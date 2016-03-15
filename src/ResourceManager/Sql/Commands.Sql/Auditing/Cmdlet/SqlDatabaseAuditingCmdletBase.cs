@@ -12,17 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     /// <summary>
     /// The base class for all Azure Sql Database security Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseAuditingCmdletBase  : AzureSqlDatabaseCmdletBase<DatabaseAuditingPolicyModel, SqlAuditAdapter>
+    public abstract class SqlDatabaseAuditingCmdletBase : AzureSqlDatabaseCmdletBase<DatabaseAuditingPolicyModel, SqlAuditAdapter>
     {
         /// <summary>
         /// Provides the model element that this cmdlet operates on

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             string rawJsonContent = StreamAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(File));
 

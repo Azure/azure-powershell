@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using System;
 using System.IO;
 using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion Input Parameter Definitions
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var filePath = ResolvePath(InputFile);
 

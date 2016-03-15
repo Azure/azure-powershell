@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineExtension,
         DefaultParameterSetName = SettingsParamSet)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string SettingStringParamSet = "SettingString";
@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Publisher { get; set; }
 
+        [Alias("Type")]
         [Parameter(
             Mandatory = true,
             Position = 4,
@@ -123,36 +124,53 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        protected override void ProcessRecord()
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Disable auto-upgrade of minor version")]
+        public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Force re-run even if extension configuration has not changed")]
+        public SwitchParameter ForceRerun { get; set; }
+
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
-                if (this.Settings != null)
+                if (this.ParameterSetName.Equals(SettingStringParamSet))
                 {
-                    this.SettingString = JsonConvert.SerializeObject(Settings);
-                    this.ProtectedSettingString = JsonConvert.SerializeObject(ProtectedSettings);
+                    this.Settings = string.IsNullOrEmpty(this.SettingString)
+                        ? null
+                        : JsonConvert.DeserializeObject<Hashtable>(this.SettingString);
+                    this.ProtectedSettings = string.IsNullOrEmpty(this.ProtectedSettingString)
+                        ? null
+                        : JsonConvert.DeserializeObject<Hashtable>(this.ProtectedSettingString);
                 }
 
                 var parameters = new VirtualMachineExtension
                 {
                     Location = this.Location,
-                    Name = this.Name,
-                    Type = VirtualMachineExtensionType,
                     Publisher = this.Publisher,
-                    ExtensionType = this.ExtensionType,
+                    VirtualMachineExtensionType = this.ExtensionType,
                     TypeHandlerVersion = this.TypeHandlerVersion,
-                    Settings = this.SettingString,
-                    ProtectedSettings = this.ProtectedSettingString,
+                    Settings = this.Settings,
+                    ProtectedSettings = this.ProtectedSettings,
+                    AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+                    ForceUpdateTag = (this.ForceRerun.IsPresent) ? "RerunExtension" : null
                 };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.VMName,
-                    parameters);
+                    this.Name,
+                    parameters).GetAwaiter().GetResult();
 
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                var result = Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
             });
         }

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCloudPool Pool { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.BatchClient.UpdatePool(this.BatchContext, this.Pool, this.AdditionalBehaviors);
         }

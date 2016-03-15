@@ -128,25 +128,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 Data = blob,
                 TaskId = taskId,
                 Channel = localChannel,
-                Record = pr
+                Record = pr,
+                TotalSize = blob.Properties.Length
             };
 
-            TransferJob downloadJob = new TransferJob(
-                new TransferLocation(blob),
-                new TransferLocation(filePath),
-                TransferMethod.SyncCopy);
-
-            BlobRequestOptions requestOptions = downloadJob.Source.RequestOptions as BlobRequestOptions;
-
-            if (null == requestOptions)
-            {
-                requestOptions = new BlobRequestOptions();
-            }
-
-            requestOptions.DisableContentMD5Validation = !checkMd5;
-            downloadJob.Source.RequestOptions = requestOptions;
-
-            await this.RunTransferJob(downloadJob, data);
+            await DataMovementTransferHelper.DoTransfer(() =>
+                {
+                    return this.TransferManager.DownloadAsync(blob, filePath,
+                        new DownloadOptions()
+                        {
+                            DisableContentMD5Validation = !this.checkMd5
+                        },
+                        this.GetTransferContext(data),
+                        this.CmdletCancellationToken);
+                }, 
+                data.Record,
+                this.OutputStream);
 
             this.WriteCloudBlobObject(data.TaskId, data.Channel, blob);
         }

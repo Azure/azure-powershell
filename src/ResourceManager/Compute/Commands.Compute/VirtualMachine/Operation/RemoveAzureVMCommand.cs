@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Remove, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Alias("ResourceName", "VMName")]
@@ -39,15 +39,17 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (this.Force.IsPresent || this.ShouldContinue(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineRemovalConfirmation, Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineRemovalCaption))
                 {
-                    var op = this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
-                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                    var op = this.VirtualMachineClient.DeleteWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
                     WriteObject(result);
                 }
             });

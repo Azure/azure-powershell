@@ -14,8 +14,8 @@
 
 using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.RemoteApp;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RemoteApp;
 using Microsoft.WindowsAzure.Management.RemoteApp.Models;
@@ -57,6 +57,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         private IRemoteAppManagementClient client = null;
 
         private Microsoft.WindowsAzure.Management.ManagementClient mgmtClient = null;
+        private IAdHelper cachedAdHelper = null;
 
         public IRemoteAppManagementClient Client
         {
@@ -102,6 +103,23 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             set
             {
                 mgmtClient = value;
+            }
+        }
+
+        public IAdHelper ActiveDirectoryHelper
+        {
+            get
+            {
+                if (cachedAdHelper == null)
+                {
+                    cachedAdHelper = new AdHelper();
+                }
+
+                return cachedAdHelper;
+            }
+            set
+            {
+                cachedAdHelper = value;
             }
         }
 

@@ -171,7 +171,26 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
 
         public Task FetchFileAttributesAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
         {
-            throw new NotImplementedException();
+            if (this.availableDirectoryNames.Contains(file.Name))
+            {
+                return TaskEx.FromResult(true);
+            }
+            else
+            {
+                throw new MockupException("FileNotFound");
+            }
+        }
+
+        public Task FetchDirectoryAttributesAsync(CloudFileDirectory directory, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            if (this.availableDirectoryNames.Contains(directory.Name))
+            {
+                return TaskEx.FromResult(true);
+            }
+            else
+            {
+                throw new MockupException("DirectoryNotFound");
+            }
         }
 
         public Task AbortCopyAsync(CloudFile file, string copyId, AccessCondition accessCondition, FileRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)

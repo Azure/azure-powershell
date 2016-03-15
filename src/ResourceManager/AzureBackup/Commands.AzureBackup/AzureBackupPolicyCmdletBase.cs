@@ -17,8 +17,8 @@ using System.Management.Automation;
 using System.Collections.Generic;
 using System.Xml;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using System.Threading;
 using Hyak.Common;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateNotNullOrEmpty]
         public AzureRMBackupProtectionPolicy ProtectionPolicy { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             WriteDebug(String.Format(Resources.CmdletCalled, 
                 ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location));

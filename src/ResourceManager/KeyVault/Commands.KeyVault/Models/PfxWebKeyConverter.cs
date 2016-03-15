@@ -31,15 +31,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password)
         {
-            if (CanProcess(fileInfo, password))
+            if (CanProcess(fileInfo))
                 return Convert(fileInfo.FullName, password);
-            else if (next != null)
+            if (next != null)
                 return next.ConvertKeyFromFile(fileInfo, password);
-            else
-                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedFileFormat, fileInfo.Name));
+            throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedFileFormat, fileInfo.Name));
         }
 
-        private bool CanProcess(FileInfo fileInfo, SecureString password)
+        private bool CanProcess(FileInfo fileInfo)
         {
             if (fileInfo == null ||
                 string.IsNullOrEmpty(fileInfo.Extension))

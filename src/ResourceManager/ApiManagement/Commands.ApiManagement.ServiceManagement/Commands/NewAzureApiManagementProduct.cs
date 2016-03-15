@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using System;
     using System.Management.Automation;
-    using System.Text.RegularExpressions;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.New, "AzureRmApiManagementProduct")]
@@ -74,20 +73,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public Int32? SubscriptionsLimit { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = false,
-            Mandatory = false,
-            HelpMessage = "The period user subscriptions stays active once approved. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).")]
-        [ValidatePattern(ApiManagementClient.PeriodPattern, Options = RegexOptions.Compiled)]
-        public String SubscriptionPeriod { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = false, 
-            Mandatory = false,
-            HelpMessage = "Specifies upcoming subscription expiration notification period. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).")]
-        [ValidatePattern(ApiManagementClient.PeriodPattern, Options = RegexOptions.Compiled)]
-        public String NotificationPeriod { get; set; }
-
-        [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
             HelpMessage = "Product state. One of: NotPublished, Published. This parameter is optional. Default value is NotPublished.")]
@@ -106,8 +91,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 SubscriptionRequired ?? true,
                 ApprovalRequired ?? false,
                 SubscriptionsLimit,
-                SubscriptionPeriod,
-                NotificationPeriod,
                 State);
 
             WriteObject(product);

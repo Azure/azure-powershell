@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
             get { return _gateway.Properties == null ? string.Empty : _gateway.Properties.ProvisioningState; }
         }
 
-        internal string Key
+        public string Key
         {
             get { return _gateway.Properties.Key; }
             set { _gateway.Properties.Key = value; }

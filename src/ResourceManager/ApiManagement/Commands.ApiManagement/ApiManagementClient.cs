@@ -12,6 +12,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 namespace Microsoft.Azure.Commands.ApiManagement
 {
     using System;
@@ -19,11 +22,9 @@ namespace Microsoft.Azure.Commands.ApiManagement
     using System.IO;
     using System.Linq;
     using AutoMapper;
-    using Microsoft.Azure.Commands.ApiManagement.Models;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Management.ApiManagement;
-    using Microsoft.Azure.Management.ApiManagement.Models;
+    using Models;
+    using Management.ApiManagement;
+    using Management.ApiManagement.Models;
 
     public class ApiManagementClient
     {
@@ -311,26 +312,28 @@ namespace Microsoft.Azure.Commands.ApiManagement
             PsApiManagementHostnameConfiguration proxyHostnameConfiguration,
             PsApiManagement currentState)
         {
-            if (portalHostnameConfiguration != null && currentState.PortalHostnameConfiguration != null)
+            if (portalHostnameConfiguration != null)
             {
                 yield return new HostnameConfiguration(
                     HostnameType.Portal,
                     portalHostnameConfiguration.Hostname,
-                    new CertificateInformation(
-                        portalHostnameConfiguration.HostnameCertificate.Expiry,
-                        portalHostnameConfiguration.HostnameCertificate.Thumbprint,
-                        portalHostnameConfiguration.HostnameCertificate.Subject));
+                    new CertificateInformation
+                    {
+                        Thumbprint = portalHostnameConfiguration.HostnameCertificate.Thumbprint,
+                        Subject = string.IsNullOrWhiteSpace(portalHostnameConfiguration.HostnameCertificate.Subject) ? "dummy" : portalHostnameConfiguration.HostnameCertificate.Subject
+                    });
             }
 
-            if (proxyHostnameConfiguration != null && currentState.ProxyHostnameConfiguration != null)
+            if (proxyHostnameConfiguration != null)
             {
                 yield return new HostnameConfiguration(
                     HostnameType.Proxy,
                     proxyHostnameConfiguration.Hostname,
-                    new CertificateInformation(
-                        proxyHostnameConfiguration.HostnameCertificate.Expiry,
-                        proxyHostnameConfiguration.HostnameCertificate.Thumbprint,
-                        proxyHostnameConfiguration.HostnameCertificate.Subject));
+                    new CertificateInformation
+                    {
+                        Thumbprint = proxyHostnameConfiguration.HostnameCertificate.Thumbprint,
+                        Subject = string.IsNullOrWhiteSpace(proxyHostnameConfiguration.HostnameCertificate.Subject) ? "dummy" : proxyHostnameConfiguration.HostnameCertificate.Subject
+                    });
             }
         }
 

@@ -55,12 +55,12 @@ ScriptsToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
-    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml'
+    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
-    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll'
+    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll'
 )
 
 # Functions to export from this module

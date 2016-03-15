@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsData.Backup, "AzureRmBackupItem"), OutputType(typeof(AzureRMBackupJob))]
     public class BackupAzureRMBackupItem : AzureRMBackupDSCmdletBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 WriteDebug(Resources.MakingClientCall);
                 Guid operationId = AzureBackupClient.TriggerBackup(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName);

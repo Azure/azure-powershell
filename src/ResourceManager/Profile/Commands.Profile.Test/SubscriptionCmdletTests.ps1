@@ -18,7 +18,7 @@ Tests each of the major parts of retrieving subscriptions in ARM mode
 #>
 function Test-GetSubscriptionsEndToEnd
 {
-	$allSubscriptions = Get-AzureRmSubscription -All
+	$allSubscriptions = Get-AzureRmSubscription
 	$firstSubscription = $allSubscriptions[0]
 	$id = $firstSubscription.SubscriptionId
 	$tenant = $firstSubscription.TenantId
@@ -80,12 +80,13 @@ function Test-SetAzureRmContextEndToEnd
     Set-AzureRmContext -SubscriptionId $secondSubscription.SubscriptionId
     $context = Get-AzureRmContext
     Assert-AreEqual $context.Subscription.SubscriptionId $secondSubscription.SubscriptionId
-    Assert-ThrowsContains {Set-AzureRmContext -SubscriptionId 'junk-subscription-id'} "does not exist under current tenant"
+    $junkSubscriptionId = "49BC3D95-9A30-40F8-81E0-3CDEF0C3F8A5"
+    Assert-ThrowsContains {Set-AzureRmContext -SubscriptionId $junkSubscriptionId} "does not exist"
 }
 
 function Test-SetAzureRmContextWithoutSubscription
 {
-    $allSubscriptions = Get-AzureRmSubscription -All
+    $allSubscriptions = Get-AzureRmSubscription
     $firstSubscription = $allSubscriptions[0]
     $id = $firstSubscription.SubscriptionId
     $tenantId = $firstSubscription.TenantId
@@ -95,7 +96,8 @@ function Test-SetAzureRmContextWithoutSubscription
     Set-AzureRmContext -TenantId $tenantId
     $context = Get-AzureRmContext
 	
-    Assert-True { $context.Subscription -eq $null }
+    Assert-True { $context.Subscription -ne $null }
     Assert-True { $context.Tenant -ne $null }
     Assert-AreEqual $context.Tenant.TenantId $firstSubscription.TenantId
+    Assert-AreEqual $context.Subscription.SubscriptionId $firstSubscription.SubscriptionId
 }

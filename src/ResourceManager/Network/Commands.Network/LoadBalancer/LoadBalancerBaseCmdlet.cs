@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class LoadBalancerBaseCmdlet : NetworkBaseCmdlet
     {
-        public ILoadBalancerOperations LoadBalancerClient
+        public ILoadBalancersOperations LoadBalancerClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.LoadBalancers;
+                return NetworkClient.NetworkManagementClient.LoadBalancers;
             }
         }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetLoadBalancer(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -54,16 +54,16 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSLoadBalancer GetLoadBalancer(string resourceGroupName, string name)
+        public PSLoadBalancer GetLoadBalancer(string resourceGroupName, string name, string expandResource = null)
         {
-            var getLoadBalancerResponse = this.LoadBalancerClient.Get(resourceGroupName, name);
+            var lb = this.LoadBalancerClient.Get(resourceGroupName, name, expandResource);
 
-            var loadBalancer = Mapper.Map<PSLoadBalancer>(getLoadBalancerResponse.LoadBalancer);
-            loadBalancer.ResourceGroupName = resourceGroupName;
-            loadBalancer.Tag =
-                TagsConversionHelper.CreateTagHashtable(getLoadBalancerResponse.LoadBalancer.Tags);
+            var psLoadBalancer = Mapper.Map<PSLoadBalancer>(lb);
+            psLoadBalancer.ResourceGroupName = resourceGroupName;
+            psLoadBalancer.Tag =
+                TagsConversionHelper.CreateTagHashtable(lb.Tags);
 
-            return loadBalancer;
+            return psLoadBalancer;
         }
 
         public PSLoadBalancer ToPsLoadBalancer(LoadBalancer lb)

@@ -42,6 +42,6 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Model
         /// <summary>
         /// Gets or sets the list of the privilege logins
         /// </summary>
-        public string PrivilegedLogins { get; set; }
+        public string PrivilegedUsers { get; set; }
     }
 }

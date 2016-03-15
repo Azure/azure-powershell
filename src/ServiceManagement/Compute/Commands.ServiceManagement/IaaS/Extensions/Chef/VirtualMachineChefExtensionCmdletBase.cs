@@ -25,6 +25,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string AutoUpdateTemplate = "\"autoUpdateClient\":\"{0}\"";
         protected const string DeleteChefConfigTemplate = "\"deleteChefConfig\":\"{0}\"";
         protected const string ClientRbTemplate = "\"client_rb\":\"{0}\"";
+        protected const string BootstrapVersionTemplate = "\"bootstrap_version\":\"{0}\"";
+        protected const string UninstallChefClientTemplate = "\"uninstallChefClient\":\"{0}\"";
         protected const string BootStrapOptionsTemplate = "\"bootstrap_options\":{0}";
         protected const string RunListTemplate = "\"runlist\": \"\\\"{0}\\\"\"";
 

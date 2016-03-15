@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
                 currentDirectory = currentDirectory.GetDirectoryReference(subFolder);
             }
 
-            return currentDirectory;
+            return new CloudFileDirectory(currentDirectory.Uri, currentDirectory.Share.ServiceClient.Credentials);
         }
 
         /// <summary>
@@ -71,7 +71,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
                 currentDirectory = currentDirectory.GetDirectoryReference(path[i]);
             }
 
-            return currentDirectory.GetFileReference(path.Last());
+            CloudFile file = currentDirectory.GetFileReference(path.Last());
+
+            return new CloudFile(file.Uri, file.Share.ServiceClient.Credentials);
         }
 
         /// <summary>

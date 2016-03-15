@@ -53,5 +53,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
         {
             this.RunPowerShellTest("Test-SiteRecoveryDissociateProfile -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VaultCRUDTests()
+        {
+            this.RunPowerShellTest("Test-SiteRecoveryVaultCRUDTests");
+        }
     }
 }

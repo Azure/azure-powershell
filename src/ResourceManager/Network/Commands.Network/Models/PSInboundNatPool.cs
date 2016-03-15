@@ -17,30 +17,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
 
-    public class PSInboundNatPool : PSChildResource
+    public class PSInboundNatPool : PSInboundRule
     {
-        [JsonProperty(Order = 1)]
-        public PSResourceId FrontendIPConfiguration { get; set; }
-
         [JsonProperty(Order = 1)]
         public int FrontendPortRangeStart { get; set; }
 
         [JsonProperty(Order = 1)]
         public int FrontendPortRangeEnd { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public int BackendPort { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public string Protocol { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public string ProvisioningState { get; set; }
-
-        [JsonIgnore]
-        public string FrontendIPConfigurationText
-        {
-            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented); }
-        }
     }
 }

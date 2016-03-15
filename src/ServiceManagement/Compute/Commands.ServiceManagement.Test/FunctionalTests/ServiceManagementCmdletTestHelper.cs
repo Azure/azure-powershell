@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
@@ -1023,62 +1023,40 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region AzureSubscription
 
-        public Collection<PSAzureSubscriptionExtended> GetAzureSubscription()
+        public Collection<PSAzureSubscriptionExtended> GetAzureSubscription(bool extendedDetails = true)
         {
-            return RunPSCmdletAndReturnAll<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, null, true, false, false));
+            return RunPSCmdletAndReturnAll<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, false, false, extendedDetails));
         }
 
-        public PSAzureSubscriptionExtended GetAzureSubscription(string subscriptionName)
+        public PSAzureSubscriptionExtended GetAzureSubscription(string subscriptionId, bool extendedDetails = true)
         {
-            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(subscriptionName, null, true, false, false));
+            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(subscriptionId, false, false, extendedDetails));
         }
 
-        public PSAzureSubscriptionExtended GetCurrentAzureSubscription()
+        public PSAzureSubscriptionExtended GetCurrentAzureSubscription(bool extendedDetails = true)
         {
-            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, null, true, true, false));
+            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, true, false, extendedDetails));
         }
 
-        public PSAzureSubscriptionExtended GetDefaultAzureSubscription()
-        {
-            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, null, true, false, true));
-        }
-
-        public PSAzureSubscriptionExtended SetAzureSubscription(string subscriptionName, string subscriptionId, string currentStorageAccountName, bool debug = false)
+        public PSAzureSubscriptionExtended SetAzureSubscription(string subscriptionId, string currentStorageAccountName, bool debug = false)
         {
             var setAzureSubscriptionCmdlet = new SetAzureSubscriptionCmdletInfo(subscriptionId, currentStorageAccountName);
-            SelectAzureSubscription(subscriptionName);
+            SelectAzureSubscription(subscriptionId);
             var azurePowershellCmdlet = new WindowsAzurePowershellCmdlet(setAzureSubscriptionCmdlet);
             azurePowershellCmdlet.Run(debug);
 
-            Collection<PSAzureSubscriptionExtended> subscriptions = GetAzureSubscription();
-            foreach (PSAzureSubscriptionExtended subscription in subscriptions)
-            {
-                if (subscription.SubscriptionName == subscriptionName)
-                {
-                    return subscription;
-                }
-            }
-            return null;
+            return GetAzureSubscription(subscriptionId);
         }
 
-        public PSAzureSubscriptionExtended SetDefaultAzureSubscription(string subscriptionName, bool debug = false)
+        public PSAzureSubscriptionExtended SetDefaultAzureSubscription(string subscriptionId, bool debug = false)
         {
-            SelectAzureSubscription(subscriptionName);
-
-            Collection<PSAzureSubscriptionExtended> subscriptions = GetAzureSubscription();
-            foreach (PSAzureSubscriptionExtended subscription in subscriptions)
-            {
-                if (subscription.SubscriptionName == subscriptionName)
-                {
-                    return subscription;
-                }
-            }
-            return null;
+            SelectAzureSubscription(subscriptionId);
+            return GetAzureSubscription(subscriptionId);
         }
 
-        public AzureSubscription SelectAzureSubscription(string subscriptionName, bool isDefault = true, bool clear = false, string subscriptionDataFile = null)
+        public AzureSubscription SelectAzureSubscription(string subscriptionId, bool isDefault = true)
         {
-            return RunPSCmdletAndReturnFirst<AzureSubscription>(new SelectAzureSubscriptionCmdletInfo(subscriptionName, isDefault, clear, subscriptionDataFile));
+            return RunPSCmdletAndReturnFirst<AzureSubscription>(new SelectAzureSubscriptionCmdletInfo(subscriptionId, isDefault));
         }
 
         #endregion
@@ -1341,6 +1319,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                         providerNamespace, publicConfig, privateConfig, version));
         }
 
+        public ExtensionConfigurationInput NewAzureServiceExtensionConfig(string extensionId, string extensionStatus,
+            string [] roles = null)
+        {
+            return
+                RunPSCmdletAndReturnFirst<ExtensionConfigurationInput>(
+                    new NewAzureServiceExtensionConfigCmdletInfo(extensionId, extensionStatus, roles));
+        }
+
         // Set-AzureServiceExtension
         public ManagementOperationContext SetAzureServiceExtension(string serviceName, string extensionName,
             string providerNamespace, string publicConfig, string privateConfig, string[] roles = null, string slot = null, string version = null)
@@ -1596,14 +1582,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Collection<SM.OSImageContext> vmImages = GetAzureVMImage();
             foreach (SM.OSImageContext image in vmImages)
             {
-                if (Utilities.MatchKeywords(image.ImageName, keywords, exactMatch) >= 0 &&
-                    ((diskSize == null) || (image.LogicalSizeInGB <= diskSize)))
+                if (Utilities.MatchKeywords(image.ImageName, keywords, exactMatch) >= 0
+                    && ((diskSize == null) || (image.LogicalSizeInGB <= diskSize))
+                    && image.Location.Contains(CredentialHelper.Location))
                     return image.ImageName;
             }
             foreach (SM.OSImageContext image in vmImages)
             {
-                if (Utilities.MatchKeywords(image.OS, keywords, exactMatch) >= 0 &&
-                    ((diskSize == null) || (image.LogicalSizeInGB <= diskSize)))
+                if (Utilities.MatchKeywords(image.OS, keywords, exactMatch) >= 0
+                    && ((diskSize == null) || (image.LogicalSizeInGB <= diskSize))
+                    && image.Location.Contains(CredentialHelper.Location))
                     return image.ImageName;
             }
             return null;

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public Hashtable[] Tag { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             BatchAccountContext context = BatchClient.CreateAccount(this.ResourceGroupName, this.AccountName, this.Location, this.Tag);
             WriteObject(context);

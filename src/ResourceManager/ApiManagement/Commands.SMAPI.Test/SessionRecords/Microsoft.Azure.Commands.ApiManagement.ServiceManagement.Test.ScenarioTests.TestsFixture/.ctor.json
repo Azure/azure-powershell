@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/e4f2946d-558a-4212-9e97-217ee3e55f94/providers/Microsoft.ApiManagement/register?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTRmMjk0NmQtNTU4YS00MjEyLTllOTctMjE3ZWUzZTU1Zjk0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9yZWdpc3Rlcj9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/providers/Microsoft.ApiManagement/register?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9yZWdpc3Rlcj9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -10,10 +10,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e4f2946d-558a-4212-9e97-217ee3e55f94/providers/Microsoft.ApiManagement\",\r\n  \"namespace\": \"Microsoft.ApiManagement\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"service\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"validateServiceName\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkServiceNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/providers/Microsoft.ApiManagement\",\r\n  \"namespace\": \"Microsoft.ApiManagement\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"service\",\r\n      \"locations\": [\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"validateServiceName\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkServiceNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"reportFeedback\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkFeedbackRequired\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "610"
+          "971"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -25,16 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1199"
         ],
         "x-ms-request-id": [
-          "f47a830c-0487-480f-9251-5c0f90cc8101"
+          "be332402-5853-45e3-a86d-a507736b5181"
         ],
         "x-ms-correlation-request-id": [
-          "f47a830c-0487-480f-9251-5c0f90cc8101"
+          "be332402-5853-45e3-a86d-a507736b5181"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150624T183811Z:f47a830c-0487-480f-9251-5c0f90cc8101"
+          "WESTUS:20151023T191304Z:be332402-5853-45e3-a86d-a507736b5181"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,14 +43,14 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 24 Jun 2015 18:38:10 GMT"
+          "Fri, 23 Oct 2015 19:13:04 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e4f2946d-558a-4212-9e97-217ee3e55f94/providers/Microsoft.ApiManagement?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTRmMjk0NmQtNTU4YS00MjEyLTllOTctMjE3ZWUzZTU1Zjk0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/providers/Microsoft.ApiManagement?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -58,10 +58,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e4f2946d-558a-4212-9e97-217ee3e55f94/providers/Microsoft.ApiManagement\",\r\n  \"namespace\": \"Microsoft.ApiManagement\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"service\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"validateServiceName\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkServiceNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/providers/Microsoft.ApiManagement\",\r\n  \"namespace\": \"Microsoft.ApiManagement\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"service\",\r\n      \"locations\": [\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"validateServiceName\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkServiceNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"reportFeedback\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkFeedbackRequired\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2014-02-14\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "610"
+          "971"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -73,16 +73,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14973"
+          "14999"
         ],
         "x-ms-request-id": [
-          "d38ef230-a25a-40b0-95f4-cd3b7a953afc"
+          "f663ab14-94d7-47a7-992e-0962da8ad3e6"
         ],
         "x-ms-correlation-request-id": [
-          "d38ef230-a25a-40b0-95f4-cd3b7a953afc"
+          "f663ab14-94d7-47a7-992e-0962da8ad3e6"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150624T183811Z:d38ef230-a25a-40b0-95f4-cd3b7a953afc"
+          "WESTUS:20151023T191304Z:f663ab14-94d7-47a7-992e-0962da8ad3e6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -91,7 +91,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 24 Jun 2015 18:38:10 GMT"
+          "Fri, 23 Oct 2015 19:13:04 GMT"
         ]
       },
       "StatusCode": 200
@@ -99,6 +99,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "e4f2946d-558a-4212-9e97-217ee3e55f94"
+    "SubscriptionId": "a200340d-6b82-494d-9dbf-687ba6e33f9e"
   }
 }

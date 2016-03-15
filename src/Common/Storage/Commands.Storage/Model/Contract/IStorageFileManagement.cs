@@ -278,6 +278,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         Task DeleteDirectoryAsync(CloudFileDirectory directory, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
 
         /// <summary>
+        /// Returns a task that performs an asynchronous operation to fetch attribute of a directory.
+        /// </summary>
+        /// <param name="directory">
+        /// Indicating the reference of the directory whose attribute to be fetched.
+        /// </param>
+        /// <param name="accessCondition">
+        ///  A Microsoft.WindowsAzure.Storage.AccessCondition object that represents
+        ///  the access conditions for the share. If null, no condition is used.
+        /// </param>
+        /// <param name="options">
+        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  additional options for the request.
+        /// </param>
+        /// <param name="operationContext">
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  the context for the current operation.
+        ///  </param>
+        /// <param name="cancellationToken">
+        ///  A System.Threading.CancellationToken to observe while waiting for a task
+        ///  to complete.
+        /// </param>
+        /// <returns>
+        ///  A System.Threading.Tasks.Task object that represents the current operation.
+        /// </returns>
+        Task FetchDirectoryAttributesAsync(CloudFileDirectory directory, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
+
+        /// <summary>
         /// Returns a task that performs an asynchronous operation to delete a share.
         /// </summary>
         /// <param name="share">

@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string BandwidthsOfferedText
         {
-            get { return JsonConvert.SerializeObject(BandwidthsOffered, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(BandwidthsOffered, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string PeeringLocationsText
         {
-            get { return JsonConvert.SerializeObject(PeeringLocations, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(PeeringLocations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

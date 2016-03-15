@@ -42,7 +42,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Azure SQL Data Warehouse database edition
         /// </summary>
-        DataWarehouse = 6
+        DataWarehouse = 6,
+
+        /// <summary>
+        /// Free database edition.  Reserved for special use cases/scenarios.
+        /// </summary>
+        Free = 7,
     }
 }
 

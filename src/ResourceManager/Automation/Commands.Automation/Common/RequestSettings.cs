@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,11 @@ namespace Microsoft.Azure.Commands.Automation
             client = ((AutomationManagementClient)automationClient);
             client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, Guid.NewGuid().ToString());
+
+            client.HttpClient.DefaultRequestHeaders.Remove(Constants.ActivityIdHeaderName);
+            var activityId = Guid.NewGuid();
+            EventProvider.SetActivityId(ref activityId);
+            client.HttpClient.DefaultRequestHeaders.Add(Constants.ActivityIdHeaderName, activityId.ToString());
         }
         
         public void Dispose()
@@ -43,6 +49,7 @@ namespace Microsoft.Azure.Commands.Automation
             if (disposing)
             {
                 client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+                client.HttpClient.DefaultRequestHeaders.Remove(Constants.ActivityIdHeaderName);
             }
         }
     }

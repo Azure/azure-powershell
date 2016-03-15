@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string commonAccountName = ScenarioTestHelpers.SharedAccount;
         private const string testPoolId = ScenarioTestHelpers.SharedPool;
 
+        // Get from WATaskOSFamilyVersions table, which lags behind https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/
+        private const string specificOSVersion = "WA-GUEST-OS-4.25_201510-01"; 
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewPool()
@@ -37,7 +40,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPoolById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -59,7 +61,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPoolsByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -97,7 +98,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPoolsWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -126,7 +126,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllPools()
         {
             BatchController controller = BatchController.NewInstance;
@@ -158,7 +157,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdatePool()
         {
             BatchController controller = BatchController.NewInstance;
@@ -181,7 +179,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeletePool()
         {
             BatchController controller = BatchController.NewInstance;
@@ -221,7 +218,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResizePoolById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -239,7 +235,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResizePoolByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -257,7 +252,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopResizePoolById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -275,7 +269,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopResizePoolByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -293,7 +286,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableAutoScaleById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -303,6 +295,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                     ScenarioTestHelpers.DisableAutoScale(controller, context, testPoolId);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
@@ -315,7 +308,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableAutoScaleByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -325,6 +317,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                     ScenarioTestHelpers.DisableAutoScale(controller, context, testPoolId);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
@@ -337,7 +330,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAutoScaleById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -347,6 +339,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                     ScenarioTestHelpers.EnableAutoScale(controller, context, testPoolId);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
@@ -356,7 +349,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAutoScaleByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -366,6 +358,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                     ScenarioTestHelpers.EnableAutoScale(controller, context, testPoolId);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
@@ -375,7 +368,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEvaluateAutoScaleById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -397,7 +389,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEvaluateAutoScaleByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -419,14 +410,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestChangeOSVersionById()
         {
             TestChangeOSVersion(false);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestChangeOSVersionPipeline()
         {
             TestChangeOSVersion(true);
@@ -443,112 +432,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
                     string currentTargetOSVersion = ScenarioTestHelpers.WaitForOSVersionChange(controller, context, testPoolId);
-                    newTargetOSVersion = currentTargetOSVersion == "*" ? "WA-GUEST-OS-4.20_201505-01" : "*";
+                    newTargetOSVersion = currentTargetOSVersion == "*" ? specificOSVersion : "*";
                 },
                 null,
                 TestUtilities.GetCallingClass(),
                 usePipeline ? "TestChangeOSVersionPipeline" : "TestChangeOSVersionById");
-        }
-    }
-
-    // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.Get, "AzureBatchPool_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
-    public class GetBatchPoolScenarioTestCommand : GetBatchPoolCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsCommon.New, "AzureBatchPool_ST", DefaultParameterSetName = TargetDedicatedParameterSet)]
-    public class NewBatchPoolScenarioTestCommand : NewBatchPoolCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Set, "AzureBatchPool_ST")]
-    public class SetBatchPoolScenarioTestCommand : SetBatchPoolCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchPool_ST")]
-    public class RemoveBatchPoolScenarioTestCommand : RemoveBatchPoolCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsLifecycle.Start, "AzureBatchPoolResize_ST")]
-    public class StartBatchPoolResizeScenarioTestCommand : StartBatchPoolResizeCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchPoolResize_ST")]
-    public class StopBatchPoolResizeScenarioTestCommand : StopBatchPoolResizeCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsLifecycle.Enable, "AzureBatchAutoScale_ST")]
-    public class EnableBatchAutoScaleScenarioTestCommand : EnableBatchAutoScaleCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsLifecycle.Disable, "AzureBatchAutoScale_ST")]
-    public class DisableBatchAutoScaleScenarioTestCommand : DisableBatchAutoScaleCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsDiagnostic.Test, "AzureBatchAutoScale_ST")]
-    public class TestBatchAutoScaleScenarioTestCommand : TestBatchAutoScaleCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Set, "AzureBatchPoolOSVersion_ST")]
-    public class SetBatchPoolOSVersionScenarioTestCommand : SetBatchPoolOSVersionCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
         }
     }
 }

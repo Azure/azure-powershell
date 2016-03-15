@@ -84,13 +84,6 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
             <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
@@ -148,13 +141,6 @@
             <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
@@ -249,13 +235,6 @@
             <maml:para />
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
@@ -357,13 +336,6 @@
             <maml:para>The resource group name.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
@@ -467,13 +439,6 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
             <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
@@ -573,13 +538,6 @@
             <maml:para />
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
@@ -731,19 +689,6 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>OutputObjectFormat</maml:name>
-        <maml:description>
-          <maml:para>The output format of the resource properties.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        <dev:type>
-          <maml:name>ResourceObjectFormat</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -905,27 +850,6 @@
         <dev:code>Get-AzureRmResource -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -ResourceName myWebsite</dev:code>
         <dev:remarks>
           <maml:para>Gets resource of type microsoft.web/sites and name myWebsite under myResourceGroup</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>
-          </maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  GetByType2  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>Get-AzureRmResource -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -ResourceName myWebsite -OutputObjectFormat New</dev:code>
-        <dev:remarks>
-          <maml:para>Gets resource of type microsoft.web/sites and name myWebsite under myResourceGroup. The output object format for Properties of the resource will be the new format</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>
@@ -2210,13 +2134,6 @@
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">Nullable`1[ResourceObjectFormat]</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ResourceId</maml:name>
           <maml:description>
@@ -2331,13 +2248,6 @@
             <maml:para>When set indicates that the full object is passed in to the -PropertyObject parameter.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">Nullable`1[ResourceObjectFormat]</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ResourceName</maml:name>
@@ -2481,13 +2391,6 @@
             <maml:para>When set indicates that the full object is passed in to the -PropertyObject parameter.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">Nullable`1[ResourceObjectFormat]</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ResourceName</maml:name>
@@ -2663,19 +2566,6 @@
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-        <maml:name>OutputObjectFormat</maml:name>
-        <maml:description>
-          <maml:para>The output format of the resource properties.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">Nullable`1[ResourceObjectFormat]</command:parameterValue>
-        <dev:type>
-          <maml:name>Nullable`1[ResourceObjectFormat]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -5050,13 +4940,6 @@
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">Nullable`1[ResourceObjectFormat]</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ResourceId</maml:name>
           <maml:description>
@@ -5164,13 +5047,6 @@
             <maml:para>When set indicates if an HTTP PATCH should be used to update the object instead of PUT.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">Nullable`1[ResourceObjectFormat]</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ResourceName</maml:name>
@@ -5307,13 +5183,6 @@
             <maml:para>When set indicates if an HTTP PATCH should be used to update the object instead of PUT.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">Nullable`1[ResourceObjectFormat]</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ResourceName</maml:name>
@@ -5476,19 +5345,6 @@
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-        <maml:name>OutputObjectFormat</maml:name>
-        <maml:description>
-          <maml:para>The output format of the resource properties.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">Nullable`1[ResourceObjectFormat]</command:parameterValue>
-        <dev:type>
-          <maml:name>Nullable`1[ResourceObjectFormat]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -5752,9 +5608,9 @@
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
         <dev:code>
-          $r = Get-AzureRmResource -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -ResourceName mySite -OutputObjectFormat New
+          $r = Get-AzureRmResource -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -ResourceName mySite 
           $r.Properties.Enabled = "False"
-          $r | Set-AzureRmResource -Force -OutputObjectFormat New
+          $r | Set-AzureRmResource -Force
         </dev:code>
         <dev:remarks>
           <maml:para />
@@ -6712,14 +6568,7 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+	      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
             <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
@@ -6764,21 +6613,7 @@
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ODataQuery</maml:name>
-          <maml:description>
-            <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+	<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
             <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
@@ -6864,13 +6699,6 @@
             <maml:para />
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
@@ -6980,13 +6808,7 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
+       
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
@@ -7082,20 +6904,6 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ApiVersion</maml:name>
-          <maml:description>
-            <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
             <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
@@ -7182,14 +6990,7 @@
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+	      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
             <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
@@ -7344,33 +7145,7 @@
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>ResourceGroupNameContains</maml:name>
-        <maml:description>
-          <maml:para>The resource group name substring.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>OutputObjectFormat</maml:name>
-        <maml:description>
-          <maml:para>The output format of the resource properties.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        <dev:type>
-          <maml:name>ResourceObjectFormat</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+   	<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApiVersion</maml:name>
         <maml:description>
           <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
@@ -9922,3 +9697,4 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
 	</maml:relatedLinks>
 </command:command>
 </helpItems>
+

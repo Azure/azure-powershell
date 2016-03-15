@@ -16,3 +16,6 @@ BatchClientBehaviors Documentation: https://msdn.microsoft.com/en-us/library/azu
 The Scenario Tests make use of the HTTP recorder/playback functionality in the Hyak
 management libraries.  See the Azure PowerShell Developer Guide for more information:
 https://github.com/Azure/azure-powershell/wiki/Microsoft-Azure-PowerShell-Developer-Guide#running-scenario-tests
+
+To save time on recording, the scenario tests assume some basic setup.  See the top of 
+ScenarioTests\ScenarioTestHelpers.cs for details.

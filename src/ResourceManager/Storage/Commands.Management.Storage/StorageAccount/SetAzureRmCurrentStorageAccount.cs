@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             CloudStorageAccount account;
             if (Context != null)

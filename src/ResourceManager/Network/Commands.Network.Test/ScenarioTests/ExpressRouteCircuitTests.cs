@@ -26,11 +26,18 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteCircuitPeeringCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitPeeringCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExpressRouteCircuitAuthorizationCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitAuthorizationCRUD");
         }
     }
 }

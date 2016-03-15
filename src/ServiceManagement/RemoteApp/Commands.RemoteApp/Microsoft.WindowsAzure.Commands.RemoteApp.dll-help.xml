@@ -49,6 +49,13 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Alias</maml:name>
+          <maml:description>
+            <maml:para>Published program alias (applicable only in per-app publishing mode)</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
@@ -105,6 +112,19 @@
         <dev:type>
           <maml:name>string[]</maml:name>
           <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Alias</maml:name>
+        <maml:description>
+          <maml:para>Published program alias (applicable only in per-app publishing mode)</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
         </dev:type>
         <dev:defaultValue>
         </dev:defaultValue>
@@ -1912,6 +1932,13 @@ Get-AzureRemoteAppTemplateImage -ImageName ContosoApps                        </
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Alias</maml:name>
+          <maml:description>
+            <maml:para>Published program alias (applicable only in per-app publishing mode)</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
@@ -1942,7 +1969,20 @@ Get-AzureRemoteAppTemplateImage -ImageName ContosoApps                        </
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-    </command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Alias</maml:name>
+        <maml:description>
+          <maml:para>Published program alias (applicable only in per-app publishing mode)</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+   </command:parameters>
     <!-- Input - Output section-->
     <command:inputTypes>
       <command:inputType>
@@ -4400,6 +4440,13 @@ Remove-AzureRemoteAppTemplateImage -ImageName ContosoApps                       
           </maml:description>
           <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Alias</maml:name>
+          <maml:description>
+            <maml:para>Published program alias (applicable only in per-app publishing mode)</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
@@ -4456,6 +4503,19 @@ Remove-AzureRemoteAppTemplateImage -ImageName ContosoApps                       
         <dev:type>
           <maml:name>string[]</maml:name>
           <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Alias</maml:name>
+        <maml:description>
+          <maml:para>Published program alias (applicable only in per-app publishing mode)</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
         </dev:type>
         <dev:defaultValue>
         </dev:defaultValue>
@@ -5295,6 +5355,23 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Set-AzureRemoteAppCollection</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>CollectionName</maml:name>
+          <maml:description>
+            <maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>AclLevel</maml:name>
+          <maml:description>
+            <maml:para>Specifies at which level ACLs are set. Possible values: Collection, Application.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">CollectionAclLevel</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
     <command:parameters>
@@ -5362,6 +5439,18 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
         </dev:type>
         <dev:defaultValue>
         </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>AclLevel</maml:name>
+        <maml:description>
+          <maml:para>Specifies at which level ACLs are set. Possible values: Collection, Application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">CollectionAclLevel</command:parameterValue>
+        <dev:type>
+          <maml:name>CollectionAclLevel</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <!-- Input - Output section-->
@@ -5993,6 +6082,13 @@ TrackingId
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+          <maml:name>SubnetName</maml:name>
+          <maml:description>
+            <maml:para>Name of subnet to move the collection into.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ForceLogoffWhenUpdateComplete</maml:name>
           <maml:description>
@@ -6047,6 +6143,19 @@ TrackingId
           <maml:para>Name of Microsoft Azure RemoteApp template image.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+        <maml:name>SubnetName</maml:name>
+        <maml:description>
+          <maml:para>Name of the subnet to move the collection into.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
           <maml:uri />

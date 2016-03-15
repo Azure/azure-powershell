@@ -273,6 +273,32 @@ function Test-SetAResource
 
 <#
 .SYNOPSIS
+Tests setting a resource using patch.
+#>
+function Test-SetAResourceWithPatch
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	$resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" } -UsePatchSemantics -Force 
+
+	$modifiedResource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+
+	# Assert patch didn't overwrite existing properties
+	Assert-AreEqual $modifiedResource.Properties.key2 "value2"
+	Assert-AreEqual $modifiedResource.Sku.Name "A1" 
+}
+
+<#
+.SYNOPSIS
 Tests finding a resource.
 #>
 function Test-FindAResource
@@ -299,4 +325,48 @@ function Test-FindAResource
 	New-AzureRmResource -Name $rname2 -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
 	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
 	Assert-AreEqual 2 @($expected).Count
+}
+
+<#
+.SYNOPSIS
+Tests getting a resource with properties expanded
+#>
+function Test-GetResourceExpandProperties
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	$resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	$resourceGet = Get-AzureRmResource -ResourceName $rname -ResourceGroupName $rgname -ExpandProperties
+
+	# Assert
+	Assert-AreEqual $resourceGet.Properties.key "value"
+}
+
+<#
+.SYNOPSIS
+Tests getting a resource with IsCollection
+#>
+function Test-GetResourceWithCollection
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2015-08-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplate.json -TemplateParameterFile sampleTemplateParams.json
+	$resourceGet = Get-AzureRmResource -ResourceGroupName $rgname -ResourceType Microsoft.Web/serverFarms -IsCollection -ApiVersion 2015-08-01
+
+	# Assert
+	Assert-AreEqual $resourceGet.ResourceType "Microsoft.Web/serverFarms"
 }

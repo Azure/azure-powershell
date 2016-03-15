@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             //
             InitialSessionState initialSessionState = InitialSessionState.Create();
             var importDscResourcefunctionEntry = new SessionStateFunctionEntry(
-                "Import-DscResource", @"param($Name, $ModuleName)
+                "Import-DscResource", @"param($Name, $ModuleName, $ModuleVersion, $Module)
                 if ($ModuleName) 
                 {
                     foreach ($module in $ModuleName) {
@@ -95,14 +95,41 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                         }
                         else{
                             if(!$global:modules.ContainsKey($module)){
-                                $global:modules.Add($module,"""")
+                                if($ModuleVersion)
+                                {   
+                                    $global:modules.Add($module,$ModuleVersion)    
+                                }
+                                else
+                                {
+                                    $global:modules.Add($module,"""")
+                                }
                             }
                         }
                     }
-                } else {
+                } 
+                elseif($Module)
+                {
+                    foreach ($module in $Module) 
+                    {
+                        if(!$global:modules.ContainsKey($module))
+                        {
+                            if($ModuleVersion)
+                            {   
+                                $global:modules.Add($module,$ModuleVersion)    
+                            }
+                            else
+                            {
+                                $global:modules.Add($module,"""")
+                            }
+                        }      
+                    }
+                }
+                else 
+                {
                     foreach ($n in $Name) { $global:resources.Add($n) }
                 }
             ");
+             
             initialSessionState.Commands.Add(importDscResourcefunctionEntry);
             initialSessionState.LanguageMode = PSLanguageMode.RestrictedLanguage;
             var moduleVarEntry = new SessionStateVariableEntry("modules", modules, "");
@@ -179,7 +206,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 
         private static Dictionary<String, String> GetRequiredModulesFromAst(Ast ast, IEnumerable<Token> tokens)
         {
-            var modules = new Dictionary<String,String>();
+            var modules = new Dictionary<String,String>(StringComparer.OrdinalIgnoreCase);
 
             // We use System.Management.Automation.Language.Parser to extract required modules from ast, 
             // but format of ast is a bit tricky and have changed in time.

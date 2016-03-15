@@ -25,15 +25,15 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteServiceProvider"), OutputType(typeof(PSExpressRouteServiceProvider))]
     public class GetAzureExpressRouteServiceProviderCommand : NetworkBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
-            var serviceProviderList = this.NetworkClient.NetworkResourceProviderClient.ExpressRouteServiceProviders.List();
+            var serviceProviderList = this.NetworkClient.NetworkManagementClient.ExpressRouteServiceProviders.List();
 
             var psProviders = new List<PSExpressRouteServiceProvider>();
 
-            foreach (var provider in serviceProviderList.ExpressRouteServiceProviders)
+            foreach (var provider in serviceProviderList)
             {
                 var psProvider = Mapper.Map<PSExpressRouteServiceProvider>(provider);
                 psProviders.Add(psProvider);

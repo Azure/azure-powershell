@@ -26,9 +26,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
     {
         private const string NetExtensionParameterSetName = NewExtensionParameterSetName;
         private const string NetExtensionUsingThumbprintParameterSetName = NewExtensionUsingThumbprintParameterSetName;
+        private const string NetUpdateExtensionStatusParameterSetName = UpdateExtensionStatusParameterSetName;
 
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.RoleHelpMessage)]
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.RoleHelpMessage)]
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = NetUpdateExtensionStatusParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public override string[] Role
         {
@@ -107,6 +109,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
+        [Parameter(Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [Parameter(Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = NetUpdateExtensionStatusParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public override string ExtensionId
+        {
+            get;
+            set;
+        }
+
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = NetUpdateExtensionStatusParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionStateHelpMessage)]
+        [ValidateSet("Enable", "Disable", "Uninstall", IgnoreCase = true)]
+        public override string ExtensionState
+        {
+            get;
+            set;
+        }
+
         protected override void ValidateParameters()
         {
             base.ValidateParameters();
@@ -119,6 +139,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             ValidateParameters();
             WriteObject(new ExtensionConfigurationInput
             {
+                Id = ExtensionId,
+                State = ExtensionState,
                 CertificateThumbprint = CertificateThumbprint,
                 ThumbprintAlgorithm = ThumbprintAlgorithm,
                 ProviderNameSpace = ProviderNamespace,

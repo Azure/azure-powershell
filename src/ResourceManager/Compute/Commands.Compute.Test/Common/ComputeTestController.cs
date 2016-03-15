@@ -26,8 +26,11 @@ using Microsoft.Azure.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
@@ -55,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public StorageManagementClient StorageClient { get; private set; }
 
-        public NetworkResourceProviderClient NetworkResourceProviderClient { get; private set; }
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
 
         public ComputeManagementClient ComputeManagementClient { get; private set; }
 
@@ -100,10 +103,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             d.Add("Microsoft.Authorization", null);
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
-            using (UndoContext context = UndoContext.Current)
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
-
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
                 if(initialize != null)
@@ -111,7 +113,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     initialize(this.csmTestFactory);
                 }
 
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 
@@ -151,17 +153,17 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             }
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(RestTestFramework.MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             StorageClient = GetStorageManagementClient();
             GalleryClient = GetGalleryClient();
             //var eventsClient = GetEventsClient();
-            NetworkResourceProviderClient = GetNetworkResourceProviderClient();
-            ComputeManagementClient = GetComputeManagementClient();
+            NetworkManagementClient = this.GetNetworkManagementClientClient(context);
+            ComputeManagementClient = GetComputeManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
-            GraphClient = GetGraphClient();
+            // GraphClient = GetGraphClient();
 
             helper.SetupManagementClients(
                 ResourceManagementClient,
@@ -169,10 +171,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 StorageClient,
                 GalleryClient,
                 //eventsClient,
-                NetworkResourceProviderClient,
+                NetworkManagementClient,
                 ComputeManagementClient,
-                AuthorizationManagementClient,
-                GraphClient);
+                AuthorizationManagementClient);
+                // GraphClient);
         }
 
         private GraphRbacManagementClient GetGraphClient()
@@ -235,17 +237,17 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         //    return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
         //}
 
-        private NetworkResourceProviderClient GetNetworkResourceProviderClient()
+        private NetworkManagementClient GetNetworkManagementClientClient(RestTestFramework.MockContext context)
         {
             return testViaCsm
-                ? TestBase.GetServiceClient<NetworkResourceProviderClient>(this.csmTestFactory)
-                : TestBase.GetServiceClient<NetworkResourceProviderClient>(new RDFETestEnvironmentFactory());
+                ? context.GetServiceClient<NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<NetworkManagementClient>(new RDFETestEnvironmentFactory());
         }
 
-        private ComputeManagementClient GetComputeManagementClient()
+        private ComputeManagementClient GetComputeManagementClient(RestTestFramework.MockContext context)
         {
             return testViaCsm
-                ? TestBase.GetServiceClient<ComputeManagementClient>(this.csmTestFactory)
+                ? context.GetServiceClient<ComputeManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
                 : TestBase.GetServiceClient<ComputeManagementClient>(new RDFETestEnvironmentFactory());
         }
     }

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
@@ -155,6 +156,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         [Parameter(ValueFromPipelineByPropertyName = true)]
         [ValidateSetAttribute(new[] { "4.0", "latest", "5.0PP" })]
         public string WmfVersion { get; set; }
+
+        /// <summary>
+        /// The Extension Data Collection state
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  " +
+            "The value is persisted in the extension between calls.")
+        ]
+        [ValidateSet("Enable", "Disable")]
+        [AllowNull]
+        public string DataCollection { get; set; }
 
         /// <summary>
         /// Credentials used to access Azure Storage
@@ -381,7 +393,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             var publicSettings = new DscExtensionPublicSettings();
             var privateSettings = new DscExtensionPrivateSettings();
 
-            publicSettings.WmfVersion = string.IsNullOrEmpty(WmfVersion) ? "latest" : WmfVersion;
+            
 
             if (!string.IsNullOrEmpty(ConfigurationArchive))
             {
@@ -389,6 +401,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
                 publicSettings.SasToken = configurationUris.SasToken;
                 publicSettings.ModulesUrl = configurationUris.ModulesUrl;
+                
+                Hashtable privacySetting = new Hashtable();
+                privacySetting.Add("DataCollection",DataCollection);
+                publicSettings.Privacy = privacySetting;
+
                 publicSettings.ConfigurationFunction = string.Format(
                     CultureInfo.InvariantCulture,
                     "{0}\\{1}",
@@ -400,6 +417,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 privateSettings.Items = settings.Item2;
 
                 privateSettings.DataBlobUri = configurationUris.DataBlobUri;
+
+                if (!string.IsNullOrEmpty(WmfVersion))
+                {
+                    publicSettings.WmfVersion = WmfVersion;        
+                }
             }
 
             //

@@ -12,16 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
-using System;
-using System.Linq;
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using System;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
 {
@@ -93,7 +90,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
             if (string.Equals(ParameterSetName, VMImageParamSet, StringComparison.OrdinalIgnoreCase))
             {
                 var osDiskConfig = DiskConfig == null ? null : DiskConfig.OSDiskConfiguration;
-                var dataDiskConfigs = DiskConfig == null ? null : DiskConfig.DataDiskConfigurations.ToList();
+                var dataDiskConfigs =
+                    (DiskConfig == null || DiskConfig.DataDiskConfigurations == null)
+                    ? null
+                    : DiskConfig.DataDiskConfigurations.ToList();
 
                 var parameters = new VirtualMachineVMImageCreateParameters
                 {

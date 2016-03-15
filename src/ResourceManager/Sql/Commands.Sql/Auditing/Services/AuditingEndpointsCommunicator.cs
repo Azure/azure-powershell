@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Services
@@ -77,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseAuditingPolicyCreateOrUpdateParameters parameters)
         {
             IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
-            operations.CreateOrUpdateDatebasePolicy(resourceGroupName, serverName, databaseName, parameters);
+            operations.CreateOrUpdateDatabasePolicy(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>

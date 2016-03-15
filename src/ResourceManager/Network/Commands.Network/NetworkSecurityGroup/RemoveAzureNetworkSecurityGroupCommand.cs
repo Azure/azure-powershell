@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ConfirmAction(
                 Force.IsPresent,

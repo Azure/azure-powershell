@@ -70,5 +70,50 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test.Common
             
             return mockVmList.Count;
         }
+
+        public static int SetUpStaleVmObjectsTest(Mock<IRemoteAppManagementClient> clientMock, string collectionName, string[] vmNames)
+        {
+            CollectionVmsListResult response = new CollectionVmsListResult();
+            ActiveDirectoryConfigResult getAdResponse = new ActiveDirectoryConfigResult()
+            {
+                ActiveDirectoryConfig = new ActiveDirectoryConfig()
+                {
+                    DomainName = "contoso.com",
+                    OrganizationalUnit = null,
+                    UserName = "user",
+                    Password = "********"
+                }
+            };
+
+            response.Vms = new List<RemoteAppVm>();
+            foreach(string vmName in vmNames)
+            {
+                response.Vms.Add(new RemoteAppVm()
+                    {
+                        VirtualMachineName = vmName,
+                        LoggedOnUserUpns = { }
+                    });
+            };
+
+            mockVmList = new List<RemoteAppVm>();
+            foreach (RemoteAppVm vm in response.Vms)
+            {
+                RemoteAppVm mockVm = new RemoteAppVm()
+                {
+                    VirtualMachineName = vm.VirtualMachineName,
+                    LoggedOnUserUpns = vm.LoggedOnUserUpns
+                };
+                mockVmList.Add(mockVm);
+            }
+
+            ISetup<IRemoteAppManagementClient, Task<CollectionVmsListResult>> setup = clientMock.Setup(c => c.Collections.ListVmsAsync(collectionName, It.IsAny<CancellationToken>()));
+            setup.Returns(Task.Factory.StartNew(() => response));
+
+            ISetup<IRemoteAppManagementClient, Task<ActiveDirectoryConfigResult>> setupGetAd = clientMock.Setup(c => c.Collections.GetAdAsync(collectionName, It.IsAny<CancellationToken>()));
+            setupGetAd.Returns(Task.Factory.StartNew(() => getAdResponse));
+
+            return mockVmList.Count;
+        }
+    
     }
 }

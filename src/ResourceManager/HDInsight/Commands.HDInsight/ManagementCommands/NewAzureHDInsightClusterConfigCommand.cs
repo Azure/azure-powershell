@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
@@ -85,6 +86,34 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.ClusterType = value; }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Object Id for accessing Azure Data Lake.")]
+        public Guid ObjectId
+        {
+            get { return _config.ObjectId; }
+            set { _config.ObjectId = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate for accessing Azure Data Lake.")]
+        public string CertificateFilePath
+        {
+            get { return _config.CertificateFilePath; }
+            set { _config.CertificateFilePath = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate Password for accessing Azure Data Lake.")]
+        public string CertificatePassword
+        {
+            get { return _config.CertificatePassword; }
+            set { _config.CertificatePassword = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the Service Principal AAD Tenant Id for accessing Azure Data Lake.")]
+        public Guid AadTenantId
+        {
+            get { return _config.AADTenantId; }
+            set { _config.AADTenantId = value; }
+        }
+
         #endregion
 
         public NewAzureHDInsightClusterConfigCommand()
@@ -92,7 +121,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             _config = new AzureHDInsightConfig();
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject(_config);
         }

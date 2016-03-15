@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseDescription, this.DatabaseName, this.ServerName),
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 return;
             }
 
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
         }
     }
 }

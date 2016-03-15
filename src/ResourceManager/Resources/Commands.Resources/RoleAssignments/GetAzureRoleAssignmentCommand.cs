@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
         public SwitchParameter IncludeClassicAdministrators { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             FilterRoleAssignmentsOptions options = new FilterRoleAssignmentsOptions()
             {
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.Resources
                 RoleDefinitionId = RoleDefinitionId == Guid.Empty ? null : RoleDefinitionId.ToString(),
                 ADObjectFilter = new ADObjectFilterOptions
                 {
-                    SignInName = SignInName,
+                    UPN = SignInName,
                     SPN = ServicePrincipalName,
                     Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
                 },

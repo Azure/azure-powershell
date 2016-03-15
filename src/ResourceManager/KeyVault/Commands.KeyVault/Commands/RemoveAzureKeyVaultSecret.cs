@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             Secret secret = null;
             ConfirmAction(

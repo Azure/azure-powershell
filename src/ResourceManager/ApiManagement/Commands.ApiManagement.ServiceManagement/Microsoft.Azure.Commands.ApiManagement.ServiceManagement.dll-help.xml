@@ -5772,20 +5772,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </maml:description>
           <command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>SubscriptionPeriod</maml:name>
-          <maml:description>
-            <maml:para>The period user subscriptions stays active once approved. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>NotificationPeriod</maml:name>
-          <maml:description>
-            <maml:para>Specifies upcoming subscription expiration notification period. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>State</maml:name>
           <maml:description>
@@ -5907,32 +5893,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>SubscriptionPeriod</maml:name>
-        <maml:description>
-          <maml:para>The period user subscriptions stays active once approved. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>NotificationPeriod</maml:name>
-        <maml:description>
-          <maml:para>Specifies upcoming subscription expiration notification period. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>State</maml:name>
         <maml:description>
@@ -6028,9 +5988,9 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>New-AzureRmApiManagementProduct –Context $apimContext –ProductId 9876543210 –Title Unlimited –Description 'Subscribers have completely unlimited access to the API. Administrator approval is required.' –LegalTerms 'Free for all' –ApprovalRequired $true –State Published –NotificationPeriod 'D10' –SubscriptionPeriod 'Y1'</dev:code>
+        <dev:code>New-AzureRmApiManagementProduct –Context $apimContext –ProductId 9876543210 –Title Unlimited –Description 'Subscribers have completely unlimited access to the API. Administrator approval is required.' –LegalTerms 'Free for all' –ApprovalRequired $true –State Published</dev:code>
         <dev:remarks>
-          <maml:para>Crete new product. Subscription and approval required. Notification period – 10 days. Subscription period – 1 year.</maml:para>
+          <maml:para>Crete new product. Subscription and approval required.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>
@@ -11353,20 +11313,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </maml:description>
           <command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>SubscriptionPeriod</maml:name>
-          <maml:description>
-            <maml:para>The period user subscriptions stays active once approved. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>NotificationPeriod</maml:name>
-          <maml:description>
-            <maml:para>Specifies upcoming subscription expiration notification period. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>State</maml:name>
           <maml:description>
@@ -11490,32 +11436,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
         <command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
         <dev:type>
           <maml:name>Nullable`1[Int32]</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>SubscriptionPeriod</maml:name>
-        <maml:description>
-          <maml:para>The period user subscriptions stays active once approved. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>NotificationPeriod</maml:name>
-        <maml:description>
-          <maml:para>Specifies upcoming subscription expiration notification period. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>

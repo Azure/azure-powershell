@@ -18,17 +18,19 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.IO;
+using System.Management.Automation;
 using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
-using Microsoft.Azure.Common.Authentication.Models;
 using Newtonsoft.Json;
-
+using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using AutomationManagement = Microsoft.Azure.Management.Automation;
 using AutomationAccount = Microsoft.Azure.Commands.Automation.Model.AutomationAccount;
 using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
@@ -43,11 +45,6 @@ using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
-    using AutomationManagement = Azure.Management.Automation;
-    using Microsoft.Azure.Common.Authentication;
-    using Hyak.Common;
-
-
     public partial class AutomationClient : IAutomationClient
     {
         private readonly AutomationManagement.IAutomationManagementClient automationManagementClient;
@@ -989,6 +986,54 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     stream => this.CreateJobStreamFromJobStreamModel(stream, resourceGroupName, automationAccountName, jobId));
         }
 
+        public JobStreamRecord GetJobStreamRecord(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId)
+        {
+            var response = this.automationManagementClient.JobStreams.Get(resourceGroupName, automationAccountName, jobId, jobStreamId);
+
+            return new JobStreamRecord(response.JobStream, resourceGroupName, automationAccountName, jobId);
+        }
+
+        public object GetJobStreamRecordAsPsObject(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId)
+        {
+            var response = this.automationManagementClient.JobStreams.Get(resourceGroupName, automationAccountName, jobId, jobStreamId);
+
+            if (response.JobStream.Properties == null || response.JobStream.Properties.Value == null) return null;
+
+            // PowerShell Workflow runbook jobs would have the below additional properties, remove them from job output
+            // we do not know the runbook type, remove will only remove if exists 
+            response.JobStream.Properties.Value.Remove("PSComputerName");
+            response.JobStream.Properties.Value.Remove("PSShowComputerName");
+            response.JobStream.Properties.Value.Remove("PSSourceJobInstanceId");
+            
+            var paramTable = new Hashtable();
+
+            foreach (var kvp in response.JobStream.Properties.Value)
+            {
+                object paramValue;
+                try
+                {
+                    paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
+                }
+                catch (CmdletInvocationException exception)
+                {
+                    if (!exception.Message.Contains("Invalid JSON primitive"))
+                        throw;
+
+                    paramValue = kvp.Value;
+                }
+
+                // for primitive outputs, the record will be in form "value" : "primitive type value". Return the key and return the primitive type value  
+                if (response.JobStream.Properties.Value.Count == 1 && response.JobStream.Properties.Value.ContainsKey("value"))
+                {
+                    return paramValue;
+                }
+
+                paramTable.Add(kvp.Key, paramValue);
+            }
+
+            return paramTable;
+        }
+
         public Job GetJob(string resourceGroupName, string automationAccountName, Guid Id)
         {
             var job = this.automationManagementClient.Jobs.Get(resourceGroupName, automationAccountName, Id).Job;
@@ -1628,15 +1673,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 throw new ArgumentException(
                     string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookParameters));
-            }
-
-            var hasJobStartedBy =
-                filteredParameters.Any(filteredParameter => filteredParameter.Key == Constants.JobStartedByParameterName);
-
-            if (!hasJobStartedBy)
-            {
-                filteredParameters.Add(Constants.JobStartedByParameterName,
-                    PowerShellJsonConverter.Serialize(Constants.ClientIdentity));
             }
 
             return filteredParameters;

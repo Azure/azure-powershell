@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -51,9 +51,8 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            WriteWarning("The output object of this cmdlet will be modified in a future release.");
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 
             this.WriteObject(

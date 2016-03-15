@@ -15,11 +15,12 @@
 using System;
 using System.Management.Automation;
 using System.Collections.Generic;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -137,7 +138,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 PublishSettingsFileUrl = "http://microsoft.com"
             };
 
-            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
         }
 
         [Fact]
@@ -239,7 +240,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.Equal(2, environments.Count);
+            Assert.Equal(3, environments.Count);
         }
 
         [Fact]

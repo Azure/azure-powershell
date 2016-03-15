@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         
         #endregion
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             Config.DefaultStorageAccountName = StorageAccountName;
             Config.DefaultStorageAccountKey = StorageAccountKey;

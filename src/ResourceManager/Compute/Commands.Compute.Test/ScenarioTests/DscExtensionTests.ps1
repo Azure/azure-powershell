@@ -12,18 +12,18 @@ function Test-GetAzureRmVMDscExtension
 
 	# Setup
     $rgname = Get-ComputeTestResourceName
+	$loc = Get-ComputeVMLocation
 
     try
     {
         # Common
-        $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -39,7 +39,7 @@ function Test-GetAzureRmVMDscExtension
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Storage Account 
         $stoname = 'sto' + $rgname;
@@ -56,23 +56,21 @@ function Test-GetAzureRmVMDscExtension
 		$p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
         
 		# OS & Image
-        $user = "Foo12";
-        $password = 'BaR@123' + $rgname;
+        $user = "localadmin";
+        $password = 'Bull_dog1';
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-
-        $imgRef = Get-DefaultCRPWindowsImageOffline;
-        $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
-
+        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
+        
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Test DSC Extension
-        $version = '2.3';
+        $version = '2.13';
 
 		# Publish DSC Configuration
 		#TODO: Find a way to mock calls with storage
@@ -89,7 +87,6 @@ function Test-GetAzureRmVMDscExtension
 		Assert-AreEqual $extension.Publisher "Microsoft.Powershell"
 		Assert-AreEqual $extension.ExtensionType "DSC"
 		Assert-AreEqual $extension.TypeHandlerVersion $version
-		Assert-AreEqual $extension.Location $loc
 		Assert-NotNull $extension.ProvisioningState
 
 		$status = Get-AzureRmVMDscExtensionStatus -ResourceGroupName $rgname -VMName $vmname 
@@ -105,8 +102,11 @@ function Test-GetAzureRmVMDscExtension
     }
     finally
     {
-        # Cleanup
-        Clean-ResourceGroup $rgname
+		# Cleanup
+		if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
+		{
+			#Remove-AzureRmResourceGroup -Name $rgname -Force;
+		}
     }
 }
 

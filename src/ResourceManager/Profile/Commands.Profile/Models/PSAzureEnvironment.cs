@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = environment.ActiveDirectoryAuthority;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = environment.AdTenant;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Gallery] = environment.GalleryUrl;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix] = environment.AzureDataLakeStoreFileSystemEndpointSuffix;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] = environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl] = environment.ManagementPortalUrl;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = environment.ServiceManagementUrl;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl] =
@@ -52,12 +54,14 @@ namespace Microsoft.Azure.Commands.Profile.Models
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] =
                 environment.StorageEndpointSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Graph] = environment.GraphUrl;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId] = environment.GraphEndpointResourceId;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix] =
                 environment.TrafficManagerDnsSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix] =
                 environment.AzureKeyVaultDnsSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] =
                 environment.AzureKeyVaultServiceEndpointResourceId;
+
             return newEnvironment;
         }
 
@@ -145,6 +149,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 GraphUrl =
                     environment.Endpoints[AzureEnvironment.Endpoint.Graph];
             }
+            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.GraphEndpointResourceId))
+            {
+                GraphEndpointResourceId =
+                    environment.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId];
+            }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix))
             {
                 TrafficManagerDnsSuffix =
@@ -154,6 +163,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
             {
                 AzureKeyVaultDnsSuffix =
                     environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix];
+            }
+            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix))
+            {
+                AzureDataLakeStoreFileSystemEndpointSuffix =
+                    environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix];
+            }
+            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix))
+            {
+                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix =
+                    environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix];
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId))
             {
@@ -168,7 +187,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whther ADFS authentication should be allowed . 
+        /// Gets or sets a value indicating whether ADFS authentication should be allowed . 
         /// Generally, this is only used in Azure Stack environments.
         /// </summary>
         public bool EnableAdfsAuthentication { get; set; }
@@ -229,6 +248,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string GraphUrl { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource Id to use for contacting the Graph endpoint
+        /// </summary>
+        public string GraphEndpointResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the domain name suffix for traffig manager services.
         /// </summary>
         public string TrafficManagerDnsSuffix { get; set; }
@@ -237,6 +261,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// Gets or sets the domain name suffix for key vault services.
         /// </summary>
         public string AzureKeyVaultDnsSuffix { get; set; }
+
+        /// <summary>
+        /// Gets or sets the domain name suffix for Data Lake store filesystem services.
+        /// </summary>
+        public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
+
+        /// <summary>
+        /// Gets or sets the domain name suffix for Data Lake Analytics job and catalog services.
+        /// </summary>
+        public string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
 
         /// <summary>
         /// Gets or sets the expected token audience for authenticating requests to the key vault service.
@@ -267,6 +301,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && ServiceManagementUrl == other.ServiceManagementUrl
                        && StorageEndpointSuffix == other.StorageEndpointSuffix
                        && SqlDatabaseDnsSuffix == other.SqlDatabaseDnsSuffix
+                       && AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix == other.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix
+                       && AzureDataLakeStoreFileSystemEndpointSuffix == other.AzureDataLakeStoreFileSystemEndpointSuffix
                        && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix;
             }
 

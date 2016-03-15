@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string PublicIpAllocationMethod { get; set; }
 
-        public PSResourceId IpConfiguration { get; set; }
+        public PSIPConfiguration IpConfiguration { get; set; }
 
         public PSPublicIpAddressDnsSettings DnsSettings { get; set; }
 
@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string IpConfigurationText
         {
-            get { return JsonConvert.SerializeObject(IpConfiguration, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(IpConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
         
         [JsonIgnore]
         public string DnsSettingsText
         {
-            get { return JsonConvert.SerializeObject(DnsSettings, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(DnsSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

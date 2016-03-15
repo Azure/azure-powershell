@@ -50,25 +50,25 @@ Gets all locations for a provider
 #>
 function Get-ProviderLocations($provider)
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-	{
-		$namespace = $provider.Split("/")[0]  
-		if($provider.Contains("/"))  
-		{  
-			$type = $provider.Substring($namespace.Length + 1)  
-			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        $namespace = $provider.Split("/")[0]  
+        if($provider.Contains("/"))  
+        {  
+            $type = $provider.Substring($namespace.Length + 1)  
+            $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
   
-			if ($location -eq $null) 
-			{  
-				return @("West US", "East US") 
-			} else 
-			{  
-				return $location.Locations[0]  
-			}  
-		}
-		
-		return @("West US", "East US")
-	}
+            if ($location -eq $null) 
+            {  
+                return @("West US", "East US") 
+            } else 
+            {  
+                return $location.Locations[0]  
+            }  
+        }
+        
+        return @("West US", "East US")
+    }
 
-	return @("West US", "East US")
+    return @("West US", "East US")
 }

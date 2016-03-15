@@ -28,6 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         public long TaskId;
         public TaskCompletionSource<bool> taskSource;
         public IStorageBlobManagement Channel;
+        public long TotalSize;
         
         public DataMovementUserData()
         {

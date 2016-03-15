@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsLifecycle.Enable, "AzureRmBackupContainerReregistration")]
     public class EnableAzureRMBackupContainerReregistration : AzureBackupContainerCmdletBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 AzureBackupContainerType containerType = (AzureBackupContainerType)Enum.Parse(typeof(AzureBackupContainerType), Container.ContainerType);
                 switch (containerType)

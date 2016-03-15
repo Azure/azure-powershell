@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Sends updated PsApiManagement to pipeline if operation succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginManageVirtualNetworks(ResourceGroupName, Name, VirtualNetworks),

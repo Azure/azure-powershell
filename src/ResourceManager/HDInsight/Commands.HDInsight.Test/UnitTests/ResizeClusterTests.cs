@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     c.ResizeCluster(ResourceGroupName, ClusterName,
                         It.Is<ClusterResizeParameters>(
                             param => param.TargetInstanceCount == targetcount)))
-                .Returns(new HDInsightLongRunningOperationResponse
+                .Returns(new OperationResource
                 {
-                    Error = null,
+                    ErrorInfo = null,
                     StatusCode = HttpStatusCode.OK,
-                    Status = OperationStatus.Succeeded
+                    State = AsyncOperationState.Succeeded
                 })
                 .Verifiable();
 

@@ -105,6 +105,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string StorageCORSRule = "AzureStorageCORSRule";
 
         /// <summary>
+        /// Azure storage account sas
+        /// </summary>
+        public const string AccountSas = "AzureStorageAccountSASToken";
+
+        /// <summary>
         /// Azure storage container sas
         /// </summary>
         public const string ContainerSas = "AzureStorageContainerSASToken";
@@ -214,6 +219,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             /// Query permission
             /// </summary>
             public const char Query = 'q';
+
+            /// <summary>
+            /// Create permission.
+            /// </summary>
+            public const char Create = 'c';
         }
     }
 }

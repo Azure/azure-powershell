@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var circuit = this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name);
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var circuitListResponse = this.ExpressRouteCircuitClient.List(this.ResourceGroupName);
+                var circuitList = this.ExpressRouteCircuitClient.List(this.ResourceGroupName);
 
                 var psCircuits = new List<PSExpressRouteCircuit>();
-                foreach (var ExpressRouteCircuit in circuitListResponse.ExpressRouteCircuits)
+                foreach (var ExpressRouteCircuit in circuitList)
                 {
                     var psVnet = this.ToPsExpressRouteCircuit(ExpressRouteCircuit);
                     psVnet.ResourceGroupName = this.ResourceGroupName;
@@ -63,10 +63,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var circuitListResponse = this.ExpressRouteCircuitClient.ListAll();
+                var circuitList = this.ExpressRouteCircuitClient.ListAll();
 
                 var psCircuits = new List<PSExpressRouteCircuit>();
-                foreach (var ExpressRouteCircuit in circuitListResponse.ExpressRouteCircuits)
+                foreach (var ExpressRouteCircuit in circuitList)
                 {
                     var psVnet = this.ToPsExpressRouteCircuit(ExpressRouteCircuit);
                     psVnet.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(ExpressRouteCircuit.Id);

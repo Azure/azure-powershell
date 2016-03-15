@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
 
     using Newtonsoft.Json;
 
@@ -24,13 +25,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string AddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
-        public List<PSResourceId> IpConfigurations { get; set; }
+        public List<PSIPConfiguration> IpConfigurations { get; set; }
 
         [JsonProperty(Order = 1)]
-        public PSResourceId NetworkSecurityGroup { get; set; }
+        public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
         [JsonProperty(Order = 1)]
-        public PSResourceId RouteTable { get; set; }
+        public PSRouteTable RouteTable { get; set; }
 
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
@@ -38,19 +39,24 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string IpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string NetworkSecurityGroupText
         {
-            get { return JsonConvert.SerializeObject(NetworkSecurityGroup, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(NetworkSecurityGroup, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string RouteTableText
         {
-            get { return JsonConvert.SerializeObject(RouteTable, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(RouteTable, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializeIpConfigurations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }

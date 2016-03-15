@@ -1,7 +1,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
@@ -10,10 +10,13 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -22,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         ProfileNouns.VirtualMachineDscExtension,
         SupportsShouldProcess = true,
         DefaultParameterSetName = AzureBlobDscExtensionParamSet)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string AzureBlobDscExtensionParamSet = "AzureBlobDscExtension";
@@ -167,7 +170,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public SwitchParameter Force { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the resource.")]
         [ValidateNotNullOrEmpty]
@@ -206,6 +209,17 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateSetAttribute(new[] { "4.0", "latest", "5.0PP" })]
         public string WmfVersion { get; set; }
 
+        /// <summary>
+        /// The Extension Data Collection state
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  " + 
+            "The value is persisted in the extension between calls.")
+        ]
+        [ValidateSet("Enable", "Disable")]
+        [AllowNull]
+        public string DataCollection { get; set; }
+        
         //Private Variables
         private const string VersionRegexExpr = @"^(([0-9])\.)\d+$";
 
@@ -214,9 +228,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// </summary>
         private StorageCredentials _storageCredentials;
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ValidateParameters();
 
@@ -302,14 +316,17 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             var publicSettings = new DscExtensionPublicSettings();
             var privateSettings = new DscExtensionPrivateSettings();
 
-            publicSettings.WmfVersion = string.IsNullOrEmpty(WmfVersion) ? "latest" : WmfVersion;
-
             if (!string.IsNullOrEmpty(ArchiveBlobName))
             {
                 ConfigurationUris configurationUris = UploadConfigurationDataToBlob();
 
                 publicSettings.SasToken = configurationUris.SasToken;
                 publicSettings.ModulesUrl = configurationUris.ModulesUrl;
+
+                Hashtable privacySetting = new Hashtable();
+                privacySetting.Add("DataCollection", DataCollection);
+                publicSettings.Privacy = privacySetting;
+
                 publicSettings.ConfigurationFunction = string.Format(
                     CultureInfo.InvariantCulture,
                     "{0}\\{1}",
@@ -321,43 +338,67 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 privateSettings.Items = settings.Item2;
 
                 privateSettings.DataBlobUri = configurationUris.DataBlobUri;
+
+                if (!string.IsNullOrEmpty(WmfVersion))
+                {
+                    publicSettings.WmfVersion = WmfVersion;
+                }
+            }
+
+            if (string.IsNullOrEmpty(this.Location))
+            {
+                this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
             }
 
             var parameters = new VirtualMachineExtension
             {
-                Location = Location,
-                Name = Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
-                Type = VirtualMachineExtensionType,
+                Location = this.Location,
                 Publisher = DscExtensionCmdletConstants.ExtensionPublishedNamespace,
-                ExtensionType = DscExtensionCmdletConstants.ExtensionPublishedName,
+                VirtualMachineExtensionType = DscExtensionCmdletConstants.ExtensionPublishedName,
                 TypeHandlerVersion = Version,
                 // Define the public and private property bags that will be passed to the extension.
-                Settings = DscExtensionSettingsSerializer.SerializePublicSettings(publicSettings),
+                Settings = publicSettings,
                 //PrivateConfuguration contains sensitive data in a plain text
-                ProtectedSettings = DscExtensionSettingsSerializer.SerializePrivateSettings(privateSettings),
+                ProtectedSettings = privateSettings,
                 AutoUpgradeMinorVersion = AutoUpdate.IsPresent
             };
 
             //Add retry logic due to CRP service restart known issue CRP bug: 3564713
             var count = 1;
-            ComputeLongRunningOperationResponse op = null;
-            while (count <= 2)
+            Rest.Azure.AzureOperationResponse<VirtualMachineExtension> op = null;
+
+            while (true)
             {
-                op = VirtualMachineExtensionClient.CreateOrUpdate(
+                try
+                {
+                    op = VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                         ResourceGroupName,
                         VMName,
-                        parameters);
+                        Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
+                        parameters).GetAwaiter().GetResult();
 
-                if (ComputeOperationStatus.Failed.Equals(op.Status) && op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
-                {
-                    count++;
+                    break;
                 }
-                else
+                catch (Rest.Azure.CloudException ex)
                 {
-                    break;    
+                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
+                        ex.Response.Content);
+
+                    if (ComputeOperationStatus.Failed.Equals(errorReturned.Status)
+                        && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                    {
+                        count++;
+                        if (count <= 2)
+                        {
+                            continue;
+                        }
+                    }
+
+                    ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
                 }
             }
-            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+
+            var result = Mapper.Map<PSAzureOperationResponse>(op);
             WriteObject(result);
         }
 

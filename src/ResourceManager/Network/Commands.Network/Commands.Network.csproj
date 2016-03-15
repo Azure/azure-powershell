@@ -49,14 +49,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common">
-      <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.3.4-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -66,7 +62,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Graph.RBAC">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.7.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.9.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
@@ -74,25 +70,21 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.1.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.13-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.2.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.7-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Data.Edm">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Data.OData">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Data.Services.Client">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
@@ -104,12 +96,16 @@
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.2.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.0.1\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.9.3\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.0.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.0.0-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -124,8 +120,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage">
-      <HintPath>..\..\..\packages\WindowsAzure.Storage.5.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.6.1.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -145,7 +142,7 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Spatial">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
@@ -206,6 +203,14 @@
     <Compile Include="ApplicationGateway\HttpListener\RemoveAzureApplicationGatewayHttpListenerCommand.cs" />
     <Compile Include="ApplicationGateway\HttpListener\SetAzureApplicationGatewayHttpListenerCommand.cs" />
     <Compile Include="ApplicationGateway\NewAzureApplicationGatewayCommand.cs" />
+    <Compile Include="ApplicationGateway\PathRule\AzureApplicationGatewayPathRuleConfigBase.cs" />
+    <Compile Include="ApplicationGateway\PathRule\NewAzureApplicationGatewayPathRuleConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\Probe\AddAzureApplicationGatewayProbeConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\Probe\AzureApplicationGatewayProbeConfigBase.cs" />
+    <Compile Include="ApplicationGateway\Probe\GetAzureApplicationGatewayProbeConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\Probe\NewAzureApplicationGatewayProbeConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\Probe\RemoveAzureApplicationGatewayProbeConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\Probe\SetAzureApplicationGatewayProbeConfigCommand.cs" />
     <Compile Include="ApplicationGateway\RemoveAzureApplicationGatewayCommand.cs" />
     <Compile Include="ApplicationGateway\RequestRoutingRule\AddAzureApplicationGatewayRequestRoutingRuleCommand.cs" />
     <Compile Include="ApplicationGateway\RequestRoutingRule\AzureApplicationGatewayRequestRoutingRuleBase.cs" />
@@ -226,9 +231,20 @@
     <Compile Include="ApplicationGateway\SslCertificate\SetAzureApplicationGatewaySslCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\StartAzureApplicationGatewayCommand.cs" />
     <Compile Include="ApplicationGateway\StopAzureApplicationGatewayCommand.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\AddAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\AzureApplicationGatewayUrlPathMapConfigBase.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\GetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\NewAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\AddAzureExpressRouteCircuitAuthorizationCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\AzureExpressRouteCircuitAuthorizationBase.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\GetAzureExpressRouteCircuitAuthorizationCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\NewAzureExpressRouteCircuitAuthorizationCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\RemoveAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AddAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AzureLoadBalancerInboundNatPoolConfigBase.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\GetAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
@@ -254,15 +270,20 @@
     <Compile Include="Models\PSApplicationGatewayFrontendPort.cs" />
     <Compile Include="Models\PSApplicationGatewayHttpListener.cs" />
     <Compile Include="Models\PSApplicationGatewayIPConfiguration.cs" />
+    <Compile Include="Models\PSApplicationGatewayPathRule.cs" />
+    <Compile Include="Models\PSApplicationGatewayProbe.cs" />
     <Compile Include="Models\PSApplicationGatewayRequestRoutingRule.cs" />
     <Compile Include="Models\PSApplicationGatewaySku.cs" />
     <Compile Include="Models\PSApplicationGatewaySslCertificate.cs" />
+    <Compile Include="Models\PSApplicationGatewayUrlPathMap.cs" />
+    <Compile Include="Models\PSInboundRule.cs" />
     <Compile Include="Models\PSInboundNatPool.cs" />
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
     <Compile Include="Models\PSExpressRouteCircuitArpTable.cs" />
     <Compile Include="Models\PSExpressRouteCircuitRoutesTable.cs" />
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
+    <Compile Include="Models\PSIPConfiguration.cs" />
     <Compile Include="Models\PSServiceProviderProperties.cs" />
     <Compile Include="Models\PSPeering.cs" />
     <Compile Include="Models\PSPeeringConfig.cs" />
@@ -293,9 +314,22 @@
     <Compile Include="VirtualNetworkGateway\VirtualNetworkGatewayBaseCmdlet.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVpnClientRootCertificateCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVpnClientRevokedCertificateCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\AddAzureVpnClientRootCertificateCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\AddAzureVpnClientRevokedCertificateCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\NewAzureVpnClientRootCertificateCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\NewAzureVpnClientRevokedCertificateCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\ResizeAzureVirtualNetworkGatewayCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\RemoveAzureVpnClientRevokedCertificateCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\RemoveAzureVpnClientRootCertificateCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\SetAzureVirtualNetworkGatewayVpnClientConfig.cs" />
+    <Compile Include="VirtualNetworkGateway\GenerateAzureVpnClientPackage.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayIpConfigCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\ResetAzureVirtualNetworkGatewayCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\SetAzureVirtualNetworkGatewayDefaultSiteCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\RemoveAzureVirtualNetworkGatewayDefaultSiteCommand.cs" />
     <Compile Include="LocalNetworkGateway\LocalNetworkGatewayBaseCmdlet.cs" />
     <Compile Include="LocalNetworkGateway\RemoveAzureLocalNetworkGatewayCommand.cs" />
     <Compile Include="LocalNetworkGateway\GetAzureLocalNetworkGatewayCommand.cs" />
@@ -371,6 +405,11 @@
     <Compile Include="Models\PSVirtualNetwork.cs" />
     <Compile Include="Models\PSTransportProtocol.cs" />
     <Compile Include="Models\PSVirtualNetworkGateway.cs" />
+    <Compile Include="Models\PSVirtualNetworkGatewaySku.cs" />
+    <Compile Include="Models\PSVpnClientRootCertificate.cs" />
+    <Compile Include="Models\PSVpnClientRevokedCertificate.cs" />
+    <Compile Include="Models\PSVpnClientConfiguration.cs" />
+    <Compile Include="Models\PSVpnClientParameters.cs" />
     <Compile Include="Models\PSVirtualNetworkGatewayConnection.cs" />
     <Compile Include="Models\PSVirtualNetworkGatewayIpConfiguration.cs" />
     <Compile Include="NetworkInterface\RemoveAzureNetworkInterfaceCommand.cs" />
@@ -409,6 +448,10 @@
     <Compile Include="VirtualNetwork\VirtualNetworkBaseCmdlet.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
@@ -437,7 +480,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Network.dll-Help.psd1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Network.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -462,5 +505,4 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 </Project>

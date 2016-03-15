@@ -77,13 +77,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesViaPipingFromAnotherResource");
         }
 
-        [Fact(Skip = "Need to re-record test")] 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveAResourceTest()
         {
             ResourcesController.NewInstance.RunPsTest("Test-MoveAResource");
         }
 
-        [Fact(Skip = "TODO: Re-record. Test not working Live due to infra issues in Profile")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAResourceTest()
         {
@@ -92,9 +93,30 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAResourceWithPatchTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-SetAResourceWithPatch");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFindAResourceTest()
         {
             ResourcesController.NewInstance.RunPsTest("Test-FindAResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceWithExpandProperties()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourceExpandProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceWithCollection()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourceWithCollection");
         }
     }
 }

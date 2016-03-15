@@ -349,6 +349,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     ServiceProperties sp = new ServiceProperties();
                     sp.Clean();
                     sp.Cors = fileServiceProperties.Cors;
+                    sp.HourMetrics = fileServiceProperties.HourMetrics;
+                    sp.MinuteMetrics = fileServiceProperties.MinuteMetrics;
                     return sp;
                 default:
                     throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
@@ -383,18 +385,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                         throw new InvalidOperationException(Resources.FileNotSupportLogging);
                     }
 
-                    if (null != properties.HourMetrics || null != properties.MinuteMetrics)
-                    {
-                        throw new InvalidOperationException(Resources.FileNotSupportMetrics);
-                    }
-
                     FileServiceProperties fileServiceProperties = new FileServiceProperties();
                     fileServiceProperties.Cors = properties.Cors;
+                    fileServiceProperties.HourMetrics = properties.HourMetrics;
+                    fileServiceProperties.MinuteMetrics = properties.MinuteMetrics;
                     account.CreateCloudFileClient().SetServiceProperties(fileServiceProperties, (FileRequestOptions)options, operationContext);
                     break;
                 default:
                     throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
             }
+        }
+
+        /// <summary>
+        /// Get the SAS token for an account.
+        /// </summary>
+        /// <param name="sharedAccessAccountPolicy">Shared access policy to generate the SAS token.</param>
+        /// <returns>Account SAS token.</returns>
+        public string GetStorageAccountSASToken(SharedAccessAccountPolicy sharedAccessAccountPolicy)
+        {
+            return StorageContext.StorageAccount.GetSharedAccessSignature(sharedAccessAccountPolicy);
         }
 
         /// <summary>
@@ -625,6 +634,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public ContainerResultSegment ListContainersSegmented(string prefix, ContainerListingDetails detailsIncluded, int? maxResults, BlobContinuationToken currentToken, BlobRequestOptions options, OperationContext operationContext)
         {
             return this.BlobClient.ListContainersSegmented(prefix, detailsIncluded, maxResults, currentToken, options, operationContext);
+        }
+
+        /// <summary>
+        /// Return a task that asynchronously start copy operation to a blob.
+        /// </summary>
+        /// <param name="blob">CloudBlob object</param>
+        /// <param name="source">Uri to copying source</param>
+        /// <param name="sourceAccessCondition">Access condition to source if it's file/blob in azure.</param>
+        /// <param name="destAccessCondition">Access condition to Destination blob.</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>Return copy id if succeeded.</returns>
+        public Task<string> StartCopyAsync(CloudBlob blob, Uri source, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            return blob.StartCopyAsync(source, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
         }
     }
 }

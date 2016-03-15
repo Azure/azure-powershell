@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, StorageAccountNounStr), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet(VerbsCommon.Remove, StorageAccountNounStr)]
     public class RemoveAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
@@ -40,15 +40,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
-            var op = this.StorageClient.StorageAccounts.Delete(
+            this.StorageClient.StorageAccounts.Delete(
                 this.ResourceGroupName,
                 this.Name);
-
-            WriteObject(op);
         }
     }
 }

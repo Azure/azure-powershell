@@ -22,8 +22,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     {
         private const int CopySASLifeTimeInMinutes = 7 * 24 * 60;
 
-        internal static CloudFile GenerateCopySourceFile(
+        internal static Uri GenerateUriWithCredentials(
             this CloudFile file)
+        {
+            if (null == file)
+            {
+                throw new ArgumentNullException("file");
+            }
+
+            string sasToken = GetFileSASToken(file);
+
+            if (string.IsNullOrEmpty(sasToken))
+            {
+                return file.Uri;
+            }
+            else
+            {
+                return new Uri(string.Format(CultureInfo.InvariantCulture, "{0}{1}", file.Uri.AbsoluteUri, sasToken));
+            }
+        }
+
+        internal static CloudFile GenerateCopySourceFile(
+           this CloudFile file)
         {
             if (null == file)
             {

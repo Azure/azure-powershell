@@ -235,7 +235,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         {
             if (!TokenCreationEnvironmentInitialized())
             {
-                string zipFilePath = Path.Combine(Environment.CurrentDirectory, Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + ".zip");
+                string zipFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + ".zip");
                 CopyResourceToFile(TokenCreationResourceName, zipFilePath);
                 ExtractZipFile(zipFilePath, JsTokenCodeLocation);
             }

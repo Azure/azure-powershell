@@ -167,10 +167,10 @@ Select Y to enable data collection [Y/N]:</value>
     <value>Succeeded to register resource provider '{0}'</value>
   </data>
   <data name="SubscriptionIdNotFound" xml:space="preserve">
-    <value>The provided account {0} does not have access to subscription ID "{1}". Please try logging in with different credentials not a different subscription ID.</value>
+    <value>The provided account {0} does not have access to subscription ID "{1}". Please try logging in with different credentials or a different subscription ID.</value>
   </data>
   <data name="SubscriptionNameNotFound" xml:space="preserve">
-    <value>The provided account {0} does not have access to subscription name "{1}". Please try logging in with different credentials not a different subscription name.</value>
+    <value>The provided account {0} does not have access to subscription name "{1}". Please try logging in with different credentials or a different subscription name.</value>
   </data>
   <data name="TenantNotFound" xml:space="preserve">
     <value>Tenant '{0}' was not found. Please verify that your account has access to this tenant.</value>

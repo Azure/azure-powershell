@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public string EndpointMonitorStatus { get; set; }
 
+        public uint? MinChildEndpoints { get; set; }
+
         public Endpoint ToSDKEndpoint()
         {
             return new Endpoint
@@ -58,7 +60,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                     Weight = this.Weight,
                     Priority = this.Priority,
                     EndpointLocation = this.Location,
-                    TargetResourceId = this.TargetResourceId
+                    TargetResourceId = this.TargetResourceId,
+                    MinChildEndpoints = this.MinChildEndpoints,
                 }
             };
         }

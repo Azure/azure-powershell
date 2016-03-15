@@ -12,6 +12,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 {
     using System;
@@ -24,8 +27,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
     using System.Text.RegularExpressions;
     using AutoMapper;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
+    using ServiceManagemenet.Common;
+    using ServiceManagemenet.Common.Models;
     using Microsoft.Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.ApiManagement.SmapiModels;
     using Newtonsoft.Json;
@@ -106,9 +109,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 .CreateMap<ProductContract, PsApiManagementProduct>()
                 .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.LegalTerms, opt => opt.MapFrom(src => src.Terms))
-                .ForMember(dest => dest.NotificationPeriod, opt => opt.MapFrom(src => FormatPeriod(src.NotificationPeriod)))
-                .ForMember(dest => dest.SubscriptionPeriod, opt => opt.MapFrom(src => FormatPeriod(src.SubscriptionPeriod)));
+                .ForMember(dest => dest.LegalTerms, opt => opt.MapFrom(src => src.Terms));
 
             Mapper
                 .CreateMap<SubscriptionContract, PsApiManagementSubscription>()
@@ -141,18 +142,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     dest.TokenBodyParameters = src.TokenBodyParameters == null
                         ? (Hashtable) null
                         : new Hashtable(src.TokenBodyParameters.ToDictionary(key => key.Name, value => value.Value)));
-        }
-
-        private static string FormatPeriod(PeriodContract notificationPeriod)
-        {
-            if (notificationPeriod == null)
-            {
-                return null;
-            }
-
-            const string format = "{0}{1}";
-
-            return string.Format(format, notificationPeriod.Interval.ToString()[0], notificationPeriod.Value);
         }
 
         public ApiManagementClient(AzureContext context)
@@ -594,8 +583,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             bool? subscriptionRequired,
             bool? approvalRequired,
             int? subscriptionsLimit,
-            string subscriptionPeriod,
-            string notificationPeriod,
             PsApiManagementProductState? state)
         {
             var productContract = new ProductContract(title)
@@ -622,16 +609,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(subscriptionPeriod))
-            {
-                productContract.SubscriptionPeriod = ParsePeriod(subscriptionPeriod);
-            }
-
-            if (!string.IsNullOrWhiteSpace(notificationPeriod))
-            {
-                productContract.NotificationPeriod = ParsePeriod(notificationPeriod);
-            }
-
             Client.Products.Create(context.ResourceGroupName, context.ServiceName, productId, new ProductCreateParameters(productContract));
             var response = Client.Products.Get(context.ResourceGroupName, context.ServiceName, productId);
 
@@ -647,8 +624,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             bool? subscriptionRequired, 
             bool? approvalRequired, 
             int? subscriptionsLimit, 
-            string subscriptionPeriod, 
-            string notificationPeriod, 
             PsApiManagementProductState? state)
         {
             var productUpdateParameters = new ProductUpdateParameters
@@ -676,41 +651,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(subscriptionPeriod))
-            {
-                productUpdateParameters.SubscriptionPeriod = ParsePeriod(subscriptionPeriod);
-            }
-
-            if (!string.IsNullOrWhiteSpace(notificationPeriod))
-            {
-                productUpdateParameters.NotificationPeriod = ParsePeriod(notificationPeriod);
-            }
-
             Client.Products.Update(context.ResourceGroupName, context.ServiceName, productId, productUpdateParameters, "*");
-        }
-
-        private static PeriodContract ParsePeriod(string period)
-        {
-            var match = PeriodRegex.Match(period);
-            if (!match.Success)
-            {
-                throw new ArgumentException(string.Format("Invalid period format: {0}", period), "period");
-            }
-
-            var periodStr = match.Groups[PeriodGroupName].Value;
-            var valueStr = match.Groups[ValueGroupName].Value;
-
-            var contract = new PeriodContract
-            {
-                Value = Int32.Parse(valueStr),
-                Interval = "d".Equals(periodStr, StringComparison.OrdinalIgnoreCase)
-                    ? PeriodIntervalContract.Day
-                    : "m".Equals(periodStr, StringComparison.OrdinalIgnoreCase)
-                        ? PeriodIntervalContract.Month
-                        : PeriodIntervalContract.Year
-            };
-
-            return contract;
         }
 
         public void ProductAddToGroup(PsApiManagementContext context, string groupId, string productId)
@@ -1101,12 +1042,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         public void PolicySetProductLevel(PsApiManagementContext context, string format, Stream stream, string productId)
         {
-            Client.ProductPolicy.Set(context.ResourceGroupName, context.ServiceName, productId, format, stream);
+            Client.ProductPolicy.Set(context.ResourceGroupName, context.ServiceName, productId, format, stream, "*");
         }
 
         public void PolicySetApiLevel(PsApiManagementContext context, string format, Stream stream, string apiId)
         {
-            Client.ApiPolicy.Set(context.ResourceGroupName, context.ServiceName, apiId, format, stream);
+            Client.ApiPolicy.Set(context.ResourceGroupName, context.ServiceName, apiId, format, stream, "*");
         }
 
         public void PolicySetOperationLevel(PsApiManagementContext context, string format, Stream stream, string apiId, string operationId)

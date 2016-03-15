@@ -13,11 +13,14 @@
 
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using System.Collections.Generic;
+using System;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -27,7 +30,6 @@ namespace Microsoft.Azure.Commands.Profile
     {
         public const string ListByIdInTenantParameterSet = "ListByIdInTenant";
         public const string ListByNameInTenantParameterSet = "ListByNameInTenant";
-        public const string ListAllParameterSet = "ListAll";
 
         private RMProfileClient _client;
 
@@ -41,9 +43,6 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
         public string TenantId { get; set; }
 
-        [Parameter(ParameterSetName = ListAllParameterSet, Mandatory = true)]
-        public SwitchParameter All { get; set; }
-
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
@@ -51,25 +50,11 @@ namespace Microsoft.Azure.Commands.Profile
             _client.WarningLog = (s) => WriteWarning(s);
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            if (this.ParameterSetName == ListAllParameterSet)
-            { 
-                try
-                {
-                    WriteObject(_client.ListSubscriptions().Select((s) => (PSAzureSubscription)(s)), enumerateCollection: true);
-                }
-                catch (AadAuthenticationException exception)
-                {
-                    var account = DefaultContext.Account == null || DefaultContext.Account.Id == null
-                        ? Resources.NoAccountProvided
-                        : DefaultContext.Account.Id;
-                    throw new PSInvalidOperationException(string.Format(Resources.CommonTenantAuthFailed, account), exception);
-                }
-            }
-            else if (!string.IsNullOrWhiteSpace(this.SubscriptionName))
+            var tenant = TenantId;
+            if (!string.IsNullOrWhiteSpace(this.SubscriptionName))
             {
-                var tenant = EnsureValidTenant();
                 AzureSubscription result;
                 try
                 {
@@ -89,11 +74,10 @@ namespace Microsoft.Azure.Commands.Profile
             }
             else if (!string.IsNullOrWhiteSpace(this.SubscriptionId))
             {
-                var tenant = EnsureValidTenant();
                 AzureSubscription result;
                 try
                 {
-                    if (!this._client.TryGetSubscription(tenant, this.SubscriptionId, out result))
+                    if (!this._client.TryGetSubscriptionById(tenant, this.SubscriptionId, out result))
                     {
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionId);
                     }
@@ -109,10 +93,43 @@ namespace Microsoft.Azure.Commands.Profile
             }
             else
             {
-                var tenant = EnsureValidTenant();
                 try
                 {
-                    WriteObject(_client.ListSubscriptions(tenant).Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
+                    var tenantsList = new List<string>();
+
+                    if (string.IsNullOrWhiteSpace(tenant))
+                    {
+                        tenantsList.AddRange(_client.ListTenants()
+                            .Select(t => (t.Id == Guid.Empty) ? t.Domain : t.Id.ToString()));
+                    }
+                    else
+                    {
+                        tenantsList.Add(tenant);
+                    }
+
+                    foreach (var tenantId in tenantsList)
+                    {
+                        try
+                        {
+                            string listNextLink = null;
+                            do
+                            {
+                                var subscriptions = _client.ListSubscriptions(tenantId, ref listNextLink);
+                                WriteObject(subscriptions.Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
+                            } while (listNextLink != null);
+                        }
+                        catch (AadAuthenticationException)
+                        {
+                            if (!string.IsNullOrWhiteSpace(tenant))
+                            {
+                                throw;
+                            }
+                            WriteWarning(string.Format(
+                                Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToLogin,
+                                AzureRmProfileProvider.Instance.Profile.Context.Account,
+                                tenant));
+                        }
+                    }
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -130,18 +147,6 @@ namespace Microsoft.Azure.Commands.Profile
         private void ThrowTenantAuthenticationError(string tenant, AadAuthenticationException exception)
         {
             throw new PSArgumentException(string.Format(Resources.TenantAuthFailed, tenant), exception);
-        }
-
-        private string EnsureValidTenant()
-        {
-            var tenant = this.TenantId;
-            if (string.IsNullOrWhiteSpace(tenant) && (DefaultContext.Tenant == null ||
-                DefaultContext.Tenant.Id == null))
-            {
-                throw new PSArgumentException(Resources.NoValidTenant);
-            }
-
-            return tenant ?? DefaultContext.Tenant.Id.ToString();
         }
     }
 }

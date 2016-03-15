@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskVhdUri)]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string SourceImageUri { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var storageProfile = this.VM.StorageProfile;
 
@@ -115,13 +115,13 @@ namespace Microsoft.Azure.Commands.Compute
                 Name = this.Name,
                 Caching = this.Caching,
                 DiskSizeGB = this.DiskSizeInGB,
-                Lun = this.Lun == null ? 0 : this.Lun.Value,
-                VirtualHardDisk = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
+                Lun = this.Lun.GetValueOrDefault(),
+                Vhd = new VirtualHardDisk
                 {
                     Uri = this.VhdUri
                 },
                 CreateOption = this.CreateOption,
-                SourceImage = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
+                Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
                 {
                     Uri = this.SourceImageUri
                 }

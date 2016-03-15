@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string poolId = ScenarioTestHelpers.SharedPool;
         
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateComputeNodeUser()
         {
             BatchController controller = BatchController.NewInstance;
@@ -73,7 +72,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateComputeNodeUser()
         {
             BatchController controller = BatchController.NewInstance;
@@ -115,37 +113,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 null,
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
-        }
-    }
-
-    // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.New, "AzureBatchComputeNodeUser_ST")]
-    public class NewBatchComputeNodeUserScenarioTestCommand : NewBatchComputeNodeUserCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchComputeNodeUser_ST")]
-    public class RemoveBatchComputeNodeUserScenarioTestCommand : RemoveBatchComputeNodeUserCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Set, "AzureBatchComputeNodeUser_ST")]
-    public class SetBatchComputeNodeUserScenarioTestCommand : SetBatchComputeNodeUserCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
         }
     }
 }

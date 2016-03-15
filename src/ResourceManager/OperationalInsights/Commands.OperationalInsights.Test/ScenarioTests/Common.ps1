@@ -48,8 +48,8 @@ function Get-ProviderLocation()
 {
 	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
 	{
-		$namespace = "OperationalInsights"  
-		$type = workspaces
+		$namespace = "Microsoft.OperationalInsights"  
+		$type = "workspaces"
 		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
   
 		if ($location -eq $null) 

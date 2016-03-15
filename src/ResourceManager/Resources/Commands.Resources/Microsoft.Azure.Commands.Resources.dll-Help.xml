@@ -1006,6 +1006,98 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+    <command:example>
+      <maml:title>--------------------------  Example 1: Get all registered resource providers --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmResourceProvider
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command gets all the registered resource providers.</maml:para>
+        <maml:para />
+        <maml:para />
+        <maml:para>
+        </maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+    <command:example>
+      <maml:title>--------------------------  Example 2: Get all resource providers, including those not registered --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmResourceProvider -ListAvailable
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command gets all the resource providers, including those registered and unregistered.</maml:para>
+        <maml:para />
+        <maml:para />
+        <maml:para>
+        </maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+    <command:example>
+      <maml:title>--------------------------  Example 3: Get details about a particular resource provider --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command gets details about a particular resource provider, including the resource types and locations available for the resource provider.</maml:para>
+        <maml:para />
+        <maml:para />
+        <maml:para>
+        </maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+    <command:example>
+      <maml:title>--------------------------  Example 4: Get all registered resource providers filtered by a location --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmResourceProvider -Location westus
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command gets all the registered resource providers under a location.</maml:para>
+        <maml:para />
+        <maml:para />
+        <maml:para>
+        </maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1683,13 +1775,6 @@ Tags:
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-          <maml:name>ProvisioningState</maml:name>
-          <maml:description>
-            <maml:para>Gets only the deployments with the specified provisioning state. Valid values include, but are not limited to: Canceled, Deprovisioning, Failed, NotProvisioned, Provisioned, Provisioning, and Succeeded. This parameter is optional. By default, Get-AzureRmResourceGroupDeployment returns all deployments for the specified resource group.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Profile</maml:name>
           <maml:description>
@@ -1717,19 +1802,6 @@ Tags:
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Gets only the deployment with the specified name. Wildcards are not permitted. This parameter is optional. By default, Get-AzureRmResourceGroupDeployment returns all deployments for the specified resource group.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-        <maml:name>ProvisioningState</maml:name>
-        <maml:description>
-          <maml:para>Gets only the deployments with the specified provisioning state. Valid values include, but are not limited to: Canceled, Deprovisioning, Failed, NotProvisioned, Provisioned, Provisioning, and Succeeded. This parameter is optional. By default, Get-AzureRmResourceGroupDeployment returns all deployments for the specified resource group.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1852,27 +1924,6 @@ Outputs           :</dev:code>
         <dev:code>PS C:\&gt;Get-AzureRmResourceGroupDeployment -ResourceGroupName ContosoLabsRG -Name DeployWebsite1</dev:code>
         <dev:remarks>
           <maml:para>This command gets the DeployWebsite1 deployment of the ContosoLabsRG resource group. You can assign a name to a deployment when you create it by using the New-AzureRmResourceGroup or New-AzureRmResourceGroupDeployment cmdlets. If you do not assign a name, the cmdlets provide a default name based on the template used to create the deployment.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>
-          </maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Example 3: Get a deployment by provisioning state  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRmResourceGroupDeployment -ResourceGroupName ContosoLabsRG -ProvisioningState NotProvisioned</dev:code>
-        <dev:remarks>
-          <maml:para>This command gets the deployments of the ContosoLabsRG resource group that are not yet provisioned.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>
@@ -3377,266 +3428,325 @@ Summary     : Help desk and service management software that empowers you to pro
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <!--Generated by PS Cmdlet Help Editor-->
-    <command:details>
-      <command:name>Get-AzureRmRoleDefinition</command:name>
-      <maml:description>
-        <maml:para>Lists all Azure RBAC roles that are available for assignment.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
-      <command:verb>Get</command:verb>
-      <command:noun>AzureRmRoleDefinition</command:noun>
-      <dev:version />
-    </command:details>
-    <maml:description>
-      <maml:para>Use the Get-AzureRmRoleDefinition command with a particular role name to view its details. To inspect individual operations that a role grants access to, review the Actions and NotActions properties of the role.</maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Get-AzureRmRoleDefinition</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-AzureRmRoleDefinition</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-          <maml:name>Id</maml:name>
-          <maml:description>
-            <maml:para>Role definition Id.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-AzureRmRoleDefinition</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>Custom</maml:name>
-          <maml:description>
-            <maml:para>If specified, only displays the custom created roles in the directory.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para>Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>InformationAction</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        <dev:type>
-          <maml:name>ActionPreference</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>InformationVariable</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-        <maml:name>Id</maml:name>
-        <maml:description>
-          <maml:para>Role definition Id.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
-        <dev:type>
-          <maml:name>Guid</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>Custom</maml:name>
-        <maml:description>
-          <maml:para>If specified, only displays the custom created roles in the directory.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-        <dev:type>
-          <maml:name>azureprofile</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
-        </dev:type>
-        <maml:description>
-          <maml:para>
-          </maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
-        </dev:type>
-        <maml:description>
-          <maml:para>
-          </maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
-    <maml:alertSet>
-      <maml:title></maml:title>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>--------------------------  Example 1  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt; Get-AzureRmRoleDefinition -Name Reader</dev:code>
-        <dev:remarks>
-          <maml:para>Get the Reader role definition</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Example 2  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt; Get-AzureRmRoleDefinition</dev:code>
-        <dev:remarks>
-          <maml:para>Lists all RBAC role definitions</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>New-AzureRmRoleAssignment</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>Get-AzureRmRoleAssignment</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>New-AzureRmRoleDefinition</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>Remove-AzureRmRoleDefinition</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Get-AzureRmRoleDefinition</command:name>
+		<maml:description>
+			<maml:para>Lists all Azure RBAC roles that are available for assignment.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>AzureRmRoleDefinition</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Use the Get-AzureRmRoleDefinition command with a particular role name to view its details. To inspect individual operations that a role grants access to, review the Actions and NotActions properties of the role.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-AzureRmRoleDefinition</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Scope</maml:name>
+				<maml:description>
+					<maml:para>Role definition scope.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>AtScopeAndBelow</maml:name>
+				<maml:description>
+					<maml:para>If specified, displays all role definitions.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureRmRoleDefinition</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>Role definition Id.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Scope</maml:name>
+				<maml:description>
+					<maml:para>Role definition scope.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureRmRoleDefinition</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Scope</maml:name>
+				<maml:description>
+					<maml:para>Role definition scope.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Custom</maml:name>
+				<maml:description>
+					<maml:para>If specified, only displays the custom created roles in the directory.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>AtScopeAndBelow</maml:name>
+				<maml:description>
+					<maml:para>If specified, displays all role definitions.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Scope</maml:name>
+			<maml:description>
+				<maml:para>Role definition scope.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>AtScopeAndBelow</maml:name>
+			<maml:description>
+				<maml:para>If specified, displays all role definitions.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Id</maml:name>
+			<maml:description>
+				<maml:para>Role definition Id.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+			<dev:type>
+				<maml:name>Guid</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Custom</maml:name>
+			<maml:description>
+				<maml:para>If specified, only displays the custom created roles in the directory.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureRmRoleDefinition -Name Reader</dev:code>
+			<dev:remarks>
+				<maml:para>Get the Reader role definition</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureRmRoleDefinition</dev:code>
+			<dev:remarks>
+				<maml:para>Lists all RBAC role definitions</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmRoleAssignment</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmRoleAssignment</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmRoleDefinition</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-AzureRmRoleDefinition</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <!--Generated by PS Cmdlet Help Editor-->
     <command:details>
       <command:name>New-AzureRmADApplication</command:name>
@@ -4434,18 +4544,6 @@ NewApplication                                                61b5d8ea-fdc6-40a2
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>DeploymentName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the deployment project for the resource group. Because the deployment properties are defined in a template, this parameter is valid only when you specify a template. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
@@ -4470,18 +4568,6 @@ NewApplication                                                61b5d8ea-fdc6-40a2
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>TemplateVersion</maml:name>
-			<maml:description>
-				<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroup verifies that the specified template has the matching version and fails if it does not.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
@@ -4490,78 +4576,6 @@ NewApplication                                                61b5d8ea-fdc6-40a2
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>TemplateParameterObject</maml:name>
-			<maml:description>
-				<maml:para>Specifies a hash table of template parameter names and values. For help with hash tables in Windows PowerShell, type: Get-Help about_Hash_Tables.This parameter is optional. If a template has parameters, you must specify parameter values, but you can use the TemplateParameterObject or the TemplateParameterFile parameters. Or, you can use the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-			<dev:type>
-				<maml:name>Hashtable</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>TemplateUri</maml:name>
-			<maml:description>
-				<maml:para>Specifies the URI of a JSON template file. This file can be a custom template or a gallery template that is saved as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>TemplateFile</maml:name>
-			<maml:description>
-				<maml:para>Specifies the path and file name of a JSON template file on disk. This can be a custom template or a gallery template that is saved to disk as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.To use this parameter, the subscription must include a storage account where the cmdlet can save the template. By default, this cmdlet uses the current storage account in the subscription, but you can use the StorageAccountName parameter to specify an alternate storage account. If you do not specify a storage account and the subscription does not have a storage account that is designated as &quot;current,&quot; the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>StorageAccountName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of a storage account in the subscription. New-AzureRmResourceGroup saves the contents of template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a current storage account, the command fails.To create a storage account, use a Switch-AzureMode -Name AzureServiceManagement command to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>GalleryTemplateIdentity</maml:name>
-			<maml:description>
-				<maml:para>Specifies the identity of a template in the Azure gallery. To find gallery templates, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. The value of the Identity property of each gallery item is displayed by default.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>TemplateParameterFile</maml:name>
-			<maml:description>
-				<maml:para>Specifies the path and name of a JSON file with the names and values of the template parameters. This parameter is optional. If a template has parameters, you must specify parameter values, but you can use the TemplateParameterObject or the TemplateParameterFile parameters. Or, you can use the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4628,117 +4642,7 @@ Resources</dev:code>
         </command:commandLines>
       </command:example>
       <command:example>
-        <maml:title>--------------------------  Example 2: Create a resource group from a custom template  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRmResourceGroup –Name ContosoHosting –Location "West US" –TemplateFile D:\Templates\ContosoHosting.json -TemplateVersion "2014-04-01-preview" -DeploymentName ContosoHosting -TemplateParameterFile D:\Templates\ContosoHostingParms.json
-Name:     ContosoHosting
-Location: westus
-Resources: 
-    Name             Type                         Location
-    ===============  =======================      ========
-    ContosoHosting   Microsoft.Web/serverFarms    westus
-    Contoso          Microsoft.Web/Sites          West US</dev:code>
-        <dev:remarks>
-          <maml:para>This command creates the "ContosoHosting" resource group from a custom template. It uses the TemplateFile parameter to specify the path and file name of the ContosoHosting.json template file and the TemplateParameterFile parameter to specify the ContosoHostingParms.json file, which contains the names and values of the parameters in the template. Because the command does not specify a storage account, New-AzureRmResourceGroup uses the current storage account in the subscription.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>
-          </maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Example 3: Create a resource group from a gallery template  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRmResourceGroup –Name ContosoRG01 –Location "West US" –GalleryTemplateIdentity Microsoft.WebSite.0.1.0-preview1 -siteName ContosoWeb -hostingPlanName ContosoHosting -siteMode Limited -computeMode Shared -siteLocation "South Central US" -subscriptionID "9b14a38b-4b93-4554-8bb0-3cefb47abcde" -resourceGroup ContosoRG01
-ResourceGroupName : ContosoRG01
-Location          : westus
-ProvisioningState : Succeeded
-Resources         : 
-                    Name             Type                       Location
-                    ===============  =========================  ==========
-                    Default1         Microsoft.Web/serverFarms  southcentralus
-                    ContosoWeb       Microsoft.Web/sites        southcentralus</dev:code>
-        <dev:remarks>
-          <maml:para>This example shows how to create a resource group from a gallery template and use the parameters that are added to the command dynamically to provide the template parameter values.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>This command uses the New-AzureRmResourceGroup cmdlet to create a new resource group. It uses the GalleryTemplateIdentity parameter to specify the identity of the gallery template. In this scenario, you don't need to save the gallery template to disk.After you type the cmdlet parameters and values, type a minus sign (to indicate a parameter name) and then press the TAB key to trigger tab-completion. The cmdlet adds a parameter, such as siteMode. Type the parameter value, type a minus sign, press TAB, and it adds another parameter. To cycle through the parameter names, press TAB repeatedly. If you miss a mandatory template parameter, the cmdlet prompts you for the value.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Example 4: Create a resource group from a saved gallery template  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt; The first command uses the Get-AzureRmResourceGroupGalleryTemplate to get a gallery item. It pipes the gallery item to the Save-AzureRmResourceGroupGalleryTemplate cmdlet, which save the template as a JSON file in the path that you specify.
-PS C:\&gt;Get-AzureRmResourceGroupGalleryTemplate -Identity Microsoft.WebSite.0.1.0-preview1 | Save-AzureRmResourceGroupTemplate -Path D:\Azure\Templates
-                         
-Path: 
-D:\Azure\Templates\Microsoft.WebSite.0.1.0-preview1.json
-
-Before we create the hash table of template parameters, we need to know which parameters the template requires. The second command uses the Get-Content cmdlet to get the contents of the template file and its Raw parameter, which ignores line breaks and returns a single JSON string. The command pipes the template to the ConvertFrom-Json cmdlet, which returns a custom object (PSCustomObject) that represents the template and saves it in the $t variable. You can use this technique to manipulate the template in Windows PowerShell.
-PS C:\&gt;$t = Get-Content -Raw -Path $home\Documents\Azure\Templates\Microsoft.WebSite.0.1.0-preview1.json | ConvertFrom-Json
-
-
-The third command gets the Parameters property of the template custom object. The object also has a Resources property that represents the resources in the template.
-PS C:\&gt;$t.Parameters
-siteName        : @{type=string}
-hostingPlanName : @{type=string}
-siteMode        : @{type=string}
-computeMode     : @{type=string}
-siteLocation    : @{type=string}
-subscriptionId  : @{type=string}
-resourceGroup   : @{type=string} 
-
-The fourth command creates a hash table of the template parameters and values and saves them in a $params variable.
-PS C:\&gt;$params = @{siteName="ContosoWeb"; hostingPlanName = "ContosoHosting"; siteMode = "Limited"; computeMode = "Shared"; siteLocation = "South Central US"; subscriptionId = "9b14a38b-4b93-4554-8bb0-3cefb47abcde"; resourceGroup = "ContosoRG01"}
-
-
-The fifth command uses the New-AzureRmResourceGroup cmdlet to create the resource group. It uses the TemplateFile parameter to specify the gallery template file on disk and the TemplateParameterObject parameter to specify the hash table of template parameter names and values in the $params variable. It uses the StorageAccountName parameter to specify the storage account in which the template is stored. You must specify a storage account when you use the TemplateFile parameter and a "current" storage account has not been selected for the subscription.The cmdlet returns an object that represents the new resource group.
-PS C:\&gt;New-AzureRmResourceGroup –Name ContosoRG01 –Location "West US" –StorageAccountName contosostorage01 -DeploymentName WebDeploy01 -TemplateFile $home\Documents\Azure\Templates\Microsoft.WebSite.0.1.0-preview1.json -TemplateParameterObject @params -StorageAccountName ContosoStorage
-ResourceGroupName : ContosoRG01
-Location          : westus
-ProvisioningState : Succeeded
-Resources         : 
-                    Name             Type                       Location
-                    ===============  =========================  ==========
-                    Default1         Microsoft.Web/serverFarms  southcentralus
-                    ContosoWeb       Microsoft.Web/sites        southcentralus</dev:code>
-        <dev:remarks>
-          <maml:para>This example shows how to create a resource group from a gallery template that you saved to disk by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet and a hash table of template parameter names and values.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>
-          </maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Example 5: Create a resource group with tags  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 2: Create a resource group with tags  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
@@ -6499,6 +6403,29 @@ Resources         :
       </maml:alert>
     </maml:alertSet>
     <command:examples>
+      <command:example>
+      <maml:title>--------------------------  Example 1: Register a resource provider --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Web
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command registers the provider "Microsoft.Web" for the selected subscription.</maml:para>
+        <maml:para />
+        <maml:para />
+        <maml:para>
+        </maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
@@ -8135,281 +8062,306 @@ True</dev:code>
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <!--Generated by PS Cmdlet Help Editor-->
-    <command:details>
-      <command:name>Remove-AzureRmRoleDefinition</command:name>
-      <maml:description>
-        <maml:para>Deletes a custom role in Azure RBAC. The role to be deleted is specified using the Id property of the role. Delete will fail if there are existing role assignments made to the custom role.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
-      <command:verb>Remove</command:verb>
-      <command:noun>AzureRmRoleDefinition</command:noun>
-      <dev:version />
-    </command:details>
-    <maml:description>
-      <maml:para>
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Remove-AzureRmRoleDefinition</command:name>
+		<maml:description>
+			<maml:para>Deletes a custom role in Azure RBAC. The role to be deleted is specified using the Id property of the role. Delete will fail if there are existing role assignments made to the custom role.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Remove</command:verb>
+		<command:noun>AzureRmRoleDefinition</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>
         The Remove-AzureRmRoleDefinition cmdlet deletes a custom role in Azure Role-Based Access Control.
-        Provide the Id parameter of an existing custom role to delete that custom role. By default, Remove-AzureRmRoleDefinition prompts you for confirmation. To suppress the prompt, use the Force parameter. If there are existing role assignments made to the custom role to be deleted, the delete will fail.
-      </maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Remove-AzureRmRoleDefinition</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-          <maml:name>Id</maml:name>
-          <maml:description>
-            <maml:para>Id of the Role definition to be deleted</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>If set, does not prompt for a confirmation before deleting the custom role</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PassThru</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Remove-AzureRmRoleDefinition</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Name of the Role definition to be deleted.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>If set, does not prompt for a confirmation before deleting the custom role</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PassThru</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-        <maml:name>Id</maml:name>
-        <maml:description>
-          <maml:para>Id of the Role definition to be deleted</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
-        <dev:type>
-          <maml:name>Guid</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>If set, does not prompt for a confirmation before deleting the custom role</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>PassThru</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>InformationAction</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        <dev:type>
-          <maml:name>ActionPreference</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>InformationVariable</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para>Name of the Role definition to be deleted.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-        <dev:type>
-          <maml:name>azureprofile</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
-        </dev:type>
-        <maml:description>
-          <maml:para>
-          </maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
-        </dev:type>
-        <maml:description>
-          <maml:para>
-          </maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
-    <maml:alertSet>
-      <maml:title></maml:title>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>--------------------------  Example 1  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>Get-AzureRmRoleDefinition –Name &quot;Virtual Machine Operator&quot; | Remove-AzureRmRoleDefinition</dev:code>
-        <dev:remarks>
-          <maml:para />
-          <maml:para />
-          <maml:para />
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Example 2  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>Remove-AzureRmRoleDefinition -Id &quot;52a6cc13-ff92-47a8-a39b-2a8205c3087e&quot;</dev:code>
-        <dev:remarks>
-          <maml:para />
-          <maml:para />
-          <maml:para />
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>New-AzureRmRoleDefinition</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>Get-AzureRmRoleDefinition</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>Set-AzureRmRoleDefinition</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+        Provide the Id parameter of an existing custom role to delete that custom role. By default, Remove-AzureRmRoleDefinition prompts you for confirmation. To suppress the prompt, use the Force parameter. If there are existing role assignments made to the custom role to be deleted, the delete will fail.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Remove-AzureRmRoleDefinition</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>Id of the Role definition to be deleted</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Scope</maml:name>
+				<maml:description>
+					<maml:para>Role definition scope.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>If set, does not prompt for a confirmation before deleting the custom role</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Remove-AzureRmRoleDefinition</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of the Role definition to be deleted.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Scope</maml:name>
+				<maml:description>
+					<maml:para>Role definition scope.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>If set, does not prompt for a confirmation before deleting the custom role</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Id</maml:name>
+			<maml:description>
+				<maml:para>Id of the Role definition to be deleted</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+			<dev:type>
+				<maml:name>Guid</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Scope</maml:name>
+			<maml:description>
+				<maml:para>Role definition scope.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>If set, does not prompt for a confirmation before deleting the custom role</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of the Role definition to be deleted.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Get-AzureRmRoleDefinition –Name &quot;Virtual Machine Operator&quot; | Remove-AzureRmRoleDefinition</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Remove-AzureRmRoleDefinition -Id &quot;52a6cc13-ff92-47a8-a39b-2a8205c3087e&quot;</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmRoleDefinition</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmRoleDefinition</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmRoleDefinition</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <!--Generated by PS Cmdlet Help Editor-->
     <command:details>
       <command:name>Save-AzureRmResourceGroupGalleryTemplate</command:name>
@@ -8870,251 +8822,249 @@ Tags:
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <!--Generated by PS Cmdlet Help Editor-->
-    <command:details>
-      <command:name>Set-AzureRmRoleDefinition</command:name>
-      <maml:description>
-        <maml:para>Modifies a custom role in Azure RBAC. Provide the modified role definition either as a JSON file or as a PSRoleDefinition. First, use the Get-AzureRmRoleDefinition command to retrieve the custom role that you wish to modify. Then, modify the properties that you wish to change. Finally, save the role definition using this command.</maml:para>
-        <maml:para>You can use Get-AzureRmRoleDefinition | ConvertTo-Json command to export the into a JSON file, that you can modify. Use the Get-AzureRmProviderOperation command to list all actions in Azure that can be secured using RBAC.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
-      <command:verb>Set</command:verb>
-      <command:noun>AzureRmRoleDefinition</command:noun>
-      <dev:version />
-    </command:details>
-    <maml:description>
-      <maml:para>The Set-AzureRmRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control. Provide the updated role definition as an input to the cmdlet in the form of a JSON file or a PSRoleDefinition object. The role definition for the updated custom role MUST contain the Id property. The role definition SHOULD contain at least one property that is being updated: DisplayName, Description, Actions, NotActions, AssignableScopes.</maml:para>
-      <maml:para>Following is a sample updated role definition json for Set-AzureRmRoleDefinition</maml:para>
-      <maml:para>
-        {
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Set-AzureRmRoleDefinition</command:name>
+		<maml:description>
+			<maml:para>Modifies a custom role in Azure RBAC. Provide the modified role definition either as a JSON file or as a PSRoleDefinition. First, use the Get-AzureRmRoleDefinition command to retrieve the custom role that you wish to modify. Then, modify the properties that you wish to change. Finally, save the role definition using this command.</maml:para>
+			<maml:para>You can use Get-AzureRmRoleDefinition | ConvertTo-Json command to export the into a JSON file, that you can modify. Use the Get-AzureRmProviderOperation command to list all actions in Azure that can be secured using RBAC.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Set</command:verb>
+		<command:noun>AzureRmRoleDefinition</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Set-AzureRmRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control. Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object. The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes. NotActions is optional.</maml:para>
+		<maml:para>Following is a sample updated role definition json for Set-AzureRmRoleDefinition</maml:para>
+		<maml:para>    {
         &quot;Id&quot;: &quot;52a6cc13-ff92-47a8-a39b-2a8205c3087e&quot;,
+        &quot;Name&quot;: &quot;Updated Role&quot;,
         &quot;Description&quot;: &quot;Can monitor all resources and start and restart virtual machines&quot;,
         &quot;Actions&quot;:
         [
-        &quot;*/read&quot;,
-        &quot;Microsoft.ClassicCompute/virtualmachines/restart/action&quot;,
-        &quot;Microsoft.ClassicCompute/virtualmachines/start/action&quot;
+            &quot;*/read&quot;,
+            &quot;Microsoft.ClassicCompute/virtualmachines/restart/action&quot;,
+            &quot;Microsoft.ClassicCompute/virtualmachines/start/action&quot;
         ]
-        }
-      </maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Set-AzureRmRoleDefinition</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InputFile</maml:name>
-          <maml:description>
-            <maml:para>File name containing a single json role definition to be updated. Only include the properties that are to be updated in the JSON. Id property is Required.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Set-AzureRmRoleDefinition</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-          <maml:name>Role</maml:name>
-          <maml:description>
-            <maml:para>Role definition object to be updated</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSRoleDefinition</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>InputFile</maml:name>
-        <maml:description>
-          <maml:para>File name containing a single json role definition to be updated. Only include the properties that are to be updated in the JSON. Id property is Required.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>InformationAction</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        <dev:type>
-          <maml:name>ActionPreference</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>InformationVariable</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-        <maml:name>Role</maml:name>
-        <maml:description>
-          <maml:para>Role definition object to be updated</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">PSRoleDefinition</command:parameterValue>
-        <dev:type>
-          <maml:name>PSRoleDefinition</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-        <dev:type>
-          <maml:name>azureprofile</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
-        </dev:type>
-        <maml:description>
-          <maml:para>
-          </maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
-        </dev:type>
-        <maml:description>
-          <maml:para>
-          </maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
-    <maml:alertSet>
-      <maml:title></maml:title>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>--------------------------  Update using PSRoleDefinitionObject  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt; $roleDef = Get-AzureRmRoleDefinition &quot;Contoso On-Call&quot;
+        &quot;AssignableScopes&quot;: [&quot;/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f&quot;]
+    }</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRmRoleDefinition</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InputFile</maml:name>
+				<maml:description>
+					<maml:para>File name containing a single json role definition to be updated. Only include the properties that are to be updated in the JSON. Id property is Required.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRmRoleDefinition</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Role</maml:name>
+				<maml:description>
+					<maml:para>Role definition object to be updated</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSRoleDefinition</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InputFile</maml:name>
+			<maml:description>
+				<maml:para>File name containing a single json role definition to be updated. Only include the properties that are to be updated in the JSON. Id property is Required.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Role</maml:name>
+			<maml:description>
+				<maml:para>Role definition object to be updated</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSRoleDefinition</command:parameterValue>
+			<dev:type>
+				<maml:name>PSRoleDefinition</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Update using PSRoleDefinitionObject  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $roleDef = Get-AzureRmRoleDefinition &quot;Contoso On-Call&quot;
           PS C:\&gt; $roleDef.Actions.Add(&quot;Microsoft.ClassicCompute/virtualmachines/start/action&quot;)
           PS C:\&gt; $roleDef.Description = &quot;Can monitor all resources and start and restart virtual machines&quot;
           PS C:\&gt; $roleDef.AssignableScopes = @(&quot;/subscriptions/eb910d4f-edbf-429b-94F6-d76bae7ff401&quot;, &quot;/subscriptions/a846d197-5eac-45c7-b885-a6227fe6d388&quot;)
 
-          PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef
-        </dev:code>
-        <dev:remarks>
-          <maml:para />
-          <maml:para />
-          <maml:para />
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Create using JSON file  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt; Set-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json</dev:code>
-        <dev:remarks>
-          <maml:para />
-          <maml:para />
-          <maml:para />
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Get-AzureRmProviderOperation</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>Get-AzureRmRoleDefinition</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>New-AzureRmRoleDefinition</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>Remove-AzureRmRoleDefinition</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+          PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Create using JSON file  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Set-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmProviderOperation</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmRoleDefinition</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmRoleDefinition</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-AzureRmRoleDefinition</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <!--Generated by PS Cmdlet Help Editor-->
     <command:details>
       <command:name>Stop-AzureRmResourceGroupDeployment</command:name>
@@ -9153,13 +9103,6 @@ Tags:
           <maml:name>Force</maml:name>
           <maml:description>
             <maml:para>Suppresses the confirmation prompt. By default, Stop-AzureRmResourceGroupDeployment prompts you before stopping a deployment.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-          <maml:name>PassThru</maml:name>
-          <maml:description>
-            <maml:para>Returns $True when the stopping operation succeeds and $False when it fails. By default, this cmdlet does not generate any output.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -9203,19 +9146,6 @@ Tags:
         <maml:name>Force</maml:name>
         <maml:description>
           <maml:para>Suppresses the confirmation prompt. By default, Stop-AzureRmResourceGroupDeployment prompts you before stopping a deployment.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-        <maml:name>PassThru</maml:name>
-        <maml:description>
-          <maml:para>Returns $True when the stopping operation succeeds and $False when it fails. By default, this cmdlet does not generate any output.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -9842,6 +9772,29 @@ Tags:
       </maml:alert>
     </maml:alertSet>
     <command:examples>
+      <command:example>
+        <maml:title>--------------------------  Example 1: Unregister a resource provider --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Unregister-AzureRmResourceProvider -ProviderNamespace Microsoft.Web
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command unregisters the provider "Microsoft.Web" for the selected subscription.</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>

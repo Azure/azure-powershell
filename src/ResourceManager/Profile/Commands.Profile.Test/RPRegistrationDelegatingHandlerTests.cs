@@ -17,17 +17,15 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Moq;
 using Xunit;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {

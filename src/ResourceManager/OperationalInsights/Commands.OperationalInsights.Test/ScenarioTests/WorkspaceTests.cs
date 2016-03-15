@@ -31,6 +31,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         public void TestWorkspaceActions()
         {
             RunPowerShellTest("Test-WorkspaceActions");
-        } 
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWorkspaceEnableDisableListIntelligencePacks()
+        {
+            RunPowerShellTest("Test-WorkspaceEnableDisableListIntelligencePacks");
+        }
     }
 }

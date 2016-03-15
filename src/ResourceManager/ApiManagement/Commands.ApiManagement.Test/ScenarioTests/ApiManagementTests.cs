@@ -13,19 +13,20 @@
 //  limitations under the License.
 
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using Microsoft.Azure.Common.Authentication;
+    using ServiceManagemenet.Common;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Storage;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
     public class ApiManagementTests : RMTestBase
@@ -132,6 +133,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         public void TestSetApiManagementVirtualNetworks()
         {
             RunPowerShellTest("Test-SetApiManagementVirtualNetworks");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetApiManagementHostnames()
+        {
+            RunPowerShellTest("Test-SetApiManagementHostnames");
         }
 
         private void RunPowerShellTest(params string[] scripts)

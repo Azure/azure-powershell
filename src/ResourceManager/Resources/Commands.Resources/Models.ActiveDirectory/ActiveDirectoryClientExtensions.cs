@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     Id = new Guid(obj.ObjectId),
                     Type = obj.ObjectType,
                     UserPrincipalName = obj.UserPrincipalName,
-                    SignInName = obj.SignInName,
                     Mail = obj.Mail
                 };
             }
@@ -104,8 +103,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 DisplayName = user.DisplayName,
                 Id = new Guid(user.ObjectId),
                 UserPrincipalName = user.UserPrincipalName,
-                Mail = user.SignInName,
-                SignInName = user.SignInName
+                Mail = user.Mail 
             };
         }
 
@@ -140,6 +138,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     ApplicationObjectId = Guid.Parse(application.ObjectId),
                     Type = application.ObjectType,
                     ApplicationId = Guid.Parse(application.AppId),
+                    IdentifierUris = application.IdentifierUris,
+                    DisplayName= application.DisplayName,
+                    ReplyUrls = application.ReplyUrls,
                     AppPermissions = application.AppPermissions,
                     AvailableToOtherTenants = application.AvailableToOtherTenants
                 };

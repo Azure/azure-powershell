@@ -252,15 +252,6 @@ function Test-BinaryFile
 
 <#
 .SYNOPSIS
-Removes all current subscriptions.
-#>
-function Remove-AllSubscriptions
-{
-    Get-AzureRmSubscription | Remove-AzureRmSubscription -Force
-}
-
-<#
-.SYNOPSIS
 Waits on the specified job with the given timeout.
 
 .PARAMETER scriptBlock
@@ -280,7 +271,7 @@ function Wait-Function
 
     do
     {
-        Start-Sleep -s 5
+        Wait-Seconds 5
         $current = [DateTime]::Now
         $diff = $current - $start
         $result = &$scriptBlock
@@ -337,7 +328,7 @@ function Retry-Function
     $tries = 1;
     while(( $result -ne $true) -and ($tries -le $maxTries))
     {
-        Start-Sleep -s $interval
+        Wait-Seconds $interval
         $result = Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $argument;
         $tries++;
     }

@@ -84,16 +84,30 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="managementCert">certificate to be uploaded</param>
         /// <param name="vault">vault object</param>
         /// <returns>credential object</returns>
-        public ASRVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ASRVault vault)
+        public ASRVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ASRVault vault, ASRSite site)
         {
-            string currentResourceName = PSRecoveryServicesClient.asrVaultCreds.ResourceName;
-            string currentResourceGroupName = PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName;
+            ASRVaultCreds currentVaultContext = new ASRVaultCreds(
+                PSRecoveryServicesClient.asrVaultCreds.SubscriptionId,
+                PSRecoveryServicesClient.asrVaultCreds.ResourceName,
+                PSRecoveryServicesClient.asrVaultCreds.ManagementCert,
+                PSRecoveryServicesClient.asrVaultCreds.AcsNamespace,
+                PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey,
+                PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName,
+                PSRecoveryServicesClient.asrVaultCreds.SiteId,
+                PSRecoveryServicesClient.asrVaultCreds.SiteName,
+                PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace,
+                PSRecoveryServicesClient.asrVaultCreds.ResourceType);
 
+            string resourceProviderNamespace = string.Empty;
+            string resourceType = string.Empty;
+            Utilities.GetResourceProviderNamespaceAndType(vault.ID, out resourceProviderNamespace, out resourceType);
             // Update vault settings with the working vault to generate file
-            Utilities.UpdateVaultSettings(new ASRVaultCreds()
+            Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
             {
                 ResourceGroupName = vault.ResouceGroupName,
-                ResourceName = vault.Name
+                ResourceName = vault.Name,
+                ResourceNamespace = resourceProviderNamespace,
+                ARMResourceType = resourceType
             });
 
             // Get Channel Integrity key
@@ -116,14 +130,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                                                 managementCert,
                                                 acsDetails,
                                                 channelIntegrityKey,
-                                                vault);
+                                                vault,
+                                                site);
 
             // Update back the original vault settings
-            Utilities.UpdateVaultSettings(new ASRVaultCreds()
-            {
-                ResourceGroupName = currentResourceGroupName,
-                ResourceName = currentResourceName
-            });
+            Utilities.UpdateCurrentVaultContext(currentVaultContext);
 
             return asrVaultCreds;
         }
@@ -135,24 +146,29 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>credential object</returns>
         public ASRVaultCreds ChangeVaultContext(ASRVault vault)
         {
-            // Update vault settings
-            Utilities.UpdateVaultSettings(new ASRVaultCreds()
+            string resourceProviderNamespace = string.Empty;
+            string resourceType = string.Empty;
+            Utilities.GetResourceProviderNamespaceAndType(vault.ID, out resourceProviderNamespace, out resourceType);
+            Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
             {
                 ResourceGroupName = vault.ResouceGroupName,
-                ResourceName = vault.Name
+                ResourceName = vault.Name,
+                ResourceNamespace = resourceProviderNamespace,
+                ARMResourceType= resourceType
             });
 
             // Get Channel Integrity key
             Task<string> getChannelIntegrityKey = this.GetChannelIntegrityKey();
             getChannelIntegrityKey.Wait();
 
-
             // Update vault settings along with Channel integrity key
-            Utilities.UpdateVaultSettings(new ASRVaultCreds()
+            Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
             {
                 ResourceGroupName = vault.ResouceGroupName,
                 ResourceName = vault.Name,
-                ChannelIntegrityKey = getChannelIntegrityKey.Result
+                ChannelIntegrityKey = getChannelIntegrityKey.Result,
+                ResourceNamespace = resourceProviderNamespace,
+                ARMResourceType = resourceType
             });
 
             return asrVaultCreds;
@@ -245,19 +261,26 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="vault">vault object</param>
         /// <param name="site">site object</param>
         /// <returns>vault credential object</returns>
-        private ASRVaultCreds GenerateCredentialObject(X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, ASRVault vault)
+        private ASRVaultCreds GenerateCredentialObject(X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, ASRVault vault, ASRSite site)
         {
             string serializedCertifivate = Convert.ToBase64String(managementCert.Export(X509ContentType.Pfx));
 
             AcsNamespace acsNamespace = new AcsNamespace(acsDetails);
 
+            string resourceProviderNamespace = string.Empty;
+            string resourceType = string.Empty;
+            Utilities.GetResourceProviderNamespaceAndType(vault.ID, out resourceProviderNamespace, out resourceType);
             ASRVaultCreds vaultCreds = new ASRVaultCreds(
                                             vault.SubscriptionId,
                                             vault.Name,
                                             serializedCertifivate,
                                             acsNamespace,
                                             channelIntegrityKey,
-                                            vault.ResouceGroupName);
+                                            vault.ResouceGroupName,
+                                            site.ID,
+                                            site.Name,
+                                            resourceProviderNamespace,
+                                            resourceType);
 
             return vaultCreds;
         }

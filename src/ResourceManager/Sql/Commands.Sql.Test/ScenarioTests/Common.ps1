@@ -27,6 +27,19 @@ function Get-SqlAuditingTestEnvironmentParameters ($testSuffix)
 
 <#
 .SYNOPSIS
+Gets the values of the parameters used at the threat detection tests
+#>
+function Get-SqlThreatDetectionTestEnvironmentParameters ($testSuffix)
+{
+	return @{ rgname = "sql-td-cmdlet-test-rg" +$testSuffix;
+			  serverName = "sql-td-cmdlet-server" +$testSuffix;
+			  databaseName = "sql-td-cmdlet-db" + $testSuffix;
+			  storageAccount = "tdcmdlets" +$testSuffix
+			  }
+}
+
+<#
+.SYNOPSIS
 Gets the values of the parameters used by the data masking tests
 #>
 function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
@@ -62,8 +75,7 @@ Creates the test environment needed to perform the Sql auditing tests
 function Create-TestEnvironmentWithParams ($params)
 {
 	New-AzureRmResourceGroup -Name $params.rgname -Location "West US" -Force
-	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
-	New-AzureRmStorageAccount -Name $params.storageAccount -Location "West US" -ResourceGroupName $params.rgname -Type "Standard_GRS"
+	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-audit-test-env-setup-classic-storage.json" -serverName $params.serverName -databaseName $params.databaseName -storageName $params.storageAccount  -Force
 }
 
 <#
@@ -74,8 +86,18 @@ function Create-TestEnvironmentWithStorageV2 ($testSuffix)
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 	New-AzureRmResourceGroup -Name $params.rgname -Location "West US" -Force
-	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
-	New-AzureRmStorageAccount -Name $params.storageAccount -Location "West US" -ResourceGroupName $params.rgname -Type "Standard_GRS"
+	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-audit-test-env-setup-storageV2.json" -serverName $params.serverName -databaseName $params.databaseName -storageName $params.storageAccount  -Force
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Sql threat detection tests, while using storage  V2 as the used storage account
+#>
+function Create-ThreatDetectionTestEnvironmentWithStorageV2 ($testSuffix, $serverVersion = "12.0")
+{
+	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	New-AzureRmResourceGroup -Name $params.rgname -Location "Australia East" -Force
+    New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-td-test-env-setup.json" -serverName $params.serverName -version $serverVersion -databaseName $params.databaseName  -storageName $params.storageAccount -Force
 }
 
 <#
@@ -212,10 +234,18 @@ Removes the test environment that was needed to perform the Sql auditing tests
 #>
 function Remove-TestEnvironment ($testSuffix)
 {
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the Sql threat detection tests
+#>
+function Remove-ThreatDetectionTestEnvironment ($testSuffix)
+{
 	try
 	{
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	Azure\Remove-AzureRmStorageAccount -StorageAccountName $params.storageAccount
+	    $params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	    Azure\Remove-AzureRmStorageAccount -StorageAccountName $params.storageAccount
 	}
 	catch
 	{

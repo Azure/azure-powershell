@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             BatchAccountContext context = BatchClient.UpdateAccount(this.ResourceGroupName, this.AccountName, this.Tag);
             WriteObject(context);

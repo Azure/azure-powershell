@@ -62,11 +62,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                             param =>
                                 param.HttpUserEnabled && param.HttpUsername == _httpCred.UserName &&
                                 param.HttpPassword == _httpCred.Password.ConvertToString())))
-                .Returns(new HDInsightLongRunningOperationResponse
+                .Returns(new OperationResource
                 {
-                    Error = null,
+                    ErrorInfo = null,
                     StatusCode = HttpStatusCode.OK,
-                    Status = OperationStatus.Succeeded
+                    State = AsyncOperationState.Succeeded
                 })
                 .Verifiable();
 
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 !param.HttpUserEnabled &&
                                 string.IsNullOrEmpty(param.HttpPassword) &&
                                 string.IsNullOrEmpty(param.HttpUsername))))
-                .Returns(new HDInsightLongRunningOperationResponse
+                .Returns(new OperationResource
                 {
-                    Error = null,
+                    ErrorInfo = null,
                     StatusCode = HttpStatusCode.OK,
-                    Status = OperationStatus.Succeeded
+                    State = AsyncOperationState.Succeeded
                 })
                 .Verifiable();
 

@@ -22,12 +22,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// When only RP Object is passed to the command.
         /// </summary>
+        internal const string ForSite = "ForSite";
+
+        /// <summary>
+        /// When only RP Object is passed to the command.
+        /// </summary>
         internal const string ByRPObject = "ByRPObject";
 
         /// <summary>
         /// When only Object is passed to the command.
         /// </summary>
         internal const string ByObject = "ByObject";
+
+        /// <summary>
+        /// When only Server Object is passed to the command.
+        /// </summary>
+        internal const string ByServerObject = "ByServerObject";
 
         /// <summary>
         /// When only PE Object is passed to the command.
@@ -88,6 +98,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// When only PE Object is passed along with VM network to the command.
         /// </summary>
         internal const string ByPEObjectWithVMNetwork = "ByPEObjectWithVMNetwork";
+
+        /// <summary>
+        /// When only PE Object is passed along with Logical VM network to the command.
+        /// </summary>
+        internal const string ByPEObjectWithLogicalVMNetwork = "ByPEObjectWithLogicalVMNetwork";
+
+        /// <summary>
+        /// When only PE Object is passed along with Logical VM network to the command.
+        /// </summary>
+        internal const string ByPEObjectWithAzureVMNetworkId = "ByPEObjectWithAzureVMNetworkId";
 
         /// <summary>
         /// When only PC and PE ids are passed to the command.
@@ -188,6 +208,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Mapping between Enterprise to Azure.
         /// </summary>
         internal const string EnterpriseToAzure = "EnterpriseToAzure";
+
+        /// <summary>
+        /// Mapping between HyperV Site to Azure.
+        /// </summary>
+        internal const string HyperVSiteToAzure = "HyperVSiteToAzure";
+
+        /// <summary>
+        /// Disable DR
+        /// </summary>
+        internal const string DisableDR = "DisableDR";
 
         /// <summary>
         /// Mapping between Enterprise to Enterprise San.

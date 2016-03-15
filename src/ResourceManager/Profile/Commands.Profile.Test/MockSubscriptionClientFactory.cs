@@ -44,6 +44,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             }
         }
 
+        public static string GetSubscriptionNameFromId(string id)
+        {
+            return "Sub-" + id;
+        }
+
         public SubscriptionClient GetSubscriptionClient()
         {
             var tenantMock = new Mock<ITenantOperations>();
@@ -72,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                             result.Subscription =
                                 new Subscription
                                 {
-                                    DisplayName = "Returned Subscription",
+                                    DisplayName = GetSubscriptionNameFromId(subId),
                                     Id = subId,
                                     State = "Active",
                                     SubscriptionId = subId
@@ -94,13 +99,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                             {
                                 StatusCode = HttpStatusCode.OK,
                                 RequestId = Guid.NewGuid().ToString(),
+                                NextLink = "LinkToNextPage",
                                 Subscriptions =
                                     new List<Subscription>(
                                         subscriptionList.Select(
                                             sub =>
                                                 new Subscription
                                                 {
-                                                    DisplayName = "Contoso Subscription",
+                                                    DisplayName = GetSubscriptionNameFromId(sub),
                                                     Id = sub,
                                                     State = "Active",
                                                     SubscriptionId = sub
@@ -108,6 +114,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                             };
                         }
 
+                        return Task.FromResult(result);
+                    });
+            subscriptionMock.Setup(
+                (s) => s.ListNextAsync("LinkToNextPage", It.IsAny<CancellationToken>())).Returns(
+                    (string nextLink, CancellationToken token) =>
+                    {
+                        SubscriptionListResult result = null;
+                        if (_subscriptions.Count > 0)
+                        {
+                            var subscriptionList = _subscriptions.Dequeue();
+                            result = new SubscriptionListResult
+                            {
+                                StatusCode = HttpStatusCode.OK,
+                                RequestId = Guid.NewGuid().ToString(),
+                                Subscriptions =
+                                    new List<Subscription>(
+                                        subscriptionList.Select(
+                                            sub =>
+                                                new Subscription
+                                                {
+                                                    DisplayName = nextLink,
+                                                    Id = sub,
+                                                    State = "Disabled",
+                                                    SubscriptionId = sub
+                                                }))
+                            };
+                        }
                         return Task.FromResult(result);
                     });
             var client = new Mock<SubscriptionClient>();

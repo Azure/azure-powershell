@@ -14,13 +14,15 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using System;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
@@ -88,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         [Alias("o")]
         public SwitchParameter OverWrite  { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var result = DownloadFromBlobUri(
                 this,

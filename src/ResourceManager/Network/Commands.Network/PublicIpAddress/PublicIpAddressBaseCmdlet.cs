@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class PublicIpAddressBaseCmdlet : NetworkBaseCmdlet
     {
-        public IPublicIpAddressOperations PublicIpAddressClient
+        public IPublicIPAddressesOperations PublicIpAddressClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.PublicIpAddresses;
+                return NetworkClient.NetworkManagementClient.PublicIPAddresses;
             }
         }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetPublicIpAddress(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -54,17 +54,17 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSPublicIpAddress GetPublicIpAddress(string resourceGroupName, string name)
+        public PSPublicIpAddress GetPublicIpAddress(string resourceGroupName, string name, string expandResource = null)
         {
-            var getPublicIpAddressResponse = this.PublicIpAddressClient.Get(resourceGroupName, name);
+            var publicIP = this.PublicIpAddressClient.Get(resourceGroupName, name, expandResource);
 
-            var psPublicIpAddress = ToPsPublicIpAddress(getPublicIpAddressResponse.PublicIpAddress);
+            var psPublicIpAddress = ToPsPublicIpAddress(publicIP);
             psPublicIpAddress.ResourceGroupName = resourceGroupName;
 
             return psPublicIpAddress;
         }
 
-        public PSPublicIpAddress ToPsPublicIpAddress(PublicIpAddress publicIp)
+        public PSPublicIpAddress ToPsPublicIpAddress(PublicIPAddress publicIp)
         {
             var psPublicIpAddress = Mapper.Map<PSPublicIpAddress>(publicIp);
             

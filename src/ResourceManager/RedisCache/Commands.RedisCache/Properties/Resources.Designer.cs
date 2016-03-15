@@ -106,11 +106,38 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling diagnostics on redis cache &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveRedisCacheDiagnostics {
+            get {
+                return ResourceManager.GetString("RemoveRedisCacheDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove redis cache &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingRedisCache {
             get {
                 return ResourceManager.GetString("RemovingRedisCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to disable diagnostics on redis cache &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingRedisCacheDiagnostics {
+            get {
+                return ResourceManager.GetString("RemovingRedisCacheDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to StorageAccountId is not valid ARM resource Id..
+        /// </summary>
+        internal static string StorageAccountIdException {
+            get {
+                return ResourceManager.GetString("StorageAccountIdException", resourceCulture);
             }
         }
     }

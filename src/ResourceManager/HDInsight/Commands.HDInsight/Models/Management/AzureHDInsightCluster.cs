@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Management.HDInsight.Models;
 
@@ -124,6 +125,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Additional storage accounts for this cluster
         /// </summary>
-        public List<string> AdditionalStorageAccounts { get; set; }
+        public List<string> AdditionalStorageAccounts { get; set; }      
     }
 }

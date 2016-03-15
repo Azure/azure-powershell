@@ -124,6 +124,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.Constraints = parameters.Constraints.omObject;
             }
 
+            if (parameters.MultiInstanceSettings != null)
+            {
+                Utils.Utils.MultiInstanceSettingsSyncCollections(parameters.MultiInstanceSettings);
+                task.MultiInstanceSettings = parameters.MultiInstanceSettings.omObject;
+            }
+
             WriteVerbose(string.Format(Resources.CreatingTask, parameters.TaskId));
             if (parameters.Job != null)
             {
@@ -198,6 +204,37 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
                 jobOperations.TerminateTask(parameters.JobId, parameters.TaskId, parameters.AdditionalBehaviors);
             }
+        }
+
+        /// <summary>
+        /// Lists the subtasks matching the specified filter options.
+        /// </summary>
+        /// <param name="options">The options to use when querying for subtasks.</param>
+        /// <returns>The subtasks matching the specified filter options.</returns>
+        public IEnumerable<PSSubtaskInformation> ListSubtasks(ListSubtaskOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException("options");
+            }
+
+            string taskId = options.Task == null ? options.TaskId : options.Task.Id;
+            string verboseLogString = string.Format(Resources.GetSubtaskNoFilter, taskId);
+            WriteVerbose(verboseLogString);
+
+            IPagedEnumerable<SubtaskInformation> subtasks = null;
+            if (options.Task != null)
+            {
+                subtasks = options.Task.omObject.ListSubtasks(additionalBehaviors: options.AdditionalBehaviors);
+            }
+            else
+            {
+                JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
+                subtasks = jobOperations.ListSubtasks(options.JobId, options.TaskId, additionalBehaviors: options.AdditionalBehaviors);
+            }
+            Func<SubtaskInformation, PSSubtaskInformation> mappingFunction = s => { return new PSSubtaskInformation(s); };
+            return PSPagedEnumerable<PSSubtaskInformation, SubtaskInformation>.CreateWithMaxCount(
+                subtasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
         }
     }
 }

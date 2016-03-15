@@ -22,7 +22,7 @@ function Test-SchedulerEndToEnd
 {
 	#Verify number of regions returned for sub is 10
 	$schedulerRegions = Get-AzureSchedulerLocation
-	Assert-AreEqual '10' $schedulerRegions.Count
+	Assert-AreEqual '18' $schedulerRegions.Count
 	$schedulerRegions
 	
 	#Create a job collection and verify job collection is successfully created

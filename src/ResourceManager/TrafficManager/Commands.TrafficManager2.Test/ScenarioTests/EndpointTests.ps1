@@ -283,9 +283,9 @@ function Test-EnableEndpointUsingPiping
 
 <#
 .SYNOPSIS
-Disable Endpoint
+Disable Endpoint using piping
 #>
-function Test-DisableEndpoint
+function Test-DisableEndpointUsingPiping
 {
 	$endpointName = getAssetname
 	$profileName = getAssetname

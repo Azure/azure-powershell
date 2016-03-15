@@ -1,107 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WATM/profiles",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2011-10-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0",
-          "WindowsAzurePowershell/v0.8.5"
-        ]
-      },
-      "ResponseBody": "<Profiles xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Profile>\r\n    <DomainName>cool-profile.trafficmanager.net</DomainName>\r\n    <Name>cool-profile</Name>\r\n    <Status>Enabled</Status>\r\n    <StatusDetails>\r\n      <EnabledVersion>1</EnabledVersion>\r\n    </StatusDetails>\r\n    <Definitions>\r\n      <Definition>\r\n        <Status>Enabled</Status>\r\n        <Version>1</Version>\r\n      </Definition>\r\n    </Definitions>\r\n  </Profile>\r\n  <Profile>\r\n    <DomainName>onesdk535.trafficmanager.net</DomainName>\r\n    <Name>onesdk535</Name>\r\n    <Status>Enabled</Status>\r\n    <StatusDetails>\r\n      <EnabledVersion>1</EnabledVersion>\r\n    </StatusDetails>\r\n    <Definitions>\r\n      <Definition>\r\n        <Status>Enabled</Status>\r\n        <Version>1</Version>\r\n      </Definition>\r\n    </Definitions>\r\n  </Profile>\r\n</Profiles>",
-      "ResponseHeaders": {
-        "x-ms-servedbyregion": [
-          "ussouth2"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "bf8326302f84c923908d2620916c6476"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 24 Jul 2014 00:12:14 GMT"
-        ],
-        "Server": [
-          "1.0.6198.108",
-          "(rd_rdfe_stable.140717-0053)",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WATM/profiles/onesdk535",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2011-10-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0",
-          "WindowsAzurePowershell/v0.8.5"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth2"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "670241c1a6abc81582648399e095408e"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 24 Jul 2014 00:12:15 GMT"
-        ],
-        "Server": [
-          "1.0.6198.108",
-          "(rd_rdfe_stable.140717-0053)",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WATM/profiles",
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/WATM/profiles",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9XQVRNL3Byb2ZpbGVz",
       "RequestMethod": "POST",
-      "RequestBody": "<Profile xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <DomainName>onesdk6485.trafficmanager.net</DomainName>\r\n  <Name>onesdk6485</Name>\r\n</Profile>",
+      "RequestBody": "<Profile xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <DomainName>onesdk9561.trafficmanager.net</DomainName>\r\n  <Name>onesdk9561</Name>\r\n</Profile>",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "156"
+        ],
         "x-ms-version": [
           "2011-10-01"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0",
-          "WindowsAzurePowershell/v0.8.5"
+          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0"
         ]
       },
       "ResponseBody": "",
@@ -110,23 +25,23 @@
           "chunked"
         ],
         "x-ms-servedbyregion": [
-          "ussouth2"
+          "ussouth3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "62d6f2647af3c54e9cdc28b88c520825"
+          "07a3534d782d61809817b74237660184"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Jul 2014 00:12:16 GMT"
+          "Thu, 21 Jan 2016 12:18:43 GMT"
         ],
         "Server": [
-          "1.0.6198.108",
-          "(rd_rdfe_stable.140717-0053)",
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
           "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
@@ -139,38 +54,50 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WATM/profiles/onesdk6485/definitions",
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/WATM/profiles/onesdk9561/definitions",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9XQVRNL3Byb2ZpbGVzL29uZXNkazk1NjEvZGVmaW5pdGlvbnM=",
       "RequestMethod": "POST",
       "RequestBody": "<Definition xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <DnsOptions>\r\n    <TimeToLiveInSeconds>300</TimeToLiveInSeconds>\r\n  </DnsOptions>\r\n  <Monitors>\r\n    <Monitor>\r\n      <IntervalInSeconds>30</IntervalInSeconds>\r\n      <TimeoutInSeconds>10</TimeoutInSeconds>\r\n      <ToleratedNumberOfFailures>3</ToleratedNumberOfFailures>\r\n      <Protocol>HTTP</Protocol>\r\n      <Port>80</Port>\r\n      <HttpOptions>\r\n        <Verb>GET</Verb>\r\n        <RelativePath>/</RelativePath>\r\n        <ExpectedStatusCode>200</ExpectedStatusCode>\r\n      </HttpOptions>\r\n    </Monitor>\r\n  </Monitors>\r\n  <Policy>\r\n    <LoadBalancingMethod>RoundRobin</LoadBalancingMethod>\r\n    <Endpoints />\r\n  </Policy>\r\n</Definition>",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "704"
+        ],
         "x-ms-version": [
           "2011-10-01"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0",
-          "WindowsAzurePowershell/v0.8.5"
+          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0"
         ]
       },
       "ResponseBody": "<Definition xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Version>1</Version>\r\n</Definition>",
       "ResponseHeaders": {
+        "Content-Length": [
+          "147"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
         "x-ms-servedbyregion": [
-          "ussouth2"
+          "ussouth3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "38f074327af0c4c3b0478a3dc449738f"
+          "c918bd46ed7561b7a0a208cc2e1bc04f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Jul 2014 00:12:16 GMT"
+          "Thu, 21 Jan 2016 12:18:44 GMT"
         ],
         "Server": [
-          "1.0.6198.108",
-          "(rd_rdfe_stable.140717-0053)",
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
           "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
@@ -183,7 +110,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WATM/profiles/onesdk6485",
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/WATM/profiles/onesdk9561",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9XQVRNL3Byb2ZpbGVzL29uZXNkazk1NjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -191,30 +119,35 @@
           "2011-10-01"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0",
-          "WindowsAzurePowershell/v0.8.5"
+          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<Profile xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <DomainName>onesdk6485.trafficmanager.net</DomainName>\r\n  <Name>onesdk6485</Name>\r\n  <Status>Enabled</Status>\r\n  <StatusDetails>\r\n    <EnabledVersion>1</EnabledVersion>\r\n  </StatusDetails>\r\n  <Definitions>\r\n    <Definition>\r\n      <Status>Enabled</Status>\r\n      <Version>1</Version>\r\n    </Definition>\r\n  </Definitions>\r\n</Profile>",
+      "ResponseBody": "<Profile xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <DomainName>onesdk9561.trafficmanager.net</DomainName>\r\n  <Name>onesdk9561</Name>\r\n  <Status>Enabled</Status>\r\n  <StatusDetails>\r\n    <EnabledVersion>1</EnabledVersion>\r\n  </StatusDetails>\r\n  <Definitions>\r\n    <Definition>\r\n      <Status>Enabled</Status>\r\n      <Version>1</Version>\r\n    </Definition>\r\n  </Definitions>\r\n</Profile>",
       "ResponseHeaders": {
+        "Content-Length": [
+          "383"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
         "x-ms-servedbyregion": [
-          "ussouth2"
+          "ussouth3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "9c51c8e1f974c1188f11da6ad3b42faa"
+          "038f129c7be56f95a38b3958b5b178ef"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Jul 2014 00:12:18 GMT"
+          "Thu, 21 Jan 2016 12:18:44 GMT"
         ],
         "Server": [
-          "1.0.6198.108",
-          "(rd_rdfe_stable.140717-0053)",
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
           "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
@@ -227,7 +160,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WATM/profiles/onesdk6485",
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/WATM/profiles/onesdk9561",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9XQVRNL3Byb2ZpbGVzL29uZXNkazk1NjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -235,30 +169,35 @@
           "2011-10-01"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0",
-          "WindowsAzurePowershell/v0.8.5"
+          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<Profile xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <DomainName>onesdk6485.trafficmanager.net</DomainName>\r\n  <Name>onesdk6485</Name>\r\n  <Status>Enabled</Status>\r\n  <StatusDetails>\r\n    <EnabledVersion>1</EnabledVersion>\r\n  </StatusDetails>\r\n  <Definitions>\r\n    <Definition>\r\n      <Status>Enabled</Status>\r\n      <Version>1</Version>\r\n    </Definition>\r\n  </Definitions>\r\n</Profile>",
+      "ResponseBody": "<Profile xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <DomainName>onesdk9561.trafficmanager.net</DomainName>\r\n  <Name>onesdk9561</Name>\r\n  <Status>Enabled</Status>\r\n  <StatusDetails>\r\n    <EnabledVersion>1</EnabledVersion>\r\n  </StatusDetails>\r\n  <Definitions>\r\n    <Definition>\r\n      <Status>Enabled</Status>\r\n      <Version>1</Version>\r\n    </Definition>\r\n  </Definitions>\r\n</Profile>",
       "ResponseHeaders": {
+        "Content-Length": [
+          "383"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
         "x-ms-servedbyregion": [
-          "ussouth2"
+          "ussouth3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "fa964d795280c14b85f3c2fa09775e0d"
+          "207e24a9473f65d2a056cdb63f405e16"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Jul 2014 00:12:20 GMT"
+          "Thu, 21 Jan 2016 12:18:47 GMT"
         ],
         "Server": [
-          "1.0.6198.108",
-          "(rd_rdfe_stable.140717-0053)",
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
           "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
@@ -271,7 +210,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WATM/profiles/onesdk6485",
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/WATM/profiles/onesdk9561",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9XQVRNL3Byb2ZpbGVzL29uZXNkazk1NjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -279,30 +219,35 @@
           "2011-10-01"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0",
-          "WindowsAzurePowershell/v0.8.5"
+          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<Profile xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <DomainName>onesdk6485.trafficmanager.net</DomainName>\r\n  <Name>onesdk6485</Name>\r\n  <Status>Disabled</Status>\r\n  <Definitions>\r\n    <Definition>\r\n      <Status>Disabled</Status>\r\n      <Version>1</Version>\r\n    </Definition>\r\n  </Definitions>\r\n</Profile>",
+      "ResponseBody": "<Profile xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <DomainName>onesdk9561.trafficmanager.net</DomainName>\r\n  <Name>onesdk9561</Name>\r\n  <Status>Disabled</Status>\r\n  <Definitions>\r\n    <Definition>\r\n      <Status>Disabled</Status>\r\n      <Version>1</Version>\r\n    </Definition>\r\n  </Definitions>\r\n</Profile>",
       "ResponseHeaders": {
+        "Content-Length": [
+          "320"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
         "x-ms-servedbyregion": [
-          "ussouth2"
+          "ussouth3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "e97efee6f728ce379025fa155571fdae"
+          "85fef9f990e16123bb72be8f856d1d63"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Jul 2014 00:12:20 GMT"
+          "Thu, 21 Jan 2016 12:18:51 GMT"
         ],
         "Server": [
-          "1.0.6198.108",
-          "(rd_rdfe_stable.140717-0053)",
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
           "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
@@ -315,7 +260,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WATM/profiles/onesdk6485/definitions/1",
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/WATM/profiles/onesdk9561/definitions/1",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9XQVRNL3Byb2ZpbGVzL29uZXNkazk1NjEvZGVmaW5pdGlvbnMvMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -323,30 +269,35 @@
           "2011-10-01"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0",
-          "WindowsAzurePowershell/v0.8.5"
+          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0"
         ]
       },
       "ResponseBody": "<Definition xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <DnsOptions>\r\n    <TimeToLiveInSeconds>300</TimeToLiveInSeconds>\r\n  </DnsOptions>\r\n  <Status>Enabled</Status>\r\n  <Version>1</Version>\r\n  <Monitors>\r\n    <Monitor>\r\n      <IntervalInSeconds>30</IntervalInSeconds>\r\n      <TimeoutInSeconds>10</TimeoutInSeconds>\r\n      <ToleratedNumberOfFailures>3</ToleratedNumberOfFailures>\r\n      <Protocol>HTTP</Protocol>\r\n      <Port>80</Port>\r\n      <HttpOptions>\r\n        <Verb>GET</Verb>\r\n        <RelativePath>/</RelativePath>\r\n        <ExpectedStatusCode>200</ExpectedStatusCode>\r\n      </HttpOptions>\r\n    </Monitor>\r\n  </Monitors>\r\n  <Policy>\r\n    <LoadBalancingMethod>RoundRobin</LoadBalancingMethod>\r\n    <Endpoints />\r\n    <MonitorStatus>Inactive</MonitorStatus>\r\n  </Policy>\r\n</Definition>",
       "ResponseHeaders": {
+        "Content-Length": [
+          "696"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
         "x-ms-servedbyregion": [
-          "ussouth2"
+          "ussouth3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "b71ff75a3666c226a2a067ba39305eb4"
+          "66faefa576d76c3994a725bd34c4dbc9"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Jul 2014 00:12:19 GMT"
+          "Thu, 21 Jan 2016 12:18:45 GMT"
         ],
         "Server": [
-          "1.0.6198.108",
-          "(rd_rdfe_stable.140717-0053)",
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
           "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
@@ -359,7 +310,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WATM/profiles/onesdk6485/definitions/1",
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/WATM/profiles/onesdk9561/definitions/1",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9XQVRNL3Byb2ZpbGVzL29uZXNkazk1NjEvZGVmaW5pdGlvbnMvMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -367,30 +319,35 @@
           "2011-10-01"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0",
-          "WindowsAzurePowershell/v0.8.5"
+          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0"
         ]
       },
       "ResponseBody": "<Definition xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <DnsOptions>\r\n    <TimeToLiveInSeconds>300</TimeToLiveInSeconds>\r\n  </DnsOptions>\r\n  <Status>Disabled</Status>\r\n  <Version>1</Version>\r\n  <Monitors>\r\n    <Monitor>\r\n      <IntervalInSeconds>30</IntervalInSeconds>\r\n      <TimeoutInSeconds>10</TimeoutInSeconds>\r\n      <ToleratedNumberOfFailures>3</ToleratedNumberOfFailures>\r\n      <Protocol>HTTP</Protocol>\r\n      <Port>80</Port>\r\n      <HttpOptions>\r\n        <Verb>GET</Verb>\r\n        <RelativePath>/</RelativePath>\r\n        <ExpectedStatusCode>200</ExpectedStatusCode>\r\n      </HttpOptions>\r\n    </Monitor>\r\n  </Monitors>\r\n  <Policy>\r\n    <LoadBalancingMethod>RoundRobin</LoadBalancingMethod>\r\n    <Endpoints />\r\n    <MonitorStatus>Disabled</MonitorStatus>\r\n  </Policy>\r\n</Definition>",
       "ResponseHeaders": {
+        "Content-Length": [
+          "697"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
         "x-ms-servedbyregion": [
-          "ussouth2"
+          "ussouth3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "8a701ed6b8aac4ba8b395f16de409cf2"
+          "c4b94735dc026b39b7c2b1970c02102d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Jul 2014 00:12:21 GMT"
+          "Thu, 21 Jan 2016 12:18:51 GMT"
         ],
         "Server": [
-          "1.0.6198.108",
-          "(rd_rdfe_stable.140717-0053)",
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
           "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
@@ -403,16 +360,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WATM/profiles/onesdk6485",
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/WATM/profiles/onesdk9561",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9XQVRNL3Byb2ZpbGVzL29uZXNkazk1NjE=",
       "RequestMethod": "PUT",
       "RequestBody": "<Profile xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Status>Disabled</Status>\r\n  <StatusDetails>\r\n    <EnabledVersion>1</EnabledVersion>\r\n  </StatusDetails>\r\n</Profile>",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "179"
+        ],
         "x-ms-version": [
           "2011-10-01"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0",
-          "WindowsAzurePowershell/v0.8.5"
+          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0"
         ]
       },
       "ResponseBody": "",
@@ -421,23 +384,23 @@
           "chunked"
         ],
         "x-ms-servedbyregion": [
-          "ussouth2"
+          "ussouth3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "5e0526491f64cc0b969615b4d32597d0"
+          "4e23dd7b42cb6746a83fbf47c7d1360d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Jul 2014 00:12:20 GMT"
+          "Thu, 21 Jan 2016 12:18:48 GMT"
         ],
         "Server": [
-          "1.0.6198.108",
-          "(rd_rdfe_stable.140717-0053)",
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
           "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
@@ -452,10 +415,10 @@
   ],
   "Names": {
     "Test-DisableProfile": [
-      "onesdk6485"
+      "onesdk9561"
     ]
   },
   "Variables": {
-    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c"
+    "SubscriptionId": "a0d901ba-9956-4f7d-830c-2d7974c36666"
   }
 }

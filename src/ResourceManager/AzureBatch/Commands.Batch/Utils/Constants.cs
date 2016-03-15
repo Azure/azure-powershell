@@ -22,15 +22,18 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureRmBatchAccount = "AzureRmBatchAccount";
         public const string AzureRmBatchAccountKey = "AzureRmBatchAccountKey";
         public const string AzureRmBatchAccountKeys = "AzureRmBatchAccountKeys";
+        public const string AzureRmBatchSubscriptionQuotas = "AzureRmBatchSubscriptionQuotas";
 
         // Batch Service cmdlet nouns
         public const string AzureBatchPool = "AzureBatchPool";
         public const string AzureBatchPoolResize = "AzureBatchPoolResize";
         public const string AzureBatchComputeNode = "AzureBatchComputeNode";
+        public const string AzureBatchComputeNodeScheduling = "AzureBatchComputeNodeScheduling";
         public const string AzureBatchComputeNodeUser = "AzureBatchComputeNodeUser";
         public const string AzureBatchJobSchedule = "AzureBatchJobSchedule";
         public const string AzureBatchJob = "AzureBatchJob";
         public const string AzureBatchTask = "AzureBatchTask";
+        public const string AzureBatchSubtask = "AzureBatchSubtask";
         public const string AzureBatchNodeFile = "AzureBatchNodeFile";
         public const string AzureBatchNodeFileContent = "AzureBatchNodeFileContent";
         public const string AzureBatchRemoteDesktopProtocolFile = "AzureBatchRemoteDesktopProtocolFile";

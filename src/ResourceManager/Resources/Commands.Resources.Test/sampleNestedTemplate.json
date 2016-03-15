@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"StorageAccountName": {
+			"type": "String"
+		}
+	},
+	"variables": {
+		"templatelink": "https://raw.githubusercontent.com/vivsriaus/armtemplates/master/newStorageAccount.json"
+	},
+	"resources": [{
+		"apiVersion": "2015-01-01",
+		"name": "nestedTemplate",
+		"type": "Microsoft.Resources/deployments",
+		"properties": {
+			"mode": "incremental",
+			"templateLink": {
+				"uri": "[variables('templatelink')]",
+				"contentVersion": "1.0.0.0"
+			},
+			"parameters": {
+				"StorageAccountName": {
+					"value": "[parameters('StorageAccountName')]"
+				}
+			}
+		}
+	}]
+}

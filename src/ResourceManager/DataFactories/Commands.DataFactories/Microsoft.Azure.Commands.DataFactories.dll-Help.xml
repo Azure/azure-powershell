@@ -2862,7 +2862,7 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryGatewayKey</maml:name>
+          <maml:name>Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway</maml:name>
           <maml:uri>
           </maml:uri>
           <maml:description>
@@ -2884,16 +2884,18 @@
         </maml:introduction>
         <dev:code>
                     PS C:\&gt; New-AzureRmDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
-                    Name            : ContosoGateway
-                    Description     : my gateway
-                    Version         :
-                    Status          : NeedRegistration
-                    VersionStatus   : None
-                    CreateTime      : 8/22/2014 1:40:34 AM
-                    RegisterTime    :
-                    LastConnectTime :
-                    ExpiryTime      :
-                </dev:code>
+          Name              : ContosoGateway
+          Description       : my gateway
+          Version           :
+          Status            : NeedRegistration
+          VersionStatus     : None
+          CreateTime        : 8/22/2014 1:40:34 AM
+          RegisterTime      :
+          LastConnectTime   :
+          ExpiryTime        :
+          ProvisioningState : Succeeded
+          Key               : ADF#40cbb3d9-2736-4794-a8a6-e6b839b4894f@a2d875ce-c9d7-4b8b-ad65-dd3ebbb9a940@8c0d1801-e863-44af-82e6-fb2f0c00f2ae@xz#Y9R0NhAeH3u7wgnrJyiWj4Y/QIhH4fFilIdzZgwsVQA=
+        </dev:code>
         <dev:remarks>
           <maml:para>This command creates a gateway named ContosoGateway in the data factory named WikiADF in the resource group named ADF. </maml:para>
         </dev:remarks>
@@ -3082,7 +3084,7 @@
         </maml:introduction>
         <dev:code>
                     PS C:\&gt; New-AzureRmDataFactoryGatewayKey -ResourceGroupName "ADF" -GatewayName "ContosoGateway" -DataFactoryName "WikiADF" | Format-List
-                    Gateway Key : ADF#40cbb3d9-2736-4794-a8a6-e6b839b4894f@a2d875ce-c9d7-4b8b-ad65-dd3ebbb9a940@8c0d1801-e863-44af-82e6-fb2f0c00f2ae@xz#Y9R0NhAeH3u7wgnrJyiWj4Y/QIhH4fFilIdzZgwsVQA=
+                    GatewayKey : ADF#40cbb3d9-2736-4794-a8a6-e6b839b4894f@a2d875ce-c9d7-4b8b-ad65-dd3ebbb9a940@8c0d1801-e863-44af-82e6-fb2f0c00f2ae@xz#Y9R0NhAeH3u7wgnrJyiWj4Y/QIhH4fFilIdzZgwsVQA=
                 </dev:code>
         <dev:remarks>
           <maml:para>This command creates a gateway key for the data factory gateway named ContosoGateway, and then passes the gateway key to the Format-List cmdlet by using the pipeline operator. For more information, type Get-Help Format-List.</maml:para>

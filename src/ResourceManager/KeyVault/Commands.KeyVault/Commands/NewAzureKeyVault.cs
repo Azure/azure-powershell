@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.KeyVault;
 using System;
 using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Management.KeyVault;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
@@ -65,10 +65,18 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter(Mandatory = false,            
             ValueFromPipelineByPropertyName = true,
-            HelpMessage =
-                "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation."
-            )]
-        public SwitchParameter EnabledForDeployment { get; set; }        
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
+        public SwitchParameter EnabledForDeployment { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Resource Manager when referenced in templates.")]
+        public SwitchParameter EnabledForTemplateDeployment { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
+        public SwitchParameter EnabledForDiskEncryption { get; set; }
 
         [Parameter(Mandatory = false,            
             ValueFromPipelineByPropertyName = true,
@@ -84,11 +92,35 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {            
             if (VaultExistsInCurrentSubscription(this.VaultName))
             {
                 throw new ArgumentException(PSKeyVaultProperties.Resources.VaultAlreadyExists);
+            }
+
+            var userObjectId = Guid.Empty;
+            AccessPolicyEntry accessPolicy = null;
+
+            try
+            {
+                userObjectId = GetCurrentUsersObjectId();
+            }
+            catch (Exception ex)
+            {
+                // Show the graph exceptions as a warning, but still proceed to create a vault with no access policy
+                // This is to unblock Key Vault in Fairfax as Graph has issues in this environment.
+                WriteWarning(ex.Message);
+            }
+            if (userObjectId != Guid.Empty)
+            {
+                accessPolicy = new AccessPolicyEntry()
+                {
+                    TenantId = GetTenantId(),
+                    ObjectId = userObjectId,
+                    PermissionsToKeys = DefaultPermissionsToKeys,
+                    PermissionsToSecrets = DefaultPermissionsToSecrets
+                };
             }
 
             var newVault = KeyVaultManagementClient.CreateNewVault(new PSKeyVaultModels.VaultCreationParameters()
@@ -97,18 +129,23 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
                 EnabledForDeployment = this.EnabledForDeployment.IsPresent,
+                EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
+                EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
                 SkuFamilyName = DefaultSkuFamily,
                 SkuName = string.IsNullOrWhiteSpace(this.Sku) ? DefaultSkuName : this.Sku,
                 TenantId = GetTenantId(),
-                ObjectId = GetCurrentUsersObjectId(),
-                PermissionsToKeys = DefaultPermissionsToKeys,
-                PermissionsToSecrets = DefaultPermissionsToSecrets,
+                AccessPolicy = accessPolicy,
                 Tags = this.Tag
-            }, 
+            },
             ActiveDirectoryClient
             );
-            
+
             this.WriteObject(newVault);
+
+            if (accessPolicy == null)
+            {
+                WriteWarning(PSKeyVaultProperties.Resources.VaultNoAccessPolicyWarning);
+            }
         }
 
 

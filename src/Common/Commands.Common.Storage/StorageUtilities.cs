@@ -48,11 +48,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                 Uri blobEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Blob;
                 Uri queueEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Queue;
                 Uri tableEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Table;
+                Uri fileEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.File;
+
                 return new CloudStorageAccount(
                     GenerateStorageCredentials(storageClient, resourceGroupName, accountName),
                     blobEndpoint,
                     queueEndpoint,
-                    tableEndpoint, null);
+                    tableEndpoint, 
+                    fileEndpoint);
             }
             else
             {
@@ -61,8 +64,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                         Convert.ToBase64String(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString()))),
                     new Uri(string.Format("https://{0}.blob.core.windows.net", accountName)),
                     new Uri(string.Format("https://{0}.queue.core.windows.net", accountName)),
-                    new Uri(string.Format("https://{0}.table.core.windows.net", accountName)),
-                    null);
+                    new Uri(string.Format("https://{0}.table.core.windows.net", accountName)),                    
+                    new Uri(string.Format("https://{0}.file.core.windows.net", accountName)));
             }
         }
 

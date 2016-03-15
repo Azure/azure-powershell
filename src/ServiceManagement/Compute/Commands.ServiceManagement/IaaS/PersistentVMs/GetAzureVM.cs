@@ -21,6 +21,7 @@ using System.Management.Automation;
 using System.Net;
 using AutoMapper;
 using Hyak.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Management.Compute;
@@ -30,10 +31,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
     using PVM = Model;
     using NSM = Management.Compute.Models;
 
-    [Cmdlet(VerbsCommon.Get, AzureVMNoun, DefaultParameterSetName = ListVMParamSet), OutputType(typeof(PVM.PersistentVMRoleContext))]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachine, DefaultParameterSetName = ListVMParamSet), OutputType(typeof(PVM.PersistentVMRoleContext))]
     public class GetAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
-        protected const string AzureVMNoun = "AzureVM";
         protected const string PersistentVMRoleStr = "PersistentVMRole";
         protected const string ListVMParamSet = "ListAllVMs";
         protected const string GetVMParamSet = "GetVMByServiceAndVMName";
@@ -178,6 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 OperationDescription        = CommandRuntime.ToString(),
                 NetworkInterfaces           = roleInstance == null ? null : Mapper.Map<PVM.NetworkInterfaceList>(roleInstance.NetworkInterfaces),
                 VirtualNetworkName          = deployment == null ? null : deployment.VirtualNetworkName,
+                RemoteAccessCertificateThumbprint =  roleInstance == null ? string.Empty : roleInstance.RemoteAccessCertificateThumbprint,
                 VM = new PVM.PersistentVM
                 {
                     AvailabilitySetName               = vmRole == null ? string.Empty : vmRole.AvailabilitySetName,
@@ -190,7 +191,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     ResourceExtensionReferences       = vmRole == null ? null : Mapper.Map<PVM.ResourceExtensionReferenceList>(vmRole.ResourceExtensionReferences),
                     DataVirtualHardDisks              = vmRole == null ? null : Mapper.Map<Collection<PVM.DataVirtualHardDisk>>(vmRole.DataVirtualHardDisks),
                     OSVirtualHardDisk                 = vmRole == null ? null : Mapper.Map<PVM.OSVirtualHardDisk>(vmRole.OSVirtualHardDisk),
-                    ConfigurationSets                 = vmRole == null ? null : PersistentVMHelper.MapConfigurationSets(vmRole.ConfigurationSets)
+                    ConfigurationSets                 = vmRole == null ? null : PersistentVMHelper.MapConfigurationSets(vmRole.ConfigurationSets),
+                    DebugSettings                     = (vmRole == null || vmRole.DebugSettings == null) ? null : Mapper.Map<PVM.DebugSettings>(vmRole.DebugSettings)
                 }
             };
 

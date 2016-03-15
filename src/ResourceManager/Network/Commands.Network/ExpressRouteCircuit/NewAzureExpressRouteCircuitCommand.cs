@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
         public string ServiceProviderName { get; set; }
 
         [Parameter(
-             Mandatory = false,
+             Mandatory = true,
              ValueFromPipelineByPropertyName = true)]
         public string PeeringLocation { get; set; }
 
@@ -84,10 +84,16 @@ namespace Microsoft.Azure.Commands.Network
         public int BandwidthInMbps { get; set; }
 
         [Parameter(
-            Mandatory = false, 
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public List<PSPeering> Peering { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public List<PSExpressRouteCircuitAuthorization> Authorization { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -100,9 +106,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name))
             {
@@ -129,7 +135,7 @@ namespace Microsoft.Azure.Commands.Network
             circuit.Name = this.Name;
             circuit.ResourceGroupName = this.ResourceGroupName;
             circuit.Location = this.Location;
-            
+
             // Construct sku
             if (!string.IsNullOrEmpty(this.SkuTier))
             {
@@ -150,17 +156,17 @@ namespace Microsoft.Azure.Commands.Network
 
             circuit.Peerings = new List<PSPeering>();
             circuit.Peerings = this.Peering;
+            circuit.Authorizations = new List<PSExpressRouteCircuitAuthorization>();
+            circuit.Authorizations = this.Authorization;
 
             // Map to the sdk object
             var circuitModel = Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
-            circuitModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.ExpressRouteCircuitType;
             circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create ExpressRouteCircuit call
             this.ExpressRouteCircuitClient.CreateOrUpdate(this.ResourceGroupName, this.Name, circuitModel);
 
             var getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name);
-
             return getExpressRouteCircuit;
         }
     }

@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(DefaultProfile.Context);
             LocationCapabilityModel model = adapter.GetLocationCapabilities(LocationName);
