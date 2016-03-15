@@ -97,7 +97,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Invalid = 0,
         Daily = 1,
         Weekly = 2
-    }  
+    }
+
+    public enum JobOperation
+    {
+        Invalid = 0,
+        Backup,
+        Restore,
+        ConfigureBackup,
+        RemoveBackup
+    }
+
+    public enum JobStatus
+    {
+        Invalid = 0,
+        InProgress,
+        Cancelling,
+        Cancelled,
+        Completed,
+        CompletedWithWarnings,
+        Failed
+    }
 
     #endregion
 

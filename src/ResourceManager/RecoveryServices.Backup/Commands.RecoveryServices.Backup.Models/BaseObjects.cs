@@ -12,12 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -27,6 +24,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
 
         } 
+    }
+
+    public class AzureRmRecoveryServicesVaultContext : AzureRmRecoveryServicesObjectBase
+    {
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
+        public string ResourceName { get; set; }
+
+        /// <summary>
+        /// Name of resource group to which this resource belongs
+        /// </summary>
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Location of the resource
+        /// </summary>
+        public string Location { get; set; }
+
+        public AzureRmRecoveryServicesVaultContext()
+        {
+        }
+
+        public AzureRmRecoveryServicesVaultContext(
+            string resourceName,
+            string resourceGroupName,
+            string location)
+        {
+            this.ResourceGroupName = resourceGroupName;
+            this.ResourceName = ResourceName;
+            this.Location = location;
+        }
+
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 
     /// <summary>
@@ -177,7 +211,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    public class AzureRmRecoveryServicesJobBase : AzureRmRecoveryServicesObjectBase
+    public class AzureRmRecoveryServicesJobBase : AzureRmRecoveryServicesVaultContext
     {
         public string ActivityId { get; set; }
 

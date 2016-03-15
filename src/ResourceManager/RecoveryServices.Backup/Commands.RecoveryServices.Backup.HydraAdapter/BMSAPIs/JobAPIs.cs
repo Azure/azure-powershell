@@ -125,8 +125,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             CommonJobQueryFilters commonFilters = new CommonJobQueryFilters()
             {
                 BackupManagementType = backupManagementType,
-                StartTime = HydraHelpers.GetDateTimeStringForService(startTime),
-                EndTime = HydraHelpers.GetDateTimeStringForService(endTime),
+                StartTime = CommonHelpers.GetDateTimeStringForService(startTime),
+                EndTime = CommonHelpers.GetDateTimeStringForService(endTime),
                 JobId = jobId,
                 Status = status,
                 Operation = operation

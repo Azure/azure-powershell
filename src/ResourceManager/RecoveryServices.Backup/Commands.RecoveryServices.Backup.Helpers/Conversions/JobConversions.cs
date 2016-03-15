@@ -39,7 +39,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         {
             AzureRmRecoveryServicesJobBase response = null;
 
-            if (hydraJob.Properties.GetType() == typeof(AzureIaaSVMJob))
+            // hydra doesn't initialize Properties if the type of job is not known to current version of hydra.
+            if (hydraJob.Properties == null)
+            {
+                // unsupported job type.
+            }
+            else if (hydraJob.Properties.GetType() == typeof(AzureIaaSVMJob))
             {
                 response = GetPSAzureVmJob(hydraJob);
             }
@@ -53,8 +58,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 foreach (var job in hydraJobs.ItemList.Value)
                 {
-                    jobsCount++;
-                    psJobs.Add(GetPSJob(job));
+                    AzureRmRecoveryServicesJobBase convertedJob = GetPSJob(job);
+                    if (convertedJob != null)
+                    {
+                        jobsCount++;
+                        psJobs.Add(convertedJob);
+                    }
                 }
             }
         }

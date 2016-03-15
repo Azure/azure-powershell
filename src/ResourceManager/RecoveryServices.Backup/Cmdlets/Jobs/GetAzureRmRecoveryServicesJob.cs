@@ -47,15 +47,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.BackupManagementTypeFilter)]
         [ValidateNotNullOrEmpty]
-        public string BackupManagementType { get; set; }
+        public BackupManagementType BackupManagementType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.OperationFilter)]
         [ValidateNotNullOrEmpty]
-        public string Operation { get; set; }
+        public JobOperation Operation { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.StatusFilter)]
         [ValidateNotNullOrEmpty]
-        public string Status { get; set; }
+        public JobStatus Status { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -104,8 +104,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 // TODO: Initialize Vault object from base cmdlet once support is added
                 List<AzureRmRecoveryServicesJobBase> result = new List<AzureRmRecoveryServicesJobBase>();
                 int resultCount = 0;
-                var adapterResponse = HydraAdapter.GetJobs(Vault.ResouceGroupName, Vault.Name, JobId, Status, Operation, rangeStart, rangeEnd,
-                    BackupManagementType);
+                var adapterResponse = HydraAdapter.GetJobs(Vault.ResouceGroupName, Vault.Name, JobId, Status.ToString(), Operation.ToString(), rangeStart, rangeEnd,
+                    BackupManagementType.ToString());
                 JobConversions.AddHydraJobsToPSList(adapterResponse, result, ref resultCount);
 
                 while (!string.IsNullOrEmpty(adapterResponse.ItemList.NextLink))
@@ -121,8 +121,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     HydraHelpers.GetSkipTokenFromNextLink(adapterResponse.ItemList.NextLink, out skipToken);
                     if (skipToken != null)
                     {
-                        adapterResponse = HydraAdapter.GetJobs(Vault.ResouceGroupName, Vault.Name, JobId, Status, Operation,
-                            rangeStart, rangeEnd, BackupManagementType, null, skipToken);
+                        adapterResponse = HydraAdapter.GetJobs(Vault.ResouceGroupName, Vault.Name, JobId, Status.ToString(), Operation.ToString(),
+                            rangeStart, rangeEnd, BackupManagementType.ToString(), null, skipToken);
                         JobConversions.AddHydraJobsToPSList(adapterResponse, result, ref resultCount);
                     }
                     else

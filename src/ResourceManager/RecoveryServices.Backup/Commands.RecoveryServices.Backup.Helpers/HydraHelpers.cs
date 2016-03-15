@@ -12,16 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Specialized;
+using System.Web;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Globalization;
-using System.Web;
-using System.Collections.Specialized;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -62,15 +57,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return providerType;
-        }
-
-        public static string GetDateTimeStringForService(DateTime date)
-        {
-            // our service expects date time to be serialized in the following format
-            // we have to use english culture because our user might be running 
-            // PS in another culture and our service can't understand it.
-            DateTimeFormatInfo dateFormat = new CultureInfo("en-US").DateTimeFormat;
-            return date.ToString("yyyy-MM-dd hh:mm:ss tt", dateFormat);
         }
 
         public static void GetSkipTokenFromNextLink(string url, out string nextLink)
