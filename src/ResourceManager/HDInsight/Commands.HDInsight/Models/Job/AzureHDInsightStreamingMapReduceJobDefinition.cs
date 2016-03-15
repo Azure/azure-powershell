@@ -54,14 +54,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets the command line environment for the mappers or the reducers.
         /// </summary>
-        public IList<string> CommandEnvironment { get; private set; }
+        public IDictionary<string, string> CommandEnvironment { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the AzureHDInsightStreamingMapReduceJobDefinition class.
         /// </summary>
         public AzureHDInsightStreamingMapReduceJobDefinition()
         {
-            CommandEnvironment = new List<string>();
+            CommandEnvironment = new Dictionary<string, string>();
             Defines = new Dictionary<string, string>();
         }
     }

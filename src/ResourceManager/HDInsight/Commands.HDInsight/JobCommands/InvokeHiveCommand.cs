@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Management.HDInsight.Job.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -175,9 +176,10 @@ namespace Microsoft.Azure.Commands.HDInsight
             else
             {
                 //get job error
-                output = Convert(HDInsightJobClient.GetJobError(jobid, DefaultStorageAccountName, DefaultStorageAccountKey,
-                    DefaultContainer));
+                IStorageAccess storageAccess = new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer);
+                output = Convert(HDInsightJobClient.GetJobError(jobid, storageAccess));
             }
+
             WriteObject(output);
         }
 

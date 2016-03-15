@@ -55,6 +55,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { job.Command = value; }
         }
 
+        [Parameter(HelpMessage = "The output location to use for the job.")]
+        public string LibDir
+        {
+            get { return job.LibDir; }
+            set { job.LibDir = value; }
+        }
+
         #endregion
 
         public NewAzureHDInsightSqoopJobDefinitionCommand()
