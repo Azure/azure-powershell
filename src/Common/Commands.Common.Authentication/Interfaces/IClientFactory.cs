@@ -55,6 +55,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         void AddUserAgent(string productName);
 
         /// <summary>
+        /// Gets the custom handlers.
+        /// </summary>
+        /// <returns>An array of custom handlers</returns>
+        DelegatingHandler[] GetCustomHandlers();
+
+        /// <summary>
         /// Adds user agent to UserAgents collection.
         /// </summary>
         /// <param name="productName">Product name.</param>
