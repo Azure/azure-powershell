@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.ServiceManagemenet.Common
 {
     /// <summary>
     /// This class handles mapping management client types

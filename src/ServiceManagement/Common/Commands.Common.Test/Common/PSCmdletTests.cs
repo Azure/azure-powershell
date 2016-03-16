@@ -17,7 +17,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Management;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using System.Net.Http;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common

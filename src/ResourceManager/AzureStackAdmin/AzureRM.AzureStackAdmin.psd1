@@ -12,7 +12,7 @@
 ModuleToProcess = 'Microsoft.AzureStack.Commands.dll'
 
 # Version number of this module.
-ModuleVersion = '0.9.1'
+ModuleVersion = '0.9.2'
 
 # ID used to uniquely identify this module
 GUID = '0e691e0a-ce16-40f2-af84-86fb0d82fb29'
@@ -48,7 +48,7 @@ CLRVersion = '4.0'
 ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.3'})
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'})
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -81,6 +81,27 @@ ModuleList = @()
 # FileList = @()
 
 # Private data to pass to the module specified in ModuleToProcess
-PrivateData = ''
+PrivateData = @{
+
+    PSData = @{
+
+        # Tags applied to this module. These help with module discovery in online galleries.
+        # Tags = @()
+
+        # A URL to the license for this module.
+        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'
+
+        # A URL to the main website for this project.
+        ProjectUri = 'https://github.com/Azure/azure-powershell'
+
+        # A URL to an icon representing this module.
+        # IconUri = ''
+
+        # ReleaseNotes of this module
+        ReleaseNotes = 'https://github.com/Azure/azure-powershell/blob/dev/ChangeLog.md'
+
+    } # End of PSData hashtable
+
+} # End of PrivateData hashtable
 }
 

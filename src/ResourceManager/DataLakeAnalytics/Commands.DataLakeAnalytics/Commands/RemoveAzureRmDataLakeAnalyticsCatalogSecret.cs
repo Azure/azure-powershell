@@ -38,15 +38,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
-            HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false)]
+        [Parameter(Position = 4, Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -58,11 +53,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     string.Format(Resources.RemovingDataLakeAnalyticsCatalogSecret, Name),
                     string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecret, Name),
                     Name,
-                    () => DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, Account, DatabaseName, Name));
+                    () => DataLakeAnalyticsClient.DeleteSecret(Account, DatabaseName, Name));
             }
             else
             {
-                DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, Account, DatabaseName, Name);
+                DataLakeAnalyticsClient.DeleteSecret(Account, DatabaseName, Name);
             }
 
             if (PassThru)

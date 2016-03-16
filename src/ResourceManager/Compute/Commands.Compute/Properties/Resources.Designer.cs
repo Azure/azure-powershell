@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Azure Enhanced Monitoring extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
+        /// </summary>
+        public static string AEMExtensionNotFound {
+            get {
+                return ResourceManager.GetString("AEMExtensionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Availability set removal operation.
         /// </summary>
         public static string AvailabilitySetRemovalCaption {
@@ -279,11 +288,11 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WadCfg or xmlCfg is not defined in configuration file..
+        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the configuration file..
         /// </summary>
-        public static string DiagnosticsExtensionConfigNoWadCfgOrXmlCfg {
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefined {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionConfigNoWadCfgOrXmlCfg", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefined", resourceCulture);
             }
         }
         

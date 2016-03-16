@@ -17,19 +17,13 @@ namespace Microsoft.WindowsAzure.Commands.Common
     public static class ApiConstants
     {
         public const string AuthorizationHeaderName = "Authorization";
-
         public const string BasicAuthorization = "Basic";
-
         public const string UserAgentHeaderName = "User-Agent";
-
-        public const string UserAgentHeaderValue = "AzurePowershell/v" + AzurePowerShell.AssemblyVersion;
-
+        public const string UserAgentHeaderValue = "AzurePowershell/v" 
+            + AzurePowerShell.AssemblyVersion;
         public const string VSDebuggerCausalityDataHeaderName = "VSDebuggerCausalityData";
-
         public const string OperationTrackingIdHeader = "x-ms-request-id";
-
         public const string VersionHeaderContentLatest = "2013-08-01";
-
         public const string VersionHeaderName = "x-ms-version";
 
     }
@@ -42,15 +36,10 @@ namespace Microsoft.WindowsAzure.Commands.Common
     public class SDKVersion
     {
         public const string Version180 = "1.8.0";
-
         public const string Version200 = "2.0.0";
-
         public const string Version220 = "2.2.0";
-
         public const string Version230 = "2.3.0";
-
         public const string Version240 = "2.4.0";
-
         public const string Version250 = "2.5.0";
     }
 
