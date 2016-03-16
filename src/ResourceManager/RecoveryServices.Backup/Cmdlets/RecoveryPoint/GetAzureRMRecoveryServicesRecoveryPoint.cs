@@ -26,41 +26,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRMRecoveryServicesRecoveryPoint"), OutputType(typeof(List<AzureRmRecoveryServicesRecoveryPointBase>))]
     class GetAzureRMRecoveryServicesRecoveryPoint : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipeline = true)]
+        internal const string DateTimeFileterParameterSet = "DateTimeFilter";
+        internal const string RecoveryPointIdParameterSet = "RecoveryPointId";
+
+        [Parameter(Mandatory = true, ParameterSetName = DateTimeFileterParameterSet, HelpMessage = "", ValueFromPipeline = false)]        
         [ValidateNotNullOrEmpty]
         public DateTime StartDate { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, ParameterSetName = DateTimeFileterParameterSet, HelpMessage = "", ValueFromPipeline = false)]        
         [ValidateNotNullOrEmpty]
         public DateTime EndDate { get; set; }
 
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, ParameterSetName = DateTimeFileterParameterSet, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, HelpMessage = "", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesItemBase Item { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = "")]
+        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, HelpMessage = "", ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
         public string RecoveryPointId { get; set; }
 
         public override void ExecuteCmdlet()
         {
             //Validate start time < end time
-            if(StartDate >= EndDate)
-            {
-                throw new Exception("End date should be greated than start date"); //tbd: Correct nsg and exception type
-            }
             base.ExecuteCmdlet();
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+
+            Dictionary<System.Enum, object> parameter = new Dictionary<System.Enum, object>();
+            parameter.Add(GetRecoveryPointParams.Item, Item);
+
+            if(this.ParameterSetName == DateTimeFileterParameterSet)
             {
-                {GetRecoveryPointParams.StartDate, StartDate},
-                {GetRecoveryPointParams.EndDate, EndDate},
-                {GetRecoveryPointParams.Item, Item},
-                {GetRecoveryPointParams.RecoveryPointId, RecoveryPointId},
-            }, HydraAdapter);
+                //User want list of RPs between given time range
+                if (StartDate >= EndDate)
+                {
+                    throw new Exception("End date should be greated than start date"); //tbd: Correct nsg and exception type
+                }
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType);
-            psBackupProvider.GetRecoveryPoint();
+                parameter.Add(GetRecoveryPointParams.StartDate, StartDate);
+                parameter.Add(GetRecoveryPointParams.EndDate, EndDate);
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType);
+                psBackupProvider.ListRecoveryPoints();
+            }
+            else if (this.ParameterSetName == RecoveryPointIdParameterSet)
+            {
+                //User want details of a particular recovery point
+                parameter.Add(GetRecoveryPointParams.RecoveryPointId, RecoveryPointId);
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType);
+                psBackupProvider.GetRecoveryPointDetail();
+            }
+            else
+            {
+
+            }
         }
-
     }
 }

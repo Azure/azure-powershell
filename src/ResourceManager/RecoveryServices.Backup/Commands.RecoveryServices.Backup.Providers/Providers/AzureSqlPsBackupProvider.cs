@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.RecoveryPointResponse GetRecoveryPoint()
+        List<AzureRmRecoveryServicesRecoveryPointBase> GetRecoveryPointDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
         {
             throw new NotImplementedException();
         }
