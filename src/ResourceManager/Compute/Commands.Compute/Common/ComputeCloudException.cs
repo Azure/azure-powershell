@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
     public class ComputeLongRunningOperationError
     {
         public string OperationId;
-        public ComputeOperationStatus Status;
+        public string Status;
         public DateTime? StartTime;
         public DateTime? EndTime;
         public ApiError Error;
