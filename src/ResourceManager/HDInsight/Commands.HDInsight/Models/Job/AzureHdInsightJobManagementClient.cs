@@ -124,6 +124,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightJobManagementClient.JobManagement.ListJobs();
         }
 
+        public virtual JobListResponse ListJobsAfterJobId(string jobId, int numberOfJobs)
+        {
+            return HdInsightJobManagementClient.JobManagement.ListJobsAfterJobId(jobId, numberOfJobs);
+        }
+
         public void StopJob(string jobId)
         {
             HdInsightJobManagementClient.JobManagement.KillJob(jobId);

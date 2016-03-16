@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.HDInsight.Models.Job;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
+using Microsoft.Azure.Management.HDInsight;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -94,39 +95,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
 
-            if (DefaultContainer == null || DefaultStorageAccountName == null || DefaultStorageAccountKey == null)
-            {
-                var result = HDInsightManagementClient.GetCluster(ResourceGroupName, _clusterName);
-
-                if (result == null || result.Count == 0)
-                {
-                    throw new CloudException(string.Format("Couldn't find cluster {0}", _clusterName));
-                }
-
-                var cluster = result.FirstOrDefault();
-                string resourceGroupName = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
-                var configuration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, cluster.Name, "core-site");
-
-                if (configuration == null)
-                {
-                    throw new CloudException(string.Format("Couldn't find storage information for cluster {0}", _clusterName));
-                }
-
-                var DefaultStorageAccount = ClusterConfigurationUtils.GetDefaultStorageAccountDetails(
-                                        configuration,
-                                        cluster.Properties.ClusterVersion);
-
-                if (DefaultStorageAccount == null)
-                {
-                    throw new CloudException(string.Format("Couldn't find storage information for cluster {0}", _clusterName));
-                }
-
-                DefaultContainer = DefaultStorageAccount.StorageContainerName;
-                DefaultStorageAccountName = DefaultStorageAccount.StorageAccountName;
-                DefaultStorageAccountKey = DefaultStorageAccount.StorageAccountKey;
-            }
-
-            storageAccess = new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer);
+            storageAccess = GetDefaultStorageAccess(ResourceGroupName, _clusterName);
 
             _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
 
@@ -134,25 +103,25 @@ namespace Microsoft.Azure.Commands.HDInsight
             switch (DisplayOutputType)
             {
                 case JobDisplayOutputType.StandardError:
-                    output = GetJobError();
+                    output = GetJobError(this.storageAccess);
                     break;
                 default:
-                    output = GetJobOutput();
+                    output = GetJobOutput(this.storageAccess);
                     break;
             }
             WriteObject(output);
         }
         
-        internal string GetJobOutput()
+        internal string GetJobOutput(IStorageAccess storageAccess)
         {
-            var output = HDInsightJobClient.GetJobOutput(JobId, this.storageAccess);
+            var output = HDInsightJobClient.GetJobOutput(JobId, storageAccess);
             var outputStr = Convert(output);
             return outputStr;
         }
 
-        private string GetJobError()
+        internal string GetJobError(IStorageAccess storageAccess)
         {
-            var output = HDInsightJobClient.GetJobError(JobId, this.storageAccess);
+            var output = HDInsightJobClient.GetJobError(JobId, storageAccess);
             var outputStr = Convert(output);
             return outputStr;
         }
@@ -162,6 +131,43 @@ namespace Microsoft.Azure.Commands.HDInsight
             var reader = new StreamReader(stream);
             var text = reader.ReadToEnd();
             return text;
+        }
+
+        internal IStorageAccess GetDefaultStorageAccess(string ResourceGroupName, string clusterName)
+        {
+            if (DefaultContainer == null && DefaultStorageAccountName == null && DefaultStorageAccountKey == null)
+            {
+                var result = HDInsightManagementClient.GetCluster(ResourceGroupName, clusterName);
+
+                if (result == null || result.Count == 0)
+                {
+                    throw new CloudException(string.Format("Couldn't find cluster {0}", clusterName));
+                }
+
+                var cluster = result.FirstOrDefault();
+                string resourceGroupName = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
+                var configuration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, cluster.Name, "core-site");
+
+                if (configuration == null)
+                {
+                    throw new CloudException(string.Format("Couldn't find storage information for cluster {0}", clusterName));
+                }
+
+                var DefaultStorageAccount = ClusterConfigurationUtils.GetDefaultStorageAccountDetails(
+                                        configuration,
+                                        cluster.Properties.ClusterVersion);
+
+                if (DefaultStorageAccount == null)
+                {
+                    throw new CloudException(string.Format("Couldn't find storage information for cluster {0}", clusterName));
+                }
+
+                DefaultContainer = DefaultStorageAccount.StorageContainerName;
+                DefaultStorageAccountName = DefaultStorageAccount.StorageAccountName;
+                DefaultStorageAccountKey = DefaultStorageAccount.StorageAccountKey;
+            }
+
+            return new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer);
         }
     }
 }
