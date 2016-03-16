@@ -65,11 +65,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             get { return _authenticationKeys; }
         }
 
-        public static string ParseResourceGroupFromId(string idFromServer)
+        /// <summary>
+        /// Get the resource group name from a storage account resource Id
+        /// </summary>
+        /// <param name="resourceId">The resource Id for the storage account</param>
+        /// <returns>The resource group containing the storage account</returns>
+        public static string ParseResourceGroupFromId(string resourceId)
         {
-            if (!string.IsNullOrEmpty(idFromServer))
+            if (!string.IsNullOrEmpty(resourceId))
             {
-                string[] tokens = idFromServer.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                if (tokens == null || tokens.Length < 4)
+                {
+                    throw new ArgumentOutOfRangeException("resourceId");
+                }
 
                 return tokens[3];
             }

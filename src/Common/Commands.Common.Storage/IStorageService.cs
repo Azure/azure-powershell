@@ -20,7 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
     public interface IStorageService
     {
         /// <summary>
-        /// The eblob service endpoint
+        /// The blob service endpoint
         /// </summary>
         Uri BlobEndpoint { get; }
 
