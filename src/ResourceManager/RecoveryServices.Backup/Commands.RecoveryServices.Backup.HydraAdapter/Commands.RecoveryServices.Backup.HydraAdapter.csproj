@@ -64,6 +64,7 @@
     <Compile Include="BMSAPIs\ContainerAPIs.cs" />
     <Compile Include="ClientProxy.cs" />
     <Compile Include="ClientProxyBase.cs" />
+    <Compile Include="CommonHelpers.cs" />
     <Compile Include="HydraAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

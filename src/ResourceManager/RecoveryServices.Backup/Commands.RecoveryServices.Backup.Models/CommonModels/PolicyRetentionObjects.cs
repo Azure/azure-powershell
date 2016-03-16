@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public MonthlyRetentionSchedule()
             : base()
         {
-            this.RetentionScheduleFormatType = RetentionScheduleFormat.Invalid;
+            
         }
 
         public override void Validate()
@@ -208,12 +208,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 throw new ArgumentException(string.Format("Allowed Count for DurationCountInMonths is 1 - {0}",
                                             PolicyConstants.MaxAllowedRetentionDurationCount));
             }
-
-            if (RetentionScheduleFormatType == RetentionScheduleFormat.Invalid)
-            {
-                throw new ArgumentException("RetentionScheduleType is set to Invalid");
-            }
-
+            
             if (RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
                 if (RetentionScheduleDaily == null)
@@ -258,7 +253,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public YearlyRetentionSchedule()
             : base()
         {
-            this.RetentionScheduleFormatType = RetentionScheduleFormat.Invalid;
+            
         }
 
         public override void Validate()
@@ -270,26 +265,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 throw new ArgumentException(string.Format("Allowed Count for DurationCountInYears is 1 - {0}",
                                             PolicyConstants.MaxAllowedRetentionDurationCount));
             }
-
-            if (RetentionScheduleFormatType == RetentionScheduleFormat.Invalid)
-            {
-                throw new ArgumentException("RetentionScheduleType is set to Invalid");
-            }
-
+                        
             if (MonthsOfYear == null || MonthsOfYear.Count == 0)
             {
                 throw new ArgumentException("MonthsOfYear is set to NULL/Empty");
             }
-
-            // validate if MonthsOfYear strings are correct
-            foreach (Month month in MonthsOfYear)
-            {               
-                if (month == Month.Invalid)
-                {
-                    throw new ArgumentException("MonthsOfYear content is Invalid");
-                }
-            }
-
+            
             if (RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
                 if (RetentionScheduleDaily == null)
@@ -357,16 +338,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if (WeeksOfTheMonth == null || WeeksOfTheMonth.Count == 0)
             {
                 throw new ArgumentException("WeeksOfTheMonth is set to NULL/Empty");
-            }
-
-            // validate if WeeksOfTheMonth are valid
-            foreach (WeekOfMonth week in WeeksOfTheMonth)
-            {
-                if (week == WeekOfMonth.Invalid)
-                {
-                    throw new ArgumentException("WeeksOfTheMonth content is Invalid");
-                }
-            }           
+            }                                
         }
 
         public override string ToString()
