@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +22,12 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public class ContainerTests : RecoveryServicesBackupTestsBase
+    public partial class ContainerTests : RecoveryServicesBackupTestsBase
     {
         [Fact]
-        public void Test()
+        public void TestGetContainerScenario()
         {
-            this.RunPowerShellTest("Test");
+            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetContainerScenario");
         }
     }
 }

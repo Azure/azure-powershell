@@ -12,3 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-GetContainerScenario
+{
+	$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
+	echo $vaults;
+}
