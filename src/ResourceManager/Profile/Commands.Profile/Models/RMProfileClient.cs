@@ -121,12 +121,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         newTenant == null &&                         
                         TryGetTenantSubscription(token, account, environment, tenant, subscriptionId, subscriptionName, out tempSubscription, out tempTenant))
                     {
-                        if (tempSubscription == null && i + 1 < tenants.Count())
-                        {
-                            // No subscription found for the given token/tenant.
-                            // Discard tempTenant value unless current token/tenant is the last one.
-                        }
-                        else
+                        // If no subscription found for the given token/tenant 
+                        // discard tempTenant value unless current token/tenant is the last one.
+                        if (tempSubscription != null || i == (tenants.Count() -1))
                         {
                             newTenant = tempTenant;
                             newSubscription = tempSubscription;
