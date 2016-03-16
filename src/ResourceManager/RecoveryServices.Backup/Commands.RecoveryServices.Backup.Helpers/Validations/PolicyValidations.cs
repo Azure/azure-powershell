@@ -94,22 +94,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
         }
 
-        private static void ValidateRetentionAndScheduleDaysOfWeek(List<DayOfWeek> backupDOWList)
+        private static void ValidateRetentionAndScheduleDaysOfWeek(List<DayOfWeek> schList, List<DayOfWeek> retList)
         {
             // TBD
 
            /* if (backupDOWList.Count != DaysOfTheWeek.Count)
             {
                 throw new ArgumentException("DaysOfTheWeek of retention schedule  must be same of backup schedule DaysOfTheWeek");
-            }
-            foreach (var day in DaysOfTheWeek)
+            } */
+
+            // each day in retList must be present in 
+
+         /*   foreach (var day in DaysOfTheWeek)
             {
                 if (!backupDOWList.Contains(day))
                 {
                     throw new ArgumentException("DaysOfTheWeek of retention schedule  must be same of backup schedule DaysOfTheWeek");
                 }
 
-            } */
+            }*/
         }
                 
         #endregion
