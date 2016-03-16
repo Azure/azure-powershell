@@ -13,16 +13,14 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.ImportExport;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
-using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Sql.Models;
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -66,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             ParameterSetName = ByContainerObjectParameterSet,
             HelpMessage = "The Azure Storage Container to place the blob in.")]
         [ValidateNotNull]
-        public AzureStorageContainer StorageContainer { get; set; }
+        public CloudBlobContainer StorageContainer { get; set; }
 
         /// <summary>
         /// Gets or sets the storage context
@@ -202,7 +200,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             try
             {
                 // Obtain the Blob Uri and Access Key
-                string blobUri = null;
+                Uri blobUri = null;
                 string accessKey = null;
                 switch (this.ParameterSetName)
                 {
@@ -212,20 +210,15 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                                 this.StorageContext.StorageAccount.Credentials.ExportKey());
 
                         blobUri =
-                            this.StorageContext.BlobEndPoint +
-                            this.StorageContainerName + "/" +
-                            this.BlobName;
+                            this.StorageContext.StorageAccount.CreateCloudBlobClient().GetContainerReference(this.StorageContainerName).GetBlobReference(this.BlobName).SnapshotQualifiedUri;
                         break;
 
                     case ByContainerObjectParameterSet:
                         accessKey =
                             System.Convert.ToBase64String(
-                                this.StorageContainer.CloudBlobContainer.ServiceClient.Credentials.ExportKey());
+                                this.StorageContainer.ServiceClient.Credentials.ExportKey());
 
-                        blobUri =
-                            this.StorageContainer.Context.BlobEndPoint +
-                            this.StorageContainer.Name + "/" +
-                            this.BlobName;
+                        blobUri = this.StorageContainer.GetBlobReference(this.BlobName).SnapshotQualifiedUri;
                         break;
 
                     default:
@@ -239,7 +232,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                 // Issue the request
                 ImportExportRequest context = this.ImportSqlAzureDatabaseProcess(
                     this.SqlConnectionContext.ServerName,
-                    new Uri(blobUri),
+                    blobUri,
                     accessKey,
                     fullyQualifiedServerName,
                     this.DatabaseName,
