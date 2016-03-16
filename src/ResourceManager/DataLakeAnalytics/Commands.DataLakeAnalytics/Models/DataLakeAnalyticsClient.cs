@@ -753,13 +753,13 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         public JobInformation GetJob(string accountName, Guid jobId)
         {
-            return _jobClient.Job.Get(jobId.ToString(), accountName);
+            return _jobClient.Job.Get(jobId, accountName);
         }
 
         public JobInformation SubmitJob(string accountName, JobInformation jobToSubmit)
         {
             return
-                _jobClient.Job.Create(jobToSubmit.JobId,
+                _jobClient.Job.Create(jobToSubmit.JobId.GetValueOrDefault(),
                     jobToSubmit, accountName);
         }
 
@@ -771,17 +771,17 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         public void CancelJob(string accountName, Guid jobId)
         {
-            _jobClient.Job.Cancel(jobId.ToString(), accountName);
+            _jobClient.Job.Cancel(jobId, accountName);
         }
 
         public JobDataPath GetDebugDataPaths(string accountName, Guid jobId)
         {
-            return _jobClient.Job.GetDebugDataPath(jobId.ToString(), accountName);
+            return _jobClient.Job.GetDebugDataPath(jobId, accountName);
         }
 
         public JobStatistics GetJobStatistics(string accountName, Guid jobId)
         {
-            return _jobClient.Job.GetStatistics(jobId.ToString(), accountName);
+            return _jobClient.Job.GetStatistics(jobId, accountName);
         }
 
         public List<JobInformation> ListJobs(string accountName, string filter, int? top,
