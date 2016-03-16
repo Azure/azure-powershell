@@ -368,6 +368,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 deploymentObject.Timestamp = properties.Timestamp;
                 deploymentObject.CorrelationId = properties.CorrelationId;
 
+                if(properties.DebugSettingResponse != null && !string.IsNullOrEmpty(properties.DebugSettingResponse.DeploymentDebugDetailLevel))
+                {
+                    deploymentObject.DeploymentDebugLogLevel = properties.DebugSettingResponse.DeploymentDebugDetailLevel;
+                }
+
                 if (!string.IsNullOrEmpty(properties.Outputs))
                 {
                     Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs);

@@ -212,18 +212,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <returns>The created resource group</returns>
         public virtual PSResourceGroup CreatePSResourceGroup(CreatePSResourceGroupParameters parameters)
         {
-            bool createDeployment = !string.IsNullOrEmpty(parameters.GalleryTemplateIdentity) || !string.IsNullOrEmpty(parameters.TemplateFile);
 
             ResourceGroupExtended resourceGroup = null;
             Action createOrUpdateResourceGroup = () =>
             {
                 resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, parameters.Location, parameters.Tag);
                 WriteVerbose(string.Format("Created resource group '{0}' in location '{1}'", resourceGroup.Name, resourceGroup.Location));
-
-                if (createDeployment)
-                {
-                    ExecuteDeployment(parameters);
-                }
             };
 
             parameters.ConfirmAction(parameters.Force,
@@ -295,7 +289,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public virtual PSResourceGroupDeployment ExecuteDeployment(CreatePSResourceGroupDeploymentParameters parameters)
         {
             parameters.DeploymentName = GenerateDeploymentName(parameters);
-            Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode);
+            Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel);
 
             ResourceManagementClient.Deployments.CreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
             WriteVerbose(string.Format("Create template deployment '{0}'.", parameters.DeploymentName));
@@ -313,10 +307,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             else if (!string.IsNullOrEmpty(parameters.TemplateFile))
             {
                 return Path.GetFileNameWithoutExtension(parameters.TemplateFile);
-            }
-            else if (!string.IsNullOrEmpty(parameters.GalleryTemplateIdentity))
-            {
-                return parameters.GalleryTemplateIdentity;
             }
             else
             {
@@ -547,7 +537,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <returns>True if valid, false otherwise.</returns>
         public virtual List<PSResourceManagerError> ValidatePSResourceGroupDeployment(ValidatePSResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode)
         {
-            Deployment deployment = CreateBasicDeployment(parameters, deploymentMode);
+            Deployment deployment = CreateBasicDeployment(parameters, deploymentMode, null);
             TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, Guid.NewGuid().ToString(), deployment);
 
             if (validationInfo.Errors.Count == 0)
