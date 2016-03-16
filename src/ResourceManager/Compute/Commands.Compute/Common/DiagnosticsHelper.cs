@@ -318,8 +318,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
             if (TryGetStorageAccount(storageClient, storageAccountName, out storageAccount))
             {
                 // Help user retrieve the storage account key
-                var psStorageAccount = new PSStorageAccount(storageAccount);
-                var credentials = StorageUtilities.GenerateStorageCredentials(storageClient, psStorageAccount.ResourceGroupName, psStorageAccount.StorageAccountName);
+                var credentials = StorageUtilities.GenerateStorageCredentials(new ARMStorageProvider(storageClient), 
+                    ARMStorageService.ParseResourceGroupFromId(storageAccount.Id), storageAccount.Name);
                 storageAccountKey = credentials.ExportBase64EncodedKey();
             }
             else

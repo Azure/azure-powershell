@@ -135,6 +135,12 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.3\ARMStorageProvider.cs">
+      <Link>Models\ARMStorageProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.3\ARMStorageService.cs">
+      <Link>Models\ARMStorageService.cs</Link>
+    </Compile>
     <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
