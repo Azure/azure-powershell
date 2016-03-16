@@ -26,43 +26,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         } 
     }
 
-    public class AzureRmRecoveryServicesVaultContext : AzureRmRecoveryServicesObjectBase
-    {
-        /// <summary>
-        /// Name of the resource.
-        /// </summary>
-        public string ResourceName { get; set; }
-
-        /// <summary>
-        /// Name of resource group to which this resource belongs
-        /// </summary>
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Location of the resource
-        /// </summary>
-        public string Location { get; set; }
-
-        public AzureRmRecoveryServicesVaultContext()
-        {
-        }
-
-        public AzureRmRecoveryServicesVaultContext(
-            string resourceName,
-            string resourceGroupName,
-            string location)
-        {
-            this.ResourceGroupName = resourceGroupName;
-            this.ResourceName = ResourceName;
-            this.Location = location;
-        }
-
-        public override void Validate()
-        {
-            base.Validate();
-        }
-    }
-
     /// <summary>
     /// Represents Recovery Services Vault Credentials Class
     /// </summary>
@@ -211,7 +174,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    public class AzureRmRecoveryServicesJobBase : AzureRmRecoveryServicesVaultContext
+    public class AzureRmRecoveryServicesJobBase : AzureRmRecoveryServicesObjectBase
     {
         public string ActivityId { get; set; }
 

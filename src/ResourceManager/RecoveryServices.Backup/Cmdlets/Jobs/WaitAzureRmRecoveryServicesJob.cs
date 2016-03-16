@@ -23,9 +23,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet("Wait", "AzureRmBackupJob"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>), typeof(AzureRmRecoveryServicesJobBase))]
     public class WaitAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Common.Vault)]
-        public ARSVault Vault { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.WaitJobOrListFilter)]
         [ValidateNotNull]
         public object Job { get; set; }
@@ -35,6 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
+            ARSVault Vault = null;
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();

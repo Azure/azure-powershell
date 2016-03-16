@@ -26,9 +26,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmBackupJob"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>), typeof(AzureRmRecoveryServicesJobBase))]
     public class GetAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Common.Vault, ValueFromPipeline = true)]
-        public ARSVault Vault { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.FromFilter)]
         [ValidateNotNull]
         public DateTime? From { get; set; }
@@ -59,6 +56,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
+            ARSVault Vault = null;
+
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();

@@ -18,27 +18,29 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmBackupJobDetails"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmBackupJobDetails", DefaultParameterSetName = JobFilterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
     public class GetAzureRmRecoveryServicesJobDetails : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Common.Vault, ValueFromPipeline = true)]
-        public ARSVault Vault { get; set; }
+        protected const string IdFilterSet = "IdFilterSet";
+        protected const string JobFilterSet = "JobFilterSet";
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobIdFilter, ParameterSetName = "IdFilterSet")]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobIdFilter, ParameterSetName = IdFilterSet)]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobFilter, ParameterSetName = "JobFilterSet")]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobFilter, ParameterSetName = JobFilterSet)]
         [ValidateNotNull]
         public AzureRmRecoveryServicesJobBase Job { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            ARSVault Vault = null;
+
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
 
-                if (string.IsNullOrEmpty(JobId) && Job != null)
+                if (ParameterSetName == JobFilterSet)
                 {
                     JobId = Job.InstanceId;
                 }
