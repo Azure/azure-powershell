@@ -31,15 +31,18 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #region Input Parameter Definitions
         
-        [Parameter(HelpMessage = "The hive arguments for the jobDetails.")]
+        [Parameter(HelpMessage = "The arguments for the jobDetails.")]
         public string[] Arguments { get; set; }
 
-        [Parameter(HelpMessage = "The file for the jobDetails.")]
+        [Parameter(HelpMessage = "Local file to be made available to tasks")]
         public string File
         {
             get { return job.File; }
             set { job.File = value; } 
         }
+
+        [Parameter(HelpMessage = "List of files to be copied to the cluster.")]
+        public string[] Files { get; set; }
 
         [Parameter(HelpMessage = "The output location to use for the job.")]
         public string StatusFolder
@@ -88,6 +91,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public NewAzureHDInsightStreamingMapReduceJobDefinitionCommand()
         {
             Arguments = new string[] {};
+            Files = new string[] { };
             CommandEnvironment = new Hashtable();
             Defines = new Hashtable();
             job = new AzureHDInsightStreamingMapReduceJobDefinition();
@@ -110,6 +114,11 @@ namespace Microsoft.Azure.Commands.HDInsight
             foreach (var define in defineDic)
             {
                 job.Defines.Add(define.Key, define.Value.ToString());
+            }
+
+            foreach (var file in Files)
+            {
+                job.Files.Add(file);
             }
 
             WriteObject(job);
