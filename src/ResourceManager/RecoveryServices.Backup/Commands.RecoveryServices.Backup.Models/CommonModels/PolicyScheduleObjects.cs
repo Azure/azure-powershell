@@ -30,11 +30,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public override void Validate()
         {
-            if (ScheduleRunFrequency == ScheduleRunType.Invalid)
-            {
-                throw new ArgumentException("ScheduleRunFrequency is set to Invalid");
-            }
-
             //Currently only one scheduled run time is allowed
             if (ScheduleRunTimes == null || ScheduleRunTimes.Count != 1)
             {
