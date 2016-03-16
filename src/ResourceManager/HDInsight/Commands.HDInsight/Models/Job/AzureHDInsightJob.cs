@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             User = jobDetails.User;
             Callback = jobDetails.Callback;
             Completed = jobDetails.Completed;
-            StatusFolder = jobDetails.Userargs.Statusdir.ToString();
+            StatusFolder = jobDetails.Userargs.Statusdir != null ? jobDetails.Userargs.Statusdir.ToString() : string.Empty;
         }
 
         /// <summary>
