@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     public class GetAzureResourceGroupDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
-        /// Gets or sets the resource group name parameter.
+        /// Gets or sets the deployment name parameter.
         /// </summary>
         [Alias("Name")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment name.")]
