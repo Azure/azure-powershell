@@ -120,6 +120,70 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Lists the backup vaults for a given Sql Azure Server.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <returns>List of backup vaults</returns>
+        public IList<Management.Sql.Models.BackupArchivalVault> ListBackupArchivalVaults(string resourceGroupName, string serverName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.ListBackupArchivalVaults(resourceGroupName, serverName).BackupArchivalVaults;
+        }
+
+        /// <summary>
+        /// Lists the backup archival policies for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>List of backup archival policies</returns>
+        public IList<Management.Sql.Models.DatabaseBackupArchivalPolicy> ListDatabaseBackupArchivalPolicies(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.ListDatabaseBackupArchivalPolicies(resourceGroupName, serverName, databaseName).DatabaseBackupArchivalPolicies;
+        }
+
+        /// <summary>
+        /// Get a backup archival vault for a given Azure SQL Server
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="baVaultName">The name of the backup vault</param>
+        /// <returns>A backup vault</returns>
+        public Management.Sql.Models.BackupArchivalVault GetBackupArchivalVault(string resourceGroupName, string serverName, string baVaultName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.GetBackupArchivalVault(resourceGroupName, serverName, baVaultName).BackupArchivalVault;
+        }
+
+        /// <summary>
+        /// Get a backup archival policy for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="baPolicyName">THe name of the backup archival policy</param>
+        /// <returns>A backup archival policy</returns>
+        public Management.Sql.Models.DatabaseBackupArchivalPolicy GetDatabaseBackupArchivalPolicy(string resourceGroupName, string serverName, string databaseName, string baPolicyName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.GetDatabaseBackupArchivalPolicy(resourceGroupName, serverName, databaseName, baPolicyName).DatabaseBackupArchivalPolicy;
+        }
+
+        /// <summary>
+        /// Creates or updates a backup archival vault
+        /// </summary>
+        public Management.Sql.Models.BackupArchivalVault SetBackupArchivalVault(string resourceGroupName, string serverName, string baVaultName, string clientRequestId, BackupArchivalVaultCreateOrUpdateParameters parameters)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.CreateOrUpdate(resourceGroupName, serverName, baVaultName, parameters).BackupArchivalVault;
+        }
+
+        /// <summary>
+        /// Creates or updates a backup archival policy
+        /// </summary>
+        public Management.Sql.Models.DatabaseBackupArchivalPolicy SetDatabaseBackupArchivalPolicy(string resourceGroupName, string serverName, string databaseName, string baPolicyName, string clientRequestId, DatabaseBackupArchivalPolicyCreateOrUpdateParameters parameters)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.CreateOrUpdate(resourceGroupName, serverName, databaseName, baPolicyName, parameters).DatabaseBackupArchivalPolicy;
+        }
+
+        /// <summary>
         /// Restore a given Sql Azure Database
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>

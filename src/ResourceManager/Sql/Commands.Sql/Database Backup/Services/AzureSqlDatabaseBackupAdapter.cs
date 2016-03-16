@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
-        /// <returns>List of geo backups</returns>
+        /// <returns>A geo backup</returns>
         internal AzureSqlDatabaseGeoBackupModel GetGeoBackup(string resourceGroup, string serverName, string databaseName)
         {
             var geoBackup = Communicator.GetGeoBackup(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
-        /// <returns>List of restorable deleted databases</returns>
+        /// <returns>A restorable deleted database</returns>
         internal AzureSqlDeletedDatabaseBackupModel GetDeletedDatabaseBackup(string resourceGroup, string serverName, string databaseName)
         {
             var deletedDatabaseBackup = Communicator.GetDeletedDatabaseBackup(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
@@ -183,6 +183,140 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 DeletionDate = deletedDatabaseBackup.Properties.DeletionDate,
                 RecoveryPeriodStartDate = deletedDatabaseBackup.Properties.EarliestRestoreDate,
                 ResourceId = deletedDatabaseBackup.Id
+            };
+        }
+
+        /// <summary>
+        /// Lists the backup vaults for a given Sql Azure Server.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <returns>List of backup vaults</returns>
+        internal ICollection<AzureSqlServerBackupArchivalVaultModel> ListBackupArchivalVaults(string resourceGroup, string serverName)
+        {
+            var resp = Communicator.ListBackupArchivalVaults(resourceGroup, serverName, Util.GenerateTracingId());
+            return resp.Select((baVault) =>
+            {
+                return new AzureSqlServerBackupArchivalVaultModel()
+                {
+                    ResourceGroupName = resourceGroup,
+                    ServerName = serverName,
+                    BackupArchivalVaultID = baVault.BackupArchivalVaultID
+                };
+            }).ToList();
+        }
+
+        /// <summary>
+        /// Lists the backup archival policies for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>List of backup archival policies</returns>
+        internal ICollection<AzureSqlDatabaseBackupArchivalPolicyModel> ListDatabaseBackupArchivalPolicies(string resourceGroup, string serverName, string databaseName)
+        {
+            var resp = Communicator.ListDatabaseBackupArchivalPolicies(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
+            return resp.Select((baPolicy) =>
+            {
+                return new AzureSqlDatabaseBackupArchivalPolicyModel()
+                {
+                    ResourceGroupName = resourceGroup,
+                    ServerName = serverName,
+                    DatabaseName = databaseName,
+                    BackupArchivalState = baPolicy.BackupArchivalState,
+                    VaultPolicyName = baPolicy.BackupArchivalPolicyID
+                };
+            }).ToList();
+        }
+
+        /// <summary>
+        /// Get a backup archival vault for a given Azure SQL Server
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="baVaultName">The name of the backup vault</param>
+        /// <returns>A backup vault</returns>
+        internal AzureSqlServerBackupArchivalVaultModel GetBackupArchivalVault(string resourceGroup, string serverName, string baVaultName)
+        {
+            var baVault = Communicator.GetBackupArchivalVault(resourceGroup, serverName, baVaultName, Util.GenerateTracingId());
+            return new AzureSqlServerBackupArchivalVaultModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                BackupArchivalVaultID = baVault.BackupArchivalVaultID
+            };
+        }
+
+        /// <summary>
+        /// Get a backup archival policy for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="baPolicyName">THe name of the backup archival policy</param>
+        /// <returns>A backup archival policy</returns>
+        internal AzureSqlDatabaseBackupArchivalPolicyModel GetDatabaseBackupArchivalPolicy(string resourceGroup, string serverName, string databaseName, string baPolicyName)
+        {
+            var baPolicy = Communicator.GetDatabaseBackupArchivalPolicy(resourceGroup, serverName, databaseName, baPolicyName, Util.GenerateTracingId());
+            return new AzureSqlDatabaseBackupArchivalPolicyModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                DatabaseName = databaseName,
+                BackupArchivalState = baPolicy.BackupArchivalState,
+                VaultPolicyName = baPolicy.BackupArchivalPolicyID
+            };
+        }
+
+        /// <summary>
+        /// Create or update a backup archival vault for a given Azure SQL Server
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="baVaultName">The name of the backup vault</param>
+        /// <returns>A backup vault</returns>
+        internal AzureSqlServerBackupArchivalVaultModel SetBackupArchivalVault(string resourceGroup, string serverName, string baVaultName, AzureSqlServerBackupArchivalVaultModel model)
+        {
+            var baVault = Communicator.SetBackupArchivalVault(resourceGroup, serverName, baVaultName, Util.GenerateTracingId(), new BackupArchivalVaultCreateOrUpdateParameters()
+            {
+                Properties = new BackupArchivalVaultCreateOrUpdateProperties()
+                {
+                    VaultResourceId = model.BackupArchivalVaultID
+                }
+            });
+            return new AzureSqlServerBackupArchivalVaultModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                BackupArchivalVaultID = baVault.BackupArchivalVaultID
+            };
+        }
+
+        /// <summary>
+        /// Create or update a backup archival policy for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="baPolicyName">THe name of the backup archival policy</param>
+        /// <returns>A backup archival policy</returns>
+        internal AzureSqlDatabaseBackupArchivalPolicyModel SetDatabaseBackupArchivalPolicy(string resourceGroup, string serverName, string databaseName, string baPolicyName, AzureSqlDatabaseBackupArchivalPolicyModel model)
+        {
+            var baPolicy = Communicator.SetDatabaseBackupArchivalPolicy(resourceGroup, serverName, databaseName, baPolicyName, Util.GenerateTracingId(), new DatabaseBackupArchivalPolicyCreateOrUpdateParameters()
+            {
+                Properties = new DatabaseBackupArchivalPolicyCreateOrUpdateProperties()
+                {
+                    BackupArchivalState = model.BackupArchivalState,
+                    VaultPolicyName = model.VaultPolicyName,
+                }
+            });
+            return new AzureSqlDatabaseBackupArchivalPolicyModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                DatabaseName = databaseName,
+                BackupArchivalState = baPolicy.BackupArchivalState,
+                VaultPolicyName = baPolicy.BackupArchivalPolicyID
             };
         }
 

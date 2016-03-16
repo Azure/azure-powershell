@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         private const string FromPointInTimeBackupSetName = "FromPointInTimeBackup";
         private const string FromDeletedDatabaseBackupSetName = "FromDeletedDatabaseBackup";
         private const string FromGeoBackupSetName = "FromGeoBackup";
+        private const string FromArchivedBackupSetName = "FromArchivedBackup";
 
         /// <summary>
         /// Gets or sets flag indicating a restore from a point-in-time backup.
@@ -62,11 +63,24 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public SwitchParameter FromGeoBackup { get; set; }
 
         /// <summary>
+        /// Gets or sets flag indicating a restore from an archived backup
+        /// </summary>
+        [Parameter(
+            ParameterSetName = FromArchivedBackupSetName,
+            Mandatory = true,
+            HelpMessage = "Restore from an archived backup.")]
+        public SwitchParameter FromArchivedBackup { get; set; }
+
+        /// <summary>
         /// Gets or sets the point in time to restore the database to
         /// </summary>
         [Parameter(
             ParameterSetName = FromPointInTimeBackupSetName,
             Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
+            ParameterSetName = FromDeletedDatabaseBackupSetName,
+            Mandatory = false,
             HelpMessage = "The point in time to restore the database to.")]
         public DateTime PointInTime { get; set; }
 
@@ -76,16 +90,62 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(
             ParameterSetName = FromDeletedDatabaseBackupSetName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true, 
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The deletion date of the deleted database to restore.")]
         public DateTime DeletionDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the backup vault.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = FromArchivedBackupSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The backup vault name.")]
+        public string BackupVaultName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the backup container ID
+        /// </summary>
+        [Parameter(
+            ParameterSetName = FromArchivedBackupSetName,
+            Mandatory = true,
+            HelpMessage = "The backup container ID.")]
+        public string BackupContainerID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the backup item ID
+        /// </summary>
+        [Parameter(
+            ParameterSetName = FromArchivedBackupSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The backup item ID.")]
+        public string BackupItemID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the backup recovery point ID
+        /// </summary>
+        [Parameter(
+            ParameterSetName = FromArchivedBackupSetName,
+            Mandatory = true,
+            HelpMessage = "The backup recovery point ID.")]
+        public string BackupRecoveryPointID { get; set; }
+
+        /// <summary>
+        /// The resource ID of the database to restore (deleted DB, geo backup DB, live DB)
+        /// </summary>
+        [Parameter(Mandatory = true,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "The resource ID of the database to restore.")]
+        public string ResourceId { get; set; }
 
         /// <summary> 
         /// Gets or sets the name of the database server to use. 
         /// </summary> 
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The name of the Azure SQL Server to restore the database to.")] 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Azure SQL Server to restore the database to.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -95,14 +155,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = true,
                     HelpMessage = "The name of the target database to restore to.")]
         public string TargetDatabaseName { get; set; }
-
-        /// <summary>
-        /// The resource ID of the database to restore (deleted DB, geo backup DB, live DB)
-        /// </summary>
-        [Parameter(Mandatory = true,
-                    ValueFromPipelineByPropertyName = true, 
-                    HelpMessage = "The resource ID of the database to restore.")]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the target edition of the database to restore
@@ -127,7 +179,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The name of the elastic pool into which the database should be restored.")]
         public string ElasticPoolName { get; set; }
-        
+
         /// <summary>
         /// Initializes the adapter
         /// </summary>
@@ -156,11 +208,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     break;
                 case FromDeletedDatabaseBackupSetName:
                     createMode = "Restore";
-                    // Use DeletionDate as RestorePointInTime for restore of deleted DB
-                    restorePointInTime = DeletionDate;
+                    restorePointInTime = PointInTime == DateTime.MinValue ? DeletionDate : PointInTime;
                     break;
                 case FromGeoBackupSetName:
                     createMode = "Recovery";
+                    break;
+                case FromArchivedBackupSetName:
+                    createMode = "RestoreArchivedBackup";
                     break;
                 default:
                     throw new ArgumentException("No ParameterSet name");
