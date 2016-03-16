@@ -55,7 +55,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.WeeklySchedule.RetentionTimes);
 
-                // validate days of week - TBD
+                // count of daysOfWeek should match for weekly schedule
+                if(ltrPolicy.WeeklySchedule.DaysOfTheWeek.Count != schPolicy.ScheduleRunDays.Count)
+                {
+                    throw new ArgumentException(
+                        "DaysOfTheWeek in WeeklySchedule of retention policy must be same as ScheduleRunDays in SchedulePolicy");
+                }
+
+                // validate days of week
+                ValidateRetentionAndScheduleDaysOfWeek(schPolicy.ScheduleRunDays, ltrPolicy.WeeklySchedule.DaysOfTheWeek);
             }
 
             // validate monthly retention schedule with schPolicy
@@ -63,7 +71,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.MonthlySchedule.RetentionTimes);
 
-                // for monthly and weeklyFormat, validate days of week - - TBD
+                // if backupSchedule is weekly, then user cannot choose 'Daily Retention format' 
+                if(schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
+                    ltrPolicy.MonthlySchedule.RetentionScheduleFormatType == Cmdlets.Models.RetentionScheduleFormat.Daily)
+                {
+                    throw new ArgumentException("DailyRetentionFormat cannot be chosen if Weekly BackupSchedule is selected");
+                }
+
+                // for monthly and weeklyFormat, validate days of week
+                if(ltrPolicy.MonthlySchedule.RetentionScheduleFormatType == Cmdlets.Models.RetentionScheduleFormat.Weekly)
+                {
+                    ValidateRetentionAndScheduleDaysOfWeek(schPolicy.ScheduleRunDays, 
+                                                           ltrPolicy.MonthlySchedule.RetentionScheduleWeekly.DaysOfTheWeek);
+                }
             }
 
             // validate yearly retention schedule with schPolicy
@@ -71,7 +91,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.YearlySchedule.RetentionTimes);
 
-                // for yearly and weeklyFormat, validate days of week - TBD
+                // if backupSchedule is weekly, then user cannot choose 'Daily Retention format' 
+                if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
+                    ltrPolicy.YearlySchedule.RetentionScheduleFormatType == Cmdlets.Models.RetentionScheduleFormat.Daily)
+                {
+                    throw new ArgumentException("DailyRetentionFormat cannot be chosen if Weekly BackupSchedule is selected");
+                }
+
+                // for yearly and weeklyFormat, validate days of week                 
+                if (ltrPolicy.YearlySchedule.RetentionScheduleFormatType == Cmdlets.Models.RetentionScheduleFormat.Weekly)
+                {
+                    ValidateRetentionAndScheduleDaysOfWeek(schPolicy.ScheduleRunDays,
+                                                           ltrPolicy.YearlySchedule.RetentionScheduleWeekly.DaysOfTheWeek);
+                }
             }
         }
 
@@ -96,23 +128,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         private static void ValidateRetentionAndScheduleDaysOfWeek(List<DayOfWeek> schList, List<DayOfWeek> retList)
         {
-            // TBD
-
-           /* if (backupDOWList.Count != DaysOfTheWeek.Count)
+            foreach (var day in retList)
             {
-                throw new ArgumentException("DaysOfTheWeek of retention schedule  must be same of backup schedule DaysOfTheWeek");
-            } */
-
-            // each day in retList must be present in 
-
-         /*   foreach (var day in DaysOfTheWeek)
-            {
-                if (!backupDOWList.Contains(day))
+                if (!schList.Contains(day))
                 {
-                    throw new ArgumentException("DaysOfTheWeek of retention schedule  must be same of backup schedule DaysOfTheWeek");
+                    throw new ArgumentException(
+                        "DaysOfTheWeek in retention schedule should be subset of ScheduleRunDays of SchedulePolicy");
                 }
-
-            }*/
+            }
         }
                 
         #endregion

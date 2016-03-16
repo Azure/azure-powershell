@@ -13,14 +13,57 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public partial class HydraAdapter
     {
+        public ProtectionPolicyResponse CreateOrUpdateProtectionPolicy(
+                string resourceGroupName,
+                string resourceName,
+                string policyName,
+                ProtectionPolicyRequest request)
+        {
+            return BmsAdapter.Client.ProtectionPolicy.CreateOrUpdateAsync(
+                                     resourceGroupName,
+                                     resourceName, 
+                                     policyName, 
+                                     request,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;            
+        }
+
+        public ProtectionPolicyResponse GetProtectionPolicy(
+                string resourceGroupName,
+                string resourceName,
+                string policyName)
+        {
+            return BmsAdapter.Client.ProtectionPolicy.GetAsync(
+                                     resourceGroupName,
+                                     resourceName,
+                                     policyName,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        public ProtectionPolicyListResponse GetProtectionPolicy(
+               string resourceGroupName,
+               string resourceName,
+               ProtectionPolicyQueryParameters queryFilter)
+        {
+            return BmsAdapter.Client.ProtectionPolicy.ListAsync(
+                                     resourceGroupName,
+                                     resourceName,
+                                     queryFilter,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        // TBD for other operations
     }
 }
