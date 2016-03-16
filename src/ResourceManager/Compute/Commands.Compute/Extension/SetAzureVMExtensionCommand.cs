@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Settings = this.Settings,
                     ProtectedSettings = this.ProtectedSettings,
                     AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
-                    ForceUpdateTag = (this.ForceRerun.IsPresent) ? "RerunExtension" : null
+                    ForceUpdateTag = (this.ForceRerun.IsPresent) ? ForceUpdateTagTypes.RerunExtension : (ForceUpdateTagTypes?) null
                 };
 
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
