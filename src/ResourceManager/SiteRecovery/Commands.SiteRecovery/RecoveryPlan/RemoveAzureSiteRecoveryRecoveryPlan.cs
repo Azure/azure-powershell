@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Name of the Recovery Plan.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = ASRParameterSets.ByObject)]
+        [Parameter(Mandatory = true, ParameterSetName = ASRParameterSets.ByObject, ValueFromPipeline = true)]
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         #endregion Parameters
