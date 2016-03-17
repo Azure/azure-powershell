@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         }
 
         public string GetResourceName()
-        {   
+        {
             return PSRecoveryServicesClient.arsVaultCreds.Name;
         }
 
