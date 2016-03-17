@@ -44,6 +44,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             int? top = null,
             string skipToken = null)
         {
+            resourceName = BmsAdapter.GetResourceName();
+            resourceGroupName = BmsAdapter.GetResourceName();
+
             // build pagination request
             PaginationRequest pagReq = new PaginationRequest()
             {
@@ -77,6 +80,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             string resourceName, 
             string jobId)
         {
+            resourceName = BmsAdapter.GetResourceName();
+            resourceGroupName = BmsAdapter.GetResourceName();
+
             return BmsAdapter.Client.Job.CancelJobAsync(
                 resourceGroupName,
                 resourceName,
@@ -95,6 +101,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             DateTime endTime,
             string backupManagementType)
         {
+            resourceName = BmsAdapter.GetResourceName();
+            resourceGroupName = BmsAdapter.GetResourceName();
+
             CommonJobQueryFilters filters = GetQueryObject(
                 backupManagementType,
                 startTime,

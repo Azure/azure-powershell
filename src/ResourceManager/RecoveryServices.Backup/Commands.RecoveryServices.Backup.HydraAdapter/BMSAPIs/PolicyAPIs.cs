@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 string policyName,
                 ProtectionPolicyRequest request)
         {
+            resourceName = BmsAdapter.GetResourceName();
+            resourceGroupName = BmsAdapter.GetResourceName();
+
             return BmsAdapter.Client.ProtectionPolicy.CreateOrUpdateAsync(
                                      resourceGroupName,
                                      resourceName, 
@@ -43,6 +46,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 string resourceName,
                 string policyName)
         {
+            resourceName = BmsAdapter.GetResourceName();
+            resourceGroupName = BmsAdapter.GetResourceName();
+
             return BmsAdapter.Client.ProtectionPolicy.GetAsync(
                                      resourceGroupName,
                                      resourceName,
@@ -56,6 +62,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                string resourceName,
                ProtectionPolicyQueryParameters queryFilter)
         {
+            resourceName = BmsAdapter.GetResourceName();
+            resourceGroupName = BmsAdapter.GetResourceName();
+
             return BmsAdapter.Client.ProtectionPolicy.ListAsync(
                                      resourceGroupName,
                                      resourceName,
