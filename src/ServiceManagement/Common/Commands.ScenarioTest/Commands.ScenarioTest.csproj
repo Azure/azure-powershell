@@ -566,17 +566,9 @@
       <Project>{58a78f29-8c0c-4a5e-893e-3953c0f29c8a}</Project>
       <Name>Commands.ServiceManagement.Test</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\RemoteApp\Commands.RemoteApp\Commands.RemoteApp.csproj">
-      <Project>{492d2af2-950b-4f2e-8079-8794305313fd}</Project>
-      <Name>Commands.RemoteApp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Services\Commands.Test.Utilities\Commands.Test.Utilities.csproj">
       <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
       <Name>Commands.Test.Utilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Storage\Commands.Storage\Commands.Storage.csproj">
-      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
-      <Name>Commands.Storage</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Compute\Commands.ServiceManagement\Commands.ServiceManagement.csproj">
       <Project>{E1CA72BA-8374-45F6-904D-FD34ECDF5B6F}</Project>

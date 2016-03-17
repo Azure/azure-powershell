@@ -618,6 +618,10 @@
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Storage\Commands.Storage\Commands.Storage.csproj">
+      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
+      <Name>Commands.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj">
       <Project>{cff09e81-1e31-444e-b4d4-a21e946c29e2}</Project>
       <Name>Commands.ServiceManagement.Common</Name>
@@ -649,10 +653,6 @@
     <ProjectReference Include="..\Commands.ServiceManagement\Commands.ServiceManagement.csproj">
       <Project>{E1CA72BA-8374-45F6-904D-FD34ECDF5B6F}</Project>
       <Name>Commands.ServiceManagement</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Storage\Commands.Storage\Commands.Storage.csproj">
-      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
-      <Name>Commands.Storage</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\Commands.Test.Utilities\Commands.Test.Utilities.csproj">
       <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
