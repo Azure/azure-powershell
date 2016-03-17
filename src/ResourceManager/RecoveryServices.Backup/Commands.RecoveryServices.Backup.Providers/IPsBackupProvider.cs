@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         BaseRecoveryServicesJobResponse TriggerRestore();
 
         ProtectedItemResponse GetProtectedItem();
-
-        List<AzureRmRecoveryServicesRecoveryPointBase> GetRecoveryPointDetails();
+        
+        AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails();
 
         List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints();
 

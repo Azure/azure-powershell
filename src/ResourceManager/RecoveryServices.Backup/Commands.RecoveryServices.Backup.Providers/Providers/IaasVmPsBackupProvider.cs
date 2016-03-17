@@ -60,13 +60,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails()
+        public AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails()
         {
             RecoveryPointResponse response = null;
-            AzureRmRecoveryServicesItemBase item = providerData.ProviderParameters[GetRecoveryPointParams.Item]
+            AzureRmRecoveryServicesItemBase item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
                 as AzureRmRecoveryServicesItemBase;
 
-            string recoveryPointId = providerData.ProviderParameters[GetRecoveryPointParams.RecoveryPointId].ToString();
+            string recoveryPointId = ProviderData.ProviderParameters[GetRecoveryPointParams.RecoveryPointId].ToString();
 
             if (item == null)
             {
@@ -76,16 +76,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerName = item.ContainerName;
             string protectedItemName = item.Name;
 
-            var rpResponse = hydraAdapter.GetRecoveryPointDetails(containerName, protectedItemName, recoveryPointId);
-            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse);
+            var rpResponse = HydraAdapter.GetRecoveryPointDetails(containerName, protectedItemName, recoveryPointId);
+            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
         }
 
-        List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
+        public List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
         {
             RecoveryPointResponse response = null;
-            DateTime startDate = (DateTime)(providerData.ProviderParameters[GetRecoveryPointParams.StartDate]);
-            DateTime endDate = (DateTime)(providerData.ProviderParameters[GetRecoveryPointParams.EndDate]);
-            AzureRmRecoveryServicesItemBase item = providerData.ProviderParameters[GetRecoveryPointParams.Item]
+            DateTime startDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.StartDate]);
+            DateTime endDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.EndDate]);
+            AzureRmRecoveryServicesItemBase item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
                 as AzureRmRecoveryServicesItemBase;
 
             if (item == null)
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             TimeSpan duration = endDate - startDate;
 
             if (duration.TotalDays > 30)
-        {
+            {
                 throw new Exception("Time difference should not be more than 30 days"); //tbd: Correct nsg and exception type
             }
 
@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryFilter.StartDate = CommonHelpers.GetDateTimeStringForService(startDate);
             queryFilter.EndDate = CommonHelpers.GetDateTimeStringForService(endDate);
             RecoveryPointListResponse rpListResponse = null;
-            rpListResponse = hydraAdapter.GetRecoveryPoints(containerName, protectedItemName, queryFilter);
-            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse);
+            rpListResponse = HydraAdapter.GetRecoveryPoints(containerName, protectedItemName, queryFilter);
+            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
 
         public ProtectionPolicyResponse CreatePolicy()

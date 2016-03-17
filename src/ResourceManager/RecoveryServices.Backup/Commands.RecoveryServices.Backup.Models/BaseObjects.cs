@@ -62,6 +62,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         public ContainerType ContainerType { get; set; }
 
+        public AzureRmRecoveryServicesContainerContext()
+        {
+        }
+
         public AzureRmRecoveryServicesContainerContext(string containerType)
         {
            
@@ -104,6 +108,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Unique name of the Container
         /// </summary>
         public string ContainerName { get; set; }
+
+        public AzureRmRecoveryServicesItemContext()
+            : base()
+        {
+
+        }
 
         public AzureRmRecoveryServicesItemContext(ProtectedItem protectedItem,
             AzureRmRecoveryServicesContainerBase container)

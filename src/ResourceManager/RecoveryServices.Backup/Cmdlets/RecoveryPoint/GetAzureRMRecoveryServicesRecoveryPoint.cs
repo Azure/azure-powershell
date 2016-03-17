@@ -74,11 +74,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 parameter.Add(GetRecoveryPointParams.RecoveryPointId, RecoveryPointId);
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType);
-                psBackupProvider.GetRecoveryPointDetail();
+                psBackupProvider.GetRecoveryPointDetails();
             }
             else
             {
-
+                throw new Exception("Unsupported Parameter set");
             }
         }
     }
