@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         PolicyName,
         SchedulePolicy,
         RetentionPolicy,
-        ProtectionPolicy
+        ProtectionPolicy,
+        ResourceGroupName,
+        ResourceName        
     }
 }

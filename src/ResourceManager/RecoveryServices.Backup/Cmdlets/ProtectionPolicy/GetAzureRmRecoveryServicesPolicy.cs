@@ -20,13 +20,15 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Get list of protection policies
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesProtectionPolicy", DefaultParameterSetName = NoParamSet), OutputType(typeof(AzureRmRecoveryServicesPolicyBase), typeof(List<AzureRmRecoveryServicesPolicyBase>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesProtectionPolicy", DefaultParameterSetName = NoParamSet), OutputType(typeof(List<AzureRmRecoveryServicesPolicyBase>))]
     public class GetAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         protected const string PolicyNameParamSet = "PolicyNameParamSet";
@@ -49,15 +51,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            // TBD section below
-
             base.ExecuteCmdlet();
+
+            string rgName = "";  // TBD
+            string resourceName = "";  // TBD
+            List<AzureRmRecoveryServicesPolicyBase> respList = new List<AzureRmRecoveryServicesPolicyBase>();
 
             switch(this.ParameterSetName)
             {
                 case PolicyNameParamSet:
+                    // validate policyName
+                    PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
+
+                    // query service
+                    ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                      Name,
+                                                      HydraAdapter,
+                                                      rgName,
+                                                      resourceName);
+                    respList.Add(ConversionHelpers.GetPolicyModel(policy.Item));
                     break;
 
+                // below cases TBD
                 case WorkloadParamSet:
                     break;
 
@@ -69,9 +84,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 default:
                     break;
-            }            
+            }
 
-            // TBD
+            WriteObject(respList);
         }
     }
 }

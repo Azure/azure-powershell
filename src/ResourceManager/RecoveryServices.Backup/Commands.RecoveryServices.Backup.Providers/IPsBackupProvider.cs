@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         ProtectionPolicyResponse CreatePolicy();
 
-        ProtectionPolicyResponse ModifyPolicy();
+        List<AzureRmRecoveryServicesJobBase> ModifyPolicy();
 
         ProtectionPolicyResponse GetPolicy();
 
