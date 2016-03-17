@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
-using ArmStorage = Microsoft.Azure.Management.Storage;
 using SmStorage = Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
 
