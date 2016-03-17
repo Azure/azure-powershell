@@ -42,11 +42,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected struct AccountTypeString
         {
-            internal const string StandardLRS = "StandardLRS";
-            internal const string StandardZRS = "StandardZRS";
-            internal const string StandardGRS = "StandardGRS";
-            internal const string StandardRAGRS = "StandardRAGRS";
-            internal const string PremiumLRS = "PremiumLRS";
+            internal const string StandardLRS = "Standard_LRS";
+            internal const string StandardZRS = "Standard_ZRS";
+            internal const string StandardGRS = "Standard_GRS";
+            internal const string StandardRAGRS = "Standard_RAGRS";
+            internal const string PremiumLRS = "Premium_LRS";
         }
         
         public IStorageManagementClient StorageClient
