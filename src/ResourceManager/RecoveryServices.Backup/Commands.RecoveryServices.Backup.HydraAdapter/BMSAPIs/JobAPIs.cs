@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
     {
         public JobResponse GetJob(string resourceGroupName, string resourceName, string jobId)
         {
+            resourceName = BmsAdapter.GetResourceName();
+            resourceGroupName = BmsAdapter.GetResourceName();
+
             return BmsAdapter.Client.Job.GetAsync(
                 resourceGroupName, 
                 resourceName, 

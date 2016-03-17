@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// <returns></returns>
         public BaseRecoveryServicesJobResponse RefreshContainers(string resourceGroupName, string resourceName)
         {
+            resourceName = BmsAdapter.GetResourceName();
+            resourceGroupName = BmsAdapter.GetResourceName();
+            
             var response = BmsAdapter.Client.Container.RefreshAsync(
                 resourceGroupName, resourceName,
                 BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, BmsAdapter.CmdletCancellationToken).Result;
