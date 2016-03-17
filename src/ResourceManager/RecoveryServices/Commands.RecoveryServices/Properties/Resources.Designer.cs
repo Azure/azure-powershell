@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replication Start Time span value cannot be greater then 24 hours..
+        ///   Looks up a localized string similar to Replication Start Time span value cannot be greater then 24 hours.
         /// </summary>
         internal static string ReplicationStartTimeInvalid {
             get {
