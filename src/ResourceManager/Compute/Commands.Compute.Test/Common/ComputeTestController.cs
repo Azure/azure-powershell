@@ -100,8 +100,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             string mockName)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            d.Add("Microsoft.Compute", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))

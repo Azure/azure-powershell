@@ -51,30 +51,5 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
             }
         }
-
-        /// <summary>
-        /// Clear the current storage account from the context - guarantees that only one storage account will be active 
-        /// at a time.
-        /// </summary>
-        public static void ClearCurrentStorageAccount()
-        {
-            //TODO: Move to RM
-            //var RMProfile = AzureRmProfileProvider.Instance.Profile;
-            //if (RMProfile != null && RMProfile.Context != null && 
-            //    RMProfile.Context.Subscription != null && RMProfile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
-            //{
-            //    RMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
-            //}
-
-            var SMProfile = AzureSMProfileProvider.Instance.Profile;
-            if (SMProfile != null && SMProfile.Context != null 
-                && SMProfile.Context.Subscription != null &&
-                SMProfile.Context.Subscription.IsPropertySet(
-                AzureSubscription.Property.StorageAccount))
-            {
-                SMProfile.Context.Subscription.SetProperty(
-                    AzureSubscription.Property.StorageAccount, null);
-            }
-        }
     }
 }

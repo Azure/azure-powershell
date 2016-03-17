@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.3'
+ModuleVersion = '1.0.4'
 
 # ID used to uniquely identify this module
 GUID = '1be1e8c1-8b8a-41b3-82e9-88e7bc941fa0'
@@ -48,7 +48,7 @@ CLRVersion='4.0'
 # ProcessorArchitecture = 'None'
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.4'})
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'})
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -97,16 +97,16 @@ PrivateData = @{
         # Tags = @()
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/Azure/azure-powershell'
 
         # A URL to an icon representing this module.
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'https://github.com/Azure/azure-powershell/blob/dev/ChangeLog.md'
 
     } # End of PSData hashtable
 

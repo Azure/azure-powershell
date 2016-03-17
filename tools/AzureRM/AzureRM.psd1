@@ -7,12 +7,9 @@
 #  
   
 @{  
-
-# Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.psm1'
   
 # Version number of this module.  
-ModuleVersion = '1.2.0'  
+ModuleVersion = '1.2.2'  
   
 # ID used to uniquely identify this module  
 GUID = 'B433E830-B479-4F7F-9C80-9CC6C28E1B51'  
@@ -48,7 +45,37 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @() 
+RequiredModules = @(
+    @{ ModuleName = 'AzureRM.Profile'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'Azure.Storage'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.ApiManagement'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.Automation'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.Backup'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.Batch'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.Compute'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.2.4'},
+    @{ ModuleName = 'AzureRM.DataFactories'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.DataLakeAnalytics'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.DataLakeStore'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.Dns'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.HDInsight'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
+    @{ ModuleName = 'AzureRM.Insights'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.KeyVault'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.1.4'},
+    @{ ModuleName = 'AzureRM.LogicApp'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.1'},
+    @{ ModuleName = 'AzureRM.Network'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.NotificationHubs'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.OperationalInsights'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.RecoveryServices'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
+    @{ ModuleName = 'AzureRM.RedisCache'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.1.3'},
+    @{ ModuleName = 'AzureRM.Resources'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.SiteRecovery'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.1.4'},
+    @{ ModuleName = 'AzureRM.Sql'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.Storage'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.StreamAnalytics'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.Tags'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.TrafficManager'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.UsageAggregates'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.Websites'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'}
+) 
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
@@ -65,8 +92,7 @@ FormatsToProcess = @(
 )  
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
-NestedModules = @(
-)  
+NestedModules = @()  
   
 # Functions to export from this module  
 FunctionsToExport = '*'  
@@ -78,7 +104,7 @@ CmdletsToExport = '*'
 VariablesToExport = '*'  
   
 # Aliases to export from this module  
-AliasesToExport = @('Install-AzureRM')  
+AliasesToExport = @()  
   
 # List of all modules packaged with this module  
 ModuleList = @()  
@@ -87,6 +113,27 @@ ModuleList = @()
 FileList =  @()  
   
 # Private data to pass to the module specified in ModuleToProcess  
-PrivateData = ''  
+PrivateData = @{
+
+    PSData = @{
+
+        # Tags applied to this module. These help with module discovery in online galleries.
+        # Tags = @()
+
+        # A URL to the license for this module.
+        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'
+
+        # A URL to the main website for this project.
+        ProjectUri = 'https://github.com/Azure/azure-powershell'
+
+        # A URL to an icon representing this module.
+        # IconUri = ''
+
+        # ReleaseNotes of this module
+        ReleaseNotes = 'https://github.com/Azure/azure-powershell/blob/dev/ChangeLog.md'
+
+    } # End of PSData hashtable
+
+} # End of PrivateData hashtable  
 
 } 

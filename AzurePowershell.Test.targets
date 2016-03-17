@@ -66,6 +66,7 @@
       <AsmXUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>
     </ItemGroup>
     <ItemGroup Condition=" '$(scope)' == 'all' ">
+      <XUnitTests Include=".\tools\StaticAnalysis\StaticAnalysis.Test\bin\Debug\StaticAnalysis.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll"/> 
       <XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
