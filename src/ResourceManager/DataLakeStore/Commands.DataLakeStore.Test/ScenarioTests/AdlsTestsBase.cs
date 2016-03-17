@@ -209,7 +209,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
                 ProviderRegistrationState.Registering != resultAfterRegister.Provider.RegistrationState,
                 string.Format("Provider registration state was not 'Registered' or 'Registering', instead it was '{0}'", resultAfterRegister.Provider.RegistrationState));
             ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes == null || resultAfterRegister.Provider.ResourceTypes.Count == 0, "Provider.ResourceTypes is empty.");
-            ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes[0].Locations == null || resultAfterRegister.Provider.ResourceTypes[0].Locations.Count == 0, "Provider.ResourceTypes[0].Locations is empty.");
         }
 
         private void TryCreateResourceGroup(string resourceGroupName, string location)
