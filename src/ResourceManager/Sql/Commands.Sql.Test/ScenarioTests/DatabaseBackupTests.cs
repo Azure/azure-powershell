@@ -44,5 +44,23 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-RestorePointInTimeBackup");
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerBackupArchivalVault()
+        {
+            RunPowerShellTest("Test-ServerBackupArchivalVault");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseBackupArchivalPolicy()
+        {
+            RunPowerShellTest("Test-DatabaseBackupArchivalPolicy");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreArchivedBackup()
+        {
+            RunPowerShellTest("Test-RestoreArchivedBackup");
+        }
     }
 }

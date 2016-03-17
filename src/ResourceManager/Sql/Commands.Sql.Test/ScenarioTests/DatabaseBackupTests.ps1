@@ -92,3 +92,18 @@ function Test-RestorePointInTimeBackup
 
 	Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2016-02-20T00:06:00Z" -TargetDatabaseName $restoredDbName
 }
+
+function Test-ServerBackupArchivalVault
+{
+	# Setup
+}
+
+function Test-DatabaseBackupArchivalPolicy
+{
+    # Setup
+}
+
+function Test-RestoreArchivedBackup
+{
+    # Setup
+}
