@@ -125,18 +125,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Updates current Vault context.
         /// </summary>
-        /// <param name="asrVaultCreds">ARS Vault credentials</param>
+        /// <param name="arsVaultCreds">ARS Vault credentials</param>
         public static void UpdateCurrentVaultContext(ARSVault arsVaultCreds)
         {
             object updateVaultContextOneAtATime = new object();
             lock (updateVaultContextOneAtATime)
             {
-                PSRecoveryServicesClient.arsVaultCreds.Name =
-                    arsVaultCreds.Name;
-                PSRecoveryServicesClient.arsVaultCreds.ResouceGroupName =
-                    arsVaultCreds.ResouceGroupName;
-                PSRecoveryServicesClient.arsVaultCreds.Location =
-                    arsVaultCreds.Location;                
+                PSRecoveryServicesClient.arsVaultCreds = arsVaultCreds;
             }
         }
 

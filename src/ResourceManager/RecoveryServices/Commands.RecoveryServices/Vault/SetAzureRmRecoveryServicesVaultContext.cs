@@ -22,12 +22,12 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// To set RecoveryServicesVaultContext
+    /// Used to set RecoveryServices Vault Context
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesVaultContext")]
     public class SetAzureRmRecoveryServicesVaultContext : RecoveryServicesCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Azure Recovery Services Vault object", ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ARSVault Vault { get; set; }        
 
