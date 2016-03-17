@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
             cmdlet.JobId = null;
             cmdlet.TaskId = null;
 
-            AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> response = new AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders>();
-            response.Headers = new ProxyModels.TaskListSubtasksHeaders();
-            response.Body = new ProxyModels.CloudTaskListSubtasksResult(new List<ProxyModels.SubtaskInformation>());
-
+            //AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> response = new AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders>();
+            //response.Headers = new ProxyModels.TaskListSubtasksHeaders();
+            //response.Body = new ProxyModels.CloudTaskListSubtasksResult(new List<ProxyModels.SubtaskInformation>());
+            AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> response = BatchTestHelpers.CreateCloudTaskListSubtasksResponse();
             // Build a SubtaskInformation instead of querying the service on a List Subtasks call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.TaskListSubtasksOptions, AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
