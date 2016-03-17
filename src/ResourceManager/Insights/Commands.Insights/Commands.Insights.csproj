@@ -148,6 +148,7 @@
     <Compile Include="OutputClasses\PSLogSettings.cs" />
     <Compile Include="OutputClasses\PSMetricSettings.cs" />
     <Compile Include="OutputClasses\PSLogProfile.cs" />
+    <Compile Include="OutputClasses\PSRetentionPolicy.cs" />
     <Compile Include="OutputClasses\PSServiceDiagnosticSettings.cs" />
     <Compile Include="OutputClasses\PSAlertRule.cs" />
     <Compile Include="OutputClasses\PSAlertRuleNoDetails.cs" />
