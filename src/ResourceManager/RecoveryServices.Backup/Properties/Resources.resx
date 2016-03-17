@@ -118,24 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AggregateException" xml:space="preserve">
-    <value>Handling aggregate exception.</value>
+    <value>Handling aggregate exception</value>
   </data>
   <data name="ArgumentException" xml:space="preserve">
-    <value>Received ArgumentException.</value>
+    <value>Received ArgumentException</value>
+  </data>
+  <data name="RsVaultResNameNullOrEmpty" xml:space="preserve">
+    <value>RecoveryServicesBackupVault.Name</value>
+  </data>
+  <data name="RsVaultRGNameNullOrEmpty" xml:space="preserve">
+    <value>RecoveryServicesBackupVault.ResourceGroupName</value>
   </data>
   <data name="CloudException" xml:space="preserve">
-    <value>Received CloudException, ErrorCode: {0}, Message: {1}.</value>
+    <value>Received CloudException, ErrorCode: {0}, Message: {1}</value>
   </data>
   <data name="CloudExceptionCodeNotFound" xml:space="preserve">
-    <value>Received CloudException, StatusCode: {0}.</value>
+    <value>Received CloudException, StatusCode: {0}</value>
   </data>
   <data name="ExceptionInExecution" xml:space="preserve">
-    <value>Caught exception, type: {0}.</value>
+    <value>Caught exception, type: {0}</value>
   </data>
   <data name="ResourceNotFoundMessage" xml:space="preserve">
-    <value>The specified resource does not exist.</value>
+    <value>The specified resource does not exist</value>
   </data>
   <data name="WebException" xml:space="preserve">
-    <value>Received WebException, Response: {0}, Status: {1}.</value>
+    <value>Received WebException, Response: {0}, Status: {1}</value>
   </data>
 </root>

@@ -85,6 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RecoveryServicesBackupVaultCmdletBase.cs" />
     <Compile Include="RecoveryServicesBackupCmdletBase.cs" />
     <Compile Include="CmdletParameterHelpMessages.cs" />
   </ItemGroup>

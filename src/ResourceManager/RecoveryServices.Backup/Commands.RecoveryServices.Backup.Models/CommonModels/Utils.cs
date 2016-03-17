@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
-{    
+{
     public class PolicyConstants
     {
         public const int MaxAllowedRetentionDurationCount = 9999;
@@ -59,17 +59,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public class IdUtils
     {
-        private static readonly Regex ResourceGroupRegex = new Regex(@"/subscriptions/(?<subscriptionsId>.+)/resourceGroups/(?<resourceGroupName>.+)/providers/(?<providersName>.+)/BackupVault/(?<BackupVaultName>.+)/containers/(?<containersName>.+)", RegexOptions.Compiled);
+        static readonly Regex ResourceGroupRegex = new Regex(@"/Subscriptions/(?<subscriptionsId>.+)/resourceGroups/(?<resourceGroupName>.+)/providers/(?<providersName>.+)/vaults/(?<BackupVaultName>.+)/backupFabrics/(?<BackupFabricName>.+)/protectionContainers/(?<containersName>.+)", RegexOptions.Compiled);
+        const string NameDelimiter = ";";
 
         public static string GetResourceGroupName(string id)
         {
             var match = ResourceGroupRegex.Match(id);
             if (match.Success)
             {
-                var vmRGName = match.Groups["containersName"];
-                if (vmRGName != null && vmRGName.Success)
+                var vmUniqueName = match.Groups["containersName"];
+                if (vmUniqueName != null && vmUniqueName.Success)
                 {
-                    return vmRGName.Value;
+                    var vmNameInfo = vmUniqueName.Value.Split(NameDelimiter.ToCharArray());
+                    if (vmNameInfo.Length == 3)
+                    {
+                        return vmNameInfo[1];
+                    }
+                    else if (vmNameInfo.Length == 4)
+                    {
+                        return vmNameInfo[2];
+                    }
+                    else
+                    {
+                        throw new Exception("Container name not in the expected format");
+                    }
                 }
             }
 

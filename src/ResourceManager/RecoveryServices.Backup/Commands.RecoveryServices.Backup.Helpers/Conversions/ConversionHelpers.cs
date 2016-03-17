@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             if (protectionContainer != null &&
                 protectionContainer.Properties != null)
             {
-                if (protectionContainer.Properties.GetType() == typeof(AzureIaaSVMProtectionContainer))
+                if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectionContainer)))
                 {
-                    new AzureRmRecoveryServicesIaasVmContainer(protectionContainer);
+                    containerModel = new AzureRmRecoveryServicesIaasVmContainer(protectionContainer);
                 }
             }
 

@@ -29,12 +29,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of containers
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>), typeof(AzureRmRecoveryServicesContainerBase))]
-    public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupVaultCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Common.Vault, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ARSVault Vault { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.ContainerType)]
         [ValidateNotNullOrEmpty]
         public ContainerType ContainerType { get; set; }
@@ -68,19 +64,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     // 3. Filter by Status
                     queryParams.RegistrationStatus = Status.ToString();
 
-                    var listResponse = HydraAdapter.ListContainers(Vault.Name, Vault.ResouceGroupName, queryParams);
+                    var listResponse = HydraAdapter.ListContainers(Vault.ResouceGroupName, Vault.Name, queryParams);
 
                     List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 
                     // NOTE: Should move this to provider?
                     // 4. Filter by RG Name
-                    if (ContainerType == Models.ContainerType.AzureVM)
+                    if (ContainerType == Models.ContainerType.AzureVM &&
+                        !string.IsNullOrEmpty(ResourceGroupName))
                     {
                         containerModels = containerModels.Where(containerModel =>
                             (containerModel as AzureRmRecoveryServicesIaasVmContainer).ResourceGroupName == ResourceGroupName).ToList();
                     }
 
-                    WriteObject(containerModels);
+                    if (containerModels.Count == 1)
+                    {
+                        WriteObject(containerModels.First());
+                    }
+                    else
+                    {
+                        WriteObject(containerModels);
+                    }
                 });
         }
     }
