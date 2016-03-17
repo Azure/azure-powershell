@@ -57,9 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Job = null;
             cmdlet.Filter = null;
 
-            AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> response = new AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>();
-            response.Headers = new ProxyModels.TaskListHeaders();
-            response.Body = new MockPage<ProxyModels.CloudTask>();
+            AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> response = BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.CloudTask, ProxyModels.TaskListHeaders>();
 
             // Build a CloudTask instead of querying the service on a List CloudTask call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.TaskListOptions, AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>>(response);
@@ -154,9 +152,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             string requestExpand = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> response = new AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>();
-            response.Headers = new ProxyModels.TaskListHeaders();
-            response.Body = new MockPage<ProxyModels.CloudTask>();
+            AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> response = BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.CloudTask, ProxyModels.TaskListHeaders>();
 
             Action<BatchRequest<ProxyModels.TaskListOptions, AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>>> extractTaskListAction =
                 (request) =>

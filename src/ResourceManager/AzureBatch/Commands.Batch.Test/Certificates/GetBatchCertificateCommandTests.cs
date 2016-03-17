@@ -119,9 +119,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             string requestSelect = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders> response = new AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders>();
-            response.Headers = new ProxyModels.CertificateListHeaders();
-            response.Body = new MockPage<ProxyModels.Certificate>();
+            AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders> response = BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.Certificate, ProxyModels.CertificateListHeaders>();
 
             Action<BatchRequest<ProxyModels.CertificateListOptions, AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders>>> extractCertificateListAction =
                 (request) =>

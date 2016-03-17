@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+
             CloudPool pool = poolOperations.CreatePool();
             pool.Id = parameters.PoolId;
             pool.VirtualMachineSize = parameters.VirtualMachineSize;

@@ -123,9 +123,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             string requestExpand = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders> response = new AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders>();
-            response.Headers = new ProxyModels.JobListHeaders();
-            response.Body = new MockPage<ProxyModels.CloudJob>();
+            AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders> response = BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.CloudJob, ProxyModels.JobListHeaders>();
 
             Action<BatchRequest<ProxyModels.JobListOptions, AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders>>> extractJobListAction =
                 (request) =>

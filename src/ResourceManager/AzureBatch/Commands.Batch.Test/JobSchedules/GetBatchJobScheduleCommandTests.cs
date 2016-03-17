@@ -122,9 +122,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             string requestSelect = null;
             string requestExpand = null;
 
-            AzureOperationResponse<IPage<ProxyModels.CloudJobSchedule>, ProxyModels.JobScheduleListHeaders> response = new AzureOperationResponse<IPage<ProxyModels.CloudJobSchedule>, ProxyModels.JobScheduleListHeaders>();
-            response.Headers = new ProxyModels.JobScheduleListHeaders();
-            response.Body = new MockPage<ProxyModels.CloudJobSchedule>();
+            AzureOperationResponse<IPage<ProxyModels.CloudJobSchedule>, ProxyModels.JobScheduleListHeaders> response = BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.CloudJobSchedule, ProxyModels.JobScheduleListHeaders>();
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
             Action<BatchRequest<ProxyModels.JobScheduleListOptions, AzureOperationResponse<IPage<ProxyModels.CloudJobSchedule>, ProxyModels.JobScheduleListHeaders>>> listJobScheduleAction =

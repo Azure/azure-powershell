@@ -25,6 +25,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Azure.Batch.Protocol.BatchRequests;
+using Microsoft.PowerShell.Commands;
 using Microsoft.Rest;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
@@ -187,6 +188,26 @@ namespace Microsoft.Azure.Commands.Batch.Test
             });
             return interceptor;
         }
+
+        public static AzureOperationResponse<TBody, THeader> CreateGenericAzureOperationResponse<TBody, THeader>()
+            where TBody : class, new () 
+            where THeader : class, new ()
+        {
+            var response = new AzureOperationResponse<TBody, THeader>();
+            response.Body = new TBody();
+            response.Headers = new THeader();
+            return response;
+        }
+
+        public static AzureOperationResponse<IPage<TBody>, THeader> CreateGenericAzureOperationListResponse<TBody, THeader>()
+            where TBody : class, new()
+            where THeader : class, new()
+        {
+            var response = new AzureOperationResponse<IPage<TBody>, THeader>();
+            response.Body = new MockPage<TBody>();
+            response.Headers = new THeader();
+            return response;
+        } 
 
         /// <summary>
         /// Creates a RequestInterceptor that does not contact the Batch Service on a Get NodeFile or a Get NodeFile Properties call.
@@ -504,7 +525,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CloudTaskListSubtasksResponse object
         /// </summary>
-        public static AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> CreateCloudTaskListSubtasksResponse(IEnumerable<int> subtaskIds)
+        public static AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> CreateCloudTaskListSubtasksResponse(IEnumerable<int> subtaskIds = default(IEnumerable<int>))
         {
             var response = new AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
@@ -512,16 +533,30 @@ namespace Microsoft.Azure.Commands.Batch.Test
             List<ProxyModels.SubtaskInformation> subtasks = new List<ProxyModels.SubtaskInformation>();
             ProxyModels.CloudTaskListSubtasksResult subtasksResult = new ProxyModels.CloudTaskListSubtasksResult();
 
-            foreach (int id in subtaskIds)
+            if (subtaskIds != null)
             {
-                ProxyModels.SubtaskInformation subtask = new ProxyModels.SubtaskInformation();
-                subtask.Id = id;
-                subtasks.Add(subtask);
+                foreach (int id in subtaskIds)
+                {
+                    ProxyModels.SubtaskInformation subtask = new ProxyModels.SubtaskInformation();
+                    subtask.Id = id;
+                    subtasks.Add(subtask);
+                }
             }
 
             subtasksResult.Value = subtasks;
             response.Body = subtasksResult;
 
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a NodeFileGetPropertiesResponse object
+        /// </summary>
+        public static AzureOperationResponse<System.IO.Stream, ProxyModels.ComputeNodeGetRemoteDesktopHeaders> CreateGetRemoteDesktOperationResponse()
+        {
+            var response = new AzureOperationResponse<System.IO.Stream, ProxyModels.ComputeNodeGetRemoteDesktopHeaders>();
+            response.Headers = new ProxyModels.ComputeNodeGetRemoteDesktopHeaders();
+            response.Body = new MemoryStream();
             return response;
         }
 
