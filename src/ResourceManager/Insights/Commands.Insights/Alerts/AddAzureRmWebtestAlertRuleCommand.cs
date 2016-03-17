@@ -27,6 +27,20 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     public class AddAzureRmWebtestAlertRuleCommand : AddAzureRmAlertRuleCommandBase
     {
         /// <summary>
+        /// Gets or sets the metric name of the condition
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric name for rule")]
+        [ValidateNotNullOrEmpty]
+        public string MetricName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target resource Uri of the condition
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource Uri for rule")]
+        [ValidateNotNullOrEmpty]
+        public string TargetResourceUri { get; set; }
+
+        /// <summary>
         /// Gets or sets the time window size of the location threshold condition
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The window size for rule")]
@@ -38,12 +52,25 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The failed location count for rule")]
         public int FailedLocationCount { get; set; }
 
+        /// <summary>
+        /// Gets or sets the metric namespace of the condition
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric namespace for rule")]
+        public string MetricNamespace { get; set; }
+
         private RuleCondition CreateRuleCondition()
         {
-            WriteVerboseWithTimestamp(string.Format("CreateRuleCondition: Creating location threshold rule condition (webtest rule)")); 
+            WriteVerboseWithTimestamp(string.Format("CreateRuleCondition: Creating location threshold rule condition (webtest rule)"));
+            var dataSource = new RuleMetricDataSource
+            {
+                MetricName = this.MetricName,
+                MetricNamespace = this.MetricNamespace,
+                ResourceUri = this.TargetResourceUri
+            };
+
             return new LocationThresholdRuleCondition()
             {
-                DataSource = new RuleMetricDataSource(),
+                DataSource = dataSource,
                 FailedLocationCount = this.FailedLocationCount,
                 WindowSize = this.WindowSize,
             };
