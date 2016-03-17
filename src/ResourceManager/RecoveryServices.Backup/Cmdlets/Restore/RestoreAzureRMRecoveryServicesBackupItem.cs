@@ -23,7 +23,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsData.Restore, "AzureRMRecoveryServicesBackupItem"), OutputType(typeof(AzureRMRecoveryServicesJob))]
+    [Cmdlet(VerbsData.Restore, "AzureRMRecoveryServicesBackupItem"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
     class RestoreAzureRMRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipeline = true)]
@@ -36,15 +36,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+            ExecutionBlock(() =>
             {
-                {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
-                {RestoreBackupItemParams.StorageAccountName, StorageAccountName}
-            }, HydraAdapter);
+                base.ExecuteCmdlet();
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                {
+                    {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
+                    {RestoreBackupItemParams.StorageAccountName, StorageAccountName}
+                }, HydraAdapter);
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.ContainerType);
-            psBackupProvider.TriggerRestore();
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.ContainerType, RecoveryPoint.BackupManagementType);
+                psBackupProvider.TriggerRestore();
+            });
         }
     }
 }

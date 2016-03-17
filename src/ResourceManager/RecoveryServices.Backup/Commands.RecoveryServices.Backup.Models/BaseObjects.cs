@@ -180,11 +180,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    //Dummy class for jobs for time being
-    public class AzureRMRecoveryServicesJob : AzureRmRecoveryServicesObjectBase
-    {
 
-    }
     public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesObjectBase
     {
         public string Name { get; set; }

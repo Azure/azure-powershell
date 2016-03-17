@@ -48,43 +48,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            //Validate start time < end time
-            base.ExecuteCmdlet();
-
-            Dictionary<System.Enum, object> parameter = new Dictionary<System.Enum, object>();
-            parameter.Add(GetRecoveryPointParams.Item, Item);
-
-            if(this.ParameterSetName == DateTimeFilterParameterSet)
+            ExecutionBlock(() =>
             {
-                //User want list of RPs between given time range
-                if (StartDate >= EndDate)
+                //Validate start time < end time
+                base.ExecuteCmdlet();            
+
+                Dictionary<System.Enum, object> parameter = new Dictionary<System.Enum, object>();
+                parameter.Add(GetRecoveryPointParams.Item, Item);
+
+                if(this.ParameterSetName == DateTimeFilterParameterSet)
                 {
-                    throw new Exception("End date should be greated than start date"); //tbd: Correct nsg and exception type
+                    //User want list of RPs between given time range
+                    if (StartDate >= EndDate)
+                    {
+                        throw new Exception("End date should be greated than start date"); //tbd: Correct nsg and exception type
+                    }
+
+                    parameter.Add(GetRecoveryPointParams.StartDate, StartDate);
+                    parameter.Add(GetRecoveryPointParams.EndDate, EndDate);
+                    PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);
+                    IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
+                    var rpList = psBackupProvider.ListRecoveryPoints();
+                    if (rpList.Count == 1)
+                        WriteObject(rpList[0]);
+                    else
+                        WriteObject(rpList);
                 }
 
-                parameter.Add(GetRecoveryPointParams.StartDate, StartDate);
-                parameter.Add(GetRecoveryPointParams.EndDate, EndDate);
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
-                var rpList = psBackupProvider.ListRecoveryPoints();
-                if (rpList.Count == 1)
-                    WriteObject(rpList[0]);
+                else if (this.ParameterSetName == RecoveryPointIdParameterSet)
+                {
+                    //User want details of a particular recovery point
+                    parameter.Add(GetRecoveryPointParams.RecoveryPointId, RecoveryPointId);
+                    PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);
+                    IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
+                    WriteObject(psBackupProvider.GetRecoveryPointDetails());
+                }
                 else
-                    WriteObject(rpList);
-            }
-
-            else if (this.ParameterSetName == RecoveryPointIdParameterSet)
-            {
-                //User want details of a particular recovery point
-                parameter.Add(GetRecoveryPointParams.RecoveryPointId, RecoveryPointId);
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
-                WriteObject(psBackupProvider.GetRecoveryPointDetails());
-            }
-            else
-            {
-                throw new Exception("Unsupported Parameter set");
-            }
+                {
+                    throw new Exception("Unsupported Parameter set");
+                }
+            });
         }
     }
 }
