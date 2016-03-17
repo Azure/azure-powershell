@@ -67,6 +67,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             if (hydraResponse.Properties.GetType() == typeof(AzureIaaSVMProtectionPolicy))
             {
+                if(((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType() !=
+                                                                           typeof(LongTermRetentionPolicy))
+                {
+                    // unsupported by old powershell - trace warning and return null
+                    return null;
+                }
+
+                if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType() != 
+                                                                            typeof(SimpleSchedulePolicy))
+                {
+                    // unsupported by old powershell - trace warning and return null
+                    return null;
+                }
+
                 policyModel = new AzureRmRecoveryServicesIaasVmPolicy();
                 AzureRmRecoveryServicesIaasVmPolicy iaasPolicyModel = policyModel as AzureRmRecoveryServicesIaasVmPolicy;
                 iaasPolicyModel.WorkloadType = WorkloadType.AzureVM;

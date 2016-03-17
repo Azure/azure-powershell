@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Specialized;
+using System.Web;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    public class HydraConstants
+    {
+        public const string SkipToken = "skipToken";
+    }
+
     public class HydraHelpers
     {
         public static string GetHydraProviderType(ContainerType containerType)
@@ -54,6 +57,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return providerType;
+        }
+
+        public static void GetSkipTokenFromNextLink(string url, out string nextLink)
+        {
+            Uri uriObj = new Uri(url);
+            // This is sent by service and we don't expect this to be encoded.
+            // TODO: Need to make sure during testing that this is in fact true.
+            NameValueCollection queryParams = HttpUtility.ParseQueryString(uriObj.Query);
+            if (queryParams.Get(HydraConstants.SkipToken) != null)
+            {
+                nextLink = queryParams.Get(HydraConstants.SkipToken);
+            }
+            else
+            {
+                nextLink = null;
+            }
         }
     }
 }

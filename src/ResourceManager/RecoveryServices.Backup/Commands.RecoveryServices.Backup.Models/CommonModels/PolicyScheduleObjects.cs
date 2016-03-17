@@ -30,11 +30,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public override void Validate()
         {
-            if (ScheduleRunFrequency == ScheduleRunType.Invalid)
-            {
-                throw new ArgumentException("ScheduleRunFrequency is set to Invalid");
-            }
-
             //Currently only one scheduled run time is allowed
             if (ScheduleRunTimes == null || ScheduleRunTimes.Count != 1)
             {
@@ -53,14 +48,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 if (ScheduleRunDays == null || ScheduleRunDays.Count == 0)
                 {
                     throw new ArgumentException("", "scheduleRunDays");
-                }              
+                }
+                                
+                if (ScheduleRunDays.Count != ScheduleRunDays.Distinct().Count())
+                {
+                    throw new ArgumentException("ScheduleRunDays list in BackupSchedule contains duplicate entries");
+                }
             }
         }
 
         public override string ToString()
         {
             return String.Format("scheduleRunType:{0}, ScheduleRunDays:{1}, ScheduleRunTimes:{2}",
-                                  ScheduleRunFrequency, ScheduleRunDays, ScheduleRunTimes);
+                                  ScheduleRunFrequency, 
+                                  TraceUtils.GetString(ScheduleRunDays), 
+                                  TraceUtils.GetString(ScheduleRunTimes));
         }
     }
 }

@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.Scheduler;
-using RecoveryServices.Backup.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
