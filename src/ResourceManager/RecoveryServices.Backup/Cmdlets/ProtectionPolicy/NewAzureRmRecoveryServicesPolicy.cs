@@ -55,6 +55,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             base.ExecuteCmdlet();
 
+            // validate policy name
+            PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
+
+            // Validate if policy already exists
+            string rgName = "";  // TBD
+            string resourceName = "";  // TBD
+            if(PolicyCmdletHelpers.GetProtectionPolicyByName(Name, HydraAdapter, rgName, resourceName) != null)
+            {
+                throw new ArgumentException("Policy already exists with this name:" + Name);
+            }
+
             PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
             {  
                 {PolicyParams.PolicyName, Name},
@@ -68,8 +79,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             psBackupProvider.CreatePolicy();
 
             // now get the created policy and return
-            ProtectionPolicyResponse policy = psBackupProvider.GetPolicy();
-
+            ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                      Name,
+                                                      HydraAdapter,
+                                                      rgName,
+                                                      resourceName);
             // now convert hydraPolicy to PSObject
             WriteObject(ConversionHelpers.GetPolicyModel(policy.Item));
         }

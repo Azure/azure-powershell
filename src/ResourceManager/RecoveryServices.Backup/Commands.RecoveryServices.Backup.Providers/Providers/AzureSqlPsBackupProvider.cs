@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -68,17 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse ModifyPolicy()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse GetPolicy()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeletePolicy()
+        public List<AzureRmRecoveryServicesJobBase> ModifyPolicy()
         {
             throw new NotImplementedException();
         }
