@@ -18,4 +18,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         public const int MaximumJobsToFetch = 1000;
     }
+
+    public class PolicyConstants
+    {
+        public const int MinPolicyNameLength = 3;
+        public const int MaxPolicyNameLength = 150;                
+    }
 }

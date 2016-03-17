@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
 
-        public ProtectionPolicyListResponse GetProtectionPolicy(
+        public ProtectionPolicyListResponse ListProtectionPolicy(
                string resourceGroupName,
                string resourceName,
                ProtectionPolicyQueryParameters queryFilter)
