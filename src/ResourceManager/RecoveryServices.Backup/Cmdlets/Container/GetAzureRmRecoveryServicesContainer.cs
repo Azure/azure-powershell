@@ -29,12 +29,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of containers
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>), typeof(AzureRmRecoveryServicesContainerBase))]
-    public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupVaultCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Common.Vault, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ARSVault Vault { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.ContainerType)]
         [ValidateNotNullOrEmpty]
         public ContainerType ContainerType { get; set; }
@@ -54,34 +50,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
+            {
+                base.ExecuteCmdlet();
+
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                {  
+                    {ContainerParams.Vault, Vault},
+                    {ContainerParams.ContainerType, ContainerType},
+                    {ContainerParams.Name, Name},
+                    {ContainerParams.ResourceGroupName, ResourceGroupName},
+                    {ContainerParams.Status, Status},
+                }, HydraAdapter);
+
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType);
+                var containerModels = psBackupProvider.ListProtectionContainers();
+
+                if (containerModels.Count == 1)
                 {
-                    base.ExecuteCmdlet();
-
-                    ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
-
-                    // 1. Filter by Name
-                    queryParams.FriendlyName = Name;
-
-                    // 2. Filter by ContainerType
-                    queryParams.ProviderType = HydraHelpers.GetHydraProviderType(ContainerType);
-
-                    // 3. Filter by Status
-                    queryParams.RegistrationStatus = Status.ToString();
-
-                    var listResponse = HydraAdapter.ListContainers(Vault.Name, Vault.ResouceGroupName, queryParams);
-
-                    List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
-
-                    // NOTE: Should move this to provider?
-                    // 4. Filter by RG Name
-                    if (ContainerType == Models.ContainerType.AzureVM)
-                    {
-                        containerModels = containerModels.Where(containerModel =>
-                            (containerModel as AzureRmRecoveryServicesIaasVmContainer).ResourceGroupName == ResourceGroupName).ToList();
-                    }
-
+                    WriteObject(containerModels.First());
+                }
+                else
+                {
                     WriteObject(containerModels);
-                });
+                }
+            });
         }
     }
 }

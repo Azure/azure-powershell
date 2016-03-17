@@ -19,8 +19,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -45,5 +43,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         ProtectionPolicyResponse CreatePolicy();
 
         List<AzureRmRecoveryServicesJobBase> ModifyPolicy();
+
+        ProtectionPolicyResponse GetPolicy();
+
+        void DeletePolicy();
+
+        List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers();
     }
 }

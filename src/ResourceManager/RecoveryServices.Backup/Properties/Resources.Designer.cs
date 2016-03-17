@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Handling aggregate exception..
+        ///   Looks up a localized string similar to Handling aggregate exception.
         /// </summary>
         internal static string AggregateException {
             get {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Received ArgumentException..
+        ///   Looks up a localized string similar to Received ArgumentException.
         /// </summary>
         internal static string ArgumentException {
             get {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Received CloudException, ErrorCode: {0}, Message: {1}..
+        ///   Looks up a localized string similar to Received CloudException, ErrorCode: {0}, Message: {1}.
         /// </summary>
         internal static string CloudException {
             get {
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Received CloudException, StatusCode: {0}..
+        ///   Looks up a localized string similar to Received CloudException, StatusCode: {0}.
         /// </summary>
         internal static string CloudExceptionCodeNotFound {
             get {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Caught exception, type: {0}..
+        ///   Looks up a localized string similar to Caught exception, type: {0}.
         /// </summary>
         internal static string ExceptionInExecution {
             get {
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The specified resource does not exist..
+        ///   Looks up a localized string similar to The specified resource does not exist.
         /// </summary>
         internal static string ResourceNotFoundMessage {
             get {
@@ -115,7 +115,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Received WebException, Response: {0}, Status: {1}..
+        ///   Looks up a localized string similar to RecoveryServicesBackupVault.Name.
+        /// </summary>
+        internal static string RsVaultResNameNullOrEmpty {
+            get {
+                return ResourceManager.GetString("RsVaultResNameNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RecoveryServicesBackupVault.ResourceGroupName.
+        /// </summary>
+        internal static string RsVaultRGNameNullOrEmpty {
+            get {
+                return ResourceManager.GetString("RsVaultRGNameNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received WebException, Response: {0}, Status: {1}.
         /// </summary>
         internal static string WebException {
             get {

@@ -18,21 +18,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class IaasVmPsBackupProvider : IPsBackupProvider
     {
-        ProviderData providerData;
-        HydraAdapter.HydraAdapter hydraAdapter;
+        ProviderData ProviderData { get; set; }
+        HydraAdapter.HydraAdapter HydraAdapter { get; set; }
 
         public void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter)
         {
-            this.providerData = providerData;
-            this.hydraAdapter = hydraAdapter;
+            this.ProviderData = providerData;
+            this.HydraAdapter = hydraAdapter;
         }
 
         public BaseRecoveryServicesJobResponse EnableProtection()
@@ -114,16 +114,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public ProtectionPolicyResponse CreatePolicy()
         {
-            string policyName = (string)providerData.ProviderParameters[PolicyParams.PolicyName];
-            WorkloadType workloadType = (WorkloadType)providerData.ProviderParameters[PolicyParams.WorkloadType];
-            BackupManagementType backupManagementType = (BackupManagementType)providerData.ProviderParameters[
+            string policyName = (string)ProviderData.ProviderParameters[PolicyParams.PolicyName];
+            WorkloadType workloadType = (WorkloadType)ProviderData.ProviderParameters[PolicyParams.WorkloadType];
+            BackupManagementType backupManagementType = (BackupManagementType)ProviderData.ProviderParameters[
                                                                               PolicyParams.BackupManagementType];
             AzureRmRecoveryServicesRetentionPolicyBase retentionPolicy = (AzureRmRecoveryServicesRetentionPolicyBase)
-                                                 providerData.ProviderParameters[PolicyParams.RetentionPolicy];
+                                                 ProviderData.ProviderParameters[PolicyParams.RetentionPolicy];
             AzureRmRecoveryServicesSchedulePolicyBase schedulePolicy = (AzureRmRecoveryServicesSchedulePolicyBase)
-                                                 providerData.ProviderParameters[PolicyParams.SchedulePolicy];
-            string resourceName = (string)providerData.ProviderParameters[PolicyParams.ResourceName];
-            string resourceGroupName = (string)providerData.ProviderParameters[PolicyParams.ResourceGroupName];
+                                                 ProviderData.ProviderParameters[PolicyParams.SchedulePolicy];
+            string resourceName = (string)ProviderData.ProviderParameters[PolicyParams.ResourceName];
+            string resourceGroupName = (string)ProviderData.ProviderParameters[PolicyParams.ResourceGroupName];
 
 
             // do validations
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             };
 
-            return hydraAdapter.CreateOrUpdateProtectionPolicy(
+            return HydraAdapter.CreateOrUpdateProtectionPolicy(
                                  resourceGroupName,
                                  resourceName,
                                  policyName,
@@ -158,19 +158,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public List<AzureRmRecoveryServicesJobBase> ModifyPolicy()
         {            
             AzureRmRecoveryServicesRetentionPolicyBase retentionPolicy = (AzureRmRecoveryServicesRetentionPolicyBase)
-                                                 providerData.ProviderParameters[PolicyParams.RetentionPolicy];
+                                                 ProviderData.ProviderParameters[PolicyParams.RetentionPolicy];
             AzureRmRecoveryServicesSchedulePolicyBase schedulePolicy = (AzureRmRecoveryServicesSchedulePolicyBase)
-                                                 providerData.ProviderParameters[PolicyParams.SchedulePolicy];
+                                                 ProviderData.ProviderParameters[PolicyParams.SchedulePolicy];
             AzureRmRecoveryServicesPolicyBase policy = (AzureRmRecoveryServicesPolicyBase)
-                                                 providerData.ProviderParameters[PolicyParams.ProtectionPolicy];
-            string resourceName = (string)providerData.ProviderParameters[PolicyParams.ResourceName];
-            string resourceGroupName = (string)providerData.ProviderParameters[PolicyParams.ResourceGroupName];
+                                                 ProviderData.ProviderParameters[PolicyParams.ProtectionPolicy];
+            string resourceName = (string)ProviderData.ProviderParameters[PolicyParams.ResourceName];
+            string resourceGroupName = (string)ProviderData.ProviderParameters[PolicyParams.ResourceGroupName];
           
             // do validations
             ValidateAzureVMProtectionPolicy(policy);
             
             // RetentionPolicy and SchedulePolicy both should not be empty
-            if(retentionPolicy == null && schedulePolicy == null)
+            if (retentionPolicy == null && schedulePolicy == null)
             {
                 throw new ArgumentException("Both RetentionPolicy and SchedulePolicy are Empty .. nothing to update");
             }
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             };
                         
-            ProtectionPolicyResponse response =  hydraAdapter.CreateOrUpdateProtectionPolicy(
+            ProtectionPolicyResponse response = HydraAdapter.CreateOrUpdateProtectionPolicy(
                                                                resourceGroupName,
                                                                resourceName,
                                                                policy.Name,
@@ -229,10 +229,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return jobsList;
         }
 
+        public List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
+        {
+            string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
+            ContainerRegistrationStatus status = (ContainerRegistrationStatus)this.ProviderData.ProviderParameters[ContainerParams.Status];
+            ARSVault vault = (ARSVault)this.ProviderData.ProviderParameters[ContainerParams.Vault];
+            string resourceGroupName = (string)this.ProviderData.ProviderParameters[ContainerParams.ResourceGroupName];
+
+            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
+
+            // 1. Filter by Name
+            queryParams.FriendlyName = name;
+
+            // 2. Filter by ContainerType
+            queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
+
+            // 3. Filter by Status
+            queryParams.RegistrationStatus = status.ToString();
+
+            var listResponse = HydraAdapter.ListContainers(vault.ResouceGroupName, vault.Name, queryParams);
+
+            List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
+
+            // 4. Filter by RG Name
+            if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                containerModels = containerModels.Where(containerModel =>
+                    (containerModel as AzureRmRecoveryServicesIaasVmContainer).ResourceGroupName == resourceGroupName).ToList();
+            }
+
+            return containerModels;
+        }
+
+        public ProtectionPolicyResponse GetPolicy()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeletePolicy()
+        {
+            throw new NotImplementedException();
+        }
+
         #region private
         private void ValidateAzureVMWorkloadType(WorkloadType type)
         {
-            if(type != WorkloadType.AzureVM)
+            if (type != WorkloadType.AzureVM)
             {
                 throw new ArgumentException("ExpectedWorkloadType = " + type.ToString());
             }
@@ -241,7 +283,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private void ValidateAzureVMProtectionPolicy(AzureRmRecoveryServicesPolicyBase policy)
         {
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesIaasVmPolicy))
-        {
+            {
                 throw new ArgumentException("ProtectionPolicy is NULL or not of type AzureRmRecoveryServicesIaasVmPolicy");
             }
 
@@ -254,7 +296,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private void ValidateAzureVMSchedulePolicy(AzureRmRecoveryServicesSchedulePolicyBase policy)
         {
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesSimpleSchedulePolicy))
-        {
+            {
                 throw new ArgumentException("SchedulePolicy is NULL or not of type AzureRmRecoveryServicesSimpleSchedulePolicy");
             }
 
@@ -265,14 +307,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private void ValidateAzureVMRetentionPolicy(AzureRmRecoveryServicesRetentionPolicyBase policy)
         {
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesLongTermRetentionPolicy))
-        {
+            {
                 throw new ArgumentException("RetentionPolicy is NULL or not of type AzureRmRecoveryServicesLongTermRetentionPolicy");
             }
             
             // call validation
             policy.Validate();
         }
-
         #endregion
     }
 }
