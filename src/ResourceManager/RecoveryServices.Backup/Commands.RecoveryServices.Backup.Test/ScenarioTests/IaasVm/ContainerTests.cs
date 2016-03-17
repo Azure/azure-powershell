@@ -12,34 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public enum ContainerParams
+    public partial class ContainerTests : RecoveryServicesBackupTestsBase
     {
-        Vault,
-        ContainerType,
-        BackupManagementType,
-        BackupManagementServer,
-        Name,
-        ResourceGroupName,
-        Status,
-    }
-
-    public enum PolicyParams
-    {
-        WorkloadType,
-        BackupManagementType,
-        PolicyName,
-        SchedulePolicy,
-        RetentionPolicy,
-        ProtectionPolicy,
-        ResourceGroupName,
-        ResourceName        
+        [Fact]
+        public void TestGetContainerScenario()
+        {
+            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetContainerScenario");
+        }
     }
 }

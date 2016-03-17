@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Update existing protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesProtectionPolicy")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesProtectionPolicy"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>))]
     public class SetAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Policy.RetentionPolicy)]
@@ -47,6 +47,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             base.ExecuteCmdlet();
 
+            // Validate policy name
+            PolicyCmdletHelpers.ValidateProtectionPolicyName(Policy.Name);
+
+            // Validate if policy already exists
+            string rgName = "";  // TBD
+            string resourceName = "";  // TBD
+            ProtectionPolicyResponse servicePolicy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                      Policy.Name, HydraAdapter, rgName, resourceName);
+            if (servicePolicy == null)
+            {
+                throw new ArgumentException("Policy doesn't exist with this name:" + Policy.Name);
+            }
+
             PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
             { 
                 {PolicyParams.ProtectionPolicy, Policy},
@@ -55,14 +68,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             }, HydraAdapter);
 
             IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType, 
-                                                                                     Policy.BackupManagementType);
-            psBackupProvider.ModifyPolicy();
-
-            // now get the created policy and return
-            ProtectionPolicyResponse policy = psBackupProvider.GetPolicy();
-
+                                                                                     Policy.BackupManagementType);            
             // now convert hydraPolicy to PSObject
-            WriteObject(ConversionHelpers.GetPolicyModel(policy.Item));
+            WriteObject(psBackupProvider.ModifyPolicy());
         }
     }
 }

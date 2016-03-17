@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         CSMTestEnvironmentFactory csmTestFactory;
         EnvironmentSetupHelper helper;
 
-        protected RecoveryServicesBackupManagementClient RsBackupClient { get; private set; }
+        public RecoveryServicesBackupManagementClient RsBackupClient { get; private set; }
 
         protected string ResourceNamespace { get; private set; }
 
@@ -56,23 +56,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             helper.SetupSomeOfManagementClients(RsBackupClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(string testFolderName, params string[] scripts)
         {
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
-                
-                string baseDir = TestUtilities.GetMockBaseDirectory();
-                string callingClass = TestUtilities.GetCallingClass(2);
-                string currMethodName = TestUtilities.GetCurrentMethodName(2);
+
+                string psFile = "ScenarioTests\\" + testFolderName + "\\" + this.GetType().Name + ".ps1";
+                string rmProfileModule = helper.RMProfileModule;
+                string rmModulePath = helper.GetRMModulePath("AzureRM.RecoveryServices.Backup.psd1");
 
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
-                    helper.RMProfileModule,
-                    helper.GetRMModulePath("AzureRM.Backup.psd1")
+                    psFile,
+                    rmProfileModule,
+                    rmModulePath
                     );
                 helper.RunPowerShellTest(scripts);
             }

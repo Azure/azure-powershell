@@ -44,5 +44,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string SchedulePolicy = "Schedule Policy object for the policy.";
             public const string ProtectionPolicy = "Protection policy object.";
         }
+
+        internal static class Job
+        {
+            public const string FromFilter = "Beginning value of time range for which jobs have to be fetched.";
+            public const string ToFilter = "Ending value of time range for which jobs have to be fetched.";
+            public const string OperationFilter = "Filter value for type of job.";
+            public const string StatusFilter = "Filter value for status of job.";
+            public const string BackupManagementTypeFilter = "Filter value for Backup Management Type of job.";
+            public const string JobIdFilter = "Filter value for Id of job.";
+            public const string JobFilter = "Job whose latest object has to be fetched.";
+            public const string WaitJobOrListFilter = "Job or List of jobs until end of which the cmdlet should wait.";
+            public const string WaitJobTimeoutFilter = "Maximum time to wait before aborting wait in seconds.";
+        }
     }
 }

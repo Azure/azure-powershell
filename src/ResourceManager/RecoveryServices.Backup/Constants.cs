@@ -12,34 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    public enum ContainerParams
+    public class JobConstants
     {
-        Vault,
-        ContainerType,
-        BackupManagementType,
-        BackupManagementServer,
-        Name,
-        ResourceGroupName,
-        Status,
+        public const int MaximumJobsToFetch = 1000;
     }
 
-    public enum PolicyParams
+    public class PolicyConstants
     {
-        WorkloadType,
-        BackupManagementType,
-        PolicyName,
-        SchedulePolicy,
-        RetentionPolicy,
-        ProtectionPolicy,
-        ResourceGroupName,
-        ResourceName        
+        public const int MinPolicyNameLength = 3;
+        public const int MaxPolicyNameLength = 150;                
     }
 }

@@ -13,33 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
-    public enum ContainerParams
+    public class CommonHelpers
     {
-        Vault,
-        ContainerType,
-        BackupManagementType,
-        BackupManagementServer,
-        Name,
-        ResourceGroupName,
-        Status,
-    }
-
-    public enum PolicyParams
-    {
-        WorkloadType,
-        BackupManagementType,
-        PolicyName,
-        SchedulePolicy,
-        RetentionPolicy,
-        ProtectionPolicy,
-        ResourceGroupName,
-        ResourceName        
+        public static string GetDateTimeStringForService(DateTime date)
+        {
+            // our service expects date time to be serialized in the following format
+            // we have to use english culture because our user might be running 
+            // PS in another culture and our service can't understand it.
+            DateTimeFormatInfo dateFormat = new CultureInfo("en-US").DateTimeFormat;
+            return date.ToString("yyyy-MM-dd hh:mm:ss tt", dateFormat);
+        }
     }
 }
