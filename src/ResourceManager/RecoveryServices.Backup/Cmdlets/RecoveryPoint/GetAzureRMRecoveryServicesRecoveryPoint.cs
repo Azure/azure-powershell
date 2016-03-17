@@ -23,7 +23,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMRecoveryServicesRecoveryPoint"), OutputType(typeof(List<AzureRmRecoveryServicesRecoveryPointBase>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMRecoveryServicesRecoveryPoint"), OutputType(typeof(List<AzureRmRecoveryServicesRecoveryPointBase>), typeof(AzureRmRecoveryServicesRecoveryPointBase))]
     class GetAzureRMRecoveryServicesRecoveryPoint : RecoveryServicesBackupCmdletBase
     {
         internal const string DateTimeFileterParameterSet = "DateTimeFilter";
