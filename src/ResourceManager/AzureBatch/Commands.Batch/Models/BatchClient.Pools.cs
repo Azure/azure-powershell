@@ -90,7 +90,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            CloudPool pool = poolOperations.CreatePool(poolId: parameters.PoolId, virtualMachineConfiguration: parameters.VirtualMachineConfiguration.omObject, virtualMachineSize: parameters.VirtualMachineSize);
+            CloudPool pool = poolOperations.CreatePool();
+            pool.Id = parameters.PoolId;
+            pool.VirtualMachineSize = parameters.VirtualMachineSize;
             pool.DisplayName = parameters.DisplayName;
             pool.ResizeTimeout = parameters.ResizeTimeout;
             pool.MaxTasksPerComputeNode = parameters.MaxTasksPerComputeNode;
@@ -139,6 +141,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (parameters.CloudServiceConfiguration != null)
             {
                 pool.CloudServiceConfiguration = parameters.CloudServiceConfiguration.omObject;
+            }
+
+            if (parameters.VirtualMachineConfiguration != null)
+            {
+                pool.VirtualMachineConfiguration = parameters.VirtualMachineConfiguration.omObject;
             }
 
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
 
             // Don't go to the service on an Enable AutoScale call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<PoolEnableAutoScaleOptions, AzureOperationHeaderResponse<PoolEnableAutoScaleHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<PoolEnableAutoScaleParameter, PoolEnableAutoScaleOptions, AzureOperationHeaderResponse<PoolEnableAutoScaleHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

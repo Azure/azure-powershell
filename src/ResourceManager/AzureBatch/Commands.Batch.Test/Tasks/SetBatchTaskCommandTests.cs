@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             cmdlet.Task = new PSCloudTask(BatchTestHelpers.CreateFakeBoundTask(context));
 
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskUpdateOptions, AzureOperationHeaderResponse<TaskUpdateHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskUpdateParameter, TaskUpdateOptions, AzureOperationHeaderResponse<TaskUpdateHeaders>>();
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };
 
             // Verify that no exceptions occur

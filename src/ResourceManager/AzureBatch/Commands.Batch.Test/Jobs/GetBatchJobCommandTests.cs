@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Models;
@@ -122,18 +123,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             string requestExpand = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.JobListOptions, AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders>>();
-            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
-            {
-                ProxyModels.JobListOptions options = (ProxyModels.JobListOptions) request.Options;
+            AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders> response = new AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders>();
+            response.Headers = new ProxyModels.JobListHeaders();
+            response.Body = new MockPage<ProxyModels.CloudJob>();
 
-                requestFilter = options.Filter;
-                requestSelect = options.Select;
-                requestExpand = options.Expand;
+            Action<BatchRequest<ProxyModels.JobListOptions, AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders>>> extractJobListAction =
+                (request) =>
+                {
+                    ProxyModels.JobListOptions options = request.Options;
+                    requestFilter = options.Filter;
+                    requestSelect = options.Select;
+                    requestExpand = options.Expand;
+                };
 
-                return Task.FromResult(response);
-            });
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(responseToUse: response, requestAction: extractJobListAction);
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor };
 
             cmdlet.ExecuteCmdlet();
 

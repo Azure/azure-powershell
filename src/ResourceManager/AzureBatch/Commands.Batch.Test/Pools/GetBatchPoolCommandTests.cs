@@ -122,17 +122,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             string requestExpand = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.PoolListOptions, AzureOperationResponse<IEnumerable<ProxyModels.CloudPool>, ProxyModels.PoolGetHeaders>>();
-            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
-            {
-                ProxyModels.PoolListOptions options = (ProxyModels.PoolListOptions) request.Options;
-                requestFilter = options.Filter;
-                requestSelect = options.Select;
-                requestExpand = options.Expand;
+            AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> response = new AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>();
+            response.Headers = new ProxyModels.PoolListHeaders();
+            response.Body = new MockPage<ProxyModels.CloudPool>();
 
-                return Task.FromResult(response);
-            });
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
+            Action<BatchRequest<ProxyModels.PoolListOptions, AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>> extractPoolListAction =
+                (request) =>
+                {
+                    ProxyModels.PoolListOptions options = request.Options;
+                    requestFilter = options.Filter;
+                    requestSelect = options.Select;
+                    requestExpand = options.Expand;
+                };
+
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(responseToUse: response, requestAction: extractPoolListAction);
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor };
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor };
 
             cmdlet.ExecuteCmdlet();
 
