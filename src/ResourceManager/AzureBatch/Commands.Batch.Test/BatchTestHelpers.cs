@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> CreateCloudTaskListResponse(IEnumerable<string> taskIds)
         {
             var response = new AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>(); 
-            response.Response.StatusCode= HttpStatusCode.OK;
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.CloudTask> tasks = new List<ProxyModels.CloudTask>();
 

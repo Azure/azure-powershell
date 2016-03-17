@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.TargetOSVersion = "targetOS";
 
             // Don't go to the service on an Upgrade OS call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<PoolUpgradeOSOptions, AzureOperationHeaderResponse<PoolUpgradeOSHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<PoolUpgradeOSParameter, PoolUpgradeOSOptions, AzureOperationHeaderResponse<PoolUpgradeOSHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

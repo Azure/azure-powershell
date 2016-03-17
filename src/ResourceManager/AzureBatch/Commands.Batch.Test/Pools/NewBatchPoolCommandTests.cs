@@ -55,10 +55,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.Id = "testPool";
             cmdlet.VirtualMachineSize = "small";
-            cmdlet.OSFamily = "4";
 
             // Don't go to the service on an Add CloudPool call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<PoolAddOptions, AzureOperationHeaderResponse<PoolAddHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<PoolAddParameter, PoolAddOptions, AzureOperationHeaderResponse<PoolAddHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set
