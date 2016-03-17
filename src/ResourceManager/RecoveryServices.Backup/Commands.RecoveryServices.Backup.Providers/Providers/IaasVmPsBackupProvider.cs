@@ -18,14 +18,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class IaasVmPsBackupProvider : IPsBackupProvider
     {
+        ProviderData ProviderData { get; set; }
+        HydraAdapter.HydraAdapter HydraAdapter { get; set; }
+
         public void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter)
         {
-            throw new NotImplementedException();
+            this.ProviderData = providerData;
+            this.HydraAdapter = hydraAdapter;
         }
 
         public BaseRecoveryServicesJobResponse EnableProtection()
@@ -76,6 +82,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public void DeletePolicy()
         {
             throw new NotImplementedException();
+        }
+
+        public List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
+        {
+            string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
+            ContainerRegistrationStatus status = (ContainerRegistrationStatus)this.ProviderData.ProviderParameters[ContainerParams.Status];
+            ARSVault vault = (ARSVault)this.ProviderData.ProviderParameters[ContainerParams.Vault];
+            string resourceGroupName = (string)this.ProviderData.ProviderParameters[ContainerParams.ResourceGroupName];
+
+            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
+
+            // 1. Filter by Name
+            queryParams.FriendlyName = name;
+
+            // 2. Filter by ContainerType
+            queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
+
+            // 3. Filter by Status
+            queryParams.RegistrationStatus = status.ToString();
+
+            var listResponse = HydraAdapter.ListContainers(vault.ResouceGroupName, vault.Name, queryParams);
+
+            List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
+
+            // 4. Filter by RG Name
+            if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                containerModels = containerModels.Where(containerModel =>
+                    (containerModel as AzureRmRecoveryServicesIaasVmContainer).ResourceGroupName == resourceGroupName).ToList();
+            }
+
+            return containerModels;
         }
     }
 }

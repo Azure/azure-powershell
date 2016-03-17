@@ -50,42 +50,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
+            {
+                base.ExecuteCmdlet();
+
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                {  
+                    {ContainerParams.Vault, Vault},
+                    {ContainerParams.ContainerType, ContainerType},
+                    {ContainerParams.Name, Name},
+                    {ContainerParams.ResourceGroupName, ResourceGroupName},
+                    {ContainerParams.Status, Status},
+                }, HydraAdapter);
+
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType);
+                var containerModels = psBackupProvider.ListProtectionContainers();
+
+                if (containerModels.Count == 1)
                 {
-                    base.ExecuteCmdlet();
-
-                    ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
-
-                    // 1. Filter by Name
-                    queryParams.FriendlyName = Name;
-
-                    // 2. Filter by ContainerType
-                    queryParams.ProviderType = HydraHelpers.GetHydraProviderType(ContainerType);
-
-                    // 3. Filter by Status
-                    queryParams.RegistrationStatus = Status.ToString();
-
-                    var listResponse = HydraAdapter.ListContainers(Vault.ResouceGroupName, Vault.Name, queryParams);
-
-                    List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
-
-                    // NOTE: Should move this to provider?
-                    // 4. Filter by RG Name
-                    if (ContainerType == Models.ContainerType.AzureVM &&
-                        !string.IsNullOrEmpty(ResourceGroupName))
-                    {
-                        containerModels = containerModels.Where(containerModel =>
-                            (containerModel as AzureRmRecoveryServicesIaasVmContainer).ResourceGroupName == ResourceGroupName).ToList();
-                    }
-
-                    if (containerModels.Count == 1)
-                    {
-                        WriteObject(containerModels.First());
-                    }
-                    else
-                    {
-                        WriteObject(containerModels);
-                    }
-                });
+                    WriteObject(containerModels.First());
+                }
+                else
+                {
+                    WriteObject(containerModels);
+                }
+            });
         }
     }
 }
