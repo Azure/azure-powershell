@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -103,8 +104,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             //we need to fetch the list of RPs
             RecoveryPointQueryParameters queryFilter = new RecoveryPointQueryParameters();
-            queryFilter.StartDate = HydraHelpers.GetDateTimeStringForService(startDate);
-            queryFilter.EndDate = HydraHelpers.GetDateTimeStringForService(endDate);
+            queryFilter.StartDate = CommonHelpers.GetDateTimeStringForService(startDate);
+            queryFilter.EndDate = CommonHelpers.GetDateTimeStringForService(endDate);
             RecoveryPointListResponse rpListResponse = null;
             rpListResponse = hydraAdapter.GetRecoveryPoints(containerName, protectedItemName, queryFilter);
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse);
