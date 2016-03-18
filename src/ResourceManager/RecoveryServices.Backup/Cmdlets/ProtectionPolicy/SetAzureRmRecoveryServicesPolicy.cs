@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -45,32 +46,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            // Validate policy name
-            PolicyCmdletHelpers.ValidateProtectionPolicyName(Policy.Name);
-
-            // Validate if policy already exists
-            string rgName = "";  // TBD
-            string resourceName = "";  // TBD
-            ProtectionPolicyResponse servicePolicy = PolicyCmdletHelpers.GetProtectionPolicyByName(
-                                                      Policy.Name, HydraAdapter, rgName, resourceName);
-            if (servicePolicy == null)
+            ExecutionBlock(() =>
             {
-                throw new ArgumentException("Policy doesn't exist with this name:" + Policy.Name);
-            }
+                base.ExecuteCmdlet();
 
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-            { 
-                {PolicyParams.ProtectionPolicy, Policy},
-                {PolicyParams.RetentionPolicy, RetentionPolicy},
-                {PolicyParams.SchedulePolicy, SchedulePolicy},                
-            }, HydraAdapter);
+                // Validate policy name
+                PolicyCmdletHelpers.ValidateProtectionPolicyName(Policy.Name);
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType, 
-                                                                                     Policy.BackupManagementType);            
-            // now convert hydraPolicy to PSObject
-            WriteObject(psBackupProvider.ModifyPolicy());
+                // Validate if policy already exists               
+                ProtectionPolicyResponse servicePolicy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                                              Policy.Name, HydraAdapter);
+                if (servicePolicy == null)
+                {
+                    throw new ArgumentException(string.Format(Resources.PolicyNotFound, Policy.Name));
+                }
+
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                { 
+                    {PolicyParams.ProtectionPolicy, Policy},
+                    {PolicyParams.RetentionPolicy, RetentionPolicy},
+                    {PolicyParams.SchedulePolicy, SchedulePolicy},                
+                }, HydraAdapter);
+
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType,
+                                                                                         Policy.BackupManagementType);
+                // now convert hydraPolicy to PSObject
+                WriteObject(psBackupProvider.ModifyPolicy());
+            });
         }
     }
 }

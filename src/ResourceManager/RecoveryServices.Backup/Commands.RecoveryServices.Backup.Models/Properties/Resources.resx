@@ -144,4 +144,46 @@
   <data name="WebException" xml:space="preserve">
     <value>Received WebException, Response: {0}, Status: {1}</value>
   </data>
+  <data name="DaysofTheWeekInWeeklyRetentionException" xml:space="preserve">
+    <value>The DaysOfWeek specified in a weekly retention schedule should be same as of DaysOfWeek value specified in the backup schedule</value>
+  </data>
+  <data name="MonthlyYearlyRetentionDaysOfWeekException" xml:space="preserve">
+    <value>The DaysOfWeek specified for monthly and yearly retention policies should be a subset of the DaysOfWeek value specified in the backup schedule</value>
+  </data>
+  <data name="PolicyAlreadyExist" xml:space="preserve">
+    <value>A protection policy with the specified name already exists: {0}</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Protection Policy not found with name: {0}</value>
+  </data>
+  <data name="ProtectionPolicyNameException" xml:space="preserve">
+    <value>The protection policy name should contain alphanumeric characters and cannot start with a number</value>
+  </data>
+  <data name="ProtectionPolicyNameLengthException" xml:space="preserve">
+    <value>The protection policy name must contain between 3 and 150 characters</value>
+  </data>
+  <data name="UnsupportedWorkloadBackupManagementTypeException" xml:space="preserve">
+    <value>Unsupported combination for WorkloadType: {0}, BackupManagementType:{1}</value>
+  </data>
+  <data name="UnsupportedWorkloadTypeException" xml:space="preserve">
+    <value>Unsupported WorkloadType: {0}</value>
+  </data>
+  <data name="WeeklyRetentionPolicyDaysOfWeekException" xml:space="preserve">
+    <value>For a weekly retention policy, using the DaysOfWeek parameter is mandatory</value>
+  </data>
+  <data name="WeeklyScheduleException" xml:space="preserve">
+    <value>For a weekly backup schedule, setting a weekly retention policy is mandatory</value>
+  </data>
+  <data name="WeeklyScheduleRunDaysException" xml:space="preserve">
+    <value>For a weekly backup schedule, using the DaysOfWeek parameter is mandatory</value>
+  </data>
+  <data name="WeeklyScheduleWithDailyException" xml:space="preserve">
+    <value>For a weekly backup schedule, setting a daily retention policy is not allowed</value>
+  </data>
+  <data name="AzureVMUnsupportedBackupManagementTypeException" xml:space="preserve">
+    <value>BackupManagementType value should be empty or AzureVM for WorkloadType=AzureVM</value>
+  </data>
+  <data name="BothRetentionAndSchedulePoliciesEmpty" xml:space="preserve">
+    <value>Both RetentionPolicy and SchedulePolicy are empty, nothing to update</value>
+  </data>
 </root>

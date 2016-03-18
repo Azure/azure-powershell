@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -73,10 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureRmRecoveryServicesRetentionPolicyBase retentionPolicy = (AzureRmRecoveryServicesRetentionPolicyBase)
                                                  ProviderData.ProviderParameters[PolicyParams.RetentionPolicy];
             AzureRmRecoveryServicesSchedulePolicyBase schedulePolicy = (AzureRmRecoveryServicesSchedulePolicyBase)
-                                                 ProviderData.ProviderParameters[PolicyParams.SchedulePolicy];
-            string resourceName = (string)ProviderData.ProviderParameters[PolicyParams.ResourceName];
-            string resourceGroupName = (string)ProviderData.ProviderParameters[PolicyParams.ResourceGroupName];
-
+                                                 ProviderData.ProviderParameters[PolicyParams.SchedulePolicy];           
 
             // do validations
             ValidateAzureVMWorkloadType(workloadType);
@@ -84,6 +82,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // validate both RetentionPolicy and SchedulePolicy
             ValidateAzureVMRetentionPolicy(retentionPolicy);
             ValidateAzureVMSchedulePolicy(schedulePolicy);
+
+            // Now validate both RetentionPolicy and SchedulePolicy matches or not
+            PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                                (AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
+                                (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy);
 
             // construct Hydra policy request            
             ProtectionPolicyRequest hydraRequest = new ProtectionPolicyRequest()
@@ -101,8 +104,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             };
 
             return HydraAdapter.CreateOrUpdateProtectionPolicy(
-                                 resourceGroupName,
-                                 resourceName,
                                  policyName,
                                  hydraRequest);
         }
@@ -115,16 +116,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                                  ProviderData.ProviderParameters[PolicyParams.SchedulePolicy];
             AzureRmRecoveryServicesPolicyBase policy = (AzureRmRecoveryServicesPolicyBase)
                                                  ProviderData.ProviderParameters[PolicyParams.ProtectionPolicy];
-            string resourceName = (string)ProviderData.ProviderParameters[PolicyParams.ResourceName];
-            string resourceGroupName = (string)ProviderData.ProviderParameters[PolicyParams.ResourceGroupName];
-
+           
             // do validations
             ValidateAzureVMProtectionPolicy(policy);
 
             // RetentionPolicy and SchedulePolicy both should not be empty
             if (retentionPolicy == null && schedulePolicy == null)
             {
-                throw new ArgumentException("Both RetentionPolicy and SchedulePolicy are Empty .. nothing to update");
+                throw new ArgumentException(Resources.BothRetentionAndSchedulePoliciesEmpty);
             }
 
             // validate RetentionPolicy and SchedulePolicy
@@ -160,8 +159,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             };
 
             ProtectionPolicyResponse response = HydraAdapter.CreateOrUpdateProtectionPolicy(
-                                                               resourceGroupName,
-                                                               resourceName,
                                                                policy.Name,
                                                                hydraRequest);
 
