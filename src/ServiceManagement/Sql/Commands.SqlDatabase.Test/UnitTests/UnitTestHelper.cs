@@ -247,7 +247,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
         {
             // Import the test manifest file
             powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
-            powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\Storage\Azure.Storage.psd1");
+            powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1");
             powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
             Assert.IsTrue(powershell.Streams.Error.Count == 0);
         }

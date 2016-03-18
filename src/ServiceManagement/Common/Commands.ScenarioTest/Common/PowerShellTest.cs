@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             if (commandMode == AzureModule.AzureServiceManagement)
             {
                 this.modules.Add(FileUtilities.GetContentFilePath(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
-                this.modules.Add(FileUtilities.GetContentFilePath(@"Storage\Azure.Storage.psd1"));
+                this.modules.Add(FileUtilities.GetContentFilePath(@"Storage\Azure.Storage\Azure.Storage.psd1"));
                 this.modules.Add(FileUtilities.GetContentFilePath(@"ServiceManagement\Azure\Azure.psd1"));
             }
             else if (commandMode == AzureModule.AzureResourceManager)

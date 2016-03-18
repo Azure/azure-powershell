@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 List<string> modules = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\ServiceManagement"), "*.ps1").ToList();
                 modules.Add("Common.ps1");
                 modules.Add(@"..\..\..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
-                modules.Add(@"..\..\..\..\..\Package\Debug\Storage\Azure.Storage.psd1");
+                modules.Add(@"..\..\..\..\..\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1");
                 modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
                 modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1");
                 modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\PIR.psd1");
