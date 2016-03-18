@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesSchedulePolicyObject"), OutputType(typeof(AzureRmRecoveryServicesSchedulePolicyBase))]
     class GetAzureRmRecoveryServicesSchedulePolicyObject : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "")]
+        [Parameter(Mandatory = true, HelpMessage = "Temp Help message. Need to update it")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(ContainerType.AzureVM.ToString())]
         public WorkloadType WorkloadType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "")]
+        [Parameter(Mandatory = false, HelpMessage = "Temp Help message. Need to update it")]
         [ValidateNotNullOrEmpty]
         public BackupManagementType BackupManagementType { get; set; }
 
@@ -41,10 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-                {  
-                    {PolicyParams.BackupManagementType, BackupManagementType},             
-                }, HydraAdapter);
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>(), HydraAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                 WriteObject(psBackupProvider.GetDefaultSchedulePolicyObject());
