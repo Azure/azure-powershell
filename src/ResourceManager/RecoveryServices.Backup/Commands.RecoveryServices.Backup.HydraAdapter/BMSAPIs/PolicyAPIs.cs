@@ -24,50 +24,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
     public partial class HydraAdapter
     {
         public ProtectionPolicyResponse CreateOrUpdateProtectionPolicy(
-                string resourceGroupName,
-                string resourceName,
                 string policyName,
                 ProtectionPolicyRequest request)
-        {
-            resourceName = BmsAdapter.GetResourceName();
-            resourceGroupName = BmsAdapter.GetResourceName();
-
+        {           
             return BmsAdapter.Client.ProtectionPolicy.CreateOrUpdateAsync(
-                                     resourceGroupName,
-                                     resourceName, 
+                                     BmsAdapter.GetResourceGroupName(),
+                                     BmsAdapter.GetResourceName(), 
                                      policyName, 
                                      request,
                                      BmsAdapter.GetCustomRequestHeaders(),
                                      BmsAdapter.CmdletCancellationToken).Result;            
         }
 
-        public ProtectionPolicyResponse GetProtectionPolicy(
-                string resourceGroupName,
-                string resourceName,
-                string policyName)
+        public ProtectionPolicyResponse GetProtectionPolicy(string policyName)
         {
-            resourceName = BmsAdapter.GetResourceName();
-            resourceGroupName = BmsAdapter.GetResourceName();
-
             return BmsAdapter.Client.ProtectionPolicy.GetAsync(
-                                     resourceGroupName,
-                                     resourceName,
+                                     BmsAdapter.GetResourceGroupName(),
+                                     BmsAdapter.GetResourceName(),
                                      policyName,
                                      BmsAdapter.GetCustomRequestHeaders(),
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
 
         public ProtectionPolicyListResponse ListProtectionPolicy(
-               string resourceGroupName,
-               string resourceName,
-               ProtectionPolicyQueryParameters queryFilter)
-        {
-            resourceName = BmsAdapter.GetResourceName();
-            resourceGroupName = BmsAdapter.GetResourceName();
-
+                                            ProtectionPolicyQueryParameters queryFilter)
+        {           
             return BmsAdapter.Client.ProtectionPolicy.ListAsync(
-                                     resourceGroupName,
-                                     resourceName,
+                                     BmsAdapter.GetResourceGroupName(),
+                                     BmsAdapter.GetResourceName(),
                                      queryFilter,
                                      BmsAdapter.GetCustomRequestHeaders(),
                                      BmsAdapter.CmdletCancellationToken).Result;

@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public virtual void Validate()
         {
+            base.Validate();
+
             SchedulePolicy.Validate();
             RetentionPolicy.Validate();
         }
