@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
@@ -34,37 +34,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             this.HydraAdapter = hydraAdapter;
         }
 
-        public HydraModel.BaseRecoveryServicesJobResponse EnableProtection()
+        public BaseRecoveryServicesJobResponse EnableProtection()
         {
             throw new NotImplementedException();
         }
 
-        public HydraModel.BaseRecoveryServicesJobResponse DisableProtection()
+        public BaseRecoveryServicesJobResponse DisableProtection()
         {
             throw new NotImplementedException();
         }
 
-        public HydraModel.BaseRecoveryServicesJobResponse TriggerBackup()
+        public BaseRecoveryServicesJobResponse TriggerBackup()
         {
             throw new NotImplementedException();
         }
 
-        public HydraModel.BaseRecoveryServicesJobResponse TriggerRestore()
+        public BaseRecoveryServicesJobResponse TriggerRestore()
         {
             throw new NotImplementedException();
         }
 
-        public HydraModel.ProtectedItemResponse GetProtectedItem()
+        public ProtectedItemResponse GetProtectedItem()
         {
             throw new NotImplementedException();
         }
 
-        public HydraModel.RecoveryPointResponse GetRecoveryPoint()
+        public RecoveryPointResponse GetRecoveryPoint()
         {
             throw new NotImplementedException();
         }
 
-        public HydraModel.ProtectionPolicyResponse CreatePolicy()
+        public ProtectionPolicyResponse CreatePolicy()
         {
             string policyName = (string)ProviderData.ProviderParameters[PolicyParams.PolicyName];
             WorkloadType workloadType = (WorkloadType)ProviderData.ProviderParameters[PolicyParams.WorkloadType];
@@ -86,11 +86,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ValidateAzureVMSchedulePolicy(schedulePolicy);
 
             // construct Hydra policy request            
-            HydraModel.ProtectionPolicyRequest hydraRequest = new HydraModel.ProtectionPolicyRequest()
+            ProtectionPolicyRequest hydraRequest = new ProtectionPolicyRequest()
             {
-                Item = new HydraModel.ProtectionPolicyResource()
+                Item = new ProtectionPolicyResource()
                 {
-                    Properties = new HydraModel.AzureIaaSVMProtectionPolicy()
+                    Properties = new AzureIaaSVMProtectionPolicy()
                     {
                         RetentionPolicy = PolicyHelpers.GetHydraLongTermRetentionPolicy(
                                                 (AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy),
@@ -145,11 +145,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (AzureRmRecoveryServicesSimpleSchedulePolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy);
 
             // construct Hydra policy request            
-            HydraModel.ProtectionPolicyRequest hydraRequest = new HydraModel.ProtectionPolicyRequest()
+            ProtectionPolicyRequest hydraRequest = new ProtectionPolicyRequest()
             {
-                Item = new HydraModel.ProtectionPolicyResource()
+                Item = new ProtectionPolicyResource()
                 {
-                    Properties = new HydraModel.AzureIaaSVMProtectionPolicy()
+                    Properties = new AzureIaaSVMProtectionPolicy()
                     {
                         RetentionPolicy = PolicyHelpers.GetHydraLongTermRetentionPolicy(
                                   (AzureRmRecoveryServicesLongTermRetentionPolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy),
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             };
 
-            HydraModel.ProtectionPolicyResponse response = HydraAdapter.CreateOrUpdateProtectionPolicy(
+            ProtectionPolicyResponse response = HydraAdapter.CreateOrUpdateProtectionPolicy(
                                                                resourceGroupName,
                                                                resourceName,
                                                                policy.Name,
@@ -188,13 +188,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ARSVault vault = (ARSVault)this.ProviderData.ProviderParameters[ContainerParams.Vault];
             string resourceGroupName = (string)this.ProviderData.ProviderParameters[ContainerParams.ResourceGroupName];
 
-            HydraModel.ProtectionContainerListQueryParams queryParams = new HydraModel.ProtectionContainerListQueryParams();
+            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
 
             // 1. Filter by Name
             queryParams.FriendlyName = name;
 
             // 2. Filter by ContainerType
-            queryParams.ProviderType = HydraModel.ProviderType.AzureIaasVM.ToString();
+            queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
 
             // 3. Filter by Status
             queryParams.RegistrationStatus = status.ToString();
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return containerModels;
         }
 
-        public HydraModel.ProtectionPolicyResponse GetPolicy()
+        public ProtectionPolicyResponse GetPolicy()
         {
             throw new NotImplementedException();
         }

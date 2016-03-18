@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
@@ -25,25 +25,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     public class ConversionHelpers
     {
         #region containers
-        public static CmdletModel.AzureRmRecoveryServicesContainerBase GetContainerModel(ProtectionContainerResource protectionContainer)
+        public static AzureRmRecoveryServicesContainerBase GetContainerModel(ProtectionContainerResource protectionContainer)
         {
-            CmdletModel.AzureRmRecoveryServicesContainerBase containerModel = null;
+            AzureRmRecoveryServicesContainerBase containerModel = null;
 
             if (protectionContainer != null &&
                 protectionContainer.Properties != null)
             {
                 if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectionContainer)))
                 {
-                    containerModel = new CmdletModel.AzureRmRecoveryServicesIaasVmContainer(protectionContainer);
+                    containerModel = new AzureRmRecoveryServicesIaasVmContainer(protectionContainer);
                 }
             }
 
             return containerModel;
         }
 
-        public static List<CmdletModel.AzureRmRecoveryServicesContainerBase> GetContainerModelList(IEnumerable<ProtectionContainerResource> protectionContainers)
+        public static List<AzureRmRecoveryServicesContainerBase> GetContainerModelList(IEnumerable<ProtectionContainerResource> protectionContainers)
         {
-            List<CmdletModel.AzureRmRecoveryServicesContainerBase> containerModels = new List<CmdletModel.AzureRmRecoveryServicesContainerBase>();
+            List<AzureRmRecoveryServicesContainerBase> containerModels = new List<AzureRmRecoveryServicesContainerBase>();
 
             foreach (var protectionContainer in protectionContainers)
             {
@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #endregion
 
         #region policy
-        public static CmdletModel.AzureRmRecoveryServicesPolicyBase GetPolicyModel(ProtectionPolicyResource hydraResponse)
+        public static AzureRmRecoveryServicesPolicyBase GetPolicyModel(ProtectionPolicyResource hydraResponse)
         {
-            CmdletModel.AzureRmRecoveryServicesPolicyBase policyModel = null;
+            AzureRmRecoveryServicesPolicyBase policyModel = null;
 
             if(hydraResponse == null || hydraResponse.Properties == null)
             {
@@ -81,10 +81,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     return null;
                 }
 
-                policyModel = new CmdletModel.AzureRmRecoveryServicesIaasVmPolicy();
-                CmdletModel.AzureRmRecoveryServicesIaasVmPolicy iaasPolicyModel = policyModel as CmdletModel.AzureRmRecoveryServicesIaasVmPolicy;
-                iaasPolicyModel.WorkloadType = CmdletModel.WorkloadType.AzureVM;
-                iaasPolicyModel.BackupManagementType = CmdletModel.BackupManagementType.AzureVM;
+                policyModel = new AzureRmRecoveryServicesIaasVmPolicy();
+                AzureRmRecoveryServicesIaasVmPolicy iaasPolicyModel = policyModel as AzureRmRecoveryServicesIaasVmPolicy;
+                iaasPolicyModel.WorkloadType = WorkloadType.AzureVM;
+                iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
                 iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((LongTermRetentionPolicy)
                                                   ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy);
                 iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicyPolicy((SimpleSchedulePolicy)
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return policyModel;
         }
 
-        public static List<CmdletModel.AzureRmRecoveryServicesPolicyBase> GetPolicyModelList(ProtectionPolicyListResponse hydraListResponse)
+        public static List<AzureRmRecoveryServicesPolicyBase> GetPolicyModelList(ProtectionPolicyListResponse hydraListResponse)
         {
             if(hydraListResponse == null || hydraListResponse.ItemList == null ||
                hydraListResponse.ItemList.Value == null || hydraListResponse.ItemList.Value.Count == 0)
@@ -111,8 +111,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 return null;
             }
 
-            List<CmdletModel.AzureRmRecoveryServicesPolicyBase> policyModels = new List<CmdletModel.AzureRmRecoveryServicesPolicyBase>();
-            CmdletModel.AzureRmRecoveryServicesPolicyBase policyModel = null;
+            List<AzureRmRecoveryServicesPolicyBase> policyModels = new List<AzureRmRecoveryServicesPolicyBase>();
+            AzureRmRecoveryServicesPolicyBase policyModel = null;
 
             foreach(ProtectionPolicyResource resource in hydraListResponse.ItemList.Value)
             {
