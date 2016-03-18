@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {   
@@ -35,31 +36,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             if (policyName.Length < PolicyConstants.MinPolicyNameLength || 
                 policyName.Length > PolicyConstants.MaxPolicyNameLength)
             {
-                throw new ArgumentException(string.Format(
-                                   "PolicyName length exception - should be within {0} and {1}",
-                                    PolicyConstants.MinPolicyNameLength,
-                                    PolicyConstants.MaxPolicyNameLength));                
+                throw new ArgumentException(Resources.ProtectionPolicyNameLengthException);
             }
 
             if (!rgx.IsMatch(policyName))
             {
-                var exception = new ArgumentException(
-                    "The protection policy name should contain alphanumeric characters " +
-                    "and cannot start with a number");
-                throw exception;
+                throw new ArgumentException(Resources.ProtectionPolicyNameException);
             }
         }
 
         public static ProtectionPolicyResponse GetProtectionPolicyByName(string policyName,
-                                                 HydraAdapter.HydraAdapter hydraAdapter,
-                                                 string resourceGroupName,
-                                                 string resourceName)
+                                                 HydraAdapter.HydraAdapter hydraAdapter)
         {
             ProtectionPolicyResponse response = null;
 
             try
             {
-                response = hydraAdapter.GetProtectionPolicy(resourceGroupName, resourceName, policyName);
+                response = hydraAdapter.GetProtectionPolicy(policyName);
             }
             catch
             {

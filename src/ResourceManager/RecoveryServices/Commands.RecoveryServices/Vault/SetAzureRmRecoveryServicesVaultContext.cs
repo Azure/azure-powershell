@@ -14,29 +14,26 @@
 
 using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// To set RecoveryServicesVaultContext
+    /// Used to set RecoveryServices Vault Context
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesVaultContext")]
-    public class SetAzureRmRecoveryServicesVaultContext : RecoveryServicesBackupCmdletBase
+    public class SetAzureRmRecoveryServicesVaultContext : RecoveryServicesCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ARSVault Vault { get; set; }        
 
         public override void ExecuteCmdlet()
         {
-            ExecutionBlock(() =>
+            try
             {
                 base.ExecuteCmdlet();
 
@@ -51,19 +48,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if (string.IsNullOrEmpty(Vault.ResouceGroupName))
                 {
                     throw new ArgumentException(
-                        Properties.Resources.CloudServiceNameNullOrEmpty,
+                        Properties.Resources.ResourceGroupNameNullOrEmpty,
                         Vault.ResouceGroupName);
                 }
 
-                AzureRmRecoveryServicesVaultCreds vaultCreds = new AzureRmRecoveryServicesVaultCreds(Vault.Name,
-                                                               Vault.ResouceGroupName, Vault.Location);
+                var vault = RecoveryServicesClient.GetVault(Vault.ResouceGroupName, Vault.Name);
+                if(vault == null)
+                {
+                    throw new ArgumentException(
+                        string.Format(Properties.Resources.VaultNotFound, Vault.Name),
+                        Vault.ResouceGroupName);
+                }
 
-                ClientProxyBase.UpdateCurrentVaultContext(vaultCreds);
-
-                //Add validation to check vault exist or not (see if we can resuse existing ASR code).
-
-                this.WriteObject(vaultCreds);
-            });
+                Utilities.UpdateCurrentVaultContext(Vault);
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
+            }           
            
         }
     }

@@ -26,38 +26,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         } 
     }
 
-    /// <summary>
-    /// Represents Recovery Services Vault Credentials Class
-    /// </summary>
-    public class AzureRmRecoveryServicesVaultCreds : AzureRmRecoveryServicesObjectBase
-    {
-        /// <summary>
-        /// Name of the recovery services vault
-        /// </summary>
-        public string ResourceName { get; set; }
-
-        /// <summary>
-        /// Name of the resource group
-        /// </summary>
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Location of the recovery services vault
-        /// </summary>
-        public string Location { get; set; }
-
-        public AzureRmRecoveryServicesVaultCreds()
-        {           
-        }
-
-        public AzureRmRecoveryServicesVaultCreds(string resourceName, string resourceGroupName, string location)
-        {
-            ResourceName = resourceName;
-            ResourceGroupName = resourceGroupName;
-            Location = location;
-        }
-    }
-
     public class AzureRmRecoveryServicesContainerContext : AzureRmRecoveryServicesObjectBase
     {
         public ContainerType ContainerType { get; set; }
