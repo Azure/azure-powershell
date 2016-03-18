@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All retention schedules are Empty in retentionPolicy. Alteast one is expected..
+        /// </summary>
+        public static string AllRetentionSchedulesEmptyException {
+            get {
+                return ResourceManager.GetString("AllRetentionSchedulesEmptyException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Received ArgumentException.
         /// </summary>
         public static string ArgumentException {
@@ -84,6 +93,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string AzureVMUnsupportedBackupManagementTypeException {
             get {
                 return ResourceManager.GetString("AzureVMUnsupportedBackupManagementTypeException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RetentionTime in retention schedule should be same as backup time in SchedulePolicy.
+        /// </summary>
+        public static string BackupAndRetentionTimesMismatch {
+            get {
+                return ResourceManager.GetString("BackupAndRetentionTimesMismatch", resourceCulture);
             }
         }
         
@@ -115,6 +133,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Daily Retention Schedule can&apos;t be null if Daily Backup Schedule is enabled.
+        /// </summary>
+        public static string DailyRetentionScheduleNullException {
+            get {
+                return ResourceManager.GetString("DailyRetentionScheduleNullException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RetentionPolicy: IsDailyScheduleEnabled=true but DailySchedule is NULL.
+        /// </summary>
+        public static string DailyScheduleEnabledButScheduleIsNullException {
+            get {
+                return ResourceManager.GetString("DailyScheduleEnabledButScheduleIsNullException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The DaysOfWeek specified in a weekly retention schedule should be same as of DaysOfWeek value specified in the backup schedule.
         /// </summary>
         public static string DaysofTheWeekInWeeklyRetentionException {
@@ -124,11 +160,92 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Empty response received from Service/Hydra.
+        /// </summary>
+        public static string EmptyHydraResponseException {
+            get {
+                return ResourceManager.GetString("EmptyHydraResponseException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Caught exception, type: {0}.
         /// </summary>
         public static string ExceptionInExecution {
             get {
                 return ResourceManager.GetString("ExceptionInExecution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ONE BackupTime is Allowed in SchedulePolicy.
+        /// </summary>
+        public static string InvalidBackupTimesInSchedulePolicyException {
+            get {
+                return ResourceManager.GetString("InvalidBackupTimesInSchedulePolicyException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InvalidDurationType - {0}.
+        /// </summary>
+        public static string InvalidDurationTypeException {
+            get {
+                return ResourceManager.GetString("InvalidDurationTypeException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid ProtectionPolicy - either NULL or NOT of type: {0}.
+        /// </summary>
+        public static string InvalidProtectionPolicyException {
+            get {
+                return ResourceManager.GetString("InvalidProtectionPolicyException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid RetentionPolicy - either NULL or NOT of type: {0}.
+        /// </summary>
+        public static string InvalidRetentionPolicyException {
+            get {
+                return ResourceManager.GetString("InvalidRetentionPolicyException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ONE RetentionTime is Allowed in RententionSchedules.
+        /// </summary>
+        public static string InvalidRetentionTimesInPolicyException {
+            get {
+                return ResourceManager.GetString("InvalidRetentionTimesInPolicyException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid SchedulePolicy - either NULL or NOT of type: {0}.
+        /// </summary>
+        public static string InvalidSchedulePolicyException {
+            get {
+                return ResourceManager.GetString("InvalidSchedulePolicyException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RetentionPolicy: IsMonthlyScheduleEnabled=true but MonthlySchedule is NULL.
+        /// </summary>
+        public static string MonthlyScheduleEnabledButScheduleIsNullException {
+            get {
+                return ResourceManager.GetString("MonthlyScheduleEnabledButScheduleIsNullException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In Monthly and Yearly retention schedules, RetentionFormatType cannot be &apos;Daily&apos; if Weekly BackupSchedule is selected.
+        /// </summary>
+        public static string MonthlyYearlyInvalidDailyRetentionFormatTypeException {
+            get {
+                return ResourceManager.GetString("MonthlyYearlyInvalidDailyRetentionFormatTypeException", resourceCulture);
             }
         }
         
@@ -144,18 +261,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A protection policy with the specified name already exists: {0}.
         /// </summary>
-        public static string PolicyAlreadyExist {
+        public static string PolicyAlreadyExistException {
             get {
-                return ResourceManager.GetString("PolicyAlreadyExist", resourceCulture);
+                return ResourceManager.GetString("PolicyAlreadyExistException", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Protection Policy not found with name: {0}.
         /// </summary>
-        public static string PolicyNotFound {
+        public static string PolicyNotFoundException {
             get {
-                return ResourceManager.GetString("PolicyNotFound", resourceCulture);
+                return ResourceManager.GetString("PolicyNotFoundException", resourceCulture);
             }
         }
         
@@ -187,6 +304,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999.
+        /// </summary>
+        public static string RetentionDurationCountInvalidException {
+            get {
+                return ResourceManager.GetString("RetentionDurationCountInvalidException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RecoveryServicesBackupVault.Name.
         /// </summary>
         public static string RsVaultResNameNullOrEmpty {
@@ -201,6 +327,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string RsVaultRGNameNullOrEmpty {
             get {
                 return ResourceManager.GetString("RsVaultRGNameNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected WorkloadType - expected:{0}, current:{1}.
+        /// </summary>
+        public static string UnExpectedWorkLoadTypeException {
+            get {
+                return ResourceManager.GetString("UnExpectedWorkLoadTypeException", resourceCulture);
             }
         }
         
@@ -232,38 +367,56 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For a weekly retention policy, using the DaysOfWeek parameter is mandatory.
+        ///   Looks up a localized string similar to For a weekly retention policy, DaysOfTheWeek is mandatory and should not contain duplicate entries.
         /// </summary>
-        public static string WeeklyRetentionPolicyDaysOfWeekException {
+        public static string WeeklyRetentionScheduleDaysOfWeekException {
             get {
-                return ResourceManager.GetString("WeeklyRetentionPolicyDaysOfWeekException", resourceCulture);
+                return ResourceManager.GetString("WeeklyRetentionScheduleDaysOfWeekException", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For a weekly backup schedule, setting a weekly retention policy is mandatory.
+        ///   Looks up a localized string similar to If Weekly backup schedule is enabled, Daily retention schedule should be null and Weekly retention schedule should not be null.
         /// </summary>
-        public static string WeeklyScheduleException {
+        public static string WeeklyRetentionScheduleNullException {
             get {
-                return ResourceManager.GetString("WeeklyScheduleException", resourceCulture);
+                return ResourceManager.GetString("WeeklyRetentionScheduleNullException", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to For a weekly backup schedule, using the DaysOfWeek parameter is mandatory.
         /// </summary>
-        public static string WeeklyScheduleRunDaysException {
+        public static string WeeklyScheduleDaysOfWeekException {
             get {
-                return ResourceManager.GetString("WeeklyScheduleRunDaysException", resourceCulture);
+                return ResourceManager.GetString("WeeklyScheduleDaysOfWeekException", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For a weekly backup schedule, setting a daily retention policy is not allowed.
+        ///   Looks up a localized string similar to RetentionPolicy: IsWeeklyScheduleEnabled=true but WeeklySchedule is NULL.
         /// </summary>
-        public static string WeeklyScheduleWithDailyException {
+        public static string WeeklyScheduleEnabledButScheduleIsNullException {
             get {
-                return ResourceManager.GetString("WeeklyScheduleWithDailyException", resourceCulture);
+                return ResourceManager.GetString("WeeklyScheduleEnabledButScheduleIsNullException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RetentionPolicy: IsYearlyScheduleEnabled=true but YearlySchedule is NULL.
+        /// </summary>
+        public static string YearlyScheduleEnabledButScheduleIsNullException {
+            get {
+                return ResourceManager.GetString("YearlyScheduleEnabledButScheduleIsNullException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MonthsOfYear list in YearlyRetentionSchedule should not be NULL and not contain duplicate entires.
+        /// </summary>
+        public static string YearlyScheduleMonthsOfYearException {
+            get {
+                return ResourceManager.GetString("YearlyScheduleMonthsOfYearException", resourceCulture);
             }
         }
     }

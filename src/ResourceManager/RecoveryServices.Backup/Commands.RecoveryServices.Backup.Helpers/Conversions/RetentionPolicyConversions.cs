@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using HydraModels = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -61,6 +62,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 ltrPolicy.YearlySchedule = GetPSLTRYearlySchedule(hydraRetPolicy.YearlySchedule);
             }
 
+            // safe side validate
+            ltrPolicy.Validate();
+
             return ltrPolicy;            
         }
 
@@ -97,8 +101,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     break;
 
                 default:
-                    throw new ArgumentException("Invalid DurationType:" +
-                                                 retentionDuration.DurationType.ToString());
+                    throw new ArgumentException(Resources.InvalidDurationTypeException,
+                                                retentionDuration.DurationType.ToString());
             }
 
             return daysCount;
@@ -127,8 +131,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     break;
 
                 default:
-                    throw new ArgumentException("Invalid DurationType:" +
-                                                 retentionDuration.DurationType.ToString());
+                    throw new ArgumentException(Resources.InvalidDurationTypeException,
+                                                retentionDuration.DurationType.ToString());
             }
 
             return weeksCount;
@@ -157,8 +161,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     break;
 
                 default:
-                    throw new ArgumentException("Invalid DurationType:" +
-                                                 retentionDuration.DurationType.ToString());
+                    throw new ArgumentException(Resources.InvalidDurationTypeException,
+                                                retentionDuration.DurationType.ToString());
             }
 
             return monthsCount;
@@ -187,8 +191,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     break;
 
                 default:
-                    throw new ArgumentException("Invalid DurationType:" +
-                                                 retentionDuration.DurationType.ToString());
+                    throw new ArgumentException(Resources.InvalidDurationTypeException,
+                                                retentionDuration.DurationType.ToString());
             }
 
             return yearsCount;

@@ -225,7 +225,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             if (type != WorkloadType.AzureVM)
             {
-                throw new ArgumentException("ExpectedWorkloadType = " + type.ToString());
+                throw new ArgumentException(string.Format(Resources.UnExpectedWorkLoadTypeException,
+                                            WorkloadType.AzureVM.ToString(),
+                                            type.ToString()));
             }
         }
 
@@ -233,7 +235,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesIaasVmPolicy))
             {
-                throw new ArgumentException("ProtectionPolicy is NULL or not of type AzureRmRecoveryServicesIaasVmPolicy");
+                throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
+                                            typeof(AzureRmRecoveryServicesIaasVmPolicy).ToString()));                
             }
 
             ValidateAzureVMWorkloadType(policy.WorkloadType);
@@ -246,7 +249,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesSimpleSchedulePolicy))
             {
-                throw new ArgumentException("SchedulePolicy is NULL or not of type AzureRmRecoveryServicesSimpleSchedulePolicy");
+                throw new ArgumentException(string.Format(Resources.InvalidSchedulePolicyException,
+                                            typeof(AzureRmRecoveryServicesSimpleSchedulePolicy).ToString()));                
             }
 
             // call validation
@@ -257,7 +261,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesLongTermRetentionPolicy))
             {
-                throw new ArgumentException("RetentionPolicy is NULL or not of type AzureRmRecoveryServicesLongTermRetentionPolicy");
+                throw new ArgumentException(string.Format(Resources.InvalidRetentionPolicyException,
+                                            typeof(AzureRmRecoveryServicesLongTermRetentionPolicy).ToString())); 
             }
 
             // call validation

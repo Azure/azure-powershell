@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                                      HydraAdapter);
                    if (policy == null)
                    {
-                       throw new ArgumentException(string.Format(Resources.PolicyNotFound, Name));
+                       throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
                    }
                    policyList.Add(ConversionHelpers.GetPolicyModel(policy.Item));
                }

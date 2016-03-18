@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                                                               Policy.Name, HydraAdapter);
                 if (servicePolicy == null)
                 {
-                    throw new ArgumentException(string.Format(Resources.PolicyNotFound, Policy.Name));
+                    throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Policy.Name));
                 }
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()

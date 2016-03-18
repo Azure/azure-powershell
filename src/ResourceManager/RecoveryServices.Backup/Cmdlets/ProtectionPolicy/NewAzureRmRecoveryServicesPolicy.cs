@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                // Validate if policy already exists               
                if (PolicyCmdletHelpers.GetProtectionPolicyByName(Name, HydraAdapter) != null)
                {
-                   throw new ArgumentException(string.Format(Resources.PolicyAlreadyExist, Name));
+                   throw new ArgumentException(string.Format(Resources.PolicyAlreadyExistException, Name));
                }
 
                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
