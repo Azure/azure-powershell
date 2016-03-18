@@ -54,18 +54,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 var modules = new List<string>
                 {
-                    "Resources\\DiagnosticsExtension\\DiagnosticsExtensionTests.ps1",
-                    "Resources\\ServiceManagement\\Common.ps1",
-                    "Common.ps1",
-                    @"..\..\..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1",
-                    @"..\..\..\..\..\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1",
-                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1",
                     @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1",
-                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\PIR.psd1"
+                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\PIR.psd1",
+                    "Resources\\ServiceManagement\\Common.ps1",
+                    "Resources\\DiagnosticsExtension\\DiagnosticsExtensionTests.ps1"
                 };
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(modules.ToArray());
+                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
 
                 helper.RunPowerShellTest(scripts);
             }
