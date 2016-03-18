@@ -32,5 +32,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionSharedKeyCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkGatewayConnectionWithBgpCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionWithBgpCRUD");
+        }
     }
 }

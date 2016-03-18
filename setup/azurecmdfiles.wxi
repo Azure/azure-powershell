@@ -1858,9 +1858,6 @@
                         <Component Id="cmp8D637393B06DDB4E95F9C9DE02FBDC88" Guid="*">
                             <File Id="fil2E0A33EC74AA6C08679F32E280E41EC3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
-                        <Component Id="cmpD70748C6F934F291B41467868246436F" Guid="*">
-                            <File Id="fil61F9393E7F2BF00B994B5674A27808B6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Web.Deployment.dll" />
-                        </Component>
                         <Component Id="cmp0352F7B00A97FE5B02477D6B4DAC6AAF" Guid="*">
                             <File Id="filFD863A0C2F2C528FAFB80B7E298762C4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
@@ -5374,7 +5371,6 @@
             <ComponentRef Id="cmpFEED527FE38FC11823CA6DF27008AD75" />
             <ComponentRef Id="cmpC7B3E3214E7ED8708906D8F3E0F9F476" />
             <ComponentRef Id="cmp8D637393B06DDB4E95F9C9DE02FBDC88" />
-            <ComponentRef Id="cmpD70748C6F934F291B41467868246436F" />
             <ComponentRef Id="cmp0352F7B00A97FE5B02477D6B4DAC6AAF" />
             <ComponentRef Id="cmp3F9778895366D6C753CEDF6DC18F265D" />
             <ComponentRef Id="cmpEBB62AC41F55737CBA5B67CD38320203" />
