@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (containerType)
             {
                 case CmdletModel.ContainerType.AzureVM:
-                    hydraContainerType = ProviderType.AzureIaasVM.ToString();
+                    hydraContainerType = ContainerType.IaasVMContainer.ToString();
                     break;
                 default:
                     break;
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (workloadType)
             {
                 case CmdletModel.WorkloadType.AzureVM:
-                    hydraWorkloadType = ProviderType.AzureIaasVM.ToString();
+                    hydraWorkloadType = WorkloadType.VM.ToString();
                     break;
                 default:
                     break;

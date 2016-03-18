@@ -81,6 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             else
             {
                 //ValidateMofifyProtectionRequest(item) -- TBD
+                // isComputeAzureVM =  IsComputeAzureVM(item.item.VirtualMachineId); -- TBD
                 string containerType = HydraHelpers.GetHydraContainerType(item.ContainerType);
                 string vmType = HydraHelpers.GetHydraWorkloadType(item.WorkloadType);
                 containerUri = string.Join(separator, new string[] { containerType, item.ContainerName });
