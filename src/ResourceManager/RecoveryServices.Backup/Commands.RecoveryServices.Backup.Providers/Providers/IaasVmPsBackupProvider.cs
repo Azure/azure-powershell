@@ -68,7 +68,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public ProtectionPolicyResponse CreatePolicy()
         {
             string policyName = (string)ProviderData.ProviderParameters[PolicyParams.PolicyName];
-            WorkloadType workloadType = (WorkloadType)ProviderData.ProviderParameters[PolicyParams.WorkloadType];
+            Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType workloadType = 
+                (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData.ProviderParameters[PolicyParams.WorkloadType];
             BackupManagementType backupManagementType = (BackupManagementType)ProviderData.ProviderParameters[
                                                                               PolicyParams.BackupManagementType];
             AzureRmRecoveryServicesRetentionPolicyBase retentionPolicy = (AzureRmRecoveryServicesRetentionPolicyBase)
@@ -221,12 +222,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         #region private
-        private void ValidateAzureVMWorkloadType(WorkloadType type)
+        private void ValidateAzureVMWorkloadType(Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType type)
         {
-            if (type != WorkloadType.AzureVM)
+            if (type != Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureVM)
             {
                 throw new ArgumentException(string.Format(Resources.UnExpectedWorkLoadTypeException,
-                                            WorkloadType.AzureVM.ToString(),
+                                            Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureVM.ToString(),
                                             type.ToString()));
             }
         }

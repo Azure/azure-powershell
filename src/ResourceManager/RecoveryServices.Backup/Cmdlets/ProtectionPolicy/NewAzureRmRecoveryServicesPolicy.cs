@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                psBackupProvider.CreatePolicy();
 
                // now get the created policy and return
-               ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+               HydraModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
                                                          Name,
                                                          HydraAdapter);
                // now convert hydraPolicy to PSObject
