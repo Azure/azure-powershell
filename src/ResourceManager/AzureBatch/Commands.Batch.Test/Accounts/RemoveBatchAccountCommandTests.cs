@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
 
-            cmdlet.Force = true;
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 

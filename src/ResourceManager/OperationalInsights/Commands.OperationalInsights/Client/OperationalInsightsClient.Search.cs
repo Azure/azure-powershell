@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return searchResponse;
         }
 
-        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, string displayName, string category, string query, int version, bool force, Action<bool, string, string, string, Action> ConfirmAction, string ETag = null)
+        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, string displayName, string category, string query, int version, bool force, Action<bool, string, string, string, Action, Func<bool>> ConfirmAction, string ETag = null)
         {
             HttpStatusCode status = HttpStatusCode.Ambiguous;
             Action createSavedSearch = () =>
@@ -107,34 +107,32 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     AzureOperationResponse response = OperationalInsightsManagementClient.Search.CreateOrUpdateSavedSearch(resourceGroupName, workspaceName, savedSearchId, parameters);
                     status = response.StatusCode;
                 };
-            if (force)
-            {
-                createSavedSearch();
-            }
-            else
-            {
-                bool savedSearchExists = CheckSavedSearchExists(resourceGroupName, workspaceName, savedSearchId);
 
-                ConfirmAction(
-                    !savedSearchExists,    // prompt only if the saved search exists
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.SavedSearchExists,
-                        savedSearchId,
-                        workspaceName),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.SavedSearchCreating,
-                        savedSearchId,
-                        workspaceName),
+            ConfirmAction(
+                force,    // prompt only if the saved search exists
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.SavedSearchExists,
                     savedSearchId,
-                    createSavedSearch);
-            }
+                    workspaceName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.SavedSearchCreating,
+                    savedSearchId,
+                    workspaceName),
+                savedSearchId,
+                createSavedSearch,
+                () => CheckSavedSearchExists(resourceGroupName, workspaceName, savedSearchId, force));
             return status;
         }
 
-        private bool CheckSavedSearchExists(string resourceGroupName, string workspaceName, string savedSearchId)
+        private bool CheckSavedSearchExists(string resourceGroupName, string workspaceName, string savedSearchId, bool force = false)
         {
+            if (force)
+            {
+                return false;
+            }
+
             try
             {
                 PSSearchGetSavedSearchResponse savedSearch = GetSavedSearch(resourceGroupName, workspaceName, savedSearchId);

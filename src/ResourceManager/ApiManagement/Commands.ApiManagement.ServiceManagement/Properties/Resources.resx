@@ -149,6 +149,14 @@
     <value>Are you sure you want to remove Certificate "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="FileOverwriteCaption" xml:space="preserve">
+    <value>File Overwrite Warning</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="FileOverwriteWarning" xml:space="preserve">
+    <value>Overwrite existing file "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="GroupRemoveDescription" xml:space="preserve">
     <value>Removing Group "{0}".</value>
     <comment>Process workflow</comment>

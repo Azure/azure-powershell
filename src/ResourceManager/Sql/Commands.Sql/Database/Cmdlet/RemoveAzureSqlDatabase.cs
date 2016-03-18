@@ -21,8 +21,7 @@ using Microsoft.Azure.Commands.Sql.Properties;
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabase",
-        SupportsShouldProcess = true, 
-        ConfirmImpact = ConfirmImpact.High)]
+        SupportsShouldProcess = true)]
     public class RemoveAzureSqlDatabase : AzureSqlDatabaseCmdletBase
     {
         /// <summary>
@@ -34,12 +33,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The name of the Azure SQL Database to remove.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Defines whether it is ok to skip the requesting of rule removal confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -78,15 +71,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent && !ShouldProcess(
+            if (ShouldProcess(
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseDescription, this.DatabaseName, this.ServerName),
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseWarning, this.DatabaseName, this.ServerName),
                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
-                return;
+                base.ExecuteCmdlet();
             }
 
-            base.ExecuteCmdlet();
         }
     }
 }

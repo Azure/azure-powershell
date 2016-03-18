@@ -25,7 +25,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Unregisters an azure automation scheduled runbook.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId)]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmAutomationScheduledRunbook", 
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId, 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High)]
     public class UnregisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -53,20 +55,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string ScheduleName { get; set; }
 
         /// <summary>
-        /// Gets or sets the switch parameter not to confirm on removing the runbook.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
             this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationJobScheduleWarning),
                 string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationJobScheduleDescription),
                 this.JobScheduleId.HasValue ? this.JobScheduleId.Value.ToString() : this.RunbookName,
                 () =>

@@ -58,7 +58,7 @@ function Test-ServerActiveDirectoryAdministrator ($location = "North Europe")
 		Assert-AreEqual $activeDirectoryAdmin3.ObjectId $activeDirectoryUser1ObjectId
 
 		# Set an Azure SQL Server Active Directory Administrator User
-		$activeDirectoryAdmin4 = Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -Force
+		$activeDirectoryAdmin4 = Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -Confirm:$false
 
 		# Verify that Azure SQL Server Active Directory Administrator was deleted
 		$activeDirectoryAdmin5 = Get-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName

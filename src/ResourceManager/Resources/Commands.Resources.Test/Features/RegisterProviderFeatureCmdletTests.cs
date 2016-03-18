@@ -108,7 +108,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 })
                 .Returns(() => Task.FromResult(registeredFeature));
 
-            this.cmdlet.Force = true;
             this.cmdlet.ProviderNamespace = ProviderName;
             this.cmdlet.FeatureName = FeatureName;
 

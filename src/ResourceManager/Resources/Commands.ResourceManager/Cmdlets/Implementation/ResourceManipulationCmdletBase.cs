@@ -100,12 +100,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter TenantLevel { get; set; }
 
         /// <summary>
-        /// Gets or sets the force parameter.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Gets or sets the subscription id.
         /// </summary>
         public Guid SubscriptionId { get; set; }

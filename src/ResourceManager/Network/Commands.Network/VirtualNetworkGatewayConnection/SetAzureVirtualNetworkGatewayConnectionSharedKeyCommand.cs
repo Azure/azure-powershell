@@ -23,7 +23,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayConnectionSharedKey"), OutputType(typeof(string))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayConnectionSharedKey", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
     public class NewAzureVirtualNetworkGatewayConnectionSharedKeyCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -56,24 +57,15 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
+                Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
+                Name,
+                () => SetVirtualNetworkGatewayConnectionSharedKey(),
+                () => IsVirtualNetworkGatewayConnectionSharedKeyPresent(ResourceGroupName, Name));
 
-            if (this.IsVirtualNetworkGatewayConnectionSharedKeyPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => SetVirtualNetworkGatewayConnectionSharedKey());
-
-                WriteObject(this.GetVirtualNetworkGatewayConnectionSharedKey(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var virtualNetworkGatewayConnectionSharedKey = SetVirtualNetworkGatewayConnectionSharedKey();
-
-                WriteObject(virtualNetworkGatewayConnectionSharedKey);
-            }
+            WriteObject(this.GetVirtualNetworkGatewayConnectionSharedKey(this.ResourceGroupName, this.Name));
         }
 
         private string SetVirtualNetworkGatewayConnectionSharedKey()

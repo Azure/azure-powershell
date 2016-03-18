@@ -49,13 +49,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Alias("KeyName")]
         public string Name { get; set; }
 
-        /// <summary>
-        /// If present, do not ask for confirmation
-        /// </summary>
-        [Parameter(Mandatory = false,
-           HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false,
             HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, the cmdlet returns the key object that was deleted.")]
         public SwitchParameter PassThru { get; set; }
@@ -65,11 +58,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             KeyBundle keyBundle = null;
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    KeyVaultProperties.Resources.RemoveKeyWarning,
-                    Name),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     KeyVaultProperties.Resources.RemoveKeyWhatIfMessage,

@@ -152,7 +152,7 @@ function create_and_setup_nic_ids
     $st = Write-Verbose "Creating and getting NICs for '${loc}' and '${rgname}' - Start";
 
     $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ($rgname + 'subnet') -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzureRmVirtualNetwork -Force -Name ($rgname + 'vnet') -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet -Tag (Get-ComputeTestTag $global:ps_test_tag_name);
+    $vnet = New-AzureRmVirtualNetwork -Confirm:$false -Force -Name ($rgname + 'vnet') -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet -Tag (Get-ComputeTestTag $global:ps_test_tag_name);
     $vnet = Get-AzureRmVirtualNetwork -Name ($rgname + 'vnet') -ResourceGroupName $rgname;
     $subnetId = $vnet.Subnets[0].Id;
 
@@ -187,7 +187,7 @@ function create_and_setup_nic_ids
         $fn_body +=
 @"
 
-    ${nic_var_name} = New-AzureRmNetworkInterface -Force -Name ${nic_name_str} -ResourceGroupName `$rgname -Location `$loc -SubnetId `$subnetId -Tag (Get-ComputeTestTag `$global:ps_test_tag_name);
+    ${nic_var_name} = New-AzureRmNetworkInterface -Confirm:$false -Force -Name ${nic_name_str} -ResourceGroupName `$rgname -Location `$loc -SubnetId `$subnetId -Tag (Get-ComputeTestTag `$global:ps_test_tag_name);
     `$nic_ids[$i] = ${nic_var_name}.Id;
     `$vmconfig = Add-AzureRmVMNetworkInterface -VM `$vmconfig -Id ${nic_var_name}.Id${primary_switch_text};
 
@@ -392,7 +392,7 @@ function ${generated_func_name}
 
         # Remove
         `$st = Write-Verbose 'Running Test ${generated_func_name} - Removing VM';
-        `$st = Remove-AzureRmVM -Name `$vmname -ResourceGroupName `$rgname -Force;
+        `$st = Remove-AzureRmVM -Name `$vmname -ResourceGroupName `$rgname -Confirm:$false;
 
         `$st = Write-Verbose 'Running Test ${generated_func_name} - End';
     }

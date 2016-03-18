@@ -24,7 +24,9 @@ using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGatewayConnection", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
+    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGatewayConnection", DefaultParameterSetName = "SetByResource",
+        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Low),
+    OutputType(typeof(PSVirtualNetworkGatewayConnection))]
     public class NewAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -133,27 +135,18 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
+                Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
+                Name,
+                () => CreateVirtualNetworkGatewayConnection(),
+                () => IsVirtualNetworkGatewayConnectionPresent(ResourceGroupName, Name));
 
-            if (this.IsVirtualNetworkGatewayConnectionPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateVirtualNetworkGatewayConnection());
-
-                WriteObject(this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var virtualNetworkGatewayConnection = CreateVirtualNetworkGatewayConnection();
-
-                WriteObject(virtualNetworkGatewayConnection);
-            }
+            WriteObject(this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name));
         }
 
-        private PSVirtualNetworkGatewayConnection CreateVirtualNetworkGatewayConnection()
+        private void CreateVirtualNetworkGatewayConnection()
         {
             var vnetGatewayConnection = new PSVirtualNetworkGatewayConnection();
             vnetGatewayConnection.Name = this.Name;
@@ -179,7 +172,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
             }
-            
+
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
@@ -201,10 +194,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create VirtualNetworkConnection call
             this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayConnectionModel);
-
-            var getVirtualNetworkGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
-
-            return getVirtualNetworkGatewayConnection;
         }
     }
 }

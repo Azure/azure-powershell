@@ -20,7 +20,8 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerEndpoint", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(bool))]
     public class DisableAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
@@ -44,9 +45,6 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public TrafficManagerEndpoint TrafficManagerEndpoint { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             var disabled = false;
@@ -68,8 +66,6 @@ namespace Microsoft.Azure.Commands.TrafficManager
             }
 
             this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(ProjectResources.Confirm_DisableEndpoint, endpointToDisable.Name, endpointToDisable.ProfileName),
                 ProjectResources.Progress_DisablingEndpoint,
                 this.Name,
                 () => { disabled = this.TrafficManagerClient.EnableDisableTrafficManagerEndpoint(endpointToDisable, shouldEnableEndpointStatus: false); });

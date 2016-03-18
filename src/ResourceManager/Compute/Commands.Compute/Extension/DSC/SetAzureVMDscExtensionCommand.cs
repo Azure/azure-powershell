@@ -460,20 +460,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     configurationDataBlobReference.Uri.AbsoluteUri,
                     () =>
                     {
-                        if (!Force && configurationDataBlobReference.Exists())
-                        {
-                            ThrowTerminatingError(
-                                new ErrorRecord(
-                                    new UnauthorizedAccessException(
-                                        string.Format(
-                                            CultureInfo.CurrentUICulture,
-                                            Microsoft.Azure.Commands.Compute.Properties.Resources.AzureVMDscStorageBlobAlreadyExists,
-                                            configurationDataBlobName)),
-                                    "StorageBlobAlreadyExists",
-                                    ErrorCategory.PermissionDenied,
-                                    null));
-                        }
-
                         configurationDataBlobReference.UploadFromFile(ConfigurationData, FileMode.Open);
 
                         var configurationDataBlobSasToken =
@@ -482,7 +468,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         configurationDataBlobUri =
                             configurationDataBlobReference.StorageUri.PrimaryUri.AbsoluteUri
                             + configurationDataBlobSasToken;
-                    });
+                    },
+                    () => configurationDataBlobReference.Exists());
             }
             return new ConfigurationUris
             {

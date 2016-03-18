@@ -120,7 +120,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
                   StatusCode = HttpStatusCode.OK,
               }));
 
-            this.cmdlet.Force = true;
 
             this.cmdlet.ProviderNamespace = ProviderName;
 
@@ -133,6 +132,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     var providerResult = (PSResourceProvider)obj;
                     Assert.Equal(ProviderName, providerResult.ProviderNamespace, StringComparer.InvariantCultureIgnoreCase);
                 });
+
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             unregistrationResult.StatusCode = HttpStatusCode.OK;
 

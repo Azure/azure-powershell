@@ -21,7 +21,8 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Gateway, DefaultParameterSetName = ByFactoryName), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, Constants.Gateway, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High), OutputType(typeof(bool))]
     public class RemoveAzureDataFactoryGatewayCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -38,9 +39,6 @@ HelpMessage = "The data factory object.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -56,12 +54,6 @@ HelpMessage = "The data factory object.")]
             }
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.DataFactoryGatewayConfirmationMessage,
-                    Name,
-                    DataFactoryName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.DataFactoryGatewayRemoving,

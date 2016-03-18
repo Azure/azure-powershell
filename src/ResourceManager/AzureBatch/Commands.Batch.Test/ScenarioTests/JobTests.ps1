@@ -221,8 +221,8 @@ function Test-NewJob
     }
     finally
     {
-        Remove-AzureBatchJob -Id $jobId1 -Force -BatchContext $context
-        Remove-AzureBatchJob -Id $jobId2 -Force -BatchContext $context
+        Remove-AzureBatchJob -Id $jobId1 -Confirm:$false -BatchContext $context
+        Remove-AzureBatchJob -Id $jobId2 -Confirm:$false -BatchContext $context
     }
 }
 
@@ -423,8 +423,8 @@ function Test-UpdateJob
     finally
     {
         # Cleanup job and autopool
-        Remove-AzureBatchJob $jobId -Force -BatchContext $context
-        Get-AzureBatchPool -Filter "startswith(id,'$autoPoolIdPrefix')" -BatchContext $context | Remove-AzureBatchPool -Force -BatchContext $context
+        Remove-AzureBatchJob $jobId -Confirm:$false -BatchContext $context
+        Get-AzureBatchPool -Filter "startswith(id,'$autoPoolIdPrefix')" -BatchContext $context | Remove-AzureBatchPool -Confirm:$false -BatchContext $context
     }
 
 }
@@ -446,11 +446,11 @@ function Test-DeleteJob
 
     if ($usePipeline -eq '1')
     {
-        Get-AzureBatchJob -Id $jobId -BatchContext $context | Remove-AzureBatchJob -Force -BatchContext $context
+        Get-AzureBatchJob -Id $jobId -BatchContext $context | Remove-AzureBatchJob -Confirm:$false -BatchContext $context
     }
     else
     {
-        Remove-AzureBatchJob -Id $jobId -Force -BatchContext $context
+        Remove-AzureBatchJob -Id $jobId -Confirm:$false -BatchContext $context
     }
 
     # Verify the job was deleted

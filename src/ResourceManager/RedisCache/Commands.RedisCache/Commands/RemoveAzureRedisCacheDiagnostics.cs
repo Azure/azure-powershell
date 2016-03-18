@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System;
     using Microsoft.Azure.Commands.RedisCache.Models;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRedisCacheDiagnostics"), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRedisCacheDiagnostics", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(void))]
     public class RemoveAzureRedisCacheDiagnostics : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
@@ -31,25 +32,13 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             RedisCacheAttributes cache = new RedisCacheAttributes(CacheClient.GetCache(ResourceGroupName, Name), ResourceGroupName);
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingRedisCacheDiagnostics, Name),
-                string.Format(Resources.RemoveRedisCacheDiagnostics, Name),
-                Name,
-                () => CacheClient.SetDiagnostics(cache.Id, null));
-            }
-            else
-            {
-                CacheClient.SetDiagnostics(cache.Id, null);
-            }
+            ConfirmAction(
+            string.Format(Resources.RemoveRedisCacheDiagnostics, Name),
+            Name,
+            () => CacheClient.SetDiagnostics(cache.Id, null));
         }
     }
 }

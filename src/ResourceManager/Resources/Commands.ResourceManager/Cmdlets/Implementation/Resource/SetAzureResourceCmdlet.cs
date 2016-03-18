@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmResource", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium,
+        DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class SetAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
@@ -89,8 +90,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var resourceId = this.GetResourceId();
             this.ConfirmAction(
-                this.Force,
-                "Are you sure you want to update the following resource: " + resourceId,
                 "Updating the resource...",
                 resourceId,
                 () =>

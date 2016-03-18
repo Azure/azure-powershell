@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Removes a given role assignment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSRoleAssignment>))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleAssignment", DefaultParameterSetName = ParameterSet.Empty, 
+        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(List<PSRoleAssignment>))]
     public class RemoveAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
@@ -147,9 +148,6 @@ namespace Microsoft.Azure.Commands.Resources
         public Guid RoleDefinitionId { get; set; }
 
         [Parameter(Mandatory = false)]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -178,13 +176,8 @@ namespace Microsoft.Azure.Commands.Resources
             };
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(ProjectResources.RemovingRoleAssignment,
-                options.ADObjectFilter.ActiveFilter,
-                options.Scope,
-                options.RoleDefinitionName ?? RoleDefinitionId.ToString()),
                 ProjectResources.RemovingRoleAssignment,
-                null,
+                options.RoleDefinitionName ?? RoleDefinitionId.ToString(),
                 () => roleAssignments = PoliciesClient.RemoveRoleAssignment(options, DefaultProfile.Context.Subscription.Id.ToString()));
 
             if (PassThru)

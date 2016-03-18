@@ -55,7 +55,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.Name = accountName;
-            this.cmdlet.Force = true;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert

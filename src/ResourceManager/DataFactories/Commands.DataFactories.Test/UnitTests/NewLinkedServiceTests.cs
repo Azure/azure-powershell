@@ -141,6 +141,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                     c.CreateOrUpdateLinkedService(ResourceGroupName, DataFactoryName, linkedServiceName, rawJsonContent))
                 .Returns(expected)
                 .Verifiable();
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             // Action
             cmdlet.File = filePath;

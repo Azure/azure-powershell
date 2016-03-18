@@ -20,7 +20,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Removes the policy definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmPolicyDefinition", DefaultParameterSetName = RemoveAzurePolicyDefinitionCmdlet.PolicyDefinitionNameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmPolicyDefinition", SupportsShouldProcess = true, ConfirmImpact =ConfirmImpact.High,
+        DefaultParameterSetName = RemoveAzurePolicyDefinitionCmdlet.PolicyDefinitionNameParameterSet), 
+    OutputType(typeof(bool))]
     public class RemoveAzurePolicyDefinitionCmdlet : PolicyDefinitionCmdletBase
     {
         /// <summary>
@@ -49,12 +51,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the force parameter.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -72,8 +68,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             string resourceId = this.Id ?? this.GetResourceId();
             this.ConfirmAction(
-                this.Force,
-                string.Format("Are you sure you want to delete the following policy definition: {0}", resourceId),
                 "Deleting the policy definition...",
                 resourceId,
                 () =>

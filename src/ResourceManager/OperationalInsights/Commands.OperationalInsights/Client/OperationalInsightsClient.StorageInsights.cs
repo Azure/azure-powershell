@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             return storageInsights;
         }
-        
+
         public virtual HttpStatusCode DeleteStorageInsight(string resourceGroupName, string workspaceName, string storageInsightName)
         {
             AzureOperationResponse response = OperationalInsightsManagementClient.StorageInsights.Delete(resourceGroupName, workspaceName, storageInsightName);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         }
 
         public virtual StorageInsight CreateOrUpdateStorageInsight(
-            string resourceGroupName, 
+            string resourceGroupName,
             string workspaceName,
             string name,
             string storageAccountResourceId,
@@ -91,12 +91,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             // Execute the update
             StorageInsight updatedStorageInsight = CreateOrUpdateStorageInsight(
-                parameters.ResourceGroupName, 
+                parameters.ResourceGroupName,
                 parameters.WorkspaceName,
-                storageInsight.Name, 
-                storageInsight.Properties.StorageAccount.Id, 
-                string.IsNullOrWhiteSpace(parameters.StorageAccountKey) ? storageInsight.Properties.StorageAccount.Key : parameters.StorageAccountKey, 
-                parameters.Tables ?? storageInsight.Properties.Tables.ToList(), 
+                storageInsight.Name,
+                storageInsight.Properties.StorageAccount.Id,
+                string.IsNullOrWhiteSpace(parameters.StorageAccountKey) ? storageInsight.Properties.StorageAccount.Key : parameters.StorageAccountKey,
+                parameters.Tables ?? storageInsight.Properties.Tables.ToList(),
                 parameters.Containers ?? storageInsight.Properties.Containers.ToList());
 
             return new PSStorageInsight(updatedStorageInsight, parameters.ResourceGroupName, parameters.WorkspaceName);
@@ -110,41 +110,33 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 storageInsight =
                     new PSStorageInsight(
                         CreateOrUpdateStorageInsight(
-                            parameters.ResourceGroupName, 
+                            parameters.ResourceGroupName,
                             parameters.WorkspaceName,
                             parameters.Name,
                             parameters.StorageAccountResourceId,
                             parameters.StorageAccountKey,
                             parameters.Tables,
-                            parameters.Containers), 
+                            parameters.Containers),
                         parameters.ResourceGroupName,
                         parameters.WorkspaceName);
             };
 
-            if (parameters.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the data factory exists or not.
-                createStorageInsight();
-            }
-            else
-            {
-                bool storageInsightExists = CheckStorageInsightExists(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
-
-                parameters.ConfirmAction(
-                    !storageInsightExists,    // prompt only if the storageInsight exists
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.StorageInsightExists,
-                        parameters.Name,
-                        parameters.WorkspaceName),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.StorageInsightCreating,
-                        parameters.Name,
-                        parameters.WorkspaceName),
+            parameters.ConfirmAction(
+                parameters.Force,    
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.StorageInsightExists,
                     parameters.Name,
-                    createStorageInsight);
-            }
+                    parameters.WorkspaceName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.StorageInsightCreating,
+                    parameters.Name,
+                    parameters.WorkspaceName),
+                parameters.Name,
+                createStorageInsight,
+                () => CheckStorageInsightExists(parameters.ResourceGroupName, parameters.WorkspaceName, 
+                    parameters.Name, parameters.Force));
 
             return storageInsight;
         }
@@ -170,8 +162,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return storageInsights;
         }
 
-        private bool CheckStorageInsightExists(string resourceGroupName, string workspaceName, string storageInsightName)
+        private bool CheckStorageInsightExists(string resourceGroupName, string workspaceName, string storageInsightName, bool force = false)
         {
+            if (force)
+            {
+                // do not check for existence if force is specified.
+                return false;
+            }
+
             try
             {
                 PSStorageInsight storageInsight = GetStorageInsight(resourceGroupName, workspaceName, storageInsightName);

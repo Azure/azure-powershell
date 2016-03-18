@@ -266,11 +266,11 @@ function Test-DeleteTask
 
     if ($usePipeline -eq '1')
     {
-        Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $context | Remove-AzureBatchTask -Force -BatchContext $context
+        Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $context | Remove-AzureBatchTask -Confirm:$false -BatchContext $context
     }
     else
     {
-        Remove-AzureBatchTask -JobId $jobId -Id $taskId -Force -BatchContext $context
+        Remove-AzureBatchTask -JobId $jobId -Id $taskId -Confirm:$false -BatchContext $context
     }
 
     # Verify the task was deleted

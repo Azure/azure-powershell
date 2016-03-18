@@ -127,33 +127,23 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                     };
             };
 
-            if (parameter.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createInput();
-            }
-            else
-            {
-                bool inputExists = CheckInputExists(parameter.ResourceGroupName, parameter.JobName, parameter.InputName);
-
-                parameter.ConfirmAction(
-                        !inputExists,
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.InputExists,
-                            parameter.InputName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.InputCreating,
-                            parameter.InputName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
+            parameter.ConfirmAction(
+                    parameter.Force,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.InputExists,
                         parameter.InputName,
-                        createInput);
-            }
-
+                        parameter.JobName,
+                        parameter.ResourceGroupName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.InputCreating,
+                        parameter.InputName,
+                        parameter.JobName,
+                        parameter.ResourceGroupName),
+                    parameter.InputName,
+                    createInput,
+                    () => CheckInputExists(parameter.ResourceGroupName, parameter.JobName, parameter.InputName, parameter.Force));
             return input;
         }
 
@@ -169,8 +159,13 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             return StreamAnalyticsManagementClient.Inputs.TestConnection(resourceGroupName, jobName, inputName);
         }
 
-        private bool CheckInputExists(string resourceGroupName, string jobName, string inputName)
+        private bool CheckInputExists(string resourceGroupName, string jobName, string inputName, bool overwrite)
         {
+            if (overwrite)
+            {
+                return false;
+            }
+
             try
             {
                 PSInput input = GetInput(resourceGroupName, jobName, inputName);

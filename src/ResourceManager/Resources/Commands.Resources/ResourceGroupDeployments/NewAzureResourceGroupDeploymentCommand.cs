@@ -22,7 +22,9 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new resource group deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroupDeployment", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
+    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroupDeployment", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = BaseParameterSetName), 
+    OutputType(typeof(PSResourceGroupDeployment))]
     public class NewAzureResourceGroupDeploymentCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Alias("DeploymentName")]
@@ -63,22 +65,16 @@ namespace Microsoft.Azure.Commands.Resources
                 DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
             };
 
-            if(this.Mode == DeploymentMode.Complete)
-            {
                 this.ConfirmAction(
                     this.Force,
                     "Are you sure you want to use the complete deployment mode? Resources in the resource group '" + ResourceGroupName + "' which are not included in the template will be deleted.",
-                    "Creating a deployment with Complete mode",
+                    "Creating a deployment",
                     ResourceGroupName,
                     () =>
                     {
                         WriteObject(ResourcesClient.ExecuteDeployment(parameters));
-                    });
-            }
-            else
-            {
-                WriteObject(ResourcesClient.ExecuteDeployment(parameters));
-            }
+                    },
+                    () => Mode == DeploymentMode.Complete);
         }
     }
 }

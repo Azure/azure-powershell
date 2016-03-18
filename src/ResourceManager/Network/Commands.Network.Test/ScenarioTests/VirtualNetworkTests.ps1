@@ -33,7 +33,7 @@ function Test-VirtualNetworkCRUD
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $actual = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet
+        $actual = New-AzureRmVirtualNetwork -Confirm:$false -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet
         $expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
         Assert-AreEqual $expected.ResourceGroupName $rgname	
@@ -62,7 +62,7 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual $expected.Etag $list[0].Etag
         
         # Delete VirtualNetwork
-        $delete = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        $delete = Remove-AzureRmVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Confirm:$false
         Assert-AreEqual true $delete
                 
         $list = Get-AzureRmvirtualNetwork -ResourceGroupName $rgname
@@ -98,7 +98,7 @@ function Test-subnetCRUD
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        New-AzureRmVirtualNetwork -Confirm:$false -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
         # Add a subnet

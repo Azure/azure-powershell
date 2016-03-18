@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                 DataFactoryClient = dataFactoriesClientMock.Object,
                 Name = DataFactoryName,
                 ResourceGroupName = ResourceGroupName,
-                Force = true
             };
         }
 

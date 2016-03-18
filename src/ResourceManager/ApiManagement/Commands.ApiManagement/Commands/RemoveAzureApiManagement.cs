@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagement"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagement", SupportsShouldProcess=true), OutputType(typeof (bool))]
     public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -38,12 +38,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        /// <summary>
-        /// Gets or sets the switch to not confirm on the removal API Management service.
-        /// </summary>
-        [Parameter(HelpMessage = "Do not confirm on the removal of the API Management service.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             var actionDescription = string.Format(
@@ -57,18 +51,23 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 Name);
 
             // Do nothing if force is not specified and user cancelled the operation
-            if (!Force.IsPresent &&
-                !ShouldProcess(
+            if (ShouldProcess(
                     actionDescription,
                     actionWarning,
                     Resources.ShouldProcessCaption))
             {
-                return;
+                ExecuteCmdLetWrap(
+                    () => Client.DeleteApiManagement(ResourceGroupName, Name),
+                    PassThru.IsPresent);
+            }
+            else
+            {
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(false);
+                }
             }
 
-            ExecuteCmdLetWrap(
-                () => Client.DeleteApiManagement(ResourceGroupName, Name),
-                PassThru.IsPresent);
         }
     }
 }

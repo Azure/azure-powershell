@@ -18,7 +18,8 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureRmBatchAccount)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureRmBatchAccount, SupportsShouldProcess = true, 
+        ConfirmImpact =ConfirmImpact.High)]
     public class RemoveBatchAccountCommand : BatchCmdletBase
     {
         private static string mamlCall = "RemoveAccount";
@@ -33,14 +34,10 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveAccountConfirm, this.AccountName),
                 Resources.RemoveBatchAccount,
                 this.AccountName,
                 () => DeleteAction(this.ResourceGroupName, this.AccountName));

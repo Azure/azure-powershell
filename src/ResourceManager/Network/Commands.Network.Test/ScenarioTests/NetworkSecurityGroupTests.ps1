@@ -36,10 +36,10 @@ function Test-NetworkSecurityGroupCRUD
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzureRmVirtualNetwork -Confirm:$false -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create NetworkSecurityGroup
-        $nsg = New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location
+        $nsg = New-AzureRmNetworkSecurityGroup -Confirm:$false -name $nsgName -ResourceGroupName $rgname -Location $location
 
         # Get NetworkSecurityGroup
         $getNsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
@@ -84,22 +84,22 @@ function Test-NetworkSecurityGroupCRUD
         Assert-AreEqual $vnet.Subnets[0].Id $getNsg.Subnets[0].Id
 
         # Create NetworkInterface with NSG
-        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -NetworkSecurityGroup $nsg
+        $nic = New-AzureRmNetworkInterface -Confirm:$false -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -NetworkSecurityGroup $nsg
         Assert-AreEqual $nic.NetworkSecurityGroup.Id $nsg.Id
         $getNsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
         Assert-AreEqual 1 @($getNsg.NetworkInterfaces[0]).Count
         Assert-AreEqual $nic.Id $getNsg.NetworkInterfaces[0].Id
 
         # Delete NetworkInterface
-        $delete = Remove-AzureRmNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
+        $delete = Remove-AzureRmNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Confirm:$false
         Assert-AreEqual true $delete
 
         # Delete VirtualNetwork
-        $delete = Remove-AzureRmVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        $delete = Remove-AzureRmVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Confirm:$false
         Assert-AreEqual true $delete
 
         # Delete NetworkSecurityGroup
-        $delete = Remove-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Force
+        $delete = Remove-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Confirm:$false
         Assert-AreEqual true $delete
         
         $list = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname
@@ -137,7 +137,7 @@ function Test-NetworkSecurityGroup-SecurityRuleCRUD
         $securityRule = New-AzureRmNetworkSecurityRuleConfig -Name $securityRule1Name -Description "desciption" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 123 -Direction Inbound
 
         # Create NetworkSecurityGroup
-        $nsg = New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location -SecurityRule $securityRule
+        $nsg = New-AzureRmNetworkSecurityGroup -Confirm:$false -name $nsgName -ResourceGroupName $rgname -Location $location -SecurityRule $securityRule
 
         # Get NetworkSecurityGroup
         $getNsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
@@ -215,7 +215,7 @@ function Test-NetworkSecurityGroup-SecurityRuleCRUD
 		Assert-AreEqual $securityRule1Name $securityRules[0].Name
 
         # Delete NetworkSecurityGroup
-        $delete = Remove-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Force
+        $delete = Remove-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Confirm:$false
         Assert-AreEqual true $delete
         
         $list = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname

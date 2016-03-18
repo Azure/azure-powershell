@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet(VerbsData.Export, "AzureRmApiManagementApi", DefaultParameterSetName = ExportContentToPipeline)]
+    [Cmdlet(VerbsData.Export, "AzureRmApiManagementApi", DefaultParameterSetName = ExportContentToPipeline,
+        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Low)]
     [OutputType(typeof(string))]
     public class ExportAzureApiManagementApi : AzureApiManagementCmdletBase
     {
@@ -30,30 +31,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         private const string ExportToFile = "Export to File";
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of exporting API. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ApiId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Specification format (Wadl or Swagger). This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementApiFormat SpecificationFormat { get; set; }
 
         [Parameter(
             ParameterSetName = ExportToFile,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "File path where to save the exporting specification to. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String SaveAs { get; set; }
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ParameterSetName = ExportToFile,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If specified will override the file if it exists. This parameter is optional.")]
+            HelpMessage = "If specified will overwrite the file if it exists. This parameter is optional.")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(
@@ -89,34 +90,37 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             }
             else if (ParameterSetName.Equals(ExportToFile))
             {
-                var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.ApiExportDescription, ApiId, SaveAs);
+                var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.ApiExportDescription, 
+                    ApiId, SaveAs);
                 var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ApiExportWarning, SaveAs);
 
-                // Do nothing if force is not specified and user cancelled the operation
-                if (File.Exists(SaveAs) &&
-                    !Force.IsPresent &&
-                    !ShouldProcess(
-                        actionDescription,
-                        actionWarning,
-                        Resources.ShouldProcessCaption))
+                if (ShouldProcess(actionDescription,
+                    actionWarning,
+                    Resources.ShouldProcessCaption))
                 {
-                    if (PassThru)
+                    if (!File.Exists(SaveAs) 
+                        || Force 
+                        || ShouldContinue(string.Format(CultureInfo.CurrentCulture, 
+                               Resources.FileOverwriteWarning, SaveAs), Resources.FileOverwriteCaption))
                     {
-                        WriteObject(false.ToString().ToLower());
+                        using (var file = File.OpenWrite(SaveAs))
+                        {
+                            file.Write(result, 0, result.Length);
+                            file.Flush();
+                        }
+
+                        if (PassThru)
+                        {
+                            WriteObject(true.ToString().ToLower());
+                        }
+
+                        return;
                     }
-
-                    return;
-                }
-
-                using (var file = File.OpenWrite(SaveAs))
-                {
-                    file.Write(result, 0, result.Length);
-                    file.Flush();
                 }
 
                 if (PassThru)
                 {
-                    WriteObject(true.ToString().ToLower());
+                    WriteObject(false.ToString().ToLower());
                 }
             }
         }

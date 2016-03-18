@@ -57,7 +57,7 @@ function Test-UpdateServer
 		$serverPassword = "n3wc00lP@55w0rd"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 
-		$server1 = Set-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SqlAdministratorPassword $secureString
+		$server1 = Set-AzureRmSqlServer -Confirm:$false -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SqlAdministratorPassword $secureString
 		Assert-AreEqual $server1.ServerName $server.ServerName
 		Assert-AreEqual $server1.ServerVersion $server.ServerVersion
 		Assert-AreEqual $server1.SqlAdministratorLogin $server.SqlAdministratorLogin
@@ -66,7 +66,7 @@ function Test-UpdateServer
 		$serverPassword = "n3wc00lP@55w0rd!!!"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 
-		$server2 = $server | Set-AzureRmSqlServer -SqlAdministratorPassword $secureString
+		$server2 = $server | Set-AzureRmSqlServer -Confirm:$false -SqlAdministratorPassword $secureString
 		Assert-AreEqual $server2.ServerName $server.ServerName
 		Assert-AreEqual $server2.ServerVersion $server.ServerVersion
 		Assert-AreEqual $server2.SqlAdministratorLogin $server.SqlAdministratorLogin
@@ -125,10 +125,10 @@ function Test-RemoveServer
 	try
 	{
 		# Test using parameters
-		Remove-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -Force
+		Remove-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -Confirm:$false
 		
 		# Test piping
-		$server2 | Remove-AzureRmSqlServer -Force
+		$server2 | Remove-AzureRmSqlServer
 
 		$all = Get-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $all.Count 0

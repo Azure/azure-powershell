@@ -24,7 +24,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancer"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancer", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSLoadBalancer))]
     public class NewAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -100,27 +101,18 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
+                Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
+                Name,
+                () => CreateLoadBalancer(),
+                () => IsLoadBalancerPresent(ResourceGroupName, Name));
 
-            if (this.IsLoadBalancerPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateLoadBalancer());
-
-                WriteObject(this.GetLoadBalancer(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var loadBalancer = this.CreateLoadBalancer();
-
-                WriteObject(loadBalancer);
-            }
+            WriteObject(this.GetLoadBalancer(this.ResourceGroupName, this.Name));
         }
 
-        private PSLoadBalancer CreateLoadBalancer()
+        private void CreateLoadBalancer()
         {
             var loadBalancer = new PSLoadBalancer();
             loadBalancer.Name = this.Name;
@@ -172,10 +164,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create VirtualNetwork call
             this.LoadBalancerClient.CreateOrUpdate(this.ResourceGroupName, this.Name, lbModel);
-
-            var getLoadBalancer = this.GetLoadBalancer(this.ResourceGroupName, this.Name);
-
-            return getLoadBalancer;
         }
     }
 }

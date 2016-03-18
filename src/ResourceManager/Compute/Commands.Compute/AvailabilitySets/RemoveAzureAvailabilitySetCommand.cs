@@ -21,7 +21,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Remove, ProfileNouns.AvailabilitySet)]
+    [Cmdlet(VerbsCommon.Remove, ProfileNouns.AvailabilitySet, SupportsShouldProcess=true, 
+        ConfirmImpact = ConfirmImpact.High)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
@@ -41,20 +42,14 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-           Position = 2,
-           HelpMessage = "To force the removal.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent
-                    || this.ShouldContinue(Properties.Resources.AvailabilitySetRemovalConfirmation, Properties.Resources.AvailabilitySetRemovalCaption))
+                if ( this.ShouldProcess(string.Format(Properties.Resources.AvailabilitySetTarget, Name), 
+                    VerbsCommon.Remove))
                 {
                     var op = this.AvailabilitySetClient.DeleteWithHttpMessagesAsync(
                         this.ResourceGroupName,

@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.Network
 {
     using System.Linq;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuit", SupportsShouldProcess =true, 
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSExpressRouteCircuit))]
     public class NewAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -110,26 +111,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name))
-            {
                 ConfirmAction(
                     Force.IsPresent,
                     string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
-                    () => CreateExpressRouteCircuit());
+                    () => CreateExpressRouteCircuit(),
+                    () => IsExpressRouteCircuitPresent(ResourceGroupName, Name));
 
-                WriteObject(this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var ExpressRouteCircuit = CreateExpressRouteCircuit();
-
-                WriteObject(ExpressRouteCircuit);
-            }
+                WriteObject(GetExpressRouteCircuit(ResourceGroupName, Name));
         }
 
-        private PSExpressRouteCircuit CreateExpressRouteCircuit()
+        private void CreateExpressRouteCircuit()
         {
             var circuit = new PSExpressRouteCircuit();
             circuit.Name = this.Name;
@@ -165,9 +158,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create ExpressRouteCircuit call
             this.ExpressRouteCircuitClient.CreateOrUpdate(this.ResourceGroupName, this.Name, circuitModel);
-
-            var getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name);
-            return getExpressRouteCircuit;
         }
     }
 }

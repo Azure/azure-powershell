@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             resourcesClientMock.Setup(f => f.DeleteResourceGroup(resourceGroupName));
 
             cmdlet.Name = resourceGroupName;
-            cmdlet.Force = true;
 
             cmdlet.ExecuteCmdlet();
 
@@ -66,7 +65,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             resourcesClientMock.Setup(f => f.DeleteResourceGroup(resourceGroupName));
 
             cmdlet.Id = resourceGroupId;
-            cmdlet.Force = true;
 
             cmdlet.ExecuteCmdlet();
 

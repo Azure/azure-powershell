@@ -18,7 +18,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-     [Cmdlet(VerbsCommon.Remove, "AzureRmExpressRouteCircuit")]
+     [Cmdlet(VerbsCommon.Remove, "AzureRmExpressRouteCircuit", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -36,11 +36,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -49,8 +44,6 @@ namespace Microsoft.Azure.Commands.Network
             base.ExecuteCmdlet();
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.RemovingResource, Name),
                 Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage,
                 Name,
                 () => this.ExpressRouteCircuitClient.Delete(this.ResourceGroupName, this.Name));

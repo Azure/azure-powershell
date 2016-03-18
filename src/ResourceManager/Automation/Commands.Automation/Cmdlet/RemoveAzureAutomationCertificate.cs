@@ -25,7 +25,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes a Certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationCertificate", 
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName, 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High)]
     public class RemoveAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -35,9 +37,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByCertificateName, Position = 3, HelpMessage = "Confirm the removal of the certificate")]
-        public SwitchParameter Force { get; set; }
-
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
@@ -45,8 +44,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             ConfirmAction(
-                       Force.IsPresent,
-                      string.Format(Resources.RemovingAzureAutomationResourceWarning, "Certificate"),
                        string.Format(Resources.RemoveAzureAutomationResourceDescription, "Certificate"),
                        Name,
                        () =>

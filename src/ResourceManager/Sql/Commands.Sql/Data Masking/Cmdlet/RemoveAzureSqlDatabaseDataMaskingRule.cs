@@ -35,28 +35,21 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         public SwitchParameter PassThru { get; set; }
 
         /// <summary>
-        /// Defines whether it is ok to skip the requesting of rule removal confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Confirmation when a data masking rule is removed")]
-        public SwitchParameter Force { get; set; }
-        
-        /// <summary>
         /// Calls the data masking removal API with the rule that this cmdlet operated on
         /// </summary>
         /// <param name="rules">A list consisting of a single rule - the rule that this cmdlet operated on</param>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            if (!Force.IsPresent && !ShouldProcess(
+            if (ShouldProcess(
                 string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveDatabaseDataMaskingRuleDescription, 
                                     ColumnName, TableName, SchemaName, DatabaseName),
                 string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveDatabaseDataMaskingRuleWarning,
                                     ColumnName, TableName, SchemaName, DatabaseName),
                 Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
-                return null;
+                ModelAdapter.RemoveDatabaseDataMaskingRule(rules.First(), clientRequestId);
             }
 
-            ModelAdapter.RemoveDatabaseDataMaskingRule(rules.First(), clientRequestId);
 
             return null;
         }

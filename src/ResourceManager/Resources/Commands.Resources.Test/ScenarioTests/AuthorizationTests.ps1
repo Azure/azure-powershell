@@ -44,7 +44,7 @@ function Test-AuthorizationEndToEnd
     $expectedScope = "/subscriptions/" + $defaultSubscription.SubscriptionId
 
     # List role assignments is piped to get remove role assignment
-    Get-AzureRmRoleAssignment | Remove-AzureRmRoleAssignment -Force
+    Get-AzureRmRoleAssignment | Remove-AzureRmRoleAssignment -Confirm:$false
     $roleAssignments = Get-AzureRmRoleAssignment
     Assert-AreEqual 0 $roleAssignments.Count
 
@@ -54,7 +54,7 @@ function Test-AuthorizationEndToEnd
     Assert-AreEqual $principal $roleAssignment.Principal
     Assert-AreEqual $expectedScope $roleAssignment.Scope
 
-    $roleAssignment | Remove-AzureRmRoleAssignment -Force
+    $roleAssignment | Remove-AzureRmRoleAssignment -Confirm:$false
 
     # Create role assignment with resource group scope
     $expectedScope = $expectedScope + "/resourceGroups/$rg"
@@ -67,5 +67,5 @@ function Test-AuthorizationEndToEnd
     [Microsoft.Azure.Commands.Resources.Models.Authorization.PoliciesClient]::RoleAssignmentNames.Enqueue("0BD5EC77-F955-4470-83B9-582CED1EA177")
     Assert-Throws { New-AzureRmRoleAssignment -Principal $principal -RoleDefinitionName $roleDef -ResourceGroup $rg }
 
-    $roleAssignment | Remove-AzureRmRoleAssignment -Force
+    $roleAssignment | Remove-AzureRmRoleAssignment -Confirm:$false
 }

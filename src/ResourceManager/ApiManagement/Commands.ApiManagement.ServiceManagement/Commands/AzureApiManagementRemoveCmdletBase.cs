@@ -24,33 +24,32 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional. Default value is false.")]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
-            HelpMessage = "Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.")]
-        public SwitchParameter Force { get; set; }
-
         public abstract string ActionWarning { get; }
 
         public abstract string ActionDescription { get; }
 
         public override void ExecuteApiManagementCmdlet()
         {
-            if (!Force.IsPresent &&
-                !ShouldProcess(
+            if (ShouldProcess(
                     ActionDescription,
                     ActionWarning,
                     Resources.ShouldProcessCaption))
             {
-                return;
+                ExecuteRemoveLogic();
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
             }
-
-            ExecuteRemoveLogic();
-
-            if (PassThru.IsPresent)
+            else
             {
-                WriteObject(true);
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(false);
+                }
             }
+
         }
 
         protected abstract void ExecuteRemoveLogic();

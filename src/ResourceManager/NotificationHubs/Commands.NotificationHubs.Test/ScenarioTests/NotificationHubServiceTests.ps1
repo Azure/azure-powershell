@@ -153,8 +153,8 @@ function Test-CRUDNamespace
     Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
 
     Write-Debug " Remove resource group"
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
-    Remove-AzureRmResourceGroup -Name $secondResourceGroup -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
+    Remove-AzureRmResourceGroup -Name $secondResourceGroup -Confirm:$false
 }
 
 <#
@@ -303,7 +303,7 @@ function Test-CRUDNamespaceAuth
     Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
 
     Write-Debug " Remove resource group"
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
 }
 
 
@@ -417,7 +417,7 @@ function Test-CRUDNotificationHub
     Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
 
     Write-Debug " Remove resource group"
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
 }
 
 <#
@@ -551,5 +551,5 @@ function Test-CRUDNHAuth
     Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
 
     Write-Debug " Remove resource group"
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
 }

@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                     filterOptions.DataFactoryName);
             }
             filterOptions.NextLink = response != null ? response.NextLink : null;
-            
+
             if (response != null && response.Pipelines != null)
             {
                 foreach (var pipeline in response.Pipelines)
@@ -187,31 +187,22 @@ namespace Microsoft.Azure.Commands.DataFactories
                 }
             };
 
-            if (parameters.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createPipeline();
-            }
-            else
-            {
-                bool pipelineExists = CheckPipelineExists(parameters.ResourceGroupName,
-                    parameters.DataFactoryName, parameters.Name);
-
-                parameters.ConfirmAction(
-                        !pipelineExists,  // prompt only if the linked service exists
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.PipelineExists,
-                            parameters.Name,
-                            parameters.DataFactoryName),
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.PipelineCreating,
-                            parameters.Name,
-                            parameters.DataFactoryName),
+            parameters.ConfirmAction(
+                    parameters.Force,  // prompt only if the linked service exists
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.PipelineExists,
                         parameters.Name,
-                        createPipeline);
-            }
+                        parameters.DataFactoryName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.PipelineCreating,
+                        parameters.Name,
+                        parameters.DataFactoryName),
+                    parameters.Name,
+                    createPipeline,
+                    () => CheckPipelineExists(parameters.ResourceGroupName,
+                            parameters.DataFactoryName, parameters.Name));
 
             return pipeline;
         }

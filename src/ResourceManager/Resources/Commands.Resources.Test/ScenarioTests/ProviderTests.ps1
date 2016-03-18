@@ -26,7 +26,7 @@ function Test-AzureProvider
 
     Assert-True { $allProviders.Length -gt $defaultProviders.Length }
 
-    Register-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement" -Force
+    Register-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement" -Confirm:$false
 
     $endTime = [DateTime]::UtcNow.AddMinutes(5)
 
@@ -37,7 +37,7 @@ function Test-AzureProvider
 
     Assert-True { @(Get-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Registered" }
 
-    Unregister-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement" -Force
+    Unregister-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement" -Confirm:$false
 
     while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Unregistered")
     {

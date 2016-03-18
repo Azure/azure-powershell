@@ -22,7 +22,8 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.IdParameterSet)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.IdParameterSet, 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High)]
     public class RemoveBatchComputeNodeCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
@@ -46,9 +47,6 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         public TimeSpan? ResizeTimeout { get; set; }
 
-        [Parameter]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             string computeNodeIds = ComputeNode == null ? string.Join(",", this.Ids) : ComputeNode.Id;
@@ -60,8 +58,6 @@ namespace Microsoft.Azure.Commands.Batch
             };
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveComputeNodeConfirm, computeNodeIds),
                 Resources.RemoveComputeNode,
                 computeNodeIds,
                 () => BatchClient.RemoveComputeNodesFromPool(parameters));

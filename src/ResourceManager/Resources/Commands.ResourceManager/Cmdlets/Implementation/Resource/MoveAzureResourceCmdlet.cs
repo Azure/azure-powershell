@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Moves existing resources to a new resource group or subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureRmResource", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Move, "AzureRmResource", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(bool))]
     public class MoveAzureResourceCommand : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -52,12 +53,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         [Alias("Id", "SubscriptionId")]
         public Guid? DestinationSubscriptionId { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value that indicates if the user should be prompted for confirmation.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Gets or sets the ids of the resources to move.
@@ -121,11 +116,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceType: null);
 
             this.ConfirmAction(
-                this.Force,
-                string.Format(
-                    "Are you sure you want to move these resources to the resource group '{0}' the resources: {1}",
-                    destinationResourceGroup,
-                    Environment.NewLine.AsArray().Concat(resourceIdsToUse).ConcatStrings(Environment.NewLine)),
                 "Moving the resources.",
                 destinationResourceGroup,
                 () =>

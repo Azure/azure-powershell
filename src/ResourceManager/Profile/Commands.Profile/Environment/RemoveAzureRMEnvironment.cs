@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to remove Azure Environment from Profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmEnvironment")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmEnvironment", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High)]
     [OutputType(typeof(PSAzureEnvironment))]
     public class RemoveAzureRMEnvironmentCommand : AzureRMCmdlet
     {
@@ -30,24 +31,16 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "The environment name")]
         public string Name { get; set; }
 
-        [Parameter(Position = 1, HelpMessage = "Do not confirm deletion of subscription")]
-        public SwitchParameter Force { get; set; }
-
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
         }
-
 
         public override void ExecuteCmdlet()
         {
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    "Removing an environment will remove all associated subscriptions and accounts. Are you sure you want to remove an environment '{0}'?", 
-                    Name),
                 "Removing environment",
                 Name,
                 () => WriteObject((PSAzureEnvironment) profileClient.RemoveEnvironment(Name)));

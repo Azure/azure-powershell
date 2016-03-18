@@ -20,7 +20,8 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Move, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
+    [Cmdlet(VerbsCommon.Move, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof (string))]
     public class MoveAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -50,21 +51,32 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            FileType fileType;
-            if (Force &&
-                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
-                    out fileType))
+            if (ShouldProcess(Destination.OriginalPath, Resources.MoveItemAction))
             {
-                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, true);
-            }
+                FileType fileType;
+                if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
+                        out fileType))
+                {
+                    if (Force || ShouldContinue(Resources.OverwriteFileOrFolderAction, ""))
+                    {
+                        DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, true);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
 
-            if (!DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.TransformedPath, Account, Destination.TransformedPath))
-            {
-                throw new CloudException(
-                    string.Format(Resources.MoveFailed, Path.OriginalPath, Destination.OriginalPath));
-            }
+                if (
+                    !DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.TransformedPath, Account,
+                        Destination.TransformedPath))
+                {
+                    throw new CloudException(
+                        string.Format(Resources.MoveFailed, Path.OriginalPath, Destination.OriginalPath));
+                }
 
-            WriteObject(Destination.OriginalPath);
+                WriteObject(Destination.OriginalPath);
+            }
         }
     }
 }

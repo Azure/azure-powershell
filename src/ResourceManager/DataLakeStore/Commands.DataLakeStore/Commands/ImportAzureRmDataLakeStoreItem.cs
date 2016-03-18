@@ -16,6 +16,7 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using Microsoft.Azure.Management.DataLake.Store.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -75,32 +76,46 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public override void ExecuteCmdlet()
         {
             var powerShellSourcePath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
-
+            FileType ignoredType;
             if (Directory.Exists(powerShellSourcePath))
             {
-                DataLakeStoreFileSystemClient.CopyDirectory(
-                    Destination.TransformedPath,
-                    Account,
+                ConfirmAction(
+                    Force.IsPresent,
+                    Resources.OverwriteFolderAction,
+                    Resources.ImportFolderAction,
                     powerShellSourcePath,
-                    CmdletCancellationToken,
-                    NumThreads,
-                    -1,
-                    Recurse,
-                    Force,
-                    Resume, ForceBinary, ForceBinary, this);
+                    () => DataLakeStoreFileSystemClient.CopyDirectory(
+                              Destination.TransformedPath,
+                              Account,
+                              powerShellSourcePath,
+                              CmdletCancellationToken,
+                              -1,
+                              NumThreads,
+                              Recurse,
+                              Force,
+                              Resume, ForceBinary, ForceBinary, this),
+                     () => DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, 
+                              Account, out ignoredType));
             }
             else if (File.Exists(powerShellSourcePath))
             {
-                DataLakeStoreFileSystemClient.CopyFile(
-                    Destination.TransformedPath,
-                    Account,
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.OverwriteFileAction, Destination.TransformedPath),
+                    Resources.ImportFileAction,
                     powerShellSourcePath,
-                    CmdletCancellationToken,
-                    NumThreads,
-                    Force,
-                    Resume,
-                    ForceBinary,
-                    this);
+                    () => DataLakeStoreFileSystemClient.CopyFile(
+                              Destination.TransformedPath,
+                              Account,
+                              powerShellSourcePath,
+                              CmdletCancellationToken,
+                              NumThreads,
+                              Force,
+                              Resume,
+                              ForceBinary,
+                              this),
+                    () => DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, 
+                              Account, out ignoredType));
             }
             else
             {

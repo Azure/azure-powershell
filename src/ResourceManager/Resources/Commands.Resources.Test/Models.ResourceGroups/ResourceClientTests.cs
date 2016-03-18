@@ -91,9 +91,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             action();
         }
 
+        private void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action, Func<bool> shouldContinuePredicate)
+        {
+            ConfirmActionCounter++;
+            action();
+        }
+
         private int RejectActionCounter = 0;
 
         private void RejectAction(bool force, string actionMessage, string processMessage, string target, Action action)
+        {
+            RejectActionCounter++;
+        }
+
+        private void RejectAction(bool force, string actionMessage, string processMessage, string target, Action action, Func<bool> shouldContinuePredicate)
         {
             RejectActionCounter++;
         }
@@ -1534,7 +1545,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
             SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
 
-            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null, 
+            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null,
                 new Hashtable(new Dictionary<string, string> { { "Name", "tag1" } }), false);
 
             Assert.Equal(2, groups1.Count);

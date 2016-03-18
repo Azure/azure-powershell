@@ -22,7 +22,9 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
     /// <summary>
     /// Cancel a running deployment.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmResourceGroupDeployment", DefaultParameterSetName = StopAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmResourceGroupDeployment", 
+        DefaultParameterSetName = StopAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet, 
+        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(bool))]
     public class StopAzureResourceGroupDeploymentCommand : ResourcesBaseCmdlet
     {
         /// <summary>
@@ -49,9 +51,6 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not confirm the stop.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
@@ -60,8 +59,6 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
                 Name = ResourceIdUtility.GetResourceName(Id);
             }
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(ProjectResources.CancelResourceGroupDeployment, ResourceGroupName),
                 ProjectResources.CancelResourceGroupDeploymentMessage,
                 ResourceGroupName,
                 () => ResourcesClient.CancelDeployment(ResourceGroupName, Name));

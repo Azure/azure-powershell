@@ -54,7 +54,7 @@ function Test-ServerUpgradeWithUpgradeHint
     }
     finally
     {
-        Remove-AzureRmResourceGroup -Name $server.ResourceGroupName -Force
+        Remove-AzureRmResourceGroup -Name $server.ResourceGroupName -Confirm:$false
     }
 }
 
@@ -74,7 +74,7 @@ function Test-ServerUpgradeAndCancel
         $upgrade = Get-AzureRmSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
         Assert-AreEqual $upgrade.Status "Queued"
 
-        Stop-AzureRmSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -Force
+        Stop-AzureRmSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -Confirm:$false
         
         $upgrade = Get-AzureRmSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
         Assert-AreEqual $upgrade.Status "Cancelling"
@@ -95,7 +95,7 @@ function Test-ServerUpgradeAndCancel
     }
     finally
     {
-        Remove-AzureRmResourceGroup -Name $server.ResourceGroupName -Force
+        Remove-AzureRmResourceGroup -Name $server.ResourceGroupName -Confirm:$false
     }
 }
 
@@ -131,7 +131,7 @@ function Test-ServerUpgradeNegative
     }
     finally
     {
-        Remove-AzureRmResourceGroup -Name $server.ResourceGroupName -Force
+        Remove-AzureRmResourceGroup -Name $server.ResourceGroupName -Confirm:$false
     }
 }
 

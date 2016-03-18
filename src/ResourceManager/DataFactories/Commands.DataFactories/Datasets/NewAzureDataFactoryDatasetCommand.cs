@@ -21,11 +21,12 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.Dataset, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataset))]
+    [Cmdlet(VerbsCommon.New, Constants.Dataset, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSDataset))]
     public class NewAzureDataFactoryDatasetCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-HelpMessage = "The data factory object.")]
+            HelpMessage = "The data factory object.")]
         public PSDataFactory DataFactory { get; set; }
 
         [Parameter(ParameterSetName = ByFactoryName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,

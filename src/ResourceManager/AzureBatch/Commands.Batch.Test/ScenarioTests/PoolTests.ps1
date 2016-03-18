@@ -100,8 +100,8 @@ function Test-NewPool
     }
     finally
     {
-        Remove-AzureBatchPool -Id $poolId1 -Force -BatchContext $context
-        Remove-AzureBatchPool -Id $poolId2 -Force -BatchContext $context
+        Remove-AzureBatchPool -Id $poolId1 -Confirm:$false -BatchContext $context
+        Remove-AzureBatchPool -Id $poolId2 -Confirm:$false -BatchContext $context
     }
 }
 
@@ -274,11 +274,11 @@ function Test-DeletePool
 
     if ($usePipeline -eq '1')
     {
-        Get-AzureBatchPool -Id $poolId -BatchContext $context | Remove-AzureBatchPool -Force -BatchContext $context
+        Get-AzureBatchPool -Id $poolId -BatchContext $context | Remove-AzureBatchPool -Confirm:$false -BatchContext $context
     }
     else
     {
-        Remove-AzureBatchPool -Id $poolId -Force -BatchContext $context
+        Remove-AzureBatchPool -Id $poolId -Confirm:$false -BatchContext $context
     }
 
     # Verify the pool was deleted. Use the OData filter since the GetPool API will cause a 404 if the pool isn't found.

@@ -1868,7 +1868,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force -Confirm:$False
+        <dev:code>PS C:\&gt;Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Confirm:$False
 </dev:code>
         <dev:remarks>
           <maml:para>This command removes the key named ITSoftware from the vault named Contoso. The command specifies the Force and Confirm parameters, and, therefore, the cmdlet does not prompt you for confirmation.</maml:para>
@@ -2112,7 +2112,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -Force -Confirm:$False
+        <dev:code>PS C:\&gt;Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret'  -Confirm:$False
 </dev:code>
         <dev:remarks>
           <maml:para>This command removes the secret named FinanceSecret from the vault named Contoso. The command specifies the Force and Confirm parameters, and, therefore, the cmdlet does not prompt you for confirmation.</maml:para>

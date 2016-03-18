@@ -8,39 +8,35 @@ using Microsoft.WindowsAzure.Storage.RetryPolicies;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Stop, Constants.FileCopyCmdletName)]
+    [Cmdlet(VerbsLifecycle.Stop, Constants.FileCopyCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium)]
     public class StopAzureStorageFileCopyCommand : AzureStorageFileCmdletBase
     {
         [Parameter(
-            Position = 0, 
-            HelpMessage = "Target share name", 
-            Mandatory = true, 
+            Position = 0,
+            HelpMessage = "Target share name",
+            Mandatory = true,
             ParameterSetName = Constants.ShareNameParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
         [Parameter(
-            Position = 1, 
-            HelpMessage = "Target file path", 
-            Mandatory = true, 
+            Position = 1,
+            HelpMessage = "Target file path",
+            Mandatory = true,
             ParameterSetName = Constants.ShareNameParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string FilePath { get; set; }
 
         [Parameter(
-            Position = 0, 
+            Position = 0,
             HelpMessage = "Target file instance", Mandatory = true,
-            ValueFromPipeline = true, 
+            ValueFromPipeline = true,
             ParameterSetName = Constants.FileParameterSetName)]
         [ValidateNotNull]
         public CloudFile File { get; set; }
 
         [Parameter(HelpMessage = "Copy Id", Mandatory = false)]
         public string CopyId { get; set; }
-
-
-        [Parameter(HelpMessage = "Whether to stop the copy when copy id is different with the one input.", Mandatory = false)]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Execute command
@@ -68,9 +64,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
 
         /// <summary>
-        /// Stop copy operation by CloudBlob object
+        /// Stop copy operation 
         /// </summary>
-        /// <param name="blob">CloudBlob object</param>
+        /// <param name="taskId">The identity of the task</param>
+        /// <param name="localChannel">The storage management implementation</param>
+        /// <param name="file">ClodFile object performing the copy</param>
         /// <param name="copyId">Copy id</param>
         private async Task StopCopyFile(long taskId, IStorageFileManagement localChannel, CloudFile file, string copyId)
         {
@@ -81,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             string abortCopyId = string.Empty;
 
-            if (string.IsNullOrEmpty(copyId) || Force)
+            if (string.IsNullOrEmpty(copyId))
             {
                 //Make sure we use the correct copy id to abort
                 //Use default retry policy for FetchBlobAttributes
@@ -98,14 +96,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     abortCopyId = file.CopyState.CopyId;
                 }
 
-                if (!Force)
+                string confirmation = String.Format(Resources.ConfirmAbortFileCopyOperation, file.Uri.ToString(), abortCopyId);
+                if (!await OutputStream.ConfirmAsync(confirmation))
                 {
-                    string confirmation = String.Format(Resources.ConfirmAbortFileCopyOperation, file.Uri.ToString(), abortCopyId);
-                    if (!await OutputStream.ConfirmAsync(confirmation))
-                    {
-                        string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, file.Uri.ToString());
-                        OutputStream.WriteVerbose(taskId, cancelMessage);
-                    }
+                    string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, file.Uri.ToString());
+                    OutputStream.WriteVerbose(taskId, cancelMessage);
                 }
             }
             else

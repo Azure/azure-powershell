@@ -25,7 +25,8 @@ using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGateway", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -147,26 +148,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateVirtualNetworkGateway());
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
+                Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
+                Name,
+                () => CreateVirtualNetworkGateway(),
+                () => IsVirtualNetworkGatewayPresent(ResourceGroupName, Name));
 
-                WriteObject(this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var virtualNetworkGateway = CreateVirtualNetworkGateway();
-
-                WriteObject(virtualNetworkGateway);
-            }
+            WriteObject(this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name));
         }
 
-        private PSVirtualNetworkGateway CreateVirtualNetworkGateway()
+        private void CreateVirtualNetworkGateway()
         {
             var vnetGateway = new PSVirtualNetworkGateway();
             vnetGateway.Name = this.Name;
@@ -261,10 +254,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create VirtualNetwork call
             this.VirtualNetworkGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayModel);
-
-            var getVirtualNetworkGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name);
-
-            return getVirtualNetworkGateway;
         }
     }
 }

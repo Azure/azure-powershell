@@ -18,7 +18,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-     [Cmdlet(VerbsCommon.Remove, "AzureRmRouteTable")]
+     [Cmdlet(VerbsCommon.Remove, "AzureRmRouteTable", SupportsShouldProcess = true, 
+         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureRouteTableCommand : RouteTableBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -36,11 +37,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -49,8 +45,6 @@ namespace Microsoft.Azure.Commands.Network
             base.ExecuteCmdlet();
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.RemovingResource, Name),
                 Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage,
                 Name,
                 () => this.RouteTableClient.Delete(this.ResourceGroupName, this.Name));

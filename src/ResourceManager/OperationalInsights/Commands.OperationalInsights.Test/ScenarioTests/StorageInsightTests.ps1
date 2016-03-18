@@ -28,7 +28,7 @@ function Test-StorageInsightCreateUpdateDelete
     New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the storage insight
-    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Force
+    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Confirm:$false -Force
 
     # Create a storage insight
     $storageinsight = New-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $rgname -WorkspaceName $wsname -Name $siname -Tables @("WADWindowsEventLogsTable", "LinuxSyslogVer2v0") -Containers @("wad-iis-logfiles") -StorageAccountResourceId $said -StorageAccountKey "fakekey"
@@ -68,7 +68,7 @@ function Test-StorageInsightCreateUpdateDelete
     Assert-AreEqual 1 ($storageinsights | Where {$_.Name -eq $sinametwo}).Count
 
     # Delete one of the storage insights
-    Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $rgname -WorkspaceName $wsname -Name $sinametwo -Force
+    Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $rgname -WorkspaceName $wsname -Name $sinametwo -Confirm:$false
     Assert-ThrowsContains { Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $sinametwo } "NotFound"
     $storageinsights = Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace
     Assert-AreEqual 1 $storageinsights.Count
@@ -89,7 +89,7 @@ function Test-StorageInsightCreateUpdateDelete
     Assert-AreEqualArray @("wad-iis-logfiles") $storageInsight.Containers
 
     # Delete the remaining storage insight via piping
-    Remove-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $siname -Force
+    Remove-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $siname -Confirm:$false
     Assert-ThrowsContains { Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $siname } "NotFound"
     $storageinsights = Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace
     Assert-AreEqual 0 $storageinsights.Count

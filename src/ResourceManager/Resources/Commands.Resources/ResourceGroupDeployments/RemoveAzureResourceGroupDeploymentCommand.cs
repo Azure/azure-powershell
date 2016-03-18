@@ -22,7 +22,9 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
     /// <summary>
     /// Deletes a deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceGroupDeployment", DefaultParameterSetName = RemoveAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceGroupDeployment", 
+        DefaultParameterSetName = RemoveAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet, 
+        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(bool))]
     public class RemoveAzureResourceGroupDeploymentCommand : ResourcesBaseCmdlet
     {
         /// <summary>
@@ -49,9 +51,6 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not confirm the remove.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if(string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
@@ -60,8 +59,6 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
                 Name = ResourceIdUtility.GetResourceName(Id);
             }
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(ProjectResources.DeleteResourceGroupDeployment, Name),
                 ProjectResources.DeleteResourceGroupDeploymentMessage,
                 ResourceGroupName,
                 () => ResourcesClient.DeleteDeployment(ResourceGroupName, Name));

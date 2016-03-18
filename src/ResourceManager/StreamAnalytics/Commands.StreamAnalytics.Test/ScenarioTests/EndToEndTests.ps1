@@ -26,7 +26,7 @@ function Test-TestStreamingAnalyticsE2E
 	$functionName = "scoreTweet"
 
     # Create Job
-	$actual =  New-AzureRmStreamAnalyticsJob -File .\Resources\job.json -ResourceGroupName $resourceGroup -Name $jobName -Force
+	$actual =  New-AzureRmStreamAnalyticsJob -File .\Resources\job.json -ResourceGroupName $resourceGroup -Name $jobName -Confirm:$false -Force
 	$expected = Get-AzureRmStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup
 	Assert-AreEqual $expected.Name $actual.Name	
 
@@ -47,7 +47,7 @@ function Test-TestStreamingAnalyticsE2E
 	Assert-AreEqual $functionName $actual.Name
 
 	# New Input (Patch)
-    $actual = New-AzureRmStreamAnalyticsInput -File .\Resources\Input.json -JobName $jobName -ResourceGroupName $resourceGroup -Force
+    $actual = New-AzureRmStreamAnalyticsInput -File .\Resources\Input.json -JobName $jobName -ResourceGroupName $resourceGroup -Confirm:$false -Force
 	Assert-AreEqual $inputName $actual.Name
 
     # Test Input 
@@ -56,7 +56,7 @@ function Test-TestStreamingAnalyticsE2E
 	Assert-AreEqual $expected $actual
 
 	# New Output (Patch)
-	$actual = New-AzureRmStreamAnalyticsOutput -File .\Resources\Output.json -JobName $jobName -ResourceGroupName $resourceGroup -Force
+	$actual = New-AzureRmStreamAnalyticsOutput -File .\Resources\Output.json -JobName $jobName -ResourceGroupName $resourceGroup -Confirm:$false -Force
 	Assert-AreEqual $outputName $actual.Name
 
 	# Test Output
@@ -65,11 +65,11 @@ function Test-TestStreamingAnalyticsE2E
 	Assert-AreEqual $expected $actual
 
 	# Create transformation (Patch)
-	$actual = New-AzureRmStreamAnalyticsTransformation -File .\Resources\Transformation.json -JobName $jobName -ResourceGroupName $resourceGroup -Force
+	$actual = New-AzureRmStreamAnalyticsTransformation -File .\Resources\Transformation.json -JobName $jobName -ResourceGroupName $resourceGroup -Confirm:$false -Force
 	Assert-AreEqual $transformationName $actual.Name
 
 	# New Function (Patch)
-    $actual = New-AzureRmStreamAnalyticsFunction -File .\Resources\Function.json -JobName $jobName -ResourceGroupName $resourceGroup -Force
+    $actual = New-AzureRmStreamAnalyticsFunction -File .\Resources\Function.json -JobName $jobName -ResourceGroupName $resourceGroup -Confirm:$false -Force
 	Assert-AreEqual $functionName $actual.Name
 
 	# Test Function
@@ -109,22 +109,22 @@ function Test-TestStreamingAnalyticsE2E
 	Assert-AreEqual $functionName $actual.Name
 
 	# Remove Function
-    $actual = Remove-AzureRmStreamAnalyticsFunction -JobName $jobName -Name $functionName -ResourceGroupName $resourceGroup -Force
+    $actual = Remove-AzureRmStreamAnalyticsFunction -JobName $jobName -Name $functionName -ResourceGroupName $resourceGroup -Confirm:$false
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 
     # Remove Output
-    $actual = Remove-AzureRmStreamAnalyticsOutput -JobName $jobName -Name Output -ResourceGroupName $resourceGroup -Force
+    $actual = Remove-AzureRmStreamAnalyticsOutput -JobName $jobName -Name Output -ResourceGroupName $resourceGroup -Confirm:$false
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 
 	# Remove Input
-    $actual = Remove-AzureRmStreamAnalyticsInput -JobName $jobName -Name Input -ResourceGroupName $resourceGroup -Force
+    $actual = Remove-AzureRmStreamAnalyticsInput -JobName $jobName -Name Input -ResourceGroupName $resourceGroup -Confirm:$false
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 
 	# Remove Job
-    $actual = Remove-AzureRmStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup -Force
+    $actual = Remove-AzureRmStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup -Confirm:$false
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 }

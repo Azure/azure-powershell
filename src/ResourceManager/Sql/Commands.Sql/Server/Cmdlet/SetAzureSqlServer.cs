@@ -62,12 +62,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string ServerVersion { get; set; }
 
         /// <summary>
-        /// Defines whether it is ok to skip the requesting of rule removal confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Get the server to update
         /// </summary>
         /// <returns>The server being updated</returns>
@@ -105,6 +99,20 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         protected override IEnumerable<Model.AzureSqlServerModel> PersistChanges(IEnumerable<Model.AzureSqlServerModel> entity)
         {
             return new List<Model.AzureSqlServerModel>() { ModelAdapter.UpsertServer(entity.First()) };
+        }
+
+        /// <summary>
+        /// Implement ShouldProcess
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            if (ShouldProcess(
+                string.Format(Properties.Resources.UpdateAzureSqlServerDescription, ServerName), 
+                string.Format(Properties.Resources.UpdateAzureSqlServerWarning, ServerName), 
+                Properties.Resources.ShouldProcessCaption))
+            {
+                base.ExecuteCmdlet();
+            }
         }
     }
 }

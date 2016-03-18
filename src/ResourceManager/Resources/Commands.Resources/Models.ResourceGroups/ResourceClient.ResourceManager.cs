@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     WriteVerbose(string.Format("Creating resource \"{0}\" started.", parameters.Name));
 
                     Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(parameters.Tag, validate: true);
-                    
-                    ResourceCreateOrUpdateResult createOrUpdateResult = ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName, 
+
+                    ResourceCreateOrUpdateResult createOrUpdateResult = ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName,
                         resourceIdentity,
                         new GenericResource
                             {
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                         WriteVerbose(string.Format("Creating resource \"{0}\" complete.", parameters.Name));
                     }
                 };
-            
+
             if (resourceExists && !parameters.Force)
             {
                 parameters.ConfirmAction(parameters.Force,
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 createOrUpdateResource();
             }
-            
+
             ResourceGetResult getResult = ResourceManagementClient.Resources.Get(parameters.ResourceGroupName, resourceIdentity);
 
             return getResult.Resource.ToPSResource(this, false);
@@ -212,7 +212,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <returns>The created resource group</returns>
         public virtual PSResourceGroup CreatePSResourceGroup(CreatePSResourceGroupParameters parameters)
         {
-            bool resourceExists = ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Exists;
 
             ResourceGroupExtended resourceGroup = null;
             Action createOrUpdateResourceGroup = () =>
@@ -221,21 +220,15 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 WriteVerbose(string.Format("Created resource group '{0}' in location '{1}'", resourceGroup.Name, resourceGroup.Location));
             };
 
-            if (resourceExists && !parameters.Force)
-            {
-                parameters.ConfirmAction(parameters.Force,
-                    ProjectResources.ResourceGroupAlreadyExists,
-                    ProjectResources.NewResourceGroupMessage,
-                    parameters.DeploymentName,
-                    createOrUpdateResourceGroup);
-                resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName).ResourceGroup;
-            }
-            else
-            {
-                createOrUpdateResourceGroup();
-            }
+            parameters.ConfirmAction(parameters.Force,
+                ProjectResources.ResourceGroupAlreadyExists,
+                ProjectResources.NewResourceGroupMessage,
+                parameters.DeploymentName,
+                createOrUpdateResourceGroup,
+                () => ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Exists);
+            //resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName).ResourceGroup;
 
-            return resourceGroup.ToPSResourceGroup(this, true);
+            return resourceGroup == null? null : resourceGroup.ToPSResourceGroup(this, true);
         }
 
         /// <summary>
@@ -332,7 +325,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
-            
+
             if (string.IsNullOrEmpty(name))
             {
                 var response = ResourceManagementClient.ResourceGroups.List(null);
@@ -466,7 +459,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
             }
 
-            if(excludedProvisioningStates.Count > 0)
+            if (excludedProvisioningStates.Count > 0)
             {
                 return deployments.Where(d => excludedProvisioningStates
                     .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();

@@ -53,7 +53,7 @@ function Test-PublicIpAddressCRUD
       Assert-AreEqual $domainNameLabel $list[0].DnsSettings.DomainNameLabel
       
       # delete
-      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Confirm:$false
       Assert-AreEqual true $delete
       
       $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
@@ -104,7 +104,7 @@ function Test-PublicIpAddressCRUD-NoDomainNameLabel
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
 
       # delete
-      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Confirm:$false
       Assert-AreEqual true $delete
       
       $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
@@ -157,7 +157,7 @@ function Test-PublicIpAddressCRUD-StaticAllocation
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
 
       # delete
-      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Confirm:$false
       Assert-AreEqual true $delete
       
       $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
@@ -209,7 +209,7 @@ function Test-PublicIpAddressCRUD-EditDomainNameLavel
       Assert-AreEqual $newDomainNameLabel $publicip.DnsSettings.DomainNameLabel
       
       # delete
-      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Confirm:$false
       Assert-AreEqual true $delete
       
       $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
@@ -260,7 +260,7 @@ function Test-PublicIpAddressCRUD-ReverseFqdn
       Assert-AreEqual $publicip.DnsSettings.Fqdn $publicip.DnsSettings.ReverseFqdn
       
       # delete
-      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Confirm:$false
       Assert-AreEqual true $delete
       
       $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName

@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroup", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSResourceGroup))]
+    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroup", DefaultParameterSetName = ParameterSet.Empty, 
+        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSResourceGroup))]
     public class NewAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         [Alias("ResourceGroupName")]

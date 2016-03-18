@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Set Protection Entity protection state.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSiteRecoveryProtectionEntity", DefaultParameterSetName = ASRParameterSets.DisableDR, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSiteRecoveryProtectionEntity", DefaultParameterSetName = ASRParameterSets.DisableDR, 
+        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Low)]
     [OutputType(typeof(ASRJob))]
     public class SetAzureSiteRecoveryProtectionEntity : SiteRecoveryCmdletBase
     {
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             this.targetNameOrId = this.ProtectionEntity.FriendlyName;
             this.ConfirmAction(
-                this.Force.IsPresent || 0 != string.CompareOrdinal(this.Protection, Constants.DisableProtection),
+                this.Force.IsPresent,
                 string.Format(Properties.Resources.DisableProtectionWarning, this.targetNameOrId),
                 string.Format(Properties.Resources.DisableProtectionWhatIfMessage, this.Protection),
                 this.targetNameOrId,
@@ -260,7 +261,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     {
                         this.HandleException(exception);
                     }
-                });
+                },
+            () => 0 != string.CompareOrdinal(this.Protection, Constants.DisableProtection));
         }
 
         /// <summary>

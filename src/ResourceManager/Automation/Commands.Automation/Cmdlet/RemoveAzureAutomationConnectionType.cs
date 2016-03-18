@@ -24,17 +24,21 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes a Connection type for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationConnectionType", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationConnectionType", 
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByName, 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High)]
     public class RemoveAzureAutomationConnectionType : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the connection name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The connection type name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The connection type name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 3, HelpMessage = "Confirm the removal of the connection type")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 3, 
+            HelpMessage = "Confirm the removal of the connection type")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -45,6 +49,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             var nextLink = string.Empty;
             var removeMessageWarning = Resources.RemovingAzureAutomationResourceWarning;
+            bool connectionTypeUsedForConnections = false;
 
             // check if any connections exists that use this connection type
             do
@@ -56,6 +61,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                                                        StringComparison.CurrentCultureIgnoreCase)))
                 {
                     removeMessageWarning = Resources.RemoveConnectionTypeThatHasConnectionWarning;
+                    connectionTypeUsedForConnections = true;
                     break;
                 }
 
@@ -67,7 +73,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                        string.Format(removeMessageWarning, "ConnectionType"),
                        string.Format(Resources.RemoveAzureAutomationResourceDescription, "ConnectionType"),
                        Name,
-                       () => this.AutomationClient.DeleteConnectionType(this.ResourceGroupName, this.AutomationAccountName, Name));
+                       () => this.AutomationClient.DeleteConnectionType(this.ResourceGroupName, this.AutomationAccountName, Name),
+                       () => connectionTypeUsedForConnections);
         }
     }
 }

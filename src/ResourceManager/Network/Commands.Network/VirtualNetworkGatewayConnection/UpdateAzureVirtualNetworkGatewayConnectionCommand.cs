@@ -24,7 +24,8 @@ using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayConnection"), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayConnection", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
     public class SetAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Parameter(
@@ -32,11 +33,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The VirtualNetworkGatewayConnection")]
         public PSVirtualNetworkGatewayConnection VirtualNetworkGatewayConnection { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -52,8 +48,6 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGatewayConnection.Tag, validate: true);
 
             ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, VirtualNetworkGatewayConnection.Name),
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     VirtualNetworkGatewayConnection.Name,
                     () => this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name, vnetGatewayConnectionModel));

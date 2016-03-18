@@ -22,12 +22,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Pipeline, DefaultParameterSetName = ByFactoryName)]
+    [Cmdlet(VerbsCommon.Remove, Constants.Pipeline, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -43,12 +41,6 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.PipelineConfirmationMessage,
-                    Name,
-                    DataFactoryName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.PipelineRemoving,

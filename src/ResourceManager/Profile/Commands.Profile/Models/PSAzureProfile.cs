@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
     /// </summary>
     public class PSAzureProfile
     {
-        private Dictionary<string, PSAzureEnvironment> _env = new Dictionary<string, PSAzureEnvironment>();
+        private IDictionary<string, PSAzureEnvironment> _env = new Dictionary<string, PSAzureEnvironment>();
 
         /// <summary>
         /// Convert between implementations of AzureProfile.
@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public IDictionary<string, PSAzureEnvironment> Environments
         {
             get { return _env; }
+            set { _env = value; }
         }
 
         /// <summary>

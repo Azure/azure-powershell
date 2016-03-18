@@ -102,8 +102,8 @@ function Test-DataLakeAnalyticsAccount
 		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
 		Assert-AreEqual 2 $testStoreAdd.Properties.DataLakeStoreAccounts.Count
 
-		# remove the Data lake storage account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName -Force -PassThru} "Remove Data Lake Store account failed."
+	# remove the Data lake storage account
+	Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName -Confirm:$false -PassThru} "Remove Data Lake Store account failed."
 
 		# get the account and ensure that it contains one data lake store
 		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
@@ -116,15 +116,15 @@ function Test-DataLakeAnalyticsAccount
 		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
 		Assert-AreEqual 1 $testStoreAdd.Properties.StorageAccounts.Count
 
-		# remove the blob storage account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -Force -PassThru} "Remove blob Storage account failed."
+	# remove the blob storage account
+	Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -Confirm:$false -PassThru} "Remove blob Storage account failed."
 
 		# get the account and ensure that it contains no azure storage accounts
 		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
 		Assert-True {$testStoreAdd.Properties.StorageAccounts -eq $null -or $testStoreAdd.Properties.StorageAccounts.Count -eq 0} "Remove blob storage reported success but failed to remove the account."
 
-		# Delete dataLakeAnalytics account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    # Delete dataLakeAnalytics account
+    Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Confirm:$false -PassThru} "Remove Account failed."
 
 		# Verify that it is gone by trying to get it again
 		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -190,9 +190,9 @@ function Test-DataLakeAnalyticsJob
 		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJob" -Script "DROP DATABASE IF EXISTS foo; CREATE DATABASE foo;"
 		Assert-NotNull {$jobInfo}
 
-		# "cancel" the fake job right away
-		Stop-AzureRmDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId -Force
-		$cancelledJob = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
+	# "cancel" the fake job right away
+	Stop-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobId $jobInfo.JobId -Confirm:$false
+	$cancelledJob = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
 
 		# Get the specific job, and the list of all jobs in the resource group
 		Assert-NotNull {$cancelledJob}
@@ -210,8 +210,8 @@ function Test-DataLakeAnalyticsJob
 
 		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted before right now"
 
-		# Delete the DataLakeAnalytics account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    # Delete the DataLakeAnalytics account
+    Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Confirm:$false -PassThru} "Remove Account failed."
 
 		# Verify that it is gone by trying to get it again
 		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -281,11 +281,11 @@ function Test-NegativeDataLakeAnalyticsAccount
 		# attempt to get a non-existent account
 		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}
 
-		# Delete dataLakeAnalytics account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    # Delete dataLakeAnalytics account
+    Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Confirm:$false -PassThru} "Remove Account failed."
 
-		# Verify that trying to delete a non existent account now throws
-		Assert-Throws {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru}
+	# Verify that trying to delete a non existent account now throws
+	Assert-Throws {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Confirm:$false -PassThru}
 
 		# Verify that it is gone by trying to get it again
 		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -357,8 +357,8 @@ function Test-NegativeDataLakeAnalyticsJob
 
 		Assert-True {$jobsWithDateOffset.Count -eq 0} "Retrieval of jobs submitted after right now returned results and should not have"
 
-		# Delete the DataLakeAnalytics account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    # Delete the DataLakeAnalytics account
+    Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Confirm:$false -PassThru} "Remove Account failed."
 
 		# Verify that it is gone by trying to get it again
 		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -697,14 +697,14 @@ function Test-DataLakeAnalyticsCatalog
 		$result = Wait-AzureRMDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
     
-		# delete the secret
-		Remove-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -Name $secretName -DatabaseName $databaseName -Force
+	# delete the secret
+	Remove-AzureRmDataLakeAnalyticsCatalogSecret -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $secretName -DatabaseName $databaseName -Confirm:$false
 
 		# verify that the secret cannot be retrieved
 		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"}
 
-		# Delete the DataLakeAnalytics account
-		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+	# Delete the DataLakeAnalytics account
+    Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Confirm:$false -PassThru} "Remove Account failed."
 
 		# Verify that it is gone by trying to get it again
 		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}

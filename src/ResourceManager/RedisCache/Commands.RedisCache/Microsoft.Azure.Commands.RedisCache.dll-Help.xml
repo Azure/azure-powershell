@@ -796,7 +796,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Remove-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Force -PassThru
+          PS C:\&gt;Remove-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Confirm:$false -PassThru
           True
 
         </dev:code>
@@ -816,7 +816,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Remove-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Force
+          PS C:\&gt;Remove-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Confirm:$false
         </dev:code>
         <dev:remarks>
           <maml:para>This command removes a redis cache.</maml:para>
@@ -1112,7 +1112,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureRmRedisCacheKey -ResourceGroupName myGroup -Name mycache -KeyType Primary -Force
+          PS C:\&gt;New-AzureRmRedisCacheKey -ResourceGroupName myGroup -Name mycache -KeyType Primary -Confirm:$false
 
           PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -1134,7 +1134,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureRmRedisCacheKey -ResourceGroupName myGroup -Name mycache -KeyType Secondary -Force
+          PS C:\&gt;New-AzureRmRedisCacheKey -ResourceGroupName myGroup -Name mycache -KeyType Secondary -Confirm:$false
 
           PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -1697,7 +1697,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName "resourceGroupName" -Name "cacheName" -Force
+          PS C:\&gt;Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName "resourceGroupName" -Name "cacheName" -Confirm:$false
         </dev:code>
         <dev:remarks>
           <maml:para>

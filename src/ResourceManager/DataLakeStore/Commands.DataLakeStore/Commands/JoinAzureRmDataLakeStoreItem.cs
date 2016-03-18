@@ -19,7 +19,8 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Join, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
+    [Cmdlet(VerbsCommon.Join, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof (string))]
     public class JoinAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -49,19 +50,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            FileType fileType;
-            if (Force &&
-                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
-                    out fileType) && fileType == FileType.File)
-                // If it is a directory you are trying to overwrite with a concatenated file, we will error out.
+            if (ShouldProcess(Destination.OriginalPath, Properties.Resources.JoinItemAction))
             {
-                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, false);
+                FileType fileType;
+                if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
+                        out fileType) 
+                     && fileType == FileType.File 
+                     && (Force || ShouldContinue(string.Format(Properties.Resources.OverwriteFileAction, 
+                         Destination.OriginalPath), "")))
+                    // If it is a directory you are trying to overwrite with a concatenated file, we will error out.
+                {
+                    DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, false);
+                }
+
+                DataLakeStoreFileSystemClient.ConcatenateFiles(Destination.TransformedPath, Account,
+                    Paths.Select(path => path.TransformedPath).ToArray());
+
+                WriteObject(Destination.OriginalPath);
             }
-
-            DataLakeStoreFileSystemClient.ConcatenateFiles(Destination.TransformedPath, Account,
-                Paths.Select(path => path.TransformedPath).ToArray());
-
-            WriteObject(Destination.OriginalPath);
         }
     }
 }

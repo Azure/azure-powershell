@@ -44,7 +44,7 @@ function Test-AzureBackupMarsContainerScenario
     
     Enable-AzureRmBackupContainerReregistration -Container $container	
     
-    Unregister-AzureRmBackupContainer -Container $container -Force
+    Unregister-AzureRmBackupContainer -Container $container -Confirm:$false
 
     $unregContainers = Get-AzureRmBackupContainer -vault $vault -type $ContainerType -name $ContainerName
     Assert-AreEqual $unregContainers.Count 0;

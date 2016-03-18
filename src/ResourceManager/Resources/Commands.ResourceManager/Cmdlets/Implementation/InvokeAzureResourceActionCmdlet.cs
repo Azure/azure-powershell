@@ -24,7 +24,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that invokes a resource action.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmResourceAction", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmResourceAction", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Medium, 
+        DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class InvokAzureResourceActionCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
@@ -53,8 +55,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var resourceId = this.GetResourceId();
 
             this.ConfirmAction(
-                this.Force,
-                string.Format("Are you sure you want to invoke the '{0}' action on the following resource: {1}", this.Action, resourceId),
                 string.Format("Invoking the '{0}' action on the resource.", this.Action),
                 resourceId,
                 () =>

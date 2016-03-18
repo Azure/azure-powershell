@@ -2206,7 +2206,7 @@ Version                      : 08587489107859952120</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Remove-AzureRmLogicApp -ResourceGroupName &quot;ResourceGroup1&quot; -Name &quot;LogicApp1&quot; -Force</dev:code>
+			<dev:code>PS C:\&gt;Remove-AzureRmLogicApp -ResourceGroupName &quot;ResourceGroup1&quot; -Name &quot;LogicApp1&quot; -Confirm:$false</dev:code>
 			<dev:remarks>
 				<maml:para>This command removes a Logic App from the specified Azure resource group.</maml:para>
 				<maml:para />

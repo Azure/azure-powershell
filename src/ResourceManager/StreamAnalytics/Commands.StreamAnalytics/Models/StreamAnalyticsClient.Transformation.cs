@@ -74,38 +74,34 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                     };
             };
 
-            if (parameter.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createTransformation();
-            }
-            else
-            {
-                bool transformationExists = CheckTransformationExists(parameter.ResourceGroupName, parameter.JobName, parameter.TransformationName);
-
-                parameter.ConfirmAction(
-                        !transformationExists,
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.TransformationExists,
-                            parameter.TransformationName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.TransformationCreating,
-                            parameter.TransformationName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
+            parameter.ConfirmAction(
+                    parameter.Force,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.TransformationExists,
                         parameter.TransformationName,
-                        createTransformation);
-            }
-
+                        parameter.JobName,
+                        parameter.ResourceGroupName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.TransformationCreating,
+                        parameter.TransformationName,
+                        parameter.JobName,
+                        parameter.ResourceGroupName),
+                    parameter.TransformationName,
+                    createTransformation,
+                    () => CheckTransformationExists(parameter.ResourceGroupName, parameter.JobName, 
+                        parameter.TransformationName, parameter.Force));
             return transformation;
         }
 
-        private bool CheckTransformationExists(string resourceGroupName, string jobName, string transformationName)
+        private bool CheckTransformationExists(string resourceGroupName, string jobName, string transformationName, bool overwrite)
         {
+            if (overwrite)
+            {
+                return false;
+            }
+
             try
             {
                 PSTransformation transformation = GetTransformation(resourceGroupName, jobName, transformationName);

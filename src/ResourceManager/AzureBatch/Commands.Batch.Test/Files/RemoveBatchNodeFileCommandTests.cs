@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
         public void RemoveBatchNodeFileParametersTest()
         {
             // Setup cmdlet to skip confirmation popup
-            cmdlet.Force = true;
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             // Setup cmdlet without required parameters

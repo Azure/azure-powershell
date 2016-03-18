@@ -123,7 +123,7 @@ function Test_SetRemoveAccessPolicyBySPN
     finally
     {
         if (-not $global:noADCmdLetMode) {        
-            Remove-AzureRmADApplication -ApplicationObjectId $app.ApplicationObjectId -Force
+            Remove-AzureRmADApplication -ApplicationObjectId $app.ApplicationObjectId -Confirm:$false
         }
     }
 
@@ -339,7 +339,7 @@ Removes the resource group under which all resources for vault tests were create
 #>
 function Cleanup-VaultTest
 {
-    Remove-AzureRmResourceGroup -Name $global:resourceGroupname -Force -Confirm:$false
+    Remove-AzureRmResourceGroup -Name $global:resourceGroupname -Confirm:$false -Confirm:$false
     $global:resourceGroupname = ''
 }
 #-------------------------------------------------------------------------------------

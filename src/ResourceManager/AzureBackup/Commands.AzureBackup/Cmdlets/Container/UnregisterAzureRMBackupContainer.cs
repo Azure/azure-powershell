@@ -30,12 +30,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmBackupContainer")]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmBackupContainer", 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High)]
     public class UnregisterAzureRMBackupContainer : AzureBackupContainerCmdletBase
     {
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = "Confirm unregistration and deletion of server")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -62,7 +60,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         private void DeleteServer()
         {
-            ConfirmAction(Force, Resources.UnregisterServerCaption, Resources.UnregisterServerMessage, "", () =>
+            ConfirmAction(Resources.UnregisterServerMessage, "", () =>
                 AzureBackupClient.UnregisterMachineContainer(Container.ResourceGroupName, Container.ResourceName, Container.Id));
         }
 

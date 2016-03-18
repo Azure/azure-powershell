@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Virtual Machine Access Extension &apos;{0}&apos; extending VirtualMachine &apos;{1}&apos;.
+        /// </summary>
+        public static string AccessExtensionTarget {
+            get {
+                return ResourceManager.GetString("AccessExtensionTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SAS Uri for the destination blob is not supported in patch mode:{0}.
         /// </summary>
         public static string AddAzureVhdCommandSASUriNotSupportedInPatchMode {
@@ -93,6 +102,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string AvailabilitySetRemovalConfirmation {
             get {
                 return ResourceManager.GetString("AvailabilitySetRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Availability set &apos;{0}&apos;.
+        /// </summary>
+        public static string AvailabilitySetTarget {
+            get {
+                return ResourceManager.GetString("AvailabilitySetTarget", resourceCulture);
             }
         }
         
@@ -270,6 +288,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom Script Extension &apos;{0}&apos; extending VirtualMachine &apos;{1}&apos;.
+        /// </summary>
+        public static string CustomScriptExtensionTarget {
+            get {
+                return ResourceManager.GetString("CustomScriptExtensionTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Run File has been assigned, and the Custom Script extension will try to use the first specified File Name as the Run File..
         /// </summary>
         public static string CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript {
@@ -365,6 +392,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string DiagnosticsExtensionXmlConfigWadCfgTagNotMatch {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionXmlConfigWadCfgTagNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disk Encryption Extension &apos;{0}&apos; extending VirtualMachine &apos;{1}&apos;.
+        /// </summary>
+        public static string DiskEncryptionExtensionTarget {
+            get {
+                return ResourceManager.GetString("DiskEncryptionExtensionTarget", resourceCulture);
             }
         }
         
@@ -932,6 +968,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Extension.
+        /// </summary>
+        public static string RemoveExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Extension.
+        /// </summary>
+        public static string SetExtensionAction {
+            get {
+                return ResourceManager.GetString("SetExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage account, {0}, is not found.  The OS disk may be in a different subscription..
         /// </summary>
         public static string StorageAccountNotFoundForBootDiagnostics {
@@ -1040,11 +1094,47 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Virtual Machine Extension &apos;{0}&apos; extending VirtualMachine &apos;{1}&apos;.
+        /// </summary>
+        public static string VMExtensionTarget {
+            get {
+                return ResourceManager.GetString("VMExtensionTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them..
         /// </summary>
         public static string VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired {
             get {
                 return ResourceManager.GetString("VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Virtual Machine.
+        /// </summary>
+        public static string VMRemoveAction {
+            get {
+                return ResourceManager.GetString("VMRemoveAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop Virtual Machine.
+        /// </summary>
+        public static string VMStopAction {
+            get {
+                return ResourceManager.GetString("VMStopAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Machine &apos;{0}&apos;.
+        /// </summary>
+        public static string VMTarget {
+            get {
+                return ResourceManager.GetString("VMTarget", resourceCulture);
             }
         }
     }

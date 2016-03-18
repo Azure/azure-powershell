@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.AzureDiskEncryptionExtension)]
+        ProfileNouns.AzureDiskEncryptionExtension, SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -54,10 +54,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "To force the removal.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -76,8 +72,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 }
 
-                if (this.Force.IsPresent
-                    || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
+                if (this.ShouldProcess(string.Format(Properties.Resources.DiskEncryptionExtensionTarget, Name, VMName), 
+                    Properties.Resources.RemoveExtensionAction))
                 {
                     var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
                         this.ResourceGroupName,

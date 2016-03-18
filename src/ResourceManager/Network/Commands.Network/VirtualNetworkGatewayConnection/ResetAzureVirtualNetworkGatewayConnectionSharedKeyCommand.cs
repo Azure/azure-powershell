@@ -22,7 +22,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Reset, "AzureRmVirtualNetworkGatewayConnectionSharedKey"), OutputType(typeof(string))]
+    [Cmdlet(VerbsCommon.Reset, "AzureRmVirtualNetworkGatewayConnectionSharedKey", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
     public class ResetAzureVirtualNetworkGatewayConnectionSharedKeyCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -56,23 +57,15 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (this.IsVirtualNetworkGatewayConnectionSharedKeyPresent(this.ResourceGroupName, this.Name))
-            {
                 ConfirmAction(
                     Force.IsPresent,
                     string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
-                    () => ResetVirtualNetworkGatewayConnectionSharedKey());
+                    () => ResetVirtualNetworkGatewayConnectionSharedKey(),
+                    () => IsVirtualNetworkGatewayConnectionSharedKeyPresent(ResourceGroupName, Name));
 
                 WriteObject(this.GetVirtualNetworkGatewayConnectionSharedKey(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var virtualNetworkGatewayConnectionSharedKey = ResetVirtualNetworkGatewayConnectionSharedKey();
-
-                WriteObject(virtualNetworkGatewayConnectionSharedKey);
-            }
         }
 
         private string ResetVirtualNetworkGatewayConnectionSharedKey()

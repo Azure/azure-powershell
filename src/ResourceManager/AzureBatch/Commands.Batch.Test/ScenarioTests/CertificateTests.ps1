@@ -62,7 +62,7 @@ function Test-AddCertificate
     }
     finally
     {
-        Get-AzureBatchCertificate -BatchContext $context | Remove-AzureBatchCertificate -Force -BatchContext $context
+        Get-AzureBatchCertificate -BatchContext $context | Remove-AzureBatchCertificate -Confirm:$false -BatchContext $context
     }
 }
 
@@ -93,7 +93,7 @@ function Test-ListCertificatesByFilter
     $filter = "state eq '$state'"
 
     # Put a cert in the 'deleting' state
-    Remove-AzureBatchCertificate "sha1" $toDeleteThumbprint -Force -BatchContext $context
+    Remove-AzureBatchCertificate "sha1" $toDeleteThumbprint -Confirm:$false -BatchContext $context
 
     $certs = Get-AzureBatchCertificate -Filter $filter -BatchContext $context
 
@@ -177,7 +177,7 @@ function Test-DeleteCertificate
     $cert = Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context
     Assert-AreEqual $thumbprint $cert.Thumbprint
 
-    Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context | Remove-AzureBatchCertificate -Force -BatchContext $context
+    Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context | Remove-AzureBatchCertificate -Confirm:$false -BatchContext $context
 
     # Verify the cert was deleted. Use the List API since the Get Certificate API will return a 404 if the cert isn't found.
     $filter = "state eq 'deleting'"

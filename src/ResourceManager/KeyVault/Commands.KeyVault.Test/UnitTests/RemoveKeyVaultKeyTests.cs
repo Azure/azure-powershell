@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             // Mock the should process to return true
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
             cmdlet.Name = KeyName;
-            cmdlet.Force = true;
             cmdlet.PassThru = true;
             cmdlet.ExecuteCmdlet();
 
@@ -75,7 +74,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             // Mock the should process to return true
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
             cmdlet.Name = KeyName;
-            cmdlet.Force = true;
             cmdlet.ExecuteCmdlet();
 
             keyVaultClientMock.VerifyAll();
@@ -114,7 +112,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             // Mock the should process to return true
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
             cmdlet.Name = KeyName;
-            cmdlet.Force = true;
             cmdlet.PassThru = true;
             try
             {

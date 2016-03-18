@@ -21,7 +21,8 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.Hub, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSHub))]
+    [Cmdlet(VerbsCommon.New, Constants.Hub, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.Low), OutputType(typeof(PSHub))]
     public class NewAzureDataFactoryHubCommand : HubContextBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,

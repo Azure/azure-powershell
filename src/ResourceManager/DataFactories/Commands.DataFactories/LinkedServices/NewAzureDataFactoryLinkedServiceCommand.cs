@@ -23,7 +23,8 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.LinkedService, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSLinkedService))]
+    [Cmdlet(VerbsCommon.New, Constants.LinkedService, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.Low), OutputType(typeof(PSLinkedService))]
     public class NewAzureDataFactoryLinkedServiceCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

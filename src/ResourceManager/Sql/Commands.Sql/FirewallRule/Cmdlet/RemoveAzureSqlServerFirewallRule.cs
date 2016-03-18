@@ -38,12 +38,6 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         public string FirewallRuleName { get; set; }
 
         /// <summary>
-        /// Defines whether it is ok to skip the requesting of rule removal confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Gets the entity to delete
         /// </summary>
         /// <returns>The entity going to be deleted</returns>
@@ -80,15 +74,14 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent && !ShouldProcess(
+            if (ShouldProcess(
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerFirewallRuleDescription, this.FirewallRuleName, this.ServerName),
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerFirewallRuleWarning, this.FirewallRuleName, this.ServerName),
                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
-                return;
+                base.ExecuteCmdlet();
             }
 
-            base.ExecuteCmdlet();
         }
     }
 }

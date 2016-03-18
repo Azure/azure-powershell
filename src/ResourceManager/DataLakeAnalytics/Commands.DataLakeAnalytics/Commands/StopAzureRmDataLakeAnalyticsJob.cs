@@ -19,7 +19,8 @@ using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmDataLakeAnalyticsJob")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmDataLakeAnalyticsJob", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Low)]
     public class StopAzureDataLakeAnalyticsJobInfo : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -34,18 +35,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         public Guid JobId { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
-            HelpMessage = "Indicates that the job should be forcibly stopped.")]
+            HelpMessage = "Name of resource group under which want to stop the job.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter Force { get; set; }
+        public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.StoppingDataLakeAnalyticsJob, JobId),
                 string.Format(Resources.StopDataLakeAnalyticsJob, JobId),
                 JobId.ToString(),
                 () => DataLakeAnalyticsClient.CancelJob(Account, JobId));

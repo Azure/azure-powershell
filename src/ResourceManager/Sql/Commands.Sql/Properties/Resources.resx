@@ -288,4 +288,12 @@
   <data name="InvalidExcludedDetectionTypeSet" xml:space="preserve">
     <value>Cannot use the '{0}' option with other excluded detection types.</value>
   </data>
+  <data name="UpdateAzureSqlServerDescription" xml:space="preserve">
+    <value>Updating Azure Sql Database Server '{0}'.</value>
+    <comment>{0} = server name</comment>
+  </data>
+  <data name="UpdateAzureSqlServerWarning" xml:space="preserve">
+    <value>Are you sure you want to update the Azure Sql Database Server '{0}'?</value>
+    <comment>{0} = server name</comment>
+  </data>
 </root>

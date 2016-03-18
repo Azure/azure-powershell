@@ -72,7 +72,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 
             AddTestTables();
             name = "text";
-            command.Force = true;
             command.confirm = false;
             removed = command.RemoveAzureTable(name);
             Assert.IsTrue(removed);

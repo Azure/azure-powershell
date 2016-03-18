@@ -255,7 +255,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $nicCount = if ([string]::IsNullOrEmpty($nicCount)) { 1 } else { [int]$nicCount }
 
     # Common
-    New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+    New-AzureRmResourceGroup -Name $rgname -Location $loc -Confirm:$false;
 
     # VM Profile & Hardware
     $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
@@ -263,10 +263,10 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
 
     # NRP
     $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+    $vnet = New-AzureRmVirtualNetwork -Confirm:$false -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
     $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
     $subnetId = $vnet.Subnets[0].Id;
-    $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+    $pubip = New-AzureRmPublicIpAddress -Confirm:$false -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
     $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
     $pubipId = $pubip.Id;
     
@@ -276,7 +276,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $nicPrimParams.Add("Primary", $true)
     for ($i = 0;$i -lt $nicCount;$i++)
     {
-        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $i + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId @pibparams
+        $nic = New-AzureRmNetworkInterface -Confirm:$false -Force -Name ('nic' + $i + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId @pibparams
         $nic = Get-AzureRmNetworkInterface -Name ('nic' + $i + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 

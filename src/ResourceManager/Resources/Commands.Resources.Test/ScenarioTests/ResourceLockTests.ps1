@@ -25,7 +25,7 @@ function Test-ResourceLockCRUD
 	$apiversion = "2014-04-01"
 
 	$rg = New-AzureRMResourceGroup -Name $rgname -Location $rglocation
-	$actual = New-AzureRMResourceLock -LockName $rname -LockLevel CanNotDelete -Force -Scope $rg.ResourceId
+	$actual = New-AzureRmResourceLock -LockName $rname -LockLevel CanNotDelete -Confirm:$false -Scope $rg.ResourceId
 	$expected = Get-AzureRMResourceLock -LockName $rname -Scope $rg.ResourceId
 
 	# Assert
@@ -35,10 +35,10 @@ function Test-ResourceLockCRUD
 	Assert-AreEqual $expected.ResourceType $actual.ResourceType
 	Assert-AreEqual $expected.LockId $actual.LockId
 
-	$expectedSet = Set-AzureRMResourceLock -LockId $expected.LockId -LockLevel CanNotDelete -LockNotes test -Force
+	$expectedSet = Set-AzureRmResourceLock -LockId $expected.LockId -LockLevel CanNotDelete -LockNotes test -Confirm:$false
 	Assert-AreEqual $expectedSet.Properties.Notes "test"
 
-	$removed = Remove-AzureRMResourceLock -LockId $expectedSet.LockId -Force
+	$removed = Remove-AzureRmResourceLock -LockId $expectedSet.LockId -Confirm:$false
 	Assert-AreEqual True $removed
 
 }

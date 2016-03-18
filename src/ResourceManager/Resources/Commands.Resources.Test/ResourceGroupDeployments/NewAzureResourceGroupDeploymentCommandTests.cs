@@ -96,6 +96,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.ExecuteCmdlet();
 

@@ -21,7 +21,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.New, Constants.StreamAnalyticsTransformation), OutputType(typeof(PSTransformation))]
+    [Cmdlet(VerbsCommon.New, Constants.StreamAnalyticsTransformation, SupportsShouldProcess = true), 
+    OutputType(typeof(PSTransformation))]
     public class NewAzureStreamAnalyticsTransformationCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics job name.")]

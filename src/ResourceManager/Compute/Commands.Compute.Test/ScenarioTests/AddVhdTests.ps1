@@ -25,7 +25,7 @@ function Test-AddVhd
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Confirm:$false;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;

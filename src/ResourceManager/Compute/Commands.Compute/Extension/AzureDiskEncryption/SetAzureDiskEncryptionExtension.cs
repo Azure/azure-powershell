@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.AzureDiskEncryptionExtension,
-        DefaultParameterSetName = aadClientSecretParameterSet)]
+        DefaultParameterSetName = aadClientSecretParameterSet,
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.Medium)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -170,10 +171,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "The passphrase specified in parameters. This parameter only works for Linux VM.")]
         [ValidateNotNullOrEmpty]
         public string Passphrase { get; set; }
-
-        [Parameter(HelpMessage = "To force the removal.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter Force { get; set; }
 
         private string currentOSType = null;
 
@@ -409,8 +406,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent ||
-                this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption))
+                if (
+                this.ShouldProcess(string.Format(Properties.Resources.DiskEncryptionExtensionTarget, Name, VMName), 
+                Properties.Resources.SetExtensionAction))
                 {
                     VirtualMachine virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
                         this.ResourceGroupName, VMName).Body;

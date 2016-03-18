@@ -43,7 +43,7 @@ function Test-ProfileCrud
 	Assert-AreEqual $resourceGroup.ResourceGroupName $updatedProfile.ResourceGroupName
 	Assert-AreEqual "Priority" $updatedProfile.TrafficRoutingMethod
 
-	$removed = Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+	$removed = Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 
 	Assert-True { $removed }
 
@@ -63,7 +63,7 @@ function Test-ProfileCrudWithPiping
 
 	$createdProfile.TrafficRoutingMethod = "Priority"
 
-	$removed = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Set-AzureRmTrafficManagerProfile | Remove-AzureRmTrafficManagerProfile -Force
+	$removed = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Set-AzureRmTrafficManagerProfile | Remove-AzureRmTrafficManagerProfile
 
 	Assert-True { $removed }
 
@@ -86,7 +86,7 @@ function Test-CreateDeleteUsingProfile
 	Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName 
 	Assert-AreEqual "Performance" $createdProfile.TrafficRoutingMethod
 
-	Remove-AzureRmTrafficManagerProfile -TrafficManagerProfile $createdProfile -Force
+	Remove-AzureRmTrafficManagerProfile -TrafficManagerProfile $createdProfile -Confirm:$false
 
 	Assert-Throws { Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } 
 }
@@ -157,7 +157,7 @@ function Test-ProfileNewAlreadyExists
 	
 	Assert-Throws { TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName } 
 
-	$createdProfile | Remove-AzureRmTrafficManagerProfile -Force
+	$createdProfile | Remove-AzureRmTrafficManagerProfile
 }
 
 <#
@@ -169,7 +169,7 @@ function Test-ProfileRemoveNonExisting
 	$profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	
-	$removed = Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force 
+	$removed = Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false 
 	Assert-False { $removed }
 }
 
@@ -239,7 +239,7 @@ function Test-ProfileDisable
 	
 	Assert-AreEqual "Enabled" $enabledProfile.ProfileStatus
 
-    Assert-True { Disable-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force }
+    Assert-True { Disable-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false }
 
     $updatedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
@@ -259,7 +259,7 @@ function Test-ProfileDisablePipeline
 	$enabledProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -ProfileStatus "Enabled" -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 	Assert-AreEqual "Enabled" $enabledProfile.ProfileStatus
 
-    Assert-True { Disable-AzureRmTrafficManagerProfile -TrafficManagerProfile $enabledProfile -Force }
+    Assert-True { Disable-AzureRmTrafficManagerProfile -TrafficManagerProfile $enabledProfile -Confirm:$false }
 
     $updatedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
@@ -275,5 +275,5 @@ function Test-ProfileDisableNonExisting
 	$profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 
-    Assert-Throws { Disable-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force } 
+    Assert-Throws { Disable-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false } 
 }

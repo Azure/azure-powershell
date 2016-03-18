@@ -27,13 +27,13 @@ function Test-GetAzureRmVMDscExtension
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRmVirtualNetwork -Confirm:$false -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
         $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
         $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = New-AzureRmNetworkInterface -Confirm:$false -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
         $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
@@ -75,10 +75,10 @@ function Test-GetAzureRmVMDscExtension
 		# Publish DSC Configuration
 		#TODO: Find a way to mock calls with storage
 		#$configPath = '.\ScenarioTests\DummyConfig.ps1'
-		#Publish-AzureRmVMDscConfiguration -ConfigurationPath $configPath -ResourceGroupName $rgname -StorageAccountName $stoname -Force -Verbose
+		#Publish-AzureRmVMDscConfiguration -ConfigurationPath $configPath -ResourceGroupName $rgname -StorageAccountName $stoname -Confirm:$false -Force -Verbose
 
 		#Install DSC Extension handler
-		Set-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname -ArchiveBlobName $null -ArchiveStorageAccountName $stoname -Version $version -Force -Location $loc
+		Set-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname -ArchiveBlobName $null -ArchiveStorageAccountName $stoname -Version $version -Confirm:$false -Location $loc
 
         $extension = Get-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname 
 		Assert-NotNull $extension
@@ -98,14 +98,14 @@ function Test-GetAzureRmVMDscExtension
 		Assert-NotNull $status.Timestamp 
 		
         # Remove Extension
-        Remove-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname
+        Remove-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname -Confirm:$false
     }
     finally
     {
 		# Cleanup
 		if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
 		{
-			#Remove-AzureRmResourceGroup -Name $rgname -Force;
+			#Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false;
 		}
     }
 }

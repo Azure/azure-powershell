@@ -131,6 +131,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = UriFilePathParameterSet)]
         public AzureStorageContext DestContext { get; set; }
 
+        [Parameter(HelpMessage = "Force to overwrite the existing file.")]
+        public override SwitchParameter Force { get; set; }
+
         private IStorageBlobManagement blobChannel = null;
 
         private BlobToAzureFileNameResolver nameResolver = new BlobToAzureFileNameResolver(() => NameUtil.MaxFileNameLength);
