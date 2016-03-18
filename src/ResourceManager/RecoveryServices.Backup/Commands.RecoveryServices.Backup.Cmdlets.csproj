@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesContainer.cs" />
+    <Compile Include="Cmdlets\Item\EnableAzureRmRecoveryServicesProtection.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJob.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJobDetails.cs" />
     <Compile Include="Cmdlets\Jobs\WaitAzureRmRecoveryServicesJob.cs" />

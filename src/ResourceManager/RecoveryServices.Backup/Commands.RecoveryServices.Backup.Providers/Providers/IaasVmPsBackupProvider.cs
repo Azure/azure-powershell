@@ -15,7 +15,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
@@ -26,6 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class IaasVmPsBackupProvider : IPsBackupProvider
     {
+        private const int defaultOperationStatusRetryTimeInMilliSec = 5 * 1000; // 10 sec
+        private const string separator = ";";
+
         ProviderData ProviderData { get; set; }
         HydraAdapter.HydraAdapter HydraAdapter { get; set; }
 
@@ -37,7 +42,78 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse EnableProtection()
         {
-            throw new NotImplementedException();
+            string azureVMName = (string)ProviderData.ProviderParameters[ItemParams.AzureVMName];
+            string azureVMCloudServiceName = (string)ProviderData.ProviderParameters[ItemParams.AzureVMCloudServiceName];
+            string azureVMResourceGroupName = (string)ProviderData.ProviderParameters[ItemParams.AzureVMResourceGroupName];
+            string parameterSetName = (string)ProviderData.ProviderParameters[ItemParams.ParameterSetName];
+
+            Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType workloadType =
+                (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData.ProviderParameters[ItemParams.WorkloadType];
+
+            AzureRmRecoveryServicesPolicyBase policy = (AzureRmRecoveryServicesPolicyBase)
+                                                 ProviderData.ProviderParameters[ItemParams.Policy];
+            if (policy == null)
+            {
+                // throw error -- TBD
+            }
+
+            AzureRmRecoveryServicesIaasVmItem item = (AzureRmRecoveryServicesIaasVmItem)
+                                                 ProviderData.ProviderParameters[ItemParams.Item];
+            // do validations
+            //ValidateAzureVMWorkloadType(workloadType, policy); -- TBD
+
+            string containerUri = "";
+            string protectedItemUri = "";
+            bool isComputeAzureVM = false;
+
+            if (item == null)
+            {
+                isComputeAzureVM = string.IsNullOrEmpty(azureVMCloudServiceName) ? true : false;
+                string azureVMRGName = (isComputeAzureVM) ? azureVMResourceGroupName : azureVMCloudServiceName;
+
+                //ValidateEnableProtectionRequest(azureVMName, azureVMCloudServiceName, azureVMResourceGroupName); -- TBD
+
+                AzureIaaSVMProtectableItem protectableObject = GetAzureVMProtectableObject(azureVMName, azureVMRGName, isComputeAzureVM);
+
+                containerUri = protectableObject.ContainerUri;
+                protectedItemUri = protectableObject.ProtectableObjectUri;
+            }
+            else
+            {
+                //ValidateMofifyProtectionRequest(item) -- TBD
+                // isComputeAzureVM =  IsComputeAzureVM(item.item.VirtualMachineId); -- TBD
+                string containerType = HydraHelpers.GetHydraContainerType(item.ContainerType);
+                string vmType = HydraHelpers.GetHydraWorkloadType(item.WorkloadType);
+                containerUri = string.Join(separator, new string[] { containerType, item.ContainerName });
+                protectedItemUri = string.Join(separator, new string[] { vmType, item.Name });
+            }
+
+            // construct Hydra protectedItem request
+
+            AzureIaaSVMProtectedItem properties;
+            if (isComputeAzureVM == false)
+            {
+                properties = new AzureIaaSClassicComputeVMProtectedItem();
+            }
+            else
+            {
+                properties = new AzureIaaSComputeVMProtectedItem();
+            }
+
+            properties.PolicyName = policy.Name;
+
+            ProtectedItemCreateOrUpdateRequest hydraRequest = new ProtectedItemCreateOrUpdateRequest()
+            {
+                Item = new ProtectedItemResource()
+                {
+                    Properties = properties,
+                }
+            };
+
+            return HydraAdapter.CreateOrUpdateProtectedItem(
+                                containerUri,
+                                protectedItemUri,
+                                hydraRequest);
         }
 
         public BaseRecoveryServicesJobResponse DisableProtection()
@@ -269,6 +345,158 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // call validation
             policy.Validate();
         }
+
+        private AzureIaaSVMProtectableItem GetAzureVMProtectableObject( string azureVMName, string azureVMRGName, bool isComputeAzureVM)
+        {
+            //TriggerDiscovery if needed
+
+            bool isDiscoveryNeed = false;
+
+            AzureIaaSVMProtectableItem protectableObject = null;
+            isDiscoveryNeed = IsDiscoveryNeeded(azureVMName, azureVMRGName, isComputeAzureVM, out protectableObject);
+            if (isDiscoveryNeed)
+            {
+                // WriteDebug(String.Format(Resources.VMNotDiscovered, vmName));
+                RefreshContainer();
+                isDiscoveryNeed = IsDiscoveryNeeded(azureVMName, azureVMRGName, isComputeAzureVM, out protectableObject);
+                if (isDiscoveryNeed == true)
+                {
+                    // TBD Container is not discovered. Throw exception
+                    //string errMsg = String.Format(Resources.DiscoveryFailure, vmName, ServiceOrRG, rgName);
+                    //WriteDebug(errMsg);
+                    //ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
+                }
+            }
+            if(protectableObject == null)
+            {
+                // TBD throw exception.
+            }
+
+            return protectableObject;
+
+        }
+        private bool IsDiscoveryNeeded(string vmName, string rgName, bool isComputeAzureVM,
+            out AzureIaaSVMProtectableItem protectableObject)
+        {
+            bool isDiscoveryNeed = true;
+            protectableObject = null;
+            string vmVersion = string.Empty;
+            vmVersion = (isComputeAzureVM) == true ? "Compute" : "ClassicCompute"; // -- TBD Move hard coded values to a constant.
+
+            ProtectableObjectListQueryParameters queryParam = new ProtectableObjectListQueryParameters();
+            queryParam.ProviderType = ProviderType.AzureIaasVM.ToString();
+            // Add FriendlyName query param here -- TBD
+            // No need to use skip or top token here as no pagination support of IaaSVM PO.
+
+            //First check if container is discovered or not            
+            var protectableItemList = HydraAdapter.ListProtectableItem(queryParam).ItemList;
+
+            //WriteDebug(String.Format(Resources.ContainerCountFromService, containers.Count())); -- TBD
+            if (protectableItemList.ProtectableObjects.Count() == 0)
+            {
+                //Container is not discovered
+                //WriteDebug(Resources.ContainerNotDiscovered); -- TBD
+                isDiscoveryNeed = true;
+            }
+            else
+            {
+                foreach (var protectableItem in protectableItemList.ProtectableObjects)
+                {
+                    AzureIaaSVMProtectableItem iaaSVMProtectableItem = (AzureIaaSVMProtectableItem)protectableItem.Properties;
+                    if (iaaSVMProtectableItem != null &&
+                        iaaSVMProtectableItem.FriendlyName == vmName && iaaSVMProtectableItem.ResourceGroup == rgName
+                        && iaaSVMProtectableItem.VirtualMachineVersion == vmVersion)
+                    {
+                        protectableObject = iaaSVMProtectableItem;
+                        isDiscoveryNeed = false;
+                        break;
+                    }
+                }
+            }
+
+            return isDiscoveryNeed;
+        }
+
+        private void RefreshContainer()
+        {
+            bool isRetryNeeded = true;
+            int retryCount = 1;
+            bool isDiscoverySuccessful = false;
+            string errorMessage = string.Empty;
+            while (isRetryNeeded && retryCount <= 3)
+            {
+                var refreshContainerJobResponse = HydraAdapter.RefreshContainers();
+
+                //Now wait for the operation to Complete               
+                isRetryNeeded = WaitForDiscoveryToComplete(refreshContainerJobResponse.Location, out isDiscoverySuccessful, out errorMessage);
+                retryCount++;
+            }
+
+            if (!isDiscoverySuccessful)
+            {
+                // TBD ThrowTerminatingError(new ErrorRecord(new Exception(errorMessage), string.Empty, ErrorCategory.InvalidArgument, null));
+            }
+        }
+
+        private bool WaitForDiscoveryToComplete(string locationUri, out bool isDiscoverySuccessful, out string errorMessage)
+        {
+            bool isRetryNeeded = false;
+            var status = TrackRefreshContainerOperation(locationUri);
+            errorMessage = String.Empty;
+
+            isDiscoverySuccessful = true;
+            //If operation fails check if retry is needed or not
+            if (status != HttpStatusCode.OK)
+            {
+                isDiscoverySuccessful = false;
+                errorMessage = "";
+                // TBDs
+                //Check if retry needed.
+                //WriteDebug(String.Format(Resources.DiscoveryFailureErrorCode, status.Error.Code));
+                //if ((status.Error.Code == AzureBackupOperationErrorCode.DiscoveryInProgress.ToString() ||
+                //    (status.Error.Code == AzureBackupOperationErrorCode.BMSUserErrorObjectLocked.ToString())))
+                //{
+                //    //Need to retry for this errors
+                //    isRetryNeeded = true;
+                //    WriteDebug(String.Format(Resources.RertyDiscovery));
+                //}
+            }
+            return isRetryNeeded;
+        }
+
+        private HttpStatusCode TrackRefreshContainerOperation(string operationResultLink, int checkFrequency = defaultOperationStatusRetryTimeInMilliSec)
+        {
+            HttpStatusCode status = HttpStatusCode.Accepted;
+            while (status == HttpStatusCode.Accepted)
+            {
+                try
+                {
+                    var response = HydraAdapter.GetRefreshContainerOperationResultByURL(operationResultLink);
+                    status = response.StatusCode;
+
+                    Thread.Sleep(checkFrequency);
+                }
+                catch (Exception ex)
+                {
+                     // TBD throw exception
+                    throw ex;
+                }                
+            }
+
+            if (status == HttpStatusCode.NoContent)
+            {
+                // TBD WriteDebug("Refresh Container Job completed with success");
+            }
+            else
+            {
+                string msg = String.Format("Unexpected http status in response header{ {0}", status);
+                // -- TBD WriteDebug(msg);
+                throw new Exception(msg);
+            }
+
+            return status;
+        }
+
         #endregion
     }
 }

@@ -74,5 +74,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 nextLink = null;
             }
         }
+
+        public static string GetHydraContainerType(CmdletModel.ContainerType containerType)
+        {
+            string hydraContainerType = string.Empty;
+
+            switch (containerType)
+            {
+                case CmdletModel.ContainerType.AzureVM:
+                    hydraContainerType = ContainerType.IaasVMContainer.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return hydraContainerType;
+        }
+
+        public static string GetHydraWorkloadType(CmdletModel.WorkloadType workloadType)
+        {
+            string hydraWorkloadType = string.Empty;
+
+            switch (workloadType)
+            {
+                case CmdletModel.WorkloadType.AzureVM:
+                    hydraWorkloadType = WorkloadType.VM.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return hydraWorkloadType;
+        }
     }
 }

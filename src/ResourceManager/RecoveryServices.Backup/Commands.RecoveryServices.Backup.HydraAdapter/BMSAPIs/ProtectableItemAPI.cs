@@ -17,40 +17,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
-    public enum ContainerParams
+    public partial class HydraAdapter
     {
-        Vault,
-        ContainerType,
-        BackupManagementType,
-        BackupManagementServer,
-        Name,
-        ResourceGroupName,
-        Status,
-    }
+        public ProtectableObjectListResponse ListProtectableItem(
+                ProtectableObjectListQueryParameters queryFilter)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceName();
 
-    public enum PolicyParams
-    {
-        WorkloadType,
-        BackupManagementType,
-        PolicyName,
-        SchedulePolicy,
-        RetentionPolicy,
-        ProtectionPolicy,
-        ResourceGroupName,
-        ResourceName
-    }
-
-    public enum ItemParams
-    {
-        AzureVMName,
-        AzureVMCloudServiceName,
-        AzureVMResourceGroupName,
-        WorkloadType,
-        Policy,
-        Item,
-        ParameterSetName
+            return BmsAdapter.Client.ProtectableObject.ListAsync(
+                                     resourceGroupName,
+                                     resourceName,
+                                     queryFilter,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
     }
 }
