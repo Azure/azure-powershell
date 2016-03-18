@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private AzureSubscription testSubscription;
 
         private AzureAccount testAccount;
-
+        
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
         private const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
@@ -316,8 +316,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             foreach (string moduleName in modules)
             {
-                powershell.AddScript(string.Format("Import-Module \"{0}\"",
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, moduleName)));
+                powershell.AddScript(string.Format("Import-Module \"{0}\"", moduleName.AsAbsoluteLocation()));
             }
 
             powershell.AddScript(

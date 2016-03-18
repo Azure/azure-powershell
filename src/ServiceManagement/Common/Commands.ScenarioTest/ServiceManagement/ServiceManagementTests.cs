@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -52,16 +53,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 SetupManagementClients();
 
-                List<string> modules = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\ServiceManagement"), "*.ps1").ToList();
-                modules.Add("Common.ps1");
-                modules.Add(@"..\..\..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
-                modules.Add(@"..\..\..\..\..\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1");
-                modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
+                List<string> modules = Directory.GetFiles(@"Resources\ServiceManagement".AsAbsoluteLocation(), "*.ps1").ToList();
                 modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1");
                 modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\PIR.psd1");
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(modules.ToArray());
+                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
 
                 helper.RunPowerShellTest(scripts);
             }
