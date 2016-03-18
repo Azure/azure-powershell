@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                    PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
 
                    // query service
-                   ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                   HydraModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
                                                      Name,
                                                      HydraAdapter);
                    if (policy == null)
@@ -113,16 +113,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                            break;
                    }
 
-                   ProtectionPolicyQueryParameters queryParams = new ProtectionPolicyQueryParameters()
+                   HydraModel.ProtectionPolicyQueryParameters queryParams = new HydraModel.ProtectionPolicyQueryParameters()
                    {
-                       DataSourceType = hydraDataSourceType,
-                       ProviderType = hydraProviderType
+                       BackupManagementType = hydraProviderType
                    };
-                   ProtectionPolicyListResponse respList = HydraAdapter.ListProtectionPolicy(queryParams);
+                   HydraModel.ProtectionPolicyListResponse respList = HydraAdapter.ListProtectionPolicy(queryParams);
                    if (respList != null && respList.ItemList != null &&
                        respList.ItemList.Value != null && respList.ItemList.Value.Count != 0)
                    {
-                       foreach (ProtectionPolicyResource policy in respList.ItemList.Value)
+                       foreach (HydraModel.ProtectionPolicyResource policy in respList.ItemList.Value)
                        {
                            AzureRmRecoveryServicesPolicyBase psModel = ConversionHelpers.GetPolicyModel(policy);
                            if (psModel != null)
