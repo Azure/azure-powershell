@@ -5828,12 +5828,12 @@ echo &quot;Total $total containers&quot;</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -5917,14 +5917,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Protocol</maml:name>
 			<maml:description>
 				<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			<dev:type>
-				<maml:name>SharedAccessProtocol</maml:name>
+				<maml:name>Nullable`1[SharedAccessProtocol]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6116,19 +6116,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage blob.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -6190,19 +6190,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Policy</maml:name>
 				<maml:description>
 					<maml:para>Azure Stored Access Policy.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -6264,19 +6264,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage blob.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -6345,19 +6345,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Policy</maml:name>
 				<maml:description>
 					<maml:para>Azure Stored Access Policy.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -6436,7 +6436,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage blob.</maml:para>
@@ -6448,14 +6448,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Protocol</maml:name>
 			<maml:description>
 				<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			<dev:type>
-				<maml:name>SharedAccessProtocol</maml:name>
+				<maml:name>Nullable`1[SharedAccessProtocol]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6557,7 +6557,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Policy</maml:name>
 			<maml:description>
 				<maml:para>Azure Stored Access Policy.</maml:para>
@@ -6972,19 +6972,19 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Policy</maml:name>
 				<maml:description>
 					<maml:para>Azure Stored Access Policy.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -7046,19 +7046,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage container.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -7125,7 +7125,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Policy</maml:name>
 			<maml:description>
 				<maml:para>Azure Stored Access Policy.</maml:para>
@@ -7137,14 +7137,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Protocol</maml:name>
 			<maml:description>
 				<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			<dev:type>
-				<maml:name>SharedAccessProtocol</maml:name>
+				<maml:name>Nullable`1[SharedAccessProtocol]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7234,7 +7234,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage container.</maml:para>
@@ -7742,6 +7742,89 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SasToken</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Protocol</maml:name>
+				<maml:description>
+					<maml:para>Transfer Protocol (https/http).</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Endpoint</maml:name>
+				<maml:description>
+					<maml:para>Azure Storage Endpoint.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureStorageContext</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>StorageAccountName</maml:name>
+				<maml:description>
+					<maml:para>Azure Storage Account name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SasToken</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Environment</maml:name>
+				<maml:description>
+					<maml:para>Azure Environment</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureStorageContext</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>StorageAccountName</maml:name>
+				<maml:description>
+					<maml:para>Azure Storage Account name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>StorageAccountKey</maml:name>
 				<maml:description>
@@ -7756,7 +7839,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Environment</maml:name>
 				<maml:description>
 					<maml:para>Azure Environment</maml:para>
@@ -7846,90 +7929,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Environment</maml:name>
-				<maml:description>
-					<maml:para>Azure Environment</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureStorageContext</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Azure Storage Account name</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SasToken</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Protocol</maml:name>
-				<maml:description>
-					<maml:para>Transfer Protocol (https/http).</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Endpoint</maml:name>
-				<maml:description>
-					<maml:para>Azure Storage Endpoint.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureStorageContext</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Azure Storage Account name</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SasToken</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Environment</maml:name>
 				<maml:description>
 					<maml:para>Azure Environment</maml:para>
@@ -8073,7 +8073,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SasToken</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Environment</maml:name>
 			<maml:description>
 				<maml:para>Azure Environment</maml:para>
@@ -8093,18 +8105,6 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>SasToken</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -8839,19 +8839,19 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Permission</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Policy</maml:name>
 				<maml:description>
-					<maml:para>Permissions for a storage file.</maml:para>
+					<maml:para>Azure Stored Access Policy.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -8920,19 +8920,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Policy</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Permission</maml:name>
 				<maml:description>
-					<maml:para>Azure Stored Access Policy.</maml:para>
+					<maml:para>Permissions for a storage file.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -8994,19 +8994,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Permission</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Policy</maml:name>
 				<maml:description>
-					<maml:para>Permissions for a storage file.</maml:para>
+					<maml:para>Azure Stored Access Policy.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -9061,19 +9061,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Policy</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Permission</maml:name>
 				<maml:description>
-					<maml:para>Azure Stored Access Policy.</maml:para>
+					<maml:para>Permissions for a storage file.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -9145,10 +9145,10 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Permission</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Policy</maml:name>
 			<maml:description>
-				<maml:para>Permissions for a storage file.</maml:para>
+				<maml:para>Azure Stored Access Policy.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -9157,14 +9157,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Protocol</maml:name>
 			<maml:description>
 				<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			<dev:type>
-				<maml:name>SharedAccessProtocol</maml:name>
+				<maml:name>Nullable`1[SharedAccessProtocol]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -9254,10 +9254,10 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Policy</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Permission</maml:name>
 			<maml:description>
-				<maml:para>Azure Stored Access Policy.</maml:para>
+				<maml:para>Permissions for a storage file.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -9602,19 +9602,19 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Policy</maml:name>
 				<maml:description>
 					<maml:para>Azure Stored Access Policy.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -9676,19 +9676,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage queue.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -9755,7 +9755,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Policy</maml:name>
 			<maml:description>
 				<maml:para>Azure Stored Access Policy.</maml:para>
@@ -9767,14 +9767,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Protocol</maml:name>
 			<maml:description>
 				<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			<dev:type>
-				<maml:name>SharedAccessProtocol</maml:name>
+				<maml:name>Nullable`1[SharedAccessProtocol]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -9864,7 +9864,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage queue.</maml:para>
@@ -10506,19 +10506,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Policy</maml:name>
 				<maml:description>
 					<maml:para>Azure Stored Access Policy name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -10580,19 +10580,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions in the SAS token to access the share and files under the share.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -10659,7 +10659,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Policy</maml:name>
 			<maml:description>
 				<maml:para>Azure Stored Access Policy name.</maml:para>
@@ -10671,14 +10671,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Protocol</maml:name>
 			<maml:description>
 				<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			<dev:type>
-				<maml:name>SharedAccessProtocol</maml:name>
+				<maml:name>Nullable`1[SharedAccessProtocol]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -10768,7 +10768,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions in the SAS token to access the share and files under the share.</maml:para>
@@ -11414,19 +11414,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Policy</maml:name>
 				<maml:description>
 					<maml:para>Azure Stored Access Policy.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -11516,19 +11516,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage table.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Protocol</maml:name>
 				<maml:description>
 					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>IPAddressOrRange</maml:name>
@@ -11623,7 +11623,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Policy</maml:name>
 			<maml:description>
 				<maml:para>Azure Stored Access Policy.</maml:para>
@@ -11635,14 +11635,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Protocol</maml:name>
 			<maml:description>
 				<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">SharedAccessProtocol</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
 			<dev:type>
-				<maml:name>SharedAccessProtocol</maml:name>
+				<maml:name>Nullable`1[SharedAccessProtocol]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -11780,7 +11780,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage table.</maml:para>
@@ -21054,18 +21054,11 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestContainer</maml:name>
+				<maml:name>DestCloudBlob</maml:name>
 				<maml:description>
-					<maml:para>Destination container name.</maml:para>
+					<maml:para>Destination CloudBlob object</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestBlob</maml:name>
-				<maml:description>
-					<maml:para>Destination blob name.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
@@ -21134,11 +21127,18 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestCloudBlob</maml:name>
+				<maml:name>DestContainer</maml:name>
 				<maml:description>
-					<maml:para>Destination CloudBlob object</maml:para>
+					<maml:para>Destination container name.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DestBlob</maml:name>
+				<maml:description>
+					<maml:para>Destination blob name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
@@ -21941,11 +21941,25 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestFile</maml:name>
+				<maml:name>DestShareName</maml:name>
 				<maml:description>
-					<maml:para>CloudFile object from Azure Storage Client library.</maml:para>
+					<maml:para>Destination share name.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DestFilePath</maml:name>
+				<maml:description>
+					<maml:para>Destination file relative path to destination share.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DestContext</maml:name>
+				<maml:description>
+					<maml:para>Destination Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -22014,25 +22028,11 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestShareName</maml:name>
+				<maml:name>DestFile</maml:name>
 				<maml:description>
-					<maml:para>Destination share name.</maml:para>
+					<maml:para>CloudFile object from Azure Storage Client library.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestFilePath</maml:name>
-				<maml:description>
-					<maml:para>Destination file relative path to destination share.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestContext</maml:name>
-				<maml:description>
-					<maml:para>Destination Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -22456,25 +22456,11 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestShareName</maml:name>
+				<maml:name>DestFile</maml:name>
 				<maml:description>
-					<maml:para>Destination share name.</maml:para>
+					<maml:para>CloudFile object from Azure Storage Client library.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestFilePath</maml:name>
-				<maml:description>
-					<maml:para>Destination file relative path to destination share.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestContext</maml:name>
-				<maml:description>
-					<maml:para>Destination Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -22543,11 +22529,25 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestFile</maml:name>
+				<maml:name>DestShareName</maml:name>
 				<maml:description>
-					<maml:para>CloudFile object from Azure Storage Client library.</maml:para>
+					<maml:para>Destination share name.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DestFilePath</maml:name>
+				<maml:description>
+					<maml:para>Destination file relative path to destination share.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DestContext</maml:name>
+				<maml:description>
+					<maml:para>Destination Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
