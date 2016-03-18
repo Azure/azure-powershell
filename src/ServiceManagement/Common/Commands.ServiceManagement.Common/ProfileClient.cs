@@ -654,7 +654,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             {
                 if (subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
                 {
-                    ServiceManagementUtilities.ClearCurrentStorageAccount();
+                    Microsoft.WindowsAzure.Commands.Utilities.Common.GeneralUtilities.ClearCurrentStorageAccount();
                 }
 
                 Profile.DefaultSubscription = subscription;

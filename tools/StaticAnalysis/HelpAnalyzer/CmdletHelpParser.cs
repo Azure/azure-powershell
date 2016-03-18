@@ -27,6 +27,9 @@ namespace StaticAnalysis.HelpAnalyzer
         public const string MamlSchemaUri = "http://schemas.microsoft.com/maml/2004/10";
         public const string MamlDevSchemaUri = "http://schemas.microsoft.com/maml/dev/2004/10";
         public const string CommandSchemaUri = "http://schemas.microsoft.com/maml/dev/command/2004/10";
+        const int MissingCommandName = 5000;
+        const int MissingCommandDetails = 5010;
+        const int InvalidHelpFile = 5020;
         public static IList<string> GetHelpTopics(string helpPath, ReportLogger<HelpIssue> logger)
         {
             IList<string> cmdlets = new List<string>();
@@ -49,6 +52,7 @@ namespace StaticAnalysis.HelpAnalyzer
                           {
                               HelpFile = helpPath,
                               Severity = 0,
+                              ProblemId = MissingCommandName,
                               Description = string.Format("Missing command:name element for file {0}", helpPath),
                               Remediation = "Correct the xml format of the help file"
                           });
@@ -62,6 +66,7 @@ namespace StaticAnalysis.HelpAnalyzer
                         {
                             HelpFile = helpPath,
                             Severity = 0,
+                            ProblemId = MissingCommandDetails,
                             Description = string.Format("Missing command:details element for file {0}", helpPath),
                             Remediation = "Correct the xml format of the help file"
                         });
@@ -74,6 +79,7 @@ namespace StaticAnalysis.HelpAnalyzer
                 {
                     HelpFile = helpPath,
                     Severity = 0,
+                    ProblemId = InvalidHelpFile,
                     Description = string.Format("Parsing error for help file {0}: {1}", helpPath, e.ToString()),
                     Remediation = "Correct the xml format of the help file"
                 });
