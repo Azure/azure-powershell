@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         ProtectionPolicyResponse CreatePolicy();
 
-        ProtectionPolicyResponse ModifyPolicy();
+        List<AzureRmRecoveryServicesJobBase> ModifyPolicy();
 
         ProtectionPolicyResponse GetPolicy();
 
@@ -48,5 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         AzureRmRecoveryServicesRetentionPolicyBase GetDefaultRetentionPolicyObject();
         void DeletePolicy();
+
+        List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers();
     }
 }

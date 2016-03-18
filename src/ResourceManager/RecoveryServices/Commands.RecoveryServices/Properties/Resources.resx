@@ -277,4 +277,7 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="SiteNotFound" xml:space="preserve">
     <value>Site {0} is not associated with the Vault {1}</value>
   </data>
+  <data name="ResourceGroupNameNullOrEmpty" xml:space="preserve">
+    <value>Resource Group name mentioned is either null or empty</value>
+  </data>
 </root>

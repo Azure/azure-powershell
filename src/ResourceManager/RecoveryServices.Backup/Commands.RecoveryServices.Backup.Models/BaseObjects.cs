@@ -12,12 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -27,38 +24,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
 
         } 
-    }
-
-    /// <summary>
-    /// Represents Recovery Services Vault Credentials Class
-    /// </summary>
-    public class AzureRmRecoveryServicesVaultCreds : AzureRmRecoveryServicesObjectBase
-    {
-        /// <summary>
-        /// Name of the recovery services vault
-        /// </summary>
-        public string ResourceName { get; set; }
-
-        /// <summary>
-        /// Name of the resource group
-        /// </summary>
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Location of the recovery services vault
-        /// </summary>
-        public string Location { get; set; }
-
-        public AzureRmRecoveryServicesVaultCreds()
-        {           
-        }
-
-        public AzureRmRecoveryServicesVaultCreds(string resourceName, string resourceGroupName, string location)
-        {
-            ResourceName = resourceName;
-            ResourceGroupName = resourceGroupName;
-            Location = location;
-        }
     }
 
     public class AzureRmRecoveryServicesContainerContext : AzureRmRecoveryServicesObjectBase
@@ -152,7 +117,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesObjectBase
     {
-        public string PolicyName { get; set; }
+        public string Name { get; set; }
 
         public BackupManagementType BackupManagementType { get; set; }
 
@@ -175,5 +140,51 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public override void Validate()
         {
         }
+    }
+
+    public class AzureRmRecoveryServicesJobBase : AzureRmRecoveryServicesObjectBase
+    {
+        public string ActivityId { get; set; }
+
+        public string InstanceId { get; set; }
+
+        public string Operation { get; set; }
+
+        public string Status { get; set; }
+
+        public string WorkloadName { get; set; }
+
+        public string BackupManagementType { get; set; }
+
+        public DateTime StartTime { get; set; }
+
+        public DateTime? EndTime { get; set; }
+
+        public TimeSpan Duration { get; set; }
+
+        public override void Validate()
+        {
+            base.Validate();
+        }
+    }
+
+    /// <summary>
+    /// This class is does not represent first class resource. So, we are not inheriting from the base class.
+    /// </summary>
+    public class AzureRmRecoveryServicesJobErrorInfoBase
+    {
+        public string ErrorMessage { get; set; }
+
+        public List<string> Recommendations { get; set; }
+    }
+
+    /// <summary>
+    /// This class is does not represent a first class resource. So, we are not inheriting from the common base class.
+    /// </summary>
+    public class AzureRmRecoveryServicesJobSubTaskBase
+    {
+        public string Name { get; set; }
+
+        public string Status { get; set; }
     }
 }

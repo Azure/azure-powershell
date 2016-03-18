@@ -39,7 +39,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();           
+            ExecutionBlock(() =>
+            {
+                base.ExecuteCmdlet();
+            });  
         }
     }
 }

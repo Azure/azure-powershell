@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 if (WeeklySchedule == null)
                 {
-                    throw new ArgumentException("IsDailyScheduleEnabled=true but DailySchedule is NULL");
+                    throw new ArgumentException("IsWeeklyScheduleEnabled=true but WeeklySchedule is NULL");
                 }
                 else
                 {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 if (MonthlySchedule == null)
                 {
-                    throw new ArgumentException("IsDailyScheduleEnabled=true but DailySchedule is NULL");
+                    throw new ArgumentException("IsMonthlyScheduleEnabled=true but MonthlySchedule is NULL");
                 }
                 else
                 {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 if (YearlySchedule == null)
                 {
-                    throw new ArgumentException("IsDailyScheduleEnabled=true but DailySchedule is NULL");
+                    throw new ArgumentException("IsYearlyScheduleEnabled=true but YearlySchedule is NULL");
                 }
                 else
                 {
@@ -171,7 +171,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if (DaysOfTheWeek == null || DaysOfTheWeek.Count == 0)
             {
                 throw new ArgumentException("DaysOfTheWeek is NULL/Empty");
-            }            
+            }
+                        
+            if(DaysOfTheWeek.Count != DaysOfTheWeek.Distinct().Count())
+            {
+                throw new ArgumentException("DaysOfTheWeek list in WeeklyRetentionSchdule contains duplicate entries");
+            }
 
             base.Validate();
         }        
@@ -191,12 +196,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public RetentionScheduleFormat RetentionScheduleFormatType { get; set; }
 
         public DailyRetentionFormat RetentionScheduleDaily { get; set; }
+
         public WeeklyRetentionFormat RetentionScheduleWeekly { get; set; }
 
         public MonthlyRetentionSchedule()
             : base()
-        {
-            this.RetentionScheduleFormatType = RetentionScheduleFormat.Invalid;
+        {            
         }
 
         public override void Validate()
@@ -208,12 +213,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 throw new ArgumentException(string.Format("Allowed Count for DurationCountInMonths is 1 - {0}",
                                             PolicyConstants.MaxAllowedRetentionDurationCount));
             }
-
-            if (RetentionScheduleFormatType == RetentionScheduleFormat.Invalid)
-            {
-                throw new ArgumentException("RetentionScheduleType is set to Invalid");
-            }
-
+            
             if (RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
                 if (RetentionScheduleDaily == null)
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public YearlyRetentionSchedule()
             : base()
         {
-            this.RetentionScheduleFormatType = RetentionScheduleFormat.Invalid;
+            
         }
 
         public override void Validate()
@@ -270,26 +270,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 throw new ArgumentException(string.Format("Allowed Count for DurationCountInYears is 1 - {0}",
                                             PolicyConstants.MaxAllowedRetentionDurationCount));
             }
-
-            if (RetentionScheduleFormatType == RetentionScheduleFormat.Invalid)
-            {
-                throw new ArgumentException("RetentionScheduleType is set to Invalid");
-            }
-
+                        
             if (MonthsOfYear == null || MonthsOfYear.Count == 0)
             {
                 throw new ArgumentException("MonthsOfYear is set to NULL/Empty");
             }
-
-            // validate if MonthsOfYear strings are correct
-            foreach (Month month in MonthsOfYear)
-            {               
-                if (month == Month.Invalid)
-                {
-                    throw new ArgumentException("MonthsOfYear content is Invalid");
-                }
+                        
+            if (MonthsOfYear.Count != MonthsOfYear.Distinct().Count())
+            {
+                throw new ArgumentException("MonthsOfYear list in YearlyRetentionSchdule contains duplicate entries");
             }
-
+            
             if (RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
                 if (RetentionScheduleDaily == null)
@@ -333,6 +324,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 throw new ArgumentException("DaysOfThe Month is set to NULL/Empty");
             }
+
+            // check if all the days are unique or not
+            List<Day> distinctDays = DaysOfTheMonth.GroupBy(x => new { x.Date, x.IsLast }).Select(g => g.First()).ToList();            
+            if (DaysOfTheMonth.Count != distinctDays.Count)
+            {
+                throw new ArgumentException("DaysOfTheMonth list in DailyRetentionFormat contains duplicate entries");
+            }
+
+            // also check if there exists more than one 'IsLast=true'
+            int countOfIsLast = 0;
+            foreach (Day day in DaysOfTheMonth)
+            {
+                day.Validate();
+                if(day.IsLast)
+                {
+                    countOfIsLast++;
+                }
+            }
+
+            if(countOfIsLast > 1)
+            {
+                throw new ArgumentException("Only ONE day can have IsLast=true in DaysOfTheMonth list");
+            }
         }
 
         public override string ToString()
@@ -358,15 +372,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 throw new ArgumentException("WeeksOfTheMonth is set to NULL/Empty");
             }
-
-            // validate if WeeksOfTheMonth are valid
-            foreach (WeekOfMonth week in WeeksOfTheMonth)
+                        
+            if (DaysOfTheWeek.Count != DaysOfTheWeek.Distinct().Count())
             {
-                if (week == WeekOfMonth.Invalid)
-                {
-                    throw new ArgumentException("WeeksOfTheMonth content is Invalid");
-                }
-            }           
+                throw new ArgumentException("DaysOfTheWeek list in WeeklyRetentionFormat contains duplicate entries");
+            }
+                        
+            if (WeeksOfTheMonth.Count != WeeksOfTheMonth.Distinct().Count())
+            {
+                throw new ArgumentException("WeeksOfTheMonth list in WeeklyRetentionFormat contains duplicate entries");
+            }
         }
 
         public override string ToString()

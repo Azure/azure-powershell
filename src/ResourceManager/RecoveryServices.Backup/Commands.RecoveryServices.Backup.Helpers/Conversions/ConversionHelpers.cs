@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
     public class ConversionHelpers
     {
+        #region containers
         public static AzureRmRecoveryServicesContainerBase GetContainerModel(ProtectionContainerResource protectionContainer)
         {
             AzureRmRecoveryServicesContainerBase containerModel = null;
@@ -31,9 +32,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             if (protectionContainer != null &&
                 protectionContainer.Properties != null)
             {
-                if (protectionContainer.Properties.GetType() == typeof(AzureIaaSVMProtectionContainer))
+                if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectionContainer)))
                 {
-                    new AzureRmRecoveryServicesIaasVmContainer(protectionContainer);
+                    containerModel = new AzureRmRecoveryServicesIaasVmContainer(protectionContainer);
                 }
             }
 
@@ -51,5 +52,80 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             return containerModels;
         }
+
+        #endregion
+
+        #region policy
+        public static AzureRmRecoveryServicesPolicyBase GetPolicyModel(ProtectionPolicyResource hydraResponse)
+        {
+            AzureRmRecoveryServicesPolicyBase policyModel = null;
+
+            if(hydraResponse == null || hydraResponse.Properties == null)
+            {
+                throw new ArgumentException("Empty policy Hydra response");
+            }
+
+            if (hydraResponse.Properties.GetType() == typeof(AzureIaaSVMProtectionPolicy))
+            {
+                if(((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType() !=
+                                                                           typeof(LongTermRetentionPolicy))
+                {
+                    // unsupported by old powershell - trace warning and return null
+                    return null;
+                }
+
+                if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType() != 
+                                                                            typeof(SimpleSchedulePolicy))
+                {
+                    // unsupported by old powershell - trace warning and return null
+                    return null;
+                }
+
+                policyModel = new AzureRmRecoveryServicesIaasVmPolicy();
+                AzureRmRecoveryServicesIaasVmPolicy iaasPolicyModel = policyModel as AzureRmRecoveryServicesIaasVmPolicy;
+                iaasPolicyModel.WorkloadType = WorkloadType.AzureVM;
+                iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
+                iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((LongTermRetentionPolicy)
+                                                  ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy);
+                iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicyPolicy((SimpleSchedulePolicy)
+                                                 ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy);                
+            }
+            else
+            {
+                // TBD - trace warning message, ignore and return
+                // we will enter this case when service supports new workload and customer 
+                // still using old version of powershell
+                return null;
+            }
+
+            policyModel.Name = hydraResponse.Name;
+
+            return policyModel;
+        }
+
+        public static List<AzureRmRecoveryServicesPolicyBase> GetPolicyModelList(ProtectionPolicyListResponse hydraListResponse)
+        {
+            if(hydraListResponse == null || hydraListResponse.ItemList == null ||
+               hydraListResponse.ItemList.Value == null || hydraListResponse.ItemList.Value.Count == 0)
+            {
+                return null;
+            }
+
+            List<AzureRmRecoveryServicesPolicyBase> policyModels = new List<AzureRmRecoveryServicesPolicyBase>();
+            AzureRmRecoveryServicesPolicyBase policyModel = null;
+
+            foreach(ProtectionPolicyResource resource in hydraListResponse.ItemList.Value)
+            {
+                policyModel = GetPolicyModel(resource);
+                if(policyModel != null)
+                {
+                    policyModels.Add(policyModel);
+                }
+            }
+
+            return policyModels;
+        }
+
+        #endregion
     }
 }

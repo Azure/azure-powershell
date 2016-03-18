@@ -37,15 +37,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            ExecutionBlock(() =>
+            {
+                base.ExecuteCmdlet();
 
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-            {  
-                {CommonParams.BackupManagementType, BackupManagementType},             
-            }, HydraAdapter);
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                {  
+                    {PolicyParams.BackupManagementType, BackupManagementType},             
+                }, HydraAdapter);
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType);
-            WriteObject(psBackupProvider.GetDefaultSchedulePolicyObject());
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                WriteObject(psBackupProvider.GetDefaultSchedulePolicyObject());
+            });
         }
     }
 }

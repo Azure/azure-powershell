@@ -7,8 +7,8 @@
     <ProjectGuid>{3B3E879A-F856-46BF-AFF9-8AD6760CF7B9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RecoveryServices.Backup</RootNamespace>
-    <AssemblyName>RecoveryServices.Backup</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,8 +16,8 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -69,24 +69,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesContainer.cs" />
+    <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJob.cs" />
+    <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJobDetails.cs" />
+    <Compile Include="Cmdlets\Jobs\WaitAzureRmRecoveryServicesJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesBackupRetentionPolicyObject.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesSchedulePolicyObject.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRMBackupSchedulePolicyObject.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRMBackupRetentionPolicyObject.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\PolicyCmdletHelpers.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRmRecoveryServicesPolicy.cs" />
+    <Compile Include="CmdletWarningAndErrorMessages.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RecoveryServicesBackupVaultCmdletBase.cs" />
     <Compile Include="RecoveryServicesBackupCmdletBase.cs" />
     <Compile Include="CmdletParameterHelpMessages.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cmdlets\Backup\" />
     <Folder Include="Cmdlets\Item\" />
-    <Folder Include="Cmdlets\Jobs\" />
     <Folder Include="Cmdlets\RecoveryPoint\" />
     <Folder Include="Cmdlets\Restore\" />
   </ItemGroup>
@@ -125,6 +133,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AzureRM.RecoveryServices.Backup.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

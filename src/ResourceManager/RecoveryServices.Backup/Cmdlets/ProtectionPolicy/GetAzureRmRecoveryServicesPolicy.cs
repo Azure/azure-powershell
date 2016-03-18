@@ -20,29 +20,73 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Get list of protection policies
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesProtectionPolicy"), OutputType(typeof(AzureRmRecoveryServicesPolicyBase), typeof(List<AzureRmRecoveryServicesPolicyBase>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesProtectionPolicy", DefaultParameterSetName = NoParamSet), OutputType(typeof(List<AzureRmRecoveryServicesPolicyBase>))]
     public class GetAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "")]
+        protected const string PolicyNameParamSet = "PolicyNameParamSet";
+        protected const string WorkloadParamSet = "WorkloadParamSet";        
+        protected const string NoParamSet = "NoParamSet";
+        protected const string WorkloadBackupMangementTypeParamSet = "WorkloadBackupManagementTypeParamSet";
+
+        [Parameter(ParameterSetName = PolicyNameParamSet, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(ParameterSetName = WorkloadParamSet, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [ValidateNotNullOrEmpty]
+        public WorkloadType WorkloadType { get; set; }
+
+        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Mandatory = false, HelpMessage = ParamHelpMsg.Common.BackupManagementType)]
+        [ValidateNotNullOrEmpty]
+        public BackupManagementType BackupManagementType { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-            {  
-                {ContainerParams.Name, Name},             
-            }, HydraAdapter);
+            string rgName = "";  // TBD
+            string resourceName = "";  // TBD
+            List<AzureRmRecoveryServicesPolicyBase> respList = new List<AzureRmRecoveryServicesPolicyBase>();
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.AzureVM);
+            switch(this.ParameterSetName)
+            {
+                case PolicyNameParamSet:
+                    // validate policyName
+                    PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
+
+                    // query service
+                    ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                      Name,
+                                                      HydraAdapter,
+                                                      rgName,
+                                                      resourceName);
+                    respList.Add(ConversionHelpers.GetPolicyModel(policy.Item));
+                    break;
+
+                // below cases TBD
+                case WorkloadParamSet:
+                    break;
+
+                case WorkloadBackupMangementTypeParamSet:
+                    break;
+
+                case NoParamSet:
+                    break;
+
+                default:
+                    break;
+            }
+
+            WriteObject(respList);
         }
     }
 }
