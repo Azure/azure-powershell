@@ -171,6 +171,16 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
             putParameters.Properties = properties;
 
+            if (properties != null && properties.Logs != null && properties.Logs.Count == 0)
+            {
+                properties.Logs = null;
+            }
+
+            if (properties != null && properties.Metrics != null && properties.Metrics.Count == 0)
+            {
+                properties.Metrics = null;
+            }
+
             this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.PutAsync(this.ResourceId, putParameters, CancellationToken.None).Wait();
             PSServiceDiagnosticSettings psResult = new PSServiceDiagnosticSettings(putParameters.Properties);
             WriteObject(psResult);
