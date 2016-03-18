@@ -84,7 +84,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
                 List<string> modules = Directory.GetFiles("ScenarioTests\\MultiVip".AsAbsoluteLocation(), "*.ps1").ToList();
                 modules.AddRange(Directory.GetFiles("ScenarioTests".AsAbsoluteLocation(), "*.ps1"));
-                modules.Add("Common.ps1");
 
                 SetupManagementClients();
 

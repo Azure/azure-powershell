@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private AzureSubscription testSubscription;
 
         private AzureAccount testAccount;
-        
+
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
         private const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
@@ -275,7 +275,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             using (var powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
             {
-               SetupPowerShellModules(powershell);
+                SetupPowerShellModules(powershell);
 
                 Collection<PSObject> output = null;
                 for (int i = 0; i < scripts.Length; ++i)
@@ -285,8 +285,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 try
                 {
-                   powershell.Runspace.Events.Subscribers.Clear();
-                   output = powershell.Invoke();
+                    powershell.Runspace.Events.Subscribers.Clear();
+                    powershell.Streams.Error.Clear();
+                    output = powershell.Invoke();
 
                     if (powershell.Streams.Error.Count > 0)
                     {
