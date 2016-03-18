@@ -106,7 +106,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNull]
         public DateTime? StartTime { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Expiry Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Expiry Time")]
         [ValidateNotNull]
         public DateTime? ExpiryTime { get; set; }
 
