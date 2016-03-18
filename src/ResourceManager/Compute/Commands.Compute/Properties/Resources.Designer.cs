@@ -288,20 +288,47 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the configuration file..
+        ///   Looks up a localized string similar to No DiagnosticMonitorConfiguration element defined in the configuration file..
         /// </summary>
-        public static string DiagnosticsExtensionIaaSConfigElementNotDefined {
+        public static string DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefined", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid diagnostics configuration file. It should be in Invalid diagnostics configuration file. It should be in either xml or json format.either xml or json format..
+        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the json configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefinedInJson {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefinedInJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No WadCfg or WadCfgBlob element defined in the xml configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefinedInXml {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefinedInXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid diagnostics configuration file. It should be in xml or json format..
         /// </summary>
         public static string DiagnosticsExtensionInvalidConfigFileFormat {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionInvalidConfigFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The resourceId defined in the config file does not match the actual resource&apos;s id..
+        /// </summary>
+        public static string DiagnosticsExtensionMetricsResourceIdNotMatch {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionMetricsResourceIdNotMatch", resourceCulture);
             }
         }
         
@@ -315,7 +342,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account endpoint is not defined or can not be retrieved automatically...
+        ///   Looks up a localized string similar to Storage account endpoint is not defined or can not be retrieved automatically..
         /// </summary>
         public static string DiagnosticsExtensionNullStorageAccountEndpoint {
             get {
@@ -338,33 +365,6 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string DiagnosticsExtensionNullStorageAccountName {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find the WadCfg end element in the config..
-        /// </summary>
-        public static string DiagnosticsExtensionXmlConfigNoWadCfgEndTag {
-            get {
-                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigNoWadCfgEndTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find the WadCfg element in the config..
-        /// </summary>
-        public static string DiagnosticsExtensionXmlConfigNoWadCfgStartTag {
-            get {
-                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigNoWadCfgStartTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to WadCfg start element in the config is not matching the end element..
-        /// </summary>
-        public static string DiagnosticsExtensionXmlConfigWadCfgTagNotMatch {
-            get {
-                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigWadCfgTagNotMatch", resourceCulture);
             }
         }
         
