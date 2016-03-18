@@ -54,8 +54,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 SetupManagementClients();
 
                 List<string> modules = new List<string>();
-                modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1");
-                modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\PIR.psd1");
+                
+                modules.Add(Path.Combine(EnvironmentSetupHelper.PackageDirectory,@"ServiceManagement\Azure\Compute\AzurePreview.psd1"));
+                modules.Add(Path.Combine(EnvironmentSetupHelper.PackageDirectory,@"ServiceManagement\Azure\Compute\PIR.psd1"));
                 modules.AddRange(Directory.GetFiles(@"Resources\ServiceManagement".AsAbsoluteLocation(), "*.ps1").ToList());
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);

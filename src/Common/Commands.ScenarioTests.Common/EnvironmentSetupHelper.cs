@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private AzureAccount testAccount;
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
-        private const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
+        public const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
         protected List<string> modules;
 
