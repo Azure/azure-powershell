@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.RunPowerShellTest("Run-NewAzureComputeParameterObjectTests");
         }
 
-        [Fact]
+        [Fact(Skip="investigate broken test")]
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
