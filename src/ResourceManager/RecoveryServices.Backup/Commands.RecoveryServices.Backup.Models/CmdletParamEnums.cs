@@ -40,6 +40,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         RetentionPolicy,
         ProtectionPolicy,
         ResourceGroupName,
-        ResourceName        
+        ResourceName
+    }
+
+    public enum ItemParams
+    {
+        AzureVMName,
+        AzureVMCloudServiceName,
+        AzureVMResourceGroupName,
+        WorkloadType,
+        Policy,
+        Item,
+        ParameterSetName
     }
 }

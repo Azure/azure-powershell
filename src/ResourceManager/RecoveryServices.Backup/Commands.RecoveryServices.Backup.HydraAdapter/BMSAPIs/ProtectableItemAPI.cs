@@ -23,26 +23,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public partial class HydraAdapter
     {
-        public BaseRecoveryServicesJobResponse GetRefreshContainerOperationResultByURL(
-                string operationResultLink)
+        public ProtectableObjectListResponse ListProtectableItem(
+                ProtectableObjectListQueryParameters queryFilter)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceName();
 
-            return BmsAdapter.Client.Container.GetRefreshOperationResultByURLAsync(
-                                     operationResultLink,
-                                     BmsAdapter.GetCustomRequestHeaders(),
-                                     BmsAdapter.CmdletCancellationToken).Result;
-        }
-
-        public BackUpOperationStatusResponse GetProtectedItemOperationStatusByURL(
-                string operationResultLink)
-        {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceName();
-
-            return BmsAdapter.Client.ProtectedItem.GetOperationStatusByURLAsync(
-                                     operationResultLink,
+            return BmsAdapter.Client.ProtectableObject.ListAsync(
+                                     resourceGroupName,
+                                     resourceName,
+                                     queryFilter,
                                      BmsAdapter.GetCustomRequestHeaders(),
                                      BmsAdapter.CmdletCancellationToken).Result;
         }

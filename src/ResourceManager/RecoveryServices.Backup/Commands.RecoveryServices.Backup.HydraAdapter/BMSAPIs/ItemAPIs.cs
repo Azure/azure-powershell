@@ -13,14 +13,85 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public partial class HydraAdapter
     {
+        public BaseRecoveryServicesJobResponse CreateOrUpdateProtectedItem(
+                string containerName,
+                string protectedItemName,
+                ProtectedItemCreateOrUpdateRequest request)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceName();
+
+            return BmsAdapter.Client.ProtectedItem.CreateOrUpdateProtectedItemAsync(
+                                     resourceGroupName,
+                                     resourceName,
+                                     AzureFabricName,
+                                     containerName,
+                                     protectedItemName,
+                                     request,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        public BaseRecoveryServicesJobResponse DeleteProtectedItem(
+                string containerName,
+                string protectedItemName)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceName();
+
+            return BmsAdapter.Client.ProtectedItem.DeleteProtectedItemAsync(
+                                     resourceGroupName,
+                                     resourceName,
+                                     AzureFabricName,
+                                     containerName,
+                                     protectedItemName,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        public ProtectedItemResponse GetProtectedItem(
+                string containerName,
+                string protectedItemName,
+            GetProtectedItemQueryParam queryFilter)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceName();
+
+            return BmsAdapter.Client.ProtectedItem.GetAsync(
+                                     resourceGroupName,
+                                     resourceName,
+                                     AzureFabricName,
+                                     containerName,
+                                     protectedItemName,
+                                     queryFilter,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        public ProtectedItemListResponse ListProtectedItem(
+                ProtectedItemListQueryParam queryFilter,
+            PaginationRequest paginationParams)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceName();
+
+            return BmsAdapter.Client.ProtectedItem.ListAsync(
+                                     resourceGroupName,
+                                     resourceName, 
+                                     queryFilter,
+                                     paginationParams,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
     }
 }
