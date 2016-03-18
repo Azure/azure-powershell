@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup</AssemblyName>
+    <AssemblyName>Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
