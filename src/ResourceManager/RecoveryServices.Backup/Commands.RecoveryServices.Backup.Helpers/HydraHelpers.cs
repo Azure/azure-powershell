@@ -15,8 +15,8 @@
 using System;
 using System.Collections.Specialized;
 using System.Web;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
     public class HydraHelpers
     {
-        public static string GetHydraProviderType(ContainerType containerType)
+        public static string GetHydraProviderType(CmdletModel.ContainerType containerType)
         {
             string providerType = string.Empty;
 
             switch (containerType)
             {
-                case ContainerType.AzureVM:
-                    providerType = ProviderType.AzureIaasVM.ToString();
+                case CmdletModel.ContainerType.AzureVM:
+                    providerType = HydraModel.ProviderType.AzureIaasVM.ToString();
                     break;
                 default:
                     break;
@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return providerType;
         }
 
-        public static string GetHydraProviderType(WorkloadType workloadType)
+        public static string GetHydraProviderType(CmdletModel.WorkloadType workloadType)
         {
             string providerType = string.Empty;
 
             switch (workloadType)
             {
-                case WorkloadType.AzureVM:
-                    providerType = ProviderType.AzureIaasVM.ToString();
+                case CmdletModel.WorkloadType.AzureVM:
+                    providerType = HydraModel.ProviderType.AzureIaasVM.ToString();
                     break;
                 default:
                     break;
