@@ -127,10 +127,10 @@ namespace Microsoft.Azure.Commands.Compute
             });
         }
 
-        private void WriteInformation(string message, params string[] args)
-        {
-            base.WriteInformation(String.Format(message, args), new string[0]);
-        }
+        //private void WriteInformation(string message, params string[] args)
+        //{
+        //    base.WriteInformation(String.Format(message, args), new string[0]);
+        //}
 
         private void WriteVerbose(string message, params object[] args)
         {
