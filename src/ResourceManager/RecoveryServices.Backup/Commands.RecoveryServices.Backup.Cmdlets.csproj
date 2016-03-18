@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cmdlets\Backup\" />
+    <Folder Include="Cmdlets\Item\" />
     <Folder Include="Cmdlets\RecoveryPoint\" />
     <Folder Include="Cmdlets\Restore\" />
   </ItemGroup>
