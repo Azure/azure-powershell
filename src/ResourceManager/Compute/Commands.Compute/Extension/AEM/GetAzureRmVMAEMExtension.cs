@@ -127,11 +127,6 @@ namespace Microsoft.Azure.Commands.Compute
             });
         }
 
-        private void WriteVerbose(string message, params object[] args)
-        {
-            base.WriteVerbose(String.Format(message, args));
-        }
-
         private void WriteError(string message, params object[] args)
         {
             base.WriteError(new ErrorRecord(new Exception(String.Format(message, args)), "Error", ErrorCategory.NotSpecified, null));

@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute
                 this._Helper.WriteVerbose("Retrieving VM...");
 
                 var selectedVM = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
-                var selectedVMStatus = ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, this.VMName);
+                var selectedVMStatus = ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, this.VMName).Body.InstanceView;
 
                 if (selectedVM == null)
                 {
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Commands.Compute
                         return;
                     }
 
-                    selectedVM = SetAzureVMDiagnosticsExtensionC(selectedVM, wadstorage.Key, wadstorage.Value);
+                    selectedVM = SetAzureVMDiagnosticsExtensionC(selectedVM, selectedVMStatus, wadstorage.Key, wadstorage.Value);
 
                     var storage = this._Helper.GetStorageAccountFromCache(wadstorage.Key);
                     var endpoint = this._Helper.GetAzureSAPTableEndpoint(storage);
@@ -324,13 +324,16 @@ namespace Microsoft.Azure.Commands.Compute
                 this._Helper.WriteHost("[INFO] Updating Azure Enhanced Monitoring Extension for SAP configuration - Please wait...");
 
                 WriteVerbose("Installing AEM extension");
+
+                Version aemVersion = this._Helper.GetExtensionVersion(selectedVM, selectedVMStatus, OSType, AEMExtensionConstants.AEMExtensionType[OSType], AEMExtensionConstants.AEMExtensionPublisher[OSType]);
+
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
                     new VirtualMachineExtension()
                     {
                         Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
                         VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
-                        TypeHandlerVersion = AEMExtensionConstants.AEMExtensionVersion[OSType],
+                        TypeHandlerVersion = aemVersion.ToString(2),
                         Settings = jsonPublicConfig,
                         ProtectedSettings = jsonPrivateConfig,
                         Location = selectedVM.Location,
@@ -345,13 +348,13 @@ namespace Microsoft.Azure.Commands.Compute
             });
         }
 
-        private VirtualMachine SetAzureVMDiagnosticsExtensionC(VirtualMachine selectedVM, string storageAccountName, string storageAccountKey)
+        private VirtualMachine SetAzureVMDiagnosticsExtensionC(VirtualMachine vm, VirtualMachineInstanceView vmStatus, string storageAccountName, string storageAccountKey)
         {
             System.Xml.XmlDocument xpublicConfig = null;
 
             var extensionName = AEMExtensionConstants.WADExtensionDefaultName[this.OSType];
 
-            var extTemp = this._Helper.GetExtension(selectedVM,
+            var extTemp = this._Helper.GetExtension(vm,
                 AEMExtensionConstants.WADExtensionType[this.OSType], AEMExtensionConstants.WADExtensionPublisher[OSType]);
             object publicConf = null;
             if (extTemp != null)
@@ -417,18 +420,22 @@ namespace Microsoft.Azure.Commands.Compute
             jPrivateConfig.Add("storageAccountEndPoint", new Newtonsoft.Json.Linq.JValue(endpoint));
 
             WriteVerbose("Installing WAD extension");
+
+            Version wadVersion = this._Helper.GetExtensionVersion(vm, vmStatus, OSType, 
+                AEMExtensionConstants.WADExtensionType[this.OSType], AEMExtensionConstants.WADExtensionPublisher[this.OSType]);
+            
             VirtualMachineExtension vmExtParameters = new VirtualMachineExtension();
 
             vmExtParameters.Publisher = AEMExtensionConstants.WADExtensionPublisher[this.OSType];
             vmExtParameters.VirtualMachineExtensionType = AEMExtensionConstants.WADExtensionType[this.OSType];
-            vmExtParameters.TypeHandlerVersion = AEMExtensionConstants.WADExtensionVersion[this.OSType];
+            vmExtParameters.TypeHandlerVersion = wadVersion.ToString(2);
             vmExtParameters.Settings = jPublicConfig;
             vmExtParameters.ProtectedSettings = jPrivateConfig;
-            vmExtParameters.Location = selectedVM.Location;
+            vmExtParameters.Location = vm.Location;
 
-            this.VirtualMachineExtensionClient.CreateOrUpdate(ResourceGroupName, selectedVM.Name, extensionName, vmExtParameters);
+            this.VirtualMachineExtensionClient.CreateOrUpdate(ResourceGroupName, vm.Name, extensionName, vmExtParameters);
 
-            return this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(ResourceGroupName, selectedVM.Name);
+            return this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(ResourceGroupName, vm.Name);
         }
 
         private void SetStorageAnalytics(string storageAccountName)
