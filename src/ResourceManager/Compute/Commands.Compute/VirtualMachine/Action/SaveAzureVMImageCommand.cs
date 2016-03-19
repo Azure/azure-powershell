@@ -23,7 +23,7 @@ using System.IO;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage, DefaultParameterSetName = ResourceGroupNameParameterSet)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SaveAzureVMImageCommand : VirtualMachineActionBaseCmdlet
     {
         [Alias("VMName")]
@@ -75,20 +75,20 @@ namespace Microsoft.Azure.Commands.Compute
                 var parameters = new VirtualMachineCaptureParameters
                 {
                     DestinationContainerName = DestinationContainerName,
-                    Overwrite = Overwrite.IsPresent,
-                    VirtualHardDiskNamePrefix = VHDNamePrefix
+                    OverwriteVhds = Overwrite.IsPresent,
+                    VhdPrefix = VHDNamePrefix
                 };
 
-                var op = this.VirtualMachineClient.Capture(
+                var op = this.VirtualMachineClient.CaptureWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.Name,
-                    parameters);
+                    parameters).GetAwaiter().GetResult();
 
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                var result = Mapper.Map<PSAzureOperationResponse>(op);
 
                 if (!string.IsNullOrWhiteSpace(this.Path))
                 {
-                    File.WriteAllText(this.Path, result.Output);
+                    File.WriteAllText(this.Path, op.Body.Output.ToString());
                 }
                 WriteObject(result);
             });

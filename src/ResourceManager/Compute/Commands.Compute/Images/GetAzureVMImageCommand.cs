@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure.OData;
 using System.Linq;
 using System.Management.Automation;
 
@@ -87,22 +87,20 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.ParameterSetName.Equals(ListVMImageParamSetName))
                 {
-                    var parameters = new VirtualMachineImageListParameters
-                    {
-                        Location = Location.Canonicalize(),
-                        Offer = Offer,
-                        PublisherName = PublisherName,
-                        Skus = Skus,
-                        FilterExpression = FilterExpression
-                    };
+                    var filter = new ODataQuery<VirtualMachineImageResource>(this.FilterExpression);
 
-                    VirtualMachineImageResourceList result = this.VirtualMachineImageClient.List(parameters);
+                    var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
+                        this.Location.Canonicalize(),
+                        this.PublisherName,
+                        this.Offer,
+                        this.Skus,
+                        odataQuery: filter).GetAwaiter().GetResult();
 
-                    var images = from r in result.Resources
+                    var images = from r in result.Body
                                  select new PSVirtualMachineImage
                                  {
                                      RequestId = result.RequestId,
-                                     StatusCode = result.StatusCode,
+                                     StatusCode = result.Response.StatusCode,
                                      Id = r.Id,
                                      Location = r.Location,
                                      Version = r.Name,
@@ -116,31 +114,27 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var parameters = new VirtualMachineImageGetParameters
-                    {
-                        Location = Location.Canonicalize(),
-                        PublisherName = PublisherName,
-                        Offer = Offer,
-                        Skus = Skus,
-                        Version = Version
-                    };
-
-                    VirtualMachineImageGetResponse response = this.VirtualMachineImageClient.Get(parameters);
+                    var response = this.VirtualMachineImageClient.GetWithHttpMessagesAsync(
+                        this.Location.Canonicalize(),
+                        this.PublisherName,
+                        this.Offer,
+                        this.Skus,
+                        version: this.Version).GetAwaiter().GetResult();
 
                     var image = new PSVirtualMachineImageDetail
                     {
                         RequestId = response.RequestId,
-                        StatusCode = response.StatusCode,
-                        Id = response.VirtualMachineImage.Id,
-                        Location = response.VirtualMachineImage.Location,
-                        Name = response.VirtualMachineImage.Name,
-                        Version = response.VirtualMachineImage.Name,
+                        StatusCode = response.Response.StatusCode,
+                        Id = response.Body.Id,
+                        Location = response.Body.Location,
+                        Name = response.Body.Name,
+                        Version = this.Version,
                         PublisherName = this.PublisherName,
                         Offer = this.Offer,
                         Skus = this.Skus,
-                        OSDiskImage = response.VirtualMachineImage.OSDiskImage,
-                        DataDiskImages = response.VirtualMachineImage.DataDiskImages,
-                        PurchasePlan = response.VirtualMachineImage.PurchasePlan,
+                        OSDiskImage = response.Body.OsDiskImage,
+                        DataDiskImages = response.Body.DataDiskImages,
+                        PurchasePlan = response.Body.Plan,
                     };
 
                     WriteObject(image);

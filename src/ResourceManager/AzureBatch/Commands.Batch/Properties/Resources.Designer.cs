@@ -178,6 +178,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling task scheduling on compute node {0}..
+        /// </summary>
+        internal static string DisableComputeNodeScheduling {
+            get {
+                return ResourceManager.GetString("DisableComputeNodeScheduling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabling job {0}..
         /// </summary>
         internal static string DisableJob {
@@ -219,6 +228,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string EnableAutoScale {
             get {
                 return ResourceManager.GetString("EnableAutoScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling task scheduling on compute node {0}..
+        /// </summary>
+        internal static string EnableComputeNodeScheduling {
+            get {
+                return ResourceManager.GetString("EnableComputeNodeScheduling", resourceCulture);
             }
         }
         
@@ -480,6 +498,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GetResourceGroupAccounts {
             get {
                 return ResourceManager.GetString("GetResourceGroupAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all subtask information for task {0}..
+        /// </summary>
+        internal static string GetSubtaskNoFilter {
+            get {
+                return ResourceManager.GetString("GetSubtaskNoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting subtask information matching the specified OData filter for task {0}..
+        /// </summary>
+        internal static string GetSubtaskOData {
+            get {
+                return ResourceManager.GetString("GetSubtaskOData", resourceCulture);
             }
         }
         

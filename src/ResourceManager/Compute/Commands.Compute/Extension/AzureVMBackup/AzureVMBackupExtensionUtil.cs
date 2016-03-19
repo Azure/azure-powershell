@@ -16,8 +16,8 @@
 using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
@@ -32,6 +32,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {
@@ -52,12 +55,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         private List<string> GetDiskBlobUris(VirtualMachine virtualMachineResponse)
         {
             List<string> blobUris = new List<string>();
-            string osDiskUri = virtualMachineResponse.StorageProfile.OSDisk.VirtualHardDisk.Uri;
+            string osDiskUri = virtualMachineResponse.StorageProfile.OsDisk.Vhd.Uri;
             blobUris.Add(osDiskUri);
             var dataDisks = virtualMachineResponse.StorageProfile.DataDisks;
             for (int i = 0; i < dataDisks.Count; i++)
             {
-                blobUris.Add(dataDisks[i].VirtualHardDisk.Uri);
+                blobUris.Add(dataDisks[i].Vhd.Uri);
             }
             return blobUris;
         }
@@ -163,12 +166,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         /// <param name="snapshotTag"></param>
         public void RemoveSnapshot(AzureVMBackupConfig vmConfig, string snapshotTag, VirtualMachineExtensionBaseCmdlet virtualMachineExtensionBaseCmdlet)
         {
-            VirtualMachineGetResponse virtualMachineResponse = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(vmConfig.ResourceGroupName, vmConfig.VMName);
+            var virtualMachineResponse = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(vmConfig.ResourceGroupName, vmConfig.VMName);
             StorageManagementClient storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(vmConfig.ResourceGroupName, storageClient, virtualMachineExtensionBaseCmdlet.DefaultProfile.Context.Subscription);
 
-            List<string> blobUris = this.GetDiskBlobUris(virtualMachineResponse.VirtualMachine);
+            List<string> blobUris = this.GetDiskBlobUris(virtualMachineResponse.Body);
 
             Dictionary<string, string> snapshotQuery = new Dictionary<string, string>();
             List<CloudPageBlob> snapshots = this.FindSnapshot(blobUris, snapshotQuery, storageCredentialsFactory);
@@ -191,14 +194,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         /// <param name="virtualMachineExtensionBaseCmdlet"></param>
         public void CreateSnapshotForDisks(AzureVMBackupConfig vmConfig, string snapshotTag, VirtualMachineExtensionBaseCmdlet virtualMachineExtensionBaseCmdlet)
         {
-            VirtualMachine virtualMachine = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(vmConfig.ResourceGroupName, vmConfig.VMName).VirtualMachine;
+            var virtualMachine = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
+                vmConfig.ResourceGroupName,
+                vmConfig.VMName);
             StorageManagementClient storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(vmConfig.ResourceGroupName, storageClient, virtualMachineExtensionBaseCmdlet.DefaultProfile.Context.Subscription);
 
             CloudPageBlobObjectFactory cloudPageBlobObjectFactory = new CloudPageBlobObjectFactory(storageCredentialsFactory, TimeSpan.FromMinutes(1));
 
-            List<string> vmPageBlobUris = this.GetDiskBlobUris(virtualMachine);
+            List<string> vmPageBlobUris = this.GetDiskBlobUris(virtualMachine.Body);
 
             AzureVMBackupBlobSasUris blobSASUris = this.GenerateBlobSasUris(vmPageBlobUris, cloudPageBlobObjectFactory);
 
@@ -228,22 +233,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 
             publicConfig.objectStr = this.GetBase64Encoding(backupMetadata);
 
-            string publicSettingString = JsonConvert.SerializeObject(publicConfig);
-
-            string ProtectedSettingString = JsonConvert.SerializeObject(privateConfig);
             VirtualMachineExtension vmExtensionParameters = new VirtualMachineExtension
             {
-                Location = virtualMachine.Location,
-                Name = vmConfig.ExtensionName ?? backupExtensionName,
-                Type = vmConfig.VirtualMachineExtensionType,
+                Location = virtualMachine.Body.Location,
                 Publisher = extensionPublisher,
-                ExtensionType = extensionType,
+                VirtualMachineExtensionType = extensionType,
                 TypeHandlerVersion = extensionDefaultVersion,
-                Settings = publicSettingString,
-                ProtectedSettings = ProtectedSettingString,
+                Settings = publicConfig,
+                ProtectedSettings = privateConfig,
             };
 
-            ComputeLongRunningOperationResponse vmBackupOperation = virtualMachineExtensionBaseCmdlet.VirtualMachineExtensionClient.CreateOrUpdate(vmConfig.ResourceGroupName, vmConfig.VMName, vmExtensionParameters);
+            var vmBackupOperation = virtualMachineExtensionBaseCmdlet.VirtualMachineExtensionClient.CreateOrUpdate(
+                vmConfig.ResourceGroupName,
+                vmConfig.VMName,
+                vmConfig.ExtensionName ?? backupExtensionName,
+                vmExtensionParameters);
 
             // check the snapshots with the task id are all created.
             int timePeriod = 5000;

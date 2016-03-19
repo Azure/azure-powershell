@@ -156,6 +156,9 @@
   <data name="DisableAutoScale" xml:space="preserve">
     <value>Disabling automatic scaling on pool {0}.</value>
   </data>
+  <data name="DisableComputeNodeScheduling" xml:space="preserve">
+    <value>Disabling task scheduling on compute node {0}.</value>
+  </data>
   <data name="DisableJob" xml:space="preserve">
     <value>Disabling job {0}.</value>
   </data>
@@ -170,6 +173,9 @@
   </data>
   <data name="EnableAutoScale" xml:space="preserve">
     <value>Enabling automatic scaling on pool {0} using the formula: {1}</value>
+  </data>
+  <data name="EnableComputeNodeScheduling" xml:space="preserve">
+    <value>Enabling task scheduling on compute node {0}.</value>
   </data>
   <data name="EnableJob" xml:space="preserve">
     <value>Enabling job {0}.</value>
@@ -257,6 +263,12 @@
   </data>
   <data name="GetResourceGroupAccounts" xml:space="preserve">
     <value>Getting accounts in resource group {0}</value>
+  </data>
+  <data name="GetSubtaskNoFilter" xml:space="preserve">
+    <value>Getting all subtask information for task {0}.</value>
+  </data>
+  <data name="GetSubtaskOData" xml:space="preserve">
+    <value>Getting subtask information matching the specified OData filter for task {0}.</value>
   </data>
   <data name="GetTaskById" xml:space="preserve">
     <value>Getting task "{0}" from job "{1}"</value>

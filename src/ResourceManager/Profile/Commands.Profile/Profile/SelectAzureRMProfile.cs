@@ -14,7 +14,7 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -56,6 +56,18 @@ namespace Microsoft.Azure.Commands.Profile
             if (AzureRmProfileProvider.Instance.Profile == null)
             {
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
+            }
+
+            if (AzureRmProfileProvider.Instance.Profile.Context != null &&
+                AzureRmProfileProvider.Instance.Profile.Context.Subscription != null &&
+                AzureRmProfileProvider.Instance.Profile.Context.Subscription.State != null &&
+                !AzureRmProfileProvider.Instance.Profile.Context.Subscription.State.Equals(
+                "Enabled",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                WriteWarning(string.Format(
+                               Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
+                               AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
             }
 
             WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.Profile);

@@ -120,7 +120,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-    Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+    Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     # NRP
     $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -136,7 +136,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
 
     $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
     # Storage Account (SA)
     $stoname = 'sto' + $rgname;
@@ -159,18 +159,18 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
     $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
 
-    Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
-    Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-    Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+    Assert-AreEqual $p.StorageProfile.OsDisk.Caching $osDiskCaching;
+    Assert-AreEqual $p.StorageProfile.OsDisk.Name $osDiskName;
+    Assert-AreEqual $p.StorageProfile.OsDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-    Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+    Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-    Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+    Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
     # OS & Image
     $user = "Foo12";

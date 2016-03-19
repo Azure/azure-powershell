@@ -141,6 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                         {
                             InstanceCount        = currentDeployment.RoleInstances.Count(ri => ri.RoleName.Equals(role.RoleName, StringComparison.OrdinalIgnoreCase)),
                             RoleName             = role.RoleName,
+                            OSVersion            = role.OSVersion,
                             OperationDescription = this.CommandRuntime.ToString(),
                             OperationStatus      = getDeploymentOperation.Status.ToString(),
                             OperationId          = getDeploymentOperation.Id,

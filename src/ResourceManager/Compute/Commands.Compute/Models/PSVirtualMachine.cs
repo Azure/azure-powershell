@@ -52,6 +52,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the property of 'Location'
         public string Location { get; set; }
 
+        // Gets or sets the license type
+        public string LicenseType { get; set; }
+
         // Gets or sets the property of 'Tags'
         public IDictionary<string, string> Tags { get; set; }
 
@@ -62,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         // Gets or sets the reference Id of the availailbity set to which this virtual machine belongs.
-        public AvailabilitySetReference AvailabilitySetReference { get; set; }
+        public SubResource AvailabilitySetReference { get; set; }
 
         [JsonIgnore]
         public string AvailabilitySetReferenceText
@@ -169,7 +172,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 var listStr = new List<string>();
                 foreach (var item in NetworkProfile.NetworkInterfaces)
                 {
-                    listStr.Add(item.ReferenceUri);
+                    listStr.Add(item.Id);
                 }
                 return listStr.ToArray();
             }

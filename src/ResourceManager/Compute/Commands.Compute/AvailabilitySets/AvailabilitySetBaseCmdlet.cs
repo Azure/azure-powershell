@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     public abstract class AvailabilitySetBaseCmdlet : ComputeClientBaseCmdlet
     {
-        public IAvailabilitySetOperations AvailabilitySetClient
+        public IAvailabilitySetsOperations AvailabilitySetClient
         {
             get
             {

@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.VM.OSProfile.WindowsConfiguration == null)
                 {
                     this.VM.OSProfile.WindowsConfiguration = new WindowsConfiguration();
-                    this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents = null;
+                    this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent = null;
                 }
 
                 var listenerList  = new List<WinRMListener>();
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.Compute
                     listenerList.Add(new WinRMListener
                     {
                         Protocol = ProtocolTypes.Https,
-                        CertificateUrl = this.WinRMCertificateUrl,
+                        CertificateUrl = this.WinRMCertificateUrl.ToString(),
                     });
                 }
 
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
 
-                this.VM.OSProfile.WindowsConfiguration.WinRMConfiguration =
+                this.VM.OSProfile.WindowsConfiguration.WinRM =
                     ! (this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent)
                     ? null
                     : new WinRMConfiguration

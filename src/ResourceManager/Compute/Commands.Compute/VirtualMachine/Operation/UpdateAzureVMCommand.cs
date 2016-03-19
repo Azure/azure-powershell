@@ -23,7 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsData.Update, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class UpdateAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Alias("VMProfile")]
@@ -46,16 +46,19 @@ namespace Microsoft.Azure.Commands.Compute
                     HardwareProfile = this.VM.HardwareProfile,
                     StorageProfile = this.VM.StorageProfile,
                     NetworkProfile = this.VM.NetworkProfile,
-                    OSProfile = this.VM.OSProfile,
+                    OsProfile = this.VM.OSProfile,
                     Plan = this.VM.Plan,
-                    AvailabilitySetReference = this.VM.AvailabilitySetReference,
+                    AvailabilitySet = this.VM.AvailabilitySetReference,
                     Location = this.VM.Location,
-                    Name = this.VM.Name,
+                    LicenseType = this.VM.LicenseType,
                     Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
                 };
 
-                var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    this.VM.Name,
+                    parameters).GetAwaiter().GetResult();
+                var result = Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
             });
         }

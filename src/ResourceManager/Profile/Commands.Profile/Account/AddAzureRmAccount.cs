@@ -16,12 +16,12 @@ using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Profile
             base.BeginProcessing();
             if (Environment == null && EnvironmentName == null)
             {
-                Environment = AzureEnvironment.PublicEnvironments[Microsoft.Azure.Common.Authentication.Models.EnvironmentName.AzureCloud];
+                Environment = AzureEnvironment.PublicEnvironments[Common.Authentication.Models.EnvironmentName.AzureCloud];
             }
             else if (Environment == null && EnvironmentName != null)
             {

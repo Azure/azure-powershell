@@ -14,7 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
@@ -26,8 +26,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     using System.ComponentModel;
     using System.Net;
     using Utilities.Common;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
 
 
@@ -145,11 +145,11 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             var result = Client.DedicatedCircuits.New(new DedicatedCircuitNewParameters()
             {
                 Bandwidth = bandwidth,
+                BillingType = billingType,
                 CircuitName = circuitName,
                 Location = location,
                 ServiceProviderName = serviceProviderName,
                 Sku = sku,
-                BillingType = billingType
             });
 
             if (result.HttpStatusCode.Equals(HttpStatusCode.OK))

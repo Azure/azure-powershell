@@ -661,13 +661,13 @@
   <data name="IaasDiagnosticsBadConfigNoMatchingWadCfg" xml:space="preserve">
     <value>WadCfg start element in the config is not matching the end element.</value>
   </data>
-  <data name="PaaSDiagnosticsWrongHeader" xml:space="preserve">
+  <data name="DiagnosticsExtensionWrongHeader" xml:space="preserve">
     <value>Your xml configuration file doesn't start with the required header &lt;?xml version="1.0" encoding="utf-8"?&gt;</value>
   </data>
-  <data name="PaaSDiagnosticsNullStorageAccount" xml:space="preserve">
+  <data name="DiagnosticsExtensionNullStorageAccount" xml:space="preserve">
     <value>The element StorageAccount cannot be empty. It is recommended to not use this element in the config. It will be set automatically by the cmdlet.</value>
   </data>
-  <data name="PassDiagnosticsNoMatchStorageAccount" xml:space="preserve">
+  <data name="DiagnosticsExtensionNoMatchStorageAccount" xml:space="preserve">
     <value>The element StorageAccount doesn't match the storage account name provided in the cmdlet arguments. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet.</value>
   </data>
   <data name="AzureVMDscApplyConfigurationAction" xml:space="preserve">
@@ -755,5 +755,41 @@
   </data>
   <data name="RemoveAzureVMShouldProcessAction" xml:space="preserve">
     <value>Deleting VM</value>
+  </data>
+  <data name="ServiceExtensionNoExistingExtensionsEnabledOnRole" xml:space="preserve">
+    <value>No existing {0}.{1} extensions enabled on role: {2}.</value>
+  </data>
+  <data name="DiagnosticsExtensionNullPublicConfig" xml:space="preserve">
+    <value>The config file doesn't have the PublicConfig element.</value>
+  </data>
+  <data name="DiagnosticsExtensionNoMatchPrivateStorageAccount" xml:space="preserve">
+    <value>The element StorageAccount in PrivateConfig doesn't match. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet.</value>
+  </data>
+  <data name="DiagnosticsExtensionNullStorageAccountKey" xml:space="preserve">
+    <value>Storage account key is not specified or can not be retrieved automatically.</value>
+  </data>
+  <data name="DiagnosticsExtensionNullStorageAccountEndpoint" xml:space="preserve">
+    <value>Storage account endpoint is not specified or can not be retrieved automatically.</value>
+  </data>
+  <data name="DiagnosticsExtensionNullStorageAccountName" xml:space="preserve">
+    <value>Storage account name is not specified.</value>
+  </data>
+  <data name="DiagnosticsExtensionIaaSConfigElementNotDefinedInJson" xml:space="preserve">
+    <value>No WadCfg, WadCfgBlob or xmlCfg element defined in the json configuration file.</value>
+  </data>
+  <data name="DiagnosticsExtensionInvalidConfigFileFormat" xml:space="preserve">
+    <value>Invalid diagnostics configuration file. It should be in xml or json format.</value>
+  </data>
+  <data name="DiagnosticsExtensionPaaSConfigElementNotDefined" xml:space="preserve">
+    <value>No WadCfg or WadCfgBlob element defined in the configuration file.</value>
+  </data>
+  <data name="DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined" xml:space="preserve">
+    <value>No DiagnosticMonitorConfiguration element defined in the configuration file.</value>
+  </data>
+  <data name="DiagnosticsExtensionIaaSConfigElementNotDefinedInXml" xml:space="preserve">
+    <value>No WadCfg or WadCfgBlob element defined in the xml configuration file.</value>
+  </data>
+  <data name="DiagnosticsExtensionMetricsResourceIdNotMatch" xml:space="preserve">
+    <value>The resourceId defined in the config file does not match the actual resource's id.</value>
   </data>
 </root>

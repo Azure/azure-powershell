@@ -19,9 +19,11 @@
 function Test-CreateServerCommunicationLink
 {
 	# Setup 
-	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
-	$server2 = Create-ServerForTest $rg "Japan East"
+	$locationOverride = "North Europe"
+	$serverVersion = "12.0"
+	$rg = Create-ResourceGroupForTest $locationOverride
+	$server1 = Create-ServerForTest $rg $serverVersion $locationOverride
+	$server2 = Create-ServerForTest $rg $serverVersion $locationOverride
 
 	try
 	{
@@ -30,6 +32,7 @@ function Test-CreateServerCommunicationLink
 			-LinkName $linkName -PartnerServer $server2.ServerName
 
 		Assert-NotNull $ep1
+		Assert-AreEqual $linkName $ep1.Name
 		Assert-AreEqual $server2.ServerName $ep1.PartnerServer
 	}
 	finally
@@ -45,23 +48,28 @@ function Test-CreateServerCommunicationLink
 function Test-GetServerCommunicationLink
 {
 	# Setup 
-	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
-	$server2 = Create-ServerForTest $rg "Japan East"
+	$locationOverride = "North Europe"
+	$serverVersion = "12.0"
+	$rg = Create-ResourceGroupForTest $locationOverride
+	$server1 = Create-ServerForTest $rg $serverVersion $locationOverride
+	$server2 = Create-ServerForTest $rg $serverVersion $locationOverride
 
 	$linkName = Get-ElasticPoolName
 	$ep1 = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
 		-LinkName $linkName -PartnerServer $server2.ServerName
 	Assert-NotNull $ep1
+	Assert-AreEqual $linkName $ep1.Name
+	Assert-AreEqual $server2.ServerName $ep1.PartnerServer
 	
 	try
 	{
 		$gep1 = Get-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
-			-LinkName $ep1.LinkName 
-		Assert-NotNull $ep1
-		Assert-AreEqual $server2.ServerName $ep1.PartnerServer
+			-LinkName $ep1.Name 
+		Assert-NotNull $gep1
+		Assert-AreEqual $linkName $gep1.Name
+		Assert-AreEqual $server2.ServerName $gep1.PartnerServer
 
-		$all = $server | Get-AzureRmSqlServerCommunicationLink
+		$all = $server1 | Get-AzureRmSqlServerCommunicationLink
 		Assert-AreEqual $all.Count 1
 	}
 	finally
@@ -77,9 +85,11 @@ function Test-GetServerCommunicationLink
 function Test-RemoveServerCommunicationLink
 {
 	# Setup 
-	$rg = Create-ResourceGroupForTest
-	$server1 = Create-ServerForTest $rg "Japan East"
-	$server2 = Create-ServerForTest $rg "Japan East"
+	$locationOverride = "North Europe"
+	$serverVersion = "12.0"
+	$rg = Create-ResourceGroupForTest $locationOverride
+	$server1 = Create-ServerForTest $rg $serverVersion $locationOverride
+	$server2 = Create-ServerForTest $rg $serverVersion $locationOverride
 
 	$linkName = Get-ElasticPoolName
 	$ep1 = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -88,9 +98,9 @@ function Test-RemoveServerCommunicationLink
 	
 	try
 	{
-		Remove-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName -LinkName $ep1.LinkName -Force
+		Remove-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName -LinkName $ep1.Name -Force
 		
-		$all = $server | Get-AzureRmSqlServerCommunicationLink
+		$all = $server1 | Get-AzureRmSqlServerCommunicationLink
 		Assert-AreEqual $all.Count 0
 	}
 	finally

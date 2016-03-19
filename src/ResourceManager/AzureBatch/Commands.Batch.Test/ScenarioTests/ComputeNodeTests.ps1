@@ -268,3 +268,37 @@ function Test-ReimageComputeNode
 
     Assert-AreEqual 'Reimaging' $computeNode.State
 }
+
+<#
+.SYNOPSIS
+Tests disabling and enabling compute node scheduling
+#>
+function Test-DisableAndEnableComputeNodeScheduling
+{
+    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+
+    $context = Get-ScenarioTestContext $accountName
+
+    $disableOption = ([Microsoft.Azure.Batch.Common.DisableComputeNodeSchedulingOption]::Terminate)
+    if ($usePipeline -eq '1')
+    {
+        Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Disable-AzureBatchComputeNodeScheduling -DisableSchedulingOption $disableOption -BatchContext $context
+    }
+    else
+    {
+        Disable-AzureBatchComputeNodeScheduling $poolId $computeNodeId -DisableSchedulingOption $disableOption -BatchContext $context
+    }
+    $computeNode = Get-AzureBatchComputeNode -PoolId $poolId -Filter "id eq '$computeNodeId'" -Select "id,schedulingState" -BatchContext $context
+    Assert-AreEqual 'Disabled' $computeNode.SchedulingState
+
+    if ($usePipeline -eq '1')
+    {
+        Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Enable-AzureBatchComputeNodeScheduling -BatchContext $context
+    }
+    else
+    {
+        Enable-AzureBatchComputeNodeScheduling $poolId $computeNodeId -BatchContext $context
+    }
+    $computeNode = Get-AzureBatchComputeNode -PoolId $poolId -Filter "id eq '$computeNodeId'" -Select "id,schedulingState" -BatchContext $context
+    Assert-AreEqual 'Enabled' $computeNode.SchedulingState
+}

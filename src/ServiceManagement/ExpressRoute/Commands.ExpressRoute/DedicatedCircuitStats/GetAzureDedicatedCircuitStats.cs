@@ -44,26 +44,15 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                                                            SecondaryBytesIn = (ulong)0,
                                                            SecondaryBytesOut = (ulong)0
                                                        };
-                AzureBgpPeering peering= ExpressRouteClient.GetAzureBGPPeering(ServiceKey, BgpPeeringAccessType.Private);
-                if (peering != null)
-                {
-                    stats = compute(stats, ServiceKey, BgpPeeringAccessType.Private);
-                }
-                peering = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, BgpPeeringAccessType.Public);
-                if (peering != null)
-                {
-                    stats = compute(stats, ServiceKey, BgpPeeringAccessType.Public);
-                }
-                peering = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, BgpPeeringAccessType.Microsoft);
-                if (peering != null)
-                {
-                    stats = compute(stats, ServiceKey, BgpPeeringAccessType.Microsoft);
-                }
+                stats = compute(stats, ServiceKey, BgpPeeringAccessType.Private);
+                stats = compute(stats, ServiceKey, BgpPeeringAccessType.Public);
+                stats = compute(stats, ServiceKey, BgpPeeringAccessType.Microsoft);
+
                 WriteObject(stats);
                 
             }
             BgpPeeringAccessType type; 
-            if (BgpPeeringAccessType.TryParse(AccessType, out type))
+            if (BgpPeeringAccessType.TryParse(AccessType, true, out type))
             {
                 var stats = ExpressRouteClient.GetAzureDedicatedCircuitStatsInfo(ServiceKey, type);
                 WriteObject(stats);
@@ -72,12 +61,24 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
         private AzureDedicatedCircuitStats compute(AzureDedicatedCircuitStats stats, Guid key, BgpPeeringAccessType type)
         {
-            var tempstats = ExpressRouteClient.GetAzureDedicatedCircuitStatsInfo(key,type);
-            stats.PrimaryBytesIn += tempstats.PrimaryBytesIn;
-            stats.PrimaryBytesOut += tempstats.PrimaryBytesOut;
-            stats.SecondaryBytesIn += tempstats.SecondaryBytesIn;
-            stats.SecondaryBytesOut += tempstats.SecondaryBytesOut;
-            return stats;
+            try
+            {
+                AzureBgpPeering peering = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, type);
+                if (peering != null)
+                {
+                    var tempstats = ExpressRouteClient.GetAzureDedicatedCircuitStatsInfo(key, type);
+                    stats.PrimaryBytesIn += tempstats.PrimaryBytesIn;
+                    stats.PrimaryBytesOut += tempstats.PrimaryBytesOut;
+                    stats.SecondaryBytesIn += tempstats.SecondaryBytesIn;
+                    stats.SecondaryBytesOut += tempstats.SecondaryBytesOut;
+                }
+                return stats;
+            }
+            catch
+            {
+                // The cirucit might not have corresponding peering
+                return stats;
+            }
         }
     }
 }

@@ -54,5 +54,25 @@ namespace Microsoft.Azure.Commands.Network.Models
          {
              get { return JsonConvert.SerializeObject(Subnets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
          }
+
+         public bool ShouldSerializeSecurityRules()
+         {
+             return !string.IsNullOrEmpty(this.Name);
+         }
+
+         public bool ShouldSerializeDefaultSecurityRules()
+         {
+             return !string.IsNullOrEmpty(this.Name);
+         }
+
+         public bool ShouldSerializeNetworkInterfaces()
+         {
+             return !string.IsNullOrEmpty(this.Name);
+         }
+
+         public bool ShouldSerializeSubnets()
+         {
+             return !string.IsNullOrEmpty(this.Name);
+         }
      }
 }

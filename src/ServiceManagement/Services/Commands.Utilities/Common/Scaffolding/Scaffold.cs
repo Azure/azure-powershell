@@ -20,7 +20,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.Scaffolding
 {

@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 tagValue: this.TagValue,
                 filter: this.ODataQuery,
                 resourceGroupNameContains: this.ResourceGroupNameContains,
-                nameContains: this.ResourceGroupNameContains);
+                nameContains: this.ResourceNameContains);
 
             return await this
                 .GetResourcesClient()

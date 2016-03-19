@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -78,30 +79,30 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                VirtualMachineSizeListResponse result = null;
+                AzureOperationResponse<IPage<VirtualMachineSize>> result = null;
 
                 if (!string.IsNullOrEmpty(this.VMName))
                 {
-                    result = this.VirtualMachineClient.ListAvailableSizes(
+                    result = this.VirtualMachineClient.ListAvailableSizesWithHttpMessagesAsync(
                         this.ResourceGroupName,
-                        this.VMName);
+                        this.VMName).GetAwaiter().GetResult();
                 }
                 else if (!string.IsNullOrEmpty(this.AvailabilitySetName))
                 {
-                    result = this.AvailabilitySetClient.ListAvailableSizes(
+                    result = this.AvailabilitySetClient.ListAvailableSizesWithHttpMessagesAsync(
                         this.ResourceGroupName,
-                        this.AvailabilitySetName);
+                        this.AvailabilitySetName).GetAwaiter().GetResult();
                 }
                 else
                 {
-                    result = this.VirtualMachineSizeClient.List(this.Location.Canonicalize());
+                    result = this.VirtualMachineSizeClient.ListWithHttpMessagesAsync(this.Location.Canonicalize()).GetAwaiter().GetResult();
                 }
 
                 List<PSVirtualMachineSize> psResultList = new List<PSVirtualMachineSize>();
-                foreach (var item in result.VirtualMachineSizes)
+                foreach (var item in result.Body)
                 {
                     var psItem = Mapper.Map<VirtualMachineSize, PSVirtualMachineSize>(item);
-                    psItem = Mapper.Map<AzureOperationResponse, PSVirtualMachineSize>(result, psItem);
+                    psItem = Mapper.Map(result, psItem);
                     psResultList.Add(psItem);
                 }
 

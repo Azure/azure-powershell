@@ -56,6 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             string serviceProviderName = "TestProvider";
             string location = "us-west";
             string serviceKey = "aa28cd19-b10a-41ff-981b-53c6bbf15ead";
+            BillingType billingType = BillingType.UnlimitedData;
 
             MockCommandRuntime mockCommandRuntime = new MockCommandRuntime();
             Mock<ExpressRouteManagementClient> client = InitExpressRouteManagementClient();
@@ -68,6 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
                     {
                         CircuitName = circuitName,
                         Bandwidth = bandwidth,
+                        BillingType = billingType.ToString(),
                         Location = location,
                         ServiceProviderName = serviceProviderName,
                         ServiceKey = serviceKey,
@@ -97,6 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             {
                 CircuitName = circuitName,
                 Bandwidth = bandwidth,
+                BillingType = billingType,
                 Location = location,
                 ServiceProviderName = serviceProviderName,
                 CommandRuntime = mockCommandRuntime,
@@ -108,6 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             // Assert
             AzureDedicatedCircuit actual = mockCommandRuntime.OutputPipeline[0] as AzureDedicatedCircuit;
             Assert.Equal<string>(expected.DedicatedCircuit.CircuitName, actual.CircuitName);
+            Assert.Equal<string>(expected.DedicatedCircuit.BillingType, actual.BillingType);
             Assert.Equal<uint>(expected.DedicatedCircuit.Bandwidth, actual.Bandwidth);
             Assert.Equal<string>(expected.DedicatedCircuit.Location, actual.Location);
             Assert.Equal<string>(expected.DedicatedCircuit.ServiceProviderName, actual.ServiceProviderName);
@@ -127,6 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             string serviceProviderName = "TestProvider";
             string location = "us-west";
             string serviceKey = "aa28cd19-b10a-41ff-981b-53c6bbf15ead";
+            BillingType billingType = BillingType.MeteredData;
 
             MockCommandRuntime mockCommandRuntime = new MockCommandRuntime();
             Mock<ExpressRouteManagementClient> client = InitExpressRouteManagementClient();
@@ -139,6 +144,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
                     {
                         CircuitName = circuitName,
                         Bandwidth = bandwidth,
+                        BillingType = billingType.ToString(),
                         Location = location,
                         ServiceProviderName = serviceProviderName,
                         ServiceKey = serviceKey,
@@ -165,6 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             // Assert
             AzureDedicatedCircuit actual = mockCommandRuntime.OutputPipeline[0] as AzureDedicatedCircuit;
+            Assert.Equal<string>(expected.DedicatedCircuit.BillingType, actual.BillingType);
             Assert.Equal<string>(expected.DedicatedCircuit.CircuitName, actual.CircuitName);
             Assert.Equal<uint>(expected.DedicatedCircuit.Bandwidth, actual.Bandwidth);
             Assert.Equal<string>(expected.DedicatedCircuit.Location, actual.Location);
@@ -219,20 +226,22 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             string serviceProviderName1 = "TestProvider";
             string location1 = "us-west";
             string serviceKey1 = "aa28cd19-b10a-41ff-981b-53c6bbf15ead";
+            BillingType billingType1 = BillingType.MeteredData;
 
             string circuitName2 = "TestCircuit2";
             uint bandwidth2 = 10;
             string serviceProviderName2 = "TestProvider";
             string location2 = "us-north";
             string serviceKey2 = "bc28cd19-b10a-41ff-981b-53c6bbf15ead";
+            BillingType billingType2 = BillingType.UnlimitedData;
 
             MockCommandRuntime mockCommandRuntime = new MockCommandRuntime();
             Mock<ExpressRouteManagementClient> client = InitExpressRouteManagementClient();
             var dcMock = new Mock<IDedicatedCircuitOperations>();
 
             List<AzureDedicatedCircuit> dedicatedCircuits = new List<AzureDedicatedCircuit>(){ 
-                new AzureDedicatedCircuit(){ Bandwidth = bandwidth1, CircuitName = circuitName1, ServiceKey = serviceKey1, Location = location1, ServiceProviderName = serviceProviderName1, ServiceProviderProvisioningState = ProviderProvisioningState.NotProvisioned, Status = DedicatedCircuitState.Enabled}, 
-                new AzureDedicatedCircuit(){ Bandwidth = bandwidth2, CircuitName = circuitName2, ServiceKey = serviceKey2, Location = location2, ServiceProviderName = serviceProviderName2, ServiceProviderProvisioningState = ProviderProvisioningState.Provisioned, Status = DedicatedCircuitState.Enabled}
+                new AzureDedicatedCircuit(){ Bandwidth = bandwidth1, BillingType = billingType1.ToString(), CircuitName = circuitName1, ServiceKey = serviceKey1, Location = location1, ServiceProviderName = serviceProviderName1, ServiceProviderProvisioningState = ProviderProvisioningState.NotProvisioned, Status = DedicatedCircuitState.Enabled}, 
+                new AzureDedicatedCircuit(){ Bandwidth = bandwidth2, BillingType = billingType2.ToString(), CircuitName = circuitName2, ServiceKey = serviceKey2, Location = location2, ServiceProviderName = serviceProviderName2, ServiceProviderProvisioningState = ProviderProvisioningState.Provisioned, Status = DedicatedCircuitState.Enabled}
             };
                  
             DedicatedCircuitListResponse expected =

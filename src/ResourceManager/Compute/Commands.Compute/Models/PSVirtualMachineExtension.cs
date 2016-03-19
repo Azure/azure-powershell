@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Models
@@ -57,19 +58,20 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get { return JsonConvert.SerializeObject(SubStatuses, Formatting.Indented); }
         }
-
+        public bool? AutoUpgradeMinorVersion { get; set; }
+        public string ForceUpdateTag { get; set; }
     }
 
     public static class PSVirtualMachineExtensionConversions
     {
-        public static PSVirtualMachineExtension ToPSVirtualMachineExtension(this VirtualMachineExtensionGetResponse response, string rgName = null)
+        public static PSVirtualMachineExtension ToPSVirtualMachineExtension(this AzureOperationResponse<VirtualMachineExtension> response, string rgName = null)
         {
             if (response == null)
             {
                 return null;
             }
 
-            return response.VirtualMachineExtension.ToPSVirtualMachineExtension(rgName);
+            return response.Body.ToPSVirtualMachineExtension(rgName);
         }
 
         public static PSVirtualMachineExtension ToPSVirtualMachineExtension(this VirtualMachineExtension ext, string rgName = null)
@@ -79,16 +81,18 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 ResourceGroupName = rgName,
                 Name = ext.Name,
                 Location = ext.Location,
-                Etag = null, // TODO: Update CRP library for this field
+                Etag = JsonConvert.SerializeObject(ext.Tags),
                 Publisher = ext.Publisher,
-                ExtensionType = ext.ExtensionType,
+                ExtensionType = ext.VirtualMachineExtensionType,
                 TypeHandlerVersion = ext.TypeHandlerVersion,
                 Id = ext.Id,
-                PublicSettings = ext.Settings,
-                ProtectedSettings = ext.ProtectedSettings,
+                PublicSettings = ext.Settings == null ? null : ext.Settings.ToString(),
+                ProtectedSettings = ext.ProtectedSettings == null ? null : ext.ProtectedSettings.ToString(),
                 ProvisioningState = ext.ProvisioningState,
                 Statuses = ext.InstanceView == null ? null : ext.InstanceView.Statuses,
-                SubStatuses = ext.InstanceView == null ? null : ext.InstanceView.SubStatuses,
+                SubStatuses = ext.InstanceView == null ? null : ext.InstanceView.Substatuses,
+                AutoUpgradeMinorVersion = ext.AutoUpgradeMinorVersion,
+                ForceUpdateTag = ext.ForceUpdateTag
             };
 
             return result;

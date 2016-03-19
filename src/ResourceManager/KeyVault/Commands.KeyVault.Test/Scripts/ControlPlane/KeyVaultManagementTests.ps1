@@ -241,22 +241,15 @@ function Test-SetRemoveAccessPolicyByUPN
     $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
     $PermToSecrets = @("get", "list", "set", "delete")
     
-    $setAccessPolicyFunc = { Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru }
-
-    if ($global:noADCmdLetMode) {
-        Assert-Throws { &$setAccessPolicyFunc }
-    }
-    else{ 
-        $vault = &$setAccessPolicyFunc
-
-        CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
-
+    $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
+	
+    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
+    if (-not $global:noADCmdLetMode) {	
         Assert-AreEqual $upn (Get-AzureRmADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0].UserPrincipalName
-
-        $vault = Remove-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PassThru
-    
-        Assert-AreEqual 0 $vault.AccessPolicies.Count
-     }
+    }
+	
+    $vault = Remove-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PassThru
+    Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 
 function Test-SetRemoveAccessPolicyBySPN

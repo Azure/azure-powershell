@@ -47,6 +47,7 @@ function Test-NewPool
         # Create a complicated pool using AutoScale parameter set
         $maxTasksPerComputeNode = 2
         $autoScaleFormula = '$TargetDedicated=2'
+        $evalInterval = [TimeSpan]::FromMinutes(7)
         
         $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         $startTaskCmd = "cmd /c dir /s"
@@ -69,7 +70,7 @@ function Test-NewPool
         
         $displayName = "displayName"
 
-        New-AzureBatchPool -Id $poolId2 -VirtualMachineSize $vmSize -OSFamily $osFamily -TargetOSVersion $targetOSVersion -DisplayName $displayName -MaxTasksPerComputeNode $maxTasksPerComputeNode -AutoScaleFormula $autoScaleFormula -StartTask $startTask -TaskSchedulingPolicy $schedulingPolicy -InterComputeNodeCommunicationEnabled -Metadata $metadata -BatchContext $context
+        New-AzureBatchPool -Id $poolId2 -VirtualMachineSize $vmSize -OSFamily $osFamily -TargetOSVersion $targetOSVersion -DisplayName $displayName -MaxTasksPerComputeNode $maxTasksPerComputeNode -AutoScaleFormula $autoScaleFormula -AutoScaleEvaluationInterval $evalInterval -StartTask $startTask -TaskSchedulingPolicy $schedulingPolicy -InterComputeNodeCommunicationEnabled -Metadata $metadata -BatchContext $context
         
         $pool2 = Get-AzureBatchPool -Id $poolId2 -BatchContext $context
         
@@ -82,6 +83,7 @@ function Test-NewPool
         Assert-AreEqual $maxTasksPerComputeNOde $pool2.MaxTasksPerComputeNode
         Assert-AreEqual $true $pool2.AutoScaleEnabled
         Assert-AreEqual $autoScaleFormula $pool2.AutoScaleFormula
+        Assert-AreEqual $evalInterval $pool2.AutoScaleEvaluationInterval
         Assert-AreEqual $true $pool2.InterComputeNodeCommunicationEnabled
         Assert-AreEqual $startTaskCmd $pool2.StartTask.CommandLine
         Assert-AreEqual $resourceFileCount $pool2.StartTask.ResourceFiles.Count
@@ -342,7 +344,7 @@ function Test-StopResizePoolById
 
     # Start a resize and then stop it
     $pool = Get-AzureBatchPool -Id $poolId -BatchContext $context
-    $initialTargetDedicated = $pool.TargetDedicated
+    $initialTargetDedicated = $pool.CurrentDedicated
 
     $newTargetDedicated = $initialTargetDedicated + 2
     Start-AzureBatchPoolResize -Id $poolId -TargetDedicated $newTargetDedicated -BatchContext $context
@@ -365,7 +367,7 @@ function Test-StopResizePoolByPipeline
 
     # Start a resize and then stop it
     $pool = Get-AzureBatchPool -Id $poolId -BatchContext $context
-    $initialTargetDedicated = $pool.TargetDedicated
+    $initialTargetDedicated = $pool.CurrentDedicated
 
     $newTargetDedicated = $initialTargetDedicated + 2
     $pool | Start-AzureBatchPoolResize -TargetDedicated $newTargetDedicated -BatchContext $context
@@ -387,6 +389,7 @@ function Test-EnableAutoScale
     $context = Get-ScenarioTestContext $accountName
 
     $formula = '$TargetDedicated=2'
+    $interval = ([TimeSpan]::FromMinutes(8))
 
     # Verify pool starts with autoscale disabled
     $pool = Get-AzureBatchPool $poolId -BatchContext $context
@@ -394,17 +397,18 @@ function Test-EnableAutoScale
 
     if ($usePipeline -eq '1')
     {
-        Get-AzureBatchPool -Id $poolId -BatchContext $context | Enable-AzureBatchAutoScale -AutoScaleFormula $formula -BatchContext $context
+        Get-AzureBatchPool -Id $poolId -BatchContext $context | Enable-AzureBatchAutoScale -AutoScaleFormula $formula -AutoScaleEvaluationInterval $interval -BatchContext $context
     }
     else
     {
-        Enable-AzureBatchAutoScale $poolId $formula -BatchContext $context
+        Enable-AzureBatchAutoScale $poolId $formula $interval -BatchContext $context
     }
 
     # Verify that autoscale was enabled. 
     # Use a filter because it seems that the recorder sometimes gets confused when two identical URLs are sent too close together
     $pool = Get-AzureBatchPool -Filter "id eq '$poolId'" -BatchContext $context
     Assert-True { $pool.AutoScaleEnabled }
+    Assert-AreEqual $interval $pool.AutoScaleEvaluationInterval
 }
 
 <#

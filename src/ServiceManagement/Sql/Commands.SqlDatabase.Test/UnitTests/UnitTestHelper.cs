@@ -23,9 +23,10 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
@@ -245,6 +246,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
         public static void ImportAzureModule(System.Management.Automation.PowerShell powershell)
         {
             // Import the test manifest file
+            powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+            powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1");
             powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
             Assert.IsTrue(powershell.Streams.Error.Count == 0);
         }

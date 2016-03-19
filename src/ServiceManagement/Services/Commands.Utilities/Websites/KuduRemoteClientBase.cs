@@ -17,8 +17,8 @@ using System.Net;
 using System.Net.Http;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 {
