@@ -60,6 +60,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string MoveResources = "moveResources";
 
         /// <summary>
+        /// The export action.
+        /// </summary>
+        public static readonly string ExportTemplate = "exportTemplate";
+
+        /// <summary>
         /// The locks resource type.
         /// </summary>
         public static readonly string MicrosoftAuthorizationLocksType = "Microsoft.Authorization/locks";

@@ -32,7 +32,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "..\..\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Rest", "..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "..\..\Common\Storage\Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "..\..\Storage\Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Common", "..\..\ServiceManagement\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj", "{CFF09E81-1E31-444E-B4D4-A21E946C29E2}"
 EndProject

@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @()
+RequiredModules = @( @{ ModuleName = 'Azure.Storage'; ModuleVersion = '1.0.5'})
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = @()
@@ -57,7 +57,6 @@ ScriptsToProcess = @()
 TypesToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Websites.Types.ps1xml',
     '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.Types.ps1xml',
-    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml',
     '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.Types.ps1xml'
 )
 
@@ -67,7 +66,6 @@ FormatsToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Websites.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.CloudService.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.ServiceBus.format.ps1xml',
-    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.Store.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.Scheduler.format.ps1xml',
     '.\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.format.ps1xml',
@@ -77,19 +75,18 @@ FormatsToProcess = @(
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = '.\Services\Microsoft.WindowsAzure.Commands.dll',
-                '.\Automation\Microsoft.Azure.Commands.Automation.dll',
-                '.\TrafficManager\Microsoft.WindowsAzure.Commands.TrafficManager.dll',
-                '.\Services\Microsoft.WindowsAzure.Commands.Profile.dll',
+NestedModules = '.\Automation\Microsoft.Azure.Commands.Automation.dll',
                 '.\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.dll',
-                '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll',
-                '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
-                '.\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll',
                 '.\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll',
+                '.\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll',
                 '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll',
-                '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll',
+                '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll',
                 '.\RemoteApp\Microsoft.WindowsAzure.Commands.RemoteApp.dll',
-                '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll'
+                '.\Services\Microsoft.WindowsAzure.Commands.dll',
+                '.\Services\Microsoft.WindowsAzure.Commands.Profile.dll',
+                '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll',
+                '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll',
+                '.\TrafficManager\Microsoft.WindowsAzure.Commands.TrafficManager.dll'
 
 # Functions to export from this module
 FunctionsToExport = '*'

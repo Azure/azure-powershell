@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
             var result = new PSStorageAccount(storageAccount);
-            var credentials = StorageUtilities.GenerateStorageCredentials(client, result.ResourceGroupName, result.StorageAccountName);
+            var credentials = StorageUtilities.GenerateStorageCredentials(new ARMStorageProvider(client), result.ResourceGroupName, result.StorageAccountName);
             CloudStorageAccount account = new CloudStorageAccount(credentials,
                 storageAccount.PrimaryEndpoints.Blob, storageAccount.PrimaryEndpoints.Queue, storageAccount.PrimaryEndpoints.Table, null);
             result.Context = new AzureStorageContext(account);
