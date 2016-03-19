@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using Xunit;
 
@@ -63,7 +64,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
                 helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
 
-                helper.RunPowerShellTest(scripts);
+                var scriptEnvPath = new List<string>();
+                scriptEnvPath.Add(
+                    string.Format(
+                    "$env:PSModulePath=\"{0};$env:PSModulePath\"",
+                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute".AsAbsoluteLocation()));
+
+                helper.RunPowerShellTest(scriptEnvPath, scripts);
             }
         }
 

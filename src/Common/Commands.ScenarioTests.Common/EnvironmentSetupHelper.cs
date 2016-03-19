@@ -272,57 +272,81 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.modules.AddRange(modules);
         }
 
+
         public virtual Collection<PSObject> RunPowerShellTest(params string[] scripts)
         {
             using (var powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
             {
-                SetupPowerShellModules(powershell);
-
-                Collection<PSObject> output = null;
-                for (int i = 0; i < scripts.Length; ++i)
-                {
-                    Console.WriteLine(scripts[i]);
-                    powershell.AddScript(scripts[i]);
-                }
-                try
-                {
-                    powershell.Runspace.Events.Subscribers.Clear();
-                    powershell.Streams.Error.Clear();
-                    output = powershell.Invoke();
-
-                    if (powershell.Streams.Error.Count > 0)
-                    {
-                        var sb = new StringBuilder();
-
-                        sb.AppendLine("Test failed due to a non-empty error stream, check the error stream in the test log for more details.");
-                        sb.AppendLine(string.Format("{0} total Errors", powershell.Streams.Error.Count));
-                        foreach (var error in powershell.Streams.Error)
-                        {
-                            sb.AppendLine(error.Exception.ToString());
-                        }
-
-                        throw new RuntimeException(sb.ToString());
-                    }
-
-                    return output;
-                }
-                catch (Exception psException)
-                {
-                    powershell.LogPowerShellException(psException);
-                    throw;
-                }
-                finally
-                {
-                    powershell.LogPowerShellResults(output);
-                    powershell.Streams.Error.Clear();
-                }
+                return ExecuteShellTest(powershell, null, scripts);
+            }
+        }
+        public virtual Collection<PSObject> RunPowerShellTest(IEnumerable<string> setupScripts, IEnumerable<string> scripts)
+        {
+            using (var powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
+            {
+                return ExecuteShellTest(powershell, setupScripts, scripts);
             }
         }
 
-        private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
+        private Collection<PSObject> ExecuteShellTest(
+            System.Management.Automation.PowerShell powershell,
+            IEnumerable<string> setupScripts,
+            IEnumerable<string> scripts)
+        {
+            SetupPowerShellModules(powershell, null);
+
+            Collection<PSObject> output = null;
+
+            foreach (var script in scripts)
+            {
+                Console.WriteLine(script);
+                powershell.AddScript(script);
+            }
+            try
+            {
+                powershell.Runspace.Events.Subscribers.Clear();
+                powershell.Streams.Error.Clear();
+                output = powershell.Invoke();
+
+                if (powershell.Streams.Error.Count > 0)
+                {
+                    var sb = new StringBuilder();
+
+                    sb.AppendLine("Test failed due to a non-empty error stream, check the error stream in the test log for more details.");
+                    sb.AppendLine(string.Format("{0} total Errors", powershell.Streams.Error.Count));
+                    foreach (var error in powershell.Streams.Error)
+                    {
+                        sb.AppendLine(error.Exception.ToString());
+                    }
+
+                    throw new RuntimeException(sb.ToString());
+                }
+
+                return output;
+            }
+            catch (Exception psException)
+            {
+                powershell.LogPowerShellException(psException);
+                throw;
+            }
+            finally
+            {
+                powershell.LogPowerShellResults(output);
+                powershell.Streams.Error.Clear();
+            }
+        }
+
+        private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell, IEnumerable<string> setupScripts)
         {
             powershell.AddScript("$error.clear()");
             powershell.AddScript(string.Format("cd \"{0}\"", AppDomain.CurrentDomain.BaseDirectory));
+            if (setupScripts != null)
+            {
+                foreach(var script in setupScripts)
+                {
+                    powershell.AddScript(script);
+                }
+            }
 
             foreach (string moduleName in modules)
             {

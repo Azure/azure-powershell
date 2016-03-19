@@ -62,7 +62,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
                 helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
 
-                helper.RunPowerShellTest(scripts);
+                var scriptEnvPath = new List<string>();
+                scriptEnvPath.Add(
+                    string.Format(
+                    "$env:PSModulePath=\"{0};$env:PSModulePath\"",
+                    Path.Combine(EnvironmentSetupHelper.PackageDirectory, @"ServiceManagement\Azure\Compute").AsAbsoluteLocation()));
+
+                helper.RunPowerShellTest(scriptEnvPath.ToArray(), scripts);
             }
         }
     }

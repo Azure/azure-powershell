@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     {
         public static string AsAbsoluteLocation(this string realtivePath)
         {
-            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, realtivePath);
+            return Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, realtivePath));
         }
 
         public static string TryResolvePath(this PSCmdlet psCmdlet, string path)
