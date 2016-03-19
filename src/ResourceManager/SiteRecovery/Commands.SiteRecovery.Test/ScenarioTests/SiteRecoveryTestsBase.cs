@@ -130,16 +130,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                 if (testEnvironment.UsesCustomUri())
                 {
                     client = new SiteRecoveryVaultManagementClient(
-                        "Microsoft.RecoveryServicesBVTD2",
-                        "vaults",
+                        "Microsoft.SiteRecoveryBVTD2",
+                        "SiteRecoveryVault",
                         testEnvironment.Credentials as SubscriptionCloudCredentials,
                         testEnvironment.BaseUri);
                 }
                 else
                 {
                     client = new SiteRecoveryVaultManagementClient(
-                        "Microsoft.RecoveryServicesBVTD2",
-                        "vaults",
+                        "Microsoft.SiteRecovery",
+                        "SiteRecoveryVault",
                         testEnvironment.Credentials as SubscriptionCloudCredentials);
                 }
                 return GetRSMServiceClient<T>(factory, client);
@@ -153,8 +153,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                     client = new SiteRecoveryManagementClient(
                         asrVaultCreds.ResourceName,
                         asrVaultCreds.ResourceGroupName,
-                        "Microsoft.RecoveryServicesBVTD2",
-                        "vaults",
+                        "Microsoft.SiteRecoveryBVTD2",
+                        "SiteRecoveryVault",
                         testEnvironment.Credentials as SubscriptionCloudCredentials,
                         testEnvironment.BaseUri);
                 }
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                     client = new SiteRecoveryManagementClient(
                         asrVaultCreds.ResourceName,
                         asrVaultCreds.ResourceGroupName,
-                        "Microsoft.RecoveryServices",
+                        "Microsoft.SiteRecovery",
                         "vaults",
                         testEnvironment.Credentials as SubscriptionCloudCredentials);
                 }

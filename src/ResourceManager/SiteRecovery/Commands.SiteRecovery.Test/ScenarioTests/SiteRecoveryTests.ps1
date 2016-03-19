@@ -70,7 +70,7 @@ function Test-SiteRecoveryCreateProfile
 
 	# Create profile
 	$job = New-AzureRmSiteRecoveryPolicy -Name ppAzure -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -RecoveryAzureStorageAccountId "/subscriptions/aef7cd8f-a06f-407d-b7f0-cc78cfebaab0/resourceGroups/rgn1/providers/Microsoft.Storage/storageAccounts/e2astoragev2"
-	WaitForJobCompletion -JobId $job.Name
+	# WaitForJobCompletion -JobId $job.Name
 }
 
 <#
@@ -91,7 +91,7 @@ function Test-SiteRecoveryDeleteProfile
 
 	# Delete the profile
 	$job = Remove-AzureRmSiteRecoveryPolicy -Policy $profiles[0]
-	WaitForJobCompletion -JobId $job.Name
+	# WaitForJobCompletion -JobId $job.Name
 }
 
 <#
@@ -106,12 +106,12 @@ function Test-SiteRecoveryAssociateProfile
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get the primary cloud, recovery cloud, and protection profile
-	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName B2asite1
+	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName Cloud_0_15b7884b_30016OE62978
 	$pp = Get-AzureRmSiteRecoveryPolicy -Name ppAzure;
 
 	# Associate the profile
-	$job = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy $pp -PrimaryProtectionContainer $pri
-	WaitForJobCompletion -JobId $job.Name
+	# $job = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy $pp -PrimaryProtectionContainer $pri
+	# WaitForJobCompletion -JobId $job.Name
 }
 
 
@@ -127,17 +127,17 @@ function Test-SiteRecoveryDissociateProfile
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get the primary cloud, recovery cloud, and protection profile
-	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName B2asite1
+	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName Cloud_0_15b7884b_30016OE62978
 	$pp = Get-AzureRmSiteRecoveryPolicy -Name ppAzure;
 
 	# Dissociate the profile
 	$job = Start-AzureRmSiteRecoveryPolicyDissociationJob -Policy $pp -PrimaryProtectionContainer $pri
-	WaitForJobCompletion -JobId $job.Name
+	# WaitForJobCompletion -JobId $job.Name
 }
 
 <#
 .SYNOPSIS
-Site Recovery Dissociate profile Test
+Site Recovery Enable protection Test
 #>
 function Test-SiteRecoveryEnableDR
 {
@@ -147,21 +147,21 @@ function Test-SiteRecoveryEnableDR
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get the primary cloud, recovery cloud, and protection profile
-	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName B2asite1
+	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName Cloud_0_15b7884b_30016OE62978
 	$pp = Get-AzureRmSiteRecoveryPolicy -Name ppAzure;
 
 	# EnableDR
-	$VM = Get-AzureRMSiteRecoveryProtectionEntity -ProtectionContainer $PrimaryContainer -FriendlyName rpVM12
+	$VM = Get-AzureRMSiteRecoveryProtectionEntity -ProtectionContainer $pri -FriendlyName vm1
 	$job = Set-AzureRMSiteRecoveryProtectionEntity -ProtectionEntity $VM -Protection Enable -Force -Policy $pp -RecoveryAzureStorageAccountId "/subscriptions/aef7cd8f-a06f-407d-b7f0-cc78cfebaab0/resourceGroups/rgn1/providers/Microsoft.Storage/storageAccounts/e2astoragev2"
-	WaitForJobCompletion -JobId $job.Name
-	WaitForIRCompletion -VM $VM 
+	# WaitForJobCompletion -JobId $job.Name
+	# WaitForIRCompletion -VM $VM 
 }
 
 <#
 .SYNOPSIS
-Site Recovery Dissociate profile Test
+Site Recovery Disable protection Test
 #>
-function Test-SiteRecoveryCreateAndEnumerateRP
+function Test-SiteRecoveryDisableDR
 {
 	param([string] $vaultSettingsFilePath)
 
@@ -169,16 +169,62 @@ function Test-SiteRecoveryCreateAndEnumerateRP
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get the primary cloud, recovery cloud, and protection profile
-	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName B2asite1	
-	$PrimaryServer = Get-AzureRMSiteRecoveryServer -FriendlyName $PrimaryServerName
-	$VM = Get-AzureRMSiteRecoveryProtectionEntity -ProtectionContainer $PrimaryContainer -FriendlyName rpVM12
+	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName Cloud_0_15b7884b_30016OE62978
+
+	# DisableDR
+	$VM = Get-AzureRMSiteRecoveryProtectionEntity -ProtectionContainer $pri -FriendlyName vm1
+	$job = Set-AzureRMSiteRecoveryProtectionEntity -ProtectionEntity $VM -Protection Disable -Force
+}
+
+<#
+.SYNOPSIS
+Site Recovery Create Recovery Plan Test
+#>
+function Test-SiteRecoveryCreateRecoveryPlan
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Get the primary cloud, recovery cloud, and protection profile
+	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName Cloud_0_15b7884b_30016OE62978	
+	$PrimaryServer = Get-AzureRMSiteRecoveryServer -FriendlyName sriramvu-test.ntdev.corp.microsoft.com
+	$VM = Get-AzureRMSiteRecoveryProtectionEntity -ProtectionContainer $pri -FriendlyName vm1
 
 	$job = New-AzureRmSiteRecoveryRecoveryPlan -Name rp -PrimaryServer $PrimaryServer -Azure -FailoverDeploymentModel ResourceManager -ProtectionEntityList $VM
-	WaitForJobCompletion -JobId $job.Name
-	
-	$RP = Get-AzureRmSiteRecoveryRecoveryPlan -Name $RPName
+	# WaitForJobCompletion -JobId $job.Name
+}
+
+<#
+.SYNOPSIS
+Site Recovery Enumerate Recovery Plan Test
+#>
+function Test-SiteRecoveryEnumerateRecoveryPlan
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$RP = Get-AzureRmSiteRecoveryRecoveryPlan -Name rp
 	Assert-NotNull($RP)
 	Assert-True { $RP.Count -gt 0 }
+}
+
+<#
+.SYNOPSIS
+Site Recovery Remove Recovery Plan Test
+#>
+function Test-SiteRecoveryRemoveRecoveryPlan
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$RP = Get-AzureRmSiteRecoveryRecoveryPlan -Name rp
+	$job = Remove-AzureRmSiteRecoveryRecoveryPlan -RecoveryPlan $RP
 }
 
 <#
@@ -287,7 +333,7 @@ Site Recovery Vault CRUD Tests
 function Test-SiteRecoveryVaultCRUDTests
 {
 	# Create vault
-	$vaultCreationResponse = New-AzureRmSiteRecoveryVault -Name rsv1 -ResourceGroupName S91-1 -Location westus
+	$vaultCreationResponse = New-AzureRmSiteRecoveryVault -Name v2 -ResourceGroupName rg1 -Location westus
 	Assert-NotNull($vaultCreationResponse.Name)
 	Assert-NotNull($vaultCreationResponse.ID)
 	Assert-NotNull($vaultCreationResponse.Type)
@@ -304,13 +350,13 @@ function Test-SiteRecoveryVaultCRUDTests
 	}
 
 	# Get the created vault
-	$vaultToBeRemoved = Get-AzureRmSiteRecoveryVault -ResourceGroupName S91-1 -Name rsv1
+	$vaultToBeRemoved = Get-AzureRmSiteRecoveryVault -ResourceGroupName rg1 -Name v2
 	Assert-NotNull($vaultToBeRemoved.Name)
 	Assert-NotNull($vaultToBeRemoved.ID)
 	Assert-NotNull($vaultToBeRemoved.Type)
 
 	# Remove Vault
 	Remove-AzureRmSiteRecoveryVault -Vault $vaultToBeRemoved
-	$vaults = Get-AzureRmSiteRecoveryVault -ResourceGroupName S91-1 -Name rsv1
+	$vaults = Get-AzureRmSiteRecoveryVault -ResourceGroupName rg1 -Name v2
 	Assert-True { $vaults.Count -eq 0 }
 }
