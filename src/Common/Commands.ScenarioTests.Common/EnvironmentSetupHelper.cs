@@ -293,14 +293,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     if (powershell.Streams.Error.Count > 0)
                     {
                         var sb = new StringBuilder();
+
+                        sb.AppendLine("Test failed due to a non-empty error stream, check the error stream in the test log for more details.");
+                        sb.AppendLine(string.Format("{0} total Errors", powershell.Streams.Error.Count));
                         foreach (var error in powershell.Streams.Error)
                         {
-                            sb.AppendLine(error.ErrorDetails.Message);
+                            sb.AppendLine(error.Exception.ToString());
                         }
 
-                        throw new RuntimeException(
-                            "Test failed due to a non-empty error stream, check the error stream in the test log for more details.\r\n" +
-                            sb.ToString());
+                        throw new RuntimeException(sb.ToString());
                     }
 
                     return output;
