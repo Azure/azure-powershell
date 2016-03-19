@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Tags", "..\Tags\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Management.Storage", "..\Storage\Commands.Management.Storage\Commands.Management.Storage.csproj", "{A50AB133-5C04-4A17-9054-F8343683EC23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "..\..\Common\Storage\Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "..\..\Storage\Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "..\..\Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
 EndProject

@@ -107,7 +107,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             get
             {
                 return Path.Combine(this.PackageDirectory,
-                                     @"ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1");
+                                     @"Storage\Azure.Storage\Azure.Storage.psd1");
             }
         }
 
