@@ -27,6 +27,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.ServiceManagemenet.Common;
+using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -291,8 +292,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                     if (powershell.Streams.Error.Count > 0)
                     {
+                        var sb = new StringBuilder();
+                        foreach (var error in powershell.Streams.Error)
+                        {
+                            sb.AppendLine(error.ErrorDetails.Message);
+                        }
+
                         throw new RuntimeException(
-                            "Test failed due to a non-empty error stream, check the error stream in the test log for more details.");
+                            "Test failed due to a non-empty error stream, check the error stream in the test log for more details.\r\n" +
+                            sb.ToString());
                     }
 
                     return output;
