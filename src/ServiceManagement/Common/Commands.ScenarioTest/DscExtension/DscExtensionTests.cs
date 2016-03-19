@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
 
@@ -29,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
-        [Fact]
+        [Fact(Skip = "#115980855")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestGetAzureVMDscExtension()
@@ -64,17 +65,21 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 {
                     "Resources\\DscExtension\\DscExtensionTests.ps1",
                     "Resources\\ServiceManagement\\Common.ps1",
-                    @"..\..\..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1",
-                    @"..\..\..\..\..\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1",
-                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1",
                     @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1",
                     @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\PIR.psd1"
                 };
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(modules.ToArray());
+                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
 
-                helper.RunPowerShellTest(scripts);
+
+                var scriptEnvPath = new List<string>();
+                scriptEnvPath.Add(
+                    string.Format(
+                    "$env:PSModulePath=\"{0};$env:PSModulePath\"",
+                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute".AsAbsoluteLocation()));
+
+                helper.RunPowerShellTest(scriptEnvPath, scripts);
             }
         }
     }

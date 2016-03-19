@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
-        [Fact]
+        [Fact(Skip = "#115980855")]
         [Trait(Category.Service, Category.DiagnosticsExtension)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.RunPowerShellTest("Test-AzureServiceDiagnosticsExtensionBasic");
         }
 
-        [Fact]
+        [Fact(Skip = "#115980855")]
         [Trait(Category.Service, Category.DiagnosticsExtension)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
