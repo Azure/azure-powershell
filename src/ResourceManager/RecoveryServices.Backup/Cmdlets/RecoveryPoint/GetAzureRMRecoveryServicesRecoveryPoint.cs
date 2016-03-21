@@ -70,11 +70,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
                     var rpList = psBackupProvider.ListRecoveryPoints();
                     if (rpList.Count == 1)
+                    {
                         WriteObject(rpList[0]);
+                    }
                     else
+                    {
                         WriteObject(rpList);
+                    }
                 }
-
                 else if (this.ParameterSetName == RecoveryPointIdParameterSet)
                 {
                     //User want details of a particular recovery point
