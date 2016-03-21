@@ -11,11 +11,6 @@
         /// Specifies that the jobDetails output file to download is the stderr file.
         /// </summary>
         StandardError,
-
-        /// <summary>
-        /// Specifies that the jobDetails output file to download is the logs/list.txt file.
-        /// </summary>
-        TaskSummary,
     }
 
     public enum JobDownloadOutputType
