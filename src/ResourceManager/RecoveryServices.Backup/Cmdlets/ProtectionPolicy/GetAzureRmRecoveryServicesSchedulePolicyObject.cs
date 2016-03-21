@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         [Parameter(Mandatory = true, HelpMessage = "Temp Help message. Need to update it")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(ContainerType.AzureVM.ToString())]
         public WorkloadType WorkloadType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Temp Help message. Need to update it")]

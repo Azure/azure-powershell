@@ -237,21 +237,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultSchedule.ScheduleRunDays = new List<DayOfWeek>();
             defaultSchedule.ScheduleRunDays.Add(DayOfWeek.Sunday);
 
-            //TimeSpan triggerTime = new TimeSpan(10, 30, 00);
-            //TimeSpan timeToGo = triggerTime - DateTime.Now.TimeOfDay;
-            //if(timeToGo < TimeSpan.Zero)
-            //{
-            //    //Schedule time will be the next day
-            //}
-            //else
-            //{
-            //    //Schedule time will be today 10:30
-            //}
-
             return defaultSchedule;
         }
 
-        public AzureRmRecoveryServicesLongTermRetentionPolicy GetDefaultRetentionPolicyObject()
+        public AzureRmRecoveryServicesRetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
             AzureRmRecoveryServicesLongTermRetentionPolicy defaultRetention = new AzureRmRecoveryServicesLongTermRetentionPolicy();
             
