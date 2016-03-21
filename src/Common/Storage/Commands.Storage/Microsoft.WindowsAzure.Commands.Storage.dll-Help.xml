@@ -6180,7 +6180,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">SharedAccessAccountResourceTypes</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage account. Permissions are only valid if they match the specified resource type; otherwise they are ignored.</maml:para>
@@ -6264,7 +6264,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage account. Permissions are only valid if they match the specified resource type; otherwise they are ignored.</maml:para>
@@ -6475,7 +6475,81 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Permission</maml:name>
+				<maml:description>
+					<maml:para>Permissions for a storage blob.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Protocol</maml:name>
+				<maml:description>
+					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>IPAddressOrRange</maml:name>
+				<maml:description>
+					<maml:para>IP address or a range of IP addresses from which to accept requests. The range is inclusive.
+For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>StartTime</maml:name>
+				<maml:description>
+					<maml:para>The time at which the shared access signature becomes valid.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ExpiryTime</maml:name>
+				<maml:description>
+					<maml:para>The time at which the shared access signature becomes invalid.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>FullUri</maml:name>
+				<maml:description>
+					<maml:para>Return the full blob uri with sas token.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
+				<maml:name>Context</maml:name>
+				<maml:description>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureStorageBlobSASToken</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>CloudBlob</maml:name>
+				<maml:description>
+					<maml:para>CloudBlob object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage blob.</maml:para>
@@ -6553,80 +6627,6 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				<maml:name>Policy</maml:name>
 				<maml:description>
 					<maml:para>Azure Stored Access Policy.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Protocol</maml:name>
-				<maml:description>
-					<maml:para>Protocol permitted for a request made with the account SAS, such as HttpsOrHttp, HttpsOnly. The default value is HttpsOrHttp.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[SharedAccessProtocol]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>IPAddressOrRange</maml:name>
-				<maml:description>
-					<maml:para>IP address or a range of IP addresses from which to accept requests. The range is inclusive.
-For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-				<maml:name>StartTime</maml:name>
-				<maml:description>
-					<maml:para>The time at which the shared access signature becomes valid.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ExpiryTime</maml:name>
-				<maml:description>
-					<maml:para>The time at which the shared access signature becomes invalid.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>FullUri</maml:name>
-				<maml:description>
-					<maml:para>Return the full blob uri with sas token.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-				<maml:name>Context</maml:name>
-				<maml:description>
-					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureStorageBlobSASToken</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>CloudBlob</maml:name>
-				<maml:description>
-					<maml:para>CloudBlob object</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Permission</maml:name>
-				<maml:description>
-					<maml:para>Permissions for a storage blob.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -6795,7 +6795,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage blob.</maml:para>
@@ -7406,7 +7406,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage container.</maml:para>
@@ -7594,7 +7594,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage container.</maml:para>
@@ -8102,6 +8102,89 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SasToken</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Protocol</maml:name>
+				<maml:description>
+					<maml:para>Transfer Protocol (https/http).</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Endpoint</maml:name>
+				<maml:description>
+					<maml:para>Azure Storage Endpoint.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureStorageContext</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>StorageAccountName</maml:name>
+				<maml:description>
+					<maml:para>Azure Storage Account name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SasToken</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Environment</maml:name>
+				<maml:description>
+					<maml:para>Azure Environment</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureStorageContext</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>StorageAccountName</maml:name>
+				<maml:description>
+					<maml:para>Azure Storage Account name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>StorageAccountKey</maml:name>
 				<maml:description>
@@ -8116,7 +8199,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Environment</maml:name>
 				<maml:description>
 					<maml:para>Azure Environment</maml:para>
@@ -8206,90 +8289,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Environment</maml:name>
-				<maml:description>
-					<maml:para>Azure Environment</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureStorageContext</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Azure Storage Account name</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SasToken</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Protocol</maml:name>
-				<maml:description>
-					<maml:para>Transfer Protocol (https/http).</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Endpoint</maml:name>
-				<maml:description>
-					<maml:para>Azure Storage Endpoint.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureStorageContext</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Azure Storage Account name</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SasToken</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Environment</maml:name>
 				<maml:description>
 					<maml:para>Azure Environment</maml:para>
@@ -8433,7 +8433,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SasToken</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Environment</maml:name>
 			<maml:description>
 				<maml:para>Azure Environment</maml:para>
@@ -8453,18 +8465,6 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>SasToken</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -9303,7 +9303,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage file.</maml:para>
@@ -9459,9 +9459,9 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Permission</maml:name>
+				<maml:name>Policy</maml:name>
 				<maml:description>
-					<maml:para>Permissions for a storage file.</maml:para>
+					<maml:para>Azure Stored Access Policy.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -9525,10 +9525,10 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Policy</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Permission</maml:name>
 				<maml:description>
-					<maml:para>Azure Stored Access Policy.</maml:para>
+					<maml:para>Permissions for a storage file.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -9609,7 +9609,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage file.</maml:para>
@@ -10140,7 +10140,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage queue.</maml:para>
@@ -10328,7 +10328,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage queue.</maml:para>
@@ -11148,7 +11148,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions in the SAS token to access the share and files under the share.</maml:para>
@@ -11336,7 +11336,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions in the SAS token to access the share and files under the share.</maml:para>
@@ -12084,7 +12084,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage table.</maml:para>
@@ -12348,7 +12348,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage table.</maml:para>
@@ -17592,19 +17592,12 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Blob</maml:name>
-				<maml:description>
-					<maml:para>Blob name.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>CloudBlobContainer</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:description>
-					<maml:para>CloudBlobContainer object from Azure Storage Client library. You can create it or use Get-AzureStorageContainer cmdlet.</maml:para>
+					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">CloudBlobContainer</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>BlobType</maml:name>
@@ -17686,12 +17679,19 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>CloudBlob</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Blob</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Blob name.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>CloudBlobContainer</maml:name>
+				<maml:description>
+					<maml:para>CloudBlobContainer object from Azure Storage Client library. You can create it or use Get-AzureStorageContainer cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">CloudBlobContainer</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>BlobType</maml:name>
@@ -17923,18 +17923,6 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>CloudBlobContainer</maml:name>
-			<maml:description>
-				<maml:para>CloudBlobContainer object from Azure Storage Client library. You can create it or use Get-AzureStorageContainer cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">CloudBlobContainer</command:parameterValue>
-			<dev:type>
-				<maml:name>CloudBlobContainer</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>CloudBlob</maml:name>
 			<maml:description>
 				<maml:para />
@@ -17942,6 +17930,18 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			<dev:type>
 				<maml:name>CloudBlob</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>CloudBlobContainer</maml:name>
+			<maml:description>
+				<maml:para>CloudBlobContainer object from Azure Storage Client library. You can create it or use Get-AzureStorageContainer cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">CloudBlobContainer</command:parameterValue>
+			<dev:type>
+				<maml:name>CloudBlobContainer</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -23080,25 +23080,11 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestShareName</maml:name>
+				<maml:name>DestFile</maml:name>
 				<maml:description>
-					<maml:para>Destination share name.</maml:para>
+					<maml:para>CloudFile object from Azure Storage Client library.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestFilePath</maml:name>
-				<maml:description>
-					<maml:para>Destination file relative path to destination share.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestContext</maml:name>
-				<maml:description>
-					<maml:para>Destination Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -23167,86 +23153,6 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestFile</maml:name>
-				<maml:description>
-					<maml:para>CloudFile object from Azure Storage Client library.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Force to overwrite the destination file without confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ServerTimeoutPerRequest</maml:name>
-				<maml:description>
-					<maml:para>Server side time out for each request.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ClientTimeoutPerRequest</maml:name>
-				<maml:description>
-					<maml:para>Client side time out for each request.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ConcurrentTaskCount</maml:name>
-				<maml:description>
-					<maml:para>The total amount of concurrent async tasks.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>WhatIf</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Start-AzureStorageFileCopy</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SrcFilePath</maml:name>
-				<maml:description>
-					<maml:para>Source file relative path to source directory or source share.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SrcShareName</maml:name>
-				<maml:description>
-					<maml:para>Source share name.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>DestShareName</maml:name>
 				<maml:description>
 					<maml:para>Destination share name.</maml:para>
@@ -23259,13 +23165,6 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 					<maml:para>Destination file relative path to destination share.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Context</maml:name>
-				<maml:description>
-					<maml:para>Source Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>DestContext</maml:name>
@@ -23427,12 +23326,19 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Start-AzureStorageFileCopy</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>SrcFile</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SrcFilePath</maml:name>
 				<maml:description>
-					<maml:para>CloudFile object from Azure Storage Client library. You can create it or use Get-AzureStorageFile cmdlet.</maml:para>
+					<maml:para>Source file relative path to source directory or source share.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SrcShareName</maml:name>
+				<maml:description>
+					<maml:para>Source share name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>DestShareName</maml:name>
@@ -23447,6 +23353,13 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 					<maml:para>Destination file relative path to destination share.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Context</maml:name>
+				<maml:description>
+					<maml:para>Source Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>DestContext</maml:name>
@@ -23587,12 +23500,12 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Start-AzureStorageFileCopy</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>AbsoluteUri</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>SrcFile</maml:name>
 				<maml:description>
-					<maml:para>Absolute Uri to the source. Be noted that the credential should be provided in the Uri, if the source requires any.</maml:para>
+					<maml:para>CloudFile object from Azure Storage Client library. You can create it or use Get-AzureStorageFile cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>DestShareName</maml:name>
@@ -23687,6 +23600,93 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 					<maml:para>CloudFile object from Azure Storage Client library.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Force to overwrite the destination file without confirmation.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ServerTimeoutPerRequest</maml:name>
+				<maml:description>
+					<maml:para>Server side time out for each request.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ClientTimeoutPerRequest</maml:name>
+				<maml:description>
+					<maml:para>Client side time out for each request.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ConcurrentTaskCount</maml:name>
+				<maml:description>
+					<maml:para>The total amount of concurrent async tasks.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Start-AzureStorageFileCopy</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>AbsoluteUri</maml:name>
+				<maml:description>
+					<maml:para>Absolute Uri to the source. Be noted that the credential should be provided in the Uri, if the source requires any.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DestShareName</maml:name>
+				<maml:description>
+					<maml:para>Destination share name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DestFilePath</maml:name>
+				<maml:description>
+					<maml:para>Destination file relative path to destination share.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DestContext</maml:name>
+				<maml:description>
+					<maml:para>Destination Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -23964,18 +23964,6 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>SrcShareName</maml:name>
-			<maml:description>
-				<maml:para>Source share name.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>SrcShare</maml:name>
 			<maml:description>
 				<maml:para>CloudFileShare object from Azure Storage Client library. You can create it or use Get-AzureStorageShare cmdlet.</maml:para>
@@ -23983,6 +23971,18 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
 			<command:parameterValue required="true" variableLength="false">CloudFileShare</command:parameterValue>
 			<dev:type>
 				<maml:name>CloudFileShare</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SrcShareName</maml:name>
+			<maml:description>
+				<maml:para>Source share name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>

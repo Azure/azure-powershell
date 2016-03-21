@@ -56,10 +56,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string accessPolicyIdentifier;
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"rwdl\".",
             ParameterSetName = SasPermissionParameterSet)]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]

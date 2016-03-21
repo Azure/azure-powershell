@@ -29,8 +29,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [Parameter(Mandatory = true, HelpMessage = "Resource type that this SAS token applies to.")]
         public SharedAccessAccountResourceTypes ResourceType { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Permissions.")]
-        [ValidateNotNull]
+        [Parameter(Mandatory = false, HelpMessage = "Permissions.")]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
