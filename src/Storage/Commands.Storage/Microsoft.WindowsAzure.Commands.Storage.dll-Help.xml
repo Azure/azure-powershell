@@ -5821,7 +5821,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">SharedAccessAccountResourceTypes</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage account. Permissions are only valid if they match the specified resource type; otherwise they are ignored.</maml:para>
@@ -5905,7 +5905,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage account. Permissions are only valid if they match the specified resource type; otherwise they are ignored.</maml:para>
@@ -6116,7 +6116,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage blob.</maml:para>
@@ -6264,7 +6264,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage blob.</maml:para>
@@ -6436,7 +6436,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage blob.</maml:para>
@@ -7046,7 +7046,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage container.</maml:para>
@@ -7234,7 +7234,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage container.</maml:para>
@@ -8920,7 +8920,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage file.</maml:para>
@@ -9061,7 +9061,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">CloudFile</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage file.</maml:para>
@@ -9254,7 +9254,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage file.</maml:para>
@@ -9676,7 +9676,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage queue.</maml:para>
@@ -9864,7 +9864,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage queue.</maml:para>
@@ -10580,7 +10580,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions in the SAS token to access the share and files under the share.</maml:para>
@@ -10768,7 +10768,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions in the SAS token to access the share and files under the share.</maml:para>
@@ -11516,7 +11516,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
 				<maml:description>
 					<maml:para>Permissions for a storage table.</maml:para>
@@ -11780,7 +11780,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Permission</maml:name>
 			<maml:description>
 				<maml:para>Permissions for a storage table.</maml:para>
