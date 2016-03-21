@@ -54,9 +54,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
         private string accessPolicyIdentifier;
 
-        [Parameter(Mandatory = true, HelpMessage = "Permissions for a share. Permissions can be any subset of \"rwdl\".",
+        [Parameter(Mandatory = false, HelpMessage = "Permissions for a share. Permissions can be any subset of \"rwdl\".",
             ParameterSetName = SasPermissionParameterSet)]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]

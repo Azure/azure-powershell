@@ -101,14 +101,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         private string accessPolicyIdentifier;
 
         [Parameter(
-            Mandatory = true, 
+            Mandatory = false, 
             HelpMessage = "Permissions for a file. Permissions can be any subset of \"rwd\".",
             ParameterSetName = NameSasPermissionParameterSet)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Permissions for a file. Permissions can be any subset of \"rwd\".",
             ParameterSetName = CloudFileSasPermissionParameterSet)]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
