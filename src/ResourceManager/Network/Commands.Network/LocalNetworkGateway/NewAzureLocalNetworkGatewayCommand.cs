@@ -65,6 +65,24 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The local network gateway's ASN")]
+        public uint Asn { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName =true,
+            HelpMessage = "The IP address of the local network gateway's BGP speaker")]
+        public string BgpPeeringAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName =true,
+            HelpMessage = "Weight added to BGP routes learned from this local network gateway")]
+        public int PeerWeight { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
 
@@ -105,6 +123,25 @@ namespace Microsoft.Azure.Commands.Network
             localnetGateway.LocalNetworkAddressSpace = new PSAddressSpace();
             localnetGateway.LocalNetworkAddressSpace.AddressPrefixes = this.AddressPrefix;
             localnetGateway.GatewayIpAddress = this.GatewayIpAddress;
+
+            if(this.PeerWeight < 0)
+            {
+                throw new PSArgumentException("PeerWeight cannot be negative");
+            }
+
+            if(this.Asn > 0 && !string.IsNullOrEmpty(this.BgpPeeringAddress))
+            {
+                localnetGateway.BgpSettings = new PSBgpSettings()
+                {
+                    Asn = this.Asn,
+                    BgpPeeringAddress = this.BgpPeeringAddress,
+                    PeerWeight = this.PeerWeight
+                };
+            }else if((!string.IsNullOrEmpty(this.BgpPeeringAddress) && this.Asn == 0) ||
+                (string.IsNullOrEmpty(this.BgpPeeringAddress) && this.Asn > 0))
+            {
+                throw new PSArgumentException("For a BGP session to be established over IPsec, the local network gateway's ASN and BgpPeeringAddress must both be specified.");
+            }
 
             // Map to the sdk object
             var localnetGatewayModel = Mapper.Map<MNM.LocalNetworkGateway>(localnetGateway);

@@ -426,6 +426,44 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             return null;
         }
 
+        internal Version GetExtensionVersion(VirtualMachine vm, VirtualMachineInstanceView vmStatus, string osType, string type, string publisher)
+        {
+            Version version = new Version();
+            if (AEMExtensionConstants.AEMExtensionPublisher[osType].Equals(publisher, StringComparison.InvariantCultureIgnoreCase)
+                && AEMExtensionConstants.AEMExtensionType[osType].Equals(type, StringComparison.InvariantCultureIgnoreCase))
+            {
+                version = AEMExtensionConstants.AEMExtensionVersion[osType];
+            }
+            else if (AEMExtensionConstants.WADExtensionPublisher[osType].Equals(publisher, StringComparison.InvariantCultureIgnoreCase)
+                && AEMExtensionConstants.WADExtensionType[osType].Equals(type, StringComparison.InvariantCultureIgnoreCase))
+            {
+                version = AEMExtensionConstants.WADExtensionVersion[osType];
+            }
+
+            if (vm.Resources != null && vmStatus.Extensions != null)
+            {
+                var extension = vm.Resources.FirstOrDefault(ext =>
+                   ext.VirtualMachineExtensionType.Equals(type)
+                   && ext.Publisher.Equals(publisher));
+
+                if (extension != null)
+                {
+                    var extensionStatus = vmStatus.Extensions.FirstOrDefault(ext => ext.Name.Equals(extension.Name));
+
+                    if (extensionStatus != null)
+                    {
+                        string strExtVersion = extensionStatus.TypeHandlerVersion;
+                        Version extVersion;
+                        if (Version.TryParse(strExtVersion, out extVersion))
+                        {
+                            version = extVersion;
+                        }
+                    }
+                }
+            }
+            return version;
+        }
+
         internal VirtualMachineExtensionInstanceView GetExtension(VirtualMachine vm, VirtualMachineInstanceView vmStatus, string type, string publisher)
         {
             var ext = this.GetExtension(vm, type, publisher);

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             else
             {
-                account = StorageUtilities.GenerateCloudStorageAccount(StorageClient, ResourceGroupName, StorageAccountName);
+                account = StorageUtilities.GenerateCloudStorageAccount(new ARMStorageProvider(StorageClient), ResourceGroupName, StorageAccountName);
             }
 
             // Clear the current storage account for both SM and RM
