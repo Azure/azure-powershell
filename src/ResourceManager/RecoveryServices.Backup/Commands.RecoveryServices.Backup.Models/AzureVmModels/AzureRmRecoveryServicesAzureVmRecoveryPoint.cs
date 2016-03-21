@@ -20,51 +20,21 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public enum ContainerParams
+    public class AzureRmRecoveryServicesIaasVmRecoveryPoint : AzureRmRecoveryServicesRecoveryPointBase
     {
-        Vault,
-        ContainerType,
-        BackupManagementType,
-        BackupManagementServer,
-        Name,
-        ResourceGroupName,
-        Status,
-    }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        public string RecoveryPointAdditionalInfo { get; set; }
 
-    public enum GetRecoveryPointParams
-    {
-        StartDate,
-        EndDate,
-        Item,
-        RecoveryPointId,
-    }
+        public AzureRmRecoveryServicesIaasVmRecoveryPoint()
+        {
 
-    public enum RestoreBackupItemParams
-    {
-        RecoveryPoint,
-        StorageAccountName,
-    }
-
-    public enum PolicyParams
-    {
-        WorkloadType,
-        BackupManagementType,
-        PolicyName,
-        SchedulePolicy,
-        RetentionPolicy,
-        ProtectionPolicy,
-        ResourceGroupName,
-        ResourceName
-    }
-
-    public enum ItemParams
-    {
-        AzureVMName,
-        AzureVMCloudServiceName,
-        AzureVMResourceGroupName,
-        WorkloadType,
-        Policy,
-        Item,
-        ParameterSetName
+        }
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

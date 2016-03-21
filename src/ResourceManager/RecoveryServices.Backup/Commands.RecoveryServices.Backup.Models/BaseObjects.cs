@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         public ContainerType ContainerType { get; set; }
 
+        public AzureRmRecoveryServicesContainerContext()
+        {
+        }
+
         public AzureRmRecoveryServicesContainerContext(string containerType)
         {
            
@@ -73,11 +77,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string ContainerName { get; set; }
 
+        public AzureRmRecoveryServicesItemContext()
+            : base()
+        {
+
+        }
+
         public AzureRmRecoveryServicesItemContext(ProtectedItem protectedItem,
             AzureRmRecoveryServicesContainerBase container)
             : base(container.ContainerType.ToString())
         {
 
+        }
+
+        public AzureRmRecoveryServicesItemContext(AzureRmRecoveryServicesItemBase protectedItem)
+            : base(protectedItem.ContainerType.ToString())
+        {
+            //tbd
         }
     }
 
@@ -111,9 +127,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {       
     }
 
-    public class AzureRmRecoveryServicesRecoveryPointBase : AzureRmRecoveryServicesObjectBase
+    public class AzureRmRecoveryServicesRecoveryPointBase : AzureRmRecoveryServicesItemContext
     {
+        private global::Microsoft.Azure.Management.RecoveryServices.Backup.Models.RecoveryPointResource rp;
+
+        /// <summary>
+        ///Type of recovery point (appConsistent\CrashConsistent etc) 
+        /// </summary>
+        ///
+        public String RecoveryPointType { get; set; }
+        
+        /// <summary>
+        /// Time of RecoveryPoint
+        /// </summary>
+        public DateTime RecoveryPointTime { get; set; }
+
+        public AzureRmRecoveryServicesRecoveryPointBase()
+            : base()
+        {
+        }
     }
+
 
     public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesObjectBase
     {

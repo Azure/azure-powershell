@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (policy == null)
             {
                 // throw error -- TBD
-            }
+        }
 
             AzureRmRecoveryServicesIaasVmItem item = (AzureRmRecoveryServicesIaasVmItem)
                                                  ProviderData.ProviderParameters[ItemParams.Item];
@@ -136,9 +137,56 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public RecoveryPointResponse GetRecoveryPoint()
+        public AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails()
         {
-            throw new NotImplementedException();
+            RecoveryPointResponse response = null;
+            AzureRmRecoveryServicesItemBase item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
+                as AzureRmRecoveryServicesItemBase;
+
+            string recoveryPointId = ProviderData.ProviderParameters[GetRecoveryPointParams.RecoveryPointId].ToString();
+
+            if (item == null)
+            {
+                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesItemBase");
+            }
+
+            string containerName = item.ContainerName;
+            string protectedItemName = item.Name;
+
+            var rpResponse = HydraAdapter.GetRecoveryPointDetails(containerName, protectedItemName, recoveryPointId);
+            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
+        }
+
+        public List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
+        {
+            RecoveryPointResponse response = null;
+            DateTime startDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.StartDate]);
+            DateTime endDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.EndDate]);
+            AzureRmRecoveryServicesItemBase item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
+                as AzureRmRecoveryServicesItemBase;
+
+            if (item == null)
+            {
+                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesItemBase");
+            }
+
+            string containerName = item.ContainerName;
+            string protectedItemName = item.Name;
+
+            TimeSpan duration = endDate - startDate;
+
+            if (duration.TotalDays > 30)
+        {
+                throw new Exception("Time difference should not be more than 30 days"); //tbd: Correct nsg and exception type
+            }
+
+            //we need to fetch the list of RPs
+            RecoveryPointQueryParameters queryFilter = new RecoveryPointQueryParameters();
+            queryFilter.StartDate = CommonHelpers.GetDateTimeStringForService(startDate);
+            queryFilter.EndDate = CommonHelpers.GetDateTimeStringForService(endDate);
+            RecoveryPointListResponse rpListResponse = null;
+            rpListResponse = HydraAdapter.GetRecoveryPoints(containerName, protectedItemName, queryFilter);
+            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
 
         public ProtectionPolicyResponse CreatePolicy()
@@ -151,7 +199,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureRmRecoveryServicesRetentionPolicyBase retentionPolicy = (AzureRmRecoveryServicesRetentionPolicyBase)
                                                  ProviderData.ProviderParameters[PolicyParams.RetentionPolicy];
             AzureRmRecoveryServicesSchedulePolicyBase schedulePolicy = (AzureRmRecoveryServicesSchedulePolicyBase)
-                                                 ProviderData.ProviderParameters[PolicyParams.SchedulePolicy];           
+                                                 ProviderData.ProviderParameters[PolicyParams.SchedulePolicy];
 
             // do validations
             ValidateAzureVMWorkloadType(workloadType);
@@ -193,7 +241,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                                  ProviderData.ProviderParameters[PolicyParams.SchedulePolicy];
             AzureRmRecoveryServicesPolicyBase policy = (AzureRmRecoveryServicesPolicyBase)
                                                  ProviderData.ProviderParameters[PolicyParams.ProtectionPolicy];
-           
+
             // do validations
             ValidateAzureVMProtectionPolicy(policy);
 
@@ -245,7 +293,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 // poll for AsyncHeader and get the jobsList
                 // TBD
-        }
+            }
             else
             {
                 // no datasources attached to policy

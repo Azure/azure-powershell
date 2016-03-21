@@ -83,6 +83,8 @@
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="CmdletWarningAndErrorMessages.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Cmdlets\RecoveryPoint\GetAzureRMRecoveryServicesRecoveryPoint.cs" />
+    <Compile Include="Cmdlets\Restore\RestoreAzureRMRecoveryServicesBackupItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecoveryServicesBackupVaultCmdletBase.cs" />
     <Compile Include="RecoveryServicesBackupCmdletBase.cs" />
@@ -93,6 +95,7 @@
     <Folder Include="Cmdlets\Item\" />
     <Folder Include="Cmdlets\RecoveryPoint\" />
     <Folder Include="Cmdlets\Restore\" />
+    <Folder Include="Cmdlets\Jobs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Commands.Common\Commands.Common.csproj">
