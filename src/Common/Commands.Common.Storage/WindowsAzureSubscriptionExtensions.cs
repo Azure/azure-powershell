@@ -30,8 +30,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Get storage account details from the current storage account
         /// </summary>
-        /// <param name="subscription">The subscription continign the account.</param>
-        /// <param name="profile">The profile continaing the subscription.</param>
+        /// <param name="subscription">The subscription containing the account.</param>
+        /// <param name="profile">The profile continuing the subscription.</param>
         /// <returns>Storage account details, usable with the windows azure storage data plane library.</returns>
         public static CloudStorageAccount GetCloudStorageAccount(this AzureSubscription subscription, AzureSMProfile profile)
         {
