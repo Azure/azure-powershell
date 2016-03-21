@@ -86,16 +86,11 @@
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureRMRecoveryServicesRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Restore\RestoreAzureRMRecoveryServicesBackupItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecoveryServicesBackupVaultCmdletBase.cs" />
     <Compile Include="RecoveryServicesBackupCmdletBase.cs" />
     <Compile Include="CmdletParameterHelpMessages.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cmdlets\Backup\" />
-    <Folder Include="Cmdlets\Item\" />
-    <Folder Include="Cmdlets\RecoveryPoint\" />
-    <Folder Include="Cmdlets\Restore\" />
-    <Folder Include="Cmdlets\Jobs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Commands.Common\Commands.Common.csproj">

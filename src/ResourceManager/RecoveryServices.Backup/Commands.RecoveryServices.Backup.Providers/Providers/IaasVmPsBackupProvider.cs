@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (policy == null)
             {
                 // throw error -- TBD
-        }
+            }
 
             AzureRmRecoveryServicesIaasVmItem item = (AzureRmRecoveryServicesIaasVmItem)
                                                  ProviderData.ProviderParameters[ItemParams.Item];
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             TimeSpan duration = endDate - startDate;
 
             if (duration.TotalDays > 30)
-        {
+            {
                 throw new Exception("Time difference should not be more than 30 days"); //tbd: Correct nsg and exception type
             }
 
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public ProtectionPolicyResponse CreatePolicy()
         {
             string policyName = (string)ProviderData.ProviderParameters[PolicyParams.PolicyName];
-            Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType workloadType = 
+            Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType workloadType =
                 (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData.ProviderParameters[PolicyParams.WorkloadType];
             BackupManagementType backupManagementType = (BackupManagementType)ProviderData.ProviderParameters[
                                                                               PolicyParams.BackupManagementType];
@@ -307,7 +307,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
             ContainerRegistrationStatus status = (ContainerRegistrationStatus)this.ProviderData.ProviderParameters[ContainerParams.Status];
-            ARSVault vault = (ARSVault)this.ProviderData.ProviderParameters[ContainerParams.Vault];
             string resourceGroupName = (string)this.ProviderData.ProviderParameters[ContainerParams.ResourceGroupName];
 
             ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
@@ -321,7 +320,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // 3. Filter by Status
             queryParams.RegistrationStatus = status.ToString();
 
-            var listResponse = HydraAdapter.ListContainers(vault.ResouceGroupName, vault.Name, queryParams);
+            var listResponse = HydraAdapter.ListContainers(queryParams);
 
             List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 
@@ -365,9 +364,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public AzureRmRecoveryServicesRetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
             AzureRmRecoveryServicesLongTermRetentionPolicy defaultRetention = new AzureRmRecoveryServicesLongTermRetentionPolicy();
-            
+
             //Default time is 10:30 local time
-            DateTime retentionTime = GenerateRandomTime(); 
+            DateTime retentionTime = GenerateRandomTime();
 
             //Daily Retention policy
             defaultRetention.IsDailyScheduleEnabled = true;
@@ -392,7 +391,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.MonthlySchedule.RetentionScheduleFormatType = Models.RetentionScheduleFormat.Weekly;
 
             //Initialize day based schedule
-            defaultRetention.MonthlySchedule.RetentionScheduleDaily = GetDailyRetentionFormat();  
+            defaultRetention.MonthlySchedule.RetentionScheduleDaily = GetDailyRetentionFormat();
 
             //Initialize Week based schedule
             defaultRetention.MonthlySchedule.RetentionScheduleWeekly = GetWeeklyRetentionFormat();
@@ -458,7 +457,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesIaasVmPolicy))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
-                                            typeof(AzureRmRecoveryServicesIaasVmPolicy).ToString()));                
+                                            typeof(AzureRmRecoveryServicesIaasVmPolicy).ToString()));
             }
 
             ValidateAzureVMWorkloadType(policy.WorkloadType);
@@ -472,7 +471,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesSimpleSchedulePolicy))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidSchedulePolicyException,
-                                            typeof(AzureRmRecoveryServicesSimpleSchedulePolicy).ToString()));                
+                                            typeof(AzureRmRecoveryServicesSimpleSchedulePolicy).ToString()));
             }
 
             // call validation
@@ -484,14 +483,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesLongTermRetentionPolicy))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidRetentionPolicyException,
-                                            typeof(AzureRmRecoveryServicesLongTermRetentionPolicy).ToString())); 
+                                            typeof(AzureRmRecoveryServicesLongTermRetentionPolicy).ToString()));
             }
 
             // call validation
             policy.Validate();
         }
 
-        private AzureIaaSVMProtectableItem GetAzureVMProtectableObject( string azureVMName, string azureVMRGName, bool isComputeAzureVM)
+        private AzureIaaSVMProtectableItem GetAzureVMProtectableObject(string azureVMName, string azureVMRGName, bool isComputeAzureVM)
         {
             //TriggerDiscovery if needed
 
@@ -512,7 +511,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     //ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
                 }
             }
-            if(protectableObject == null)
+            if (protectableObject == null)
             {
                 // TBD throw exception.
             }
@@ -623,9 +622,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
                 catch (Exception ex)
                 {
-                     // TBD throw exception
+                    // TBD throw exception
                     throw ex;
-                }                
+                }
             }
 
             if (status == HttpStatusCode.NoContent)

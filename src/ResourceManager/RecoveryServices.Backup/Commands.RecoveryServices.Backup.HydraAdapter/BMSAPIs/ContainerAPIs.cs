@@ -22,18 +22,15 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public partial class HydraAdapter
-    {        
+    {
         /// <summary>
         /// Fetches protection containers in the vault according to the query params
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public IEnumerable<ProtectionContainerResource> ListContainers(string resourceGroupName, string resourceName, ProtectionContainerListQueryParams queryParams)
+        public IEnumerable<ProtectionContainerResource> ListContainers(ProtectionContainerListQueryParams queryParams)
         {
-            resourceName = BmsAdapter.GetResourceName();
-            resourceGroupName = BmsAdapter.GetResourceGroupName();
-
-            var listResponse = BmsAdapter.Client.Container.ListAsync(resourceGroupName, resourceName, queryParams,
+            var listResponse = BmsAdapter.Client.Container.ListAsync(BmsAdapter.GetResourceGroupName(), BmsAdapter.GetResourceName(), queryParams,
                 BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
             return listResponse.ItemList.ProtectionContainers;
         }
@@ -46,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceName();
-            
+
             var response = BmsAdapter.Client.Container.RefreshAsync(
                 resourceGroupName, resourceName,
                 BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, BmsAdapter.CmdletCancellationToken).Result;

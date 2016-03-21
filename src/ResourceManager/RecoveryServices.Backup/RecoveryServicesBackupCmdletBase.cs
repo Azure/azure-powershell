@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         protected HydraAdapterNS.HydraAdapter HydraAdapter { get; set; }
 
-        protected void InitializeAzureBackupCmdlet(string resourceGroupName, string resourceName)
+        protected void InitializeAzureBackupCmdlet()
         {
             var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
             HydraAdapter = new HydraAdapterNS.HydraAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
@@ -110,6 +110,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 var errorRecord = new ErrorRecord(targetEx, targetErrorId, targetErrorCategory, null);
                 WriteError(errorRecord);
             }
+        }
+
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+
+            InitializeAzureBackupCmdlet();
         }
     }
 }
