@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         public IEnumerable<ProtectionContainerResource> ListContainers(string resourceGroupName, string resourceName, ProtectionContainerListQueryParams queryParams)
         {
             resourceName = BmsAdapter.GetResourceName();
-            resourceGroupName = BmsAdapter.GetResourceName();
+            resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             var listResponse = BmsAdapter.Client.Container.ListAsync(resourceGroupName, resourceName, queryParams,
                 BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
