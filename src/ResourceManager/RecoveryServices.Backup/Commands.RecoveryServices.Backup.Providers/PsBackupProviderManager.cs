@@ -54,6 +54,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return GetProviderInstance(providerType);
         }
 
+        public IPsBackupProvider GetProviderInstance(WorkloadType workloadType)
+        {
+            PsBackupProviderTypes providerType = 0;
+
+            switch (workloadType)
+            {
+                case WorkloadType.AzureVM:
+                    providerType = PsBackupProviderTypes.IaasVm;
+                    break;
+                default:
+                    throw new ArgumentException("BackupManagementType is also required for WorkloadType: " +
+                                                     workloadType.ToString());
+            }
+
+            return GetProviderInstance(providerType);
+        }
+
         public IPsBackupProvider GetProviderInstance(ContainerType containerType, BackupManagementType backupManagementType)
         {
             throw new NotImplementedException();
@@ -67,7 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 case WorkloadType.AzureVM:
                     // validate backupManagementType is valid
-                    if (backupManagementType != null && backupManagementType != BackupManagementType.AzureVM)
+                    if (backupManagementType != BackupManagementType.AzureVM)
                     {
                         // throw exception that it is not expected
                         throw new ArgumentException("BackupManagementType is not expected for WorkloadType: " +

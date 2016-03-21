@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             if(hydraResponse == null || hydraResponse.Properties == null)
             {
-                throw new ArgumentException("Empty policy Hydra response");
+                throw new ArgumentException(Resources.EmptyHydraResponseException);
             }
 
             if (hydraResponse.Properties.GetType() == typeof(AzureIaaSVMProtectionPolicy))
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 policyModel = new AzureRmRecoveryServicesIaasVmPolicy();
                 AzureRmRecoveryServicesIaasVmPolicy iaasPolicyModel = policyModel as AzureRmRecoveryServicesIaasVmPolicy;
-                iaasPolicyModel.WorkloadType = WorkloadType.AzureVM;
+                iaasPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureVM;
                 iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
                 iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((LongTermRetentionPolicy)
                                                   ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy);

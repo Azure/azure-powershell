@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// <returns></returns>
         public IEnumerable<ProtectionContainerResource> ListContainers(string resourceGroupName, string resourceName, ProtectionContainerListQueryParams queryParams)
         {
+            resourceName = BmsAdapter.GetResourceName();
+            resourceGroupName = BmsAdapter.GetResourceName();
+
             var listResponse = BmsAdapter.Client.Container.ListAsync(resourceGroupName, resourceName, queryParams,
                 BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
             return listResponse.ItemList.ProtectionContainers;
@@ -39,8 +42,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// Triggers refresh of container catalog in service
         /// </summary>
         /// <returns></returns>
-        public BaseRecoveryServicesJobResponse RefreshContainers(string resourceGroupName, string resourceName)
+        public BaseRecoveryServicesJobResponse RefreshContainers()
         {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceName();
+            
             var response = BmsAdapter.Client.Container.RefreshAsync(
                 resourceGroupName, resourceName,
                 BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, BmsAdapter.CmdletCancellationToken).Result;

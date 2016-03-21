@@ -17,22 +17,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
-    public class AzureRmRecoveryServicesIaasVmPolicy : AzureRmRecoveryServicesPolicyBase
+    public partial class HydraAdapter
     {
-        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }
-
-        public AzureRmRecoveryServicesRetentionPolicyBase RetentionPolicy { get; set; }
-
-        public virtual void Validate()
+        public ProtectableObjectListResponse ListProtectableItem(
+                ProtectableObjectListQueryParameters queryFilter)
         {
-            base.Validate();
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceName();
 
-            SchedulePolicy.Validate();
-            RetentionPolicy.Validate();
+            return BmsAdapter.Client.ProtectableObject.ListAsync(
+                                     resourceGroupName,
+                                     resourceName,
+                                     queryFilter,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
         }
     }
-
 }

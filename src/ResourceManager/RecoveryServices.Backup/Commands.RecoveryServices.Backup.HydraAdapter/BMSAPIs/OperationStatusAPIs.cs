@@ -17,10 +17,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public partial class HydraAdapter
     {
+        public BaseRecoveryServicesJobResponse GetRefreshContainerOperationResultByURL(
+                string operationResultLink)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceName();
+
+            return BmsAdapter.Client.Container.GetRefreshOperationResultByURLAsync(
+                                     operationResultLink,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        public BackUpOperationStatusResponse GetProtectedItemOperationStatusByURL(
+                string operationResultLink)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceName();
+
+            return BmsAdapter.Client.ProtectedItem.GetOperationStatusByURLAsync(
+                                     operationResultLink,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
     }
 }

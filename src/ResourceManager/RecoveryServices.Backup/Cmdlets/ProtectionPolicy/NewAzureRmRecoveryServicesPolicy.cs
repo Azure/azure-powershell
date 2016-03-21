@@ -19,9 +19,10 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -53,39 +54,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+           ExecutionBlock(() =>
+           {
+               base.ExecuteCmdlet();
 
-            // validate policy name
-            PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
+               // validate policy name
+               PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
 
-            // Validate if policy already exists
-            string rgName = "";  // TBD
-            string resourceName = "";  // TBD
-            if(PolicyCmdletHelpers.GetProtectionPolicyByName(Name, HydraAdapter, rgName, resourceName) != null)
-            {
-                throw new ArgumentException("Policy already exists with this name:" + Name);
-            }
+               // Validate if policy already exists               
+               if (PolicyCmdletHelpers.GetProtectionPolicyByName(Name, HydraAdapter) != null)
+               {
+                   throw new ArgumentException(string.Format(Resources.PolicyAlreadyExistException, Name));
+               }
 
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-            {  
-                {PolicyParams.PolicyName, Name},
-                {PolicyParams.WorkloadType, WorkloadType},
-                {PolicyParams.BackupManagementType, BackupManagementType},
-                {PolicyParams.RetentionPolicy, RetentionPolicy},
-                {PolicyParams.SchedulePolicy, SchedulePolicy},                
-            }, HydraAdapter);
+               PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+               {  
+                   {PolicyParams.PolicyName, Name},
+                   {PolicyParams.WorkloadType, WorkloadType},
+                   {PolicyParams.BackupManagementType, BackupManagementType},
+                   {PolicyParams.RetentionPolicy, RetentionPolicy},
+                   {PolicyParams.SchedulePolicy, SchedulePolicy},                
+               }, HydraAdapter);
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
-            psBackupProvider.CreatePolicy();
+               IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+               psBackupProvider.CreatePolicy();
 
-            // now get the created policy and return
-            ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
-                                                      Name,
-                                                      HydraAdapter,
-                                                      rgName,
-                                                      resourceName);
-            // now convert hydraPolicy to PSObject
-            WriteObject(ConversionHelpers.GetPolicyModel(policy.Item));
+               // now get the created policy and return
+               HydraModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                         Name,
+                                                         HydraAdapter);
+               // now convert hydraPolicy to PSObject
+               WriteObject(ConversionHelpers.GetPolicyModel(policy.Item));
+           });
         }
     }
 }
