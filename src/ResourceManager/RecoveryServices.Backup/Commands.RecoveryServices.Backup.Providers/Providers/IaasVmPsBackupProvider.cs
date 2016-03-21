@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 // poll for AsyncHeader and get the jobsList
                 // TBD
-            }
+        }
             else
             {
                 // no datasources attached to policy
@@ -296,6 +296,103 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             throw new NotImplementedException();
         }
+
+
+        public AzureRmRecoveryServicesSchedulePolicyBase GetDefaultSchedulePolicyObject()
+        {
+            AzureRmRecoveryServicesSimpleSchedulePolicy defaultSchedule = new AzureRmRecoveryServicesSimpleSchedulePolicy();
+            //Default is daily scedule at 10:30 AM local time
+            defaultSchedule.ScheduleRunFrequency = ScheduleRunType.Daily;
+
+            DateTime scheduleTime = GenerateRandomTime();
+            defaultSchedule.ScheduleRunTimes = new List<DateTime>();
+            defaultSchedule.ScheduleRunTimes.Add(scheduleTime);
+
+            defaultSchedule.ScheduleRunDays = new List<DayOfWeek>();
+            defaultSchedule.ScheduleRunDays.Add(DayOfWeek.Sunday);
+
+            return defaultSchedule;
+        }
+
+        public AzureRmRecoveryServicesRetentionPolicyBase GetDefaultRetentionPolicyObject()
+        {
+            AzureRmRecoveryServicesLongTermRetentionPolicy defaultRetention = new AzureRmRecoveryServicesLongTermRetentionPolicy();
+            
+            //Default time is 10:30 local time
+            DateTime retentionTime = GenerateRandomTime(); 
+
+            //Daily Retention policy
+            defaultRetention.IsDailyScheduleEnabled = true;
+            defaultRetention.DailySchedule = new Models.DailyRetentionSchedule();
+            defaultRetention.DailySchedule.RetentionTimes = new List<DateTime>();
+            defaultRetention.DailySchedule.RetentionTimes.Add(retentionTime);
+            defaultRetention.DailySchedule.DurationCountInDays = 180; //TBD make it const
+
+            //Weekly Retention policy
+            defaultRetention.IsWeeklyScheduleEnabled = true;
+            defaultRetention.WeeklySchedule = new Models.WeeklyRetentionSchedule();
+            defaultRetention.WeeklySchedule.DaysOfTheWeek = new List<DayOfWeek>();
+            defaultRetention.WeeklySchedule.DaysOfTheWeek.Add(DayOfWeek.Sunday);
+            defaultRetention.WeeklySchedule.DurationCountInWeeks = 104; //TBD make it const
+            defaultRetention.WeeklySchedule.RetentionTimes = new List<DateTime>();
+            defaultRetention.WeeklySchedule.RetentionTimes.Add(retentionTime);
+
+            //Monthly retention policy
+            defaultRetention.IsMonthlyScheduleEnabled = true;
+            defaultRetention.MonthlySchedule = new Models.MonthlyRetentionSchedule();
+            defaultRetention.MonthlySchedule.DurationCountInMonths = 60; //tbd: make it const
+            defaultRetention.MonthlySchedule.RetentionScheduleFormatType = Models.RetentionScheduleFormat.Weekly;
+
+            //Initialize day based schedule
+            defaultRetention.MonthlySchedule.RetentionScheduleDaily = GetDailyRetentionFormat();  
+
+            //Initialize Week based schedule
+            defaultRetention.MonthlySchedule.RetentionScheduleWeekly = GetWeeklyRetentionFormat();
+
+            //Yearly retention policy
+            defaultRetention.IsYearlyScheduleEnabled = true;
+            defaultRetention.YearlySchedule = new Models.YearlyRetentionSchedule();
+            defaultRetention.YearlySchedule.DurationCountInYears = 10;
+            defaultRetention.YearlySchedule.RetentionScheduleFormatType = Models.RetentionScheduleFormat.Weekly;
+            defaultRetention.YearlySchedule.MonthsOfYear = new List<Models.Month>();
+            defaultRetention.YearlySchedule.MonthsOfYear.Add(Models.Month.January);
+            defaultRetention.YearlySchedule.RetentionScheduleDaily = GetDailyRetentionFormat();
+            defaultRetention.YearlySchedule.RetentionScheduleWeekly = GetWeeklyRetentionFormat();
+            return defaultRetention;
+
+        }
+
+        private static Models.DailyRetentionFormat GetDailyRetentionFormat()
+        {
+            Models.DailyRetentionFormat dailyRetention = new Models.DailyRetentionFormat();
+            dailyRetention.DaysOfTheMonth = new List<Models.Day>();
+            Models.Day dayBasedRetention = new Models.Day();
+            dayBasedRetention.IsLast = false;
+            dayBasedRetention.Date = 1;
+            dailyRetention.DaysOfTheMonth.Add(dayBasedRetention);
+            return dailyRetention;
+        }
+
+        private static Models.WeeklyRetentionFormat GetWeeklyRetentionFormat()
+        {
+            Models.WeeklyRetentionFormat weeklyRetention = new Models.WeeklyRetentionFormat();
+            weeklyRetention.DaysOfTheWeek = new List<DayOfWeek>();
+            weeklyRetention.DaysOfTheWeek.Add(DayOfWeek.Sunday);
+
+            weeklyRetention.WeeksOfTheMonth = new List<WeekOfMonth>();
+            weeklyRetention.WeeksOfTheMonth.Add(WeekOfMonth.First);
+            return weeklyRetention;
+        }
+
+        private static DateTime GenerateRandomTime()
+        {
+            //Schedule time will be random to avoid the load in service (same is in portal as well)
+            Random rand = new Random();
+            int hour = rand.Next(0, 24);
+            int minute = (rand.Next(0, 2) == 0) ? 0 : 30;
+            return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, 00);
+        }
+
 
         #region private
         private void ValidateAzureVMWorkloadType(Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType type)
