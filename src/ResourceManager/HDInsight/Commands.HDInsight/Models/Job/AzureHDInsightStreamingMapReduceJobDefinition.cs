@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string Reducer { get; set; }
 
         /// <summary>
-        /// Gets or sets an HDFS file to add to the distributed cache.	
+        /// Gets or sets a file to add to the distributed cache.	
         /// </summary>
         public string File { get; set; }
 

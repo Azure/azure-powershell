@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 Mapper = streamingJobDef.Mapper,
                 Reducer = streamingJobDef.Reducer,
                 File = streamingJobDef.File,
+                Files = streamingJobDef.Files,
                 Defines = streamingJobDef.Defines,
                 CmdEnv = streamingJobDef.CommandEnvironment,
                 Arguments = streamingJobDef.Arguments,
