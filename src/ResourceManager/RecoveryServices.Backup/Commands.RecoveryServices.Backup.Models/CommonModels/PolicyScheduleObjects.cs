@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -31,29 +32,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public override void Validate()
         {
             //Currently only one scheduled run time is allowed
-            if (ScheduleRunTimes == null || ScheduleRunTimes.Count != 1)
-            {
-                throw new ArgumentException("", "ScheduleRunTimes");
-            }
-
             //Validate that the schedule runtime is in multiples of 30 Mins
-            if (ScheduleRunTimes[0].Minute % 30 != 0 || ScheduleRunTimes[0].Second != 0 || ScheduleRunTimes[0].Millisecond != 0)
+            if (ScheduleRunTimes == null || ScheduleRunTimes.Count != 1 || 
+                ScheduleRunTimes[0].Minute % 30 != 0 || 
+                ScheduleRunTimes[0].Second != 0 || 
+                ScheduleRunTimes[0].Millisecond != 0)
             {
-                throw new ArgumentException("ScheduleTimes must be of multiples of 30 Mins with Seconds " +
-                                            "and milliseconds set to 0");
+                throw new ArgumentException(Resources.InvalidScheduleTimeInScheduleException);
             }
 
             if (ScheduleRunFrequency == ScheduleRunType.Weekly)
             {
-                if (ScheduleRunDays == null || ScheduleRunDays.Count == 0)
+                if (ScheduleRunDays == null || ScheduleRunDays.Count == 0 || 
+                    ScheduleRunDays.Count != ScheduleRunDays.Distinct().Count())
                 {
-                    throw new ArgumentException("", "scheduleRunDays");
-                }
-                                
-                if (ScheduleRunDays.Count != ScheduleRunDays.Distinct().Count())
-                {
-                    throw new ArgumentException("ScheduleRunDays list in BackupSchedule contains duplicate entries");
-                }
+                    throw new ArgumentException(Resources.InvalidScheduleRunDaysInScheduleException);
+                }                
             }
         }
 
