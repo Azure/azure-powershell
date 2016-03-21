@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { job.Command = value; }
         }
 
-        [Parameter(HelpMessage = "The output location to use for the job.")]
+        [Parameter(HelpMessage = "The directory where the libjar can be found for the Sqoop job.")]
         public string LibDir
         {
             get { return job.LibDir; }

@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <param name="cluster">The cluster that the jobDetails was created against.</param>
         public AzureHDInsightJob(JobDetailRootJsonObject jobDetails, string cluster)
         {
-            Cluster = cluster.Substring(0, cluster.IndexOf('.'));
+            var index = cluster.IndexOf('.');
+            Cluster = index > -1 ? cluster.Substring(0, index) : cluster;
             HttpEndpoint = cluster;
             State = jobDetails.Status.State;
             JobId = jobDetails.Id;
