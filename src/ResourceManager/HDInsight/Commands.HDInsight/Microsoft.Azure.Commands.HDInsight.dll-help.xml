@@ -3202,28 +3202,28 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ObjectId</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>The Service Principal Object Id for accessing Azure Data Lake.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>CertificateFilePath</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>The Service Principal certificate for accessing Azure Data Lake.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>CertificatePassword</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>The Service Principal certificate password for accessing Azure Data Lake.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>AadTenantId</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>The Service Principal AAD Tenant Id for accessing Azure Data Lake.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
         </command:parameter>
