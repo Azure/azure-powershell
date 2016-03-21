@@ -1346,6 +1346,13 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>NumOfJobs</maml:name>
+          <maml:description>
+            <maml:para>The number of jobs to retrieve.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        </command:parameter>        
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>The name of the resource group.</maml:para>
@@ -1406,6 +1413,18 @@
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>NumOfJobs</maml:name>
+        <maml:description>
+          <maml:para>The number of jobs to retrieve.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>      
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para>The name of the resource group.</maml:para>
@@ -1441,7 +1460,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
         <maml:name>ClusterCredential</maml:name>
         <maml:description>
           <maml:para>The credentials with which to connect to the cluster.</maml:para>
@@ -1520,7 +1539,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>Retrieves various types of job logs including Standard Output, Standard Error, Task logs, and a summary of the task logs.</maml:para>
+      <maml:para>Retrieves various types of job logs including Standard Output, Standard Error.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1539,21 +1558,21 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
           <maml:name>DefaultContainer</maml:name>
           <maml:description>
             <maml:para>The default container name.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
           <maml:name>DefaultStorageAccountName</maml:name>
           <maml:description>
             <maml:para>The default storage account name.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
           <maml:name>DefaultStorageAccountKey</maml:name>
           <maml:description>
             <maml:para>The default storage account key.</maml:para>
@@ -1596,86 +1615,6 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-AzureRmHDInsightJobOutput</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
-          <maml:name>ClusterName</maml:name>
-          <maml:description>
-            <maml:para>The name of the cluster.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-          <maml:name>JobId</maml:name>
-          <maml:description>
-            <maml:para>The JobID of the jobDetails to stop.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
-          <maml:name>DefaultContainer</maml:name>
-          <maml:description>
-            <maml:para>The default container name.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
-          <maml:name>DefaultStorageAccountName</maml:name>
-          <maml:description>
-            <maml:para>The default storage account name.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
-          <maml:name>DefaultStorageAccountKey</maml:name>
-          <maml:description>
-            <maml:para>The default storage account key.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="5">
-          <maml:name>HttpCredential</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ResourceGroupName</maml:name>
-          <maml:description>
-            <maml:para>The name of the resource group.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>DownloadOutputType</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">JobDownloadOutputType</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Folder</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
@@ -1702,7 +1641,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
         <maml:name>DefaultContainer</maml:name>
         <maml:description>
           <maml:para>The default container name.</maml:para>
@@ -1714,7 +1653,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
         <maml:name>DefaultStorageAccountName</maml:name>
         <maml:description>
           <maml:para>The default storage account name.</maml:para>
@@ -1726,7 +1665,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
         <maml:name>DefaultStorageAccountKey</maml:name>
         <maml:description>
           <maml:para>The default storage account key.</maml:para>
@@ -1798,31 +1737,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>DownloadOutputType</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">JobDownloadOutputType</command:parameterValue>
-        <dev:type>
-          <maml:name>JobDownloadOutputType</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Folder</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="6">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="5">
         <maml:name>ClusterCredential</maml:name>
         <maml:description>
           <maml:para>The credentials with which to connect to the cluster.</maml:para>
@@ -2723,7 +2638,7 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>StatusFolder</maml:name>
           <maml:description>
             <maml:para />
@@ -2765,21 +2680,21 @@
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>DefaultContainer</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>DefaultStorageAccountName</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>DefaultStorageAccountKey</maml:name>
           <maml:description>
             <maml:para />
@@ -2827,7 +2742,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>StatusFolder</maml:name>
         <maml:description>
           <maml:para />
@@ -2899,7 +2814,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DefaultContainer</maml:name>
         <maml:description>
           <maml:para />
@@ -2911,7 +2826,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DefaultStorageAccountName</maml:name>
         <maml:description>
           <maml:para />
@@ -2923,7 +2838,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DefaultStorageAccountKey</maml:name>
         <maml:description>
           <maml:para />
@@ -3202,28 +3117,28 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ObjectId</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>The Service Principal Object Id for accessing Azure Data Lake.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>CertificateFilePath</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>The Service Principal certificate for accessing Azure Data Lake.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>CertificatePassword</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>The Service Principal certificate password for accessing Azure Data Lake.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>AadTenantId</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>The Service Principal AAD Tenant Id for accessing Azure Data Lake.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
         </command:parameter>
@@ -4764,7 +4679,7 @@
     <command:details>
       <command:name>New-AzureRmHDInsightSqoopJobDefinition</command:name>
       <maml:description>
-        <maml:para />
+        <maml:para>Defines a new Sqoop job. </maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4802,6 +4717,13 @@
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Command</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>LibDir</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -4862,6 +4784,18 @@
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Command</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>LibDir</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
@@ -4980,7 +4914,7 @@
           <maml:description>
             <maml:para>The command line environment for the mappers or the reducers.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Defines</maml:name>
@@ -5075,7 +5009,7 @@
         <maml:description>
           <maml:para>The command line environment for the mappers or the reducers.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+        <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         <dev:type>
           <maml:name>String[]</maml:name>
           <maml:uri/>
