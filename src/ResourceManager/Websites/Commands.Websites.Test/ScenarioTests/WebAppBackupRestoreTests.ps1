@@ -40,7 +40,7 @@ function Test-CreateNewWebAppBackup
     finally
 	{
 		# Cleanup
-		#Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stoName
+		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stoName
 		Remove-AzureRmWebApp -ResourceGroupName $rgName -Name $wName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgName -Name  $whpName -Force
 		Remove-AzureRmResourceGroup -Name $rgName -Force
@@ -211,7 +211,6 @@ function Test-EditAndGetWebAppBackupConfiguration
 		# Assert
 		Assert-True { $config.Enabled }
 		Assert-NotNull $config.StorageAccountUrl
-		#Assert-AreEqual $dbBackupSetting $config.Databases
 		$configSchedule = $config.BackupSchedule
 		Assert-NotNull $configSchedule
 		Assert-AreEqual $frequencyInterval $configSchedule.FrequencyInterval

@@ -50,24 +50,6 @@ function Get-ResourceGroupName
 
 <#
 .SYNOPSIS
-Gets a database name for testing.
-#>
-function Get-DatabaseName
-{
-    return getAssetName
-}
-
-<#
-.SYNOPSIS
-Gets a database server name for testing.
-#>
-function Get-DatabaseServerName
-{
-    return getAssetName
-}
-
-<#
-.SYNOPSIS
 Gets a backup name for testing.
 #>
 function Get-BackupName
