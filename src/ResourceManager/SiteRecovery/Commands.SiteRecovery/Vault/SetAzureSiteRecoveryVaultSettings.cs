@@ -59,10 +59,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ASRVault:
-                    this.setASRVaultContext(this.ASRVault);
+                    this.SetASRVaultContext(this.ASRVault);
                     break;
                 case ASRParameterSets.ARSVault:
-                    this.setARSVaultContext(this.ARSVault);
+                    this.SetARSVaultContext(this.ARSVault);
                     break;
             }
         }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Set Azure Site Recovery Vault context.
         /// </summary>
-        private void setASRVaultContext(ASRVault asrVault)
+        private void SetASRVaultContext(ASRVault asrVault)
         {
             // Change the vault context
             RecoveryServicesClient.ChangeVaultContext(asrVault);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Set Azure Recovery Services Vault context.
         /// </summary>
-        private void setARSVaultContext(ARSVault arsVault)
+        private void SetARSVaultContext(ARSVault arsVault)
         {
             try
             {
@@ -112,6 +112,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
             catch (InvalidOperationException e)
             {
+                WriteDebug(e.Message);
             }
         }
     }
