@@ -12,38 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the LogSettings
+    /// Wrapps around the ServiceDiagnosticSettings
     /// </summary>
-    public class PSLogSettings
+    public class PSRetentionPolicy
     {
         /// <summary>
-        /// A value indicating whether the logs are enabled for this category.
+        /// Gets or sets a value indicating whether the retention is enabled.
         /// </summary>
-        public bool Enabled{ get; set; }
+        public bool Enabled { get; set; }
 
         /// <summary>
-        /// The category of the log. Use Categories to selectively enabling and desabling logs.
+        /// Gets or sets the retention in days.
         /// </summary>
-        public string Category { get; set; }
+        public int Days { get; set; }
 
         /// <summary>
-        /// The retention policy
+        /// Initializes a new instance of the PSRetentionPolicy class.
         /// </summary>
-        public PSRetentionPolicy RetentionPolicy { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the PSLogSettings class.
-        /// </summary>
-        public PSLogSettings(LogSettings logSettings)
+        public PSRetentionPolicy(RetentionPolicy retentionPolicy)
         {
-            this.Enabled = logSettings.Enabled;
-            this.Category = logSettings.Category;
-            this.RetentionPolicy = new PSRetentionPolicy(logSettings.RetentionPolicy);
+            this.Enabled = retentionPolicy.Enabled;
+            this.Days = retentionPolicy.Days;
         }
     }
 }

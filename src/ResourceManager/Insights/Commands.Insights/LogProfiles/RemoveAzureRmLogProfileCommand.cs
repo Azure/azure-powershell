@@ -12,38 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+using System.Threading;
+using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
-namespace Microsoft.Azure.Commands.Insights.OutputClasses
+namespace Microsoft.Azure.Commands.Insights.LogProfiles
 {
     /// <summary>
-    /// Wrapps around the LogSettings
+    /// Removes the log profile.
     /// </summary>
-    public class PSLogSettings
+    [Cmdlet(VerbsCommon.Remove, "AzureRmLogProfile"), OutputType(typeof(bool))]
+    public class RemoveAzureRmLogProfileCommand : ManagementCmdletBase
     {
-        /// <summary>
-        /// A value indicating whether the logs are enabled for this category.
-        /// </summary>
-        public bool Enabled{ get; set; }
+
+        #region Parameters declarations
 
         /// <summary>
-        /// The category of the log. Use Categories to selectively enabling and desabling logs.
+        /// Gets or sets the name of the log profile
         /// </summary>
-        public string Category { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the log profile")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
-        /// <summary>
-        /// The retention policy
-        /// </summary>
-        public PSRetentionPolicy RetentionPolicy { get; set; }
+        #endregion
 
-        /// <summary>
-        /// Initializes a new instance of the PSLogSettings class.
-        /// </summary>
-        public PSLogSettings(LogSettings logSettings)
+        protected override void ProcessRecordInternal()
         {
-            this.Enabled = logSettings.Enabled;
-            this.Category = logSettings.Category;
-            this.RetentionPolicy = new PSRetentionPolicy(logSettings.RetentionPolicy);
+            this.InsightsManagementClient.LogProfilesOperations.DeleteAsync(this.Name, CancellationToken.None).Wait();
+            WriteObject(true);
         }
     }
 }

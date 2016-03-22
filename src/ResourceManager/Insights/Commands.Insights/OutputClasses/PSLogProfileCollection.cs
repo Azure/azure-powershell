@@ -12,39 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Xml;
+using System.Linq;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the MetricSettings
+    /// Collection of PSLogProfile
     /// </summary>
-    public class PSMetricSettings
+    public class PSLogProfileCollection : List<PSLogProfile>
     {
-        /// <summary>
-        /// The storageAccount Id
-        /// </summary>
-        public bool Enabled{ get; set; }
-
-        /// <summary>
-        /// The timegrain
-        /// </summary>
-        public string Timegrain { get; set; }
-
-        /// <summary>
-        /// The retention policy
-        /// </summary>
-        public PSRetentionPolicy RetentionPolicy { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the PSMetricSettings class.
-        /// </summary>
-        public PSMetricSettings(MetricSettings metricSettings)
-        {
-            this.Enabled = metricSettings.Enabled;
-            this.Timegrain = XmlConvert.ToString(metricSettings.TimeGrain);
-            this.RetentionPolicy = new PSRetentionPolicy(metricSettings.RetentionPolicy);
-        }
     }
 }

@@ -18,41 +18,27 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class AzureRmDiagnosticSettingTests : RMTestBase
+    public class AzureRmLogProfileTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureRmDiagnosticSetting()
+        public void TestGetAzureRmLogProfile()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureRmDiagnosticSetting");
+            TestsController.NewInstance.RunPsTest("Test-GetAzureRmLogProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAzureRmDiagnosticSetting()
+        public void TestAddAzureRmLogProfile()
         {
-            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting");
+            TestsController.NewInstance.RunPsTest("Test-AddAzureRmLogProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAzureRmDiagnosticSettingWithRetention()
+        public void TestAddAzureRmLogProfileWithRetention()
         {
-            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSettingWithRetention");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAzureRmDiagnosticSettingCategoriesOnly()
-        {
-            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting-CategoriesOnly");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAzureRmDiagnosticSettingTimeGrainsOnly()
-        {
-            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting-TimegrainsOnly");
+            TestsController.NewInstance.RunPsTest("Test-AddAzureRmLogProfileWithRetention");
         }
     }
 }

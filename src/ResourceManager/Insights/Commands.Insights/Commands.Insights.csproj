@@ -139,6 +139,9 @@
     <Compile Include="Events\GetAzureRmLogCommand.cs" />
     <Compile Include="InsightsClientCmdletBase.cs" />
     <Compile Include="InsightsCmdletBase.cs" />
+    <Compile Include="LogProfiles\RemoveAzureRmLogProfileCommand.cs" />
+    <Compile Include="LogProfiles\GetAzureRmLogProfileCommand.cs" />
+    <Compile Include="LogProfiles\AddAzureRmLogProfileCommand.cs" />
     <Compile Include="ManagementCmdletBase.cs" />
     <Compile Include="Metrics\GetAzureRmMetricDefinitionCommand.cs" />
     <Compile Include="Metrics\GetAzureRmMetricCommand.cs" />
@@ -146,8 +149,11 @@
     <Compile Include="OutputClasses\CustomPrinter.cs" />
     <Compile Include="OutputClasses\IPSEventData.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSLogProfileCollection.cs" />
     <Compile Include="OutputClasses\PSLogSettings.cs" />
     <Compile Include="OutputClasses\PSMetricSettings.cs" />
+    <Compile Include="OutputClasses\PSLogProfile.cs" />
+    <Compile Include="OutputClasses\PSRetentionPolicy.cs" />
     <Compile Include="OutputClasses\PSServiceDiagnosticSettings.cs" />
     <Compile Include="OutputClasses\PSAlertRule.cs" />
     <Compile Include="OutputClasses\PSAlertRuleNoDetails.cs" />
