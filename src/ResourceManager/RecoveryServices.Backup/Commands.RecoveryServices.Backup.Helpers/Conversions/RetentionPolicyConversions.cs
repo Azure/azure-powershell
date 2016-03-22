@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             hydraYearly.RetentionDuration = new HydraModels.RetentionDuration()
             {
                 Count = psYearly.DurationCountInYears,
-                DurationType = HydraModels.RetentionDurationType.Months
+                DurationType = HydraModels.RetentionDurationType.Years
             };
             hydraYearly.RetentionTimes = psYearly.RetentionTimes;
 
