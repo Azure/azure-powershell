@@ -137,7 +137,7 @@
     <Compile Include="Handlers\CmdletInfoHandler.cs" />
     <Compile Include="Handlers\UserAgentHandler.cs" />
     <Compile Include="Implementation\FindAzureResourceGroupCmdlet.cs" />
-    <Compile Include="Implementation\ExportAzureResourceGroupTemplateCmdlet.cs" />
+    <Compile Include="Implementation\ExportAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\SaveAzureResourceGroupDeploymentTemplateCmdlet.cs" />
     <Compile Include="Implementation\GetAzureResourceGroupDeploymentOperationCmdlet.cs" />
     <Compile Include="Implementation\Lock\GetAzureResourceLockCmdlet.cs" />
