@@ -37,16 +37,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected const string NoParamSet = "NoParamSet";
         protected const string WorkloadBackupMangementTypeParamSet = "WorkloadBackupManagementTypeParamSet";
 
-        [Parameter(ParameterSetName = PolicyNameParamSet, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name)]
+        [Parameter(ParameterSetName = PolicyNameParamSet, Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = WorkloadParamSet, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
-        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [Parameter(ParameterSetName = WorkloadParamSet, Position = 2, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 2, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
-        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Mandatory = false, HelpMessage = ParamHelpMsg.Common.BackupManagementType)]
+        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 3, Mandatory = true, HelpMessage = ParamHelpMsg.Common.BackupManagementType)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType BackupManagementType { get; set; }
 
@@ -75,8 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                }
                else
                {
-                   string hydraProviderType = null;
-                   string hydraDataSourceType = null;
+                   string hydraProviderType = null;                   
 
                    switch (this.ParameterSetName)
                    {

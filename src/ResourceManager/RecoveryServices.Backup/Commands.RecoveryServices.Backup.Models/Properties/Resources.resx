@@ -261,4 +261,7 @@
   <data name="MonthlyYearlyRetentionWeeklySchedulePolicyNULLException" xml:space="preserve">
     <value>In Monthly/Yearly retention schedule, if RetentionScheduleFormatType=Weekly then RetentionScheduleWeekly should NOT be null</value>
   </data>
+  <data name="UpdateToNewAzurePowershellWarning" xml:space="preserve">
+    <value>Data truncated. Please upgrade to latest version of Azure Powershell</value>
+  </data>
 </root>

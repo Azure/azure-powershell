@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0E1D3F36-E6C8-4764-8C7D-6F9EE537490C}</ProjectGuid>
+    <ProjectGuid>{5E675749-6139-464A-904C-59C0FFDFEC82}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Helpers</RootNamespace>
-    <AssemblyName>Helpers</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup.Logger</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup.Logger</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,18 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hyak.Common">
-      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\net45\Hyak.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Common">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.RecoveryServicesBackupManagement">
-      <HintPath>..\Commands.RecoveryServices.Backup.HydraAdapter\Resources\Microsoft.Azure.Management.RecoveryServicesBackupManagement.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,25 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conversions\JobConversions.cs" />
-    <Compile Include="Conversions\RecoveryPointConversions.cs" />
-    <Compile Include="Utils.cs" />
-    <Compile Include="Validations\PolicyValidations.cs" />
-    <Compile Include="Conversions\SchedulePolicyConversions.cs" />
-    <Compile Include="Conversions\RetentionPolicyConversions.cs" />
-    <Compile Include="Conversions\ConversionHelpers.cs" />
-    <Compile Include="HydraHelpers.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.csproj">
-      <Project>{5e675749-6139-464a-904c-59c0ffdfec82}</Project>
-      <Name>Commands.RecoveryServices.Backup.Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.csproj">
-      <Project>{30b92759-50b3-494e-b9f0-ec9a2ce9d57b}</Project>
-      <Name>Commands.RecoveryServices.Backup.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

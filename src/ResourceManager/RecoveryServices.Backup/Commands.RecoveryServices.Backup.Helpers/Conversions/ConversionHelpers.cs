@@ -71,14 +71,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if(((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType() !=
                                                                            typeof(LongTermRetentionPolicy))
                 {
-                    // unsupported by old powershell - trace warning and return null
+                    Logger.Logger.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                    Logger.Logger.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
 
                 if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType() != 
                                                                             typeof(SimpleSchedulePolicy))
                 {
-                    // unsupported by old powershell - trace warning and return null
+                    Logger.Logger.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                    Logger.Logger.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
 
@@ -93,9 +95,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             else
             {
-                // TBD - trace warning message, ignore and return
+                // trace warning message, ignore and return
                 // we will enter this case when service supports new workload and customer 
-                // still using old version of powershell
+                // still using old version of azure powershell
+                Logger.Logger.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                Logger.Logger.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                 return null;
             }
 
