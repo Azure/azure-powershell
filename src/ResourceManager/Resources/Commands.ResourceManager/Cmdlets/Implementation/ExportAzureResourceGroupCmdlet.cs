@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Captures the specifies resource group as a template and saves it to a file on disk.
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureRmResourceGroupTemplate"), OutputType(typeof(PSObject))]
-    public class ExportAzureResourceGroupTemplateCmdlet : ResourceManagerCmdletBase
+    [Cmdlet(VerbsData.Export, "AzureRmResourceGroup"), OutputType(typeof(PSObject))]
+    public class ExportAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// Gets or sets the resource group name parameter.
