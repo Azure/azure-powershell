@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         }
 
         /// <summary>
-        /// Handler to add aditional headers and properties to the request.
+        /// Handler to add additional headers and properties to the request.
         /// </summary>
         /// <param name="request">The request to enhance.</param>
         protected virtual void OnEnhanceRequest(HttpWebRequest request)

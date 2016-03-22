@@ -119,11 +119,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
         /// <summary>
+        /// Creates the client.
         /// </summary>
-        /// <typeparam name="TClient"></typeparam>
-        /// <param name="subscription"></param>
-        /// <param name="endpoint"></param>
+        /// <typeparam name="TClient">The type of the client.</typeparam>
+        /// <param name="profile">The profile.</param>
+        /// <param name="subscription">The subscription.</param>
+        /// <param name="endpoint">The endpoint.</param>
         /// <returns></returns>
+        /// <exception cref="System.ApplicationException"></exception>
+        /// <exception cref="System.ArgumentException">
+        /// accountName
+        /// or
+        /// environment
+        /// </exception>
         public virtual TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
             if (subscription == null)
@@ -287,7 +295,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
 
-        private DelegatingHandler[] GetCustomHandlers()
+        public DelegatingHandler[] GetCustomHandlers()
         {
             List<DelegatingHandler> newHandlers = new List<DelegatingHandler>();
             var enumerator = _handlers.GetEnumerator();

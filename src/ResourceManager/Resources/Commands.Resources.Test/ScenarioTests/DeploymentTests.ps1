@@ -105,6 +105,40 @@ function Test-NestedDeploymentFromTemplateFile
 
 <#
 .SYNOPSIS
+Tests save deployment template file.
+#>
+function Test-SaveDeploymentTemplateFile
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$location = Get-ProviderLocation "Microsoft.Web/sites"
+
+	try
+	{
+		# Test
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+		
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplate.json -TemplateParameterFile sampleTemplateParams.json
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+		
+		$saveOutput = Save-AzureRmResourceGroupDeploymentTemplate -ResourceGroupName $rgname -DeploymentName $rname -Force
+		Assert-NotNull $saveOutput
+		Assert-True { $saveOutput.Path.Contains($rname + ".json") }
+	}
+	
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests deployment via template file and parameter file with KeyVault reference.
 #>
 function Test-NewDeploymentWithKeyVaultReference

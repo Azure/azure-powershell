@@ -1085,6 +1085,20 @@ If the rule exists, then it just disables it.</maml:para>
 		<command:syntaxItem>
 			<maml:name>Add-AzureRmWebtestAlertRule</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MetricName</maml:name>
+				<maml:description>
+					<maml:para>The metric name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>TargetResourceUri</maml:name>
+				<maml:description>
+					<maml:para>The webtest resource Id</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>WindowSize</maml:name>
 				<maml:description>
 					<maml:para>The time window size for the rule to compute its data.</maml:para>
@@ -1097,6 +1111,13 @@ If the rule exists, then it just disables it.</maml:para>
 					<maml:para>The failed location count for the webtest rules. This is similar to the threshold in the other types of rules.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MetricNamespace</maml:name>
+				<maml:description>
+					<maml:para>The metric namespace for rule</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Location</maml:name>
@@ -1144,6 +1165,30 @@ If the rule exists, then it just disables it.</maml:para>
 	</command:syntax>
 	<command:parameters>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>MetricName</maml:name>
+			<maml:description>
+				<maml:para>The metric name</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>TargetResourceUri</maml:name>
+			<maml:description>
+				<maml:para>The webtest resource Id</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>WindowSize</maml:name>
 			<maml:description>
 				<maml:para>The time window size for the rule to compute its data.</maml:para>
@@ -1163,6 +1208,18 @@ If the rule exists, then it just disables it.</maml:para>
 			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			<dev:type>
 				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>MetricNamespace</maml:name>
+			<maml:description>
+				<maml:para>The metric namespace for rule</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1292,7 +1349,7 @@ If the rule exists, then it just disables it.</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Add-AzureRmWebtestAlertRule -Name webtestRule -Location &quot;East US&quot; -ResourceGroup Default-Web-EastUS -WindowSize 00:05:00 -Description &quot;Nice Webtest rule&quot; -Failed 3</dev:code>
+			<dev:code>Add-AzureRmWebtestAlertRule -Name webtestRule -Location &quot;East US&quot; -ResourceGroup Default-Web-EastUS -WindowSize 00:05:00 -MetricName metric -TargetResourceUri :/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/webtests/leowebtestr1-webtestr1 -Description &quot;Nice Webtest rule&quot; -Failed 3</dev:code>
 			<dev:remarks>
 				<maml:para>Adds or updates a webtest alert rule</maml:para>
 				<maml:para />
@@ -1840,13 +1897,6 @@ SubStatus            :</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>The name of the alert rule</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DetailedOutput</maml:name>
 				<maml:description>
@@ -1888,6 +1938,13 @@ SubStatus            :</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>The name of the alert rule</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DetailedOutput</maml:name>
 				<maml:description>
@@ -1902,18 +1959,6 @@ SubStatus            :</maml:para>
 			<maml:name>ResourceGroup</maml:name>
 			<maml:description>
 				<maml:para>The name of the resource group.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Name</maml:name>
-			<maml:description>
-				<maml:para>The name of the alert rule</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1938,6 +1983,18 @@ SubStatus            :</maml:para>
 			<maml:name>TargetResourceId</maml:name>
 			<maml:description>
 				<maml:para>The Id of the target resource</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>The name of the alert rule</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3015,107 +3072,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>ResourceGroup</maml:name>
-				<maml:description>
-					<maml:para>Specifies a filter by ResourceGroup. This parameter is mandatory.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>MaxEvents</maml:name>
-				<maml:description>
-					<maml:para>If present it indicates total number of events to be fetched for the filter specified. This parameter is optional. The default is 1000.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Get-AzureRmLog</maml:name>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StartTime</maml:name>
-				<maml:description>
-					<maml:para>Specifies the start time of the query in local time. This parameter is optional. 
-The default is EndTime minus one hour.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>EndTime</maml:name>
-				<maml:description>
-					<maml:para>Specifies the end time of the query in local time. This parameter is optional. The default is the current time.
-The value must be earlier than StartTime, but not more than 15 days.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Status</maml:name>
-				<maml:description>
-					<maml:para>Specifies a filter by status. This parameter is optional. The fault is an empty string (i.e. no filter)</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Caller</maml:name>
-				<maml:description>
-					<maml:para>Specifies a filter by caller. This parameter is optional. The fault is an empty string (i.e. no filter)</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DetailedOutput</maml:name>
-				<maml:description>
-					<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is no (i.e. summarized output.)</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>MaxEvents</maml:name>
-				<maml:description>
-					<maml:para>If present it indicates total number of events to be fetched for the filter specified. This parameter is optional. The default is 1000.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Get-AzureRmLog</maml:name>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StartTime</maml:name>
-				<maml:description>
-					<maml:para>Specifies the start time of the query in local time. This parameter is optional. 
-The default is EndTime minus one hour.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>EndTime</maml:name>
-				<maml:description>
-					<maml:para>Specifies the end time of the query in local time. This parameter is optional. The default is the current time.
-The value must be earlier than StartTime, but not more than 15 days.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Status</maml:name>
-				<maml:description>
-					<maml:para>Specifies a filter by status. This parameter is optional. The fault is an empty string (i.e. no filter)</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Caller</maml:name>
-				<maml:description>
-					<maml:para>Specifies a filter by caller. This parameter is optional. The fault is an empty string (i.e. no filter)</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DetailedOutput</maml:name>
-				<maml:description>
-					<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is no (i.e. summarized output.)</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceId</maml:name>
 				<maml:description>
 					<maml:para>Specifies a filter by ResoruceId. This parameter is mandatory.</maml:para>
@@ -3170,9 +3126,9 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>CorrelationId</maml:name>
+				<maml:name>ResourceGroup</maml:name>
 				<maml:description>
-					<maml:para>Specifies a filter by correlationId. This parameter is mandatory.</maml:para>
+					<maml:para>Specifies a filter by ResourceGroup. This parameter is mandatory.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3227,6 +3183,107 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				<maml:name>ResourceProvider</maml:name>
 				<maml:description>
 					<maml:para>Specifies a filter by ResourceProvider. This parameter is mandatory.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MaxEvents</maml:name>
+				<maml:description>
+					<maml:para>If present it indicates total number of events to be fetched for the filter specified. This parameter is optional. The default is 1000.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureRmLog</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>StartTime</maml:name>
+				<maml:description>
+					<maml:para>Specifies the start time of the query in local time. This parameter is optional. 
+The default is EndTime minus one hour.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>EndTime</maml:name>
+				<maml:description>
+					<maml:para>Specifies the end time of the query in local time. This parameter is optional. The default is the current time.
+The value must be earlier than StartTime, but not more than 15 days.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Status</maml:name>
+				<maml:description>
+					<maml:para>Specifies a filter by status. This parameter is optional. The fault is an empty string (i.e. no filter)</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Caller</maml:name>
+				<maml:description>
+					<maml:para>Specifies a filter by caller. This parameter is optional. The fault is an empty string (i.e. no filter)</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>DetailedOutput</maml:name>
+				<maml:description>
+					<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is no (i.e. summarized output.)</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MaxEvents</maml:name>
+				<maml:description>
+					<maml:para>If present it indicates total number of events to be fetched for the filter specified. This parameter is optional. The default is 1000.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureRmLog</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>StartTime</maml:name>
+				<maml:description>
+					<maml:para>Specifies the start time of the query in local time. This parameter is optional. 
+The default is EndTime minus one hour.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>EndTime</maml:name>
+				<maml:description>
+					<maml:para>Specifies the end time of the query in local time. This parameter is optional. The default is the current time.
+The value must be earlier than StartTime, but not more than 15 days.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Status</maml:name>
+				<maml:description>
+					<maml:para>Specifies a filter by status. This parameter is optional. The fault is an empty string (i.e. no filter)</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Caller</maml:name>
+				<maml:description>
+					<maml:para>Specifies a filter by caller. This parameter is optional. The fault is an empty string (i.e. no filter)</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>DetailedOutput</maml:name>
+				<maml:description>
+					<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is no (i.e. summarized output.)</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>CorrelationId</maml:name>
+				<maml:description>
+					<maml:para>Specifies a filter by correlationId. This parameter is mandatory.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3303,9 +3360,9 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-			<maml:name>ResourceGroup</maml:name>
+			<maml:name>ResourceId</maml:name>
 			<maml:description>
-				<maml:para>Specifies a filter by ResourceGroup. This parameter is mandatory.</maml:para>
+				<maml:para>Specifies a filter by ResoruceId. This parameter is mandatory.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3327,21 +3384,9 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-			<maml:name>ResourceId</maml:name>
+			<maml:name>ResourceGroup</maml:name>
 			<maml:description>
-				<maml:para>Specifies a filter by ResoruceId. This parameter is mandatory.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-			<maml:name>CorrelationId</maml:name>
-			<maml:description>
-				<maml:para>Specifies a filter by correlationId. This parameter is mandatory.</maml:para>
+				<maml:para>Specifies a filter by ResourceGroup. This parameter is mandatory.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3354,6 +3399,18 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<maml:name>ResourceProvider</maml:name>
 			<maml:description>
 				<maml:para>Specifies a filter by ResourceProvider. This parameter is mandatory.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>CorrelationId</maml:name>
+			<maml:description>
+				<maml:para>Specifies a filter by correlationId. This parameter is mandatory.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -5149,7 +5206,7 @@ Unit                   : Bytes</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Example 1: New-AzureRmAutoscaleNotification  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1: NewAzureRmAutoscaleNotification  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -5169,7 +5226,7 @@ Unit                   : Bytes</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Example 2: New-AzureRmAutoscaleNotification  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 2: NewAzureRmAutoscaleNotification  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -5241,6 +5298,41 @@ Unit                   : Bytes</maml:para>
 				<maml:name>MinimumCapacity</maml:name>
 				<maml:description>
 					<maml:para>The minimum capacity.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>RecurrenceFrequency</maml:name>
+				<maml:description>
+					<maml:para>The frequency of recurrence. The allowed values are: None, Second, Minute, Hour, Day, Week, Month, Year. Not all those values are supported.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">RecurrenceFrequency</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ScheduleDays</maml:name>
+				<maml:description>
+					<maml:para>A list of days scheduled.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ScheduleHours</maml:name>
+				<maml:description>
+					<maml:para>A list of scheduled hours.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ScheduleMinutes</maml:name>
+				<maml:description>
+					<maml:para>List of scheduled minutes.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ScheduleTimeZone</maml:name>
+				<maml:description>
+					<maml:para>The time zone of the schedule.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -5341,41 +5433,6 @@ Unit                   : Bytes</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>RecurrenceFrequency</maml:name>
-				<maml:description>
-					<maml:para>The frequency of recurrence. The allowed values are: None, Second, Minute, Hour, Day, Week, Month, Year. Not all those values are supported.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">RecurrenceFrequency</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ScheduleDays</maml:name>
-				<maml:description>
-					<maml:para>A list of days scheduled.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ScheduleHours</maml:name>
-				<maml:description>
-					<maml:para>A list of scheduled hours.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ScheduleMinutes</maml:name>
-				<maml:description>
-					<maml:para>List of scheduled minutes.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ScheduleTimeZone</maml:name>
-				<maml:description>
-					<maml:para>The time zone of the schedule.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Rules</maml:name>
 				<maml:description>
@@ -5426,54 +5483,6 @@ Unit                   : Bytes</maml:para>
 			<maml:name>MinimumCapacity</maml:name>
 			<maml:description>
 				<maml:para>The minimum capacity.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Rules</maml:name>
-			<maml:description>
-				<maml:para>The list of rules to add to the newly created profile.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
-			<dev:type>
-				<maml:name>List`1[ScaleRule]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>StartTimeWindow</maml:name>
-			<maml:description>
-				<maml:para>The start of the time window.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-			<dev:type>
-				<maml:name>DateTime</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>EndTimeWindow</maml:name>
-			<maml:description>
-				<maml:para>The end of the time window.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-			<dev:type>
-				<maml:name>DateTime</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>TimeWindowTimeZone</maml:name>
-			<maml:description>
-				<maml:para>The time zone of the time window.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -5534,6 +5543,54 @@ Unit                   : Bytes</maml:para>
 			<maml:name>ScheduleTimeZone</maml:name>
 			<maml:description>
 				<maml:para>The time zone of the schedule.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Rules</maml:name>
+			<maml:description>
+				<maml:para>The list of rules to add to the newly created profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
+			<dev:type>
+				<maml:name>List`1[ScaleRule]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>StartTimeWindow</maml:name>
+			<maml:description>
+				<maml:para>The start of the time window.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			<dev:type>
+				<maml:name>DateTime</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>EndTimeWindow</maml:name>
+			<maml:description>
+				<maml:para>The end of the time window.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			<dev:type>
+				<maml:name>DateTime</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>TimeWindowTimeZone</maml:name>
+			<maml:description>
+				<maml:para>The time zone of the time window.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -6532,7 +6589,7 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Enabled</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The value indicating whether the diagnostics should be enabled or disabled</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
 			</command:parameter>
@@ -6580,7 +6637,7 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Enabled</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The value indicating whether the diagnostics should be enabled or disabled</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
 			<dev:type>

@@ -15,12 +15,14 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
+using System.Linq;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
+using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
@@ -195,14 +197,93 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 job.Reducer == reducer && job.Defines.Count == defines.Count)));
         }
 
-        [Fact(Skip = "Test requires setting env variable, TODO remove that constraint")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetJobWithIdProvided()
+        {
+            // Update HDInsight Management properties for Job.
+            SetupManagementClientForJobTests();
+
+            var jobId = "jobid_1984120_001";
+            var cmdlet = GetJobCommandDefinition();
+            cmdlet.JobId = jobId;
+
+            // Setup Job Management mocks
+            var jobResponse = new JobGetResponse
+            {
+                JobDetail = new JobDetailRootJsonObject { Id = jobId, Status = new Status(), Userargs = new Userargs() }
+            };
+
+            hdinsightJobManagementMock.Setup(c => c.GetJob(It.IsAny<string>()))
+                .Returns(jobResponse)
+                .Verifiable();
+
+            cmdlet.ExecuteCmdlet();
+            commandRuntimeMock.VerifyAll();
+            commandRuntimeMock.Verify(
+                f =>
+                    f.WriteObject(It.Is<AzureHDInsightJob>(job => job.JobId.Equals(jobId))));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ListJobs()
+        {
+            // Update HDInsight Management properties for Job.
+            SetupManagementClientForJobTests();
+
+            var cmdlet = GetJobCommandDefinition();
+
+            // Setup Job Management mocks
+            var jobListResponse = GetJobListResponse();
+
+            hdinsightJobManagementMock.Setup(c => c.ListJobs())
+                .Returns(jobListResponse)
+                .Verifiable();
+
+            cmdlet.ExecuteCmdlet();
+            commandRuntimeMock.VerifyAll();
+            commandRuntimeMock.Verify(
+                f =>
+                    f.WriteObject(It.Is<IEnumerable<string>>(job => job.ElementAt(0).Equals(jobListResponse.ElementAt(0).Detail.Id) && job.ElementAt(1).Equals(jobListResponse.ElementAt(1).Detail.Id)), true));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ListJobsAfterJobId()
+        {
+            // Update HDInsight Management properties for Job.
+            SetupManagementClientForJobTests();
+
+            var cmdlet = GetJobCommandDefinition();
+            cmdlet.NumOfJobs = 2;
+
+            // Setup Job Management mocks
+            var jobListResponse = GetJobListResponse();
+
+            hdinsightJobManagementMock.Setup(c => c.ListJobsAfterJobId(It.IsAny<string>(), It.IsAny<int>()))
+                .Returns(jobListResponse)
+                .Verifiable();
+
+            cmdlet.ExecuteCmdlet();
+            commandRuntimeMock.VerifyAll();
+            commandRuntimeMock.Verify(
+                f =>
+                    f.WriteObject(It.Is<IEnumerable<AzureHDInsightJob>>(job => job.ElementAt(0).JobId.Equals(jobListResponse.ElementAt(0).Detail.Id) && job.ElementAt(1).JobId.Equals(jobListResponse.ElementAt(1).Detail.Id)), true));
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StartJob()
         {
+            // Update HDInsight Management properties for Job.
+            SetupManagementClientForJobTests();
+
             var cmdlet = new StartAzureHDInsightJobCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightJobClient = hdinsightJobManagementMock.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
                 HttpCredential = new PSCredential("httpuser", string.Format("Password1!").ConvertToSecureString()),
                 ClusterName = ClusterName
             };
@@ -246,7 +327,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 {
                     Completed = "false",
                     User = cmdlet.HttpCredential.UserName,
-                    Id = jobid
+                    Id = jobid,
+                    Status = new Status(),
+                    Userargs = new Userargs()
                 }
             };
             hdinsightJobManagementMock.Setup(c => c.GetJob(jobsub.JobSubmissionJsonResponse.Id)).Returns(getresponse).Verifiable();
@@ -258,6 +341,43 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     f.WriteObject(
                         It.Is<AzureHDInsightJob>(
                             job => job.Cluster == ClusterName && job.JobId == jobid && job.Completed == "false")));
+        }
+
+        public JobListResponse GetJobListResponse()
+        {
+            var jobListobject1 = new JobListJsonObject
+            {
+                Detail = new JobDetailRootJsonObject { Id = "jobid_1984120_001", Status = new Status(), Userargs = new Userargs() },
+                Id = "jobid_1984120_001"
+            };
+
+            var jobListobject2 = new JobListJsonObject
+            {
+                Detail = new JobDetailRootJsonObject { Id = "jobid_1984120_002", Status = new Status(), Userargs = new Userargs() },
+                Id = "jobid_1984120_002"
+            };
+
+            var jobListResponse = new JobListResponse
+            {
+                JobList = new List<JobListJsonObject> { jobListobject1, jobListobject2 },
+                StatusCode = HttpStatusCode.OK
+            };
+
+            return jobListResponse;
+        }
+
+        public GetAzureHDInsightJobCommand GetJobCommandDefinition()
+        {
+            var cmdlet = new GetAzureHDInsightJobCommand
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                HDInsightJobClient = hdinsightJobManagementMock.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
+                HttpCredential = new PSCredential("httpuser", string.Format("Password1!").ConvertToSecureString()),
+                ClusterName = ClusterName
+            };
+
+            return cmdlet;
         }
     }
 }
