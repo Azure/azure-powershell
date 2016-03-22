@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSExpressRouteCircuit : PSTopLevelResource
     {
+        public bool? AllowClassicOperations { get; set; }
+
         public string CircuitProvisioningState { get; set; }
 
         public string ServiceProviderProvisioningState { get; set; }
