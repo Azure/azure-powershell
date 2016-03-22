@@ -76,13 +76,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             string resourceId = this.Id ?? this.GetResourceId();
-            var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
 
             var operationResult = this.GetResourcesClient()
                         .PutResource(
                             resourceId: resourceId,
-                            apiVersion: apiVersion,
-                            resource: this.GetResource(resourceId, apiVersion),
+                            apiVersion: Constants.PolicyApiVersion,
+                            resource: this.GetResource(resourceId, Constants.PolicyApiVersion),
                             cancellationToken: this.CancellationToken.Value,
                             odataQuery: null)
                         .Result;
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var managementUri = this.GetResourcesClient()
               .GetResourceManagementRequestUri(
                   resourceId: resourceId,
-                  apiVersion: apiVersion,
+                  apiVersion: Constants.PolicyApiVersion,
                   odataQuery: null);
 
             var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
