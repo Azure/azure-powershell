@@ -29,12 +29,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSComputeNodeUser
+    public class PSVirtualMachineConfiguration
     {
         
-        internal Microsoft.Azure.Batch.ComputeNodeUser omObject;
+        internal Microsoft.Azure.Batch.VirtualMachineConfiguration omObject;
         
-        internal PSComputeNodeUser(Microsoft.Azure.Batch.ComputeNodeUser omObject)
+        private PSImageReference imageReference;
+        
+        private PSWindowsConfiguration windowsConfiguration;
+        
+        internal PSVirtualMachineConfiguration(Microsoft.Azure.Batch.VirtualMachineConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -43,59 +47,37 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Name
+        public PSImageReference ImageReference
         {
             get
             {
-                return this.omObject.Name;
-            }
-            set
-            {
-                this.omObject.Name = value;
+                if (((this.imageReference == null) 
+                            && (this.omObject.ImageReference != null)))
+                {
+                    this.imageReference = new PSImageReference(this.omObject.ImageReference);
+                }
+                return this.imageReference;
             }
         }
         
-        public System.Boolean? IsAdmin
+        public string NodeAgentSkuId
         {
             get
             {
-                return this.omObject.IsAdmin;
-            }
-            set
-            {
-                this.omObject.IsAdmin = value;
+                return this.omObject.NodeAgentSkuId;
             }
         }
         
-        public System.DateTime ExpiryTime
+        public PSWindowsConfiguration WindowsConfiguration
         {
             get
             {
-                return this.omObject.ExpiryTime;
-            }
-            set
-            {
-                this.omObject.ExpiryTime = value;
-            }
-        }
-        
-        public string Password
-        {
-            set
-            {
-                this.omObject.Password = value;
-            }
-        }
-        
-        public string SshPublicKey
-        {
-            get
-            {
-                return this.omObject.SshPublicKey;
-            }
-            set
-            {
-                this.omObject.SshPublicKey = value;
+                if (((this.windowsConfiguration == null) 
+                            && (this.omObject.WindowsConfiguration != null)))
+                {
+                    this.windowsConfiguration = new PSWindowsConfiguration(this.omObject.WindowsConfiguration);
+                }
+                return this.windowsConfiguration;
             }
         }
     }

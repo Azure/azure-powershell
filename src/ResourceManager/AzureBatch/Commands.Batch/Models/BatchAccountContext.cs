@@ -21,6 +21,9 @@ using Microsoft.Azure.Management.Batch.Models;
 using System;
 using System.Collections;
 using System.Net.Http.Headers;
+using System.Security.Policy;
+using Microsoft.Rest;
+using TaskDependencies = Microsoft.Azure.Batch.Protocol.Models.TaskDependencies;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -139,7 +142,7 @@ namespace Microsoft.Azure.Commands.Batch
                         throw new InvalidOperationException(string.Format(Resources.KeyNotPresent, KeyInUse));
                     }
                     string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
-                    BatchRestClient restClient = CreateBatchRestClient(TaskTenantUrl, AccountName, key);
+                    BatchService restClient = CreateBatchRestClient(TaskTenantUrl, AccountName, key);
                     this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Open(restClient);
                 }
                 return this.batchOMClient;
@@ -207,13 +210,15 @@ namespace Microsoft.Azure.Commands.Batch
             return baContext;
         }
 
-        protected virtual BatchRestClient CreateBatchRestClient(string url, string accountName, string key)
+        protected virtual BatchService CreateBatchRestClient(string url, string accountName, string key)
         {
-            Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
-            BatchRestClient restClient = new BatchRestClient(credentials, new Uri(url));
+            //Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
+            ServiceClientCredentials credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
+            BatchService restClient = new BatchService(new Uri(url), credentials);
+            
             restClient.HttpClient.DefaultRequestHeaders.UserAgent.Add(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue);
 
-            restClient.SetRetryPolicy(Hyak.Common.TransientFaultHandling.RetryPolicy.NoRetry); //Force there to be no retries
+            restClient.SetRetryPolicy(null); //Force there to be no retries
             restClient.HttpClient.Timeout = Timeout.InfiniteTimeSpan; //Client side timeout will be set per-request
 
             return restClient;

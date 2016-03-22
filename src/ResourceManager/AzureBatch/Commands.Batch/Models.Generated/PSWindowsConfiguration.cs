@@ -29,12 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSComputeNodeUser
+    public class PSWindowsConfiguration
     {
         
-        internal Microsoft.Azure.Batch.ComputeNodeUser omObject;
+        internal Microsoft.Azure.Batch.WindowsConfiguration omObject;
         
-        internal PSComputeNodeUser(Microsoft.Azure.Batch.ComputeNodeUser omObject)
+        public PSWindowsConfiguration(System.Nullable<bool> enableAutomaticUpdates)
+        {
+            this.omObject = new Microsoft.Azure.Batch.WindowsConfiguration(enableAutomaticUpdates);
+        }
+        
+        internal PSWindowsConfiguration(Microsoft.Azure.Batch.WindowsConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -43,59 +48,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Name
+        public System.Boolean? EnableAutomaticUpdates
         {
             get
             {
-                return this.omObject.Name;
-            }
-            set
-            {
-                this.omObject.Name = value;
-            }
-        }
-        
-        public System.Boolean? IsAdmin
-        {
-            get
-            {
-                return this.omObject.IsAdmin;
-            }
-            set
-            {
-                this.omObject.IsAdmin = value;
-            }
-        }
-        
-        public System.DateTime ExpiryTime
-        {
-            get
-            {
-                return this.omObject.ExpiryTime;
-            }
-            set
-            {
-                this.omObject.ExpiryTime = value;
-            }
-        }
-        
-        public string Password
-        {
-            set
-            {
-                this.omObject.Password = value;
-            }
-        }
-        
-        public string SshPublicKey
-        {
-            get
-            {
-                return this.omObject.SshPublicKey;
-            }
-            set
-            {
-                this.omObject.SshPublicKey = value;
+                return this.omObject.EnableAutomaticUpdates;
             }
         }
     }

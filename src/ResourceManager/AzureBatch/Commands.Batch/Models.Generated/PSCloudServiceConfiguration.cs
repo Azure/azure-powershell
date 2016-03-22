@@ -29,12 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSComputeNodeUser
+    public class PSCloudServiceConfiguration
     {
         
-        internal Microsoft.Azure.Batch.ComputeNodeUser omObject;
+        internal Microsoft.Azure.Batch.CloudServiceConfiguration omObject;
         
-        internal PSComputeNodeUser(Microsoft.Azure.Batch.ComputeNodeUser omObject)
+        public PSCloudServiceConfiguration(string osFamily, string targetOSVersion)
+        {
+            this.omObject = new Microsoft.Azure.Batch.CloudServiceConfiguration(osFamily, targetOSVersion);
+        }
+        
+        internal PSCloudServiceConfiguration(Microsoft.Azure.Batch.CloudServiceConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -43,59 +48,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Name
+        public string OSFamily
         {
             get
             {
-                return this.omObject.Name;
-            }
-            set
-            {
-                this.omObject.Name = value;
+                return this.omObject.OSFamily;
             }
         }
         
-        public System.Boolean? IsAdmin
+        public string TargetOSVersion
         {
             get
             {
-                return this.omObject.IsAdmin;
-            }
-            set
-            {
-                this.omObject.IsAdmin = value;
+                return this.omObject.TargetOSVersion;
             }
         }
         
-        public System.DateTime ExpiryTime
+        public string CurrentOSVersion
         {
             get
             {
-                return this.omObject.ExpiryTime;
-            }
-            set
-            {
-                this.omObject.ExpiryTime = value;
-            }
-        }
-        
-        public string Password
-        {
-            set
-            {
-                this.omObject.Password = value;
-            }
-        }
-        
-        public string SshPublicKey
-        {
-            get
-            {
-                return this.omObject.SshPublicKey;
-            }
-            set
-            {
-                this.omObject.SshPublicKey = value;
+                return this.omObject.CurrentOSVersion;
             }
         }
     }

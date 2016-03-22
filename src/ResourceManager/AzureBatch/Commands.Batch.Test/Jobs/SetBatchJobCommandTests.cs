@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Management.Automation;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context));
 
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobUpdateParameters, CloudJobUpdateResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobUpdateOptions, AzureOperationHeaderResponse<JobUpdateHeaders>>();
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] {interceptor};
 
             // Verify that no exceptions occur

@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -56,8 +57,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             cmdlet.Filter = null;
 
             // Build a compute node instead of querying the service on a Get ComputeNode call
-            ComputeNodeGetResponse response = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetParameters, ComputeNodeGetResponse>(response);
+            AzureOperationResponse<Microsoft.Azure.Batch.Protocol.Models.ComputeNode, ComputeNodeGetHeaders> response = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetOptions, AzureOperationResponse<Microsoft.Azure.Batch.Protocol.Models.ComputeNode, ComputeNodeGetHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -85,11 +86,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string requestSelect = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            ComputeNodeGetResponse getResponse = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetParameters, ComputeNodeGetResponse>(getResponse);
+            AzureOperationResponse<Microsoft.Azure.Batch.Protocol.Models.ComputeNode, ComputeNodeGetHeaders> getResponse = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetOptions, AzureOperationResponse<Microsoft.Azure.Batch.Protocol.Models.ComputeNode, ComputeNodeGetHeaders>>(getResponse);
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                ComputeNodeGetOptions computeNodeOptions = (ComputeNodeGetOptions) request.Options;
+                requestSelect = computeNodeOptions.Select;
 
                 return Task.FromResult(response);
             });
@@ -116,11 +118,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string requestSelect = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeListParameters, ComputeNodeListResponse>();
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeListNextOptions, AzureOperationResponse<IEnumerable<Microsoft.Azure.Batch.Protocol.Models.ComputeNode>, ComputeNodeGetHeaders>>();
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                requestFilter = request.Parameters.DetailLevel.FilterClause;
-                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                ComputeNodeListOptions options = (ComputeNodeListOptions) request.Options;
+
+                requestFilter = options.Filter;
+                requestSelect = options.Select;
 
                 return Task.FromResult(response);
             });
@@ -146,8 +150,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string[] idsOfConstructedComputeNodes = new[] { "computeNode1", "computeNode2", "computeNode3" };
 
             // Build some compute nodes instead of querying the service on a List ComputeNodes call
-            ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeListParameters, ComputeNodeListResponse>(response);
+            AzureOperationResponse<IEnumerable<Microsoft.Azure.Batch.Protocol.Models.ComputeNode>, ComputeNodeListHeaders> response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeListOptions, AzureOperationResponse<IEnumerable<Microsoft.Azure.Batch.Protocol.Models.ComputeNode>, ComputeNodeListHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -188,8 +192,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string[] idsOfConstructedComputeNodes = new[] { "computeNode1", "computeNode2", "computeNode3" };
 
             // Build some compute nodes instead of querying the service on a List ComputeNodes call
-            ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeListParameters, ComputeNodeListResponse>(response);
+            AzureOperationResponse<IEnumerable<Microsoft.Azure.Batch.Protocol.Models.ComputeNode>, ComputeNodeListHeaders> response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeListOptions, AzureOperationResponse<IEnumerable<Microsoft.Azure.Batch.Protocol.Models.ComputeNode>, ComputeNodeListHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

@@ -280,5 +280,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 this.omObject.Priority = value;
             }
         }
+        
+        public System.Boolean? UsesTaskDependencies
+        {
+            get
+            {
+                return this.omObject.UsesTaskDependencies;
+            }
+            set
+            {
+                this.omObject.UsesTaskDependencies = value;
+            }
+        }
     }
 }
