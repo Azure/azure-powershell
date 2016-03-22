@@ -51,6 +51,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public string FileMode
+        {
+            get
+            {
+                return this.omObject.FileMode;
+            }
+        }
+        
         public System.DateTime LastModified
         {
             get

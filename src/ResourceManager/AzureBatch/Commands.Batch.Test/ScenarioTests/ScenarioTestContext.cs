@@ -16,6 +16,7 @@ using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Test.HttpRecorder;
 using System;
 using System.Net.Http;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -35,15 +36,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             this.TaskTenantUrl = context.TaskTenantUrl;
         }
 
-        protected override BatchRestClient CreateBatchRestClient(string url, string accountName, string key)
+        protected override BatchService CreateBatchRestClient(string url, string accountName, string key)
         {
-            BatchRestClient restClient = base.CreateBatchRestClient(url, accountName, key);
-
             // Add HTTP recorder to the BatchRestClient
             HttpMockServer mockServer = HttpMockServer.CreateInstance();
             mockServer.InnerHandler = new HttpClientHandler();
-            restClient.AddHandlerToPipeline(mockServer);
 
+            BatchCredentials credentials = new BatchSharedKeyCredential(accountName, key);
+            
+            BatchService restClient = new BatchService(credentials, mockServer);
             return restClient;
         }
     }

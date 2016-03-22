@@ -381,5 +381,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 return this.omObject.Url;
             }
         }
+        
+        public System.Boolean? UsesTaskDependencies
+        {
+            get
+            {
+                return this.omObject.UsesTaskDependencies;
+            }
+            set
+            {
+                this.omObject.UsesTaskDependencies = value;
+            }
+        }
     }
 }

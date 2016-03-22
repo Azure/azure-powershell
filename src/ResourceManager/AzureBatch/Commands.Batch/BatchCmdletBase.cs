@@ -155,16 +155,16 @@ namespace Microsoft.Azure.Commands.Batch
         {
             if (ex != null)
             {
-                if (ex.RequestInformation != null && ex.RequestInformation.AzureError != null)
+                if (ex.RequestInformation != null && ex.RequestInformation.BatchError != null)
                 {
                     StringBuilder str = new StringBuilder(ex.Message).AppendLine();
 
-                    str.AppendFormat("Error Code: {0}", ex.RequestInformation.AzureError.Code).AppendLine();
-                    str.AppendFormat("Error Message: {0}", ex.RequestInformation.AzureError.Message.Value).AppendLine();
+                    str.AppendFormat("Error Code: {0}", ex.RequestInformation.BatchError.Code).AppendLine();
+                    str.AppendFormat("Error Message: {0}", ex.RequestInformation.BatchError.Message.Value).AppendLine();
                     str.AppendFormat("Client Request ID:{0}", ex.RequestInformation.ClientRequestId).AppendLine();
-                    if (ex.RequestInformation.AzureError.Values != null)
+                    if (ex.RequestInformation.BatchError.Values != null)
                     {
-                        foreach (AzureErrorDetail detail in ex.RequestInformation.AzureError.Values)
+                        foreach (var detail in ex.RequestInformation.BatchError.Values)
                         {
                             str.AppendFormat("{0}:{1}", detail.Key, detail.Value).AppendLine();
                         }

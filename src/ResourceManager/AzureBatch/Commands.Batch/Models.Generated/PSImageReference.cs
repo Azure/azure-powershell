@@ -29,12 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSComputeNodeUser
+    public class PSImageReference
     {
         
-        internal Microsoft.Azure.Batch.ComputeNodeUser omObject;
+        internal Microsoft.Azure.Batch.ImageReference omObject;
         
-        internal PSComputeNodeUser(Microsoft.Azure.Batch.ComputeNodeUser omObject)
+        public PSImageReference(string publisher, string offer, string skuId, string version)
+        {
+            this.omObject = new Microsoft.Azure.Batch.ImageReference(publisher, offer, skuId, version);
+        }
+        
+        internal PSImageReference(Microsoft.Azure.Batch.ImageReference omObject)
         {
             if ((omObject == null))
             {
@@ -43,59 +48,35 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Name
+        public string Publisher
         {
             get
             {
-                return this.omObject.Name;
-            }
-            set
-            {
-                this.omObject.Name = value;
+                return this.omObject.Publisher;
             }
         }
         
-        public System.Boolean? IsAdmin
+        public string Offer
         {
             get
             {
-                return this.omObject.IsAdmin;
-            }
-            set
-            {
-                this.omObject.IsAdmin = value;
+                return this.omObject.Offer;
             }
         }
         
-        public System.DateTime ExpiryTime
+        public string SkuId
         {
             get
             {
-                return this.omObject.ExpiryTime;
-            }
-            set
-            {
-                this.omObject.ExpiryTime = value;
+                return this.omObject.SkuId;
             }
         }
         
-        public string Password
-        {
-            set
-            {
-                this.omObject.Password = value;
-            }
-        }
-        
-        public string SshPublicKey
+        public string Version
         {
             get
             {
-                return this.omObject.SshPublicKey;
-            }
-            set
-            {
-                this.omObject.SshPublicKey = value;
+                return this.omObject.Version;
             }
         }
     }

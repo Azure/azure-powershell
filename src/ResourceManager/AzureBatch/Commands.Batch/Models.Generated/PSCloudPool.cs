@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IList<PSCertificateReference> certificateReferences;
         
+        private PSCloudServiceConfiguration cloudServiceConfiguration;
+        
         private IList<PSMetadataItem> metadata;
         
         private PSResizeError resizeError;
@@ -47,6 +49,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         private PSStartTask startTask;
         
         private PSPoolStatistics statistics;
+        
+        private PSVirtualMachineConfiguration virtualMachineConfiguration;
         
         internal PSCloudPool(Microsoft.Azure.Batch.CloudPool omObject)
         {
@@ -157,6 +161,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public PSCloudServiceConfiguration CloudServiceConfiguration
+        {
+            get
+            {
+                if (((this.cloudServiceConfiguration == null) 
+                            && (this.omObject.CloudServiceConfiguration != null)))
+                {
+                    this.cloudServiceConfiguration = new PSCloudServiceConfiguration(this.omObject.CloudServiceConfiguration);
+                }
+                return this.cloudServiceConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.CloudServiceConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.CloudServiceConfiguration = value.omObject;
+                }
+                this.cloudServiceConfiguration = value;
+            }
+        }
+        
         public System.DateTime? CreationTime
         {
             get
@@ -170,14 +199,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.CurrentDedicated;
-            }
-        }
-        
-        public string CurrentOSVersion
-        {
-            get
-            {
-                return this.omObject.CurrentOSVersion;
             }
         }
         
@@ -277,18 +298,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.Metadata = new List<Microsoft.Azure.Batch.MetadataItem>();
                 }
                 this.metadata = value;
-            }
-        }
-        
-        public string OSFamily
-        {
-            get
-            {
-                return this.omObject.OSFamily;
-            }
-            set
-            {
-                this.omObject.OSFamily = value;
             }
         }
         
@@ -408,23 +417,36 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public string TargetOSVersion
-        {
-            get
-            {
-                return this.omObject.TargetOSVersion;
-            }
-            set
-            {
-                this.omObject.TargetOSVersion = value;
-            }
-        }
-        
         public string Url
         {
             get
             {
                 return this.omObject.Url;
+            }
+        }
+        
+        public PSVirtualMachineConfiguration VirtualMachineConfiguration
+        {
+            get
+            {
+                if (((this.virtualMachineConfiguration == null) 
+                            && (this.omObject.VirtualMachineConfiguration != null)))
+                {
+                    this.virtualMachineConfiguration = new PSVirtualMachineConfiguration(this.omObject.VirtualMachineConfiguration);
+                }
+                return this.virtualMachineConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.VirtualMachineConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.VirtualMachineConfiguration = value.omObject;
+                }
+                this.virtualMachineConfiguration = value;
             }
         }
         

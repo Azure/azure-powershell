@@ -23,6 +23,7 @@ using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Files
 {
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.InputObject = null;
 
             // Don't go to the service on a Delete NodeFile call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeFileDeleteParameters, NodeFileDeleteResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<FileDeleteFromTaskOptions, AzureOperationHeaderResponse<FileDeleteFromTaskHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());

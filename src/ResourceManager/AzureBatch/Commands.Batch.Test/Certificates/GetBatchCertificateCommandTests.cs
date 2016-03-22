@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -23,7 +22,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.Rest.Azure;
 using Xunit;
+using Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Certificates
@@ -57,8 +58,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             cmdlet.Filter = null;
 
             // Build a Certificate instead of querying the service on a Get Certificate call
-            CertificateGetResponse response = BatchTestHelpers.CreateCertificateGetResponse(cmdlet.Thumbprint);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateGetParameters, CertificateGetResponse>(response);
+            AzureOperationResponse<Azure.Batch.Protocol.Models.Certificate, CertificateGetHeaders>  response = BatchTestHelpers.CreateCertificateGetResponse(cmdlet.Thumbprint);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateGetOptions, AzureOperationResponse<Azure.Batch.Protocol.Models.Certificate, CertificateGetHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -86,11 +87,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             string requestSelect = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            CertificateGetResponse getResponse = BatchTestHelpers.CreateCertificateGetResponse(cmdlet.Thumbprint);
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateGetParameters, CertificateGetResponse>(getResponse);
+            AzureOperationResponse<Azure.Batch.Protocol.Models.Certificate, CertificateGetHeaders> getResponse = BatchTestHelpers.CreateCertificateGetResponse(cmdlet.Thumbprint);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateGetOptions, AzureOperationResponse<Azure.Batch.Protocol.Models.Certificate, CertificateGetHeaders>>(getResponse);
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                CertificateGetOptions certOptions = (CertificateGetOptions) request.Options;
+                requestSelect = certOptions.Select;
                
                 return Task.FromResult(response);
             });
@@ -117,11 +119,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             string requestSelect = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateListParameters, CertificateListResponse>();
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateListOptions, AzureOperationResponse<IEnumerable<Azure.Batch.Protocol.Models.Certificate>, CertificateListHeaders>>();
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                requestFilter = request.Parameters.DetailLevel.FilterClause;
-                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                CertificateListOptions certOptions = (CertificateListOptions) request.Options;
+
+                requestFilter = certOptions.Filter;
+                requestSelect = certOptions.Select;
 
                 return Task.FromResult(response);
             });
@@ -147,8 +151,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             string[] thumbprintsOfConstructedCerts = new[] { "12345", "67890", "ABCDE" };
 
             // Build some Certificates instead of querying the service on a List Certificates call
-            CertificateListResponse response = BatchTestHelpers.CreateCertificateListResponse(thumbprintsOfConstructedCerts);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateListParameters, CertificateListResponse>(response);
+            AzureOperationResponse<IEnumerable<Azure.Batch.Protocol.Models.Certificate>, CertificateListHeaders> response = BatchTestHelpers.CreateCertificateListResponse(thumbprintsOfConstructedCerts);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateListOptions, AzureOperationResponse<IEnumerable<Azure.Batch.Protocol.Models.Certificate>, CertificateListHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -189,8 +193,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             string[] thumbprintsOfConstructedCerts = new[] { "12345", "67890", "ABCDE" };
 
             // Build some Certificates instead of querying the service on a List Certificates call
-            CertificateListResponse response = BatchTestHelpers.CreateCertificateListResponse(thumbprintsOfConstructedCerts);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateListParameters, CertificateListResponse>(response);
+            AzureOperationResponse<IEnumerable<Azure.Batch.Protocol.Models.Certificate>, CertificateListHeaders> response = BatchTestHelpers.CreateCertificateListResponse(thumbprintsOfConstructedCerts);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateListOptions, AzureOperationResponse<IEnumerable<Azure.Batch.Protocol.Models.Certificate>, CertificateListHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

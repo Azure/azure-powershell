@@ -14,15 +14,17 @@
 
 using System;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
+using Microsoft.Rest.Azure;
 using Xunit;
+using Microsoft.Azure.Batch.Protocol.Models;
+using BatchCommon = Microsoft.Azure.Batch.Common;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
@@ -61,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "computeNode1";
 
             // Don't go to the service on a Reboot ComputeNode call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeRebootParameters, ComputeNodeRebootResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeRebootOptions, AzureOperationResponse<ComputeNodeRebootHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -77,23 +79,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.PoolId = "testPool";
             cmdlet.Id = "computeNode1";
-            cmdlet.RebootOption = ComputeNodeRebootOption.Terminate;
+            cmdlet.RebootOption = BatchCommon.ComputeNodeRebootOption.Terminate;
 
             ComputeNodeRebootOption? requestRebootOption = null;
 
             // Don't go to the service on a Reboot ComputeNode call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                BatchRequest<ComputeNodeRebootParameters, ComputeNodeRebootResponse> request =
-                (BatchRequest<ComputeNodeRebootParameters, ComputeNodeRebootResponse>)baseRequest;
+                ComputeNodeRebootBatchRequest request = (ComputeNodeRebootBatchRequest) baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     // Grab the reboot option from the outgoing request.
-                    requestRebootOption = request.TypedParameters.ComputeNodeRebootOption;
+                    requestRebootOption = request.Parameters.NodeRebootOption;
 
-                    ComputeNodeRebootResponse response = new ComputeNodeRebootResponse();
-                    Task<ComputeNodeRebootResponse> task = Task.FromResult(response);
+                    AzureOperationHeaderResponse<ComputeNodeRebootHeaders> response = new AzureOperationHeaderResponse<ComputeNodeRebootHeaders>();
+                    Task<AzureOperationHeaderResponse<ComputeNodeRebootHeaders>> task = Task.FromResult(response);
                     return task;
                 };
             });
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             // Verify that the reboot option was properly set on the outgoing request
-            Assert.Equal(cmdlet.RebootOption, requestRebootOption);
+            Assert.Equal(cmdlet.RebootOption.ToString().ToLower(), requestRebootOption.ToString().ToLower());
         }
     }
 }

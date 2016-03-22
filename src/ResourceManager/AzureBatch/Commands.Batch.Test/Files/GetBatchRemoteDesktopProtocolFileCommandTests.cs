@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.DestinationPath = null;
 
             // Don't go to the service on a Get ComputeNode Remote Desktop call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetRemoteDesktopParameters, ComputeNodeGetRemoteDesktopResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetRemoteDesktopOptions, AzureOperationHeaderResponse<ComputeNodeGetHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())

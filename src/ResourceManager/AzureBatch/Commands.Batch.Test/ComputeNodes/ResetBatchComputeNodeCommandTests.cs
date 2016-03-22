@@ -14,7 +14,6 @@
 
 using System;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -22,6 +21,8 @@ using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "computeNode1";
 
             // Don't go to the service on a Reimage ComputeNode call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeReimageParameters, ComputeNodeReimageResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeReimageOptions, AzureOperationHeaderResponse<ComputeNodeReimageHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -77,23 +78,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.PoolId = "testPool";
             cmdlet.Id = "computeNode1";
-            cmdlet.ReimageOption = ComputeNodeReimageOption.Terminate;
+            cmdlet.ReimageOption = Microsoft.Azure.Batch.Common.ComputeNodeReimageOption.Terminate;
 
             ComputeNodeReimageOption? requestReimageOption = null;
 
             // Don't go to the service on a Reimage ComputeNode call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                BatchRequest<ComputeNodeReimageParameters, ComputeNodeReimageResponse> request =
-                (BatchRequest<ComputeNodeReimageParameters, ComputeNodeReimageResponse>)baseRequest;
+                ComputeNodeReimageBatchRequest request = (ComputeNodeReimageBatchRequest) baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     // Grab the reimage option from the outgoing request.
-                    requestReimageOption = request.TypedParameters.ComputeNodeReimageOption;
+                    requestReimageOption = request.Parameters.NodeReimageOption;
 
-                    ComputeNodeReimageResponse response = new ComputeNodeReimageResponse();
-                    Task<ComputeNodeReimageResponse> task = Task.FromResult(response);
+                    AzureOperationHeaderResponse<ComputeNodeReimageHeaders> response = new AzureOperationHeaderResponse<ComputeNodeReimageHeaders>();
+                    Task<AzureOperationHeaderResponse<ComputeNodeReimageHeaders>> task = Task.FromResult(response);
                     return task;
                 };
             });
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             // Verify that the reimage option was properly set on the outgoing request
-            Assert.Equal(cmdlet.ReimageOption, requestReimageOption);
+            Assert.Equal(cmdlet.ReimageOption.ToString().ToLower(), requestReimageOption.ToString().ToLower());
         }
     }
 }

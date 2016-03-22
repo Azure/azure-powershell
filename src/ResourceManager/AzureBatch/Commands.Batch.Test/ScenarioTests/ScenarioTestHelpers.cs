@@ -245,8 +245,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             catch (AggregateException aex)
             {
                 BatchException innerException = aex.InnerException as BatchException;
-                if (innerException == null || innerException.RequestInformation == null || innerException.RequestInformation.AzureError == null ||
-                    innerException.RequestInformation.AzureError.Code != BatchErrorCodeStrings.PoolNotFound)
+                if (innerException == null || innerException.RequestInformation == null || innerException.RequestInformation.BatchError == null ||
+                    innerException.RequestInformation.BatchError.Code != BatchErrorCodeStrings.PoolNotFound)
                 {
                     throw;
                 }
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             DateTime timeout = DateTime.Now.AddMinutes(5);
             PSCloudPool pool = client.ListPools(options).First();
-            while (pool.CurrentOSVersion != pool.TargetOSVersion)
+            while (pool.CloudServiceConfiguration.CurrentOSVersion != pool.CloudServiceConfiguration.TargetOSVersion)
             {
                 if (DateTime.Now > timeout)
                 {
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 pool = client.ListPools(options).First();
             }
 
-            return pool.TargetOSVersion;
+            return pool.CloudServiceConfiguration.TargetOSVersion;
         }
 
         public static void ResizePool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated)

@@ -66,8 +66,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
                 return PSPagedEnumerable<PSCloudPool, CloudPool>.CreateWithMaxCount(
-                    pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));            
+                    pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));          
             }
+        }
+
+        public PSPoolStatistics ListAllPoolsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
+            PoolStatistics poolStatistics = poolOperations.GetAllPoolsLifetimeStatistics(additionBehaviors);
+            PSPoolStatistics psPoolStatistics = new PSPoolStatistics(poolStatistics);
+            return psPoolStatistics;
         }
 
         /// <summary>
@@ -82,13 +90,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            CloudPool pool = poolOperations.CreatePool(poolId: parameters.PoolId, osFamily: parameters.OSFamily, virtualMachineSize: parameters.VirtualMachineSize);
+            CloudPool pool = poolOperations.CreatePool(poolId: parameters.PoolId, virtualMachineConfiguration: parameters.VirtualMachineConfiguration.omObject, virtualMachineSize: parameters.VirtualMachineSize);
             pool.DisplayName = parameters.DisplayName;
             pool.ResizeTimeout = parameters.ResizeTimeout;
             pool.MaxTasksPerComputeNode = parameters.MaxTasksPerComputeNode;
             pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
-            pool.TargetOSVersion = parameters.TargetOSVersion;
-
+            
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
             {
                 pool.AutoScaleEnabled = true;
@@ -127,6 +134,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 {
                     pool.CertificateReferences.Add(c.omObject);
                 }
+            }
+
+            if (parameters.CloudServiceConfiguration != null)
+            {
+                pool.CloudServiceConfiguration = parameters.CloudServiceConfiguration.omObject;
             }
 
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
