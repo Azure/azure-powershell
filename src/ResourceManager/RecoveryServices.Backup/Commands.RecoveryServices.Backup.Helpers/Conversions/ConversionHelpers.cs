@@ -71,16 +71,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if(((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType() !=
                                                                            typeof(LongTermRetentionPolicy))
                 {
-                    Logger.Logger.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
-                    Logger.Logger.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                    Logger.Instance.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                    Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
 
                 if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType() != 
                                                                             typeof(SimpleSchedulePolicy))
                 {
-                    Logger.Logger.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
-                    Logger.Logger.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                    Logger.Instance.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                    Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
 
@@ -98,8 +98,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 // trace warning message, ignore and return
                 // we will enter this case when service supports new workload and customer 
                 // still using old version of azure powershell
-                Logger.Logger.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
-                Logger.Logger.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                Logger.Instance.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                 return null;
             }
 

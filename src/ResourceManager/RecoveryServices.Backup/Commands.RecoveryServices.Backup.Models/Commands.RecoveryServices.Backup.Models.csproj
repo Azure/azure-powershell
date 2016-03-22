@@ -7,7 +7,7 @@
     <ProjectGuid>{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup.Models</RootNamespace>
+    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup</RootNamespace>
     <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
