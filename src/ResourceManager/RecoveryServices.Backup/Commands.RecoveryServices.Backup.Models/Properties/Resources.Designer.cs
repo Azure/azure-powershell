@@ -430,6 +430,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data truncated. Please upgrade to latest version of Azure Powershell.
+        /// </summary>
+        public static string UpdateToNewAzurePowershellWarning {
+            get {
+                return ResourceManager.GetString("UpdateToNewAzurePowershellWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Received WebException, Response: {0}, Status: {1}.
         /// </summary>
         public static string WebException {
