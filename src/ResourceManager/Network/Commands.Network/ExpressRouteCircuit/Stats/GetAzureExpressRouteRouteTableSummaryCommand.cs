@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Network
 
     using AutoMapper;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitARPTable"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitRouteTableSummary"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
     public class GetAzureExpressRouteRouteTableSummaryCommand : NetworkBaseCmdlet
     {
         [Alias("ResourceName")]
