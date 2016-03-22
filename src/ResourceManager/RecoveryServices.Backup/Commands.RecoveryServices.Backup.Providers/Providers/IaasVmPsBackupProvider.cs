@@ -203,6 +203,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             // do validations
             ValidateAzureVMWorkloadType(workloadType);
+            ValidateAzureVMSchedulePolicy(schedulePolicy);
+
+            // update the retention times from backupSchedule to retentionPolicy after converting to UTC           
+            CopyScheduleTimeToRetentionTimes((AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
+                                             (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy);
 
             // validate both RetentionPolicy and SchedulePolicy
             ValidateAzureVMRetentionPolicy(retentionPolicy);
@@ -262,6 +267,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ValidateAzureVMRetentionPolicy(retentionPolicy);
                 ((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy = retentionPolicy;
             }
+
+            // copy the backupSchedule time to retentionPolicy after converting to UTC
+            CopyScheduleTimeToRetentionTimes(
+                (AzureRmRecoveryServicesLongTermRetentionPolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy,
+                (AzureRmRecoveryServicesSimpleSchedulePolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy);
 
             // Now validate both RetentionPolicy and SchedulePolicy matches or not
             PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
@@ -437,7 +447,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Random rand = new Random();
             int hour = rand.Next(0, 24);
             int minute = (rand.Next(0, 2) == 0) ? 0 : 30;
-            return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, 00);
+            return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, 00, DateTimeKind.Utc);
         }
 
 
@@ -519,6 +529,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return protectableObject;
 
         }
+
         private bool IsDiscoveryNeeded(string vmName, string rgName, bool isComputeAzureVM,
             out AzureIaaSVMProtectableItem protectableObject)
         {
@@ -639,6 +650,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             return status;
+        }
+
+        private void CopyScheduleTimeToRetentionTimes(AzureRmRecoveryServicesLongTermRetentionPolicy retPolicy,
+                                                      AzureRmRecoveryServicesSimpleSchedulePolicy schPolicy)
+        {
+            // first convert schedule run times to UTC
+            schPolicy.ScheduleRunTimes = PolicyHelpers.ParseScheduleRunTimesToUTC(schPolicy.ScheduleRunTimes);
+
+            // now copy times from schedule to retention policy
+            if(retPolicy.IsDailyScheduleEnabled && retPolicy.DailySchedule != null)
+            {
+                retPolicy.DailySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
+            }
+
+            if (retPolicy.IsWeeklyScheduleEnabled && retPolicy.WeeklySchedule != null)
+            {
+                retPolicy.DailySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
+            }
+
+            if (retPolicy.IsMonthlyScheduleEnabled && retPolicy.MonthlySchedule != null)
+            {
+                retPolicy.DailySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
+            }
+
+            if (retPolicy.IsYearlyScheduleEnabled && retPolicy.YearlySchedule != null)
+            {
+                retPolicy.DailySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
+            }
         }
 
         #endregion

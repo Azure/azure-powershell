@@ -250,7 +250,7 @@
     <value>In Schedule, if ScheduleRunFrequency is Weekly then ScheduleRunDays should not be empty and not contain duplicate entries</value>
   </data>
   <data name="InvalidScheduleTimeInScheduleException" xml:space="preserve">
-    <value>ScheduleTimes in Schedule should have ONE time and must be of multiples of 30 Mins with seconds and milliseconds set to 0</value>
+    <value>ScheduleTimes in Schedule should be in UTC Timezone, have ONE time and must be of multiples of 30 Mins with seconds and milliseconds set to 0</value>
   </data>
   <data name="InvalidWeeksOfMonthInMonthlyYearlyRetentionPolicyException" xml:space="preserve">
     <value>In Monthly/Yearly retention schedule, WeeksOfMonth is NULL or empty or contains duplicate entires</value>

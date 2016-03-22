@@ -15,16 +15,20 @@
 function Test-PolicyScenario
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
-	$containers = Get-AzureRmRecoveryServicesContainer -Vault $vault -ContainerType "AzureVM" -Status "Registered";
-	foreach ($container in $containers)
-	{
-		echo $container.Name $container.ResourceGroupName;
-	}
-	Assert-AreEqual $containers[0].Name "mylinux1";
+	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
-	$namedContainer = Get-AzureRmRecoveryServicesContainer -Vault $vault -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
-	Assert-AreEqual $namedContainer.Name "mylinux1";
+	# get default objects
+	$schedulePolicy = Get-AzureRmRecoveryServicesSchedulePolicyObject -WorkloadType "AzureVM"
+	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
 
-	$rgFilteredContainer = Get-AzureRmRecoveryServicesContainer -Vault $vault -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1" -ResourceGroupName "00prjai12";
-	echo $rgFilteredContainer.Name $rgFilteredContainer.ResourceGroupName;
+	# now create new policy
+	$policy = New-AzureRmRecoveryServicesProtectionPolicy -Name "pwtest1" -WorkloadType "AzureVM" -RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy
+		
+	# now get policy and update it with new schedule/retention
+	$schedulePolicy = Get-AzureRmRecoveryServicesSchedulePolicyObject -WorkloadType "AzureVM"
+	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
+
+    Get-AzureRmRecoveryServicesProtectionPolicy -Name "pwtest1"	| Set-AzureRmRecoveryServicesProtectionPolicy -RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy 
+
+	echo $schedulePolicy	
 }

@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ScheduleTimes in Schedule should have ONE time and must be of multiples of 30 Mins with seconds and milliseconds set to 0.
+        ///   Looks up a localized string similar to ScheduleTimes in Schedule should be in UTC Timezone, have ONE time and must be of multiples of 30 Mins with seconds and milliseconds set to 0.
         /// </summary>
         public static string InvalidScheduleTimeInScheduleException {
             get {
