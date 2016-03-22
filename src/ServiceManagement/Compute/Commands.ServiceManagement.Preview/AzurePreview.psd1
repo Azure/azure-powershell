@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest
-ModuleToProcess = 'Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll'
+ModuleToProcess = '.\Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll'
 
 # Version number of this module.
 ModuleVersion = '1.0.0'
