@@ -10241,7 +10241,9 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
     <command:details>
       <command:name>Export-AzureRmResourceGroup</command:name>
       <maml:description>
-        <maml:para>Captures the specifies resource group as a template and saves it to a file on disk.</maml:para>
+        <maml:para>Captures the specified resource group as a template and saves it to a file on disk.</maml:para>
+        <maml:para>The Export-AzureRmResourceGroup cmdlet is used to generate the template for an existing resource group. It is useful in scenarios where you already have created some resources in your resource group but now want to leverage the benefits of using template backed deployments. This cmdlet gives you an easy start by generating the template for your existing resources in the resource group.</maml:para>
+        <maml:para>There might be some cases where this cmdlet fails to generate some parts of the template. We will give out warning messages to inform you of the resources that failed. The template will still be generated for the parts that were successful.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
