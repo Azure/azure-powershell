@@ -3,8 +3,8 @@
 
 This repository contains a set of PowerShell cmdlets for developers and administrators to develop, deploy and manage Microsoft Azure applications.
 
-* For documentation on how to build and deploy applications to Microsoft Azure please see the [Microsoft Azure Documentation Center](http://azure.microsoft.com/en-us/documentation/).
-* For comprehensive documentation on the developer cmdlets see [How to install and configure Azure PowerShell](http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
+* For documentation on how to build and deploy applications to Microsoft Azure please see the [Microsoft Azure Documentation Center](https://azure.microsoft.com/en-us/documentation/).
+* For comprehensive documentation on the developer cmdlets see [How to install and configure Azure PowerShell](https://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
 * For comprehensive documentation on the full set of Microsoft Azure cmdlets see [Microsoft Azure Management Center](http://go.microsoft.com/fwlink/?linkID=254459&clcid=0x409).
 
 ## Features
@@ -55,17 +55,17 @@ For detail descriptions and examples of the cmdlets, type
 
 ## Supported Environments
 
-* [Microsoft Azure](http://www.azure.microsoft.com)
+* [Microsoft Azure](https://azure.microsoft.com)
 * [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/)
-* [Windows Azure Pack](http://www.microsoft.com/en-us/server-cloud/windows-azure-pack.aspx)
-* [Microsoft Azure China](http://www.windowsazure.cn/)
+* [Windows Azure Pack](https://www.microsoft.com/en-us/server-cloud/windows-azure-pack.aspx)
+* [Microsoft Azure China](https://www.azure.cn/)
 * [USGovernment](https://azure.microsoft.com/en-us/features/gov/)
 
 ## Installation
 
 ### Microsoft Web Platform Installer
 
-1. Install [Microsoft Web Platform Installer](http://www.microsoft.com/web/downloads/platform.aspx).
+1. Install [Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx).
 2. Open Microsoft Web Platform Installer and search for __Microsoft Azure PowerShell__.
 3. Install.
 
@@ -84,7 +84,7 @@ You can also find the standalone installers for all the versions at [Downloads](
 
 ### Supported PowerShell Versions
 
-* [Windows Management Framework 3] (http://www.microsoft.com/en-us/download/details.aspx?id=34595)
+* [Windows Management Framework 3] (https://www.microsoft.com/en-us/download/details.aspx?id=34595)
 * [Windows Management Framework 4] (https://www.microsoft.com/en-us/download/details.aspx?id=40855)
 * [Windows Management Framework 5] (https://www.microsoft.com/en-us/download/details.aspx?id=50395)
 
@@ -92,7 +92,7 @@ You can also find the standalone installers for all the versions at [Downloads](
 
 In general, following are the steps to start using Microsoft Azure PowerShell
 
-* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
+* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](https://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
   * Option 1: Login with your Microsoft account or Organizational account directly from PowerShell. Microsoft Azure Active Directory authentication is used in this case. No management certificate is needed.
       * Starting from 1.0.0, you can use ```Add-AzureRmAccount -Credential``` to avoid the browser pop up for Organizational account.
       * To use RDFE cmdlets, use ```Add-AzureAccount```
@@ -120,7 +120,7 @@ New-AzureRmResourceGroup -Name myresourceGroup -Location "West US"
 Add-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 # use the cmdlets to manage your services/applications
-New-AzureRmResourceGroup -Name myresourceGroup -Location "Chine East"
+New-AzureRmResourceGroup -Name myresourceGroup -Location "China East"
 ```
 
 ### Windows Azure Pack
@@ -181,10 +181,10 @@ Be sure to check out the [Microsoft Azure Developer Forums on Stack Overflow](ht
 
 ## Contribute Code or Provide Feedback
 
-If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
+If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](https://azure.github.io/guidelines/).
 
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-powershell/issues) section of the project.
 
 # Learn More
 
-* [Microsoft Azure Script Center](http://www.azure.microsoft.com/en-us/documentation/scripts/)
+* [Microsoft Azure Script Center](https://azure.microsoft.com/en-us/documentation/scripts/)
