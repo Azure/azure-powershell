@@ -1461,7 +1461,7 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 	<command:details>
 		<command:name>Disable-AzureRmVMDiskEncryption</command:name>
 		<maml:description>
-			<maml:para>Disable-AzureRmVMDiskEncryption cmdlet disables encryption on a running IaaS VM in Azure. This cmdlet is supported only for Windows VMs and not Linux VMs. This cmdlet installs an extension on the VM to disable encryption. If no Name parameter is specified, an extension with default name &#39;AzureDiskEncryption&#39; for Windows VMs is created. This cmdlet reboots the VM. Please save your work on the VM before running this cmdlet and wait for it to be done.</maml:para>
+			<maml:para>Disable-AzureRmVMDiskEncryption cmdlet disables encryption on a running IaaS VM in Azure. This cmdlet is only supported on Windows VMs and not Linux VMs. This cmdlet installs an extension on the VM to disable encryption. If no Name parameter is specified, an extension with default name &#39;AzureDiskEncryption&#39; for Windows VMs is created. This cmdlet reboots the VM. Please save your work on the VM before running this cmdlet and wait for it to be done.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
