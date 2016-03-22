@@ -16,8 +16,16 @@ using System.Globalization;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
+    /// <summary>
+    /// Extension methods for strings.
+    /// </summary>
     public static class StringExtensions
     {
+        /// <summary>
+        /// Formats the string with parameters and invariant culture.
+        /// </summary>
+        /// <param name="s">The string</param>
+        /// <param name="args">The arguments</param>
         public static string FormatInvariant(this string s, params object[] args)
         {
             return string.Format(CultureInfo.InvariantCulture, s, args);

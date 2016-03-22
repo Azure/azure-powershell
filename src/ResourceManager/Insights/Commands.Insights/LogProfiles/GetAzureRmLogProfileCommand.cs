@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         #region Parameters declarations
 
         /// <summary>
-        /// Gets or sets the Name parameter of the cmdlet.
+        /// Gets or sets the name of the log profile.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the log profile.")]
         [ValidateNotNullOrEmpty]
