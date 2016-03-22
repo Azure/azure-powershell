@@ -250,7 +250,7 @@
     <value>In Schedule, if ScheduleRunFrequency is Weekly then ScheduleRunDays should not be empty and not contain duplicate entries</value>
   </data>
   <data name="InvalidScheduleTimeInScheduleException" xml:space="preserve">
-    <value>ScheduleTimes in Schedule should have ONE time and must be of multiples of 30 Mins with seconds and milliseconds set to 0</value>
+    <value>ScheduleTimes in Schedule should be in UTC Timezone, have ONE time and must be of multiples of 30 Mins with seconds and milliseconds set to 0</value>
   </data>
   <data name="InvalidWeeksOfMonthInMonthlyYearlyRetentionPolicyException" xml:space="preserve">
     <value>In Monthly/Yearly retention schedule, WeeksOfMonth is NULL or empty or contains duplicate entires</value>
@@ -260,5 +260,8 @@
   </data>
   <data name="MonthlyYearlyRetentionWeeklySchedulePolicyNULLException" xml:space="preserve">
     <value>In Monthly/Yearly retention schedule, if RetentionScheduleFormatType=Weekly then RetentionScheduleWeekly should NOT be null</value>
+  </data>
+  <data name="UpdateToNewAzurePowershellWarning" xml:space="preserve">
+    <value>Data truncated. Please upgrade to latest version of Azure Powershell</value>
   </data>
 </root>

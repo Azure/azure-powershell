@@ -7,8 +7,8 @@
     <ProjectGuid>{02234E90-BCDE-4B20-B1F5-01B1005821DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProviderModel</RootNamespace>
-    <AssemblyName>ProviderModel</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup.Providers</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup.Providers</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
