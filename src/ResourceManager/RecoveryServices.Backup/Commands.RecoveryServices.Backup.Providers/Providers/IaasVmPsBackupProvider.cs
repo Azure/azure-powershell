@@ -398,6 +398,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.IsMonthlyScheduleEnabled = true;
             defaultRetention.MonthlySchedule = new Models.MonthlyRetentionSchedule();
             defaultRetention.MonthlySchedule.DurationCountInMonths = 60; //tbd: make it const
+            defaultRetention.MonthlySchedule.RetentionTimes = new List<DateTime>();
+            defaultRetention.MonthlySchedule.RetentionTimes.Add(retentionTime);
             defaultRetention.MonthlySchedule.RetentionScheduleFormatType = Models.RetentionScheduleFormat.Weekly;
 
             //Initialize day based schedule
@@ -410,6 +412,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.IsYearlyScheduleEnabled = true;
             defaultRetention.YearlySchedule = new Models.YearlyRetentionSchedule();
             defaultRetention.YearlySchedule.DurationCountInYears = 10;
+            defaultRetention.YearlySchedule.RetentionTimes = new List<DateTime>();
+            defaultRetention.YearlySchedule.RetentionTimes.Add(retentionTime);
             defaultRetention.YearlySchedule.RetentionScheduleFormatType = Models.RetentionScheduleFormat.Weekly;
             defaultRetention.YearlySchedule.MonthsOfYear = new List<Models.Month>();
             defaultRetention.YearlySchedule.MonthsOfYear.Add(Models.Month.January);
@@ -666,17 +670,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             if (retPolicy.IsWeeklyScheduleEnabled && retPolicy.WeeklySchedule != null)
             {
-                retPolicy.DailySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
+                retPolicy.WeeklySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
             }
 
             if (retPolicy.IsMonthlyScheduleEnabled && retPolicy.MonthlySchedule != null)
             {
-                retPolicy.DailySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
+                retPolicy.MonthlySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
             }
 
             if (retPolicy.IsYearlyScheduleEnabled && retPolicy.YearlySchedule != null)
             {
-                retPolicy.DailySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
+                retPolicy.YearlySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
             }
         }
 
