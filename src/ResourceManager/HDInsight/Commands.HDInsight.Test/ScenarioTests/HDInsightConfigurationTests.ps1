@@ -18,9 +18,10 @@
     Tests pipelining with creating the config
 #>
     function Test-ConfigurationPipelining{
-        #test New-AzureRmHDInsightClusterConfig
-		$config = New-AzureRmHDInsightClusterConfig -ClusterType Hadoop
+        #test New-AzureRmHDInsightClusterConfig		
+		$config = New-AzureRmHDInsightClusterConfig -ClusterType Hadoop -ClusterTier Standard
 		Assert-NotNull $config.ClusterType
+		Assert-NotNull $config.ClusterTier
 		
 		#test Add-AzureRmHDInsightStorage
 		Assert-AreEqual $config.AdditionalStorageAccounts.Count 0

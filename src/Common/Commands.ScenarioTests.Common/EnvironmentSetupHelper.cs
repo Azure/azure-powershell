@@ -293,7 +293,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             IEnumerable<string> setupScripts,
             IEnumerable<string> scripts)
         {
-            SetupPowerShellModules(powershell, null);
+            SetupPowerShellModules(powershell, setupScripts);
 
             Collection<PSObject> output = null;
 

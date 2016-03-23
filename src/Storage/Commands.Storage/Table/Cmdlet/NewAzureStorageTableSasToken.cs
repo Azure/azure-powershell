@@ -43,7 +43,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Policy Identifier", ParameterSetName = SasPolicyParmeterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Policy Identifier", ParameterSetName = SasPolicyParmeterSet)]
+        [ValidateNotNullOrEmpty]
         public string Policy
         {
             get { return accessPolicyIdentifier; }
@@ -52,20 +53,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
         private string accessPolicyIdentifier;
 
-        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"audq\".",
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"audq\".",
             ParameterSetName = SasPermissionParameterSet)]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        public SharedAccessProtocol Protocol { get; set; }
+        [ValidateNotNull]
+        public SharedAccessProtocol? Protocol { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
+        [ValidateNotNullOrEmpty]
         public string IPAddressOrRange { get; set; }
 
-        [Parameter(HelpMessage = "Start Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Start Time")]
+        [ValidateNotNull]
         public DateTime? StartTime { get; set; }
 
-        [Parameter(HelpMessage = "Expiry Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Expiry Time")]
+        [ValidateNotNull]
         public DateTime? ExpiryTime { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
@@ -74,12 +82,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [Alias("startpk")]
         [Parameter(HelpMessage = "Start Partition Key")]
         public string StartPartitionKey { get; set; }
+
         [Alias("startrk")]
         [Parameter(HelpMessage = "Start Row Key")]
         public string StartRowKey { get; set; }
+
         [Alias("endpk")]
         [Parameter(HelpMessage = "End Partition Key")]
         public string EndPartitionKey { get; set; }
+
         [Alias("endrk")]
         [Parameter(HelpMessage = "End Row Key")]
         public string EndRowKey { get; set; }

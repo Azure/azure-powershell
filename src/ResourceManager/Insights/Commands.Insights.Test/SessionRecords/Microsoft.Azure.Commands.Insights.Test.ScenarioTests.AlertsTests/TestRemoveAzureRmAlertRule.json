@@ -1,0 +1,57 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/chiricutin?api-version=2016-03-01",
+            "RequestMethod": "DELETE",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [
+                    "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.14"
+                ]
+            },
+            "ResponseBody": "",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Content-Length": [
+                    "0"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1199"
+                ],
+                "x-ms-request-id": [
+                    "93550c06-54b2-4e11-8c29-a3bd7b37b1dc"
+                ],
+                "x-ms-correlation-request-id": [
+                    "5ae48b3c-591c-4a28-88c8-c873f541d1c4"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150303T185656Z:5ae48b3c-591c-4a28-88c8-c873f541d1c4"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+  "Names": {
+    "Test-GetAlertRule": [
+      ""
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}

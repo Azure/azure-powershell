@@ -22,30 +22,58 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAlertRule()
+        public void TestNewAzureRmAlertRuleWebhook()
         {
-            TestsController.NewInstance.RunPsTest("Test-AddAlertRule");
+            TestsController.NewInstance.RunPsTest("Test-NewAzureRmAlertRuleWebhook");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAlertRule()
+        public void TestNewAzureRmAlertRuleEmail()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAlertRule");
+            TestsController.NewInstance.RunPsTest("Test-NewAzureRmAlertRuleEmail");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAlertRule()
+        public void TestAddAzureRmMetricAlertRule()
         {
-            TestsController.NewInstance.RunPsTest("Test-RemoveAlertRule");
+            TestsController.NewInstance.RunPsTest("Test-AddAzureRmMetricAlertRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAlertHistory()
+        public void TestAddAzureRmLogAlertRule()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAlertHistory");
+            TestsController.NewInstance.RunPsTest("Test-AddAzureRmLogAlertRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzureRmWebtestAlertRule()
+        {
+            TestsController.NewInstance.RunPsTest("Test-AddAzureRmWebtestAlertRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureRmAlertRule()
+        {
+            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAlertRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAzureRmAlertRule()
+        {
+            TestsController.NewInstance.RunPsTest("Test-RemoveAzureRmAlertRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureRmAlertHistory()
+        {
+            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAlertHistory");
         }
     }
 }
