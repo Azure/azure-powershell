@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     CreationDate = deletedDatabaseBackup.Properties.CreationDate,
                     DeletionDate = deletedDatabaseBackup.Properties.DeletionDate,
                     RecoveryPeriodStartDate = deletedDatabaseBackup.Properties.EarliestRestoreDate,
-                    ResourceId = deletedDatabaseBackup.Id
+                    ResourceId = deletedDatabaseBackup.Id,
                 };
             }).ToList();
         }
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ServerName = serverName,
                 ResourceId = geoBackup.Id,
                 Edition = geoBackup.Properties.Edition,
-                LastAvailableBackupDate = geoBackup.Properties.LastAvailableBackupDate
+                LastAvailableBackupDate = geoBackup.Properties.LastAvailableBackupDate,
             };
         }
 
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 CreationDate = deletedDatabaseBackup.Properties.CreationDate,
                 DeletionDate = deletedDatabaseBackup.Properties.DeletionDate,
                 RecoveryPeriodStartDate = deletedDatabaseBackup.Properties.EarliestRestoreDate,
-                ResourceId = deletedDatabaseBackup.Id
+                ResourceId = deletedDatabaseBackup.Id,
             };
         }
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 {
                     ResourceGroupName = resourceGroup,
                     ServerName = serverName,
-                    BackupArchivalVaultID = baVault.BackupArchivalVaultID
+                    RecoveryServicesVaultId = baVault.RecoveryServicesVaultId,
                 };
             }).ToList();
         }
@@ -223,8 +223,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     ResourceGroupName = resourceGroup,
                     ServerName = serverName,
                     DatabaseName = databaseName,
-                    BackupArchivalState = baPolicy.BackupArchivalState,
-                    VaultPolicyName = baPolicy.BackupArchivalPolicyID
+                    State = baPolicy.State,
+                    RecoveryServicesVaultPolicyId = baPolicy.RecoveryServicesVaultPolicyId,
                 };
             }).ToList();
         }
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             {
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
-                BackupArchivalVaultID = baVault.BackupArchivalVaultID
+                RecoveryServicesVaultId = baVault.RecoveryServicesVaultId,
             };
         }
 
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
-        /// <param name="baPolicyName">THe name of the backup archival policy</param>
+        /// <param name="baPolicyName">The name of the backup archival policy</param>
         /// <returns>A backup archival policy</returns>
         internal AzureSqlDatabaseBackupArchivalPolicyModel GetDatabaseBackupArchivalPolicy(string resourceGroup, string serverName, string databaseName, string baPolicyName)
         {
@@ -263,8 +263,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
                 DatabaseName = databaseName,
-                BackupArchivalState = baPolicy.BackupArchivalState,
-                VaultPolicyName = baPolicy.BackupArchivalPolicyID
+                State = baPolicy.State,
+                RecoveryServicesVaultPolicyId = baPolicy.RecoveryServicesVaultPolicyId,
             };
         }
 
@@ -281,14 +281,14 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             {
                 Properties = new BackupArchivalVaultCreateOrUpdateProperties()
                 {
-                    VaultResourceId = model.BackupArchivalVaultID
+                    ReocveryServiceVaultId = model.RecoveryServicesVaultId
                 }
             });
             return new AzureSqlServerBackupArchivalVaultModel()
             {
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
-                BackupArchivalVaultID = baVault.BackupArchivalVaultID
+                RecoveryServicesVaultId = baVault.RecoveryServicesVaultId,
             };
         }
 
@@ -306,8 +306,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             {
                 Properties = new DatabaseBackupArchivalPolicyCreateOrUpdateProperties()
                 {
-                    BackupArchivalState = model.BackupArchivalState,
-                    VaultPolicyName = model.VaultPolicyName,
+                    State = model.State,
+                    RecoveryServicesVaultPolicyId = model.RecoveryServicesVaultPolicyId,
                 }
             });
             return new AzureSqlDatabaseBackupArchivalPolicyModel()
@@ -315,8 +315,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
                 DatabaseName = databaseName,
-                BackupArchivalState = baPolicy.BackupArchivalState,
-                VaultPolicyName = baPolicy.BackupArchivalPolicyID
+                State = baPolicy.State,
+                RecoveryServicesVaultPolicyId = baPolicy.RecoveryServicesVaultPolicyId,
             };
         }
 

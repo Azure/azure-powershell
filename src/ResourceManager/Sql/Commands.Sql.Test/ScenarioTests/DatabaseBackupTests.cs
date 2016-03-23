@@ -46,21 +46,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestServerBackupArchivalVault()
+        public void TestServerBackupLongTermRetentionVault()
         {
-            RunPowerShellTest("Test-ServerBackupArchivalVault");
+            RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseBackupArchivalPolicy()
+        public void TestDatabaseBackupLongTermRetentionPolicy()
         {
-            RunPowerShellTest("Test-DatabaseBackupArchivalPolicy");
+            RunPowerShellTest("Test-DatabaseBackupLongTermRetentionPolicy");
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRestoreArchivedBackup()
+        public void TestRestoreLongTermRetentionBackup()
         {
-            RunPowerShellTest("Test-RestoreArchivedBackup");
+            RunPowerShellTest("Test-RestoreLongTermRetentionBackup");
         }
     }
 }

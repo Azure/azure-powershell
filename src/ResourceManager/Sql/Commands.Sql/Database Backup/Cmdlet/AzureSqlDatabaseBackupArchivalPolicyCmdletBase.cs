@@ -46,13 +46,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public string DatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the backup archival policy.
+        /// Gets or sets the name of the backup long term retention policy.
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the backup archival policy.")]
+            HelpMessage = "The name of the backup long term retention policy.")]
         [ValidateNotNullOrEmpty]
-        public string BackupArchivalPolicyName { get; set; }
+        public string BackupLongTermRetentionPolicyName { get; set; }
 
         /// <summary>
         /// Initializes the adapter

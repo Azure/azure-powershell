@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-   [Cmdlet(VerbsCommon.Get, "AzureRnSqlServerBackupArchivalVault",
+   [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerBackupLongTermRetentionVault",
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlServerBackupArchivalVault : AzureSqlServerBackupArchivalVaultCmdletBase
     {
@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         {
             ICollection<AzureSqlServerBackupArchivalVaultModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("BackupArchivalVaultName"))
+            if (MyInvocation.BoundParameters.ContainsKey("BackupLongTermRetentionVaultName"))
             {
                 results = new List<AzureSqlServerBackupArchivalVaultModel>();
-                results.Add(ModelAdapter.GetBackupArchivalVault(this.ResourceGroupName, this.ServerName, this.BackupArchivalVaultName));
+                results.Add(ModelAdapter.GetBackupArchivalVault(this.ResourceGroupName, this.ServerName, this.BackupLongTermRetentionVaultName));
             }
             else
             {

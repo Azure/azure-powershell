@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public string ServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the backup archival vault
+        /// Gets or sets the name of the backup long term retention vault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the backup archival vault.")]
+            HelpMessage = "The name of the backup long term retention vault.")]
         [ValidateNotNullOrEmpty]
-        public string BackupArchivalVaultName { get; set; }
+        public string BackupLongTermRetentionVaultName { get; set; }
 
         /// <summary>
         /// Initializes the adapter

@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupArchivalPolicy",
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseBackupArchivalPolicy : AzureSqlDatabaseBackupArchivalPolicyCmdletBase
     {
@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         {
             ICollection<AzureSqlDatabaseBackupArchivalPolicyModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("BackupArchivalPolicyName"))
+            if (MyInvocation.BoundParameters.ContainsKey("BackupLongTermRetentionPolicyName"))
             {
                 results = new List<AzureSqlDatabaseBackupArchivalPolicyModel>();
-                results.Add(ModelAdapter.GetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.BackupArchivalPolicyName));
+                results.Add(ModelAdapter.GetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.BackupLongTermRetentionPolicyName));
             }
             else
             {

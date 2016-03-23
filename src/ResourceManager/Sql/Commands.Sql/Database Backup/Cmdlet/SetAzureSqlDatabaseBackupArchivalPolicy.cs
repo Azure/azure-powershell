@@ -24,26 +24,26 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// <summary>
     /// Cmdlet to create or update a new Azure Sql Database backup archival policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupArchivalPolicy",
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
         ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlDatabaseBackupArchivalPolicy : AzureSqlDatabaseBackupArchivalPolicyCmdletBase
     {
         /// <summary>
-        /// Gets or sets the backup archival state
+        /// Gets or sets the backup long term retention state
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The backup archival state.")]
+            HelpMessage = "The backup long term retention state.")]
         [ValidateNotNullOrEmpty]
-        public string BackupArchivalState { get; set; }
+        public string State { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the backup archival policy
+        /// Gets or sets the name of the backup long term retention policy
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the backup archival policy.")]
+            HelpMessage = "The Resource ID of the backup long term retention policy.")]
         [ValidateNotNullOrEmpty]
-        public string BackupArchivalPolicyName { get; set; }
+        public string RecoveryServicesVaultPolicyId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseBackupArchivalPolicyModel> GetEntity()
         {
             return new List<AzureSqlDatabaseBackupArchivalPolicyModel>() { 
-                ModelAdapter.GetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.BackupArchivalPolicyName) 
+                ModelAdapter.GetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.BackupLongTermRetentionPolicyName) 
             };
         }
 
@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
                 DatabaseName = DatabaseName,
-                BackupArchivalState = BackupArchivalState,
-                VaultPolicyName = BackupArchivalPolicyName,
+                State = State,
+                RecoveryServicesVaultPolicyId = RecoveryServicesVaultPolicyId,
             });
             return newEntity;
         }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseBackupArchivalPolicyModel> PersistChanges(IEnumerable<AzureSqlDatabaseBackupArchivalPolicyModel> entity)
         {
             return new List<AzureSqlDatabaseBackupArchivalPolicyModel>() {
-                ModelAdapter.SetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.BackupArchivalPolicyName, entity.First())
+                ModelAdapter.SetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.RecoveryServicesVaultPolicyId, entity.First())
             };
         }
     }

@@ -24,19 +24,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// <summary>
     /// Cmdlet to create or update a new Azure Sql Server backup archival vault
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerBackupArchivalVault",
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerBackupLongTermRetentionVault",
         ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlServerBackupArchivalVault : AzureSqlServerBackupArchivalVaultCmdletBase
     {
-        /// <summary>
-        /// Gets or sets the name of the backup archival vault
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the backup archival vault.")]
-        [ValidateNotNullOrEmpty]
-        public string BackupArchivalVaultName { get; set; }
-
         /// <summary>
         /// Gets or sets the vault resource ID
         /// </summary>
@@ -44,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The vault resource ID.")]
         [ValidateNotNullOrEmpty]
-        public string VaultResourceId { get; set; }
+        public string RecoveryServicesVaultId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -53,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override IEnumerable<AzureSqlServerBackupArchivalVaultModel> GetEntity()
         {
             return new List<AzureSqlServerBackupArchivalVaultModel>() { 
-                ModelAdapter.GetBackupArchivalVault(this.ResourceGroupName, this.ServerName, this.BackupArchivalVaultName) 
+                ModelAdapter.GetBackupArchivalVault(this.ResourceGroupName, this.ServerName, this.BackupLongTermRetentionVaultName) 
             };
         }
 
@@ -69,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                BackupArchivalVaultID = VaultResourceId
+                RecoveryServicesVaultId = RecoveryServicesVaultId,
             });
             return newEntity;
         }
@@ -82,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override IEnumerable<AzureSqlServerBackupArchivalVaultModel> PersistChanges(IEnumerable<AzureSqlServerBackupArchivalVaultModel> entity)
         {
             return new List<AzureSqlServerBackupArchivalVaultModel>() {
-                ModelAdapter.SetBackupArchivalVault(this.ResourceGroupName, this.ServerName, this.BackupArchivalVaultName, entity.First())
+                ModelAdapter.SetBackupArchivalVault(this.ResourceGroupName, this.ServerName, this.BackupLongTermRetentionVaultName, entity.First())
             };
         }
     }
