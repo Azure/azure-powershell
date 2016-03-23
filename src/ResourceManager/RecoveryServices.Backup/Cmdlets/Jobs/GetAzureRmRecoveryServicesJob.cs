@@ -44,20 +44,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.BackupManagementTypeFilter)]
         [ValidateNotNullOrEmpty]
-        public BackupManagementType BackupManagementType { get; set; }
+        public BackupManagementType? BackupManagementType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.OperationFilter)]
         [ValidateNotNullOrEmpty]
-        public JobOperation Operation { get; set; }
+        public JobOperation? Operation { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.StatusFilter)]
         [ValidateNotNullOrEmpty]
-        public JobStatus Status { get; set; }
+        public JobStatus? Status { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ARSVault Vault = null;
-
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
@@ -68,18 +66,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (From.HasValue)
                 {
+                    WriteDebug("Entered From filter: " + From.Value);
                     rangeStart = From.Value;
                 }
 
                 if (To.HasValue)
                 {
+                    WriteDebug("Entered To filter; " + To.Value);
                     rangeEnd = To.Value;
                 }
 
                 // validate filters
-                if (rangeEnd >= rangeStart)
+                if (rangeEnd <= rangeStart)
                 {
-                    throw new Exception(CmdletWarningAndErrorMessages.Job.ToShouldBeLessThanFrom);
+                    throw new Exception(CmdletWarningAndErrorMessages.Job.ToShouldBeGreaterThanFrom);
                 }
                 else if (rangeEnd.Subtract(rangeStart) > TimeSpan.FromDays(30))
                 {
@@ -100,11 +100,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     JobId = Job.InstanceId;
                 }
 
-                // TODO: Initialize Vault object from base cmdlet once support is added
                 List<AzureRmRecoveryServicesJobBase> result = new List<AzureRmRecoveryServicesJobBase>();
                 int resultCount = 0;
-                var adapterResponse = HydraAdapter.GetJobs(Vault.ResouceGroupName, Vault.Name, JobId, Status.ToString(), Operation.ToString(), rangeStart, rangeEnd,
-                    BackupManagementType.ToString());
+                var adapterResponse = HydraAdapter.GetJobs(JobId,
+                    Status.HasValue ? Status.ToString() : null,
+                    Operation.HasValue ? Operation.ToString() : null,
+                    rangeStart,
+                    rangeEnd,
+                    BackupManagementType.HasValue ? Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null);
                 JobConversions.AddHydraJobsToPSList(adapterResponse, result, ref resultCount);
 
                 while (!string.IsNullOrEmpty(adapterResponse.ItemList.NextLink))
@@ -120,14 +123,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     HydraHelpers.GetSkipTokenFromNextLink(adapterResponse.ItemList.NextLink, out skipToken);
                     if (skipToken != null)
                     {
-                        adapterResponse = HydraAdapter.GetJobs(Vault.ResouceGroupName, Vault.Name, JobId, Status.ToString(), Operation.ToString(),
-                            rangeStart, rangeEnd, BackupManagementType.ToString(), null, skipToken);
+                        adapterResponse = HydraAdapter.GetJobs(JobId,
+                            Status.HasValue ? Status.ToString() : null,
+                            Operation.HasValue ? Operation.ToString() : null,
+                            rangeStart,
+                            rangeEnd,
+                            BackupManagementType.HasValue ? Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null,
+                            null,
+                            skipToken);
                         JobConversions.AddHydraJobsToPSList(adapterResponse, result, ref resultCount);
                     }
                     else
                     {
                         break;
                     }
+                }
+
+                foreach (var temp in result)
+                {
+                    WriteDebug("StartTime: " + temp.StartTime);
                 }
 
                 if (resultCount != 1)

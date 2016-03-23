@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 ProtectableObjectListQueryParameters queryFilter)
         {
             string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             return BmsAdapter.Client.ProtectableObject.ListAsync(
                                      resourceGroupName,

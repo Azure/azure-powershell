@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             // we have to use english culture because our user might be running 
             // PS in another culture and our service can't understand it.
             DateTimeFormatInfo dateFormat = new CultureInfo("en-US").DateTimeFormat;
-            return date.ToString("yyyy-MM-dd hh:mm:ss tt", dateFormat);
+            return date.ToUniversalTime().ToString("yyyy-MM-dd hh:mm:ss tt", dateFormat);
         }
     }
 }

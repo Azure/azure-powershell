@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -85,15 +86,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 response = new AzureRmRecoveryServicesAzureVmJob();
             }
 
-            response.InstanceId = hydraJob.Id;
-            response.StartTime = vmJob.StartTime;
-            response.EndTime = vmJob.EndTime;
+            response.InstanceId = GetJobIdFromFullId(hydraJob.Id);
+            response.StartTime = vmJob.StartTime.ToLocalTime();
+            if (vmJob.EndTime > new DateTime(2000, 1, 1))
+            {
+                response.EndTime = vmJob.EndTime.ToLocalTime();
+            }
+            else
+            {
+                response.EndTime = null;
+            }
             response.Duration = vmJob.Duration;
             response.Status = vmJob.Status;
             response.VmVersion = vmJob.VirtualMachineVersion;
             response.WorkloadName = vmJob.EntityFriendlyName;
             response.ActivityId = vmJob.ActivityId;
-            response.BackupManagementType = vmJob.BackupManagementType;
+            response.BackupManagementType = GetPSBackupManagementType(vmJob.BackupManagementType);
             response.Operation = vmJob.Operation;
 
             if (vmJob.ErrorDetails != null)
@@ -152,8 +160,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return psErrorInfo;
         }
 
+        private static string GetJobIdFromFullId(string fullId)
+        {
+            string[] splitArr = fullId.Split("/".ToCharArray());
+            return splitArr[splitArr.Length - 1];
+        }
+
         #endregion
 
+        #endregion
+
+        #region Enum translators
+
+        public static string GetJobTypeForService(BackupManagementType mgmtType)
+        {
+            switch (mgmtType)
+            {
+                case BackupManagementType.AzureVM:
+                    return "AzureIaasVM";
+                default:
+                    throw new Exception("Invalid BackupManagementType provided: " + mgmtType);
+            }
+        }
+
+        public static string GetPSBackupManagementType(string jobType)
+        {
+            if (jobType == "AzureIaasVM")
+            {
+                return BackupManagementType.AzureVM.ToString();
+            }
+            else
+            {
+                throw new Exception("Invalid JobType provided: " + jobType);
+            }
+        }
+                    
         #endregion
     }
 }

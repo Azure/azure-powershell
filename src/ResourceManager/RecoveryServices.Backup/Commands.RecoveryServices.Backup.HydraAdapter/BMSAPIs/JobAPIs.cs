@@ -19,22 +19,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public partial class HydraAdapter
     {
-        public JobResponse GetJob(string resourceGroupName, string resourceName, string jobId)
+        public JobResponse GetJob(string jobId)
         {
-            resourceName = BmsAdapter.GetResourceName();
-            resourceGroupName = BmsAdapter.GetResourceName();
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             return BmsAdapter.Client.Job.GetAsync(
-                resourceGroupName, 
-                resourceName, 
-                jobId, 
-                BmsAdapter.GetCustomRequestHeaders(), 
+                resourceGroupName,
+                resourceName,
+                jobId,
+                BmsAdapter.GetCustomRequestHeaders(),
                 BmsAdapter.CmdletCancellationToken).Result;
         }
 
         public JobListResponse GetJobs(
-            string resourceGroupName,
-            string resourceName,
             string jobId,
             string status,
             string operation,
@@ -44,8 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             int? top = null,
             string skipToken = null)
         {
-            resourceName = BmsAdapter.GetResourceName();
-            resourceGroupName = BmsAdapter.GetResourceName();
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             // build pagination request
             PaginationRequest pagReq = new PaginationRequest()
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 pagReq.Top = top.ToString();
             }
 
-            CommonJobQueryFilters commonFilters  = GetQueryObject(
+            CommonJobQueryFilters commonFilters = GetQueryObject(
                 backupManagementType,
                 startTime,
                 endTime,
@@ -69,19 +67,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             return BmsAdapter.Client.Job.ListAsync(
                 resourceGroupName,
                 resourceName,
-                null,
+                commonFilters,
                 pagReq,
                 BmsAdapter.GetCustomRequestHeaders(),
                 BmsAdapter.CmdletCancellationToken).Result;
         }
 
-        public BaseRecoveryServicesJobResponse CancelJob(
-            string resourceGroupName, 
-            string resourceName, 
-            string jobId)
+        public BaseRecoveryServicesJobResponse CancelJob(string jobId)
         {
-            resourceName = BmsAdapter.GetResourceName();
-            resourceGroupName = BmsAdapter.GetResourceName();
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             return BmsAdapter.Client.Job.CancelJobAsync(
                 resourceGroupName,
@@ -92,8 +87,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         }
 
         public BaseRecoveryServicesJobResponse ExportJobs(
-            string resourceGroupName,
-            string resourceName,
             string jobId,
             string status,
             string operation,
@@ -101,8 +94,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             DateTime endTime,
             string backupManagementType)
         {
-            resourceName = BmsAdapter.GetResourceName();
-            resourceGroupName = BmsAdapter.GetResourceName();
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             CommonJobQueryFilters filters = GetQueryObject(
                 backupManagementType,

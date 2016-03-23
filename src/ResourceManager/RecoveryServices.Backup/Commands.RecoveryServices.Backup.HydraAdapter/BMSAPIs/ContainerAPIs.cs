@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         public BaseRecoveryServicesJobResponse RefreshContainers()
         {
             string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             var response = BmsAdapter.Client.Container.RefreshAsync(
                 resourceGroupName, resourceName,

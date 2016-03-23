@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((LongTermRetentionPolicy)
                                                   ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy);
                 iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicyPolicy((SimpleSchedulePolicy)
-                                                 ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy);                
+                                                 ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy);
             }
             else
             {

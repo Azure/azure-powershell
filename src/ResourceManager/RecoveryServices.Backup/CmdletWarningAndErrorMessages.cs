@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RefineFilters = "There are more than 1000 jobs for the filter combination you have provided. Kindly refine your filters to fetch the job you want.";
             public const string AllowedDateTimeRangeExceeded = "To filter should not be more than 30 days away from From filter.";
             public const string JobIdAndJobMismatch = "JobID and Job object provided don't match each other";
-            public const string ToShouldBeLessThanFrom = "To filter should not less than From filter.";
+            public const string ToShouldBeGreaterThanFrom = "To filter should not be less than From filter.";
             public const string WaitJobInvalidInput = "Please pass Job or List of Jobs as input. Your input is of type: ";
         }
     }
