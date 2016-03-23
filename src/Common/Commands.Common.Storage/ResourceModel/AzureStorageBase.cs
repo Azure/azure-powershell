@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
+namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
     using System;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
