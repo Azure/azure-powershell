@@ -100,17 +100,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             string resourceId = this.Id ?? this.GetResourceId();
 
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceId)
-                .ConfigureAwait(continueOnCapturedContext: false);
-
             if (IsResourceGet(resourceId))
             {
                 var resource = await this
                     .GetResourcesClient()
                     .GetResource<JObject>(
                         resourceId: resourceId,
-                        apiVersion: apiVersion,
+                        apiVersion: Constants.PolicyApiVersion,
                         cancellationToken: this.CancellationToken.Value,
                         odataQuery: null)
                     .ConfigureAwait(continueOnCapturedContext: false);
@@ -126,7 +122,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     .GetResourcesClient()
                     .ListObjectColleciton<JObject>(
                         resourceCollectionId: resourceId,
-                        apiVersion: apiVersion,
+                        apiVersion: Constants.PolicyApiVersion,
                         cancellationToken: this.CancellationToken.Value,
                         odataQuery: filter)
                     .ConfigureAwait(continueOnCapturedContext: false);
@@ -141,7 +137,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     .GetResourcesClient()
                     .ListObjectColleciton<JObject>(
                         resourceCollectionId: resourceId,
-                        apiVersion: apiVersion,
+                        apiVersion: Constants.PolicyApiVersion,
                         cancellationToken: this.CancellationToken.Value,
                         odataQuery: filter)
                     .ConfigureAwait(continueOnCapturedContext: false);
