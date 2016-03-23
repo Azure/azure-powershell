@@ -30,10 +30,25 @@ function SetArmCommonVersion([string]$FilePath, [string]$Version)
     Set-Content -Path $assemblyConfig -Value $content -Encoding UTF8
 }
 
+function SetCommonAssemlbyVersions([string]$FilePath, [string]$Version)
+{
+    $commonAssemblies = Join-Path $FilePath "Common"
+    $assemblyInfos = Get-ChildItem -Path $commonAssemblies -Filter AssemblyInfo.cs -Recurse
+    ForEach ($assemblyInfo in $assemblyInfos)
+    {
+        $content = Get-Content $assemblyInfo.FullName
+        $content = $content -replace "\[assembly: AssemblyVersion\([\w\`"\.]+\)\]", "[assembly: AssemblyVersion(`"$Version`")]"
+        $content = $content -replace "\[assembly: AssemblyFileVersion\([\w\`"\.]+\)\]", "[assembly: AssemblyFileVersion(`"$Version`")]"
+        Write-Output "Updating assembly version in " $assemblyInfo.FullName
+        Set-Content -Path $assemblyInfo.FullName -Value $content -Encoding UTF8
+    }   
+}
+
 if (!$Folder) 
 {
     $Folder = "$PSScriptRoot\..\src"
 }
 
 SetCommandsCommonVersion $Folder $Version
+SetCommonAssemlbyVersions $Folder $Version
 SetArmCommonVersion $Folder $Version
