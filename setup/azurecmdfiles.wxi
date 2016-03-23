@@ -3029,6 +3029,9 @@
                         <Component Id="cmpF7ADD37722F45985B5323202F35958F2" Guid="*">
                             <File Id="fil0FA91D9C31AF07DCD03BFB842FE2B77E" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.dll" />
                         </Component>
+                        <Component Id="cmp9D64A1111722F25BC100121E73BE039E" Guid="*">
+                            <File Id="filD9BAD7BE2D8E9E1E7DDA9BAED346E4B7" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.dll-Help.xml" />
+                        </Component>
                         <Component Id="cmpE52498FB0431A601DD9FDE6F082DF1D4" Guid="*">
                             <File Id="fil1C2DE4A7227BA117EC30E177CDE33EBA" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll" />
                         </Component>
@@ -3091,6 +3094,9 @@
                         </Component>
                         <Component Id="cmp7F9F978DBE7D6715FA75FFB3BE40806E" Guid="*">
                             <File Id="filD8D9BC2D74630E2A6A9438D81BEBFE40" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Newtonsoft.Json.dll" />
+                        </Component>
+                        <Component Id="cmp4AA539549D58FD2D5DD3C404556F3DBB" Guid="*">
+                            <File Id="fil4D8DA0FB6E8B4E47BD5A37E758BFC156" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\PIR.psd1" />
                         </Component>
                         <Component Id="cmp348131C92750A7166DCA75757E409378" Guid="*">
                             <File Id="fil4C89A8A3AA200315DD08D7FD6DA12286" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\ServiceManagementStartup.ps1" />
@@ -5836,6 +5842,7 @@
             <ComponentRef Id="cmp70D1D6B3A151E5DA4EBA09BA3F9FAD5F" />
             <ComponentRef Id="cmpAC5C284B13829839B2AD819221131DB0" />
             <ComponentRef Id="cmpF7ADD37722F45985B5323202F35958F2" />
+            <ComponentRef Id="cmp9D64A1111722F25BC100121E73BE039E" />
             <ComponentRef Id="cmpE52498FB0431A601DD9FDE6F082DF1D4" />
             <ComponentRef Id="cmpFD1814D8F2D73854649A52268A2C2A83" />
             <ComponentRef Id="cmp9DF26170AD3B0860AAFF291D39DD9FC5" />
@@ -5857,6 +5864,7 @@
             <ComponentRef Id="cmpBFA5705441B7DF4264EFE1632A830DF1" />
             <ComponentRef Id="cmpA7662EDC9DDCCFD0290DDB9350660A6B" />
             <ComponentRef Id="cmp7F9F978DBE7D6715FA75FFB3BE40806E" />
+            <ComponentRef Id="cmp4AA539549D58FD2D5DD3C404556F3DBB" />
             <ComponentRef Id="cmp348131C92750A7166DCA75757E409378" />
             <ComponentRef Id="cmp289352966E5E4647DF24D7FFCEA4200F" />
             <ComponentRef Id="cmpA497DCDAF4262858EF7BF8F3E4A03F30" />
