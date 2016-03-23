@@ -7,6 +7,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
     public class DiagnosticsHelperTest
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetEventHubFromJsonConfig()
         {
             var table = new Hashtable();
@@ -20,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetEventHubFromXmlConfig()
         {
             var table = new Hashtable();
