@@ -263,7 +263,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             return privateConfig;
         }
 
-        private static void AddEventHubPrivateConfig(Hashtable privateConfig, string configurationPath)
+        internal static void AddEventHubPrivateConfig(Hashtable privateConfig, string configurationPath)
         {
             var eventHubUrl = GetConfigValueFromPrivateConfig(configurationPath, EventHubElemStr, EventHubUrlAttr);
             var eventHubSharedAccessKeyName = GetConfigValueFromPrivateConfig(configurationPath, EventHubElemStr, EventHubSharedAccessKeyNameAttr);

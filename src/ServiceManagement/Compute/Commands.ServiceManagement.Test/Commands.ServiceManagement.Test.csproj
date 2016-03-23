@@ -457,6 +457,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Include="UnitTests\Cmdlets\IaaS\Extensions\Diagnostics\DiagnosticsHelperTest.cs" />
     <Compile Include="UnitTests\Cmdlets\IaaS\Extensions\DSC\DscExtensionConfigurationParsingHelperTests.cs" />
     <Compile Include="UnitTests\Cmdlets\IaaS\Extensions\DSC\DscExtensionSettingsSerializerTests.cs" />
     <Compile Include="UnitTests\Cmdlets\IaaS\Extensions\DSC\GetAzureVMDscExtensionStatusUnitTest.cs" />
@@ -575,6 +576,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\wrongPara_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Diagnostics\diagnostics.wadcfgx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Diagnostics\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
