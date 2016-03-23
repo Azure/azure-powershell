@@ -442,7 +442,7 @@
     </Compile>
     <!--Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteARPTableCommand.cs" /-->
     <!--Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteRouteTableCommand.cs" /-->
-    <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteStatsCommand.cs" />
+    <!--Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteStatsCommand.cs" /-->
     <Compile Include="ProviderWideCmdlets\TestAzureDnsAvailabilityCmdlet.cs" />
     <Compile Include="VirtualNetwork\RemoveAzureVirtualNetworkCommand.cs" />
     <Compile Include="VirtualNetwork\SetAzureVirtualNetworkCommand.cs" />
