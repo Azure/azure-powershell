@@ -38,10 +38,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory=true, ParameterSetName=ResourceNameParameterSet, 
+        [Parameter(Mandatory=true, ParameterSetName=ResourceNameParameterSet,
         ValueFromPipelineByPropertyName = true)]
+        [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
-        public string StorageAccountName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             else
             {
-                account = StorageUtilities.GenerateCloudStorageAccount(new ARMStorageProvider(StorageClient), ResourceGroupName, StorageAccountName);
+                account = StorageUtilities.GenerateCloudStorageAccount(new ARMStorageProvider(StorageClient), ResourceGroupName, Name);
             }
 
             // Clear the current storage account for both SM and RM

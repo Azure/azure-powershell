@@ -3066,6 +3066,13 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ClusterTier</maml:name>
+          <maml:description>
+            <maml:para>The HDInsight cluster tier. By default, this is Standard. The Premium tier can only be used with Linux clusters, and it enables the use of some new features.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Tier</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>VirtualNetworkId</maml:name>
           <maml:description>
             <maml:para>The virtual network guid for this HDInsight cluster.</maml:para>
@@ -3388,6 +3395,13 @@
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ClusterTier</maml:name>
+          <maml:description>
+            <maml:para>The HDInsight cluster tier. By default, this is Standard. The Premium tier can only be used with Linux clusters, and it enables the use of some new features.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Tier</command:parameterValue>
+        </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>VirtualNetworkId</maml:name>
         <maml:description>
           <maml:para>The virtual network guid for this HDInsight cluster.</maml:para>
@@ -3672,6 +3686,13 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ClusterTier</maml:name>
+          <maml:description>
+            <maml:para>The HDInsight cluster tier. By default, this is Standard. The Premium tier can only be used with Linux clusters, and it enables the use of some new features.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Tier</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ObjectId</maml:name>
           <maml:description>
             <maml:para />
@@ -3811,6 +3832,13 @@
           <maml:uri/>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ClusterTier</maml:name>
+        <maml:description>
+          <maml:para>The HDInsight cluster tier. By default, this is Standard. The Premium tier can only be used with Linux clusters, and it enables the use of some new features.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Tier</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ObjectId</maml:name>
