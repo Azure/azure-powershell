@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <typeparam name="TResponse">The type of the expected response.</typeparam>
         public static RequestInterceptor CreateFakeServiceResponseInterceptor<TBody, TOptions, TResponse>(TResponse responseToUse = default(TResponse),
             Action<BatchRequest<TBody, TOptions, TResponse>> requestAction = null)
-            where TBody : class 
+            where TBody : class
             where TOptions : ProxyModels.IOptions, new()
             where TResponse : IAzureOperationResponse, new()
         {
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         public static AzureOperationResponse<TBody, THeader> CreateGenericAzureOperationResponse<TBody, THeader>()
-            where TBody : class, new () 
+            where TBody : class, new ()
             where THeader : class, new ()
         {
             var response = new AzureOperationResponse<TBody, THeader>();
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             response.Body = new EmptyPagedEnumerable<TBody>();
             response.Headers = new THeader();
             return response;
-        } 
+        }
 
         /// <summary>
         /// Creates a RequestInterceptor that does not contact the Batch Service on a Get NodeFile or a Get NodeFile Properties call.
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             cert.Thumbprint = thumbprint;
 
             response.Body = cert;
-            
+
             return response;
         }
 
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         {
             var response = new AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
-            
+
             List<ProxyModels.Certificate> certs = new List<ProxyModels.Certificate>();
 
             foreach (string t in certThumbprints)
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 job.Id = id;
                 jobs.Add(job);
             }
-            
+
             response.Body = new EmptyPagedEnumerable<ProxyModels.CloudJob>(jobs);
 
             return response;
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// </summary>
         public static AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> CreateCloudTaskListResponse(IEnumerable<string> taskIds)
         {
-            var response = new AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>(); 
+            var response = new AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.CloudTask> tasks = new List<ProxyModels.CloudTask>();
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.NodeFile> files = new List<ProxyModels.NodeFile>();
-            
+
             foreach (string name in fileNames)
             {
                 ProxyModels.NodeFile file = new ProxyModels.NodeFile();
@@ -671,7 +671,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     var response = new AzureOperationResponse<ProxyModels.CloudJobSchedule, ProxyModels.JobScheduleGetHeaders>();
-                    
+
                     response.Body = new ProxyModels.CloudJobSchedule(id: jobScheduleId, schedule: new ProxyModels.Schedule(), jobSpecification: new ProxyModels.JobSpecification());
 
                     Task<AzureOperationResponse<ProxyModels.CloudJobSchedule, ProxyModels.JobScheduleGetHeaders>> task = Task.FromResult(response);
@@ -741,7 +741,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Uses Reflection to set a property value on an object. 
+        /// Uses Reflection to set a property value on an object.
         /// </summary>
         internal static void SetField(object obj, string fieldName, object fieldValue)
         {
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="otherEnum"></param>
@@ -768,7 +768,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="otherEnum"></param>

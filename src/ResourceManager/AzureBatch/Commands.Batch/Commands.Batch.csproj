@@ -44,10 +44,9 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Batch, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.Internal.Iaas.3.1.0.7\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Batch, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <Private>True</Private>
+      <HintPath>..\lib\Microsoft.Azure.Batch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
@@ -59,8 +58,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Batch">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.1.5.0\lib\net40\Microsoft.Azure.Management.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Batch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Azure.Management.Batch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.11-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -86,7 +86,7 @@
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-        <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.2.0.1\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -113,6 +113,10 @@
     <Reference Include="Microsoft.WindowsAzure.Management, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.6.2.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -152,6 +156,10 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
+    <Compile Include="Applications\DeleteBatchApplicationCommand.cs" />
+    <Compile Include="Applications\GetBatchApplicationCommand.cs" />
+    <Compile Include="Applications\UpdateBatchApplicationCommand.cs" />
+    <Compile Include="Applications\UploadBatchApplicationCommand.cs" />
     <Compile Include="Certificates\GetBatchCertificateCommand.cs" />
     <Compile Include="Certificates\RemoveBatchCertificateCommand.cs" />
     <Compile Include="Certificates\NewBatchCertificateCommand.cs" />
@@ -211,6 +219,7 @@
     <Compile Include="Models.Generated\PSWindowsConfiguration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\BatchClient.Applications.cs" />
     <Compile Include="Models\DisableComputeNodeSchedulingParameters.cs" />
     <Compile Include="Models\EnableAutoScaleParameters.cs" />
     <Compile Include="Models\EvaluateAutoScaleParameters.cs" />
