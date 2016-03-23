@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 1,
-                Mandatory = false
+                Mandatory = true
             });
             pNextPageLink.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("NextPageLink", pNextPageLink);

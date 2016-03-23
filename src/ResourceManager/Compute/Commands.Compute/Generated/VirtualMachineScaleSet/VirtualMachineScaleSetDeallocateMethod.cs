@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 1,
-                Mandatory = false
+                Mandatory = true
             });
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
-                Mandatory = false
+                Mandatory = true
             });
             pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
@@ -212,23 +212,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pArgumentList.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ArgumentList", pArgumentList);
 
-            var pStayProvision = new RuntimeDefinedParameter();
-            pStayProvision.Name = "StayProvision";
-            pStayProvision.ParameterType = typeof(SwitchParameter);
-            pStayProvision.Attributes.Add(new ParameterAttribute
+            var pStayProvisioned = new RuntimeDefinedParameter();
+            pStayProvisioned.Name = "StayProvisioned";
+            pStayProvisioned.ParameterType = typeof(SwitchParameter);
+            pStayProvisioned.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
                 Position = 4,
                 Mandatory = true
             });
-            pStayProvision.Attributes.Add(new ParameterAttribute
+            pStayProvisioned.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByStaticParametersForFriendMethod",
                 Position = 5,
                 Mandatory = true
             });
-            pStayProvision.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("StayProvision", pStayProvision);
+            pStayProvisioned.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("StayProvisioned", pStayProvisioned);
 
             return dynamicParameters;
         }
