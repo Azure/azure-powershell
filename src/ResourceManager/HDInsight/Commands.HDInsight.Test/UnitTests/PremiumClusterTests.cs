@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     public class PremiumClusterTests : HDInsightTestBase
     {
         private NewAzureHDInsightClusterCommand cmdlet;
-        private const string StorageName = "giyerwestus1.blob.core.windows.net";
-        private const string StorageKey = "O9EQvp3A3AjXq/W27rst1GQfLllhp01qlJMJfSU1hVW2K42gUeiUUn2D8zX2lU3taiXSSfqkZlcPv+nQcYUxYw==";
+        private const string StorageName = "PlaceStorageName";
+        private const string StorageKey = "PlaceStorageKey";
         private const int ClusterSize = 4;
 
         private readonly PSCredential _httpCred;
