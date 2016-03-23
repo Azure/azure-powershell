@@ -20,7 +20,7 @@ using System.Xml;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.RecoveryServices;
+using Microsoft.Azure.Management.SiteRecoveryVault;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
         private ASRVaultCreds asrVaultCreds = null;
 
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
-        public RecoveryServicesManagementClient RecoveryServicesMgmtClient { get; private set; }
-        
+        public SiteRecoveryVaultManagementClient RecoveryServicesMgmtClient { get; private set; }
+
         protected SiteRecoveryTestsBase()
         {
             this.vaultSettingsFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests\\vaultSettings.VaultCredentials");
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
         protected void SetupManagementClients()
         {
-            RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient();
+            RecoveryServicesMgmtClient = GetSiteRecoveryVaultManagementClient();
             SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient();
 
             helper.SetupManagementClients(RecoveryServicesMgmtClient, SiteRecoveryMgmtClient);
@@ -117,9 +117,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             }
         }
 
-        private RecoveryServicesManagementClient GetRecoveryServicesManagementClient()
+        private SiteRecoveryVaultManagementClient GetSiteRecoveryVaultManagementClient()
         {
-            return GetServiceClient<RecoveryServicesManagementClient>();
+            return GetServiceClient<SiteRecoveryVaultManagementClient>();
         }
 
         private SiteRecoveryManagementClient GetSiteRecoveryManagementClient()
@@ -134,23 +134,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
             ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
 
-            if (typeof(T) == typeof(RecoveryServicesManagementClient))
+            if (typeof(T) == typeof(SiteRecoveryVaultManagementClient))
             {
-                RecoveryServicesManagementClient client;
+                SiteRecoveryVaultManagementClient client;
 
                 if (testEnvironment.UsesCustomUri())
                 {
-                    client = new RecoveryServicesManagementClient(
-                        "Microsoft.RecoveryServicesBVTD2",
-                        "vaults",
+                    client = new SiteRecoveryVaultManagementClient(
+                        "Microsoft.SiteRecoveryBVTD2",
+                        "SiteRecoveryVault",
                         testEnvironment.Credentials as SubscriptionCloudCredentials,
                         testEnvironment.BaseUri);
                 }
                 else
                 {
-                    client = new RecoveryServicesManagementClient(
-                        "Microsoft.RecoveryServicesBVTD2",
-                        "vaults",
+                    client = new SiteRecoveryVaultManagementClient(
+                        "Microsoft.SiteRecovery",
+                        "SiteRecoveryVault",
                         testEnvironment.Credentials as SubscriptionCloudCredentials);
                 }
                 return GetRSMServiceClient<T>(factory, client);
@@ -164,8 +164,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                     client = new SiteRecoveryManagementClient(
                         asrVaultCreds.ResourceName,
                         asrVaultCreds.ResourceGroupName,
-                        "Microsoft.RecoveryServicesBVTD2",
-                        "vaults",
+                        "Microsoft.SiteRecoveryBVTD2",
+                        "SiteRecoveryVault",
                         testEnvironment.Credentials as SubscriptionCloudCredentials,
                         testEnvironment.BaseUri);
                 }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                     client = new SiteRecoveryManagementClient(
                         asrVaultCreds.ResourceName,
                         asrVaultCreds.ResourceGroupName,
-                        "Microsoft.RecoveryServices",
+                        "Microsoft.SiteRecovery",
                         "vaults",
                         testEnvironment.Credentials as SubscriptionCloudCredentials);
                 }
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
         }
 
-        public static T GetRSMServiceClient<T>(TestEnvironmentFactory factory, RecoveryServicesManagementClient client) where T : class
+        public static T GetRSMServiceClient<T>(TestEnvironmentFactory factory, SiteRecoveryVaultManagementClient client) where T : class
         {
             TestEnvironment testEnvironment = factory.GetTestEnvironment();
 

@@ -48,26 +48,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByObjectWithName:
-                        this.GetByName();
-                        break;
-                    case ASRParameterSets.ByObjectWithFriendlyName:
-                        this.GetByFriendlyName();
-                        break;
-                    default:
-                        this.GetAll();
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
+                case ASRParameterSets.ByObjectWithName:
+                    this.GetByName();
+                    break;
+                case ASRParameterSets.ByObjectWithFriendlyName:
+                    this.GetByFriendlyName();
+                    break;
+                default:
+                    this.GetAll();
+                    break;
             }
         }
 
@@ -94,15 +89,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     ProtectionContainer protectionContainer in
                     protectionContainerListResponse.ProtectionContainers)
                 {
-                    if (0 == string.Compare(this.FriendlyName, protectionContainer.Properties.FriendlyName, true))
+                    if (0 == string.Compare(this.FriendlyName, protectionContainer.Properties.FriendlyName, StringComparison.OrdinalIgnoreCase))
                     {
-                        this.WriteProtectionContainer(protectionContainer);
+                        var protectionContainerByName = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(fabric.Name, protectionContainer.Name).ProtectionContainer;
+                        this.WriteProtectionContainer(protectionContainerByName);
+
                         found = true;
                         // break; //We can break if we are sure that we have clouds with unique name across fabrics
                     }
                 }
             }
-            
+
             if (!found)
             {
                 throw new InvalidOperationException(
@@ -136,9 +133,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     ProtectionContainer protectionContainer in
                     protectionContainerListResponse.ProtectionContainers)
                 {
-                    if (0 == string.Compare(this.Name, protectionContainer.Name, true))
+                    if (0 == string.Compare(this.Name, protectionContainer.Name, StringComparison.OrdinalIgnoreCase))
                     {
-                        this.WriteProtectionContainer(protectionContainer);
+                        var protectionContainerByName = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(fabric.Name, protectionContainer.Name).ProtectionContainer;
+                        this.WriteProtectionContainer(protectionContainerByName);
+
                         found = true;
                         // break; //We can break if we are sure that we have clouds with unique name across fabrics
                     }
@@ -160,21 +159,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAll()
         {
-            ProtectionContainerListResponse protectionContainerListResponse;
-
-            FabricListResponse fabricListResponse = RecoveryServicesClient.GetAzureSiteRecoveryFabric();
-
-            foreach (Fabric fabric in fabricListResponse.Fabrics)
-            {
-                // Do not process for fabrictype other than Vmm|HyperVSite 
-                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.VMM) != 0 && String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
-                    continue;
-
-                protectionContainerListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(fabric.Name);
-
-                this.WriteProtectionContainers(protectionContainerListResponse.ProtectionContainers);
-            }            
+            ProtectionContainerListResponse protectionContainerListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer();
+            this.WriteProtectionContainers(protectionContainerListResponse.ProtectionContainers);
         }
 
         /// <summary>
@@ -182,23 +168,62 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="protectionContainers">List of Protection Containers</param>
         private void WriteProtectionContainers(IList<ProtectionContainer> protectionContainers)
-        {           
+        {
             List<ASRProtectionContainer> asrProtectionContainers = new List<ASRProtectionContainer>();
+            Dictionary<string, ASRPolicy> policyCache = new Dictionary<string, ASRPolicy>();
 
             foreach (ProtectionContainer protectionContainer in protectionContainers)
             {
                 List<ASRPolicy> availablePolicies = new List<ASRPolicy>();
 
-                ProtectionContainerMappingListResponse protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(Utilities.GetValueFromArmId(protectionContainer.Id, ARMResourceTypeConstants.ReplicationFabrics), protectionContainer.Name);
-                foreach (ProtectionContainerMapping protectionContainerMapping in protectionContainerMappingListResponse.ProtectionContainerMappings)
+                // Check if container is paired then fetch policy details.
+                if (0 == string.Compare(protectionContainer.Properties.PairingStatus, "paired", StringComparison.OrdinalIgnoreCase))
                 {
-                    PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(protectionContainerMapping.Properties.PolicyId, ARMResourceTypeConstants.ReplicationPolicies));
-                    availablePolicies.Add(new ASRPolicy(policyResponse.Policy));          
+                    // Get all Protection Container Mappings for specific container to find out the policies attached to container.
+                    ProtectionContainerMappingListResponse protectionContainerMappingListResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(
+                        Utilities.GetValueFromArmId(protectionContainer.Id, ARMResourceTypeConstants.ReplicationFabrics),
+                        protectionContainer.Name);
+
+                    // TODO: This call can be made parallel to speed up processing if required later.
+                    foreach (ProtectionContainerMapping protectionContainerMapping in protectionContainerMappingListResponse.ProtectionContainerMappings)
+                    {
+                        string policyName = Utilities.GetValueFromArmId(protectionContainerMapping.Properties.PolicyId, ARMResourceTypeConstants.ReplicationPolicies).ToLower();
+                        ASRPolicy asrPolicy = null;
+
+                        if (policyCache.ContainsKey(policyName))
+                        {
+                            asrPolicy = policyCache[policyName];
+                        }
+                        else
+                        {
+                            // Get all policies and fill up the dictionary once.
+                            PolicyListResponse policyListResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy();
+                            foreach (Policy policy in policyListResponse.Policies)
+                            {
+                                asrPolicy = new ASRPolicy(policy);
+                                try
+                                {
+                                    policyCache.Add(asrPolicy.Name.ToLower(), asrPolicy);
+                                }
+                                catch (ArgumentException)
+                                {
+                                    // In case of item already exist eat the exception.
+                                }
+                            }
+
+                            // Get the policy from dictionary now.
+                            asrPolicy = policyCache[policyName];
+                        }
+
+                        availablePolicies.Add(asrPolicy);
+                    }
                 }
-                
+
                 asrProtectionContainers.Add(new ASRProtectionContainer(protectionContainer, availablePolicies));
             }
 
+            asrProtectionContainers.Sort((x, y) => x.FriendlyName.CompareTo(y.FriendlyName));
             this.WriteObject(asrProtectionContainers, true);
         }
 
@@ -210,10 +235,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             List<ASRPolicy> availablePolicies = new List<ASRPolicy>();
 
-            ProtectionContainerMappingListResponse protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(Utilities.GetValueFromArmId(protectionContainer.Id, ARMResourceTypeConstants.ReplicationFabrics), protectionContainer.Name);
+            ProtectionContainerMappingListResponse protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(
+                Utilities.GetValueFromArmId(protectionContainer.Id, ARMResourceTypeConstants.ReplicationFabrics), protectionContainer.Name);
             foreach (ProtectionContainerMapping protectionContainerMapping in protectionContainerMappingListResponse.ProtectionContainerMappings)
             {
-                PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(protectionContainerMapping.Properties.PolicyId, ARMResourceTypeConstants.ReplicationPolicies));
+                PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(
+                    Utilities.GetValueFromArmId(protectionContainerMapping.Properties.PolicyId, ARMResourceTypeConstants.ReplicationPolicies));
                 availablePolicies.Add(new ASRPolicy(policyResponse.Policy));
             }
 
