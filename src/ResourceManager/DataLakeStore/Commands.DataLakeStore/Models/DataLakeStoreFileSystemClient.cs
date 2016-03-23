@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public bool RenameFileOrDirectory(string sourcePath, string accountName, string destinationPath)
         {
-            var boolean = _client.FileSystem.Rename(sourcePath, destinationPath, accountName).Boolean;
+            var boolean = _client.FileSystem.Rename(sourcePath, destinationPath, accountName).OperationResult;
             return boolean != null && boolean.Value;
         }
 
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public bool DeleteFileOrFolder(string path, string accountName, bool isRecursive)
         {
-            var boolean = _client.FileSystem.Delete(path, accountName, isRecursive).Boolean;
+            var boolean = _client.FileSystem.Delete(path, accountName, isRecursive).OperationResult;
             return boolean != null && boolean.Value;
         }
 
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public bool CreateDirectory(string dirPath, string accountName)
         {
-            var boolean = _client.FileSystem.Mkdirs(dirPath, accountName).Boolean;
+            var boolean = _client.FileSystem.Mkdirs(dirPath, accountName).OperationResult;
             return boolean != null && boolean.Value;
         }
 

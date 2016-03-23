@@ -21,5 +21,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public string DeploymentName { get; set; }
 
         public DeploymentMode DeploymentMode { get; set; }
+
+        public string DeploymentDebugLogLevel { get; set; }
     }
 }
