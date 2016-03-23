@@ -168,7 +168,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AzureRm.Cdn.psd1">
+    <None Include="AzureRM.Cdn.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Cdn.dll-help.psd1" />
