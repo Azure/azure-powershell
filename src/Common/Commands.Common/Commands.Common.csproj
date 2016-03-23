@@ -133,6 +133,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StringExtensions.cs" />
     <Compile Include="AzureDataCmdlet.cs" />
     <Compile Include="AzurePSCmdlet.cs" />
     <Compile Include="AzurePSDataCollectionProfile.cs" />

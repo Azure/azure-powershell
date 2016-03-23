@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -22,11 +23,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public class PSMetricDefinition : MetricDefinition
     {
         /// <summary>
-        /// Gets or sets the Dimensions of the metric
-        /// </summary>
-        public new PSDimensionCollection Dimensions { get; set; }
-
-        /// <summary>
         /// Gets or sets the MetricAvailabilties of the metric
         /// </summary>
         public new PSAvailabilityCollection MetricAvailabilities { get; set; }
@@ -35,6 +31,15 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Gets or sets the Name of the metric
         /// </summary>
         public new string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of Dimension objects
+        /// </summary>
+        protected internal new IList<Dimension> Dimensions
+        {
+            get { return base.Dimensions; }
+            set { base.Dimensions = value; }
+        }
 
         /// <summary>
         /// Gets or sets the Proterties of the metric
@@ -53,7 +58,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             base.Name = metricDefinition.Name;
             base.Properties = metricDefinition.Properties;
 
-            this.Dimensions = new PSDimensionCollection(metricDefinition.Dimensions);
             this.MetricAvailabilities = new PSAvailabilityCollection(metricDefinition.MetricAvailabilities);
             this.Name = metricDefinition.Name.ToString(localizedValue: false);
             this.PrimaryAggregationType = metricDefinition.PrimaryAggregationType;
