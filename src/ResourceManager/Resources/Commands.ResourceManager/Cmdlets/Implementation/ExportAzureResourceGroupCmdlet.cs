@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 options = string.IsNullOrEmpty(options) ? "IncludeParameterDefaultValue" : options + ",IncludeParameterDefaultValue";
             }
-            return options;
+            return string.IsNullOrEmpty(options) ? null : options;
         }
 
         /// <summary>
