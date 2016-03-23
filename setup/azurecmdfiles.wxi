@@ -500,8 +500,8 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir75F2C4F350248207C418DE5A1C651FB6" Name="AzureRM.Cdn">
-                        <Component Id="cmpD18084727DDF26BDFCE36BE4EF3E3FBC" Guid="*">
-                            <File Id="fil94E16717A827E81C325C0FF864D01FFC" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Cdn\AzureRm.Cdn.psd1" />
+                        <Component Id="cmpB7108FC1E0DA3A2DABE2F5A549025C62" Guid="*">
+                            <File Id="filB74B1CDF4E2C5B548CAC901E51955AA5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Cdn\AzureRM.Cdn.psd1" />
                         </Component>
                         <Component Id="cmp87DFE6BA28632B552074C8A05968ED49" Guid="*">
                             <File Id="filB29D13A0412832DF84301430FAF5C2EB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Cdn\AzureRM.Tags.psd1" />
@@ -5064,7 +5064,7 @@
             <ComponentRef Id="cmp8E6B2CBC9EF2E6C9012C5090F2932C68" />
             <ComponentRef Id="cmp30F0EC1B207C0F4C59F81099974C18E3" />
             <ComponentRef Id="cmp22BC5873E0018F5801CD486C6CBCE0C5" />
-            <ComponentRef Id="cmpD18084727DDF26BDFCE36BE4EF3E3FBC" />
+            <ComponentRef Id="cmpB7108FC1E0DA3A2DABE2F5A549025C62" />
             <ComponentRef Id="cmp87DFE6BA28632B552074C8A05968ED49" />
             <ComponentRef Id="cmpFCC54BA077C7C12B0A49F42DD3039435" />
             <ComponentRef Id="cmp984FE30B4A873A5B1BC8F7E85B1CEF85" />
