@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRetentionPolicyObject"), OutputType(typeof(AzureRmRecoveryServicesRetentionPolicyBase))]
-    class GetAzureRmRecoveryServicesBackupRetentionPolicyObject : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesBackupRetentionPolicyObject : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Temp Help message. Need to update it")]
         [ValidateNotNullOrEmpty]
