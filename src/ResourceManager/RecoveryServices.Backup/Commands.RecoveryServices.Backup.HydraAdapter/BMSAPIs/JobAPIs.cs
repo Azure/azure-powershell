@@ -86,29 +86,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 BmsAdapter.CmdletCancellationToken).Result;
         }
 
-        public BaseRecoveryServicesJobResponse ExportJobs(
-            string jobId,
-            string status,
-            string operation,
-            DateTime startTime,
-            DateTime endTime,
-            string backupManagementType)
+        public JobResponse GetJobOperationStatus(string jobId, string operationId)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            CommonJobQueryFilters filters = GetQueryObject(
-                backupManagementType,
-                startTime,
-                endTime,
-                jobId,
-                status,
-                operation);
-
-            return BmsAdapter.Client.Job.ExportJobAsync(
+            return BmsAdapter.Client.Job.GetOperationResultAsync(
                 resourceGroupName,
                 resourceName,
-                filters,
+                jobId,
+                operationId,
                 BmsAdapter.GetCustomRequestHeaders(),
                 BmsAdapter.CmdletCancellationToken).Result;
         }
