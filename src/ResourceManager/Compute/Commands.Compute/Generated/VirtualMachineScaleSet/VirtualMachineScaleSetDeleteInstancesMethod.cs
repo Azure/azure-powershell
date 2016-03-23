@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 1,
-                Mandatory = false
+                Mandatory = true
             });
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
-                Mandatory = false
+                Mandatory = true
             });
             pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
