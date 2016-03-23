@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(SubStatuses, Formatting.Indented); }
         }
         public bool? AutoUpgradeMinorVersion { get; set; }
-        public ForceUpdateTagTypes? ForceUpdateTag { get; set; }
+        public string ForceUpdateTag { get; set; }
     }
 
     public static class PSVirtualMachineExtensionConversions

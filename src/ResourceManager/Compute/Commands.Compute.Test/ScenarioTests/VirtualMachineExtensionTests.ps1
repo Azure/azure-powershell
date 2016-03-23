@@ -1382,7 +1382,10 @@ function Test-VirtualMachineExtensionWithSwitch
         # Set extension settings by raw strings
         $settingstr = '{"fileUris":[],"commandToExecute":""}';
         $protectedsettingstr = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
-        Set-AzureRmVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr -DisableAutoUpgradeMinorVersion -ForceRerun
+        Set-AzureRmVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname `
+            -Name $extname -Publisher $publisher `
+            -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr `
+            -DisableAutoUpgradeMinorVersion -ForceRerun "RerunExtension";
 
         # Get VM Extension
         $ext = Get-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
