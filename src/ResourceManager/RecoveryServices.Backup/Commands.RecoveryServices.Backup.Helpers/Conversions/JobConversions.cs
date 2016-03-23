@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             response.VmVersion = vmJob.VirtualMachineVersion;
             response.WorkloadName = vmJob.EntityFriendlyName;
             response.ActivityId = vmJob.ActivityId;
-            response.BackupManagementType = vmJob.BackupManagementType;
+            response.BackupManagementType = EnumUtils.GetEnum<BackupManagementType>(vmJob.BackupManagementType);
             response.Operation = vmJob.Operation;
 
             if (vmJob.ErrorDetails != null)

@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             string containerName = item.ContainerName;
-            string protectedItemName = item.Name;
+            string protectedItemName = (item as AzureRmRecoveryServicesIaasVmItem).Name;
 
             var rpResponse = HydraAdapter.GetRecoveryPointDetails(containerName, protectedItemName, recoveryPointId);
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             string containerName = item.ContainerName;
-            string protectedItemName = item.Name;
+            string protectedItemName = (item as AzureRmRecoveryServicesIaasVmItem).Name;
 
             TimeSpan duration = endDate - startDate;
 
@@ -342,6 +342,70 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             return containerModels;
+        }
+
+        public List<AzureRmRecoveryServicesItemBase> ListProtectedItems()
+        {
+            AzureRmRecoveryServicesContainerBase container =
+                (AzureRmRecoveryServicesContainerBase)this.ProviderData.ProviderParameters[ItemParams.Container];
+            string name = (string)this.ProviderData.ProviderParameters[ItemParams.AzureVMName];
+            ItemProtectionStatus protectionStatus =
+                (ItemProtectionStatus)this.ProviderData.ProviderParameters[ItemParams.ProtectionStatus];
+            ItemStatus status = (ItemStatus)this.ProviderData.ProviderParameters[ItemParams.Status];
+            Models.WorkloadType workloadType =
+                (Models.WorkloadType)this.ProviderData.ProviderParameters[ItemParams.WorkloadType];
+
+            ProtectedItemListQueryParam queryParams = new ProtectedItemListQueryParam();
+            queryParams.DatasourceType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.VM;
+            queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
+
+            var listResponse = HydraAdapter.ListProtectedItem(queryParams);
+            
+            List<AzureRmRecoveryServicesItemBase> itemModels = ConversionHelpers.GetItemModelList(listResponse.ItemList.Value, container);
+
+            // 1. Filter by container
+            itemModels = itemModels.Where(itemModel =>
+            {
+                return itemModel.ContainerName == container.Name;
+            }).ToList();
+
+            // 2. Filter by item's friendly name
+            if (!string.IsNullOrEmpty(name))
+            {
+                itemModels = itemModels.Where(itemModel =>
+                {
+                    return ((AzureRmRecoveryServicesIaasVmItem)itemModel).Name == name;
+                }).ToList();
+            }
+
+            // 3. Filter by item's Protection Status
+            if (protectionStatus != 0)
+            {
+                itemModels = itemModels.Where(itemModel =>
+                {
+                    return ((AzureRmRecoveryServicesIaasVmItem)itemModel).ProtectionStatus == protectionStatus;
+                }).ToList();
+            }
+
+            // 4. Filter by item's Protection State
+            if (status != 0)
+            {
+                itemModels = itemModels.Where(itemModel =>
+                {
+                    return ((AzureRmRecoveryServicesIaasVmItem)itemModel).ProtectionState == status;
+                }).ToList();
+            }
+
+            // 5. Filter by workload type
+            if (workloadType != 0)
+            {
+                itemModels = itemModels.Where(itemModel =>
+                {
+                    return itemModel.WorkloadType == workloadType;
+                }).ToList();
+            }
+
+            return itemModels;
         }
 
         public ProtectionPolicyResponse GetPolicy()
@@ -663,7 +727,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             schPolicy.ScheduleRunTimes = PolicyHelpers.ParseScheduleRunTimesToUTC(schPolicy.ScheduleRunTimes);
 
             // now copy times from schedule to retention policy
-            if(retPolicy.IsDailyScheduleEnabled && retPolicy.DailySchedule != null)
+            if (retPolicy.IsDailyScheduleEnabled && retPolicy.DailySchedule != null)
             {
                 retPolicy.DailySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
             }

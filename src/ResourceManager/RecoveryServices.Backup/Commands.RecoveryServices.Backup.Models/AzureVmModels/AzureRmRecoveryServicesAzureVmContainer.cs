@@ -29,17 +29,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string ResourceGroupName { get; set; }
 
         /// <summary>
+        /// Friendly name of the container
+        /// </summary>
+        public string FriendlyName { get; set; }
+
+        /// <summary>
         /// Registration Status
         /// </summary>
-        public string Status { get; set; }
+        public ContainerRegistrationStatus Status { get; set; }
 
         public AzureRmRecoveryServicesIaasVmContainer(ProtectionContainerResource protectionContainer)
-            : base(protectionContainer.Properties as ProtectionContainer)
+            : base(protectionContainer)
         {
             AzureIaaSVMProtectionContainer iaasVmProtectionContainer = (AzureIaaSVMProtectionContainer)protectionContainer.Properties;
-            ContainerType = ContainerType.AzureVM;
             ResourceGroupName = IdUtils.GetResourceGroupName(protectionContainer.Id);
-            Status = iaasVmProtectionContainer.RegistrationStatus;
+            FriendlyName = iaasVmProtectionContainer.FriendlyName;
+            Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(iaasVmProtectionContainer.RegistrationStatus);
         }
     }
 }
