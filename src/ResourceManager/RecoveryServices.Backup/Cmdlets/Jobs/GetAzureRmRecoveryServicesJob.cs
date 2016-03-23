@@ -139,11 +139,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                 }
 
-                foreach (var temp in result)
-                {
-                    WriteDebug("StartTime: " + temp.StartTime);
-                }
-
                 if (resultCount != 1)
                 {
                     WriteObject(result);
