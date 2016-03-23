@@ -300,4 +300,10 @@
   <data name="UnsupportedCredentialType" xml:space="preserve">
     <value>Certificate authentication is not supported for account type {0}.</value>
   </data>
+  <data name="InvalidGraphTokenAudience" xml:space="preserve">
+    <value>No value was specified for the token audience for the graph endpoint in environment '{0}'.  Please use Set-AzureRmEnvironment -Name {0} -GraphAudience token-audience-value</value>
+  </data>
+  <data name="InvalidManagementTokenAudience" xml:space="preserve">
+    <value>No value was specified for the token audience for the management endpoint in environment '{0}'.  Please use Set-AzureRmEnvironment -Name {0} -ActiveDirectoryServiceEndpointResourceId token-audience-value</value>
+  </data>
 </root>

@@ -53,7 +53,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.10.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.11.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -79,7 +79,7 @@
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
-    </Reference>	
+    </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
@@ -101,6 +101,7 @@
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -114,34 +115,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alerts\AddAlertRuleCommandBase.cs" />
-    <Compile Include="Alerts\AddAlertRuleCommand.cs" />
+    <Compile Include="Alerts\AddAzureRmAlertRuleCommandBase.cs" />
+    <Compile Include="Alerts\AddAzureRmMetricAlertRuleCommand.cs" />
+    <Compile Include="Alerts\AddAzureRmLogAlertRuleCommand.cs" />
+    <Compile Include="Alerts\AddAzureRmWebtestAlertRuleCommand.cs" />
     <Compile Include="Alerts\AlertRuleTypes.cs" />
-    <Compile Include="Alerts\GetAlertHistoryCommand.cs" />
-    <Compile Include="Alerts\GetAlertRuleCommand.cs" />
-    <Compile Include="Alerts\RemoveAlertRuleCommand.cs" />
-    <Compile Include="Autoscale\NewAutoscaleProfileCommand.cs" />
-    <Compile Include="Autoscale\NewAutoscaleRuleCommand.cs" />
-    <Compile Include="Autoscale\AddAutoscaleSettingCommand.cs" />
-    <Compile Include="Autoscale\GetAutoscaleHistoryCommand.cs" />
-    <Compile Include="Autoscale\GetAutoscaleSettingCommand.cs" />
-    <Compile Include="Autoscale\RemoveAutoscaleSettingCommand.cs" />
+    <Compile Include="Alerts\GetAzureRmAlertHistoryCommand.cs" />
+    <Compile Include="Alerts\GetAzureRmAlertRuleCommand.cs" />
+    <Compile Include="Alerts\NewAzureRmAlertRuleEmailCommand.cs" />
+    <Compile Include="Alerts\NewAzureRmAlertRuleWebhookCommand.cs" />
+    <Compile Include="Alerts\RemoveAzureRmAlertRuleCommand.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleNotificationCommand.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleProfileCommand.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleRuleCommand.cs" />
+    <Compile Include="Autoscale\AddAzureRmAutoscaleSettingCommand.cs" />
+    <Compile Include="Autoscale\GetAzureRmAutoscaleHistoryCommand.cs" />
+    <Compile Include="Autoscale\GetAzureRmAutoscaleSettingCommand.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleWebhookCommand.cs" />
+    <Compile Include="Autoscale\RemoveAzureRmAutoscaleSettingCommand.cs" />
     <Compile Include="Diagnostics\SetAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="Diagnostics\GetAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="EventCmdletBase.cs" />
     <Compile Include="Events\GetAzureRmLogCommand.cs" />
     <Compile Include="InsightsClientCmdletBase.cs" />
     <Compile Include="InsightsCmdletBase.cs" />
+    <Compile Include="LogProfiles\RemoveAzureRmLogProfileCommand.cs" />
+    <Compile Include="LogProfiles\GetAzureRmLogProfileCommand.cs" />
+    <Compile Include="LogProfiles\AddAzureRmLogProfileCommand.cs" />
     <Compile Include="ManagementCmdletBase.cs" />
-    <Compile Include="Metrics\FormatMetricsAsTableCommand.cs" />
-    <Compile Include="Metrics\GetMetricDefinitionsCommand.cs" />
-    <Compile Include="Metrics\GetMetricsCommand.cs" />
+    <Compile Include="Metrics\GetAzureRmMetricDefinitionCommand.cs" />
+    <Compile Include="Metrics\GetAzureRmMetricCommand.cs" />
     <Compile Include="OutputClasses\ConversionExtensions.cs" />
     <Compile Include="OutputClasses\CustomPrinter.cs" />
     <Compile Include="OutputClasses\IPSEventData.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSLogProfileCollection.cs" />
     <Compile Include="OutputClasses\PSLogSettings.cs" />
     <Compile Include="OutputClasses\PSMetricSettings.cs" />
+    <Compile Include="OutputClasses\PSLogProfile.cs" />
+    <Compile Include="OutputClasses\PSRetentionPolicy.cs" />
     <Compile Include="OutputClasses\PSServiceDiagnosticSettings.cs" />
     <Compile Include="OutputClasses\PSAlertRule.cs" />
     <Compile Include="OutputClasses\PSAlertRuleNoDetails.cs" />
@@ -150,7 +162,6 @@
     <Compile Include="OutputClasses\PSAutoscaleSettingProperty.cs" />
     <Compile Include="OutputClasses\PSAvailabilityCollection.cs" />
     <Compile Include="OutputClasses\PSDictionaryElement.cs" />
-    <Compile Include="OutputClasses\PSDimensionCollection.cs" />
     <Compile Include="OutputClasses\PSEventData.cs" />
     <Compile Include="OutputClasses\PSEventDataAuthorization.cs" />
     <Compile Include="OutputClasses\PSEventDataHttpRequest.cs" />
@@ -186,7 +197,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesForAutoscaleCmdlets.resx</DependentUpon>
     </Compile>
-    <Compile Include="UsageMetrics\GetUsageMetricsCommand.cs" />
+    <Compile Include="UsageMetrics\GetAzureRmUsageCommand.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>

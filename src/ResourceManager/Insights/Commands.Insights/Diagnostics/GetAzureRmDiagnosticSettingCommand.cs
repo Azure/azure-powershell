@@ -41,6 +41,16 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         {
             ServiceDiagnosticSettingsGetResponse result = this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.GetAsync(this.ResourceId, CancellationToken.None).Result;
 
+            if (result.Properties != null && result.Properties.Logs != null && result.Properties.Logs.Count == 0)
+            {
+                result.Properties.Logs = null;
+            }
+
+            if (result.Properties != null && result.Properties.Metrics != null && result.Properties.Metrics.Count == 0)
+            {
+                result.Properties.Metrics = null;
+            }
+
             PSServiceDiagnosticSettings psResult = new PSServiceDiagnosticSettings(result.Properties);
             WriteObject(psResult);
         }
