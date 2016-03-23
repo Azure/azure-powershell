@@ -22,8 +22,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web.Script.Serialization;
 using System.Xml;
-using Microsoft.Azure.Management.RecoveryServices;
-using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Azure.Management.SiteRecoveryVault;
+using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets the value of recovery services management client.
         /// </summary>
-        public RecoveryServicesManagementClient GetRecoveryServicesClient
+        public SiteRecoveryVaultManagementClient GetRecoveryServicesClient
         {
             get
             {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Recovery Services client.
         /// </summary>
-        private RecoveryServicesManagementClient recoveryServicesClient;
+        private SiteRecoveryVaultManagementClient recoveryServicesClient;
 
         /// <summary>
         /// End point Uri
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             cloudCredentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context);
             this.recoveryServicesClient =
-            AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
+            AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryVaultManagementClient>(
                 asrVaultCreds.ResourceNamespace,
                 asrVaultCreds.ARMResourceType,
                 cloudCredentials,
