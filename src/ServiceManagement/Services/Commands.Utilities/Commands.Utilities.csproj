@@ -141,7 +141,7 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.MediaServices.4.0.0\lib\net40\Microsoft.WindowsAzure.Management.MediaServices.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+      <SpecificVersion>False</SpecificVersion>	
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.4\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Scheduler, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -327,7 +327,6 @@
     <Compile Include="WAPackIaaS\Operations\StaticIPAddressPoolOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VirtualHardDiskOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VirtualMachineOperations.cs" />
-    <Compile Include="WAPackIaaS\Operations\VMRoleSizeProfileOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VMSubnetOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VMNetworkOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VMRoleOperations.cs" />
@@ -707,5 +706,4 @@
     <PostBuildEvent>powershell.exe -ExecutionPolicy Unrestricted -File "$(ProjectDir)\PostBuild.ps1" "$(TargetDir)\"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
