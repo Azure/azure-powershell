@@ -28,11 +28,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public const string LinuxExtensionDefaultVersion = "0.1";
 
         public const string ExtensionDefaultPublisher = "Microsoft.Azure.Security";
-        // TODO: Uncomment these and remove ADETest/version strings once testing is completed
-        //public const string ExtensionDefaultName = "AzureDiskEncryption";
-        public const string ExtensionDefaultName = "ADETest";
-        //public const string ExtensionDefaultVersion = "1.0";
-        public const string ExtensionDefaultVersion = "1.4";
+        public const string ExtensionDefaultName = "AzureDiskEncryption";
+        public const string ExtensionDefaultVersion = "1.1";
         public const string VolumeTypeOS = "OS";
         public const string VolumeTypeData = "Data";
         public const string VolumeTypeAll = "All";
