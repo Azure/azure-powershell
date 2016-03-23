@@ -232,15 +232,25 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 {
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
 
-                    this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                    var opExt = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                                                             this.ResourceGroupName,
                                                             this.VMName,
                                                             this.Name,
                                                             parameters).GetAwaiter().GetResult();
 
-                    var op = UpdateVmEncryptionSettings();
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
-                    WriteObject(result);
+                    if(string.IsNullOrWhiteSpace(VolumeType) ||
+                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeAll, StringComparison.InvariantCultureIgnoreCase) ||
+                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeOS, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var opVm = UpdateVmEncryptionSettings();
+                        var result = Mapper.Map<PSAzureOperationResponse>(opVm);
+                        WriteObject(result);
+                    }
+                    else
+                    {
+                        var result = Mapper.Map<PSAzureOperationResponse>(opExt);
+                        WriteObject(result);
+                    }
                 }
             });
         }
