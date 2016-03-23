@@ -132,5 +132,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         #endregion
+
+        #region Item
+
+        public static AzureRmRecoveryServicesItemBase GetItemModel(ProtectedItemResource protectedItem, AzureRmRecoveryServicesContainerBase container)
+        {
+            AzureRmRecoveryServicesItemBase itemModel = null;
+
+            if (protectedItem != null &&
+                protectedItem.Properties != null)
+            {
+                if (protectedItem.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectedItem)))
+                {
+                    itemModel = new AzureRmRecoveryServicesIaasVmItem((AzureIaaSVMProtectedItem)protectedItem.Properties, container);
+                }
+            }
+
+            return itemModel;
+        }
+
+        public static List<AzureRmRecoveryServicesItemBase> GetItemModelList(IEnumerable<ProtectedItemResource> protectedItems, AzureRmRecoveryServicesContainerBase container)
+        {
+            List<AzureRmRecoveryServicesItemBase> itemModels = new List<AzureRmRecoveryServicesItemBase>();
+
+            foreach (var protectedItem in protectedItems)
+            {
+                itemModels.Add(GetItemModel(protectedItem, container));
+            }
+
+            return itemModels;
+        }
+
+        #endregion
     }
 }

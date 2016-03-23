@@ -12,20 +12,14 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Test-GetContainerScenario
+function Test-GetItemScenario
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-	$containers = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered";
-	foreach ($container in $containers)
-	{
-		echo $container.Name $container.ResourceGroupName;
-	}
-	Assert-AreEqual $containers[0].FriendlyName "mylinux1";
-
+	
 	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
 	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
 
-	$rgFilteredContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1" -ResourceGroupName "00prjai12";
-	echo $rgFilteredContainer.Name $rgFilteredContainer.ResourceGroupName;
+	$item = Get-AzureRmRecoveryServicesItem -Container $namedContainer -WorkloadType "AzureVM";
+	echo $item.Name;
 }

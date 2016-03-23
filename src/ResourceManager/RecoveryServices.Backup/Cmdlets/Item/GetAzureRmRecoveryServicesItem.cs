@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,17 +24,59 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Get list of containers
+    /// Get list of items
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesItem"), OutputType(typeof(List<AzureRmRecoveryServicesItemBase>), typeof(AzureRmRecoveryServicesItemBase))]
     public class GetAzureRmRecoveryServicesItem : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = "")]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Item.Container)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesContainerBase Container { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.ProtectionStatus)]
+        [ValidateNotNullOrEmpty]
+        public ItemProtectionStatus ProtectionStatus { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.Status)]
+        [ValidateNotNullOrEmpty]
+        public ItemStatus Status { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [ValidateNotNullOrEmpty]
+        public WorkloadType WorkloadType { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            ExecutionBlock(() =>
+            {
+                base.ExecuteCmdlet();
+
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                {
+                    {ItemParams.Container, Container},
+                    {ItemParams.AzureVMName, Name},
+                    {ItemParams.ProtectionStatus, ProtectionStatus},
+                    {ItemParams.Status, Status},
+                    {ItemParams.WorkloadType, WorkloadType},
+                }, HydraAdapter);
+
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType,
+                    (Container as AzureRmRecoveryServicesBackupManagementContext).BackupManagementType);
+                var itemModels = psBackupProvider.ListProtectedItems();
+
+                if (itemModels.Count == 1)
+                {
+                    WriteObject(itemModels.First());
+                }
+                else
+                {
+                    WriteObject(itemModels);
+                }
+            });
+        }
     }
 }

@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -87,6 +88,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             }
 
             return null;
+        }
+    }
+
+    public class EnumUtils
+    {
+        public static T GetEnum<T>(string enumValue)
+        {
+            return (T)Enum.Parse(typeof(T), enumValue);
+        }
+    }
+
+    public class ConversionUtils
+    {
+        public static BackupManagementType GetPsBackupManagementType(string backupManagementType)
+        {
+            ProviderType providerType = EnumUtils.GetEnum<ProviderType>(backupManagementType);
+
+            switch (providerType)
+            {
+                case ProviderType.AzureIaasVM:
+                    return BackupManagementType.AzureVM;
+                default:
+                    throw new Exception("Unsupported BackupManagmentType: " + backupManagementType);
+            }
+        }
+
+        public static ContainerType GetPsContainerType(string containerType)
+        {
+            if (containerType == "Microsoft.ClassicCompute/virtualMachines" ||
+                containerType == "Microsoft.Compute/virtualMachines")
+            {
+                return ContainerType.AzureVM;
+            }
+            else
+            {
+                throw new Exception("Unsupported ContainerType: " + containerType);
+            }
+        }
+
+        public static WorkloadType GetPsWorkloadType(string workloadType)
+        {
+            if (workloadType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.VM)
+            {
+                return WorkloadType.AzureVM;
+            }
+            else
+            {
+                throw new Exception("Unsupported WorkloadType: " + workloadType);
+            }
         }
     }
 }

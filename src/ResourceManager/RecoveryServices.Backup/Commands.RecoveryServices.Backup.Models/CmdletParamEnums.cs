@@ -65,6 +65,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         WorkloadType,
         Policy,
         Item,
-        ParameterSetName
+        ParameterSetName,
+        Container,
+        ProtectionStatus,
+        Status,
     }
 }
