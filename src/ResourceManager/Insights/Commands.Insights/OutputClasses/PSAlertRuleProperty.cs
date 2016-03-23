@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Microsoft.Azure.Commands.Insights.Properties;
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the Action of the rule
         /// </summary>
-        public RuleAction Action { get; set; }
+        public IList<RuleAction> Actions { get; set; }
 
         /// <summary>
         /// Gets or sets the Condition of the rule
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <param name="properties"></param>
         public PSAlertRuleProperty(Rule properties)
         {
-            this.Action = properties.Action;
+            this.Actions = properties.Actions;
 
             var condition = properties.Condition as ThresholdRuleCondition;
             if (condition != null)
@@ -85,18 +86,18 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         }
 
         /// <summary>
-        /// A string representation of the PSEventDataAuthorization
+        /// A string representation of the PSAlertRuleProperty
         /// </summary>
-        /// <returns>A string representation of the PSEventDataAuthorization</returns>
+        /// <returns>A string representation of the PSAlertRuleProperty</returns>
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();
             output.AppendLine();
-            output.AppendLine("Action      : " + this.Action);
+            output.AppendLine("Name:       : " + this.Name);
             output.AppendLine("Condition   : " + this.Condition);
             output.AppendLine("Description : " + this.Description);
             output.AppendLine("Status      : " + this.Status);
-            output.Append("Name:       : " + this.Name);
+            output.Append("Actions     : " + this.Actions.ToString(indentationTabs: 1));
             return output.ToString();
         }
     }

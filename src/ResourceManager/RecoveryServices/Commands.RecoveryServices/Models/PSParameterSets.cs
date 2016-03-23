@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
    /// <summary>
     /// Parameter Sets used for Azure Site Recovery commands.
     /// </summary>
-    internal static class ASRParameterSets
+    internal static class ARSParameterSets
     {
         /// <summary>
         /// For default parameter set
