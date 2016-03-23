@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets Server object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByServerObject, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRServer Server { get; set; }
 
@@ -55,29 +55,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByServerObject:
-                        this.GetByServer();
-                        break;
-                    case ASRParameterSets.ByName:
-                        this.GetByName();
-                        break;
-                    case ASRParameterSets.ByFriendlyName:
-                        this.GetByFriendlyName();
-                        break;
-                    case ASRParameterSets.Default:
-                        this.GetAllNetworks();
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
+                case ASRParameterSets.ByServerObject:
+                    this.GetByServer();
+                    break;
+                case ASRParameterSets.ByName:
+                    this.GetByName();
+                    break;
+                case ASRParameterSets.ByFriendlyName:
+                    this.GetByFriendlyName();
+                    break;
+                case ASRParameterSets.Default:
+                    this.GetAllNetworks();
+                    break;
             }
         }
 

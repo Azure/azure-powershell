@@ -153,6 +153,26 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public const string HyperVReplicaAzure = "HyperVReplicaAzure";
 
         /// <summary>
+        /// Represents HyperVReplicaAzureReplicationDetails string constant.
+        /// </summary>
+        public const string HyperVReplicaAzureReplicationDetails = "HyperVReplicaAzureReplicationDetails";
+
+        /// <summary>
+        /// Represents HyperVReplica2012ReplicationDetails string constant.
+        /// </summary>
+        public const string HyperVReplica2012ReplicationDetails = "HyperVReplica2012ReplicationDetails";
+
+        /// <summary>
+        /// Represents InMageAzureV2ProviderSpecificSettings string constant.
+        /// </summary>
+        public const string InMageAzureV2ProviderSpecificSettings = "InMageAzureV2ProviderSpecificSettings";
+
+        /// <summary>
+        /// Represents InMageProviderSpecificSettings string constant.
+        /// </summary>
+        public const string InMageProviderSpecificSettings = "InMageProviderSpecificSettings";
+
+        /// <summary>
         /// Represents San string constant.
         /// </summary>
         public const string San = "San";
@@ -296,6 +316,41 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Nic Selection Type - SelectedByUser
         /// </summary>
         public const string SelectedByUser = "SelectedByUser";
+
+        /// <summary>
+        /// Failover deployment model: NotApplicable
+        /// </summary>
+        public const string NotApplicable = "NotApplicable";
+
+        /// <summary>
+        /// Failover deployment model: Classic
+        /// </summary>
+        public const string Classic = "Classic";
+
+        /// <summary>
+        /// Failover deployment model: ResourceMananger
+        /// </summary>
+        public const string ResourceManager = "ResourceManager";
+
+        /// <summary>
+        /// Group Type: Shutdown
+        /// </summary>
+        public const string Shutdown = "Shutdown";
+
+        /// <summary>
+        /// Group Type: Boot
+        /// </summary>
+        public const string Boot = "Boot";
+
+        /// <summary>
+        /// Group Type: Failover
+        /// </summary>
+        public const string Failover = "Failover";
+
+        /// <summary>
+        /// JSON field: InstanceType
+        /// </summary>
+        public const string InstanceType = "InstanceType";
     }
 
      /// <summary>
@@ -357,5 +412,358 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Virtual Networks
         /// </summary>
         public const string VirtualNetworks = "virtualNetworks";
+
+        /// <summary>
+        /// Recovery provider resource name.
+        /// </summary>
+        public const string RecoveryServicesProviders = "replicationRecoveryServicesProviders";
+
+        /// <summary>
+        /// Protection container mappings resource name.
+        /// </summary>
+        public const string ProtectionContainerMappings = "replicationProtectionContainerMappings";
+
+        /// <summary>
+        /// Protectable Items resource name.
+        /// </summary>
+        public const string ProtectableItems = "replicationProtectableItems";
+
+        /// <summary>
+        /// Recovery Points resource name.
+        /// </summary>
+        public const string RecoveryPoints = "recoveryPoints";
+
+        /// <summary>
+        /// Jobs resource name.
+        /// </summary>
+        public const string Jobs = "replicationJobs";
+
+        /// <summary>
+        /// Policies resource name.
+        /// </summary>
+        public const string Policies = "replicationPolicies";
+
+        /// <summary>
+        /// RecoveryPlans resource name.
+        /// </summary>
+        public const string RecoveryPlans = "replicationRecoveryPlans";
+
+        /// <summary>
+        /// Logical Networks resource name.
+        /// </summary>
+        public const string LogicalNetworks = "replicationLogicalNetworks";
+
+        /// <summary>
+        /// Network Mappings resource name.
+        /// </summary>
+        public const string NetworkMappings = "replicationNetworkMappings";
+
+        /// <summary>
+        /// VCenters resource name.
+        /// </summary>
+        public const string VCenters = "replicationvCenters";
+
+        /// <summary>
+        /// Replication Vault Usages.
+        /// </summary>
+        public const string ReplicationVaultUsages = "replicationUsages";
+
+        /// <summary>
+        /// Vault Usages.
+        /// </summary>
+        public const string VaultUsages = "usages";
+
+        /// <summary>
+        /// Events resource name.
+        /// </summary>
+        public const string Events = "replicationEvents";
+
+        /// <summary>
+        /// Storage classification resource name.
+        /// </summary>
+        public const string StorageClassification = "replicationStorageClassifications";
+
+        /// <summary>
+        /// Storage classification mapping resource name.
+        /// </summary>
+        public const string StorageClassificationMapping = "replicationStorageClassificationMappings";
+
+        /// <summary>
+        /// Alerts resource name.
+        /// </summary>
+        public const string Alerts = "replicationAlertSettings";
+
+        /// <summary>
+        /// List Recovery Azure Vm size operation name.
+        /// </summary>
+        public const string TargetComputeSizes = "targetComputeSizes";
+    }
+
+    /// <summary>
+    /// Constants for current version.
+    /// </summary>
+    public class ARMResourceIdPaths
+    {
+        /// <summary>
+        /// ARM resource path for fabric.
+        /// </summary>
+        public const string FabricResourceIdPath = ARMRoutePathConstants.FabricsRoutePath + "/{0}";
+
+        /// <summary>
+        /// ARM resource path for recovery services providers.
+        /// </summary>
+        public const string RecoveryServicesProviderResourceIdPath = FabricResourceIdPath + "/" + ARMResourceTypeConstants.RecoveryServicesProviders + "/{1}";
+
+        /// <summary>
+        /// ARM resource path for recovery services providers.
+        /// </summary>
+        public const string ProtectionContainerResourceIdPath = FabricResourceIdPath + "/" + ARMResourceTypeConstants.ReplicationProtectionContainers + "/{1}";
+
+        /// <summary>
+        /// ARM resource path for protection container mappings.
+        /// </summary>
+        public const string ProtectionContainerMappingResourceIdPath = ProtectionContainerResourceIdPath + "/" + ARMResourceTypeConstants.ProtectionContainerMappings + "/{2}";
+
+        /// <summary>
+        /// ARM resource path for ProtectableItems.
+        /// </summary>
+        public const string ProtectableItemResourceIdPath = ProtectionContainerResourceIdPath + "/" + ARMResourceTypeConstants.ProtectableItems + "/{2}";
+
+        /// <summary>
+        /// ARM resource path for ReplicatedProtectedItems.
+        /// </summary>
+        public const string ReplicatedProtectedItemResourceIdPath = ProtectionContainerResourceIdPath + "/" + ARMResourceTypeConstants.ReplicationProtectedItems + "/{2}";
+
+        /// <summary>
+        /// ARM resource path for RecoveryPoints.
+        /// </summary>
+        public const string RecoveryPointResourceIdPath = ReplicatedProtectedItemResourceIdPath + "/" + ARMResourceTypeConstants.RecoveryPoints + "/{3}";
+
+        /// <summary>
+        /// ARM resource path for Jobs.
+        /// </summary>
+        public const string JobResourceIdPath = ARMRoutePathConstants.JobsRoutePath + "/{0}";
+
+        /// <summary>
+        /// ARM resource path for Policies.
+        /// </summary>
+        public const string PolicyResourceIdPath = ARMRoutePathConstants.PoliciesRoutePath + "/{0}";
+
+        /// <summary>
+        /// ARM resource path for RecoveryPlans.
+        /// </summary>
+        public const string RecoveryPlanResourceIdPath = ARMRoutePathConstants.RecoveryPlansRoutePath + "/{0}";
+
+        /// <summary>
+        /// ARM resource path for Networks.
+        /// </summary>
+        public const string NetworkResourceIdPath = FabricResourceIdPath + "/" + ARMResourceTypeConstants.ReplicationNetworks + "/{1}";
+
+        /// <summary>
+        /// ARM resource path for LogicalNetworks.
+        /// </summary>
+        public const string LogicalNetworkResourceIdPath = FabricResourceIdPath + "/" + ARMResourceTypeConstants.LogicalNetworks + "/{1}";
+
+        /// <summary>
+        /// ARM resource path for Network Mappings.
+        /// </summary>
+        public const string NetworkMappingResourceIdPath =
+            NetworkResourceIdPath + "/" + ARMResourceTypeConstants.NetworkMappings + "/{2}";
+
+        /// <summary>
+        /// ARM Resource path for Vcenters.
+        /// </summary>
+        public const string VCenterResourceIdPath = FabricResourceIdPath + "/" + ARMResourceTypeConstants.VCenters + "/{1}";
+
+        /// <summary>
+        /// ARM resource path for event.
+        /// </summary>
+        public const string EventResourceIdPath = ARMRoutePathConstants.EventsRoutePath + "/{0}";
+
+        /// <summary>
+        /// ARM resource path for storage classification.
+        /// </summary>
+        public const string StorageClassificationResourceIdPath =
+            FabricResourceIdPath + "/" + ARMResourceTypeConstants.StorageClassification + "/{1}";
+
+        /// <summary>
+        /// ARM resource path for storage classification mapping.
+        /// </summary>
+        public const string StorageClassificationMappingResourceIdPath =
+            StorageClassificationResourceIdPath + "/" + ARMResourceTypeConstants.StorageClassificationMapping + "/{2}";
+
+        /// <summary>
+        /// ARM resource path for event.
+        /// </summary>
+        public const string AlertsResourceIdPath = ARMRoutePathConstants.AlertsRoutePath + "/{0}";
+
+        /// <summary>
+        /// SRS ARM Url Pattern.
+        /// </summary>
+        public const string SRSArmUrlPattern = "/Subscriptions/{0}/resourceGroups/{1}/providers/{2}/{3}/{4}";
+
+        #region External ARM Resource Id
+        /// <summary>
+        /// Storage account ARM Id.
+        /// </summary>
+        public const string StorageAccountArmId = "/subscriptions/{0}/resourceGroups/{1}/providers/{2}/storageAccounts/{3}";
+
+        /// <summary>
+        /// ARM resource path for Azure Networks.
+        /// </summary>
+        public const string AzureNetworksPath =
+            "/subscriptions/{0}/resourceGroups/{1}/providers/{2}/virtualNetworks/{3}";
+
+        /// <summary>
+        /// Automation runbook ARM Id.
+        /// </summary>
+        public const string AutomationRunbookArmId =
+            "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/runbooks/{3}";
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Constants for Route paths.
+    /// </summary>
+    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Keeping all related classes together.")]
+    public class ARMRoutePathConstants
+    {
+        /// <summary>
+        /// Vault level ReplicatedProtectedItems route path.
+        /// </summary>
+        public const string VaultLevelReplicationProtectedItemsRoutePath = ARMResourceTypeConstants.ReplicationProtectedItems;
+
+        /// <summary>
+        /// Vault level ProtectionContainerMappings route path.
+        /// </summary>
+        public const string VaultLevelProtectionContainerMappingsRoutePath = ARMResourceTypeConstants.ProtectionContainerMappings;
+
+        /// <summary>
+        /// Vault level ProtectionContainers route path.
+        /// </summary>
+        public const string VaultLevelProtectionContainersRoutePath = ARMResourceTypeConstants.ReplicationProtectionContainers;
+
+        /// <summary>
+        /// Vault level storage classification route path.
+        /// </summary>
+        public const string VaultLevelStorageClassificationRoutePath =
+            ARMResourceTypeConstants.StorageClassification;
+
+        /// <summary>
+        /// Vault level storage classification mapping route path.
+        /// </summary>
+        public const string VaultLevelStorageClassificationMappingRoutePath =
+            ARMResourceTypeConstants.StorageClassificationMapping;
+
+        /// <summary>
+        /// Fabric route path.
+        /// </summary>
+        public const string FabricsRoutePath = ARMResourceTypeConstants.ReplicationFabrics;
+
+        /// <summary>
+        /// RecoveryServicesProvider route path.
+        /// </summary>
+        public const string RecoveryServicesProvidersRoutePath = FabricsRoutePath + "/{fabricName}/" + ARMResourceTypeConstants.RecoveryServicesProviders;
+
+        /// <summary>
+        /// RecoveryServicesProvider view API route path.
+        /// </summary>
+        public const string RecoveryServicesProvidersViewRoutePath = ARMResourceTypeConstants.RecoveryServicesProviders;
+
+        /// <summary>
+        /// ProtectionContainer route path.
+        /// </summary>
+        public const string ProtectionContainersRoutePath = FabricsRoutePath + "/{fabricName}/" + ARMResourceTypeConstants.ReplicationProtectionContainers;
+
+        /// <summary>
+        /// Protection container mappings path.
+        /// </summary>
+        public const string ProtectionContainerMappingsRoutePath = ProtectionContainersRoutePath + "/{protectionContainerName}/" + ARMResourceTypeConstants.ProtectionContainerMappings;
+
+        /// <summary>
+        /// ProtectableItems route path.
+        /// </summary>
+        public const string ProtectableItemsRoutePath = ProtectionContainersRoutePath + "/{protectionContainerName}/" + ARMResourceTypeConstants.ProtectableItems;
+
+        /// <summary>
+        /// ReplicatedProtectedItems route path.
+        /// </summary>
+        public const string ReplicationProtectedItemsRoutePath = ProtectionContainersRoutePath + "/{protectionContainerName}/" + ARMResourceTypeConstants.ReplicationProtectedItems;
+
+        /// <summary>
+        /// RecoveryPoints route path.
+        /// </summary>
+        public const string RecoveryPointsRoutePath = ReplicationProtectedItemsRoutePath + "/{replicatedProtectedItemName}/" + ARMResourceTypeConstants.RecoveryPoints;
+
+        /// <summary>
+        /// Jobs route path.
+        /// </summary>
+        public const string JobsRoutePath = ARMResourceTypeConstants.Jobs;
+
+        /// <summary>
+        /// Jobs route path.
+        /// </summary>
+        public const string PoliciesRoutePath = ARMResourceTypeConstants.Policies;
+
+        /// <summary>
+        /// Jobs route path.
+        /// </summary>
+        public const string RecoveryPlansRoutePath = ARMResourceTypeConstants.RecoveryPlans;
+
+        /// <summary>
+        /// Replication Networks Route Path
+        /// </summary>
+        public const string NetworksRoutePath = FabricsRoutePath + "/{fabricName}/" + ARMResourceTypeConstants.ReplicationNetworks;
+
+        /// <summary>
+        /// Replication Logical Networks Route Path
+        /// </summary>
+        public const string LogicalNetworksRoutePath = FabricsRoutePath + "/{fabricName}/" + ARMResourceTypeConstants.LogicalNetworks;
+
+        /// <summary>
+        /// Network Mappings Route Path
+        /// </summary>
+        public const string NetworkMappingsRoutePath =
+            NetworksRoutePath + "/{networkName}/" + ARMResourceTypeConstants.NetworkMappings;
+
+        /// <summary>
+        /// VCenters route path.
+        /// </summary>
+        public const string VCentersRoutePath = FabricsRoutePath + "/{fabricName}/" + ARMResourceTypeConstants.VCenters;
+
+        /// <summary>
+        /// Events route path.
+        /// </summary>
+        public const string EventsRoutePath = ARMResourceTypeConstants.Events;
+
+        /// <summary>
+        /// Storage route path.
+        /// </summary>
+        public const string StorageClassificationRoutePath =
+            FabricsRoutePath + "/{fabricName}/" + ARMResourceTypeConstants.StorageClassification;
+
+        /// <summary>
+        /// Storage mapping route path.
+        /// </summary>
+        public const string StorageClassificationMappingRoutePath =
+            StorageClassificationRoutePath + "/{storageClassificationName}/" + ARMResourceTypeConstants.StorageClassificationMapping;
+
+        /// <summary>
+        /// Alerts route path.
+        /// </summary>
+        public const string AlertsRoutePath = ARMResourceTypeConstants.Alerts;
+
+        /// <summary>
+        /// Operations route path.
+        /// </summary>
+        public const string OperationsRoutePath = "operations";
+
+        /// <summary>
+        /// Operations route path.
+        /// </summary>
+        public const string TargetComputesSizesPath =
+            ReplicationProtectedItemsRoutePath + "/{replicatedProtectedItemName}/" +
+            ARMResourceTypeConstants.TargetComputeSizes;
     }
 }
