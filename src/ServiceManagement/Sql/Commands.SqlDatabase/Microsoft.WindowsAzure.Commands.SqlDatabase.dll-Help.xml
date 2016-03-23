@@ -5622,7 +5622,7 @@ Start-AzureSqlDatabaseCopy returns immediately without waiting for the completio
           <maml:description>
             <maml:para>The Blob storage container object into which the data is exported.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">CloudBlobContainer</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">AzureStorageContainer</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
           <maml:name>DatabaseName</maml:name>
@@ -5697,9 +5697,9 @@ Start-AzureSqlDatabaseCopy returns immediately without waiting for the completio
         <maml:description>
           <maml:para>The Blob storage container object into which the data is exported.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">CloudBlobContainer</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">AzureStorageContainer</command:parameterValue>
         <dev:type>
-          <maml:name>CloudBlobContainer</maml:name>
+          <maml:name>AzureStorageContainer</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -5811,7 +5811,7 @@ Start-AzureSqlDatabaseCopy returns immediately without waiting for the completio
 C:\PS&gt;$SqlCtx = New-AzureSqlDatabaseServerContext -ServerName $ServerName -Credentials $credential
 C:\PS&gt;$StorageCtx = New-AzureStorageContext -StorageAccountName $StorageName -StorageAccountKey $StorageKey
 C:\PS&gt;$Container = Get-AzureStorageContainer -Name $ContainerName -Context $StorageCtx
-C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $SqlCtx -StorageContainer $Container.CloudBlobContainer -DatabaseName $DatabaseName -BlobName $BlobName</dev:code>
+C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $SqlCtx -StorageContainer $Container -DatabaseName $DatabaseName -BlobName $BlobName</dev:code>
         <dev:remarks>
           <maml:para>This example initiates an export process from the SQL Database, "$DatabaseName", to the Blob storage, "$BlobName".</maml:para>
         </dev:remarks>
@@ -5869,7 +5869,7 @@ C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $Sq
           <maml:description>
             <maml:para>The name of the storage container containing the Blob from which to import.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">CloudBlobContainer</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">AzureStorageContainer</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
           <maml:name>DatabaseName</maml:name>
@@ -5972,9 +5972,9 @@ C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $Sq
         <maml:description>
           <maml:para>The name of the storage container containing the Blob from which to import.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">CloudBlobContainer</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">AzureStorageContainer</command:parameterValue>
         <dev:type>
-          <maml:name>CloudBlobContainer</maml:name>
+          <maml:name>AzureStorageContainer</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -6112,7 +6112,7 @@ C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $Sq
 C:\PS&gt;$SqlCtx = New-AzureSqlDatabaseServerContext -ServerName $ServerName -Credentials $credential
 C:\PS&gt;$StorageCtx = New-AzureStorageContext -StorageAccountName $StorageName -StorageAccountKey $StorageKey
 C:\PS&gt;$Container = Get-AzureStorageContainer -Name $ContainerName -Context $StorageCtx
-C:\PS&gt;$importRequest = Start-AzureSqlDatabaseImport -SqlConnectionContext $SqlCtx -StorageContainer $Container.CloudBlobContainer -DatabaseName $DatabaseName -BlobName $BlobName</dev:code>
+C:\PS&gt;$importRequest = Start-AzureSqlDatabaseImport -SqlConnectionContext $SqlCtx -StorageContainer $Container -DatabaseName $DatabaseName -BlobName $BlobName</dev:code>
         <dev:remarks>
           <maml:para>This example initiates an import process from the Blob storage, "$BlobName", into the SQL Database, "DatabaseName".</maml:para>
         </dev:remarks>
