@@ -20,7 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         public const string ExtensionDefaultPublisher = "Microsoft.Compute";
         public const string ExtensionDefaultName = "BGInfo";
-        public const string ExtensionDefaultVersion = "1.*";
+        public const string ExtensionDefaultVersion = "2.*";
 
         public VirtualMachineBGInfoExtensionCmdletBase()
         {
