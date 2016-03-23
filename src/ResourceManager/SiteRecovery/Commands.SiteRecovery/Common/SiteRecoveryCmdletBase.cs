@@ -19,8 +19,8 @@ using System.Threading;
 using System.Xml;
 using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.RecoveryServices;
-using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Azure.Management.SiteRecoveryVault;
+using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -58,6 +58,30 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 }
 
                 return this.recoveryServicesClient;
+            }
+        }
+
+        /// <summary>
+        /// Virtual method to be implemented by Site Recovery cmdlets.
+        /// </summary>
+        public virtual void ExecuteSiteRecoveryCmdlet()
+        {
+            // Do Nothing
+        }
+
+        /// <summary>
+        /// Overriding base implementation go execute cmdlet.
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            try
+            {
+                base.ExecuteCmdlet();
+                ExecuteSiteRecoveryCmdlet();
+            }
+            catch (Exception ex)
+            {
+                this.HandleException(ex);
             }
         }
 
@@ -216,7 +240,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets the current vault location.
         /// </summary>
         /// <returns>The current vault location.</returns>
-        protected string GetCurrentValutLocation()
+        protected string GetCurrentVaultLocation()
         {
             string location = string.Empty;
 

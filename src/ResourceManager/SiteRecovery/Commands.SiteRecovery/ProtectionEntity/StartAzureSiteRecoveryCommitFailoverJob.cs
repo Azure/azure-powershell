@@ -44,6 +44,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string fabricName;
 
         #region Parameters
+
+        /// <summary>
+        /// Gets or sets Recovery Plan object.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRRecoveryPlan RecoveryPlan { get; set; }
+
         /// <summary>
         /// Gets or sets Protection Entity object.
         /// </summary>
@@ -51,36 +59,25 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity ProtectionEntity { get; set; }
 
-        /// <summary>
-        /// Gets or sets Failover direction for the recovery plan.
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        [ValidateSet(
-            Constants.PrimaryToRecovery,
-            Constants.RecoveryToPrimary)]
-        public string Direction { get; set; }
         #endregion Parameters
 
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+	        base.ExecuteSiteRecoveryCmdlet();
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByPEObject:
-                        this.protectionEntityName = this.ProtectionEntity.Name;
-                        this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
-                        this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
-                        this.SetPECommit();
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
+                case ASRParameterSets.ByPEObject:
+                    this.protectionEntityName = this.ProtectionEntity.Name;
+                    this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
+                    this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
+                    this.SetPECommit();
+                    break;
+                case ASRParameterSets.ByRPObject:
+                    this.StartRpCommit();
+                    break;
             }
         }
 
@@ -96,16 +93,31 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             ReplicationProtectedItemResponse replicationProtectedItemResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(this.fabricName,
-                        this.ProtectionEntity.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId,  ARMResourceTypeConstants.ReplicationProtectedItems));
+                        this.ProtectionEntity.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
 
-            PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID,  ARMResourceTypeConstants.ReplicationPolicies));
+            PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID, ARMResourceTypeConstants.ReplicationPolicies));
 
             this.ProtectionEntity = new ASRProtectionEntity(protectableItemResponse.ProtectableItem, replicationProtectedItemResponse.ReplicationProtectedItem);
 
             LongRunningOperationResponse response = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
                 this.fabricName,
                 this.protectionContainerName,
-                Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Id,  ARMResourceTypeConstants.ReplicationProtectedItems));
+                Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Id, ARMResourceTypeConstants.ReplicationProtectedItems));
+
+            JobResponse jobResponse =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            WriteObject(new ASRJob(jobResponse.Job));
+        }
+
+        /// <summary>
+        /// Starts RP Commit.
+        /// </summary>
+        private void StartRpCommit()
+        {
+            LongRunningOperationResponse response = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
+                this.RecoveryPlan.Name);
 
             JobResponse jobResponse =
                 RecoveryServicesClient

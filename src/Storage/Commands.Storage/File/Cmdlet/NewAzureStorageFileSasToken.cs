@@ -90,8 +90,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public CloudFile File { get; set; }
 
-        [Parameter(HelpMessage = "Policy Identifier", ParameterSetName = NameSasPolicyParmeterSet)]
-        [Parameter(HelpMessage = "Policy Identifier", ParameterSetName = CloudFileSasPolicyParmeterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Policy Identifier", ParameterSetName = NameSasPolicyParmeterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Policy Identifier", ParameterSetName = CloudFileSasPolicyParmeterSet)]
+        [ValidateNotNullOrEmpty]
         public string Policy
         {
             get { return accessPolicyIdentifier; }
@@ -99,35 +100,47 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
         private string accessPolicyIdentifier;
 
-        [Parameter(HelpMessage = "Permissions for a file. Permissions can be any subset of \"rwd\".",
+        [Parameter(
+            Mandatory = false, 
+            HelpMessage = "Permissions for a file. Permissions can be any subset of \"rwd\".",
             ParameterSetName = NameSasPermissionParameterSet)]
-        [Parameter(HelpMessage = "Permissions for a file. Permissions can be any subset of \"rwd\".",
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Permissions for a file. Permissions can be any subset of \"rwd\".",
             ParameterSetName = CloudFileSasPermissionParameterSet)]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        public SharedAccessProtocol Protocol { get; set; }
+        [ValidateNotNull]
+        public SharedAccessProtocol? Protocol { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
+        [ValidateNotNullOrEmpty]
         public string IPAddressOrRange { get; set; }
 
-        [Parameter(HelpMessage = "Start Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Start Time")]
+        [ValidateNotNull]
         public DateTime? StartTime { get; set; }
 
-        [Parameter(HelpMessage = "Expiry Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Expiry Time")]
+        [ValidateNotNull]
         public DateTime? ExpiryTime { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
         public SwitchParameter FullUri { get; set; }
 
         [Parameter(
+            Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "Azure Storage Context Object",
             ParameterSetName = NameSasPermissionParameterSet)]
         [Parameter(
+            Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "Azure Storage Context Object",
             ParameterSetName = NameSasPolicyParmeterSet)]
+        [ValidateNotNull]
         public override AzureStorageContext Context { get; set; }
 
         // Overwrite the useless parameter

@@ -10,37 +10,25 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// ---------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
+using System.Collections;
+
+namespace Microsoft.Azure.Commands.Cdn.Models
 {
-    using System;
-    using Microsoft.WindowsAzure.Storage.Table;
-
     /// <summary>
-    /// Azure storage table object
+    /// ARM tracked resource
     /// </summary>
-    public class AzureStorageTable : AzureStorageBase
+    public class PSTrackedResource : PSResource
     {
         /// <summary>
-        /// Cloud table object
+        /// Gets or sets Resource location
         /// </summary>
-        public CloudTable CloudTable { get; private set; }
+        public string Location { get; set; }
 
         /// <summary>
-        /// Table uri
+        /// Resource tags
         /// </summary>
-        public Uri Uri { get; private set; }
-
-        /// <summary>
-        /// Azure storage table constructor
-        /// </summary>
-        /// <param name="table">Cloud table object</param>
-        public AzureStorageTable(CloudTable table)
-        {
-            Name = table.Name;
-            CloudTable = table;
-            Uri = table.Uri;
-        }
+        public Hashtable Tags { get; set; }
     }
 }

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1401:FieldsMustBePrivate",
         Justification = "For Resource Credentials.")]
-        public static ASRVaultCreds asrVaultCreds = new ASRVaultCreds();
+        public static ASRVaultCreds arsVaultCreds = new ASRVaultCreds();
 
         /// <summary>
         /// Recovery Services client.
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string resourceType = string.Empty;
             
             // Get Resource provider namespace from config if needed to communicate with internal deployments
-            if (string.IsNullOrEmpty(asrVaultCreds.ResourceNamespace))
+            if (string.IsNullOrEmpty(arsVaultCreds.ResourceNamespace))
             {
                 if (appSettings.Settings.Count == 0)
                 {
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             this.recoveryServicesClient =
             AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
-                asrVaultCreds.ResourceNamespace,
+                arsVaultCreds.ResourceNamespace,
                 AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context),
                 azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
         }

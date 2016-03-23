@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
+namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 {
-    using System;
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
-
-    /// <summary>
-    /// Base class for all azure storage object
-    /// </summary>
-    public class AzureStorageBase
+    public enum PSCustomDomainInvalidReason
     {
-        /// <summary>
-        /// Storage context
-        /// </summary>
-        public AzureStorageContext Context { get; set; }
-
-        /// <summary>
-        /// Azure storage object name
-        /// </summary>
-        public String Name { get; set; }
+        InvalidFormat,
+        IncorrectMapping,
     }
 }

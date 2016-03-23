@@ -72,8 +72,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
+            base.ExecuteSiteRecoveryCmdlet();
+
             try
             {
                 this.GetVaultSettingsFile();
@@ -82,8 +84,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 // if an exception is thrown from a task, it will be wrapped in AggregateException 
                 // and propagated to the main thread. Just throwing the first exception in the list.
-                Exception exception = aggregateEx.InnerExceptions.First<Exception>();
-                this.HandleException(exception);
+                throw aggregateEx.InnerExceptions.First<Exception>();
             }
         }
 
