@@ -13,13 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
     using System;
     using System.Linq;
-    using Microsoft.Azure.Common.Authentication;
+    using ServiceManagemenet.Common;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
@@ -110,8 +111,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             string mockName) 
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (UndoContext context = UndoContext.Current) 
             { 

@@ -24,6 +24,7 @@ namespace StaticAnalysis.HelpAnalyzer
     /// </summary>
     public class HelpAnalyzer : IStaticAnalyzer
     {
+        const int MissingHelp = 6050;
         public HelpAnalyzer()
         {
             Name = "Help Analyzer";
@@ -66,7 +67,7 @@ namespace StaticAnalysis.HelpAnalyzer
                                     h.HelpFile = helpFileName;
                                     h.Assembly = cmdletFileName;
                                 }, "Cmdlet");
-                                var proxy = AppDomainHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+                                var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
                                 var cmdlets = proxy.GetCmdlets(cmdletFile);
                                 var helpRecords = CmdletHelpParser.GetHelpTopics(helpFile, helpLogger);
                                 ValidateHelpRecords(cmdlets, helpRecords, helpLogger);
@@ -92,6 +93,7 @@ namespace StaticAnalysis.HelpAnalyzer
                     {
                         Target = cmdlet.ClassName,
                         Severity = 1,
+                        ProblemId = MissingHelp,
                         Description = string.Format("Help missing for cmdlet {0} implemented by class {1}", 
                         cmdlet.CmdletName, cmdlet.ClassName),
                         Remediation = string.Format("Add Help record for cmdlet {0} to help file.", cmdlet.CmdletName)

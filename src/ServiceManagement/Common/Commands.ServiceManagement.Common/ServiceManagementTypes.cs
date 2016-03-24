@@ -1700,6 +1700,51 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
     }
     #endregion
 
+    #region DebugSettings
+    [DataContract(Namespace = Constants.ServiceManagementNS)]
+    public class DebugSettings : Mergable<DebugSettings>
+    {
+        [DataMember(Name = "BootDiagnosticsEnabled", EmitDefaultValue = false, Order = 1)]
+        public bool BootDiagnosticsEnabled
+        {
+            get
+            {
+                return this.GetValue<bool>("BootDiagnosticsEnabled");
+            }
+            set
+            {
+                this.SetValue("BootDiagnosticsEnabled", value);
+            }
+        }
+
+        [DataMember(Name = "ConsoleScreenshotBlobUri", EmitDefaultValue = false, Order = 2)]
+        public Uri ConsoleScreenshotBlobUri
+        {
+            get
+            {
+                return this.GetValue<Uri>("ConsoleScreenshotBlobUri");
+            }
+            set
+            {
+                this.SetValue("ConsoleScreenshotBlobUri", value);
+            }
+        }
+
+        [DataMember(Name = "SerialOutputBlobUri", EmitDefaultValue = false, Order = 3)]
+        public Uri SerialOutputBlobUri
+        {
+            get
+            {
+                return this.GetValue<Uri>("SerialOutputBlobUri");
+            }
+            set
+            {
+                this.SetValue("SerialOutputBlobUri", value);
+            }
+        }
+    }
+    #endregion
+
     #region RoleOperation
     [DataContract(Namespace = Constants.ServiceManagementNS)]
     public class RoleOperation : IExtensibleDataObject

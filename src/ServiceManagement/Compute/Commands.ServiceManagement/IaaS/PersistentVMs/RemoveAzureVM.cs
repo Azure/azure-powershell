@@ -15,15 +15,16 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureVM", SupportsShouldProcess = true), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsCommon.Remove, ProfileNouns.VirtualMachine, SupportsShouldProcess = true), OutputType(typeof(ManagementOperationContext))]
     public class RemoveAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the role to remove.")]

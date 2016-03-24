@@ -28,6 +28,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
+using System;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
@@ -37,13 +38,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private Mock<IGalleryClient> galleryClientMock;
 
-        private string templateFile = @"Resources\sampleTemplateFile.json";
+        private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
-        private string invalidTemplateFile = @"Resources\invalidTemplateFile.json";
+        private string invalidTemplateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\invalidTemplateFile.json");
 
-        private string templateParameterFileSchema1 = @"Resources\sampleTemplateParameterFile.json";
+        private string templateParameterFileSchema1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateParameterFile.json");
 
-        private string templateParameterFileSchema2 = @"Resources\sampleTemplateParameterFileSchema2.json";
+        private string templateParameterFileSchema2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateParameterFileSchema2.json");
 
         public GalleryTemplatesClientTests()
         {

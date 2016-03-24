@@ -23,6 +23,7 @@ using System.ServiceModel.Dispatcher;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
@@ -62,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
 
         public object DeserializeReply(Message message, object[] parameters)
         {
-            XDocument response = XDocument.Parse(GeneralUtilities.ReadMessageBody(ref message));
+            XDocument response = XDocument.Parse(ServiceManagementUtilities.ReadMessageBody(ref message));
             List<T> results = new List<T>();
             IEnumerable<XElement> contents = response.Descendants(XName.Get("content", ServiceBusConstants.AtomNamespaceName));
             XmlSerializer serializer = new XmlSerializer(typeof(T));

@@ -20,7 +20,8 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using Xunit;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -272,12 +273,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 SetupManagementClients();
 
-                List<string> modules = Directory.GetFiles("Resources\\TrafficManager", "*.ps1").ToList();
-                modules.Add("Common.ps1");
-                modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
+                List<string> modules = Directory.GetFiles("Resources\\TrafficManager".AsAbsoluteLocation(), "*.ps1").ToList();
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(modules.ToArray());
+                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
 
                 helper.RunPowerShellTest(scripts);
             }

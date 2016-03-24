@@ -18,8 +18,8 @@ using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
 using Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             base.ExecuteCmdlet();
 
             var virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, VMName);
-            string currentOSType = virtualMachineResponse.Body.StorageProfile.OsDisk.OsType;
+            var currentOSType = virtualMachineResponse.Body.StorageProfile.OsDisk.OsType;
 
-            if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
+            if (OperatingSystemTypes.Linux.Equals(currentOSType))
             {
                 AzureVMBackupExtensionUtil util = new AzureVMBackupExtensionUtil();
                 AzureVMBackupConfig vmConfig = new AzureVMBackupConfig();
