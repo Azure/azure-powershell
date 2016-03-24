@@ -102,6 +102,14 @@ function Test-DataLakeAnalyticsAccount
 		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
 		Assert-AreEqual 2 $testStoreAdd.Properties.DataLakeStoreAccounts.Count
 
+		# get the specific data source added
+		$adlsAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
+		Assert-AreEqual $secondDataLakeAccountName $adlsAccountInfo.Name
+
+		# get the list of data lakes
+		$adlsAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataSource DataLakeStore
+		Assert-AreEqual 2 $adlsAccountInfos.Count
+
 		# remove the Data lake storage account
 		Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName -Force -PassThru} "Remove Data Lake Store account failed."
 
@@ -115,6 +123,14 @@ function Test-DataLakeAnalyticsAccount
 		# get the account and ensure that it contains one blob account
 		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
 		Assert-AreEqual 1 $testStoreAdd.Properties.StorageAccounts.Count
+
+		# get the specific data source added
+		$blobAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName
+		Assert-AreEqual $blobAccountName $blobAccountInfo.Name
+
+		# get the list of blobs
+		$blobAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataSource Blob
+		Assert-AreEqual 1 $blobAccountInfos.Count
 
 		# remove the blob storage account
 		Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -Force -PassThru} "Remove blob Storage account failed."

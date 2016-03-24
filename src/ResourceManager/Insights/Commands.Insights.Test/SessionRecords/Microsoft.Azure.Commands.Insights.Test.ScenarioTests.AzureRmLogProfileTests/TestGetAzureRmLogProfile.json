@@ -1,0 +1,41 @@
+{
+    "Entries": [{
+        "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/logprofiles/default?api-version=2016-03-01",
+        "RequestMethod": "GET",
+        "RequestBody": "",
+        "RequestHeaders": {
+            "Accept": ["application/json"],
+            "Authorization": ["Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDU3OTk1OTI5LCJuYmYiOjE0NTc5OTU5MjksImV4cCI6MTQ1Nzk5OTgyOSwiX2NsYWltX25hbWVzIjp7Imdyb3VwcyI6InNyYzEifSwiX2NsYWltX3NvdXJjZXMiOnsic3JjMSI6eyJlbmRwb2ludCI6Imh0dHBzOi8vZ3JhcGgud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3VzZXJzL2M4YzdjZDVlLTJlNGQtNGNhNC1hNTAxLWRjYWZlNzc0NmI3Ny9nZXRNZW1iZXJPYmplY3RzIn19LCJhY3IiOiIxIiwiYW1yIjpbInJzYSIsIndpYSIsIm1mYSJdLCJhcHBpZCI6IjE5NTBhMjU4LTIyN2ItNGUzMS1hOWNmLTcxNzQ5NTk0NWZjMiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiTWVkZWlyb3MgUnVlbGEiLCJnaXZlbl9uYW1lIjoiVmluaWNpdXMiLCJpbl9jb3JwIjoidHJ1ZSIsImlwYWRkciI6IjEzMS4xMDcuMTU5LjgzIiwibmFtZSI6IlZpbmljaXVzIE1lZGVpcm9zIFJ1ZWxhIiwib2lkIjoiYzhjN2NkNWUtMmU0ZC00Y2E0LWE1MDEtZGNhZmU3NzQ2Yjc3Iiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTEzMDcxODA4IiwicHVpZCI6IjEwMDMwMDAwODcyMjgwRUYiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJpQTlnamJCbmdYX0ViMHFqdGVOb05NN1dzWkJQU2hQQXpoODFIcXIya0hzIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidW5pcXVlX25hbWUiOiJ2aXJ1ZWxhQG1pY3Jvc29mdC5jb20iLCJ1cG4iOiJ2aXJ1ZWxhQG1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.t00gmS4vA2vKJ6fKA4hXxUN34A2suk-TBxL4vqLtdBnD_FGp5TuRR-VSYTt5AG1aMGrJtygion2MLEht_hLkEoSyRRVOUDyNJNC7qbqnn2U0t1Dj27inELEoM-yRDgmybnwAiKbhwug70Ov5zKvpGU5uDMahBXa7IQZuCCnt_XsU4P8qHo0XHG4WHPTaknu-cI2gT5rsda8qOrDwnNMQjC0ufN1Ylq1hG24LScGMHBsd_Zkm_-hENcgAMU6an_InTfwPIMxG9sE4NLPygggJP4g25ThGjn7oiD8m13kP11JDt5cPpa_X8I173JJa-4UW7zAmtkysTZeXtnUnFQQZtQ"],
+            "User-Agent": ["Microsoft.Azure.Management.Insights.InsightsManagementClient/0.9.0.0 AzurePowershell/v1.0.0.0"],
+            "CommandName": ["Get-AzureRmLogProfile"],
+            "ParameterSetName": ["__AllParameterSets"],
+            "x-ms-client-request-id": ["f4dd9dcb-126c-4621-952a-6d37fc0e570e"],
+            "Host": ["management.azure.com"],
+            "Connection": ["Keep-Alive"]
+        },
+        "ResponseBody": "{\"id\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/providers/microsoft.insights/logprofiles/default\",\"name\":\"default\",\"location\":null,\"tags\":null,\"properties\":{\"storageAccountId\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777\",\"serviceBusRuleId\":null,\"locations\":[\"global\"],\"categories\":[\"Delete\",\"Write\",\"Action\"],\"retentionPolicy\":{\"enabled\":false,\"days\":0}}}\r\n",
+        "ResponseHeaders": {
+            "Cache-Control": ["no-cache"],
+            "Pragma": ["no-cache"],
+            "Content-Length": ["450"],
+            "Content-Type": ["application/json",
+            "charset=utf-8"],
+            "Expires": ["-1"],
+            "Strict-Transport-Security": ["max-age=31536000",
+            "includeSubDomains"],
+            "x-ms-request-id": ["c6647f69-de49-4a88-8325-ecf979ce45fc"],
+            "Server": ["Microsoft-IIS/8.5"],
+            "x-ms-ratelimit-remaining-subscription-reads": ["14914"],
+            "x-ms-correlation-request-id": ["6bf4b807-a542-4ad9-9dc3-8091c90299b7"],
+            "x-ms-routing-request-id": ["WESTUS:20160314T234953Z:6bf4b807-a542-4ad9-9dc3-8091c90299b7"],
+            "Date": ["Mon, 14 Mar 2016 23:49:53 GMT"]
+        },
+        "StatusCode": "200"
+    }],
+    "Names": {
+        "Test-AddAlertRule": [""]
+    },
+    "Variables": {
+        "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+    }
+}

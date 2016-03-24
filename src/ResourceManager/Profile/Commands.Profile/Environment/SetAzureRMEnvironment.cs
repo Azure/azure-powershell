@@ -100,7 +100,12 @@ namespace Microsoft.Azure.Commands.Profile
            HelpMessage = "The default tenant for this environment.")]
         public string AdTenant { get; set; }
 
-        protected override void BeginProcessing()
+          [Parameter(Position = 18, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The audience for tokens authenticating with the AD Graph Endpoint.")]
+        [Alias("GraphEndpointResourceId", "GraphResourceId")]
+        public string GraphAudience { get; set; }
+
+       protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
         }
@@ -139,7 +144,7 @@ namespace Microsoft.Azure.Commands.Profile
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, AzureDataLakeStoreFileSystemEndpointSuffix);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AdTenant, AdTenant);
-
+            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.GraphEndpointResourceId, GraphAudience);
             profileClient.AddOrSetEnvironment(newEnvironment);
 
             WriteObject((PSAzureEnvironment)newEnvironment);

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Saves the deployment template to a file on disk.
     /// </summary>
     [Cmdlet(VerbsData.Save, "AzureRmResourceGroupDeploymentTemplate"), OutputType(typeof(PSObject))]
-    public class GetAzureResourceGroupDeploymentTemplateCmdlet : ResourceManagerCmdletBase
+    public class SaveAzureResourceGroupDeploymentTemplateCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// Gets or sets the resource group name parameter.
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
 
             string path = FileUtility.SaveTemplateFile(
-                deploymentName: this.DeploymentName,
+                templateName: this.DeploymentName,
                 contents: template.ToString(),
                 outputPath: string.IsNullOrEmpty(this.Path) ? System.IO.Path.Combine(CurrentPath(), this.DeploymentName) : this.TryResolvePath(this.Path),
                 overwrite: this.Force,

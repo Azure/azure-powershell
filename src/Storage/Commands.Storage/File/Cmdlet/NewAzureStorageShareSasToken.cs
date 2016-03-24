@@ -45,7 +45,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
-        [Parameter(HelpMessage = "Policy Identifier", ParameterSetName = SasPolicyParmeterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Policy Identifier", ParameterSetName = SasPolicyParmeterSet)]
+        [ValidateNotNullOrEmpty]
         public string Policy
         {
             get { return accessPolicyIdentifier; }
@@ -53,29 +54,36 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
         private string accessPolicyIdentifier;
 
-        [Parameter(HelpMessage = "Permissions for a share. Permissions can be any subset of \"rwdl\".",
+        [Parameter(Mandatory = false, HelpMessage = "Permissions for a share. Permissions can be any subset of \"rwdl\".",
             ParameterSetName = SasPermissionParameterSet)]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        public SharedAccessProtocol Protocol { get; set; }
+        [ValidateNotNull]
+        public SharedAccessProtocol? Protocol { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
+        [ValidateNotNullOrEmpty]
         public string IPAddressOrRange { get; set; }
 
-        [Parameter(HelpMessage = "Start Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Start Time")]
+        [ValidateNotNull]
         public DateTime? StartTime { get; set; }
 
-        [Parameter(HelpMessage = "Expiry Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Expiry Time")]
+        [ValidateNotNull]
         public DateTime? ExpiryTime { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
         public SwitchParameter FullUri { get; set; }
 
         [Parameter(
+            Mandatory = false,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName=true,
             HelpMessage = "Azure Storage Context Object")]
+        [ValidateNotNull]
         public override AzureStorageContext Context { get; set; }
 
         // Overwrite the useless parameter
