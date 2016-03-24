@@ -129,7 +129,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse TriggerRestore()
         {
-            throw new NotImplementedException();
+            AzureRmRecoveryServicesIaasVmRecoveryPoint rp = ProviderData.ProviderParameters[RestoreBackupItemParams.RecoveryPoint] 
+                as AzureRmRecoveryServicesIaasVmRecoveryPoint;
+            string storageId = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountId].ToString();
+
+            if(rp == null)
+            {
+                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesIaasVmRecoveryPoint");
+            }
         }
 
         public ProtectedItemResponse GetProtectedItem()

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum RestoreBackupItemParams
     {
         RecoveryPoint,
-        StorageAccountName,
+        StorageAccountId,
     }
 
     public enum PolicyParams

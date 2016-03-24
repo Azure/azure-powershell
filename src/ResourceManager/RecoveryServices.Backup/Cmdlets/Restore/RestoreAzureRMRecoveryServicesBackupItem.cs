@@ -14,12 +14,16 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using ResourcesNS = Microsoft.Azure.Management.Resources;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -39,13 +43,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
+
+                ResourcesNS.ResourceManagementClient rmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                ResourceIdentity identity = new ResourceIdentity();
+                identity.ResourceName = StorageAccountName;
+                identity.ResourceType = "Microsoft.ClassicStorage";
+
+                ResourcesNS.Models.ResourceGetResult resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
+                if(resource == null)
+                {
+                    identity.ResourceType = "Microsoft.Storage";
+                    resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
+                }
+                if(resource == null)
+                {
+                    throw new ArgumentException("Storage account doesnt exists");
+                }
+
+                string storageId = resource.Resource.Id;
+
+                storageId = StorageAccountName; //TBD: once service will migrate to storageID we will remove this line;
+
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
                     {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
-                    {RestoreBackupItemParams.StorageAccountName, StorageAccountName}
+                    {RestoreBackupItemParams.StorageAccountId, storageId}
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.ContainerType, RecoveryPoint.BackupManagementType);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 psBackupProvider.TriggerRestore();
             });
         }
