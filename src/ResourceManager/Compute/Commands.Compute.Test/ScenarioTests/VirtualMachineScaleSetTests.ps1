@@ -32,15 +32,13 @@ Get-AzureRmVmssSku                                 1.2.4      AzureRM.Compute
 Get-AzureRmVmssVM                                  1.2.4      AzureRM.Compute
 New-AzureRmVmss                                    1.2.4      AzureRM.Compute
 New-AzureRmVmssConfig                              1.2.4      AzureRM.Compute
-New-AzureRmVmssIpConfigurationConfig               1.2.4      AzureRM.Compute
+New-AzureRmVmssIpConfig                            1.2.4      AzureRM.Compute
 New-AzureRmVmssVaultCertificateConfig              1.2.4      AzureRM.Compute
 Remove-AzureRmVmss                                 1.2.4      AzureRM.Compute
-Remove-AzureRmVmssAdditionalUnattendContent        1.2.4      AzureRM.Compute
 Remove-AzureRmVmssExtension                        1.2.4      AzureRM.Compute
 Remove-AzureRmVmssNetworkInterfaceConfiguration    1.2.4      AzureRM.Compute
 Remove-AzureRmVmssSecret                           1.2.4      AzureRM.Compute
 Remove-AzureRmVmssSshPublicKey                     1.2.4      AzureRM.Compute
-Remove-AzureRmVmssWinRMListener                    1.2.4      AzureRM.Compute
 Restart-AzureRmVmss                                1.2.4      AzureRM.Compute
 Set-AzureRmVmss                                    1.2.4      AzureRM.Compute
 Set-AzureRmVmssOsProfile                           1.2.4      AzureRM.Compute
@@ -49,6 +47,11 @@ Set-AzureRmVmssVM                                  1.2.4      AzureRM.Compute
 Start-AzureRmVmss                                  1.2.4      AzureRM.Compute
 Stop-AzureRmVmss                                   1.2.4      AzureRM.Compute
 Update-AzureRmVmss                                 1.2.4      AzureRM.Compute
+#>
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set
 #>
 function Test-VirtualMachineScaleSet
 {
@@ -130,7 +133,7 @@ function Test-VirtualMachineScaleSet
         $aucPassName ="oobeSystem";
         $aucSetting = "AutoLogon";
         $aucContent = "<UserAccounts><AdministratorPassword><Value>password</Value><PlainText>true</PlainText></AdministratorPassword></UserAccounts>";
-        $ipCfg = New-AzureRmVmssIPConfigurationConfig -Name 'test' `
+        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' `
             -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
             -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
             -SubnetId $subnetId;
@@ -139,11 +142,9 @@ function Test-VirtualMachineScaleSet
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
-            | Add-AzureRmVmssAdditionalUnattendContent -ComponentName  $aucComponentName -Content  $aucContent -PassName  $aucPassName -SettingName  $aucSetting `
-            | Remove-AzureRmVmssAdditionalUnattendContent -ComponentName  $aucComponentName;
+            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer ;
 
-        $st = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSetCreateOrUpdateParameter $vmss;
+        $st = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss');
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
@@ -258,6 +259,121 @@ function Test-VirtualMachineScaleSet
         $st = Stop-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $instanceListParam;
         $st = Start-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $instanceListParam;
         $st = Restart-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $instanceListParam;
+
+        # Remove
+        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;
+
+        $argList = New-AzureComputeArgumentList -MethodName VirtualMachineScaleSetVMsDelete;
+        $argList[0].Value = $rgname;
+        $argList[1].Value = $vmssName;
+        $i = 0;
+        $argList[2].Value = $i.ToString();
+        $args = ($argList | select -ExpandProperty Value);
+
+        try
+        {
+            Invoke-AzureComputeMethod -MethodName VirtualMachineScaleSetVMDelete -ArgumentList $args;
+        }
+        catch
+        {
+            $actualMessage = $_.Exception.Message;
+            Write-Output ("Caught exception: '$actualMessage'");
+            if (-not $actualMessage.Contains("BadRequest"))
+            {
+                throw "Expected exception does not contain expected text 'BadRequest', the actual message is '$actualMessage'";
+            }
+        }
+
+        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set Reimage and Upgrade
+#>
+function Test-VirtualMachineScaleSetReimageUpdate
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = 'westus';
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+
+        $adminUsername = 'Foo12';
+        $adminPassword = "BaR@123" + $rgname;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
+
+        $aucComponentName="Microsoft-Windows-Shell-Setup";
+        $aucComponentName="MicrosoftWindowsShellSetup";
+        $aucPassName ="oobeSystem";
+        $aucSetting = "AutoLogon";
+        $aucContent = "<UserAccounts><AdministratorPassword><Value>password</Value><PlainText>true</PlainText></AdministratorPassword></UserAccounts>";
+
+        $extname = 'csetest';
+        $publisher = 'Microsoft.Compute';
+        $exttype = 'BGInfo';
+        $extver = '2.1';
+
+        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg `
+            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
+            | Add-AzureRmVmssAdditionalUnattendContent -ComponentName  $aucComponentName -Content  $aucContent -PassName  $aucPassName -SettingName  $aucSetting `
+            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true;
+
+        $vmss.VirtualMachineProfile.OsProfile.WindowsConfiguration.AdditionalUnattendContent = $null;
+        $st = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+		$vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
+        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $st = Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssResult;
+
+        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
+
+        # Stop/Start/Restart Operation
+        Update-AzureRmVmssInstance -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId "0";
+
+        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
+
+        try
+        {
+            Set-AzureRmVmss -Reimage -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        }
+        catch
+        {
+        }
 
         # Remove
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;

@@ -28,9 +28,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmVmssIpConfigurationConfig")]
+    [Cmdlet("New", "AzureRmVmssIpConfig")]
     [OutputType(typeof(VirtualMachineScaleSet))]
-    public class NewAzureRmVmssIpConfigurationConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public class NewAzureRmVmssIpConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,

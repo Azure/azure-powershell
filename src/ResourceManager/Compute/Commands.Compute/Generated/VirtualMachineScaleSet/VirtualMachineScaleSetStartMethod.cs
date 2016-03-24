@@ -169,18 +169,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pInstanceIds.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("InstanceId", pInstanceIds);
 
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
             return dynamicParameters;
         }
     }
