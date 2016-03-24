@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mapper.CreateMap<AzureOperationResponse<FROM.AvailabilitySet>, TO.PSAvailabilitySet>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
-            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.AvailabilitySet>>, TO.PSAvailabilitySet>()
+            Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.AvailabilitySet>>, TO.PSAvailabilitySet>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
             // VirtualMachine => PSVirtualMachine
@@ -112,13 +112,16 @@ namespace Microsoft.Azure.Commands.Compute
             Mapper.CreateMap<AzureOperationResponse<IPage<FROM.VirtualMachine>>, TO.PSVirtualMachine>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
+            Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.VirtualMachine>>, TO.PSVirtualMachine>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
             // VirtualMachineSize => PSVirtualMachineSize
             Mapper.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
 
             Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachineSize>, TO.PSVirtualMachineSize>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
-            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.VirtualMachineSize>>, TO.PSVirtualMachineSize>()
+            Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.VirtualMachineSize>>, TO.PSVirtualMachineSize>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
             // Usage => PSUsage

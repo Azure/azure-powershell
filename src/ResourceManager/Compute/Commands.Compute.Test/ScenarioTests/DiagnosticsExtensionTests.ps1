@@ -41,7 +41,7 @@ function Test-DiagnosticsExtensionBasic
         }
 
         # Test Set and Get command. It should use the storage account defined in configuration file
-        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath '.\ConfigFiles\DiagnosticsExtensionConfig.xml'
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml"
         $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension
@@ -92,7 +92,7 @@ function Test-DiagnosticsExtensionSepcifyStorageAccountName
             Assert-Null $extension
         }
 
-        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath '.\ConfigFiles\DiagnosticsExtensionConfig.xml' -StorageAccountName $storagename
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml" -StorageAccountName $storagename
         $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension
@@ -135,7 +135,7 @@ function Test-DiagnosticsExtensionCantListSepcifyStorageAccountKey
         # Get a random storage account name, which we can't list the key
         $storagename = 'notexiststorage'
         Assert-ThrowsContains `
-            { Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath '.\ConfigFiles\DiagnosticsExtensionConfig.xml' -StorageAccountName $storagename } `
+            { Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml" -StorageAccountName $storagename } `
             'Storage account key'
     }
     finally
@@ -171,7 +171,7 @@ function Test-DiagnosticsExtensionSupportJsonConfig
             Assert-Null $extension
         }
 
-        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath '.\ConfigFiles\DiagnosticsExtensionConfig.json' -StorageAccountName $storagename
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.json" -StorageAccountName $storagename
         $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension

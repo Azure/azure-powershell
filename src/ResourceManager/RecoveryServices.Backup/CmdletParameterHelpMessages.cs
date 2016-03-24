@@ -56,6 +56,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string JobFilter = "Job whose latest object has to be fetched.";
             public const string WaitJobOrListFilter = "Job or List of jobs until end of which the cmdlet should wait.";
             public const string WaitJobTimeoutFilter = "Maximum time to wait before aborting wait in seconds.";
+            public const string StopJobJobIdFilter = "Id of Job to be stopped.";
+            public const string StopJobJobFilter = "Job to be stopped.";
         }
 
         internal static class Item
@@ -64,6 +66,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string AzureVMServiceName = "Cloud Service Name for Azure Classic Compute VM.";
             public const string AzureVMResourceGroupName = "Resource Group Name for Azure Compute VM .";
             public const string ProtectedItem = "Filter value for status of job.";
+            public const string ProtectionStatus = "Protection status of Item";
+            public const string Status = "Status of the data source";
+            public const string Container = "Container where the item resides";
         }
     }
 }

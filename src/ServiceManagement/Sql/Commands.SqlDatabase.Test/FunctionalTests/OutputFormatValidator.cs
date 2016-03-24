@@ -16,7 +16,7 @@ using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.FunctionalTests
 {

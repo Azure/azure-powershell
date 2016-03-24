@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.HDInsight.Job;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 
@@ -28,7 +26,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     {
         public AzureHdInsightJobManagementClient(string clusterName, BasicAuthenticationCloudCredentials credential)
         {
-            HdInsightJobManagementClient = AzureSession.ClientFactory.CreateCustomClient<HDInsightJobManagementClient>(clusterName, credential);
+            HdInsightJobManagementClient = AzureSession.ClientFactory.CreateCustomClient<HDInsightJobManagementClient>(clusterName, credential, HDInsightJobManagementClient.HDInsightRetryPolicy);
         }
 
         /// <summary>
@@ -44,13 +42,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             var hiveJobParams = new HiveJobSubmissionParameters
             {
-                Arguments = ConvertListToString(hiveJobDef.Arguments, "arg"),
-                Defines = ConvertDefinesToString(hiveJobDef.Defines),
+                Arguments = hiveJobDef.Arguments,
+                Defines = hiveJobDef.Defines,
                 File = hiveJobDef.File,
-                Files = ConvertListToString(hiveJobDef.Files, "file"),
+                Files = hiveJobDef.Files,
                 Query = hiveJobDef.Query,
-                StatusDir = hiveJobDef.StatusFolder,
-                UserName = HdInsightJobManagementClient.Credentials.Username
+                StatusDir = hiveJobDef.StatusFolder
             };
             return HdInsightJobManagementClient.JobManagement.SubmitHiveJob(hiveJobParams);
         }
@@ -59,14 +56,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             var mapredJobParams = new MapReduceJobSubmissionParameters
             {
-                Arguments = ConvertListToString(mapredJobDef.Arguments, "arg"),
-                Defines = ConvertDefinesToString(mapredJobDef.Defines),
-                Files = ConvertListToString(mapredJobDef.Files, "file"),
+                Arguments = mapredJobDef.Arguments,
+                Defines = mapredJobDef.Defines,
+                Files = mapredJobDef.Files,
                 JarClass = mapredJobDef.ClassName,
-                LibJars = ConvertListToString(mapredJobDef.LibJars, "jar"),
+                LibJars = mapredJobDef.LibJars,
                 JarFile = mapredJobDef.JarFile,
-                StatusDir = mapredJobDef.StatusFolder,
-                UserName = HdInsightJobManagementClient.Credentials.Username
+                StatusDir = mapredJobDef.StatusFolder
             };
 
             return HdInsightJobManagementClient.JobManagement.SubmitMapReduceJob(mapredJobParams);
@@ -76,12 +72,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             var pigJobParams = new PigJobSubmissionParameters
             {
-                Arguments = ConvertListToString(pigJobDef.Arguments, "arg"),
-                Files = ConvertListToString(pigJobDef.Files, "file"),
+                Arguments = pigJobDef.Arguments,
+                Files = pigJobDef.Files,
                 StatusDir = pigJobDef.StatusFolder,
                 File = pigJobDef.File,
-                Query = pigJobDef.Query,
-                UserName = HdInsightJobManagementClient.Credentials.Username
+                Query = pigJobDef.Query
             };
 
             return HdInsightJobManagementClient.JobManagement.SubmitPigJob(pigJobParams);
@@ -97,11 +92,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 Mapper = streamingJobDef.Mapper,
                 Reducer = streamingJobDef.Reducer,
                 File = streamingJobDef.File,
-                Defines = ConvertDefinesToString(streamingJobDef.Defines),
-                CmdEnv = ConvertListToString(streamingJobDef.CommandEnvironment, "cmdenv"),
-                Arguments = ConvertListToString(streamingJobDef.Arguments, "arg"),
-                StatusDir = streamingJobDef.StatusFolder,
-                UserName = HdInsightJobManagementClient.Credentials.Username
+                Files = streamingJobDef.Files,
+                Defines = streamingJobDef.Defines,
+                CmdEnv = streamingJobDef.CommandEnvironment,
+                Arguments = streamingJobDef.Arguments,
+                StatusDir = streamingJobDef.StatusFolder
             };
 
             return HdInsightJobManagementClient.JobManagement.SubmitMapReduceStreamingJob(streamingJobParams);
@@ -113,9 +108,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             {
                 Command = sqoopJobDef.Command,
                 File = sqoopJobDef.File,
-                Files = ConvertListToString(sqoopJobDef.Files, "file"),
-                StatusDir = sqoopJobDef.StatusFolder,
-                UserName = HdInsightJobManagementClient.Credentials.Username
+                Files = sqoopJobDef.Files,
+                LibDir = sqoopJobDef.LibDir,
+                StatusDir = sqoopJobDef.StatusFolder
             };
             return HdInsightJobManagementClient.JobManagement.SubmitSqoopJob(sqoopJobParams);
         }
@@ -130,44 +125,26 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightJobManagementClient.JobManagement.ListJobs();
         }
 
+        public virtual JobListResponse ListJobsAfterJobId(string jobId, int numberOfJobs)
+        {
+            return HdInsightJobManagementClient.JobManagement.ListJobsAfterJobId(jobId, numberOfJobs);
+        }
+
         public void StopJob(string jobId)
         {
             HdInsightJobManagementClient.JobManagement.KillJob(jobId);
         }
 
-        public Stream GetJobOutput(string jobid, string storageAccountName, string storageAccountKey, string containerName)
+        public Stream GetJobOutput(string jobid, IStorageAccess storageAccess)
         {
-            var joboutput = HdInsightJobManagementClient.JobManagement.GetJobOutput(jobid, storageAccountName, storageAccountKey, containerName);
+            var joboutput = HdInsightJobManagementClient.JobManagement.GetJobOutput(jobid, storageAccess);
             return joboutput;
         }
 
-        public Stream GetJobError(string jobid, string storageAccountName, string storageAccountKey, string containerName)
+        public Stream GetJobError(string jobid, IStorageAccess storageAccess)
         {
-            var joboutput = HdInsightJobManagementClient.JobManagement.GetJobErrorLogs(jobid, storageAccountName, storageAccountKey, containerName);
+            var joboutput = HdInsightJobManagementClient.JobManagement.GetJobErrorLogs(jobid, storageAccess);
             return joboutput;
-        }
-
-        public Stream GetJobTaskLogSummary(string jobid, string storageAccountName, string storageAccountKey, string containerName)
-        {
-            var joboutput = HdInsightJobManagementClient.JobManagement.GetJobTaskLogSummary(jobid, storageAccountName, storageAccountKey, containerName);
-            return joboutput;
-        }
-
-        public void DownloadJobTaskLogs(string jobid, string targetDirectory, string storageAccountName,
-            string storageAccountKey, string containerName)
-        {
-            HdInsightJobManagementClient.JobManagement.DownloadJobTaskLogs(jobid, targetDirectory, storageAccountName, storageAccountKey, containerName);
-        }
-
-        public static string ConvertDefinesToString(IDictionary<string, string> defines)
-        {
-            return defines.Count == 0 ? null : string.Format("&define={0}", string.Join("&define=", defines.Select(x => x.Key + "%3D" + x.Value).ToArray()));
-        }
-
-        public static string ConvertListToString(IList<string> list, string argtype)
-        {
-            var prefix = "&" + argtype + "=";
-            return list.Count == 0 ? null : string.Join(prefix, list.ToArray());
         }
     }
 }

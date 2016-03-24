@@ -18,6 +18,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
@@ -146,6 +147,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 DeploymentInfoContext result = vmPowershellCmdlets.GetAzureDeployment(_serviceName, DeploymentSlotType.Production);
                 pass = Utilities.PrintAndCompareDeployment(result, _serviceName, DeploymentName, DeploymentLabel, DeploymentSlotType.Production, null, 2);
                 Console.WriteLine("successfully deployed the package");
+                var extId = result.ExtensionConfiguration.AllRoles[0].Id;
 
                 ExtensionContext resultExtensionContext = vmPowershellCmdlets.GetAzureServiceExtension(_serviceName)[0];
 
@@ -158,6 +160,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.PrintContext(resultContext);
 
                 VerifyRDP(_serviceName, rdpPath);
+
+                ExtensionConfigurationInput extConfig = vmPowershellCmdlets.NewAzureServiceExtensionConfig(extId, "Uninstall");
+
+                try
+                {
+                    vmPowershellCmdlets.SetAzureDeploymentConfig(_serviceName, DeploymentSlotType.Production,
+                    _configPath.FullName, extConfig);
+                    Assert.Fail("Succeeded, but extected to fail!");
+                }
+                catch (Exception e)
+                {
+                    if (e.ToString().Contains("BadRequest")
+                        || ((e.InnerException != null) && (e.InnerException.ToString().Contains("BadRequest"))))
+                    {
+                        Console.WriteLine(e.ToString());
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
 
                 vmPowershellCmdlets.RemoveAzureServiceExtension(
                     serviceName: _serviceName,
@@ -177,8 +200,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     }
                     Console.WriteLine("Failed to get RDP file as expected");
                 }
-
-
 
                 vmPowershellCmdlets.RemoveAzureDeployment(_serviceName, DeploymentSlotType.Production, true);
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Adapter</RootNamespace>
-    <AssemblyName>Adapter</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup.HydraAdapter</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup.HydraAdapter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -63,6 +63,7 @@
     <Compile Include="BMSAPIs\ItemAPIs.cs" />
     <Compile Include="BMSAPIs\ContainerAPIs.cs" />
     <Compile Include="BMSAPIs\ProtectableItemAPI.cs" />
+    <Compile Include="BMSAPIs\RecoveryPointsAPIs.cs" />
     <Compile Include="ClientProxy.cs" />
     <Compile Include="ClientProxyBase.cs" />
     <Compile Include="CommonHelpers.cs" />

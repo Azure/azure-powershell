@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
 using System.Net.Http;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models

@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [OutputType(typeof(ASRJob))]
     public class SetAzureSiteRecoveryVM : SiteRecoveryCmdletBase
     {
-         #region Parameters
+        #region Parameters
 
         /// <summary>
         /// Gets or sets ID of the Virtual Machine.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRVirtualMachine VirtualMachine { get; set; }
 
@@ -94,120 +94,115 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+
+            ProtectableItemResponse protectableItemResponse =
+                                                RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                                                this.VirtualMachine.ProtectionContainerId, this.VirtualMachine.Name);
+
+            if (protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId == null)
             {
-                ProtectableItemResponse protectableItemResponse =
-                                                    RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                                                    this.VirtualMachine.ProtectionContainerId, this.VirtualMachine.Name);
+                this.WriteWarning(Properties.Resources.ProtectionIsNotEnabledForVM.ToString());
+                return;
+            }
 
-                if(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId == null)
+            ReplicationProtectedItemResponse replicationProtectedItemResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                        this.VirtualMachine.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
+
+            // Check for Replication Provider type HyperVReplicaAzure
+            if (0 != string.Compare(
+                    replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.InstanceType,
+                    Constants.HyperVReplicaAzure,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning(Properties.Resources.UnsupportedReplicationProvidedForUpdateVmProperties.ToString());
+                return;
+            }
+
+            // Check for at least one option
+            if (string.IsNullOrEmpty(this.Name) &&
+                string.IsNullOrEmpty(this.Size) &&
+                string.IsNullOrEmpty(this.PrimaryNic) &&
+                string.IsNullOrEmpty(this.RecoveryNetworkId))
+            {
+                this.WriteWarning(Properties.Resources.ArgumentsMissingForUpdateVmProperties.ToString());
+                return;
+            }
+
+            // Both primary & recovery inputs should be present
+            if (string.IsNullOrEmpty(this.PrimaryNic) ^
+                string.IsNullOrEmpty(this.RecoveryNetworkId))
+            {
+                this.WriteWarning(Properties.Resources.NetworkArgumentsMissingForUpdateVmProperties.ToString());
+                return;
+            }
+
+            List<VMNicInputDetails> vMNicInputDetailsList = new List<VMNicInputDetails>();
+            VMNicDetails vMNicDetailsToBeUpdated;
+            if (!string.IsNullOrEmpty(this.PrimaryNic))
+            {
+                HyperVReplicaAzureReplicationDetails providerSpecificDetails =
+                            (HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails;
+
+                if (providerSpecificDetails.VMNics != null)
                 {
-                    this.WriteWarning(Properties.Resources.ProtectionIsNotEnabledForVM.ToString());
-                    return;
-                }
-
-                ReplicationProtectedItemResponse replicationProtectedItemResponse =
-                            RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                            this.VirtualMachine.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId,  ARMResourceTypeConstants.ReplicationProtectedItems));
-
-                // Check for Replication Provider type HyperVReplicaAzure
-                if (0 != string.Compare(
-                        replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.InstanceType,
-                        Constants.HyperVReplicaAzure,
-                        StringComparison.OrdinalIgnoreCase))
-                {
-                    this.WriteWarning(Properties.Resources.UnsupportedReplicationProvidedForUpdateVmProperties.ToString());
-                    return;
-                }
-
-                // Check for at least one option
-                if (string.IsNullOrEmpty(this.Name) &&
-                    string.IsNullOrEmpty(this.Size) &&
-                    string.IsNullOrEmpty(this.PrimaryNic) &&
-                    string.IsNullOrEmpty(this.RecoveryNetworkId))
-                {
-                    this.WriteWarning(Properties.Resources.ArgumentsMissingForUpdateVmProperties.ToString());
-                    return;
-                }
-
-                // Both primary & recovery inputs should be present
-                if (string.IsNullOrEmpty(this.PrimaryNic) ^
-                    string.IsNullOrEmpty(this.RecoveryNetworkId))
-                {
-                    this.WriteWarning(Properties.Resources.NetworkArgumentsMissingForUpdateVmProperties.ToString());
-                    return;
-                }
-
-                List<VMNicInputDetails> vMNicInputDetailsList = new List<VMNicInputDetails>();
-                VMNicDetails vMNicDetailsToBeUpdated;
-                if (!string.IsNullOrEmpty(this.PrimaryNic))
-                {                 
-                    HyperVReplicaAzureReplicationDetails providerSpecificDetails =
-                                (HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails;
-
-                    if (providerSpecificDetails.VMNics != null)
+                    vMNicDetailsToBeUpdated = providerSpecificDetails.VMNics.SingleOrDefault(n => string.Compare(n.NicId, this.PrimaryNic, StringComparison.OrdinalIgnoreCase) == 0);
+                    if (vMNicDetailsToBeUpdated != null)
                     {
-                        vMNicDetailsToBeUpdated = providerSpecificDetails.VMNics.SingleOrDefault(n => string.Compare(n.NicId, this.PrimaryNic, StringComparison.OrdinalIgnoreCase) == 0);
-                        if(vMNicDetailsToBeUpdated != null)
-                        {
-                            VMNicInputDetails vMNicInputDetails = new VMNicInputDetails();
+                        VMNicInputDetails vMNicInputDetails = new VMNicInputDetails();
 
-                            vMNicInputDetails.NicId = this.PrimaryNic;
-                            vMNicInputDetails.RecoveryVMSubnetName = this.RecoveryNicSubnetName;
-                            vMNicInputDetails.ReplicaNicStaticIPAddress = this.RecoveryNicStaticIPAddress;
-                            vMNicInputDetails.SelectionType = string.IsNullOrEmpty(this.NicSelectionType) ? Constants.SelectedByUser : this.NicSelectionType;
+                        vMNicInputDetails.NicId = this.PrimaryNic;
+                        vMNicInputDetails.RecoveryVMSubnetName = this.RecoveryNicSubnetName;
+                        vMNicInputDetails.ReplicaNicStaticIPAddress = this.RecoveryNicStaticIPAddress;
+                        vMNicInputDetails.SelectionType = string.IsNullOrEmpty(this.NicSelectionType) ? Constants.SelectedByUser : this.NicSelectionType;
+                        vMNicInputDetailsList.Add(vMNicInputDetails);
+
+                        IEnumerable<VMNicDetails> vMNicDetailsListRemaining = providerSpecificDetails.VMNics.Where(n => string.Compare(n.NicId, this.PrimaryNic, StringComparison.OrdinalIgnoreCase) != 0);
+                        foreach (VMNicDetails nDetails in vMNicDetailsListRemaining)
+                        {
+                            vMNicInputDetails = new VMNicInputDetails();
+
+                            vMNicInputDetails.NicId = nDetails.NicId;
+                            vMNicInputDetails.RecoveryVMSubnetName = nDetails.RecoveryVMSubnetName;
+                            vMNicInputDetails.ReplicaNicStaticIPAddress = nDetails.ReplicaNicStaticIPAddress;
+                            vMNicInputDetails.SelectionType = nDetails.SelectionType;
                             vMNicInputDetailsList.Add(vMNicInputDetails);
-
-                            IEnumerable<VMNicDetails> vMNicDetailsListRemaining = providerSpecificDetails.VMNics.Where(n => string.Compare(n.NicId, this.PrimaryNic, StringComparison.OrdinalIgnoreCase) != 0);
-                            foreach(VMNicDetails nDetails in vMNicDetailsListRemaining)
-                            {
-                                vMNicInputDetails = new VMNicInputDetails();
-
-                                vMNicInputDetails.NicId = nDetails.NicId;
-                                vMNicInputDetails.RecoveryVMSubnetName = nDetails.RecoveryVMSubnetName;
-                                vMNicInputDetails.ReplicaNicStaticIPAddress = nDetails.ReplicaNicStaticIPAddress;
-                                vMNicInputDetails.SelectionType = nDetails.SelectionType;
-                                vMNicInputDetailsList.Add(vMNicInputDetails);
-                            }
                         }
-                        else
-                        {
-                            throw new PSInvalidOperationException(Properties.Resources.NicNotFoundInVMForUpdateVmProperties);
-                        }
-                    }                      
+                    }
+                    else
+                    {
+                        throw new PSInvalidOperationException(Properties.Resources.NicNotFoundInVMForUpdateVmProperties);
+                    }
                 }
-
-                UpdateReplicationProtectedItemInputProperties updateReplicationProtectedItemInputProperties = new UpdateReplicationProtectedItemInputProperties()
-                {
-                    RecoveryAzureVMName = this.Name,
-                    RecoveryAzureVMSize = this.Size,
-                    SelectedRecoveryAzureNetworkId = this.RecoveryNetworkId,
-                    VmNics = vMNicInputDetailsList
-                };
-
-                UpdateReplicationProtectedItemInput input = new UpdateReplicationProtectedItemInput()
-                {
-                    Properties = updateReplicationProtectedItemInputProperties
-                };
-
-                LongRunningOperationResponse response = RecoveryServicesClient.UpdateVmProperties(
-                    Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                    this.VirtualMachine.Name,
-                    input);
-
-                JobResponse jobResponse =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-                WriteObject(new ASRJob(jobResponse.Job));
             }
-            catch (Exception exception)
+
+            UpdateReplicationProtectedItemInputProperties updateReplicationProtectedItemInputProperties = new UpdateReplicationProtectedItemInputProperties()
             {
-                this.HandleException(exception);
-            }
+                RecoveryAzureVMName = this.Name,
+                RecoveryAzureVMSize = this.Size,
+                SelectedRecoveryAzureNetworkId = this.RecoveryNetworkId,
+                VmNics = vMNicInputDetailsList
+            };
+
+            UpdateReplicationProtectedItemInput input = new UpdateReplicationProtectedItemInput()
+            {
+                Properties = updateReplicationProtectedItemInputProperties
+            };
+
+            LongRunningOperationResponse response = RecoveryServicesClient.UpdateVmProperties(
+                Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
+                replicationProtectedItemResponse.ReplicationProtectedItem.Name,
+                input);
+
+            JobResponse jobResponse =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }

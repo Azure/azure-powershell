@@ -71,14 +71,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if(((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType() !=
                                                                            typeof(LongTermRetentionPolicy))
                 {
-                    // unsupported by old powershell - trace warning and return null
+                    Logger.Instance.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                    Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
 
                 if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType() != 
                                                                             typeof(SimpleSchedulePolicy))
                 {
-                    // unsupported by old powershell - trace warning and return null
+                    Logger.Instance.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                    Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
 
@@ -89,13 +91,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((LongTermRetentionPolicy)
                                                   ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy);
                 iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicyPolicy((SimpleSchedulePolicy)
-                                                 ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy);                
+                                                 ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy);
             }
             else
             {
-                // TBD - trace warning message, ignore and return
+                // trace warning message, ignore and return
                 // we will enter this case when service supports new workload and customer 
-                // still using old version of powershell
+                // still using old version of azure powershell
+                Logger.Instance.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                 return null;
             }
 
@@ -125,6 +129,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return policyModels;
+        }
+
+        #endregion
+
+        #region Item
+
+        public static AzureRmRecoveryServicesItemBase GetItemModel(ProtectedItemResource protectedItem, AzureRmRecoveryServicesContainerBase container)
+        {
+            AzureRmRecoveryServicesItemBase itemModel = null;
+
+            if (protectedItem != null &&
+                protectedItem.Properties != null)
+            {
+                if (protectedItem.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectedItem)))
+                {
+                    itemModel = new AzureRmRecoveryServicesIaasVmItem((AzureIaaSVMProtectedItem)protectedItem.Properties, container);
+                }
+            }
+
+            return itemModel;
+        }
+
+        public static List<AzureRmRecoveryServicesItemBase> GetItemModelList(IEnumerable<ProtectedItemResource> protectedItems, AzureRmRecoveryServicesContainerBase container)
+        {
+            List<AzureRmRecoveryServicesItemBase> itemModels = new List<AzureRmRecoveryServicesItemBase>();
+
+            foreach (var protectedItem in protectedItems)
+            {
+                itemModels.Add(GetItemModel(protectedItem, container));
+            }
+
+            return itemModels;
         }
 
         #endregion

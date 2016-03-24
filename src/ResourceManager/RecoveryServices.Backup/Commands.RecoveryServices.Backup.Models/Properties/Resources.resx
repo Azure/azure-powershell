@@ -237,4 +237,53 @@
   <data name="YearlyScheduleMonthsOfYearException" xml:space="preserve">
     <value>MonthsOfYear list in YearlyRetentionSchedule should not be NULL and not contain duplicate entires</value>
   </data>
+  <data name="InvalidDayInDaysOfMonthOfMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, Day in DaysOfMonth should be 1-28 (or) IsLast=true set for one day only</value>
+  </data>
+  <data name="InvalidDaysOfMonthInMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, DaysOfMonth is NULL or empty or contains duplicate entires</value>
+  </data>
+  <data name="InvalidDaysOfWeekInMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, DaysOfWeek is NULL or empty or contains duplicate entires</value>
+  </data>
+  <data name="InvalidScheduleRunDaysInScheduleException" xml:space="preserve">
+    <value>In Schedule, if ScheduleRunFrequency is Weekly then ScheduleRunDays should not be empty and not contain duplicate entries</value>
+  </data>
+  <data name="InvalidScheduleTimeInScheduleException" xml:space="preserve">
+    <value>ScheduleTimes in Schedule should be in UTC Timezone, have ONE time and must be of multiples of 30 Mins with seconds and milliseconds set to 0</value>
+  </data>
+  <data name="InvalidWeeksOfMonthInMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, WeeksOfMonth is NULL or empty or contains duplicate entires</value>
+  </data>
+  <data name="MonthlyYearlyRetentionDailySchedulePolicyNULLException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, if RetentionScheduleFormatType=Daily then RetentionScheduleDaily should NOT be null</value>
+  </data>
+  <data name="MonthlyYearlyRetentionWeeklySchedulePolicyNULLException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, if RetentionScheduleFormatType=Weekly then RetentionScheduleWeekly should NOT be null</value>
+  </data>
+  <data name="UpdateToNewAzurePowershellWarning" xml:space="preserve">
+    <value>Data truncated. Please upgrade to latest version of Azure Powershell</value>
+  </data>
+  <data name="JobAllowedDateTimeRangeExceeded" xml:space="preserve">
+    <value>To filter should not be more than 30 days away from From filter.</value>
+  </data>
+  <data name="JobCouldNotCancelJob" xml:space="preserve">
+    <value>Failed to cancel the job. Error code: {0}</value>
+    <comment> </comment>
+  </data>
+  <data name="JobJobIdAndJobMismatch" xml:space="preserve">
+    <value>JobID and Job object provided don't match each other.</value>
+  </data>
+  <data name="JobRefineFilters" xml:space="preserve">
+    <value>There are more than 1000 jobs for the filter combination you have provided. Kindly refine your filters to fetch the job you want.</value>
+  </data>
+  <data name="JobTimeFiltersShouldBeSpecifiedInUtc" xml:space="preserve">
+    <value>Please specify From and To filter values in UTC. Other timezones are not supported.</value>
+  </data>
+  <data name="JobToShouldBeGreaterThanFrom" xml:space="preserve">
+    <value>To filter should not be less than From filter.</value>
+  </data>
+  <data name="JobWaitJobInvalidInput" xml:space="preserve">
+    <value>Please pass Job or List of Jobs as input. Your input is of type: {0}</value>
+  </data>
 </root>

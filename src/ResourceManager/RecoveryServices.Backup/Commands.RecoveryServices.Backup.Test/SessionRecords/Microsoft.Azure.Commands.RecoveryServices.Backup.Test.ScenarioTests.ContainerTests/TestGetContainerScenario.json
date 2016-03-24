@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d427fcdd-923e-4b22-a46e-28027e47aa5f-2016-03-17 10:16:36Z-P"
+          "b4623a32-a357-4df0-a62a-03619f433a11-2016-03-23 13:38:10Z-P"
         ],
         "x-ms-version": [
           "2015-01-01"
@@ -31,28 +31,88 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e427d490-5ba1-4dc3-9a99-1f569143ad65"
+          "52a54614-7cf0-47df-b0a5-5c132200292f"
         ],
         "x-ms-client-request-id": [
-          "d427fcdd-923e-4b22-a46e-28027e47aa5f-2016-03-17 10:16:36Z-P"
+          "b4623a32-a357-4df0-a62a-03619f433a11-2016-03-23 13:38:10Z-P"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "13873"
+          "13507"
         ],
         "x-ms-correlation-request-id": [
-          "e427d490-5ba1-4dc3-9a99-1f569143ad65"
+          "52a54614-7cf0-47df-b0a5-5c132200292f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160317T101638Z:e427d490-5ba1-4dc3-9a99-1f569143ad65"
+          "CENTRALUS:20160323T133811Z:52a54614-7cf0-47df-b0a5-5c132200292f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 17 Mar 2016 10:16:38 GMT"
+          "Wed, 23 Mar 2016 13:38:10 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1?api-version=2015-08-15",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMDRjZjY4NGEtZDQxZi00NTUwLTlmNzAtNzcwOGEzYTIyODNiL3Jlc291cmNlR3JvdXBzL3BoYW5pa3RSU1YvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9waGFuaWt0UnMxP2FwaS12ZXJzaW9uPTIwMTUtMDgtMTU=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "725ce7f9-69a3-4596-9320-3104c5a5853c-2016-03-23 13:38:11Z-P"
+        ],
+        "x-ms-version": [
+          "2015-01-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westus\",\r\n  \"name\": \"phaniktRs1\",\r\n  \"etag\": \"5ac5016f-e720-4fbb-84df-7726c1b12e95\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "356"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a28242ca-7d7e-4c81-a456-57339ea547ac"
+        ],
+        "x-ms-client-request-id": [
+          "725ce7f9-69a3-4596-9320-3104c5a5853c-2016-03-23 13:38:11Z-P"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13723"
+        ],
+        "x-ms-correlation-request-id": [
+          "a28242ca-7d7e-4c81-a456-57339ea547ac"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160323T133812Z:a28242ca-7d7e-4c81-a456-57339ea547ac"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 23 Mar 2016 13:38:12 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -70,7 +130,7 @@
           "en-us"
         ],
         "x-ms-client-request-id": [
-          "ce7aeea7-e102-4fb3-80fa-68a63efa2371-2016-03-17 10:16:38Z-PS"
+          "959ab394-00ac-4242-90fc-e035c8d38014-2016-03-23 13:38:13Z-PS"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupManagementClient/0.9.0.0"
@@ -91,29 +151,29 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "676f96c5-4309-4ff5-b8cb-bbdec5b85053"
+          "c15eb75e-4d77-4d8a-b525-456b3e20fcd6"
         ],
         "x-ms-client-request-id": [
-          "ce7aeea7-e102-4fb3-80fa-68a63efa2371-2016-03-17 10:16:38Z-PS",
-          "ce7aeea7-e102-4fb3-80fa-68a63efa2371-2016-03-17 10:16:38Z-PS"
+          "959ab394-00ac-4242-90fc-e035c8d38014-2016-03-23 13:38:13Z-PS",
+          "959ab394-00ac-4242-90fc-e035c8d38014-2016-03-23 13:38:13Z-PS"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "13873"
+          "13557"
         ],
         "x-ms-correlation-request-id": [
-          "676f96c5-4309-4ff5-b8cb-bbdec5b85053"
+          "c15eb75e-4d77-4d8a-b525-456b3e20fcd6"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160317T101641Z:676f96c5-4309-4ff5-b8cb-bbdec5b85053"
+          "CENTRALUS:20160323T133815Z:c15eb75e-4d77-4d8a-b525-456b3e20fcd6"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 17 Mar 2016 10:16:41 GMT"
+          "Wed, 23 Mar 2016 13:38:14 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -134,7 +194,7 @@
           "en-us"
         ],
         "x-ms-client-request-id": [
-          "2e515ced-d264-47ff-b143-c4d1dbd88d7d-2016-03-17 10:16:41Z-PS"
+          "c8b0a37a-3be8-4db3-bae4-51d5e65a1fc5-2016-03-23 13:38:15Z-PS"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupManagementClient/0.9.0.0"
@@ -155,29 +215,29 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9777fb94-8224-40eb-8f17-35c332a859ca"
+          "d6a08239-300a-44e6-8c1e-55f32974d35e"
         ],
         "x-ms-client-request-id": [
-          "2e515ced-d264-47ff-b143-c4d1dbd88d7d-2016-03-17 10:16:41Z-PS",
-          "2e515ced-d264-47ff-b143-c4d1dbd88d7d-2016-03-17 10:16:41Z-PS"
+          "c8b0a37a-3be8-4db3-bae4-51d5e65a1fc5-2016-03-23 13:38:15Z-PS",
+          "c8b0a37a-3be8-4db3-bae4-51d5e65a1fc5-2016-03-23 13:38:15Z-PS"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "13872"
+          "13555"
         ],
         "x-ms-correlation-request-id": [
-          "9777fb94-8224-40eb-8f17-35c332a859ca"
+          "d6a08239-300a-44e6-8c1e-55f32974d35e"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160317T101642Z:9777fb94-8224-40eb-8f17-35c332a859ca"
+          "CENTRALUS:20160323T133816Z:d6a08239-300a-44e6-8c1e-55f32974d35e"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 17 Mar 2016 10:16:42 GMT"
+          "Wed, 23 Mar 2016 13:38:15 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -198,7 +258,7 @@
           "en-us"
         ],
         "x-ms-client-request-id": [
-          "9e1c6f6e-e75c-436c-962a-7ee5d535de48-2016-03-17 10:16:42Z-PS"
+          "9c4c5180-9caf-4409-b66a-ab9216b2a92e-2016-03-23 13:38:16Z-PS"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupManagementClient/0.9.0.0"
@@ -219,29 +279,29 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1ea59bcf-0c1e-489a-aaa3-a13b6fd36569"
+          "aa9cf3dd-59d1-4957-a7a3-1d96e9d8039b"
         ],
         "x-ms-client-request-id": [
-          "9e1c6f6e-e75c-436c-962a-7ee5d535de48-2016-03-17 10:16:42Z-PS",
-          "9e1c6f6e-e75c-436c-962a-7ee5d535de48-2016-03-17 10:16:42Z-PS"
+          "9c4c5180-9caf-4409-b66a-ab9216b2a92e-2016-03-23 13:38:16Z-PS",
+          "9c4c5180-9caf-4409-b66a-ab9216b2a92e-2016-03-23 13:38:16Z-PS"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "13871"
+          "13554"
         ],
         "x-ms-correlation-request-id": [
-          "1ea59bcf-0c1e-489a-aaa3-a13b6fd36569"
+          "aa9cf3dd-59d1-4957-a7a3-1d96e9d8039b"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160317T101643Z:1ea59bcf-0c1e-489a-aaa3-a13b6fd36569"
+          "CENTRALUS:20160323T133819Z:aa9cf3dd-59d1-4957-a7a3-1d96e9d8039b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 17 Mar 2016 10:16:42 GMT"
+          "Wed, 23 Mar 2016 13:38:19 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"

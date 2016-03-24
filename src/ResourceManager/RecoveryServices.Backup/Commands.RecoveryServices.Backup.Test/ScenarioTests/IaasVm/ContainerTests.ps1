@@ -15,16 +15,17 @@
 function Test-GetContainerScenario
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
-	$containers = Get-AzureRmRecoveryServicesContainer -Vault $vault -ContainerType "AzureVM" -Status "Registered";
+	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+	$containers = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered";
 	foreach ($container in $containers)
 	{
 		echo $container.Name $container.ResourceGroupName;
 	}
-	Assert-AreEqual $containers[0].Name "mylinux1";
+	Assert-AreEqual $containers[0].FriendlyName "mylinux1";
 
-	$namedContainer = Get-AzureRmRecoveryServicesContainer -Vault $vault -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
-	Assert-AreEqual $namedContainer.Name "mylinux1";
+	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
+	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
 
-	$rgFilteredContainer = Get-AzureRmRecoveryServicesContainer -Vault $vault -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1" -ResourceGroupName "00prjai12";
+	$rgFilteredContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1" -ResourceGroupName "00prjai12";
 	echo $rgFilteredContainer.Name $rgFilteredContainer.ResourceGroupName;
 }

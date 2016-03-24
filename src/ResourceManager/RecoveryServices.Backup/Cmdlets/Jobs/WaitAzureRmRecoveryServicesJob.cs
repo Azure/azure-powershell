@@ -17,13 +17,14 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     [Cmdlet("Wait", "AzureRmBackupJob"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>), typeof(AzureRmRecoveryServicesJobBase))]
     public class WaitAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.WaitJobOrListFilter)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.WaitJobOrListFilter, ValueFromPipeline = true)]
         [ValidateNotNull]
         public object Job { get; set; }
 
@@ -32,7 +33,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            ARSVault Vault = null;
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
@@ -42,12 +42,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 // TODO: Validate the following code
                 object castedObj;
-                if (GetCastedObjFromPSObj(Job, typeof(AzureRmRecoveryServicesJobBase), out castedObj))
+                if (GetCastedObjFromPSObj<AzureRmRecoveryServicesJobBase>(Job, out castedObj))
                 {
                     AzureRmRecoveryServicesJobBase justJob = castedObj as AzureRmRecoveryServicesJobBase;
                     jobsToWaitOn.Add(justJob.InstanceId);
                 }
-                else if (GetCastedObjFromPSObj(Job, typeof(List<AzureRmRecoveryServicesJobBase>), out castedObj))
+                else if (GetCastedObjFromPSObj<List<AzureRmRecoveryServicesJobBase>>(Job, out castedObj))
                 {
                     List<AzureRmRecoveryServicesJobBase> jobsList = castedObj as List<AzureRmRecoveryServicesJobBase>;
                     foreach (var job in jobsList)
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 else
                 {
                     // not a valid object. throw exception.
-                    throw new Exception(CmdletWarningAndErrorMessages.Job.WaitJobInvalidInput + Job.GetType().FullName);
+                    throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, Job.GetType().FullName));
                 }
 
                 // now wait until timeout happens or all jobs complete execution
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     foreach (string jobId in jobsToWaitOn)
                     {
                         var updatedJob = JobConversions.GetPSJob(
-                            HydraAdapter.GetJob(Vault.ResouceGroupName, Vault.Name, jobId)
+                            HydraAdapter.GetJob(jobId)
                             );
 
                         if (IsJobInProgress(updatedJob))
@@ -107,23 +107,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             });
         }
 
-        private bool GetCastedObjFromPSObj(object obj, Type objType, out object castedJob)
+        private bool GetCastedObjFromPSObj<T>(object obj, out object castedJob) where T : class
         {
             if (obj is PSObject)
             {
                 obj = ((PSObject)obj).ImmediateBaseObject;
             }
-            // try to cast the immediate object to base object
-            try
+
+            castedJob = obj as T;
+
+            if (castedJob == null)
             {
-                castedJob = Convert.ChangeType(obj, objType);
-                return true;
-            }
-            catch (InvalidCastException)
-            {
-                castedJob = null;
                 return false;
             }
+            return true;
         }
 
         // Move the following function to a common helper file later when

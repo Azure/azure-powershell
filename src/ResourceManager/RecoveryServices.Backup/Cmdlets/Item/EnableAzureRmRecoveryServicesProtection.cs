@@ -92,10 +92,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     // TBD -- Hydra change to add jobId in OperationStatusExtendedInfo
                     string jobId = ""; //response.OperationStatus.Properties.jobId;
-                    var job = HydraAdapter.GetJob("", "", jobId);
+                    var job = HydraAdapter.GetJob(jobId);
                     //WriteObject(ConversionHelpers.GetJobModel(job));
                 }
-                
             });
         }
     }

@@ -419,8 +419,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             };
             hydraMonthly.RetentionTimes = psMonthly.RetentionTimes;
 
-            hydraMonthly.RetentionScheduleFormatType = Enum.Parse(typeof(HydraModels.RetentionScheduleFormat),
-                                                                  psMonthly.RetentionScheduleFormatType.ToString()).ToString();
+            hydraMonthly.RetentionScheduleFormatType = psMonthly.RetentionScheduleFormatType.ToString();
             if (psMonthly.RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
                 hydraMonthly.RetentionScheduleDaily = GetHydraLTRDailyRetentionFormat(psMonthly.RetentionScheduleDaily);
@@ -445,12 +444,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             hydraYearly.RetentionDuration = new HydraModels.RetentionDuration()
             {
                 Count = psYearly.DurationCountInYears,
-                DurationType = HydraModels.RetentionDurationType.Months
+                DurationType = HydraModels.RetentionDurationType.Years
             };
             hydraYearly.RetentionTimes = psYearly.RetentionTimes;
 
-            hydraYearly.RetentionScheduleFormatType = Enum.Parse(typeof(HydraModels.RetentionScheduleFormat),
-                                                                  psYearly.RetentionScheduleFormatType.ToString()).ToString();
+            hydraYearly.RetentionScheduleFormatType = psYearly.RetentionScheduleFormatType.ToString();
             if (psYearly.RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
                 hydraYearly.RetentionScheduleDaily = GetHydraLTRDailyRetentionFormat(psYearly.RetentionScheduleDaily);

@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         #region Input Parameter Definitions
 
         [Parameter(HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account.")]
-        public string DefaultStorageAccountName {
+        public string DefaultStorageAccountName
+        {
             get { return _config.DefaultStorageAccountName; }
             set { _config.DefaultStorageAccountName = value; }
         }
@@ -80,11 +81,19 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the flavor for a cluster.")]
-        public HDInsightClusterType ClusterType
+        public string ClusterType
         {
             get { return _config.ClusterType; }
             set { _config.ClusterType = value; }
         }
+
+        [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
+        public Tier ClusterTier
+        {
+            get { return _config.ClusterTier; }
+            set { _config.ClusterTier = value; }
+        }
+
 
         [Parameter(HelpMessage = "Gets or sets the Service Principal Object Id for accessing Azure Data Lake.")]
         public Guid ObjectId

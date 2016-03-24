@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 ProtectedItemCreateOrUpdateRequest request)
         {
             string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             return BmsAdapter.Client.ProtectedItem.CreateOrUpdateProtectedItemAsync(
                                      resourceGroupName,
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 string protectedItemName)
         {
             string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             return BmsAdapter.Client.ProtectedItem.DeleteProtectedItemAsync(
                                      resourceGroupName,
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             GetProtectedItemQueryParam queryFilter)
         {
             string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             return BmsAdapter.Client.ProtectedItem.GetAsync(
                                      resourceGroupName,
@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 
         public ProtectedItemListResponse ListProtectedItem(
                 ProtectedItemListQueryParam queryFilter,
-            PaginationRequest paginationParams)
+            PaginationRequest paginationParams = null)
         {
             string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             return BmsAdapter.Client.ProtectedItem.ListAsync(
                                      resourceGroupName,

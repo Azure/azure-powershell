@@ -73,23 +73,21 @@
   <ItemGroup>
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesContainer.cs" />
     <Compile Include="Cmdlets\Item\EnableAzureRmRecoveryServicesProtection.cs" />
+    <Compile Include="Cmdlets\Item\GetAzureRmRecoveryServicesItem.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJob.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJobDetails.cs" />
+    <Compile Include="Cmdlets\Jobs\StopAzureRmRecoveryServicesJob.cs" />
     <Compile Include="Cmdlets\Jobs\WaitAzureRmRecoveryServicesJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesBackupRetentionPolicyObject.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesSchedulePolicyObject.cs" />
-    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRMBackupSchedulePolicyObject.cs" />
-    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRMBackupRetentionPolicyObject.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\PolicyCmdletHelpers.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRmRecoveryServicesPolicy.cs" />
-    <Compile Include="CmdletWarningAndErrorMessages.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureRMRecoveryServicesRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Restore\RestoreAzureRMRecoveryServicesBackupItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecoveryServicesBackupVaultCmdletBase.cs" />
     <Compile Include="RecoveryServicesBackupCmdletBase.cs" />
     <Compile Include="CmdletParameterHelpMessages.cs" />
   </ItemGroup>
@@ -116,6 +114,10 @@
     <ProjectReference Include="Commands.RecoveryServices.Backup.HydraAdapter\Commands.RecoveryServices.Backup.HydraAdapter.csproj">
       <Project>{b758fec1-35c1-4f93-a954-66dd33f6e0ec}</Project>
       <Name>Commands.RecoveryServices.Backup.HydraAdapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.csproj">
+      <Project>{5e675749-6139-464a-904c-59c0ffdfec82}</Project>
+      <Name>Commands.RecoveryServices.Backup.Logger</Name>
     </ProjectReference>
     <ProjectReference Include="Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.csproj">
       <Project>{30b92759-50b3-494e-b9f0-ec9a2ce9d57b}</Project>

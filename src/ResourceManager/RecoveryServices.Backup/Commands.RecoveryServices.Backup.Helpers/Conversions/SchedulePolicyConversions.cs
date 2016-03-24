@@ -51,6 +51,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region PStoHydraObject conversions
 
+        public static List<DateTime> ParseScheduleRunTimesToUTC(List<DateTime> localTimes)
+        {
+            if (localTimes == null || localTimes.Count == 0)
+            {
+                return null;
+            }
+
+            List<DateTime> utcTimes = new List<DateTime>();
+            DateTime temp;
+
+            foreach (DateTime localTime in localTimes)
+            {
+                temp = localTime;
+                if (localTime.Kind == DateTimeKind.Local)
+                {
+                    temp = localTime.ToUniversalTime();
+                    temp = new DateTime(temp.Year, temp.Month,
+                                        temp.Day, temp.Hour, temp.Minute - (temp.Minute % 30), 0);
+                }                
+                utcTimes.Add(temp);
+            }
+
+            return utcTimes;
+        }       
+
         public static SimpleSchedulePolicy GetHydraSimpleSchedulePolicy(
             AzureRmRecoveryServicesSimpleSchedulePolicy psPolicy)
         {
@@ -65,6 +90,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 hydraPolicy.ScheduleRunDays = HelperUtils.GetStringListFromEnumList<DayOfWeek>(psPolicy.ScheduleRunDays);
             }
+            hydraPolicy.ScheduleRunTimes = psPolicy.ScheduleRunTimes;
 
             return hydraPolicy;
         }

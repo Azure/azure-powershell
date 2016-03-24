@@ -32,18 +32,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesProtectionPolicy"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>))]
     public class SetAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Policy.RetentionPolicy)]
-        [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesRetentionPolicyBase RetentionPolicy { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Policy.SchedulePolicy)]
-        [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy, ValueFromPipeline=true)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesPolicyBase Policy { get; set; }
 
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.RetentionPolicy)]
+        [ValidateNotNullOrEmpty]
+        public AzureRmRecoveryServicesRetentionPolicyBase RetentionPolicy { get; set; }
+
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.SchedulePolicy)]
+        [ValidateNotNullOrEmpty]
+        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }
+       
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>

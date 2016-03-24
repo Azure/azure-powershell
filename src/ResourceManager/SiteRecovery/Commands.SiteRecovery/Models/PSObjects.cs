@@ -17,7 +17,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System.Web.Script.Serialization;
@@ -773,6 +773,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 this.Policy = new ASRPolicy(policy);
             }
+            this.ReplicationProtectedItemId = rpi.Id;
         }
 
         private void UpdateDiskDetails(IList<DiskDetails> diskDetails)
@@ -882,6 +883,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets Replication provider.
         /// </summary>
         public string ReplicationProvider { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication protected item id.
+        /// </summary>
+        public string ReplicationProtectedItemId { get; set; }
     }
 
     /// <summary>
@@ -1328,6 +1334,53 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets the Time of the error creation.
         /// </summary>
         public DateTime CreationTimeUtc { get; set; }
+    }
+
+    /// <summary>
+    /// Represents Azure site recovery storage classification.
+    /// </summary>
+    public class ASRStorageClassification
+    {
+        /// <summary>
+        /// Gets or sets Storage classification ARM Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets Storage classification ARM name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets Storage classification friendly name.
+        /// </summary>
+        public string FriendlyName { get; set; }
+    }
+    
+    /// <summary>
+    /// Represents Azure site recovery storage classification mapping.
+    /// </summary>
+    public class ASRStorageClassificationMapping
+    {
+        /// <summary>
+        /// Gets or sets Storage classification ARM Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets Storage classification ARM name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets primary classification ARM Id.
+        /// </summary>
+        public string PrimaryClassificationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets recovery classification ARM Id.
+        /// </summary>
+        public string RecoveryClassificationId { get; set; }
     }
 
     /// <summary>

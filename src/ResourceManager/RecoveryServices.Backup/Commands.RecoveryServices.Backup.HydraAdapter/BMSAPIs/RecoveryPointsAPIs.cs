@@ -34,9 +34,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// <returns></returns>
         public RecoveryPointResponse GetRecoveryPointDetails(string containerName, string protectedItemName, string recoveryPointId)
         {
-            var vault = BmsAdapter.GetVaultCredentials();
-            string resourceGroupName = vault.ResourceGroupName;
-            string resourceName = vault.ResourceName;
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+            string resourceName = BmsAdapter.GetResourceName();
 
             var response = BmsAdapter.Client.RecoveryPoint.GetAsync(resourceGroupName, resourceName,
                 BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, containerName, protectedItemName, recoveryPointId, BmsAdapter.CmdletCancellationToken).Result;
@@ -55,9 +54,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// <returns></returns>
         public RecoveryPointListResponse GetRecoveryPoints(string containerName, string protectedItemName, RecoveryPointQueryParameters queryFilter)
         {
-            var vault = BmsAdapter.GetVaultCredentials();
-            string resourceGroupName = vault.ResourceGroupName;
-            string resourceName = vault.ResourceName;
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+            string resourceName = BmsAdapter.GetResourceName();
 
             var response = BmsAdapter.Client.RecoveryPoint.ListAsync(resourceGroupName, resourceName,
                 BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, containerName, protectedItemName, queryFilter, BmsAdapter.CmdletCancellationToken).Result;

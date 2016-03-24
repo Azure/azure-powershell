@@ -20,23 +20,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     public class AzureRmRecoveryServicesObjectBase
     {
-        public virtual void Validate()
-        {
-
-        } 
+        public virtual void Validate() { }
     }
 
-    public class AzureRmRecoveryServicesContainerContext : AzureRmRecoveryServicesObjectBase
+    public class AzureRmRecoveryServicesBackupManagementContext : AzureRmRecoveryServicesObjectBase
+    {
+        /// <summary>
+        /// BackupManagementType
+        /// </summary>
+        public BackupManagementType BackupManagementType { get; set; }
+
+        public AzureRmRecoveryServicesBackupManagementContext() { }
+
+        public AzureRmRecoveryServicesBackupManagementContext(string backupManagementType)
+        {
+            BackupManagementType = ConversionUtils.GetPsBackupManagementType(backupManagementType);
+        }
+    }
+
+    public class AzureRmRecoveryServicesContainerContext : AzureRmRecoveryServicesBackupManagementContext
     {
         public ContainerType ContainerType { get; set; }
 
-        public AzureRmRecoveryServicesContainerContext()
-        {
-        }
+        public AzureRmRecoveryServicesContainerContext() { }
 
-        public AzureRmRecoveryServicesContainerContext(string containerType)
+        public AzureRmRecoveryServicesContainerContext(ContainerType containerType, string backupManagementType)
+            : base(backupManagementType)
         {
-           
+            ContainerType = containerType;
         }
     }
 
@@ -47,13 +58,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Name { get; set; }
 
-        public ContainerType ContainerType { get; set; }
-
-        public AzureRmRecoveryServicesContainerBase(ProtectionContainer protectionContainer)
-            : base(protectionContainer.ContainerType)
+        public AzureRmRecoveryServicesContainerBase(ProtectionContainerResource protectionContainer)
+            : base(ConversionUtils.GetPsContainerType(((ProtectionContainer)protectionContainer.Properties).ContainerType), 
+                   ((ProtectionContainer)protectionContainer.Properties).BackupManagementType)
         {
-            Name = protectionContainer.FriendlyName;
-            
+            Name = protectionContainer.Name;
         }
     }
 
@@ -62,11 +71,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class AzureRmRecoveryServicesItemContext : AzureRmRecoveryServicesContainerContext
     {
-        /// <summary>
-        /// BackupManagementType for the protected Item
-        /// </summary>
-        public BackupManagementType BackupManagementType { get; set; }
-
         /// <summary>
         /// Workload Type of Item
         /// </summary>
@@ -85,15 +89,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public AzureRmRecoveryServicesItemContext(ProtectedItem protectedItem,
             AzureRmRecoveryServicesContainerBase container)
-            : base(container.ContainerType.ToString())
+            : base(container.ContainerType, protectedItem.BackupManagementType)
         {
-
-        }
-
-        public AzureRmRecoveryServicesItemContext(AzureRmRecoveryServicesItemBase protectedItem)
-            : base(protectedItem.ContainerType.ToString())
-        {
-            //tbd
+            WorkloadType = ConversionUtils.GetPsWorkloadType(protectedItem.WorkloadType);
+            ContainerName = protectedItem.ContainerName;
         }
     }
 
@@ -103,20 +102,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureRmRecoveryServicesItemBase : AzureRmRecoveryServicesItemContext
     {
         /// <summary>
-        /// Friendly Name for the Item
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
         /// Last Recovery Point for the item
         /// </summary>
         public DateTime? LastRecoveryPoint { get; set; }
 
-        public AzureRmRecoveryServicesItemBase(ProtectedItem protectedItem, 
+        public AzureRmRecoveryServicesItemBase(ProtectedItem protectedItem,
             AzureRmRecoveryServicesContainerBase container)
             : base(protectedItem, container)
-        {            
-
+        {
+            LastRecoveryPoint = protectedItem.LastRecoveryPoint;
         }
     }
 
@@ -124,7 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// Represents Azure Backup Item ExtendedInfo Base Class
     /// </summary>
     public class AzureRmRecoveryServicesItemExtendedInfoBase : AzureRmRecoveryServicesObjectBase
-    {       
+    {
     }
 
     public class AzureRmRecoveryServicesRecoveryPointBase : AzureRmRecoveryServicesItemContext
@@ -136,7 +130,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         ///
         public String RecoveryPointType { get; set; }
-        
+
         /// <summary>
         /// Time of RecoveryPoint
         /// </summary>
@@ -149,11 +143,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
 
-    public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesObjectBase
+    public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesBackupManagementContext
     {
         public string Name { get; set; }
-
-        public BackupManagementType BackupManagementType { get; set; }
 
         public WorkloadType WorkloadType { get; set; }
 
@@ -176,7 +168,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    public class AzureRmRecoveryServicesJobBase : AzureRmRecoveryServicesObjectBase
+    public class AzureRmRecoveryServicesJobBase : AzureRmRecoveryServicesBackupManagementContext
     {
         public string ActivityId { get; set; }
 
@@ -187,8 +179,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string Status { get; set; }
 
         public string WorkloadName { get; set; }
-
-        public string BackupManagementType { get; set; }
 
         public DateTime StartTime { get; set; }
 

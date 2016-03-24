@@ -16,9 +16,8 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -73,8 +72,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
+            base.ExecuteSiteRecoveryCmdlet();
+
             try
             {
                 this.GetVaultSettingsFile();
@@ -83,8 +84,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 // if an exception is thrown from a task, it will be wrapped in AggregateException 
                 // and propagated to the main thread. Just throwing the first exception in the list.
-                Exception exception = aggregateEx.InnerExceptions.First<Exception>();
-                this.HandleException(exception);
+                throw aggregateEx.InnerExceptions.First<Exception>();
             }
         }
 

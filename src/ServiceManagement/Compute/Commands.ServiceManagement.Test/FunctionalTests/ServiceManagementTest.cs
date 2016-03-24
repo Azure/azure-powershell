@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
@@ -103,9 +103,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             if (!string.IsNullOrEmpty(GetDefaultStorage(CredentialHelper.DefaultStorageName, CredentialHelper.Location)))
             {
+                vmPowershellCmdlets.SelectAzureSubscription(defaultAzureSubscription.SubscriptionId);
                 defaultAzureSubscription = vmPowershellCmdlets.SetAzureSubscription(defaultAzureSubscription.SubscriptionId, CredentialHelper.DefaultStorageName);
                 defaultAzureSubscription.CurrentStorageAccountName = CredentialHelper.DefaultStorageName;
-                vmPowershellCmdlets.SelectAzureSubscription(defaultAzureSubscription.SubscriptionId);
                 storageAccountKey = vmPowershellCmdlets.GetAzureStorageAccountKey(CredentialHelper.DefaultStorageName);
                 Assert.AreEqual(CredentialHelper.DefaultStorageName, storageAccountKey.StorageAccountName);
                 blobUrlRoot = (vmPowershellCmdlets.GetAzureStorageAccount(CredentialHelper.DefaultStorageName)[0].Endpoints.ToArray())[0];
@@ -341,7 +341,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             // Re-import the subscription.
             vmPowershellCmdlets.ImportAzurePublishSettingsFile();
-            vmPowershellCmdlets.SetDefaultAzureSubscription(CredentialHelper.DefaultSubscriptionName);
+            vmPowershellCmdlets.SetDefaultAzureSubscription(defaultAzureSubscription.SubscriptionId);
             vmPowershellCmdlets.SetAzureSubscription(defaultAzureSubscription.SubscriptionId, defaultAzureSubscription.CurrentStorageAccountName);
         }
 
