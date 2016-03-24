@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     public class AddAzureRmVmssWinRMListenerCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]

@@ -33,59 +33,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     public class RemoveAzureRmVmssExtensionCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public VirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true)]
-        public string Publisher { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 3,
-            ValueFromPipelineByPropertyName = true)]
-        public string Type { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 4,
-            ValueFromPipelineByPropertyName = true)]
-        public string TypeHandlerVersion { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 5,
-            ValueFromPipelineByPropertyName = true)]
-        public bool? AutoUpgradeMinorVersion { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 6,
-            ValueFromPipelineByPropertyName = true)]
-        public Object Setting { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 7,
-            ValueFromPipelineByPropertyName = true)]
-        public Object ProtectedSetting { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 8,
-            ValueFromPipelineByPropertyName = true)]
-        public string Id { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -111,14 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             var vExtensions = this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.First
                 (e =>
-                    (this.Name == null || e.Name == this.Name)
-                    && (this.Publisher == null || e.Publisher == this.Publisher)
-                    && (this.Type == null || e.Type == this.Type)
-                    && (this.TypeHandlerVersion == null || e.TypeHandlerVersion == this.TypeHandlerVersion)
-                    && (this.AutoUpgradeMinorVersion == null || e.AutoUpgradeMinorVersion == this.AutoUpgradeMinorVersion)
-                    && (this.Setting == null || e.Settings == this.Setting)
-                    && (this.ProtectedSetting == null || e.ProtectedSettings == this.ProtectedSetting)
-                    && (this.Id == null || e.Id == this.Id)
+                    (e.Name == this.Name)
                 );
 
             if (vExtensions != null)
