@@ -2248,7 +2248,7 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 			</maml:introduction>
 			<dev:code>Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name &apos;test&apos; -Primary $true -IPConfiguration $ipCfg
 
-Add-AzureRmVmssNetworkInterfaceConfiguration -Name &apos;test2&apos; -IPConfiguration $ipCfg </dev:code>
+Add-AzureRmVmssNetworkInterfaceConfiguration -Name &apos;test2&apos; -IPConfiguration $ipCfg</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -2421,6 +2421,32 @@ Add-AzureRmVmssNetworkInterfaceConfiguration -Name &apos;test2&apos; -IPConfigur
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$vault = Get-AzureRmKeyVault -VaultName &quot;contosovault&quot;
+
+$certConfig = New-AzureRmVmssVaultCertificateConfig -CertificateUrl &quot;http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion&quot; -CertificateStore &quot;mycerts&quot;
+
+$vmss = New-AzureRmVmssConfig
+
+Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $vault.ResourceId -VaultCertificate $certConfig</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -2579,6 +2605,28 @@ Add-AzureRmVmssNetworkInterfaceConfiguration -Name &apos;test2&apos; -IPConfigur
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$vmss = New-AzureRmVmssConfig
+
+Add-AzureRmVmssSshPublicKey -VirtualMachineScaleSet $vmss -KeyData &quot;MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSq12Ib3DQEB21QUAMEUxCzAJBgNV&quot; -Path &quot;/home/admin/.ssh/authorized_keys&quot;</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -2737,6 +2785,28 @@ Add-AzureRmVmssNetworkInterfaceConfiguration -Name &apos;test2&apos; -IPConfigur
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$vmss = New-AzureRmVmssConfig
+
+Add-AzureRmVmssWinRMListener -VirtualMachineScaleSet $vmss -Protocol Https -CertificateUrl &quot;http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion&quot;</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -10542,6 +10612,26 @@ New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleS
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>New-AzureRmVmssVaultCertificateConfig -CertificateUrl &quot;http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion&quot; -CertificateStore &quot;mycerts&quot;</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -23677,6 +23767,26 @@ FromImage – This value is used when you are using an image to create the VM Sc
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Set-AzureRmVmssVM -Reimage -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId &quot;3&quot;</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
