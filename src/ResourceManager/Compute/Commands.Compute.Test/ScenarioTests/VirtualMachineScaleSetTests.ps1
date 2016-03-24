@@ -37,8 +37,6 @@ New-AzureRmVmssVaultCertificateConfig              1.2.4      AzureRM.Compute
 Remove-AzureRmVmss                                 1.2.4      AzureRM.Compute
 Remove-AzureRmVmssExtension                        1.2.4      AzureRM.Compute
 Remove-AzureRmVmssNetworkInterfaceConfiguration    1.2.4      AzureRM.Compute
-Remove-AzureRmVmssSecret                           1.2.4      AzureRM.Compute
-Remove-AzureRmVmssSshPublicKey                     1.2.4      AzureRM.Compute
 Restart-AzureRmVmss                                1.2.4      AzureRM.Compute
 Set-AzureRmVmss                                    1.2.4      AzureRM.Compute
 Set-AzureRmVmssOsProfile                           1.2.4      AzureRM.Compute
@@ -47,6 +45,7 @@ Set-AzureRmVmssVM                                  1.2.4      AzureRM.Compute
 Start-AzureRmVmss                                  1.2.4      AzureRM.Compute
 Stop-AzureRmVmss                                   1.2.4      AzureRM.Compute
 Update-AzureRmVmss                                 1.2.4      AzureRM.Compute
+Update-AzureRmVmssInstance                         1.2.4      AzureRM.Compute
 #>
 
 <#
@@ -146,9 +145,8 @@ function Test-VirtualMachineScaleSet
             | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
             | Remove-AzureRmVmssExtension -Name $extname `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' -IPConfiguration $ipCfg `
-            | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2';
-
-        $st = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+            | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' `
+            | New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName;
 
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss');
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
@@ -361,24 +359,32 @@ function Test-VirtualMachineScaleSetReimageUpdate
         $st = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
-        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        $st = Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssResult;
+        Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
 
+        # Manual Upgrade operation
+        $st = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName | Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName;
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
+        Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
 
-        # Stop/Start/Restart Operation
         Update-AzureRmVmssInstance -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId "0";
-
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
+        Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
 
+        # Reimage operation
         try
         {
             Set-AzureRmVmss -Reimage -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         }
         catch
         {
+            $actualMessage = $_.Exception.Message;
+            Write-Output ("Caught exception: '$actualMessage'");
+            if (-not $actualMessage.Contains("Conflict"))
+            {
+                throw "Expected exception does not contain expected text 'Conflict', the actual message is '$actualMessage'";
+            }
         }
 
         # Remove
