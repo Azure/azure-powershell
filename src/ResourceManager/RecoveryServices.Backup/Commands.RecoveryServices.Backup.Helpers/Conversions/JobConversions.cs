@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (mgmtType)
             {
                 case BackupManagementType.AzureVM:
-                    return "AzureIaasVM";
+                    return ProviderType.AzureIaasVM.ToString();
                 default:
                     throw new Exception("Invalid BackupManagementType provided: " + mgmtType);
             }
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         public static string GetPSBackupManagementType(string jobType)
         {
-            if (jobType == "AzureIaasVM")
+            if (jobType == ProviderType.AzureIaasVM.ToString())
             {
                 return BackupManagementType.AzureVM.ToString();
             }
