@@ -16,15 +16,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceGroups;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 
     /// <summary>
-    /// Saves the deployment template to a file on disk.
+    /// Captures the specifies resource group as a template and saves it to a file on disk.
     /// </summary>
-    [Cmdlet(VerbsData.Save, "AzureRmResourceGroupDeploymentTemplate"), OutputType(typeof(PSObject))]
-    public class SaveAzureResourceGroupDeploymentTemplateCmdlet : ResourceManagerCmdletBase
+    [Cmdlet(VerbsData.Export, "AzureRmResourceGroup"), OutputType(typeof(PSObject))]
+    public class ExportAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// Gets or sets the resource group name parameter.
@@ -35,19 +38,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the deployment name parameter.
-        /// </summary>
-        [Alias("Name")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment name.")]
-        [ValidateNotNullOrEmpty]
-        public string DeploymentName { get; set; }
-
-        /// <summary>
         /// Gets or sets the file path.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The output path of the template file.")]		
         [ValidateNotNullOrEmpty]		
          public string Path { get; set; }
+
+        /// <summary>
+        /// Export template parameter with default value.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Export template parameter with default value.")]
+        public SwitchParameter IncludeParameterDefaultValue { get; set; }
+
+        /// <summary>
+        /// Export template with comments.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Export template with comments.")]
+        public SwitchParameter IncludeComments { get; set; }
 
         /// <summary>
         /// Gets or sets the force parameter.
@@ -66,10 +73,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
 
+            var parameters = new ExportTemplateParameters
+            {
+                Resources = new string [] {"*"},
+                Options = this.GetExportOptions() ?? null
+            };
+
             var operationResult = this.GetResourcesClient()
                         .InvokeActionOnResource<JObject>(
                             resourceId: resourceId,
                             action: Constants.ExportTemplate,
+                            parameters: parameters.ToJToken(),
                             apiVersion: apiVersion,
                             cancellationToken: this.CancellationToken.Value)
                         .Result;
@@ -86,14 +100,44 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
 
+            if(JObject.Parse(resultString)["error"] != null)
+            {
+                ExtendedErrorInfo error;
+                if(JObject.Parse(resultString)["error"].TryConvertTo(out error))
+                {
+                    WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
+                    foreach(var detail in error.Details)
+                    {
+                        WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
+                    }
+                }
+            }
+
             string path = FileUtility.SaveTemplateFile(
-                templateName: this.DeploymentName,
+                templateName: this.ResourceGroupName,
                 contents: template.ToString(),
-                outputPath: string.IsNullOrEmpty(this.Path) ? System.IO.Path.Combine(CurrentPath(), this.DeploymentName) : this.TryResolvePath(this.Path),
+                outputPath: string.IsNullOrEmpty(this.Path) ? System.IO.Path.Combine(CurrentPath(), this.ResourceGroupName) : this.TryResolvePath(this.Path),
                 overwrite: this.Force,
                 confirmAction: ConfirmAction);
 
             WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", path));
+        }
+
+        /// <summary>
+        /// Gets the export template options
+        /// </summary>
+        private string GetExportOptions()
+        {
+            string options = string.Empty;
+            if(this.IncludeComments.IsPresent)
+            {
+                options += "IncludeComments";
+            }
+            if(this.IncludeParameterDefaultValue.IsPresent)
+            {
+                options = string.IsNullOrEmpty(options) ? "IncludeParameterDefaultValue" : options + ",IncludeParameterDefaultValue";
+            }
+            return string.IsNullOrEmpty(options) ? null : options;
         }
 
         /// <summary>
@@ -104,8 +148,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return ResourceIdUtility.GetResourceId(
                 subscriptionId: DefaultContext.Subscription.Id,
                 resourceGroupName: this.ResourceGroupName,
-                resourceType: Constants.MicrosoftResourcesDeploymentType,
-                resourceName: this.DeploymentName);
+                resourceType: null,
+                resourceName: null);
         }
     }
 }

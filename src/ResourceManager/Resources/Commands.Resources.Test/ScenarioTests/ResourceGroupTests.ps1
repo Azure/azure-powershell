@@ -318,3 +318,36 @@ function Test-GetNonExistingResourceGroupWithDebugStream
     $ErrorActionPreference="Stop"
     Assert-True { $output -Like "*============================ HTTP RESPONSE ============================*" }
 }
+
+<#
+.SYNOPSIS
+Tests export resource group template file.
+#>
+function Test-ExportResourceGroup
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	
+	try
+	{
+		# Test
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+		$r = New-AzureRmResource -Name $rname -Location "centralus" -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+		Assert-AreEqual $r.ResourceGroupName $rgname
+
+		$exportOutput = Export-AzureRmResourceGroup -ResourceGroupName $rgname -Force
+		Assert-NotNull $exportOutput
+		Assert-True { $exportOutput.Path.Contains($rgname + ".json") }
+	}
+	
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
