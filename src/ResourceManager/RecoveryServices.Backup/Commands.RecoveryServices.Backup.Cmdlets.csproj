@@ -73,6 +73,7 @@
     <Compile Include="Cmdlets\Item\GetAzureRmRecoveryServicesItem.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJob.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJobDetails.cs" />
+    <Compile Include="Cmdlets\Jobs\StopAzureRmRecoveryServicesJob.cs" />
     <Compile Include="Cmdlets\Jobs\WaitAzureRmRecoveryServicesJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesBackupRetentionPolicyObject.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesPolicy.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="Cmdlets\ProtectionPolicy\PolicyCmdletHelpers.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRmRecoveryServicesPolicy.cs" />
-    <Compile Include="CmdletWarningAndErrorMessages.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureRMRecoveryServicesRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Restore\RestoreAzureRMRecoveryServicesBackupItem.cs" />
