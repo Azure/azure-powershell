@@ -222,6 +222,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestApplicationGatewayCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+	<None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestExpressRouteCircuitStageCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTests\TestExpressRouteCircuitAuthorizationCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

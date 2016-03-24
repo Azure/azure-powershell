@@ -16,6 +16,63 @@
 .SYNOPSIS
 Tests ExpressRouteCircuitCRUD.
 #>
+function Test-ExpressRouteCircuitStageCRUD
+{
+    # Setup
+    $rgname = 'movecircuit'
+    $circuitName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $location = "westus"
+    try 
+    {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+      
+      # Create the ExpressRouteCircuit
+		$circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix test" -PeeringLocation "Silicon Valley Test" -BandwidthInMbps 50 -AllowClassicOperations $true;
+      
+      # get Circuit
+      $getCircuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+
+      #verification
+      Assert-AreEqual $rgName $getCircuit.ResourceGroupName
+      Assert-AreEqual $circuitName $getCircuit.Name
+      Assert-NotNull $getCircuit.Location
+      Assert-NotNull $getCircuit.Etag
+      Assert-AreEqual 0 @($getCircuit.Peerings).Count
+      Assert-AreEqual "Standard_MeteredData" $getCircuit.Sku.Name
+      Assert-AreEqual "Standard" $getCircuit.Sku.Tier
+      Assert-AreEqual "MeteredData" $getCircuit.Sku.Family
+
+
+	  # set
+      $getCircuit.AllowClassicOperations = $false
+
+      $getCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $getCircuit
+	  
+	  #move
+	  Move-AzureRmExpressRouteCircuit -Name -ResourceGroupName -Location -ServiceKey 
+            
+      # Delete Circuit
+      $delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+      Assert-AreEqual true $delete
+		      
+      $list = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname
+      Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+    # Cleanup
+      Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuitCRUD.
+#>
 function Test-ExpressRouteCircuitCRUD
 {
     # Setup
