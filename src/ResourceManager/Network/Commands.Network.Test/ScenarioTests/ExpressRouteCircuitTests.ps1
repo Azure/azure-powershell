@@ -21,9 +21,8 @@ function Test-ExpressRouteCircuitStageCRUD
     # Setup
     $rgname = 'movecircuit'
     $circuitName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = "westus"
     $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
-    $location = Get-ProviderLocation $resourceTypeParent
     $location = "westus"
     try 
     {
@@ -31,29 +30,15 @@ function Test-ExpressRouteCircuitStageCRUD
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
       
       # Create the ExpressRouteCircuit
-		$circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix test" -PeeringLocation "Silicon Valley Test" -BandwidthInMbps 50 -AllowClassicOperations $true;
+	  $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix test" -PeeringLocation "Silicon Valley Test" -BandwidthInMbps 50 -AllowClassicOperations $true;
       
-      # get Circuit
-      $getCircuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
-
-      #verification
-      Assert-AreEqual $rgName $getCircuit.ResourceGroupName
-      Assert-AreEqual $circuitName $getCircuit.Name
-      Assert-NotNull $getCircuit.Location
-      Assert-NotNull $getCircuit.Etag
-      Assert-AreEqual 0 @($getCircuit.Peerings).Count
-      Assert-AreEqual "Standard_MeteredData" $getCircuit.Sku.Name
-      Assert-AreEqual "Standard" $getCircuit.Sku.Tier
-      Assert-AreEqual "MeteredData" $getCircuit.Sku.Family
-
-
-	  # set
-      $getCircuit.AllowClassicOperations = $false
-
-      $getCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $getCircuit
+      $circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+      # set
+      $circuit.AllowClassicOperations = $false
+      $circuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 	  
 	  #move
-	  Move-AzureRmExpressRouteCircuit -Name -ResourceGroupName -Location -ServiceKey 
+	  Move-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname -Location $location -ServiceKey $circuit.ServiceKey -Force
             
       # Delete Circuit
       $delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
@@ -61,6 +46,7 @@ function Test-ExpressRouteCircuitStageCRUD
 		      
       $list = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname
       Assert-AreEqual 0 @($list).Count
+      
     }
     finally
     {
