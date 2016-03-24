@@ -76,8 +76,6 @@ function Test-ExpressRouteCircuitCRUD
       Assert-AreEqual "Silicon Valley" $getCircuit.ServiceProviderProperties.PeeringLocation
       Assert-AreEqual "1000" $getCircuit.ServiceProviderProperties.BandwidthInMbps
       
-      #$getCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $getCircuit -AllowClassicOperations $true
-      #Assert-AreEqual $true $getCircuit.AllowClassicOperations
 
       # Delete Circuit
       $delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force

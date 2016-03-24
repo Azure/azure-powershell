@@ -244,7 +244,6 @@
     <Compile Include="ExpressRouteCircuit\Authorization\NewAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\RemoveAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\MoveAzureExpressRouteCircuitCommand.cs" />
-    <!--Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteRouteTableSummaryCommand.cs" /-->
     <Compile Include="LoadBalancer\InboundNatPool\AddAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AzureLoadBalancerInboundNatPoolConfigBase.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\GetAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
@@ -437,9 +436,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <!--Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteARPTableCommand.cs" /-->
-    <!--Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteRouteTableCommand.cs" /-->
-    <!--Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteStatsCommand.cs" /-->
     <Compile Include="ProviderWideCmdlets\TestAzureDnsAvailabilityCmdlet.cs" />
     <Compile Include="VirtualNetwork\RemoveAzureVirtualNetworkCommand.cs" />
     <Compile Include="VirtualNetwork\SetAzureVirtualNetworkCommand.cs" />
