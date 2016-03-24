@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public class RemoveAzureSiteRecoverySite : SiteRecoveryCmdletBase
     {
         #region Parameters
-
+       
         /// <summary>
         /// Gets or sets the site name
         /// </summary>
@@ -37,48 +37,42 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [ValidateNotNullOrEmpty]
         public ASRSite Site { get; set; }
 
-        /// <summary>
-        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
-        /// </summary>
-        [Parameter]
-        public SwitchParameter Force { get; set; }
-
         #endregion
 
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-
-            RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryProvider(
-                    this.Site.Name);
-
-            if (recoveryServicesProviderListResponse.RecoveryServicesProviders.Count != 0)
+            try
             {
-                throw new PSInvalidOperationException(Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
-            }
-         
-            LongRunningOperationResponse response;
+                RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryProvider(
+                        this.Site.Name);
 
-            if (!this.Force.IsPresent)
+                if (recoveryServicesProviderListResponse.RecoveryServicesProviders.Count != 0)
+                {
+                    throw new PSInvalidOperationException(Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
+                }
+
+                FabricDeletionInput input = new FabricDeletionInput()
+                {
+                    Properties = new FabricDeletionInputProperties()
+                };
+
+                LongRunningOperationResponse response =
+                 RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name, input);
+
+                JobResponse jobResponse =
+                    RecoveryServicesClient
+                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+                WriteObject(new ASRJob(jobResponse.Job));
+            }
+            catch (Exception exception)
             {
-                response =
-                         RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name);
+                this.HandleException(exception);
             }
-            else
-            {
-                response =
-                        RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(this.Site.Name);
-            }
-
-            JobResponse jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-            WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }

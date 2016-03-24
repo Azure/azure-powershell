@@ -18,7 +18,6 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -27,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
     using PVM = Model;
 
-    [Cmdlet(VerbsData.Export, ProfileNouns.VirtualMachine)]
+    [Cmdlet(VerbsData.Export, "AzureVM")]
     public class ExportAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Service name.")]

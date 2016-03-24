@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Microsoft.Azure.Commands.Insights.Properties;
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the Action of the rule
         /// </summary>
-        public IList<RuleAction> Actions { get; set; }
+        public RuleAction Action { get; set; }
 
         /// <summary>
         /// Gets or sets the Condition of the rule
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <param name="properties"></param>
         public PSAlertRuleProperty(Rule properties)
         {
-            this.Actions = properties.Actions;
+            this.Action = properties.Action;
 
             var condition = properties.Condition as ThresholdRuleCondition;
             if (condition != null)
@@ -86,18 +85,18 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         }
 
         /// <summary>
-        /// A string representation of the PSAlertRuleProperty
+        /// A string representation of the PSEventDataAuthorization
         /// </summary>
-        /// <returns>A string representation of the PSAlertRuleProperty</returns>
+        /// <returns>A string representation of the PSEventDataAuthorization</returns>
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();
             output.AppendLine();
-            output.AppendLine("Name:       : " + this.Name);
+            output.AppendLine("Action      : " + this.Action);
             output.AppendLine("Condition   : " + this.Condition);
             output.AppendLine("Description : " + this.Description);
             output.AppendLine("Status      : " + this.Status);
-            output.Append("Actions     : " + this.Actions.ToString(indentationTabs: 1));
+            output.Append("Name:       : " + this.Name);
             return output.ToString();
         }
     }

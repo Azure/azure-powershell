@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipeline = true,
-           HelpMessage = "The ExpressRouteCircuit")]
-        public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
+           HelpMessage = "The Circuit")]
+        public PSExpressRouteCircuit Circuit { get; set; }
 
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            var authorization = this.ExpressRouteCircuit.Authorizations.SingleOrDefault(resource => string.Equals(resource.Name,this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var authorization = this.Circuit.Authorizations.SingleOrDefault(resource => string.Equals(resource.Name,this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (authorization != null)
             {
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Network
             authorization = new PSExpressRouteCircuitAuthorization();
 
             authorization.Name = this.Name;
-            this.ExpressRouteCircuit.Authorizations.Add(authorization);
+            this.Circuit.Authorizations.Add(authorization);
 
-            WriteObject(this.ExpressRouteCircuit);
+            WriteObject(this.Circuit);
         }
     }
 }

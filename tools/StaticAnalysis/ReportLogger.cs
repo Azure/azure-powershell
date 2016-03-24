@@ -13,9 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace StaticAnalysis
 {
@@ -26,18 +24,10 @@ namespace StaticAnalysis
     {
         private AnalysisLogger _parent;
         private string _outputFile;
-        private string _exceptionsFilename;
-
         public ReportLogger(string fileName, AnalysisLogger parent)
-            : this(fileName, null, parent)
-        {
-        }
-
-        public ReportLogger(string fileName, string exceptionsFilename, AnalysisLogger parent)
         {
             _parent = parent;
             _outputFile = fileName;
-            _exceptionsFilename = exceptionsFilename;
         }
 
         protected AnalysisLogger ParentLogger { get { return _parent; } }
@@ -64,31 +54,15 @@ namespace StaticAnalysis
     /// A typed report logger
     /// </summary>
     /// <typeparam name="T">The type of the report this logger will log.</typeparam>
-    public class ReportLogger<T> : ReportLogger where T : class, IReportRecord, new()
+    public class ReportLogger<T> : ReportLogger where T : IReportRecord, new()
     {
         public ReportLogger(string fileName, AnalysisLogger logger)
-            : this(fileName, null, logger)
-        {
-            Decorator = Decorator<T>.Create();
-        }
-
-        public ReportLogger(string fileName, string exceptionsFileName, AnalysisLogger logger)
             : base(fileName, logger)
         {
             Decorator = Decorator<T>.Create();
-            if (exceptionsFileName != null && File.Exists(exceptionsFileName))
-            {
-                var records = File.ReadAllLines(exceptionsFileName);
-                for (int i = 1; i < records.Length; ++i)
-                {
-                    var record = new T();
-                    _exceptionRecords.Add(record.Parse(records[i]) as T);
-                }
-            }
         }
 
         private IList<T> _records = new List<T>();
-        private IList<T> _exceptionRecords = new List<T>();
         public Decorator<T> Decorator { get; protected set; }
 
         /// <summary>
@@ -98,10 +72,7 @@ namespace StaticAnalysis
         public void LogRecord(T record)
         {
             Decorator.Apply(record);
-            if (!_exceptionRecords.Any(r => r.Match(record)))
-            {
-                _records.Add(record);
-            }
+            _records.Add(record);
         }
 
         public override IList<IReportRecord> Records

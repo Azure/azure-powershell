@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Primary Network object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRNetwork PrimaryNetwork { get; set; }
 
@@ -55,18 +55,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-
-            switch (this.ParameterSetName)
+            try
             {
-                case ASRParameterSets.EnterpriseToEnterprise:
-                    this.EnterpriseToEnterpriseNetworkMapping();
-                    break;
-                case ASRParameterSets.EnterpriseToAzure:
-                    this.EnterpriseToAzureNetworkMapping();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.EnterpriseToEnterprise:
+                        this.EnterpriseToEnterpriseNetworkMapping();
+                        break;
+                    case ASRParameterSets.EnterpriseToAzure:
+                        this.EnterpriseToAzureNetworkMapping();
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
             }
         }
 

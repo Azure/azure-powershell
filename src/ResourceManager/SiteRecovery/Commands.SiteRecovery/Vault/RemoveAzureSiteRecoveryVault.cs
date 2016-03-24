@@ -16,7 +16,7 @@ using System;
 using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.SiteRecovery.Properties;
-using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -40,18 +40,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-
-            RecoveryServicesOperationStatusResponse response = RecoveryServicesClient.DeleteVault(this.Vault.ResouceGroupName, this.Vault.Name);
-
-            VaultOperationOutput output = new VaultOperationOutput()
+            try
             {
-                Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.StatusCode.ToString()
-            };
+                RecoveryServicesOperationStatusResponse response = RecoveryServicesClient.DeleteVault(this.Vault.ResouceGroupName, this.Vault.Name);
 
-            this.WriteObject(output, true);
+                VaultOperationOutput output = new VaultOperationOutput()
+                {
+                    Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.StatusCode.ToString()
+                };
+
+                this.WriteObject(output, true);
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
+            }
         }
     }
 }

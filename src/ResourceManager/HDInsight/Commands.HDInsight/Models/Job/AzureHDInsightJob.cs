@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <param name="cluster">The cluster that the jobDetails was created against.</param>
         public AzureHDInsightJob(JobDetailRootJsonObject jobDetails, string cluster)
         {
-            var index = cluster.IndexOf('.');
-            Cluster = index > -1 ? cluster.Substring(0, index) : cluster;
+            Cluster = cluster.Substring(0, cluster.IndexOf('.'));
             HttpEndpoint = cluster;
             State = jobDetails.Status.State;
             JobId = jobDetails.Id;
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             User = jobDetails.User;
             Callback = jobDetails.Callback;
             Completed = jobDetails.Completed;
-            StatusFolder = jobDetails.Userargs.Statusdir != null ? jobDetails.Userargs.Statusdir.ToString() : string.Empty;
+            StatusFolder = jobDetails.Userargs.Statusdir.ToString();
         }
 
         /// <summary>

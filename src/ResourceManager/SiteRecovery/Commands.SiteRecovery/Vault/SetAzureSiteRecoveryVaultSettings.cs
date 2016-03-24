@@ -18,9 +18,6 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.Azure.Commands.RecoveryServices;
-using System.Diagnostics;
-using System.Collections.ObjectModel;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -34,86 +31,28 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         #region Parameters
 
         /// <summary>
-        /// Gets or sets ASR vault Object.
+        /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ASRVault, Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRVault ASRVault { get; set; }
-
-        /// <summary>
-        /// Gets or sets ARS vault Object.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ARSVault, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public ARSVault ARSVault { get; set; }
+        public ASRVault Vault { get; set; }
 
         #endregion Parameters
 
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-
-            switch (this.ParameterSetName)
-            {
-                case ASRParameterSets.ASRVault:
-                    this.SetASRVaultContext(this.ASRVault);
-                    break;
-                case ASRParameterSets.ARSVault:
-                    this.SetARSVaultContext(this.ARSVault);
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Set Azure Site Recovery Vault context.
-        /// </summary>
-        private void SetASRVaultContext(ASRVault asrVault)
-        {
-            // Change the vault context
-            RecoveryServicesClient.ChangeVaultContext(asrVault);
-
             // Validate the Vault
             RecoveryServicesClient.ValidateVaultSettings(
-                asrVault.Name,
-                asrVault.ResouceGroupName);
+                this.Vault.Name,
+                this.Vault.ResouceGroupName);
+
+            // Change the vault context
+            ASRVaultCreds vaultCreds = RecoveryServicesClient.ChangeVaultContext(this.Vault);
 
             this.WriteObject(new ASRVaultSettings(PSRecoveryServicesClient.asrVaultCreds));
-        }
-
-        /// <summary>
-        /// Set Azure Recovery Services Vault context.
-        /// </summary>
-        private void SetARSVaultContext(ARSVault arsVault)
-        {
-            try
-            {
-                using (System.Management.Automation.PowerShell powerShell = System.Management.Automation.PowerShell.Create())
-                {
-                    Collection<PSObject> result =
-                        powerShell
-                        .AddCommand("Get-AzureRmRecoveryServicesVaultSettingsFile")
-                        .AddParameter("Vault", arsVault)
-                        .Invoke();
-
-                    string vaultSettingspath = (string)result[0].Members["FilePath"].Value;
-                    powerShell.Commands.Clear();
-
-                    result =
-                        powerShell
-                        .AddCommand("Import-AzureRmSiteRecoveryVaultSettingsFile")
-                        .AddParameter("Path", vaultSettingspath)
-                        .Invoke();
-                    WriteObject(result);
-                    powerShell.Commands.Clear();
-                }
-            }
-            catch (InvalidOperationException e)
-            {
-                WriteDebug(e.Message);
-            }
         }
     }
 }

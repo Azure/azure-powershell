@@ -12,10 +12,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using Microsoft.Azure.Commands.Common.Authentication;
-
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
+    using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.Authorization;
@@ -27,16 +26,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
     using Microsoft.WindowsAzure.Management.Storage;
     using Xunit;
 
-    public class ApiManagementTests : RMTestBase, IClassFixture<ApiManagementTestsFixture>
+    public class ApiManagementTests : RMTestBase, IUseFixture<ApiManagementTestsFixture>
     {
         private readonly EnvironmentSetupHelper _helper;
         private ApiManagementTestsFixture _fixture;
 
-        public ApiManagementTests(ApiManagementTestsFixture fixture)
+        public ApiManagementTests()
         {
-            _fixture = fixture;
             _helper = new EnvironmentSetupHelper();
         }
+
 
         protected void SetupManagementClients()
         {
@@ -184,6 +183,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
                 _helper.RunPowerShellTest(scripts);
             }
+        }
+
+        public void SetFixture(ApiManagementTestsFixture data)
+        {
+            this._fixture = data;
         }
     }
 }

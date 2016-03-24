@@ -47,21 +47,26 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-
-            switch (this.ParameterSetName)
+            try
             {
-                case ASRParameterSets.ByName:
-                    this.GetByName();
-                    break;
-                case ASRParameterSets.ByFriendlyName:
-                    this.GetByFriendlyName();
-                    break;
-                case ASRParameterSets.Default:
-                    this.GetAll();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByName:
+                        this.GetByName();
+                        break;
+                    case ASRParameterSets.ByFriendlyName:
+                        this.GetByFriendlyName();
+                        break;
+                    case ASRParameterSets.Default:
+                        this.GetAll();
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
             }
         }
 

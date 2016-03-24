@@ -15,12 +15,10 @@
 using System;
 using System.Net;
 using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 
@@ -54,7 +52,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Databases
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="profile"></param>
+        /// <param name="subscription"></param>
         public AzureSqlServerUpgradeCommunicator(AzureContext context)
         {
             Context = context;

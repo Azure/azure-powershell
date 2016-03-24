@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
@@ -26,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RunVMDynamicTests()
         {
-            ComputeTestController.NewInstance.RunPsTest("Run-VMDynamicTests -num_total_generated_tests 1");
+            ComputeTestController.NewInstance.RunPsTest("Run-VMDynamicTests");
         }
     }
 }

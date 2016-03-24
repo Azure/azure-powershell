@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -219,7 +218,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             if (!string.IsNullOrWhiteSpace(field))
             {
                 var condition = string.Format("and {0} eq '{1}'", field, value);
-                Assert.True(filter.Contains(condition), string.Format("Filter: {0} does not contain required condition: {1}", filter, condition));
+                Assert.True(filter.Contains(condition), "Filter does not contain required condition");
             }
         }
 
@@ -320,10 +319,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
                 Name = Name,
                 Properties = new Rule()
                 {
-                    Actions = new BindingList<RuleAction>()
-                    {
-                        new RuleEmailAction(),
-                    },
+                    Action = new RuleEmailAction(),
                     Condition = new ThresholdRuleCondition()
                     {
                         DataSource = new RuleMetricDataSource()
@@ -381,7 +377,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             };
         }
 
-        public static void VerifyDetailedOutput(GetAzureRmAlertRuleCommand cmdlet, string expectedResourceGroup, ref string resourceGroup, ref string nameOrTargetUri)
+        public static void VerifyDetailedOutput(GetAlertRuleCommand cmdlet, string expectedResourceGroup, ref string resourceGroup, ref string nameOrTargetUri)
         {
             // Calling with detailed output
             cmdlet.DetailedOutput = true;
@@ -408,7 +404,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             Assert.Equal(expectedResourceGroup, resourceGroup);
             Assert.Null(nameOrTargetUri);
 
-            var typedCmdlet = cmdlet as GetAzureRmAlertRuleCommand;
+            var typedCmdlet = cmdlet as GetAlertRuleCommand;
             if (typedCmdlet != null)
             {
                 // Calling with Name

@@ -55,15 +55,7 @@ namespace StaticAnalysis
                 logReportsDirectoryWarning = false;
             }
 
-           var exceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
-           bool useExceptions = true;
-            if (args.Length > 2)
-            {
-                bool.TryParse(args[2], out useExceptions);
-            }
-
-            var logger = useExceptions? new ConsoleLogger(reportsDirectory, exceptionsDirectory) :
-                new ConsoleLogger(reportsDirectory);
+            var logger = new ConsoleLogger(reportsDirectory);
 
             if (logReportsDirectoryWarning)
             {
@@ -80,7 +72,6 @@ namespace StaticAnalysis
             }
 
             logger.WriteReports();
-            logger.CheckForIssues(2);
         }
     }
 }

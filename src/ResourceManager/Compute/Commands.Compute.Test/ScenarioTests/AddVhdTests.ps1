@@ -49,7 +49,8 @@ function Test-AddVhd
               Write-Output ("Start Uploading... : " + $testItem.vhdName);
 
               $vhdUploadContext = Add-AzureRmVhd -ResourceGroupName $rgname -Destination $vhdDestUri -LocalFilePath $vhdLocalPath -NumberOfUploaderThreads 1;
-              Wait-Seconds 5;
+              Start-Sleep -s 5;
+
               Write-Output ("Destination Uri :" + $vhdUploadContext.DestinationUri);
               Write-Output ("Local File :" + $vhdUploadContext.LocalFilePath.FullName);
               Write-Output ("Uploading Ended.");

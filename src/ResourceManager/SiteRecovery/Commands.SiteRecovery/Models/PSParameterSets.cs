@@ -30,11 +30,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         internal const string ByRPObject = "ByRPObject";
 
         /// <summary>
-        /// When only RP File is passed to the command.
-        /// </summary>
-        internal const string ByRPFile = "ByRPFile";
-
-        /// <summary>
         /// When only Object is passed to the command.
         /// </summary>
         internal const string ByObject = "ByObject";
@@ -93,11 +88,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// When only RP Id is passed along with VM network to the command.
         /// </summary>
         internal const string ByRPIdWithVMNetwork = "ByRPIdWithVMNetwork";
-
-        /// <summary>
-        /// When only RP Object is passed along with Azure VM Network Id to the command.
-        /// </summary>
-        internal const string ByRPObjectWithAzureVMNetworkId = "ByRPObjectWithAzureVMNetworkId";
 
         /// <summary>
         /// When only PE Object is passed along with VM network ID to the command.
@@ -243,35 +233,5 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// For Disable replication group parameter set.
         /// </summary>
         internal const string DisableReplicationGroup = "DisableReplicationGroup";
-
-        /// <summary>
-        /// To append group to RP.
-        /// </summary>
-        internal const string AppendGroup = "AppendGroup";
-
-        /// <summary>
-        /// To remove group from RP
-        /// </summary>
-        internal const string RemoveGroup = "RemoveGroup";
-
-        /// <summary>
-        /// Add protected entities to RP
-        /// </summary>
-        internal const string AddProtectedEntities = "AddProtectedEntities";
-
-        /// <summary>
-        /// Remove protected entities from RP
-        /// </summary>
-        internal const string RemoveProtectedEntities = "RemoveProtectedEntities";
-
-	/// </summary>
-        /// Handle ASR Vault.
-        /// </summary>
-        internal const string ASRVault = "AzureSiteRecoveryVault";
-
-        /// <summary>
-        /// Handle ARS Vault.
-        /// </summary>
-        internal const string ARSVault = "AzureRecoveryServicesVault";
     }
 }

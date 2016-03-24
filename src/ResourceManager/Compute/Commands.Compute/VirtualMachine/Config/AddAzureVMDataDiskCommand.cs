@@ -59,7 +59,9 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCaching)]
-        public CachingTypes Caching { get; set; }
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(ValidateSetValues.ReadOnly, ValidateSetValues.ReadWrite, ValidateSetValues.None)]
+        public string Caching { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -82,7 +84,9 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
-        public DiskCreateOptionTypes CreateOption { get; set; }
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(DiskCreateOptionTypes.Empty, DiskCreateOptionTypes.Attach, DiskCreateOptionTypes.FromImage)]
+        public string CreateOption { get; set; }
 
         [Alias("SourceImage")]
         [Parameter(

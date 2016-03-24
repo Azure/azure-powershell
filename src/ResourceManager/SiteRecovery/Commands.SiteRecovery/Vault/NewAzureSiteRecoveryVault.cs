@@ -16,7 +16,7 @@ using System;
 using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.SiteRecovery.Properties;
-using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -54,23 +54,28 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
+            try
+            {
+                this.WriteWarningWithTimestamp(
+                    string.Format(
+                    Properties.Resources.SiteRecoveryVaultTypeWillBeDeprecatedSoon));
 
-            this.WriteWarningWithTimestamp(
-                string.Format(
-                Properties.Resources.SiteRecoveryVaultTypeWillBeDeprecatedSoon));
+                VaultCreateArgs vaultCreateArgs = new VaultCreateArgs();
+                vaultCreateArgs.Location = this.Location;
+                vaultCreateArgs.Properties = new VaultProperties();
+                vaultCreateArgs.Properties.Sku = new VaultSku();
+                vaultCreateArgs.Properties.Sku.Name = "standard";
 
-            VaultCreateArgs vaultCreateArgs = new VaultCreateArgs();
-            vaultCreateArgs.Location = this.Location;
-            vaultCreateArgs.Properties = new VaultProperties();
-            vaultCreateArgs.Properties.Sku = new VaultSku();
-            vaultCreateArgs.Properties.Sku.Name = "standard";
+                VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
 
-            VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
-
-            this.WriteObject(new ASRVault(response));
+                this.WriteObject(new ASRVault(response));
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
+            }
         }
     }
 }

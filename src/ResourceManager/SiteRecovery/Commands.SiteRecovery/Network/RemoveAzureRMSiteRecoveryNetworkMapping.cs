@@ -39,22 +39,27 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
+            try
+            {
+                LongRunningOperationResponse response = 
+                    RecoveryServicesClient
+                    .RemoveAzureSiteRecoveryNetworkMapping(
+                    Utilities.GetValueFromArmId(this.NetworkMapping.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                    Utilities.GetValueFromArmId(this.NetworkMapping.ID, "replicationNetworks"),
+                    Utilities.GetValueFromArmId(this.NetworkMapping.ID, "replicationNetworkMappings"));
 
-            LongRunningOperationResponse response = 
-                RecoveryServicesClient
-                .RemoveAzureSiteRecoveryNetworkMapping(
-                Utilities.GetValueFromArmId(this.NetworkMapping.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(this.NetworkMapping.ID, "replicationNetworks"),
-                Utilities.GetValueFromArmId(this.NetworkMapping.ID, "replicationNetworkMappings"));
+                JobResponse jobResponse =
+                    RecoveryServicesClient
+                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            JobResponse jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-            WriteObject(new ASRJob(jobResponse.Job));
+                WriteObject(new ASRJob(jobResponse.Job));
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
+            }
         }
     }
 }

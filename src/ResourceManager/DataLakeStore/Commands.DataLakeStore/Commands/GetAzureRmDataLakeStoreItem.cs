@@ -15,6 +15,7 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -47,7 +48,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         Path.TransformedPath.LastIndexOf("/", StringComparison.InvariantCultureIgnoreCase) + 1);
             }
 
-            WriteObject(new DataLakeStoreItem(toReturn, itemName));
+            toReturn.PathSuffix = itemName;
+            WriteObject(new DataLakeStoreItem(toReturn));
         }
     }
 }

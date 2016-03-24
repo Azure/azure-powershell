@@ -25,6 +25,8 @@ using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.Resources;
@@ -34,8 +36,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 using System.Net;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -245,33 +245,23 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
                 if (operation.Properties.ProvisioningState != ProvisioningState.Failed)
                 {
-                    if (operation.Properties.TargetResource != null)
-                    {
-                        statusMessage = string.Format(normalStatusFormat,
+                    statusMessage = string.Format(normalStatusFormat,
                         operation.Properties.TargetResource.ResourceType,
                         operation.Properties.TargetResource.ResourceName,
                         operation.Properties.ProvisioningState.ToLower());
 
-                        WriteVerbose(statusMessage);
-                    }
+                    WriteVerbose(statusMessage);
                 }
                 else
                 {
                     string errorMessage = ParseErrorMessage(operation.Properties.StatusMessage);
 
-                    if(operation.Properties.TargetResource != null)
-                    {
-                        statusMessage = string.Format(failureStatusFormat,
+                    statusMessage = string.Format(failureStatusFormat,
                         operation.Properties.TargetResource.ResourceType,
                         operation.Properties.TargetResource.ResourceName,
                         errorMessage);
 
-                        WriteError(statusMessage);
-                    }
-                    else
-                    {
-                        WriteError(errorMessage);
-                    }
+                    WriteError(statusMessage);
 
                     List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage);
 
@@ -331,7 +321,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
 
                 deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName).Deployment;
-                TestMockSupport.Delay(10000);
+                Thread.Sleep(2000);
 
             } while (!status.Any(s => s.Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 
@@ -365,16 +355,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                             parameters: null);
 
                         newNestedOperations = GetNewOperations(operations, result.Operations);
-
-                        foreach (DeploymentOperation op in newNestedOperations)
-                        {
-                            DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
-
-                            if (nestedOperationWithSameIdAndProvisioningState == null)
-                            {
-                                newOperations.Add(op);
-                            }
-                        }
+                        newOperations.AddRange(newNestedOperations);
                     }
                 }
             }
@@ -382,7 +363,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return newOperations;
         }
 
-        private Deployment CreateBasicDeployment(ValidatePSResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode, string debugSetting)
+        private Deployment CreateBasicDeployment(ValidatePSResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode)
         {
             Deployment deployment = new Deployment
             {
@@ -391,19 +372,18 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
             };
 
-            if(!string.IsNullOrEmpty(debugSetting))
-            {
-                deployment.Properties.DebugSetting = new DeploymentDebugSetting
-                {
-                    DeploymentDebugDetailLevel = debugSetting
-                };
-            }
-
             if (Uri.IsWellFormedUriString(parameters.TemplateFile, UriKind.Absolute))
             {
                 deployment.Properties.TemplateLink = new TemplateLink
                 {
                     Uri = new Uri(parameters.TemplateFile)
+                };
+            }
+            else if (!string.IsNullOrEmpty(parameters.GalleryTemplateIdentity))
+            {
+                deployment.Properties.TemplateLink = new TemplateLink
+                {
+                    Uri = new Uri(GalleryTemplatesClient.GetGalleryTemplateFile(parameters.GalleryTemplateIdentity))
                 };
             }
             else

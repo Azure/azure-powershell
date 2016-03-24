@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The circuit")]
-        public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
+        public PSExpressRouteCircuit Circuit { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var peering =
-                    this.ExpressRouteCircuit.Peerings.First(
+                    this.Circuit.Peerings.First(
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var peerings = this.ExpressRouteCircuit.Peerings;
+                var peerings = this.Circuit.Peerings;
                 WriteObject(peerings, true);
             }
         }

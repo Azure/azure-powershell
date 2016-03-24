@@ -56,21 +56,23 @@ function Test-GetAzureRmVMDscExtension
 		$p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
         
 		# OS & Image
-        $user = "localadmin";
-        $password = 'Bull_dog1';
+        $user = "Foo12";
+        $password = 'BaR@123' + $rgname;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
-        
+
+        $imgRef = Get-DefaultCRPWindowsImageOffline;
+        $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
+
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Test DSC Extension
-        $version = '2.13';
+        $version = '2.8';
 
 		# Publish DSC Configuration
 		#TODO: Find a way to mock calls with storage

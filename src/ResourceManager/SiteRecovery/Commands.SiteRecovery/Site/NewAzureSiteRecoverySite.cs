@@ -49,18 +49,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
+            try
+            {
+                LongRunningOperationResponse response =
+                 RecoveryServicesClient.CreateAzureSiteRecoveryFabric(this.Name, FabricProviders.HyperVSite);
 
-            LongRunningOperationResponse response =
-             RecoveryServicesClient.CreateAzureSiteRecoveryFabric(this.Name, FabricProviders.HyperVSite);
+                JobResponse jobResponse =
+                    RecoveryServicesClient
+                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            JobResponse jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-            WriteObject(new ASRJob(jobResponse.Job));
+                WriteObject(new ASRJob(jobResponse.Job));
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
+            }
         }
     }
 }

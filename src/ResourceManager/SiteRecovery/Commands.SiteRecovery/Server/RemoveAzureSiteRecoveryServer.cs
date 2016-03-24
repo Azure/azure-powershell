@@ -48,10 +48,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-            RemoveServer();
+            try
+            {
+                RemoveServer();
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
+            }
         }
 
         /// <summary>
@@ -68,8 +74,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             if (!this.Force.IsPresent)
             {
+                RecoveryServicesProviderDeletionInput input = new RecoveryServicesProviderDeletionInput()
+                {
+                    Properties = new RecoveryServicesProviderDeletionInputProperties()
+                };
+
                 response =
-                        RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name);
+                        RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name, input);
             }
             else
             {
@@ -82,6 +93,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse.Job));
-        }
+        }      
     }
 }

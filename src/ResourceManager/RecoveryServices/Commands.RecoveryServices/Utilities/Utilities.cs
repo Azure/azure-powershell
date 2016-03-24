@@ -103,22 +103,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Updates current Vault context.
         /// </summary>
-        /// <param name="arsVaultCreds">ARS Vault credentials</param>
-        public static void UpdateCurrentVaultContext(ASRVaultCreds arsVaultCreds)
+        /// <param name="asrVaultCreds">ASR Vault credentials</param>
+        public static void UpdateCurrentVaultContext(ASRVaultCreds asrVaultCreds)
         {
             object updateVaultContextOneAtATime = new object();
             lock (updateVaultContextOneAtATime)
             {
-                PSRecoveryServicesClient.arsVaultCreds.ResourceName =
-                    arsVaultCreds.ResourceName;
-                PSRecoveryServicesClient.arsVaultCreds.ResourceGroupName =
-                    arsVaultCreds.ResourceGroupName;
-                PSRecoveryServicesClient.arsVaultCreds.ChannelIntegrityKey =
-                    arsVaultCreds.ChannelIntegrityKey;
-                PSRecoveryServicesClient.arsVaultCreds.ResourceNamespace =
-                    arsVaultCreds.ResourceNamespace;
-                PSRecoveryServicesClient.arsVaultCreds.ARMResourceType =
-                    arsVaultCreds.ARMResourceType;
+                PSRecoveryServicesClient.asrVaultCreds.ResourceName =
+                    asrVaultCreds.ResourceName;
+                PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName =
+                    asrVaultCreds.ResourceGroupName;
+                PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey =
+                    asrVaultCreds.ChannelIntegrityKey;
+                PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace =
+                    asrVaultCreds.ResourceNamespace;
+                PSRecoveryServicesClient.asrVaultCreds.ARMResourceType =
+                    asrVaultCreds.ARMResourceType;
             }
         }
 

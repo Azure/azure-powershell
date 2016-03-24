@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
+using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
@@ -64,13 +65,13 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
             catch (CloudException ex)
             {
-                if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) && ex.Body.Code == "ResourceNotFound" ||
+                if (ex.Error != null && !string.IsNullOrEmpty(ex.Error.Code) && ex.Error.Code == "ResourceNotFound" ||
                     ex.Message.Contains("ResourceNotFound"))
                 {
                     // account does not exists so go ahead and create one
                 }
-                else if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) &&
-                         ex.Body.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
+                else if (ex.Error != null && !string.IsNullOrEmpty(ex.Error.Code) &&
+                         ex.Error.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
                 {
                     // resource group not found, let create throw error don't throw from here
                 }
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 }
             }
 
-            var defaultStorage = new DataLakeStoreAccountInfo
+            var defaultStorage = new DataLakeStoreAccount
             {
                 Name = DefaultDataLakeStore
             };

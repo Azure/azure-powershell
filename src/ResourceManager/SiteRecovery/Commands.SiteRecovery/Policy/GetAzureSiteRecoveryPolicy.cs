@@ -22,7 +22,7 @@ using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Policy.
+    /// Retrieves Azure Site Recovery Server.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryPolicy", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRPolicy>))]
@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     {
         #region Parameters
         /// <summary>
-        /// Gets or sets name of the Policy.
+        /// Gets or sets ID of the Server.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets friendly name of the Policy.
+        /// Gets or sets name of the Server.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -47,21 +47,26 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-
-            switch (this.ParameterSetName)
+            try
             {
-                case ASRParameterSets.ByFriendlyName:
-                    this.GetByFriendlyName();
-                    break;
-                case ASRParameterSets.ByName:
-                    this.GetByName();
-                    break;
-                case ASRParameterSets.Default:
-                    this.GetAll();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByFriendlyName:
+                        this.GetByFriendlyName();
+                        break;
+                    case ASRParameterSets.ByName:
+                        this.GetByName();
+                        break;
+                    case ASRParameterSets.Default:
+                        this.GetAll();
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
             }
         }
 
@@ -78,9 +83,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (0 == string.Compare(this.FriendlyName, policy.Properties.FriendlyName, true))
                 {
-                    var policyByName = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(policy.Name).Policy;
-                    this.WritePolicy(policyByName);
-
+                    this.WritePolicy(policy);
                     found = true;
                 }
             }
@@ -109,9 +112,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (0 == string.Compare(this.Name, policy.Name, true))
                 {
-                    var policyByName = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(policy.Name).Policy;
-                    this.WritePolicy(policyByName);
-
+                    this.WritePolicy(policy);
                     found = true;
                 }
             }
@@ -140,16 +141,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Write Policies.
         /// </summary>
-        /// <param name="policy">List of Policies</param>
+        /// <param name="policy">List of Profiles</param>
         private void WritePolicies(IList<Policy> policy)
         {
             this.WriteObject(policy.Select(p => new ASRPolicy(p)), true);
         }
 
         /// <summary>
-        /// Write Policy.
+        /// Write Profile.
         /// </summary>
-        /// <param name="policy">Policy object</param>
+        /// <param name="policy">Profile object</param>
         private void WritePolicy(Policy policy)
         {
             this.WriteObject(new ASRPolicy(policy));

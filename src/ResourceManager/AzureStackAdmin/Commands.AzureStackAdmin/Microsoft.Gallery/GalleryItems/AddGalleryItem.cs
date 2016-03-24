@@ -15,7 +15,6 @@
 namespace Microsoft.AzureStack.Commands
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Management.Automation;
     using Microsoft.Azure;
@@ -61,17 +60,6 @@ namespace Microsoft.AzureStack.Commands
         public string Path { get; set; }
 
         /// <summary>
-        /// This queue is used by the tests to assign fixed GalleryPackageId
-        /// every time the test runs
-        /// </summary>
-        public static Queue<Guid> GalleryPackageIds { get; set; }
-
-        static AddGalleryItem()
-        {
-            GalleryPackageIds = new Queue<Guid>();
-        }
-
-        /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
@@ -81,13 +69,8 @@ namespace Microsoft.AzureStack.Commands
             using (var client = this.GetAzureStackClient(this.SubscriptionId))
             using (var filestream = File.Open(this.Path, FileMode.Open, FileAccess.Read))
             {
-                var manifest = client.Package.CreateOrUpdate(
-                    this.ResourceGroup,
-                    (AddGalleryItem.GalleryPackageIds.Count == 0
-                        ? Guid.NewGuid()
-                        : AddGalleryItem.GalleryPackageIds.Dequeue()).ToString(),
-                    filestream);
-                var uploadParameters = new GalleryItemCreateOrUpdateParameters() {Manifest = manifest.Manifest};
+                var manifest = client.Package.CreateOrUpdate(this.ResourceGroup, Guid.NewGuid().ToString(), filestream);
+                var uploadParameters = new GalleryItemCreateOrUpdateParameters() { Manifest = manifest.Manifest };
                 return client.GalleryItem.CreateOrUpdate(this.ResourceGroup, this.Name, uploadParameters);
             }
         }

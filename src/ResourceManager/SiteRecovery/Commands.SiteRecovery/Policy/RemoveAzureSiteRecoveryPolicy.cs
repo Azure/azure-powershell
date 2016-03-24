@@ -22,7 +22,7 @@ using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
-    /// Removes Azure Site Recovery Policy.
+    /// Creates Azure Site Recovery Policy object in memory.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryPolicy")]
     public class RemoveAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Name of the Policy.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true)]
         public ASRPolicy Policy { get; set; }
 
         #endregion Parameters
@@ -40,17 +40,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-
-            LongRunningOperationResponse responseBlue =  RecoveryServicesClient.DeletePolicy(this.Policy.Name);
+            try
+            {
+                LongRunningOperationResponse responseBlue =  RecoveryServicesClient.DeletePolicy(this.Policy.Name);
                 
-            JobResponse jobResponseBlue =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
+                JobResponse jobResponseBlue =
+                    RecoveryServicesClient
+                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
 
-            WriteObject(new ASRJob(jobResponseBlue.Job));
+                WriteObject(new ASRJob(jobResponseBlue.Job));
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
+            }
         }
     }
 }

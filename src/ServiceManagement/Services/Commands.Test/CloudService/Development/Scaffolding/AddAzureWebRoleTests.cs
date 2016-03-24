@@ -23,7 +23,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
-using System;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffolding
 {
@@ -94,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         public void AddAzureWebRoleWithTemplateFolder()
         {
             string scaffoldingPath = "MyWebTemplateFolder";
-            Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, scaffoldingPath));
+            Directory.CreateDirectory(Path.Combine(System.Environment.CurrentDirectory, scaffoldingPath));
 
             using (FileSystemHelper files = new FileSystemHelper(this))
             {
@@ -124,7 +123,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
             {
                 string roleName = "WebRole1";
                 string serviceName = "AzureService";
-                string scaffoldingPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TemplateMissingScaffoldXml");
+                string scaffoldingPath = "TemplateMissingScaffoldXml";
                 if (Directory.Exists(scaffoldingPath))
                 {
                     Directory.Delete(scaffoldingPath, true);

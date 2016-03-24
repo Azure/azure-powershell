@@ -24,15 +24,11 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Channels;
 using System.Text;
-using System.Xml.Linq;
+using System.Xml;
 using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Newtonsoft.Json;
-using Formatting = System.Xml.Formatting;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -55,11 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static X509Certificate2 GetCertificateFromStore(string thumbprint)
         {
-            if (string.IsNullOrWhiteSpace(thumbprint))
-            {
-                throw new ArgumentNullException("certificate thumbprint");
-            }
-
+            Validate.ValidateStringIsNullOrEmpty(thumbprint, "certificate thumbprint");
             X509Certificate2Collection certificates;
             if (TryFindCertificatesInStore(thumbprint, StoreLocation.CurrentUser, out certificates) ||
                 TryFindCertificatesInStore(thumbprint, StoreLocation.LocalMachine, out certificates))
@@ -69,8 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             else
             {
                 throw new ArgumentException(string.Format(
-                    "Certificate {0} was not found in the certificate store.  Please ensure the referenced " +
-                    "certificate exists in the the LocalMachine\\My or CurrentUser\\My store", 
+                    Microsoft.Azure.Common.Authentication.Properties.Resources.CertificateNotFoundInStore, 
                     thumbprint));
             }
         }
@@ -92,6 +83,24 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return false;
         }
 
+        public static string ReadMessageBody(ref Message originalMessage)
+        {
+            StringBuilder strBuilder = new StringBuilder();
+
+            using (MessageBuffer messageBuffer = originalMessage.CreateBufferedCopy(int.MaxValue))
+            {
+                Message message = messageBuffer.CreateMessage();
+                XmlWriter writer = XmlWriter.Create(strBuilder);
+                using (XmlDictionaryWriter dictionaryWriter = XmlDictionaryWriter.CreateDictionaryWriter(writer))
+                {
+                    message.WriteBodyContents(dictionaryWriter);
+                }
+
+                originalMessage = messageBuffer.CreateMessage();
+            }
+
+            return XmlUtilities.Beautify(strBuilder.ToString());
+        }
 
         public static string GetConfiguration(string configurationPath)
         {
@@ -289,8 +298,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string GetLog(HttpResponseMessage response)
         {
-            string body = response.Content == null ? string.Empty 
-                : FormatString(response.Content.ReadAsStringAsync().Result);
+            string body = response.Content == null ? string.Empty : FormatString(response.Content.ReadAsStringAsync().Result);
 
             return GetHttpResponseLog(
                 response.StatusCode.ToString(),
@@ -300,8 +308,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string GetLog(HttpRequestMessage request)
         {
-            string body = request.Content == null ? string.Empty 
-                : FormatString(request.Content.ReadAsStringAsync().Result);
+            string body = request.Content == null ? string.Empty : FormatString(request.Content.ReadAsStringAsync().Result);
 
             return GetHttpRequestLog(
                 request.Method.ToString(),
@@ -314,41 +321,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (CloudException.IsXml(content))
             {
-                return TryFormatXml(content);
+                return XmlUtilities.TryFormatXml(content);
             }
             else if (CloudException.IsJson(content))
             {
-                return TryFormatJson(content);
+                return JsonUtilities.TryFormatJson(content);
             }
             else
-            {
-                return content;
-            }
-        }
-
-        private static string TryFormatJson(string str)
-        {
-            try
-            {
-                object parsedJson = JsonConvert.DeserializeObject(str);
-                return JsonConvert.SerializeObject(parsedJson, 
-                    Newtonsoft.Json.Formatting.Indented);
-            }
-            catch
-            {
-                // can't parse JSON, return the original string
-                return str;
-            }
-        }
-
-        private static string TryFormatXml(string content)
-        {
-            try
-            {
-                XDocument doc = XDocument.Parse(content);
-                return doc.ToString();
-            }
-            catch (Exception)
             {
                 return content;
             }
@@ -421,12 +400,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return contents;
         }
 
-        /// <summary>
-        /// Pad a string using the given separator string
-        /// </summary>
-        /// <param name="amount">The number of repetitions of the separator</param>
-        /// <param name="separator">The separator string to use</param>
-        /// <returns>A string containing the given number of repetitions of the separator string</returns>
         public static string GenerateSeparator(int amount, string separator)
         {
             StringBuilder result = new StringBuilder();
@@ -449,7 +422,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// Clear the current storage account from the context - guarantees that only one storage account will be active 
         /// at a time.
         /// </summary>
-        /// <param name="clearSMContext">Whether to clear the service management context.</param>
+        /// <param name="clearSMContext">Whenter to clear the service management context.</param>
         public static void ClearCurrentStorageAccount(bool clearSMContext = false)
         {
             var RMProfile = AzureRmProfileProvider.Instance.Profile;

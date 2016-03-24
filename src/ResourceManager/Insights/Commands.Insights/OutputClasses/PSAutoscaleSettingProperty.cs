@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 this.Name = autoscaleSetting.Name;
                 this.Profiles = autoscaleSetting.Profiles;
                 this.TargetResourceUri = autoscaleSetting.TargetResourceUri;
-                this.Notifications = autoscaleSetting.Notifications;
             }
         }
 
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             output.AppendLine("TargetResourceId : " + this.TargetResourceUri);
             output.AppendLine("Enabled          : " + this.Enabled);
             output.Append("Profiles         : " + this.Profiles.ToString(indentationTabs: 2));
-            output.Append("Notifications    : " + this.Notifications.ToString(indentationTabs: 2));
             return output.ToString();
         }
     }

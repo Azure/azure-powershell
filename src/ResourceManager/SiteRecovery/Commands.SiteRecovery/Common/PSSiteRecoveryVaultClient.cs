@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.SiteRecoveryVault;
-using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using Microsoft.Azure.Management.RecoveryServices;
+using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {

@@ -152,18 +152,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithEmptyAuc");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineWithBYOL()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithBYOL");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineRedeploy()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineRedeploy");
-        }
     }
 }

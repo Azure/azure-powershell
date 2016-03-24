@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         // Gets or sets an enum describing the unit of measurement.
-        public string Unit { get; set; }
+        public UsageUnit? Unit { get; set; }
 
         [JsonIgnore]
         public string UnitText

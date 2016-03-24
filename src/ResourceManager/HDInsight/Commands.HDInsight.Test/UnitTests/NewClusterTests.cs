@@ -55,7 +55,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.HttpCredential = _httpCred;
             cmdlet.DefaultStorageAccountName = StorageName;
             cmdlet.DefaultStorageAccountKey = StorageKey;
-            cmdlet.ClusterType = ClusterType;
 
             var cluster = new Cluster
             {
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        ClusterType = "Hadoop"
                     },
                     QuotaInfo = new QuotaInfo
                     {
@@ -110,7 +109,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.Location == Location &&
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == ClusterType &&
+                    parameters.ClusterType == HDInsightClusterType.Hadoop &&
                     parameters.OSType == OSType.Windows)))
             .Returns(getresponse)
             .Verifiable();    
@@ -121,7 +120,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightCluster>(
                 clusterout =>
                     clusterout.ClusterState == "Running" &&
-                    clusterout.ClusterType == ClusterType &&
+                    clusterout.ClusterType == HDInsightClusterType.Hadoop &&
                     clusterout.ClusterVersion == "3.1" &&
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&

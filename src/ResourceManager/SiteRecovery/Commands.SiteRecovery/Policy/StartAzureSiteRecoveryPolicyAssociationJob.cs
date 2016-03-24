@@ -18,8 +18,6 @@ using Microsoft.Azure.Management.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -60,18 +58,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-
-            switch (this.ParameterSetName)
+            try
             {
-                case ASRParameterSets.EnterpriseToAzure:
-                    this.EnterpriseToAzureAssociation();
-                    break;
-                case ASRParameterSets.EnterpriseToEnterprise:
-                    this.EnterpriseToEnterpriseAssociation();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.EnterpriseToAzure:
+                        this.EnterpriseToAzureAssociation();
+                        break;
+                    case ASRParameterSets.EnterpriseToEnterprise:
+                        this.EnterpriseToEnterpriseAssociation();
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
             }
         }
 
@@ -114,7 +117,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.Policy.ReplicationProvider));
             }
 
-            Associate(Constants.AzureContainer);
+            Associate(Constants.AzureContainer);         
         }
 
         /// <summary>
@@ -134,24 +137,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = inputProperties
             };
 
-            string targetProtectionContainerName;
-            if( string.Compare(targetProtectionContainerId, Constants.AzureContainer, StringComparison.OrdinalIgnoreCase) == 0 )
-            {
-                targetProtectionContainerName = Constants.AzureContainer;
-            }
-            else
-            {
-                targetProtectionContainerName = Utilities.GetValueFromArmId(targetProtectionContainerId, ARMResourceTypeConstants.ReplicationProtectionContainers);
-            }
-
-            HashAlgorithm algorithm = new SHA256CryptoServiceProvider();
-            byte[] hashedBytes = algorithm.ComputeHash(Encoding.UTF8.GetBytes(this.PrimaryProtectionContainer.Name + targetProtectionContainerName));
-            string hashedCloudNames =  BitConverter.ToString(hashedBytes).ToLower().Replace("-", string.Empty);
-
-            string mappingName = string.Format("ContainerMapping_{0}_{1}", this.Policy.Name.ToLower(), hashedCloudNames);
-            LongRunningOperationResponse response = RecoveryServicesClient.ConfigureProtection(
-                Utilities.GetValueFromArmId(this.PrimaryProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics), 
-                this.PrimaryProtectionContainer.Name, mappingName, input);
+            string mappingName = "ContainerMapping_" + Guid.NewGuid().ToString();
+            LongRunningOperationResponse response = RecoveryServicesClient.ConfigureProtection(Utilities.GetValueFromArmId(this.PrimaryProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics), this.PrimaryProtectionContainer.Name, mappingName, input);
 
             JobResponse jobResponse =
                 RecoveryServicesClient

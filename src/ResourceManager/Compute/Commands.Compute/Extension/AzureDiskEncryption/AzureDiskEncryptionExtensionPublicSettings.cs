@@ -24,6 +24,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public string VolumeType { get; set; }
         public string AadClientCertThumbprint { get; set; }
         public string SequenceVersion { get; set; }
-        public string EncryptionOperation { get; set; }
     }
 }

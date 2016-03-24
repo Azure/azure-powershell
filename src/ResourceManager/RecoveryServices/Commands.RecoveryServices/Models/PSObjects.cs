@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public class Constants
     {
         /// <summary>
-        /// Vault type
+        /// ASR vault type
         /// </summary>
-        public const string VaultType = "HyperVRecoveryManagerVault";
+        public const string ASRVaultType = "HyperVRecoveryManagerVault";
 
         /// <summary>
         /// Vault Credential version.
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Location = vault.Location;
             this.ResouceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
             this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
-            this.Properties = new ARSVaultProperties();
+            this.Properties = new ASRVaultProperties();
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
         }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Location = vault.Location;
             this.ResouceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
             this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
-            this.Properties = new ARSVaultProperties();
+            this.Properties = new ASRVaultProperties();
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
         }
 
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Properties.
         /// </summary>
-        public ARSVaultProperties Properties { get; set; }
+        public ASRVaultProperties Properties { get; set; }
 
         #endregion
     }
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Azure Site Recovery Vault properties.
     /// </summary>
-    public class ARSVaultProperties
+    public class ASRVaultProperties
     {
         #region Properties
         

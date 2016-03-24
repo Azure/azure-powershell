@@ -58,7 +58,11 @@ function Test-CRUDNamespace
     Write-Debug " Create new notificationHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
     $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location
-    Wait-Seconds 15
+
+    if($env:AZURE_TEST_MODE -ne "Playback")
+    {
+        Start-Sleep -Seconds 15
+    }
 
     Write-Debug "Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
@@ -88,7 +92,11 @@ function Test-CRUDNamespace
     $namespaceName2 = Get-NamespaceName
     Write-Debug "Namespace name : $namespaceName2" 
     $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2 -Location $location
-    Wait-Seconds 15
+
+    if($env:AZURE_TEST_MODE -ne "Playback")
+    {
+        Start-Sleep -Seconds 15
+    }
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
     $allCreatedNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup 
@@ -142,7 +150,11 @@ function Test-CRUDNamespace
     
     $updatedNamespace = Set-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2 -Location $location -Tags $tags
     Assert-AreEqual 2 $updatedNamespace.Tags.Count
-    Wait-Seconds 15
+
+    if($env:AZURE_TEST_MODE -ne "Playback")
+    {
+        Start-Sleep -Seconds 15
+    }
 
     Write-Debug " Get the updated namespace "
     $getUpdatedNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2
@@ -177,8 +189,12 @@ function Test-CRUDNamespaceAuth
     Write-Debug "Namespace name : $namespaceName"
 
     $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location
-    Wait-Seconds 15
-        
+
+    if($env:AZURE_TEST_MODE -ne "Playback")
+    {
+        Start-Sleep -Seconds 15
+    }
+    
     Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
     Assert-True {$createdNamespace.Count -eq 1}
@@ -277,7 +293,11 @@ function Test-CRUDNamespaceAuth
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
     Assert-AreEqual $newPrimaryKey $updatedAuthRule.PrimaryKey
     Assert-NotNull $updatedAuthRule.SecondaryKey
-    Wait-Seconds 15
+
+    if($env:AZURE_TEST_MODE -ne "Playback")
+    {
+        Start-Sleep -Seconds 15
+    }
     
     Write-Debug "Get updated Namespace AuthorizationRules"
     $updatedAuthRule = Get-AzureRmNotificationHubsNamespaceAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -AuthorizationRule $authRuleName
@@ -326,7 +346,11 @@ function Test-CRUDNotificationHub
     Write-Debug "  Create new notificationHub namespace"
     Write-Debug " Namespace name : $namespaceName"
     $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location
-    Wait-Seconds 15
+
+    if($env:AZURE_TEST_MODE -ne "Playback")
+    {
+        Start-Sleep -Seconds 15
+    }
     
     Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
@@ -401,7 +425,11 @@ function Test-CRUDNotificationHub
     $createdNotificationHub.WnsCredential.Properties.SecretKey = "w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp"
     $createdNotificationHub.WnsCredential.Properties.WindowsLiveEndpoint = "http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf"
     $result = Set-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHubObj $createdNotificationHub
-    Wait-Seconds 15
+
+    if($env:AZURE_TEST_MODE -ne "Playback")
+    {
+        Start-Sleep -Seconds 15
+    }
 
     Write-Debug " Get the PNS credentials for the first notificationHub created"
     $pnsCredentials = Get-AzureRmNotificationHubPNSCredentials -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName
@@ -439,7 +467,11 @@ function Test-CRUDNHAuth
     Write-Debug " Create new notificationHub namespace"
     Write-Debug "Namespace name : $namespaceName"
     $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location
-    Wait-Seconds 15
+
+    if($env:AZURE_TEST_MODE -ne "Playback")
+    {
+        Start-Sleep -Seconds 15
+    }
     
     Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
@@ -476,7 +508,11 @@ function Test-CRUDNHAuth
     Assert-AreEqual 2 $result.Rights.Count
     Assert-True { $result.Rights -Contains "Listen" }
     Assert-True { $result.Rights -Contains "Send" }
-    Wait-Seconds 15
+
+    if($env:AZURE_TEST_MODE -ne "Playback")
+    {
+        Start-Sleep -Seconds 15
+    }
 
     Write-Debug "Get created authorizationRule"
     $createdAuthRule = Get-AzureRmNotificationHubAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -AuthorizationRule $authRuleName
@@ -523,7 +559,11 @@ function Test-CRUDNHAuth
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
     Assert-AreEqual $newPrimaryKey $updatedAuthRule.PrimaryKey
     Assert-NotNull $updatedAuthRule.SecondaryKey
-    Wait-Seconds 15
+
+    if($env:AZURE_TEST_MODE -ne "Playback")
+    {
+        Start-Sleep -Seconds 15
+    }
     
     $updatedAuthRule = Get-AzureRmNotificationHubAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -AuthorizationRule $authRuleName
     

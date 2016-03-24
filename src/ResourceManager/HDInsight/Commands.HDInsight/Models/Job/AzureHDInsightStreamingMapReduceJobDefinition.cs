@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string Reducer { get; set; }
 
         /// <summary>
-        /// Gets or sets a file to add to the distributed cache.	
+        /// Gets or sets an HDFS file to add to the distributed cache.	
         /// </summary>
         public string File { get; set; }
 
@@ -54,14 +54,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets the command line environment for the mappers or the reducers.
         /// </summary>
-        public IDictionary<string, string> CommandEnvironment { get; private set; }
+        public IList<string> CommandEnvironment { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the AzureHDInsightStreamingMapReduceJobDefinition class.
         /// </summary>
         public AzureHDInsightStreamingMapReduceJobDefinition()
         {
-            CommandEnvironment = new Dictionary<string, string>();
+            CommandEnvironment = new List<string>();
             Defines = new Dictionary<string, string>();
         }
     }

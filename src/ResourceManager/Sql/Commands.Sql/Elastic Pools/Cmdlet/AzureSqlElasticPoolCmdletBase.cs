@@ -14,7 +14,6 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlElasticPoolAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlElasticPoolAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
         {
             return new AzureSqlElasticPoolAdapter(DefaultProfile.Context);
         }

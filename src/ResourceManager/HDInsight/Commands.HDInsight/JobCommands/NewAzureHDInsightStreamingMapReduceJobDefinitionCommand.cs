@@ -31,18 +31,15 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #region Input Parameter Definitions
         
-        [Parameter(HelpMessage = "The arguments for the jobDetails.")]
+        [Parameter(HelpMessage = "The hive arguments for the jobDetails.")]
         public string[] Arguments { get; set; }
 
-        [Parameter(HelpMessage = "Local file to be made available to tasks")]
+        [Parameter(HelpMessage = "The file for the jobDetails.")]
         public string File
         {
             get { return job.File; }
             set { job.File = value; } 
         }
-
-        [Parameter(HelpMessage = "List of files to be copied to the cluster.")]
-        public string[] Files { get; set; }
 
         [Parameter(HelpMessage = "The output location to use for the job.")]
         public string StatusFolder
@@ -52,7 +49,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "The command line environment for the mappers or the reducers.")]
-        public Hashtable CommandEnvironment { get; set; }
+        public string[] CommandEnvironment { get; set; }
         
         [Parameter(HelpMessage = "The parameters for the jobDetails.")]
         public Hashtable Defines { get; set; }
@@ -91,8 +88,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public NewAzureHDInsightStreamingMapReduceJobDefinitionCommand()
         {
             Arguments = new string[] {};
-            Files = new string[] { };
-            CommandEnvironment = new Hashtable();
+            CommandEnvironment = new string[] {};
             Defines = new Hashtable();
             job = new AzureHDInsightStreamingMapReduceJobDefinition();
         }
@@ -104,21 +100,15 @@ namespace Microsoft.Azure.Commands.HDInsight
                 job.Arguments.Add(arg);
             }
 
-            var cmdEnvDic = CommandEnvironment.ToDictionary(false);
-            foreach (var cmdEnv in cmdEnvDic)
+            foreach (var cmdenv in CommandEnvironment)
             {
-                job.CommandEnvironment.Add(cmdEnv.Key, cmdEnv.Value.ToString());
+                job.CommandEnvironment.Add(cmdenv);
             }
 
             var defineDic = Defines.ToDictionary(false);
             foreach (var define in defineDic)
             {
                 job.Defines.Add(define.Key, define.Value.ToString());
-            }
-
-            foreach (var file in Files)
-            {
-                job.Files.Add(file);
             }
 
             WriteObject(job);
