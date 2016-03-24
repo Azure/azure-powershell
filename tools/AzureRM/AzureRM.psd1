@@ -47,13 +47,13 @@ ProcessorArchitecture = 'None'
 # Modules that must be imported into the global environment prior to importing this module  
 RequiredModules = @(
     @{ ModuleName = 'AzureRM.Profile'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
-    @{ ModuleName = 'Azure.Storage'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
+    @{ ModuleName = 'Azure.Storage'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.1.0'},
     @{ ModuleName = 'AzureRM.ApiManagement'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
     @{ ModuleName = 'AzureRM.Automation'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
     @{ ModuleName = 'AzureRM.Backup'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
     @{ ModuleName = 'AzureRM.Batch'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
     @{ ModuleName = 'AzureRM.Compute'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.2.5'},
-    @{ ModuleName = 'AzureRM.Cdn'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.1'},
+    @{ ModuleName = 'AzureRM.Cdn'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.0'},
     @{ ModuleName = 'AzureRM.DataFactories'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
     @{ ModuleName = 'AzureRM.DataLakeAnalytics'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
     @{ ModuleName = 'AzureRM.DataLakeStore'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
