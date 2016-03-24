@@ -1,4 +1,15 @@
-﻿##2016.03.03 version 1.2.2
+﻿##2016.03.30 version 1.2.3
+* Azure Storage
+  * Made Protocol parameter in following cmdlets to be nullable and optional
+    - New-AzureStorageBlobSASToken
+    - New-AzureStorageContainerSASToken
+    - New-AzureStorageFileSASToken
+    - New-AzureStorageShareSASToken
+    - New-AzureStorageQueueSASToken
+    - New-AzureStorageTableSASToken
+    - New-AzureStorageAccountSASToken
+
+##2016.03.03 version 1.2.2
 * Azure Compute (ARM):
   * Add -LicenseType parameter to New-AzureRmVM for bring your own license (BYOL)
   * Add -SecureExecution parameter to Set-AzureRmVMCustomScriptExtension
