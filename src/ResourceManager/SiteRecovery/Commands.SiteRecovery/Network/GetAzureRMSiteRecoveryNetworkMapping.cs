@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Primary Server object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRServer PrimaryServer { get; set; }
 
@@ -61,25 +61,30 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-
-            networkMappingsListResponse =
+            try
+            {
+                networkMappingsListResponse =
                     RecoveryServicesClient
                     .GetAzureSiteRecoveryNetworkMappings();
 
-            switch (this.ParameterSetName)
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.EnterpriseToEnterprise:
+                        this.FilterE2EMappings();
+                        break;
+                    case ASRParameterSets.EnterpriseToAzure:
+                        this.FilterE2AMappings();
+                        break;
+                    case ASRParameterSets.Default:
+                        WriteNetworkMappings(networkMappingsListResponse.NetworkMappingsList);
+                        break;
+                }
+            }
+            catch (Exception exception)
             {
-                case ASRParameterSets.EnterpriseToEnterprise:
-                    this.FilterE2EMappings();
-                    break;
-                case ASRParameterSets.EnterpriseToAzure:
-                    this.FilterE2AMappings();
-                    break;
-                case ASRParameterSets.Default:
-                    WriteNetworkMappings(networkMappingsListResponse.NetworkMappingsList);
-                    break;
+                this.HandleException(exception);
             }
         }
 

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -24,7 +24,6 @@ using System.Net.Http;
 using System.Net.Security;
 using System.Reflection;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
@@ -59,14 +58,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 
         protected void RunPowerShellTest(params string[] scripts)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            d.Add("Microsoft.Compute", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
@@ -174,8 +165,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
                 if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
                 {
-                    property1.SetValue((object)obj2, (object)-1);
-                    property2.SetValue((object)obj2, (object)-1);
+                    property1.SetValue((object)obj2, (object)0);
+                    property2.SetValue((object)obj2, (object)0);
                 }
             }
             return obj2;
@@ -214,8 +205,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
                 if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
                 {
-                    property1.SetValue((object)obj2, (object)-1);
-                    property2.SetValue((object)obj2, (object)-1);
+                    property1.SetValue((object)obj2, (object)0);
+                    property2.SetValue((object)obj2, (object)0);
                 }
             }
             return obj2;

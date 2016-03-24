@@ -56,7 +56,7 @@ namespace Commands.HDInsight.Test.UnitTests
             };
         }
 
-        [Fact(Skip="Test currently failing. To be fixed in next release.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateNewHDInsightDataLakeStoreCluster()
         {
@@ -83,7 +83,7 @@ namespace Commands.HDInsight.Test.UnitTests
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        ClusterType = "Hadoop"
                     },
                     QuotaInfo = new QuotaInfo
                     {
@@ -133,7 +133,7 @@ namespace Commands.HDInsight.Test.UnitTests
                         parameters.Location == Location &&
                         parameters.UserName == _httpCred.UserName &&
                         parameters.Password == _httpCred.Password.ConvertToString() &&
-                        parameters.ClusterType == ClusterType &&
+                        parameters.ClusterType == HDInsightClusterType.Hadoop &&
                         parameters.OSType == OSType.Windows)))
                 .Returns(getresponse)
                 .Verifiable();
@@ -144,7 +144,7 @@ namespace Commands.HDInsight.Test.UnitTests
             commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightCluster>(
                 clusterout =>
                     clusterout.ClusterState == "Running" &&
-                    clusterout.ClusterType == ClusterType &&
+                    clusterout.ClusterType == HDInsightClusterType.Hadoop &&
                     clusterout.ClusterVersion == "3.2" &&
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&

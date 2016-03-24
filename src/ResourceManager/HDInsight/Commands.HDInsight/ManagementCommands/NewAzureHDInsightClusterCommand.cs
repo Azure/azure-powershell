@@ -23,13 +23,11 @@ using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Common.Authentication;
 using System.Diagnostics;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -108,7 +106,6 @@ namespace Microsoft.Azure.Commands.HDInsight
                 var result = new AzureHDInsightConfig
                 {
                     ClusterType = parameters.ClusterType,
-                    ClusterTier = parameters.ClusterTier,
                     DefaultStorageAccountName = parameters.DefaultStorageAccountName,
                     DefaultStorageAccountKey = parameters.DefaultStorageAccountKey,
                     WorkerNodeSize = parameters.WorkerNodeSize,
@@ -141,7 +138,6 @@ namespace Microsoft.Azure.Commands.HDInsight
             set
             {
                 parameters.ClusterType = value.ClusterType;
-                parameters.ClusterTier = value.ClusterTier;
                 if (parameters.DefaultStorageAccountName == null)
                 {
                     parameters.DefaultStorageAccountName = value.DefaultStorageAccountName;
@@ -199,9 +195,9 @@ namespace Microsoft.Azure.Commands.HDInsight
             get { return parameters.DefaultStorageContainer; }
             set { parameters.DefaultStorageContainer = value; }
         }
-
+        
         [Parameter(HelpMessage = "Gets or sets the version of the HDInsight cluster.")]
-        public string Version
+        public string Version 
         {
             get { return parameters.Version; }
             set { parameters.Version = value; }
@@ -215,7 +211,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Data Node.")]
-        public string WorkerNodeSize
+        public string WorkerNodeSize 
         {
             get { return parameters.WorkerNodeSize; }
             set { parameters.WorkerNodeSize = value; }
@@ -229,7 +225,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the flavor for a cluster.")]
-        public string ClusterType
+        public HDInsightClusterType ClusterType
         {
             get { return parameters.ClusterType; }
             set { parameters.ClusterType = value; }
@@ -254,13 +250,6 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             get { return parameters.OSType; }
             set { parameters.OSType = value; }
-        }
-
-        [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
-        public Tier ClusterTier
-        {
-            get { return parameters.ClusterTier; }
-            set { parameters.ClusterTier = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets SSH credential.")]

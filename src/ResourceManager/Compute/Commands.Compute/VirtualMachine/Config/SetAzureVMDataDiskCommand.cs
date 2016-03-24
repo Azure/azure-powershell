@@ -67,7 +67,9 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCaching)]
-        public CachingTypes? Caching { get; set; }
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(ValidateSetValues.ReadOnly, ValidateSetValues.ReadWrite, ValidateSetValues.None)]
+        public string Caching { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -96,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else
             {
-                if (this.Caching != null)
+                if (! string.IsNullOrWhiteSpace(this.Caching))
                 {
                     dataDisk.Caching = this.Caching;
                 }

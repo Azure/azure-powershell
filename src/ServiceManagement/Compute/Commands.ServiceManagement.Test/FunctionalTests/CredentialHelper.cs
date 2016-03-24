@@ -138,7 +138,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 case "UseDefaults":
                 default:
-                    CredentialHelper.GetCredentialInfo(AppDomain.CurrentDomain.BaseDirectory);
+                    CredentialHelper.GetCredentialInfo(Environment.CurrentDirectory);
                     break;
 
                 case "UseCustom":
@@ -166,7 +166,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     break;
 
                 case "UseDefaultsandOverride":
-                    CredentialHelper.GetCredentialInfo(AppDomain.CurrentDomain.BaseDirectory);
+                    CredentialHelper.GetCredentialInfo(Environment.CurrentDirectory);
 
                     if (!string.IsNullOrWhiteSpace(Resource.PublishSettingsFile))
                     {

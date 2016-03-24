@@ -35,8 +35,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSVpnClientConfiguration VpnClientConfiguration { get; set; }
 
-        public PSBgpSettings BgpSettings { get; set; }
-
         [JsonIgnore]
         public string IpConfigurationsText
         {
@@ -59,12 +57,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string VpnClientConfigurationText
         {
             get { return JsonConvert.SerializeObject(VpnClientConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string BgpSettingsText
-        {
-            get { return JsonConvert.SerializeObject(BgpSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

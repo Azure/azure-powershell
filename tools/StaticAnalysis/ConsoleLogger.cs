@@ -23,15 +23,11 @@ namespace StaticAnalysis
     public class ConsoleLogger : AnalysisLogger
     {
 
-        public ConsoleLogger(string baseDirectory, string exceptionsDirectory)
-            : base(baseDirectory, exceptionsDirectory)
-        {
-        }
-
         public ConsoleLogger(string baseDirectory)
             : base(baseDirectory)
         {
         }
+
         public override void WriteError(string error)
         {
             Console.WriteLine("### ERROR {0}", error);

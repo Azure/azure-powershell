@@ -100,7 +100,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             string resourceId = this.Id ?? this.GetResourceId();
 
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
+            var apiVersion = await this
+                .DetermineApiVersion(resourceId: resourceId)
+                .ConfigureAwait(continueOnCapturedContext: false);
 
             if (IsResourceGet(resourceId))
             {

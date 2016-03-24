@@ -141,17 +141,25 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                 CommandRuntime.ToString(),
                 () => 
                 {
-                    var publisherExtension = this.ComputeClient.HostedServices
-                                          .ListPublisherExtensions()
-                                          .FirstOrDefault(e => e.ProviderNameSpace.Equals(this.Publisher)
-                                              && e.Type.Equals(this.ExtensionName)
-                                              && e.Version.Equals(this.Version));
+                    var vmExtension = this.ComputeClient.VirtualMachineExtensions
+                                          .ListVersions(this.Publisher, this.ExtensionName)
+                                          .FirstOrDefault(e => e.Version.Equals(this.Version));
 
-                    if (publisherExtension != null)
+                    var serviceExtn = this.ComputeClient.HostedServices
+                                          .ListExtensionVersions(this.Publisher, this.ExtensionName)
+                                          .FirstOrDefault(e => e.Version.Equals(this.Version));
+
+                    if (vmExtension != null)
                     {
-                        IsJsonExtension = publisherExtension.IsJsonExtension;
-                        IsInternalExtension = publisherExtension.IsInternalExtension;
-                        BlockRoleUponFailure = publisherExtension.BlockRoleUponFailure;
+                        IsJsonExtension = vmExtension.IsJsonExtension;
+                        IsInternalExtension = vmExtension.IsInternalExtension;
+                        DisallowMajorVersionUpgrade = vmExtension.DisallowMajorVersionUpgrade;
+                    }
+                    else if (serviceExtn != null)
+                    {
+                        IsJsonExtension = serviceExtn.IsJsonExtension;
+                        IsInternalExtension = serviceExtn.IsInternalExtension;
+                        BlockRoleUponFailure = serviceExtn.BlockRoleUponFailure;
                     }
 
                     if (! string.IsNullOrEmpty(this.ExtensionMode))

@@ -13,9 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
@@ -76,42 +73,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Deletes Azure Site Recovery Fabric.
         /// </summary>
-        /// <param name="DeleteAzureSiteRecoveryFabric">Fabric Input</param>
+        /// <param name="createAndAssociatePolicyInput">Policy Input</param>
         /// <returns>Long operation response</returns>
-        public LongRunningOperationResponse DeleteAzureSiteRecoveryFabric(string fabricName)
+        public LongRunningOperationResponse DeleteAzureSiteRecoveryFabric(string fabricName, FabricDeletionInput input)
         {
-            return this.GetSiteRecoveryClient().Fabrics.BeginDeleting(fabricName,
+            return this.GetSiteRecoveryClient().Fabrics.BeginDeleting(fabricName, input,
                 this.GetRequestHeaders());
-        }
-
-        /// <summary>
-        /// Purge Azure Site Recovery Fabric.
-        /// </summary>
-        /// <param name="PurgeAzureSiteRecoveryFabric">Policy Input</param>
-        /// <returns>Long operation response</returns>
-        public LongRunningOperationResponse PurgeAzureSiteRecoveryFabric(string fabricName)
-        {
-            return this.GetSiteRecoveryClient().Fabrics.BeginPurging(fabricName,
-                this.GetRequestHeaders());
-        }
-    }
-
-    /// <summary>
-    /// Fabric extensions.
-    /// </summary>
-    public static class FabricExtensions
-    {
-        /// <summary>
-        /// Gets ARM Id of fabric from provider's ARM Id.
-        /// </summary>
-        /// <param name="provider">Provider ARM Id.</param>
-        /// <returns>ARM Id of fabric.</returns>
-        public static string GetFabricId(this ASRServer provider)
-        {
-            return provider.ID.GetVaultArmId() + "/" + 
-                string.Format(ARMResourceIdPaths.FabricResourceIdPath,
-                provider.ID.UnFormatArmId(
-                    ARMResourceIdPaths.RecoveryServicesProviderResourceIdPath));
         }
     }
 }

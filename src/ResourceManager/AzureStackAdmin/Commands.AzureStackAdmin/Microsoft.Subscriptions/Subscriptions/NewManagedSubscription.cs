@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.AzureStack.Commands
 {
     using System;
@@ -61,32 +59,20 @@ namespace Microsoft.AzureStack.Commands
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// This queue is used by the tests to assign fixed SubscritionIds
-        /// every time the test runs
-        /// </summary>
-        public static Queue<Guid> SubscriptionIds { get; set; }
-
-        static NewManagedSubscription()
-        {
-            SubscriptionIds = new Queue<Guid>();
-        }
-
-        /// <summary>
         /// Gets the subscription definition.
         /// </summary>
         protected SubscriptionDefinition GetSubscriptionDefinition()
         {
+            // TODO: determine any extra properties which could / should be set
             return new SubscriptionDefinition()
-                   {
-                       SubscriptionId = (NewManagedSubscription.SubscriptionIds.Count == 0
-                           ? Guid.NewGuid()
-                           : NewManagedSubscription.SubscriptionIds.Dequeue()).ToString(),
-                       DisplayName = this.DisplayName,
-                       OfferId = this.OfferId,
-                       OfferName = GetAndValidateOfferName(this.OfferId),
-                       Owner = this.Owner,
-                       State = SubscriptionState.Enabled,
-                   };
+            {
+                SubscriptionId = Guid.NewGuid().ToString(),
+                DisplayName = this.DisplayName,
+                OfferId = this.OfferId,
+                OfferName = GetAndValidateOfferName(this.OfferId),
+                Owner = this.Owner,
+                State = SubscriptionState.Enabled,
+            };
         }
 
         /// <summary>

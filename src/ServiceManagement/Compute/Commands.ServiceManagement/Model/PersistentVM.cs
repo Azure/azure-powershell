@@ -16,7 +16,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
-using Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 {
@@ -135,17 +134,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set;
         }
 
-        public DebugSettings DebugSettings
-        {
-            get;
-            set;
-        }
-
         public PersistentVM GetInstance()
         {
             return this;
         }
-
     }
 }
 

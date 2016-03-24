@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Insights;
 
 namespace Microsoft.Azure.Commands.Insights
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Insights
     /// <summary>
     /// Base class for the Azure Insights SDK Cmdlets based on the InsightsManagementClient
     /// </summary>
-    public abstract class ManagementCmdletBase : InsightsCmdletBase
+    public abstract class ManagementCmdletBase : InsightsCmdletBase, IDisposable
     {
         #region General declarations
 
@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         public IInsightsManagementClient InsightsManagementClient
         {
-            // The premise is that a command to establish a context (like Add-AzureRmAccount) has
-            //   been called before this command in order to have a correct CurrentContext
-            get {
+            get
+            {
                 if (this.insightsManagementClient == null)
                 {
+                    // The premise is that a command to establish a context (like Add-AzureRmAccount) has been called before this command in order to have a correct CurrentContext
                     this.insightsManagementClient = AzureSession.ClientFactory.CreateClient<InsightsManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 

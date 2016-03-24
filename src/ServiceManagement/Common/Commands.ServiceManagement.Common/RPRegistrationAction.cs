@@ -17,12 +17,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.WindowsAzure.Management;
 
-namespace Microsoft.Azure.ServiceManagemenet.Common.Models
+namespace Microsoft.Azure.Common.Authentication.Models
 {
     public class RPRegistrationAction : IClientAction
     {

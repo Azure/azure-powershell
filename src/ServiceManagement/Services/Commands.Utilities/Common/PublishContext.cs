@@ -17,10 +17,9 @@ using System.IO;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 {

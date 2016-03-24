@@ -19,8 +19,8 @@ namespace Microsoft.AzureStack.Commands
     using System.Net;
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Commands.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure;
     using Microsoft.AzureStack.Management;
 
@@ -168,7 +168,7 @@ namespace Microsoft.AzureStack.Commands
             {
                 return new AzureStackClient(
                     baseUri: this.AdminUri,
-                    credentials: new TokenCloudCredentials(token: this.Token), 
+                    credentials: new TokenCloudCredentials(token: this.Token),
                     apiVersion: this.ApiVersion);
             }
             else

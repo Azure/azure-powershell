@@ -358,24 +358,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanently removing Azure Sql Disaster Recovery Configuration &apos;{0}&apos; on server &apos;{1}&apos;..
-        /// </summary>
-        internal static string RemoveAzureSqlServerDisasterRecoveryConfigurationDescription {
-            get {
-                return ResourceManager.GetString("RemoveAzureSqlServerDisasterRecoveryConfigurationDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Disaster Recovery Configuration &apos;{0}&apos; on server &apos;{1}&apos;?.
-        /// </summary>
-        internal static string RemoveAzureSqlServerDisasterRecoveryConfigurationWarning {
-            get {
-                return ResourceManager.GetString("RemoveAzureSqlServerDisasterRecoveryConfigurationWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Permanently removing Firewall Rule &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerFirewallRuleDescription {
@@ -426,15 +408,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ServerCommunicationLinkNameExists {
             get {
                 return ResourceManager.GetString("ServerCommunicationLinkNameExists", resourceCulture);
-            }
-        }        
-
-        /// <summary>
-        ///   Looks up a localized string similar to Server Disaster Recovery Configuration already exists in server &apos;{1}&apos;..
-        /// </summary>
-        internal static string ServerDisasterRecoveryConfigurationNameExists {
-            get {
-                return ResourceManager.GetString("ServerDisasterRecoveryConfigurationNameExists", resourceCulture);
             }
         }
         
@@ -492,16 +465,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to No Set Options were provided.
-        /// </summary>
-        internal static string SetDisasterRecoveryConfigurationNoOptionProvided
-        {
-            get {
-                return ResourceManager.GetString("SetDisasterRecoveryConfigurationNoOptionProvided", resourceCulture);
-            }
-        }
-
         /// <summary>
         ///   Looks up a localized string similar to No Set Options were provided.
         /// </summary>

@@ -34,11 +34,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         public Guid JobId { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+            HelpMessage = "Name of resource group under which want to stop the job.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "Indicates that the job should be forcibly stopped.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false)]
+        [Parameter(Position = 4, Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -48,7 +53,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 string.Format(Resources.StoppingDataLakeAnalyticsJob, JobId),
                 string.Format(Resources.StopDataLakeAnalyticsJob, JobId),
                 JobId.ToString(),
-                () => DataLakeAnalyticsClient.CancelJob(Account, JobId));
+                () => DataLakeAnalyticsClient.CancelJob(ResourceGroupName, Account, JobId));
 
             if (PassThru)
             {

@@ -1,28 +1,19 @@
-﻿// ----------------------------------------------------------------------------------
-//
-// Copyright Microsoft Corporation
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// http://www.apache.org/licenses/LICENSE-2.0
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// ----------------------------------------------------------------------------------
+﻿
+using System.CodeDom;
+using System.Diagnostics.Eventing.Reader;
+using System.Text;
+using Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
     using System;
-    using System.Linq;
-    using System.Text;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.WindowsAzure.Management.Storage;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.Table;
+    using  Arm = Microsoft.Azure.Management.Storage;
 
     public class StorageUtilities
     {
@@ -44,24 +35,27 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         /// <summary>
         /// Create a cloud storage account using an ARM storage management client
         /// </summary>
-        /// <param name="provider">The adapter to ARM storage services.</param>
-        /// <param name="resourceGroupName">The resource group containing the storage account.</param>
+        /// <param name="storageClient">The client to use to get storage account details.</param>
+        /// <param name="resourceGroupName">The resource group contining the storage account.</param>
         /// <param name="accountName">The name of the storage account.</param>
         /// <returns>A CloudStorageAccount that can be used by windows azure storage library to manipulate objects in the storage account.</returns>
-        public static CloudStorageAccount GenerateCloudStorageAccount(IStorageServiceProvider provider,
+        public static CloudStorageAccount GenerateCloudStorageAccount(Arm.IStorageManagementClient storageClient,
             string resourceGroupName, string accountName)
         {
             if (!TestMockSupport.RunningMocked)
             {
-                var service = provider.GetStorageService(accountName, resourceGroupName);
-
+                var storageServiceResponse = storageClient.StorageAccounts.GetProperties(resourceGroupName, accountName);
+                Uri blobEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Blob;
+                Uri queueEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Queue;
+                Uri tableEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Table;
+                Uri fileEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.File;
 
                 return new CloudStorageAccount(
-                    new StorageCredentials(service.Name, service.AuthenticationKeys.First()),
-                    service.BlobEndpoint,
-                    service.QueueEndpoint,
-                    service.TableEndpoint,
-                    service.FileEndpoint);
+                    GenerateStorageCredentials(storageClient, resourceGroupName, accountName),
+                    blobEndpoint,
+                    queueEndpoint,
+                    tableEndpoint, 
+                    fileEndpoint);
             }
             else
             {
@@ -70,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                         Convert.ToBase64String(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString()))),
                     new Uri(string.Format("https://{0}.blob.core.windows.net", accountName)),
                     new Uri(string.Format("https://{0}.queue.core.windows.net", accountName)),
-                    new Uri(string.Format("https://{0}.table.core.windows.net", accountName)),
+                    new Uri(string.Format("https://{0}.table.core.windows.net", accountName)),                    
                     new Uri(string.Format("https://{0}.file.core.windows.net", accountName)));
             }
         }
@@ -133,22 +127,23 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                     new Uri(string.Format("https://{0}.table.core.windows.net", accountName)),
                     new Uri(string.Format("https://{0}.file.core.windows.net", accountName)));
             }
-        }
+       }
 
         /// <summary>
         /// Create storage credentials for the given account
         /// </summary>
-        /// <param name="provider">The storage provider for ARM storage services.</param>
+        /// <param name="storageClient">The ARM storage management client.</param>
         /// <param name="resourceGroupName">The resource group containing the storage account.</param>
         /// <param name="accountName">The storage account name.</param>
         /// <returns>Storage credentials for the given account.</returns>
-        public static StorageCredentials GenerateStorageCredentials(IStorageServiceProvider provider,
+        public static StorageCredentials GenerateStorageCredentials(Arm.IStorageManagementClient storageClient,
             string resourceGroupName, string accountName)
         {
             if (!TestMockSupport.RunningMocked)
             {
-                var service = provider.GetStorageService(accountName, resourceGroupName);
-                return new StorageCredentials(accountName, service.AuthenticationKeys.First());
+                var storageKeysResponse = storageClient.StorageAccounts.ListKeys(resourceGroupName, accountName);
+                return new StorageCredentials(accountName,
+                    storageKeysResponse.StorageAccountKeys.Key1);
             }
             else
             {
@@ -163,8 +158,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         /// <param name="storageClient">The RDFE storage management client.</param>
         /// <param name="accountName">The storage account name.</param>
         /// <returns>Storage credentials for the given account.</returns>
-        public static StorageCredentials GenerateStorageCredentials(IStorageManagementClient storageClient,
-           string accountName)
+         public static StorageCredentials GenerateStorageCredentials(IStorageManagementClient storageClient,
+            string accountName)
         {
             if (!TestMockSupport.RunningMocked)
             {

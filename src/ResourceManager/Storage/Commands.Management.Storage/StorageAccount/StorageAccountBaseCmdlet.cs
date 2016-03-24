@@ -78,23 +78,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected static AccountType ParseAccountType(string accountType)
         {
-            if (AccountTypeString.StandardLRS.Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            if ("Standard_LRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
             {
                 return AccountType.StandardLRS;
             }
-            if (AccountTypeString.StandardZRS.Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            if ("Standard_ZRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
             {
                 return AccountType.StandardZRS;
             }
-            if (AccountTypeString.StandardGRS.Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            if ("Standard_GRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
             {
                 return AccountType.StandardGRS;
             }
-            if (AccountTypeString.StandardRAGRS.Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            if ("Standard_RAGRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
             {
                 return AccountType.StandardRAGRS;
             }
-            if (AccountTypeString.PremiumLRS.Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            if ("Premium_LRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
             {
                 return AccountType.PremiumLRS;
             }

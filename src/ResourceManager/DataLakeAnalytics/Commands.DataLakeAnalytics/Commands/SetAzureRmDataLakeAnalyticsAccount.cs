@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
@@ -47,10 +48,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
-            DataLakeStoreAccountInfo defaultAccount = null;
+            DataLakeStoreAccount defaultAccount = null;
             if (!string.IsNullOrEmpty(DefaultDataLakeStore))
             {
-                defaultAccount = new DataLakeStoreAccountInfo
+                defaultAccount = new DataLakeStoreAccount
                 {
                     Name = DefaultDataLakeStore
                 };

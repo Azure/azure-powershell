@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using System;
 using System.Management.Automation;
+using System;
+using AutoMapper;
+using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "To force the removal of the extension from the virtual machine.")]
+        [Parameter(HelpMessage = "To force the removal.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             {
                 VirtualMachine virtualMachineResponse = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName));
 
-                var currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
-                if (OperatingSystemTypes.Windows.Equals(currentOSType))
+                string currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
+                if (string.Equals(currentOSType, "Windows", StringComparison.InvariantCultureIgnoreCase))
                 {
                     this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
                 }
-                else if (OperatingSystemTypes.Linux.Equals(currentOSType))
+                else if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
                 {
                     this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 }

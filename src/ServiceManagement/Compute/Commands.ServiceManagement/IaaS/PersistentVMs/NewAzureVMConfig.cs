@@ -16,8 +16,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -101,13 +100,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.VMBootDiagnosticsDisable)]
-        public SwitchParameter DisableBootDiagnostics
-        {
-            get;
-            set;
-        }
-
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -123,8 +115,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 RoleSize = InstanceSize,
                 RoleType = RoleType,
                 Label = Label,
-                ProvisionGuestAgent = true,
-                DebugSettings = new DebugSettings()
+                ProvisionGuestAgent = true
             };
 
             role.OSVirtualHardDisk = new OSVirtualHardDisk()
@@ -136,7 +127,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 DiskLabel = string.IsNullOrEmpty(DiskLabel) ? null : DiskLabel
             };
 
-            role.DebugSettings.BootDiagnosticsEnabled = !(DisableBootDiagnostics.IsPresent);
             WriteObject(role, true);
         }
 

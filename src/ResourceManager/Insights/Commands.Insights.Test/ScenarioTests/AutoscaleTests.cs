@@ -22,44 +22,30 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAzureRmAutoscaleSetting()
+        public void TestAddAutoscaleSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-AddAzureRmAutoscaleSetting");
+            TestsController.NewInstance.RunPsTest("Test-AddAutoscaleSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureRmAutoscaleSetting()
+        public void TestGetAutoscaleSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleSetting");
+            TestsController.NewInstance.RunPsTest("Test-GetAutoscaleSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAzureRmAutoscaleSetting()
+        public void TestRemoveAutoscaleSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-RemoveAzureRmAutoscaleSetting");
+            TestsController.NewInstance.RunPsTest("Test-RemoveAutoscaleSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureRmAutoscaleHistory()
+        public void TestGetAutoscaleHistory()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleHistory");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureRmAutoscaleNotification()
-        {
-            TestsController.NewInstance.RunPsTest("Test-NewAzureRmAutoscaleNotification");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureRmAutoscaleWebhook()
-        {
-            TestsController.NewInstance.RunPsTest("Test-NewAzureRmAutoscaleWebhook");
+            TestsController.NewInstance.RunPsTest("Test-GetAutoscaleHistory");
         }
     }
 }

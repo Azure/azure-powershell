@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -53,22 +51,16 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 SetupManagementClients();
 
-                List<string> modules = new List<string>();
-                
-                modules.Add(Path.Combine(EnvironmentSetupHelper.PackageDirectory,@"ServiceManagement\Azure\Compute\AzurePreview.psd1"));
-                modules.Add(Path.Combine(EnvironmentSetupHelper.PackageDirectory,@"ServiceManagement\Azure\Compute\PIR.psd1"));
-                modules.AddRange(Directory.GetFiles(@"Resources\ServiceManagement".AsAbsoluteLocation(), "*.ps1").ToList());
+                List<string> modules = Directory.GetFiles(@"Resources\ServiceManagement", "*.ps1").ToList();
+                modules.Add("Common.ps1");
+                modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
+                modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1");
+                modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\PIR.psd1");
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
+                helper.SetupModules(modules.ToArray());
 
-                var scriptEnvPath = new List<string>();
-                scriptEnvPath.Add(
-                    string.Format(
-                    "$env:PSModulePath=\"{0};$env:PSModulePath\"",
-                    Path.Combine(EnvironmentSetupHelper.PackageDirectory, @"ServiceManagement\Azure\Compute").AsAbsoluteLocation()));
-
-                helper.RunPowerShellTest(scriptEnvPath.ToArray(), scripts);
+                helper.RunPowerShellTest(scripts);
             }
         }
     }

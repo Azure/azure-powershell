@@ -14,10 +14,9 @@
 
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.SecureConnection.Model;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
 {

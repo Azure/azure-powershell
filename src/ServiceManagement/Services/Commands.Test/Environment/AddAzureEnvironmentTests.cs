@@ -14,7 +14,7 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -22,8 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {

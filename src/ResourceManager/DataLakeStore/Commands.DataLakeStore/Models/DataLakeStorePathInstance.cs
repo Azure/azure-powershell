@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models

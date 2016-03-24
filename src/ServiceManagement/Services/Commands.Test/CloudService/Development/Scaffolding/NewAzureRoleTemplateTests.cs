@@ -24,7 +24,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
-using System;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffolding
 {
@@ -45,36 +44,26 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRoleTemplateWithWebRole()
         {
-            string outputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WebRoleTemplate");
-            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
+            string outputPath = Path.Combine(Directory.GetCurrentDirectory(), "WebRoleTemplate");
             addTemplateCmdlet = new NewAzureRoleTemplateCommand() { Web = true, CommandRuntime = mockCommandRuntime };
 
             addTemplateCmdlet.ExecuteCmdlet();
 
             Assert.Equal<string>(outputPath, ((PSObject)mockCommandRuntime.OutputPipeline[0]).GetVariableValue<string>(Parameters.Path));
-            Testing.AssertDirectoryIdentical(
-                Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory,
-                    Resources.GeneralScaffolding, 
-                    RoleType.WebRole.ToString()), outputPath);
+            Testing.AssertDirectoryIdentical(Path.Combine(Resources.GeneralScaffolding, RoleType.WebRole.ToString()), outputPath);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRoleTemplateWithWorkerRole()
         {
-            string outputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WorkerRoleTemplate");
-            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
+            string outputPath = Path.Combine(Directory.GetCurrentDirectory(), "WorkerRoleTemplate");
             addTemplateCmdlet = new NewAzureRoleTemplateCommand() { Worker = true, CommandRuntime = mockCommandRuntime };
 
             addTemplateCmdlet.ExecuteCmdlet();
 
             Assert.Equal<string>(outputPath, ((PSObject)mockCommandRuntime.OutputPipeline[0]).GetVariableValue<string>(Parameters.Path));
-            Testing.AssertDirectoryIdentical(
-                Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory,
-                    Resources.GeneralScaffolding, 
-                    RoleType.WorkerRole.ToString()), outputPath);
+            Testing.AssertDirectoryIdentical(Path.Combine(Resources.GeneralScaffolding, RoleType.WorkerRole.ToString()), outputPath);
         }
 
         [Fact]
@@ -89,12 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
                 addTemplateCmdlet.ExecuteCmdlet();
 
                 Assert.Equal<string>(outputPath, ((PSObject)mockCommandRuntime.OutputPipeline[0]).GetVariableValue<string>(Parameters.Path));
-                Testing.AssertDirectoryIdentical(
-                    Path.Combine(
-                        AppDomain.CurrentDomain.BaseDirectory,
-                        Resources.GeneralScaffolding, 
-                        RoleType.WorkerRole.ToString()), 
-                        outputPath);
+                Testing.AssertDirectoryIdentical(Path.Combine(Resources.GeneralScaffolding, RoleType.WorkerRole.ToString()), outputPath);
             }
         }
 
@@ -113,20 +97,18 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
                     outputPath,
                     ((PSObject)mockCommandRuntime.OutputPipeline[0]).GetVariableValue<string>(Parameters.Path));
                 Testing.AssertDirectoryIdentical(
-                    Path.Combine(
-                        AppDomain.CurrentDomain.BaseDirectory,
-                        Resources.GeneralScaffolding,
-                        RoleType.WorkerRole.ToString()),
-                        outputPath);
+                    Path.Combine(Resources.GeneralScaffolding,
+                    RoleType.WorkerRole.ToString()),
+                    outputPath);
             }
         }
 
         [Fact(Skip = "TODO: Fix SetScaffolding in CloudServiceProject.")]
         public void NewAzureRoleTemplateWithRunningOutsideDefaultDirectory()
         {
-            string outputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestDir", "WebRoleTemplate");
+            string outputPath = Path.Combine(Directory.GetCurrentDirectory(), "TestDir", "WebRoleTemplate");
             addTemplateCmdlet = new NewAzureRoleTemplateCommand() { Web = true, CommandRuntime = mockCommandRuntime };
-            string originalDir = AppDomain.CurrentDomain.BaseDirectory;
+            string originalDir = Directory.GetCurrentDirectory();
             Directory.CreateDirectory("TestDir");
             Directory.SetCurrentDirectory("TestDir");
 

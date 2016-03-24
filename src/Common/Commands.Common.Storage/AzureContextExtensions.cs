@@ -12,10 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System;
+using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using ArmStorage = Microsoft.Azure.Management.Storage;
 using SmStorage = Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Storage.Auth;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {

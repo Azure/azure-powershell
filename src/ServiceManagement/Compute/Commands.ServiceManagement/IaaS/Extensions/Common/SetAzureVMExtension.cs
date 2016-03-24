@@ -13,14 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.VirtualMachineExtension,
+        VirtualMachineExtensionNoun,
         DefaultParameterSetName = SetByExtensionParamSetName),
     OutputType(
         typeof(IPersistentVM))]

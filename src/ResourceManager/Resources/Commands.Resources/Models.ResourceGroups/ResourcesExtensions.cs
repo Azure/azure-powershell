@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Resources.Models;
@@ -26,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -367,11 +367,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 deploymentObject.TemplateLink = properties.TemplateLink;
                 deploymentObject.Timestamp = properties.Timestamp;
                 deploymentObject.CorrelationId = properties.CorrelationId;
-
-                if(properties.DebugSettingResponse != null && !string.IsNullOrEmpty(properties.DebugSettingResponse.DeploymentDebugDetailLevel))
-                {
-                    deploymentObject.DeploymentDebugLogLevel = properties.DebugSettingResponse.DeploymentDebugDetailLevel;
-                }
 
                 if (!string.IsNullOrEmpty(properties.Outputs))
                 {

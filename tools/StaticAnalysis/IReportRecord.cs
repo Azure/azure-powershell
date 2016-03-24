@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security.Cryptography.X509Certificates;
-
 namespace StaticAnalysis
 {
     /// <summary>
@@ -21,13 +19,10 @@ namespace StaticAnalysis
     /// </summary>
     public interface IReportRecord
     {
-        int ProblemId { get; set; }
         string Description { get; set; }
         string Remediation { get; set; }
         int Severity { get; set; }
         string PrintHeaders();
         string FormatRecord();
-        bool Match(IReportRecord other);
-        IReportRecord Parse(string line);
     }
 }

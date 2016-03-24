@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private const string referenceNamePrefix = "Reference";
         private readonly string vmAccessUserName = Utilities.GetUniqueShortName();
         private readonly string vmAccessPassword = Utilities.GetUniqueShortName("", 8);
-        private const string version = "2.*";
+        private const string version = "1.0";
         const string rdpPath = @".\AzureVM.rdp";
         private string referenceName;
 
@@ -87,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     VerifyRDPExtension(vmName, serviceName);
 
                     // Disbale extesnion
-                    DisableExtension(vmName, serviceName, "2.*");
+                    DisableExtension(vmName, serviceName, "1.*");
                     ValidateVMAccessExtension(vmName, serviceName, false);
                     pass = true;
 

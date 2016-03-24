@@ -62,13 +62,11 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The JobID of the jobDetails to stop.")]
         public string JobId { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the number of jobs to retrieve.")]
-        public int NumOfJobs { get; set; }
-
         [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
         public string ResourceGroupName { get; set; }
 
         #endregion
+
 
         public override void ExecuteCmdlet()
         {
@@ -76,15 +74,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
-
             _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
-
-            if (NumOfJobs > 0)
-            {
-                var jobs = HDInsightJobClient.ListJobsAfterJobId(JobId, NumOfJobs).Select(job => new AzureHDInsightJob(job.Detail, HDInsightJobClient.ClusterName));
-                WriteObject(jobs, true);
-            }
-            else if (JobId != null)
+            if (JobId != null)
             {
                 var job = HDInsightJobClient.GetJob(JobId);
                 var jobDetails = new AzureHDInsightJob(job.JobDetail, HDInsightJobClient.ClusterName);

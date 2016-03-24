@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.OperationalInsights;
@@ -22,7 +23,6 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
@@ -54,12 +54,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         protected void RunPowerShellTest(params string[] scripts)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
             using (UndoContext context = UndoContext.Current)
             {

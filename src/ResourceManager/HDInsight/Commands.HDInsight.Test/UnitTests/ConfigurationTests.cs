@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
-                ClusterType = ClusterType
+                ClusterType = HDInsightClusterType.Hadoop
             };
 
             newconfigcmdlet.ExecuteCmdlet();
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     f.WriteObject(
                         It.Is<AzureHDInsightConfig>(
                             c =>
-                                c.ClusterType == ClusterType &&
+                                c.ClusterType == HDInsightClusterType.Hadoop &&
                                 c.AdditionalStorageAccounts.Count == 0 &&
                                 c.Configurations.Count == 0 &&
                                 string.IsNullOrEmpty(c.WorkerNodeSize) &&

@@ -14,13 +14,12 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsData.Import, ProfileNouns.VirtualMachine), OutputType(typeof(PersistentVM))]
+    [Cmdlet(VerbsData.Import, "AzureVM"), OutputType(typeof(PersistentVM))]
     public class ImportAzureVMCommand : Cmdlet
     {   
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Path to the file with the persistent VM role state previously serialized.")]

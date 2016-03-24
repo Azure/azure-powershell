@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -602,7 +601,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
         /// </summary>
         private static void InitializeMockResults()
         {
-            string path = "./TSqlMockSessions".AsAbsoluteLocation();
+            string path = "./TSqlMockSessions";
 
             var files = Directory.GetFiles(path);
             foreach (var file in files)

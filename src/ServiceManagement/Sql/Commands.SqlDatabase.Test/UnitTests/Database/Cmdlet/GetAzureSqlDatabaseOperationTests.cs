@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                         (expected, actual) =>
                         {
                             Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                            Assert.IsNotNull(actual.UserAgent);
+                            Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
                             switch (expected.Index)
                             {
                                 // Request 0-7: Create and Query $testdb                                                                

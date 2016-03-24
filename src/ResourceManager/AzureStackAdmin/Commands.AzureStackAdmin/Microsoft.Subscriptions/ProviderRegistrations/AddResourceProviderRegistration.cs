@@ -19,6 +19,7 @@ namespace Microsoft.AzureStack.Commands
     using System.Management.Automation;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
+    using Microsoft.WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Add Resource Provider Registration Cmdlet

@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// downloaded from Azure site recovery Vault portal and stored locally.
         /// </summary>
         [Parameter(
-            Position = 0,
-            Mandatory = true,
-            HelpMessage = "AzureSiteRecovery vault settings file path",
+            Position = 0, 
+            Mandatory = true, 
+            HelpMessage = "AzureSiteRecovery vault settings file path", 
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
@@ -46,14 +46,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
+        public override void ExecuteCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-
             this.WriteVerbose("Vault Settings File path: " + this.Path);
 
             ASRVaultCreds asrVaultCreds = null;
-
             if (File.Exists(this.Path))
             {
                 try
@@ -101,13 +98,20 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     asrVaultCreds.ResourceGroupName);
             }
 
-            Utilities.UpdateCurrentVaultContext(asrVaultCreds);
+            try
+            {
+                Utilities.UpdateCurrentVaultContext(asrVaultCreds);
 
-            RecoveryServicesClient.ValidateVaultSettings(
-                asrVaultCreds.ResourceName,
-                asrVaultCreds.ResourceGroupName);
+                RecoveryServicesClient.ValidateVaultSettings(
+                    asrVaultCreds.ResourceName,
+                    asrVaultCreds.ResourceGroupName);
 
-            this.WriteObject(new ASRVaultSettings(asrVaultCreds));
+                this.WriteObject(new ASRVaultSettings(asrVaultCreds));
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
+            }
         }
     }
 }

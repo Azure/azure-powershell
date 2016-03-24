@@ -14,10 +14,9 @@
 using System;
 using System.Linq;
 using Microsoft.Azure;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Location_Capabilities.Model;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
 {

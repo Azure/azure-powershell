@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using ServiceManagemenet.Common;
+    using Microsoft.Azure.Common.Authentication;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
 
@@ -68,8 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 throw new PSInvalidOperationException("The supplied PolicyDefinition object is invalid.");
             }
             string resourceId = GetResourceId();
-
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
+            var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
             
             var operationResult = this.GetResourcesClient()
                 .PutResource(

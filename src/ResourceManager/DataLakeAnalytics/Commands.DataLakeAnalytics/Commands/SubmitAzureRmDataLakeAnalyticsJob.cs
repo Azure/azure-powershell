@@ -15,10 +15,10 @@
 using System;
 using System.IO;
 using System.Management.Automation;
+using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
-using Microsoft.Azure.Management.DataLake.Analytics.Models;
-using Microsoft.Rest.Azure;
+using Microsoft.Azure.Management.DataLake.AnalyticsJob.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
@@ -120,13 +120,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time. Valid range is between 1 and 50, inclusive."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time. Valid range is between 1 and 50, inclusive."
             )]
+        [ValidateRange(1, 50)]
         public int DegreeOfParallelism
         {
             get { return _degreeOfParallelism; }
@@ -150,6 +151,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             set { _priority = value; }
         }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 8,
+            Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
+        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobWithScriptPath, Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 8,
+            Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
+        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobParameterSetName, Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // error handling for not passing or passing both script and script path
@@ -172,13 +182,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 Script = File.ReadAllText(powerShellDestinationPath);
             }
 
-            JobType jobType;
+            string jobType;
             JobProperties properties;
             if (USql)
             {
                 jobType = JobType.USql;
-                var sqlIpProperties = new USqlJobProperties
+                var sqlIpProperties = new USqlProperties
                 {
+                    Type = jobType,
                     Script = Script
                 };
 
@@ -197,9 +208,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             else if (Hive)
             {
                 jobType = JobType.Hive;
-                properties = new HiveJobProperties
+                properties = new HiveProperties
                 {
-                    Script = Script
+                    Script = Script,
+                    Type = jobType
                 };
             }
             else
@@ -218,8 +230,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             };
 
             WriteObject(CompileOnly
-                ? DataLakeAnalyticsClient.BuildJob(Account, jobInfo)
-                : DataLakeAnalyticsClient.SubmitJob(Account, jobInfo));
+                ? DataLakeAnalyticsClient.BuildJob(ResourceGroupName, Account, jobInfo)
+                : DataLakeAnalyticsClient.SubmitJob(ResourceGroupName, Account, jobInfo));
         }
     }
 }

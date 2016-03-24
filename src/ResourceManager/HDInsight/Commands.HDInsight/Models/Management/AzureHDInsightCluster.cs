@@ -29,9 +29,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Location = cluster.Location;
             ClusterVersion = cluster.Properties.ClusterVersion;
             OperatingSystemType = cluster.Properties.OperatingSystemType;
-            ClusterTier = cluster.Properties.ClusterTier;
             ClusterState = cluster.Properties.ClusterState;
-            ClusterType = cluster.Properties.ClusterDefinition.ClusterType;
+            HDInsightClusterType type;
+            Enum.TryParse(cluster.Properties.ClusterDefinition.ClusterType, out type);
+            ClusterType = type;
             CoresUsed = cluster.Properties.QuotaInfo.CoresUsed;
             var httpEndpoint =
                 cluster.Properties.ConnectivityEndpoints.FirstOrDefault(c => c.Name.Equals("HTTPS", StringComparison.OrdinalIgnoreCase));
@@ -82,11 +83,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public OSType OperatingSystemType { get; set; }
 
         /// <summary>
-        /// Gets or sets the cluster tier.
-        /// </summary>
-        public Tier ClusterTier { get; set; }
-
-        /// <summary>
         /// The state of the cluster.
         /// </summary>
         public string ClusterState { get; set; }
@@ -94,7 +90,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// The type of cluster.
         /// </summary>
-        public string ClusterType { get; set; }
+        public HDInsightClusterType ClusterType { get; set; }
 
         /// <summary>
         /// The cores used by the cluster.
@@ -129,6 +125,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Additional storage accounts for this cluster
         /// </summary>
-        public List<string> AdditionalStorageAccounts { get; set; }
+        public List<string> AdditionalStorageAccounts { get; set; }      
     }
 }

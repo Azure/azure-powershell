@@ -14,6 +14,7 @@
 
 using System.IO;
 using System.Management.Automation;
+using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
@@ -83,8 +84,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
-                    NumThreads,
                     -1,
+                    NumThreads,
                     Recurse,
                     Force,
                     Resume, ForceBinary, ForceBinary, this);

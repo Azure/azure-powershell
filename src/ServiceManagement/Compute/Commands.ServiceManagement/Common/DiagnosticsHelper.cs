@@ -14,14 +14,12 @@
 
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Management.Automation;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
@@ -34,9 +32,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
 {
     public static class DiagnosticsHelper
     {
+        private static string XmlNamespace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
         private static string EncodedXmlCfg = "xmlCfg";
         private static string WadCfg = "WadCfg";
-        private static string WadCfgBlob = "WadCfgBlob";
         private static string StorageAccount = "storageAccount";
         private static string Path = "path";
         private static string ExpandResourceDirectory = "expandResourceDirectory";
@@ -45,21 +43,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         private static string StorageAccountKeyTag = "storageAccountKey";
         private static string StorageAccountEndPointTag = "storageAccountEndPoint";
 
-        public static string XmlNamespace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
         public static string DiagnosticsConfigurationElemStr = "DiagnosticsConfiguration";
-        public static string DiagnosticMonitorConfigurationElemStr = "DiagnosticMonitorConfiguration";
         public static string PublicConfigElemStr = "PublicConfig";
         public static string PrivateConfigElemStr = "PrivateConfig";
         public static string StorageAccountElemStr = "StorageAccount";
         public static string PrivConfNameAttr = "name";
         public static string PrivConfKeyAttr = "key";
         public static string PrivConfEndpointAttr = "endpoint";
-        public static string MetricsElemStr = "Metrics";
-        public static string MetricsResourceIdAttr = "resourceId";
-        public static string EventHubElemStr = "EventHub";
-        public static string EventHubUrlAttr = "Url";
-        public static string EventHubSharedAccessKeyNameAttr = "SharedAccessKeyName";
-        public static string EventHubSharedAccessKeyAttr = "SharedAccessKey";
 
         public enum ConfigFileType
         {
@@ -78,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
                     doc.Load(configurationPath);
                     return ConfigFileType.Xml;
                 }
-                catch (XmlException)
+                catch
                 { }
 
                 try
@@ -86,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
                     JsonConvert.DeserializeObject(File.ReadAllText(configurationPath));
                     return ConfigFileType.Json;
                 }
-                catch (JsonReaderException)
+                catch
                 { }
             }
 
@@ -94,42 +84,55 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         }
 
         public static Hashtable GetPublicDiagnosticsConfigurationFromFile(string configurationPath,
-            string storageAccountName, string resourceId, Cmdlet cmdlet)
+            string storageAccountName)
         {
             switch (GetConfigFileType(configurationPath))
             {
                 case ConfigFileType.Xml:
-                    return GetPublicConfigFromXmlFile(configurationPath, storageAccountName, resourceId, cmdlet);
+                    return GetPublicConfigFromXmlFile(configurationPath, storageAccountName);
                 case ConfigFileType.Json:
-                    return GetPublicConfigFromJsonFile(configurationPath, storageAccountName, resourceId, cmdlet);
+                    return GetPublicConfigFromJsonFile(configurationPath, storageAccountName);
                 default:
                     throw new ArgumentException(Properties.Resources.DiagnosticsExtensionInvalidConfigFileFormat);
             }
         }
 
-        private static Hashtable GetPublicConfigFromXmlFile(string configurationPath, string storageAccountName, string resourceId, Cmdlet cmdlet)
+        private static Hashtable GetPublicConfigFromXmlFile(string configurationPath, string storageAccountName)
         {
-            var doc = XDocument.Load(configurationPath);
-            var wadCfgElement = doc.Descendants().FirstOrDefault(d => d.Name.LocalName == WadCfg);
-            var wadCfgBlobElement = doc.Descendants().FirstOrDefault(d => d.Name.LocalName == WadCfgBlob);
-            if (wadCfgElement == null && wadCfgBlobElement == null)
+            var config = File.ReadAllText(configurationPath);
+
+            // find the <WadCfg> element and extract it
+            int wadCfgBeginIndex = config.IndexOf("<WadCfg>");
+            if (wadCfgBeginIndex == -1)
             {
-                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionIaaSConfigElementNotDefinedInXml);
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionXmlConfigNoWadCfgStartTag);
             }
 
-            if (wadCfgElement != null)
+            int wadCfgEndIndex = config.IndexOf("</WadCfg>");
+            if (wadCfgEndIndex == -1)
             {
-                AutoFillMetricsConfig(wadCfgElement, resourceId, cmdlet);
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionXmlConfigNoWadCfgEndTag);
             }
 
-            string originalConfiguration = wadCfgElement != null ? wadCfgElement.ToString() : wadCfgBlobElement.ToString();
-            string encodedConfiguration = Convert.ToBase64String(Encoding.UTF8.GetBytes(wadCfgElement.ToString().ToCharArray()));
+            if (wadCfgEndIndex <= wadCfgBeginIndex)
+            {
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionXmlConfigWadCfgTagNotMatch);
+            }
+
+            string encodedConfiguration = Convert.ToBase64String(
+                Encoding.UTF8.GetBytes(
+                    config.Substring(
+                        wadCfgBeginIndex, wadCfgEndIndex + "</WadCfg>".Length - wadCfgBeginIndex).ToCharArray()));
 
             // Now extract the local resource directory element
-            var node = doc.Descendants().FirstOrDefault(e => e.Name.LocalName == "LocalResourceDirectory");
-            string localDirectory = (node != null && node.Attribute(Path) != null) ? node.Attribute(Path).Value : null;
-            string localDirectoryExpand = (node != null && node.Attribute("expandEnvironment") != null)
-                ? node.Attribute("expandEnvironment").Value
+            XmlDocument doc = new XmlDocument();
+            XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
+            ns.AddNamespace("ns", XmlNamespace);
+            doc.LoadXml(config);
+            var node = doc.SelectSingleNode("//ns:LocalResourceDirectory", ns);
+            string localDirectory = (node != null && node.Attributes != null) ? node.Attributes[Path].Value : null;
+            string localDirectoryExpand = (node != null && node.Attributes != null)
+                ? node.Attributes["expandEnvironment"].Value
                 : null;
             if (localDirectoryExpand == "0")
             {
@@ -154,58 +157,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             return hashTable;
         }
 
-        public static void AutoFillMetricsConfig(XElement wadCfgElement, string resourceId, Cmdlet cmdlet)
-        {
-            if (string.IsNullOrEmpty(resourceId))
-            {
-                return;
-            }
-
-            var configurationElem = wadCfgElement.Elements().FirstOrDefault(d => d.Name.LocalName == DiagnosticMonitorConfigurationElemStr);
-            if (configurationElem == null)
-            {
-                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined);
-            }
-
-            var metricsElement = configurationElem.Elements().FirstOrDefault(d => d.Name.LocalName == MetricsElemStr);
-            if (metricsElement == null)
-            {
-                XNamespace ns = XmlNamespace;
-                metricsElement = new XElement(ns + MetricsElemStr,
-                    new XAttribute(MetricsResourceIdAttr, resourceId));
-                configurationElem.Add(metricsElement);
-            }
-            else
-            {
-                var resourceIdAttr = metricsElement.Attribute(MetricsResourceIdAttr);
-                if (resourceIdAttr != null && !resourceIdAttr.Value.Equals(resourceId))
-                {
-                    cmdlet.WriteWarning(Properties.Resources.DiagnosticsExtensionMetricsResourceIdNotMatch);
-                }
-                metricsElement.SetAttributeValue(MetricsResourceIdAttr, resourceId);
-            }
-        }
-
-        private static Hashtable GetPublicConfigFromJsonFile(string configurationPath, string storageAccountName, string resourceId, Cmdlet cmdlet)
+        private static Hashtable GetPublicConfigFromJsonFile(string configurationPath, string storageAccountName)
         {
             var publicConfig = GetPublicConfigJObjectFromJsonFile(configurationPath);
             var properties = publicConfig.Properties().Select(p => p.Name);
             var wadCfgProperty = properties.FirstOrDefault(p => p.Equals(WadCfg, StringComparison.OrdinalIgnoreCase));
-            var wadCfgBlobProperty = properties.FirstOrDefault(p => p.Equals(WadCfgBlob, StringComparison.OrdinalIgnoreCase));
             var xmlCfgProperty = properties.FirstOrDefault(p => p.Equals(EncodedXmlCfg, StringComparison.OrdinalIgnoreCase));
 
             var hashTable = new Hashtable();
             hashTable.Add(StorageAccount, storageAccountName);
 
-            if (wadCfgProperty != null && publicConfig[wadCfgProperty] is JObject)
+            if (wadCfgProperty != null)
             {
-                var wadCfgObject = (JObject)publicConfig[wadCfgProperty];
-                AutoFillMetricsConfig(wadCfgObject, resourceId, cmdlet);
-                hashTable.Add(wadCfgProperty, wadCfgObject);
-            }
-            else if (wadCfgBlobProperty != null)
-            {
-                hashTable.Add(wadCfgBlobProperty, publicConfig[wadCfgBlobProperty]);
+                hashTable.Add(wadCfgProperty, publicConfig[wadCfgProperty]);
             }
             else if (xmlCfgProperty != null)
             {
@@ -213,74 +177,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             }
             else
             {
-                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionIaaSConfigElementNotDefinedInJson);
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionConfigNoWadCfgOrXmlCfg);
             }
 
             return hashTable;
         }
 
-        private static void AutoFillMetricsConfig(JObject wadCfgObject, string resourceId, Cmdlet cmdlet)
-        {
-            if (string.IsNullOrEmpty(resourceId))
-            {
-                return;
-            }
-
-            var configObject = wadCfgObject[DiagnosticMonitorConfigurationElemStr] as JObject;
-            if (configObject == null)
-            {
-                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined);
-            }
-
-            var metricsObject = configObject[MetricsElemStr] as JObject;
-            if (metricsObject == null)
-            {
-                configObject.Add(new JProperty(MetricsElemStr,
-                                    new JObject(
-                                        new JProperty(MetricsResourceIdAttr, resourceId))));
-            }
-            else
-            {
-                var resourceIdValue = metricsObject[MetricsResourceIdAttr] as JValue;
-                if (resourceIdValue != null && !resourceIdValue.Value.Equals(resourceId))
-                {
-                    cmdlet.WriteWarning(Properties.Resources.DiagnosticsExtensionMetricsResourceIdNotMatch);
-                }
-                metricsObject[MetricsResourceIdAttr] = resourceId;
-            }
-        }
-
-        public static Hashtable GetPrivateDiagnosticsConfiguration(string configurationPath,
-            string storageAccountName, string storageKey, string endpoint)
+        public static Hashtable GetPrivateDiagnosticsConfiguration(string storageAccountName,
+            string storageKey, string endpoint)
         {
             var privateConfig = new Hashtable();
             privateConfig.Add(StorageAccountNameTag, storageAccountName);
             privateConfig.Add(StorageAccountKeyTag, storageKey);
             privateConfig.Add(StorageAccountEndPointTag, endpoint);
 
-            AddEventHubPrivateConfig(privateConfig, configurationPath);
-
             return privateConfig;
         }
 
-        internal static void AddEventHubPrivateConfig(Hashtable privateConfig, string configurationPath)
-        {
-            var eventHubUrl = GetConfigValueFromPrivateConfig(configurationPath, EventHubElemStr, EventHubUrlAttr);
-            var eventHubSharedAccessKeyName = GetConfigValueFromPrivateConfig(configurationPath, EventHubElemStr, EventHubSharedAccessKeyNameAttr);
-            var eventHubSharedAccessKey = GetConfigValueFromPrivateConfig(configurationPath, EventHubElemStr, EventHubSharedAccessKeyAttr);
-
-            if (!string.IsNullOrEmpty(eventHubUrl) || !string.IsNullOrEmpty(eventHubSharedAccessKeyName) || !string.IsNullOrEmpty(eventHubSharedAccessKey))
-            {
-                var eventHubConfig = new Hashtable();
-                eventHubConfig.Add(EventHubUrlAttr, eventHubUrl);
-                eventHubConfig.Add(EventHubSharedAccessKeyNameAttr, eventHubSharedAccessKeyName);
-                eventHubConfig.Add(EventHubSharedAccessKeyAttr, eventHubSharedAccessKey);
-
-                privateConfig.Add(EventHubElemStr, eventHubConfig);
-            }
-        }
-
-        private static XElement GetPublicConfigXElementFromXmlFile(string configurationPath)
+        public static XElement GetPublicConfigXElementFromXmlFile(string configurationPath)
         {
             XElement publicConfig = null;
 
@@ -303,7 +217,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             return publicConfig;
         }
 
-        private static JObject GetPublicConfigJObjectFromJsonFile(string configurationPath)
+        public static JObject GetPublicConfigJObjectFromJsonFile(string configurationPath)
         {
             var config = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(configurationPath));
             var properties = config.Properties().Select(p => p.Name);
@@ -315,34 +229,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             return publicConfig;
         }
 
-        /// <summary>
-        /// Get the private config value for a specific attribute.
-        /// The private config looks like this:
-        /// XML:
-        ///    <PrivateConfig xmlns="namespace">
-        ///      <StorageAccount name = "name" key="key" endpoint="endpoint" />
-        ///      <EventHub Url = "url" SharedAccessKeyName="sasKeyName" SharedAccessKey="sasKey"/>
-        ///    </PrivateConfig>
-        ///
-        /// JSON:
-        ///    "PrivateConfig":{
-        ///      "storageAccountName":"name",
-        ///      "storageAccountKey":"key",
-        ///      "storageAccountEndPoint":"endpoint",
-        ///      "EventHub":{
-        ///        "Url":"url",
-        ///        "SharedAccessKeyName":"sasKeyName",
-        ///        "SharedAccessKey":"sasKey"
-        ///      }
-        ///    }
-        /// </summary>
-        /// <param name="configurationPath">The path to the configuration file</param>
-        /// <param name="elementName">The element name of the private config. e.g., StorageAccount, EventHub</param>
-        /// <param name="attributeName">The attribute name of the element</param>
-        /// <returns></returns>
-        public static string GetConfigValueFromPrivateConfig(string configurationPath, string elementName, string attributeName)
+        public static string GetStorageAccountInfoFromPrivateConfig(string configurationPath, string attributeName)
         {
-            string value = string.Empty;
+            string value = null;
             var configFileType = GetConfigFileType(configurationPath);
 
             if (configFileType == ConfigFileType.Xml)
@@ -352,54 +241,25 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
                 if (xmlConfig.Name.LocalName == DiagnosticsConfigurationElemStr)
                 {
                     var privateConfigElem = xmlConfig.Elements().FirstOrDefault(ele => ele.Name.LocalName == PrivateConfigElemStr);
-                    var configElem = privateConfigElem == null ? null : privateConfigElem.Elements().FirstOrDefault(ele => ele.Name.LocalName == elementName);
-                    var attribute = configElem == null ? null : configElem.Attributes().FirstOrDefault(a => string.Equals(a.Name.LocalName, attributeName));
+                    var storageAccountElem = privateConfigElem == null ? null : privateConfigElem.Elements().FirstOrDefault(ele => ele.Name.LocalName == StorageAccountElemStr);
+                    var attribute = storageAccountElem == null ? null : storageAccountElem.Attributes().FirstOrDefault(a => string.Equals(a.Name.LocalName, attributeName));
                     value = attribute == null ? null : attribute.Value;
                 }
             }
             else if (configFileType == ConfigFileType.Json)
             {
-                // Find the PrivateConfig
                 var jsonConfig = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(configurationPath));
                 var properties = jsonConfig.Properties().Select(p => p.Name);
-                var privateConfigProperty = properties.FirstOrDefault(p => p.Equals(PrivateConfigElemStr));
 
-                if (privateConfigProperty == null)
+                var privateConfigProperty = properties.FirstOrDefault(p => p.Equals(PrivateConfigElemStr, StringComparison.OrdinalIgnoreCase));
+                if (privateConfigProperty != null)
                 {
-                    return value;
-                }
-                var privateConfig = jsonConfig[privateConfigProperty] as JObject;
-
-                // Find the target config object corresponding to elementName
-                JObject targetConfig = null;
-                if (elementName == StorageAccountElemStr)
-                {
-                    // Special handling as private storage config is flattened
-                    targetConfig = privateConfig;
-                    var attributeNameMapping = new Dictionary<string, string>()
-                    {
-                        { PrivConfNameAttr, "storageAccountName" },
-                        { PrivConfKeyAttr, "storageAccountKey" },
-                        { PrivConfEndpointAttr, "storageAccountEndPoint" }
-                    };
-                    attributeName = attributeNameMapping.FirstOrDefault(m => m.Key == attributeName).Value;
-                }
-                else
-                {
+                    var privateConfig = jsonConfig[privateConfigProperty] as JObject;
                     properties = privateConfig.Properties().Select(p => p.Name);
-                    var configProperty = properties.FirstOrDefault(p => p.Equals(elementName));
-                    targetConfig = configProperty == null ? null : privateConfig[configProperty] as JObject;
-                }
 
-                if (targetConfig == null || attributeName == null)
-                {
-                    return value;
+                    var attributeProperty = properties.FirstOrDefault(p => p.Equals(attributeName, StringComparison.OrdinalIgnoreCase));
+                    value = attributeProperty == null ? null : privateConfig[attributeProperty].Value<string>();
                 }
-
-                // Find the config value corresponding to attributeName
-                properties = targetConfig.Properties().Select(p => p.Name);
-                var attributeProperty = properties.FirstOrDefault(p => p.Equals(attributeName));
-                value = attributeProperty == null ? null : targetConfig[attributeProperty].Value<string>();
             }
 
             return value;
@@ -460,7 +320,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             else
             {
                 // Use the one defined in PrivateConfig
-                storageAccountKey = GetConfigValueFromPrivateConfig(configurationPath, StorageAccountElemStr, PrivConfKeyAttr);
+                storageAccountKey = GetStorageAccountInfoFromPrivateConfig(configurationPath, PrivConfKeyAttr);
             }
 
             return storageAccountKey;
@@ -494,7 +354,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
                 storageAccountEndpoint = GetEndpointFromStorageContext(context);
             }
             else if (!string.IsNullOrEmpty(
-                storageAccountEndpoint = GetConfigValueFromPrivateConfig(configurationPath, StorageAccountElemStr, PrivConfEndpointAttr)))
+                storageAccountEndpoint = GetStorageAccountInfoFromPrivateConfig(configurationPath, PrivConfEndpointAttr)))
             {
                 // We can get value from PrivateConfig
             }
