@@ -273,6 +273,9 @@
   <data name="JobRefineFilters" xml:space="preserve">
     <value>There are more than 1000 jobs for the filter combination you have provided. Kindly refine your filters to fetch the job you want.</value>
   </data>
+  <data name="JobTimeFiltersShouldBeSpecifiedInUtc" xml:space="preserve">
+    <value>Please specify From and To filter values in UTC. Other timezones are not supported.</value>
+  </data>
   <data name="JobToShouldBeGreaterThanFrom" xml:space="preserve">
     <value>To filter should not be less than From filter.</value>
   </data>

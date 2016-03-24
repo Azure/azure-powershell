@@ -313,6 +313,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please specify From and To filter values in UTC. Other timezones are not supported..
+        /// </summary>
+        public static string JobTimeFiltersShouldBeSpecifiedInUtc {
+            get {
+                return ResourceManager.GetString("JobTimeFiltersShouldBeSpecifiedInUtc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To filter should not be less than From filter..
         /// </summary>
         public static string JobToShouldBeGreaterThanFrom {

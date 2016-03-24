@@ -77,6 +77,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     rangeEnd = To.Value;
                 }
 
+                if (rangeStart.Kind != DateTimeKind.Utc || rangeEnd.Kind != DateTimeKind.Utc)
+                {
+                    throw new Exception(Resources.JobTimeFiltersShouldBeSpecifiedInUtc);
+                }
+
                 // validate filters
                 if (rangeEnd <= rangeStart)
                 {
