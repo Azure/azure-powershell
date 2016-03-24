@@ -68,11 +68,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 throw new PSInvalidOperationException("The supplied PolicyDefinition object is invalid.");
             }
             string resourceId = GetResourceId();
+
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
             
             var operationResult = this.GetResourcesClient()
                 .PutResource(
                     resourceId: resourceId,
-                    apiVersion: Constants.PolicyApiVersion,
+                    apiVersion: apiVersion,
                     resource: this.GetResource(),
                     cancellationToken: this.CancellationToken.Value,
                     odataQuery: null)
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var managementUri = this.GetResourcesClient()
               .GetResourceManagementRequestUri(
                   resourceId: resourceId,
-                  apiVersion: Constants.PolicyApiVersion,
+                  apiVersion: apiVersion,
                   odataQuery: null);
 
             var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
