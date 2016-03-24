@@ -252,6 +252,7 @@
     <Compile Include="WAPackIaaS\CloudService\RemoveWAPackCloudService.cs" />
     <Compile Include="WAPackIaaS\IaaSCmdletBase.cs" />
     <Compile Include="WAPackIaaS\Networking\GetWAPackLogicalNetwork.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\GetWAPackCloudVMRoleSizeProfile.cs" />
     <Compile Include="WAPackIaaS\VirtualMachine\GetWAPackVM.cs" />
     <Compile Include="WAPackIaaS\VirtualMachine\GetWAPackVMOSDisk.cs" />
     <Compile Include="WAPackIaaS\Networking\GetWAPackStaticIPAddressPool.cs" />
