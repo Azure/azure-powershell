@@ -923,15 +923,15 @@ function Test-AzureDiskEncryptionExtension
 {
     # This test should be run in Live mode only not in Playback mode
 	#Pre-requisites to be filled in before running this test. The AAD app should belong to the directory as the user running the test.
-    $aadClientID = "";
-	$aadClientSecret = "";
-	#Fill in VM admin user and password
-	$adminUser = "";
-	$adminPassword = "";
-
+	$aadAppName = "detestaadapp";
+	
 	#Resource group variables
-	$rgName = "detestrg";
-	$loc = "South Central US";
+	$rgName = Get-ComputeTestResourceName;
+	$loc = Get-ComputeVMLocation;
+	
+	#Fill in VM admin user and password
+	$adminUser = "Foo12";
+	$adminPassword = "BaR@123" + $rgName;
 
 	#KeyVault config variables
 	$vaultName = "detestvault";
@@ -951,30 +951,54 @@ function Test-AzureDiskEncryptionExtension
     $osDiskName = 'osdisk' + $vmName;
 	$dataDiskName = 'datadisk' + $vmName;
     $osDiskCaching = 'ReadWrite';
+	$extraDataDiskName1 = $dataDiskName + '1';
+	$extraDataDiskName2 = $dataDiskName + '2';
 	
 	#Network config variables
 	$vnetName = "detestvnet";
 	$subnetName = "detestsubnet";
 	$publicIpName = 'pubip' + $vmName;
 	$nicName = 'nic' + $vmName;
-
-
+	
 	#Disk encryption variables
 	$keyEncryptionAlgorithm = "RSA-OAEP";
 	$volumeType = "All";
 
     try
     {
-        Login-AzureRmAccount;
-        # Create new resource group      
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        # Create new resource group
+        New-AzureRmResourceGroup -Name $rgName -Location $loc -Force;
+
+		#Check if AAD app was already created
+		$SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
+		if(-not $SvcPrincipals)
+		{
+			# Create a new AD application if not created before
+			$identifierUri = [string]::Format("http://localhost:8080/{0}", $rgname);
+			$defaultHomePage = 'http://contoso.com';
+			$now = [System.DateTime]::Now;
+			$oneYearFromNow = $now.AddYears(1);
+			$aadClientSecret = Get-ResourceName;
+			$ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
+			Assert-NotNull $ADApp;
+			$servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $ADApp.ApplicationId;
+			$SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
+			# Was AAD app created?
+			Assert-NotNull $SvcPrincipals;
+			$aadClientID = $servicePrincipal.ApplicationId;
+		}
+		else
+		{
+			# Was AAD app already created?
+			Assert-NotNull $aadClientSecret;
+			$aadClientID = $SvcPrincipals[0].ApplicationId;
+		}
 
 		# Create new KeyVault
 		$keyVault = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku standard;
 		$keyVault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname
 		#set enabledForDiskEncryption
-        Write-Host 'Press go to https://resources.azure.com and set enabledForDiskEncryption flag on KeyVault. [ENTER] to continue or [CTRL-C] to abort...'
-        Read-Host
+        Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
 		#set permissions to AAD app to write secrets and keys
 		Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all 
 		#create a key in KeyVault to use as Kek
@@ -1019,8 +1043,7 @@ function Test-AzureDiskEncryptionExtension
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
         $p = Set-AzureRmVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest";
-
-
+		
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
@@ -1028,8 +1051,61 @@ function Test-AzureDiskEncryptionExtension
         Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -Force;
         #Get encryption status
         $encryptionStatus = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;
+		#Verify encryption is enabled on OS volume and data volumes
+		$OsVolumeEncryptionSettings = $encryptionStatus.OsVolumeEncryptionSettings;
+		Assert-AreEqual $encryptionStatus.OsVolumeEncrypted $true;
+		Assert-AreEqual $encryptionStatus.DataVolumesEncrypted $true;
+		#verify diskencryption keyvault url & kek url are not null
+		Assert-NotNull $OsVolumeEncryptionSettings;
+		Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl;
+		Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault;
+		
+		#Add a couple of data volumes to encrypt them
+        $p = Add-AzureRmVMDataDisk -VM $p -Name $extraDataDiskName1 -Caching 'ReadOnly' -DiskSizeInGB 2 -Lun 1 -VhdUri $dataDiskVhdUri -CreateOption Empty;
+        $p = Add-AzureRmVMDataDisk -VM $p -Name $extraDataDiskName2 -Caching 'ReadOnly' -DiskSizeInGB 2 -Lun 1 -VhdUri $dataDiskVhdUri -CreateOption Empty;
+		#Enable encryption on the VM
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -Force;
+        #Get encryption status
+        $encryptionStatus = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;
+		#Verify encryption is enabled on OS volume and data volumes
+		$OsVolumeEncryptionSettings = $encryptionStatus.OsVolumeEncryptionSettings;
+		Assert-AreEqual $encryptionStatus.OsVolumeEncrypted $true;
+		Assert-AreEqual $encryptionStatus.DataVolumesEncrypted $true;
+		#verify diskencryption keyvault url & kek url are not null
+		Assert-NotNull $OsVolumeEncryptionSettings;
+		Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl;
+		Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault;
+		
+		#Disable encryption on the VM
+		Disable-AzureRmVMDiskEncryption -ResourceGroupName $rgname -VMName $vmName;
+		#Get encryption status
+        $encryptionStatus = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $p.StorageProfile.OSDisk.Name;
+		#Verify encryption is disabled on OS volume and data volumes
+		$OsVolumeEncryptionSettings = $encryptionStatus.OsVolumeEncryptionSettings;
+		Assert-AreEqual $encryptionStatus.OsVolumeEncrypted $false;
+		Assert-AreEqual $encryptionStatus.DataVolumesEncrypted $false;
+
         #Remove AzureDiskEncryption extension
         Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName;
+        #Get encryption status again to make sure it's the same as before when the extension was installed
+        $encryptionStatus = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;
+		#Verify encryption is disabled on OS volume and data volumes
+		$OsVolumeEncryptionSettings = $encryptionStatus.OsVolumeEncryptionSettings;
+		Assert-AreEqual $encryptionStatus.OsVolumeEncrypted $false;
+		Assert-AreEqual $encryptionStatus.DataVolumesEncrypted $false;
+
+		#Enable encryption on the VM
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -Force;
+        #Get encryption status
+        $encryptionStatus = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;
+		#Verify encryption is enabled on OS volume and data volumes
+		$OsVolumeEncryptionSettings = $encryptionStatus.OsVolumeEncryptionSettings;
+		Assert-AreEqual $encryptionStatus.OsVolumeEncrypted $true;
+		Assert-AreEqual $encryptionStatus.DataVolumesEncrypted $true;
+		#verify diskencryption keyvault url & kek url are not null
+		Assert-NotNull $OsVolumeEncryptionSettings;
+		Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl;
+		Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault;
 
         #Remove the VM 
         Remove-AzureRmVm -ResourceGroupName $rgname -Name $vmName -Force;
@@ -1041,12 +1117,12 @@ function Test-AzureDiskEncryptionExtension
         $p = Set-AzureRmVMOSDisk -VM $p -Name $p.StorageProfile.OSDisk.Name -VhdUri $p.StorageProfile.OSDisk.Vhd.Uri -Caching ReadWrite -CreateOption attach -DiskEncryptionKeyUrl $encryptionStatus.OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl -DiskEncryptionKeyVaultId $encryptionStatus.OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault.Id -Windows;
 
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
-
     }
     finally
     {
         # Cleanup
-        Remove-AzureRmResourceGroup -Name $rgname -Force;
+        Clean-ResourceGroup $rgname;
+		#Remove-AzureRmADApplication -ApplicationObjectId $ADApp.ApplicationId -Force;
     }
 }
 
@@ -1306,7 +1382,10 @@ function Test-VirtualMachineExtensionWithSwitch
         # Set extension settings by raw strings
         $settingstr = '{"fileUris":[],"commandToExecute":""}';
         $protectedsettingstr = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
-        Set-AzureRmVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr -DisableAutoUpgradeMinorVersion -ForceRerun
+        Set-AzureRmVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname `
+            -Name $extname -Publisher $publisher `
+            -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr `
+            -DisableAutoUpgradeMinorVersion -ForceRerun "RerunExtension";
 
         # Get VM Extension
         $ext = Get-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;

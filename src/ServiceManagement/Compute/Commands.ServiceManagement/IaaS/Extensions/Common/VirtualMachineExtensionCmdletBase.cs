@@ -118,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         {
             if (string.IsNullOrEmpty(version))
             {
-                return true;
+                return false;
             }
             return version.StartsWith("1");
         }
