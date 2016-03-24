@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var osdisk = virtualMachine.StorageProfile.OsDisk;
                     if (String.IsNullOrEmpty(this.OSType))
                     {
-                        this.OSType = osdisk.OsType;
+                        this.OSType = osdisk.OsType.ToString();
                     }
                     if (String.IsNullOrEmpty(this.OSType))
                     {

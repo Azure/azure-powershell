@@ -116,6 +116,7 @@
     <Compile Include="Entities\Policy\PolicyRule.cs" />
     <Compile Include="Entities\Providers\ResourceProviderDefinition.cs" />
     <Compile Include="Entities\Providers\ResourceTypeDefinition.cs" />
+    <Compile Include="Entities\ResourceGroup\ExportTemplateParameters.cs" />
     <Compile Include="Entities\ResourceGroup\ResourceBatchMoveParameters.cs" />
     <Compile Include="Entities\Resources\Resource.cs" />
     <Compile Include="Entities\Resources\ResourcePlan.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Handlers\CmdletInfoHandler.cs" />
     <Compile Include="Handlers\UserAgentHandler.cs" />
     <Compile Include="Implementation\FindAzureResourceGroupCmdlet.cs" />
+    <Compile Include="Implementation\ExportAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\SaveAzureResourceGroupDeploymentTemplateCmdlet.cs" />
     <Compile Include="Implementation\GetAzureResourceGroupDeploymentOperationCmdlet.cs" />
     <Compile Include="Implementation\Lock\GetAzureResourceLockCmdlet.cs" />
@@ -191,6 +193,14 @@
       <Link>AzureRM.Resources.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

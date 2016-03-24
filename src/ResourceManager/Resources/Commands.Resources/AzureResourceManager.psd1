@@ -57,12 +57,14 @@ ScriptsToProcess = @()
 TypesToProcess = @(  
     '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml',
     '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml',
-    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
+    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml',
+    '.\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'
 )  
   
 # Format files (.ps1xml) to be loaded when importing this module  
 FormatsToProcess = @(  
-    '.\AzureRM.Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',  
+    '.\AzureRM.Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',
+    '.\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml',
     '.\AzureRM.Tags\Microsoft.Azure.Commands.Tags.format.ps1xml',  
     '.\AzureRM.Profile\Microsoft.Azure.Commands.Profile.format.ps1xml',
     '.\AzureRM.DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',  

@@ -501,4 +501,10 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>No Azure Enhanced Monitoring extension found under resource group '{0}', virtual machine '{1}'.</value>
     <comment>{0} = resource group name, {1} = virtual machine name</comment>
   </data>
+  <data name="DisableAzureDiskEncryptionCaption" xml:space="preserve">
+    <value>Disable AzureDiskEncryption on the VM</value>
+  </data>
+  <data name="DisableAzureDiskEncryptionConfirmation" xml:space="preserve">
+    <value>This cmdlet disables encryption on the VM which may reboot the machine. Please save your work on the VM before confirming. Do you want to continue?</value>
+  </data>
 </root>

@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (String.IsNullOrEmpty(this.OSType))
                 {
-                    this.OSType = osdisk.OsType;
+                    this.OSType = osdisk.OsType.ToString();
                 }
                 if (String.IsNullOrEmpty(this.OSType))
                 {
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 var caching = osdisk.Caching;
                 sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = osdisk.Name });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching.ToString() });
                 if (this._Helper.IsPremiumStorageAccount(accountName))
                 {
                     WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Compute
                     caching = disk.Caching;
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun.ToString() });
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = disk.Name });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = caching });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = caching.ToString() });
 
                     if (this._Helper.IsPremiumStorageAccount(accountName))
                     {

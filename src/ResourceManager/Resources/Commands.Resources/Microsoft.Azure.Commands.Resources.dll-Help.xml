@@ -1469,7 +1469,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRmResourceGroup cmdlet gets the Azure resource groups in your subscription. You can use the Name parameter to select resource groups by name. The default is all resource groups.An Azure resource is a user-managed Azure entity, such as a database server, database, or web site. An Azure resource group is a collection of Azure resources that are deployed as a unit.</maml:para>
+      <maml:para>The Get-AzureRmResourceGroup cmdlet gets the Azure resource groups in your subscription. You can use the Name parameter to select resource groups by name. The default is all resource groups. An Azure resource is a user-managed Azure entity, such as a database server, database, or web site. An Azure resource group is a collection of Azure resources that are deployed as a unit.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1501,37 +1501,35 @@
           </dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-AzureRmResourceGroup</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
-          <maml:name>Id</maml:name>
-          <maml:description>
-            <maml:para>Specifies the id of the resource group. Wildcards are not permitted. This parameter is optional. The default is all resource groups in the subscription</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>
-          </dev:defaultValue>
-        </command:parameter>
-        <command:parameter variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
-          <maml:name>Location</maml:name>
-          <maml:description>
-            <maml:para>Specifies the location of the resource group.</maml:para>
-          </maml:description>
-          <command:parameterValue>String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>
-          </dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
     </command:syntax>
     <command:parameters>
+      <maml:name>Get-AzureRmResourceGroup</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>Specifies the id of the resource group. Wildcards are not permitted. This parameter is optional. The default is all resource groups in the subscription</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
+        <maml:name>Location</maml:name>
+        <maml:description>
+          <maml:para>Specifies the location of the resource group.</maml:para>
+        </maml:description>
+        <command:parameterValue>String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -1579,24 +1577,19 @@
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup -Detailed
-Name:      Contoso
-Location:  West US
-Resources: 
-           Name             Type                     Location
-           ===============  =======================  ========
-           ConstosoWebSite  Microsoft.Web/sites      West US
-           sqlsvr03         Microsoft.Sql/servers    West US
-           sqldb01          Microsoft.Sql/databases  West US
+        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup 
+          ResourceGroupName : Api-Default-West-US
+          Location          : westus
+          ProvisioningState : Succeeded
+          Tags              :
+          ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/Api-Default-West-US
 
-Name:      EngineerBlog
-Location:  East US
-Resources: 
-           Name             Type                     Location
-           ===============  =======================  ========
-           EngineerBlog     Microsoft.Web/sites      West US
-           EngSvr01         Microsoft.Sql/servers    West US
-           EngDB02          Microsoft.Sql/databases  West US</dev:code>
+          ResourceGroupName : AzureResourceGroup3
+          Location          : centralus
+          ProvisioningState : Succeeded
+          Tags              :
+          ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/AzureResourceGroup3
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all resource groups in the subscription.</maml:para>
           <maml:para />
@@ -1613,21 +1606,19 @@ Resources:
         </command:commandLines>
       </command:example>
       <command:example>
-        <maml:title>--------------------------  Example 2: Get resource groups by name  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 2: Get resource group by name  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup -Name EngineerBlog
-Name:      EngineerBlog
-Location:  East US
-Resources: 
-           Name             Type                     Location
-           ===============  =======================  ========
-           EngineerBlog     Microsoft.Web/sites      West US
-           EngSvr01         Microsoft.Sql/servers    West US
-           EngDB02          Microsoft.Sql/databases  West US</dev:code>
-        <dev:remarks>
-          <maml:para>This command gets Azure resource groups in your subscription that have names that begin with "eng".</maml:para>
+        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup -Name AzureResourceGroup3
+          ResourceGroupName : AzureResourceGroup3
+          Location          : centralus
+          ProvisioningState : Succeeded
+          Tags              :
+          ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/AzureResourceGroup3
+          </dev:code>
+          <dev:remarks>
+          <maml:para>This command gets the Azure resource group in your subscription which has the name AzureResourceGroup3.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>
@@ -1640,54 +1631,9 @@ Resources:
             </command:commandText>
           </command:commandLine>
         </command:commandLines>
-      </command:example>
+      </command:example>    
       <command:example>
-        <maml:title>--------------------------  Example 3: Get resource groups by other properties  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup -Detailed | Where-Object {$_.Resources.Type -like "*serverFarms*"} | Select-Object -Property ResourceGroupName
-Contoso
-EngineerBlog</dev:code>
-        <dev:remarks>
-          <maml:para>The command uses the Where-Object, ForEach-Object, and Select-Object cmdlets to get the names of resource groups that include Azure database server farms. You can use commands like this one to find resource groups with resources or properties of interest.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>The command uses the Get-AzureRmResourceGroup cmdlet to get all resource groups in the subscription. It pipes the resource groups to the Where-Object cmdlet, which returns only the resource groups that include server farm resources. The command pipes those resource groups to the Select-Object cmdlet, which returns only the value of the ResourceGroupName property of each resource group.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Example 4: Get resource groups by tag  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup -Tag @{Name="CostCenter";Value="Development"}
-
-PS C:\&gt;Get-AzureRmResourceGroup -Tag @{Name="CostCenter"}</dev:code>
-        <dev:remarks>
-          <maml:para>These commands get resource groups by tag. The first command gets resource groups that have a "CostCenter" tag with a value of "Development". The second command gets all resource groups that have a "CostCenter" tag, regardless of its value.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>
-          </maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Example 5: Get all tags of a resource group  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 3: Get all tags of a resource group  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
@@ -4165,7 +4111,7 @@ NewApplication                                                61b5d8ea-fdc6-40a2
 	<command:details>
 		<command:name>New-AzureRmResourceGroup</command:name>
 		<maml:description>
-			<maml:para>Creates an Azure resource group and its resources</maml:para>
+			<maml:para>Creates an Azure resource group</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -4183,7 +4129,7 @@ NewApplication                                                61b5d8ea-fdc6-40a2
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Specifies a name for the resource group. This parameter is required. The resource name must be unique in the subscription.You can use -Name or its alias, -ResourceGroupName.If a resource group with that name already exists, the command prompts you for confirmation before replacing the existing resource group. To suppress the confirmation prompt, use the Force parameter.</maml:para>
+					<maml:para>Specifies a name for the resource group. This parameter is required. The resource group name must be unique in the subscription.You can use -Name or its alias, -ResourceGroupName.If a resource group with that name already exists, the command prompts you for confirmation before replacing the existing resource group. To suppress the confirmation prompt, use the Force parameter.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -4197,7 +4143,7 @@ NewApplication                                                61b5d8ea-fdc6-40a2
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
+					<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Find-AzureRmResource and Find-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
 			</command:parameter>
@@ -4238,7 +4184,7 @@ NewApplication                                                61b5d8ea-fdc6-40a2
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
+				<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Find-AzureRmResource and Find-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
 			<dev:type>
@@ -5995,7 +5941,7 @@ Resources</dev:code>
     <command:details>
       <command:name>Register-AzureRmResourceProvider</command:name>
       <maml:description>
-        <maml:para />
+        <maml:para>Registers a subscription with a resource provider</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6005,7 +5951,7 @@ Resources</dev:code>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para />
+      <maml:para>Registers a subscription with a resource provider. A subscription must be registered with a resource provider before you can start using the resources supported by that provider. You can check the registration state of the providers in your subscription by running Get-AzureRmResourceProvider -ListAvailable</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -6013,7 +5959,7 @@ Resources</dev:code>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ProviderNamespace</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>The namespace of the resource provider</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -6037,7 +5983,7 @@ Resources</dev:code>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>ProviderNamespace</maml:name>
         <maml:description>
-          <maml:para />
+          <maml:para>The namespace of the resource provider</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>

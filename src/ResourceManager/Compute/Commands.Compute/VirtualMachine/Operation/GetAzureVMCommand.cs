@@ -75,7 +75,48 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (!string.IsNullOrEmpty(this.Name))
+                if (string.IsNullOrEmpty(this.ResourceGroupName) && string.IsNullOrEmpty(this.Name))
+                {
+                    AzureOperationResponse<IPage<VirtualMachine>> vmListResult = null;
+
+                    if (this.NextLink != null)
+                    {
+                        vmListResult = this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync(this.NextLink.ToString())
+                            .GetAwaiter().GetResult();
+                    }
+                    else
+                    {
+                        vmListResult = this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult();
+                    }
+
+                    var psResultList = new List<PSVirtualMachine>();
+
+                    while (vmListResult != null)
+                    {
+                        if (vmListResult.Body != null)
+                        {
+                            foreach (var item in vmListResult.Body)
+                            {
+                                var psItem = Mapper.Map<PSVirtualMachine>(item);
+                                psItem = Mapper.Map(vmListResult, psItem);
+                                psResultList.Add(psItem);
+                            }
+                        }
+
+                        if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
+                        {
+                            vmListResult = this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync(vmListResult.Body.NextPageLink)
+                                 .GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            vmListResult = null;
+                        }
+                    }
+
+                    WriteObject(psResultList, true);
+                }
+                else if (!string.IsNullOrEmpty(this.Name))
                 {
                     if (Status)
                     {
@@ -97,49 +138,19 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    AzureOperationResponse<IPage<VirtualMachine>> vmListResult = null;
-                    if (!string.IsNullOrEmpty(this.ResourceGroupName))
-                    {
-                        vmListResult = this.VirtualMachineClient.ListWithHttpMessagesAsync(this.ResourceGroupName)
+                    AzureOperationResponse<IEnumerable<VirtualMachine>> vmListResult = null;
+                    vmListResult = this.VirtualMachineClient.ListWithHttpMessagesAsync(this.ResourceGroupName)
                             .GetAwaiter().GetResult();
-                    }
-                    else if (this.NextLink != null)
-                    {
-                        vmListResult = this.VirtualMachineClient.ListNextWithHttpMessagesAsync(this.NextLink.ToString())
-                            .GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        vmListResult = this.VirtualMachineClient.ListAllWithHttpMessagesAsync()
-                            .GetAwaiter().GetResult();
-                    }
-
                     var psResultList = new List<PSVirtualMachine>();
-
-                    while (vmListResult != null)
+                    if (vmListResult.Body != null)
                     {
-                        if (vmListResult.Body != null)
+                        foreach (var item in vmListResult.Body)
                         {
-                            foreach (var item in vmListResult.Body)
-                            {
-                                var psItem = Mapper.Map<PSVirtualMachine>(item);
-                                psItem = Mapper.Map(vmListResult, psItem);
-                                psResultList.Add(psItem);
-                            }
-                        }
-
-
-                        if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
-                        {
-                            vmListResult = this.VirtualMachineClient.ListNextWithHttpMessagesAsync(vmListResult.Body.NextPageLink)
-                                 .GetAwaiter().GetResult();
-                        }
-                        else
-                        {
-                            vmListResult = null;
+                            var psItem = Mapper.Map<PSVirtualMachine>(item);
+                            psItem = Mapper.Map(vmListResult, psItem);
+                            psResultList.Add(psItem);
                         }
                     }
-
                     WriteObject(psResultList, true);
                 }
             });

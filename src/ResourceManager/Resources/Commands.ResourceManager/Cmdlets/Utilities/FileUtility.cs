@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         /// <param name="overwrite">Overrides existing file</param>
         /// <param name="confirmAction">The confirmation action</param>
         /// <returns>The file path</returns>
-        public static string SaveTemplateFile(string deploymentName, string contents, string outputPath, bool overwrite, Action<bool, string, string, string, Action> confirmAction)
+        public static string SaveTemplateFile(string templateName, string contents, string outputPath, bool overwrite, Action<bool, string, string, string, Action> confirmAction)
         {
             StringBuilder finalOutputPath = new StringBuilder();
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
             if (FileUtilities.IsValidDirectoryPath(outputPath))
             {
-                finalOutputPath.Append(Path.Combine(outputPath, deploymentName + ".json"));
+                finalOutputPath.Append(Path.Combine(outputPath, templateName + ".json"));
             }
             else
             {
