@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
     public class RecoveryPointConversions
     {
-        public static List<AzureRmRecoveryServicesRecoveryPointBase> GetPSAzureRecoveryPoints(RecoveryPointListResponse rpList, AzureRmRecoveryServicesItemBase item)
+        public static List<AzureRmRecoveryServicesRecoveryPointBase> GetPSAzureRecoveryPoints(RecoveryPointListResponse rpList, AzureRmRecoveryServicesIaasVmItem item)
         {
             if (rpList == null || rpList.RecoveryPointList == null || rpList.RecoveryPointList.RecoveryPoints == null) 
             { 
@@ -36,11 +36,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     BackupManagementType = item.BackupManagementType,
                     ContainerName = item.ContainerName,
+                    ItemName = item.Name,
                     ContainerType = item.ContainerType,
                     RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
                     RecoveryPointType = recPoint.RecoveryPointType,
                     WorkloadType = item.WorkloadType,
-                    RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
+                    RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,                    
                 };
                 result.Add(rpBase);
             }
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return result;
         }
 
-        public static AzureRmRecoveryServicesRecoveryPointBase GetPSAzureRecoveryPoints(RecoveryPointResponse rpResponse, AzureRmRecoveryServicesItemBase item)
+        public static AzureRmRecoveryServicesRecoveryPointBase GetPSAzureRecoveryPoints(RecoveryPointResponse rpResponse, AzureRmRecoveryServicesIaasVmItem item)
         {
             if (rpResponse == null || rpResponse.RecPoint == null)
             {
@@ -60,10 +61,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             AzureRmRecoveryServicesIaasVmRecoveryPoint result = new AzureRmRecoveryServicesIaasVmRecoveryPoint()
                 {
                     BackupManagementType = item.BackupManagementType,
+                    ItemName = item.Name,
                     ContainerName = item.ContainerName,
                     ContainerType = item.ContainerType,
                     RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
                     RecoveryPointType = recPoint.RecoveryPointType,
+                    RecoveryPointId = rpResponse.RecPoint.Id,
+                    Region = rpResponse.Location,
                     WorkloadType = item.WorkloadType,
                     RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
                 };

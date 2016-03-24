@@ -146,7 +146,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails()
         {
-            RecoveryPointResponse response = null;
             AzureRmRecoveryServicesItemBase item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
                 as AzureRmRecoveryServicesItemBase;
 
@@ -166,7 +165,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
         {
-            RecoveryPointResponse response = null;
             DateTime startDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.StartDate]);
             DateTime endDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.EndDate]);
             AzureRmRecoveryServicesItemBase item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
