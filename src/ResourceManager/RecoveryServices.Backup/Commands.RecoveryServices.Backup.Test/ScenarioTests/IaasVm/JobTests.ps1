@@ -14,7 +14,9 @@
 
 #Have to hard-code this because time keeps changing with every run and we cannot use recorded sessions
 $fixedStartDate = Get-Date -Date "2016-03-21 12:00:00"
+$fixedStartDate = $fixedStartDate.ToUniversalTime()
 $fixedEndDate = Get-Date -Date "2016-03-22 12:00:00"
+$fixedEndDate = $fixedEndDate.ToUniversalTime()
 
 function SetVaultContext
 {
