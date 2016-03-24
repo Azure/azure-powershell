@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.Tags.Model;
@@ -23,10 +22,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System.Linq;
+    using System.Collections;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
-    public class NewAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
+    [Cmdlet(VerbsCommon.Move, "AzureRmExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
+    public class MoveAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -44,63 +43,18 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-         Mandatory = true,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "location.")]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The location.")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
         [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true)]
-        [ValidateSet(
-            MNM.ExpressRouteCircuitSkuTier.Standard,
-            MNM.ExpressRouteCircuitSkuTier.Premium,
-            IgnoreCase = true)]
-        public string SkuTier { get; set; }
-
-        [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true)]
-        [ValidateSet(
-            MNM.ExpressRouteCircuitSkuFamily.MeteredData,
-            MNM.ExpressRouteCircuitSkuFamily.UnlimitedData,
-            IgnoreCase = true)]
-        public string SkuFamily { get; set; }
-
-        [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
-        public string ServiceProviderName { get; set; }
-
-        [Parameter(
-             Mandatory = true,
-             ValueFromPipelineByPropertyName = true)]
-        public string PeeringLocation { get; set; }
-
-        [Parameter(
-             Mandatory = true,
-             ValueFromPipelineByPropertyName = true)]
-        public int BandwidthInMbps { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The location.")]
         [ValidateNotNullOrEmpty]
-        public List<PSPeering> Peering { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public List<PSExpressRouteCircuitAuthorization> Authorization { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? AllowClassicOperations { get; set; }
-
+        public virtual string ServiceKey { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -140,32 +94,9 @@ namespace Microsoft.Azure.Commands.Network
         {
             var circuit = new PSExpressRouteCircuit();
             circuit.Name = this.Name;
+            circuit.ServiceKey = this.ServiceKey;
             circuit.ResourceGroupName = this.ResourceGroupName;
             circuit.Location = this.Location;
-
-            // Construct sku
-            if (!string.IsNullOrEmpty(this.SkuTier))
-            {
-                circuit.Sku = new PSExpressRouteCircuitSku();
-                circuit.Sku.Tier = this.SkuTier;
-                circuit.Sku.Family = this.SkuFamily;
-                circuit.Sku.Name = this.SkuTier + "_" + this.SkuFamily;
-            }
-
-            // construct the service provider properties
-            if (!string.IsNullOrEmpty(this.ServiceProviderName))
-            {
-                circuit.ServiceProviderProperties = new PSServiceProviderProperties();
-                circuit.ServiceProviderProperties.ServiceProviderName = this.ServiceProviderName;
-                circuit.ServiceProviderProperties.PeeringLocation = this.PeeringLocation;
-                circuit.ServiceProviderProperties.BandwidthInMbps = this.BandwidthInMbps;
-            }
-
-            circuit.Peerings = new List<PSPeering>();
-            circuit.Peerings = this.Peering;
-            circuit.Authorizations = new List<PSExpressRouteCircuitAuthorization>();
-            circuit.Authorizations = this.Authorization;
-            circuit.AllowClassicOperations = this.AllowClassicOperations;
 
             // Map to the sdk object
             var circuitModel = Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
@@ -179,3 +110,7 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+
+
+
