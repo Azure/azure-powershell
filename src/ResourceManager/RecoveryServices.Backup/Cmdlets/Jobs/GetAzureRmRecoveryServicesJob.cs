@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -79,11 +80,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 // validate filters
                 if (rangeEnd <= rangeStart)
                 {
-                    throw new Exception(CmdletWarningAndErrorMessages.Job.ToShouldBeGreaterThanFrom);
+                    throw new Exception(Resources.JobToShouldBeGreaterThanFrom);
                 }
                 else if (rangeEnd.Subtract(rangeStart) > TimeSpan.FromDays(30))
                 {
-                    throw new Exception(CmdletWarningAndErrorMessages.Job.AllowedDateTimeRangeExceeded);
+                    throw new Exception(Resources.JobAllowedDateTimeRangeExceeded);
                 }
 
                 // validate JobId and Job objects
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     // if JobId and Job are provided together and they don't match then throw exception
                     if (Job != null && JobId != Job.InstanceId)
                     {
-                        throw new Exception(CmdletWarningAndErrorMessages.Job.JobIdAndJobMismatch);
+                        throw new Exception(Resources.JobJobIdAndJobMismatch);
                     }
                 }
                 else if (Job != null)
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     if (resultCount >= JobConstants.MaximumJobsToFetch)
                     {
                         // trace a warning that there are more jobs and user has to refine filters.
-                        WriteWarning(CmdletWarningAndErrorMessages.Job.RefineFilters);
+                        WriteWarning(Resources.JobRefineFilters);
                         break;
                     }
 

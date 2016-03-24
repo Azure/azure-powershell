@@ -81,7 +81,6 @@
     <Compile Include="Cmdlets\ProtectionPolicy\PolicyCmdletHelpers.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRmRecoveryServicesPolicy.cs" />
-    <Compile Include="CmdletWarningAndErrorMessages.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureRMRecoveryServicesRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Restore\RestoreAzureRMRecoveryServicesBackupItem.cs" />

@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 else
                 {
                     // not a valid object. throw exception.
-                    throw new Exception(CmdletWarningAndErrorMessages.Job.WaitJobInvalidInput + Job.GetType().FullName);
+                    throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, Job.GetType().FullName));
                 }
 
                 // now wait until timeout happens or all jobs complete execution
