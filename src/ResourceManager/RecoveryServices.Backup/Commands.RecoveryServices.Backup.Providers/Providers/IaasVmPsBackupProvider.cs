@@ -359,9 +359,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryParams.DatasourceType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.VM;
             queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
 
-            var listResponse = HydraAdapter.ListProtectedItem(queryParams);
-            
-            List<AzureRmRecoveryServicesItemBase> itemModels = ConversionHelpers.GetItemModelList(listResponse.ItemList.Value, container);
+            List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
+            string skipToken = null;
+            PaginationRequest paginationRequest = null;
+            do
+            {
+                var listResponse = HydraAdapter.ListProtectedItem(queryParams, paginationRequest);
+                protectedItems.AddRange(listResponse.ItemList.Value);
+
+                HydraHelpers.GetSkipTokenFromNextLink(listResponse.ItemList.NextLink, out skipToken);
+                if (skipToken != null)
+                {
+                    paginationRequest = new PaginationRequest();
+                    paginationRequest.SkipToken = skipToken;
+                }
+            } while (skipToken != null);
+
+            List<AzureRmRecoveryServicesItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems, container);
 
             // 1. Filter by container
             itemModels = itemModels.Where(itemModel =>
