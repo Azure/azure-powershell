@@ -7,7 +7,7 @@
     - New-AzureStorageShareSASToken
     - New-AzureStorageQueueSASToken
     - New-AzureStorageTableSASToken
-	- New-AzureStorageAccountSASToken
+    - New-AzureStorageAccountSASToken
 
 ##2016.03.03 version 1.2.2
 * Azure Compute (ARM):
