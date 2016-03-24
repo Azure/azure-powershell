@@ -58,7 +58,7 @@ TypesToProcess = @()
   
 # Format files (.ps1xml) to be loaded when importing this module  
 FormatsToProcess = @(
-     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml''
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml'
 )  
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
