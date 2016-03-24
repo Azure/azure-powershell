@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 
         public ProtectedItemListResponse ListProtectedItem(
                 ProtectedItemListQueryParam queryFilter,
-            PaginationRequest paginationParams)
+            PaginationRequest paginationParams = null)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();

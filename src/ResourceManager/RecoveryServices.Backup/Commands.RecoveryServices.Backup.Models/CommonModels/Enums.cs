@@ -22,19 +22,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     public enum ContainerType
     {
-        AzureVM,
+        AzureVM = 1,
 
         AzureSqlContainer,
     }
 
     public enum BackupManagementType
     {
-        AzureVM
+        AzureVM = 1,
     }
 
     public enum WorkloadType
     {
-        AzureVM,
+        AzureVM = 1,
     }
 
     public enum PsBackupProviderTypes
@@ -48,6 +48,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         Registered = 1,
         Registering,
+    }
+
+    public enum ItemProtectionStatus
+    {
+        Healthy = 1,
+        Unhealthy,
+    }
+
+    public enum ItemStatus
+    {
+        IRPending = 1,
+        ProtectionError,
+        Protected,
     }
 
     #region policy

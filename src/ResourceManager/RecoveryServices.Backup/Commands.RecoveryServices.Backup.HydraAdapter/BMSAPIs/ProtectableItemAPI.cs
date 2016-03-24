@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
     public partial class HydraAdapter
     {
         public ProtectableObjectListResponse ListProtectableItem(
-                ProtectableObjectListQueryParameters queryFilter)
+                ProtectableObjectListQueryParameters queryFilter,
+                PaginationRequest paginationRequest = null)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                                      resourceGroupName,
                                      resourceName,
                                      queryFilter,
+                                     paginationRequest,
                                      BmsAdapter.GetCustomRequestHeaders(),
                                      BmsAdapter.CmdletCancellationToken).Result;
         }

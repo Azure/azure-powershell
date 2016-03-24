@@ -52,5 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         void DeletePolicy();
 
         List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers();
+
+        List<AzureRmRecoveryServicesItemBase> ListProtectedItems();
     }
 }

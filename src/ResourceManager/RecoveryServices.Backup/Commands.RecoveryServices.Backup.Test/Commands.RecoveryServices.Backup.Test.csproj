@@ -75,6 +75,9 @@
     <None Include="ScenarioTests\IaasVm\JobTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\IaasVm\ItemTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\IaasVm\PolicyTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -82,6 +85,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Compile Include="ScenarioTests\IaasVm\JobTests.cs" />
+    <Compile Include="ScenarioTests\IaasVm\ItemTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\PolicyTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\ContainerTests.cs" />
     <Compile Include="ScenarioTests\TestsBase.cs" />
@@ -110,6 +114,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestWaitJobScenario.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestGetItemScenario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
