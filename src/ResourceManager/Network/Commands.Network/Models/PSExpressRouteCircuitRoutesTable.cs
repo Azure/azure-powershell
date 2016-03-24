@@ -17,12 +17,15 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSExpressRouteCircuitRoutesTable
     {
-        public string AddressPrefix { get; set; }
 
-        public string NextHopType { get; set; }
+        public string LocPrf { get; set; }
 
-        public string NextHopIP { get; set; }
+        public string Network { get; set; }
 
-        public string AsPath { get; set; }
+        public string NextHop { get; set; }
+
+        public string Path { get; set; }
+
+        public int? Weight { get; set; }
     }
 }
