@@ -55,7 +55,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.10.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.11.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -134,8 +134,10 @@
     <Reference Include="System.Spatial">
       <HintPath>..\..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml" />    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>      <Private>True</Private>
+    <Reference Include="System.Xml" />
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\xunit.assert.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.assert.dll</HintPath>
@@ -151,23 +153,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alerts\AddAlertRuleCommandTests.cs" />
-    <Compile Include="Alerts\GetAlertHistoryCommandTests.cs" />
-    <Compile Include="Alerts\GetAlertRuleCommandTests.cs" />
-    <Compile Include="Alerts\RemoveAlertRuleCommandTests.cs" />
-    <Compile Include="Autoscale\AddAutoscaleSettingCommandTests.cs" />
-    <Compile Include="Autoscale\GetAutoscaleHistoryCommandTests.cs" />
-    <Compile Include="Autoscale\GetAutoscaleSettingCommandTests.cs" />
-    <Compile Include="Autoscale\NewAutoscaleProfileCommandTests.cs" />
-    <Compile Include="Autoscale\NewAutoscaleRuleCommandTests.cs" />
-    <Compile Include="Autoscale\RemoveAutoscaleSettingCommandTests.cs" />
+    <Compile Include="Alerts\AddAzureRmMetricAlertRuleTests.cs" />
+    <Compile Include="Alerts\AddAzureRmLogAlertRuleTests.cs" />
+    <Compile Include="Alerts\AddAzureRmWebtestAlertRuleTests.cs" />
+    <Compile Include="Alerts\GetAzureRmAlertHistoryTests.cs" />
+    <Compile Include="Alerts\GetAzureRmAlertRuleTests.cs" />
+    <Compile Include="Alerts\NewAzureRmAlerRuleWebhookTests.cs" />
+    <Compile Include="Alerts\NewAzureRmAlertRuleEmailTests.cs" />
+    <Compile Include="Alerts\RemoveAzureRmAlertRuleTests.cs" />
+    <Compile Include="Autoscale\AddAzureRmAutoscaleSettingTests.cs" />
+    <Compile Include="Autoscale\GetAzureRmAutoscaleHistoryTests.cs" />
+    <Compile Include="Autoscale\GetAzureRmAutoscaleSettingTests.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleNotificationTests.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleProfileTests.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleRuleTests.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleWebhookTests.cs" />
+    <Compile Include="Autoscale\RemoveAzureRmAutoscaleSettingTests.cs" />
     <Compile Include="Diagnostics\SetDiagnosticSettingCommandTests.cs" />
     <Compile Include="Diagnostics\GetDiagnosticSettingCommandTests.cs" />
-    <Compile Include="Events\GetAzureRmLogCommandTests.cs" />
-    <Compile Include="Metrics\FormatMetricsAsTableCommandTests.cs" />
-    <Compile Include="Metrics\GetMetricDefinitionsCommandTests.cs" />
-    <Compile Include="Metrics\GetMetricsCommandTests.cs" />
+    <Compile Include="Events\GetAzureRmLogTests.cs" />
+    <Compile Include="Metrics\GetAzureRmMetricDefinitionTests.cs" />
+    <Compile Include="Metrics\GetAzureRmMetricTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\AzureRmLogProfileTests.cs" />
     <Compile Include="ScenarioTests\AzureRmDiagnosticSettingTests.cs" />
     <Compile Include="ScenarioTests\AlertsTests.cs" />
     <Compile Include="ScenarioTests\AutoscaleTests.cs" />
@@ -175,7 +183,7 @@
     <Compile Include="ScenarioTests\MetricsTests.cs" />
     <Compile Include="ScenarioTests\TestsController.cs" />
     <Compile Include="ScenarioTests\UsageMetricsTests.cs" />
-    <Compile Include="UsageMetrics\GetUsageMetricsCommandTests.cs" />
+    <Compile Include="UsageMetrics\GetAzureRmUsageTests.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +211,9 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="ScenarioTests\AzureRmLogProfileTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\AzureRmDiagnosticSettingTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -224,6 +235,36 @@
     <None Include="ScenarioTests\UsageMetricsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestSetAzureRmDiagnosticSettingWithRetention.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmLogProfileTests\TestAddAzureRmLogProfileWithRetention.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmLogProfileTests\TestGetAzureRmLogProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmLogProfileTests\TestAddAzureRmLogProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestAddAzureRmLogAlertRule.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestAddAzureRmWebtestAlertRule.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestNewAzureRmAlertRuleEmail.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestNewAzureRmAlertRuleWebhook.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestNewAzureRmAutoscaleNotification.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestNewAzureRmAutoscaleWebhook.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestSetAzureRmDiagnosticSettingTimegrainsOnly.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -236,28 +277,28 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestGetAzureRmDiagnosticSetting.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestAddAlertRule.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestAddAzureRmMetricAlertRule.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestGetAlertHistory.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestGetAzureRmAlertHistory.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestGetAlertRule.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestGetAzureRmAlertRule.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestRemoveAlertRule.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestRemoveAzureRmAlertRule.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestAddAutoscaleSetting.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestAddAzureRmAutoscaleSetting.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestGetAutoscaleHistory.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestGetAzureRmAutoscaleHistory.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestGetAutoscaleSetting.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestGetAzureRmAutoscaleSetting.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestRemoveAutoscaleSetting.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestRemoveAzureRmAutoscaleSetting.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.EventsTests\TestGetAzureCorrelationIdLog.json">

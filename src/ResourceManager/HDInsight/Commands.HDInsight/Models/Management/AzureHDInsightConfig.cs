@@ -56,7 +56,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the flavor for a cluster.
         /// </summary>
         public string ClusterType { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the cluster tier.
+        /// </summary>
+        public Tier ClusterTier { get; set; }
+
         /// <summary>
         /// Gets or sets the database to store the metadata for Oozie.
         /// </summary>
@@ -86,7 +91,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets AAD tenant uri of the service principal
         /// </summary>
         public Guid AADTenantId { get; set; }
-        
+
         /// <summary>
         /// Gets the configurations of this HDInsight cluster.
         /// </summary>

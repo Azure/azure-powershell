@@ -50,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSetWithPolicy)]
         [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSetWithPermision)]
+        [ValidateNotNull]
         public CloudBlob CloudBlob { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Container Name",
@@ -66,8 +67,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Blob { get; set; }
 
-        [Parameter(HelpMessage = "Policy Identifier", ParameterSetName = BlobNamePipelineParmeterSetWithPolicy)]
-        [Parameter(HelpMessage = "Policy Identifier", ParameterSetName = BlobPipelineParameterSetWithPolicy)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Policy Identifier", 
+            ParameterSetName = BlobNamePipelineParmeterSetWithPolicy)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Policy Identifier", 
+            ParameterSetName = BlobPipelineParameterSetWithPolicy)]
+        [ValidateNotNullOrEmpty]
         public string Policy
         {
             get { return accessPolicyIdentifier; }
@@ -75,22 +83,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private string accessPolicyIdentifier;
 
-        [Parameter(HelpMessage = "Permissions for a blob. Permissions can be any not-empty subset of \"rwd\".",
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Permissions for a blob. Permissions can be any not-empty subset of \"rwd\".",
             ParameterSetName = BlobNamePipelineParmeterSetWithPermission)]
-        [Parameter(HelpMessage = "Permissions for a blob. Permissions can be any not-empty subset of \"rwd\".",
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Permissions for a blob. Permissions can be any not-empty subset of \"rwd\".",
             ParameterSetName = BlobPipelineParameterSetWithPermision)]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        public SharedAccessProtocol Protocol { get; set; }
+        [ValidateNotNull]
+        public SharedAccessProtocol? Protocol { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
+        [ValidateNotNullOrEmpty]
         public string IPAddressOrRange { get; set; }
 
-        [Parameter(HelpMessage = "Start Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Start Time")]
+        [ValidateNotNull]
         public DateTime? StartTime { get; set; }
 
-        [Parameter(HelpMessage = "Expiry Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Expiry Time")]
+        [ValidateNotNull]
         public DateTime? ExpiryTime { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
@@ -161,7 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="accessPolicy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The existing policy identifier.</param>
         /// <returns></returns>
-        private string GetBlobSharedAccessSignature(CloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier, SharedAccessProtocol protocol, IPAddressOrRange iPAddressOrRange)
+        private string GetBlobSharedAccessSignature(CloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier, SharedAccessProtocol? protocol, IPAddressOrRange iPAddressOrRange)
         {
             CloudBlobContainer container = blob.Container;
             return blob.GetSharedAccessSignature(accessPolicy, null, policyIdentifier, protocol, iPAddressOrRange);
