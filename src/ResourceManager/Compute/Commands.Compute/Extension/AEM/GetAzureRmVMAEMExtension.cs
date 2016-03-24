@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var osdisk = virtualMachine.StorageProfile.OsDisk;
                     if (String.IsNullOrEmpty(this.OSType))
                     {
-                        this.OSType = osdisk.OsType;
+                        this.OSType = osdisk.OsType.ToString();
                     }
                     if (String.IsNullOrEmpty(this.OSType))
                     {
@@ -125,16 +125,6 @@ namespace Microsoft.Azure.Commands.Compute
                 var returnedExtension = virtualMachineExtensionGetResponse.ToPSVirtualMachineExtension(this.ResourceGroupName);
                 WriteObject(returnedExtension);
             });
-        }
-
-        private void WriteInformation(string message, params string[] args)
-        {
-            base.WriteInformation(String.Format(message, args), new string[0]);
-        }
-
-        private void WriteVerbose(string message, params object[] args)
-        {
-            base.WriteVerbose(String.Format(message, args));
         }
 
         private void WriteError(string message, params object[] args)

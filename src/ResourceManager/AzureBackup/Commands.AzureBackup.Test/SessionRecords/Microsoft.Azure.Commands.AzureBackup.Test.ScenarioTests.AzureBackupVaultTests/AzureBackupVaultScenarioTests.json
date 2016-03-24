@@ -84,9 +84,6 @@
         "x-ms-client-request-id": [
           "ff97c9dd-5838-4ec9-802a-dc1f5f06a3bf-2015-08-16 19:16:03Z-PS"
         ],
-        "x-ms-version": [
-          "2013-03-01"
-        ],
         "User-Agent": [
           "Microsoft.Azure.Management.BackupServices.BackupVaultServicesManagementClient/0.0.0.0"
         ]
@@ -147,9 +144,6 @@
         ],
         "x-ms-client-request-id": [
           "fd70aa7c-a1db-42ed-8295-5cec7663d72d-2015-08-16 19:16:19Z-PS"
-        ],
-        "x-ms-version": [
-          "2013-03-01"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.BackupServices.BackupVaultServicesManagementClient/0.0.0.0"
@@ -514,9 +508,6 @@
         ],
         "x-ms-client-request-id": [
           "43cf16e7-e7a0-4d56-8eb5-66f9ecee0ff4-2015-08-16 19:16:15Z-PS"
-        ],
-        "x-ms-version": [
-          "2013-03-01"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.BackupServices.BackupVaultServicesManagementClient/0.0.0.0"

@@ -96,8 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 SetupManagementClients();
 
-                List<string> modules = Directory.GetFiles("Resources\\Automation", "*.ps1").ToList();
-                modules.Add("Common.ps1");
+                List<string> modules = Directory.GetFiles("Resources\\Automation".AsAbsoluteLocation(), "*.ps1").ToList();
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
                 helper.SetupModulesFromCommon(AzureModule.AzureServiceManagement, modules.ToArray());

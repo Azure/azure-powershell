@@ -77,11 +77,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute, Version=10.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.11.3.0-prerelease\lib\net45\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.12.0.1-prerelease\lib\net45\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.2.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.4.1.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -108,11 +109,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.0.1\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.0.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.1.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -168,6 +169,12 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.3\ARMStorageProvider.cs">
+      <Link>Common\ARMStorageProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.3\ARMStorageService.cs">
+      <Link>Common\ARMStorageService.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs">
       <Link>Extension\DSC\DscExtensionCmdletConstants.cs</Link>
     </Compile>
@@ -196,6 +203,7 @@
     <Compile Include="Common\ComputeClientInstancViewMethod.cs" />
     <Compile Include="Common\ComputeCloudException.cs" />
     <Compile Include="Common\DiagnosticsHelper.cs" />
+    <Compile Include="Common\StorageManagementClient.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
     <Compile Include="ExtensionImages\VirtualMachineExtensionImageBaseCmdlet.cs" />
@@ -211,9 +219,11 @@
     <Compile Include="Extension\AEM\RemoveAzureRmVMAEMExtension.cs" />
     <Compile Include="Extension\AEM\SetAzureRmVMAEMExtension.cs" />
     <Compile Include="Extension\AEM\TestAzureRmVMAEMExtension.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionConstants.cs" />
     <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionContext.cs" />
     <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionProtectedSettings.cs" />
     <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionPublicSettings.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\DisableAzureDiskEncryption.cs" />
     <Compile Include="Extension\AzureDiskEncryption\GetAzureDiskEncryptionStatus.cs" />
     <Compile Include="Extension\AzureDiskEncryption\RemoveAzureDiskEncryptionExtension.cs" />
     <Compile Include="Extension\AzureDiskEncryption\SetAzureDiskEncryptionExtension.cs" />
@@ -369,10 +379,6 @@
     <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Storage\Commands.Management.Storage\Commands.Management.Storage.csproj">
-      <Project>{a50ab133-5c04-4a17-9054-f8343683ec23}</Project>
-      <Name>Commands.Management.Storage</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
       <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>

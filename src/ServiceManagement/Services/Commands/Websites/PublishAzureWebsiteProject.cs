@@ -87,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                 }
             }
 
-            if (!File.Exists(fullSetParametersFile))
+            if (!string.IsNullOrEmpty(fullSetParametersFile) && !File.Exists(fullSetParametersFile))
             {
                 if (File.Exists(Path.Combine(Path.GetDirectoryName(fullPackage), fullSetParametersFile)))
                 {

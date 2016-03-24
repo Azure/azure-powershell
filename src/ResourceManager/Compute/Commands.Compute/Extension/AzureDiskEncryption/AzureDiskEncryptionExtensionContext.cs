@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Models;
 using Newtonsoft.Json;
 using System.Security;
-using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         public const string ExtensionDefaultPublisher = "Microsoft.Azure.Security";
         public const string ExtensionDefaultName = "AzureDiskEncryption";
-        public const string ExtensionDefaultVersion = "1.0";
+        public const string ExtensionDefaultVersion = "1.1";
         public const string VolumeTypeOS = "OS";
         public const string VolumeTypeData = "Data";
         public const string VolumeTypeAll = "All";
@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public string VolumeType { get; set; }
         public string AadClientCertThumbprint { get; set; }
         public string SequenceVersion { get; set; }
-        public SecureString Passphrase { get; set; } 
+        public string EncryptionOperation { get; set; }
+        public SecureString Passphrase { get; set; }
 
         private static SecureString ConvertStringToSecureString(string str)
         {
@@ -74,6 +75,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             VolumeType = (publicSettings == null) ? null : publicSettings.VolumeType;
             AadClientCertThumbprint = (publicSettings == null) ? null : publicSettings.AadClientCertThumbprint;
             SequenceVersion = (publicSettings == null) ? null : publicSettings.SequenceVersion;
+            EncryptionOperation = (publicSettings == null) ? null : publicSettings.EncryptionOperation;
             AadClientSecret = (protectedSettings == null) ? null : ConvertStringToSecureString(protectedSettings.AadClientSecret);
             Passphrase = (protectedSettings == null) ? null : ConvertStringToSecureString(protectedSettings.Passphrase);
         }
