@@ -117,6 +117,7 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\GetAzureRmDataLakeAnalyticsDataSource.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsCatalogSecret.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeAnalyticsCatalogSecret.cs" />
     <Compile Include="Commands\NewAzureRmDataLakeAnalyticsCatalogSecret.cs" />
@@ -155,6 +156,9 @@
     </Content>
     <None Include="..\AzureRM.DataLakeAnalytics.psd1">
       <Link>AzureRM.DataLakeAnalytics.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Microsoft.Azure.Commands.DataLakeAnalytics.dll-help.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
