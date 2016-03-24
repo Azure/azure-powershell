@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsg.Common.BackupManagementType, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public BackupManagementType BackupManagementType { get; set; }
+        public BackupManagementType? BackupManagementType { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.RetentionPolicy, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
