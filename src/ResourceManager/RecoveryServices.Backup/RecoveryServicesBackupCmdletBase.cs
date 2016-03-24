@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     public abstract class RecoveryServicesBackupCmdletBase : AzureRMCmdlet
     {
+        public delegate BackUpOperationStatusResponse GetOpResponse(string url);
+
         // in seconds
         private int _defaultSleepForOperationTracking = 15;
 
@@ -142,12 +144,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             return result;
         }
 
-        public BackUpOperationStatusResponse WaitForOperation(string url)
+        public BackUpOperationStatusResponse WaitForOperation(string url, GetOpResponse hydraFunc)
         {
             // using this directly because it doesn't matter which function we use.
             // return type is same and currently we are using it in only two places.
             // protected item and policy.
-            BackUpOperationStatusResponse response = HydraAdapter.GetProtectedItemOperationStatusByURL(url);
+            BackUpOperationStatusResponse response = hydraFunc(url);
 
             while (response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
             {

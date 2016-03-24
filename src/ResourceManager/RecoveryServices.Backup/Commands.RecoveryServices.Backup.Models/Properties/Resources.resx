@@ -267,6 +267,10 @@
   <data name="JobAllowedDateTimeRangeExceeded" xml:space="preserve">
     <value>To filter should not be more than 30 days away from From filter.</value>
   </data>
+  <data name="JobCouldNotCancelJob" xml:space="preserve">
+    <value>Failed to cancel the job. Error code: {0}</value>
+    <comment> </comment>
+  </data>
   <data name="JobJobIdAndJobMismatch" xml:space="preserve">
     <value>JobID and Job object provided don't match each other.</value>
   </data>

@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 response = new AzureRmRecoveryServicesAzureVmJob();
             }
 
-            response.InstanceId = GetJobIdFromFullId(hydraJob.Id);
+            response.InstanceId = GetLastIdFromFullId(hydraJob.Id);
             response.StartTime = vmJob.StartTime.ToLocalTime();
             if (vmJob.EndTime > new DateTime(2000, 1, 1))
             {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return psErrorInfo;
         }
 
-        private static string GetJobIdFromFullId(string fullId)
+        public static string GetLastIdFromFullId(string fullId)
         {
             string[] splitArr = fullId.Split("/".ToCharArray());
             return splitArr[splitArr.Length - 1];

@@ -15,8 +15,11 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Net;
+using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -46,14 +49,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 var cancelResponse = HydraAdapter.CancelJob(JobId);
+                string opId = HydraHelpers.GetLastIdFromFullId(cancelResponse.Location);
+                var cancelStatus = HydraAdapter.GetJobOperationStatus(JobId, opId);
 
-                while (cancelResponse.StatusCode == System.Net.HttpStatusCode.Accepted)
+                while (cancelStatus.StatusCode == HttpStatusCode.Accepted)
                 {
-
+                    Thread.Sleep(15 * 1000);
+                    cancelStatus = HydraAdapter.GetJobOperationStatus(JobId, opId);
                 }
 
-                var adapterResponse = HydraAdapter.GetJob(JobId);
-                WriteObject(JobConversions.GetPSJob(adapterResponse));
+                if (cancelStatus.StatusCode != HttpStatusCode.NoContent)
+                {
+                    throw new Exception(string.Format(Resources.JobCouldNotCancelJob, cancelStatus.StatusCode.ToString()));
+                }
+                else
+                {
+                    WriteObject(JobConversions.GetPSJob(cancelStatus.Item));
+                }
             });
         }
     }

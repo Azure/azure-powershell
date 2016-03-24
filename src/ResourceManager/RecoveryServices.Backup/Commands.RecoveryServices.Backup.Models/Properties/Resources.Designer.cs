@@ -295,6 +295,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to cancel the job. Error code: {0}.
+        /// </summary>
+        public static string JobCouldNotCancelJob {
+            get {
+                return ResourceManager.GetString("JobCouldNotCancelJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to JobID and Job object provided don&apos;t match each other..
         /// </summary>
         public static string JobJobIdAndJobMismatch {
