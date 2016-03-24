@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -33,7 +34,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
 {
     public static class DiagnosticsHelper
     {
-        private static string XmlNamespace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
         private static string EncodedXmlCfg = "xmlCfg";
         private static string WadCfg = "WadCfg";
         private static string WadCfgBlob = "WadCfgBlob";
@@ -45,6 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         private static string StorageAccountKeyTag = "storageAccountKey";
         private static string StorageAccountEndPointTag = "storageAccountEndPoint";
 
+        public static string XmlNamespace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
         public static string DiagnosticsConfigurationElemStr = "DiagnosticsConfiguration";
         public static string DiagnosticMonitorConfigurationElemStr = "DiagnosticMonitorConfiguration";
         public static string PublicConfigElemStr = "PublicConfig";
@@ -55,6 +56,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         public static string PrivConfEndpointAttr = "endpoint";
         public static string MetricsElemStr = "Metrics";
         public static string MetricsResourceIdAttr = "resourceId";
+        public static string EventHubElemStr = "EventHub";
+        public static string EventHubUrlAttr = "Url";
+        public static string EventHubSharedAccessKeyNameAttr = "SharedAccessKeyName";
+        public static string EventHubSharedAccessKeyAttr = "SharedAccessKey";
 
         public enum ConfigFileType
         {
@@ -245,15 +250,34 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             }
         }
 
-        public static Hashtable GetPrivateDiagnosticsConfiguration(string storageAccountName,
-            string storageKey, string endpoint)
+        public static Hashtable GetPrivateDiagnosticsConfiguration(string configurationPath,
+            string storageAccountName, string storageKey, string endpoint)
         {
             var privateConfig = new Hashtable();
             privateConfig.Add(StorageAccountNameTag, storageAccountName);
             privateConfig.Add(StorageAccountKeyTag, storageKey);
             privateConfig.Add(StorageAccountEndPointTag, endpoint);
 
+            AddEventHubPrivateConfig(privateConfig, configurationPath);
+
             return privateConfig;
+        }
+
+        internal static void AddEventHubPrivateConfig(Hashtable privateConfig, string configurationPath)
+        {
+            var eventHubUrl = GetConfigValueFromPrivateConfig(configurationPath, EventHubElemStr, EventHubUrlAttr);
+            var eventHubSharedAccessKeyName = GetConfigValueFromPrivateConfig(configurationPath, EventHubElemStr, EventHubSharedAccessKeyNameAttr);
+            var eventHubSharedAccessKey = GetConfigValueFromPrivateConfig(configurationPath, EventHubElemStr, EventHubSharedAccessKeyAttr);
+
+            if (!string.IsNullOrEmpty(eventHubUrl) || !string.IsNullOrEmpty(eventHubSharedAccessKeyName) || !string.IsNullOrEmpty(eventHubSharedAccessKey))
+            {
+                var eventHubConfig = new Hashtable();
+                eventHubConfig.Add(EventHubUrlAttr, eventHubUrl);
+                eventHubConfig.Add(EventHubSharedAccessKeyNameAttr, eventHubSharedAccessKeyName);
+                eventHubConfig.Add(EventHubSharedAccessKeyAttr, eventHubSharedAccessKey);
+
+                privateConfig.Add(EventHubElemStr, eventHubConfig);
+            }
         }
 
         private static XElement GetPublicConfigXElementFromXmlFile(string configurationPath)
@@ -291,9 +315,34 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             return publicConfig;
         }
 
-        public static string GetStorageAccountInfoFromPrivateConfig(string configurationPath, string attributeName)
+        /// <summary>
+        /// Get the private config value for a specific attribute.
+        /// The private config looks like this:
+        /// XML:
+        ///    <PrivateConfig xmlns="namespace">
+        ///      <StorageAccount name = "name" key="key" endpoint="endpoint" />
+        ///      <EventHub Url = "url" SharedAccessKeyName="sasKeyName" SharedAccessKey="sasKey"/>
+        ///    </PrivateConfig>
+        ///
+        /// JSON:
+        ///    "PrivateConfig":{
+        ///      "storageAccountName":"name",
+        ///      "storageAccountKey":"key",
+        ///      "storageAccountEndPoint":"endpoint",
+        ///      "EventHub":{
+        ///        "Url":"url",
+        ///        "SharedAccessKeyName":"sasKeyName",
+        ///        "SharedAccessKey":"sasKey"
+        ///      }
+        ///    }
+        /// </summary>
+        /// <param name="configurationPath">The path to the configuration file</param>
+        /// <param name="elementName">The element name of the private config. e.g., StorageAccount, EventHub</param>
+        /// <param name="attributeName">The attribute name of the element</param>
+        /// <returns></returns>
+        public static string GetConfigValueFromPrivateConfig(string configurationPath, string elementName, string attributeName)
         {
-            string value = null;
+            string value = string.Empty;
             var configFileType = GetConfigFileType(configurationPath);
 
             if (configFileType == ConfigFileType.Xml)
@@ -303,25 +352,54 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
                 if (xmlConfig.Name.LocalName == DiagnosticsConfigurationElemStr)
                 {
                     var privateConfigElem = xmlConfig.Elements().FirstOrDefault(ele => ele.Name.LocalName == PrivateConfigElemStr);
-                    var storageAccountElem = privateConfigElem == null ? null : privateConfigElem.Elements().FirstOrDefault(ele => ele.Name.LocalName == StorageAccountElemStr);
-                    var attribute = storageAccountElem == null ? null : storageAccountElem.Attributes().FirstOrDefault(a => string.Equals(a.Name.LocalName, attributeName));
+                    var configElem = privateConfigElem == null ? null : privateConfigElem.Elements().FirstOrDefault(ele => ele.Name.LocalName == elementName);
+                    var attribute = configElem == null ? null : configElem.Attributes().FirstOrDefault(a => string.Equals(a.Name.LocalName, attributeName));
                     value = attribute == null ? null : attribute.Value;
                 }
             }
             else if (configFileType == ConfigFileType.Json)
             {
+                // Find the PrivateConfig
                 var jsonConfig = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(configurationPath));
                 var properties = jsonConfig.Properties().Select(p => p.Name);
+                var privateConfigProperty = properties.FirstOrDefault(p => p.Equals(PrivateConfigElemStr));
 
-                var privateConfigProperty = properties.FirstOrDefault(p => p.Equals(PrivateConfigElemStr, StringComparison.OrdinalIgnoreCase));
-                if (privateConfigProperty != null)
+                if (privateConfigProperty == null)
                 {
-                    var privateConfig = jsonConfig[privateConfigProperty] as JObject;
-                    properties = privateConfig.Properties().Select(p => p.Name);
-
-                    var attributeProperty = properties.FirstOrDefault(p => p.Equals(attributeName, StringComparison.OrdinalIgnoreCase));
-                    value = attributeProperty == null ? null : privateConfig[attributeProperty].Value<string>();
+                    return value;
                 }
+                var privateConfig = jsonConfig[privateConfigProperty] as JObject;
+
+                // Find the target config object corresponding to elementName
+                JObject targetConfig = null;
+                if (elementName == StorageAccountElemStr)
+                {
+                    // Special handling as private storage config is flattened
+                    targetConfig = privateConfig;
+                    var attributeNameMapping = new Dictionary<string, string>()
+                    {
+                        { PrivConfNameAttr, "storageAccountName" },
+                        { PrivConfKeyAttr, "storageAccountKey" },
+                        { PrivConfEndpointAttr, "storageAccountEndPoint" }
+                    };
+                    attributeName = attributeNameMapping.FirstOrDefault(m => m.Key == attributeName).Value;
+                }
+                else
+                {
+                    properties = privateConfig.Properties().Select(p => p.Name);
+                    var configProperty = properties.FirstOrDefault(p => p.Equals(elementName));
+                    targetConfig = configProperty == null ? null : privateConfig[configProperty] as JObject;
+                }
+
+                if (targetConfig == null || attributeName == null)
+                {
+                    return value;
+                }
+
+                // Find the config value corresponding to attributeName
+                properties = targetConfig.Properties().Select(p => p.Name);
+                var attributeProperty = properties.FirstOrDefault(p => p.Equals(attributeName));
+                value = attributeProperty == null ? null : targetConfig[attributeProperty].Value<string>();
             }
 
             return value;
@@ -382,7 +460,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             else
             {
                 // Use the one defined in PrivateConfig
-                storageAccountKey = GetStorageAccountInfoFromPrivateConfig(configurationPath, PrivConfKeyAttr);
+                storageAccountKey = GetConfigValueFromPrivateConfig(configurationPath, StorageAccountElemStr, PrivConfKeyAttr);
             }
 
             return storageAccountKey;
@@ -416,7 +494,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
                 storageAccountEndpoint = GetEndpointFromStorageContext(context);
             }
             else if (!string.IsNullOrEmpty(
-                storageAccountEndpoint = GetStorageAccountInfoFromPrivateConfig(configurationPath, PrivConfEndpointAttr)))
+                storageAccountEndpoint = GetConfigValueFromPrivateConfig(configurationPath, StorageAccountElemStr, PrivConfEndpointAttr)))
             {
                 // We can get value from PrivateConfig
             }
