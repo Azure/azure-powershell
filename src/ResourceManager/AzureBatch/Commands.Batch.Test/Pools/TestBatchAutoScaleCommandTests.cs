@@ -60,8 +60,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.AutoScaleFormula = "formula";
 
+            AzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders> response = BatchTestHelpers.CreateGenericAzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders>();
+
             // Don't go to the service on an Evaluate AutoScale call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.PoolEvaluateAutoScaleParameter, ProxyModels.PoolEvaluateAutoScaleOptions, AzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<string, ProxyModels.PoolEvaluateAutoScaleOptions, AzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -81,14 +83,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
             cmdlet.AutoScaleFormula = formula;
 
+            AzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders> response = BatchTestHelpers.CreateGenericAzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders>();
+
             // Don't go to the service on an Evaluate AutoScale call
-            Action<BatchRequest<ProxyModels.PoolEvaluateAutoScaleParameter, ProxyModels.PoolEvaluateAutoScaleOptions, AzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders>>> extractFormulaAction =
+            Action<BatchRequest<string, ProxyModels.PoolEvaluateAutoScaleOptions, AzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders>>> extractFormulaAction =
                 (request) =>
                 {
-                    requestFormula = request.Parameters.AutoScaleFormula;
+                    requestFormula = request.Parameters;
                 };
 
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractFormulaAction);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(responseToUse: response, requestAction: extractFormulaAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();

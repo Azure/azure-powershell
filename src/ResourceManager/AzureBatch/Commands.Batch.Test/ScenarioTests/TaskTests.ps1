@@ -35,8 +35,8 @@ function Test-CreateTask
     Assert-AreEqual $cmd $task1.CommandLine
 
     # Create a complicated task
-    $affinityInfo = New-Object Microsoft.Azure.Commands.Batch.Models.PSAffinityInformation
-    $affinityInfo.AffinityId = $affinityId = "affinityId"
+	$affinityId = "affinityId"
+    $affinityInfo = New-Object Microsoft.Azure.Commands.Batch.Models.PSAffinityInformation -ArgumentList @($affinityId)
 
     $taskConstraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @([TimeSpan]::FromDays(1),[TimeSpan]::FromDays(2),5)
     $maxWallClockTime = $taskConstraints.MaxWallClockTime

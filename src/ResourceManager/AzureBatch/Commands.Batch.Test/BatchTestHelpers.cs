@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Azure.Batch.Protocol.BatchRequests;
+using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
@@ -220,11 +220,11 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 {
                     fileRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
-                        var response = new AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromTaskHeaders>();
+                        var response = new AzureOperationResponse<Stream, ProxyModels.FileGetFromTaskHeaders>();
                         response.Headers = new ProxyModels.FileGetFromTaskHeaders();
                         response.Body = new MemoryStream();
 
-                        Task<AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromTaskHeaders>> task = Task.FromResult(response);
+                        Task<AzureOperationResponse<Stream, ProxyModels.FileGetFromTaskHeaders>> task = Task.FromResult(response);
 
                         return task;
                     };
@@ -262,11 +262,11 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 {
                     fileRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
-                        var response = new AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromComputeNodeHeaders>();
+                        var response = new AzureOperationResponse<Stream, ProxyModels.FileGetFromComputeNodeHeaders>();
                         response.Headers = new ProxyModels.FileGetFromComputeNodeHeaders();
                         response.Body = new MemoryStream();
 
-                        Task<AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromComputeNodeHeaders>> task = Task.FromResult(response);
+                        Task<AzureOperationResponse<Stream, ProxyModels.FileGetFromComputeNodeHeaders>> task = Task.FromResult(response);
 
                         return task;
                     };
@@ -548,16 +548,16 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a NodeFileGetPropertiesResponse object
         /// </summary>
-        public static AzureOperationResponse<System.IO.Stream, ProxyModels.ComputeNodeGetRemoteDesktopHeaders> CreateGetRemoteDesktOperationResponse()
+        public static AzureOperationResponse<Stream, ProxyModels.ComputeNodeGetRemoteDesktopHeaders> CreateGetRemoteDesktOperationResponse()
         {
-            var response = new AzureOperationResponse<System.IO.Stream, ProxyModels.ComputeNodeGetRemoteDesktopHeaders>();
+            var response = new AzureOperationResponse<Stream, ProxyModels.ComputeNodeGetRemoteDesktopHeaders>();
             response.Headers = new ProxyModels.ComputeNodeGetRemoteDesktopHeaders();
             response.Body = new MemoryStream();
             return response;
         }
 
         /// <summary>
-        /// Builds a NodeFileGetPropertiesResponse object
+        /// Builds a NodeFileGetPropertiesFromTaskResponse object
         /// </summary>
         public static AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders> CreateNodeFileGetPropertiesByTaskResponse()
         {
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Builds a NodeFileGetPropertiesResponse object
+        /// Builds a NodeFileGetPropertiesFromComputeNodeResponse object
         /// </summary>
         public static AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders> CreateNodeFileGetPropertiesByComputeNodeResponse()
         {
@@ -579,18 +579,18 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Builds a NodeFileGetPropertiesResponse object
+        /// Builds a NodeFileGetPropertiesFromComputeNodeResponse object
         /// </summary>
-        public static AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromComputeNodeHeaders> CreateNodeFileByComputeNodeResponse()
+        public static AzureOperationResponse<Stream, ProxyModels.FileGetFromComputeNodeHeaders> CreateNodeFileByComputeNodeResponse()
         {
-            var response = new AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromComputeNodeHeaders>();
+            var response = new AzureOperationResponse<Stream, ProxyModels.FileGetFromComputeNodeHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
             response.Headers = new ProxyModels.FileGetFromComputeNodeHeaders();
             return response;
         }
 
         /// <summary>
-        /// Builds a NodeFileListResponse object
+        /// Builds a NodeFileListFromTaskResponse object
         /// </summary>
         public static AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders> CreateNodeFileListByTaskResponse(IEnumerable<string> fileNames)
         {
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Builds a NodeFileListResponse object
+        /// Builds a NodeFileListFromComputeNodeResponse object
         /// </summary>
         public static AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders> CreateNodeFileListByComputeNodeResponse(IEnumerable<string> fileNames)
         {
@@ -751,11 +751,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        ///
+        /// Convert Hyak-based code generator enums to swagger base
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="otherEnum"></param>
-        /// <returns></returns>
         internal static T MapEnum<T>(Enum otherEnum) where T : struct
         {
             if (otherEnum == null)
@@ -768,11 +765,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        ///
+        /// Convert Hyak-based code generator nullable enums to swagger base
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="otherEnum"></param>
-        /// <returns></returns>
         internal static T? MapNullableEnum<T>(Enum otherEnum) where T : struct
         {
             if (otherEnum == null)

@@ -42,11 +42,14 @@ function Test-NewJob
         $startTaskCmd = "cmd /c dir /s"
         $startTask.CommandLine = $startTaskCmd
 
+		$osFamily = 4
+		$targetOS = "*"
+		$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+
         $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
         $poolSpec.TargetDedicated = $targetDedicated = 3
         $poolSpec.VirtualMachineSize = $vmSize = "small"
-        $poolSpec.OSFamily = $osFamily = "4"
-        $poolSpec.TargetOSVersion = $targetOS = "*"
+        $poolSpec.CloudServiceConfiguration = $paasConfiguration
         $poolSpec.StartTask = $startTask
 
         $poolSpec.CertificateReferences = new-object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSCertificateReference]
@@ -159,8 +162,8 @@ function Test-NewJob
         Assert-AreEqual $poolLifeTime $job2.PoolInformation.AutoPoolSpecification.PoolLifeTimeOption
         Assert-AreEqual $targetDedicated $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetDedicated
         Assert-AreEqual $vmSize $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.VirtualMachineSize
-        Assert-AreEqual $osFamily $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.OSFamily
-        Assert-AreEqual $targetOS $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetOSVersion
+        Assert-AreEqual $osFamily $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.OSFamily
+        Assert-AreEqual $targetOS $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.TargetOSVersion
         Assert-AreEqual $certRefCount $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences.Count
         Assert-AreEqual $storeLocation $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreLocation
         Assert-AreEqual $storeName $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreName
@@ -366,12 +369,15 @@ function Test-UpdateJob
 
     $context = Get-ScenarioTestContext $accountName
 
+	$osFamily = 4
+	$targetOS = "*"
+	$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+
     # Create the job with an auto pool
     $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
     $poolSpec.TargetDedicated = 3
     $poolSpec.VirtualMachineSize = "small"
-    $poolSpec.OSFamily = "4"
-    $poolSpec.TargetOSVersion = "*"
+    $poolSpec.CloudServiceConfiguration = $paasConfiguration
     $poolSpec.Metadata = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSMetadataItem]
     $poolSpecMetaItem = New-Object Microsoft.Azure.Commands.Batch.Models.PSMetadataItem -ArgumentList "meta1","value1"
     $poolSpec.Metadata.Add($poolSpecMetaItem)

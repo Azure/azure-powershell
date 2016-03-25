@@ -33,13 +33,15 @@ function Test-NewPool
         $targetDedicated = 1
         $resizeTimeout = ([TimeSpan]::FromMinutes(10))
         $vmSize = "small"
-        New-AzureBatchPool $poolId1 -OSFamily $osFamily -TargetOSVersion $targetOSVersion -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -ResizeTimeout $resizeTimeout -BatchContext $context
+		$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+
+        New-AzureBatchPool $poolId1 -CloudServiceConfiguration $paasConfiguration -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -ResizeTimeout $resizeTimeout -BatchContext $context
         $pool1 = Get-AzureBatchPool -Id $poolId1 -BatchContext $context
 
         # Verify created pool matches expectations
         Assert-AreEqual $poolId1 $pool1.Id
-        Assert-AreEqual $osFamily $pool1.OSFamily
-        Assert-AreEqual $targetOSVersion $pool1.TargetOSVersion
+        Assert-AreEqual $osFamily $pool1.CloudServiceConfiguration.OSFamily
+        Assert-AreEqual $targetOSVersion $pool1.CloudServiceConfiguration.TargetOSVersion
         Assert-AreEqual $resizeTimeout $pool1.ResizeTimeout
         Assert-AreEqual $targetDedicated $pool1.TargetDedicated
         Assert-AreEqual $vmSize $pool1.VirtualMachineSize
@@ -70,7 +72,7 @@ function Test-NewPool
         
         $displayName = "displayName"
 
-        New-AzureBatchPool -Id $poolId2 -VirtualMachineSize $vmSize -OSFamily $osFamily -TargetOSVersion $targetOSVersion -DisplayName $displayName -MaxTasksPerComputeNode $maxTasksPerComputeNode -AutoScaleFormula $autoScaleFormula -AutoScaleEvaluationInterval $evalInterval -StartTask $startTask -TaskSchedulingPolicy $schedulingPolicy -InterComputeNodeCommunicationEnabled -Metadata $metadata -BatchContext $context
+        New-AzureBatchPool -Id $poolId2 -VirtualMachineSize $vmSize -CloudServiceConfiguration $paasConfiguration -DisplayName $displayName -MaxTasksPerComputeNode $maxTasksPerComputeNode -AutoScaleFormula $autoScaleFormula -AutoScaleEvaluationInterval $evalInterval -StartTask $startTask -TaskSchedulingPolicy $schedulingPolicy -InterComputeNodeCommunicationEnabled -Metadata $metadata -BatchContext $context
         
         $pool2 = Get-AzureBatchPool -Id $poolId2 -BatchContext $context
         
@@ -78,8 +80,8 @@ function Test-NewPool
         Assert-AreEqual $poolId2 $pool2.Id
         Assert-AreEqual $displayName $pool2.DisplayName
         Assert-AreEqual $vmSize $pool2.VirtualMachineSize
-        Assert-AreEqual $osFamily $pool2.OSFamily
-        Assert-AreEqual $targetOSVersion $pool2.TargetOSVersion
+        Assert-AreEqual $osFamily $pool2.CloudServiceConfiguration.OSFamily
+        Assert-AreEqual $targetOSVersion $pool2.CloudServiceConfiguration.TargetOSVersion
         Assert-AreEqual $maxTasksPerComputeNOde $pool2.MaxTasksPerComputeNode
         Assert-AreEqual $true $pool2.AutoScaleEnabled
         Assert-AreEqual $autoScaleFormula $pool2.AutoScaleFormula
@@ -466,7 +468,7 @@ function Test-EvaluateAutoScale
     }
 
     # Verify that the evaluation result matches expectation
-    Assert-True { $evalResult.AutoScaleRun.Results.Contains($formula) }
+    Assert-True { $evalResult.Results.Contains($formula) }
 }
 
 <#
@@ -481,7 +483,7 @@ function Test-ChangeOSVersion
 
     # Verify that we start with a different target OS
     $pool = Get-AzureBatchPool $poolId -BatchContext $context
-    Assert-AreNotEqual $targetOSVersion $pool.TargetOSVersion
+    Assert-AreNotEqual $targetOSVersion $pool.CloudServiceConfiguration.TargetOSVersion
 
     if ($usePipeline -eq '1')
     {
@@ -493,5 +495,5 @@ function Test-ChangeOSVersion
     }
 
     $pool = Get-AzureBatchPool $poolId -BatchContext $context
-    Assert-AreEqual $targetOSVersion $pool.TargetOSVersion
+    Assert-AreEqual $targetOSVersion $pool.CloudServiceConfiguration.TargetOSVersion
 }
