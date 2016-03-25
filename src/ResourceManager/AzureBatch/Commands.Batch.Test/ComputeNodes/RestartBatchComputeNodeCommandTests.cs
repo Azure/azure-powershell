@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
+using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Microsoft.Azure.Batch.Protocol.BatchRequests;
-using Microsoft.Rest.Azure;
 using Xunit;
-using Microsoft.Azure.Batch.Protocol.Models;
-using BatchCommon = Microsoft.Azure.Batch.Common;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using BatchCommon = Microsoft.Azure.Batch.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             // Verify that the reboot option was properly set on the outgoing request
-            Assert.Equal(cmdlet.RebootOption.ToString().ToLower(), requestRebootOption.ToString().ToLower());
+            Assert.Equal(cmdlet.RebootOption, BatchTestHelpers.MapEnum<BatchCommon.ComputeNodeRebootOption>(requestRebootOption));
         }
     }
 }

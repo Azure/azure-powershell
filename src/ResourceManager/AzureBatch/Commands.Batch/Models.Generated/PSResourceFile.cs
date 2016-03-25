@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.ResourceFile omObject;
         
-        public PSResourceFile(string blobSource, string filePath, string fileMode)
+        public PSResourceFile(string blobSource, string filePath, string fileMode = default(string))
         {
             this.omObject = new Microsoft.Azure.Batch.ResourceFile(blobSource, filePath, fileMode);
         }
