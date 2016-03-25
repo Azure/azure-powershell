@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string computeNodeId = null;
-            int count = 3; // shared, startup, workitems
+            int count = 4; // shared, startup, workitems, applications
             controller.RunPsTestWorkflow(
             () => { return new string[] { string.Format("Test-ListAllNodeFilesByComputeNode '{0}' '{1}' '{2}' '{3}'", accountName, poolId, computeNodeId, count) }; },
             () =>
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string computeNodeId = null;
-            int count = 3; // shared, startup, workitems
+            int count = 4; // shared, startup, workitems, applications
             controller.RunPsTestWorkflow(
             () => { return new string[] { string.Format("Test-ListNodeFileByComputeNodePipeline '{0}' '{1}' '{2}' '{3}'", accountName, poolId, computeNodeId, count) }; },
             () =>

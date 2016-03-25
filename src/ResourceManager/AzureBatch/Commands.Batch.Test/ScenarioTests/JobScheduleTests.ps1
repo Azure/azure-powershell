@@ -44,11 +44,13 @@ function Test-NewJobSchedule
         $startTaskCmd = "cmd /c dir /s"
         $startTask.CommandLine = $startTaskCmd
 
+		$osFamily = "4"
+		$targetOS = "*"
+
         $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
         $poolSpec.TargetDedicated = $targetDedicated = 3
         $poolSpec.VirtualMachineSize = $vmSize = "small"
-        $poolSpec.OSFamily = $osFamily = "4"
-        $poolSpec.TargetOSVersion = $targetOS = "*"
+        $poolSpec.CloudServiceConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOS)
         $poolSpec.StartTask = $startTask
 
         $poolSpec.CertificateReferences = new-object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSCertificateReference]
@@ -192,8 +194,8 @@ function Test-NewJobSchedule
         Assert-AreEqual $poolLifeTime $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolLifeTimeOption
         Assert-AreEqual $targetDedicated $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetDedicated
         Assert-AreEqual $vmSize $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.VirtualMachineSize
-        Assert-AreEqual $osFamily $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.OSFamily
-        Assert-AreEqual $targetOS $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetOSVersion
+        Assert-AreEqual $osFamily $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.OSFamily
+        Assert-AreEqual $targetOS $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.TargetOSVersion
         Assert-AreEqual $certRefCount $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences.Count
         Assert-AreEqual $storeLocation $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreLocation
         Assert-AreEqual $storeName $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreName
@@ -384,11 +386,13 @@ function Test-UpdateJobSchedule
     $startTaskCmd = "cmd /c dir /s"
     $startTask.CommandLine = $startTaskCmd
 
+	$osFamily = "4"
+	$targetOS = "*"
+
     $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
     $poolSpec.TargetDedicated = $targetDedicated = 3
     $poolSpec.VirtualMachineSize = $vmSize = "small"
-    $poolSpec.OSFamily = $osFamily = "4"
-    $poolSpec.TargetOSVersion = $targetOS = "*"
+    $poolSpec.CloudServiceConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOS)
     $poolSpec.StartTask = $startTask
 
     $poolSpec.CertificateReferences = new-object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSCertificateReference]
@@ -538,8 +542,8 @@ function Test-UpdateJobSchedule
     Assert-AreEqual $poolLifeTime $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolLifeTimeOption
     Assert-AreEqual $targetDedicated $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetDedicated
     Assert-AreEqual $vmSize $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.VirtualMachineSize
-    Assert-AreEqual $osFamily $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.OSFamily
-    Assert-AreEqual $targetOS $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetOSVersion
+    Assert-AreEqual $osFamily $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.OSFamily
+    Assert-AreEqual $targetOS $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.TargetOSVersion
     Assert-AreEqual $certRefCount $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences.Count
     Assert-AreEqual $storeLocation $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreLocation
     Assert-AreEqual $storeName $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreName

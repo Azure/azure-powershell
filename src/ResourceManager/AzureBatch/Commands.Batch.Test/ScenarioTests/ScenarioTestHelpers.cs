@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     BatchException batchEx = inner as BatchException;
                     // When the cert doesn't exist, we get a 404 error. For all other errors, throw.
-                    if (batchEx == null || !batchEx.Message.Contains("CertificateNotFound"))
+                    if (batchEx == null || !batchEx.Message.Contains("NotFound"))
                     {
                         throw;
                     }
@@ -212,11 +212,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 psStartTask = new PSStartTask(startTask);
             }
 
+            PSCloudServiceConfiguration paasConfiguration = new PSCloudServiceConfiguration("4", "*");
+            
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
                 VirtualMachineSize = "small",
-                OSFamily = "4",
-                TargetOSVersion = "*",
+                CloudServiceConfiguration = paasConfiguration,
                 TargetDedicated = targetDedicated,
                 CertificateReferences = certReferences,
                 StartTask = psStartTask,
