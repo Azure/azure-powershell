@@ -70,12 +70,9 @@ namespace Microsoft.WindowsAzure.Commands.WAPackIaaS.VirtualMachine
         {
             vm.CPUCount = VMSizeProfile.CPUCount;
             vm.Memory = VMSizeProfile.Memory;
-            if (VMSizeProfile.DynamicMemoryEnabled == true)
-            {
-                vm.DynamicMemoryEnabled = VMSizeProfile.DynamicMemoryEnabled;
-                vm.DynamicMemoryMaximumMB = VMSizeProfile.DynamicMemoryMaximumMB;
-                vm.DynamicMemoryMinimumMB = VMSizeProfile.DynamicMemoryMinimumMB;
-            }            
+            vm.DynamicMemoryEnabled = VMSizeProfile.DynamicMemoryEnabled;
+            vm.DynamicMemoryMaximumMB = VMSizeProfile.DynamicMemoryMaximumMB;
+            vm.DynamicMemoryMinimumMB = VMSizeProfile.DynamicMemoryMinimumMB;
         }
     }
 }

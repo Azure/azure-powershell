@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.Operations;
 
 namespace Microsoft.WindowsAzure.Commands.WAPackIaaS.VirtualMachine
 {
-    [Cmdlet(VerbsCommon.Get, "WAPackCloudVMRoleSizeProfile", DefaultParameterSetName = WAPackCmdletParameterSets.Empty)]
+    [Cmdlet(VerbsCommon.Get, "WAPackClodVMRoleSizeProfile", DefaultParameterSetName = WAPackCmdletParameterSets.Empty)]
     public class GetWAPackClodVMRoleSizeProfile : IaaSCmdletBase
     {
         
