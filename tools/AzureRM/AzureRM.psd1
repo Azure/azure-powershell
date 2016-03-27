@@ -8,6 +8,9 @@
   
 @{  
   
+#Base module
+RootModule = '.\AzureRM.psm1'
+
 # Version number of this module.  
 ModuleVersion = '1.3.0'  
   
