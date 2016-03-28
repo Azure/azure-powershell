@@ -54,21 +54,21 @@ namespace Microsoft.AzureStack.Commands
         public Guid SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the path. TODO - support directory and file path.
+        /// Gets or sets the resource manager location.
+        /// </summary>
+        [Parameter(Mandatory = true)]
+        [ValidateNotNull]
+        public string ArmLocation { get; set; } // TODO - use API to get CSM location?
+
+        /// <summary>
+        /// Gets or sets the gallery item uri.
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateNotNull]
-        public string Path { get; set; }
-
-        /// <summary>
-        /// This queue is used by the tests to assign fixed GalleryPackageId
-        /// every time the test runs
-        /// </summary>
-        public static Queue<Guid> GalleryPackageIds { get; set; }
+        public string GalleryItemUri { get; set; }
 
         static AddGalleryItem()
         {
-            GalleryPackageIds = new Queue<Guid>();
         }
 
         /// <summary>
@@ -77,17 +77,18 @@ namespace Microsoft.AzureStack.Commands
         protected override object ExecuteCore()
         {
             this.WriteVerbose(Resources.AddingGalleryItem.FormatArgs(this.Name));
-
             using (var client = this.GetAzureStackClient(this.SubscriptionId))
-            using (var filestream = File.Open(this.Path, FileMode.Open, FileAccess.Read))
             {
-                var manifest = client.Package.CreateOrUpdate(
-                    this.ResourceGroup,
-                    (AddGalleryItem.GalleryPackageIds.Count == 0
-                        ? Guid.NewGuid()
-                        : AddGalleryItem.GalleryPackageIds.Dequeue()).ToString(),
-                    filestream);
-                var uploadParameters = new GalleryItemCreateOrUpdateParameters() {Manifest = manifest.Manifest};
+                var galleryItemModel = new GalleryItemModel()
+                {
+                    Location = this.ArmLocation,
+                    Properties = new GalleryItemUriPayload()
+                    {
+                        GalleryItemUri = this.GalleryItemUri
+                    }
+                };
+
+                var uploadParameters = new GalleryItemCreateOrUpdateParameters() { GalleryItem = galleryItemModel };
                 return client.GalleryItem.CreateOrUpdate(this.ResourceGroup, this.Name, uploadParameters);
             }
         }
