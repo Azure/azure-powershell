@@ -121,9 +121,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             string requestSelect = null;
             string requestExpand = null;
 
-            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
             AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> response = BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.CloudPool, ProxyModels.PoolListHeaders>();
-
             Action<BatchRequest<ProxyModels.PoolListOptions, AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>> extractPoolListAction =
                 (request) =>
                 {

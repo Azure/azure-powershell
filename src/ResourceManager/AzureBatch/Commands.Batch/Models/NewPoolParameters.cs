@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public string OSFamily { get; set; }
 
         /// <summary>
-        /// The configuration of virtual machines for the pool.
+        /// The configuration of virtual machines for an IaaS pool.
         /// </summary>
         public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
 
         /// <summary>
-        /// The configuration of cloud service for the pool.
+        /// The configuration of cloud service for a PaaS pool.
         /// </summary>
         public PSCloudServiceConfiguration CloudServiceConfiguration { get; set; }
 
