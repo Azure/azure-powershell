@@ -3,10 +3,10 @@
 
 <#
  .Synopsis
-  DEPRECATED - Installing the AzureRM installs all AzureRM cmdlets.
+  DEPRECATED - Installing the AzureRM module installs all AzureRM cmdlets.
 
  .Description
-  DEPRECATED - Installing the AzureRM installs all AzureRM cmdlets.
+  DEPRECATED - Installing the AzureRM module installs all AzureRM cmdlets.
 
  .Parameter MajorVersion
   DEPRECATED -Specifies the major version.
@@ -85,7 +85,7 @@ function Uninstall-AzureRM
 
   
 
-  Write-Output "DEPRECATED - to uninstall azure modules, remove or uninstall each module using 'Uninstall-Module'"
+  Write-Output "DEPRECATED - to uninstall azure modules, remove or uninstall each module using 'Uninstall-Module'."
 
  
 }
