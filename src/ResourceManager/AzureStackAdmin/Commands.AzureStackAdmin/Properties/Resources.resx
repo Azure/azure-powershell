@@ -234,9 +234,6 @@
   <data name="UpdatingSubscription" xml:space="preserve">
     <value>Updating subscription id "{0}".</value>
   </data>
-  <data name="WarningDisableCertificateValidation" xml:space="preserve">
-    <value>Disabling certificate validation may allow others to intercept and decrypt this web request.</value>
-  </data>
   <data name="ManagedLocationAlreadyExists" xml:space="preserve">
     <value>A managed location with name "{0}" already exists.</value>
   </data>

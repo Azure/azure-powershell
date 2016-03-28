@@ -17,8 +17,6 @@ namespace Microsoft.AzureStack.Commands.Security
     using System;
     using System.Collections.Specialized;
     using System.Management.Automation;
-    using System.Net;
-    using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     /// <summary>
@@ -93,46 +91,22 @@ namespace Microsoft.AzureStack.Commands.Security
         public PSCredential Credential { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether to disable certificate validation.
-        /// </summary>
-        [Parameter]
-        public SwitchParameter DisableCertificateValidation { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void ProcessRecord()
         {
-            var originalValidateCallback = ServicePointManager.ServerCertificateValidationCallback;
             AuthenticationResult result;
 
-            try
+            this.Resource = this.Resource ?? SharedConstants.ResourceManager.ClientId;
+            this.ClientId = this.ClientId ?? SharedConstants.AzureStackPowerShell.ClientId;
+
+            if (this.IsInteractiveTokenRequest())
             {
-                // TODO (bryanr) - Evaluate if this should be removed entirely
-                if (this.DisableCertificateValidation)
-                {
-                    this.WriteWarning(Resources.WarningDisableCertificateValidation);
-                    ServicePointManager.ServerCertificateValidationCallback = (s, certificate, chain, sslPolicyErrors) => true;
-                }
-
-                this.Resource = this.Resource ?? SharedConstants.ResourceManager.ClientId;
-                this.ClientId = this.ClientId ?? SharedConstants.AzureStackPowerShell.ClientId;
-
-                if (this.IsInteractiveTokenRequest())
-                {
-                    result = this.GetSecurityTokenWithInteractiveFlow();
-                }
-                else
-                {
-                    result = this.GetSecurityTokenWithNonInteractiveFlow();
-                }
+                result = this.GetSecurityTokenWithInteractiveFlow();
             }
-            finally
+            else
             {
-                if (this.DisableCertificateValidation)
-                {
-                    ServicePointManager.ServerCertificateValidationCallback = originalValidateCallback;
-                }
+                result = this.GetSecurityTokenWithNonInteractiveFlow();
             }
 
             // Write the object to the pipeline only after the certificate validation callback has been restored.
