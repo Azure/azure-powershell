@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// </summary>
         /// <param name="responseToUse">The response the interceptor should return. If none is specified, then a new instance of the response type is instantiated.</param>
         /// <param name="requestAction">An action to perform on the request.</param>
-        /// <typeparam name="TOptions">The type of the request parameters.</typeparam>
+        /// <typeparam name="TOptions">The type of the request options.</typeparam>
         /// <typeparam name="TResponse">The type of the expected response.</typeparam>
         public static RequestInterceptor CreateFakeServiceResponseInterceptor<TOptions, TResponse>(TResponse responseToUse = default(TResponse),
             Action<BatchRequest<TOptions, TResponse>> requestAction = null)
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <param name="responseToUse">The response the interceptor should return. If none is specified, then a new instance of the response type is instantiated.</param>
         /// <param name="requestAction">An action to perform on the request.</param>
         /// <typeparam name="TBody">The type of the body parameters associated with the request.</typeparam>
-        /// <typeparam name="TOptions">The type of the request parameters.</typeparam>
+        /// <typeparam name="TOptions">The type of the request options.</typeparam>
         /// <typeparam name="TResponse">The type of the expected response.</typeparam>
         public static RequestInterceptor CreateFakeServiceResponseInterceptor<TBody, TOptions, TResponse>(TResponse responseToUse = default(TResponse),
             Action<BatchRequest<TBody, TOptions, TResponse>> requestAction = null)
@@ -185,6 +185,12 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return interceptor;
         }
 
+        /// <summary>
+        /// Builds a generic azure operation response object
+        /// </summary>
+        /// <typeparam name="TBody">The object that will be put in the response body</typeparam>
+        /// <typeparam name="THeader">The type of header for the response</typeparam>
+        /// <returns></returns>
         public static AzureOperationResponse<TBody, THeader> CreateGenericAzureOperationResponse<TBody, THeader>()
             where TBody : class, new ()
             where THeader : class, new ()
@@ -195,6 +201,12 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return response;
         }
 
+        /// <summary>
+        /// Builds a generic azure operation response with a response body that contains a list of objects
+        /// </summary>
+        /// <typeparam name="TBody">The object that will be put in the response body as a list</typeparam>
+        /// <typeparam name="THeader">The type of header for the response</typeparam>
+        /// <returns></returns>
         public static AzureOperationResponse<IPage<TBody>, THeader> CreateGenericAzureOperationListResponse<TBody, THeader>()
             where TBody : class, new()
             where THeader : class, new()
