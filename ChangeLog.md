@@ -1,4 +1,4 @@
-﻿##2016.03.30 version 1.2.3
+﻿##2016.03.30 version 1.3.0
 * Azure Storage
   * Made Protocol parameter in following cmdlets to be nullable and optional
     - New-AzureStorageBlobSASToken
