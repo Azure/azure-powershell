@@ -85,7 +85,7 @@ function Uninstall-AzureRM
 
   
 
-  Write-Output "DEPRECATED - to uninstall azure modules, run 'Uninstall-Module AzureRm', then 'Uninstall-Module Azure* -Force'"
+  Write-Output "DEPRECATED - to uninstall azure modules, remove or uninstall each module using 'Uninstall-Module'"
 
  
 }
