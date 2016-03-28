@@ -52,11 +52,11 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.10-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.12-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight.Job">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.Job.1.1.0-preview\lib\net40\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.Job.2.0.0-preview\lib\net40\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HDInsightTestBase.cs" />
+    <Compile Include="UnitTests\PremiumClusterTests.cs" />
     <Compile Include="UnitTests\ScriptActionTests.cs" />
     <None Include="ScenarioTests\HDInsightConfigurationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

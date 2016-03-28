@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         {
             base.ValidateParameters();
 
-            XNamespace configNameSpace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
+            XNamespace configNameSpace = DiagnosticsHelper.XmlNamespace;
             ProviderNamespace = DiagnosticsExtensionNamespace;
             ExtensionName = DiagnosticsExtensionType;
 
@@ -158,7 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             PublicConfiguration = publicConfigElement.ToString();
 
             // Make sure the storage account name in PrivateConfig matches.
-            var privateConfigStorageAccountName = DiagnosticsHelper.GetStorageAccountInfoFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.PrivConfNameAttr);
+            var privateConfigStorageAccountName = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfNameAttr);
             if (!string.IsNullOrEmpty(privateConfigStorageAccountName)
                 && !string.Equals(StorageAccountName, privateConfigStorageAccountName, StringComparison.OrdinalIgnoreCase))
             {
@@ -169,6 +169,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfNameAttr, StorageAccountName);
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfKeyAttr, StorageAccountKey);
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfEndpointAttr, StorageAccountEndpoint);
+            AddEventHubPrivateConfig(PrivateConfigurationXml);
+
             PrivateConfiguration = PrivateConfigurationXml.ToString();
         }
 
@@ -191,6 +193,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 ? string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ClassicCompute/domainNames/{2}",
                     Profile.DefaultSubscription.Id, resourceGroup, ServiceName)
                 : null;
+        }
+
+        private void AddEventHubPrivateConfig(XDocument privateConfig)
+        {
+            var eventHubUrl = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.EventHubElemStr, DiagnosticsHelper.EventHubUrlAttr);
+            var eventHubSharedAccessKeyName = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.EventHubElemStr, DiagnosticsHelper.EventHubSharedAccessKeyNameAttr);
+            var eventHubSharedAccessKey = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.EventHubElemStr, DiagnosticsHelper.EventHubSharedAccessKeyAttr);
+
+            if (!string.IsNullOrEmpty(eventHubUrl) || !string.IsNullOrEmpty(eventHubSharedAccessKeyName) || !string.IsNullOrEmpty(eventHubSharedAccessKey))
+            {
+                var privateConfigElem = privateConfig.Descendants().FirstOrDefault(d => d.Name.LocalName == DiagnosticsHelper.PrivateConfigElemStr);
+                XNamespace XmlNamespace = DiagnosticsHelper.XmlNamespace;
+                privateConfigElem.Add(new XElement(XmlNamespace + DiagnosticsHelper.EventHubElemStr,
+                    new XAttribute(DiagnosticsHelper.EventHubUrlAttr, eventHubUrl),
+                    new XAttribute(DiagnosticsHelper.EventHubSharedAccessKeyNameAttr, eventHubSharedAccessKeyName),
+                    new XAttribute(DiagnosticsHelper.EventHubSharedAccessKeyAttr, eventHubSharedAccessKey)
+                    ));
+            }
         }
     }
 }

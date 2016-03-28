@@ -29,19 +29,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [Parameter(Mandatory = true, HelpMessage = "Resource type that this SAS token applies to.")]
         public SharedAccessAccountResourceTypes ResourceType { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Permissions.")]
+        [Parameter(Mandatory = false, HelpMessage = "Permissions.")]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        public SharedAccessProtocol Protocol { get; set; }
+        [ValidateNotNull]
+        public SharedAccessProtocol? Protocol { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
+        [ValidateNotNullOrEmpty]
         public string IPAddressOrRange { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Start Time")]
+        [ValidateNotNull]
         public DateTime? StartTime { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Expiry Time")]
+        [ValidateNotNull]
         public DateTime? ExpiryTime { get; set; }
 
         // Overwrite the useless parameter

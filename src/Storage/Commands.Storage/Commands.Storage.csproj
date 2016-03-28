@@ -108,9 +108,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\WindowsAzure.Storage.6.1.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement, Version=5.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement">
+      <HintPath>..\..\packages\Microsoft.Azure.Storage.DataMovement.0.2.0\lib\net45\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -235,16 +235,11 @@
     <Compile Include="Model\Contract\IStorageTableManagement.cs" />
     <Compile Include="Model\Contract\StorageFileManagement.cs" />
     <Compile Include="Model\Contract\StorageQueueManagement.cs" />
-    <Compile Include="Model\ResourceModel\AzureStorageQueue.cs" />
     <Compile Include="Model\Contract\StorageTableManagement.cs" />
-    <Compile Include="Model\ResourceModel\AzureStorageTable.cs" />
     <Compile Include="Model\ResourceModel\PSCorsRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\ResourceModel\AzureStorageBlob.cs" />
     <Compile Include="Model\Contract\IStorageBlobManagement.cs" />
     <Compile Include="Model\Contract\StorageBlobManagement.cs" />
-    <Compile Include="Model\ResourceModel\AzureStorageBase.cs" />
-    <Compile Include="Model\ResourceModel\AzureStorageContainer.cs" />
     <Compile Include="Queue\Cmdlet\GetAzureStorageQueue.cs" />
     <Compile Include="Queue\Cmdlet\GetAzureStorageQueueStoredAccessPolicy.cs" />
     <Compile Include="Queue\Cmdlet\NewAzureStorageQueue.cs" />

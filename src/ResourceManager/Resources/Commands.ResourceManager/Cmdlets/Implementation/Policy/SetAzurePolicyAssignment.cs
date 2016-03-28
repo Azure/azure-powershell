@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             string resourceId = this.Id ?? this.GetResourceId();
-            var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
 
             var operationResult = this.GetResourcesClient()
                         .PutResource(

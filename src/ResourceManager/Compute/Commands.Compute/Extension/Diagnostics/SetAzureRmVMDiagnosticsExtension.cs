@@ -194,9 +194,8 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.privateConfiguration == null)
                 {
-                    this.privateConfiguration = DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.StorageAccountName,
-                        this.StorageAccountKey,
-                        this.StorageAccountEndpoint);
+                    this.privateConfiguration = DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.DiagnosticsConfigurationPath,
+                        this.StorageAccountName, this.StorageAccountKey, this.StorageAccountEndpoint);
                 }
 
                 return this.privateConfiguration;
