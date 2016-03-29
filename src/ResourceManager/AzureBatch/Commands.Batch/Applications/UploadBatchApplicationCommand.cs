@@ -44,9 +44,16 @@ namespace Microsoft.Azure.Commands.Batch.Applications
         [ValidateNotNullOrEmpty]
         public string FilePath { get; set; }
 
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string Format { get; set; }
+
+        /// <summary>
+        /// TODO: IVAN
+        /// </summary>
         public override void ExecuteCmdlet()
         {
-            PSApplicationPackage response = BatchClient.UploadApplicationPackage(ResourceGroupName, AccountName, ApplicationId, ApplicationVersion, FilePath);
+            PSApplicationPackage response = BatchClient.UploadApplicationPackage(ResourceGroupName, AccountName, ApplicationId, ApplicationVersion, FilePath, Format);
             WriteObject(response);
         }
     }

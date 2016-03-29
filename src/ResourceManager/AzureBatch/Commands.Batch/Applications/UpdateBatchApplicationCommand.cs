@@ -49,10 +49,11 @@ namespace Microsoft.Azure.Commands.Batch.Applications
         [ValidateNotNullOrEmpty]
         public bool allowUpdates { get; set; }
 
+        /// <summary>
+        /// TODO: IVAN
+        /// </summary>
         public override void ExecuteCmdlet()
         {
-            System.Diagnostics.Debugger.Launch();
-
             WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
             BatchClient.UpdateApplication(ResourceGroupName, AccountName, ApplicationId, allowUpdates, defaultVersion, displayName);
             WriteVerboseWithTimestamp(Resources.EndMAMLCall, mamlCall);

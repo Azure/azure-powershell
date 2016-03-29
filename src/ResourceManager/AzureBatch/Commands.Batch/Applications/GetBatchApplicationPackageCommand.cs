@@ -40,9 +40,11 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ApplicationVersion { get; set; }
 
+        /// <summary>
+        /// TODO: IVAN
+        /// </summary>
         public override void ExecuteCmdlet()
         {
-            System.Diagnostics.Debugger.Launch();
             PSApplicationPackage context = BatchClient.GetApplicationPackage(this.ResourceGroupName, this.AccountName, ApplicationId, ApplicationVersion);
             WriteObject(context);
         }

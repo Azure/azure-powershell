@@ -45,10 +45,11 @@ namespace Microsoft.Azure.Commands.Batch.Applications
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
+        /// <summary>
+        /// TODO: IVAN
+        /// </summary>
         public override void ExecuteCmdlet()
         {
-            System.Diagnostics.Debugger.Launch();
-
             PSApplication response = BatchClient.AddApplication(ResourceGroupName, AccountName, ApplicationId, AllowUpdates, DisplayName);
 
             WriteObject(response);
