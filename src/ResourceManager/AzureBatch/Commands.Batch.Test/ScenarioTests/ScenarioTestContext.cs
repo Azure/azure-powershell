@@ -22,8 +22,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class ScenarioTestContext : BatchAccountContext
     {
-        public ScenarioTestContext(BatchAccountContext context) : base()
+        public ScenarioTestContext() : base()
         {
+            // Only set the properties needed for interacting with the Batch service.
+            this.AccountName = Environment.GetEnvironmentVariable("AZURE_BATCH_ACCOUNT");
+            this.PrimaryAccountKey = Environment.GetEnvironmentVariable("AZURE_BATCH_ACCESS_KEY");
+            this.TaskTenantUrl = Environment.GetEnvironmentVariable("AZURE_BATCH_ENDPOINT");
         }
 
         protected override BatchServiceClient CreateBatchRestClient(string url, string accountName, string key, DelegatingHandler handler = default(DelegatingHandler))
