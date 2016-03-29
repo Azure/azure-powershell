@@ -126,11 +126,12 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    TResponse response = responseToUse;
-
                     if (responseToUse == null)
                     {
-                        response = new TResponse();
+                        responseToUse = new TResponse()
+                        {
+                            Response = new HttpResponseMessage()
+                        };
                     }
 
                     if (requestAction != null)
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                         requestAction(request);
                     }
 
-                    Task<TResponse> task = Task.FromResult(response);
+                    Task<TResponse> task = Task.FromResult(responseToUse);
                     return task;
                 };
             });
@@ -170,15 +171,15 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    TResponse response = responseToUse;
-
                     if (responseToUse == null)
                     {
-                        response = new TResponse();
-                        response.Response = new HttpResponseMessage();
+                        responseToUse = new TResponse()
+                        {
+                            Response = new HttpResponseMessage()
+                        };
                     }
 
-                    Task<TResponse> task = Task.FromResult(response);
+                    Task<TResponse> task = Task.FromResult(responseToUse);
                     return task;
                 };
             });
@@ -195,9 +196,12 @@ namespace Microsoft.Azure.Commands.Batch.Test
             where TBody : class, new () 
             where THeader : class, new ()
         {
-            var response = new AzureOperationResponse<TBody, THeader>();
-            response.Body = new TBody();
-            response.Headers = new THeader();
+            var response = new AzureOperationResponse<TBody, THeader>()
+            {
+                Body = new TBody(),
+                Headers = new THeader()
+            };
+
             return response;
         }
 
@@ -211,9 +215,12 @@ namespace Microsoft.Azure.Commands.Batch.Test
             where TBody : class, new()
             where THeader : class, new()
         {
-            var response = new AzureOperationResponse<IPage<TBody>, THeader>();
-            response.Body = new EmptyPagedEnumerable<TBody>();
-            response.Headers = new THeader();
+            var response = new AzureOperationResponse<IPage<TBody>, THeader>()
+            {
+                Body = new EmptyPagedEnumerable<TBody>(),
+                Headers = new THeader()
+            };
+
             return response;
         } 
 
@@ -762,9 +769,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
             fieldInfo.SetValue(obj, fieldValue);
         }
 
-        /// <summary>
-        /// Convert Hyak-based code generator enums to swagger base
-        /// </summary>
         internal static T MapEnum<T>(Enum otherEnum) where T : struct
         {
             if (otherEnum == null)
@@ -776,9 +780,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return result;
         }
 
-        /// <summary>
-        /// Convert Hyak-based code generator nullable enums to swagger base
-        /// </summary>
         internal static T? MapNullableEnum<T>(Enum otherEnum) where T : struct
         {
             if (otherEnum == null)

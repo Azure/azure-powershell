@@ -210,7 +210,7 @@
     <Compile Include="Jobs\RemoveBatchJobCommandTests.cs" />
     <Compile Include="Jobs\SetBatchJobCommandTests.cs" />
     <Compile Include="Jobs\StopBatchJobCommandTests.cs" />
-    <Compile Include="EmptyPagedEnumerable.cs" />
+    <Compile Include="MockPagedEnumerable.cs" />
     <Compile Include="Models\BatchAccountContextTest.cs" />
     <Compile Include="Pools\DisableBatchAutoScaleCommandTests.cs" />
     <Compile Include="Pools\EnableBatchAutoScaleCommandTests.cs" />

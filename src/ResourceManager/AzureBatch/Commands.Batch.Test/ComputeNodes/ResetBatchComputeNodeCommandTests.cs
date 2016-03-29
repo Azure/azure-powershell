@@ -25,6 +25,7 @@ using Microsoft.Azure.Batch.Protocol.BatchRequests;
 using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using BatchCommon = Microsoft.Azure.Batch.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.PoolId = "testPool";
             cmdlet.Id = "computeNode1";
-            cmdlet.ReimageOption = Microsoft.Azure.Batch.Common.ComputeNodeReimageOption.Terminate;
+            cmdlet.ReimageOption = BatchCommon.ComputeNodeReimageOption.Terminate;
 
             ComputeNodeReimageOption? requestReimageOption = null;
 
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             // Verify that the reimage option was properly set on the outgoing request
-            Assert.Equal(cmdlet.ReimageOption.ToString().ToLower(), requestReimageOption.ToString().ToLower());
+            Assert.Equal(cmdlet.ReimageOption, BatchTestHelpers.MapEnum<BatchCommon.ComputeNodeReimageOption>(requestReimageOption));
         }
     }
 }

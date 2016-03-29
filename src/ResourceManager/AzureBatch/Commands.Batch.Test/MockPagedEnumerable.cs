@@ -19,13 +19,13 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Batch.Test
 {
-    public class EmptyPagedEnumerable<T> : IPage<T>, IEnumerable<T>, IEnumerable
+    public class EmptyPagedEnumerable<T> : IPage<T>
     {
-        private readonly IList<T> items;
+        private readonly IEnumerable<T> items;
 
-        public EmptyPagedEnumerable(IList<T> items = null)
+        public EmptyPagedEnumerable(IEnumerable<T> items = null)
         {
-            this.items = items;
+            this.items = items ?? Enumerable.Empty<T>();
         }
 
         public IEnumerator GetEnumerator()
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
-            return (items == null) ? Enumerable.Empty<T>().GetEnumerator() : items.GetEnumerator();
+            return items.GetEnumerator();
         }
 
-        public string NextPageLink { get; private set; }
+        public string NextPageLink { get; set; }
     }
 }

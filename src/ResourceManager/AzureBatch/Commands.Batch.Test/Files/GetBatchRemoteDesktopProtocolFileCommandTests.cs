@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -56,10 +56,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.ComputeNode = null;
             cmdlet.DestinationPath = null;
 
-            AzureOperationResponse<System.IO.Stream, ComputeNodeGetRemoteDesktopHeaders> response = BatchTestHelpers.CreateGetRemoteDesktOperationResponse();
+            AzureOperationResponse<Stream, ComputeNodeGetRemoteDesktopHeaders> response = BatchTestHelpers.CreateGetRemoteDesktOperationResponse();
             
             // Don't go to the service on a Get ComputeNode Remote Desktop call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetRemoteDesktopOptions, AzureOperationResponse<System.IO.Stream, ComputeNodeGetRemoteDesktopHeaders>>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetRemoteDesktopOptions, AzureOperationResponse<Stream, ComputeNodeGetRemoteDesktopHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())
