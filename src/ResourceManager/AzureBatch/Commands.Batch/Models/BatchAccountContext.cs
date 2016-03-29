@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Batch
             }
         }
 
-        internal BatchAccountContext()
+        public BatchAccountContext()
         {
             this.keyInUse = AccountKeyType.Primary;
         }
