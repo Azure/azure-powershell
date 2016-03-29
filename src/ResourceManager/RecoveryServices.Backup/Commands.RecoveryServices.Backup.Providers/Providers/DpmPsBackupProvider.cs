@@ -82,8 +82,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public List<Models.AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
         {
             string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
-            ContainerRegistrationStatus status = (ContainerRegistrationStatus)this.ProviderData.ProviderParameters[ContainerParams.Status];
-            string resourceGroupName = (string)this.ProviderData.ProviderParameters[ContainerParams.ResourceGroupName];
 
             ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
 
@@ -91,22 +89,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryParams.FriendlyName = name;
 
             // 2. Filter by ContainerType
-            queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
-
-            // 3. Filter by Status
-            queryParams.RegistrationStatus = status.ToString();
+            queryParams.ProviderType = ProviderType.Mab.ToString();
 
             var listResponse = HydraAdapter.ListContainers(queryParams);
 
             List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
-
-            // 4. Filter by RG Name
-            if (!string.IsNullOrEmpty(resourceGroupName))
-            {
-                containerModels = containerModels.Where(containerModel =>
-                    (containerModel as AzureRmRecoveryServicesDpmContainer).ResourceGroupName == resourceGroupName).ToList();
-            }
-
+            
             return containerModels;
         }
 

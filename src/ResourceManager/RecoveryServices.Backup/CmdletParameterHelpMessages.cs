@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ResourceGroupName = "The ResourceGroup of the resource being managed by the Azure Backup service (for example: ResourceGroup name of the VM).";
             public const string Status = "The registration status of the Azure Backup container.";
             public const string ContainerType = "The type of the Azure Backup container. This can be a Windows Server, an Azure IaaS VM, or a Data Protection Manager server.";
-            public const string Container = "The recovery services backup container.";
+            public const string RegisteredContainer = "The recovery services backup container.";
         }
 
         internal static class Common

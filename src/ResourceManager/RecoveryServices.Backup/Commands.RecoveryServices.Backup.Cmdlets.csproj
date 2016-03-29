@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\Container\GetAzureRmBackupManagementServer.cs" />
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureRmBackupManagementServer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureRmRecoveryServicesBackupContainer.cs" />

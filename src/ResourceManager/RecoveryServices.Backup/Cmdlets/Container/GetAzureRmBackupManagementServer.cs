@@ -22,14 +22,17 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmBackupManagementServer")]
-    public class UnregisterAzureRmBackupManagementServer : RecoveryServicesBackupCmdletBase
+    /// <summary>
+    /// Get list of containers
+    /// </summary>
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>), typeof(AzureRmRecoveryServicesContainerBase))]
+    public class GetAzureRmBackupManagementServer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Name)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesContainerBase Container { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -37,10 +40,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
             {
                 base.ExecuteCmdlet();
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>() { { ContainerParams.Container, Container } }, HydraAdapter);
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                {  
+                    {ContainerParams.ContainerType, ContainerType.Dpm},
+                    {ContainerParams.Name, Name}
+                }, HydraAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.Dpm);
-                var containerModels = psBackupProvider.UnregisterContainer();
+                var containerModels = psBackupProvider.ListProtectionContainers();
+
+                if (containerModels.Count != 1)
+                {
+                    WriteObject(containerModels.First());
+                }
+                else
+                {
+                    WriteObject(containerModels);
+                }
             });
         }
     }
