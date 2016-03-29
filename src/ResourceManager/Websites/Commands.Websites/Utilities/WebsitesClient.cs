@@ -507,18 +507,33 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public void RestoreSite(string resourceGroupName, string webSiteName, string slotName,
+        public RestoreResponse RestoreSite(string resourceGroupName, string webSiteName, string slotName,
             string backupId, RestoreRequest request)
         {
             string qualifiedSiteName;
             var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
             if (useSlot)
             {
-                WrappedWebsitesClient.Sites.RestoreSiteSlot(resourceGroupName, webSiteName, backupId, request, slotName);
+                return WrappedWebsitesClient.Sites.RestoreSiteSlot(resourceGroupName, webSiteName, backupId, request, slotName);
             }
             else
             {
-                WrappedWebsitesClient.Sites.RestoreSite(resourceGroupName, webSiteName, backupId, request);
+                return WrappedWebsitesClient.Sites.RestoreSite(resourceGroupName, webSiteName, backupId, request);
+            }
+        }
+
+        public void RecoverSite(string resourceGroupName, string webSiteName, string slotName,
+            CsmSiteRecoveryEntity recoveryEntity)
+        {
+            string qualifiedSiteName;
+            bool useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                WrappedWebsitesClient.Sites.RecoverSiteSlot(resourceGroupName, webSiteName, recoveryEntity, slotName);
+            }
+            else
+            {
+                WrappedWebsitesClient.Sites.RecoverSite(resourceGroupName, webSiteName, recoveryEntity);
             }
         }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.WebApps
         protected const string ParameterSet2Name = "S2";
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 0, Mandatory = true,
-            HelpMessage = "The name of the resource group.")]
+            HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.WebApps
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false,
-            HelpMessage = "The name of the web app slot.")]
+            HelpMessage = "The name of the web app slot.", ValueFromPipelineByPropertyName = true)]
         public string Slot { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true,

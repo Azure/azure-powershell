@@ -19,6 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 
@@ -37,7 +38,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(WebsitesClient.DeleteBackup(ResourceGroupName, Name, Slot, BackupId));
+            var backup = WebsitesClient.DeleteBackup(ResourceGroupName, Name, Slot, BackupId);
+            WriteObject(BackupRestoreUtils.BackupItemToAppBackup(backup, ResourceGroupName, Name, Slot));
         }
     }
 }

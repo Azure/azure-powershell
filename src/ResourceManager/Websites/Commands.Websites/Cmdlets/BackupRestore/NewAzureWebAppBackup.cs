@@ -15,6 +15,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
@@ -22,17 +23,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Creates a backup of an Azure Web App
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmWebAppBackup"), OutputType(typeof(BackupItem))]
+    [Cmdlet(VerbsCommon.New, "AzureRmWebAppBackup"), OutputType(typeof(AzureWebAppBackup))]
     public class NewAzureWebAppBackup : WebAppOptionalSlotBaseCmdlet
     {
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.")]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountUrl;
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The name of the backup.")]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The name of the backup.", ValueFromPipelineByPropertyName = true)]
         public string BackupName { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The databases to backup.")]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The databases to backup.", ValueFromPipelineByPropertyName = true)]
         public DatabaseBackupSetting[] Databases;
 
         public override void ExecuteCmdlet()
@@ -47,7 +48,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 BackupRequestName = this.BackupName,
                 Databases = this.Databases
             };
-            WriteObject(WebsitesClient.BackupSite(ResourceGroupName, Name, Slot, request));
+            var backup = WebsitesClient.BackupSite(ResourceGroupName, Name, Slot, request);
+            WriteObject(BackupRestoreUtils.BackupItemToAppBackup(backup, ResourceGroupName, Name, Slot));
         }
     }
 }

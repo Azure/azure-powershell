@@ -26,23 +26,22 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
     [Cmdlet(VerbsData.Restore, "AzureRmWebAppBackup")]
     public class RestoreAzureWebAppBackup : WebAppOptionalSlotBaseCmdlet
     {
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.")]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountUrl;
 
-        [Parameter(Position = 4, Mandatory = true, HelpMessage = "The name of the backup blob to restore.")]
+        [Parameter(Position = 4, Mandatory = true, HelpMessage = "The name of the backup blob to restore.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string BlobName;
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "If specified, an existing web app will be overwritten by the contents of the backup.")]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "If specified, an existing web app will be overwritten by the contents of the backup.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter Overwrite;
 
-        [Parameter(Position = 6, Mandatory = false, HelpMessage = "If specified, custom domains are removed automatically during restore. Otherwise, custom domains are added to the site object when it is being restored, but the restore might fail due to conflicts.")]
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = "If specified, custom domains are removed automatically during restore. Otherwise, custom domains are added to the site object when it is being restored, but the restore might fail due to conflicts.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter IgnoreConflictingHostNames { get; set; }
 
-        [Parameter(Position = 7, Mandatory = false, HelpMessage = "The databases to restore. Must match the list of databases in the backup.")]
-        [ValidateNotNullOrEmpty]
-        public IList<DatabaseBackupSetting> Databases { get; set; }
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = "The databases to restore. Must match the list of databases in the backup.", ValueFromPipelineByPropertyName = true)]
+        public DatabaseBackupSetting[] Databases { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -58,7 +57,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                 Databases = this.Databases,
                 OperationType = BackupRestoreOperationType.Default
             };
-            // The id here does not actually matter. It is an artifact of the CSM API requirements.
+            // The id here does not actually matter. It is an artifact of the CSM API requirements. It should be possible
+            // to restore from a backup that is no longer stored in our Backups table.
             WebsitesClient.RestoreSite(ResourceGroupName, Name, Slot, "1", request);
         }
 

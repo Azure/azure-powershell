@@ -19,6 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
@@ -26,40 +27,39 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Modifies the automatic backup configuration for an Azure Web App
     /// </summary>
-    [Cmdlet(VerbsData.Edit, "AzureRmWebAppBackupConfiguration")]
+    [Cmdlet(VerbsData.Edit, "AzureRmWebAppBackupConfiguration"), OutputType(typeof(AzureWebAppBackupConfiguration))]
     public class EditAzureWebAppBackupConfiguration : WebAppOptionalSlotBaseCmdlet
     {
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.")]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountUrl;
 
-        [Parameter(Position = 4, Mandatory = true, HelpMessage = "Numeric value for how often the backups should be made.")]
+        [Parameter(Position = 4, Mandatory = true, HelpMessage = "Numeric value for how often the backups should be made.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public int FrequencyInterval { get; set; }
 
-        [Parameter(Position = 5, Mandatory = true, HelpMessage = "Unit of time for how often the backups should be made.")]
+        [Parameter(Position = 5, Mandatory = true, HelpMessage = "Unit of time for how often the backups should be made. Options are \"Hour\" and \"Day\".", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public FrequencyUnit FrequencyUnit { get; set; }
+        public string FrequencyUnit { get; set; }
 
-        [Parameter(Position = 6, Mandatory = true, HelpMessage = "How many days the automatic backups should be saved before being automatically deleted.")]
+        [Parameter(Position = 6, Mandatory = true, HelpMessage = "How many days the automatic backups should be saved before being automatically deleted.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public int RetentionPeriodInDays { get; set; }
 
-        [Parameter(Position = 7, Mandatory = true, HelpMessage = "The time when the automatic backups should begin.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = "The time when the automatic backups should begin. Backups will begin immediately if this is null.", ValueFromPipelineByPropertyName = true)]
         public DateTime StartTime { get; set; }
 
-        [Parameter(Position = 8, Mandatory = false, HelpMessage = "True if one backup should always be kept in the storage account, regardless of how old it is.")]
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = "True if one backup should always be kept in the storage account, regardless of how old it is.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter KeepAtLeastOneBackup { get; set; }
 
-        [Parameter(Position = 9, Mandatory = false, HelpMessage = "The databases to backup.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = "The databases to backup.", ValueFromPipelineByPropertyName = true)]
         public DatabaseBackupSetting[] Databases;
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            BackupSchedule schedule = new BackupSchedule(FrequencyUnit, FrequencyInterval, KeepAtLeastOneBackup.IsPresent,
+            var freq = BackupRestoreUtils.StringToFrequencyUnit(FrequencyUnit);
+            BackupSchedule schedule = new BackupSchedule(freq, FrequencyInterval, KeepAtLeastOneBackup.IsPresent,
                 RetentionPeriodInDays, StartTime);
             BackupRequest request = new BackupRequest()
             {
@@ -70,7 +70,20 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 Databases = this.Databases,
                 BackupRequestType = BackupRestoreOperationType.Default
             };
-            WriteObject(WebsitesClient.UpdateWebAppBackupConfiguration(ResourceGroupName, Name, Slot, request));
+            WebsitesClient.UpdateWebAppBackupConfiguration(ResourceGroupName, Name, Slot, request);
+            var config = new AzureWebAppBackupConfiguration()
+            {
+                Name = this.Name,
+                ResourceGroupName = this.ResourceGroupName,
+                StorageAccountUrl = this.StorageAccountUrl,
+                FrequencyInterval = this.FrequencyInterval,
+                FrequencyUnit = this.FrequencyUnit,
+                RetentionPeriodInDays = this.RetentionPeriodInDays,
+                StartTime = this.StartTime,
+                KeepAtLeastOneBackup = this.KeepAtLeastOneBackup.IsPresent,
+                Databases = this.Databases
+            };
+            WriteObject(config);
         }
     }
 }
