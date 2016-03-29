@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     // Grab the reboot option from the outgoing request.
-                    requestRebootOption = request.Parameters.NodeRebootOption;
+                    requestRebootOption = request.Parameters;
 
                     AzureOperationHeaderResponse<ComputeNodeRebootHeaders> response = new AzureOperationHeaderResponse<ComputeNodeRebootHeaders>();
                     Task<AzureOperationHeaderResponse<ComputeNodeRebootHeaders>> task = Task.FromResult(response);

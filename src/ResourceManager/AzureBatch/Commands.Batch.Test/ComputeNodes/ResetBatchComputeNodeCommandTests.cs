@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     // Grab the reimage option from the outgoing request.
-                    requestReimageOption = request.Parameters.NodeReimageOption;
+                    requestReimageOption = request.Parameters;
 
                     AzureOperationHeaderResponse<ComputeNodeReimageHeaders> response = new AzureOperationHeaderResponse<ComputeNodeReimageHeaders>();
                     Task<AzureOperationHeaderResponse<ComputeNodeReimageHeaders>> task = Task.FromResult(response);

@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Gets the result of evaluating an automatic scaling formula on the specified pool.
         /// </summary>
         /// <param name="parameters">The parameters specifying the pool and autoscale formula.</param>
-        public PSAutoScaleEvaluation EvaluateAutoScale(EvaluateAutoScaleParameters parameters)
+        public PSAutoScaleRun EvaluateAutoScale(EvaluateAutoScaleParameters parameters)
         {
             if (parameters == null)
             {
@@ -277,8 +277,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.EvaluateAutoScale, poolId, parameters.AutoScaleFormula));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            AutoScaleEvaluation evaluation = poolOperations.EvaluateAutoScale(poolId, parameters.AutoScaleFormula, parameters.AdditionalBehaviors);
-            return new PSAutoScaleEvaluation(evaluation);
+            AutoScaleRun evaluation = poolOperations.EvaluateAutoScale(poolId, parameters.AutoScaleFormula, parameters.AdditionalBehaviors);
+            return new PSAutoScaleRun(evaluation);
         }
 
         /// <summary>

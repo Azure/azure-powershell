@@ -15,21 +15,18 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Management.Batch.Models;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
-using Microsoft.Azure.Batch.Protocol.BatchRequests;
-using Microsoft.PowerShell.Commands;
-using Microsoft.Rest;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Batch.Test
 {
@@ -48,7 +45,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// </summary>
         public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null)
         {
-
             string tenantUrlEnding = "batch-test.windows-int.net";
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
             string subscription = Guid.Empty.ToString();
@@ -204,7 +200,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             where THeader : class, new()
         {
             var response = new AzureOperationResponse<IPage<TBody>, THeader>();
-            response.Body = new MockPage<TBody>();
+            response.Body = new EmptyPagedEnumerable<TBody>();
             response.Headers = new THeader();
             return response;
         } 
@@ -326,7 +322,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 certs.Add(cert);
             }
 
-            response.Body = new MockPage<ProxyModels.Certificate>(certs);
+            response.Body = new EmptyPagedEnumerable<ProxyModels.Certificate>(certs);
 
             return response;
         }
@@ -364,7 +360,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 pools.Add(pool);
             }
 
-            response.Body = new MockPage<ProxyModels.CloudPool>(pools);
+            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudPool>(pools);
 
             return response;
         }
@@ -402,7 +398,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 computeNodes.Add(computeNode);
             }
 
-            response.Body = new MockPage<ProxyModels.ComputeNode>(computeNodes);
+            response.Body = new EmptyPagedEnumerable<ProxyModels.ComputeNode>(computeNodes);
 
             return response;
         }
@@ -441,7 +437,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 jobSchedules.Add(new ProxyModels.CloudJobSchedule(id: id, schedule: schedule, jobSpecification: jobSpec));
             }
 
-            response.Body = new MockPage<ProxyModels.CloudJobSchedule>(jobSchedules);
+            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudJobSchedule>(jobSchedules);
 
             return response;
         }
@@ -479,7 +475,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 jobs.Add(job);
             }
             
-            response.Body = new MockPage<ProxyModels.CloudJob>(jobs);
+            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudJob>(jobs);
 
             return response;
         }
@@ -517,7 +513,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 tasks.Add(task);
             }
 
-            response.Body = new MockPage<ProxyModels.CloudTask>(tasks);
+            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudTask>(tasks);
 
             return response;
         }
@@ -610,7 +606,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 files.Add(file);
             }
 
-            response.Body = new MockPage<ProxyModels.NodeFile>(files);
+            response.Body = new EmptyPagedEnumerable<ProxyModels.NodeFile>(files);
 
             return response;
         }
@@ -632,7 +628,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 files.Add(file);
             }
 
-            response.Body = new MockPage<ProxyModels.NodeFile>(files);
+            response.Body = new EmptyPagedEnumerable<ProxyModels.NodeFile>(files);
 
             return response;
         }
