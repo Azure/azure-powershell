@@ -118,8 +118,8 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
         /// </summary>
-        public AccountKeyType KeyInUse 
-        { 
+        public AccountKeyType KeyInUse
+        {
             get { return this.keyInUse; }
             set
             {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Batch
                     this.batchOMClient = null;
                 }
                 this.keyInUse = value;
-            } 
+            }
         }
 
         internal BatchClient BatchOMClient
@@ -217,7 +217,6 @@ namespace Microsoft.Azure.Commands.Batch
             ServiceClientCredentials credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
 
             BatchServiceClient restClient = handler == null ? new BatchServiceClient(new Uri(url), credentials) : new BatchServiceClient(new Uri(url), credentials, handler);
-            
             restClient.HttpClient.DefaultRequestHeaders.UserAgent.Add(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue);
 
             restClient.SetRetryPolicy(null); //Force there to be no retries
