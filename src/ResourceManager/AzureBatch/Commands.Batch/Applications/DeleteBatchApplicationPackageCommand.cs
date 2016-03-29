@@ -15,14 +15,12 @@
 using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
-
 namespace Microsoft.Azure.Commands.Batch.Applications
 {
-    [Cmdlet(VerbsCommon.Set, Constants.AzureRmBatchApplicationPackage)]
-    [OutputType(typeof(BatchAccountContext))]
-    public class UpdateBatchApplicationCommand : BatchCmdletBase
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureRmBatchApplicationPackage)]
+    public class DeleteBatchApplicationPackageCommand : BatchCmdletBase
     {
-        private static string mamlCall = "UpdateApplication";
+        private static string mamlCall = "DeleteApplicationPackage";
 
         [Alias("Name")]
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
@@ -33,28 +31,18 @@ namespace Microsoft.Azure.Commands.Batch.Applications
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string displayName { get; set; }
-
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string defaultVersion { get; set; }
-
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public bool allowUpdates { get; set; }
+        public string ApplicationVersion { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            System.Diagnostics.Debugger.Launch();
-
             WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
-            BatchClient.UpdateApplication(ResourceGroupName, AccountName, ApplicationId, allowUpdates, defaultVersion, displayName);
+            BatchClient.DeleteApplicationPackage(this.ResourceGroupName, this.AccountName, ApplicationId, ApplicationVersion);
             WriteVerboseWithTimestamp(Resources.EndMAMLCall, mamlCall);
         }
     }

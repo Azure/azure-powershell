@@ -87,6 +87,10 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCertificateReference[] CertificateReferences { get; set; }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
+
         public override void ExecuteCmdlet()
         {
             NewPoolParameters parameters = new NewPoolParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
@@ -104,7 +108,8 @@ namespace Microsoft.Azure.Commands.Batch
                 Metadata = this.Metadata,
                 InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,
                 StartTask = this.StartTask,
-                CertificateReferences = this.CertificateReferences
+                CertificateReferences = this.CertificateReferences,
+                ApplicationPackageReferences = this.ApplicationPackageReferences
             };
 
             BatchClient.CreatePool(parameters);

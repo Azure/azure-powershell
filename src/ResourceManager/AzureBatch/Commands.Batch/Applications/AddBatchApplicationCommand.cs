@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Tags.Model;
+
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Applications
 {
-    [Cmdlet(VerbsCommon.Set, Constants.AzureRmBatchApplicationPackage)]
-    [OutputType(typeof(BatchAccountContext))]
-    public class UpdateBatchApplicationCommand : BatchCmdletBase
+    [Cmdlet(VerbsCommon.Add, Constants.AzureRmBatchApplication)]
+    [OutputType(typeof(PSApplication))]
+    public class AddBatchApplicationCommand : BatchCmdletBase
     {
-        private static string mamlCall = "UpdateApplication";
-
         [Alias("Name")]
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -33,29 +33,25 @@ namespace Microsoft.Azure.Commands.Batch.Applications
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public bool AllowUpdates { get; set; }
+
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string displayName { get; set; }
-
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string defaultVersion { get; set; }
-
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public bool allowUpdates { get; set; }
+        public string DisplayName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             System.Diagnostics.Debugger.Launch();
 
-            WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
-            BatchClient.UpdateApplication(ResourceGroupName, AccountName, ApplicationId, allowUpdates, defaultVersion, displayName);
-            WriteVerboseWithTimestamp(Resources.EndMAMLCall, mamlCall);
+            PSApplication response = BatchClient.AddApplication(ResourceGroupName, AccountName, ApplicationId, AllowUpdates, DisplayName);
+
+            WriteObject(response);
         }
     }
 }

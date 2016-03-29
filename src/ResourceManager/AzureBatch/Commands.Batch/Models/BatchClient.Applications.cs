@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -7,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -15,73 +15,20 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public partial class BatchClient
     {
-		public virtual BatchAccountContext GetApplications(string resourceGroupName, string accountName, string applicationId)
+        public virtual PSApplication AddApplication(string resourceGroupName, string accountName, string applicationId, bool allowUpdates, string displayName)
         {
-            // single account lookup - find its resource group if not specified
-            if (string.IsNullOrEmpty(resourceGroupName))
-            {
-                resourceGroupName = GetGroupForAccount(accountName);
-            }
+            AddApplicationResponse response = BatchManagementClient.Applications.AddApplication(
+                resourceGroupName,
+                accountName,
+                applicationId,
+                new AddApplicationParameters() { AllowUpdates = allowUpdates, DisplayName = displayName });
 
-            var response = BatchManagementClient.Applications.GetApplication(resourceGroupName, accountName, applicationId);
-
-		    return null;//BatchAccountContext.ConvertAccountResourceToNewAccountContext(response.Resource);
+            return ConvertApplicationToPSApplication(response.Application);
         }
 
-        /// <summary>
-        /// Lists all accounts in a subscription or in a resource group if its name is specified
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group to search under for accounts. If unspecified, all accounts will be looked up.</param>
-        /// <param name="tag">The tag to filter accounts on</param>
-        /// <param name="accountName"></param>
-        /// <returns>A collection of BatchAccountContext objects</returns>
-        public virtual IEnumerable<BatchAccountContext> ListApplications(string resourceGroupName, Hashtable tag, string accountName)
+        public virtual PSApplicationPackage UploadApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version, string filePath)
         {
-            List<BatchAccountContext> accounts = new List<BatchAccountContext>();
-
-            // no account name so we're doing some sort of list. If no resource group, then list all accounts under the
-            // subscription otherwise all accounts in the resource group.
-            var response = BatchManagementClient.Applications.List(resourceGroupName, accountName, new ListApplicationsParameters());
-
-            Console.WriteLine("response: " + response);
-            // filter out the accounts if a tag was specified
-            /*            IList<AccountResource> accountResources = new List<AccountResource>();
-                        if (tag != null && tag.Count > 0)
-                        {
-                            accountResources = Helpers.FilterAccounts(response.Accounts, tag);
-                        }
-                        else
-                        {
-                            accountResources = response.Accounts;
-                        }
-
-                        foreach (AccountResource resource in accountResources)
-                        {
-                            accounts.Add(BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource));
-                        }
-
-                        var nextLink = response.NextLink;
-
-                        while (nextLink != null)
-                        {
-                            response = ListNextAccounts(nextLink);
-
-                            foreach (AccountResource resource in response.Accounts)
-                            {
-                                accounts.Add(BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource));
-                            }
-
-                            nextLink = response.NextLink;
-                        }*/
-
-            return null;
-        }
-
-        public BatchAccountContext AddApplicationPackage(string resourceGroupName, string applicationId, string version, string accountName, string filePath)
-        {
-            var response = BatchManagementClient.Applications.AddApplicationPackage(resourceGroupName, accountName, applicationId, version);
-
-            Console.WriteLine("response: " + response);
+            AddApplicationPackageResponse response = BatchManagementClient.Applications.AddApplicationPackage(resourceGroupName, accountName, applicationId, version);
 
             CloudBlockBlob blob = new CloudBlockBlob(new Uri(response.StorageUrl));
 
@@ -92,49 +39,108 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 accountName,
                 applicationId,
                 version,
-                new ActivateApplicationPackageParameters { Format = "zip" });
+                new ActivateApplicationPackageParameters { Format = "zip", });
 
-            var getResponse = this.GetApplications(resourceGroupName, accountName, applicationId);
+            PSApplicationPackage getResponse = this.GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
 
-            return null;
+            return getResponse;
         }
 
-        public BatchAccountContext DeleteApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version)
+        public virtual AzureOperationResponse DeleteApplication(string resourceGroupName, string accountName, string applicationId)
         {
-            var response = BatchManagementClient.Applications.DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
-
-            Console.WriteLine("response: " + response);
-
-            return null;
+            return BatchManagementClient.Applications.DeleteApplication(resourceGroupName, accountName, applicationId);
         }
 
-        public BatchAccountContext UpdateApplication(string resourceGroupName, string applicationId, string applicationVersion, bool allowUpdates, string defaultVersion, string displayName)
+        public virtual AzureOperationResponse DeleteApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version)
         {
-            var response = BatchManagementClient.Applications.UpdateApplication(
+            return BatchManagementClient.Applications.DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
+        }
+
+        public virtual PSApplication GetApplication(string resourceGroupName, string accountName, string applicationId)
+        {
+            // single account lookup - find its resource group if not specified
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetGroupForAccount(accountName);
+            }
+
+            var response = BatchManagementClient.Applications.GetApplication(resourceGroupName, accountName, applicationId);
+
+            return ConvertApplicationToPSApplication(response.Application);
+        }
+
+        public virtual PSApplicationPackage GetApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version)
+        {
+            // single account lookup - find its resource group if not specified
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetGroupForAccount(accountName);
+            }
+
+            GetApplicationPackageResponse response = BatchManagementClient.Applications.GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
+
+            var context = this.ConvertGetApplicationPackageResponseToApplicationPackage(response);
+            return context;
+        }
+
+        private PSApplicationPackage ConvertGetApplicationPackageResponseToApplicationPackage(GetApplicationPackageResponse response)
+        {
+            return new PSApplicationPackage
+                       {
+                           Format = response.Format,
+                           StorageUrl = response.StorageUrl,
+                           StorageUrlExpiry = response.StorageUrlExpiry,
+                           State = response.State,
+                           Id = response.Id,
+                           Version = response.Version,
+                           LastActivationTime = response.LastActivationTime,
+                       };
+        }
+
+        public virtual IEnumerable<PSApplication> ListApplications(string resourceGroupName, string accountName)
+        {
+            ListApplicationsResponse response = BatchManagementClient.Applications.List(resourceGroupName, accountName, new ListApplicationsParameters());
+
+            List<PSApplication> psApplications = response.Applications.Select(ConvertApplicationToPSApplication).ToList();
+
+            string nextLink = response.NextLink;
+
+            while (nextLink != null)
+            {
+                response = ListNextApplications(nextLink);
+
+                psApplications.AddRange(response.Applications.Select(ConvertApplicationToPSApplication));
+
+                nextLink = response.NextLink;
+            }
+
+            return psApplications;
+        }
+
+        private static PSApplication ConvertApplicationToPSApplication(Application application)
+        {
+            return new PSApplication()
+                       {
+                           AllowUpdates = application.AllowUpdates,
+                           ApplicationPackages = application.ApplicationPackages,
+                           DefaultVersion = application.DefaultVersion,
+                           DisplayName = application.DisplayName,
+                           Id = application.Id,
+                       };
+        }
+
+        private ListApplicationsResponse ListNextApplications(string NextLink)
+        {
+            return BatchManagementClient.Applications.ListNext(NextLink);
+        }
+
+        public virtual AzureOperationResponse UpdateApplication(string resourceGroupName, string accountName, string applicationId, bool allowUpdates, string defaultVersion, string displayName)
+        {
+            return BatchManagementClient.Applications.UpdateApplication(
                 resourceGroupName,
-                applicationVersion,
+                accountName,
                 applicationId,
                 new UpdateApplicationParameters() { AllowUpdates = allowUpdates, DefaultVersion = defaultVersion, DisplayName = displayName, });
-
-            return null;
-        }
-
-        public BatchAccountContext AddApplication(string resourceGroupName, string applicationId, string applicationVersion, bool allowUpdates, string displayName)
-        {
-            var response = BatchManagementClient.Applications.AddApplication(
-                resourceGroupName,
-                applicationVersion,
-                applicationId,
-                new AddApplicationParameters() { AllowUpdates = allowUpdates, DisplayName = displayName });
-
-            return null;
-        }
-
-        public BatchAccountContext DeleteApplication(string resourceGroupName, string applicationId, string applicationVersion)
-        {
-            var response = BatchManagementClient.Applications.DeleteApplication(resourceGroupName, applicationVersion, applicationId);
-
-            return null;
         }
     }
 }

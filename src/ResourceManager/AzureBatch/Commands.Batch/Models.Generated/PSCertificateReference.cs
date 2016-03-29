@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     public class PSCertificateReference
     {
         
-        internal Microsoft.Azure.Batch.CertificateReference omObject;
+        internal CertificateReference omObject;
         
         public PSCertificateReference()
         {

@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Tags.Model;
+
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Applications
 {
-    [Cmdlet(VerbsCommon.Add, Constants.AzureRmBatchApplicationPackage)]
-    [OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Add, Constants.AzureRmBatchApplicationPackage), OutputType(typeof(PSApplicationPackage))]
     public class UploadBatchApplicationCommand : BatchCmdletBase
     {
         [Alias("Name")]
@@ -31,30 +32,21 @@ namespace Microsoft.Azure.Commands.Batch.Applications
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag { get; set; }
-
-        [Alias("id")]
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
-        [Alias("version")]
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ApplicationVersion { get; set; }
 
-        [Alias("file")]
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string FilePath { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            System.Diagnostics.Debugger.Launch();
-
-            var response = BatchClient.AddApplicationPackage(ResourceGroupName, ApplicationId, ApplicationVersion, AccountName, FilePath);
-
+            PSApplicationPackage response = BatchClient.UploadApplicationPackage(ResourceGroupName, AccountName, ApplicationId, ApplicationVersion, FilePath);
             WriteObject(response);
         }
     }

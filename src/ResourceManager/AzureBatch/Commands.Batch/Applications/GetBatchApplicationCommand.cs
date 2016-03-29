@@ -12,13 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Tags.Model;
+
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchApplicationPackage), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchApplication), OutputType(typeof(PSApplication))]
     public class GetBatchApplicationCommand : BatchCmdletBase
     {
         [Alias("Name")]
@@ -30,10 +32,6 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag { get; set; }
-
-        [Alias("id")]
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
@@ -44,14 +42,14 @@ namespace Microsoft.Azure.Commands.Batch
 
             if (string.IsNullOrEmpty(this.ApplicationId))
             {
-                foreach (BatchAccountContext context in BatchClient.ListApplications(this.ResourceGroupName, Tag, AccountName))
+                foreach (PSApplication context in BatchClient.ListApplications(this.ResourceGroupName, AccountName))
                 {
                     WriteObject(context);
                 }
             }
             else
             {
-                BatchAccountContext context = BatchClient.GetApplications(this.ResourceGroupName, this.AccountName, ApplicationId);
+                PSApplication context = BatchClient.GetApplication(this.ResourceGroupName, this.AccountName, ApplicationId);
                 WriteObject(context);
             }
         }

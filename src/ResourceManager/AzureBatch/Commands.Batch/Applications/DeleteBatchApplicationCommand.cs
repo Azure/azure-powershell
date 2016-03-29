@@ -12,14 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
+using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+
 namespace Microsoft.Azure.Commands.Batch.Applications
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureRmBatchApplicationPackage), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureRmBatchApplication)]
     public class DeleteBatchApplicationCommand : BatchCmdletBase
     {
+        private static string mamlCall = "DeleteApplication";
+
         [Alias("Name")]
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -29,25 +32,16 @@ namespace Microsoft.Azure.Commands.Batch.Applications
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag { get; set; }
-
         [Alias("id")]
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
-        [Alias("version")]
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string ApplicationVersion { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            System.Diagnostics.Debugger.Launch();
-
-            BatchAccountContext context = BatchClient.DeleteApplicationPackage(this.ResourceGroupName, this.AccountName, ApplicationId, ApplicationVersion);
-            WriteObject(context);
+            WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
+            BatchClient.DeleteApplication(this.ResourceGroupName, this.AccountName, ApplicationId);
+            WriteVerboseWithTimestamp(Resources.EndMAMLCall, mamlCall);
         }
     }
 }
