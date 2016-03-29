@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
             AzureOperationResponse<IPage<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders> response = new AzureOperationResponse<IPage<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders>();
             response.Headers = new ProxyModels.ComputeNodeListHeaders();
-            response.Body = new MockPage<ProxyModels.ComputeNode>();
+            response.Body = new EmptyPagedEnumerable<ProxyModels.ComputeNode>();
 
             Action<BatchRequest<ProxyModels.ComputeNodeListOptions, AzureOperationResponse<IPage<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders>>> listComputeNodeAction =
                 (request) =>

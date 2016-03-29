@@ -22,29 +22,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class ScenarioTestContext : BatchAccountContext
     {
-        public ScenarioTestContext(BatchAccountContext context) : base()
+        public ScenarioTestContext() : base()
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
-
             // Only set the properties needed for interacting with the Batch service.
-            this.AccountName = context.AccountName;
-            this.PrimaryAccountKey = context.PrimaryAccountKey;
-            this.SecondaryAccountKey = context.SecondaryAccountKey;
-            this.TaskTenantUrl = context.TaskTenantUrl;
+            this.AccountName = Environment.GetEnvironmentVariable("AZURE_BATCH_ACCOUNT");
+            this.PrimaryAccountKey = Environment.GetEnvironmentVariable("AZURE_BATCH_ACCESS_KEY");
+            this.TaskTenantUrl = Environment.GetEnvironmentVariable("AZURE_BATCH_ENDPOINT");
         }
 
-        protected override BatchService CreateBatchRestClient(string url, string accountName, string key)
+        protected override BatchServiceClient CreateBatchRestClient(string url, string accountName, string key, DelegatingHandler handler = default(DelegatingHandler))
         {
             // Add HTTP recorder to the BatchRestClient
             HttpMockServer mockServer = HttpMockServer.CreateInstance();
             mockServer.InnerHandler = new HttpClientHandler();
 
-            BatchCredentials credentials = new BatchSharedKeyCredential(accountName, key);
-            
-            BatchService restClient = new BatchService(credentials, mockServer);
+            BatchServiceClient restClient = base.CreateBatchRestClient(url, accountName, key, mockServer);
+
             return restClient;
         }
     }

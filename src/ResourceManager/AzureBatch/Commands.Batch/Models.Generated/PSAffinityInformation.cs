@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.AffinityInformation omObject;
         
-        public PSAffinityInformation()
+        public PSAffinityInformation(string affinityId)
         {
-            this.omObject = new Microsoft.Azure.Batch.AffinityInformation();
+            this.omObject = new Microsoft.Azure.Batch.AffinityInformation(affinityId);
         }
         
         internal PSAffinityInformation(Microsoft.Azure.Batch.AffinityInformation omObject)
@@ -53,10 +53,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.AffinityId;
-            }
-            set
-            {
-                this.omObject.AffinityId = value;
             }
         }
     }

@@ -43,7 +43,23 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime CreationTime
+        public long ContentLength
+        {
+            get
+            {
+                return this.omObject.ContentLength;
+            }
+        }
+        
+        public string ContentType
+        {
+            get
+            {
+                return this.omObject.ContentType;
+            }
+        }
+        
+        public System.DateTime? CreationTime
         {
             get
             {
@@ -64,22 +80,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.LastModified;
-            }
-        }
-        
-        public long ContentLength
-        {
-            get
-            {
-                return this.omObject.ContentLength;
-            }
-        }
-        
-        public string ContentType
-        {
-            get
-            {
-                return this.omObject.ContentType;
             }
         }
     }

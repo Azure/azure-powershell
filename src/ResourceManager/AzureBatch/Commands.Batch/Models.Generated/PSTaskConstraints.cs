@@ -48,11 +48,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
+        public System.Int32? MaxTaskRetryCount
+        {
+            get
+            {
+                return this.omObject.MaxTaskRetryCount;
+            }
+            set
+            {
+                this.omObject.MaxTaskRetryCount = value;
+            }
+        }
+        
         public System.TimeSpan? MaxWallClockTime
         {
             get
             {
                 return this.omObject.MaxWallClockTime;
+            }
+            set
+            {
+                this.omObject.MaxWallClockTime = value;
             }
         }
         
@@ -62,13 +78,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 return this.omObject.RetentionTime;
             }
-        }
-        
-        public System.Int32? MaxTaskRetryCount
-        {
-            get
+            set
             {
-                return this.omObject.MaxTaskRetryCount;
+                this.omObject.RetentionTime = value;
             }
         }
     }
