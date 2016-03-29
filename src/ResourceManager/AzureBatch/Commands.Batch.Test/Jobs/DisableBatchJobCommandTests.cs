@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
 using Xunit;
+using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using BatchCommon = Microsoft.Azure.Batch.Common;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
-using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.ExecuteCmdlet();
 
             // Verify that the job disable option was properly set on the outgoing request
-            Assert.Equal(disableOption.ToString().ToLower(), requestDisableOption.ToString().ToLower());
+            Assert.Equal(disableOption, BatchTestHelpers.MapEnum<BatchCommon.DisableJobOption>(requestDisableOption));
         }
     }
 }

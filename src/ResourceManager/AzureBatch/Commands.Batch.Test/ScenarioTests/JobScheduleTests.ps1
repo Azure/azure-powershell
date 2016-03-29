@@ -20,7 +20,7 @@ function Test-NewJobSchedule
 {
     param([string]$accountName)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     
     $jsId1 = "simple"
     $jsId2 = "complex"
@@ -277,7 +277,7 @@ function Test-GetJobScheduleById
 {
     param([string]$accountName, [string]$jsId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobSchedule = Get-AzureBatchJobSchedule -Id $jsId -BatchContext $context
 
     Assert-AreEqual $jsId $jobSchedule.Id
@@ -291,7 +291,7 @@ function Test-ListJobSchedulesByFilter
 {
     param([string]$accountName, [string]$jsPrefix, [string]$matches)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jsFilter = "startswith(id,'" + "$jsPrefix" + "')"
     $jobSchedules = Get-AzureBatchJobSchedule -Filter $jsFilter -BatchContext $context
 
@@ -310,7 +310,7 @@ function Test-GetAndListJobSchedulesWithSelect
 {
     param([string]$accountName, [string]$jobScheduleId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "id eq '$jobScheduleId'"
     $selectClause = "id,state"
 
@@ -341,7 +341,7 @@ function Test-ListJobSchedulesWithMaxCount
 {
     param([string]$accountName, [string]$maxCount)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobSchedules = Get-AzureBatchJobSchedule -MaxCount $maxCount -BatchContext $context
 
     Assert-AreEqual $maxCount $jobSchedules.Length
@@ -355,7 +355,7 @@ function Test-ListAllJobSchedules
 {
     param([string]$accountName, [string]$count)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobSchedules = Get-AzureBatchJobSchedule -BatchContext $context
 
     Assert-AreEqual $count $jobSchedules.Length
@@ -369,7 +369,7 @@ function Test-UpdateJobSchedule
 {
     param([string]$accountName, [string]$jobScheduleId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     $jobSchedule = Get-AzureBatchJobSchedule $jobScheduleId -BatchContext $context
     
@@ -617,7 +617,7 @@ function Test-DeleteJobSchedule
 {
     param([string]$accountName, [string]$jobScheduleId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the job schedule exists
     $jobSchedules = Get-AzureBatchJobSchedule -BatchContext $context
@@ -645,7 +645,7 @@ function Test-DisableAndEnableJobSchedule
 {
     param([string]$accountName, [string]$jobScheduleId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the job schedule is Active
     $jobSchedule = Get-AzureBatchJobSchedule $jobScheduleId -BatchContext $context
@@ -681,7 +681,7 @@ function Test-TerminateJobSchedule
 {
     param([string]$accountName, [string]$jobScheduleId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     if ($usePipeline -eq '1')
     {

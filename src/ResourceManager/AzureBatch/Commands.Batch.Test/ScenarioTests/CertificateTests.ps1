@@ -20,7 +20,7 @@ function Test-AddCertificate
 {
     param([string]$accountName)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Load certificates so thumbprints can be compared later
     $localDir = ($pwd).Path # Use $pwd to get the local directory. If $pwd is not used, paths are relative to [Environment]::CurrentDirectory, which can be different
@@ -74,7 +74,7 @@ function Test-GetCertificateByThumbprint
 {
     param([string]$accountName, [string]$thumbprintAlgorithm, [string]$thumbprint)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $cert = Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context
 
     Assert-AreEqual $thumbprint $cert.Thumbprint
@@ -89,7 +89,7 @@ function Test-ListCertificatesByFilter
 {
     param([string]$accountName, [string]$state, [string]$toDeleteThumbprint, [string]$matches)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "state eq '$state'"
 
     # Put a cert in the 'deleting' state
@@ -112,7 +112,7 @@ function Test-GetAndListCertificatesWithSelect
 {
     param([string]$accountName, [string]$thumbprintAlgorithm, [string]$thumbprint)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "state eq 'active'"
     $selectClause = "thumbprint,state"
 
@@ -143,7 +143,7 @@ function Test-ListCertificatesWithMaxCount
 {
     param([string]$accountName, [string]$maxCount)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $certs = Get-AzureBatchCertificate -MaxCount $maxCount -BatchContext $context
 
     Assert-AreEqual $maxCount $certs.Length
@@ -157,7 +157,7 @@ function Test-ListAllCertificates
 {
     param([string]$accountName, [string]$count)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $certs = Get-AzureBatchCertificate -BatchContext $context
 
     Assert-AreEqual $count $certs.Length
@@ -171,7 +171,7 @@ function Test-DeleteCertificate
 {
     param([string]$accountName, [string]$thumbprintAlgorithm, [string]$thumbprint)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the cert exists
     $cert = Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context
@@ -194,7 +194,7 @@ function Test-TestCancelCertificateDelete
 {
     param([string]$accountName, [string]$thumbprintAlgorithm, [string]$thumbprint)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the cert is in the deletefailed state
     $cert = Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context

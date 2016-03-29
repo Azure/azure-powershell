@@ -20,7 +20,7 @@ function Test-NewPool
 {
     param([string]$accountName)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     
     $poolId1 = "simple"
     $poolId2 = "complex"
@@ -115,7 +115,7 @@ function Test-GetPoolById
 {
     param([string]$accountName, [string]$poolId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $pool = Get-AzureBatchPool $poolId -BatchContext $context
 
     Assert-AreEqual $poolId $pool.Id
@@ -129,7 +129,7 @@ function Test-ListPoolsByFilter
 {
     param([string]$accountName, [string]$poolPrefix, [string]$matches)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $poolFilter = "startswith(id,'" + "$poolPrefix" + "')"
     $pools = Get-AzureBatchPool -Filter $poolFilter -BatchContext $context
 
@@ -148,7 +148,7 @@ function Test-GetAndListPoolsWithSelect
 {
     param([string]$accountName, [string]$poolId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "id eq '$poolId'"
     $selectClause = "id,state"
 
@@ -179,7 +179,7 @@ function Test-ListPoolsWithMaxCount
 {
     param([string]$accountName, [string]$maxCount)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $pools = Get-AzureBatchPool -MaxCount $maxCount -BatchContext $context
 
     Assert-AreEqual $maxCount $pools.Length
@@ -193,7 +193,7 @@ function Test-ListAllPools
 {
     param([string]$accountName, [string]$count)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $pools = Get-AzureBatchPool -BatchContext $context
 
     Assert-AreEqual $count $pools.Length
@@ -207,7 +207,7 @@ function Test-UpdatePool
 {
     param([string]$accountName, [string]$poolId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     $pool = Get-AzureBatchPool $poolId -BatchContext $context
 
@@ -268,7 +268,7 @@ function Test-DeletePool
 {
     param([string]$accountName, [string]$poolId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the pool exists
     $pool = Get-AzureBatchPool $poolId -BatchContext $context
@@ -298,7 +298,7 @@ function Test-ResizePoolById
 {
     param([string]$accountName, [string]$poolId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Get the initial TargetDedicated count
     $pool = Get-AzureBatchPool -Id $poolId -BatchContext $context
@@ -320,7 +320,7 @@ function Test-ResizePoolByPipeline
 {
     param([string]$accountName, [string]$poolId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Get the initial TargetDedicated count
     $pool = Get-AzureBatchPool -Id $poolId -BatchContext $context
@@ -342,7 +342,7 @@ function Test-StopResizePoolById
 {
     param([string]$accountName, [string]$poolId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Start a resize and then stop it
     $pool = Get-AzureBatchPool -Id $poolId -BatchContext $context
@@ -365,7 +365,7 @@ function Test-StopResizePoolByPipeline
 {
     param([string]$accountName, [string]$poolId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Start a resize and then stop it
     $pool = Get-AzureBatchPool -Id $poolId -BatchContext $context
@@ -388,7 +388,7 @@ function Test-EnableAutoScale
 {
     param([string]$accountName, [string]$poolId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     $formula = '$TargetDedicated=2'
     $interval = ([TimeSpan]::FromMinutes(8))
@@ -421,7 +421,7 @@ function Test-DisableAutoScale
 {
     param([string]$accountName, [string]$poolId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify pool starts with autoscale enabled
     $pool = Get-AzureBatchPool $poolId -BatchContext $context
@@ -450,7 +450,7 @@ function Test-EvaluateAutoScale
 {
     param([string]$accountName, [string]$poolId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     $formula = '$TargetDedicated=2'
 
@@ -479,7 +479,7 @@ function Test-ChangeOSVersion
 {
     param([string]$accountName, [string]$poolId, [string]$targetOSVersion, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify that we start with a different target OS
     $pool = Get-AzureBatchPool $poolId -BatchContext $context
