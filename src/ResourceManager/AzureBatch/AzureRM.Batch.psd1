@@ -66,7 +66,7 @@ FormatsToProcess = @(
 #    '.\Microsoft.Azure.Commands.Batch.dll'
 #)
 NestedModules = @(
-    'D:\ps\azure-powershell-pr\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.Commands.Batch.dll'
+    '.\Microsoft.Azure.Commands.Batch.dll'
 )
 
 # Functions to export from this module
