@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="ScenarioTests\Dpm\ContainerTests.ps1" />
     <None Include="ScenarioTests\IaasVm\JobTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -84,11 +85,14 @@
     <None Include="ScenarioTests\IaasVm\ContainerTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Compile Include="ScenarioTests\Dpm\ContainerTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\JobTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\ItemTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\PolicyTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\ContainerTests.cs" />
+    <Compile Include="ScenarioTests\Mab\ContainerTests.cs" />
     <Compile Include="ScenarioTests\TestsBase.cs" />
+    <None Include="ScenarioTests\Mab\ContainerTests.ps1" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestGetContainerScenario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

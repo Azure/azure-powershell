@@ -18,16 +18,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
-    public class AzureSqlPsBackupProvider : IPsBackupProvider
+    public class DpmPsBackupProvider : IPsBackupProvider
     {
+        ProviderData ProviderData { get; set; }
+        HydraAdapter.HydraAdapter HydraAdapter { get; set; }
+
         public void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter)
         {
-            throw new NotImplementedException();
-        }
+            this.ProviderData = providerData;
+            this.HydraAdapter = hydraAdapter;
+        }       
 
         public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse EnableProtection()
         {
@@ -76,12 +81,56 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<Models.AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
         {
-            throw new NotImplementedException();
+            string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
+            ContainerRegistrationStatus status = (ContainerRegistrationStatus)this.ProviderData.ProviderParameters[ContainerParams.Status];
+            string resourceGroupName = (string)this.ProviderData.ProviderParameters[ContainerParams.ResourceGroupName];
+
+            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
+
+            // 1. Filter by Name
+            queryParams.FriendlyName = name;
+
+            // 2. Filter by ContainerType
+            queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
+
+            // 3. Filter by Status
+            queryParams.RegistrationStatus = status.ToString();
+
+            var listResponse = HydraAdapter.ListContainers(queryParams);
+
+            List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
+
+            // 4. Filter by RG Name
+            if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                containerModels = containerModels.Where(containerModel =>
+                    (containerModel as AzureRmRecoveryServicesDpmContainer).ResourceGroupName == resourceGroupName).ToList();
+            }
+
+            return containerModels;
         }
 
         public AzureOperationResponse UnregisterContainer()
         {
-            throw new NotImplementedException();
+            AzureOperationResponse response = null;
+
+            AzureRmRecoveryServicesContainerBase container = ProviderData.ProviderParameters[ContainerParams.Container]
+                as AzureRmRecoveryServicesContainerBase;
+
+            if (container == null)
+            {
+                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesItemBase");
+            }
+
+            if (container.ContainerType != Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType.Dpm)
+            {
+                throw new InvalidOperationException("Please provide dpm container in the input. Provided container is of type " + container.ContainerType);
+            }
+            AzureRmRecoveryServicesDpmContainer mabContainer = container as AzureRmRecoveryServicesDpmContainer;
+            string containerName = mabContainer.Name;
+
+            response = HydraAdapter.UnregisterContainers(containerName);
+            return response;
         }
 
         public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse GetPolicy()

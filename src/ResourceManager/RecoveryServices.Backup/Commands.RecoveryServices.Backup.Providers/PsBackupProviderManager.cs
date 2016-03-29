@@ -47,6 +47,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 case ContainerType.AzureSqlContainer:
                     providerType = PsBackupProviderTypes.AzureSql;
                     break;
+                case ContainerType.Mab:
+                    providerType = PsBackupProviderTypes.Mab;
+                    break;
+                case ContainerType.Dpm:
+                    providerType = PsBackupProviderTypes.Dpm;
+                    break;
                 default:
                     break;
             }
