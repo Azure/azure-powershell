@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             WriteVerbose(string.Format(Resources.UpdatingComputeNodeUser, parameters.ComputeNodeUserName));
-
-            ComputeNodeUser computeNodeUser = new ComputeNodeUser(parameters.Context.BatchOMClient.PoolOperations, parameters.PoolId, parameters.ComputeNodeId);
+            
+            ComputeNodeUser computeNodeUser = parameters.Context.BatchOMClient.PoolOperations.CreateComputeNodeUser(parameters.PoolId, parameters.ComputeNodeId);
             computeNodeUser.Name = parameters.ComputeNodeUserName;
             computeNodeUser.Password = parameters.Password;
             computeNodeUser.ExpiryTime = parameters.ExpiryTime;

@@ -20,8 +20,10 @@ using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch.Models;
 using System;
 using System.Collections;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Policy;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using TaskDependencies = Microsoft.Azure.Batch.Protocol.Models.TaskDependencies;
 
@@ -142,7 +144,7 @@ namespace Microsoft.Azure.Commands.Batch
                         throw new InvalidOperationException(string.Format(Resources.KeyNotPresent, KeyInUse));
                     }
                     string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
-                    BatchService restClient = CreateBatchRestClient(TaskTenantUrl, AccountName, key);
+                    BatchServiceClient restClient = CreateBatchRestClient(TaskTenantUrl, AccountName, key);
                     this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Open(restClient);
                 }
                 return this.batchOMClient;
@@ -210,11 +212,11 @@ namespace Microsoft.Azure.Commands.Batch
             return baContext;
         }
 
-        protected virtual BatchService CreateBatchRestClient(string url, string accountName, string key)
+        protected virtual BatchServiceClient CreateBatchRestClient(string url, string accountName, string key, DelegatingHandler handler = default(DelegatingHandler))
         {
-            //Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
             ServiceClientCredentials credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
-            BatchService restClient = new BatchService(new Uri(url), credentials);
+
+            BatchServiceClient restClient = handler == null ? new BatchServiceClient(new Uri(url), credentials) : new BatchServiceClient(new Uri(url), credentials, handler);
             
             restClient.HttpClient.DefaultRequestHeaders.UserAgent.Add(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue);
 

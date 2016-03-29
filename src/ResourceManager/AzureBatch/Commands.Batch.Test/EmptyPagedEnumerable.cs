@@ -19,11 +19,11 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Batch.Test
 {
-    public class MockPage<T> : IPage<T>, IEnumerable<T>, IEnumerable
+    public class EmptyPagedEnumerable<T> : IPage<T>, IEnumerable<T>, IEnumerable
     {
         private readonly IList<T> items;
 
-        public MockPage(IList<T> items = null)
+        public EmptyPagedEnumerable(IList<T> items = null)
         {
             this.items = items;
         }

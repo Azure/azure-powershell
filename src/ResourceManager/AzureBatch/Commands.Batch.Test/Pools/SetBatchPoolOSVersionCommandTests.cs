@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 PoolUpgradeOSBatchRequest request = (PoolUpgradeOSBatchRequest) baseRequest;
 
                 // Grab the target OS version off the outgoing request
-                requestTargetOS = request.Parameters.TargetOSVersion;
+                requestTargetOS = request.Parameters;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
