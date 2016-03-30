@@ -57,6 +57,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
 
-        // TBD for other operations
+        public BackUpOperationStatusResponse GetProtectionPolicyOperationStatusByURL(string url)
+        {
+            return BmsAdapter.Client.ProtectionPolicy.GetOperationStatusByURLAsync(
+                              url,
+                              BmsAdapter.GetCustomRequestHeaders(),
+                              BmsAdapter.CmdletCancellationToken).Result;                              
+        }
     }
 }

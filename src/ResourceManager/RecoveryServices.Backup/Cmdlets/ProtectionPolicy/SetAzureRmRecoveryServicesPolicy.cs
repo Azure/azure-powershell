@@ -69,9 +69,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }, HydraAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType,
-                                                                                         Policy.BackupManagementType);
-                // now convert hydraPolicy to PSObject
-                WriteObject(psBackupProvider.ModifyPolicy());
+                                                                                         Policy.BackupManagementType);                
+                ProtectionPolicyResponse policyResponse = psBackupProvider.ModifyPolicy();
+
+                if(policyResponse.StatusCode == System.Net.HttpStatusCode.Accepted)
+                {
+                    // Track OperationStatus URL for operation completion
+                    BackUpOperationStatusResponse operationResponse =  WaitForOperationCompletionUsingStatusLink(
+                                                policyResponse.AzureAsyncOperation,
+                                                HydraAdapter.GetProtectionPolicyOperationStatusByURL);
+                                        
+                    if(operationResponse.OperationStatus.Status == OperationStatusValues.Failed.ToString())
+                    {
+                          // if operation failed, then trace warning/error
+                    }
+
+                    // get list of jobIds and return jobResponses                    
+                    WriteObject(GetJobObject(((OperationStatusJobsExtendedInfo)operationResponse.OperationStatus.Properties).JobIds));
+                }
+                else
+                {
+                    // Hydra will return OK if NO datasources are associated with this policy
+                    // just trace and return
+                }
             });
         }
     }
