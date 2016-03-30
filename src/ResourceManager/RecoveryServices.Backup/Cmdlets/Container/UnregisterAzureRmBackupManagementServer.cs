@@ -37,10 +37,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
             {
                 base.ExecuteCmdlet();
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>() { { ContainerParams.Container, Container } }, HydraAdapter);
+                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.Scdpm)
+                {
+                    throw new ArgumentException(String.Format("Please provide Container of containerType Windows and backupManagementType Scdpm. Provided Container has containerType {0} and backupManagementType {1}", Container.ContainerType, Container.BackupManagementType));
+                }
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.Dpm);
-                var containerModels = psBackupProvider.UnregisterContainer();
+                string containerName = Container.Name;
+                HydraAdapter.UnregisterContainers(containerName);
             });
         }
     }

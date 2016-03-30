@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>), typeof(AzureRmRecoveryServicesContainerBase))]
     public class GetAzureRmBackupManagementServer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Name)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -42,11 +42,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {  
-                    {ContainerParams.ContainerType, ContainerType.Dpm},
+                    {ContainerParams.ContainerType, ContainerType.Windows},
+                    {ContainerParams.BackupManagementType, BackupManagementType.Scdpm},                    
                     {ContainerParams.Name, Name}
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.Dpm);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.Windows, BackupManagementType.Scdpm);
+
                 var containerModels = psBackupProvider.ListProtectionContainers();
 
                 if (containerModels.Count != 1)

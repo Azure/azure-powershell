@@ -344,11 +344,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return containerModels;
         }
 
-        public AzureOperationResponse UnregisterContainer()
-        {
-            throw new NotImplementedException();
-        }
-
         public List<AzureRmRecoveryServicesItemBase> ListProtectedItems()
         {
             AzureRmRecoveryServicesContainerBase container =

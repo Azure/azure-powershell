@@ -53,8 +53,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers();
 
-        AzureOperationResponse UnregisterContainer();
-
         List<AzureRmRecoveryServicesItemBase> ListProtectedItems();
     }
 }

@@ -90,38 +90,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryParams.FriendlyName = name;
 
             // 2. Filter by ContainerType
-            queryParams.ProviderType = ProviderType.Dpm.ToString();
+            queryParams.ProviderType = ProviderType.Mab.ToString();
 
             var listResponse = HydraAdapter.ListContainers(queryParams);
 
             List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 
             return containerModels;
-        }
-
-        public AzureOperationResponse UnregisterContainer()
-        {
-            AzureOperationResponse response = null;
-
-            AzureRmRecoveryServicesContainerBase container = ProviderData.ProviderParameters[ContainerParams.Container]
-                as AzureRmRecoveryServicesContainerBase;
-
-            if (container == null)
-            {
-                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesItemBase");
-            }
-
-            if (container.ContainerType != Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType.Mab)
-            {
-                throw new InvalidOperationException("Please provide mab container in the input. Provided container is of type " + container.ContainerType);
-            }
-            AzureRmRecoveryServicesMabContainer mabContainer = container as AzureRmRecoveryServicesMabContainer;
-            //string ResourceGroupName = mabContainer.ResourceGroupName;
-            //string ResourceName = mabContainer.ResourceName;
-            string containerName = mabContainer.Name;
-
-            response = HydraAdapter.UnregisterContainers(containerName); 
-            return response;
         }
 
         public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse GetPolicy()

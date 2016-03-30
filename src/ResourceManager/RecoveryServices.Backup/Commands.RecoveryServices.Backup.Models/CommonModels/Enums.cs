@@ -23,14 +23,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum ContainerType
     {
         AzureVM = 1,
-        AzureSqlContainer,
-        Mab,
-        Dpm
+        //AzureSqlContainer,
+        Windows
     }
 
     public enum BackupManagementType
     {
         AzureVM = 1,
+        Mars,
+        Scdpm
     }
 
     public enum WorkloadType

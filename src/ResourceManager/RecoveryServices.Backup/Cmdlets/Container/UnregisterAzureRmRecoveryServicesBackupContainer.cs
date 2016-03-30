@@ -39,12 +39,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
-
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-                {{ContainerParams.Container, Container}}, HydraAdapter);
-
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.Mab);
-                var containerModels = psBackupProvider.UnregisterContainer();
+                
+                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.Mars)
+                {
+                    throw new ArgumentException(String.Format("Please provide Container of containerType Windows and backupManagementType Mars. Provided Container has containerType {0} and backupManagementType {1}", Container.ContainerType, Container.BackupManagementType));
+                }
+                string containerName = Container.Name;
+                HydraAdapter.UnregisterContainers(containerName);
             });
         }
     }

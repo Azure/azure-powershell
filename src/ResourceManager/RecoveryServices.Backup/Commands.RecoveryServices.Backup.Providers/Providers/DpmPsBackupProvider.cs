@@ -81,6 +81,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<Models.AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
         {
+            throw new NotImplementedException();
+
             string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
 
             ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
@@ -89,36 +91,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryParams.FriendlyName = name;
 
             // 2. Filter by ContainerType
-            queryParams.ProviderType = ProviderType.Mab.ToString();
+            queryParams.ProviderType = ProviderType.Dpm.ToString();
 
-            var listResponse = HydraAdapter.ListContainers(queryParams);
+            //ToDo: Piyush to call Get Backup Engine
+            //var listResponse = HydraAdapter.ListContainers(queryParams);
 
-            List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
+            //List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
             
-            return containerModels;
-        }
-
-        public AzureOperationResponse UnregisterContainer()
-        {
-            AzureOperationResponse response = null;
-
-            AzureRmRecoveryServicesContainerBase container = ProviderData.ProviderParameters[ContainerParams.Container]
-                as AzureRmRecoveryServicesContainerBase;
-
-            if (container == null)
-            {
-                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesItemBase");
-            }
-
-            if (container.ContainerType != Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType.Dpm)
-            {
-                throw new InvalidOperationException("Please provide dpm container in the input. Provided container is of type " + container.ContainerType);
-            }
-            AzureRmRecoveryServicesDpmContainer mabContainer = container as AzureRmRecoveryServicesDpmContainer;
-            string containerName = mabContainer.Name;
-
-            response = HydraAdapter.UnregisterContainers(containerName);
-            return response;
+            //return containerModels;
         }
 
         public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse GetPolicy()
