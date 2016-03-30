@@ -14,31 +14,28 @@
 
 function Test-GetContainerScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "swatitestrg" -Name "swatitestrn";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-	$containers = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered";
+	$containers = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType "Mars";
 	foreach ($container in $containers)
 	{
-		echo $container.Name $container.ResourceGroupName;
+		echo $container.Name 
 	}
 	Assert-AreEqual $containers[0].FriendlyName "mylinux1";
 
-	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
+	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType "Mars" -Name "mylinux1";
 	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
-
-	$rgFilteredContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1" -ResourceGroupName "00prjai12";
-	echo $rgFilteredContainer.Name $rgFilteredContainer.ResourceGroupName;
 }
 
 function Test-UnregisterContainerScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "swatitestrg" -Name "swatitestrn";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
-	$container = Get-AzureRmRecoveryServicesContainer -ContainerType "MAB" -Status "Registered" -Name "swatimab";
+	$container = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType "Mars" -Name "swatimab";
 	Assert-AreEqual $container.FriendlyName "swatimab";
 
 	Unregister-AzureRmRecoveryServicesBackupContainer -Container $container;
-	$contianer = Get-AzureRmRecoveryServicesContainer -ContainerType "MAB" -Status "Registered" -Name "swatimab";
+	$contianer = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType "Mars" -Name "swatimab";
 	Assert-Null $container;
 }
