@@ -154,6 +154,9 @@ namespace Microsoft.Azure.Commands.Batch
         public BatchAccountContext()
         {
             this.keyInUse = AccountKeyType.Primary;
+            this.AccountName = Environment.GetEnvironmentVariable("temp_account_name", EnvironmentVariableTarget.User);
+            this.PrimaryAccountKey = Environment.GetEnvironmentVariable("temp_account_key", EnvironmentVariableTarget.User);
+            this.TaskTenantUrl = Environment.GetEnvironmentVariable("iaas_url", EnvironmentVariableTarget.User);
         }
 
         internal BatchAccountContext(string accountEndpoint) : this()
