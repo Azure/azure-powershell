@@ -237,12 +237,12 @@ function Test-RemoveDeployment
     # Setup
     $deploymentName = "Test"
     $templateUri = "https://gallery.azure.com/artifact/20140901/Microsoft.ResourceGroup.1.0.0/DeploymentTemplates/Template.json"
-    $rgName = "TestSDK"
+    $rgName = "TestSDK0123"
 
     try
     {
         # Test
-        New-AzureRmResourceGroup -Name $rgName -Location "west us"
+        New-AzureRmResourceGroup -Name $rgName -Location "East US"
         $deployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
         Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName -Force }
     }
