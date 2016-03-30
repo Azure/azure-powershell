@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 
         public string GetResourceName()
         {
-            return PSRecoveryServicesClient.arsVaultCreds.Name;
+            return PSRecoveryServicesClient.arsVault.Name;
         }
 
         public string GetResourceGroupName()
         {
-            return PSRecoveryServicesClient.arsVaultCreds.ResouceGroupName;
+            return PSRecoveryServicesClient.arsVault.ResouceGroupName;
         }
     }
 }

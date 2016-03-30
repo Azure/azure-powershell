@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1401:FieldsMustBePrivate",
         Justification = "For Resource Credentials.")]
-        public static ARSVault arsVaultCreds = new ARSVault();
+        public static ARSVault arsVault = new ARSVault();
         /// <summary>
         /// Recovery Services client.
         /// </summary>
