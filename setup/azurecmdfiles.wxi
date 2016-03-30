@@ -763,6 +763,11 @@
                         <Component Id="cmp8BCA174B740D6FE9FE610DDF340C002E" Guid="*">
                             <File Id="fil5F3D2DE1162DE2DB606A10FC49FD35D3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\System.Spatial.dll" />
                         </Component>
+                        <Directory Id="dirA59EF05935407C6E2436C80080A7C107" Name="Generated">
+                            <Component Id="cmp7E161D88C2C114CB3885FA17B24DF61C" Guid="*">
+                                <File Id="filDB35D90F36AFF3DF49E3C45376E82EBE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml" />
+                            </Component>
+                        </Directory>
                     </Directory>
                     <Directory Id="dir92B779C59BDF2780C6B4FC5F744D2EF5" Name="AzureRM.DataFactories">
                         <Component Id="cmp75C3D72B9C46E1B9D3F51CE3D29F6F00" Guid="*">
@@ -5211,6 +5216,7 @@
             <ComponentRef Id="cmpD971A9A271757FD9B35B0AA9E0C18E24" />
             <ComponentRef Id="cmp22C16EA85B773C14B7E6439621F10355" />
             <ComponentRef Id="cmp8BCA174B740D6FE9FE610DDF340C002E" />
+            <ComponentRef Id="cmp7E161D88C2C114CB3885FA17B24DF61C" />
             <ComponentRef Id="cmp75C3D72B9C46E1B9D3F51CE3D29F6F00" />
             <ComponentRef Id="cmpEEBCE6D5D00306CCD759CE5B7793B164" />
             <ComponentRef Id="cmpEA6F740D378DB99E31F7433B8C57865A" />
