@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                  hydraRequest);
         }
 
-        public List<AzureRmRecoveryServicesJobBase> ModifyPolicy()
+        public ProtectionPolicyResponse ModifyPolicy()
         {
             AzureRmRecoveryServicesRetentionPolicyBase retentionPolicy = (AzureRmRecoveryServicesRetentionPolicyBase)
                                                  ProviderData.ProviderParameters[PolicyParams.RetentionPolicy];
@@ -298,24 +298,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             };
 
-            ProtectionPolicyResponse response = HydraAdapter.CreateOrUpdateProtectionPolicy(
-                                                               policy.Name,
-                                                               hydraRequest);
-
-            List<AzureRmRecoveryServicesJobBase> jobsList = new List<AzureRmRecoveryServicesJobBase>();
-
-            if (/*response.StatusCode == System.Net.HttpStatusCode.Accepted*/ true)
-            {
-                // poll for AsyncHeader and get the jobsList
-                // TBD
-            }
-            else
-            {
-                // no datasources attached to policy
-                // hence no jobs and no action.
-            }
-
-            return jobsList;
+            return HydraAdapter.CreateOrUpdateProtectionPolicy(policy.Name,
+                                                               hydraRequest);            
         }
 
         public List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
@@ -411,18 +395,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             return itemModels;
-        }
-
-        public ProtectionPolicyResponse GetPolicy()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeletePolicy()
-        {
-            throw new NotImplementedException();
-        }
-
+        }      
 
         public AzureRmRecoveryServicesSchedulePolicyBase GetDefaultSchedulePolicyObject()
         {

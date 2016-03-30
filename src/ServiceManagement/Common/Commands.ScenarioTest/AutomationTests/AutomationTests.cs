@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using Xunit;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -96,8 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 SetupManagementClients();
 
-                List<string> modules = Directory.GetFiles("Resources\\Automation", "*.ps1").ToList();
-                modules.Add("Common.ps1");
+                List<string> modules = Directory.GetFiles("Resources\\Automation".AsAbsoluteLocation(), "*.ps1").ToList();
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
                 helper.SetupModulesFromCommon(AzureModule.AzureServiceManagement, modules.ToArray());

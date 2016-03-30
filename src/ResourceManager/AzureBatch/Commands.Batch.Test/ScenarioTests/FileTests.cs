@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string startTaskStdOutContent = ScenarioTestHelpers.SharedPoolStartTaskStdOutContent;
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileByTaskByName()
         {
             BatchController controller = BatchController.NewInstance;
@@ -60,7 +59,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByTaskByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -87,7 +85,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByTaskWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -113,7 +110,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllNodeFilesByTask()
         {
             BatchController controller = BatchController.NewInstance;
@@ -139,7 +135,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByTaskRecursive()
         {
             BatchController controller = BatchController.NewInstance;
@@ -165,7 +160,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFileByTaskPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -191,7 +185,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileContentByTaskByName()
         {
             BatchController controller = BatchController.NewInstance;
@@ -219,7 +212,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileContentByTaskPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -247,7 +239,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileByComputeNodeByName()
         {
             BatchController controller = BatchController.NewInstance;
@@ -267,7 +258,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByComputeNodeByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -288,7 +278,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByComputeNodeWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -308,7 +297,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllNodeFilesByComputeNode()
         {
             BatchController controller = BatchController.NewInstance;
@@ -328,7 +316,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByComputeNodeRecursive()
         {
             BatchController controller = BatchController.NewInstance;
@@ -369,7 +356,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileContentByComputeNodeByName()
         {
             BatchController controller = BatchController.NewInstance;
@@ -388,7 +374,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileContentByComputeNodeByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -407,7 +392,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRemoteDesktopProtocolFileById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -426,7 +410,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRemoteDesktopProtocolFilePipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -452,21 +435,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteNodeFileByTaskByPipeline()
         {
             TestDeleteNodeFileByTask(true, TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteNodeFileByComputeNodeByName()
         {
             TestDeleteNodeFileByComputeNode(false, TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteNodeFileByComputeNodeByPipeline()
         {
             TestDeleteNodeFileByComputeNode(true, TestUtilities.GetCurrentMethodName());

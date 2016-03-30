@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             getJobsCommand.EndProcessing();
 
             AzureHDInsightJob jobWithStatusDirectory = getJobsCommand.Output.First(j => !string.IsNullOrEmpty(j.StatusDirectory));
-            string logDirectoryPath = Path.Combine(System.Environment.CurrentDirectory, Guid.NewGuid().ToString());
+            string logDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Guid.NewGuid().ToString());
             IGetAzureHDInsightJobOutputCommand getJobOutputCommand =
                 ServiceLocator.Instance.Locate<IAzureHDInsightCommandFactory>().CreateGetJobOutput();
             getJobOutputCommand.CurrentSubscription = GetCurrentSubscription();

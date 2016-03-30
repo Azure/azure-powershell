@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -25,6 +24,8 @@ using System.Reflection;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Management.RecoveryServices.Backup;
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
@@ -58,6 +59,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
         protected void RunPowerShellTest(string testFolderName, params string[] scripts)
         {
+            Dictionary<string, string> providers = new Dictionary<string, string>();
+            providers.Add("Microsoft.Resources", null);
+            providers.Add("Microsoft.Features", null);
+            providers.Add("Microsoft.Authorization", null);
+            providers.Add("Microsoft.Compute", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
+
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
@@ -139,8 +149,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
                 if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
                 {
-                    property1.SetValue((object)obj2, (object)0);
-                    property2.SetValue((object)obj2, (object)0);
+                    property1.SetValue((object)obj2, (object)-1);
+                    property2.SetValue((object)obj2, (object)-1);
                 }
             }
             return obj2;

@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using Xunit;
 
@@ -54,18 +55,22 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 var modules = new List<string>
                 {
-                    "Resources\\DiagnosticsExtension\\DiagnosticsExtensionTests.ps1",
-                    "Resources\\ServiceManagement\\Common.ps1",
-                    "Common.ps1",
-                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1",
                     @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1",
-                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\PIR.psd1"
+                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\PIR.psd1",
+                    "Resources\\ServiceManagement\\Common.ps1",
+                    "Resources\\DiagnosticsExtension\\DiagnosticsExtensionTests.ps1"
                 };
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(modules.ToArray());
+                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
 
-                helper.RunPowerShellTest(scripts);
+                var scriptEnvPath = new List<string>();
+                scriptEnvPath.Add(
+                    string.Format(
+                    "$env:PSModulePath=\"{0};$env:PSModulePath\"",
+                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute".AsAbsoluteLocation()));
+
+                helper.RunPowerShellTest(scriptEnvPath, scripts);
             }
         }
 

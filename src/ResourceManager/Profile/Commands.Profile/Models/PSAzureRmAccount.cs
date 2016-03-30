@@ -14,10 +14,8 @@
 
 using System;
 using System.Linq;
-using System.Configuration;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Utilities;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
