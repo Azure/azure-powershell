@@ -19,21 +19,21 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Batch.Test
 {
-    public class EmptyPagedEnumerable<T> : IPage<T>
+    public class MockPagedEnumerable<T> : IPage<T>
     {
         private readonly IEnumerable<T> items;
 
-        public EmptyPagedEnumerable(IEnumerable<T> items = null)
+        public MockPagedEnumerable(IEnumerable<T> items = null)
         {
             this.items = items ?? Enumerable.Empty<T>();
         }
 
-        public IEnumerator GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
             return items.GetEnumerator();
         }

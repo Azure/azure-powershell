@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         {
             var response = new AzureOperationResponse<IPage<TBody>, THeader>()
             {
-                Body = new EmptyPagedEnumerable<TBody>(),
+                Body = new MockPagedEnumerable<TBody>(),
                 Headers = new THeader()
             };
 
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 certs.Add(cert);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.Certificate>(certs);
+            response.Body = new MockPagedEnumerable<ProxyModels.Certificate>(certs);
 
             return response;
         }
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 pools.Add(pool);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudPool>(pools);
+            response.Body = new MockPagedEnumerable<ProxyModels.CloudPool>(pools);
 
             return response;
         }
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 computeNodes.Add(computeNode);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.ComputeNode>(computeNodes);
+            response.Body = new MockPagedEnumerable<ProxyModels.ComputeNode>(computeNodes);
 
             return response;
         }
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 jobSchedules.Add(new ProxyModels.CloudJobSchedule(id: id, schedule: schedule, jobSpecification: jobSpec));
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudJobSchedule>(jobSchedules);
+            response.Body = new MockPagedEnumerable<ProxyModels.CloudJobSchedule>(jobSchedules);
 
             return response;
         }
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 jobs.Add(job);
             }
             
-            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudJob>(jobs);
+            response.Body = new MockPagedEnumerable<ProxyModels.CloudJob>(jobs);
 
             return response;
         }
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 tasks.Add(task);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudTask>(tasks);
+            response.Body = new MockPagedEnumerable<ProxyModels.CloudTask>(tasks);
 
             return response;
         }
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 files.Add(file);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.NodeFile>(files);
+            response.Body = new MockPagedEnumerable<ProxyModels.NodeFile>(files);
 
             return response;
         }
@@ -646,7 +646,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 files.Add(file);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.NodeFile>(files);
+            response.Body = new MockPagedEnumerable<ProxyModels.NodeFile>(files);
 
             return response;
         }
