@@ -26,7 +26,9 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
@@ -49,7 +51,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
             var storageClient = GetStorageClient();
-            var resourcesClient = GetResourcesClient();
+            //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
+            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
             var authorizationClient = GetAuthorizationManagementClient();
             var graphClient = GetGraphClient();
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient, graphClient);
