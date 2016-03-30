@@ -156,7 +156,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <typeparam name="TResponse">The type of the expected response.</typeparam>
         public static RequestInterceptor CreateFakeServiceResponseInterceptor<TBody, TOptions, TResponse>(TResponse responseToUse = default(TResponse),
             Action<BatchRequest<TBody, TOptions, TResponse>> requestAction = null)
-            where TBody : class 
             where TOptions : ProxyModels.IOptions, new()
             where TResponse : IAzureOperationResponse, new()
         {
