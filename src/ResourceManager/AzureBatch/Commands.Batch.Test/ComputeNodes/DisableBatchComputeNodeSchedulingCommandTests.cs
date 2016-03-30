@@ -21,6 +21,8 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Threading.Tasks;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
 using Xunit;
 using BatchCommon = Microsoft.Azure.Batch.Common;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -59,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             cmdlet.Id = "computeNode01";
 
             // Don't go to the service on an Disable Compute Node Scheduling call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeDisableSchedulingParameter, ComputeNodeDisableSchedulingOptions, AzureOperationHeaderResponse<ComputeNodeDisableSchedulingHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<DisableComputeNodeSchedulingOption?, ComputeNodeDisableSchedulingOptions, AzureOperationHeaderResponse<ComputeNodeDisableSchedulingHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -81,12 +83,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             cmdlet.DisableSchedulingOption = disableOption;
 
             // Don't go to the service on an Disable Compute Node Scheduling call
-            Action<BatchRequest<NodeDisableSchedulingParameter, ComputeNodeDisableSchedulingOptions, AzureOperationHeaderResponse<ComputeNodeDisableSchedulingHeaders>>> extractFormulaAction =
-                (request) =>
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                ComputeNodeDisableSchedulingBatchRequest request = (ComputeNodeDisableSchedulingBatchRequest) baseRequest;
+
+                requestDisableOption = BatchTestHelpers.MapEnum<BatchCommon.DisableComputeNodeSchedulingOption>(request.Parameters);
+                
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    requestDisableOption = BatchTestHelpers.MapEnum<BatchCommon.DisableComputeNodeSchedulingOption>(request.Parameters.NodeDisableSchedulingOption);
+                    var response = new AzureOperationHeaderResponse<ComputeNodeDisableSchedulingHeaders>();
+                    Task<AzureOperationHeaderResponse<ComputeNodeDisableSchedulingHeaders>> task = Task.FromResult(response);
+                    return task;
                 };
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractFormulaAction);
+            });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();
