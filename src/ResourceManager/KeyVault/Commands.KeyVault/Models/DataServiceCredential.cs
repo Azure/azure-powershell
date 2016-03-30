@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 using System;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {

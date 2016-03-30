@@ -3,144 +3,79 @@
 
 This repository contains a set of PowerShell cmdlets for developers and administrators to develop, deploy and manage Microsoft Azure applications.
 
-* For documentation on how to build and deploy applications to Microsoft Azure please see the [Microsoft Azure Documentation Center](http://azure.microsoft.com/en-us/documentation/).
-* For comprehensive documentation on the developer cmdlets see [How to install and configure Azure PowerShell](http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
+* For documentation on how to build and deploy applications to Microsoft Azure please see the [Microsoft Azure Documentation Center](https://azure.microsoft.com/en-us/documentation/).
+* For comprehensive documentation on the developer cmdlets see [How to install and configure Azure PowerShell](https://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
 * For comprehensive documentation on the full set of Microsoft Azure cmdlets see [Microsoft Azure Management Center](http://go.microsoft.com/fwlink/?linkID=254459&clcid=0x409).
 
 ## Features
 
-* Account
-  * Get and import Azure publish settings
-  * Login with Microsoft account or Organizational account through Microsoft Azure Active Directory
+* Account management
+  * Login with Microsoft account, Organizational account, or Service Principal through Microsoft Azure Active Directory
+  * Save Credentials to disk with Save-AzureRmProfile and load saved credentials using Select-AzureRmProfile
 * Environment
   * Get the different out-of-box Microsoft Azure environments
-  * Add/Set/Remove customized environments (like your Windows Azure Pack environments)
-  * Get Azure publish settings for a particular environment
-* Subscription
-  * Manage Azure subscription
-  * Manage AffinityGroup
-* Website
-  * Manage website, such as CRUD, start and stop.
-  * Manage slot
-  * Manage WebJob
-  * Deploy project via WebDeploy
-  * Diagnostics
-      * Configure site and application diagnostics
-      * Log streaming
-      * Save log
-* Cloud Services
-  * Create scaffolding for cloud service and role. Role support includes Node.js and PHP.
-  * Manage cloud service and role, such as CRUD, start and stop.
-  * Manage extension.
-  * Start/Stop Azure emulator.
-  * Manage certificate.
-  * Manage cloud service extensions
-    * Remote desktop
-    * Diagnostics
-    * Microsoft Antimalware
-    * Windows Azure Diagnostics
-* Storage
-  * Manage storage account and access key.
-  * Manage storage container and blob, with paging.
-  * Copy storage blob.
-  * Manage storage table.
-  * Manage storage queue.
-  * Create SAS token.
-  * Manage metrics and logging.
-  * Configure timeout
-* SQL Database
-  * CRUD support for database server, database and firewall rule.
-  * Get database server quota.
-  * Get/Set database server service objective.
-  * Manage database copies and active geo-replication.
-  * Get dropped databases that can be restored.
-  * Issue requests to restore a live or dropped database to a point in time.
-  * Issue requests to recover a database from an unavailable database server.
-  * Manage database and database server auditing policy.
-* Service Bus
-  * Manage service bus namespaces.
-* VM
-  * Manage VM, such as CRUD, import/export and start/stop/restart.
-  * Manage VM image and VM image disks.
-  * Manage disk, such as CRUD.
-  * Manage VM endpoint, such as CRUD and ACL.
-  * Get/Set VM sub net.
-  * Manage certificate and SSH key.
-  * PowerShell remoting
-  * Manage extension
-    * BG Info
-    * Chef
-    * Puppet
-    * Custom Script
-    * Access
-    * Microsoft Antimalware
-    * PowerShell DSC
-    * Windows Azure Diagnostics
-  * Public IP, reserved IP and internal load balancer
-* Deployment
-  * Manage deployment, such as CRUD, move, upgrade and restore.
-  * Get/Create DNS settings of a deployment.
-* VNet
-  * Manage virtual network config, connection and gateway.
-  * Manage static IP
-* Azure Media Services
-  * Create, read and delete Media Services Accounts
-  * Generate new account keys for Media Services Accounts
-* HDInsight
-  * Manage clusters, such as CRUD, add/set storage
-  * Manage jobs, such as CRUD, start/stop/wait/invoke
-  * Manage HTTP service access. such as grant/revoke
-* Store
-  * View available Microsoft Azure Store Add-On plans.
-  * Purchase, view, upgrade and remove Microsoft Azure Store Add-On instances.
-* Utility
-  * Test whether a name is available. Currently support cloud service name, storage account name and service bus namespace name.
-  * Get the list of geo locations supported by Azure.
-  * Get the list of OS supported by Azure.
-  * Direct you to Azure portal.
+  * Add/Set/Remove customized environments (like your Azure Stack or Windows Azure Pack environments)
+* Management and data plane cmdlets for Azure services in ARM and RDFE
+  * VM
+  * Storage
+  * Network
+  * App Service (Websites)
+  * SQL Database
+  * KeyVault
+  * Operational Insights
+  * Automation
+  * Batch
+  * Backup
+  * RecoveryServices and SiteRecovery
+  * Stream Analytics
+  * Traffic Manager
+  * DataFactories
+  * DNS
+  * HDInsight
+  * Express Route
+  * Scheduler
+  * StorSimple
+  * Redis Cache
+ 
 * Windows Azure Pack
   * Web Site: CRUD web site, deployment, configure and get log, start/stop/restart/show web site
   * Service Bus: CRD namespace
   * VM: CRUD VM, get OS disk, size profile and VM template, start/stop/restart/suspend/resume VM
   * VNET: CRUD VNET and subnet.
   * Cloud Service: CRUD cloud service.
-* ExpressRoute
-  * Manage dedicated circuit
-  * Manage BGP peering
-* Scheduler
-  * Manage job collections
-  * Manage HTTP and storage queue jobs
-* Resource Manager
-  * Manage resource groups and deployments
-  * Query and download gallery templates
-  * Manage individual resources
-* Traffic Manager
-  * Manage profiles and endpoints
-* Azure Automation
-  * Manage automation accounts
-  * Manage automation jobs, runbooks and schedules
+* Windows Azure Stack
+  * Azure Stack Administration
+  * Storage Servcie Management
+  
 
 For detail descriptions and examples of the cmdlets, type
 * ```help azure``` to get all the cmdlets.
-* ```help node-dev``` to get all Node.js development related cmdlets.
-* ```help php-dev``` to get all PHP development related cmdlets.
+* ```help azurerm``` to get all the Azure Resource Manaber (ARM) cmdlets.
 * ```help <cmdlet name>``` to get the details of a specific cmdlet.
 
 ## Supported Environments
 
-* [Microsoft Azure](http://www.azure.microsoft.com)
-* [Windows Azure Pack](http://www.microsoft.com/en-us/server-cloud/windows-azure-pack.aspx)
-* [Microsoft Azure China](http://www.windowsazure.cn/)
+* [Microsoft Azure](https://azure.microsoft.com)
+* [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/)
+* [Windows Azure Pack](https://www.microsoft.com/en-us/server-cloud/windows-azure-pack.aspx)
+* [Microsoft Azure China](https://www.azure.cn/)
+* [USGovernment](https://azure.microsoft.com/en-us/features/gov/)
 
 ## Installation
 
 ### Microsoft Web Platform Installer
 
-1. Install [Microsoft Web Platform Installer](http://www.microsoft.com/web/downloads/platform.aspx).
+1. Install [Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx).
 2. Open Microsoft Web Platform Installer and search for __Microsoft Azure PowerShell__.
 3. Install.
 
 You can also find the standalone installers for all the versions at [Downloads](https://github.com/Azure/azure-powershell/releases)
+
+### PowerShell Gallery
+1. Install [Windows Management Framework 5 ot PowerShellGet cmdlets](https://www.powershellgallery.com/GettingStarted?section=Get%20Started)
+2. In an elevated PowerShell session, run  ```Install-Module AzureRM```
+3. run ```Install-AzureRm```
+4. Top install RDFE cmdlets, run ```Install-Module Azure```
 
 ### Source Code
 
@@ -149,20 +84,18 @@ You can also find the standalone installers for all the versions at [Downloads](
 
 ### Supported PowerShell Versions
 
-* 0.6.9 or lower
-  * [Windows PowerShell 2.0](http://technet.microsoft.com/en-us/scriptcenter/dd742419)
-  * [Windows PowerShell 3.0](http://www.microsoft.com/en-us/download/details.aspx?id=34595)
-* 0.6.10 to higher
-  * [Windows PowerShell 3.0](http://www.microsoft.com/en-us/download/details.aspx?id=34595)
+* [Windows Management Framework 3] (https://www.microsoft.com/en-us/download/details.aspx?id=34595)
+* [Windows Management Framework 4] (https://www.microsoft.com/en-us/download/details.aspx?id=40855)
+* [Windows Management Framework 5] (https://www.microsoft.com/en-us/download/details.aspx?id=50395)
 
 ## Get Started
 
 In general, following are the steps to start using Microsoft Azure PowerShell
 
-* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
+* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](https://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
   * Option 1: Login with your Microsoft account or Organizational account directly from PowerShell. Microsoft Azure Active Directory authentication is used in this case. No management certificate is needed.
-      * Starting from 0.8.6, you can use ``Add-AzureAccount -Credential`` to avoid the browser pop up for Organizational account.
-  * Option 2: Download and import a publish settings file which contains a management certificate.
+      * Starting from 1.0.0, you can use ```Add-AzureRmAccount -Credential``` to avoid the browser pop up for Organizational account.
+      * To use RDFE cmdlets, use ```Add-AzureAccount```
 * Use the cmdlets
 
 The first step can be different for different environment you are targeting. Following are detail instructions for each supported environment.
@@ -175,46 +108,19 @@ If you use both mechanisms on the same subscription, Microsoft Azure Active Dire
 
 ```powershell
 # Pop up an embedded browser control for you to login
-Add-AzureAccount
+Add-AzureRmAccount
 
 # use the cmdlets to manage your services/applications
-New-AzureWebsite -Name mywebsite -Location "West US"
-```
-
-#### Use publish settings file (Management certificate authentication)
-
-```powershell
-# Download a file which contains the publish settings information of your subscription.
-# This will open a browser window and ask you to log in to get the file.
-Get-AzurePublishSettingsFile
-
-# Import the file you just downloaded.
-# Notice that the file contains credential of your subscription so you don't want to make it public
-# (like check in to source control, etc.).
-Import-AzurePublishSettingsFile "<file location>"
-
-# Use the cmdlets to manage your services/applications
-New-AzureWebsite -Name mywebsite -Location "West US"
+New-AzureRmResourceGroup -Name myresourceGroup -Location "West US"
 ```
 
 ### Microsoft Azure China
 
 ```powershell
-# Check the environment supported by your Microsoft Azure PowerShell installation.
-Get-AzureEnvironment
+Add-AzureRmAccount -EnvironmentName AzureChinaCloud
 
-# Download a file which contains the publish settings information of your subscription.
-# Use the -Environment parameter to target Microsoft Azure China.
-# This will open a browser window and ask you to log in to get the file.
-Get-AzurePublishSettingsFile -Environment "AzureChinaCloud"
-
-# Import the file you just downloaded.
-# Notice that the file contains credential of your subscription so you don't want to make it public
-# (like check in to source control, etc.).
-Import-AzurePublishSettingsFile "<file location>"
-
-# Use the cmdlets to manage your services/applications
-New-AzureWebsite -Name mywebsite -Location "China East"
+# use the cmdlets to manage your services/applications
+New-AzureRmResourceGroup -Name myresourceGroup -Location "China East"
 ```
 
 ### Windows Azure Pack
@@ -245,35 +151,21 @@ Import-WAPackPublishSettingsFile "<file location>"
 # Use the cmdlets to manage your services/applications
 New-WAPackWebsite -Name mywebsite
 ```
-## 2 Modes
-
-Starting from 0.8.0, we are adding a separate mode for Resource Manager. You can use the following cmdlet to switch between the
-
-* Service management: cmdlets using the Azure service management API
-* Resource manager: cmdlets using the Azure Resource Manager API
-
-They are not designed to work together.
-
-```powershell
-Switch-AzureMode AzureServiceManagement
-Switch-AzureMode AzureResourceManager
-```
 
 ## Find Your Way
 
 All the cmdlets can be put into 3 categories:
 
-1. Cmdlets support both Microsoft Azure and Windows Azure Pack
-2. Cmdlets only support both Microsoft Azure
-3. Cmdlets only support Windows Azure Pack
+1. ARM management cmdlets use the noun 'AzureRm' (New-AzureRmResourceGroup, Get-AzureRmVM)
+2. Legacy RDFE management cmdlets use the noun 'Azure' (Get-AzureVM)
+3. Data plane cmdlets that work in ARM or RDFE use the noun Azure (Get-AzureBlob)
 
-* For category 1, we are using an "Azure" prefix in the cmdlet name and adding an alias with "WAPack" prefix.
-* For category 2, we are using an "Azure" prefix in the cmdlet name.
-* For category 2, we are using an "WAPack" prefix in the cmdlet name.
 
 So you can use the following cmdlet to find out all the cmdlets for your environment
 
 ```powershell
+# Return all the cmdlets for Azure Resource Manager (ARM)
+Get-Command *AzureRm*
 # Return all the cmdlets for Microsoft Azure
 Get-Command *Azure*
 
@@ -289,10 +181,10 @@ Be sure to check out the [Microsoft Azure Developer Forums on Stack Overflow](ht
 
 ## Contribute Code or Provide Feedback
 
-If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
+If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](https://azure.github.io/guidelines/).
 
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-powershell/issues) section of the project.
 
 # Learn More
 
-* [Microsoft Azure Script Center](http://www.azure.microsoft.com/en-us/documentation/scripts/)
+* [Microsoft Azure Script Center](https://azure.microsoft.com/en-us/documentation/scripts/)

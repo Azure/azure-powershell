@@ -16,19 +16,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
-using Hyak.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     public class DataLakeStoreClient
     {
-        private readonly DataLakeStoreManagementClient _client;
+        private readonly DataLakeStoreAccountManagementClient _client;
         private readonly Guid _subscriptionId;
 
         public DataLakeStoreClient(AzureContext context)
@@ -39,9 +39,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             _subscriptionId = context.Subscription.Id;
-            _client = AzureSession.ClientFactory.CreateClient<DataLakeStoreManagementClient>(context,
+            _client = DataLakeStoreCmdletBase.CreateAdlsClient<DataLakeStoreAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
-            _client.UserAgentSuffix = " - PowerShell Client";
         }
 
         public DataLakeStoreClient()
@@ -60,18 +59,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             var tags = TagsConversionHelper.CreateTagDictionary(customTags, true);
 
-            var parameters = new DataLakeStoreAccountCreateOrUpdateParameters
+            var parameters = new DataLakeStoreAccount
             {
-                DataLakeStoreAccount = new DataLakeStoreAccount
+                Name = accountName,
+                Location = location,
+                Properties = new DataLakeStoreAccountProperties
                 {
-                    Name = accountName,
-                    Location = location,
-                    Properties = new DataLakeStoreAccountProperties
-                    {
-                        DefaultGroup = defaultGroup
-                    },
-                    Tags = tags ?? new Dictionary<string, string>()
-                }
+                    DefaultGroup = defaultGroup
+                },
+                Tags = tags ?? new Dictionary<string, string>()
             };
 
             var accountExists = false;
@@ -88,20 +84,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 // get the account we know it doesn't exist and we will attempt to create it fresh.
             }
 
-            var response = accountExists
-                ? _client.DataLakeStoreAccount.Update(resourceGroupName, parameters)
-                : _client.DataLakeStoreAccount.Create(resourceGroupName, parameters);
-
-            if (response.Status != OperationStatus.Succeeded)
-            {
-                throw new CloudException(string.Format(Properties.Resources.LongRunningOperationFailed,
-                    response.Error.Code, response.Error.Message));
-            }
-
-            return _client.DataLakeStoreAccount.Get(resourceGroupName, accountName).DataLakeStoreAccount;
+            return accountExists
+                ? _client.Account.Update(resourceGroupName,accountName, parameters)
+                : _client.Account.Create(resourceGroupName, accountName, parameters);
         }
 
-        public AzureOperationResponse DeleteAccount(string resourceGroupName, string accountName)
+        public void DeleteAccount(string resourceGroupName, string accountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -113,15 +101,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 throw new InvalidOperationException(string.Format(Properties.Resources.AccountDoesNotExist, accountName));
             }
 
-            var response = _client.DataLakeStoreAccount.Delete(resourceGroupName, accountName);
-
-            if (response.Status != OperationStatus.Succeeded)
-            {
-                throw new CloudException(string.Format(Properties.Resources.LongRunningOperationFailed,
-                    response.Error.Code, response.Error.Message));
-            }
-
-            return response;
+            _client.Account.Delete(resourceGroupName, accountName);
         }
 
         public bool TestAccount(string resourceGroupName, string accountName)
@@ -149,12 +129,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
-            return _client.DataLakeStoreAccount.Get(resourceGroupName, accountName).DataLakeStoreAccount;
+            return _client.Account.Get(resourceGroupName, accountName);
         }
 
         public List<DataLakeStoreAccount> ListAccounts(string resourceGroupName, string filter, int? top, int? skip)
         {
-            var parameters = new DataLakeStoreAccountListParameters
+            var parameters = new ODataQuery<DataLakeStoreAccount>
             {
                 Filter = filter,
                 Top = top,
@@ -162,21 +142,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             };
 
             var accountList = new List<DataLakeStoreAccount>();
-            var response = _client.DataLakeStoreAccount.List(resourceGroupName, parameters);
-            accountList.AddRange(response.Value);
+            var response = string.IsNullOrEmpty(resourceGroupName) ? 
+                _client.Account.List(parameters) : 
+                _client.Account.ListByResourceGroup(resourceGroupName, parameters);
 
-            while (!string.IsNullOrEmpty(response.NextLink))
+            accountList.AddRange(response);
+
+            while (!string.IsNullOrEmpty(response.NextPageLink))
             {
-                response = ListAccountsWithNextLink(response.NextLink);
-                accountList.AddRange(response.Value);
+                response = ListAccountsWithNextLink(response.NextPageLink);
+                accountList.AddRange(response);
             }
 
             return accountList;
         }
 
-        private DataLakeStoreAccountListResponse ListAccountsWithNextLink(string nextLink)
+        private IPage<DataLakeStoreAccount> ListAccountsWithNextLink(string nextLink)
         {
-            return _client.DataLakeStoreAccount.ListNext(nextLink);
+            return _client.Account.ListNext(nextLink);
         }
 
         private string GetResourceGroupByAccount(string accountName)

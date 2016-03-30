@@ -24,10 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Rest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Tags", "..\Tags\Commands.Tags\Commands.Tags.csproj", "{2493A8F7-1949-4F29-8D53-9D459046C3B8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7865F5ED-E0F3-45CD-87BA-214FE8A27061}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\packages.config = .nuget\packages.config
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication", "..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj", "{D3804B64-C0D3-48F8-82EC-1F632F833C9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +72,10 @@ Global
 		{2493A8F7-1949-4F29-8D53-9D459046C3B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2493A8F7-1949-4F29-8D53-9D459046C3B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2493A8F7-1949-4F29-8D53-9D459046C3B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7485,7 +7485,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -7537,7 +7537,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -7582,7 +7582,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -7618,7 +7618,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
         <maml:description>
-          <maml:para />
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -7810,7 +7810,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -7886,7 +7886,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -7922,7 +7922,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
         <maml:description>
-          <maml:para />
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -8087,7 +8087,7 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>Scope</maml:name>
           <maml:description>
-            <maml:para>The scope at which to assign the policy assignment. For example: /subscriptions/{subId}/resourcegroups/{rgName}</maml:para>
+            <maml:para>The scope at which to assign the policy assignment. The allowed scopes are subscription, resource group or resource. An example of resource group scope: /subscriptions/{subId}/resourcegroups/{rgName}. An example of resource level scope would be /subscriptions/{subId}/resourcegroups/{rgName}/providers/{resource-type}/{resource-name}</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -8115,7 +8115,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -8151,7 +8151,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Scope</maml:name>
         <maml:description>
-          <maml:para>The scope at which to assign the policy assignment. For example: /subscriptions/{subId}/resourcegroups/{rgName}</maml:para>
+          <maml:para>The scope at which to assign the policy assignment. The allowed scopes are subscription, resource group or resource. An example of resource group scope: /subscriptions/{subId}/resourcegroups/{rgName}. An example of resource level scope would be /subscriptions/{subId}/resourcegroups/{rgName}/providers/{resource-type}/{resource-name}</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -8199,7 +8199,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
         <maml:description>
-          <maml:para />
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -8352,7 +8352,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -8436,7 +8436,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
         <maml:description>
-          <maml:para />
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -8598,7 +8598,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -8643,7 +8643,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -8715,7 +8715,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
         <maml:description>
-          <maml:para />
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -8880,7 +8880,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -8939,14 +8939,14 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Pre</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>InformationAction</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para></maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
         </command:parameter>
@@ -9023,7 +9023,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
         <maml:description>
-          <maml:para />
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -9180,7 +9180,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Pre</maml:name>
 				<maml:description>
-					<maml:para />
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -9225,7 +9225,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Pre</maml:name>
 				<maml:description>
-					<maml:para />
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -9297,7 +9297,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Pre</maml:name>
 			<maml:description>
-				<maml:para />
+        <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -9467,7 +9467,7 @@ Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -Force</dev:code
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Pre</maml:name>
 				<maml:description>
-					<maml:para />
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -9512,7 +9512,7 @@ Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -Force</dev:code
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Pre</maml:name>
 				<maml:description>
-					<maml:para />
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -9572,7 +9572,7 @@ Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -Force</dev:code
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Pre</maml:name>
 			<maml:description>
-				<maml:para />
+        <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -9696,5 +9696,801 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
 	<maml:relatedLinks>
 	</maml:relatedLinks>
 </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Invoke-AzureRmResourceAction</command:name>
+		<maml:description>
+			<maml:para>Invokes the specified action on a resource</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Invoke</command:verb>
+		<command:noun>AzureRmResourceAction</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Invokes the specified action on a resource. This command is an equivalent of a POST operation on a resource. To get a list of suported actions you can do something like Get-AzureRmProviderOperation -OperationSearchString * | where{$_.Operation -like "*action"} | FT Operation. You can also use the Azure Resource Explorer tool to discover these actions and the schema of the -Parameters property </maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Invoke-AzureRmResourceAction</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Parameters</maml:name>
+				<maml:description>
+					<maml:para>A hashtable that reperesents the resource properties. Example- $ParametersObject=@{targetResourceGroup = "(string)", resources = ("string")}</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Do not ask for confirmation</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ApiVersion</maml:name>
+				<maml:description>
+          <maml:para>The api version to use while invoking the action on the resource.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Pre</maml:name>
+				<maml:description>
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Parameters</maml:name>
+				<maml:description>
+					<maml:para>A hashtable that reperesents the resource properties. Example- $ParametersObject=@{targetResourceGroup = "(string)", resources = ("string")}</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Do not ask for confirmation</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ApiVersion</maml:name>
+				<maml:description>
+          <maml:para>The api version to use while invoking the action on the resource.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Pre</maml:name>
+			<maml:description>
+        <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Action</maml:name>
+			<maml:description>
+				<maml:para>The name of the action to invoke.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceId</maml:name>
+			<maml:description>
+				<maml:para>The fully qualified resource Id, including the subscription. e.g. /subscriptions/{subscriptionId}/providers/Microsoft.Sql/servers/myServer/databases/myDatabase</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceName</maml:name>
+			<maml:description>
+				<maml:para>The resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ResourceType</maml:name>
+        <maml:description>
+          <maml:para>The resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ExtensionResourceName</maml:name>
+        <maml:description>
+          <maml:para>The extension resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ExtensionResourceType</maml:name>
+        <maml:description>
+          <maml:para>The extension resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ODataQuery</maml:name>
+        <maml:description>
+          <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>The resource group name.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TenantLevel</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Invoke list action on website config resource  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Invoke-AzureRmResourceAction -ResourceGroupName myGroup -ResourceType Microsoft.Web/sites/config/list -ResourceName mySite/appsettings -Action list -ApiVersion 2015-08-01 -Force</dev:code>
+			<dev:remarks>
+				<maml:para>Invokes the list action on website config</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <!--Generated by PS Cmdlet Help Editor-->
+    <command:details>
+      <command:name>Save-AzureRmResourceGroupDeploymentTemplate</command:name>
+      <maml:description>
+        <maml:para>Save the resource group deployment template to a file on disk</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Save</command:verb>
+      <command:noun>AzureRmResourceGroupDeploymentTemplate</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>Save the resource group deployment template to a file on disk</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Save-AzureRmResourceGroupDeploymentTemplate</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>DeploymentName</maml:name>
+          <maml:description>
+            <maml:para>The deployment name.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>The resource group name.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para>The output path of the template file.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>DeploymentName</maml:name>
+        <maml:description>
+          <maml:para>The deployment name.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>The resource group name.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>The output path of the template file.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApiVersion</maml:name>
+        <maml:description>
+          <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Pre</maml:name>
+        <maml:description>
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Profile</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>AzureProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>InformationAction</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        <dev:type>
+          <maml:name>ActionPreference</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>InformationVariable</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
+    <maml:alertSet>
+      <maml:title>
+      </maml:title>
+      <maml:alert>
+        <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------------------------  Save1  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>Save-AzureRmResourceGroupDeploymentTemplate -DeploymentName testDeployment -ResourceGroupName testGroup</dev:code>
+        <dev:remarks>
+          <maml:para>Gets the deployment template from testDeployment and saves it as a json file in the current directory</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <!--Generated by PS Cmdlet Help Editor-->
+    <command:details>
+      <command:name>Export-AzureRmResourceGroup</command:name>
+      <maml:description>
+        <maml:para>Captures the specified resource group as a template and saves it to a file on disk.</maml:para>
+        <maml:para>The Export-AzureRmResourceGroup cmdlet is used to generate the template for an existing resource group. It is useful in scenarios where you already have created some resources in your resource group but now want to leverage the benefits of using template backed deployments. This cmdlet gives you an easy start by generating the template for your existing resources in the resource group.</maml:para>
+        <maml:para>There might be some cases where this cmdlet fails to generate some parts of the template. We will give out warning messages to inform you of the resources that failed. The template will still be generated for the parts that were successful.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Export</command:verb>
+      <command:noun>AzureRmResourceGroup</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>Captures the specifies resource group as a template and saves it to a file on disk.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Export-AzureRmResourceGroup</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>The resource group name.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para>The output path of the template file.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>IncludeParameterDefaultValue</maml:name>
+          <maml:description>
+            <maml:para>Export template parameter with default value.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>IncludeComments</maml:name>
+          <maml:description>
+            <maml:para>Export template with comments.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>The resource group name.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>The output path of the template file.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>IncludeParameterDefaultValue</maml:name>
+        <maml:description>
+          <maml:para>Export template parameter with default value.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>IncludeComments</maml:name>
+        <maml:description>
+          <maml:para>Export template with comments.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApiVersion</maml:name>
+        <maml:description>
+          <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Pre</maml:name>
+        <maml:description>
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Profile</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>AzureProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>InformationAction</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        <dev:type>
+          <maml:name>ActionPreference</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>InformationVariable</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
+    <maml:alertSet>
+      <maml:title>
+      </maml:title>
+      <maml:alert>
+        <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------------------------  Export1  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>Export-AzureRmResourceGroup -ResourceGroupName testGroup</dev:code>
+        <dev:remarks>
+          <maml:para>Captures the specifies resource group as a template and saves it as a json file in the current directory</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+    </maml:relatedLinks>
+  </command:command>
 </helpItems>
 

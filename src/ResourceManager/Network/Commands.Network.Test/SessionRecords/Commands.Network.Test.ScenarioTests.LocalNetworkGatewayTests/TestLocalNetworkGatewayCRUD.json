@@ -10,7 +10,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network\",\r\n  \"namespace\": \"Microsoft.Network\",\r\n  \"authorization\": {\r\n    \"applicationId\": \"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\r\n    \"roleDefinitionId\": \"13ba9ab4-19f0-4804-adc4-14ece36cc7a1\"\r\n  },\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"virtualNetworks\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"publicIPAddresses\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"networkInterfaces\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"loadBalancers\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"networkSecurityGroups\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"routeTables\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualNetworkGateways\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"localNetworkGateways\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"connections\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"applicationGateways\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/CheckDnsNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/usages\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"expressRouteCircuits\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"expressRouteServiceProviders\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/A\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/AAAA\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/CNAME\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/PTR\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/MX\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/TXT\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/SRV\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"trafficmanagerprofiles\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-04-28-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkTrafficManagerNameAvailability\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-04-28-preview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network\",\r\n  \"namespace\": \"Microsoft.Network\",\r\n  \"authorization\": {\r\n    \"applicationId\": \"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\r\n    \"roleDefinitionId\": \"13ba9ab4-19f0-4804-adc4-14ece36cc7a1\"\r\n  },\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"virtualNetworks\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"publicIPAddresses\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"networkInterfaces\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"loadBalancers\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"networkSecurityGroups\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"routeTables\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualNetworkGateways\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"localNetworkGateways\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"connections\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"applicationGateways\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/CheckDnsNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/usages\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"expressRouteCircuits\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"expressRouteServiceProviders\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/A\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/AAAA\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/CNAME\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/PTR\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/MX\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/TXT\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/SRV\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"trafficmanagerprofiles\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-04-28-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkTrafficManagerNameAvailability\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-04-28-preview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "5908"
@@ -247,8 +247,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -301,8 +301,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -356,8 +356,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -417,8 +417,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -478,8 +478,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -539,8 +539,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -594,8 +594,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -655,8 +655,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -716,8 +716,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"localNetworkAddressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"192.168.0.0/16\"\r\n      ]\r\n    },\r\n    \"gatewayIpAddress\": \"192.168.3.4\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -758,7 +758,7 @@
           "94e7cbf4-a582-4d3a-98b0-60e7e00667a3"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/94e7cbf4-a582-4d3a-98b0-60e7e00667a3?api-version=2015-06-15"
+          "https://management.azure.com/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/94e7cbf4-a582-4d3a-98b0-60e7e00667a3?api-version=2016-03-30"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -786,8 +786,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"etag\": \"W/\\\"6d4f0ece-4a17-406f-bf7a-faece144d2ac\\\"\",\r\n  \"id\": \"/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"localNetworkAddressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"200.168.0.0/16\"\r\n      ]\r\n    },\r\n    \"gatewayIpAddress\": \"192.168.3.4\",\r\n    \"resourceGuid\": \"f63b518d-484e-4bbf-aa35-d34738fb123c\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -828,7 +828,7 @@
           "3dfab1f5-10a5-41fa-b968-360c19d3948d"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/3dfab1f5-10a5-41fa-b968-360c19d3948d?api-version=2015-06-15"
+          "https://management.azure.com/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/3dfab1f5-10a5-41fa-b968-360c19d3948d?api-version=2016-03-30"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -856,8 +856,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/94e7cbf4-a582-4d3a-98b0-60e7e00667a3?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvY2VudHJhbHVzL29wZXJhdGlvbnMvOTRlN2NiZjQtYTU4Mi00ZDNhLTk4YjAtNjBlN2UwMDY2N2EzP2FwaS12ZXJzaW9uPTIwMTUtMDYtMTU=",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/94e7cbf4-a582-4d3a-98b0-60e7e00667a3?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvY2VudHJhbHVzL29wZXJhdGlvbnMvOTRlN2NiZjQtYTU4Mi00ZDNhLTk4YjAtNjBlN2UwMDY2N2EzP2FwaS12ZXJzaW9uPTIwMTYtMDMtMzA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -908,8 +908,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzP2FwaS12ZXJzaW9uPTIwMTUtMDYtMTU=",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzP2FwaS12ZXJzaW9uPTIwMTYtMDMtMzA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -966,8 +966,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzP2FwaS12ZXJzaW9uPTIwMTUtMDYtMTU=",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzP2FwaS12ZXJzaW9uPTIwMTYtMDMtMzA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1020,8 +1020,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/3dfab1f5-10a5-41fa-b968-360c19d3948d?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvY2VudHJhbHVzL29wZXJhdGlvbnMvM2RmYWIxZjUtMTBhNS00MWZhLWI5NjgtMzYwYzE5ZDM5NDhkP2FwaS12ZXJzaW9uPTIwMTUtMDYtMTU=",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/3dfab1f5-10a5-41fa-b968-360c19d3948d?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvY2VudHJhbHVzL29wZXJhdGlvbnMvM2RmYWIxZjUtMTBhNS00MWZhLWI5NjgtMzYwYzE5ZDM5NDhkP2FwaS12ZXJzaW9uPTIwMTYtMDMtMzA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1072,8 +1072,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/3dfab1f5-10a5-41fa-b968-360c19d3948d?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvY2VudHJhbHVzL29wZXJhdGlvbnMvM2RmYWIxZjUtMTBhNS00MWZhLWI5NjgtMzYwYzE5ZDM5NDhkP2FwaS12ZXJzaW9uPTIwMTUtMDYtMTU=",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/3dfab1f5-10a5-41fa-b968-360c19d3948d?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvY2VudHJhbHVzL29wZXJhdGlvbnMvM2RmYWIxZjUtMTBhNS00MWZhLWI5NjgtMzYwYzE5ZDM5NDhkP2FwaS12ZXJzaW9uPTIwMTYtMDMtMzA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1124,8 +1124,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/resourceGroups/onesdk1066/providers/Microsoft.Network/localNetworkGateways/onesdk1732?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Jlc291cmNlR3JvdXBzL29uZXNkazEwNjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2xvY2FsTmV0d29ya0dhdGV3YXlzL29uZXNkazE3MzI/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1157,7 +1157,7 @@
           "8a5d52a8-a5f4-4f5a-a76a-495079d869a9"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/8a5d52a8-a5f4-4f5a-a76a-495079d869a9?api-version=2015-06-15"
+          "https://management.azure.com/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/8a5d52a8-a5f4-4f5a-a76a-495079d869a9?api-version=2016-03-30"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1166,7 +1166,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operationResults/8a5d52a8-a5f4-4f5a-a76a-495079d869a9?api-version=2015-06-15"
+          "https://management.azure.com/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operationResults/8a5d52a8-a5f4-4f5a-a76a-495079d869a9?api-version=2016-03-30"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -1188,8 +1188,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/8a5d52a8-a5f4-4f5a-a76a-495079d869a9?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvY2VudHJhbHVzL29wZXJhdGlvbnMvOGE1ZDUyYTgtYTVmNC00ZjVhLWE3NmEtNDk1MDc5ZDg2OWE5P2FwaS12ZXJzaW9uPTIwMTUtMDYtMTU=",
+      "RequestUri": "/subscriptions/64229c92-175a-4eba-a2fd-ee1f9e29766e/providers/Microsoft.Network/locations/centralus/operations/8a5d52a8-a5f4-4f5a-a76a-495079d869a9?api-version=2016-03-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjQyMjljOTItMTc1YS00ZWJhLWEyZmQtZWUxZjllMjk3NjZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvY2VudHJhbHVzL29wZXJhdGlvbnMvOGE1ZDUyYTgtYTVmNC00ZjVhLWE3NmEtNDk1MDc5ZDg2OWE5P2FwaS12ZXJzaW9uPTIwMTYtMDMtMzA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

@@ -16,10 +16,11 @@ using System;
 using System.Collections;
 using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
@@ -177,9 +178,10 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.publicConfiguration == null)
                 {
+                    var vm = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
                     this.publicConfiguration =
                         DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath,
-                            this.StorageAccountName);
+                            this.StorageAccountName, vm.Id, cmdlet: this);
                 }
 
                 return this.publicConfiguration;
@@ -192,9 +194,8 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.privateConfiguration == null)
                 {
-                    this.privateConfiguration = DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.StorageAccountName,
-                        this.StorageAccountKey,
-                        this.StorageAccountEndpoint);
+                    this.privateConfiguration = DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.DiagnosticsConfigurationPath,
+                        this.StorageAccountName, this.StorageAccountKey, this.StorageAccountEndpoint);
                 }
 
                 return this.privateConfiguration;

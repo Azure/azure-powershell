@@ -27,6 +27,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets Azure Site Recovery Protection Container.
         /// </summary>
         /// <returns>Protection Container list response</returns>
+        public ProtectionContainerListResponse GetAzureSiteRecoveryProtectionContainer()
+        {
+            return this.GetSiteRecoveryClient().ProtectionContainer.ListAll(this.GetRequestHeaders());
+        }
+
+        /// <summary>
+        /// Gets Azure Site Recovery Protection Container.
+        /// </summary>
+        /// <returns>Protection Container list response</returns>
         public ProtectionContainerListResponse GetAzureSiteRecoveryProtectionContainer(string fabricName)
         {
             return this.GetSiteRecoveryClient().ProtectionContainer.List(fabricName, this.GetRequestHeaders());
