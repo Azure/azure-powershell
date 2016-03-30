@@ -38,8 +38,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     public abstract class RecoveryServicesBackupCmdletBase : AzureRMCmdlet
     {
-        public delegate BackUpOperationStatusResponse GetOpResponse(string url);
-
         // in seconds
         private int _defaultSleepForOperationTracking = 15;
 
@@ -134,7 +132,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             return JobConversions.GetPSJob(HydraAdapter.GetJob(jobId));
         }
 
-        public List<AzureRmRecoveryServicesJobBase> GetJobObject(List<string> jobIds)
+        public List<AzureRmRecoveryServicesJobBase> GetJobObject(IList<string> jobIds)
         {
             List<AzureRmRecoveryServicesJobBase> result = new List<AzureRmRecoveryServicesJobBase>();
             foreach (string jobId in jobIds)
@@ -144,17 +142,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             return result;
         }
 
-        public BackUpOperationStatusResponse WaitForOperation(string url, GetOpResponse hydraFunc)
+        public BackUpOperationStatusResponse WaitForOperationCompletionUsingStatusLink(
+                                              string statusUrlLink,
+                                              Func<string, BackUpOperationStatusResponse> hydraFunc)
         {
             // using this directly because it doesn't matter which function we use.
             // return type is same and currently we are using it in only two places.
             // protected item and policy.
-            BackUpOperationStatusResponse response = hydraFunc(url);
+            BackUpOperationStatusResponse response = hydraFunc(statusUrlLink);
 
             while (response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
             {
                 Thread.Sleep(_defaultSleepForOperationTracking * 1000);
-                response = HydraAdapter.GetProtectedItemOperationStatusByURL(url);
+                response = hydraFunc(statusUrlLink);
             }
 
             return response;
