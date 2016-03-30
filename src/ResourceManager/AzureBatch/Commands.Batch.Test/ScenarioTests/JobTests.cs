@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListJobsByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -113,7 +111,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListJobsWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -142,7 +139,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllJobs()
         {
             BatchController controller = BatchController.NewInstance;
@@ -171,7 +167,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListJobsUnderSchedule()
         {
             BatchController controller = BatchController.NewInstance;
@@ -205,7 +200,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateJob()
         {
             BatchController controller = BatchController.NewInstance;
@@ -234,7 +228,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteJobPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -254,7 +247,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAndEnableJob()
         {
             BatchController controller = BatchController.NewInstance;
@@ -277,14 +269,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTerminateJobById()
         {
             TestTerminateJob(false);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTerminateJobPipeline()
         {
             TestTerminateJob(true);

@@ -86,6 +86,14 @@
         "scheduledTransferLogLevelFilter": "Error",
         "scheduledTransferPeriod": "PT1M"
       },
+      "Metrics": {
+        "resourceId": "dummy",
+        "MetricAggregation": [
+          {
+            "scheduledTransferPeriod": "PT1M"
+          }
+        ]
+      },
       "overallQuotaInMB": 4096
     }
   }

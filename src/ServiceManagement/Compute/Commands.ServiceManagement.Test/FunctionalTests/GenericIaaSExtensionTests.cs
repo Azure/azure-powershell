@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             testStartTime = DateTime.Now;
             GetVmAccessConfiguration();
             referenceName = Utilities.GetUniqueShortName(referenceNamePrefix);
-            localPath = Path.Combine(Environment.CurrentDirectory, serviceName + ".xml").ToString();
+            localPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName + ".xml").ToString();
         }
 
         [TestCleanup]

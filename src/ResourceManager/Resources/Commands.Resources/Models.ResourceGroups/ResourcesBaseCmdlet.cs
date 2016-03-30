@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.IO;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {

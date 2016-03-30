@@ -19,7 +19,7 @@ using System.Security.Permissions;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.CloudService.Development.Scaffolding
 {

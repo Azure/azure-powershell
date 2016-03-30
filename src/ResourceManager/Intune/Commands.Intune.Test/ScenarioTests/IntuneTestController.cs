@@ -15,10 +15,12 @@ namespace Microsoft.Azure.Commands.Intune.Test.ScenarioTests
 {
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Management.Intune;
+    using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
     using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
@@ -72,6 +74,7 @@ namespace Microsoft.Azure.Commands.Intune.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);

@@ -50,6 +50,11 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMBootDiagnosticsDisable = "Disable boot diagnostics data of the virtual machine";
         public const string VMBootDiagnosticsResourceGroupName = "Resource group name for storage account";
         public const string VMBootDiagnosticsStorageAccountName = "Storage account name for boot diagnostics data";
+
+        public const string VMPlanName = "The plan ID";
+        public const string VMPlanProduct = "The offer ID";
+        public const string VMPlanPromotionCode = "The promotion code";
+        public const string VMPlanPublisher = "The publisher ID";
     }
 
     public static class ValidateSetValues
@@ -88,6 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineExtensionImageVersion = "AzureRmVMExtensionImageVersion";
         public const string VirtualMachineExtensionImageType = "AzureRmVMExtensionImageType";
         public const string VirtualMachineChefExtension = "AzureRmVMChefExtension";
+        public const string VirtualMachineAEMExtension = "AzureRmVMAEMExtension";
 
         public const string AvailabilitySet = "AzureRmAvailabilitySet";
         public const string VirtualMachineConfig = "AzureRmVMConfig";
@@ -120,6 +126,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         //AzureDiskEncryption
         public const string AzureDiskEncryptionExtension = "AzureRmVMDiskEncryptionExtension";
         public const string AzureDiskEncryptionStatus = "AzureRmVMDiskEncryptionStatus";
+        public const string AzureDiskEncryption = "AzureRmVMDiskEncryption";
 
         //AzureVMBackup
         public const string AzureVMBackup = "AzureRmVMBackup";

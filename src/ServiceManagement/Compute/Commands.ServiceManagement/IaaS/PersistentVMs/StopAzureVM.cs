@@ -13,20 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureVM", DefaultParameterSetName = "ByName"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = "ByName"), OutputType(typeof(ManagementOperationContext))]
     public class StopAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Virtual Machine to stop.", ParameterSetName = "ByName")]

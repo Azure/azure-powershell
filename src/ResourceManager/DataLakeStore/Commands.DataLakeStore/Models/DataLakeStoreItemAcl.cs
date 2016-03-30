@@ -15,9 +15,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
+using Microsoft.Azure.Management.DataLake.Store.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {

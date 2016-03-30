@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Xml;
 using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -34,12 +32,18 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public string Category { get; set; }
 
         /// <summary>
+        /// The retention policy
+        /// </summary>
+        public PSRetentionPolicy RetentionPolicy { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the PSLogSettings class.
         /// </summary>
         public PSLogSettings(LogSettings logSettings)
         {
             this.Enabled = logSettings.Enabled;
             this.Category = logSettings.Category;
+            this.RetentionPolicy = new PSRetentionPolicy(logSettings.RetentionPolicy);
         }
     }
 }

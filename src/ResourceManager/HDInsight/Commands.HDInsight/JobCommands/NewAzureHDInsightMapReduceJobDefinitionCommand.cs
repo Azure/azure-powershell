@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #region Input Parameter Definitions
 
-        [Parameter(HelpMessage = "The hive arguments for the jobDetails.")]
+        [Parameter(HelpMessage = "The arguments for the jobDetails.")]
         public string[] Arguments { get; set; }
 
-        [Parameter(HelpMessage = "The files for the jobDetails.")]
+        [Parameter(HelpMessage = "List of files to be copied to the cluster.")]
         public string[] Files { get; set; }
 
         [Parameter(HelpMessage = "The output location to use for the job.")]
