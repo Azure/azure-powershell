@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of containers
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>), typeof(AzureRmRecoveryServicesContainerBase))]
-    public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupVaultCmdletBase
+    public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.ContainerType)]
         [ValidateNotNullOrEmpty]
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {  
-                    {ContainerParams.Vault, Vault},
                     {ContainerParams.ContainerType, ContainerType},
                     {ContainerParams.Name, Name},
                     {ContainerParams.ResourceGroupName, ResourceGroupName},

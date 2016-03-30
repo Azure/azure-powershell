@@ -7,8 +7,8 @@
     <ProjectGuid>{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Models</RootNamespace>
-    <AssemblyName>Models</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmJob.cs" />
+    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmRecoveryPoint.cs" />
     <Compile Include="BaseObjects.cs" />
     <Compile Include="CmdletParamEnums.cs" />
     <Compile Include="CommonModels\Utils.cs" />
@@ -53,6 +54,17 @@
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmItem.cs" />
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

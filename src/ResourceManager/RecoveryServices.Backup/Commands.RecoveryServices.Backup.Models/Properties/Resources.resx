@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AggregateException" xml:space="preserve">
+    <value>Handling aggregate exception</value>
+  </data>
+  <data name="ArgumentException" xml:space="preserve">
+    <value>Received ArgumentException</value>
+  </data>
+  <data name="RsVaultResNameNullOrEmpty" xml:space="preserve">
+    <value>RecoveryServicesBackupVault.Name</value>
+  </data>
+  <data name="RsVaultRGNameNullOrEmpty" xml:space="preserve">
+    <value>RecoveryServicesBackupVault.ResourceGroupName</value>
+  </data>
+  <data name="CloudException" xml:space="preserve">
+    <value>Received CloudException, ErrorCode: {0}, Message: {1}</value>
+  </data>
+  <data name="CloudExceptionCodeNotFound" xml:space="preserve">
+    <value>Received CloudException, StatusCode: {0}</value>
+  </data>
+  <data name="ExceptionInExecution" xml:space="preserve">
+    <value>Caught exception, type: {0}</value>
+  </data>
+  <data name="ResourceNotFoundMessage" xml:space="preserve">
+    <value>The specified resource does not exist</value>
+  </data>
+  <data name="WebException" xml:space="preserve">
+    <value>Received WebException, Response: {0}, Status: {1}</value>
+  </data>
+  <data name="DaysofTheWeekInWeeklyRetentionException" xml:space="preserve">
+    <value>The DaysOfWeek specified in a weekly retention schedule should be same as of DaysOfWeek value specified in the backup schedule</value>
+  </data>
+  <data name="MonthlyYearlyRetentionDaysOfWeekException" xml:space="preserve">
+    <value>The DaysOfWeek specified for monthly and yearly retention policies should be a subset of the DaysOfWeek value specified in the backup schedule</value>
+  </data>
+  <data name="PolicyAlreadyExistException" xml:space="preserve">
+    <value>A protection policy with the specified name already exists: {0}</value>
+  </data>
+  <data name="PolicyNotFoundException" xml:space="preserve">
+    <value>Protection Policy not found with name: {0}</value>
+  </data>
+  <data name="ProtectionPolicyNameException" xml:space="preserve">
+    <value>The protection policy name should contain alphanumeric characters and cannot start with a number</value>
+  </data>
+  <data name="ProtectionPolicyNameLengthException" xml:space="preserve">
+    <value>The protection policy name must contain between 3 and 150 characters</value>
+  </data>
+  <data name="UnsupportedWorkloadBackupManagementTypeException" xml:space="preserve">
+    <value>Unsupported combination for WorkloadType: {0}, BackupManagementType:{1}</value>
+  </data>
+  <data name="UnsupportedWorkloadTypeException" xml:space="preserve">
+    <value>Unsupported WorkloadType: {0}</value>
+  </data>
+  <data name="WeeklyRetentionScheduleDaysOfWeekException" xml:space="preserve">
+    <value>For a weekly retention policy, DaysOfTheWeek is mandatory and should not contain duplicate entries</value>
+  </data>
+  <data name="WeeklyScheduleDaysOfWeekException" xml:space="preserve">
+    <value>For a weekly backup schedule, using the DaysOfWeek parameter is mandatory</value>
+  </data>
+  <data name="AzureVMUnsupportedBackupManagementTypeException" xml:space="preserve">
+    <value>BackupManagementType value should be empty or AzureVM for WorkloadType=AzureVM</value>
+  </data>
+  <data name="BothRetentionAndSchedulePoliciesEmpty" xml:space="preserve">
+    <value>Both RetentionPolicy and SchedulePolicy are empty, nothing to update</value>
+  </data>
+  <data name="EmptyHydraResponseException" xml:space="preserve">
+    <value>Empty response received from Service/Hydra</value>
+  </data>
+  <data name="InvalidProtectionPolicyException" xml:space="preserve">
+    <value>Invalid ProtectionPolicy - either NULL or NOT of type: {0}</value>
+  </data>
+  <data name="InvalidRetentionPolicyException" xml:space="preserve">
+    <value>Invalid RetentionPolicy - either NULL or NOT of type: {0}</value>
+  </data>
+  <data name="InvalidSchedulePolicyException" xml:space="preserve">
+    <value>Invalid SchedulePolicy - either NULL or NOT of type: {0}</value>
+  </data>
+  <data name="UnExpectedWorkLoadTypeException" xml:space="preserve">
+    <value>Unexpected WorkloadType - expected:{0}, current:{1}</value>
+  </data>
+  <data name="AllRetentionSchedulesEmptyException" xml:space="preserve">
+    <value>All retention schedules are Empty in retentionPolicy. Alteast one is expected.</value>
+  </data>
+  <data name="BackupAndRetentionTimesMismatch" xml:space="preserve">
+    <value>RetentionTime in retention schedule should be same as backup time in SchedulePolicy</value>
+  </data>
+  <data name="DailyRetentionScheduleNullException" xml:space="preserve">
+    <value>Daily Retention Schedule can't be null if Daily Backup Schedule is enabled</value>
+  </data>
+  <data name="DailyScheduleEnabledButScheduleIsNullException" xml:space="preserve">
+    <value>RetentionPolicy: IsDailyScheduleEnabled=true but DailySchedule is NULL</value>
+  </data>
+  <data name="InvalidBackupTimesInSchedulePolicyException" xml:space="preserve">
+    <value>ONE BackupTime is Allowed in SchedulePolicy</value>
+  </data>
+  <data name="InvalidDurationTypeException" xml:space="preserve">
+    <value>InvalidDurationType - {0}</value>
+  </data>
+  <data name="InvalidRetentionTimesInPolicyException" xml:space="preserve">
+    <value>ONE RetentionTime is Allowed in RententionSchedules</value>
+  </data>
+  <data name="MonthlyScheduleEnabledButScheduleIsNullException" xml:space="preserve">
+    <value>RetentionPolicy: IsMonthlyScheduleEnabled=true but MonthlySchedule is NULL</value>
+  </data>
+  <data name="MonthlyYearlyInvalidDailyRetentionFormatTypeException" xml:space="preserve">
+    <value>In Monthly and Yearly retention schedules, RetentionFormatType cannot be 'Daily' if Weekly BackupSchedule is selected</value>
+  </data>
+  <data name="RetentionDurationCountInvalidException" xml:space="preserve">
+    <value>RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999</value>
+  </data>
+  <data name="WeeklyRetentionScheduleNullException" xml:space="preserve">
+    <value>If Weekly backup schedule is enabled, Daily retention schedule should be null and Weekly retention schedule should not be null</value>
+  </data>
+  <data name="WeeklyScheduleEnabledButScheduleIsNullException" xml:space="preserve">
+    <value>RetentionPolicy: IsWeeklyScheduleEnabled=true but WeeklySchedule is NULL</value>
+  </data>
+  <data name="YearlyScheduleEnabledButScheduleIsNullException" xml:space="preserve">
+    <value>RetentionPolicy: IsYearlyScheduleEnabled=true but YearlySchedule is NULL</value>
+  </data>
+  <data name="YearlyScheduleMonthsOfYearException" xml:space="preserve">
+    <value>MonthsOfYear list in YearlyRetentionSchedule should not be NULL and not contain duplicate entires</value>
+  </data>
+  <data name="InvalidDayInDaysOfMonthOfMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, Day in DaysOfMonth should be 1-28 (or) IsLast=true set for one day only</value>
+  </data>
+  <data name="InvalidDaysOfMonthInMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, DaysOfMonth is NULL or empty or contains duplicate entires</value>
+  </data>
+  <data name="InvalidDaysOfWeekInMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, DaysOfWeek is NULL or empty or contains duplicate entires</value>
+  </data>
+  <data name="InvalidScheduleRunDaysInScheduleException" xml:space="preserve">
+    <value>In Schedule, if ScheduleRunFrequency is Weekly then ScheduleRunDays should not be empty and not contain duplicate entries</value>
+  </data>
+  <data name="InvalidScheduleTimeInScheduleException" xml:space="preserve">
+    <value>ScheduleTimes in Schedule should be in UTC Timezone, have ONE time and must be of multiples of 30 Mins with seconds and milliseconds set to 0</value>
+  </data>
+  <data name="InvalidWeeksOfMonthInMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, WeeksOfMonth is NULL or empty or contains duplicate entires</value>
+  </data>
+  <data name="MonthlyYearlyRetentionDailySchedulePolicyNULLException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, if RetentionScheduleFormatType=Daily then RetentionScheduleDaily should NOT be null</value>
+  </data>
+  <data name="MonthlyYearlyRetentionWeeklySchedulePolicyNULLException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, if RetentionScheduleFormatType=Weekly then RetentionScheduleWeekly should NOT be null</value>
+  </data>
+  <data name="UpdateToNewAzurePowershellWarning" xml:space="preserve">
+    <value>Data truncated. Please upgrade to latest version of Azure Powershell</value>
+  </data>
+  <data name="JobAllowedDateTimeRangeExceeded" xml:space="preserve">
+    <value>To filter should not be more than 30 days away from From filter.</value>
+  </data>
+  <data name="JobCouldNotCancelJob" xml:space="preserve">
+    <value>Failed to cancel the job. Error code: {0}</value>
+    <comment> </comment>
+  </data>
+  <data name="JobJobIdAndJobMismatch" xml:space="preserve">
+    <value>JobID and Job object provided don't match each other.</value>
+  </data>
+  <data name="JobRefineFilters" xml:space="preserve">
+    <value>There are more than 1000 jobs for the filter combination you have provided. Kindly refine your filters to fetch the job you want.</value>
+  </data>
+  <data name="JobTimeFiltersShouldBeSpecifiedInUtc" xml:space="preserve">
+    <value>Please specify From and To filter values in UTC. Other timezones are not supported.</value>
+  </data>
+  <data name="JobToShouldBeGreaterThanFrom" xml:space="preserve">
+    <value>To filter should not be less than From filter.</value>
+  </data>
+  <data name="JobWaitJobInvalidInput" xml:space="preserve">
+    <value>Please pass Job or List of Jobs as input. Your input is of type: {0}</value>
+  </data>
+</root>

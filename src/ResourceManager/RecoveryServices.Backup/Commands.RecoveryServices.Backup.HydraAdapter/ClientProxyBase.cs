@@ -24,12 +24,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public class ClientProxyBase
-    {
-        /// <summary>
-        /// Recovery Services Vault Credentials.
-        /// </summary>
-        protected static AzureRmRecoveryServicesVaultCreds recoveryServicesVaultCreds = new AzureRmRecoveryServicesVaultCreds();
-
+    {   
         protected object[] Parameters;
 
         /// <summary>
@@ -63,23 +58,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             return ClientRequestId;
         }
 
-        public AzureRmRecoveryServicesVaultCreds GetVaultCredentials()
+        public string GetResourceName()
         {
-            return recoveryServicesVaultCreds;
+            return PSRecoveryServicesClient.arsVault.Name;
         }
 
-        public static void UpdateCurrentVaultContext(AzureRmRecoveryServicesVaultCreds vaultCreds)
+        public string GetResourceGroupName()
         {
-            object updateVaultContextOneAtATime = new object();
-            lock (updateVaultContextOneAtATime)
-            {
-                recoveryServicesVaultCreds.ResourceName =
-                    vaultCreds.ResourceName;
-                recoveryServicesVaultCreds.ResourceGroupName =
-                    vaultCreds.ResourceGroupName;
-                recoveryServicesVaultCreds.Location =
-                    vaultCreds.Location;                
-            }
+            return PSRecoveryServicesClient.arsVault.ResouceGroupName;
         }
     }
 }

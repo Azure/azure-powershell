@@ -31,6 +31,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Status,
     }
 
+    public enum GetRecoveryPointParams
+    {
+        StartDate,
+        EndDate,
+        Item,
+        RecoveryPointId,
+    }
+
+    public enum RestoreBackupItemParams
+    {
+        RecoveryPoint,
+        StorageAccountName,
+    }
+
     public enum PolicyParams
     {
         WorkloadType,
@@ -40,6 +54,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         RetentionPolicy,
         ProtectionPolicy,
         ResourceGroupName,
-        ResourceName        
+        ResourceName
+    }
+
+    public enum ItemParams
+    {
+        AzureVMName,
+        AzureVMCloudServiceName,
+        AzureVMResourceGroupName,
+        WorkloadType,
+        Policy,
+        Item,
+        ParameterSetName,
+        Container,
+        ProtectionStatus,
+        Status,
     }
 }

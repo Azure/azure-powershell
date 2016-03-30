@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             if(schPolicy.ScheduleRunFrequency == ScheduleRunType.Daily && 
                ltrPolicy.DailySchedule == null)
             {
-                throw new ArgumentException("Daily Retention Schedule can't be null if Daily Backup Schedule is enabled ");
+                throw new ArgumentException(Resources.DailyRetentionScheduleNullException);
             }
 
             // for weekly schedule, daily retention policy should be NULL
@@ -40,8 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
                (ltrPolicy.DailySchedule != null || ltrPolicy.WeeklySchedule == null))
             {
-                throw new ArgumentException("If Weekly backup schedule is enabled, Daily retention schedule should be null &" +
-                                            "Weekly retention schedule should not be null");
+                throw new ArgumentException(Resources.WeeklyRetentionScheduleNullException);
             }
 
             // validate daily retention schedule with schPolicy
@@ -58,8 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 // count of daysOfWeek should match for weekly schedule
                 if(ltrPolicy.WeeklySchedule.DaysOfTheWeek.Count != schPolicy.ScheduleRunDays.Count)
                 {
-                    throw new ArgumentException(
-                        "DaysOfTheWeek in WeeklySchedule of retention policy must be same as ScheduleRunDays in SchedulePolicy");
+                    throw new ArgumentException(Resources.DaysofTheWeekInWeeklyRetentionException);                        
                 }
 
                 // validate days of week
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if(schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
                     ltrPolicy.MonthlySchedule.RetentionScheduleFormatType == Cmdlets.Models.RetentionScheduleFormat.Daily)
                 {
-                    throw new ArgumentException("DailyRetentionFormat cannot be chosen if Weekly BackupSchedule is selected");
+                    throw new ArgumentException(Resources.MonthlyYearlyInvalidDailyRetentionFormatTypeException);
                 }
 
                 // for monthly and weeklyFormat, validate days of week
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
                     ltrPolicy.YearlySchedule.RetentionScheduleFormatType == Cmdlets.Models.RetentionScheduleFormat.Daily)
                 {
-                    throw new ArgumentException("DailyRetentionFormat cannot be chosen if Weekly BackupSchedule is selected");
+                    throw new ArgumentException(Resources.MonthlyYearlyInvalidDailyRetentionFormatTypeException);
                 }
 
                 // for yearly and weeklyFormat, validate days of week                 
@@ -111,18 +110,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         private static void ValidateRetentionAndBackupTimes(List<DateTime> schPolicyTimes, List<DateTime> retPolicyTimes)
         {
-            //Currently supported BackupTimes  & retentionTimes is 1
+            //Currently supported BackupTimes & retentionTimes is 1
             if (retPolicyTimes == null || retPolicyTimes.Count != 1)
             {
-                throw new ArgumentException("Only one RetentionTime is Allowed in RententionSchedules");
+                throw new ArgumentException(Resources.InvalidRetentionTimesInPolicyException);
             }
             if (schPolicyTimes == null || schPolicyTimes.Count != 1)
             {
-                throw new ArgumentException("Only one BackupTime is Allowed in SchedulePolicy");
+                throw new ArgumentException(Resources.InvalidBackupTimesInSchedulePolicyException);
             }
             if (schPolicyTimes[0] != retPolicyTimes[0])
             {
-                throw new ArgumentException("RetentionTime in retention schedule should be same as backup time in SchedulePolicy");
+                throw new ArgumentException(Resources.BackupAndRetentionTimesMismatch);
             }
         }
 
@@ -132,8 +131,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 if (!schList.Contains(day))
                 {
-                    throw new ArgumentException(
-                        "DaysOfTheWeek in retention schedule should be subset of ScheduleRunDays of SchedulePolicy");
+                    throw new ArgumentException(Resources.MonthlyYearlyRetentionDaysOfWeekException);                        
                 }
             }
         }

@@ -25,18 +25,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// Represents IaaSVM Item Class
     /// </summary>
     public class AzureRmRecoveryServicesIaasVmItem : AzureRmRecoveryServicesItemBase
-    {   
+    {
+        /// <summary>
+        /// Friendly Name for the Item
+        /// </summary>
+        public string Name { get; set; }
+
         public string VirtualMachineId { get; set; }
 
         /// <summary>
         /// Protection Status of the item
         /// </summary>
-        public string ProtectionStatus { get; set; }
+        public ItemProtectionStatus ProtectionStatus { get; set; }
 
         /// <summary>
         /// Protection State of the item
         /// </summary>
-        public string ProtectionState { get; set; }
+        public ItemStatus ProtectionState { get; set; }
 
         /// <summary>
         /// Last Backup Status for the item
@@ -53,11 +58,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary
         public AzureRmRecoveryServicesIaasVmItemExtendedInfo ExtendedInfo { get; set; }
 
-        public AzureRmRecoveryServicesIaasVmItem(AzureIaaSVMProtectedItem protectedItem, 
+        public AzureRmRecoveryServicesIaasVmItem(AzureIaaSVMProtectedItem protectedItem,
             AzureRmRecoveryServicesContainerBase container)
             : base(protectedItem, container)
         {
-
+            LastBackupStatus = protectedItem.LastBackupStatus;
+            ProtectionPolicyName = protectedItem.PolicyName;
+            ProtectionState = EnumUtils.GetEnum<ItemStatus>(protectedItem.ProtectionState);
+            ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
+            VirtualMachineId = protectedItem.VirtualMachineId;
+            Name = protectedItem.FriendlyName;
         }
     }
 

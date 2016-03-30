@@ -27,19 +27,72 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #region HydraToPSObject conversions
 
         public static AzureRmRecoveryServicesSimpleSchedulePolicy GetPSSimpleSchedulePolicyPolicy(
-            SimpleSchedulePolicy hydraRetPolicy)
+            SimpleSchedulePolicy hydraPolicy)
         {
-            throw new NotImplementedException();
+            if (hydraPolicy == null)
+            {
+                return null;
+            }
+
+            AzureRmRecoveryServicesSimpleSchedulePolicy psPolicy = new AzureRmRecoveryServicesSimpleSchedulePolicy();
+
+            psPolicy.ScheduleRunDays = HelperUtils.GetEnumListFromStringList<DayOfWeek>(hydraPolicy.ScheduleRunDays);
+            psPolicy.ScheduleRunFrequency = (ScheduleRunType)Enum.Parse(typeof(ScheduleRunType),
+                                                                        hydraPolicy.ScheduleRunFrequency);
+            psPolicy.ScheduleRunTimes = (List<DateTime>)hydraPolicy.ScheduleRunTimes;
+
+            // safe side validation
+            psPolicy.Validate();
+
+            return psPolicy;
         }
 
         #endregion
 
         #region PStoHydraObject conversions
 
-        public static SimpleSchedulePolicy GetHydraSimpleSchedulePolicy(
-            AzureRmRecoveryServicesSimpleSchedulePolicy psRetPolicy)
+        public static List<DateTime> ParseScheduleRunTimesToUTC(List<DateTime> localTimes)
         {
-            throw new NotImplementedException();
+            if (localTimes == null || localTimes.Count == 0)
+            {
+                return null;
+            }
+
+            List<DateTime> utcTimes = new List<DateTime>();
+            DateTime temp;
+
+            foreach (DateTime localTime in localTimes)
+            {
+                temp = localTime;
+                if (localTime.Kind == DateTimeKind.Local)
+                {
+                    temp = localTime.ToUniversalTime();
+                    temp = new DateTime(temp.Year, temp.Month,
+                                        temp.Day, temp.Hour, temp.Minute - (temp.Minute % 30), 0);
+                }                
+                utcTimes.Add(temp);
+            }
+
+            return utcTimes;
+        }       
+
+        public static SimpleSchedulePolicy GetHydraSimpleSchedulePolicy(
+            AzureRmRecoveryServicesSimpleSchedulePolicy psPolicy)
+        {
+            if (psPolicy == null)
+            {
+                return null;
+            }
+
+            SimpleSchedulePolicy hydraPolicy = new SimpleSchedulePolicy();            
+            hydraPolicy.ScheduleRunFrequency = psPolicy.ScheduleRunFrequency.ToString();
+            if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
+            {
+                hydraPolicy.ScheduleRunDays = HelperUtils.GetStringListFromEnumList<DayOfWeek>(psPolicy.ScheduleRunDays);
+            }
+            hydraPolicy.ScheduleRunTimes = psPolicy.ScheduleRunTimes;
+
+            return hydraPolicy;
         }
 
         #endregion

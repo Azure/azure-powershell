@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,7 +54,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.RecoveryPointResponse GetRecoveryPoint()
+        public AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
         {
             throw new NotImplementedException();
         }
@@ -79,6 +85,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public void DeletePolicy()
+        {
+            throw new NotImplementedException();
+        }
+
+        public AzureRmRecoveryServicesSchedulePolicyBase GetDefaultSchedulePolicyObject()
+        {
+            throw new NotImplementedException();
+        }
+
+        public AzureRmRecoveryServicesRetentionPolicyBase GetDefaultRetentionPolicyObject()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Models.AzureRmRecoveryServicesItemBase> ListProtectedItems()
         {
             throw new NotImplementedException();
         }

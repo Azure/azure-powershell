@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using HydraModels = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -61,6 +62,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 ltrPolicy.YearlySchedule = GetPSLTRYearlySchedule(hydraRetPolicy.YearlySchedule);
             }
 
+            // safe side validate
+            ltrPolicy.Validate();
+
             return ltrPolicy;            
         }
 
@@ -97,8 +101,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     break;
 
                 default:
-                    throw new ArgumentException("Invalid DurationType:" +
-                                                 retentionDuration.DurationType.ToString());
+                    throw new ArgumentException(Resources.InvalidDurationTypeException,
+                                                retentionDuration.DurationType.ToString());
             }
 
             return daysCount;
@@ -127,8 +131,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     break;
 
                 default:
-                    throw new ArgumentException("Invalid DurationType:" +
-                                                 retentionDuration.DurationType.ToString());
+                    throw new ArgumentException(Resources.InvalidDurationTypeException,
+                                                retentionDuration.DurationType.ToString());
             }
 
             return weeksCount;
@@ -157,8 +161,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     break;
 
                 default:
-                    throw new ArgumentException("Invalid DurationType:" +
-                                                 retentionDuration.DurationType.ToString());
+                    throw new ArgumentException(Resources.InvalidDurationTypeException,
+                                                retentionDuration.DurationType.ToString());
             }
 
             return monthsCount;
@@ -187,8 +191,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     break;
 
                 default:
-                    throw new ArgumentException("Invalid DurationType:" +
-                                                 retentionDuration.DurationType.ToString());
+                    throw new ArgumentException(Resources.InvalidDurationTypeException,
+                                                retentionDuration.DurationType.ToString());
             }
 
             return yearsCount;
@@ -415,8 +419,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             };
             hydraMonthly.RetentionTimes = psMonthly.RetentionTimes;
 
-            hydraMonthly.RetentionScheduleFormatType = Enum.Parse(typeof(HydraModels.RetentionScheduleFormat),
-                                                                  psMonthly.RetentionScheduleFormatType.ToString()).ToString();
+            hydraMonthly.RetentionScheduleFormatType = psMonthly.RetentionScheduleFormatType.ToString();
             if (psMonthly.RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
                 hydraMonthly.RetentionScheduleDaily = GetHydraLTRDailyRetentionFormat(psMonthly.RetentionScheduleDaily);
@@ -441,12 +444,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             hydraYearly.RetentionDuration = new HydraModels.RetentionDuration()
             {
                 Count = psYearly.DurationCountInYears,
-                DurationType = HydraModels.RetentionDurationType.Months
+                DurationType = HydraModels.RetentionDurationType.Years
             };
             hydraYearly.RetentionTimes = psYearly.RetentionTimes;
 
-            hydraYearly.RetentionScheduleFormatType = Enum.Parse(typeof(HydraModels.RetentionScheduleFormat),
-                                                                  psYearly.RetentionScheduleFormatType.ToString()).ToString();
+            hydraYearly.RetentionScheduleFormatType = psYearly.RetentionScheduleFormatType.ToString();
             if (psYearly.RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
                 hydraYearly.RetentionScheduleDaily = GetHydraLTRDailyRetentionFormat(psYearly.RetentionScheduleDaily);

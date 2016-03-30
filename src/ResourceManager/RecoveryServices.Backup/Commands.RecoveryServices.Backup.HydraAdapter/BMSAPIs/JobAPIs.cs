@@ -19,19 +19,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public partial class HydraAdapter
     {
-        public JobResponse GetJob(string resourceGroupName, string resourceName, string jobId)
+        public JobResponse GetJob(string jobId)
         {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+
             return BmsAdapter.Client.Job.GetAsync(
-                resourceGroupName, 
-                resourceName, 
-                jobId, 
-                BmsAdapter.GetCustomRequestHeaders(), 
+                resourceGroupName,
+                resourceName,
+                jobId,
+                BmsAdapter.GetCustomRequestHeaders(),
                 BmsAdapter.CmdletCancellationToken).Result;
         }
 
         public JobListResponse GetJobs(
-            string resourceGroupName,
-            string resourceName,
             string jobId,
             string status,
             string operation,
@@ -41,6 +42,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             int? top = null,
             string skipToken = null)
         {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+
             // build pagination request
             PaginationRequest pagReq = new PaginationRequest()
             {
@@ -52,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 pagReq.Top = top.ToString();
             }
 
-            CommonJobQueryFilters commonFilters  = GetQueryObject(
+            CommonJobQueryFilters commonFilters = GetQueryObject(
                 backupManagementType,
                 startTime,
                 endTime,
@@ -63,17 +67,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             return BmsAdapter.Client.Job.ListAsync(
                 resourceGroupName,
                 resourceName,
-                null,
+                commonFilters,
                 pagReq,
                 BmsAdapter.GetCustomRequestHeaders(),
                 BmsAdapter.CmdletCancellationToken).Result;
         }
 
-        public BaseRecoveryServicesJobResponse CancelJob(
-            string resourceGroupName, 
-            string resourceName, 
-            string jobId)
+        public BaseRecoveryServicesJobResponse CancelJob(string jobId)
         {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+
             return BmsAdapter.Client.Job.CancelJobAsync(
                 resourceGroupName,
                 resourceName,
@@ -82,28 +86,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 BmsAdapter.CmdletCancellationToken).Result;
         }
 
-        public BaseRecoveryServicesJobResponse ExportJobs(
-            string resourceGroupName,
-            string resourceName,
-            string jobId,
-            string status,
-            string operation,
-            DateTime startTime,
-            DateTime endTime,
-            string backupManagementType)
+        public JobResponse GetJobOperationStatus(string jobId, string operationId)
         {
-            CommonJobQueryFilters filters = GetQueryObject(
-                backupManagementType,
-                startTime,
-                endTime,
-                jobId,
-                status,
-                operation);
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.Job.ExportJobAsync(
+            return BmsAdapter.Client.Job.GetOperationResultAsync(
                 resourceGroupName,
                 resourceName,
-                filters,
+                jobId,
+                operationId,
                 BmsAdapter.GetCustomRequestHeaders(),
                 BmsAdapter.CmdletCancellationToken).Result;
         }

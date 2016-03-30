@@ -7,8 +7,8 @@
     <ProjectGuid>{0E1D3F36-E6C8-4764-8C7D-6F9EE537490C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Helpers</RootNamespace>
-    <AssemblyName>Helpers</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conversions\JobConversions.cs" />
+    <Compile Include="Conversions\RecoveryPointConversions.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Validations\PolicyValidations.cs" />
     <Compile Include="Conversions\SchedulePolicyConversions.cs" />
@@ -59,10 +60,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.csproj">
+      <Project>{5e675749-6139-464a-904c-59c0ffdfec82}</Project>
+      <Name>Commands.RecoveryServices.Backup.Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.csproj">
       <Project>{30b92759-50b3-494e-b9f0-ec9a2ce9d57b}</Project>
       <Name>Commands.RecoveryServices.Backup.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -23,26 +23,28 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    /// <summary>
-    /// Get default schedule policy object for given workloadType and backupmanagementtype
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMBackupRetentionPolicyObject"), OutputType(typeof(AzureRmRecoveryServicesRetentionPolicyBase))]
-    public class GetAzureRMBackupRetentionPolicyObject : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRetentionPolicyObject"), OutputType(typeof(AzureRmRecoveryServicesRetentionPolicyBase))]
+    public class GetAzureRmRecoveryServicesBackupRetentionPolicyObject : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "Temp Help message. Need to update it")]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "Temp Help message. Need to update it")]
         [ValidateNotNullOrEmpty]
-        public BackupManagementType BackupManagementType { get; set; }
+        public BackupManagementType? BackupManagementType { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
-                {
-                    base.ExecuteCmdlet();
-                });
+            {
+                base.ExecuteCmdlet();
+
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>(), HydraAdapter);
+
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                WriteObject(psBackupProvider.GetDefaultRetentionPolicyObject());
+            });
         }
     }
 }

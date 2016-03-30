@@ -35,8 +35,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         BaseRecoveryServicesJobResponse TriggerRestore();
 
         ProtectedItemResponse GetProtectedItem();
+        
+        AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails();
 
-        RecoveryPointResponse GetRecoveryPoint();
+        List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints();
 
         ProtectionPolicyResponse CreatePolicy();
 
@@ -44,8 +46,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         ProtectionPolicyResponse GetPolicy();
 
+        AzureRmRecoveryServicesSchedulePolicyBase GetDefaultSchedulePolicyObject();
+
+        AzureRmRecoveryServicesRetentionPolicyBase GetDefaultRetentionPolicyObject();
         void DeletePolicy();
 
         List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers();
+
+        List<AzureRmRecoveryServicesItemBase> ListProtectedItems();
     }
 }

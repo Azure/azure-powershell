@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -43,14 +44,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if (IsDailyScheduleEnabled == false && IsWeeklyScheduleEnabled == false &&
                 IsMonthlyScheduleEnabled == false && IsYearlyScheduleEnabled == false)
             {
-                throw new ArgumentException("All schedules Daily/Weekly/Monthly/yearly are not enabled");
+                throw new ArgumentException(Resources.AllRetentionSchedulesEmptyException);
             }
 
             if (IsDailyScheduleEnabled)
             {
                 if (DailySchedule == null)
                 {
-                    throw new ArgumentException("IsDailyScheduleEnabled=true but DailySchedule is NULL");
+                    throw new ArgumentException(Resources.DailyScheduleEnabledButScheduleIsNullException);
                 }
                 else
                 {
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 if (WeeklySchedule == null)
                 {
-                    throw new ArgumentException("IsWeeklyScheduleEnabled=true but WeeklySchedule is NULL");
+                    throw new ArgumentException(Resources.WeeklyScheduleEnabledButScheduleIsNullException);
                 }
                 else
                 {
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 if (MonthlySchedule == null)
                 {
-                    throw new ArgumentException("IsMonthlyScheduleEnabled=true but MonthlySchedule is NULL");
+                    throw new ArgumentException(Resources.MonthlyScheduleEnabledButScheduleIsNullException);
                 }
                 else
                 {
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 if (YearlySchedule == null)
                 {
-                    throw new ArgumentException("IsYearlyScheduleEnabled=true but YearlySchedule is NULL");
+                    throw new ArgumentException(Resources.YearlyScheduleEnabledButScheduleIsNullException);
                 }
                 else
                 {
@@ -115,14 +116,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public virtual void Validate()
         {
-            if (RetentionTimes == null || RetentionTimes.Count == 0)
+            if (RetentionTimes == null || RetentionTimes.Count == 0 || RetentionTimes.Count != 1)
             {
-                throw new ArgumentException("RetentionTime is NULL/Empty");
-            }
-            if (RetentionTimes.Count != 1)
-            {
-                throw new ArgumentException("Only one RetentionTime is Allowed");
-            }          
+                throw new ArgumentException(Resources.InvalidRetentionTimesInPolicyException);
+            }                    
         }        
 
         public override string ToString()
@@ -140,8 +137,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             if (DurationCountInDays <= 0 || DurationCountInDays > PolicyConstants.MaxAllowedRetentionDurationCount)
             {
-                throw new ArgumentException(string.Format("Allowed Count for RetentionDurationInDays is 1 - {0}",
-                                            PolicyConstants.MaxAllowedRetentionDurationCount));
+                throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
             } 
 
             base.Validate();
@@ -164,18 +160,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             if (DurationCountInWeeks <= 0 || DurationCountInWeeks > PolicyConstants.MaxAllowedRetentionDurationCount)
             {
-                throw new ArgumentException(string.Format("Allowed Count for DurationCountInWeeks is 1 - {0}",
-                                            PolicyConstants.MaxAllowedRetentionDurationCount));
+                throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
             }
 
-            if (DaysOfTheWeek == null || DaysOfTheWeek.Count == 0)
+            if (DaysOfTheWeek == null || DaysOfTheWeek.Count == 0 || DaysOfTheWeek.Count != DaysOfTheWeek.Distinct().Count())
             {
-                throw new ArgumentException("DaysOfTheWeek is NULL/Empty");
-            }
-                        
-            if(DaysOfTheWeek.Count != DaysOfTheWeek.Distinct().Count())
-            {
-                throw new ArgumentException("DaysOfTheWeek list in WeeklyRetentionSchdule contains duplicate entries");
+                throw new ArgumentException(Resources.WeeklyRetentionScheduleDaysOfWeekException);
             }
 
             base.Validate();
@@ -210,15 +200,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
             if (DurationCountInMonths <= 0 || DurationCountInMonths > PolicyConstants.MaxAllowedRetentionDurationCount)
             {
-                throw new ArgumentException(string.Format("Allowed Count for DurationCountInMonths is 1 - {0}",
-                                            PolicyConstants.MaxAllowedRetentionDurationCount));
+                throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
             }
             
             if (RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
                 if (RetentionScheduleDaily == null)
                 {
-                    throw new ArgumentException("RetentionScheduleDaily is set to NULL");
+                    throw new ArgumentException(Resources.MonthlyYearlyRetentionDailySchedulePolicyNULLException);
                 }
 
                 RetentionScheduleDaily.Validate();
@@ -228,7 +217,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 if (RetentionScheduleWeekly == null)
                 {
-                    throw new ArgumentException("RetentionScheduleWeekly is set to NULL");
+                    throw new ArgumentException(Resources.MonthlyYearlyRetentionWeeklySchedulePolicyNULLException);                    
                 }
 
                 RetentionScheduleWeekly.Validate();
@@ -267,25 +256,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
             if (DurationCountInYears <= 0 || DurationCountInYears > PolicyConstants.MaxAllowedRetentionDurationCount)
             {
-                throw new ArgumentException(string.Format("Allowed Count for DurationCountInYears is 1 - {0}",
-                                            PolicyConstants.MaxAllowedRetentionDurationCount));
+                throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
             }
                         
-            if (MonthsOfYear == null || MonthsOfYear.Count == 0)
+            if (MonthsOfYear == null || MonthsOfYear.Count == 0 || MonthsOfYear.Count != MonthsOfYear.Distinct().Count())
             {
-                throw new ArgumentException("MonthsOfYear is set to NULL/Empty");
-            }
-                        
-            if (MonthsOfYear.Count != MonthsOfYear.Distinct().Count())
-            {
-                throw new ArgumentException("MonthsOfYear list in YearlyRetentionSchdule contains duplicate entries");
+                throw new ArgumentException(Resources.YearlyScheduleMonthsOfYearException);
             }
             
             if (RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
                 if (RetentionScheduleDaily == null)
                 {
-                    throw new ArgumentException("RetentionScheduleDaily is set to NULL");
+                    throw new ArgumentException(Resources.MonthlyYearlyRetentionDailySchedulePolicyNULLException);
                 }
 
                 RetentionScheduleDaily.Validate();
@@ -295,7 +278,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 if (RetentionScheduleWeekly == null)
                 {
-                    throw new ArgumentException("RetentionScheduleWeekly is set to NULL");
+                    throw new ArgumentException(Resources.MonthlyYearlyRetentionWeeklySchedulePolicyNULLException);
                 }
 
                 RetentionScheduleWeekly.Validate();
@@ -322,14 +305,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             if (DaysOfTheMonth == null || DaysOfTheMonth.Count == 0)
             {
-                throw new ArgumentException("DaysOfThe Month is set to NULL/Empty");
+                throw new ArgumentException(Resources.InvalidDaysOfMonthInMonthlyYearlyRetentionPolicyException);
             }
 
             // check if all the days are unique or not
-            List<Day> distinctDays = DaysOfTheMonth.GroupBy(x => new { x.Date, x.IsLast }).Select(g => g.First()).ToList();            
+            List<Day> distinctDays = DaysOfTheMonth.GroupBy(x => new { x.Date, x.IsLast }).Select(g => g.First()).ToList();
             if (DaysOfTheMonth.Count != distinctDays.Count)
             {
-                throw new ArgumentException("DaysOfTheMonth list in DailyRetentionFormat contains duplicate entries");
+                throw new ArgumentException(Resources.InvalidDaysOfMonthInMonthlyYearlyRetentionPolicyException);
             }
 
             // also check if there exists more than one 'IsLast=true'
@@ -345,7 +328,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
             if(countOfIsLast > 1)
             {
-                throw new ArgumentException("Only ONE day can have IsLast=true in DaysOfTheMonth list");
+                throw new ArgumentException(Resources.InvalidDayInDaysOfMonthOfMonthlyYearlyRetentionPolicyException);
             }
         }
 
@@ -363,25 +346,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public void Validate()
         {
-            if (DaysOfTheWeek == null || DaysOfTheWeek.Count == 0)
+            if (DaysOfTheWeek == null || DaysOfTheWeek.Count == 0 ||
+                DaysOfTheWeek.Count != DaysOfTheWeek.Distinct().Count())
             {
-                throw new ArgumentException(" DaysOfTheWeek is set to NULL/Empty");
+                throw new ArgumentException(Resources.InvalidDaysOfWeekInMonthlyYearlyRetentionPolicyException);
             }            
 
-            if (WeeksOfTheMonth == null || WeeksOfTheMonth.Count == 0)
+            if (WeeksOfTheMonth == null || WeeksOfTheMonth.Count == 0 ||
+                WeeksOfTheMonth.Count != WeeksOfTheMonth.Distinct().Count())
             {
-                throw new ArgumentException("WeeksOfTheMonth is set to NULL/Empty");
-            }
-                        
-            if (DaysOfTheWeek.Count != DaysOfTheWeek.Distinct().Count())
-            {
-                throw new ArgumentException("DaysOfTheWeek list in WeeklyRetentionFormat contains duplicate entries");
-            }
-                        
-            if (WeeksOfTheMonth.Count != WeeksOfTheMonth.Distinct().Count())
-            {
-                throw new ArgumentException("WeeksOfTheMonth list in WeeklyRetentionFormat contains duplicate entries");
-            }
+                throw new ArgumentException(Resources.InvalidWeeksOfMonthInMonthlyYearlyRetentionPolicyException);
+            }           
         }
 
         public override string ToString()
@@ -407,8 +382,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             if (IsLast == false && (Date <= 0 || Date > PolicyConstants.MaxAllowedDateInMonth))
             {
-                throw new ArgumentException("Days in DaysOfTheMonth should have IsLast = true  or date should be 1-" +
-                                             PolicyConstants.MaxAllowedDateInMonth);
+                throw new ArgumentException(Resources.InvalidDayInDaysOfMonthOfMonthlyYearlyRetentionPolicyException);
             }
         }
 
