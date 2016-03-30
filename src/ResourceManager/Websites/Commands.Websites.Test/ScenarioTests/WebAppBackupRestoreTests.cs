@@ -61,19 +61,5 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest("Test-EditAndGetWebAppBackupConfigurationPiping");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveWebAppBackupConfiguration()
-        {
-            WebsitesController.NewInstance.RunPsTest("Test-RemoveWebAppBackupConfiguration");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveWebAppBackupConfigurationPiping()
-        {
-            WebsitesController.NewInstance.RunPsTest("Test-RemoveWebAppBackupConfigurationPiping");
-        }
     }
 }
