@@ -159,9 +159,6 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Storage">
-      <HintPath>..\..\..\lib\Microsoft.Azure.Management.Storage.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationGateway\ApplicationGatewayBaseCmdlet.cs" />
@@ -246,6 +243,7 @@
     <Compile Include="ExpressRouteCircuit\Authorization\GetAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\NewAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\RemoveAzureExpressRouteCircuitAuthorizationCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\MoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AddAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AzureLoadBalancerInboundNatPoolConfigBase.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\GetAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
@@ -281,8 +279,6 @@
     <Compile Include="Models\PSInboundRule.cs" />
     <Compile Include="Models\PSInboundNatPool.cs" />
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
-    <Compile Include="Models\PSExpressRouteCircuitArpTable.cs" />
-    <Compile Include="Models\PSExpressRouteCircuitRoutesTable.cs" />
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
     <Compile Include="Models\PSIPConfiguration.cs" />
