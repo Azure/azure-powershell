@@ -3,10 +3,12 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
+using Newtonsoft.Json;
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -62,22 +64,29 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
                 while (true)
                 {
-                    op = VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
-                        ResourceGroupName,
-                        VMName,
-                        Name).GetAwaiter().GetResult();
-
-                    if (ComputeOperationStatus.Failed.Equals(op.Response.StatusCode))
-                        //&& op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
+                    try
                     {
-                        count++;
-                        if (count <= 2)
-                        {
-                            continue;
-                        }
+                        op = VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
+                            ResourceGroupName,
+                            VMName,
+                            Name).GetAwaiter().GetResult();
+                        break;
                     }
-                    
-                    break;
+                    catch (Rest.Azure.CloudException ex)
+                    {
+                        var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(ex.Response.Content);
+
+                        if ("Failed".Equals(errorReturned.Status)
+                            && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                        {
+                            count++;
+                            if (count <= 2)
+                            {
+                                continue;
+                            }
+                        }
+                        ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
+                    }
                 }
 
                 var result = Mapper.Map<PSAzureOperationResponse>(op);

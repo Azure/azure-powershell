@@ -204,6 +204,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         protected override void SetupDebuggingTraces()
         {
+            ServiceClientTracing.IsEnabled = true;
             base.SetupDebuggingTraces();
             _serviceClientTracingInterceptor = _serviceClientTracingInterceptor 
                 ?? new ServiceClientTracingInterceptor(DebugMessages);

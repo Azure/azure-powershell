@@ -287,7 +287,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 throw new ArgumentNullException("environment");
             }
+
             var adEndpoint = environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory];
+            if (string.IsNullOrWhiteSpace(adEndpoint))
+            {
+                throw new ArgumentOutOfRangeException("environment", string.Format("No Active Directory endpoint specified for environment '{0}'", environment.Name));
+            }
+
+            var audience = environment.Endpoints[resourceId];
+            if (string.IsNullOrWhiteSpace(audience))
+            {
+                string message = Resources.InvalidManagementTokenAudience;
+                if (resourceId == AzureEnvironment.Endpoint.GraphEndpointResourceId)
+                {
+                    message = Resources.InvalidGraphTokenAudience;
+                }
+
+                throw new ArgumentOutOfRangeException("environment", string.Format(message, environment.Name));
+            }
 
             return new AdalConfiguration
             {

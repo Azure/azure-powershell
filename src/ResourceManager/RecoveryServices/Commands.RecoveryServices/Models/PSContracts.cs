@@ -191,54 +191,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
-    /// Error contract returned when some exception occurs in ASR REST API.
-    /// </summary>
-    [SuppressMessage(
-        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
-        "SA1402:FileMayOnlyContainASingleClass",
-        Justification = "Keeping all contracts together.")]
-    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    public class Error
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Error" /> class.
-        /// </summary>
-        public Error()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets error code.
-        /// </summary>
-        [DataMember]
-        public string Code { get; set; }
-
-        /// <summary>
-        /// Gets or sets error message.
-        /// </summary>
-        [DataMember]
-        public string Message { get; set; }
-
-        /// <summary>
-        /// Gets or sets possible causes of error.
-        /// </summary>
-        [DataMember]
-        public string PossibleCauses { get; set; }
-
-        /// <summary>
-        /// Gets or sets recommended action to resolve error.
-        /// </summary>
-        [DataMember]
-        public string RecommendedAction { get; set; }
-
-        /// <summary>
-        /// Gets or sets client request Id.
-        /// </summary>
-        [DataMember(Name = "ActivityId")]
-        public string ClientRequestId { get; set; }
-    }
-
-    /// <summary>
     /// CIK token details.
     /// </summary>
     [SuppressMessage(
@@ -361,7 +313,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
         {
             this.SubscriptionId = subscriptionId;
-            this.ResourceType = Constants.ASRVaultType;
+            this.ResourceType = Constants.VaultType;
             this.ResourceName = resourceName;
             this.ManagementCert = managementCert;
             this.AcsNamespace = acsNamespace;
@@ -404,7 +356,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     }
 
     /// <summary>
-    /// Class to define ASR Vault credentials
+    /// Class to define ARS Vault credentials
     /// </summary>
     [SuppressMessage(
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",

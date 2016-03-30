@@ -72,8 +72,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.2.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.4.1.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm">
@@ -97,11 +98,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.0.1\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.0.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.1.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -157,9 +158,6 @@
     </Reference>
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.Storage">
-      <HintPath>..\..\..\lib\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +243,7 @@
     <Compile Include="ExpressRouteCircuit\Authorization\GetAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\NewAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\RemoveAzureExpressRouteCircuitAuthorizationCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\MoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AddAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AzureLoadBalancerInboundNatPoolConfigBase.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\GetAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
@@ -262,6 +261,7 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
+    <Compile Include="Models\PSBgpSettings.cs" />
     <Compile Include="Models\PSApplicationGateway.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddress.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
@@ -279,8 +279,6 @@
     <Compile Include="Models\PSInboundRule.cs" />
     <Compile Include="Models\PSInboundNatPool.cs" />
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
-    <Compile Include="Models\PSExpressRouteCircuitArpTable.cs" />
-    <Compile Include="Models\PSExpressRouteCircuitRoutesTable.cs" />
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
     <Compile Include="Models\PSIPConfiguration.cs" />

@@ -44,8 +44,9 @@ namespace StaticAnalysis
             var directories = new List<string>
             {
                 Path.Combine(installDir, @"ResourceManager\AzureResourceManager\"),
-                Path.Combine(installDir, @"ServiceManagement\Azure\")
-            };
+                Path.Combine(installDir, @"ServiceManagement\Azure\"),
+                Path.Combine(installDir, @"Storage\")
+           };
 
             var reportsDirectory = Directory.GetCurrentDirectory();
             bool logReportsDirectoryWarning = true;
@@ -55,7 +56,15 @@ namespace StaticAnalysis
                 logReportsDirectoryWarning = false;
             }
 
-            var logger = new ConsoleLogger(reportsDirectory);
+           var exceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
+           bool useExceptions = true;
+            if (args.Length > 2)
+            {
+                bool.TryParse(args[2], out useExceptions);
+            }
+
+            var logger = useExceptions? new ConsoleLogger(reportsDirectory, exceptionsDirectory) :
+                new ConsoleLogger(reportsDirectory);
 
             if (logReportsDirectoryWarning)
             {
@@ -72,6 +81,7 @@ namespace StaticAnalysis
             }
 
             logger.WriteReports();
+            logger.CheckForIssues(2);
         }
     }
 }

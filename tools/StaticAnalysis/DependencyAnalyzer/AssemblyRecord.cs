@@ -114,6 +114,12 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         }
 
+        public override int GetHashCode()
+        {
+            return string.Format("{0}-{1}-{2}", AssemblyName, AssemblyFileMajorVersion, AssemblyFileMinorVersion).GetHashCode();
+        }
+
+
         /// <summary>
         /// Get all the ancestors in the ancestor tree
         /// </summary>

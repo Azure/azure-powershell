@@ -162,6 +162,10 @@
                 <Label>Outputs</Label>
                 <PropertyName>OutputsString</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>DeploymentDebugLogLevel</Label>
+                <PropertyName>DeploymentDebugLogLevel</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
