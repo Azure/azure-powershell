@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public List<AzureRmRecoveryServicesJobBase> ModifyPolicy()
+        public ProtectionPolicyResponse ModifyPolicy()
         {
             throw new NotImplementedException();
         }
