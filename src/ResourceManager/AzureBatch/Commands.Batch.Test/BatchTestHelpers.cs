@@ -126,11 +126,12 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    TResponse response = responseToUse;
-
                     if (responseToUse == null)
                     {
-                        response = new TResponse();
+                        responseToUse = new TResponse()
+                        {
+                            Response = new HttpResponseMessage()
+                        };
                     }
 
                     if (requestAction != null)
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                         requestAction(request);
                     }
 
-                    Task<TResponse> task = Task.FromResult(response);
+                    Task<TResponse> task = Task.FromResult(responseToUse);
                     return task;
                 };
             });
@@ -155,7 +156,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <typeparam name="TResponse">The type of the expected response.</typeparam>
         public static RequestInterceptor CreateFakeServiceResponseInterceptor<TBody, TOptions, TResponse>(TResponse responseToUse = default(TResponse),
             Action<BatchRequest<TBody, TOptions, TResponse>> requestAction = null)
-            where TBody : class
             where TOptions : ProxyModels.IOptions, new()
             where TResponse : IAzureOperationResponse, new()
         {
@@ -170,15 +170,15 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    TResponse response = responseToUse;
-
                     if (responseToUse == null)
                     {
-                        response = new TResponse();
-                        response.Response = new HttpResponseMessage();
+                        responseToUse = new TResponse()
+                        {
+                            Response = new HttpResponseMessage()
+                        };
                     }
 
-                    Task<TResponse> task = Task.FromResult(response);
+                    Task<TResponse> task = Task.FromResult(responseToUse);
                     return task;
                 };
             });
@@ -195,9 +195,12 @@ namespace Microsoft.Azure.Commands.Batch.Test
             where TBody : class, new ()
             where THeader : class, new ()
         {
-            var response = new AzureOperationResponse<TBody, THeader>();
-            response.Body = new TBody();
-            response.Headers = new THeader();
+            var response = new AzureOperationResponse<TBody, THeader>()
+            {
+                Body = new TBody(),
+                Headers = new THeader()
+            };
+
             return response;
         }
 
@@ -211,9 +214,11 @@ namespace Microsoft.Azure.Commands.Batch.Test
             where TBody : class, new()
             where THeader : class, new()
         {
-            var response = new AzureOperationResponse<IPage<TBody>, THeader>();
-            response.Body = new EmptyPagedEnumerable<TBody>();
-            response.Headers = new THeader();
+            var response = new AzureOperationResponse<IPage<TBody>, THeader>()
+            {
+                Body = new MockPagedEnumerable<TBody>(),
+                Headers = new THeader()
+            };
             return response;
         }
 
@@ -334,7 +339,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 certs.Add(cert);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.Certificate>(certs);
+            response.Body = new MockPagedEnumerable<ProxyModels.Certificate>(certs);
 
             return response;
         }
@@ -372,7 +377,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 pools.Add(pool);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudPool>(pools);
+            response.Body = new MockPagedEnumerable<ProxyModels.CloudPool>(pools);
 
             return response;
         }
@@ -410,7 +415,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 computeNodes.Add(computeNode);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.ComputeNode>(computeNodes);
+            response.Body = new MockPagedEnumerable<ProxyModels.ComputeNode>(computeNodes);
 
             return response;
         }
@@ -449,7 +454,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 jobSchedules.Add(new ProxyModels.CloudJobSchedule(id: id, schedule: schedule, jobSpecification: jobSpec));
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudJobSchedule>(jobSchedules);
+            response.Body = new MockPagedEnumerable<ProxyModels.CloudJobSchedule>(jobSchedules);
 
             return response;
         }
@@ -487,7 +492,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 jobs.Add(job);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudJob>(jobs);
+            response.Body = new MockPagedEnumerable<ProxyModels.CloudJob>(jobs);
 
             return response;
         }
@@ -525,7 +530,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 tasks.Add(task);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.CloudTask>(tasks);
+            response.Body = new MockPagedEnumerable<ProxyModels.CloudTask>(tasks);
 
             return response;
         }
@@ -618,7 +623,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 files.Add(file);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.NodeFile>(files);
+            response.Body = new MockPagedEnumerable<ProxyModels.NodeFile>(files);
 
             return response;
         }
@@ -640,7 +645,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 files.Add(file);
             }
 
-            response.Body = new EmptyPagedEnumerable<ProxyModels.NodeFile>(files);
+            response.Body = new MockPagedEnumerable<ProxyModels.NodeFile>(files);
 
             return response;
         }
@@ -761,10 +766,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
             FieldInfo fieldInfo = t.GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
             fieldInfo.SetValue(obj, fieldValue);
         }
-
-        /// <summary>
-        /// Convert Hyak-based code generator enums to swagger base
-        /// </summary>
         internal static T MapEnum<T>(Enum otherEnum) where T : struct
         {
             if (otherEnum == null)
@@ -776,9 +777,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return result;
         }
 
-        /// <summary>
-        /// Convert Hyak-based code generator nullable enums to swagger base
-        /// </summary>
         internal static T? MapNullableEnum<T>(Enum otherEnum) where T : struct
         {
             if (otherEnum == null)

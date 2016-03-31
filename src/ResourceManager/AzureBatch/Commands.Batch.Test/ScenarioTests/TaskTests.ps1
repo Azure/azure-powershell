@@ -20,7 +20,7 @@ function Test-CreateTask
 {
     param([string]$accountName, [string]$jobId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     $taskId1 = "simple"
     $taskId2= "complex"
@@ -93,7 +93,7 @@ function Test-GetTaskById
 {
     param([string]$accountName, [string]$jobId, [string]$taskId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $task = Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $context
 
     Assert-AreEqual $taskId $task.Id
@@ -112,7 +112,7 @@ function Test-ListTasksByFilter
 {
     param([string]$accountName, [string]$jobId, [string]$taskPrefix, [string]$matches)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "startswith(id,'" + "$taskPrefix" + "')"
 
     $tasks = Get-AzureBatchTask -JobId $jobId -Filter $filter -BatchContext $context
@@ -142,7 +142,7 @@ function Test-GetAndListTasksWithSelect
 {
     param([string]$accountName, [string]$jobId, [string]$taskId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "id eq '$taskId'"
     $selectClause = "id,state"
 
@@ -174,7 +174,7 @@ function Test-ListTasksWithMaxCount
 {
     param([string]$accountName, [string]$jobId, [string]$maxCount)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $tasks = Get-AzureBatchTask -JobId $jobId -MaxCount $maxCount -BatchContext $context
 
     Assert-AreEqual $maxCount $tasks.Length
@@ -194,7 +194,7 @@ function Test-ListAllTasks
 {
     param([string]$accountName, [string] $jobId, [string]$count)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $tasks = Get-AzureBatchTask -JobId $jobId -BatchContext $context
 
     Assert-AreEqual $count $tasks.Length
@@ -214,7 +214,7 @@ function Test-ListTaskPipeline
 {
     param([string]$accountName, [string]$jobId, [string]$taskId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Get Job into Get Task
     $task = Get-AzureBatchJob -Id $jobId -BatchContext $context | Get-AzureBatchTask -BatchContext $context
@@ -229,7 +229,7 @@ function Test-UpdateTask
 {
     param([string]$accountName, [string]$jobId, [string]$taskId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     $task = Get-AzureBatchTask $jobId $taskId -BatchContext $context
 
@@ -258,7 +258,7 @@ function Test-DeleteTask
 {
     param([string]$accountName, [string]$jobId, [string]$taskId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the task exists
     $tasks = Get-AzureBatchTask -JobId $jobId -BatchContext $context
@@ -286,7 +286,7 @@ function Test-TerminateTask
 {
     param([string]$accountName, [string]$jobId, [string]$taskId1, [string]$taskId2)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     Stop-AzureBatchTask $jobId $taskId1 -BatchContext $context
     Get-AzureBatchTask $jobId $taskId2 -BatchContext $context | Stop-AzureBatchTask -BatchContext $context
@@ -306,7 +306,7 @@ function Test-ListSubtasksWithMaxCount
 {
     param([string]$accountName, [string]$jobId, [string]$taskId, [string]$maxCount)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $subtasks = Get-AzureBatchSubtask $jobId $taskId -MaxCount $maxCount -BatchContext $context
 
     Assert-AreEqual $maxCount $subtasks.Length
@@ -328,7 +328,7 @@ function Test-ListAllSubtasks
 
     $numSubTasksExpected = $numInstances - 1
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $subtasks = Get-AzureBatchSubtask $jobId $taskId -BatchContext $context
 
     Assert-AreEqual $numSubTasksExpected $subtasks.Length

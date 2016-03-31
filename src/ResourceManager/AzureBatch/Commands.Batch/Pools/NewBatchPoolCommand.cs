@@ -82,6 +82,8 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
         public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
 
         [Parameter]

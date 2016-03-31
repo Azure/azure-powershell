@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class NewTaskParameters : JobOperationParameters
     {
-        public NewTaskParameters(BatchAccountContext context, string jobId, PSCloudJob job, string taskId, IEnumerable<BatchClientBehavior> additionalBehaviors = null) 
+        public NewTaskParameters(BatchAccountContext context, string jobId, PSCloudJob job, string taskId, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, jobId, job, additionalBehaviors)
         {
             if (string.IsNullOrWhiteSpace(taskId))
@@ -76,5 +76,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Information about how to run the multi-instance task.
         /// </summary>
         public PSMultiInstanceSettings MultiInstanceSettings { get; set; }
+
+        /// <summary>
+        /// Information about how to run the multi-instance task.
+        /// </summary>
+        public TaskDependencies TaskDependencies { get; set; }
     }
 }

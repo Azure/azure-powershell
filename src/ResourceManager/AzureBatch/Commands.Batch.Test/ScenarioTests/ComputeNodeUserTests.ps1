@@ -20,7 +20,7 @@ function Test-CreateComputeNodeUser
 {
     param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $password = "Password1234!"
 
     # Create a user
@@ -49,7 +49,7 @@ function Test-UpdateComputeNodeUser
 {
     param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Basically just validating that we can set the parameters and execute the cmdlet without error. 
     # If a Get user API is added, we can validate that the properties were actually updated.
@@ -64,7 +64,7 @@ function Test-DeleteComputeNodeUser
 {
     param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
 

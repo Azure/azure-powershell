@@ -20,7 +20,7 @@ function Test-NewJob
 {
     param([string]$accountName)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     
     $jobId1 = "simple"
     $jobId2 = "complex"
@@ -238,7 +238,7 @@ function Test-GetJobById
 {
     param([string]$accountName, [string]$jobId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $job = Get-AzureBatchJob -Id $jobId -BatchContext $context
 
     Assert-AreEqual $jobId $job.Id
@@ -257,7 +257,7 @@ function Test-ListJobsByFilter
 {
     param([string]$accountName, [string]$prefix, [string]$matches)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "startswith(id,'$prefix')"
 
     $jobs = Get-AzureBatchJob -Filter $filter -BatchContext $context
@@ -277,7 +277,7 @@ function Test-GetAndListJobsWithSelect
 {
     param([string]$accountName, [string]$jobId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "id eq '$jobId'"
     $selectClause = "id,state"
 
@@ -308,7 +308,7 @@ function Test-ListJobsWithMaxCount
 {
     param([string]$accountName, [string]$maxCount)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobs = Get-AzureBatchJob -MaxCount $maxCount -BatchContext $context
 
     Assert-AreEqual $maxCount $jobs.Length
@@ -322,7 +322,7 @@ function Test-ListAllJobs
 {
     param([string]$accountName, [string]$count)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobs = Get-AzureBatchJob -BatchContext $context
 
     Assert-AreEqual $count $jobs.Length
@@ -336,7 +336,7 @@ function Test-ListJobsUnderSchedule
 {
     param([string]$accountName, [string]$jobScheduleId, [string]$jobId, [string]$count)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobSchedule = Get-AzureBatchJobSchedule -Id $jobScheduleId -BatchContext $context
 
     # Verify that listing jobs works
@@ -367,7 +367,11 @@ function Test-UpdateJob
 {
     param([string]$accountName, [string]$jobId)
 
-    $context = Get-ScenarioTestContext $accountName
+	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+
+	$osFamily = 4
+	$targetOS = "*"
+	$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
 	$osFamily = 4
 	$targetOS = "*"
@@ -444,7 +448,7 @@ function Test-DeleteJob
 {
     param([string]$accountName, [string]$jobId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the job exists
     $job = Get-AzureBatchJob $jobId -BatchContext $context
@@ -472,7 +476,7 @@ function Test-DisableAndEnableJob
 {
     param([string]$accountName, [string]$jobId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the job is Active
     $job = Get-AzureBatchJob $jobId -BatchContext $context
@@ -508,7 +512,7 @@ function Test-TerminateJob
 {
     param([string]$accountName, [string]$jobId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $terminateReason = "test"
 
     if ($usePipeline -eq '1')
