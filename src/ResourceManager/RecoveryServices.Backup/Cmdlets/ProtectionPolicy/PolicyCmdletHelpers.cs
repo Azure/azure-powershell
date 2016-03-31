@@ -51,8 +51,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ProtectionPolicyResponse response = null;
 
             try
-            {
+            {                
                 response = hydraAdapter.GetProtectionPolicy(policyName);
+                Logger.Instance.WriteDebug("Successfully fetched policy from service: " + policyName);
             }
             catch
             {

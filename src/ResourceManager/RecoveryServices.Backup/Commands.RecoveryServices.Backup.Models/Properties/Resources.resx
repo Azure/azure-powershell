@@ -269,7 +269,6 @@
   </data>
   <data name="JobCouldNotCancelJob" xml:space="preserve">
     <value>Failed to cancel the job. Error code: {0}</value>
-    <comment> </comment>
   </data>
   <data name="JobJobIdAndJobMismatch" xml:space="preserve">
     <value>JobID and Job object provided don't match each other.</value>
@@ -285,5 +284,8 @@
   </data>
   <data name="JobWaitJobInvalidInput" xml:space="preserve">
     <value>Please pass Job or List of Jobs as input. Your input is of type: {0}</value>
+  </data>
+  <data name="ScheduleTimeNotInUTCTimeZoneException" xml:space="preserve">
+    <value>ScheduleRunTimes in Schedule Policy should be in UTC Timezone</value>
   </data>
 </root>

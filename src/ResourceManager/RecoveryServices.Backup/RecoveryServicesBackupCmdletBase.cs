@@ -153,6 +153,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             while (response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
             {
+                WriteDebug("Tracking operation completion using status link: " + statusUrlLink);
                 Thread.Sleep(_defaultSleepForOperationTracking * 1000);
                 response = hydraFunc(statusUrlLink);
             }

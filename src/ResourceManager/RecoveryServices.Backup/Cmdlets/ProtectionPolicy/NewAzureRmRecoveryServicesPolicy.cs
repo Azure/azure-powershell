@@ -58,6 +58,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
            {
                base.ExecuteCmdlet();
 
+               WriteDebug(string.Format("Input params - Name:{0}, WorkloadType:{1}, " +
+                          "BackupManagementType: {2}, " +
+                          "RetentionPolicy:{3}, SchedulePolicy:{4}",
+                          Name, WorkloadType.ToString(),
+                          BackupManagementType.HasValue ? BackupManagementType.ToString() : "NULL",
+                          RetentionPolicy == null ? "NULL" : RetentionPolicy.ToString(),
+                          SchedulePolicy == null ? "NULL" : SchedulePolicy.ToString()));
+
                // validate policy name
                PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
 
@@ -79,10 +87,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                psBackupProvider.CreatePolicy();
 
+               WriteDebug("Successfully created policy, now fetching it from service: " + Name);
+
                // now get the created policy and return
                HydraModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
-                                                         Name,
-                                                         HydraAdapter);
+                                                                           Name,
+                                                                           HydraAdapter);
                // now convert hydraPolicy to PSObject
                WriteObject(ConversionHelpers.GetPolicyModel(policy.Item));
            });
