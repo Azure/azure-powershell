@@ -174,9 +174,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             AzureDiskEncryptionExtensionContext adeExtension = new AzureDiskEncryptionExtensionContext(vmExtension.ToPSVirtualMachineExtension(this.ResourceGroupName));
                             if (DataVolumeInExtensionConfig(adeExtension))
                             {
-                                if (ExtensionProvisioningSucceeded(adeExtension))
+                                if (adeExtension.EncryptionOperation.Equals(AzureDiskEncryptionExtensionConstants.enableEncryptionOperation, StringComparison.InvariantCultureIgnoreCase))
                                 {
-                                    return EncryptionStatus.Encrypted;
+                                    if (ExtensionProvisioningSucceeded(adeExtension))
+                                    {
+                                        return EncryptionStatus.Encrypted;
+                                    }
                                 }
                             }
                         }
