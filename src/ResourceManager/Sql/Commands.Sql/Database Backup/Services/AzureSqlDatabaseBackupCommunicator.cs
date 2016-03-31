@@ -14,9 +14,10 @@
 
 using System;
 using System.Collections.Generic;
-
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
@@ -70,6 +71,65 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         public IList<Management.Sql.Models.RestorePoint> ListRestorePoints(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).DatabaseBackup.ListRestorePoints(resourceGroupName, serverName, databaseName).RestorePoints;
+        }
+
+        /// <summary>
+        /// Lists the geo backups for a given Sql Azure Server
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <returns>List of restore points</returns>
+        public IList<Management.Sql.Models.GeoBackup> ListGeoBackups(string resourceGroupName, string serverName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.ListGeoBackups(resourceGroupName, serverName).GeoBackups;
+        }
+
+        /// <summary>
+        /// Lists the restorable deleted databases for a given Sql Azure Server
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <returns>List of restore points</returns>
+        public IList<Management.Sql.Models.DeletedDatabaseBackup> ListDeletedDatabaseBackups(string resourceGroupName, string serverName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.ListDeletedDatabaseBackups(resourceGroupName, serverName).DeletedDatabaseBackups;
+        }
+
+        /// <summary>
+        /// Get a geo backup for a given Sql Azure Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>List of restore points</returns>
+        public Management.Sql.Models.GeoBackup GetGeoBackup(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.GetGeoBackup(resourceGroupName, serverName, databaseName).GeoBackup;
+        }
+
+        /// <summary>
+        /// Get a restorable deleted database for a given Sql Azure Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>List of restore points</returns>
+        public Management.Sql.Models.DeletedDatabaseBackup GetDeletedDatabaseBackup(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.GetDeletedDatabaseBackup(resourceGroupName, serverName, databaseName).DeletedDatabaseBackup;
+        }
+
+        /// <summary>
+        /// Restore a given Sql Azure Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="parameters">Parameters describing the database restore request</param>
+        /// <returns>Restored database object</returns>
+        public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseCreateOrUpdateParameters parameters)
+        {
+            return GetCurrentSqlClient(clientRequestId).Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).Database;
         }
 
         /// <summary>

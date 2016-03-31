@@ -19,7 +19,7 @@ using System.Net.Http;
 using System.Net.Security;
 using System.Reflection;
 using Microsoft.Azure;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;

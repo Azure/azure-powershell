@@ -22,8 +22,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web.Script.Serialization;
 using System.Xml;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1401:FieldsMustBePrivate",
         Justification = "For Resource Credentials.")]
-        public static ASRVaultCreds asrVaultCreds = new ASRVaultCreds();
+        public static ASRVaultCreds arsVaultCreds = new ASRVaultCreds();
 
         /// <summary>
         /// Resource credentials holds vault, resource group name, location and other details.
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1401:FieldsMustBePrivate",
         Justification = "For Resource Credentials.")]
-        public static ARSVault arsVaultCreds = new ARSVault();
+        public static ARSVault arsVault = new ARSVault();
         /// <summary>
         /// Recovery Services client.
         /// </summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string resourceType = string.Empty;
             
             // Get Resource provider namespace from config if needed to communicate with internal deployments
-            if (string.IsNullOrEmpty(asrVaultCreds.ResourceNamespace))
+            if (string.IsNullOrEmpty(arsVaultCreds.ResourceNamespace))
             {
                 if (appSettings.Settings.Count == 0)
                 {
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             this.recoveryServicesClient =
             AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
-                asrVaultCreds.ResourceNamespace,
+                arsVaultCreds.ResourceNamespace,
                 AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context),
                 azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
         }

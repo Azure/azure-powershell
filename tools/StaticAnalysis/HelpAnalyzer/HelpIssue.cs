@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 
 namespace StaticAnalysis.HelpAnalyzer
@@ -33,18 +34,54 @@ namespace StaticAnalysis.HelpAnalyzer
         /// The target of the report (cmdlet name, etc..)
         /// </summary>
         public string Target { get; set; }
+
+        public int ProblemId { get; set; }
         public string Description { get; set; }
         public string Remediation { get; set; }
         public int Severity { get; set; }
         public string PrintHeaders()
         {
-            return "\"Assembly\",\"HelpFile\",\"Target\",\"Severity\",\"Description\",\"Remediation\"";
+            return "\"Assembly\",\"HelpFile\",\"Target\",\"Severity\",\"ProblemId\",\"Description\",\"Remediation\"";
         }
 
         public string FormatRecord()
         {
-            return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\"", 
-                Assembly, HelpFile, Target, Severity, Description, Remediation);
+            return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"", 
+                Assembly, HelpFile, Target, Severity, ProblemId, Description, Remediation);
+        }
+
+        public bool Match(IReportRecord other)
+        {
+            var result = false;
+            var record = other as HelpIssue;
+            if (record != null)
+            {
+                result = string.Equals(record.Assembly, Assembly, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(record.HelpFile, HelpFile, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(record.Target, Target, StringComparison.OrdinalIgnoreCase) &&
+                         record.ProblemId == ProblemId;
+            }
+            
+            return result;
+        }
+
+        public IReportRecord Parse(string line)
+        {
+            var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
+            var match = Regex.Match(line, matcher);
+            if (!match.Success || match.Groups.Count < 8)
+            {
+                throw new InvalidOperationException(string.Format("Could not parse '{0}' as HelpIssue record", line));
+            }
+
+            Assembly = match.Groups[1].Value;
+            HelpFile = match.Groups[2].Value;
+            Target = match.Groups[3].Value;
+            Severity = int.Parse(match.Groups[4].Value);
+            ProblemId = int.Parse(match.Groups[5].Value);
+            Description = match.Groups[6].Value;
+            Remediation = match.Groups[7].Value;
+            return this;
         }
     }
 }

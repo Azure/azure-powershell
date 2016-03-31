@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Batch.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -31,8 +32,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
     /// </summary>
     public static class BatchTestHelpers
     {
-        internal const string TestCertificateFileName1 = "Resources\\BatchTestCert01.cer";
-        internal const string TestCertificateFileName2 = "Resources\\BatchTestCert02.cer";
+        internal static readonly string TestCertificateFileName1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\BatchTestCert01.cer");
+        internal static readonly string TestCertificateFileName2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\BatchTestCert02.cer");
         internal const string TestCertificateAlgorithm = "sha1";
         internal const string TestCertificatePassword = "Passw0rd";
 

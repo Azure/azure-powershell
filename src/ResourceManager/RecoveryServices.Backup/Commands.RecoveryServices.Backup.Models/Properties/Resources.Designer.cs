@@ -286,6 +286,69 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To filter should not be more than 30 days away from From filter..
+        /// </summary>
+        public static string JobAllowedDateTimeRangeExceeded {
+            get {
+                return ResourceManager.GetString("JobAllowedDateTimeRangeExceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to cancel the job. Error code: {0}.
+        /// </summary>
+        public static string JobCouldNotCancelJob {
+            get {
+                return ResourceManager.GetString("JobCouldNotCancelJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to JobID and Job object provided don&apos;t match each other..
+        /// </summary>
+        public static string JobJobIdAndJobMismatch {
+            get {
+                return ResourceManager.GetString("JobJobIdAndJobMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are more than 1000 jobs for the filter combination you have provided. Kindly refine your filters to fetch the job you want..
+        /// </summary>
+        public static string JobRefineFilters {
+            get {
+                return ResourceManager.GetString("JobRefineFilters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please specify From and To filter values in UTC. Other timezones are not supported..
+        /// </summary>
+        public static string JobTimeFiltersShouldBeSpecifiedInUtc {
+            get {
+                return ResourceManager.GetString("JobTimeFiltersShouldBeSpecifiedInUtc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To filter should not be less than From filter..
+        /// </summary>
+        public static string JobToShouldBeGreaterThanFrom {
+            get {
+                return ResourceManager.GetString("JobToShouldBeGreaterThanFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please pass Job or List of Jobs as input. Your input is of type: {0}.
+        /// </summary>
+        public static string JobWaitJobInvalidInput {
+            get {
+                return ResourceManager.GetString("JobWaitJobInvalidInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RetentionPolicy: IsMonthlyScheduleEnabled=true but MonthlySchedule is NULL.
         /// </summary>
         public static string MonthlyScheduleEnabledButScheduleIsNullException {

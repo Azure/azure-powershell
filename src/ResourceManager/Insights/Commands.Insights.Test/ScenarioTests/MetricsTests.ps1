@@ -24,7 +24,7 @@ function Test-GetMetrics
     try 
     {
         # Test
-        $actual = Get-Metrics -ResourceId $rscname -timeGrain 00:01:00 -starttime 2015-03-23T15:00:00 -endtime 2015-03-23T15:30:00
+        $actual = Get-AzureRmMetric -ResourceId $rscname -timeGrain 00:01:00 -starttime 2015-03-23T15:00:00 -endtime 2015-03-23T15:30:00
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.Count 15
@@ -47,7 +47,7 @@ function Test-GetMetricDefinitions
 
     try 
     {
-	    $actual = Get-MetricDefinitions -ResourceId $rscname
+	    $actual = Get-AzureRmMetricDefinition -ResourceId $rscname
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.Count 15

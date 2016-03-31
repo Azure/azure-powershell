@@ -34,8 +34,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            ARSVault Vault = null;
-
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
@@ -45,8 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     JobId = Job.InstanceId;
                 }
 
-                // Initialize vault object from base cmdlet
-                var adapterResponse = HydraAdapter.GetJob(Vault.ResouceGroupName, Vault.Name, JobId);
+                var adapterResponse = HydraAdapter.GetJob(JobId);
                 WriteObject(JobConversions.GetPSJob(adapterResponse));
             });
         }

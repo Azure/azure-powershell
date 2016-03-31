@@ -20,7 +20,7 @@ using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.ServiceManagemenet.Common.Models
 {
     public class RecordingTracingInterceptor : Hyak.Common.ICloudTracingInterceptor
     {

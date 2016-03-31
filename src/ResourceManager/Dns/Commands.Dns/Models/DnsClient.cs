@@ -16,14 +16,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Dns;
 using Microsoft.Azure.Management.Dns.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure;
 using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Dns.Models

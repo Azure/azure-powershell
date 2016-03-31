@@ -45,13 +45,15 @@
     <Scope Condition=" $(Scope) == '' " >all</Scope>
   </PropertyGroup>
   <ItemGroup>
-    <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln"
+    <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln;.\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln"
                             Exclude=".\src\ResourceManager\Intune\*.sln"
                             Condition=" '$(Scope)' == 'all' "/>
     <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln" 
                             Condition=" '$(Scope)' != 'all' and '$(Scope)' != 'ServiceManagement' and '$(Scope)' != 'AzureStorage' "/>
     <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
-                            Condition=" '$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'AzureStorage' "/>
+                            Condition=" '$(Scope)' == 'ServiceManagement'"/>
+    <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln"
+                            Condition=" '$(Scope)' == 'AzureStorage' "/>                            
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <StaticAnalysis Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
   </ItemGroup>
@@ -70,7 +72,7 @@
   <Import Condition=" $(OnPremiseBuild) " Project="$(CIToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
 
   <UsingTask 
-    AssemblyFile="$(MSBuildProjectDirectory)\src\packages\xunit.MSBuild.2.0.0.0\tools\xunit.runner.msbuild.dll"
+    AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runner.msbuild.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.runner.msbuild.dll"
     TaskName="Xunit.Runner.MSBuild.xunit" />
   
   <!-- Clean the build in all configurations -->
@@ -137,6 +139,9 @@
     <!-- Restore packages -->
     <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch)" 
           ContinueOnError="false" />
+    <!-- Restore packages for static analysis-->
+    <Exec Command="$(NuGetCommand) restore %(StaticAnalysis.FullPath) $(NuGetRestoreConfigSwitch)"
+          ContinueOnError="false" />
 
     <!--Restore the xunit runner needed to run unit tests-->
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
@@ -200,8 +205,6 @@
     <!-- Copying shortcut to be signed -->
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psd1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
-    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1" 
-      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
@@ -254,8 +257,6 @@
         
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1" 
-      DestinationFolder="$(LibraryRoot)tools\AzureRM" />
-    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1" 
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
   </Target>
   

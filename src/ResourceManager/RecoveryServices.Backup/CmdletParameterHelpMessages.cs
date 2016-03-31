@@ -56,6 +56,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string JobFilter = "Job whose latest object has to be fetched.";
             public const string WaitJobOrListFilter = "Job or List of jobs until end of which the cmdlet should wait.";
             public const string WaitJobTimeoutFilter = "Maximum time to wait before aborting wait in seconds.";
+            public const string StopJobJobIdFilter = "Id of Job to be stopped.";
+            public const string StopJobJobFilter = "Job to be stopped.";
         }
 
         internal static class Item

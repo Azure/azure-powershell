@@ -22,7 +22,7 @@ function Test-PolicyDefinitionCRUD
 	$policyName = Get-ResourceName
 
 	# Test
-	$actual = New-AzureRMPolicyDefinition -Name $policyName -Policy SamplePolicyDefinition.json
+	$actual = New-AzureRMPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json"
 	$expected = Get-AzureRMPolicyDefinition -Name $policyName
 	Assert-AreEqual $expected.Name $actual.Name
 	Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
@@ -54,7 +54,7 @@ function Test-PolicyAssignmentCRUD
 
 	# Test
 	$rg = New-AzureRMResourceGroup -Name $rgname -Location "west us"
-	$policy = New-AzureRMPolicyDefinition -Name $policyName -Policy SamplePolicyDefinition.json
+	$policy = New-AzureRMPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json"
 	$actual = New-AzureRMPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId
 	$expected = Get-AzureRMPolicyAssignment -Name testPA -Scope $rg.ResourceId
 

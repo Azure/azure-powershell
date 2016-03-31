@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "Temp Help message. Need to update it")]
         [ValidateNotNullOrEmpty]
-        public BackupManagementType BackupManagementType { get; set; }
+        public BackupManagementType? BackupManagementType { get; set; }
 
         public override void ExecuteCmdlet()
         {

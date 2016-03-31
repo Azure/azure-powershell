@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;

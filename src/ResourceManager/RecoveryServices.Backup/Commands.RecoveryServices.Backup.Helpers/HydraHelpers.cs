@@ -82,6 +82,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
         }
 
+        /// <summary>
+        /// Use this function to get the last part of a URL.
+        /// Generally this is the ID of object or OperationId.
+        /// Note: This doesn't work if the string has any extra characters
+        /// after slash. (CSM ID's generally don't have)
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public static string GetLastIdFromFullId(string fullId)
+        {
+            string[] splitArr = fullId.Split("/".ToCharArray());
+            return splitArr[splitArr.Length - 1];
+        }
+
         public static string GetHydraContainerType(CmdletModel.ContainerType containerType)
         {
             string hydraContainerType = string.Empty;

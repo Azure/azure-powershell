@@ -15,8 +15,6 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.Scheduler;
 using System;
 using System.Collections.Generic;
@@ -26,6 +24,12 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using HydraAdapterNS = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System.Threading;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -34,6 +38,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     public abstract class RecoveryServicesBackupCmdletBase : AzureRMCmdlet
     {
+        // in seconds
+        private int _defaultSleepForOperationTracking = 15;
+
         protected HydraAdapterNS.HydraAdapter HydraAdapter { get; set; }
 
         protected void InitializeAzureBackupCmdlet()
@@ -118,6 +125,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             base.ExecuteCmdlet();
 
             InitializeAzureBackupCmdlet();
+        }
+
+        public AzureRmRecoveryServicesJobBase GetJobObject(string jobId)
+        {
+            return JobConversions.GetPSJob(HydraAdapter.GetJob(jobId));
+        }
+
+        public List<AzureRmRecoveryServicesJobBase> GetJobObject(IList<string> jobIds)
+        {
+            List<AzureRmRecoveryServicesJobBase> result = new List<AzureRmRecoveryServicesJobBase>();
+            foreach (string jobId in jobIds)
+            {
+                result.Add(GetJobObject(jobId));
+            }
+            return result;
+        }
+
+        public BackUpOperationStatusResponse WaitForOperationCompletionUsingStatusLink(
+                                              string statusUrlLink,
+                                              Func<string, BackUpOperationStatusResponse> hydraFunc)
+        {
+            // using this directly because it doesn't matter which function we use.
+            // return type is same and currently we are using it in only two places.
+            // protected item and policy.
+            BackUpOperationStatusResponse response = hydraFunc(statusUrlLink);
+
+            while (response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
+            {
+                Thread.Sleep(_defaultSleepForOperationTracking * 1000);
+                response = hydraFunc(statusUrlLink);
+            }
+
+            return response;
         }
     }
 }

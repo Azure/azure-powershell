@@ -18,12 +18,13 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsCommon.Set, "AzureDataDisk"), OutputType(typeof(IPersistentVM))]
+    [Cmdlet(VerbsCommon.Set, ProfileNouns.DataDisk), OutputType(typeof(IPersistentVM))]
     public class SetAzureDataDiskCommand : VirtualMachineConfigurationCmdletBase
     {
         private const string ResizeParameterSet = "Resize";
