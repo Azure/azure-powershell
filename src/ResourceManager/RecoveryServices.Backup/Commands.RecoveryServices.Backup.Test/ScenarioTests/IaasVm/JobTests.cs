@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,48 +26,56 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
     public class JobTests : RecoveryServicesBackupTestsBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobs()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobsScenario");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobsTimeFilter()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobsTimeFilter");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobsStatusFilter()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobsStatusFilter");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobsOperationFilter()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobsOperationFilter");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobsBackupManagementTypeFilter()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobsBackupManagementTypeFilter");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobDetails()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobDetails");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWaitJobScenario()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-WaitJobScenario");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWaitJobPipeScenario()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-WaitJobPipeScenario");

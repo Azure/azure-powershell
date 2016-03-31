@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public List<AzureRmRecoveryServicesJobBase> ModifyPolicy()
+        public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse ModifyPolicy()
         {
             throw new NotImplementedException();
         }
@@ -77,18 +77,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public List<Models.AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
         {
             throw new NotImplementedException();
-        }
-
-        public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse GetPolicy()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeletePolicy()
-        {
-            throw new NotImplementedException();
-        }
-
+        }      
+       
         public AzureRmRecoveryServicesSchedulePolicyBase GetDefaultSchedulePolicyObject()
         {
             throw new NotImplementedException();
