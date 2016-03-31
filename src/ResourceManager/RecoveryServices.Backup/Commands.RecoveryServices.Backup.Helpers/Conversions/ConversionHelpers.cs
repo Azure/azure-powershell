@@ -133,6 +133,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
             }
 
+            Logger.Instance.WriteDebug("Total policies in list: " + policyModels.Count);
             return policyModels;
         }
 
