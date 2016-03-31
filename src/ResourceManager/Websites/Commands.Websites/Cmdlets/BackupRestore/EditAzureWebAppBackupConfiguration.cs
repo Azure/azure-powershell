@@ -81,7 +81,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 RetentionPeriodInDays = this.RetentionPeriodInDays,
                 StartTime = this.StartTime,
                 KeepAtLeastOneBackup = this.KeepAtLeastOneBackup.IsPresent,
-                Databases = this.Databases
+                Databases = this.Databases,
+                Enabled = true
             };
             WriteObject(config);
         }

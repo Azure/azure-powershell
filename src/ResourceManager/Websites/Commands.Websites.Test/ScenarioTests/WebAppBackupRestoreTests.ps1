@@ -32,7 +32,7 @@ function Test-CreateNewWebAppBackup
         $result = New-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName 
 
         # Assert
-        Assert-AreEqual $backupName $result.BackupItemName
+        Assert-AreEqual $backupName $result.BackupName
         Assert-NotNull $result.StorageAccountUrl
     }
     finally
@@ -67,16 +67,15 @@ function Test-CreateNewWebAppBackupPiping
         $backup = $app | New-AzureRmWebAppBackup -StorageAccountUrl $sasUri -BackupName $backupName
 
         # Assert
-        Assert-AreEqual $backupName $backup.BackupItemName
+        Assert-AreEqual $backupName $backup.BackupName
         Assert-NotNull $backup.StorageAccountUrl
 
-        Start-Sleep -Seconds 60
         # Test that it's possible to modify the return value of the cmdlet to make a new backup
         $backup.BackupName = $backupName2
         $backup2 = $backup | New-AzureRmWebAppBackup
 
         # Assert
-        Assert-AreEqual $backupName2 $backup2.BackupItemName
+        Assert-AreEqual $backupName2 $backup2.BackupName
         Assert-NotNull $backup2.StorageAccountUrl
     }
     finally
@@ -111,19 +110,19 @@ function Test-GetWebAppBackup
         $newBackup = New-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName
 
         # Get the backup
-        $result = Get-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -BackupId $newBackup.BackupItemId
+        $result = Get-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -BackupId $newBackup.BackupId
 
         # Assert
-        Assert-AreEqual $backupName $result.BackupItemName
+        Assert-AreEqual $backupName $result.BackupName
         Assert-NotNull $result.StorageAccountUrl
-        Assert-NotNull $result.BackupItemId
+        Assert-NotNull $result.BackupId
 
         # Test piping - should be able to pipe result of previous get backup and get the same backup
         $pipeResult = $result | Get-AzureRmWebAppBackup
 
-        Assert-AreEqual $backupName $pipeResult.BackupItemName
+        Assert-AreEqual $backupName $pipeResult.BackupName
         Assert-AreEqual $result.StorageAccountUrl $pipeResult.StorageAccountUrl 
-        Assert-AreEqual $result.BackupItemId $pipeResult.BackupItemId
+        Assert-AreEqual $result.BackupId $pipeResult.BackupId
     }
     finally
     {
@@ -158,21 +157,21 @@ function Test-GetWebAppBackupList
 
         # Get a list of the backups
         $backupList = Get-AzureRmWebAppBackupList -ResourceGroupName $rgName -Name $wName
-        $listBackup = $backupList | where {$_.BackupItemId -eq $backup.BackupItemId}
+        $listBackup = $backupList | where {$_.BackupId -eq $backup.BackupId}
 
         # Assert
         Assert-AreEqual 1 $backupList.Count
         Assert-NotNull $listBackup
-        Assert-AreEqual $backup.BackupItemName $listBackup.BackupItemName
+        Assert-AreEqual $backup.BackupName $listBackup.BackupName
 
         # Test piping
         $pipeBackupList = $app | Get-AzureRmWebAppBackupList
-        $pipeBackup = $pipeBackupList | where {$_.BackupItemId -eq $backup.BackupItemId}
+        $pipeBackup = $pipeBackupList | where {$_.BackupId -eq $backup.BackupId}
 
         # Assert
         Assert-AreEqual 1 $pipeBackupList.Count
         Assert-NotNull $pipeBackup
-        Assert-AreEqual $backup.BackupItemName $pipeBackup.BackupItemName
+        Assert-AreEqual $backup.BackupName $pipeBackup.BackupName
     }
     finally
     {
@@ -216,14 +215,12 @@ function Test-EditAndGetWebAppBackupConfiguration
         # Assert
         Assert-True { $config.Enabled }
         Assert-NotNull $config.StorageAccountUrl
-        $configSchedule = $config.BackupSchedule
-        Assert-NotNull $configSchedule
-        Assert-AreEqual $frequencyInterval $configSchedule.FrequencyInterval
-        Assert-AreEqual $frequencyUnit $configSchedule.FrequencyUnit 
-        Assert-True { $configSchedule.KeepAtLeastOneBackup }
-        Assert-AreEqual $retentionPeriod $configSchedule.RetentionPeriodInDays
+        Assert-AreEqual $frequencyInterval $config.FrequencyInterval
+        Assert-AreEqual $frequencyUnit $config.FrequencyUnit 
+        Assert-True { $config.KeepAtLeastOneBackup }
+        Assert-AreEqual $retentionPeriod $config.RetentionPeriodInDays
         # Cannot assert equality because time will be different in playback mode
-        Assert-NotNull $configSchedule.StartTime
+        Assert-NotNull $config.StartTime
 
         # Get the configuration and verify it's the same
         $getConfig = Get-AzureRmWebAppBackupConfiguration -ResourceGroupName $rgName -Name $wName
@@ -231,15 +228,12 @@ function Test-EditAndGetWebAppBackupConfiguration
         # Assert
         Assert-True { $getConfig.Enabled }
         Assert-NotNull $getConfig.StorageAccountUrl
-        $getConfigSchedule = $getConfig.BackupSchedule
-        Assert-NotNull $getConfigSchedule
-        Assert-AreEqual $frequencyInterval $getConfigSchedule.FrequencyInterval
-        Assert-AreEqual $frequencyUnit $getConfigSchedule.FrequencyUnit 
-        Assert-True { $getConfigSchedule.KeepAtLeastOneBackup }
-        Assert-AreEqual $retentionPeriod $getConfigSchedule.RetentionPeriodInDays
+        Assert-AreEqual $frequencyInterval $getConfig.FrequencyInterval
+        Assert-AreEqual $frequencyUnit $getConfig.FrequencyUnit 
+        Assert-True { $getConfig.KeepAtLeastOneBackup }
+        Assert-AreEqual $retentionPeriod $getConfig.RetentionPeriodInDays
         # Cannot assert equality because time will be different in playback mode
-        Assert-NotNull $getConfigSchedule.StartTime
-
+        Assert-NotNull $getConfig.StartTime
     }
     finally
     {
@@ -283,14 +277,12 @@ function Test-EditAndGetWebAppBackupConfigurationPiping
         # Assert
         Assert-True { $config.Enabled }
         Assert-NotNull $config.StorageAccountUrl
-        $schedule = $config.BackupSchedule
-        Assert-NotNull $schedule
-        Assert-AreEqual $frequencyInterval $schedule.FrequencyInterval
-        Assert-AreEqual $frequencyUnit $schedule.FrequencyUnit 
-        Assert-True { $schedule.KeepAtLeastOneBackup }
-        Assert-AreEqual $retentionPeriod $schedule.RetentionPeriodInDays
+        Assert-AreEqual $frequencyInterval $config.FrequencyInterval
+        Assert-AreEqual $frequencyUnit $config.FrequencyUnit 
+        Assert-True { $config.KeepAtLeastOneBackup }
+        Assert-AreEqual $retentionPeriod $config.RetentionPeriodInDays
         # Cannot assert equality because time will be different in playback mode
-        Assert-NotNull $schedule.StartTime
+        Assert-NotNull $config.StartTime
 
         # Test piping a modified configuration object into the Edit cmdlet
         $newFrequencyInterval = 5
@@ -305,14 +297,12 @@ function Test-EditAndGetWebAppBackupConfigurationPiping
         # Assert
         Assert-True { $pipeConfig.Enabled }
         Assert-NotNull $pipeConfig.StorageAccountUrl
-        $schedule = $pipeConfig.BackupSchedule
-        Assert-NotNull $schedule
-        Assert-AreEqual $newFrequencyInterval $schedule.FrequencyInterval
-        Assert-AreEqual $newFrequencyUnit $schedule.FrequencyUnit 
-        Assert-True { $schedule.KeepAtLeastOneBackup }
-        Assert-AreEqual $newRetentionPeriod $schedule.RetentionPeriodInDays
+        Assert-AreEqual $newFrequencyInterval $pipeConfig.FrequencyInterval
+        Assert-AreEqual $newFrequencyUnit $pipeConfig.FrequencyUnit 
+        Assert-True { $pipeConfig.KeepAtLeastOneBackup }
+        Assert-AreEqual $newRetentionPeriod $pipeConfig.RetentionPeriodInDays
         # Cannot assert equality because time will be different in playback mode
-        Assert-NotNull $schedule.StartTime
+        Assert-NotNull $pipeConfig.StartTime
     }
     finally
     {
