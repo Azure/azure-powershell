@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,7 +71,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }, HydraAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
-                psBackupProvider.TriggerRestore();
+                var jobResponse = psBackupProvider.TriggerRestore();
+
+                var response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
+                while (response.OperationStatus.Status == "InProgress")
+                {
+                    response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
+                }
+
+                if (response.OperationStatus.Status == "Completed")
+                {
+                    // TBD -- Hydra change to add jobId in OperationStatusExtendedInfo
+                    string jobId = ""; //response.OperationStatus.Properties.jobId;
+                    var job = HydraAdapter.GetJob(jobId);
+                    //WriteObject(ConversionHelpers.GetJobModel(job));
+                }
             });
         }
     }

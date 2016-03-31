@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// <param name="protectedItemName"></param>
         /// <param name="recoveryPointId"></param>
         /// <returns></returns>
-        public RecoveryPointResponse RestoreDisk(AzureRmRecoveryServicesIaasVmRecoveryPoint rp, string storageAccountId)
+        public BaseRecoveryServicesJobResponse RestoreDisk(AzureRmRecoveryServicesIaasVmRecoveryPoint rp, string storageAccountId)
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             string resourceName = BmsAdapter.GetResourceName();
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             triggerRestoreRequest.Item.Properties = restoreRequest;
 
             var response = BmsAdapter.Client.Restore.TriggerRestoreAsync(resourceGroupName, resourceName, BmsAdapter.GetCustomRequestHeaders(),
-                AzureFabricName, containerName, protectedItemName, recoveryPointId, triggerRestoreRequest, BmsAdapter.CmdletCancellationToken);
+                AzureFabricName, containerName, protectedItemName, recoveryPointId, triggerRestoreRequest, BmsAdapter.CmdletCancellationToken).Result;
 
             return response;
         }
