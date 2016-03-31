@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +22,18 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ItemTests : RecoveryServicesBackupTestsBase
+    public partial class ContainerTests : RecoveryServicesBackupTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetItemScenario()
+        public void TestGetDpmContainerScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetItemScenario");
+            this.RunPowerShellTest(PsBackupProviderTypes.Mab.ToString(), "Test-GetContainerScenario");
+        }
+
+        [Fact]
+        public void TestUnregisterDpmContainerScenario()
+        {
+            this.RunPowerShellTest(PsBackupProviderTypes.Mab.ToString(), "Test-GetContainerScenario");
         }
     }
 }
