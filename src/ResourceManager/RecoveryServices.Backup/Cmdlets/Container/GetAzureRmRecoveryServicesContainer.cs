@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType, BackupManagementType);
                 var containerModels = psBackupProvider.ListProtectionContainers();
 
-                if (containerModels.Count != 1)
+                if (containerModels.Count == 1)
                 {
                     WriteObject(containerModels.First());
                 }
