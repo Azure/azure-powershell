@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.CloudPool omObject;
         
+        private IList<PSApplicationPackageReference> applicationPackageReferences;
+        
         private PSAutoScaleRun autoScaleRun;
         
         private IList<PSCertificateReference> certificateReferences;
@@ -44,11 +46,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSResizeError resizeError;
         
-        private PSTaskSchedulingPolicy taskSchedulingPolicy;
-        
         private PSStartTask startTask;
         
         private PSPoolStatistics statistics;
+        
+        private PSTaskSchedulingPolicy taskSchedulingPolicy;
         
         private PSVirtualMachineConfiguration virtualMachineConfiguration;
         
@@ -74,6 +76,43 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.AllocationStateTransitionTime;
+            }
+        }
+        
+        public IList<PSApplicationPackageReference> ApplicationPackageReferences
+        {
+            get
+            {
+                System.Diagnostics.Debugger.Launch();
+
+                if (((this.applicationPackageReferences == null) 
+                            && (this.omObject.ApplicationPackageReferences != null)))
+                {
+                    List<PSApplicationPackageReference> list;
+                    list = new List<PSApplicationPackageReference>();
+                    IEnumerator<Microsoft.Azure.Batch.ApplicationPackageReference> enumerator;
+                    enumerator = this.omObject.ApplicationPackageReferences.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSApplicationPackageReference(enumerator.Current));
+                    }
+                    this.applicationPackageReferences = list;
+                }
+                return this.applicationPackageReferences;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ApplicationPackageReferences = null;
+                }
+                else
+                {
+                    this.omObject.ApplicationPackageReferences = new List<Microsoft.Azure.Batch.ApplicationPackageReference>();
+                }
+                this.applicationPackageReferences = value;
             }
         }
         
@@ -326,31 +365,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSTaskSchedulingPolicy TaskSchedulingPolicy
-        {
-            get
-            {
-                if (((this.taskSchedulingPolicy == null) 
-                            && (this.omObject.TaskSchedulingPolicy != null)))
-                {
-                    this.taskSchedulingPolicy = new PSTaskSchedulingPolicy(this.omObject.TaskSchedulingPolicy);
-                }
-                return this.taskSchedulingPolicy;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.TaskSchedulingPolicy = null;
-                }
-                else
-                {
-                    this.omObject.TaskSchedulingPolicy = value.omObject;
-                }
-                this.taskSchedulingPolicy = value;
-            }
-        }
-        
         public PSStartTask StartTask
         {
             get
@@ -414,6 +428,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.TargetDedicated = value;
+            }
+        }
+        
+        public PSTaskSchedulingPolicy TaskSchedulingPolicy
+        {
+            get
+            {
+                if (((this.taskSchedulingPolicy == null) 
+                            && (this.omObject.TaskSchedulingPolicy != null)))
+                {
+                    this.taskSchedulingPolicy = new PSTaskSchedulingPolicy(this.omObject.TaskSchedulingPolicy);
+                }
+                return this.taskSchedulingPolicy;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.TaskSchedulingPolicy = null;
+                }
+                else
+                {
+                    this.omObject.TaskSchedulingPolicy = value.omObject;
+                }
+                this.taskSchedulingPolicy = value;
             }
         }
         

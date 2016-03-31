@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSAutoScaleRunError
+    public class PSNodeAgentSku
     {
         
-        internal Microsoft.Azure.Batch.AutoScaleRunError omObject;
+        internal Microsoft.Azure.Batch.NodeAgentSku omObject;
         
-        private IReadOnlyList<PSNameValuePair> values;
+        private IReadOnlyList<PSImageReference> verifiedImageReferences;
         
-        internal PSAutoScaleRunError(Microsoft.Azure.Batch.AutoScaleRunError omObject)
+        internal PSNodeAgentSku(Microsoft.Azure.Batch.NodeAgentSku omObject)
         {
             if ((omObject == null))
             {
@@ -45,42 +45,42 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Code
+        public string Id
         {
             get
             {
-                return this.omObject.Code;
+                return this.omObject.Id;
             }
         }
         
-        public string Message
+        public Microsoft.Azure.Batch.Common.OSType? OSType
         {
             get
             {
-                return this.omObject.Message;
+                return this.omObject.OSType;
             }
         }
         
-        public IReadOnlyList<PSNameValuePair> Values
+        public IReadOnlyList<PSImageReference> VerifiedImageReferences
         {
             get
             {
-                if (((this.values == null) 
-                            && (this.omObject.Values != null)))
+                if (((this.verifiedImageReferences == null) 
+                            && (this.omObject.VerifiedImageReferences != null)))
                 {
-                    List<PSNameValuePair> list;
-                    list = new List<PSNameValuePair>();
-                    IEnumerator<Microsoft.Azure.Batch.NameValuePair> enumerator;
-                    enumerator = this.omObject.Values.GetEnumerator();
+                    List<PSImageReference> list;
+                    list = new List<PSImageReference>();
+                    IEnumerator<Microsoft.Azure.Batch.ImageReference> enumerator;
+                    enumerator = this.omObject.VerifiedImageReferences.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
-                        list.Add(new PSNameValuePair(enumerator.Current));
+                        list.Add(new PSImageReference(enumerator.Current));
                     }
-                    this.values = list.AsReadOnly();
+                    this.verifiedImageReferences = list.AsReadOnly();
                 }
-                return this.values;
+                return this.verifiedImageReferences;
             }
         }
     }

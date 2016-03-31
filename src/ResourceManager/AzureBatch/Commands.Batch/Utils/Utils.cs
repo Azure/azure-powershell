@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
                 if (specification.JobManagerTask != null)
                 {
-                    JobManagerTaskSyncCollections(specification.JobManagerTask);   
+                    JobManagerTaskSyncCollections(specification.JobManagerTask);
                 }
 
                 if (specification.JobPreparationTask != null)
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     MetadataItem metadata = new MetadataItem(m.Name, m.Value);
                     return metadata;
                 });
-                
+
                 if (specification.PoolInformation != null)
                 {
                     PoolInformationSyncCollections(specification.PoolInformation);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (jobManager != null)
             {
-                jobManager.omObject.EnvironmentSettings = CreateSyncedList(jobManager.EnvironmentSettings, 
+                jobManager.omObject.EnvironmentSettings = CreateSyncedList(jobManager.EnvironmentSettings,
                     (e) =>
                     {
                         EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
@@ -247,12 +247,24 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         return ConvertCertificateReference(c);
                     });
 
-                spec.omObject.Metadata = CreateSyncedList(spec.Metadata, 
+                spec.omObject.Metadata = CreateSyncedList(spec.Metadata,
                     (m) =>
                     {
                         MetadataItem metadata = new MetadataItem(m.Name, m.Value);
                         return metadata;
                     });
+
+                spec.omObject.ApplicationPackageReferences = CreateSyncedList(spec.ApplicationPackageReferences,
+                    (apr) =>
+                        {
+                            ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference()
+                            {
+                                ApplicationId = apr.ApplicationId,
+                                Version = apr.Version
+                            };
+
+                            return applicationPackageReference;
+                        });
 
                 if (spec.StartTask != null)
                 {

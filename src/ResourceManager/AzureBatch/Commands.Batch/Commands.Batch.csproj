@@ -211,10 +211,14 @@
     <Compile Include="Models.Generated\PSJobScheduleExecutionInformation.cs" />
     <Compile Include="Models.Generated\PSJobScheduleStatistics.cs" />
     <Compile Include="Models.Generated\PSMultiInstanceSettings.cs" />
+    <Compile Include="Models.Generated\PSNodeAgentSku.cs" />
     <Compile Include="Models.Generated\PSNodeFile.cs" />
     <Compile Include="Models.Generated\PSPoolInformation.cs" />
     <Compile Include="Models.Generated\PSPoolUsageMetrics.cs" />
+    <Compile Include="Models.Generated\PSRemoteLoginSettings.cs" />
     <Compile Include="Models.Generated\PSSchedule.cs" />
+    <Compile Include="Models.Generated\PSTaskDependencies.cs" />
+    <Compile Include="Models.Generated\PSTaskIdRange.cs" />
     <Compile Include="Models.Generated\PSTaskSchedulingPolicy.cs" />
     <Compile Include="Models.Generated\PSSubtaskInformation.cs" />
     <Compile Include="Models.Generated\PSVirtualMachineConfiguration.cs">
