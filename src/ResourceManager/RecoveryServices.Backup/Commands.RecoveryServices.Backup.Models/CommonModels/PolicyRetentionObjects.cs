@@ -40,7 +40,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             IsYearlyScheduleEnabled = false;
         }
         public override void Validate()
-        {           
+        {
+            base.Validate();
+
             if (IsDailyScheduleEnabled == false && IsWeeklyScheduleEnabled == false &&
                 IsMonthlyScheduleEnabled == false && IsYearlyScheduleEnabled == false)
             {

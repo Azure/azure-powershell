@@ -466,6 +466,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ScheduleRunTimes in Schedule Policy should be in UTC Timezone.
+        /// </summary>
+        public static string ScheduleTimeNotInUTCTimeZoneException {
+            get {
+                return ResourceManager.GetString("ScheduleTimeNotInUTCTimeZoneException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unexpected WorkloadType - expected:{0}, current:{1}.
         /// </summary>
         public static string UnExpectedWorkLoadTypeException {
