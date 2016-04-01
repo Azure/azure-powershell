@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             string resourceName = BmsAdapter.GetResourceName();
+            string location = BmsAdapter.GetResourceLocation();            
 
             string containerName = rp.ContainerName;
             string protectedItemName = rp.ItemName;
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 CreateNewCloudService = false,
                 RecoveryPointId = recoveryPointId,
                 RecoveryType = RecoveryType.RestoreDisks,
-                Region = rp.Region,
+                Region = location,
                 StorageAccountName = storageAccountId,
                 SubnetName = string.Empty,
                 VirtualMachineName = string.Empty,

@@ -67,5 +67,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         {
             return PSRecoveryServicesClient.arsVault.ResouceGroupName;
         }
+
+        public string GetResourceLocation()
+        {
+            return PSRecoveryServicesClient.arsVault.Location;
+        }
     }
 }
