@@ -217,11 +217,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CopyScheduleTimeToRetentionTimes((AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
                                              (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy);
 
-            // validate both RetentionPolicy and SchedulePolicy
-            ValidateAzureVMRetentionPolicy(retentionPolicy);
-            ValidateAzureVMSchedulePolicy(schedulePolicy);
+            // validate RetentionPolicy
+            ValidateAzureVMRetentionPolicy(retentionPolicy);            
 
-            // Now validate both RetentionPolicy and SchedulePolicy matches or not
+            // Now validate both RetentionPolicy and SchedulePolicy together
             PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
                                 (AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
                                 (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy);
@@ -704,9 +703,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private void CopyScheduleTimeToRetentionTimes(AzureRmRecoveryServicesLongTermRetentionPolicy retPolicy,
                                                       AzureRmRecoveryServicesSimpleSchedulePolicy schPolicy)
         {
-            // first convert schedule run times to UTC
-            schPolicy.ScheduleRunTimes = PolicyHelpers.ParseScheduleRunTimesToUTC(schPolicy.ScheduleRunTimes);
-
+            // schedule runTimes is already validated if in UTC/not during validate()
             // now copy times from schedule to retention policy
             if (retPolicy.IsDailyScheduleEnabled && retPolicy.DailySchedule != null)
             {
