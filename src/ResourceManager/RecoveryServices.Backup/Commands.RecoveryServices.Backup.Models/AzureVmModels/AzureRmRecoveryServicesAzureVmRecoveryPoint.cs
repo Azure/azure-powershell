@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// 
         public string RecoveryPointAdditionalInfo { get; set; }
 
+        public string Region { get; set; }
+
         public AzureRmRecoveryServicesIaasVmRecoveryPoint()
         {
 

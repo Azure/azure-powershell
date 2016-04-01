@@ -126,6 +126,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         private global::Microsoft.Azure.Management.RecoveryServices.Backup.Models.RecoveryPointResource rp;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public string ItemName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string RecoveryPointId { get; set; }
+
+        /// <summary>
         ///Type of recovery point (appConsistent\CrashConsistent etc) 
         /// </summary>
         ///
