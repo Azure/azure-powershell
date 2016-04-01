@@ -35,11 +35,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 AzureRmRecoveryServicesIaasVmRecoveryPoint rpBase = new AzureRmRecoveryServicesIaasVmRecoveryPoint()
                 {
                     BackupManagementType = item.BackupManagementType,
-                    ContainerName = item.ContainerName,
                     ItemName = item.Name,
+                    ContainerName = item.ContainerName,
                     ContainerType = item.ContainerType,
                     RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
                     RecoveryPointType = recPoint.RecoveryPointType,
+                    RecoveryPointId = rp.Id,
                     WorkloadType = item.WorkloadType,
                     RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,                    
                 };
@@ -67,7 +68,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
                     RecoveryPointType = recPoint.RecoveryPointType,
                     RecoveryPointId = rpResponse.RecPoint.Id,
-                    Region = rpResponse.Location,
                     WorkloadType = item.WorkloadType,
                     RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
                 };
