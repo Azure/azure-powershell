@@ -81,5 +81,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The job priority.
         /// </summary>
         public int Priority { get; set; }
+
+        /// <summary>
+        /// TODO:
+        /// </summary>
+        public bool? DependsOn { get; set; }
     }
 }

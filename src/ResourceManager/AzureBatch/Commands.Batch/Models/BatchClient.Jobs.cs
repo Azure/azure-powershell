@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 else
                 {
                     JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
-                    jobs = jobOperations.ListJobs(listDetailLevel, options.AdditionalBehaviors);      
+                    jobs = jobOperations.ListJobs(listDetailLevel, options.AdditionalBehaviors);
                 }
                 Func<CloudJob, PSCloudJob> mappingFunction = j => { return new PSCloudJob(j); };
                 return PSPagedEnumerable<PSCloudJob, CloudJob>.CreateWithMaxCount(
@@ -114,6 +114,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (parameters.Constraints != null)
             {
                 job.Constraints = parameters.Constraints.omObject;
+            }
+
+            if (parameters.DependsOn != null)
+            {
+                job.UsesTaskDependencies = parameters.DependsOn;
             }
 
             if (parameters.JobManagerTask != null)

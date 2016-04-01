@@ -245,6 +245,7 @@
     <Compile Include="ScenarioTests\ScenarioTestContext.cs" />
     <Compile Include="ScenarioTests\ScenarioTestHelpers.cs" />
     <Compile Include="ScenarioTests\SubscriptionTests.cs" />
+    <Compile Include="ScenarioTests\TaskDependenciesTests.cs" />
     <Compile Include="ScenarioTests\TaskTests.cs" />
     <Compile Include="ScenarioTests\ComputeNodeUserTests.cs" />
     <Compile Include="ScenarioTests\ComputeNodeTests.cs" />
@@ -306,6 +307,9 @@
     </None>
     <None Include="ScenarioTests\SubscriptionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\TaskDependenciesTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\TaskTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
