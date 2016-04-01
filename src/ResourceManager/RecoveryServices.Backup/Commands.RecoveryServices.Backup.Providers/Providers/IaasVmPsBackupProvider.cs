@@ -193,9 +193,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string policyName = (string)ProviderData.ProviderParameters[PolicyParams.PolicyName];
             Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType workloadType =
-                (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData.ProviderParameters[PolicyParams.WorkloadType];
-            BackupManagementType backupManagementType = (BackupManagementType)ProviderData.ProviderParameters[
-                                                                              PolicyParams.BackupManagementType];
+                (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData.ProviderParameters[PolicyParams.WorkloadType];            
             AzureRmRecoveryServicesRetentionPolicyBase retentionPolicy = (AzureRmRecoveryServicesRetentionPolicyBase)
                                                  ProviderData.ProviderParameters[PolicyParams.RetentionPolicy];
             AzureRmRecoveryServicesSchedulePolicyBase schedulePolicy = (AzureRmRecoveryServicesSchedulePolicyBase)
@@ -204,18 +202,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // do validations
             ValidateAzureVMWorkloadType(workloadType);
             ValidateAzureVMSchedulePolicy(schedulePolicy);
+            Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
 
             // update the retention times from backupSchedule to retentionPolicy after converting to UTC           
             CopyScheduleTimeToRetentionTimes((AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
                                              (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy);
 
             // validate RetentionPolicy
-            ValidateAzureVMRetentionPolicy(retentionPolicy);            
+            ValidateAzureVMRetentionPolicy(retentionPolicy);
+            Logger.Instance.WriteDebug("Validation of Retention policy is successful");
 
             // Now validate both RetentionPolicy and SchedulePolicy together
             PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
                                 (AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
                                 (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy);
+            Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
             // construct Hydra policy request            
             ProtectionPolicyRequest hydraRequest = new ProtectionPolicyRequest()
