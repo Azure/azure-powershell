@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ProtectionStatus = "Protection status of Item";
             public const string Status = "Status of the data source";
             public const string Container = "Container where the item resides";
+            public const string ExpiryDate = "Retention period for the recovery points created by this backup operaiton";
         }
     }
 }
