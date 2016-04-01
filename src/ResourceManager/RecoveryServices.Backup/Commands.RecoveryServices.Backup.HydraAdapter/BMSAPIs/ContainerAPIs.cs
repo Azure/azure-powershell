@@ -49,5 +49,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, BmsAdapter.CmdletCancellationToken).Result;
             return response;
         }
+
+        /// <summary>
+        /// Unregister a container in service
+        /// </summary>
+        /// <returns></returns>
+        public AzureOperationResponse UnregisterContainers(string containerName)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+            
+            var response = BmsAdapter.Client.Container.UnregisterAsync(
+                resourceGroupName, resourceName, containerName,
+                BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
+            return response;
+        }
     }
 }

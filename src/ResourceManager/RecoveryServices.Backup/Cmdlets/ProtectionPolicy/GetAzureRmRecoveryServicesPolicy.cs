@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(ParameterSetName = WorkloadParamSet, Position = 2, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 2, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
-        public WorkloadType WorkloadType { get; set; }
+        public WorkloadType? WorkloadType { get; set; }
 
         [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 3, Mandatory = true, HelpMessage = ParamHelpMsg.Common.BackupManagementType)]
         [ValidateNotNullOrEmpty]
-        public BackupManagementType BackupManagementType { get; set; }
+        public BackupManagementType? BackupManagementType { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -56,10 +56,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
            {
                base.ExecuteCmdlet();
 
-               List<AzureRmRecoveryServicesPolicyBase> policyList = new List<AzureRmRecoveryServicesPolicyBase>();
+               WriteDebug(string.Format("Input params - Name:{0}, " +
+                                     "WorkloadType: {1}, BackupManagementType:{2}, " +
+                                     "ParameterSetName: {3}",
+                                     Name == null ? "NULL" : Name,
+                                     WorkloadType.HasValue ? WorkloadType.ToString() : "NULL",
+                                     BackupManagementType.HasValue ? BackupManagementType.ToString() : "NULL",
+                                     this.ParameterSetName));
 
+
+               List<AzureRmRecoveryServicesPolicyBase> policyList = new List<AzureRmRecoveryServicesPolicyBase>();
+               
                if (this.ParameterSetName == PolicyNameParamSet)
-               {
+               {                   
                    // validate policyName
                    PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
 
@@ -82,7 +91,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                        case WorkloadParamSet:
                            if (WorkloadType == Models.WorkloadType.AzureVM)
                            {
-                               hydraProviderType = HydraHelpers.GetHydraProviderType(WorkloadType);
+                               hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureVM);
                            }
                            break;
 
@@ -93,7 +102,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                {
                                    throw new ArgumentException(Resources.AzureVMUnsupportedBackupManagementTypeException);
                                }
-                               hydraProviderType = HydraHelpers.GetHydraProviderType(WorkloadType);
+                               hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureVM);
                            }
                            else
                            {
@@ -116,19 +125,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                    {
                        BackupManagementType = hydraProviderType
                    };
+
+                   WriteDebug("going to query service to get list of policies");
                    HydraModel.ProtectionPolicyListResponse respList = HydraAdapter.ListProtectionPolicy(queryParams);
-                   if (respList != null && respList.ItemList != null &&
-                       respList.ItemList.Value != null && respList.ItemList.Value.Count != 0)
-                   {
-                       foreach (HydraModel.ProtectionPolicyResource policy in respList.ItemList.Value)
-                       {
-                           AzureRmRecoveryServicesPolicyBase psModel = ConversionHelpers.GetPolicyModel(policy);
-                           if (psModel != null)
-                           {
-                               policyList.Add(ConversionHelpers.GetPolicyModel(policy));
-                           }
-                       }
-                   }
+                   WriteDebug("Successfully got response from service");
+
+                   policyList = ConversionHelpers.GetPolicyModelList(respList);
                }
 
                WriteObject(policyList);

@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ResourceGroupName = "The ResourceGroup of the resource being managed by the Azure Backup service (for example: ResourceGroup name of the VM).";
             public const string Status = "The registration status of the Azure Backup container.";
             public const string ContainerType = "The type of the Azure Backup container. This can be a Windows Server, an Azure IaaS VM, or a Data Protection Manager server.";
+            public const string BackupManagementType = "The backup management type of the Azure Backup container";
+            public const string RegisteredContainer = "The recovery services backup container.";
         }
 
         internal static class Common
@@ -70,6 +72,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string Status = "Status of the data source";
             public const string Container = "Container where the item resides";
             public const string ExpiryDate = "Retention period for the recovery points created by this backup operaiton";
+        }
+
+        internal static class RecoveryPoint
+        {
+			public const string StartDate = "Start time of Time range for which recovery point need to be fetched";
+			public const string EndDate = "End time of Time range for which recovery point need to be fetched";
+			public const string Item = "Protected Item object for which recovery point need to be fetched";
+			public const string RecoveryPointId = "Recovery point Id for which detail is needed";
+        }
+
+        internal static class RestoreDisk
+        {
+			public const string RecoveryPoint = "Recovery point objected to be restored";
+			public const string StorageAccountName = "Storage account name where the disk need to be recovered";
         }
     }
 }

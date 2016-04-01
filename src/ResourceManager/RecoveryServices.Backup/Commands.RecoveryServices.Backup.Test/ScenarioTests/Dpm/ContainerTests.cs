@@ -12,31 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public class AzureRmRecoveryServicesIaasVmRecoveryPoint : AzureRmRecoveryServicesRecoveryPointBase
+    public partial class ContainerTests : RecoveryServicesBackupTestsBase
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// 
-        public string RecoveryPointAdditionalInfo { get; set; }
-
-        public string Region { get; set; }
-
-        public AzureRmRecoveryServicesIaasVmRecoveryPoint()
+        [Fact]
+        public void TestGetDpmContainerScenario()
         {
-
+            this.RunPowerShellTest(PsBackupProviderTypes.Mab.ToString(), "Test-GetContainerScenario");
         }
-        public override void Validate()
+
+        [Fact]
+        public void TestUnregisterDpmContainerScenario()
         {
-            base.Validate();
+            this.RunPowerShellTest(PsBackupProviderTypes.Mab.ToString(), "Test-GetContainerScenario");
         }
     }
 }

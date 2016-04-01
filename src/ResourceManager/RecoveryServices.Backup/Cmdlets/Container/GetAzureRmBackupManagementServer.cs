@@ -27,28 +27,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>), typeof(AzureRmRecoveryServicesContainerBase))]
-    public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmBackupManagementServer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>), typeof(AzureRmRecoveryServicesContainerBase))]
+    public class GetAzureRmBackupManagementServer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.ContainerType)]
-        [ValidateNotNullOrEmpty]
-        public ContainerType ContainerType { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.BackupManagementType)]
-        [ValidateNotNullOrEmpty]
-        public BackupManagementType BackupManagementType { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Name)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.ResourceGroupName)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Status)]
-        [ValidateNotNullOrEmpty]
-        public ContainerRegistrationStatus Status { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -58,14 +42,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {  
-                    {ContainerParams.ContainerType, ContainerType},
-                    {ContainerParams.BackupManagementType, BackupManagementType},
-                    {ContainerParams.Name, Name},
-                    {ContainerParams.ResourceGroupName, ResourceGroupName},
-                    {ContainerParams.Status, Status},
+                    {ContainerParams.ContainerType, ContainerType.Windows},
+                    {ContainerParams.BackupManagementType, BackupManagementType.Scdpm},                    
+                    {ContainerParams.Name, Name}
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType, BackupManagementType);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.Windows, BackupManagementType.Scdpm);
+
                 var containerModels = psBackupProvider.ListProtectionContainers();
 
                 if (containerModels.Count == 1)

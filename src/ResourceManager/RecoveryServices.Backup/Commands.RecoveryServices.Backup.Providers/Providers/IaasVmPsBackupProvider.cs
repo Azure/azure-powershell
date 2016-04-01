@@ -133,7 +133,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse TriggerRestore()
         {
-            throw new NotImplementedException();
+            AzureRmRecoveryServicesIaasVmRecoveryPoint rp = ProviderData.ProviderParameters[RestoreBackupItemParams.RecoveryPoint] 
+                as AzureRmRecoveryServicesIaasVmRecoveryPoint;
+            string storageId = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountId].ToString();
+
+            if(rp == null)
+            {
+                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesIaasVmRecoveryPoint");
+            }
+
+            var response = HydraAdapter.RestoreDisk(rp, storageId);
+            return response;
         }
 
         public ProtectedItemResponse GetProtectedItem()
@@ -143,9 +153,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails()
         {
-            RecoveryPointResponse response = null;
-            AzureRmRecoveryServicesItemBase item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
-                as AzureRmRecoveryServicesItemBase;
+            AzureRmRecoveryServicesIaasVmItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
+                as AzureRmRecoveryServicesIaasVmItem;
 
             string recoveryPointId = ProviderData.ProviderParameters[GetRecoveryPointParams.RecoveryPointId].ToString();
 
@@ -163,11 +172,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
         {
-            RecoveryPointResponse response = null;
             DateTime startDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.StartDate]);
             DateTime endDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.EndDate]);
-            AzureRmRecoveryServicesItemBase item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
-                as AzureRmRecoveryServicesItemBase;
+            AzureRmRecoveryServicesIaasVmItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
+                as AzureRmRecoveryServicesIaasVmItem;
 
             if (item == null)
             {
@@ -197,9 +205,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string policyName = (string)ProviderData.ProviderParameters[PolicyParams.PolicyName];
             Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType workloadType =
-                (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData.ProviderParameters[PolicyParams.WorkloadType];
-            BackupManagementType backupManagementType = (BackupManagementType)ProviderData.ProviderParameters[
-                                                                              PolicyParams.BackupManagementType];
+                (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData.ProviderParameters[PolicyParams.WorkloadType];            
             AzureRmRecoveryServicesRetentionPolicyBase retentionPolicy = (AzureRmRecoveryServicesRetentionPolicyBase)
                                                  ProviderData.ProviderParameters[PolicyParams.RetentionPolicy];
             AzureRmRecoveryServicesSchedulePolicyBase schedulePolicy = (AzureRmRecoveryServicesSchedulePolicyBase)
@@ -208,19 +214,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // do validations
             ValidateAzureVMWorkloadType(workloadType);
             ValidateAzureVMSchedulePolicy(schedulePolicy);
+            Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
 
             // update the retention times from backupSchedule to retentionPolicy after converting to UTC           
             CopyScheduleTimeToRetentionTimes((AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
                                              (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy);
 
-            // validate both RetentionPolicy and SchedulePolicy
+            // validate RetentionPolicy
             ValidateAzureVMRetentionPolicy(retentionPolicy);
-            ValidateAzureVMSchedulePolicy(schedulePolicy);
+            Logger.Instance.WriteDebug("Validation of Retention policy is successful");
 
-            // Now validate both RetentionPolicy and SchedulePolicy matches or not
+            // Now validate both RetentionPolicy and SchedulePolicy together
             PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
                                 (AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
                                 (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy);
+            Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
             // construct Hydra policy request            
             ProtectionPolicyRequest hydraRequest = new ProtectionPolicyRequest()
@@ -714,9 +722,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private void CopyScheduleTimeToRetentionTimes(AzureRmRecoveryServicesLongTermRetentionPolicy retPolicy,
                                                       AzureRmRecoveryServicesSimpleSchedulePolicy schPolicy)
         {
-            // first convert schedule run times to UTC
-            schPolicy.ScheduleRunTimes = PolicyHelpers.ParseScheduleRunTimesToUTC(schPolicy.ScheduleRunTimes);
-
+            // schedule runTimes is already validated if in UTC/not during validate()
             // now copy times from schedule to retention policy
             if (retPolicy.IsDailyScheduleEnabled && retPolicy.DailySchedule != null)
             {

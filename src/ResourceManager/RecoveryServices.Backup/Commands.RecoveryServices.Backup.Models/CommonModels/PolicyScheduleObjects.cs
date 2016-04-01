@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 throw new ArgumentException(Resources.InvalidScheduleTimeInScheduleException);
             }
 
+            if(ScheduleRunTimes[0].Kind != DateTimeKind.Utc)
+            {
+                throw new ArgumentException(Resources.ScheduleTimeNotInUTCTimeZoneException);
+            }
+
             if (ScheduleRunFrequency == ScheduleRunType.Weekly)
             {
                 if (ScheduleRunDays == null || ScheduleRunDays.Count == 0 || 
