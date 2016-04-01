@@ -60,5 +60,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             BatchController.NewInstance.RunPsTest("Test-BatchAccountKeys");
         }
+
+        [Fact]
+        public void TestBatchAccountListNodeAgentSkus()
+        {
+            BatchController.NewInstance.RunPsTest("Test-GetBatchNodeAgentSkus");
+        }
+
+        [Fact]
+        public void TestBatchAccountListNodeAgentSkusWithFilter()
+        {
+            BatchController.NewInstance.RunPsTest("Test-GetBatchNodeAgentSkusWithFilter");
+        }
     }
 }

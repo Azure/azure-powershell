@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     {
         private const string accountName = ScenarioTestHelpers.SharedAccount;
         private const string poolId = ScenarioTestHelpers.SharedPool;
+        private const string iaasPoolId = ScenarioTestHelpers.SharedIaasPool;
 
         [Fact]
         public void TestGetComputeNodeById()
@@ -194,6 +195,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             TestDisableAndEnableComputeNodeScheduling(true, TestUtilities.GetCurrentMethodName());
         }
 
+        [Fact]
+        public void TestGetComputeNodeRemoteLoginSettingsById()
+        {
+            TestGetComputeNodeRemoteLoginSettings(false, TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        public void TestGetComputeNodeRemoteLoginSettingsPipeline()
+        {
+            TestGetComputeNodeRemoteLoginSettings(true, TestUtilities.GetCurrentMethodName());
+        }
+
         private void TestRemoveComputeNode(bool usePipeline, string testMethodName)
         {
             BatchController controller = BatchController.NewInstance;
@@ -267,6 +280,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, ScenarioTestHelpers.MpiOnlineAccount);
                     computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
                     ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                testMethodName);
+        }
+
+        private void TestGetComputeNodeRemoteLoginSettings(bool usePipeline, string testMethodName)
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string computeNodeId = null;
+
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-GetComputeNodeRemoteLoginSettings '{0}' '{1}' '{2}' '{3}'", ScenarioTestHelpers.SharedAccount, iaasPoolId, computeNodeId, usePipeline ? 1 : 0) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, iaasPoolId);
                 },
                 null,
                 TestUtilities.GetCallingClass(),
