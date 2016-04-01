@@ -358,7 +358,7 @@ function Test-GetResourceWithCollection
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = "East US"
 	$apiversion = "2015-08-01"
 	$resourceType = "Providers.Test/statefulResources"
 
