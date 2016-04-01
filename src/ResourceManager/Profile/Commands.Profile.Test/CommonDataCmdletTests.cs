@@ -21,11 +21,19 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit.Extensions;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class CommonDataCmdletTests
     {
+        public CommonDataCmdletTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         public static AzureRMProfile CreateAzureRMProfile(string storageAccount)
         {
             var tenantId = Guid.NewGuid();
@@ -60,7 +68,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public static AzureSMProfile CreateAzureSMProfile(string storageAccount)
         {
             var profile = new AzureSMProfile();
-            var client = new ProfileClient(profile);
+            var client = new ArmProfileClient(profile);
             var tenantId = Guid.NewGuid();
             var subscriptionId = Guid.NewGuid();
             var account = new AzureAccount

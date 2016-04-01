@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.TrafficManager.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
+
 namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
 {
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using Microsoft.Azure.Commands.TrafficManager;
-    using Microsoft.Azure.Commands.TrafficManager.Models;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using WindowsAzure.Commands.Test.Utilities.Common;
-    using Xunit;
-
     public class RemoveAzureTrafficManagerEndpointConfigTests : RMTestBase
     {
         [Fact]

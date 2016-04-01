@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Test.Utilities.Common;
+
 namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
 {
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;        
 
     /// <summary>
     /// Base class for the Logic app command tests

@@ -12,26 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Logic;
+using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using LegacyTest = Microsoft.Azure.Test;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+using Microsoft.Azure.Management.WebSites;
+using System.IO;
+using Microsoft.Azure.Commands.ScenarioTest;
+
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Gallery;
-    using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Logic;
-    using Microsoft.Azure.Subscriptions;
-    using Microsoft.Azure.Test.HttpRecorder;
-    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using LegacyTest = Microsoft.Azure.Test;
-    using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-    using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-    using Microsoft.Azure.Management.WebSites;
-    using System.IO;
-
     /// <summary>
     /// Test controller for the logic app scenario testing
     /// </summary>
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// <summary>
         /// EnvironmentSetupHelper instance
         /// </summary>
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
 
         /// <summary>
         /// Authorization Api Version
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         public WorkflowController()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         /// <summary>
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
             d.Add("Microsoft.Features", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ArmPermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))

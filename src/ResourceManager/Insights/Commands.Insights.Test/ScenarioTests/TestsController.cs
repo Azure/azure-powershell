@@ -14,19 +14,19 @@
 
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Insights;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using System;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
     public sealed class TestsController : RMTestBase
     {
         private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
 
         public IInsightsClient InsightsClient { get; private set; }
         public IInsightsManagementClient InsightsManagementClient { get; private set; }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         public TestsController()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)

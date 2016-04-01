@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Management.HDInsight.Models;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Management.HDInsight.Models;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Moq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {

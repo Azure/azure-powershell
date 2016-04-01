@@ -12,21 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
-using Microsoft.Azure.Batch.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
 {
-    public class DisableBatchComputeNodeSchedulingCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class DisableBatchComputeNodeSchedulingCommandTests : RMTestBase
     {
         private DisableBatchComputeNodeSchedulingCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

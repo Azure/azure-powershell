@@ -23,10 +23,11 @@ using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Files
 {
-    public class RemoveBatchNodeFileCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class RemoveBatchNodeFileCommandTests : RMTestBase
     {
         private RemoveBatchNodeFileCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

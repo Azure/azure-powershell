@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {

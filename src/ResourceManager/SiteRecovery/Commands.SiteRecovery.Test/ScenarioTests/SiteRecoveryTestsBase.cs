@@ -12,30 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Management.SiteRecovery;
+using Microsoft.Azure.Management.SiteRecoveryVault;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Net.Security;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Xml;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.SiteRecoveryVault;
-using Microsoft.Azure.Management.SiteRecovery;
-using Microsoft.Azure.Test;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System;
-using System.Net.Http;
-using System.Reflection;
-using Microsoft.Azure.Commands.Common.Authentication;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 {
     public abstract class SiteRecoveryTestsBase : RMTestBase
     {
         private CSMTestEnvironmentFactory armTestFactory;
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
         protected string vaultSettingsFilePath;
         private ASRVaultCreds asrVaultCreds = null;
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                         this.vaultSettingsFilePath));
             }
 
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         protected void SetupManagementClients()
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ArmPermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (UndoContext context = UndoContext.Current)
             {

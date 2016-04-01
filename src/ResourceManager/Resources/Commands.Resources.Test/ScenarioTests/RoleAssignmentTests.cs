@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {

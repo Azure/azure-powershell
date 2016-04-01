@@ -20,12 +20,13 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class StartBatchPoolResizeCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class StartBatchPoolResizeCommandTests : RMTestBase
     {
         private StartBatchPoolResizeCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

@@ -13,24 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Redis;
+using Microsoft.Azure.Test;
+using System;
 
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
-    using System;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.Test;
-    using Microsoft.Azure.Management.Redis;
-    using WindowsAzure.Commands.Test.Utilities.Common;
-    using Microsoft.Azure.Management.Insights;
-    using Microsoft.Azure.Management.Internal.Resources;
-
     public abstract class RedisCacheTestsBase : RMTestBase, IDisposable
     {
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
 
         protected RedisCacheTestsBase()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         protected void SetupManagementClients()

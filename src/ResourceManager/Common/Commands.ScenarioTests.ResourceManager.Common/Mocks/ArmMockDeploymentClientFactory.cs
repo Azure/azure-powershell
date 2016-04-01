@@ -12,23 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Hyak.Common.TransientFaultHandling;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.Mocks
 {
-    public class MockDeploymentClientFactory
+    public class ArmMockDeploymentClientFactory
     {
         public static ResourceManagementClient GetResourceClient(ResourceManagementClient wrapped)
         {

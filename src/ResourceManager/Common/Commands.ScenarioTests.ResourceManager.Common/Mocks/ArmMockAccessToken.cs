@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication;
+using System;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
-    public class MockAccessToken : IAccessToken
+    public class ArmMockAccessToken : IAccessToken
     {
         private string _tenantId = String.Empty;
         public void AuthorizeRequest(Action<string, string> authTokenSetter)

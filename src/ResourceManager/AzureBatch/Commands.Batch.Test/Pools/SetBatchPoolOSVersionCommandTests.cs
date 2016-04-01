@@ -20,13 +20,14 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class SetBatchPoolOSVersionCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class SetBatchPoolOSVersionCommandTests : RMTestBase
     {
         private SetBatchPoolOSVersionCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
