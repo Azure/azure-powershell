@@ -129,7 +129,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse TriggerRestore()
         {
-            throw new NotImplementedException();
+            AzureRmRecoveryServicesIaasVmRecoveryPoint rp = ProviderData.ProviderParameters[RestoreBackupItemParams.RecoveryPoint] 
+                as AzureRmRecoveryServicesIaasVmRecoveryPoint;
+            string storageId = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountId].ToString();
+
+            if(rp == null)
+            {
+                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesIaasVmRecoveryPoint");
+            }
+
+            var response = HydraAdapter.RestoreDisk(rp, storageId);
+            return response;
         }
 
         public ProtectedItemResponse GetProtectedItem()
@@ -139,9 +149,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails()
         {
-            RecoveryPointResponse response = null;
-            AzureRmRecoveryServicesItemBase item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
-                as AzureRmRecoveryServicesItemBase;
+            AzureRmRecoveryServicesIaasVmItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
+                as AzureRmRecoveryServicesIaasVmItem;
 
             string recoveryPointId = ProviderData.ProviderParameters[GetRecoveryPointParams.RecoveryPointId].ToString();
 
@@ -159,11 +168,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
         {
-            RecoveryPointResponse response = null;
             DateTime startDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.StartDate]);
             DateTime endDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.EndDate]);
-            AzureRmRecoveryServicesItemBase item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
-                as AzureRmRecoveryServicesItemBase;
+            AzureRmRecoveryServicesIaasVmItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
+                as AzureRmRecoveryServicesIaasVmItem;
 
             if (item == null)
             {

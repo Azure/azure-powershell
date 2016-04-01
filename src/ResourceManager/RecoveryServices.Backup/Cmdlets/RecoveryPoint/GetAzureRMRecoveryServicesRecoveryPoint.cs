@@ -29,20 +29,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string DateTimeFilterParameterSet = "DateTimeFilter";
         internal const string RecoveryPointIdParameterSet = "RecoveryPointId";
 
-        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = "", ValueFromPipeline = false)]        
+        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = false, Position = 0, HelpMessage = ParamHelpMsg.RecoveryPoint.StartDate)]        
         [ValidateNotNullOrEmpty]
         public DateTime StartDate { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = "", ValueFromPipeline = false)]        
+        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = false, Position = 1, HelpMessage = ParamHelpMsg.RecoveryPoint.EndDate)]        
         [ValidateNotNullOrEmpty]
         public DateTime EndDate { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = "", ValueFromPipeline = true)]
-        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = ParamHelpMsg.RecoveryPoint.Item)]
+        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsg.RecoveryPoint.Item)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesItemBase Item { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, HelpMessage = "", ValueFromPipeline = false)]
+        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, ValueFromPipeline = false, Position = 1, HelpMessage = ParamHelpMsg.RecoveryPoint.RecoveryPointId)]
         [ValidateNotNullOrEmpty]
         public string RecoveryPointId { get; set; }
 
@@ -70,11 +70,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
                     var rpList = psBackupProvider.ListRecoveryPoints();
                     if (rpList.Count == 1)
+                    {
                         WriteObject(rpList[0]);
+                    }
                     else
+                    {
                         WriteObject(rpList);
+                    }
                 }
-
                 else if (this.ParameterSetName == RecoveryPointIdParameterSet)
                 {
                     //User want details of a particular recovery point
