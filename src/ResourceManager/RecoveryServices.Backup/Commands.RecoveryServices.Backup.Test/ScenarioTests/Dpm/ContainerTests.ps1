@@ -21,10 +21,10 @@ function Test-GetContainerScenario
 	{
 		echo $container.Name $container.ResourceGroupName;
 	}
-	Assert-AreEqual $containers[0].FriendlyName "mylinux1";
+	Assert-AreEqual $containers[0].FriendlyName "swatidpm";
 
-	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType "Scdpm" -Name "swatimab";
-	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
+	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType "Scdpm" -Name "swatidpm";
+	Assert-AreEqual $namedContainer.FriendlyName "swatidpm";
 }
 
 function Test-UnregisterContainerScenario
