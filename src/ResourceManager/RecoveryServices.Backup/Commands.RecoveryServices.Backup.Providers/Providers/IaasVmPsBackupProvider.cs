@@ -127,7 +127,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse DisableProtection()
         {
-            throw new NotImplementedException();
+            bool deleteBackupData = (bool)ProviderData.ProviderParameters[ItemParams.DeleteBackupData];
+
+            AzureRmRecoveryServicesItemBase itemBase = (AzureRmRecoveryServicesItemBase)
+                                                 ProviderData.ProviderParameters[ItemParams.Item];
+
+            AzureRmRecoveryServicesIaasVmItem item = (AzureRmRecoveryServicesIaasVmItem)
+                                                 ProviderData.ProviderParameters[ItemParams.Item];
+            // do validations
+
+            ValidateAzureVMDisableProtectionRequest(itemBase);
+
+            string containerType = HydraHelpers.GetHydraContainerType(item.ContainerType);
+            string vmType = HydraHelpers.GetHydraWorkloadType(item.WorkloadType);
+            string containerUri = string.Join(separator, new string[] { containerType, item.ContainerName });
+            string protectedItemUri = string.Join(separator, new string[] { vmType, item.Name });
+
+            bool isComputeAzureVM = false;
+
+            if (deleteBackupData)
+            {
+                return HydraAdapter.DeleteProtectedItem(
+                                containerUri,
+                                protectedItemUri);
+            }
+            else
+            {
+                isComputeAzureVM = IsComputeAzureVM(item.VirtualMachineId);
+
+                // construct Hydra protectedItem request
+
+                AzureIaaSVMProtectedItem properties;
+                if (isComputeAzureVM == false)
+                {
+                    properties = new AzureIaaSClassicComputeVMProtectedItem();
+                }
+                else
+                {
+                    properties = new AzureIaaSComputeVMProtectedItem();
+                }
+
+                properties.PolicyName = string.Empty;
+                properties.ProtectionState = ItemStatus.ProtectionStopped.ToString();
+
+                ProtectedItemCreateOrUpdateRequest hydraRequest = new ProtectedItemCreateOrUpdateRequest()
+                {
+                    Item = new ProtectedItemResource()
+                    {
+                        Properties = properties,
+                    }
+                };
+
+                return HydraAdapter.CreateOrUpdateProtectedItem(
+                                    containerUri,
+                                    protectedItemUri,
+                                    hydraRequest);
+            }
         }
 
         public BaseRecoveryServicesJobResponse TriggerBackup()
@@ -532,6 +587,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
+        private void ValidateAzureVMContainerType(Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType type)
+        {
+            if (type != Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType.AzureVM)
+            {
+                throw new ArgumentException(string.Format(Resources.UnExpectedContainerTypeException,
+                                            Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType.AzureVM.ToString(),
+                                            type.ToString()));
+            }
+        }
         private void ValidateAzureVMProtectionPolicy(AzureRmRecoveryServicesPolicyBase policy)
         {
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesIaasVmPolicy))
@@ -594,6 +658,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
                                             typeof(AzureRmRecoveryServicesIaasVmItem).ToString()));
             }
+        }
+
+        private void ValidateAzureVMDisableProtectionRequest(AzureRmRecoveryServicesItemBase itemBase)
+        {
+
+            if (itemBase == null || itemBase.GetType() != typeof(AzureRmRecoveryServicesIaasVmItem))
+            {
+                throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
+                                            typeof(AzureRmRecoveryServicesIaasVmItem).ToString()));
+            }
+
+            ValidateAzureVMWorkloadType(itemBase.WorkloadType);
+            ValidateAzureVMContainerType(itemBase.ContainerType);
         }
 
         private bool IsComputeAzureVM(string virtualMachineId)

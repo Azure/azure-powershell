@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ProtectionStatus = "Protection status of Item";
             public const string Status = "Status of the data source";
             public const string Container = "Container where the item resides";
+            public const string RemoveProtectionOption = "If this option is used, all the backup data for this item will also be deleted and restoring data will not be possible.";
         }
 
         internal static class RecoveryPoint

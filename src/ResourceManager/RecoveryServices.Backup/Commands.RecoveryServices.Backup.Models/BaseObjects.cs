@@ -102,14 +102,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureRmRecoveryServicesItemBase : AzureRmRecoveryServicesItemContext
     {
         /// <summary>
+        /// Name of the item
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Id of the item
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
         /// Last Recovery Point for the item
         /// </summary>
         public DateTime? LastRecoveryPoint { get; set; }
 
-        public AzureRmRecoveryServicesItemBase(ProtectedItem protectedItem,
+        public AzureRmRecoveryServicesItemBase(ProtectedItemResource protectedItemResource,
             AzureRmRecoveryServicesContainerBase container)
-            : base(protectedItem, container)
+            : base((ProtectedItem)protectedItemResource.Properties, container)
         {
+            ProtectedItem protectedItem = (ProtectedItem)protectedItemResource.Properties;
+            Name = protectedItemResource.Name;
+            Id = protectedItemResource.Id;
             LastRecoveryPoint = protectedItem.LastRecoveryPoint;
         }
     }
