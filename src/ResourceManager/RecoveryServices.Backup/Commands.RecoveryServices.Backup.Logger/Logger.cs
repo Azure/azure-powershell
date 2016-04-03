@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup
 {
@@ -28,15 +29,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup
 
         private Action<string> writeVerboseAction;
 
+        private Action<ErrorRecord> throwTerminatingErrorAction;
+
         public static Logger Instance { get; set; }
 
         public Logger(Action<string> writeWarning,
                       Action<string> writeDebug,
-                      Action<string> writeVerbose)
+                      Action<string> writeVerbose,
+                      Action<ErrorRecord> throwTerminatingError)
         {
             writeWarningAction = writeWarning;
             writeDebugAction = writeDebug;
             writeVerboseAction = writeVerbose;
+            throwTerminatingErrorAction = throwTerminatingError;
         }
 
         public void WriteVerbose(string text)
@@ -52,6 +57,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup
         public void WriteWarning(string text)
         {
             writeWarningAction(text);
+        }
+
+        public void ThrowTerminatingError(ErrorRecord errorRecord)
+        {
+            throwTerminatingErrorAction(errorRecord);
         }
     }
 }

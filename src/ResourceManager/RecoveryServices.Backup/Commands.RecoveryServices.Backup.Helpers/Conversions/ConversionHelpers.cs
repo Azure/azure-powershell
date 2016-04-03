@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 if (protectedItem.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectedItem)))
                 {
-                    itemModel = new AzureRmRecoveryServicesIaasVmItem((AzureIaaSVMProtectedItem)protectedItem.Properties, container);
+                    itemModel = new AzureRmRecoveryServicesIaasVmItem(protectedItem, container);
                 }
             }
 

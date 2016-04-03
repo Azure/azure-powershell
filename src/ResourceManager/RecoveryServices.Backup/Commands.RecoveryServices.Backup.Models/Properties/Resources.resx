@@ -195,6 +195,9 @@
   <data name="UnExpectedWorkLoadTypeException" xml:space="preserve">
     <value>Unexpected WorkloadType - expected:{0}, current:{1}</value>
   </data>
+  <data name="UnExpectedContainerTypeException" xml:space="preserve">
+    <value>Unexpected ContainerType - expected:{0}, current:{1}</value>
+  </data>
   <data name="AllRetentionSchedulesEmptyException" xml:space="preserve">
     <value>All retention schedules are Empty in retentionPolicy. Alteast one is expected.</value>
   </data>
@@ -337,5 +340,14 @@ Please contact Microsoft for further assistant.</value>
   </data>
   <data name="ProtectionPolicyDeleted" xml:space="preserve">
     <value>Successfully deleted policy</value>
+  </data>
+  <data name="DisableProtectionMessage" xml:space="preserve">
+    <value>Disabling protection for the item</value>
+  </data>
+  <data name="DisableProtectionWarning" xml:space="preserve">
+    <value>Are you sure you want to disable protection for the item '{0}'</value>
+  </data>
+  <data name="DisableProtectionOperationFailed" xml:space="preserve">
+    <value>Disable Protection OperationFailed with error code {0} , and error Message {1}</value>
   </data>
 </root>

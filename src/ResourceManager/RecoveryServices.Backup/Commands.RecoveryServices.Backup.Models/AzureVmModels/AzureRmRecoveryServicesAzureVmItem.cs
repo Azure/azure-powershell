@@ -58,10 +58,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary
         public AzureRmRecoveryServicesIaasVmItemExtendedInfo ExtendedInfo { get; set; }
 
-        public AzureRmRecoveryServicesIaasVmItem(AzureIaaSVMProtectedItem protectedItem,
+        public AzureRmRecoveryServicesIaasVmItem(ProtectedItemResource protectedItemResource,
             AzureRmRecoveryServicesContainerBase container)
-            : base(protectedItem, container)
+            : base(protectedItemResource, container)
         {
+            AzureIaaSVMProtectedItem protectedItem = (AzureIaaSVMProtectedItem)protectedItemResource.Properties;
             LastBackupStatus = protectedItem.LastBackupStatus;
             ProtectionPolicyName = protectedItem.PolicyName;
             ProtectionState = EnumUtils.GetEnum<ItemStatus>(protectedItem.ProtectionState);

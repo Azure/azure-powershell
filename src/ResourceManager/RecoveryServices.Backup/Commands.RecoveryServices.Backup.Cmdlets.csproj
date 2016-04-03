@@ -78,6 +78,7 @@
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureRmBackupManagementServer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureRmRecoveryServicesBackupContainer.cs" />
+    <Compile Include="Cmdlets\Item\DisableAzureRmRecoveryServicesProtection.cs" />
     <Compile Include="Cmdlets\Item\EnableAzureRmRecoveryServicesProtection.cs" />
     <Compile Include="Cmdlets\Item\GetAzureRmRecoveryServicesItem.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJob.cs" />

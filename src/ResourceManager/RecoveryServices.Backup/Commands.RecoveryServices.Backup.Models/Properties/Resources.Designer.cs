@@ -201,6 +201,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling protection for the item.
+        /// </summary>
+        public static string DisableProtectionMessage {
+            get {
+                return ResourceManager.GetString("DisableProtectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable Protection OperationFailed with error code {0} , and error Message {1}.
+        /// </summary>
+        public static string DisableProtectionOperationFailed {
+            get {
+                return ResourceManager.GetString("DisableProtectionOperationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to disable protection for the item &apos;{0}&apos;.
+        /// </summary>
+        public static string DisableProtectionWarning {
+            get {
+                return ResourceManager.GetString("DisableProtectionWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to discover VM {0} under {1} {2}. Please make sure names are correct and VM is not deleted&quot;.
         /// </summary>
         public static string DiscoveryFailure {
@@ -602,6 +629,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string ScheduleTimeNotInUTCTimeZoneException {
             get {
                 return ResourceManager.GetString("ScheduleTimeNotInUTCTimeZoneException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected ContainerType - expected:{0}, current:{1}.
+        /// </summary>
+        public static string UnExpectedContainerTypeException {
+            get {
+                return ResourceManager.GetString("UnExpectedContainerTypeException", resourceCulture);
             }
         }
         
