@@ -21,6 +21,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -30,8 +31,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesProtection", DefaultParameterSetName = ModifyProtectionParameterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
     public class EnableAzureRmRecoveryServicesProtection : RecoveryServicesBackupCmdletBase
     {
-        internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicCompute";
-        internal const string AzureVMComputeParameterSet = "AzureVMCompute";
+        internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";
+        internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
         internal const string ModifyProtectionParameterSet = "ModifyProtection";
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
@@ -44,15 +45,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMResourceGroupName)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [Parameter(Mandatory = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [Parameter(Mandatory = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         public WorkloadType WorkLoadType { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesPolicyBase Policy { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesItemBase Item { get; set; }
 
@@ -90,10 +91,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if(response.OperationStatus.Status == "Completed")
                 {
-                    // TBD -- Hydra change to add jobId in OperationStatusExtendedInfo
-                    string jobId = ""; //response.OperationStatus.Properties.jobId;
+                    var jobStatusResponse = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+                    string jobId = jobStatusResponse.JobId;
                     var job = HydraAdapter.GetJob(jobId);
-                    //WriteObject(ConversionHelpers.GetJobModel(job));
+                    WriteObject(JobConversions.GetPSJob(job));
                 }
             });
         }
