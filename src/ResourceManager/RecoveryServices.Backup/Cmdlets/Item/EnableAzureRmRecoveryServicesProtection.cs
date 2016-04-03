@@ -83,18 +83,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 // -- TBD to move it to common helper and remove hard-coded vaules
 
                 var response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
-                while (response.OperationStatus.Status == "InProgress")
+                while (response.OperationStatus.Status == HydraModel.OperationStatusValues.InProgress)
                 {
                     response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
                     System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
                 }
 
-                if(response.OperationStatus.Status == "Completed")
+                if (response.OperationStatus.Status == HydraModel.OperationStatusValues.Succeeded)
                 {
                     var jobStatusResponse = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
                     string jobId = jobStatusResponse.JobId;
                     var job = HydraAdapter.GetJob(jobId);
                     WriteObject(JobConversions.GetPSJob(job));
+                }
+                else if(response.OperationStatus.Status == HydraModel.OperationStatusValues.Failed)
+                {
+                    var jobStatusResponse = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+                    if(jobStatusResponse != null || !string.IsNullOrEmpty(jobStatusResponse.JobId))
+                    {
+                        string jobId = jobStatusResponse.JobId;
+                        var job = HydraAdapter.GetJob(jobId);
+                        WriteObject(JobConversions.GetPSJob(job));
+                    }
+
+                    var errorMessage(string.Format("Operation failed with error code and error message",
+                    response.OperationStatus.OperationStatusError,
+                    response.OperationStatus.OperationStatusError));
+
+                    throw new Exception(errorMessage);
                 }
             });
         }
