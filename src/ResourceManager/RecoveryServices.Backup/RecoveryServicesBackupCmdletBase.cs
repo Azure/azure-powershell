@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
             HydraAdapter = new HydraAdapterNS.HydraAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
-            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose);
+            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
         }
 
         protected void ExecutionBlock(Action action)
