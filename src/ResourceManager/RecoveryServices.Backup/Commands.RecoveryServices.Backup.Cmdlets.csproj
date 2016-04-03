@@ -92,6 +92,7 @@
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesSchedulePolicyObject.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\PolicyCmdletHelpers.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Constants.cs" />

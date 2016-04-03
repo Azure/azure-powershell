@@ -444,6 +444,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Making client call.
+        /// </summary>
+        public static string MakingClientCall {
+            get {
+                return ResourceManager.GetString("MakingClientCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RetentionPolicy: IsMonthlyScheduleEnabled=true but MonthlySchedule is NULL.
         /// </summary>
         public static string MonthlyScheduleEnabledButScheduleIsNullException {
@@ -507,6 +516,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully deleted policy.
+        /// </summary>
+        public static string ProtectionPolicyDeleted {
+            get {
+                return ResourceManager.GetString("ProtectionPolicyDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The protection policy name should contain alphanumeric characters and cannot start with a number.
         /// </summary>
         public static string ProtectionPolicyNameException {
@@ -521,6 +539,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string ProtectionPolicyNameLengthException {
             get {
                 return ResourceManager.GetString("ProtectionPolicyNameLengthException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the protection policy.
+        /// </summary>
+        public static string RemoveProtectionPolicyMessage {
+            get {
+                return ResourceManager.GetString("RemoveProtectionPolicyMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the protection policy &apos;{0}&apos;.
+        /// </summary>
+        public static string RemoveProtectionPolicyWarning {
+            get {
+                return ResourceManager.GetString("RemoveProtectionPolicyWarning", resourceCulture);
             }
         }
         
