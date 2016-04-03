@@ -20,8 +20,10 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -82,12 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 // Track Response and display job details
                 // -- TBD to move it to common helper and remove hard-coded vaules
 
-                var response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
-                while (response.OperationStatus.Status == HydraModel.OperationStatusValues.InProgress)
-                {
-                    response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
-                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
-                }
+                var response = OperationStatusHelper.TrackOperationStatus(jobResponse, HydraAdapter);
 
                 if (response.OperationStatus.Status == HydraModel.OperationStatusValues.Succeeded)
                 {
@@ -106,9 +103,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         WriteObject(JobConversions.GetPSJob(job));
                     }
 
-                    var errorMessage(string.Format("Operation failed with error code and error message",
-                    response.OperationStatus.OperationStatusError,
-                    response.OperationStatus.OperationStatusError));
+                    var errorMessage = string.Format(Resources.EnableProtectionOperationFailed,
+                    response.OperationStatus.OperationStatusError.Code,
+                    response.OperationStatus.OperationStatusError.Message);
 
                     throw new Exception(errorMessage);
                 }

@@ -237,6 +237,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable Protection OperationFailed with error code {0} , and error Message {1}.
+        /// </summary>
+        public static string EnableProtectionOperationFailed {
+            get {
+                return ResourceManager.GetString("EnableProtectionOperationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Caught exception, type: {0}.
         /// </summary>
         public static string ExceptionInExecution {
