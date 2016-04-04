@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="Conversions\JobConversions.cs" />
     <Compile Include="Conversions\RecoveryPointConversions.cs" />
-    <Compile Include="OperationStatusHelper.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Validations\PolicyValidations.cs" />
     <Compile Include="Conversions\SchedulePolicyConversions.cs" />

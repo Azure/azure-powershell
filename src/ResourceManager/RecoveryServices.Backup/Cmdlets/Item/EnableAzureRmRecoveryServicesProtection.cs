@@ -79,33 +79,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 IPsBackupProvider psBackupProvider = (Item != null) ? providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
                     : providerManager.GetProviderInstance(WorkLoadType);
 
-                var jobResponse = psBackupProvider.EnableProtection();
+                var itemResponse = psBackupProvider.EnableProtection();
 
                 // Track Response and display job details
 
-                var response = OperationStatusHelper.TrackOperationStatus(jobResponse, HydraAdapter);
+                WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
+                                itemResponse.AzureAsyncOperation);
 
-                if (response.OperationStatus.Status == HydraModel.OperationStatusValues.Succeeded)
+                var response = WaitForOperationCompletionUsingStatusLink(
+                                                itemResponse.AzureAsyncOperation,
+                                                HydraAdapter.GetProtectedItemOperationStatusByURL);
+
+                WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
+
+                if (response.OperationStatus.Properties != null &&
+                       ((HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
                 {
                     var jobStatusResponse = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
-                    string jobId = jobStatusResponse.JobId;
-                    var job = HydraAdapter.GetJob(jobId);
-                    WriteObject(JobConversions.GetPSJob(job));
+                    WriteObject(GetJobObject(jobStatusResponse.JobId));
                 }
-                else if(response.OperationStatus.Status == HydraModel.OperationStatusValues.Failed)
-                {
-                    var jobStatusResponse = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
-                    if(jobStatusResponse != null || !string.IsNullOrEmpty(jobStatusResponse.JobId))
-                    {
-                        string jobId = jobStatusResponse.JobId;
-                        var job = HydraAdapter.GetJob(jobId);
-                        WriteObject(JobConversions.GetPSJob(job));
-                    }
 
+                if(response.OperationStatus.Status == HydraModel.OperationStatusValues.Failed)
+                {
                     var errorMessage = string.Format(Resources.EnableProtectionOperationFailed,
                     response.OperationStatus.OperationStatusError.Code,
                     response.OperationStatus.OperationStatusError.Message);
-
                     throw new Exception(errorMessage);
                 }
             });

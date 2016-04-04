@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public abstract class RecoveryServicesBackupCmdletBase : AzureRMCmdlet
     {
         // in seconds
-        private int _defaultSleepForOperationTracking = 15;
+        private int _defaultSleepForOperationTracking = 5;
 
         protected HydraAdapterNS.HydraAdapter HydraAdapter { get; set; }
 
