@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         {
             // for daily schedule, daily retention policy is required
             if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Daily &&
-               ltrPolicy.DailySchedule == null)
+               (ltrPolicy.DailySchedule == null || ltrPolicy.IsDailyScheduleEnabled == false))
             {
                 throw new ArgumentException(Resources.DailyRetentionScheduleNullException);
             }
@@ -39,19 +39,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             // for weekly schedule, daily retention policy should be NULL
             // AND weekly retention policy is required
             if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
-               (ltrPolicy.DailySchedule != null || ltrPolicy.WeeklySchedule == null))
+               (ltrPolicy.IsDailyScheduleEnabled != false || ltrPolicy.WeeklySchedule == null || 
+               (ltrPolicy.IsWeeklyScheduleEnabled == false)))
             {
                 throw new ArgumentException(Resources.WeeklyRetentionScheduleNullException);
             }
 
             // validate daily retention schedule with schPolicy
-            if (ltrPolicy.DailySchedule != null)
+            if (ltrPolicy.DailySchedule != null && ltrPolicy.IsDailyScheduleEnabled == true)
             {
                 ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.DailySchedule.RetentionTimes);
             }
 
             // validate weekly retention schedule with schPolicy
-            if (ltrPolicy.WeeklySchedule != null)
+            if (ltrPolicy.WeeklySchedule != null && ltrPolicy.IsWeeklyScheduleEnabled == true)
             {
                 ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.WeeklySchedule.RetentionTimes);
 
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             // validate monthly retention schedule with schPolicy
-            if (ltrPolicy.MonthlySchedule != null)
+            if (ltrPolicy.MonthlySchedule != null && ltrPolicy.IsMonthlyScheduleEnabled == true)
             {
                 ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.MonthlySchedule.RetentionTimes);
 
