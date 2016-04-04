@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
             }
         }
 
-        protected NotificationHubsManagementClient GetNotificationHubsManagementClient()
+        protected Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient GetNotificationHubsManagementClient()
         {
-            return TestBase.GetServiceClient<NotificationHubsManagementClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         private ResourceManagementClient GetResourceManagementClient()
