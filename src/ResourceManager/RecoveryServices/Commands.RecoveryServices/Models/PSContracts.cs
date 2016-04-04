@@ -358,10 +358,10 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="resourceName">resource name</param>
         /// <param name="managementCert">management cert</param>
         /// <param name="acsNamespace">authenticating service namespace</param>
-        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
+        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace, string resourceType = null)
         {
             this.SubscriptionId = subscriptionId;
-            this.ResourceType = Constants.ASRVaultType;
+            this.ResourceType = string.IsNullOrEmpty(resourceType) ? Constants.ASRVaultType : resourceType;
             this.ResourceName = resourceName;
             this.ManagementCert = managementCert;
             this.AcsNamespace = acsNamespace;
@@ -500,6 +500,55 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 6)]
         public string ARMResourceType { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Class to define backup vault credentials
+    /// </summary>
+    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Grouping classes based on entity")]
+    [DataContract]
+    public class BackupVaultCreds : VaultCreds
+    {
+        /// <summary>
+        /// Gets or sets the agent links
+        /// </summary>
+        [DataMember(Order = 0)]
+        public string AgentLinks { get; set; }
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        public BackupVaultCreds() { }
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceType">resource type</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">acs namespace</param>
+        public BackupVaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
+            : base(subscriptionId, resourceName, managementCert, acsNamespace, Constants.BackupVaultType) { }
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceType">resource type</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">acs namespace</param>
+        /// <param name="agentLinks">agent links</param>
+        public BackupVaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace, string agentLinks)
+            : this(subscriptionId, resourceName, managementCert, acsNamespace)
+        {
+            AgentLinks = agentLinks;
+        }
 
         #endregion
     }

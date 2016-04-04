@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public const string ASRVaultType = "HyperVRecoveryManagerVault";
 
         /// <summary>
+        /// Backup vault type
+        /// </summary>
+        public const string BackupVaultType = "Vaults";
+
+        /// <summary>
         /// Vault Credential version.
         /// </summary>
         public const string VaultCredentialVersion = "1.0";

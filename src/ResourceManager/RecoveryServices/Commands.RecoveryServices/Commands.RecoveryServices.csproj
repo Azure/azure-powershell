@@ -129,6 +129,9 @@
     </Compile>
     <Compile Include="Utilities\CertUtils.cs" />
     <Compile Include="Utilities\Utilities.cs" />
+    <Compile Include="Vault\GetAzureRmRecoveryServicesVaultBackupCredentials.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Vault\GetAzureRmRecoveryServicesVaults.cs" />
     <Compile Include="Vault\GetAzureRmRecoveryServicesVaultSettingsFile.cs" />
     <Compile Include="Vault\NewAzureRmRecoveryServicesVault.cs" />
@@ -165,4 +168,5 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
