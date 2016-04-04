@@ -588,6 +588,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End date should be greater than start date.
+        /// </summary>
+        public static string RecoveryPointEndDateShouldBeGreater {
+            get {
+                return ResourceManager.GetString("RecoveryPointEndDateShouldBeGreater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported Parameter set.
+        /// </summary>
+        public static string RecoveryPointUnsupportedParamet {
+            get {
+                return ResourceManager.GetString("RecoveryPointUnsupportedParamet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing the protection policy.
         /// </summary>
         public static string RemoveProtectionPolicyMessage {

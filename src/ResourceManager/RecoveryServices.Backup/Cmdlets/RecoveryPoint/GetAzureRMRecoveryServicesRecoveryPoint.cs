@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,9 +60,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if(this.ParameterSetName == DateTimeFilterParameterSet)
                 {
                     //User want list of RPs between given time range
+                    WriteDebug(String.Format("ParameterSet = DateTimeFilterParameterSet. \n" +
+                        "StartDate = {0} EndDate = {1}, Item.Name = {2}, Item.ContainerName = {3}",
+                        StartDate, EndDate, Item.Name, Item.ContainerName));
                     if (StartDate >= EndDate)
                     {
-                        throw new Exception("End date should be greated than start date"); //tbd: Correct nsg and exception type
+                        throw new Exception("End date should be greater than start date"); //tbd: Correct nsg and exception type
                     }
 
                     parameter.Add(GetRecoveryPointParams.StartDate, StartDate);
@@ -69,6 +73,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);
                     IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
                     var rpList = psBackupProvider.ListRecoveryPoints();
+
+                    WriteDebug(String.Format("RPCount in Response = {0}", rpList.Count));
                     if (rpList.Count == 1)
                     {
                         WriteObject(rpList[0]);
@@ -81,6 +87,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 else if (this.ParameterSetName == RecoveryPointIdParameterSet)
                 {
                     //User want details of a particular recovery point
+                    WriteDebug(String.Format("ParameterSet = DateTimeFilterParameterSet. \n" +
+                        "StartDate = {0} EndDate = {1}, RPId = {2}",
+                        StartDate, EndDate, RecoveryPointId));
+
                     parameter.Add(GetRecoveryPointParams.RecoveryPointId, RecoveryPointId);
                     PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);
                     IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
