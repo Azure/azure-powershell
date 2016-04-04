@@ -35,8 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string PolicyNameParameterSet = "PolicyName";
         internal const string PolicyObjectParameterSet = "PolicyObject";
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name, ValueFromPipeline = true,
-            ParameterSetName = PolicyNameParameterSet)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name, ParameterSetName = PolicyNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                Force.IsPresent,
                string.Format(Resources.RemoveProtectionPolicyWarning, PolicyName),
                Resources.RemoveProtectionPolicyMessage,
-               Policy.Name, () =>
+               PolicyName, () =>
                {
                    ExecutionBlock(() =>
                    {
