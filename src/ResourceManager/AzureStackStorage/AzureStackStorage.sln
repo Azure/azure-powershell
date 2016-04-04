@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStackStorage", "Commands.AzureStackStorage\Commands.AzureStackStorage.csproj", "{D4CA0CC1-CD0A-4CE2-A40D-2D8A082D8791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStackStorage.Test", "Commands.AzureStackStorage.Tests\Commands.AzureStackStorage.Test.csproj", "{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStackStorage.Test", "Commands.AzureStackStorage.Tests\Commands.AzureStackStorage.Test.csproj", "{53ED0604-8774-4B46-BB26-6AA5A6327A7C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Tags", "..\Tags\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication", "..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj", "{D3804B64-C0D3-48F8-82EC-1F632F833C9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.Common", "..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj", "{C1BDA476-A5CC-4394-914D-48B0EC31A710}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,10 +42,10 @@ Global
 		{D4CA0CC1-CD0A-4CE2-A40D-2D8A082D8791}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4CA0CC1-CD0A-4CE2-A40D-2D8A082D8791}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4CA0CC1-CD0A-4CE2-A40D-2D8A082D8791}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53ED0604-8774-4B46-BB26-6AA5A6327A7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53ED0604-8774-4B46-BB26-6AA5A6327A7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53ED0604-8774-4B46-BB26-6AA5A6327A7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53ED0604-8774-4B46-BB26-6AA5A6327A7C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -76,12 +78,17 @@ Global
 		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{53ED0604-8774-4B46-BB26-6AA5A6327A7C} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{3436A126-EDC9-4060-8952-9A1BE34CDD95} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal
