@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class IaasVmPsBackupProvider : IPsBackupProvider
     {
-        private const int defaultOperationStatusRetryTimeInMilliSec = 5 * 1000; // 10 sec
+        private const int defaultOperationStatusRetryTimeInMilliSec = 5 * 1000; // 5 sec
         private const string separator = ";";
         private const string computeAzureVMVersion = "Compute";
         private const string classicComputeAzureVMVersion = "ClassicCompute";
@@ -713,7 +713,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 if (isDiscoveryNeed == true)
                 {
                     // Container is not discovered. Throw exception
-                    string errMsg = String.Format(Resources.DiscoveryFailure, azureVMName, azureVMRGName, isComputeAzureVM);
+                    string vmversion = (isComputeAzureVM) ? computeAzureVMVersion : classicComputeAzureVMVersion;
+                    string errMsg = String.Format(Resources.DiscoveryFailure, azureVMName, azureVMRGName, vmversion);
                     Logger.Instance.WriteDebug(errMsg);
                     Logger.Instance.ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
                 }
@@ -721,7 +722,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (protectableObject == null)
             {
                 // Container is not discovered. Throw exception
-                string errMsg = String.Format(Resources.DiscoveryFailure, azureVMName, azureVMRGName, isComputeAzureVM);
+                string vmversion = (isComputeAzureVM) ? computeAzureVMVersion : classicComputeAzureVMVersion;
+                string errMsg = String.Format(Resources.DiscoveryFailure, azureVMName, azureVMRGName, vmversion);
                 Logger.Instance.WriteDebug(errMsg);
                 Logger.Instance.ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
             }
@@ -790,9 +792,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        private bool WaitForDiscoveryToComplete(string locationUri, out bool isDiscoverySuccessful, out string errorMessage)
+        private void WaitForDiscoveryToComplete(string locationUri, out bool isDiscoverySuccessful, out string errorMessage)
         {
-            bool isRetryNeeded = false;
             var status = TrackRefreshContainerOperation(locationUri);
             errorMessage = String.Empty;
 
@@ -801,12 +802,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (status != HttpStatusCode.NoContent)
             {
                 isDiscoverySuccessful = false;
-                errorMessage = String.Format(Resources.DiscoveryFailureErrorMessage, status);
-                Logger.Instance.WriteDebug(String.Format(Resources.DiscoveryFailureErrorCode, status));
-                // No need to try as service is handling retryable errors
-                isRetryNeeded = false;
+                errorMessage = String.Format(Resources.DiscoveryFailureErrorCode, status);
+                Logger.Instance.WriteDebug(errorMessage);
             }
-            return isRetryNeeded;
         }
 
         private HttpStatusCode TrackRefreshContainerOperation(string operationResultLink, int checkFrequency = defaultOperationStatusRetryTimeInMilliSec)
