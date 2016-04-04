@@ -26,8 +26,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class TaskTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private const string accountName = ScenarioTestHelpers.SharedAccount;
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateTask()
@@ -58,10 +56,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string taskId = "testTask";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetTaskById '{0}' '{1}' '{2}'", accountName, jobId, taskId) }; },
+                () => { return new string[] { string.Format("Test-GetTaskById '{0}' '{1}' '{2}'", BatchController.BatchAccount, jobId, taskId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId);
                 },
@@ -85,10 +83,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int matches = 2;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListTasksByFilter '{0}' '{1}' '{2}' '{3}'", accountName, jobId, taskPrefix, matches) }; },
+                () => { return new string[] { string.Format("Test-ListTasksByFilter '{0}' '{1}' '{2}' '{3}'", BatchController.BatchAccount, jobId, taskPrefix, matches) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId1);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId2);
@@ -111,10 +109,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string jobId = "selectTaskTest";
             string taskId = "testTask1";
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetAndListTasksWithSelect '{0}' '{1}' '{2}'", accountName, jobId, taskId) }; },
+                () => { return new string[] { string.Format("Test-GetAndListTasksWithSelect '{0}' '{1}' '{2}'", BatchController.BatchAccount, jobId, taskId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId);
                 },
@@ -137,10 +135,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int maxCount = 1;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListTasksWithMaxCount '{0}' '{1}' '{2}'", accountName, jobId, maxCount) }; },
+                () => { return new string[] { string.Format("Test-ListTasksWithMaxCount '{0}' '{1}' '{2}'", BatchController.BatchAccount, jobId, maxCount) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId1);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId2);
@@ -165,10 +163,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int count = 3;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListAllTasks '{0}' '{1}' '{2}'", accountName, jobId, count) }; },
+                () => { return new string[] { string.Format("Test-ListAllTasks '{0}' '{1}' '{2}'", BatchController.BatchAccount, jobId, count) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId1);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId2);
@@ -190,10 +188,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string taskId = "testTask";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListTaskPipeline '{0}' '{1}' '{2}'", accountName, jobId, taskId) }; },
+                () => { return new string[] { string.Format("Test-ListTaskPipeline '{0}' '{1}' '{2}'", BatchController.BatchAccount, jobId, taskId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId);
                 },
@@ -214,10 +212,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-UpdateTask '{0}' '{1}' '{2}'", accountName, jobId, taskId) }; },
+                () => { return new string[] { string.Format("Test-UpdateTask '{0}' '{1}' '{2}'", BatchController.BatchAccount, jobId, taskId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     // Make the task long running so the constraints can be updated
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId, "ping -t localhost -w 60");
@@ -240,10 +238,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeleteTask '{0}' '{1}' '{2}' '0'", accountName, jobId, taskId) }; },
+                () => { return new string[] { string.Format("Test-DeleteTask '{0}' '{1}' '{2}' '0'", BatchController.BatchAccount, jobId, taskId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId);
                 },
@@ -264,10 +262,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeleteTask '{0}' '{1}' '{2}' '1'", accountName, jobId, taskId) }; },
+                () => { return new string[] { string.Format("Test-DeleteTask '{0}' '{1}' '{2}' '1'", BatchController.BatchAccount, jobId, taskId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId);
                 },
@@ -288,10 +286,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string taskId1 = "testTask1";
             string taskId2 = "testTask2";
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-TerminateTask '{0}' '{1}' '{2}' '{3}'", accountName, jobId, taskId1, taskId2) }; },
+                () => { return new string[] { string.Format("Test-TerminateTask '{0}' '{1}' '{2}' '{3}'", BatchController.BatchAccount, jobId, taskId1, taskId2) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     // Make the tasks long running so they can be terminated before they finish execution
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId1, "ping -t localhost -w 60");
