@@ -281,28 +281,38 @@ namespace Microsoft.Azure.Commands.Compute
                     var osaccountIsPremium = this._Helper.IsPremiumStorageAccount(osaccountName);
 
                     var vmSize = selectedVM.HardwareProfile.VmSize;
-                    this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Size", "vmsize", sapmonPublicConfig, vmSize, aemConfigResult);
-                    this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Memory", "vm.memory.isovercommitted", sapmonPublicConfig, "0", aemConfigResult);
-                    this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM CPU", "vm.cpu.isovercommitted", sapmonPublicConfig, "0", aemConfigResult);
-                    this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: Script Version", "script.version", sapmonPublicConfig, null, aemConfigResult, true);
+                    this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Size", "vmsize", sapmonPublicConfig, vmSize, aemConfigResult);
+                    this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Memory", "vm.memory.isovercommitted", sapmonPublicConfig, 0, aemConfigResult);
+                    this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM CPU", "vm.cpu.isovercommitted", sapmonPublicConfig, 0, aemConfigResult);
+                    this._Helper.MonitoringPropertyExists("Azure Enhanced Monitoring Extension for SAP public configuration check: Script Version", "script.version", sapmonPublicConfig, aemConfigResult);
 
                     var vmSLA = this._Helper.GetVMSLA(selectedVM);
                     if (vmSLA.HasSLA)
                     {
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM SLA IOPS", "vm.sla.iops", sapmonPublicConfig, vmSLA.IOPS, aemConfigResult);
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM SLA Throughput", "vm.sla.throughput", sapmonPublicConfig, vmSLA.TP, aemConfigResult);
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM SLA IOPS", "vm.sla.iops", sapmonPublicConfig, vmSLA.IOPS, aemConfigResult);
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM SLA Throughput", "vm.sla.throughput", sapmonPublicConfig, vmSLA.TP, aemConfigResult);
                     }
 
-                    var wadEnabled = this._Helper.GetMonPropertyValue("wad.isenabled", sapmonPublicConfig);
-                    if (wadEnabled == "1")
+                    int wadEnabled;
+                    if (this._Helper.GetMonPropertyValue("wad.isenabled", sapmonPublicConfig, out wadEnabled))
                     {
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: WAD name", "wad.name", sapmonPublicConfig, null, aemConfigResult, true);
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: WAD URI", "wad.uri", sapmonPublicConfig, null, aemConfigResult, true);
+                        if (wadEnabled == 1)
+                        {
+                            this._Helper.MonitoringPropertyExists("Azure Enhanced Monitoring Extension for SAP public configuration check: WAD name", "wad.name", sapmonPublicConfig, aemConfigResult);
+                            this._Helper.MonitoringPropertyExists("Azure Enhanced Monitoring Extension for SAP public configuration check: WAD URI", "wad.uri", sapmonPublicConfig, aemConfigResult);
+                        }
+                        else
+                        {
+                            this._Helper.MonitoringPropertyExists("Azure Enhanced Monitoring Extension for SAP public configuration check: WAD name", "wad.name", sapmonPublicConfig, aemConfigResult, false);
+                            this._Helper.MonitoringPropertyExists("Azure Enhanced Monitoring Extension for SAP public configuration check: WAD URI", "wad.uri", sapmonPublicConfig, aemConfigResult, false);
+                        }
                     }
                     else
                     {
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: WAD name", "wad.name", sapmonPublicConfig, null, aemConfigResult);
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: WAD URI", "wad.uri", sapmonPublicConfig, null, aemConfigResult);
+                        string message = "Azure Enhanced Monitoring Extension for SAP public configuration check:";
+                        aemConfigResult.PartialResults.Add(new AEMTestResult(message, false));
+                        this._Helper.WriteHost(message + "...", false);
+                        this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);
                     }
 
                     if (!osaccountIsPremium)
@@ -310,23 +320,23 @@ namespace Microsoft.Azure.Commands.Compute
                         var endpoint = this._Helper.GetAzureSAPTableEndpoint(storage);
                         var minuteUri = endpoint + "$MetricsMinutePrimaryTransactionsBlob";
 
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS disk URI Key", "osdisk.connminute", sapmonPublicConfig, osaccountName + ".minute", aemConfigResult);
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS disk URI Key", "osdisk.connminute", sapmonPublicConfig, osaccountName + ".minute", aemConfigResult);
                         //# TODO: check uri config
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS disk URI Value", osaccountName + ".minute.uri", sapmonPublicConfig, minuteUri, aemConfigResult);
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS disk URI Name", osaccountName + ".minute.name", sapmonPublicConfig, osaccountName, aemConfigResult);
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk Type", "osdisk.type", sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_STANDARD, aemConfigResult);
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS disk URI Value", osaccountName + ".minute.uri", sapmonPublicConfig, minuteUri, aemConfigResult);
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS disk URI Name", osaccountName + ".minute.name", sapmonPublicConfig, osaccountName, aemConfigResult);
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk Type", "osdisk.type", sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_STANDARD, aemConfigResult);
 
                     }
                     else
                     {
                         var sla = this._Helper.GetDiskSLA(osdisk);
 
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk Type", "osdisk.type", sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_PREMIUM, aemConfigResult);
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk SLA IOPS", "osdisk.sla.throughput", sapmonPublicConfig, sla.TP, aemConfigResult);
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk SLA Throughput", "osdisk.sla.iops", sapmonPublicConfig, sla.IOPS, aemConfigResult);
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk Type", "osdisk.type", sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_PREMIUM, aemConfigResult);
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk SLA IOPS", "osdisk.sla.throughput", sapmonPublicConfig, sla.TP, aemConfigResult);
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk SLA Throughput", "osdisk.sla.iops", sapmonPublicConfig, sla.IOPS, aemConfigResult);
 
                     }
-                    this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS disk name", "osdisk.name", sapmonPublicConfig, osdisk.Name, aemConfigResult);
+                    this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS disk name", "osdisk.name", sapmonPublicConfig, this._Helper.GetDiskName(osdisk.Vhd.Uri), aemConfigResult);
 
 
                     var diskNumber = 1;
@@ -336,28 +346,28 @@ namespace Microsoft.Azure.Commands.Compute
                         storage = this._Helper.GetStorageAccountFromCache(accountName);
                         var accountIsPremium = this._Helper.IsPremiumStorageAccount(storage);
 
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " LUN", "disk.lun." + diskNumber, sapmonPublicConfig, disk.Lun.ToString(), aemConfigResult);
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " LUN", "disk.lun." + diskNumber, sapmonPublicConfig, disk.Lun, aemConfigResult);
                         if (!accountIsPremium)
                         {
                             var endpoint = this._Helper.GetAzureSAPTableEndpoint(storage);
                             var minuteUri = endpoint + "$MetricsMinutePrimaryTransactionsBlob";
 
-                            this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Key", "disk.connminute." + diskNumber, sapmonPublicConfig, accountName + ".minute", aemConfigResult);
-                            this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Value", accountName + ".minute.uri", sapmonPublicConfig, minuteUri, aemConfigResult);
-                            this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Name", accountName + ".minute.name", sapmonPublicConfig, accountName, aemConfigResult);
-                            this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_STANDARD, aemConfigResult);
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Key", "disk.connminute." + diskNumber, sapmonPublicConfig, accountName + ".minute", aemConfigResult);
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Value", accountName + ".minute.uri", sapmonPublicConfig, minuteUri, aemConfigResult);
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Name", accountName + ".minute.name", sapmonPublicConfig, accountName, aemConfigResult);
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_STANDARD, aemConfigResult);
 
                         }
                         else
                         {
                             var sla = this._Helper.GetDiskSLA(disk);
 
-                            this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_PREMIUM, aemConfigResult);
-                            this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA IOPS", "disk.sla.throughput." + diskNumber, sapmonPublicConfig, sla.TP, aemConfigResult);
-                            this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA Throughput", "disk.sla.iops." + diskNumber, sapmonPublicConfig, sla.IOPS, aemConfigResult);
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_PREMIUM, aemConfigResult);
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA IOPS", "disk.sla.throughput." + diskNumber, sapmonPublicConfig, sla.TP, aemConfigResult);
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA Throughput", "disk.sla.iops." + diskNumber, sapmonPublicConfig, sla.IOPS, aemConfigResult);
                         }
 
-                        this._Helper.CheckMonProp("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " name", "disk.name." + diskNumber, sapmonPublicConfig, disk.Name, aemConfigResult);
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " name", "disk.name." + diskNumber, sapmonPublicConfig, this._Helper.GetDiskName(disk.Vhd.Uri), aemConfigResult);
 
                         diskNumber += 1;
                     }
@@ -379,8 +389,9 @@ namespace Microsoft.Azure.Commands.Compute
 
                 //#################################################
                 //# Check WAD Configuration
-                //#################################################                
-                if (this._Helper.GetMonPropertyValue("wad.isenabled", sapmonPublicConfig) == "1")
+                //#################################################
+                int iswadEnabled;
+                if (this._Helper.GetMonPropertyValue("wad.isenabled", sapmonPublicConfig, out iswadEnabled) && iswadEnabled == 1)
                 {
                     var wadConfigResult = new AEMTestResult("IaaSDiagnostics check");
                     rootResult.PartialResults.Add(wadConfigResult);
@@ -435,7 +446,11 @@ namespace Microsoft.Azure.Commands.Compute
                             }
                         }
 
-                        var wadstorage = this._Helper.GetMonPropertyValue("wad.name", sapmonPublicConfig);
+                        string wadstorage;
+                        if (!this._Helper.GetMonPropertyValue<string>("wad.name", sapmonPublicConfig, out wadstorage))
+                        {
+                            wadstorage = null;
+                        }
 
                         this._Helper.WriteHost("\tIaaSDiagnostics data check...", false);
 
