@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -172,9 +173,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public WorkloadType WorkloadType { get; set; }
 
+        public string Id { get; set; }
+
         public override void Validate()
         {
             base.Validate();
+
+            if(string.IsNullOrEmpty(Name))
+            {
+                throw new ArgumentException(Resources.PolicyNameIsEmptyOrNull);
+            }
+
+            if(string.IsNullOrEmpty(Id))
+            {
+                throw new ArgumentException(Resources.PolicyIdIsEmptyOrNull);
+            }
         }
     }
 

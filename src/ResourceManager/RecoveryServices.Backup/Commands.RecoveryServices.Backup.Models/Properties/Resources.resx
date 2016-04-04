@@ -350,4 +350,10 @@ Please contact Microsoft for further assistant.</value>
   <data name="DisableProtectionOperationFailed" xml:space="preserve">
     <value>Disable Protection OperationFailed with error code {0} , and error Message {1}</value>
   </data>
+  <data name="PolicyIdIsEmptyOrNull" xml:space="preserve">
+    <value>PolicyId is NULL or Empty. Please enter valid PolicyId</value>
+  </data>
+  <data name="PolicyNameIsEmptyOrNull" xml:space="preserve">
+    <value>PolicyName is NULL or Empty. Please enter valid PolicyName</value>
+  </data>
 </root>

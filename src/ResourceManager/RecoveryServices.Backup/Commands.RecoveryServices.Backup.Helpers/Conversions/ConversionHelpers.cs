@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             policyModel.Name = hydraResponse.Name;
+            policyModel.Id = hydraResponse.Id;
 
             return policyModel;
         }
