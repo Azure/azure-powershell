@@ -42,10 +42,10 @@
                 <PropertyName>BackupManagementType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SchedulePolicy.ScheduleRunTimes</PropertyName>
+                <ScriptBlock>$_.SchedulePolicy.ScheduleRunTimes</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SchedulePolicy.ScheduleRunDays</PropertyName>
+                <ScriptBlock>$_.SchedulePolicy.ScheduleRunDays</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

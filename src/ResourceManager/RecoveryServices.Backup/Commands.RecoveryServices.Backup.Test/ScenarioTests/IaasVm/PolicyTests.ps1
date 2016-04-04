@@ -33,5 +33,5 @@ function Test-PolicyScenario
 
 	#cleanup 
 
-	echo $schedulePolicy	
+	Remove-AzureRmRecoveryServicesProtectionPolicy -Policy $temp[0] -Force
 }

@@ -30,59 +30,49 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesProtection", DefaultParameterSetName = ModifyProtectionParameterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
-    public class EnableAzureRmRecoveryServicesProtection : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesProtection"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
+    public class DisableAzureRmRecoveryServicesProtection : RecoveryServicesBackupCmdletBase
     {
-        internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";
-        internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
-        internal const string ModifyProtectionParameterSet = "ModifyProtection";
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
-        public string Name { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMServiceName)]
-        public string ServiceName { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMResourceGroupName)]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
-        [Parameter(Mandatory = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
-        public WorkloadType WorkLoadType { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy)]
-        [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesPolicyBase Policy { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesItemBase Item { get; set; }
 
+        [Parameter(Position = 1, Mandatory = false, HelpMessage = ParamHelpMsg.Item.RemoveProtectionOption)]
+        public SwitchParameter RemoveRecoveryPoints
+        {
+            get { return DeleteBackupData; }
+            set { DeleteBackupData = value; }
+        }
+
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
+        private bool DeleteBackupData;
+
         public override void ExecuteCmdlet()
         {
-            ExecutionBlock(() =>
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.DisableProtectionWarning, Item.Name),
+                Resources.DisableProtectionMessage,
+                Item.Name, () =>
+                {
+                    ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
                 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {  
-                    {ItemParams.AzureVMName, Name},
-                    {ItemParams.AzureVMCloudServiceName, ServiceName},
-                    {ItemParams.AzureVMResourceGroupName, ResourceGroupName},
-                    {ItemParams.WorkloadType, WorkLoadType},
-                    {ItemParams.Policy, Policy},
+                    
                     {ItemParams.Item, Item},
-                    {ItemParams.ParameterSetName, this.ParameterSetName},
+                    {ItemParams.DeleteBackupData, this.DeleteBackupData},
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = (Item != null) ? providerManager.GetProviderInstance(WorkLoadType, Item.BackupManagementType)
-                    : providerManager.GetProviderInstance(WorkLoadType);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
 
-                var jobResponse = psBackupProvider.EnableProtection();
+                var jobResponse = psBackupProvider.DisableProtection();
 
                 // Track Response and display job details
-                // -- TBD to move it to common helper and remove hard-coded vaules
 
                 var response = OperationStatusHelper.TrackOperationStatus(jobResponse, HydraAdapter);
 
@@ -103,13 +93,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         WriteObject(JobConversions.GetPSJob(job));
                     }
 
-                    var errorMessage = string.Format(Resources.EnableProtectionOperationFailed,
+                    var errorMessage = string.Format(Resources.DisableProtectionOperationFailed,
                     response.OperationStatus.OperationStatusError.Code,
                     response.OperationStatus.OperationStatusError.Message);
 
                     throw new Exception(errorMessage);
                 }
             });
+                    });
+
         }
     }
 }
