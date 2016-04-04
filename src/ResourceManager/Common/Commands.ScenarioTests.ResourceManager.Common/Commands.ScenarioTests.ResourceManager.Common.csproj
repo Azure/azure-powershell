@@ -140,20 +140,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnvironmentSetupHelper.cs" />
-    <Compile Include="Mocks\MockClientFactory.cs" />
-    <Compile Include="Mocks\MockCommandRuntime.cs" />
-    <Compile Include="Mocks\MockDeploymentClientFactory.cs" />
-    <Compile Include="PermissiveRecordMatcherWithApiExclusion.cs" />
-    <Compile Include="ProfileClient.cs" />
+    <Compile Include="ArmEnvironmentSetupHelper.cs" />
+    <Compile Include="Mocks\ArmMockClientFactory.cs" />
+    <Compile Include="Mocks\ArmMockDeploymentClientFactory.cs" />
+    <Compile Include="ArmPermissiveRecordMatcherWithApiExclusion.cs" />
+    <Compile Include="ArmProfileClient.cs" />
     <Compile Include="PSCmdletExtensions.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="Mocks\MockAccessToken.cs" />
-    <Compile Include="Mocks\MockAccessTokenProvider.cs" />
-    <Compile Include="Mocks\MockCertificateAuthenticationFactory.cs" />
-    <Compile Include="Mocks\MockTokenAuthenticationFactory.cs" />
+    <Compile Include="Mocks\ArmMockAccessToken.cs" />
+    <Compile Include="Mocks\ArmMockAccessTokenProvider.cs" />
+    <Compile Include="Mocks\ArmMockCertificateAuthenticationFactory.cs" />
+    <Compile Include="Mocks\ArmMockTokenAuthenticationFactory.cs" />
     <Compile Include="PermissiveRecordMatcher.cs" />
-    <Compile Include="PowerShellExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RMTestBase.cs" />
   </ItemGroup>
@@ -176,6 +173,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
+      <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
+      <Name>Commands.ScenarioTests.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>

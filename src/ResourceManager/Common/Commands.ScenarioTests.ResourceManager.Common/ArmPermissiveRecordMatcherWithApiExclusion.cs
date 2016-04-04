@@ -12,30 +12,30 @@
 // limitations under the License. 
 // ---------------------------------------------------------------------------------- 
 
+using Microsoft.Azure.Test.HttpRecorder;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Test.HttpRecorder;
 
-namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.ScenarioTest
 {
     // Excludes api version when matching mocked records. 
     // If alternate api version is provided, uses that to match records else removes the api-version matching.
-    public class PermissiveRecordMatcherWithApiExclusion : IRecordMatcher
+    public class ArmPermissiveRecordMatcherWithApiExclusion : IRecordMatcher
     {
         private bool _ignoreGenericResource;
         private Dictionary<string, string> _providersToIgnore;
         private Dictionary<string, string> _userAgentsToIgnore;
 
-        public PermissiveRecordMatcherWithApiExclusion(bool ignoreResourcesClient, Dictionary<string, string> providers)
+        public ArmPermissiveRecordMatcherWithApiExclusion(bool ignoreResourcesClient, Dictionary<string, string> providers)
         {
             _ignoreGenericResource = ignoreResourcesClient;
             _providersToIgnore = providers;
         }
 
-        public PermissiveRecordMatcherWithApiExclusion(
+        public ArmPermissiveRecordMatcherWithApiExclusion(
             bool ignoreResourcesClient,
             Dictionary<string, string> providers,
             Dictionary<string, string> userAgents)

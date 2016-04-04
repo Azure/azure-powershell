@@ -12,24 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure;
-using System.Security;
-using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Security;
+using System.Security.Cryptography.X509Certificates;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
-    public class MockCertificateAuthenticationFactory : IAuthenticationFactory
+    public class ArmMockCertificateAuthenticationFactory : IAuthenticationFactory
     {
         public X509Certificate2 Certificate { get; set; }
 
-        public MockCertificateAuthenticationFactory()
+        public ArmMockCertificateAuthenticationFactory()
         {
             Certificate = new X509Certificate2();
         }
 
-        public MockCertificateAuthenticationFactory(string userId, X509Certificate2 certificate)
+        public ArmMockCertificateAuthenticationFactory(string userId, X509Certificate2 certificate)
         {
             Certificate = certificate;
         }
@@ -48,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 account.Id = "test";
             }
 
-            var token = new MockAccessToken
+            var token = new ArmMockAccessToken
             {
                 UserId = account.Id,
                 LoginType = LoginType.OrgId,

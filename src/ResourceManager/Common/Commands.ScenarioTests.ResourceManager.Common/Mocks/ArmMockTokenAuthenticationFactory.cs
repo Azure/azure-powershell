@@ -12,31 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure;
 using Microsoft.Rest;
 using System;
 using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
-    public class MockTokenAuthenticationFactory : IAuthenticationFactory
+    public class ArmMockTokenAuthenticationFactory : IAuthenticationFactory
     {
         public IAccessToken Token { get; set; }
 
         public Func<AzureAccount, AzureEnvironment, string, IAccessToken> TokenProvider { get; set; }
 
-        public MockTokenAuthenticationFactory()
+        public ArmMockTokenAuthenticationFactory()
         {
-            Token = new MockAccessToken
+            Token = new ArmMockAccessToken
             {
                 UserId = "Test",
                 LoginType = LoginType.OrgId,
                 AccessToken = "abc"
             };
 
-            TokenProvider = (account, environment, tenant) => Token = new MockAccessToken
+            TokenProvider = (account, environment, tenant) => Token = new ArmMockAccessToken
             {
                 UserId = account.Id,
                 LoginType = LoginType.OrgId,
@@ -44,9 +43,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             };
         }
 
-        public MockTokenAuthenticationFactory(string userId, string accessToken)
+        public ArmMockTokenAuthenticationFactory(string userId, string accessToken)
         {
-            Token = new MockAccessToken
+            Token = new ArmMockAccessToken
             {
                 UserId = userId,
                 LoginType = LoginType.OrgId,
@@ -56,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             TokenProvider = ((account, environment, tenant) => Token);
         }
 
-        public MockTokenAuthenticationFactory(string userId, string accessToken, string tenantId)
+        public ArmMockTokenAuthenticationFactory(string userId, string accessToken, string tenantId)
         {
-            Token = new MockAccessToken
+            Token = new ArmMockAccessToken
             {
                 UserId = userId,
                 LoginType = LoginType.OrgId,
@@ -86,7 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
             if (TokenProvider == null)
             {
-                return new MockAccessToken()
+                return new ArmMockAccessToken()
                 {
                     AccessToken = account.Id,
                     LoginType = LoginType.OrgId,

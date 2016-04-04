@@ -12,28 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Test.HttpRecorder;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Azure;
-using System.IO;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
-    public class MockClientFactory : IClientFactory
+    public class ArmMockClientFactory : IClientFactory
     {
         private readonly bool throwWhenNotAvailable;
 
@@ -41,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public List<object> ManagementClients { get; private set; }
 
-        public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
+        public ArmMockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
         {
             UniqueUserAgents = new HashSet<ProductInfoHeaderValue>();
             ManagementClients = clients.ToList();
@@ -78,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             SubscriptionCloudCredentials creds = new TokenCloudCredentials(subscription.Id.ToString(), "fake_token");
             if (HttpMockServer.GetCurrentMode() != HttpRecorderMode.Playback)
             {
-                ProfileClient profileClient = new ProfileClient(profile);
+                ArmProfileClient profileClient = new ArmProfileClient(profile);
                 AzureContext context = new AzureContext(
                     subscription,
                     profileClient.GetAccount(subscription.Account),

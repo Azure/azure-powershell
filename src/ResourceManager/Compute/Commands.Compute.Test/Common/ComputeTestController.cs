@@ -12,25 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.IO;
+using System.Linq;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         bool testViaCsm = true; // Currently set to true, we will get this from Environment varialbe.
 
         private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
 
@@ -74,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public ComputeTestController()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             d.Add("Microsoft.Compute", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ArmPermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))

@@ -20,12 +20,13 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class DisableBatchAutoScaleCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class DisableBatchAutoScaleCommandTests : RMTestBase
     {
         private DisableBatchAutoScaleCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

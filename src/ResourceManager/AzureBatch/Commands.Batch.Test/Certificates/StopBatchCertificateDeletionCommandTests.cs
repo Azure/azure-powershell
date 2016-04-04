@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
@@ -25,7 +26,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Certificates
 {
-    public class StopBatchCertificateDeletionCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class StopBatchCertificateDeletionCommandTests : RMTestBase
     {
         private StopBatchCertificateDeletionCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

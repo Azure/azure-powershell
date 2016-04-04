@@ -33,7 +33,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
-    public class SqlEvnSetupHelper : EnvironmentSetupHelper
+    public class SqlEvnSetupHelper : ArmEnvironmentSetupHelper
     {
         /// <summary>
         /// This overrides the default subscription and default account. This allows the 

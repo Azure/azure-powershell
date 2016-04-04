@@ -41,19 +41,19 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using System;
 using System.Linq;
 using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
 {
     public sealed class TestsController : RMTestBase
     {
         private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
         
         public string UserDomain { get; private set; }
 
@@ -67,7 +67,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
 
         public TestsController()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)

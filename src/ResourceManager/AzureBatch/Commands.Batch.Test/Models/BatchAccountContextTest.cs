@@ -15,12 +15,13 @@
 using Microsoft.Azure.Commands.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using System;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.BatchManager.Test
 {
-    public class BatchAccountContextTest : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class BatchAccountContextTest : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

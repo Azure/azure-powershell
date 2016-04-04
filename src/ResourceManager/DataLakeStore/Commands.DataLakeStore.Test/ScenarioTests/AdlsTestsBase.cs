@@ -12,30 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.DataLake.Store;
+using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 {
     public class AdlsTestsBase
     {
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
         private const string AuthorizationApiVersion = "2014-07-01-preview";
         internal const string resourceGroupLocation = "East US 2";
 
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         public AdlsTestsBase()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ArmPermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {

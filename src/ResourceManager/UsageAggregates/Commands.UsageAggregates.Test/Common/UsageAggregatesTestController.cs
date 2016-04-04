@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using System;
 using System.Linq;
 using Microsoft.Azure.Commerce.UsageAggregates;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 {
     public sealed class UsageAggregatesTestController
     {
         private CSMTestEnvironmentFactory csmTestFactory;
-        private readonly EnvironmentSetupHelper helper;
+        private readonly ArmEnvironmentSetupHelper helper;
         
         public static UsageAggregatesTestController NewInstance 
         { 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 
         public UsageAggregatesTestController()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)

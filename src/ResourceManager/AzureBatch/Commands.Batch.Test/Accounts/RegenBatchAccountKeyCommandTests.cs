@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
-    public class RegenBatchAccountKeyCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class RegenBatchAccountKeyCommandTests : RMTestBase
     {
         private RegenBatchAccountKeyCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

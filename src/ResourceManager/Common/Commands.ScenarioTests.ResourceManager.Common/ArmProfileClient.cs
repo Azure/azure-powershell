@@ -12,6 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Subscriptions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,22 +26,13 @@ using System.IO;
 using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Hyak.Common;
-using Microsoft.Azure;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Subscriptions;
 
-namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.ScenarioTest
 {
     /// <summary>
     /// Convenience client for azure profile and subscriptions.
     /// </summary>
-    public class ProfileClient
+    public class ArmProfileClient
     {
         public AzureSMProfile Profile { get; private set; }
 
@@ -138,7 +136,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
-        public ProfileClient(AzureSMProfile profile)
+        public ArmProfileClient(AzureSMProfile profile)
         {
             Profile = profile;
             WarningLog = (s) => Debug.WriteLine(s);

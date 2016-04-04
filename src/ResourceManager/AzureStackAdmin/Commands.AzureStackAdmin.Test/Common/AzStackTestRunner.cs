@@ -12,27 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Test.Mocks;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test;
+using Microsoft.AzureStack.Management;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+
 namespace Microsoft.AzureStack.Commands.Admin.Test.Common
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Configuration;
-    using System.Globalization;
-    using System.IO;
-    using System.Linq;
-    using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Gallery;
-    using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Subscriptions;
-    using Microsoft.Azure.Test;
-    using Microsoft.AzureStack.Management;
-    using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     public sealed class AzStackTestRunner
     {
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
         private CSMTestEnvironmentFactory armTestEnvironmentFactory;
         private const string DefaultApiVersion = "1.0";
 
@@ -58,7 +59,7 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
 
         public AzStackTestRunner()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
         public void RunPsTest(string testScript)
         {
@@ -222,7 +223,7 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
 
         private void SetupManagementClients(params object[] initializedManagementClients)
         {
-            AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients);
+            AzureSession.ClientFactory = new ArmMockClientFactory(initializedManagementClients);
         }
 
         private ResourceManagementClient GetResourceManagementClient()

@@ -12,29 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.TrafficManager;
+using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
-    using System;
-    using System.Linq;
-    using Microsoft.Azure.Gallery;
-    using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.TrafficManager;
-
-    using Microsoft.Azure.Test;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.Subscriptions;
-    using WindowsAzure.Commands.Test.Utilities.Common;
 
     public class TestController : RMTestBase
     {
         private CSMTestEnvironmentFactory csmTestFactory;
 
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         protected TestController()
         {
-            this.helper = new EnvironmentSetupHelper();
+            this.helper = new ArmEnvironmentSetupHelper();
         }
 
         protected void SetupManagementClients()
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ArmPermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (UndoContext context = UndoContext.Current)
             {

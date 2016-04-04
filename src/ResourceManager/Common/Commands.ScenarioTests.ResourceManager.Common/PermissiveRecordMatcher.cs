@@ -17,7 +17,7 @@ using System.Text;
 using Microsoft.Azure.Test.HttpRecorder;
 using Xunit;
 
-namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.ScenarioTest
 {
     public class PermissiveRecordMatcher : IRecordMatcher
     {

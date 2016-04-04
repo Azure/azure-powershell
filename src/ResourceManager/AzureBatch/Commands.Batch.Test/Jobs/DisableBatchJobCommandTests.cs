@@ -23,10 +23,11 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
-    public class DisableBatchJobCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class DisableBatchJobCommandTests : RMTestBase
     {
         private DisableBatchJobCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

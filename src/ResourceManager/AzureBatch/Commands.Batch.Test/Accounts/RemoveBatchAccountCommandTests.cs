@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Management.Automation;
@@ -21,7 +21,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
-    public class RemoveBatchAccountCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class RemoveBatchAccountCommandTests : RMTestBase
     {
         private RemoveBatchAccountCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

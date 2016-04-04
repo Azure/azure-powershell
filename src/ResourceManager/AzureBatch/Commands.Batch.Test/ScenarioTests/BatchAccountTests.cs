@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class BatchAccountTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class BatchAccountTests : RMTestBase
     {
         [Fact]
         public void TestGetNonExistingBatchAccount()

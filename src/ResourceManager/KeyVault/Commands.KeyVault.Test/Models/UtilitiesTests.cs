@@ -18,8 +18,6 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.Models

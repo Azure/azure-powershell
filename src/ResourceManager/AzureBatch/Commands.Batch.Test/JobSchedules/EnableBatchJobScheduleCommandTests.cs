@@ -23,10 +23,11 @@ using System.Management.Automation;
 using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 {
-    public class EnableBatchJobScheduleCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class EnableBatchJobScheduleCommandTests : RMTestBase
     {
         private EnableBatchJobScheduleCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

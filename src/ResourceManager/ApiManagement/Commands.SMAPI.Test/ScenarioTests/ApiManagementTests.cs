@@ -16,26 +16,27 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
+    using Azure.Commands.Test.Utilities.Common;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Test;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Storage;
+    using ScenarioTest;
+    using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
     public class ApiManagementTests : RMTestBase, IClassFixture<ApiManagementTestsFixture>
     {
-        private readonly EnvironmentSetupHelper _helper;
+        private readonly ArmEnvironmentSetupHelper _helper;
         private ApiManagementTestsFixture _fixture;
 
         public ApiManagementTests(ApiManagementTestsFixture fixture)
         {
             _fixture = fixture;
-            _helper = new EnvironmentSetupHelper();
+            _helper = new ArmEnvironmentSetupHelper();
         }
 
         protected void SetupManagementClients()

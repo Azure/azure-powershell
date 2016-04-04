@@ -20,7 +20,6 @@ using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Insights;
@@ -31,14 +30,14 @@ using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public sealed class ResourcesController
     {
         private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
         private const string SubscriptionIdKey = "SubscriptionId";
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public ResourcesController()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ArmPermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (UndoContext context = UndoContext.Current)
             {

@@ -24,13 +24,14 @@ using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
     public class TestController
     {
         private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
         
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         public TestController()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             d.Add("Microsoft.Storage", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ArmPermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (UndoContext context = UndoContext.Current)
             {

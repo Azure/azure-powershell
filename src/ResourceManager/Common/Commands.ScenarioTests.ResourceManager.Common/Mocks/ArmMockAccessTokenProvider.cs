@@ -12,24 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.Azure.Commands.Common.Test.Mocks;
+using System.Security;
 
-namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
+namespace Microsoft.Azure.Commands.Test.Utilities.Common
 {
-    public class MockAccessTokenProvider : ITokenProvider
+    public class ArmMockAccessTokenProvider : ITokenProvider
     {
         private readonly IAccessToken accessToken;
 
-        public MockAccessTokenProvider(string token)
+        public ArmMockAccessTokenProvider(string token)
             : this(token, "user@live.com")
         { }
 
-        public MockAccessTokenProvider(string token, string userId)
+        public ArmMockAccessTokenProvider(string token, string userId)
         {
-            this.accessToken = new MockAccessToken()
+            this.accessToken = new ArmMockAccessToken()
             {
                 AccessToken = token,
                 UserId = userId

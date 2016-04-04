@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
+
 namespace Microsoft.Azure.Commands.Dns.Test.UnitTests
 {
-    using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using WindowsAzure.Commands.Test.Utilities.Common;
-    using Xunit;
-
     public class GetAzureDnsZoneTests : RMTestBase
     {
         [Fact]

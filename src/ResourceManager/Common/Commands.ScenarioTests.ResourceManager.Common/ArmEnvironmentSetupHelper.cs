@@ -12,10 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -26,14 +29,10 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 
-namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.ScenarioTest
 {
-    public class EnvironmentSetupHelper
+    public class ArmEnvironmentSetupHelper
     {
         private static string testEnvironmentName = "__test-environment";
 
@@ -48,9 +47,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         protected List<string> modules;
 
-        protected ProfileClient ProfileClient { get; set; }
+        protected ArmProfileClient ProfileClient { get; set; }
 
-        public EnvironmentSetupHelper()
+        public ArmEnvironmentSetupHelper()
         {
             var datastore = new MemoryDataStore();
             AzureSession.DataStore = datastore;
@@ -65,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
             AzureSession.DataStore = datastore;
-            ProfileClient = new ProfileClient(profile);
+            ProfileClient = new ArmProfileClient(profile);
 
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
@@ -314,7 +313,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             d.Add("Microsoft.Compute", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ArmPermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (var powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
             {

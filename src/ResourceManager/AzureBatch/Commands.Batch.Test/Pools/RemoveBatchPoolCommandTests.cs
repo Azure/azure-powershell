@@ -19,13 +19,14 @@ using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class RemoveBatchPoolCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class RemoveBatchPoolCommandTests : RMTestBase
     {
         private RemoveBatchPoolCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

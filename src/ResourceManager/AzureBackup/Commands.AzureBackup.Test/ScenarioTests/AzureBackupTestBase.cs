@@ -13,25 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Net.Security;
 using System.Reflection;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
     public abstract class AzureBackupTestsBase : RMTestBase
     {
         private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
 
         public static string ResourceGroupName;
         public static string ResourceName;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
             AzureBackupTestsBase.ResourceName = ConfigurationManager.AppSettings["ResourceName"];
             AzureBackupTestsBase.ResourceGroupName = ConfigurationManager.AppSettings["ResourceGroupName"];
 
-            this.helper = new EnvironmentSetupHelper();
+            this.helper = new ArmEnvironmentSetupHelper();
             this.csmTestFactory = new CSMTestEnvironmentFactory();
         }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
             d.Add("Microsoft.Compute", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ArmPermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));

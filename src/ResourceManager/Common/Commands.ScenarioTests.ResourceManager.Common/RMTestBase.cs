@@ -22,7 +22,7 @@ using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 
-namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
+namespace Microsoft.Azure.Commands.Test.Utilities.Common
 {
     /// <summary>
     /// Base class for Microsoft Azure PowerShell unit tests.

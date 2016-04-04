@@ -13,25 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Subscriptions;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 {
     public abstract class StreamAnalyticsScenarioTestsBase : RMTestBase
     {
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
 
         protected StreamAnalyticsScenarioTestsBase()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         protected void SetupManagementClients()

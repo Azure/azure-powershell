@@ -12,30 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
-    using System;
-    using System.Linq;
-    using ServiceManagemenet.Common;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Test;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.Azure.Management.Dns;
+    using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Subscriptions;
-    using WindowsAzure.Commands.Test.Utilities.Common;
+    using Microsoft.Azure.Test;
+    using System;
+    using System.Linq;
+    using Test.Utilities.Common;
 
     public class DnsTestsBase : RMTestBase
     { 
         private CSMTestEnvironmentFactory csmTestFactory; 
 
 
-        private readonly EnvironmentSetupHelper helper; 
+        private readonly ArmEnvironmentSetupHelper helper; 
 
 
         public ResourceManagementClient ResourceManagementClient { get; private set; } 
@@ -64,7 +62,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         protected DnsTestsBase() 
         { 
-            this.helper = new EnvironmentSetupHelper(); 
+            this.helper = new ArmEnvironmentSetupHelper(); 
         } 
 
 
@@ -116,7 +114,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ArmPermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (UndoContext context = UndoContext.Current) 
             { 

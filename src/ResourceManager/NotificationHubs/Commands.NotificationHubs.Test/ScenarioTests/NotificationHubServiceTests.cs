@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
 {
-    using Microsoft.Azure.Commands.NotificationHubs;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.Test;
-    using Xunit;
-    using System;
 
     public class NotificationHubServiceTests : TestBaseClass
     {
