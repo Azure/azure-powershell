@@ -327,7 +327,7 @@ Please contact Microsoft for further assistant.</value>
     <value>For Azure VM, both cloud service name and resource group name can not be empty</value>
   </data>
   <data name="EnableProtectionOperationFailed" xml:space="preserve">
-    <value>Enable Protection OperationFailed with error code {0} , and error Message {1}</value>
+    <value>Enable Protection OperationFailed with error code: {0} , and error Message: {1}</value>
   </data>
   <data name="RemoveProtectionPolicyMessage" xml:space="preserve">
     <value>Removing the protection policy</value>
@@ -348,6 +348,12 @@ Please contact Microsoft for further assistant.</value>
     <value>Are you sure you want to disable protection for the item '{0}'</value>
   </data>
   <data name="DisableProtectionOperationFailed" xml:space="preserve">
-    <value>Disable Protection OperationFailed with error code {0} , and error Message {1}</value>
+    <value>Disable Protection OperationFailed with error code: {0} , and error Message: {1}</value>
+  </data>
+  <data name="FinalOperationStatus" xml:space="preserve">
+    <value>Final operation status:</value>
+  </data>
+  <data name="TrackingOperationStatusURLForCompletion" xml:space="preserve">
+    <value>Tracking operation status URL for completion:</value>
   </data>
 </root>
