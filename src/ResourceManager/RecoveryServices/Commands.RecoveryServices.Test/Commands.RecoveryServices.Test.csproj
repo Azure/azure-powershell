@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6C7D3D81-37AB-445E-8081-78A1FEC0A773}</ProjectGuid>
+    <ProjectGuid>{6C4229E1-BD77-40B4-8430-C271E3444EF7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.RecoveryServicesArm.Test</RootNamespace>
@@ -154,6 +154,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
+      <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
+      <Name>Commands.ScenarioTests.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>

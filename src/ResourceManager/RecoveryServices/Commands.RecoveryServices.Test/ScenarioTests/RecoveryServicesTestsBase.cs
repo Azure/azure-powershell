@@ -12,22 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using System.Net;
-using System.Net.Security;
-using System.Runtime.Serialization;
-using System.Xml;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Test.HttpRecorder;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
+using System.Net.Security;
 using System.Reflection;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
@@ -35,12 +30,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
     public abstract class RecoveryServicesTestsBase : RMTestBase
     {
         private CSMTestEnvironmentFactory armTestFactory;
-        private EnvironmentSetupHelper helper;
+        private ArmEnvironmentSetupHelper helper;
         public RecoveryServicesManagementClient RecoveryServicesMgmtClient { get; private set; }
 
         protected RecoveryServicesTestsBase()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new ArmEnvironmentSetupHelper();
         }
 
         protected void SetupManagementClients()
@@ -58,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             d.Add("Microsoft.Compute", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ArmPermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
