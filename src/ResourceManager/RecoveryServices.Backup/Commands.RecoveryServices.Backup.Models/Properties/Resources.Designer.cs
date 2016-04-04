@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable Protection OperationFailed with error code {0} , and error Message {1}.
+        ///   Looks up a localized string similar to Disable Protection OperationFailed with error code: {0} , and error Message: {1}.
         /// </summary>
         public static string DisableProtectionOperationFailed {
             get {
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable Protection OperationFailed with error code {0} , and error Message {1}.
+        ///   Looks up a localized string similar to Enable Protection OperationFailed with error code: {0} , and error Message: {1}.
         /// </summary>
         public static string EnableProtectionOperationFailed {
             get {
@@ -278,6 +278,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string ExceptionInExecution {
             get {
                 return ResourceManager.GetString("ExceptionInExecution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Final operation status:.
+        /// </summary>
+        public static string FinalOperationStatus {
+            get {
+                return ResourceManager.GetString("FinalOperationStatus", resourceCulture);
             }
         }
         
@@ -674,6 +683,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string ScheduleTimeNotInUTCTimeZoneException {
             get {
                 return ResourceManager.GetString("ScheduleTimeNotInUTCTimeZoneException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracking operation status URL for completion:.
+        /// </summary>
+        public static string TrackingOperationStatusURLForCompletion {
+            get {
+                return ResourceManager.GetString("TrackingOperationStatusURLForCompletion", resourceCulture);
             }
         }
         
