@@ -59,7 +59,7 @@ For detail descriptions and examples of the cmdlets, type
 * [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/)
 * [Windows Azure Pack](https://www.microsoft.com/en-us/server-cloud/windows-azure-pack.aspx)
 * [Microsoft Azure China](https://www.azure.cn/)
-* [USGovernment](https://azure.microsoft.com/en-us/features/gov/)
+* [Microsoft Azure US Government](https://azure.microsoft.com/en-us/features/gov/)
 
 ## Installation
 
@@ -121,6 +121,15 @@ Add-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 # use the cmdlets to manage your services/applications
 New-AzureRmResourceGroup -Name myresourceGroup -Location "China East"
+```
+
+### Microsoft Azure US Government
+
+```powershell
+Add-AzureRmAccount -EnvironmentName AzureUSGovernment
+
+# use the cmdlets to manage your services/applications
+New-AzureRmResourceGroup -Name myresourceGroup -Location "US Gov Virginia"
 ```
 
 ### Windows Azure Pack
