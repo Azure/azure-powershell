@@ -298,6 +298,21 @@ namespace Microsoft.Azure.Commands.Resources.Models
             parameters.DeploymentName = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel);
 
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+
+            if (validationInfo.Errors.Count != 0)
+            {
+                int counter = 1;
+                string errorFormat = "Error {0}: Code={1}; Message={2}\r\n";
+                StringBuilder errorsString = new StringBuilder();
+                validationInfo.Errors.ForEach(e => errorsString.AppendFormat(errorFormat, counter++, e.Code, e.Message));
+                throw new ArgumentException(errorsString.ToString());
+            }
+            else
+            {
+                WriteVerbose(ProjectResources.TemplateValid);
+            }
+
             ResourceManagementClient.Deployments.CreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
             WriteVerbose(string.Format("Create template deployment '{0}'.", parameters.DeploymentName));
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
