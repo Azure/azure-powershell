@@ -824,6 +824,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 catch (Exception ex)
                 {
                     Logger.Instance.WriteDebug(ex.Message);
+                    status = HttpStatusCode.InternalServerError;
                     break;
                 }
             }
@@ -834,7 +835,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else
             {
-                string msg = String.Format("Unexpected http status in response header{ {0}", status);
+                string msg = String.Format("Unexpected http status in response header {0}", status);
                 Logger.Instance.WriteDebug(msg);
                 throw new Exception(msg);
             }

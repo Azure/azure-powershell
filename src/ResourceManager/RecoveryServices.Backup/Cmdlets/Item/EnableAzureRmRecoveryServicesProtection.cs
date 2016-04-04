@@ -37,27 +37,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
         internal const string ModifyProtectionParameterSet = "ModifyProtection";
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
-        public string Name { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMServiceName)]
-        public string ServiceName { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMResourceGroupName)]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
-        [Parameter(Mandatory = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
-        public WorkloadType WorkLoadType { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesPolicyBase Policy { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesItemBase Item { get; set; }
+
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
+        public string Name { get; set; }
+
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMServiceName)]
+        public string ServiceName { get; set; }
+
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMResourceGroupName)]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Position = 4, Mandatory = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [Parameter(Position = 4, Mandatory = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        public WorkloadType WorkLoadType { get; set; }
 
         public override void ExecuteCmdlet()
         {
