@@ -76,13 +76,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {ItemParams.ParameterSetName, this.ParameterSetName},
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = (Item != null) ? providerManager.GetProviderInstance(WorkLoadType, Item.BackupManagementType)
+                IPsBackupProvider psBackupProvider = (Item != null) ? providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
                     : providerManager.GetProviderInstance(WorkLoadType);
 
                 var jobResponse = psBackupProvider.EnableProtection();
 
                 // Track Response and display job details
-                // -- TBD to move it to common helper and remove hard-coded vaules
 
                 var response = OperationStatusHelper.TrackOperationStatus(jobResponse, HydraAdapter);
 
