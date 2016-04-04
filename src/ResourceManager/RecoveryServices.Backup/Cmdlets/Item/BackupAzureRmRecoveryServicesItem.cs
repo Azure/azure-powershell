@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesItemBase Item { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Item.ExpiryDate, ValueFromPipeline = false)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.ExpiryDate, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
         public DateTime ExpiryDate { get; set; }
 
