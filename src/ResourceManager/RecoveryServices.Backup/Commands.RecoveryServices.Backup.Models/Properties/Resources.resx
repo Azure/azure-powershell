@@ -362,4 +362,7 @@ Please contact Microsoft for further assistant.</value>
   <data name="RecoveryPointUnsupportedParamet" xml:space="preserve">
     <value>Unsupported Parameter set</value>
   </data>
+  <data name="RecoveryPointItemTypeConversionError" xml:space="preserve">
+    <value>Cant convert input Item to AzureRmRecoveryServicesItemBase</value>
+  </data>
 </root>

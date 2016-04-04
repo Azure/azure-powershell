@@ -597,6 +597,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cant convert input Item to AzureRmRecoveryServicesItemBase.
+        /// </summary>
+        public static string RecoveryPointItemTypeConversionError {
+            get {
+                return ResourceManager.GetString("RecoveryPointItemTypeConversionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unsupported Parameter set.
         /// </summary>
         public static string RecoveryPointUnsupportedParamet {
