@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Daily Retention Schedule can&apos;t be null if Daily Backup Schedule is enabled.
+        ///   Looks up a localized string similar to Daily Retention Schedule can&apos;t be null (or) IsDailyScheduleEnabled should be &apos;true&apos;  if Daily Backup Schedule is enabled.
         /// </summary>
         public static string DailyRetentionScheduleNullException {
             get {
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If Weekly backup schedule is enabled, Daily retention schedule should be null and Weekly retention schedule should not be null.
+        ///   Looks up a localized string similar to If Weekly backup schedule is enabled, then IsDailyScheduleEnabled should be false and Weekly retention schedule should not be null, IsWeeklyScheduleEnabled should be true.
         /// </summary>
         public static string WeeklyRetentionScheduleNullException {
             get {

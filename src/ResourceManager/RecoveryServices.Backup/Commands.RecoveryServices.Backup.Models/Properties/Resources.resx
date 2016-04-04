@@ -202,7 +202,7 @@
     <value>RetentionTime in retention schedule should be same as backup time in SchedulePolicy</value>
   </data>
   <data name="DailyRetentionScheduleNullException" xml:space="preserve">
-    <value>Daily Retention Schedule can't be null if Daily Backup Schedule is enabled</value>
+    <value>Daily Retention Schedule can't be null (or) IsDailyScheduleEnabled should be 'true'  if Daily Backup Schedule is enabled</value>
   </data>
   <data name="DailyScheduleEnabledButScheduleIsNullException" xml:space="preserve">
     <value>RetentionPolicy: IsDailyScheduleEnabled=true but DailySchedule is NULL</value>
@@ -226,7 +226,7 @@
     <value>RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999</value>
   </data>
   <data name="WeeklyRetentionScheduleNullException" xml:space="preserve">
-    <value>If Weekly backup schedule is enabled, Daily retention schedule should be null and Weekly retention schedule should not be null</value>
+    <value>If Weekly backup schedule is enabled, then IsDailyScheduleEnabled should be false and Weekly retention schedule should not be null, IsWeeklyScheduleEnabled should be true</value>
   </data>
   <data name="WeeklyScheduleEnabledButScheduleIsNullException" xml:space="preserve">
     <value>RetentionPolicy: IsWeeklyScheduleEnabled=true but WeeklySchedule is NULL</value>
