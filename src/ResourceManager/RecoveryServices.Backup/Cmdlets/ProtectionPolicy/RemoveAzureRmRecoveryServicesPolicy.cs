@@ -34,24 +34,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         internal const string PolicyNameParameterSet = "PolicyName";
         internal const string PolicyObjectParameterSet = "PolicyObject";
-        
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy, ValueFromPipeline = true,
-            ParameterSetName = PolicyObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesPolicyBase Policy { get; set { PolicyName = Policy.Name; } }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name, ValueFromPipeline = true,
             ParameterSetName = PolicyNameParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set { PolicyName = Name; } }
+        public string Name { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsg.Common.ConfirmationMessage)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy, ValueFromPipeline = true,
+            ParameterSetName = PolicyObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public AzureRmRecoveryServicesPolicyBase Policy { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Common.ConfirmationMessage)]
         public SwitchParameter Force { get; set; }
 
         private string PolicyName = string.Empty;
-
+        
         public override void ExecuteCmdlet()
         {
+            PolicyName = (this.ParameterSetName == PolicyNameParameterSet) ? Name : Policy.Name;
             if(string.IsNullOrEmpty(PolicyName))
             {
                 throw new ArgumentException(Resources.PolicyNameIsEmptyOrNull);
