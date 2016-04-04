@@ -29,21 +29,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Update existing protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesProtectionPolicy")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesProtectionPolicy", DefaultParameterSetName = PolicyNameParameterSet)]
     public class RemoveAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy, ValueFromPipeline = true)]
+        internal const string PolicyNameParameterSet = "PolicyName";
+        internal const string PolicyObjectParameterSet = "PolicyObject";
+        
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy, ValueFromPipeline = true,
+            ParameterSetName = PolicyObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesPolicyBase Policy { get; set; }
+        public AzureRmRecoveryServicesPolicyBase Policy { get; set { PolicyName = Policy.Name; } }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Common.ConfirmationMessage)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name, ValueFromPipeline = true,
+            ParameterSetName = PolicyNameParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set { PolicyName = Name; } }
+
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsg.Common.ConfirmationMessage)]
         public SwitchParameter Force { get; set; }
+
+        private string PolicyName = string.Empty;
 
         public override void ExecuteCmdlet()
         {
+            if(string.IsNullOrEmpty(PolicyName))
+            {
+                throw new ArgumentException(Resources.PolicyNameIsEmptyOrNull);
+            }
             ConfirmAction(
                Force.IsPresent,
-               string.Format(Resources.RemoveProtectionPolicyWarning, Policy.Name),
+               string.Format(Resources.RemoveProtectionPolicyWarning, PolicyName),
                Resources.RemoveProtectionPolicyMessage,
                Policy.Name, () =>
                {
@@ -53,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                        WriteDebug(Resources.MakingClientCall);
 
-                       HydraAdapter.RemoveProtectionPolicy(Policy.Name);
+                       HydraAdapter.RemoveProtectionPolicy(PolicyName);
                        WriteDebug(Resources.ProtectionPolicyDeleted);
                    });
 
