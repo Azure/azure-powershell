@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string testPoolId = ScenarioTestHelpers.SharedPool;
 
         // Get from WATaskOSFamilyVersions table, which lags behind https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/
-        private const string specificOSVersion = "WA-GUEST-OS-4.25_201510-01"; 
+        private const string specificOSVersion = "WA-GUEST-OS-4.27_201512-01"; 
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () => { return new string[] { string.Format("Test-ChangeOSVersion '{0}' '{1}' '{2}' '{3}'", BatchController.BatchAccount, testPoolId, newTargetOSVersion, usePipeline ? 1 : 0) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
+                    context = new ScenarioTestContext();
                     string currentTargetOSVersion = ScenarioTestHelpers.WaitForOSVersionChange(controller, context, testPoolId);
                     newTargetOSVersion = currentTargetOSVersion == "*" ? specificOSVersion : "*";
                 },
