@@ -25,7 +25,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
     /// Command to download an azure backup vault's credentials.
