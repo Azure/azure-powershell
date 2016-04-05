@@ -53,23 +53,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             Dictionary<CmdletModel.UriEnums, string> keyValuePairDict = new Dictionary<CmdletModel.UriEnums, string>();
             if (!string.IsNullOrEmpty(id))
             {
-                string pattern = @"/[a-zA-Z]*/[a-zA-Z0-9-;.]*";
-                Regex reg = new Regex(pattern, RegexOptions.IgnoreCase);
+                string idPattern = @"/[a-zA-Z]*/[a-zA-Z0-9-;.]*";
+                string uriPattern = @"/";                    
+                Regex reg = new Regex(idPattern, RegexOptions.IgnoreCase);
 
                 // Match the regular expression pattern against a uri string.
                 Match match = reg.Match(id);
 
                 while (match.Success)
                 {
-                    Console.WriteLine(match.Value);
-                    string pat = @"/";
-                    string[] keyValuePair = match.Value.Split(new string[] { pat }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] keyValuePair = match.Value.Split(new string[] { uriPattern }, StringSplitOptions.RemoveEmptyEntries);
                     CmdletModel.UriEnums key;
                     CmdletModel.UriEnums value;
                     if (keyValuePair.Length == 2)
                     {
                         if (Enum.TryParse<CmdletModel.UriEnums>(keyValuePair[0], true, out key) &&
-                            Enum.TryParse<CmdletModel.UriEnums>(keyValuePair[1], true, out value))
+                            !Enum.TryParse<CmdletModel.UriEnums>(keyValuePair[1], true, out value))
                         {
                             keyValuePairDict.Add(key, keyValuePair[1]);
                         }

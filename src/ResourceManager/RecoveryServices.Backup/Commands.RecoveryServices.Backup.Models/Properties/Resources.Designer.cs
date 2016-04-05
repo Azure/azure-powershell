@@ -669,6 +669,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set vault context first using cmdlet Set-AzureRmRecoveryServicesVaultContext.
+        /// </summary>
+        public static string SetVaultContextFirst {
+            get {
+                return ResourceManager.GetString("SetVaultContextFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tracking operation status URL for completion:.
         /// </summary>
         public static string TrackingOperationStatusURLForCompletion {
@@ -732,7 +741,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Uri Value Not Found in resource Id {1}.
+        ///   Looks up a localized string similar to {0} Uri value not found in Id {1}.
         /// </summary>
         public static string URIValueNotFound {
             get {
