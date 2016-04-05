@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -39,5 +42,75 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             return ret;
         }
+
+        /// <summary>
+        /// Helper function to parse resource id which in format of "[\{Key}\{value}]*"
+        /// </summary>
+        /// <param name="id">Id of the resource</param>
+        /// <returns>dictionary of UriEnum as key and value as value of corresponding URI enum</returns>
+        public static Dictionary<CmdletModel.UriEnums, string> ParseUri(string id)
+        {
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict = new Dictionary<CmdletModel.UriEnums, string>();
+            if (!string.IsNullOrEmpty(id))
+            {
+                string pattern = @"/[a-zA-Z]*/[a-zA-Z0-9-;.]*";
+                Regex reg = new Regex(pattern, RegexOptions.IgnoreCase);
+
+                // Match the regular expression pattern against a uri string.
+                Match match = reg.Match(id);
+
+                while (match.Success)
+                {
+                    Console.WriteLine(match.Value);
+                    string pat = @"/";
+                    string[] keyValuePair = match.Value.Split(new string[] { pat }, StringSplitOptions.RemoveEmptyEntries);
+                    CmdletModel.UriEnums key;
+                    CmdletModel.UriEnums value;
+                    if (keyValuePair.Length == 2)
+                    {
+                        if (Enum.TryParse<CmdletModel.UriEnums>(keyValuePair[0], true, out key) &&
+                            Enum.TryParse<CmdletModel.UriEnums>(keyValuePair[1], true, out value))
+                        {
+                            keyValuePairDict.Add(key, keyValuePair[1]);
+                        }
+                    }
+                    match = match.NextMatch();
+                }
+            }
+            return keyValuePairDict;
+        }
+
+        public static string GetContainerUri(Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, string id)
+        {
+            string containerUri = string.Empty;
+
+            if (keyValuePairDict.ContainsKey(CmdletModel.UriEnums.ProtectionContainers))
+            {
+                containerUri = keyValuePairDict[CmdletModel.UriEnums.ProtectionContainers];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.ProtectionContainers.ToString(), id));
+            }
+            return containerUri;
+        }
+
+        public static string GetProtectedItemUri(Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, string id)
+        {
+            string itemUri = string.Empty;
+
+            if (keyValuePairDict.ContainsKey(CmdletModel.UriEnums.ProtectedItems))
+            {
+                itemUri = keyValuePairDict[CmdletModel.UriEnums.ProtectedItems];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.ProtectedItems.ToString(), id));
+            }
+            return itemUri;
+        }
+    
     }
 }
