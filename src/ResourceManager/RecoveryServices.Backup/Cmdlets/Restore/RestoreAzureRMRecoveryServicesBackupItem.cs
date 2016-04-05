@@ -28,7 +28,7 @@ using ResourcesNS = Microsoft.Azure.Management.Resources;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     [Cmdlet(VerbsData.Restore, "AzureRMRecoveryServicesBackupItem"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
-    class RestoreAzureRMRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
+    public class RestoreAzureRMRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsg.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
@@ -43,13 +43,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
-
+                WriteDebug("InsideRestore. going to create ResourceManager Client");
                 ResourcesNS.ResourceManagementClient rmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                WriteDebug("Client Created successfully");
                 ResourceIdentity identity = new ResourceIdentity();
                 identity.ResourceName = StorageAccountName;
                 identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
                 identity.ResourceProviderApiVersion = "2015-12-01";
 
+                WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", StorageAccountName));
                 ResourcesNS.Models.ResourceGetResult resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
                 if(resource == null)
                 {
@@ -62,6 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 string storageId = resource.Resource.Id;
+                WriteDebug(String.Format("StorageId = {0}", storageId));
 
                 storageId = StorageAccountName; //TBD: once service will migrate to storageID we will remove this line;
 
@@ -74,9 +77,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerRestore();
 
+                WriteDebug(String.Format("Restore submitted", storageId));
                 var response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
                 while (response.OperationStatus.Status == "InProgress")
                 {
+                    WriteDebug(String.Format("Restore inProgress", storageId));
                     response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
                     System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
                 }
@@ -84,6 +89,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if (response.OperationStatus.Status == "Completed")
                 {
                     // TBD -- Hydra change to add jobId in OperationStatusExtendedInfo
+                    WriteDebug(String.Format("Restore Completed", storageId));
                     string jobId = ""; //response.OperationStatus.Properties.jobId;
                     var job = HydraAdapter.GetJob(jobId);
                     //WriteObject(ConversionHelpers.GetJobModel(job));
