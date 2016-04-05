@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             DailyRetentionSchedule psDaily = new DailyRetentionSchedule();
 
             psDaily.DurationCountInDays = GetRetentionDurationInDays(hydraDaily.RetentionDuration);
-            psDaily.RetentionTimes = (List<DateTime>)hydraDaily.RetentionTimes;
+            psDaily.RetentionTimes = ParseDateTimesToUTC(hydraDaily.RetentionTimes);
 
             return psDaily;
         }
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             WeeklyRetentionSchedule psWeekly = new WeeklyRetentionSchedule();
 
             psWeekly.DurationCountInWeeks = GetRetentionDurationInWeeks(hydraWeekly.RetentionDuration);
-            psWeekly.RetentionTimes = (List<DateTime>)hydraWeekly.RetentionTimes;
+            psWeekly.RetentionTimes = ParseDateTimesToUTC(hydraWeekly.RetentionTimes);
             psWeekly.DaysOfTheWeek = HelperUtils.GetEnumListFromStringList<DayOfWeek>(hydraWeekly.DaysOfTheWeek);
 
             return psWeekly;
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             MonthlyRetentionSchedule psMonthly = new MonthlyRetentionSchedule();
 
             psMonthly.DurationCountInMonths = GetRetentionDurationInMonths(hydraMonthly.RetentionDuration);
-            psMonthly.RetentionTimes = (List<DateTime>)hydraMonthly.RetentionTimes;
+            psMonthly.RetentionTimes = ParseDateTimesToUTC(hydraMonthly.RetentionTimes);
             psMonthly.RetentionScheduleFormatType = (RetentionScheduleFormat)Enum.Parse(typeof(RetentionScheduleFormat),
                                                                                    hydraMonthly.RetentionScheduleFormatType);
             psMonthly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(hydraMonthly.RetentionScheduleDaily);
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             YearlyRetentionSchedule psYearly = new YearlyRetentionSchedule();
 
             psYearly.DurationCountInYears = GetRetentionDurationInYears(hydraYearly.RetentionDuration);
-            psYearly.RetentionTimes = (List<DateTime>)hydraYearly.RetentionTimes;
+            psYearly.RetentionTimes = ParseDateTimesToUTC(hydraYearly.RetentionTimes);
             psYearly.RetentionScheduleFormatType = (RetentionScheduleFormat)Enum.Parse(typeof(RetentionScheduleFormat),
                                                                                    hydraYearly.RetentionScheduleFormatType);
             psYearly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(hydraYearly.RetentionScheduleDaily);

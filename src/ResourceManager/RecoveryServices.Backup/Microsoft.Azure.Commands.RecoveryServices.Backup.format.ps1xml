@@ -10,7 +10,7 @@
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
-            <Width>25</Width>
+            <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>WorkloadType</Label>
@@ -18,11 +18,11 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>BackupManagementType</Label>
-            <Width>18</Width>
+            <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>BackupTime</Label>
-            <Width>30</Width>
+            <Width>25</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DaysOfWeek</Label>
@@ -42,10 +42,10 @@
                 <PropertyName>BackupManagementType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SchedulePolicy.ScheduleRunTimes</PropertyName>
+                <ScriptBlock>$_.SchedulePolicy.ScheduleRunTimes</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SchedulePolicy.ScheduleRunDays</PropertyName>
+                <ScriptBlock>$_.SchedulePolicy.ScheduleRunDays</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

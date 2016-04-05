@@ -37,6 +37,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     containerModel = new AzureRmRecoveryServicesIaasVmContainer(protectionContainer);
                 }
+                if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(MabProtectionContainer)))
+                {
+                    containerModel = new AzureRmRecoveryServicesMabContainer(protectionContainer);
+                }
             }
 
             return containerModel;
@@ -93,7 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
                 iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((LongTermRetentionPolicy)
                                                   ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy);
-                iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicyPolicy((SimpleSchedulePolicy)
+                iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((SimpleSchedulePolicy)
                                                  ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy);
             }
             else
@@ -107,6 +111,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             policyModel.Name = hydraResponse.Name;
+            policyModel.Id = hydraResponse.Id;
 
             return policyModel;
         }
@@ -150,7 +155,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 if (protectedItem.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectedItem)))
                 {
-                    itemModel = new AzureRmRecoveryServicesIaasVmItem((AzureIaaSVMProtectedItem)protectedItem.Properties, container);
+                    itemModel = new AzureRmRecoveryServicesIaasVmItem(protectedItem, container);
                 }
             }
 

@@ -78,8 +78,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                {  
                    {PolicyParams.PolicyName, Name},
-                   {PolicyParams.WorkloadType, WorkloadType},
-                   {PolicyParams.BackupManagementType, BackupManagementType},
+                   {PolicyParams.WorkloadType, WorkloadType},                   
                    {PolicyParams.RetentionPolicy, RetentionPolicy},
                    {PolicyParams.SchedulePolicy, SchedulePolicy},                
                }, HydraAdapter);

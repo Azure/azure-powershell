@@ -64,5 +64,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                               BmsAdapter.GetCustomRequestHeaders(),
                               BmsAdapter.CmdletCancellationToken).Result;                              
         }
+
+        public AzureOperationResponse RemoveProtectionPolicy(
+                string policyName)
+        {
+            return BmsAdapter.Client.ProtectionPolicy.DeleteAsync(
+                                     BmsAdapter.GetResourceGroupName(),
+                                     BmsAdapter.GetResourceName(),
+                                     policyName,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
     }
 }

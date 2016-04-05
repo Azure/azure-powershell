@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public static void ValidateProtectionPolicyName(string policyName)
         {
+            if(string.IsNullOrEmpty(policyName))
+            {
+                throw new ArgumentException(Resources.PolicyNameIsEmptyOrNull);
+            }
+
             if (policyName.Length < PolicyConstants.MinPolicyNameLength || 
                 policyName.Length > PolicyConstants.MaxPolicyNameLength)
             {
