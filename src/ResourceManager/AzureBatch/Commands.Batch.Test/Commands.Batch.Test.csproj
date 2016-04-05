@@ -683,7 +683,6 @@
     <Content Include="Resources\MSMpiSetup.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ScenarioTests\README.txt" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

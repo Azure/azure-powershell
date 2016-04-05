@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 BatchAccountUrl = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountEndpoint);
 
                 HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountName] = BatchAccount;
-                HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountEndpoint] = BatchAccountKey;
+                HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountEndpoint] = BatchAccountUrl;
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {

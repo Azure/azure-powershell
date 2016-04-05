@@ -88,9 +88,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static BatchAccountContext GetBatchAccountContextWithKeys(BatchController controller, string accountName)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-            BatchAccountContext context = client.ListKeys(null, accountName);
-
             ScenarioTestContext testContext = new ScenarioTestContext();
 
             return testContext;
