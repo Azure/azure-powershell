@@ -19,6 +19,7 @@ using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Mod
 using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -36,6 +37,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return response;
+        }
+
+        public static CmdletModel.AzureRmRecoveryServicesJobBase GetJobFromOperation(HydraModel.BaseRecoveryServicesJobResponse jobResponse, HydraAdapter hydraAdapter)
+        {
+            var response = OperationStatusHelper.TrackOperationStatus(jobResponse, hydraAdapter);
+
+            if (response.OperationStatus.Status == HydraModel.OperationStatusValues.Succeeded)
+            {
+                var jobStatusResponse = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+                string jobId = jobStatusResponse.JobId;
+                var job = hydraAdapter.GetJob(jobId);
+                return JobConversions.GetPSJob(job);
+            }
+            else if (response.OperationStatus.Status == HydraModel.OperationStatusValues.Failed)
+            {
+                var jobStatusResponse = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+                if (jobStatusResponse != null || !string.IsNullOrEmpty(jobStatusResponse.JobId))
+                {
+                    string jobId = jobStatusResponse.JobId;
+                    var job = hydraAdapter.GetJob(jobId);
+                    return JobConversions.GetPSJob(job);
+                }
+
+                var errorMessage = string.Format(Resources.EnableProtectionOperationFailed,
+                response.OperationStatus.OperationStatusError.Code,
+                response.OperationStatus.OperationStatusError.Message);
+
+                throw new Exception(errorMessage);
+            }
+
+            var jobStatusResponse1 = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+            string jobId1 = jobStatusResponse1.JobId;
+            var job1 = hydraAdapter.GetJob(jobId1);
+            return JobConversions.GetPSJob(job1);
         }
     }
 }

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
             var jobResponse = psBackupProvider.TriggerBackup();
+
+            WriteObject(OperationStatusHelper.GetJobFromOperation(jobResponse, HydraAdapter));            
         }
     }
 }

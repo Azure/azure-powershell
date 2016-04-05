@@ -84,31 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 // Track Response and display job details
                 // -- TBD to move it to common helper and remove hard-coded vaules
 
-                var response = OperationStatusHelper.TrackOperationStatus(jobResponse, HydraAdapter);
-
-                if (response.OperationStatus.Status == HydraModel.OperationStatusValues.Succeeded)
-                {
-                    var jobStatusResponse = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
-                    string jobId = jobStatusResponse.JobId;
-                    var job = HydraAdapter.GetJob(jobId);
-                    WriteObject(JobConversions.GetPSJob(job));
-                }
-                else if(response.OperationStatus.Status == HydraModel.OperationStatusValues.Failed)
-                {
-                    var jobStatusResponse = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
-                    if(jobStatusResponse != null || !string.IsNullOrEmpty(jobStatusResponse.JobId))
-                    {
-                        string jobId = jobStatusResponse.JobId;
-                        var job = HydraAdapter.GetJob(jobId);
-                        WriteObject(JobConversions.GetPSJob(job));
-                    }
-
-                    var errorMessage = string.Format(Resources.EnableProtectionOperationFailed,
-                    response.OperationStatus.OperationStatusError.Code,
-                    response.OperationStatus.OperationStatusError.Message);
-
-                    throw new Exception(errorMessage);
-                }
+                WriteObject(OperationStatusHelper.GetJobFromOperation(jobResponse, HydraAdapter));
             });
         }
     }
