@@ -62,6 +62,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         static readonly Regex ResourceGroupRegex = new Regex(@"/Subscriptions/(?<subscriptionsId>.+)/resourceGroups/(?<resourceGroupName>.+)/providers/(?<providersName>.+)/vaults/(?<BackupVaultName>.+)/backupFabrics/(?<BackupFabricName>.+)/protectionContainers/(?<containersName>.+)", RegexOptions.Compiled);
         const string NameDelimiter = ";";
+        const string IdDelimiter = "/";
+
+        public class IdNames
+        {
+            public const string SubscriptionId = "Subscriptions";
+            public const string ResourceGroup = "resourceGroups";
+            public const string Provider = "providers";
+            public const string Vault = "vaults";
+            public const string BackupFabric = "backupFabrics";
+            public const string ProtectionContainerName = "protectionContainers";
+            public const string ProtectedItemName = "protectedItems";
+        }
 
         public static string GetResourceGroupName(string id)
         {
@@ -88,6 +100,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             }
 
             return null;
+        }
+
+        public static string GetValueByName(string id, string idName)
+        {
+            var parts = id.Split(IdDelimiter.ToArray(), StringSplitOptions.RemoveEmptyEntries)
+                .Select((x, i) => new { Index = i, Value = x })
+                .GroupBy(x => x.Index % 2)
+                .ToList();
+
+            var dict = parts[0].ToList().Zip(parts[1].ToList(), (k, v) => new { k, v })
+                               .ToDictionary(x => x.k.Value, x => x.v.Value);
+
+            return dict[idName];
         }
     }
 

@@ -11,6 +11,8 @@
     <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -125,19 +127,19 @@
     <None Include="ScenarioTests\IaasVm\ContainerTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-	<None Include="ScenarioTests\Mab\ContainerTests.ps1">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</None>
+    <None Include="ScenarioTests\Mab\ContainerTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\Dpm\ContainerTests.ps1">
-		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</None>
-	<Compile Include="ScenarioTests\IaasVm\JobTests.cs" />
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Compile Include="ScenarioTests\IaasVm\JobTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\ItemTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\PolicyTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\ContainerTests.cs" />
     <Compile Include="ScenarioTests\Mab\ContainerTests.cs" />
-	<Compile Include="ScenarioTests\Dpm\ContainerTests.cs"/>
-	<Compile Include="ScenarioTests\TestsBase.cs" />
+    <Compile Include="ScenarioTests\Dpm\ContainerTests.cs" />
+    <Compile Include="ScenarioTests\TestsBase.cs" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestGetContainerScenario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -199,6 +201,13 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

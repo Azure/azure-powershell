@@ -185,7 +185,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse TriggerBackup()
         {
-            throw new NotImplementedException();
+            AzureRmRecoveryServicesItemBase item = (AzureRmRecoveryServicesItemBase)ProviderData.ProviderParameters[ItemParams.Item];
+            DateTime expiryDate = (DateTime)ProviderData.ProviderParameters[ItemParams.ExpiryDate];
+            AzureRmRecoveryServicesIaasVmItem iaasVmItem = item as AzureRmRecoveryServicesIaasVmItem;
+            return HydraAdapter.TriggerBackup(IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectionContainerName), 
+                IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectedItemName));
         }
 
         public BaseRecoveryServicesJobResponse TriggerRestore()
@@ -194,7 +198,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 as AzureRmRecoveryServicesIaasVmRecoveryPoint;
             string storageId = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountId].ToString();
 
-            if(rp == null)
+            if (rp == null)
             {
                 throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesIaasVmRecoveryPoint");
             }
@@ -429,9 +433,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryParams.DatasourceType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.VM;
             queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
 
-            var listResponse = HydraAdapter.ListProtectedItem(queryParams);
+            List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
+            string skipToken = null;
+            PaginationRequest paginationRequest = null;
+            do
+            {
+                var listResponse = HydraAdapter.ListProtectedItem(queryParams, paginationRequest);
+                protectedItems.AddRange(listResponse.ItemList.Value);
+
+                HydraHelpers.GetSkipTokenFromNextLink(listResponse.ItemList.NextLink, out skipToken);
+                if (skipToken != null)
+                {
+                    paginationRequest = new PaginationRequest();
+                    paginationRequest.SkipToken = skipToken;
+                }
+            } while (skipToken != null);
             
-            List<AzureRmRecoveryServicesItemBase> itemModels = ConversionHelpers.GetItemModelList(listResponse.ItemList.Value, container);
+            List<AzureRmRecoveryServicesItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems, container);
 
             // 1. Filter by container
             itemModels = itemModels.Where(itemModel =>
@@ -653,11 +671,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private void ValidateAzureVMEnableProtectionRequest(string vmName, string serviceName, string rgName,
             AzureRmRecoveryServicesPolicyBase policy)
         {
-            if(string.IsNullOrEmpty(vmName))
+            ValidateAzureVMProtectionPolicy(policy);
+            if (string.IsNullOrEmpty(vmName))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidAzureVMName));
             }
-            if(string.IsNullOrEmpty(rgName) && string.IsNullOrEmpty(serviceName))
+            if (string.IsNullOrEmpty(rgName) && string.IsNullOrEmpty(serviceName))
             {
                 throw new ArgumentException(string.Format(Resources.BothCloudServiceNameAndResourceGroupNameShouldNotEmpty));
             }
@@ -689,7 +708,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private bool IsComputeAzureVM(string virtualMachineId)
         {
             bool isComputeAzureVM = true;
-            if(virtualMachineId.IndexOf(classicComputeAzureVMVersion, StringComparison.InvariantCultureIgnoreCase) >=0)
+            if (virtualMachineId.IndexOf(classicComputeAzureVMVersion, StringComparison.InvariantCultureIgnoreCase) >= 0)
             {
                 isComputeAzureVM = false;
             }

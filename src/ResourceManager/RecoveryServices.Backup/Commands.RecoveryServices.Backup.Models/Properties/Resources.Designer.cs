@@ -264,11 +264,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable Protection OperationFailed with error code: {0} , and error Message: {1}.
+        ///   Looks up a localized string similar to Enable Protection Operation.
         /// </summary>
-        public static string EnableProtectionOperationFailed {
+        public static string EnableProtectionOperation {
             get {
-                return ResourceManager.GetString("EnableProtectionOperationFailed", resourceCulture);
+                return ResourceManager.GetString("EnableProtectionOperation", resourceCulture);
             }
         }
         
@@ -534,6 +534,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} failed. Error Code: {1}. Error Message: {2}.
+        /// </summary>
+        public static string OperationFailed {
+            get {
+                return ResourceManager.GetString("OperationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A protection policy with the specified name already exists: {0}.
         /// </summary>
         public static string PolicyAlreadyExistException {
@@ -665,6 +674,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string TrackingOperationStatusURLForCompletion {
             get {
                 return ResourceManager.GetString("TrackingOperationStatusURLForCompletion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigger Backup Operation.
+        /// </summary>
+        public static string TriggerBackupOperation {
+            get {
+                return ResourceManager.GetString("TriggerBackupOperation", resourceCulture);
             }
         }
         
