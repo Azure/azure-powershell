@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 BatchAccount = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountName];
-                BatchAccountKey = "non null default value";
+                BatchAccountKey = "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000==";
                 BatchAccountUrl = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountEndpoint];
             }
 

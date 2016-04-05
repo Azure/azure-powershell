@@ -56,7 +56,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             cmdlet.Id = "testJobSchedule";
 
             // Don't go to the service on an Add CloudJobSchedule call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobScheduleAddParameter, JobScheduleAddOptions, AzureOperationHeaderResponse<JobScheduleAddHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                JobScheduleAddParameter, 
+                JobScheduleAddOptions, 
+                AzureOperationHeaderResponse<JobScheduleAddHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

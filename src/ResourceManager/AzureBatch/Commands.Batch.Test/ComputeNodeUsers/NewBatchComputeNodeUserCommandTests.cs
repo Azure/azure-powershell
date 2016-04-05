@@ -59,7 +59,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             cmdlet.Password = "Password1234";
 
             // Don't go to the service on an Add ComputeNodeUser call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.ComputeNodeUser, ProxyModels.ComputeNodeAddUserOptions, AzureOperationHeaderResponse<ProxyModels.ComputeNodeAddUserHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.ComputeNodeUser, 
+                ProxyModels.ComputeNodeAddUserOptions, 
+                AzureOperationHeaderResponse<ProxyModels.ComputeNodeAddUserHeaders>>();
+            
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

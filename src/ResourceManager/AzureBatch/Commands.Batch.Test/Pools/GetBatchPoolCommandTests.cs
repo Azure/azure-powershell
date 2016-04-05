@@ -58,7 +58,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Build a CloudPool instead of querying the service on a Get CloudPool call
             AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders> response = BatchTestHelpers.CreateCloudPoolGetResponse(cmdlet.Id);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.PoolGetOptions, AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.PoolGetOptions, 
+                AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -88,7 +91,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
             AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders> getResponse = BatchTestHelpers.CreateCloudPoolGetResponse(cmdlet.Id);
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.PoolGetOptions, AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>>(getResponse);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.PoolGetOptions, 
+                AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>>(getResponse);
+
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
                 ProxyModels.PoolGetOptions options = (ProxyModels.PoolGetOptions) request.Options;
@@ -156,7 +162,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Build some CloudPools instead of querying the service on a List CloudPools call
             AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.PoolListOptions, AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.PoolListOptions, 
+                AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -197,7 +206,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Build some CloudPools instead of querying the service on a List CloudPools call
             AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.PoolListOptions, AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.PoolListOptions, 
+                AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

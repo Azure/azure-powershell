@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewJobSchedule()
         {
-            BatchController controller = BatchController.NewInstance;
-            controller.RunPsTest(string.Format("Test-NewJobSchedule '{0}'", BatchController.BatchAccount));
+            BatchController.NewInstance.RunPsTest("Test-NewJobSchedule");
         }
 
         [Fact]
@@ -39,10 +38,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string jobScheduleId = "testId";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetJobScheduleById '{0}' '{1}'", BatchController.BatchAccount, jobScheduleId) }; },
+                () => { return new string[] { string.Format("Test-GetJobScheduleById '{0}'", jobScheduleId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, null);
                 },
                 () =>
@@ -64,10 +63,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int matches = 2;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListJobSchedulesByFilter '{0}' '{1}' '{2}'", BatchController.BatchAccount, jobSchedulePrefix, matches) }; },
+                () => { return new string[] { string.Format("Test-ListJobSchedulesByFilter '{0}' '{1}'", jobSchedulePrefix, matches) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId1, null);
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId2, null);
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId3, null);
@@ -90,10 +89,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchAccountContext context = null;
             string jobScheduleId = "selectTest";
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetAndListJobSchedulesWithSelect '{0}' '{1}'", BatchController.BatchAccount, jobScheduleId) }; },
+                () => { return new string[] { string.Format("Test-GetAndListJobSchedulesWithSelect '{0}'", jobScheduleId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, null);
                 },
                 () =>
@@ -114,10 +113,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int maxCount = 1;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListJobSchedulesWithMaxCount '{0}' '{1}'", BatchController.BatchAccount, maxCount) }; },
+                () => { return new string[] { string.Format("Test-ListJobSchedulesWithMaxCount '{0}'", maxCount) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId1, null);
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId2, null);
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId3, null);
@@ -142,10 +141,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int count = 3;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListAllJobSchedules '{0}' '{1}'", BatchController.BatchAccount, count) }; },
+                () => { return new string[] { string.Format("Test-ListAllJobSchedules '{0}'", count) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId1, null);
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId2, null);
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId3, null);
@@ -168,10 +167,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-UpdateJobSchedule '{0}' '{1}'", BatchController.BatchAccount, jobScheduleId) }; },
+                () => { return new string[] { string.Format("Test-UpdateJobSchedule '{0}'", jobScheduleId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, null);
                 },
                 () =>
@@ -190,10 +189,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeleteJobSchedule '{0}' '{1}' '0'", BatchController.BatchAccount, jobScheduleId) }; },
+                () => { return new string[] { string.Format("Test-DeleteJobSchedule '{0}' '0'", jobScheduleId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, null);
                 },
                 null,
@@ -210,10 +209,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeleteJobSchedule '{0}' '{1}' '1'", BatchController.BatchAccount, jobScheduleId) }; },
+                () => { return new string[] { string.Format("Test-DeleteJobSchedule '{0}' '1'", jobScheduleId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, null);
                 },
                 null,
@@ -229,10 +228,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DisableAndEnableJobSchedule '{0}' '{1}' '1'", BatchController.BatchAccount, jobScheduleId) }; },
+                () => { return new string[] { string.Format("Test-DisableAndEnableJobSchedule '{0}' '1'", jobScheduleId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, null);
                 },
                 () =>
@@ -261,10 +260,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchAccountContext context = null;
             string jobScheduleId = "testTerminateJobSchedule" + (usePipeline ? "Pipeline" : "Id");
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-TerminateJobSchedule '{0}' '{1}' '{2}'", BatchController.BatchAccount, jobScheduleId, usePipeline ? 1 : 0) }; },
+                () => { return new string[] { string.Format("Test-TerminateJobSchedule '{0}' '{1}'", jobScheduleId, usePipeline ? 1 : 0) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, BatchController.BatchAccount);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, null);
                 },
                 () =>
