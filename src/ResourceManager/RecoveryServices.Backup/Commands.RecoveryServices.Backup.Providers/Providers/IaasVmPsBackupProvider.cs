@@ -671,7 +671,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private void ValidateAzureVMEnableProtectionRequest(string vmName, string serviceName, string rgName,
             AzureRmRecoveryServicesPolicyBase policy)
         {
-            ValidateAzureVMProtectionPolicy(policy);
             if (string.IsNullOrEmpty(vmName))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidAzureVMName));
