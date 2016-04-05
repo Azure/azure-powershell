@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 string subscriptionId = DefaultContext.Subscription.Id.ToString();
-                string displayName = subscriptionId + "_" + Vault.ResouceGroupName + "_" + Vault.Name;
+                string displayName = Vault.Name;
 
                 WriteDebug(string.Format(CultureInfo.InvariantCulture,
                                           "Executing cmdlet with SubscriptionId = {0}, ResourceGroupName = {1}, ResourceName = {2}, TargetLocation = {3}",
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                                                                       "Microsoft.Azure.Portal.RecoveryServices.Models.Common");
 
                 // prepare for download
-                string fileName = string.Format("{0}_{1}.VaultCredentials", displayName, DateTime.UtcNow.ToString("yyyy-dd-M--HH-mm-ss"));
+                string fileName = string.Format("{0}_{1:ddd MMM dd yyyy}.VaultCredentials", displayName, DateTime.UtcNow);
                 string filePath = Path.Combine(TargetLocation, fileName);
                 WriteDebug(string.Format("Saving Vault Credentials to file : {0}", filePath));
 
