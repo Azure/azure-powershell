@@ -34,13 +34,20 @@ namespace Microsoft.WindowsAzure.ServiceManagemenet.Common.Models
 
         private void Write(string message, params object[] arguments)
         {
-            if (arguments == null || arguments.Length == 0)
+            try
             {
-                traceOutput.WriteLine(message);
+                if (arguments == null || arguments.Length == 0)
+                {
+                    traceOutput.WriteLine(message);
+                }
+                else
+                {
+                    traceOutput.WriteLine(string.Format(message, arguments));
+                }
             }
-            else
+            catch (Exception ex)
             {
-                traceOutput.WriteLine(string.Format(message, arguments));
+                Console.WriteLine(ex.Message);
             }
         }
 
