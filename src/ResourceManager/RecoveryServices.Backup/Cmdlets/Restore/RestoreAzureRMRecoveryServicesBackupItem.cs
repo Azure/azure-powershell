@@ -47,12 +47,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 ResourcesNS.ResourceManagementClient rmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 ResourceIdentity identity = new ResourceIdentity();
                 identity.ResourceName = StorageAccountName;
-                identity.ResourceType = "Microsoft.ClassicStorage";
+                identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
+                identity.ResourceProviderApiVersion = "2015-12-01";
 
                 ResourcesNS.Models.ResourceGetResult resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
                 if(resource == null)
                 {
-                    identity.ResourceType = "Microsoft.Storage";
+                    identity.ResourceType = "Microsoft.Storage/storageAccounts";
                     resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
                 }
                 if(resource == null)
