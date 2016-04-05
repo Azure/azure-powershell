@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,43 +24,59 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>))]
+    /// <summary>
+    /// Get list of containers
+    /// </summary>
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>), typeof(AzureRmRecoveryServicesContainerBase))]
     public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ARSVault Vault { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = "")]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.ContainerType)]
         [ValidateNotNullOrEmpty]
         public ContainerType ContainerType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "")]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.BackupManagementType)]
+        [ValidateNotNullOrEmpty]
+        public BackupManagementType BackupManagementType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "")]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "")]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Status)]
         [ValidateNotNullOrEmpty]
         public ContainerRegistrationStatus Status { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+            ExecutionBlock(() =>
             {
-                {GetContainerParams.Vault, Vault}, 
-                {GetContainerParams.ContainerType, ContainerType},
-                {GetContainerParams.Name, Name},
-                {GetContainerParams.ResourceGroupName, ResourceGroupName},
-                {GetContainerParams.Status, Status},
-            }, HydraAdapter);
+                base.ExecuteCmdlet();
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.AzureVM);
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                {  
+                    {ContainerParams.ContainerType, ContainerType},
+                    {ContainerParams.BackupManagementType, BackupManagementType},
+                    {ContainerParams.Name, Name},
+                    {ContainerParams.ResourceGroupName, ResourceGroupName},
+                    {ContainerParams.Status, Status},
+                }, HydraAdapter);
+
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType, BackupManagementType);
+                var containerModels = psBackupProvider.ListProtectionContainers();
+
+                if (containerModels.Count == 1)
+                {
+                    WriteObject(containerModels.First());
+                }
+                else
+                {
+                    WriteObject(containerModels);
+                }
+            });
         }
     }
 }

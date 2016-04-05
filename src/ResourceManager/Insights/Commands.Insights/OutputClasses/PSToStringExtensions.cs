@@ -12,12 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
 using System.Text;
-using System.Xml;
 using Hyak.Common;
 using Microsoft.Azure.Insights.Models;
 using Microsoft.Azure.Management.Insights.Models;
@@ -125,6 +122,60 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 output.AddSpacesInFront(indentationTabs).Append("ResourceId : " + ruleMetricDataSource.ResourceUri);
             }
 
+            return output.ToString();
+        }
+
+        
+        /// <summary>
+        /// A string representation of the RuleMetricDataSource including indentation
+        /// </summary>
+        /// <param name="actions">The RuleAction objects</param>
+        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
+        /// <returns>A string representation of the list of RuleAction objects including indentation</returns>
+        public static string ToString(this IList<RuleAction> actions, int indentationTabs)
+        {
+            StringBuilder output = new StringBuilder();
+            if (actions != null)
+            {
+                foreach (var action in actions)
+                {
+                    output.AppendLine();
+                    RuleEmailAction eMailAction = action as RuleEmailAction;
+                    if (eMailAction != null)
+                    {
+                        output.AddSpacesInFront(indentationTabs).AppendLine("SendToServiceOwners : " + eMailAction.SendToServiceOwners);
+                        output.AddSpacesInFront(indentationTabs).Append("E-mails             : " + eMailAction.CustomEmails.ToString(indentationTabs: indentationTabs + 1));
+                    }
+                    else
+                    {
+                        RuleWebhookAction webhookAction = action as RuleWebhookAction;
+                        if (webhookAction != null)
+                        {
+                            output.AddSpacesInFront(indentationTabs).AppendLine("ServiceUri : " + webhookAction.ServiceUri);
+                            output.AddSpacesInFront(indentationTabs).Append("Properties : " + webhookAction.Properties.ToString(indentationTabs: indentationTabs + 1));
+                        }
+                        else
+                        {
+                            output.AddSpacesInFront(indentationTabs).AppendLine(string.Format("Unsupported rule type <{0}>", action));
+                        }
+                    }
+                }
+            }
+
+            return output.ToString();
+        }
+
+        /// <summary>
+        /// A string representation of the list of string including indentation
+        /// </summary>
+        /// <param name="strings">The list of string objects</param>
+        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
+        /// <returns>A string representation of the list of string objects including indentation</returns>
+        public static string ToString(this IList<string> strings, int indentationTabs)
+        {
+            StringBuilder output = new StringBuilder();
+            output.AppendLine();
+            output.AddSpacesInFront(indentationTabs).Append(string.Join(",", strings));
             return output.ToString();
         }
 
@@ -252,6 +303,20 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         }
 
         /// <summary>
+        /// A string representation of the list of WebhookNotification objects including indentation
+        /// </summary>
+        /// <param name="webhookNotifications">The list of WebhookNotification objects</param>
+        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
+        /// <returns>A string representation of the list of WebhookNotification objects including indentation</returns>
+        public static string ToString(this IList<WebhookNotification> webhookNotifications, int indentationTabs)
+        {
+            StringBuilder output = new StringBuilder();
+            webhookNotifications.ForEach(webhookNotification => output.Append(webhookNotification.ToString(indentationTabs)));
+
+            return output.ToString();
+        }
+
+        /// <summary>
         /// A string representation of the AutoscaleProfile object including indentation
         /// </summary>
         /// <param name="autoscaleProfile">The AutoscaleProfile object</param>
@@ -274,6 +339,27 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         }
 
         /// <summary>
+        /// A string representation of the AutoscaleProfile object including indentation
+        /// </summary>
+        /// <param name="autoscaleNotification">The AutoscaleProfile object</param>
+        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
+        /// <returns>A string representation of the AutoscaleProfile object including indentation</returns>
+        public static string ToString(this AutoscaleNotification autoscaleNotification, int indentationTabs)
+        {
+            StringBuilder output = new StringBuilder();
+            if (autoscaleNotification != null)
+            {
+                output.AppendLine();
+                output.AddSpacesInFront(indentationTabs).AppendLine("E-mail     : " + autoscaleNotification.Email);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Operation  : " + autoscaleNotification.Operation);
+                output.AddSpacesInFront(indentationTabs).Append("Webhooks   : " + autoscaleNotification.Webhooks.ToString(indentationTabs + DefaultIndentationTabs));
+            }
+
+            return output.ToString();
+        }
+
+
+        /// <summary>
         /// A string representation of the list of AutoscaleProfile objects including indentation
         /// </summary>
         /// <param name="profiles">The list of AutoscaleProfile objects</param>
@@ -283,6 +369,20 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             var output = new StringBuilder();
             profiles.ForEach(profile => output.Append(profile.ToString(indentationTabs)));
+
+            return output.ToString();
+        }
+
+        /// <summary>
+        /// A string representation of the list of AutoscaleNotification objects including indentation
+        /// </summary>
+        /// <param name="notifications">The list of AutoscaleNotification objects</param>
+        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
+        /// <returns>A string representation of the list of AutoscaleNotification objects including indentation</returns>
+        public static string ToString(this IList<AutoscaleNotification> notifications, int indentationTabs)
+        {
+            var output = new StringBuilder();
+            notifications.ForEach(notification => output.Append(notification.ToString(indentationTabs)));
 
             return output.ToString();
         }
@@ -323,6 +423,39 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 output.AddSpacesInFront(indentationTabs).AppendLine("MetricTrigger : " + scaleRule.MetricTrigger.ToString(indentationTabs + DefaultIndentationTabs));
                 output.AddSpacesInFront(indentationTabs).Append("ScaleAction   : " + scaleRule.ScaleAction.ToString(indentationTabs + DefaultIndentationTabs));
             }
+
+            return output.ToString();
+        }
+
+        /// <summary>
+        /// A string representation of the WebhookNotification including indentation
+        /// </summary>
+        /// <param name="webhookNotification">The WebhookNotification object</param>
+        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
+        /// <returns>A string representation of the WebhookNotification including indentation</returns>
+        public static string ToString(this WebhookNotification webhookNotification, int indentationTabs)
+        {
+            StringBuilder output = new StringBuilder();
+            if (webhookNotification != null)
+            {
+                output.AppendLine();
+                output.AddSpacesInFront(indentationTabs).AppendLine("ServiceUri : " + webhookNotification.ServiceUri);
+                output.AddSpacesInFront(indentationTabs).Append("Properties : " + webhookNotification.Properties.ToString(indentationTabs + DefaultIndentationTabs));
+            }
+
+            return output.ToString();
+        }
+
+        /// <summary>
+        /// A string representation of the list of AutoscaleNotification objects including indentation
+        /// </summary>
+        /// <param name="dictionary">The 'string, string' dictionary object</param>
+        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
+        /// <returns>A string representation of the 'string, string' dictionary object including indentation</returns>
+        public static string ToString(this IDictionary<string, string> dictionary, int indentationTabs)
+        {
+            var output = new StringBuilder();
+            dictionary.ForEach(notification => output.AddSpacesInFront(indentationTabs).AppendLine(string.Format("{0}: {1}", notification.Key, notification.Value)));
 
             return output.ToString();
         }

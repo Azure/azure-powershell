@@ -22,20 +22,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     public enum ContainerType
     {
-        AzureVM,
+        AzureVM = 1,
+        //AzureSqlContainer,
+        Windows
     }
 
     public enum BackupManagementType
     {
+        AzureVM = 1,
+        Mars,
+        Scdpm
     }
 
     public enum WorkloadType
     {
+        AzureVM = 1,
     }
 
     public enum PsBackupProviderTypes
     {
         IaasVm = 1,
+        AzureSql,
+        Mab,
+        Dpm
     }
 
     public enum ContainerRegistrationStatus
@@ -44,10 +53,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Registering,
     }
 
+    public enum ItemProtectionStatus
+    {
+        Healthy = 1,
+        Unhealthy,
+    }
+
+    public enum ItemStatus
+    {
+        IRPending = 1,
+        ProtectionError,
+        Protected,
+        ProtectionStopped
+    }
+
     #region policy
     public enum WeekOfMonth
     {
-        Invalid = 0,
         First = 1,
         Second = 2,
         Third = 3,
@@ -56,7 +78,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
     public enum Month
     {
-        Invalid = 0,
         January = 1,
         February = 2,
         March = 3,
@@ -73,14 +94,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public enum ScheduleRunType
     {    
-        Invalid = 0,
         Daily = 1,
         Weekly = 2,
     }
 
     public enum RetentionDurationType
     {
-        Invalid = 0,
         Days = 1,
         Weeks = 2,
         Months = 3,
@@ -89,10 +108,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public enum RetentionScheduleFormat
     {
-        Invalid = 0,
         Daily = 1,
         Weekly = 2
-    }  
+    }
+
+    #endregion
+
+    #region jobs
+
+    public enum JobOperation
+    {
+        Backup,
+        Restore,
+        ConfigureBackup,
+        RemoveBackup
+    }
+
+    public enum JobStatus
+    {
+        InProgress,
+        Cancelling,
+        Cancelled,
+        Completed,
+        CompletedWithWarnings,
+        Failed
+    }
 
     #endregion
 

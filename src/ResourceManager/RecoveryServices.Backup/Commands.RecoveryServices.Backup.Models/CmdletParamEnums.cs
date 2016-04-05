@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public enum GetContainerParams
+    public enum ContainerParams
     {
         Vault,
         ContainerType,
@@ -29,5 +29,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Name,
         ResourceGroupName,
         Status,
+        Container
+    }
+
+    public enum GetRecoveryPointParams
+    {
+        StartDate,
+        EndDate,
+        Item,
+        RecoveryPointId,
+    }
+
+    public enum RestoreBackupItemParams
+    {
+        RecoveryPoint,
+        StorageAccountId,
+    }
+
+    public enum PolicyParams
+    {
+        WorkloadType,
+        BackupManagementType,
+        PolicyName,
+        SchedulePolicy,
+        RetentionPolicy,
+        ProtectionPolicy,
+        ResourceGroupName,
+        ResourceName
+    }
+
+    public enum ItemParams
+    {
+        AzureVMName,
+        AzureVMCloudServiceName,
+        AzureVMResourceGroupName,
+        WorkloadType,
+        Policy,
+        Item,
+        ParameterSetName,
+        Container,
+        ProtectionStatus,
+        Status,
+        DeleteBackupData,
+        ExpiryDate,
     }
 }

@@ -13,14 +13,119 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public partial class HydraAdapter
     {
+        public JobResponse GetJob(string jobId)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+
+            return BmsAdapter.Client.Job.GetAsync(
+                resourceGroupName,
+                resourceName,
+                jobId,
+                BmsAdapter.GetCustomRequestHeaders(),
+                BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        public JobListResponse GetJobs(
+            string jobId,
+            string status,
+            string operation,
+            DateTime startTime,
+            DateTime endTime,
+            string backupManagementType,
+            int? top = null,
+            string skipToken = null)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+
+            // build pagination request
+            PaginationRequest pagReq = new PaginationRequest()
+            {
+                SkipToken = skipToken
+            };
+            // respecting top if provided
+            if (top.HasValue)
+            {
+                pagReq.Top = top.ToString();
+            }
+
+            CommonJobQueryFilters commonFilters = GetQueryObject(
+                backupManagementType,
+                startTime,
+                endTime,
+                jobId,
+                status,
+                operation);
+
+            return BmsAdapter.Client.Job.ListAsync(
+                resourceGroupName,
+                resourceName,
+                commonFilters,
+                pagReq,
+                BmsAdapter.GetCustomRequestHeaders(),
+                BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        public BaseRecoveryServicesJobResponse CancelJob(string jobId)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+
+            return BmsAdapter.Client.Job.CancelJobAsync(
+                resourceGroupName,
+                resourceName,
+                jobId,
+                BmsAdapter.GetCustomRequestHeaders(),
+                BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        public JobResponse GetJobOperationStatus(string jobId, string operationId)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+
+            return BmsAdapter.Client.Job.GetOperationResultAsync(
+                resourceGroupName,
+                resourceName,
+                jobId,
+                operationId,
+                BmsAdapter.GetCustomRequestHeaders(),
+                BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        #region private helpers
+
+        public CommonJobQueryFilters GetQueryObject(
+            string backupManagementType,
+            DateTime startTime,
+            DateTime endTime,
+            string jobId,
+            string status,
+            string operation)
+        {
+            // build query filters object.
+            // currently we don't support any provider specific filters.
+            // so we are initializing the object directly
+            CommonJobQueryFilters commonFilters = new CommonJobQueryFilters()
+            {
+                BackupManagementType = backupManagementType,
+                StartTime = CommonHelpers.GetDateTimeStringForService(startTime),
+                EndTime = CommonHelpers.GetDateTimeStringForService(endTime),
+                JobId = jobId,
+                Status = status,
+                Operation = operation
+            };
+
+            return commonFilters;
+        }
+
+        #endregion
     }
 }

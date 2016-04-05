@@ -18,47 +18,106 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Update existing protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesProtectionPolicy")]    
+    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesProtectionPolicy"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>))]
     public class SetAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "")]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public AzureRmRecoveryServicesPolicyBase Policy { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public WorkloadType WorkloadType { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public BackupManagementType BackupManagementType { get; set; }
-        
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.RetentionPolicy)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesRetentionPolicyBase RetentionPolicy { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.SchedulePolicy)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }      
-
+        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }
+       
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            ExecutionBlock(() =>
+            {
+                base.ExecuteCmdlet();
 
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-            {  
-                {GetContainerParams.Name, Name},             
-            }, HydraAdapter);
+                WriteDebug(string.Format("Input params - Policy: {0}" +
+                          "RetentionPolicy:{1}, SchedulePolicy:{2}",
+                          Policy == null ? "NULL" : Policy.ToString(),
+                          RetentionPolicy == null ? "NULL" : RetentionPolicy.ToString(),
+                          SchedulePolicy == null ? "NULL" : SchedulePolicy.ToString()));
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.AzureVM);
+                // Validate policy name
+                PolicyCmdletHelpers.ValidateProtectionPolicyName(Policy.Name);
+
+                // Validate if policy already exists               
+                ProtectionPolicyResponse servicePolicy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                                              Policy.Name, HydraAdapter);
+                if (servicePolicy == null)
+                {
+                    throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Policy.Name));
+                }
+
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                { 
+                    {PolicyParams.ProtectionPolicy, Policy},
+                    {PolicyParams.RetentionPolicy, RetentionPolicy},
+                    {PolicyParams.SchedulePolicy, SchedulePolicy},                
+                }, HydraAdapter);
+
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType,
+                                                                                         Policy.BackupManagementType);                
+                ProtectionPolicyResponse policyResponse = psBackupProvider.ModifyPolicy();
+                WriteDebug("ModifyPolicy http response from service: " + policyResponse.StatusCode.ToString());
+
+                if(policyResponse.StatusCode == System.Net.HttpStatusCode.Accepted)
+                {
+                    WriteDebug("Tracking operation status URL for completion: " +
+                                policyResponse.AzureAsyncOperation);
+
+                    // Track OperationStatus URL for operation completion
+                    BackUpOperationStatusResponse operationResponse =  WaitForOperationCompletionUsingStatusLink(
+                                                policyResponse.AzureAsyncOperation,
+                                                HydraAdapter.GetProtectionPolicyOperationStatusByURL);
+
+                    WriteDebug("Final operation status: " + operationResponse.OperationStatus.Status);
+
+                    if (operationResponse.OperationStatus.Properties != null &&
+                       ((OperationStatusJobsExtendedInfo)operationResponse.OperationStatus.Properties).JobIds != null)
+                    {
+                        // get list of jobIds and return jobResponses                    
+                        WriteObject(GetJobObject(((OperationStatusJobsExtendedInfo)operationResponse.OperationStatus.Properties).JobIds));
+                    }
+
+                    if (operationResponse.OperationStatus.Status == OperationStatusValues.Failed.ToString())
+                    {
+                        // if operation failed, then trace error and throw exception
+                        if (operationResponse.OperationStatus.OperationStatusError != null)
+                        {
+                            WriteDebug(string.Format(
+                                         "OperationStatus Error: {0} " +
+                                         "OperationStatus Code: {1}",
+                                         operationResponse.OperationStatus.OperationStatusError.Message,
+                                         operationResponse.OperationStatus.OperationStatusError.Code));
+                        }                                     
+                    }
+                }
+                else
+                {
+                    // Hydra will return OK if NO datasources are associated with this policy
+                    WriteDebug("No datasources are associated with Policy, http response code: " +
+                                policyResponse.StatusCode.ToString());
+                }
+            });
         }
     }
 }

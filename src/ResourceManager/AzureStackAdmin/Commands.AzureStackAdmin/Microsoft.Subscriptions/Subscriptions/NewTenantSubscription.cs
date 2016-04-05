@@ -15,8 +15,8 @@
 namespace Microsoft.AzureStack.Commands
 {
     using System;
+    using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
@@ -52,6 +52,17 @@ namespace Microsoft.AzureStack.Commands
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// This queue is used by the tests to assign fixed SubscritionIds
+        /// every time the test runs
+        /// </summary>
+        public static Queue<Guid> SubscriptionIds { get; set; }
+
+        static NewTenantSubscription()
+        {
+            SubscriptionIds = new Queue<Guid>();
+        }
+
+        /// <summary>
         /// Gets the subscription definition.
         /// </summary>
         protected SubscriptionDefinition GetSubscriptionDefinition()
@@ -59,7 +70,9 @@ namespace Microsoft.AzureStack.Commands
             // TODO: determine any extra properties which could / should be set
             return new SubscriptionDefinition()
             {
-                SubscriptionId = Guid.NewGuid().ToString(),
+                SubscriptionId = (NewTenantSubscription.SubscriptionIds.Count == 0
+                    ? Guid.NewGuid()
+                    : NewTenantSubscription.SubscriptionIds.Dequeue()).ToString(),
                 DisplayName = this.DisplayName,
                 OfferId = this.OfferId,
                 OfferName = GetAndValidateOfferName(this.OfferId),

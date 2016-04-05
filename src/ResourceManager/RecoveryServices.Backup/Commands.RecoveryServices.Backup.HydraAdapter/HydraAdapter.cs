@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         const string AppSettingsSectionName = "appSettings";
         const string RecoveryServicesResourceNamespace = "Microsoft.RecoveryServices";
         const string ProviderNamespaceKey = "ProviderNamespace";
-        const string AzureFabricName = "AzureIaasVM";
+        const string AzureFabricName = "Azure";
 
-        public ClientProxy<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders> BmsAdapter;
+        ClientProxy<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders> BmsAdapter;
 
         public HydraAdapter(SubscriptionCloudCredentials creds, Uri baseUri)
         {

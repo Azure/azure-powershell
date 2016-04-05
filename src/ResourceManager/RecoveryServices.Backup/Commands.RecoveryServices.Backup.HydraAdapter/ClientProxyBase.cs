@@ -19,11 +19,13 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public class ClientProxyBase
-    {
+    {   
         protected object[] Parameters;
 
         /// <summary>
@@ -36,7 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// </summary>
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public CancellationToken CmdletCancellationToken;
-
+        
         public ClientProxyBase(params object[] parameters)
         {
             Parameters = parameters;
@@ -55,6 +57,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         public string GetClientRequestId()
         {
             return ClientRequestId;
+        }
+
+        public string GetResourceName()
+        {
+            if (string.IsNullOrEmpty(PSRecoveryServicesClient.arsVault.Name))
+            {
+                throw new ArgumentException(Resources.SetVaultContextFirst);
+            }
+            return PSRecoveryServicesClient.arsVault.Name;
+        }
+
+        public string GetResourceGroupName()
+        {
+            if (string.IsNullOrEmpty(PSRecoveryServicesClient.arsVault.ResouceGroupName))
+            {
+                throw new ArgumentException(Resources.SetVaultContextFirst);
+            }
+            return PSRecoveryServicesClient.arsVault.ResouceGroupName;
+        }
+
+        public string GetResourceLocation()
+        {
+            if (string.IsNullOrEmpty(PSRecoveryServicesClient.arsVault.Location))
+            {
+                throw new ArgumentException(Resources.SetVaultContextFirst);
+            }
+            return PSRecoveryServicesClient.arsVault.Location;
         }
     }
 }

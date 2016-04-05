@@ -7,8 +7,8 @@
     <ProjectGuid>{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Models</RootNamespace>
-    <AssemblyName>Models</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.RecoveryServicesBackupManagement">
+      <HintPath>..\Commands.RecoveryServices.Backup.HydraAdapter\Resources\Microsoft.Azure.Management.RecoveryServicesBackupManagement.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,16 +42,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmJob.cs" />
+    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmRecoveryPoint.cs" />
     <Compile Include="BaseObjects.cs" />
     <Compile Include="CmdletParamEnums.cs" />
     <Compile Include="CommonModels\Utils.cs" />
     <Compile Include="CommonModels\Enums.cs" />
     <Compile Include="CommonModels\PolicyRetentionObjects.cs" />
     <Compile Include="CommonModels\PolicyScheduleObjects.cs" />
-    <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmPolicy.cs" />
-    <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmItem.cs" />
-    <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmContainer.cs" />
+    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmPolicy.cs" />
+    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmItem.cs" />
+    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmContainer.cs" />
+    <Compile Include="DpmModels\AzureRmRecoveryServicesDpmContainer.cs" />
+    <Compile Include="MabModels\AzureRmRecoveryServicesMabContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UriEnums.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

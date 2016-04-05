@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
@@ -34,11 +35,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         BaseRecoveryServicesJobResponse TriggerRestore();
 
         ProtectedItemResponse GetProtectedItem();
+        
+        AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails();
 
-        RecoveryPointResponse GetRecoveryPoint();
+        List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints();
 
         ProtectionPolicyResponse CreatePolicy();
 
-        ProtectionPolicyResponse ModifyPolicy();
+        ProtectionPolicyResponse ModifyPolicy();        
+
+        AzureRmRecoveryServicesSchedulePolicyBase GetDefaultSchedulePolicyObject();
+
+        AzureRmRecoveryServicesRetentionPolicyBase GetDefaultRetentionPolicyObject();        
+
+        List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers();
+
+        List<AzureRmRecoveryServicesItemBase> ListProtectedItems();
     }
 }

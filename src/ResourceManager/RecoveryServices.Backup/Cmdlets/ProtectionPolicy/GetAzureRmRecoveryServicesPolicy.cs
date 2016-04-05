@@ -20,29 +20,121 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Get list of protection policies
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesProtectionPolicy"), OutputType(typeof(AzureRmRecoveryServicesPolicyBase), typeof(List<AzureRmRecoveryServicesPolicyBase>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesProtectionPolicy", DefaultParameterSetName = NoParamSet), OutputType(typeof(List<AzureRmRecoveryServicesPolicyBase>))]
     public class GetAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "")]
+        protected const string PolicyNameParamSet = "PolicyNameParamSet";
+        protected const string WorkloadParamSet = "WorkloadParamSet";
+        protected const string NoParamSet = "NoParamSet";
+        protected const string WorkloadBackupMangementTypeParamSet = "WorkloadBackupManagementTypeParamSet";
+
+        [Parameter(ParameterSetName = PolicyNameParamSet, Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(ParameterSetName = WorkloadParamSet, Position = 2, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 2, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [ValidateNotNullOrEmpty]
+        public WorkloadType? WorkloadType { get; set; }
+
+        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 3, Mandatory = true, HelpMessage = ParamHelpMsg.Common.BackupManagementType)]
+        [ValidateNotNullOrEmpty]
+        public BackupManagementType? BackupManagementType { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+           ExecutionBlock(() =>
+           {
+               base.ExecuteCmdlet();
 
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-            {  
-                {GetContainerParams.Name, Name},             
-            }, HydraAdapter);
+               WriteDebug(string.Format("Input params - Name:{0}, " +
+                                     "WorkloadType: {1}, BackupManagementType:{2}, " +
+                                     "ParameterSetName: {3}",
+                                     Name == null ? "NULL" : Name,
+                                     WorkloadType.HasValue ? WorkloadType.ToString() : "NULL",
+                                     BackupManagementType.HasValue ? BackupManagementType.ToString() : "NULL",
+                                     this.ParameterSetName));
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.AzureVM);
+
+               List<AzureRmRecoveryServicesPolicyBase> policyList = new List<AzureRmRecoveryServicesPolicyBase>();
+               
+               if (this.ParameterSetName == PolicyNameParamSet)
+               {                   
+                   // validate policyName
+                   PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
+
+                   // query service
+                   HydraModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                     Name,
+                                                     HydraAdapter);
+                   if (policy == null)
+                   {
+                       throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
+                   }
+                   policyList.Add(ConversionHelpers.GetPolicyModel(policy.Item));
+               }
+               else
+               {
+                   string hydraProviderType = null;                   
+
+                   switch (this.ParameterSetName)
+                   {
+                       case WorkloadParamSet:
+                           if (WorkloadType == Models.WorkloadType.AzureVM)
+                           {
+                               hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureVM);
+                           }
+                           break;
+
+                       case WorkloadBackupMangementTypeParamSet:
+                           if (WorkloadType == Models.WorkloadType.AzureVM)
+                           {
+                               if (BackupManagementType != Models.BackupManagementType.AzureVM)
+                               {
+                                   throw new ArgumentException(Resources.AzureVMUnsupportedBackupManagementTypeException);
+                               }
+                               hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureVM);
+                           }
+                           else
+                           {
+                               throw new ArgumentException(string.Format(
+                                           Resources.UnsupportedWorkloadBackupManagementTypeException,       
+                                           WorkloadType.ToString(),
+                                           BackupManagementType.ToString()));
+                           }
+                           break;
+
+                       case NoParamSet:
+                           // query params should be null by default
+                           break;
+
+                       default:
+                           break;
+                   }
+
+                   HydraModel.ProtectionPolicyQueryParameters queryParams = new HydraModel.ProtectionPolicyQueryParameters()
+                   {
+                       BackupManagementType = hydraProviderType
+                   };
+
+                   WriteDebug("going to query service to get list of policies");
+                   HydraModel.ProtectionPolicyListResponse respList = HydraAdapter.ListProtectionPolicy(queryParams);
+                   WriteDebug("Successfully got response from service");
+
+                   policyList = ConversionHelpers.GetPolicyModelList(respList);
+               }
+
+               WriteObject(policyList);
+           });
         }
     }
 }

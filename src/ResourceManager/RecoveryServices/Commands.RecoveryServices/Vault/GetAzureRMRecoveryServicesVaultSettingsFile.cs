@@ -16,7 +16,7 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -38,22 +38,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByDefault, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ForSite, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ARSParameterSets.ByDefault, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ARSVault Vault { get; set; }
 
         /// <summary>
         /// Gets or sets Site Identifier.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ForSite, Mandatory = true)]
+        [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public String SiteIdentifier { get; set; }
 
         /// <summary>
         /// Gets or sets SiteFriendlyName.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ForSite, Mandatory = true)]
+        [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public String SiteFriendlyName { get; set; }
 
@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByDefault)]
-        [Parameter(ParameterSetName = ASRParameterSets.ForSite)]
+        [Parameter(ParameterSetName = ARSParameterSets.ByDefault)]
+        [Parameter(ParameterSetName = ARSParameterSets.ForSite)]
         public string Path { get; set; }
 
         #endregion Parameters

@@ -22,15 +22,15 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public partial class HydraAdapter
-    {        
+    {
         /// <summary>
         /// Fetches protection containers in the vault according to the query params
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public IEnumerable<ProtectionContainerResource> RecoveryServicesListContainers(string resourceGroupName, string resourceName, ProtectionContainerListQueryParams queryParams)
+        public IEnumerable<ProtectionContainerResource> ListContainers(ProtectionContainerListQueryParams queryParams)
         {
-            var listResponse = BmsAdapter.Client.Container.ListAsync(resourceGroupName, resourceName, queryParams,
+            var listResponse = BmsAdapter.Client.Container.ListAsync(BmsAdapter.GetResourceGroupName(), BmsAdapter.GetResourceName(), queryParams,
                 BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
             return listResponse.ItemList.ProtectionContainers;
         }
@@ -39,11 +39,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// Triggers refresh of container catalog in service
         /// </summary>
         /// <returns></returns>
-        public BaseRecoveryServicesJobResponse RecoveryServicesRefreshContainers(string resourceGroupName, string resourceName)
+        public BaseRecoveryServicesJobResponse RefreshContainers()
         {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+
             var response = BmsAdapter.Client.Container.RefreshAsync(
                 resourceGroupName, resourceName,
                 BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, BmsAdapter.CmdletCancellationToken).Result;
+            return response;
+        }
+
+        /// <summary>
+        /// Unregister a container in service
+        /// </summary>
+        /// <returns></returns>
+        public AzureOperationResponse UnregisterContainers(string containerName)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+            
+            var response = BmsAdapter.Client.Container.UnregisterAsync(
+                resourceGroupName, resourceName, containerName,
+                BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
             return response;
         }
     }

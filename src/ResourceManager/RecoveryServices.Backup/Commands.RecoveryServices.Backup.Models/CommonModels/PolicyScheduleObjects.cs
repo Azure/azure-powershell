@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -30,37 +31,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public override void Validate()
         {
-            if (ScheduleRunFrequency == ScheduleRunType.Invalid)
-            {
-                throw new ArgumentException("ScheduleRunFrequency is set to Invalid");
-            }
-
             //Currently only one scheduled run time is allowed
-            if (ScheduleRunTimes == null || ScheduleRunTimes.Count != 1)
+            //Validate that the schedule runtime is in multiples of 30 Mins
+            if (ScheduleRunTimes == null || ScheduleRunTimes.Count != 1 || 
+                ScheduleRunTimes[0].Minute % 30 != 0 || 
+                ScheduleRunTimes[0].Second != 0 || 
+                ScheduleRunTimes[0].Millisecond != 0)
             {
-                throw new ArgumentException("", "ScheduleRunTimes");
+                throw new ArgumentException(Resources.InvalidScheduleTimeInScheduleException);
             }
 
-            //Validate that the schedule runtime is in multiples of 30 Mins
-            if (ScheduleRunTimes[0].Minute % 30 != 0 || ScheduleRunTimes[0].Second != 0 || ScheduleRunTimes[0].Millisecond != 0)
+            if(ScheduleRunTimes[0].Kind != DateTimeKind.Utc)
             {
-                throw new ArgumentException("ScheduleTimes must be of multiples of 30 Mins with Seconds " +
-                                            "and milliseconds set to 0");
+                throw new ArgumentException(Resources.ScheduleTimeNotInUTCTimeZoneException);
             }
 
             if (ScheduleRunFrequency == ScheduleRunType.Weekly)
             {
-                if (ScheduleRunDays == null || ScheduleRunDays.Count == 0)
+                if (ScheduleRunDays == null || ScheduleRunDays.Count == 0 || 
+                    ScheduleRunDays.Count != ScheduleRunDays.Distinct().Count())
                 {
-                    throw new ArgumentException("", "scheduleRunDays");
-                }              
+                    throw new ArgumentException(Resources.InvalidScheduleRunDaysInScheduleException);
+                }                
             }
         }
 
         public override string ToString()
         {
             return String.Format("scheduleRunType:{0}, ScheduleRunDays:{1}, ScheduleRunTimes:{2}",
-                                  ScheduleRunFrequency, ScheduleRunDays, ScheduleRunTimes);
+                                  ScheduleRunFrequency, 
+                                  TraceUtils.GetString(ScheduleRunDays), 
+                                  TraceUtils.GetString(ScheduleRunTimes));
         }
     }
 }

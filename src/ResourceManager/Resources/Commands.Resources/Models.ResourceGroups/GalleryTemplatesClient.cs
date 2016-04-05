@@ -24,14 +24,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Gallery.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using Microsoft.Azure.Common.Authentication;
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Common.OData;
 
 namespace Microsoft.Azure.Commands.Resources.Models

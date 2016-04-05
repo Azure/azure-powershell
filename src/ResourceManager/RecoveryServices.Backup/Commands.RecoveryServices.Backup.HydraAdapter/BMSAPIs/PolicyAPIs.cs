@@ -13,14 +13,67 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public partial class HydraAdapter
     {
+        public ProtectionPolicyResponse CreateOrUpdateProtectionPolicy(
+                string policyName,
+                ProtectionPolicyRequest request)
+        {           
+            return BmsAdapter.Client.ProtectionPolicy.CreateOrUpdateAsync(
+                                     BmsAdapter.GetResourceGroupName(),
+                                     BmsAdapter.GetResourceName(), 
+                                     policyName, 
+                                     request,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;            
+        }
+
+        public ProtectionPolicyResponse GetProtectionPolicy(string policyName)
+        {
+            return BmsAdapter.Client.ProtectionPolicy.GetAsync(
+                                     BmsAdapter.GetResourceGroupName(),
+                                     BmsAdapter.GetResourceName(),
+                                     policyName,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        public ProtectionPolicyListResponse ListProtectionPolicy(
+                                            ProtectionPolicyQueryParameters queryFilter)
+        {           
+            return BmsAdapter.Client.ProtectionPolicy.ListAsync(
+                                     BmsAdapter.GetResourceGroupName(),
+                                     BmsAdapter.GetResourceName(),
+                                     queryFilter,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        public BackUpOperationStatusResponse GetProtectionPolicyOperationStatusByURL(string url)
+        {
+            return BmsAdapter.Client.ProtectionPolicy.GetOperationStatusByURLAsync(
+                              url,
+                              BmsAdapter.GetCustomRequestHeaders(),
+                              BmsAdapter.CmdletCancellationToken).Result;                              
+        }
+
+        public AzureOperationResponse RemoveProtectionPolicy(
+                string policyName)
+        {
+            return BmsAdapter.Client.ProtectionPolicy.DeleteAsync(
+                                     BmsAdapter.GetResourceGroupName(),
+                                     BmsAdapter.GetResourceName(),
+                                     policyName,
+                                     BmsAdapter.GetCustomRequestHeaders(),
+                                     BmsAdapter.CmdletCancellationToken).Result;
+        }
     }
 }

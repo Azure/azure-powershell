@@ -18,47 +18,83 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Create new protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesProtectionPolicy")]    
+    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesProtectionPolicy"), OutputType(typeof(AzureRmRecoveryServicesPolicyBase))]
     public class NewAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "")]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsg.Common.BackupManagementType, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public BackupManagementType BackupManagementType { get; set; }
-        
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+        public BackupManagementType? BackupManagementType { get; set; }
+
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.RetentionPolicy, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesRetentionPolicyBase RetentionPolicy { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.SchedulePolicy, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }      
+        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+           ExecutionBlock(() =>
+           {
+               base.ExecuteCmdlet();
 
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-            {  
-                {GetContainerParams.Name, Name},             
-            }, HydraAdapter);
+               WriteDebug(string.Format("Input params - Name:{0}, WorkloadType:{1}, " +
+                          "BackupManagementType: {2}, " +
+                          "RetentionPolicy:{3}, SchedulePolicy:{4}",
+                          Name, WorkloadType.ToString(),
+                          BackupManagementType.HasValue ? BackupManagementType.ToString() : "NULL",
+                          RetentionPolicy == null ? "NULL" : RetentionPolicy.ToString(),
+                          SchedulePolicy == null ? "NULL" : SchedulePolicy.ToString()));
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.AzureVM);
+               // validate policy name
+               PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
+
+               // Validate if policy already exists               
+               if (PolicyCmdletHelpers.GetProtectionPolicyByName(Name, HydraAdapter) != null)
+               {
+                   throw new ArgumentException(string.Format(Resources.PolicyAlreadyExistException, Name));
+               }
+
+               PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+               {  
+                   {PolicyParams.PolicyName, Name},
+                   {PolicyParams.WorkloadType, WorkloadType},                   
+                   {PolicyParams.RetentionPolicy, RetentionPolicy},
+                   {PolicyParams.SchedulePolicy, SchedulePolicy},                
+               }, HydraAdapter);
+
+               IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+               psBackupProvider.CreatePolicy();
+
+               WriteDebug("Successfully created policy, now fetching it from service: " + Name);
+
+               // now get the created policy and return
+               HydraModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                                           Name,
+                                                                           HydraAdapter);
+               // now convert hydraPolicy to PSObject
+               WriteObject(ConversionHelpers.GetPolicyModel(policy.Item));
+           });
         }
     }
 }
