@@ -437,7 +437,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // 1. Filter by container
             itemModels = itemModels.Where(itemModel =>
             {
-                return itemModel.ContainerName == container.Name;
+                // return itemModel.ContainerName == container.Name;
+                return container.Name.Contains(itemModel.ContainerName);
             }).ToList();
 
             // 2. Filter by item's friendly name
