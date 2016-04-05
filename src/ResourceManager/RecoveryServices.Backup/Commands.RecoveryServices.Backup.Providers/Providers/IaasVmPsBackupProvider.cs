@@ -78,10 +78,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 ValidateAzureVMEnableProtectionRequest(azureVMName, azureVMCloudServiceName, azureVMResourceGroupName, policy);
 
-                AzureIaaSVMProtectableItem protectableObject = GetAzureVMProtectableObject(azureVMName, azureVMRGName, isComputeAzureVM);
+                ProtectableObjectResource protectableObjectResource = GetAzureVMProtectableObject(azureVMName, azureVMRGName, isComputeAzureVM);
 
-                containerUri = protectableObject.ContainerUri;
-                protectedItemUri = protectableObject.ProtectableObjectUri;
+                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(protectableObjectResource.Id);
+                containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+                protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
             }
             else
             {
@@ -89,11 +90,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ValidateAzureVMModifyProtectionRequest(itemBase, policy);
 
                 isComputeAzureVM =  IsComputeAzureVM(item.VirtualMachineId);
-
-                string containerType = HydraHelpers.GetHydraContainerType(item.ContainerType);
-                string vmType = HydraHelpers.GetHydraWorkloadType(item.WorkloadType);
-                containerUri = string.Join(separator, new string[] { containerType, item.ContainerName });
-                protectedItemUri = string.Join(separator, new string[] { vmType, item.Name });
+                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+                containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+                protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
             }
 
             // construct Hydra protectedItem request
@@ -697,19 +696,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return isComputeAzureVM;
         }
 
-        private AzureIaaSVMProtectableItem GetAzureVMProtectableObject(string azureVMName, string azureVMRGName, bool isComputeAzureVM)
+        private ProtectableObjectResource GetAzureVMProtectableObject(string azureVMName, string azureVMRGName, bool isComputeAzureVM)
         {
             //TriggerDiscovery if needed
 
             bool isDiscoveryNeed = false;
 
-            AzureIaaSVMProtectableItem protectableObject = null;
-            isDiscoveryNeed = IsDiscoveryNeeded(azureVMName, azureVMRGName, isComputeAzureVM, out protectableObject);
+            ProtectableObjectResource protectableObjectResource = null;
+            isDiscoveryNeed = IsDiscoveryNeeded(azureVMName, azureVMRGName, isComputeAzureVM, out protectableObjectResource);
             if (isDiscoveryNeed)
             {
                 Logger.Instance.WriteDebug(String.Format(Resources.VMNotDiscovered, azureVMName));
                 RefreshContainer();
-                isDiscoveryNeed = IsDiscoveryNeeded(azureVMName, azureVMRGName, isComputeAzureVM, out protectableObject);
+                isDiscoveryNeed = IsDiscoveryNeeded(azureVMName, azureVMRGName, isComputeAzureVM, out protectableObjectResource);
                 if (isDiscoveryNeed == true)
                 {
                     // Container is not discovered. Throw exception
@@ -719,7 +718,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     Logger.Instance.ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
                 }
             }
-            if (protectableObject == null)
+            if (protectableObjectResource == null)
             {
                 // Container is not discovered. Throw exception
                 string vmversion = (isComputeAzureVM) ? computeAzureVMVersion : classicComputeAzureVMVersion;
@@ -728,15 +727,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
             }
 
-            return protectableObject;
+            return protectableObjectResource;
 
         }
 
         private bool IsDiscoveryNeeded(string vmName, string rgName, bool isComputeAzureVM,
-            out AzureIaaSVMProtectableItem protectableObject)
+            out ProtectableObjectResource protectableObjectResource)
         {
             bool isDiscoveryNeed = true;
-            protectableObject = null;
+            protectableObjectResource = null;
             string vmVersion = string.Empty;
             vmVersion = (isComputeAzureVM) == true ? computeAzureVMVersion : classicComputeAzureVMVersion;
 
@@ -767,7 +766,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         && string.Compare(iaaSVMProtectableItem.ResourceGroup, rgName, true) == 0
                         && string.Compare(iaaSVMProtectableItem.VirtualMachineVersion, vmVersion, true) == 0)
                     {
-                        protectableObject = iaaSVMProtectableItem;
+                        protectableObjectResource = protectableItem;
                         isDiscoveryNeed = false;
                         break;
                     }
