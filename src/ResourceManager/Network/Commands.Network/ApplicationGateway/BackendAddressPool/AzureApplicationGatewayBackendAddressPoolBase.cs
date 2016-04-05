@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -28,20 +30,12 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResourceId",
-                HelpMessage = "Resource IDs of the application gateway backend servers")]
-        [ValidateNotNullOrEmpty]
-        public List<string> BackendIPConfigurationIds { get; set; }
-
-        [Parameter(
-                ParameterSetName = "SetByIP",
                 HelpMessage = "IP addresses of application gateway backend servers")]
         [ValidateNotNullOrEmpty]
         public List<string> BackendIPAddresses { get; set; }
 
         [Parameter(
-        ParameterSetName = "SetByFqdn",
-        HelpMessage = "FQDNs of application gateway backend servers")]
+               HelpMessage = "FQDNs of application gateway backend servers")]
         [ValidateNotNullOrEmpty]
         public List<string> BackendFqdns { get; set; }         
 
@@ -51,17 +45,11 @@ namespace Microsoft.Azure.Commands.Network
 
             backendAddressPool.Name = this.Name;
 
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResourceId))
+            if (BackendIPAddresses != null && BackendFqdns != null)
             {
-                backendAddressPool.BackendIpConfigurations = new System.Collections.Generic.List<PSResourceId>();
-                foreach (string id in this.BackendIPConfigurationIds)
-                {
-                    var backendIpConfig = new PSResourceId();
-                    backendIpConfig.Id = id;
-                    backendAddressPool.BackendIpConfigurations.Add(backendIpConfig);
-                }
+                throw new ArgumentException("At most one of BackendIPAddresses and BackendFqdns can be specified.");
             }
-            else if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByIP))
+            else if (BackendIPAddresses != null && BackendIPAddresses.Count > 0)
             {
                 backendAddressPool.BackendAddresses = new System.Collections.Generic.List<PSApplicationGatewayBackendAddress>();
                 foreach (string ip in this.BackendIPAddresses)
@@ -71,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
                     backendAddressPool.BackendAddresses.Add(backendAddress);
                 }
             }
-            else
+            else if (BackendFqdns != null && BackendFqdns.Count > 0)
             {
                 backendAddressPool.BackendAddresses = new System.Collections.Generic.List<PSApplicationGatewayBackendAddress>();
                 foreach (string fqdn in this.BackendFqdns)
@@ -79,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
                     var backendAddress = new PSApplicationGatewayBackendAddress();
                     backendAddress.Fqdn = fqdn;
                     backendAddressPool.BackendAddresses.Add(backendAddress);
-                }
+                }                
             }
 
             backendAddressPool.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
