@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.WindowsConfiguration omObject;
         
-        public PSWindowsConfiguration(System.Nullable<bool> enableAutomaticUpdates)
+        public PSWindowsConfiguration(System.Nullable<bool> enableAutomaticUpdates = null)
         {
             this.omObject = new Microsoft.Azure.Batch.WindowsConfiguration(enableAutomaticUpdates);
         }

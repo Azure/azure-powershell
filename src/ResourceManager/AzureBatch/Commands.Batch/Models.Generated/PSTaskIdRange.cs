@@ -29,14 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSAutoScaleRunError
+    public class PSTaskIdRange
     {
         
-        internal Microsoft.Azure.Batch.AutoScaleRunError omObject;
+        internal Microsoft.Azure.Batch.TaskIdRange omObject;
         
-        private IReadOnlyList<PSNameValuePair> values;
+        public PSTaskIdRange(int start, int end)
+        {
+            this.omObject = new Microsoft.Azure.Batch.TaskIdRange(start, end);
+        }
         
-        internal PSAutoScaleRunError(Microsoft.Azure.Batch.AutoScaleRunError omObject)
+        internal PSTaskIdRange(Microsoft.Azure.Batch.TaskIdRange omObject)
         {
             if ((omObject == null))
             {
@@ -45,42 +48,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Code
+        public int End
         {
             get
             {
-                return this.omObject.Code;
+                return this.omObject.End;
             }
         }
         
-        public string Message
+        public int Start
         {
             get
             {
-                return this.omObject.Message;
-            }
-        }
-        
-        public IReadOnlyList<PSNameValuePair> Values
-        {
-            get
-            {
-                if (((this.values == null) 
-                            && (this.omObject.Values != null)))
-                {
-                    List<PSNameValuePair> list;
-                    list = new List<PSNameValuePair>();
-                    IEnumerator<Microsoft.Azure.Batch.NameValuePair> enumerator;
-                    enumerator = this.omObject.Values.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(new PSNameValuePair(enumerator.Current));
-                    }
-                    this.values = list.AsReadOnly();
-                }
-                return this.values;
+                return this.omObject.Start;
             }
         }
     }
