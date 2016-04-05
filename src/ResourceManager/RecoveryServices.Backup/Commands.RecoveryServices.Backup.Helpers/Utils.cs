@@ -110,6 +110,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             return itemUri;
         }
+
+        public static string GetProtectableItemUri(Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, string id)
+        {
+            string protectableItemUri = string.Empty;
+
+            if (keyValuePairDict.ContainsKey(CmdletModel.UriEnums.ProtectableItems))
+            {
+                protectableItemUri = keyValuePairDict[CmdletModel.UriEnums.ProtectableItems];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.ProtectableItems.ToString(), id));
+            }
+            return protectableItemUri;
+        }
     
     }
 }

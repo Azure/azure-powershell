@@ -210,11 +210,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable Protection OperationFailed with error code: {0} , and error Message: {1}.
+        ///   Looks up a localized string similar to Disable Protection Operation.
         /// </summary>
-        public static string DisableProtectionOperationFailed {
+        public static string DisableProtectionOperation {
             get {
-                return ResourceManager.GetString("DisableProtectionOperationFailed", resourceCulture);
+                return ResourceManager.GetString("DisableProtectionOperation", resourceCulture);
             }
         }
         
@@ -746,6 +746,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string URIValueNotFound {
             get {
                 return ResourceManager.GetString("URIValueNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId.
+        /// </summary>
+        public static string VirtualMachineIdIsEmptyOrNull {
+            get {
+                return ResourceManager.GetString("VirtualMachineIdIsEmptyOrNull", resourceCulture);
             }
         }
         

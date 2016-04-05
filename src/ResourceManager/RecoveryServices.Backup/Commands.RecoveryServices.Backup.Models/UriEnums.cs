@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Vaults,
         BackupFabrics,
         ProtectionContainers,
+        ProtectableItems,
         ProtectedItems,
         RecoveryPoints,
         BackupJobs,

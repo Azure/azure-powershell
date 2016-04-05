@@ -81,8 +81,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProtectableObjectResource protectableObjectResource = GetAzureVMProtectableObject(azureVMName, azureVMRGName, isComputeAzureVM);
 
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(protectableObjectResource.Id);
-                containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
-                protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+                containerUri = HelperUtils.GetContainerUri(keyValueDict, protectableObjectResource.Id);
+                protectedItemUri = HelperUtils.GetProtectableItemUri(keyValueDict, protectableObjectResource.Id);
             }
             else
             {
@@ -136,10 +136,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             ValidateAzureVMDisableProtectionRequest(itemBase);
 
-            string containerType = HydraHelpers.GetHydraContainerType(item.ContainerType);
-            string vmType = HydraHelpers.GetHydraWorkloadType(item.WorkloadType);
-            string containerUri = string.Join(separator, new string[] { containerType, item.ContainerName });
-            string protectedItemUri = string.Join(separator, new string[] { vmType, item.Name });
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
 
             bool isComputeAzureVM = false;
 
@@ -689,6 +688,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
                                             typeof(AzureRmRecoveryServicesIaasVmItem).ToString()));
             }
+
+            if(string.IsNullOrEmpty(((AzureRmRecoveryServicesIaasVmItem)itemBase).VirtualMachineId))
+            {
+                throw new ArgumentException(Resources.VirtualMachineIdIsEmptyOrNull);
+            }
         }
 
         private void ValidateAzureVMDisableProtectionRequest(AzureRmRecoveryServicesItemBase itemBase)
@@ -698,6 +702,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
                                             typeof(AzureRmRecoveryServicesIaasVmItem).ToString()));
+            }
+
+            if (string.IsNullOrEmpty(((AzureRmRecoveryServicesIaasVmItem)itemBase).VirtualMachineId))
+            {
+                throw new ArgumentException(Resources.VirtualMachineIdIsEmptyOrNull);
             }
 
             ValidateAzureVMWorkloadType(itemBase.WorkloadType);
