@@ -38,6 +38,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSWindowsConfiguration windowsConfiguration;
         
+        public PSVirtualMachineConfiguration(PSImageReference imageReference, string nodeAgentSkuId, PSWindowsConfiguration windowsConfiguration = default(PSWindowsConfiguration))
+        {
+            Microsoft.Azure.Batch.WindowsConfiguration windowsConfigurationOmObject = null;
+            if ((windowsConfiguration != null))
+            {
+                windowsConfigurationOmObject = windowsConfiguration.omObject;
+            }
+            this.omObject = new Microsoft.Azure.Batch.VirtualMachineConfiguration(imageReference.omObject, nodeAgentSkuId, windowsConfigurationOmObject);
+        }
+        
         internal PSVirtualMachineConfiguration(Microsoft.Azure.Batch.VirtualMachineConfiguration omObject)
         {
             if ((omObject == null))
@@ -58,6 +68,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
                 return this.imageReference;
             }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ImageReference = null;
+                }
+                else
+                {
+                    this.omObject.ImageReference = value.omObject;
+                }
+                this.imageReference = value;
+            }
         }
         
         public string NodeAgentSkuId
@@ -65,6 +87,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.NodeAgentSkuId;
+            }
+            set
+            {
+                this.omObject.NodeAgentSkuId = value;
             }
         }
         
@@ -78,6 +104,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.windowsConfiguration = new PSWindowsConfiguration(this.omObject.WindowsConfiguration);
                 }
                 return this.windowsConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.WindowsConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.WindowsConfiguration = value.omObject;
+                }
+                this.windowsConfiguration = value;
             }
         }
     }

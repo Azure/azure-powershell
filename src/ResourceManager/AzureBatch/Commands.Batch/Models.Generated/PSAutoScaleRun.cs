@@ -45,11 +45,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime Timestamp
+        public PSAutoScaleRunError Error
         {
             get
             {
-                return this.omObject.Timestamp;
+                if (((this.error == null) 
+                            && (this.omObject.Error != null)))
+                {
+                    this.error = new PSAutoScaleRunError(this.omObject.Error);
+                }
+                return this.error;
             }
         }
         
@@ -61,16 +66,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSAutoScaleRunError Error
+        public System.DateTime Timestamp
         {
             get
             {
-                if (((this.error == null) 
-                            && (this.omObject.Error != null)))
-                {
-                    this.error = new PSAutoScaleRunError(this.omObject.Error);
-                }
-                return this.error;
+                return this.omObject.Timestamp;
             }
         }
     }

@@ -134,16 +134,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     existingCert = client.ListCertificates(getParameters).FirstOrDefault();
                 }
             }
-            catch (AggregateException ex)
+            catch (BatchException ex)
             {
-                foreach (Exception inner in ex.InnerExceptions)
+                // When the cert doesn't exist, we get a 404 error. For all other errors, throw.
+                if (ex == null || !ex.Message.Contains("NotFound"))
                 {
-                    BatchException batchEx = inner as BatchException;
-                    // When the cert doesn't exist, we get a 404 error. For all other errors, throw.
-                    if (batchEx == null || !batchEx.Message.Contains("NotFound"))
-                    {
-                        throw;
-                    }
+                    throw;
                 }
             }
 

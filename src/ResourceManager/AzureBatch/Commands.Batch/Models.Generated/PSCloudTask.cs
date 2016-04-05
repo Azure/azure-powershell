@@ -38,17 +38,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSComputeNodeInformation computeNodeInformation;
         
-        private PSMultiInstanceSettings multiInstanceSettings;
+        private PSTaskConstraints constraints;
+        
+        private PSTaskDependencies dependsOn;
         
         private IList<PSEnvironmentSetting> environmentSettings;
         
         private PSTaskExecutionInformation executionInformation;
         
+        private PSMultiInstanceSettings multiInstanceSettings;
+        
         private IList<PSResourceFile> resourceFiles;
         
         private PSTaskStatistics statistics;
-        
-        private PSTaskConstraints constraints;
         
         public PSCloudTask(string id, string commandline)
         {
@@ -114,28 +116,28 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSMultiInstanceSettings MultiInstanceSettings
+        public PSTaskConstraints Constraints
         {
             get
             {
-                if (((this.multiInstanceSettings == null) 
-                            && (this.omObject.MultiInstanceSettings != null)))
+                if (((this.constraints == null) 
+                            && (this.omObject.Constraints != null)))
                 {
-                    this.multiInstanceSettings = new PSMultiInstanceSettings(this.omObject.MultiInstanceSettings);
+                    this.constraints = new PSTaskConstraints(this.omObject.Constraints);
                 }
-                return this.multiInstanceSettings;
+                return this.constraints;
             }
             set
             {
                 if ((value == null))
                 {
-                    this.omObject.MultiInstanceSettings = null;
+                    this.omObject.Constraints = null;
                 }
                 else
                 {
-                    this.omObject.MultiInstanceSettings = value.omObject;
+                    this.omObject.Constraints = value.omObject;
                 }
-                this.multiInstanceSettings = value;
+                this.constraints = value;
             }
         }
         
@@ -144,6 +146,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.CreationTime;
+            }
+        }
+        
+        public PSTaskDependencies DependsOn
+        {
+            get
+            {
+                if (((this.dependsOn == null) 
+                            && (this.omObject.DependsOn != null)))
+                {
+                    this.dependsOn = new PSTaskDependencies(this.omObject.DependsOn);
+                }
+                return this.dependsOn;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.DependsOn = null;
+                }
+                else
+                {
+                    this.omObject.DependsOn = value.omObject;
+                }
+                this.dependsOn = value;
             }
         }
         
@@ -232,6 +259,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.LastModified;
+            }
+        }
+        
+        public PSMultiInstanceSettings MultiInstanceSettings
+        {
+            get
+            {
+                if (((this.multiInstanceSettings == null) 
+                            && (this.omObject.MultiInstanceSettings != null)))
+                {
+                    this.multiInstanceSettings = new PSMultiInstanceSettings(this.omObject.MultiInstanceSettings);
+                }
+                return this.multiInstanceSettings;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.MultiInstanceSettings = null;
+                }
+                else
+                {
+                    this.omObject.MultiInstanceSettings = value.omObject;
+                }
+                this.multiInstanceSettings = value;
             }
         }
         
@@ -324,31 +376,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.statistics = new PSTaskStatistics(this.omObject.Statistics);
                 }
                 return this.statistics;
-            }
-        }
-        
-        public PSTaskConstraints Constraints
-        {
-            get
-            {
-                if (((this.constraints == null) 
-                            && (this.omObject.Constraints != null)))
-                {
-                    this.constraints = new PSTaskConstraints(this.omObject.Constraints);
-                }
-                return this.constraints;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.Constraints = null;
-                }
-                else
-                {
-                    this.omObject.Constraints = value.omObject;
-                }
-                this.constraints = value;
             }
         }
         

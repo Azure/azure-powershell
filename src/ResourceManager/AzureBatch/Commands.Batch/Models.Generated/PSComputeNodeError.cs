@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.ComputeNodeError omObject;
         
-        private IEnumerable<PSNameValuePair> errorDetails;
+        private IReadOnlyList<PSNameValuePair> errorDetails;
         
         internal PSComputeNodeError(Microsoft.Azure.Batch.ComputeNodeError omObject)
         {
@@ -53,15 +53,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public string Message
-        {
-            get
-            {
-                return this.omObject.Message;
-            }
-        }
-        
-        public IEnumerable<PSNameValuePair> ErrorDetails
+        public IReadOnlyList<PSNameValuePair> ErrorDetails
         {
             get
             {
@@ -78,9 +70,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSNameValuePair(enumerator.Current));
                     }
-                    this.errorDetails = list;
+                    this.errorDetails = list.AsReadOnly();
                 }
                 return this.errorDetails;
+            }
+        }
+        
+        public string Message
+        {
+            get
+            {
+                return this.omObject.Message;
             }
         }
     }
