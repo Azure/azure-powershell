@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class IaasVmPsBackupProvider : IPsBackupProvider
     {
-        private const int defaultOperationStatusRetryTimeInMilliSec = 5 * 1000; // 10 sec
+        private const int defaultOperationStatusRetryTimeInMilliSec = 5 * 1000; // 5 sec
         private const string separator = ";";
         private const string computeAzureVMVersion = "Compute";
         private const string classicComputeAzureVMVersion = "ClassicCompute";
@@ -64,8 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureRmRecoveryServicesIaasVmItem item = (AzureRmRecoveryServicesIaasVmItem)
                                                  ProviderData.ProviderParameters[ItemParams.Item];
             // do validations
-
-
+            
             string containerUri = "";
             string protectedItemUri = "";
             bool isComputeAzureVM = false;
@@ -196,7 +195,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse TriggerRestore()
         {
-            AzureRmRecoveryServicesIaasVmRecoveryPoint rp = ProviderData.ProviderParameters[RestoreBackupItemParams.RecoveryPoint]
+            AzureRmRecoveryServicesIaasVmRecoveryPoint rp = ProviderData.ProviderParameters[RestoreBackupItemParams.RecoveryPoint] 
                 as AzureRmRecoveryServicesIaasVmRecoveryPoint;
             string storageId = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountId].ToString();
 
@@ -291,7 +290,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CopyScheduleTimeToRetentionTimes((AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
                                              (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy);
             Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
-
+            
             // Now validate both RetentionPolicy and SchedulePolicy together
             PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
                                 (AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
@@ -386,7 +385,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             };
 
             return HydraAdapter.CreateOrUpdateProtectionPolicy(policy.Name,
-                                                               hydraRequest);
+                                                               hydraRequest);            
         }
 
         public List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
@@ -450,7 +449,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     paginationRequest.SkipToken = skipToken;
                 }
             } while (skipToken != null);
-
+            
             List<AzureRmRecoveryServicesItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems, container);
 
             // 1. Filter by container
@@ -496,7 +495,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             return itemModels;
-        }
+        }      
 
         public AzureRmRecoveryServicesSchedulePolicyBase GetDefaultSchedulePolicyObject()
         {
@@ -631,6 +630,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                             type.ToString()));
             }
         }
+        
         private void ValidateAzureVMProtectionPolicy(AzureRmRecoveryServicesPolicyBase policy)
         {
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesIaasVmPolicy))
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             policy.Validate();
         }
 
-        private void ValidateAzureVMEnableProtectionRequest(string vmName, string rgName, string serviceName,
+        private void ValidateAzureVMEnableProtectionRequest(string vmName, string serviceName, string rgName,
             AzureRmRecoveryServicesPolicyBase policy)
         {
             ValidateAzureVMProtectionPolicy(policy);
@@ -686,8 +686,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private void ValidateAzureVMModifyProtectionRequest(AzureRmRecoveryServicesItemBase itemBase,
             AzureRmRecoveryServicesPolicyBase policy)
         {
-            ValidateAzureVMProtectionPolicy(policy);
-
             if (itemBase == null || itemBase.GetType() != typeof(AzureRmRecoveryServicesIaasVmItem))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
@@ -734,7 +732,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 if (isDiscoveryNeed == true)
                 {
                     // Container is not discovered. Throw exception
-                    string errMsg = String.Format(Resources.DiscoveryFailure, azureVMName, azureVMRGName, isComputeAzureVM);
+                    string vmversion = (isComputeAzureVM) ? computeAzureVMVersion : classicComputeAzureVMVersion;
+                    string errMsg = String.Format(Resources.DiscoveryFailure, azureVMName, azureVMRGName, vmversion);
                     Logger.Instance.WriteDebug(errMsg);
                     Logger.Instance.ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
                 }
@@ -742,7 +741,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (protectableObject == null)
             {
                 // Container is not discovered. Throw exception
-                string errMsg = String.Format(Resources.DiscoveryFailure, azureVMName, azureVMRGName, isComputeAzureVM);
+                string vmversion = (isComputeAzureVM) ? computeAzureVMVersion : classicComputeAzureVMVersion;
+                string errMsg = String.Format(Resources.DiscoveryFailure, azureVMName, azureVMRGName, vmversion);
                 Logger.Instance.WriteDebug(errMsg);
                 Logger.Instance.ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
             }
@@ -760,8 +760,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             vmVersion = (isComputeAzureVM) == true ? computeAzureVMVersion : classicComputeAzureVMVersion;
 
             ProtectableObjectListQueryParameters queryParam = new ProtectableObjectListQueryParameters();
-            queryParam.ProviderType = ProviderType.AzureIaasVM.ToString();
-            queryParam.FriendlyName = vmName;
+            // --- TBD To be added once bug is fixed in hydra and service
+            //queryParam.ProviderType = ProviderType.AzureIaasVM.ToString();
+            //queryParam.FriendlyName = vmName;
+
             // No need to use skip or top token here as no pagination support of IaaSVM PO.
 
             //First check if container is discovered or not
@@ -780,8 +782,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     AzureIaaSVMProtectableItem iaaSVMProtectableItem = (AzureIaaSVMProtectableItem)protectableItem.Properties;
                     if (iaaSVMProtectableItem != null &&
-                        iaaSVMProtectableItem.FriendlyName == vmName && iaaSVMProtectableItem.ResourceGroup == rgName
-                        && iaaSVMProtectableItem.VirtualMachineVersion == vmVersion)
+                        string.Compare(iaaSVMProtectableItem.FriendlyName, vmName, true) == 0
+                        && string.Compare(iaaSVMProtectableItem.ResourceGroup, rgName, true) == 0
+                        && string.Compare(iaaSVMProtectableItem.VirtualMachineVersion, vmVersion, true) == 0)
                     {
                         protectableObject = iaaSVMProtectableItem;
                         isDiscoveryNeed = false;
@@ -795,18 +798,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         private void RefreshContainer()
         {
-            bool isRetryNeeded = true;
-            int retryCount = 1;
-            bool isDiscoverySuccessful = true;
+            bool isDiscoverySuccessful = false;
             string errorMessage = string.Empty;
-            while (!isDiscoverySuccessful && retryCount <= 3)
-            {
                 var refreshContainerJobResponse = HydraAdapter.RefreshContainers();
 
                 //Now wait for the operation to Complete
-                isRetryNeeded = WaitForDiscoveryToComplete(refreshContainerJobResponse.Location, out isDiscoverySuccessful, out errorMessage);
-                retryCount++;
-            }
+            WaitForDiscoveryToComplete(refreshContainerJobResponse.Location, out isDiscoverySuccessful, out errorMessage);
 
             if (!isDiscoverySuccessful)
             {
@@ -814,23 +811,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        private bool WaitForDiscoveryToComplete(string locationUri, out bool isDiscoverySuccessful, out string errorMessage)
+        private void WaitForDiscoveryToComplete(string locationUri, out bool isDiscoverySuccessful, out string errorMessage)
         {
-            bool isRetryNeeded = false;
             var status = TrackRefreshContainerOperation(locationUri);
             errorMessage = String.Empty;
 
             isDiscoverySuccessful = true;
             //If operation fails check if retry is needed or not
-            if (status != HttpStatusCode.OK)
+            if (status != HttpStatusCode.NoContent)
             {
                 isDiscoverySuccessful = false;
-                errorMessage = String.Format(Resources.DiscoveryFailureErrorMessage, status);
-                Logger.Instance.WriteDebug(String.Format(Resources.DiscoveryFailureErrorCode, status));
-                // No need to try as service is handling retryable errors
-                isRetryNeeded = false;
+                errorMessage = String.Format(Resources.DiscoveryFailureErrorCode, status);
+                Logger.Instance.WriteDebug(errorMessage);
             }
-            return isRetryNeeded;
         }
 
         private HttpStatusCode TrackRefreshContainerOperation(string operationResultLink, int checkFrequency = defaultOperationStatusRetryTimeInMilliSec)
@@ -848,6 +841,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 catch (Exception ex)
                 {
                     Logger.Instance.WriteDebug(ex.Message);
+                    status = HttpStatusCode.InternalServerError;
                     break;
                 }
             }
@@ -858,7 +852,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else
             {
-                string msg = String.Format("Unexpected http status in response header{ {0}", status);
+                string msg = String.Format("Unexpected http status in response header {0}", status);
                 Logger.Instance.WriteDebug(msg);
                 throw new Exception(msg);
             }

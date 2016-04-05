@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public abstract class RecoveryServicesBackupCmdletBase : AzureRMCmdlet
     {
         // in seconds
-        private int _defaultSleepForOperationTracking = 15;
+        private int _defaultSleepForOperationTracking = 5;
 
         protected HydraAdapterNS.HydraAdapter HydraAdapter { get; set; }
 
@@ -159,6 +159,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             }
 
             return response;
+        }
+
+        protected AzureRmRecoveryServicesJobBase GetCreatedJob(BaseRecoveryServicesJobResponse itemResponse)
+        {
+            WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
+                            itemResponse.AzureAsyncOperation);
+
+            var response = WaitForOperationCompletionUsingStatusLink(
+                                            itemResponse.AzureAsyncOperation,
+                                            HydraAdapter.GetProtectedItemOperationStatusByURL);
+
+            WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
+
+            AzureRmRecoveryServicesJobBase job = null;
+
+            if (response.OperationStatus.Properties != null &&
+                   ((OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
+            {
+                var jobStatusResponse = (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+                job = GetJobObject(jobStatusResponse.JobId);
+            }
+
+            if (response.OperationStatus.Status == OperationStatusValues.Failed)
+            {
+                var errorMessage = string.Format(
+                    Resources.OperationFailed,
+                    Resources.EnableProtectionOperation,
+                    response.OperationStatus.OperationStatusError.Code,
+                    response.OperationStatus.OperationStatusError.Message);
+                throw new Exception(errorMessage);
+            }
+
+            return job;
         }
     }
 }

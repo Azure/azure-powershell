@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
             var jobResponse = psBackupProvider.TriggerBackup();
 
-            WriteObject(OperationStatusHelper.GetJobFromOperation(jobResponse, HydraAdapter));            
+            WriteObject(GetCreatedJob(jobResponse));
         }
     }
 }
