@@ -83,29 +83,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 // Track Response and display job details
 
-                WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
-                                itemResponse.AzureAsyncOperation);
-
-                var response = WaitForOperationCompletionUsingStatusLink(
-                                                itemResponse.AzureAsyncOperation,
-                                                HydraAdapter.GetProtectedItemOperationStatusByURL);
-
-                WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
-
-                if (response.OperationStatus.Properties != null &&
-                       ((HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
-                {
-                    var jobStatusResponse = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
-                    WriteObject(GetJobObject(jobStatusResponse.JobId));
-                }
-
-                if(response.OperationStatus.Status == HydraModel.OperationStatusValues.Failed)
-                {
-                    var errorMessage = string.Format(Resources.EnableProtectionOperationFailed,
-                    response.OperationStatus.OperationStatusError.Code,
-                    response.OperationStatus.OperationStatusError.Message);
-                    throw new Exception(errorMessage);
-                }
+                HandleCreatedJob(itemResponse, Resources.EnableProtectionOperation);
             });
         }
     }

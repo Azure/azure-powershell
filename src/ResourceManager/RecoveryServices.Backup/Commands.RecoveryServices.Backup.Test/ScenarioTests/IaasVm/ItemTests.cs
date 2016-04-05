@@ -45,5 +45,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-DisableAzureVMProtectionScenario");
         }
+
+        [Fact]
+        public void TestBackupItemScenario()
+        {
+            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-BackupItemScenario");
+        }
     }
 }

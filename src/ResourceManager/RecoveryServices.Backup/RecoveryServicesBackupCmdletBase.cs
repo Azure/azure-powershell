@@ -160,5 +160,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             return response;
         }
+
+        protected void HandleCreatedJob(BaseRecoveryServicesJobResponse itemResponse, string operationName)
+        {
+            WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
+                            itemResponse.AzureAsyncOperation);
+
+            var response = WaitForOperationCompletionUsingStatusLink(
+                                            itemResponse.AzureAsyncOperation,
+                                            HydraAdapter.GetProtectedItemOperationStatusByURL);
+
+            WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
+
+            if (response.OperationStatus.Properties != null &&
+                   ((OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
+            {
+                var jobStatusResponse = (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+                WriteObject(GetJobObject(jobStatusResponse.JobId));
+            }
+
+            if (response.OperationStatus.Status == OperationStatusValues.Failed)
+            {
+                var errorMessage = string.Format(
+                    Resources.OperationFailed,
+                    operationName,
+                    response.OperationStatus.OperationStatusError.Code,
+                    response.OperationStatus.OperationStatusError.Message);
+                throw new Exception(errorMessage);
+            }
+        }
     }
 }

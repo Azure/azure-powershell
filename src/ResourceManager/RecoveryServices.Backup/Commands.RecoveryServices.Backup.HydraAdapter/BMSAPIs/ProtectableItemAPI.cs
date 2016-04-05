@@ -38,5 +38,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                                      BmsAdapter.GetCustomRequestHeaders(),
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
+
+        public BaseRecoveryServicesJobResponse TriggerBackup(string containerName, string itemName)
+        {
+            return BmsAdapter.Client.Backup.TriggerBackupAsync(
+                BmsAdapter.GetResourceGroupName(),
+                BmsAdapter.GetResourceName(),
+                BmsAdapter.GetCustomRequestHeaders(),
+                HydraAdapter.AzureFabricName,
+                containerName,
+                itemName,
+                BmsAdapter.CmdletCancellationToken).Result;
+        }
     }
 }
