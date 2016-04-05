@@ -4223,39 +4223,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.DataContract
     public partial class VirtualMachine : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
-        /// Create a new VirtualMachine object.
-        /// </summary>
-        /// <param name="ID">Initial value of ID.</param>
-        /// <param name="vMNetworkAssignments">Initial value of VMNetworkAssignments.</param>
-        /// <param name="grantedToList">Initial value of GrantedToList.</param>
-        /// <param name="vMConnection">Initial value of VMConnection.</param>
-        /// <param name="stampId">Initial value of StampId.</param>
-        /// <param name="newVirtualNetworkAdapterInput">Initial value of NewVirtualNetworkAdapterInput.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static VirtualMachine CreateVirtualMachine(global::System.Guid ID, global::System.Collections.ObjectModel.ObservableCollection<VMNetworkAssignment> vMNetworkAssignments, global::System.Collections.ObjectModel.ObservableCollection<UserAndRole> grantedToList, global::System.Data.Services.Client.DataServiceStreamLink vMConnection, global::System.Guid stampId, global::System.Collections.ObjectModel.ObservableCollection<NewVMVirtualNetworkAdapterInput> newVirtualNetworkAdapterInput)
-        {
-            VirtualMachine virtualMachine = new VirtualMachine();
-            virtualMachine.ID = ID;
-            if ((vMNetworkAssignments == null))
-            {
-                throw new global::System.ArgumentNullException("vMNetworkAssignments");
-            }
-            virtualMachine.VMNetworkAssignments = vMNetworkAssignments;
-            if ((grantedToList == null))
-            {
-                throw new global::System.ArgumentNullException("grantedToList");
-            }
-            virtualMachine.GrantedToList = grantedToList;
-            virtualMachine.VMConnection = vMConnection;
-            virtualMachine.StampId = stampId;
-            if ((newVirtualNetworkAdapterInput == null))
-            {
-                throw new global::System.ArgumentNullException("newVirtualNetworkAdapterInput");
-            }
-            virtualMachine.NewVirtualNetworkAdapterInput = newVirtualNetworkAdapterInput;
-            return virtualMachine;
-        }
-        /// <summary>
+
         /// There are no comments for Property AddedTime in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -6298,28 +6266,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.DataContract
         partial void OnVMBaseConfigurationIdChanging(global::System.Nullable<global::System.Guid> value);
         partial void OnVMBaseConfigurationIdChanged();
         /// <summary>
-        /// There are no comments for Property VMConnection in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceStreamLink VMConnection
-        {
-            get
-            {
-                return this._VMConnection;
-            }
-            set
-            {
-                this.OnVMConnectionChanging(value);
-                this._VMConnection = value;
-                this.OnVMConnectionChanged();
-                this.OnPropertyChanged("VMConnection");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceStreamLink _VMConnection;
-        partial void OnVMConnectionChanging(global::System.Data.Services.Client.DataServiceStreamLink value);
-        partial void OnVMConnectionChanged();
-        /// <summary>
+
         /// There are no comments for Property VMConfigResource in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
