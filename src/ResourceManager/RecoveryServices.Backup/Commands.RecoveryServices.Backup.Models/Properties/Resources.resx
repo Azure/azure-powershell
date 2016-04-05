@@ -362,4 +362,7 @@ Please contact Microsoft for further assistant.</value>
   <data name="PolicyNameIsEmptyOrNull" xml:space="preserve">
     <value>PolicyName is NULL or Empty. Please enter valid PolicyName</value>
   </data>
+  <data name="JobFromNotProvided" xml:space="preserve">
+    <value>Please provide From filter along with To filter.</value>
+  </data>
 </root>

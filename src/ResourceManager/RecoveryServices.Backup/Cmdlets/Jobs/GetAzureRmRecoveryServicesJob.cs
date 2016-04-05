@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of jobs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmBackupJob"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>), typeof(AzureRmRecoveryServicesJobBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesJob"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>), typeof(AzureRmRecoveryServicesJobBase))]
     public class GetAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.FromFilter)]
@@ -67,13 +67,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (From.HasValue)
                 {
-                    WriteDebug("Entered From filter: " + From.Value);
                     rangeStart = From.Value;
+                }
+
+                if (!From.HasValue && To.HasValue)
+                {
+                    throw new Exception(Resources.JobFromNotProvided);
                 }
 
                 if (To.HasValue)
                 {
-                    WriteDebug("Entered To filter; " + To.Value);
                     rangeEnd = To.Value;
                 }
 
@@ -107,6 +110,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 List<AzureRmRecoveryServicesJobBase> result = new List<AzureRmRecoveryServicesJobBase>();
+
+                WriteDebug(string.Format("Filters provided are: StartTime - {0} EndTime - {1} Status - {2} Operation - {3} Type - {4}",
+                    From,
+                    To,
+                    Status,
+                    Operation,
+                    BackupManagementType));
+
                 int resultCount = 0;
                 var adapterResponse = HydraAdapter.GetJobs(JobId,
                     Status.HasValue ? Status.ToString() : null,
@@ -145,6 +156,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                 }
 
+                WriteDebug("Number of jobs fetched: " + result.Count);
                 if (resultCount != 1)
                 {
                     WriteObject(result);

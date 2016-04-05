@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmBackupJobDetails", DefaultParameterSetName = JobFilterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesJobDetails", DefaultParameterSetName = JobFilterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
     public class GetAzureRmRecoveryServicesJobDetails : RecoveryServicesBackupCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     JobId = Job.InstanceId;
                 }
+
+                WriteDebug("Fetching job with ID: " + JobId);
 
                 var adapterResponse = HydraAdapter.GetJob(JobId);
                 WriteObject(JobConversions.GetPSJob(adapterResponse));

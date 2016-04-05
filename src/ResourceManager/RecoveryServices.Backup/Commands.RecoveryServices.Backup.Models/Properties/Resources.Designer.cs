@@ -435,6 +435,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide From filter along with To filter..
+        /// </summary>
+        public static string JobFromNotProvided {
+            get {
+                return ResourceManager.GetString("JobFromNotProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to JobID and Job object provided don&apos;t match each other..
         /// </summary>
         public static string JobJobIdAndJobMismatch {
