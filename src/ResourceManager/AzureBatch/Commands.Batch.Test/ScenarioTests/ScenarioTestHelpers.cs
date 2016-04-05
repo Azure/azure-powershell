@@ -41,20 +41,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     public static class ScenarioTestHelpers
     {
         // NOTE: To save time on setup and compute node allocation when recording, many tests assume the following:
-        //     - The SharedAccount exists under the subscription being used for recording.
         //     - The following commands were run to create a pool, and all 3 compute nodes are allocated:
-        //          $context = Get-AzureRmBatchAccountKeys "<SharedAccount>"
+        //          $context = Get-AzureRmBatchAccountKeys "<Account that will be used for recorded tests>"
         //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         //          $startTask.CommandLine = "cmd /c echo hello"
-        //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
-        internal const string SharedAccount = "pstestaccount";
+        //          $osFamily = "4"
+        //          $targetOSVersion = "*"
+        //          $configuration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+        //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -CloudServiceConfiguration $configuration -TargetDedicated 3 -StartTask $startTask -BatchContext $context
         internal const string SharedPool = "testPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
         internal const string SharedPoolStartTaskStdOutContent = "hello";
-
-        // TO DO: MPI and online/offline node scheduling are only enabled in a few regions, so they need a dedicated account.  Once the features are
-        // enabled everywhere, the tests for these features can just use the default shared account.
-        internal const string MpiOnlineAccount = "batchtest";
 
         // MPI requires a special pool configuration. When recording, the Storage environment variables need to be
         // set so we can upload the MPI installer for use as a start task resource file.
@@ -81,16 +78,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             context.PrimaryAccountKey = response.PrimaryKey;
             context.SecondaryAccountKey = response.SecondaryKey;
             return context;
-        }
-
-        /// <summary>
-        /// Get Batch Context with keys
-        /// </summary>
-        public static BatchAccountContext GetBatchAccountContextWithKeys(BatchController controller, string accountName)
-        {
-            ScenarioTestContext testContext = new ScenarioTestContext();
-
-            return testContext;
         }
 
         /// <summary>

@@ -57,12 +57,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
             cmdlet.JobId = null;
             cmdlet.TaskId = null;
 
-            //AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> response = new AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders>();
-            //response.Headers = new ProxyModels.TaskListSubtasksHeaders();
-            //response.Body = new ProxyModels.CloudTaskListSubtasksResult(new List<ProxyModels.SubtaskInformation>());
             AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> response = BatchTestHelpers.CreateCloudTaskListSubtasksResponse();
             // Build a SubtaskInformation instead of querying the service on a List Subtasks call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.TaskListSubtasksOptions, AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders>>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.TaskListSubtasksOptions, 
+                AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, 
+                ProxyModels.TaskListSubtasksHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
         public void ListBatchSubtasksMaxCountTest()
         {
             // Verify default max count
-            Assert.Equal(Microsoft.Azure.Commands.Batch.Utils.Constants.DefaultMaxCount, cmdlet.MaxCount);
+            Assert.Equal(Utils.Constants.DefaultMaxCount, cmdlet.MaxCount);
 
             // Setup cmdlet to list Subtasks with a max count
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
@@ -154,7 +155,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
         // TO DO: Since we have to fetch the task, the interceptor needs to handle that case too. Once
         // the cmdlet can directly call the List Subtasks method by itself, update these test cases to
         // use the generic interceptor creation helper.
-        private RequestInterceptor CreateFakeListSubtasksInterceptor(string taskId, AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> listSubtasksResponse)
+        private RequestInterceptor CreateFakeListSubtasksInterceptor(
+            string taskId, 
+            AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult,
+            ProxyModels.TaskListSubtasksHeaders> listSubtasksResponse)
         {
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {

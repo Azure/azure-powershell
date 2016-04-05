@@ -57,7 +57,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
 
             // Don't go to the service on an Enable AutoScale call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<PoolEnableAutoScaleParameter, PoolEnableAutoScaleOptions, AzureOperationHeaderResponse<PoolEnableAutoScaleHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolEnableAutoScaleParameter, 
+                PoolEnableAutoScaleOptions, 
+                AzureOperationHeaderResponse<PoolEnableAutoScaleHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -81,7 +85,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.AutoScaleEvaluationInterval = interval;
 
             // Don't go to the service on an Enable AutoScale call
-            Action<BatchRequest<PoolEnableAutoScaleParameter, PoolEnableAutoScaleOptions, Microsoft.Rest.Azure.AzureOperationHeaderResponse<PoolEnableAutoScaleHeaders>>> extractFormulaAction =
+            Action<BatchRequest<PoolEnableAutoScaleParameter, PoolEnableAutoScaleOptions, AzureOperationHeaderResponse<PoolEnableAutoScaleHeaders>>> extractFormulaAction =
                 (request) =>
                 {
                     requestFormula = request.Parameters.AutoScaleFormula;

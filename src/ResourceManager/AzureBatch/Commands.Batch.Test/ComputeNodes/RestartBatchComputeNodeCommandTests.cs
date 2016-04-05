@@ -63,7 +63,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "computeNode1";
 
             // Don't go to the service on a Reboot ComputeNode call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeRebootOption?, ComputeNodeRebootOptions, AzureOperationHeaderResponse<ComputeNodeRebootHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ComputeNodeRebootOption?, 
+                ComputeNodeRebootOptions, 
+                AzureOperationHeaderResponse<ComputeNodeRebootHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -93,7 +97,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     // Grab the reboot option from the outgoing request.
                     requestRebootOption = request.Parameters;
 
-                    AzureOperationHeaderResponse<ComputeNodeRebootHeaders> response = new AzureOperationHeaderResponse<ComputeNodeRebootHeaders>();
+                    var response = new AzureOperationHeaderResponse<ComputeNodeRebootHeaders>();
                     Task<AzureOperationHeaderResponse<ComputeNodeRebootHeaders>> task = Task.FromResult(response);
                     return task;
                 };

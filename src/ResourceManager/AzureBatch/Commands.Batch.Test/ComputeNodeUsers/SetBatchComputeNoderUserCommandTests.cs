@@ -63,7 +63,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             cmdlet.Name = "testUser";
 
             // Don't go to the service on an Update ComputeNodeUser call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeUpdateUserParameter, ComputeNodeUpdateUserOptions, AzureOperationHeaderResponse<ComputeNodeUpdateUserHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                NodeUpdateUserParameter, 
+                ComputeNodeUpdateUserOptions, 
+                AzureOperationHeaderResponse<ComputeNodeUpdateUserHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set
