@@ -143,3 +143,16 @@ function Test-WaitJobPipeScenario
 		Assert-AreNotEqual $waitedJob.Status "Cancelling"
 	}
 }
+
+function Test-CancelJobScenario
+{
+	$startTime = Get-Date -Date "2016-04-04 21:00:00"
+	$endTime = Get-Date -Date "2016-04-05 13:40:00"
+
+	$runningJobs = Get-AzureRmBackupJob -From $startTime -To $endTime -Status "InProgress"
+	foreach ($runningJob in $runningJobs)
+	{
+		$cancelledJob = Stop-AzureRmBackupJob -Job $runningJob
+		Assert-AreNotEqual $cancelledJob.Status "InProgress"
+	}
+}
