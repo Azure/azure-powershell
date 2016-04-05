@@ -156,6 +156,7 @@
     <Compile Include="PowerShellExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RMTestBase.cs" />
+    <Compile Include="XunitTracingAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assert.ps1">

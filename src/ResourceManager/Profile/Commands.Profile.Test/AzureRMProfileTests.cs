@@ -30,6 +30,8 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Subscriptions.Models;
 using Hyak.Common;
 using System.Management.Automation;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
@@ -68,6 +70,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var profile = new AzureRMProfile();
             profile.Context = Context;
             return new RMProfileClient(profile);
+        }
+
+        public AzureRMProfileTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]

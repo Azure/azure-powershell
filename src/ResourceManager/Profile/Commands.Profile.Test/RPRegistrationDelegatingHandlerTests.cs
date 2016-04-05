@@ -26,6 +26,8 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -34,6 +36,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
         private const string compatibleUri = "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}?validating={true|false}&api-version={api-version}";
 
         private const string incompatibleUri = "https://management.core.windows.net/<subscription-id>";
+
+        public RPRegistrationDelegatingHandlerTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
