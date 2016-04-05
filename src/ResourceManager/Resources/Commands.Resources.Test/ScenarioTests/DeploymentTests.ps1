@@ -42,8 +42,7 @@ function Test-NewDeploymentFromTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
-	$location = Get-ProviderLocation "Microsoft.Web/sites"
+	$rglocation = "EastUS"
 
 	try
 	{
@@ -77,8 +76,7 @@ function Test-NestedDeploymentFromTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
-	$location = Get-ProviderLocation "Microsoft.Web/sites"
+	$rglocation = "EastUS"
 
 	try
 	{
@@ -112,8 +110,7 @@ function Test-SaveDeploymentTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
-	$location = Get-ProviderLocation "Microsoft.Web/sites"
+	$rglocation = "EastUS"
 
 	try
 	{
