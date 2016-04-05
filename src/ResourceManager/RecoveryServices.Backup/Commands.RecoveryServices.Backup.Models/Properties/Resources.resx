@@ -365,4 +365,7 @@ Please contact Microsoft for further assistant.</value>
   <data name="OperationFailed" xml:space="preserve">
     <value>{0} failed. Error Code: {1}. Error Message: {2}</value>
   </data>
+  <data name="TriggerBackupOperation" xml:space="preserve">
+    <value>Trigger Backup Operation</value>
+  </data>
 </root>

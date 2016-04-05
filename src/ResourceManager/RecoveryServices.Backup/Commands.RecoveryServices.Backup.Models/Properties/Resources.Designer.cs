@@ -678,6 +678,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trigger Backup Operation.
+        /// </summary>
+        public static string TriggerBackupOperation {
+            get {
+                return ResourceManager.GetString("TriggerBackupOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unexpected ContainerType - expected:{0}, current:{1}.
         /// </summary>
         public static string UnExpectedContainerTypeException {

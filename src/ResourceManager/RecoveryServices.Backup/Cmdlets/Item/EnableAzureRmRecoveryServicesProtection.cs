@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 // Track Response and display job details
 
-                WriteObject(GetCreatedJob(itemResponse));
+                HandleCreatedJob(itemResponse, Resources.EnableProtectionOperation);
             });
         }
     }

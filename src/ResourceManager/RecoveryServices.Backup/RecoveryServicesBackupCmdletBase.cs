@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             return response;
         }
 
-        protected AzureRmRecoveryServicesJobBase GetCreatedJob(BaseRecoveryServicesJobResponse itemResponse)
+        protected void HandleCreatedJob(BaseRecoveryServicesJobResponse itemResponse, string operationName)
         {
             WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
                             itemResponse.AzureAsyncOperation);
@@ -172,26 +172,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
 
-            AzureRmRecoveryServicesJobBase job = null;
-
             if (response.OperationStatus.Properties != null &&
                    ((OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
             {
                 var jobStatusResponse = (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
-                job = GetJobObject(jobStatusResponse.JobId);
+                WriteObject(GetJobObject(jobStatusResponse.JobId));
             }
 
             if (response.OperationStatus.Status == OperationStatusValues.Failed)
             {
                 var errorMessage = string.Format(
                     Resources.OperationFailed,
-                    Resources.EnableProtectionOperation,
+                    operationName,
                     response.OperationStatus.OperationStatusError.Code,
                     response.OperationStatus.OperationStatusError.Message);
                 throw new Exception(errorMessage);
             }
-
-            return job;
         }
     }
 }
