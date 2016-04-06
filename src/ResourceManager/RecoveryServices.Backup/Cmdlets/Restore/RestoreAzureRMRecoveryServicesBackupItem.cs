@@ -24,7 +24,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ResourcesNS = Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
 using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
@@ -40,44 +39,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
+        [Parameter(Mandatory = true, Position = 2, HelpMessage = ParamHelpMsg.RestoreDisk.StorageAccountResourceGroupName)]
+        [ValidateNotNullOrEmpty]
+        public string StorageAccountResourceGroupName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
-                //WriteDebug("InsideRestore. going to create ResourceManager Client");
-                //ResourcesNS.ResourceManagementClient rmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-                //WriteDebug("Client Created successfully");
-                //ResourceIdentity identity = new ResourceIdentity();
-                //identity.ResourceName = StorageAccountName;
-                //identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
-                //identity.ResourceProviderApiVersion = "2015-12-01";
+                WriteDebug("InsideRestore. going to create ResourceManager Client");
+                ResourcesNS.ResourceManagementClient rmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                WriteDebug("Client Created successfully");
+                ResourceIdentity identity = new ResourceIdentity();
+                identity.ResourceName = StorageAccountName;
+                identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
+                identity.ResourceProviderApiVersion = "2015-12-01";
 
-                //ResourcesNS.Models.ResourceGetResult resource;
-                //try
-                //{ 
-                //    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", StorageAccountName));
-                //    resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
-                //}
-                //catch(Hyak.Common.CloudException exp)
-                //{
-                //    if(exp.Error.Code =="ResourceNotFound")
-                //    {
-                //        identity.ResourceType = "Microsoft.Storage/storageAccounts";
-                //        identity.ResourceProviderApiVersion = "2016-01-01";
-                //        resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
-                //    }
-                //    else
-                //    {
-                //        throw;
-                //    }
-                //}
+                ResourcesNS.Models.ResourceGetResult resource;
+                try
+                {
+                    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", StorageAccountName));
+                    resource = rmClient.Resources.GetAsync(StorageAccountResourceGroupName, identity, CancellationToken.None).Result;
+                }
+                catch (Hyak.Common.CloudException exp)
+                {
+                    if (exp.Error.Code == "ResourceNotFound")
+                    {
+                        identity.ResourceType = "Microsoft.Storage/storageAccounts";
+                        identity.ResourceProviderApiVersion = "2016-01-01";
+                        resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                
+                string storageAccountId = resource.Resource.Id;
+                string storageAccountlocation = resource.Resource.Location;
+                string storageAccountType = resource.Resource.Type;
 
-                string storageAccountId = string.Empty;
-                string storageAccountlocation = string.Empty;
-                string storageAccountType = string.Empty;
-
-                GetStorageResource(StorageAccountName, out storageAccountId, out storageAccountlocation, out storageAccountType);
+                //GetStorageResource(StorageAccountName, out storageAccountId, out storageAccountlocation, out storageAccountType);
 
                 WriteDebug(String.Format("StorageId = {0}", storageAccountId));
 
@@ -89,26 +92,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {RestoreBackupItemParams.StorageAccountId, storageAccountId}
                 }, HydraAdapter);
 
-                //IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
-                //var jobResponse = psBackupProvider.TriggerRestore();
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
+                var jobResponse = psBackupProvider.TriggerRestore();
 
-                //WriteDebug(String.Format("Restore submitted"));
-                //var response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
-                //while (response.OperationStatus.Status == "InProgress")
-                //{
-                //    WriteDebug(String.Format("Restore inProgress"));
-                //    response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
-                //    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
-                //}
+                WriteDebug(String.Format("Restore submitted"));
+                var response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
+                while (response.OperationStatus.Status == "InProgress")
+                {
+                    WriteDebug(String.Format("Restore inProgress"));
+                    response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
+                }
 
-                //if (response.OperationStatus.Status == "Completed")
-                //{
-                //    // TBD -- Hydra change to add jobId in OperationStatusExtendedInfo
-                //    WriteDebug(String.Format("Restore Completed"));
-                //    string jobId = ""; //response.OperationStatus.Properties.jobId;
-                //    var job = HydraAdapter.GetJob(jobId);
-                //    //WriteObject(ConversionHelpers.GetJobModel(job));
-                //}
+                if (response.OperationStatus.Status == "Completed")
+                {
+                    // TBD -- Hydra change to add jobId in OperationStatusExtendedInfo
+                    WriteDebug(String.Format("Restore Completed"));
+                    string jobId = ""; //response.OperationStatus.Properties.jobId;
+                    var job = HydraAdapter.GetJob(jobId);
+                    //WriteObject(ConversionHelpers.GetJobModel(job));
+                }
             });
         }
 
