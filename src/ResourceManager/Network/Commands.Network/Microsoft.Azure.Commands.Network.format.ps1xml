@@ -1019,7 +1019,11 @@
               <ListItem>
                 <Label>Authorizations</Label>
                 <PropertyName>AuthorizationsText</PropertyName>
-              </ListItem>		
+              </ListItem>
+              <ListItem>
+                <Label>AllowClassicOperations</Label>
+                <PropertyName>AllowClassicOperations</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
