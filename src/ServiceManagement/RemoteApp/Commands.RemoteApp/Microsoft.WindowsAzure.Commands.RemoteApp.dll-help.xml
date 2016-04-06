@@ -188,7 +188,7 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-Add-AzureRemoteAppUser -CollectionName Contoso -UserType MicrosoftAccount -UserUpn someone@example.com                        </dev:code>
+Add-AzureRemoteAppUser -CollectionName Contoso -Type MicrosoftAccount -UserUpn someone@example.com                        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -217,7 +217,7 @@ Add-AzureRemoteAppUser -CollectionName Contoso -UserType MicrosoftAccount -UserU
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-Add-AzureRemoteAppUser -CollectionName Contoso -UserType OrgId -UserUpn user@contoso.com                        </dev:code>
+Add-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@contoso.com                        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>

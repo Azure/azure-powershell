@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\Backup\BackupAzureRmRecoveryServicesItem.cs" />
     <Compile Include="Cmdlets\Container\GetAzureRmBackupManagementServer.cs" />
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureRmBackupManagementServer.cs" />
@@ -103,9 +104,7 @@
     <Compile Include="RecoveryServicesBackupCmdletBase.cs" />
     <Compile Include="CmdletParameterHelpMessages.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cmdlets\Backup\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
