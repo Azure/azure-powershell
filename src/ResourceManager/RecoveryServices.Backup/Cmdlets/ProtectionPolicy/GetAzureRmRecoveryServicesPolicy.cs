@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of protection policies
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesProtectionPolicy", DefaultParameterSetName = NoParamSet), OutputType(typeof(List<AzureRmRecoveryServicesPolicyBase>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet), 
+            OutputType(typeof(List<AzureRmRecoveryServicesBackupPolicyBase>), typeof(AzureRmRecoveryServicesBackupPolicyBase))]
     public class GetAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         protected const string PolicyNameParamSet = "PolicyNameParamSet";
@@ -63,9 +64,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                      WorkloadType.HasValue ? WorkloadType.ToString() : "NULL",
                                      BackupManagementType.HasValue ? BackupManagementType.ToString() : "NULL",
                                      this.ParameterSetName));
-
-
-               List<AzureRmRecoveryServicesPolicyBase> policyList = new List<AzureRmRecoveryServicesPolicyBase>();
                
                if (this.ParameterSetName == PolicyNameParamSet)
                {                   
@@ -80,10 +78,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                    {
                        throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
                    }
-                   policyList.Add(ConversionHelpers.GetPolicyModel(policy.Item));
+
+                   WriteObject(ConversionHelpers.GetPolicyModel(policy.Item));
                }
                else
                {
+                   List<AzureRmRecoveryServicesBackupPolicyBase> policyList = new List<AzureRmRecoveryServicesBackupPolicyBase>();
                    string hydraProviderType = null;                   
 
                    switch (this.ParameterSetName)
@@ -131,9 +131,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                    WriteDebug("Successfully got response from service");
 
                    policyList = ConversionHelpers.GetPolicyModelList(respList);
-               }
-
-               WriteObject(policyList);
+                   WriteObject(policyList);
+               }               
            });
         }
     }

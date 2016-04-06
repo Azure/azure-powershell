@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy, ValueFromPipeline = true,
             ParameterSetName = PolicyObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesPolicyBase Policy { get; set; }
+        public AzureRmRecoveryServicesBackupPolicyBase Policy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Common.ConfirmationMessage)]
         public SwitchParameter Force { get; set; }

@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
 
-    public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesBackupManagementContext
+    public class AzureRmRecoveryServicesBackupPolicyBase : AzureRmRecoveryServicesBackupManagementContext
     {
         public string Name { get; set; }
 
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    public class AzureRmRecoveryServicesRetentionPolicyBase : AzureRmRecoveryServicesObjectBase
+    public class AzureRmRecoveryServicesBackupRetentionPolicyBase : AzureRmRecoveryServicesObjectBase
     {
         public override void Validate()
         {
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    public class AzureRmRecoveryServicesSchedulePolicyBase : AzureRmRecoveryServicesObjectBase
+    public class AzureRmRecoveryServicesBackupSchedulePolicyBase : AzureRmRecoveryServicesObjectBase
     {
         public override void Validate()
         {

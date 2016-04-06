@@ -25,13 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ContainerTests : RecoveryServicesBackupTestsBase
     {
-        [Fact]
         public void TestGetMabContainerScenario()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.Mab.ToString(), "Test-GetContainerScenario");
         }
 
-        [Fact]
         public void TestUnregisterMabContainerScenario()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.Mab.ToString(), "Test-GetContainerScenario");
