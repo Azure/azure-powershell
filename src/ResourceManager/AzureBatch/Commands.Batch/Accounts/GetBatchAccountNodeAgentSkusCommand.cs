@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Batch.Pools
 
         public override void ExecuteCmdlet()
         {
-            foreach(PSNodeAgentSku nodeAgentSku in BatchClient.ListNodeAgentSkus(this.BatchContext, this.Filter, maxCount, this.AdditionalBehaviors))
+            foreach(PSNodeAgentSku nodeAgentSku in BatchClient.ListNodeAgentSkus(this.BatchContext, this.Filter, this.MaxCount, this.AdditionalBehaviors))
             {
                 WriteObject(nodeAgentSku);
             }
