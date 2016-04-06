@@ -24,6 +24,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ResourcesNS = Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -95,6 +97,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     //WriteObject(ConversionHelpers.GetJobModel(job));
                 }
             });
+        }
+
+        internal void GetStorageResource(string storageAccountName, out string id, out string location, out string resourceType)
+        {
+            using (System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create())
+            {
+                //Get-AzureRmResource | Where-Object { ($_.Name -eq "<StorageAccName>") -and ($_.ResourceType -eq "Microsoft.Storage/storageAccounts" -or $_.ResourceType -eq "Microsoft.ClassicStorage/storageAccounts")}
+                ps.AddCommand("Get-AzureRmResource");
+                ps.AddCommand("where-object");
+                string filterString = String.Format(@"($_.Name -eq ""{0}"") -and ($_.ResourceType -eq ""Microsoft.Storage/storageAccounts"" -or $_.ResourceType -eq ""Microsoft.ClassicStorage/storageAccounts"")");
+                ScriptBlock filter = ScriptBlock.Create(filterString);
+
+                ps.AddParameter("FilterScript", filter);                
+                var result = ps.Invoke();
+
+                if (ps.HadErrors)
+                {
+                    WriteVerbose(string.Format("Error in Get-AzureRmResource"));
+                    throw new Exception(ps.HadErrors.ToString());
+                }
+
+                if(result.Count == 0)
+                {
+                    WriteVerbose(string.Format("Storage Account not fount"));
+                    throw new ArgumentException("Storage account not found");
+                }
+                else if (result.Count > 1)
+                {
+                    WriteVerbose(string.Format("Found more than one StorageAccount with same name. Some thing went wrong"));
+                    throw new Exception(string.Format("Found more than one StorageAccount with same name. Some thing went wrong"));
+                }
+                id = result[0].Members["ResourceId"].Value.ToString();
+                location = result[0].Members["Location"].Value.ToString();
+                resourceType = result[0].Members["ResourceType"].Value.ToString();
+            }
         }
     }
 }
