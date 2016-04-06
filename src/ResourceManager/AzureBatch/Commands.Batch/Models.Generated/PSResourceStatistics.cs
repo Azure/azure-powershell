@@ -43,43 +43,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime StartTime
-        {
-            get
-            {
-                return this.omObject.StartTime;
-            }
-        }
-        
-        public System.DateTime LastUpdateTime
-        {
-            get
-            {
-                return this.omObject.LastUpdateTime;
-            }
-        }
-        
         public double AverageCpuPercentage
         {
             get
             {
                 return this.omObject.AverageCpuPercentage;
-            }
-        }
-        
-        public double AverageMemoryGiB
-        {
-            get
-            {
-                return this.omObject.AverageMemoryGiB;
-            }
-        }
-        
-        public double PeakMemoryGiB
-        {
-            get
-            {
-                return this.omObject.PeakMemoryGiB;
             }
         }
         
@@ -91,31 +59,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public double PeakDiskGiB
+        public double AverageMemoryGiB
         {
             get
             {
-                return this.omObject.PeakDiskGiB;
-            }
-        }
-        
-        public long DiskReadIOps
-        {
-            get
-            {
-                return this.omObject.DiskReadIOps;
-            }
-        }
-        
-        public long DiskWriteIOps
-        {
-            get
-            {
-                return this.omObject.DiskWriteIOps;
-            }
-            set
-            {
-                this.omObject.DiskWriteIOps = value;
+                return this.omObject.AverageMemoryGiB;
             }
         }
         
@@ -127,11 +75,35 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public long DiskReadIOps
+        {
+            get
+            {
+                return this.omObject.DiskReadIOps;
+            }
+        }
+        
         public double DiskWriteGiB
         {
             get
             {
                 return this.omObject.DiskWriteGiB;
+            }
+        }
+        
+        public long DiskWriteIOps
+        {
+            get
+            {
+                return this.omObject.DiskWriteIOps;
+            }
+        }
+        
+        public System.DateTime LastUpdateTime
+        {
+            get
+            {
+                return this.omObject.LastUpdateTime;
             }
         }
         
@@ -148,6 +120,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.NetworkWriteGiB;
+            }
+        }
+        
+        public double PeakDiskGiB
+        {
+            get
+            {
+                return this.omObject.PeakDiskGiB;
+            }
+        }
+        
+        public double PeakMemoryGiB
+        {
+            get
+            {
+                return this.omObject.PeakMemoryGiB;
+            }
+        }
+        
+        public System.DateTime StartTime
+        {
+            get
+            {
+                return this.omObject.StartTime;
             }
         }
     }
