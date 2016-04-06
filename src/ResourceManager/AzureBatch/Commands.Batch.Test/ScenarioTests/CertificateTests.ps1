@@ -18,8 +18,6 @@ Tests adding certificates to a Batch account
 #>
 function Test-AddCertificate
 {
-    param([string]$accountName)
-
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Load certificates so thumbprints can be compared later
@@ -72,7 +70,7 @@ Tests querying for a certificate by its thumbprint
 #>
 function Test-GetCertificateByThumbprint
 {
-    param([string]$accountName, [string]$thumbprintAlgorithm, [string]$thumbprint)
+    param([string]$thumbprintAlgorithm, [string]$thumbprint)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $cert = Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context
@@ -87,7 +85,7 @@ Tests querying for Batch certs using a filter
 #>
 function Test-ListCertificatesByFilter
 {
-    param([string]$accountName, [string]$state, [string]$toDeleteThumbprint, [string]$matches)
+    param([string]$state, [string]$toDeleteThumbprint, [string]$matches)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "state eq '$state'"
@@ -110,7 +108,7 @@ Tests querying for Batch certs using a select clause
 #>
 function Test-GetAndListCertificatesWithSelect
 {
-    param([string]$accountName, [string]$thumbprintAlgorithm, [string]$thumbprint)
+    param([string]$thumbprintAlgorithm, [string]$thumbprint)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "state eq 'active'"
@@ -141,7 +139,7 @@ Tests querying for Batch certs and supplying a max count
 #>
 function Test-ListCertificatesWithMaxCount
 {
-    param([string]$accountName, [string]$maxCount)
+    param([string]$maxCount)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $certs = Get-AzureBatchCertificate -MaxCount $maxCount -BatchContext $context
@@ -155,7 +153,7 @@ Tests querying for all certs under an account
 #>
 function Test-ListAllCertificates
 {
-    param([string]$accountName, [string]$count)
+    param([string]$count)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $certs = Get-AzureBatchCertificate -BatchContext $context
@@ -169,7 +167,7 @@ Tests deleting a cert
 #>
 function Test-DeleteCertificate
 {
-    param([string]$accountName, [string]$thumbprintAlgorithm, [string]$thumbprint)
+    param([string]$thumbprintAlgorithm, [string]$thumbprint)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -192,7 +190,7 @@ Tests canceling a cert deletion
 #>
 function Test-TestCancelCertificateDelete
 {
-    param([string]$accountName, [string]$thumbprintAlgorithm, [string]$thumbprint)
+    param([string]$thumbprintAlgorithm, [string]$thumbprint)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 

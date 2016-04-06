@@ -55,7 +55,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 
             cmdlet.JobSchedule = new PSCloudJobSchedule(BatchTestHelpers.CreateFakeBoundJobSchedule(context));
 
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobScheduleUpdateParameter, JobScheduleUpdateOptions, AzureOperationHeaderResponse<JobScheduleUpdateHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                JobScheduleUpdateParameter, 
+                JobScheduleUpdateOptions, 
+                AzureOperationHeaderResponse<JobScheduleUpdateHeaders>>();
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };
 
             // Verify that no exceptions occur

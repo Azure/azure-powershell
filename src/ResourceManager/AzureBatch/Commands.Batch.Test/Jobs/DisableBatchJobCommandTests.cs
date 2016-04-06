@@ -58,7 +58,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.DisableJobOption = BatchCommon.DisableJobOption.Terminate;
 
             // Don't go to the service on a Disable CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.DisableJobOption, ProxyModels.JobDisableOptions, AzureOperationHeaderResponse<ProxyModels.JobDisableHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.DisableJobOption, 
+                ProxyModels.JobDisableOptions, 
+                AzureOperationHeaderResponse<ProxyModels.JobDisableHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

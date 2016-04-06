@@ -60,7 +60,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.InputObject = null;
 
             // Don't go to the service on a Delete NodeFile call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<bool?, FileDeleteFromComputeNodeOptions, AzureOperationHeaderResponse<FileDeleteFromComputeNodeHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                bool?, 
+                FileDeleteFromComputeNodeOptions, 
+                AzureOperationHeaderResponse<FileDeleteFromComputeNodeHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
@@ -93,7 +97,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.InputObject = null;
 
             // Don't go to the service on a Delete NodeFile call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<bool?, FileDeleteFromTaskOptions, AzureOperationHeaderResponse<FileDeleteFromTaskHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                bool?, 
+                FileDeleteFromTaskOptions, 
+                AzureOperationHeaderResponse<FileDeleteFromTaskHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());

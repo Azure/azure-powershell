@@ -275,7 +275,7 @@ Tests querying for a Batch job schedule by id
 #>
 function Test-GetJobScheduleById
 {
-    param([string]$accountName, [string]$jsId)
+    param([string]$jsId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobSchedule = Get-AzureBatchJobSchedule -Id $jsId -BatchContext $context
@@ -289,7 +289,7 @@ Tests querying for Batch job schedules using a filter
 #>
 function Test-ListJobSchedulesByFilter
 {
-    param([string]$accountName, [string]$jsPrefix, [string]$matches)
+    param([string]$jsPrefix, [string]$matches)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jsFilter = "startswith(id,'" + "$jsPrefix" + "')"
@@ -308,7 +308,7 @@ Tests querying for Batch job schedules using a select clause
 #>
 function Test-GetAndListJobSchedulesWithSelect
 {
-    param([string]$accountName, [string]$jobScheduleId)
+    param([string]$jobScheduleId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "id eq '$jobScheduleId'"
@@ -339,7 +339,7 @@ Tests querying for Batch job schedules and supplying a max count
 #>
 function Test-ListJobSchedulesWithMaxCount
 {
-    param([string]$accountName, [string]$maxCount)
+    param([string]$maxCount)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobSchedules = Get-AzureBatchJobSchedule -MaxCount $maxCount -BatchContext $context
@@ -353,7 +353,7 @@ Tests querying for all job schedules under an account
 #>
 function Test-ListAllJobSchedules
 {
-    param([string]$accountName, [string]$count)
+    param([string]$count)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobSchedules = Get-AzureBatchJobSchedule -BatchContext $context
@@ -367,7 +367,7 @@ Tests updating a job schedule
 #>
 function Test-UpdateJobSchedule
 {
-    param([string]$accountName, [string]$jobScheduleId)
+    param([string]$jobScheduleId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -615,7 +615,7 @@ Tests deleting a job schedule
 #>
 function Test-DeleteJobSchedule
 {
-    param([string]$accountName, [string]$jobScheduleId, [string]$usePipeline)
+    param([string]$jobScheduleId, [string]$usePipeline)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -643,7 +643,7 @@ Tests disabling and enabling a job schedule
 #>
 function Test-DisableAndEnableJobSchedule
 {
-    param([string]$accountName, [string]$jobScheduleId)
+    param([string]$jobScheduleId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -679,7 +679,7 @@ Tests terminating a job schedule
 #>
 function Test-TerminateJobSchedule
 {
-    param([string]$accountName, [string]$jobScheduleId, [string]$usePipeline)
+    param([string]$jobScheduleId, [string]$usePipeline)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 

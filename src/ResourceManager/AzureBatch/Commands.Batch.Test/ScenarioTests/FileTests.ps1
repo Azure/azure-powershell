@@ -18,7 +18,7 @@ Tests querying for a Batch node file by task by name
 #>
 function Test-GetNodeFileByTaskByName
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFileName)
+    param([string]$jobId, [string]$taskId, [string]$nodeFileName)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $nodeFile = Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context
@@ -32,7 +32,7 @@ Tests querying for Batch node files by task using a filter
 #>
 function Test-ListNodeFilesByTaskByFilter
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFilePrefix, [string]$matches)
+    param([string]$jobId, [string]$taskId, [string]$nodeFilePrefix, [string]$matches)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "startswith(name,'" + "$nodeFilePrefix" + "')"
@@ -62,7 +62,7 @@ Tests querying for Batch node files by task and supplying a max count
 #>
 function Test-ListNodeFilesByTaskWithMaxCount
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$maxCount)
+    param([string]$jobId, [string]$taskId, [string]$maxCount)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $nodeFiles = Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -MaxCount $maxCount -BatchContext $context
@@ -82,7 +82,7 @@ Tests querying for Batch node files by task with the Recursive switch
 #>
 function Test-ListNodeFilesByTaskRecursive
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$newfile)
+    param([string]$jobId, [string]$taskId, [string]$newfile)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "startswith(name,'wd')"
@@ -106,7 +106,7 @@ Tests querying for all node files under a task
 #>
 function Test-ListAllNodeFilesByTask
 {
-    param([string]$accountName, [string] $jobId, [string]$taskId, [string]$count)
+    param([string] $jobId, [string]$taskId, [string]$count)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $nodeFiles = Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Filter $null -BatchContext $context
@@ -126,7 +126,7 @@ Tests pipelining scenarios
 #>
 function Test-ListNodeFileByTaskPipeline
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$count)
+    param([string]$jobId, [string]$taskId, [string]$count)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -145,7 +145,7 @@ Tests downloading node file contents by task by name
 #>
 function Test-GetNodeFileContentByTaskByName
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFileName, [string]$fileContent)
+    param([string]$jobId, [string]$taskId, [string]$nodeFileName, [string]$fileContent)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $stream = New-Object System.IO.MemoryStream 
@@ -177,7 +177,7 @@ Tests downloading node file contents by task using the pipeline
 #>
 function Test-GetNodeFileContentByTaskPipeline
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFileName, [string]$fileContent)
+    param([string]$jobId, [string]$taskId, [string]$nodeFileName, [string]$fileContent)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $stream = New-Object System.IO.MemoryStream 
@@ -210,7 +210,7 @@ Tests querying for a Batch node file by compute node by name
 #>
 function Test-GetNodeFileByComputeNodeByName
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFileName)
+    param([string]$poolId, [string]$computeNodeId, [string]$nodeFileName)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $nodeFile = Get-AzureBatchNodeFile -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context
@@ -229,7 +229,7 @@ Tests querying for Batch node files by compute node using a filter
 #>
 function Test-ListNodeFilesByComputeNodeByFilter
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFilePrefix, [string]$matches)
+    param([string]$poolId, [string]$computeNodeId, [string]$nodeFilePrefix, [string]$matches)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "startswith(name,'" + "$nodeFilePrefix" + "')"
@@ -259,7 +259,7 @@ Tests querying for Batch node files by compute node and supplying a max count
 #>
 function Test-ListNodeFilesByComputeNodeWithMaxCount
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$maxCount)
+    param([string]$poolId, [string]$computeNodeId, [string]$maxCount)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $nodeFiles = Get-AzureBatchNodeFile -PoolId $poolId -ComputeNodeId $computeNodeId -MaxCount $maxCount -BatchContext $context
@@ -279,7 +279,7 @@ Tests querying for Batch node files by compute node with the Recursive switch
 #>
 function Test-ListNodeFilesByComputeNodeRecursive
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$startupFolder, [string]$recursiveCount)
+    param([string]$poolId, [string]$computeNodeId, [string]$startupFolder, [string]$recursiveCount)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "startswith(name,'" + "$startupFolder" + "')"
@@ -303,7 +303,7 @@ Tests querying for all node files under a compute node
 #>
 function Test-ListAllNodeFilesByComputeNode
 {
-    param([string]$accountName, [string]$poolId, [string] $computeNodeId, [string]$count)
+    param([string]$poolId, [string] $computeNodeId, [string]$count)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $nodeFiles = Get-AzureBatchNodeFile -PoolId $poolId -ComputeNodeId $computeNodeId -BatchContext $context
@@ -323,7 +323,7 @@ Tests pipelining scenarios
 #>
 function Test-ListNodeFileByComputeNodePipeline
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$count)
+    param([string]$poolId, [string]$computeNodeId, [string]$count)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -338,7 +338,7 @@ Tests downloading node file contents by compute node by name
 #>
 function Test-GetNodeFileContentByComputeNodeByName
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFileName, [string]$fileContent)
+    param([string]$poolId, [string]$computeNodeId, [string]$nodeFileName, [string]$fileContent)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $stream = New-Object System.IO.MemoryStream 
@@ -392,7 +392,7 @@ Tests downloading node file contents by compute node using the pipeline
 #>
 function Test-GetNodeFileContentByComputeNodePipeline
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFileName, [string]$fileContent)
+    param([string]$poolId, [string]$computeNodeId, [string]$nodeFileName, [string]$fileContent)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $stream = New-Object System.IO.MemoryStream 
@@ -425,7 +425,7 @@ Tests downloading a Remote Desktop Protocol file by compute node id
 #>
 function Test-GetRDPFileById
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId)
+    param([string]$poolId, [string]$computeNodeId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $stream = New-Object System.IO.MemoryStream 
@@ -480,7 +480,7 @@ Tests downloading a Remote DesktopProtocol file using the pipeline
 #>
 function Test-GetRDPFilePipeline
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId)
+    param([string]$poolId, [string]$computeNodeId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $stream = New-Object System.IO.MemoryStream 
@@ -514,7 +514,7 @@ Tests deleting a node file associated with a task
 #>
 function Test-DeleteNodeFileByTask 
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$filePath, [string]$usePipeline)
+    param([string]$jobId, [string]$taskId, [string]$filePath, [string]$usePipeline)
     
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     if ($usePipeline -eq '1')
@@ -537,7 +537,7 @@ Tests deleting a node file from a compute node
 #>
 function Test-DeleteNodeFileByComputeNode 
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$filePath, [string]$usePipeline)
+    param([string]$poolId, [string]$computeNodeId, [string]$filePath, [string]$usePipeline)
     
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     if ($usePipeline -eq '1')

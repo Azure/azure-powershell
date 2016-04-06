@@ -36,15 +36,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IList<PSApplicationPackageReference> applicationPackageReferences;
         
-        private PSCloudServiceConfiguration cloudServiceConfiguration;
-        
         private IList<PSCertificateReference> certificateReferences;
+        
+        private PSCloudServiceConfiguration cloudServiceConfiguration;
         
         private IList<PSMetadataItem> metadata;
         
-        private PSTaskSchedulingPolicy taskSchedulingPolicy;
-        
         private PSStartTask startTask;
+        
+        private PSTaskSchedulingPolicy taskSchedulingPolicy;
         
         private PSVirtualMachineConfiguration virtualMachineConfiguration;
         
@@ -133,31 +133,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSCloudServiceConfiguration CloudServiceConfiguration
-        {
-            get
-            {
-                if (((this.cloudServiceConfiguration == null) 
-                            && (this.omObject.CloudServiceConfiguration != null)))
-                {
-                    this.cloudServiceConfiguration = new PSCloudServiceConfiguration(this.omObject.CloudServiceConfiguration);
-                }
-                return this.cloudServiceConfiguration;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.CloudServiceConfiguration = null;
-                }
-                else
-                {
-                    this.omObject.CloudServiceConfiguration = value.omObject;
-                }
-                this.cloudServiceConfiguration = value;
-            }
-        }
-        
         public IList<PSCertificateReference> CertificateReferences
         {
             get
@@ -190,6 +165,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.CertificateReferences = new List<Microsoft.Azure.Batch.CertificateReference>();
                 }
                 this.certificateReferences = value;
+            }
+        }
+        
+        public PSCloudServiceConfiguration CloudServiceConfiguration
+        {
+            get
+            {
+                if (((this.cloudServiceConfiguration == null) 
+                            && (this.omObject.CloudServiceConfiguration != null)))
+                {
+                    this.cloudServiceConfiguration = new PSCloudServiceConfiguration(this.omObject.CloudServiceConfiguration);
+                }
+                return this.cloudServiceConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.CloudServiceConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.CloudServiceConfiguration = value.omObject;
+                }
+                this.cloudServiceConfiguration = value;
             }
         }
         
@@ -276,31 +276,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSTaskSchedulingPolicy TaskSchedulingPolicy
-        {
-            get
-            {
-                if (((this.taskSchedulingPolicy == null) 
-                            && (this.omObject.TaskSchedulingPolicy != null)))
-                {
-                    this.taskSchedulingPolicy = new PSTaskSchedulingPolicy(this.omObject.TaskSchedulingPolicy);
-                }
-                return this.taskSchedulingPolicy;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.TaskSchedulingPolicy = null;
-                }
-                else
-                {
-                    this.omObject.TaskSchedulingPolicy = value.omObject;
-                }
-                this.taskSchedulingPolicy = value;
-            }
-        }
-        
         public PSStartTask StartTask
         {
             get
@@ -335,6 +310,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.TargetDedicated = value;
+            }
+        }
+        
+        public PSTaskSchedulingPolicy TaskSchedulingPolicy
+        {
+            get
+            {
+                if (((this.taskSchedulingPolicy == null) 
+                            && (this.omObject.TaskSchedulingPolicy != null)))
+                {
+                    this.taskSchedulingPolicy = new PSTaskSchedulingPolicy(this.omObject.TaskSchedulingPolicy);
+                }
+                return this.taskSchedulingPolicy;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.TaskSchedulingPolicy = null;
+                }
+                else
+                {
+                    this.omObject.TaskSchedulingPolicy = value.omObject;
+                }
+                this.taskSchedulingPolicy = value;
             }
         }
         

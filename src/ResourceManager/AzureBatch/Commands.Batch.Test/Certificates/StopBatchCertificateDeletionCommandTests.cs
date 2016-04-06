@@ -59,7 +59,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             cmdlet.Thumbprint = "123456789";
 
             // Don't go to the service on a Certificate Cancel Deletion call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateCancelDeletionOptions, AzureOperationHeaderResponse<CertificateCancelDeletionHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                CertificateCancelDeletionOptions, 
+                AzureOperationHeaderResponse<CertificateCancelDeletionHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

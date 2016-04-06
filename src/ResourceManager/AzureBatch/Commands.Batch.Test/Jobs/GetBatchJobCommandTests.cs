@@ -58,7 +58,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             // Build a CloudJob instead of querying the service on a Get CloudJob call
             AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> response = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.JobGetOptions, AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.JobGetOptions, 
+                AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -88,7 +91,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
             AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> getResponse = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.JobGetOptions, AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>>(getResponse);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.JobGetOptions, 
+                AzureOperationResponse<ProxyModels.CloudJob,
+                ProxyModels.JobGetHeaders>>(getResponse);
+
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
                 ProxyModels.JobGetOptions options = (ProxyModels.JobGetOptions) request.Options;

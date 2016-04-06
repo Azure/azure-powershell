@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSJobReleaseTask jobReleaseTask;
         
-        private PSPoolInformation poolInformation;
-        
         private IList<PSMetadataItem> metadata;
+        
+        private PSPoolInformation poolInformation;
         
         public PSJobSpecification()
         {
@@ -209,31 +209,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSPoolInformation PoolInformation
-        {
-            get
-            {
-                if (((this.poolInformation == null) 
-                            && (this.omObject.PoolInformation != null)))
-                {
-                    this.poolInformation = new PSPoolInformation(this.omObject.PoolInformation);
-                }
-                return this.poolInformation;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.PoolInformation = null;
-                }
-                else
-                {
-                    this.omObject.PoolInformation = value.omObject;
-                }
-                this.poolInformation = value;
-            }
-        }
-        
         public IList<PSMetadataItem> Metadata
         {
             get
@@ -266,6 +241,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.Metadata = new List<Microsoft.Azure.Batch.MetadataItem>();
                 }
                 this.metadata = value;
+            }
+        }
+        
+        public PSPoolInformation PoolInformation
+        {
+            get
+            {
+                if (((this.poolInformation == null) 
+                            && (this.omObject.PoolInformation != null)))
+                {
+                    this.poolInformation = new PSPoolInformation(this.omObject.PoolInformation);
+                }
+                return this.poolInformation;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.PoolInformation = null;
+                }
+                else
+                {
+                    this.omObject.PoolInformation = value.omObject;
+                }
+                this.poolInformation = value;
             }
         }
         

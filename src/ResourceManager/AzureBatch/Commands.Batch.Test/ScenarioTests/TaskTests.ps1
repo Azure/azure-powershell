@@ -18,7 +18,7 @@ Tests creating a Task
 #>
 function Test-CreateTask
 {
-    param([string]$accountName, [string]$jobId)
+    param([string]$jobId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -91,7 +91,7 @@ Tests querying for a Batch task by id
 #>
 function Test-GetTaskById
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId)
+    param([string]$jobId, [string]$taskId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $task = Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $context
@@ -110,7 +110,7 @@ Tests querying for Batch tasks using a filter
 #>
 function Test-ListTasksByFilter
 {
-    param([string]$accountName, [string]$jobId, [string]$taskPrefix, [string]$matches)
+    param([string]$jobId, [string]$taskPrefix, [string]$matches)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "startswith(id,'" + "$taskPrefix" + "')"
@@ -140,7 +140,7 @@ Tests querying for tasks using a select clause
 #>
 function Test-GetAndListTasksWithSelect
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId)
+    param([string]$jobId, [string]$taskId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "id eq '$taskId'"
@@ -172,7 +172,7 @@ Tests querying for Batch tasks and supplying a max count
 #>
 function Test-ListTasksWithMaxCount
 {
-    param([string]$accountName, [string]$jobId, [string]$maxCount)
+    param([string]$jobId, [string]$maxCount)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $tasks = Get-AzureBatchTask -JobId $jobId -MaxCount $maxCount -BatchContext $context
@@ -192,7 +192,7 @@ Tests querying for all tasks under a job
 #>
 function Test-ListAllTasks
 {
-    param([string]$accountName, [string] $jobId, [string]$count)
+    param([string] $jobId, [string]$count)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $tasks = Get-AzureBatchTask -JobId $jobId -BatchContext $context
@@ -212,7 +212,7 @@ Tests pipelining scenarios
 #>
 function Test-ListTaskPipeline
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId)
+    param([string]$jobId, [string]$taskId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -227,7 +227,7 @@ Tests updating a task
 #>
 function Test-UpdateTask
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId)
+    param([string]$jobId, [string]$taskId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -256,7 +256,7 @@ Tests deleting a task
 #>
 function Test-DeleteTask
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$usePipeline)
+    param([string]$jobId, [string]$taskId, [string]$usePipeline)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -284,7 +284,7 @@ Tests terminating a task
 #>
 function Test-TerminateTask
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId1, [string]$taskId2)
+    param([string]$jobId, [string]$taskId1, [string]$taskId2)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -304,7 +304,7 @@ Tests querying for Batch subtasks and supplying a max count
 #>
 function Test-ListSubtasksWithMaxCount
 {
-    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$maxCount)
+    param([string]$jobId, [string]$taskId, [string]$maxCount)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $subtasks = Get-AzureBatchSubtask $jobId $taskId -MaxCount $maxCount -BatchContext $context
@@ -324,7 +324,7 @@ Tests querying for all subtasks under a task
 #>
 function Test-ListAllSubtasks
 {
-    param([string]$accountName, [string] $jobId, [string]$taskId, [string]$numInstances)
+    param([string] $jobId, [string]$taskId, [string]$numInstances)
 
     $numSubTasksExpected = $numInstances - 1
 

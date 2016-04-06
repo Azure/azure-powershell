@@ -18,7 +18,7 @@ Tests querying for a Batch compute node by id
 #>
 function Test-GetComputeNodeById
 {
-    param([string]$accountName, [string]$poolId)
+    param([string]$poolId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $computeNodeId = (Get-AzureBatchComputeNode -PoolId $poolId -BatchContext $context)[0].Id
@@ -39,7 +39,7 @@ Tests querying for Batch compute nodes using a filter
 #>
 function Test-ListComputeNodesByFilter
 {
-    param([string]$accountName, [string]$poolId, [string]$state, [string]$matches)
+    param([string]$poolId, [string]$state, [string]$matches)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "state eq '" + "$state" + "'"
@@ -69,7 +69,7 @@ Tests querying for compute nodes using a select clause
 #>
 function Test-GetAndListComputeNodesWithSelect
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId)
+    param([string]$poolId, [string]$computeNodeId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "id eq '$computeNodeId'"
@@ -101,7 +101,7 @@ Tests querying for Batch compute nodes and supplying a max count
 #>
 function Test-ListComputeNodesWithMaxCount
 {
-    param([string]$accountName, [string]$poolId, [string]$maxCount)
+    param([string]$poolId, [string]$maxCount)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $computeNodes = Get-AzureBatchComputeNode -PoolId $poolId -MaxCount $maxCount -BatchContext $context
@@ -121,7 +121,7 @@ Tests querying for all compute nodes under a pool
 #>
 function Test-ListAllComputeNodes
 {
-    param([string]$accountName, [string]$poolId, [string]$count)
+    param([string]$poolId, [string]$count)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $computeNodes = Get-AzureBatchComputeNode -PoolId $poolId -BatchContext $context
@@ -141,7 +141,7 @@ Tests piping Get-AzureBatchPool into Get-AzureBatchComputeNode
 #>
 function Test-ListComputeNodePipeline
 {
-    param([string]$accountName, [string]$poolId, [string]$count)
+    param([string]$poolId, [string]$count)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $computeNodes = Get-AzureBatchPool -Id $poolId -BatchContext $context | Get-AzureBatchComputeNode -BatchContext $context
@@ -155,7 +155,7 @@ Tests removing a compute node from a pool
 #>
 function Test-RemoveComputeNode
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+    param([string]$poolId, [string]$computeNodeId, [string]$usePipeline)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -194,7 +194,7 @@ Tests removing multiple compute nodes from a pool
 #>
 function Test-RemoveMultipleComputeNodes
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$computeNodeId2)
+    param([string]$poolId, [string]$computeNodeId, [string]$computeNodeId2)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -223,7 +223,7 @@ Tests rebooting a compute node
 #>
 function Test-RebootComputeNode
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+    param([string]$poolId, [string]$computeNodeId, [string]$usePipeline)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -249,7 +249,7 @@ Tests reimaging a compute node
 #>
 function Test-ReimageComputeNode
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+    param([string]$poolId, [string]$computeNodeId, [string]$usePipeline)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -275,7 +275,7 @@ Tests disabling and enabling compute node scheduling
 #>
 function Test-DisableAndEnableComputeNodeScheduling
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+    param([string]$poolId, [string]$computeNodeId, [string]$usePipeline)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
