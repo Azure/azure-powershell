@@ -292,10 +292,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string computeNodeId = null;
 
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetComputeNodeRemoteLoginSettings '{0}' '{1}' '{2}' '{3}'", ScenarioTestHelpers.SharedAccount, iaasPoolId, computeNodeId, usePipeline ? 1 : 0) }; },
+                () => { return new string[] { string.Format("Test-GetComputeNodeRemoteLoginSettings '{0}' '{1}' '{2}'", iaasPoolId, computeNodeId, usePipeline ? 1 : 0) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, iaasPoolId);
                 },
                 null,
