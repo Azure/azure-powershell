@@ -115,7 +115,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
             else
             {
-                if (!MoqClients)
+                if (!MoqClients && !client.GetType().Namespace.Contains("Castle."))
                 {
                     // Use the WithHandler method to create an extra reference to the http client
                     // this will prevent the httpClient from being disposed in a long-running test using 
