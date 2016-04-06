@@ -309,7 +309,7 @@ Tests getting remote login settings from compute node
 #>
 function Test-GetComputeNodeRemoteLoginSettings
 {
-	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+	param([string]$poolId, [string]$computeNodeId, [string]$usePipeline)
 	
 	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 	$remoteLoginSettings = $null

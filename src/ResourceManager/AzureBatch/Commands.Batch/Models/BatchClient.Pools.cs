@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="maxCount">The number of results.</param>
         /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
         /// <returns>The node agent skus matching the specified filter.</returns>
-        public IEnumerable<PSNodeAgentSku> ListNodeAgentSkus(BatchAccountContext context, string detailLevel = null, int maxCount = Int32.MaxValue, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public IEnumerable<PSNodeAgentSku> ListNodeAgentSkus(BatchAccountContext context, string detailLevel = default(string), int maxCount = default(int), IEnumerable<BatchClientBehavior> additionalBehaviors = null)
         {
             PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
             ODATADetailLevel filterClause = new ODATADetailLevel(filterClause: detailLevel);
