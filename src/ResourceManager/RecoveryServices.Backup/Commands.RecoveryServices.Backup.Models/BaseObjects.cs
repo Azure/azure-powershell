@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -102,14 +103,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureRmRecoveryServicesItemBase : AzureRmRecoveryServicesItemContext
     {
         /// <summary>
+        /// Name of the item
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Id of the item
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
         /// Last Recovery Point for the item
         /// </summary>
         public DateTime? LastRecoveryPoint { get; set; }
 
-        public AzureRmRecoveryServicesItemBase(ProtectedItem protectedItem,
+        public AzureRmRecoveryServicesItemBase(ProtectedItemResource protectedItemResource,
             AzureRmRecoveryServicesContainerBase container)
-            : base(protectedItem, container)
+            : base((ProtectedItem)protectedItemResource.Properties, container)
         {
+            ProtectedItem protectedItem = (ProtectedItem)protectedItemResource.Properties;
+            Name = protectedItemResource.Name;
+            Id = protectedItemResource.Id;
             LastRecoveryPoint = protectedItem.LastRecoveryPoint;
         }
     }
@@ -124,6 +138,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureRmRecoveryServicesRecoveryPointBase : AzureRmRecoveryServicesItemContext
     {
         private global::Microsoft.Azure.Management.RecoveryServices.Backup.Models.RecoveryPointResource rp;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ItemName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string RecoveryPointId { get; set; }
 
         /// <summary>
         ///Type of recovery point (appConsistent\CrashConsistent etc) 
@@ -149,8 +173,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public WorkloadType WorkloadType { get; set; }
 
+        public string Id { get; set; }
+
         public override void Validate()
         {
+            base.Validate();
+
+            if(string.IsNullOrEmpty(Name))
+            {
+                throw new ArgumentException(Resources.PolicyNameIsEmptyOrNull);
+            }
+
+            if(string.IsNullOrEmpty(Id))
+            {
+                throw new ArgumentException(Resources.PolicyIdIsEmptyOrNull);
+            }
         }
     }
 
@@ -158,6 +195,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         public override void Validate()
         {
+            base.Validate();
         }
     }
 
@@ -165,6 +203,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         public override void Validate()
         {
+            base.Validate();
         }
     }
 

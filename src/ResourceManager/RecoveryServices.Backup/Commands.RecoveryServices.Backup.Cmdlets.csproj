@@ -11,6 +11,8 @@
     <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,6 +44,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Commands.RecoveryServices.Backup.HydraAdapter\Resources\Microsoft.Azure.Management.RecoveryServicesBackupManagement.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\portable-net45+wp8+wpa81+win\Microsoft.Azure.ResourceManager.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
@@ -72,7 +78,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\Backup\BackupAzureRmRecoveryServicesItem.cs" />
+    <Compile Include="Cmdlets\Container\GetAzureRmBackupManagementServer.cs" />
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesContainer.cs" />
+    <Compile Include="Cmdlets\Container\UnregisterAzureRmBackupManagementServer.cs" />
+    <Compile Include="Cmdlets\Container\UnregisterAzureRmRecoveryServicesBackupContainer.cs" />
+    <Compile Include="Cmdlets\Item\DisableAzureRmRecoveryServicesProtection.cs" />
     <Compile Include="Cmdlets\Item\EnableAzureRmRecoveryServicesProtection.cs" />
     <Compile Include="Cmdlets\Item\GetAzureRmRecoveryServicesItem.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJob.cs" />
@@ -83,6 +94,7 @@
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesSchedulePolicyObject.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\PolicyCmdletHelpers.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Constants.cs" />
@@ -92,9 +104,7 @@
     <Compile Include="RecoveryServicesBackupCmdletBase.cs" />
     <Compile Include="CmdletParameterHelpMessages.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cmdlets\Backup\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
@@ -143,11 +153,4 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

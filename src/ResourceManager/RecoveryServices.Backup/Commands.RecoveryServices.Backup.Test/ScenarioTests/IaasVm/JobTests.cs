@@ -80,5 +80,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-WaitJobPipeScenario");
         }
+
+        [Fact]
+        public void TestCancelJobScenario()
+        {
+            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-CancelJobScenario");
+        }
     }
 }

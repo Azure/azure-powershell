@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             hydraAdapter = hydraAdapterIn;
         }
 
-        public IPsBackupProvider GetProviderInstance(ContainerType containerType)
+        public IPsBackupProvider GetProviderInstance(ContainerType containerType, BackupManagementType? backupManagementType)
         {
             PsBackupProviderTypes providerType = 0;
 
@@ -44,11 +44,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 case ContainerType.AzureVM:
                     providerType = PsBackupProviderTypes.IaasVm;
                     break;
-                case ContainerType.AzureSqlContainer:
-                    providerType = PsBackupProviderTypes.AzureSql;
+                case ContainerType.Windows:
+                    if (backupManagementType == BackupManagementType.Mars)
+                        providerType = PsBackupProviderTypes.Mab;
+                    else if (backupManagementType == BackupManagementType.Scdpm)
+                        providerType = PsBackupProviderTypes.Dpm;
+                    else
+                        throw new ArgumentException(String.Format("BackupManagementType {0} is not expected for ContainerType {1}", backupManagementType, containerType));
                     break;
+                //case ContainerType.AzureSqlContainer:
+                //    if (backupManagementType.HasValue)
+                //    {
+                //        throw new ArgumentException("BackupManagementType is not expected for ContainerType: " +
+                //                                     containerType.ToString());
+                //    }
+                //    providerType = PsBackupProviderTypes.AzureSql;
+                //    break;
                 default:
-                    break;
+                    throw new ArgumentException("Unsupported containerType: " + containerType.ToString());
             }
 
             return GetProviderInstance(providerType);
@@ -71,7 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return GetProviderInstance(providerType);
         }
 
-        public IPsBackupProvider GetProviderInstance(ContainerType containerType, BackupManagementType backupManagementType)
+        public IPsBackupProvider GetProviderInstance(ContainerType containerType)
         {
             throw new NotImplementedException();
         }

@@ -50,6 +50,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                WriteDebug(string.Format("Input params - Policy: {0}" +
+                          "RetentionPolicy:{1}, SchedulePolicy:{2}",
+                          Policy == null ? "NULL" : Policy.ToString(),
+                          RetentionPolicy == null ? "NULL" : RetentionPolicy.ToString(),
+                          SchedulePolicy == null ? "NULL" : SchedulePolicy.ToString()));
+
                 // Validate policy name
                 PolicyCmdletHelpers.ValidateProtectionPolicyName(Policy.Name);
 
@@ -71,26 +77,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType,
                                                                                          Policy.BackupManagementType);                
                 ProtectionPolicyResponse policyResponse = psBackupProvider.ModifyPolicy();
+                WriteDebug("ModifyPolicy http response from service: " + policyResponse.StatusCode.ToString());
 
                 if(policyResponse.StatusCode == System.Net.HttpStatusCode.Accepted)
                 {
+                    WriteDebug("Tracking operation status URL for completion: " +
+                                policyResponse.AzureAsyncOperation);
+
                     // Track OperationStatus URL for operation completion
                     BackUpOperationStatusResponse operationResponse =  WaitForOperationCompletionUsingStatusLink(
                                                 policyResponse.AzureAsyncOperation,
                                                 HydraAdapter.GetProtectionPolicyOperationStatusByURL);
-                                        
-                    if(operationResponse.OperationStatus.Status == OperationStatusValues.Failed.ToString())
+
+                    WriteDebug("Final operation status: " + operationResponse.OperationStatus.Status);
+
+                    if (operationResponse.OperationStatus.Properties != null &&
+                       ((OperationStatusJobsExtendedInfo)operationResponse.OperationStatus.Properties).JobIds != null)
                     {
-                          // if operation failed, then trace warning/error
+                        // get list of jobIds and return jobResponses                    
+                        WriteObject(GetJobObject(((OperationStatusJobsExtendedInfo)operationResponse.OperationStatus.Properties).JobIds));
                     }
 
-                    // get list of jobIds and return jobResponses                    
-                    WriteObject(GetJobObject(((OperationStatusJobsExtendedInfo)operationResponse.OperationStatus.Properties).JobIds));
+                    if (operationResponse.OperationStatus.Status == OperationStatusValues.Failed.ToString())
+                    {
+                        // if operation failed, then trace error and throw exception
+                        if (operationResponse.OperationStatus.OperationStatusError != null)
+                        {
+                            WriteDebug(string.Format(
+                                         "OperationStatus Error: {0} " +
+                                         "OperationStatus Code: {1}",
+                                         operationResponse.OperationStatus.OperationStatusError.Message,
+                                         operationResponse.OperationStatus.OperationStatusError.Code));
+                        }                                     
+                    }
                 }
                 else
                 {
                     // Hydra will return OK if NO datasources are associated with this policy
-                    // just trace and return
+                    WriteDebug("No datasources are associated with Policy, http response code: " +
+                                policyResponse.StatusCode.ToString());
                 }
             });
         }

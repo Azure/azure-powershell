@@ -40,7 +40,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             IsYearlyScheduleEnabled = false;
         }
         public override void Validate()
-        {           
+        {
+            base.Validate();
+
             if (IsDailyScheduleEnabled == false && IsWeeklyScheduleEnabled == false &&
                 IsMonthlyScheduleEnabled == false && IsYearlyScheduleEnabled == false)
             {
@@ -293,7 +295,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                  base.ToString(),
                                  RetentionScheduleDaily == null ? "NULL" : RetentionScheduleDaily.ToString(),
                                  RetentionScheduleWeekly == null ? "NULL" : RetentionScheduleWeekly.ToString(),
-                                 MonthsOfYear.ToString(), base.ToString());
+                                 TraceUtils.GetEnumsString<Month>(MonthsOfYear), base.ToString());
         }
     }
         
@@ -363,7 +365,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             return string.Format("DaysOfTheWeek:{0}, WeeksOfTheMonth:{1}",
                                   TraceUtils.GetString(DaysOfTheWeek),
-                                  WeeksOfTheMonth.ToString());
+                                  TraceUtils.GetEnumsString<WeekOfMonth>(WeeksOfTheMonth));
         }
     }
 

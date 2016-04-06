@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     {
         #region HydraToPSObject conversions
 
-        public static AzureRmRecoveryServicesSimpleSchedulePolicy GetPSSimpleSchedulePolicyPolicy(
+        public static AzureRmRecoveryServicesSimpleSchedulePolicy GetPSSimpleSchedulePolicy(
             SimpleSchedulePolicy hydraPolicy)
         {
             if (hydraPolicy == null)
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             psPolicy.ScheduleRunDays = HelperUtils.GetEnumListFromStringList<DayOfWeek>(hydraPolicy.ScheduleRunDays);
             psPolicy.ScheduleRunFrequency = (ScheduleRunType)Enum.Parse(typeof(ScheduleRunType),
                                                                         hydraPolicy.ScheduleRunFrequency);
-            psPolicy.ScheduleRunTimes = (List<DateTime>)hydraPolicy.ScheduleRunTimes;
+            psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(hydraPolicy.ScheduleRunTimes);
 
             // safe side validation
             psPolicy.Validate();
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region PStoHydraObject conversions
 
-        public static List<DateTime> ParseScheduleRunTimesToUTC(List<DateTime> localTimes)
+        public static List<DateTime> ParseDateTimesToUTC(IList<DateTime> localTimes)
         {
             if (localTimes == null || localTimes.Count == 0)
             {
@@ -64,11 +64,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             foreach (DateTime localTime in localTimes)
             {
                 temp = localTime;
-                if (localTime.Kind == DateTimeKind.Local)
+                if (localTime.Kind != DateTimeKind.Utc)
                 {
-                    temp = localTime.ToUniversalTime();
-                    temp = new DateTime(temp.Year, temp.Month,
-                                        temp.Day, temp.Hour, temp.Minute - (temp.Minute % 30), 0);
+                    temp = localTime.ToUniversalTime();                    
                 }                
                 utcTimes.Add(temp);
             }

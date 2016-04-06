@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public AzureRmRecoveryServicesRetentionPolicyBase RetentionPolicy { get; set; }
 
-        public virtual void Validate()
+        public override void Validate()
         {
             base.Validate();
 

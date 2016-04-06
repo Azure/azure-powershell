@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public abstract class RecoveryServicesBackupCmdletBase : AzureRMCmdlet
     {
         // in seconds
-        private int _defaultSleepForOperationTracking = 15;
+        private int _defaultSleepForOperationTracking = 5;
 
         protected HydraAdapterNS.HydraAdapter HydraAdapter { get; set; }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
             HydraAdapter = new HydraAdapterNS.HydraAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
-            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose);
+            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
         }
 
         protected void ExecutionBlock(Action action)
@@ -153,11 +153,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             while (response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
             {
+                WriteDebug("Tracking operation completion using status link: " + statusUrlLink);
                 Thread.Sleep(_defaultSleepForOperationTracking * 1000);
                 response = hydraFunc(statusUrlLink);
             }
 
             return response;
+        }
+
+        protected void HandleCreatedJob(BaseRecoveryServicesJobResponse itemResponse, string operationName)
+        {
+            WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
+                            itemResponse.AzureAsyncOperation);
+
+            var response = WaitForOperationCompletionUsingStatusLink(
+                                            itemResponse.AzureAsyncOperation,
+                                            HydraAdapter.GetProtectedItemOperationStatusByURL);
+
+            WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
+
+            if (response.OperationStatus.Properties != null &&
+                   ((OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
+            {
+                var jobStatusResponse = (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+                WriteObject(GetJobObject(jobStatusResponse.JobId));
+            }
+
+            if (response.OperationStatus.Status == OperationStatusValues.Failed)
+            {
+                var errorMessage = string.Format(
+                    Resources.OperationFailed,
+                    operationName,
+                    response.OperationStatus.OperationStatusError.Code,
+                    response.OperationStatus.OperationStatusError.Message);
+                throw new Exception(errorMessage);
+            }
         }
     }
 }
