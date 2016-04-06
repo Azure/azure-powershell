@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType workloadType =
                 (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData.ProviderParameters[ItemParams.WorkloadType];
 
-            AzureRmRecoveryServicesPolicyBase policy = (AzureRmRecoveryServicesPolicyBase)
+            AzureRmRecoveryServicesBackupPolicyBase policy = (AzureRmRecoveryServicesBackupPolicyBase)
                                                  ProviderData.ProviderParameters[ItemParams.Policy];
 
             AzureRmRecoveryServicesItemBase itemBase = (AzureRmRecoveryServicesItemBase)
@@ -266,13 +266,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string policyName = (string)ProviderData.ProviderParameters[PolicyParams.PolicyName];
             Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType workloadType =
                 (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData.ProviderParameters[PolicyParams.WorkloadType];
-            AzureRmRecoveryServicesRetentionPolicyBase retentionPolicy =
+            AzureRmRecoveryServicesBackupRetentionPolicyBase retentionPolicy =
                 ProviderData.ProviderParameters.ContainsKey(PolicyParams.RetentionPolicy) ?
-                (AzureRmRecoveryServicesRetentionPolicyBase)ProviderData.ProviderParameters[PolicyParams.RetentionPolicy] :
+                (AzureRmRecoveryServicesBackupRetentionPolicyBase)ProviderData.ProviderParameters[PolicyParams.RetentionPolicy] :
                 null;
-            AzureRmRecoveryServicesSchedulePolicyBase schedulePolicy =
+            AzureRmRecoveryServicesBackupSchedulePolicyBase schedulePolicy =
                 ProviderData.ProviderParameters.ContainsKey(PolicyParams.SchedulePolicy) ?
-                (AzureRmRecoveryServicesSchedulePolicyBase)ProviderData.ProviderParameters[PolicyParams.SchedulePolicy] :
+                (AzureRmRecoveryServicesBackupSchedulePolicyBase)ProviderData.ProviderParameters[PolicyParams.SchedulePolicy] :
                 null;
 
             // do validations
@@ -285,14 +285,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Logger.Instance.WriteDebug("Validation of Retention policy is successful");
 
             // update the retention times from backupSchedule to retentionPolicy after converting to UTC           
-            CopyScheduleTimeToRetentionTimes((AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
-                                             (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy);
+            CopyScheduleTimeToRetentionTimes((AzureRmRecoveryServicesBackupLongTermRetentionPolicy)retentionPolicy,
+                                             (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)schedulePolicy);
             Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
             
             // Now validate both RetentionPolicy and SchedulePolicy together
             PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
-                                (AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy,
-                                (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy);
+                                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)retentionPolicy,
+                                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)schedulePolicy);
             Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
             // construct Hydra policy request            
@@ -303,9 +303,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     Properties = new AzureIaaSVMProtectionPolicy()
                     {
                         RetentionPolicy = PolicyHelpers.GetHydraLongTermRetentionPolicy(
-                                                (AzureRmRecoveryServicesLongTermRetentionPolicy)retentionPolicy),
+                                                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)retentionPolicy),
                         SchedulePolicy = PolicyHelpers.GetHydraSimpleSchedulePolicy(
-                                                (AzureRmRecoveryServicesSimpleSchedulePolicy)schedulePolicy)
+                                                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)schedulePolicy)
                     }
                 }
             };
@@ -317,18 +317,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public ProtectionPolicyResponse ModifyPolicy()
         {
-            AzureRmRecoveryServicesRetentionPolicyBase retentionPolicy =
+            AzureRmRecoveryServicesBackupRetentionPolicyBase retentionPolicy =
                ProviderData.ProviderParameters.ContainsKey(PolicyParams.RetentionPolicy) ?
-               (AzureRmRecoveryServicesRetentionPolicyBase)ProviderData.ProviderParameters[PolicyParams.RetentionPolicy] :
+               (AzureRmRecoveryServicesBackupRetentionPolicyBase)ProviderData.ProviderParameters[PolicyParams.RetentionPolicy] :
                null;
-            AzureRmRecoveryServicesSchedulePolicyBase schedulePolicy =
+            AzureRmRecoveryServicesBackupSchedulePolicyBase schedulePolicy =
                 ProviderData.ProviderParameters.ContainsKey(PolicyParams.SchedulePolicy) ?
-                (AzureRmRecoveryServicesSchedulePolicyBase)ProviderData.ProviderParameters[PolicyParams.SchedulePolicy] :
+                (AzureRmRecoveryServicesBackupSchedulePolicyBase)ProviderData.ProviderParameters[PolicyParams.SchedulePolicy] :
                 null;
 
-            AzureRmRecoveryServicesPolicyBase policy =
+            AzureRmRecoveryServicesBackupPolicyBase policy =
                 ProviderData.ProviderParameters.ContainsKey(PolicyParams.ProtectionPolicy) ?
-                (AzureRmRecoveryServicesPolicyBase)ProviderData.ProviderParameters[PolicyParams.ProtectionPolicy] :
+                (AzureRmRecoveryServicesBackupPolicyBase)ProviderData.ProviderParameters[PolicyParams.ProtectionPolicy] :
                 null;
 
             // do validations
@@ -357,14 +357,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             // copy the backupSchedule time to retentionPolicy after converting to UTC
             CopyScheduleTimeToRetentionTimes(
-                (AzureRmRecoveryServicesLongTermRetentionPolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy,
-                (AzureRmRecoveryServicesSimpleSchedulePolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy);
+                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy,
+                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy);
             Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
 
             // Now validate both RetentionPolicy and SchedulePolicy matches or not
             PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
-                (AzureRmRecoveryServicesLongTermRetentionPolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy,
-                (AzureRmRecoveryServicesSimpleSchedulePolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy);
+                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy,
+                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy);
             Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
             // construct Hydra policy request            
@@ -375,9 +375,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     Properties = new AzureIaaSVMProtectionPolicy()
                     {
                         RetentionPolicy = PolicyHelpers.GetHydraLongTermRetentionPolicy(
-                                  (AzureRmRecoveryServicesLongTermRetentionPolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy),
+                                  (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy),
                         SchedulePolicy = PolicyHelpers.GetHydraSimpleSchedulePolicy(
-                                  (AzureRmRecoveryServicesSimpleSchedulePolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy)
+                                  (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy)
                     }
                 }
             };
@@ -495,9 +495,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return itemModels;
         }      
 
-        public AzureRmRecoveryServicesSchedulePolicyBase GetDefaultSchedulePolicyObject()
+        public AzureRmRecoveryServicesBackupSchedulePolicyBase GetDefaultSchedulePolicyObject()
         {
-            AzureRmRecoveryServicesSimpleSchedulePolicy defaultSchedule = new AzureRmRecoveryServicesSimpleSchedulePolicy();
+            AzureRmRecoveryServicesBackupSimpleSchedulePolicy defaultSchedule = new AzureRmRecoveryServicesBackupSimpleSchedulePolicy();
             //Default is daily scedule at 10:30 AM local time
             defaultSchedule.ScheduleRunFrequency = ScheduleRunType.Daily;
 
@@ -511,9 +511,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return defaultSchedule;
         }
 
-        public AzureRmRecoveryServicesRetentionPolicyBase GetDefaultRetentionPolicyObject()
+        public AzureRmRecoveryServicesBackupRetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
-            AzureRmRecoveryServicesLongTermRetentionPolicy defaultRetention = new AzureRmRecoveryServicesLongTermRetentionPolicy();
+            AzureRmRecoveryServicesBackupLongTermRetentionPolicy defaultRetention = new AzureRmRecoveryServicesBackupLongTermRetentionPolicy();
 
             //Default time is 10:30 local time
             DateTime retentionTime = GenerateRandomTime();
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
         
-        private void ValidateAzureVMProtectionPolicy(AzureRmRecoveryServicesPolicyBase policy)
+        private void ValidateAzureVMProtectionPolicy(AzureRmRecoveryServicesBackupPolicyBase policy)
         {
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesIaasVmPolicy))
             {
@@ -643,24 +643,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             policy.Validate();
         }
 
-        private void ValidateAzureVMSchedulePolicy(AzureRmRecoveryServicesSchedulePolicyBase policy)
+        private void ValidateAzureVMSchedulePolicy(AzureRmRecoveryServicesBackupSchedulePolicyBase policy)
         {
-            if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesSimpleSchedulePolicy))
+            if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesBackupSimpleSchedulePolicy))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidSchedulePolicyException,
-                                            typeof(AzureRmRecoveryServicesSimpleSchedulePolicy).ToString()));
+                                            typeof(AzureRmRecoveryServicesBackupSimpleSchedulePolicy).ToString()));
             }
 
             // call validation
             policy.Validate();
         }
 
-        private void ValidateAzureVMRetentionPolicy(AzureRmRecoveryServicesRetentionPolicyBase policy)
+        private void ValidateAzureVMRetentionPolicy(AzureRmRecoveryServicesBackupRetentionPolicyBase policy)
         {
-            if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesLongTermRetentionPolicy))
+            if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesBackupLongTermRetentionPolicy))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidRetentionPolicyException,
-                                            typeof(AzureRmRecoveryServicesLongTermRetentionPolicy).ToString()));
+                                            typeof(AzureRmRecoveryServicesBackupLongTermRetentionPolicy).ToString()));
             }
 
             // call validation
@@ -668,7 +668,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         private void ValidateAzureVMEnableProtectionRequest(string vmName, string serviceName, string rgName,
-            AzureRmRecoveryServicesPolicyBase policy)
+            AzureRmRecoveryServicesBackupPolicyBase policy)
         {
             if (string.IsNullOrEmpty(vmName))
             {
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         private void ValidateAzureVMModifyProtectionRequest(AzureRmRecoveryServicesItemBase itemBase,
-            AzureRmRecoveryServicesPolicyBase policy)
+            AzureRmRecoveryServicesBackupPolicyBase policy)
         {
             if (itemBase == null || itemBase.GetType() != typeof(AzureRmRecoveryServicesIaasVmItem))
             {
@@ -867,8 +867,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return status;
         }
 
-        private void CopyScheduleTimeToRetentionTimes(AzureRmRecoveryServicesLongTermRetentionPolicy retPolicy,
-                                                      AzureRmRecoveryServicesSimpleSchedulePolicy schPolicy)
+        private void CopyScheduleTimeToRetentionTimes(AzureRmRecoveryServicesBackupLongTermRetentionPolicy retPolicy,
+                                                      AzureRmRecoveryServicesBackupSimpleSchedulePolicy schPolicy)
         {
             // schedule runTimes is already validated if in UTC/not during validate()
             // now copy times from schedule to retention policy
