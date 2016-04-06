@@ -347,8 +347,8 @@ Please contact Microsoft for further assistant.</value>
   <data name="DisableProtectionWarning" xml:space="preserve">
     <value>Are you sure you want to disable protection for the item '{0}'</value>
   </data>
-  <data name="DisableProtectionOperationFailed" xml:space="preserve">
-    <value>Disable Protection OperationFailed with error code: {0} , and error Message: {1}</value>
+  <data name="DisableProtectionOperation" xml:space="preserve">
+    <value>Disable Protection Operation</value>
   </data>
   <data name="FinalOperationStatus" xml:space="preserve">
     <value>Final operation status:</value>
@@ -367,5 +367,14 @@ Please contact Microsoft for further assistant.</value>
   </data>
   <data name="TriggerBackupOperation" xml:space="preserve">
     <value>Trigger Backup Operation</value>
+  </data>
+  <data name="URIValueNotFound" xml:space="preserve">
+    <value>{0} Uri value not found in Id {1}</value>
+  </data>
+  <data name="SetVaultContextFirst" xml:space="preserve">
+    <value>Set vault context first using cmdlet Set-AzureRmRecoveryServicesVaultContext</value>
+  </data>
+  <data name="VirtualMachineIdIsEmptyOrNull" xml:space="preserve">
+    <value>VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId</value>
   </data>
 </root>
