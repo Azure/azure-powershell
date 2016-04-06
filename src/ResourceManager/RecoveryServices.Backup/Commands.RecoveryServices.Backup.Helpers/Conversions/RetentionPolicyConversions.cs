@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #region HydraToPSObject conversions
 
         #region public
-        public static AzureRmRecoveryServicesLongTermRetentionPolicy GetPSLongTermRetentionPolicy(
+        public static AzureRmRecoveryServicesBackupLongTermRetentionPolicy GetPSLongTermRetentionPolicy(
             HydraModels.LongTermRetentionPolicy hydraRetPolicy)
         {
             if(hydraRetPolicy == null)
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 return null;
             }
 
-            AzureRmRecoveryServicesLongTermRetentionPolicy ltrPolicy = new AzureRmRecoveryServicesLongTermRetentionPolicy();
+            AzureRmRecoveryServicesBackupLongTermRetentionPolicy ltrPolicy = new AzureRmRecoveryServicesBackupLongTermRetentionPolicy();
 
             if(hydraRetPolicy.DailySchedule != null)
             {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return ltrPolicy;            
         }
 
-        public static AzureRmRecoveryServicesLongTermRetentionPolicy GetPSSimpleRetentionPolicy(
+        public static AzureRmRecoveryServicesBackupLongTermRetentionPolicy GetPSSimpleRetentionPolicy(
            HydraModels.SimpleRetentionPolicy hydraRetPolicy)
         {
             throw new NotSupportedException();
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region PStoHydraObject conversions
         public static HydraModels.LongTermRetentionPolicy GetHydraLongTermRetentionPolicy(
-            AzureRmRecoveryServicesLongTermRetentionPolicy psRetPolicy)
+            AzureRmRecoveryServicesBackupLongTermRetentionPolicy psRetPolicy)
         {
             if(psRetPolicy == null)
             {
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         public static HydraModels.SimpleRetentionPolicy GetHydraSimpleRetentionPolicy(
-            AzureRmRecoveryServicesSimpleSchedulePolicy psRetPolicy)
+            AzureRmRecoveryServicesBackupSimpleSchedulePolicy psRetPolicy)
         {
             throw new NotSupportedException();
         }

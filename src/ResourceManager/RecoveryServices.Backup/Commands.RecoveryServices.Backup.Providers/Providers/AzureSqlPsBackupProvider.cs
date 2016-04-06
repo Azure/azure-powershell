@@ -78,12 +78,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }      
        
-        public AzureRmRecoveryServicesSchedulePolicyBase GetDefaultSchedulePolicyObject()
+        public AzureRmRecoveryServicesBackupSchedulePolicyBase GetDefaultSchedulePolicyObject()
         {
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesRetentionPolicyBase GetDefaultRetentionPolicyObject()
+        public AzureRmRecoveryServicesBackupRetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
             throw new NotImplementedException();
         }

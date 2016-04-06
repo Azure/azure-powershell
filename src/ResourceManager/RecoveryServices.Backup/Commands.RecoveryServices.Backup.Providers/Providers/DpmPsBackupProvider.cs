@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryParams.FriendlyName = name;
 
             // 2. Filter by ContainerType
-            queryParams.ProviderType = ProviderType.Dpm.ToString();
+            queryParams.ProviderType = ProviderType.DPM.ToString();
 
             //ToDo: Piyush to call Get Backup Engine
             //var listResponse = HydraAdapter.ListContainers(queryParams);
@@ -111,12 +111,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesSchedulePolicyBase GetDefaultSchedulePolicyObject()
+        public AzureRmRecoveryServicesBackupSchedulePolicyBase GetDefaultSchedulePolicyObject()
         {
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesRetentionPolicyBase GetDefaultRetentionPolicyObject()
+        public AzureRmRecoveryServicesBackupRetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
             throw new NotImplementedException();
         }

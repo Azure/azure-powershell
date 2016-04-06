@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #endregion
 
         #region policy
-        public static AzureRmRecoveryServicesPolicyBase GetPolicyModel(ProtectionPolicyResource hydraResponse)
+        public static AzureRmRecoveryServicesBackupPolicyBase GetPolicyModel(ProtectionPolicyResource hydraResponse)
         {
-            AzureRmRecoveryServicesPolicyBase policyModel = null;
+            AzureRmRecoveryServicesBackupPolicyBase policyModel = null;
 
             if(hydraResponse == null || hydraResponse.Properties == null)
             {
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return policyModel;
         }
 
-        public static List<AzureRmRecoveryServicesPolicyBase> GetPolicyModelList(
+        public static List<AzureRmRecoveryServicesBackupPolicyBase> GetPolicyModelList(
             ProtectionPolicyListResponse hydraListResponse)
         {
             if(hydraListResponse == null || hydraListResponse.ItemList == null ||
@@ -126,8 +126,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 return null;
             }
 
-            List<AzureRmRecoveryServicesPolicyBase> policyModels = new List<AzureRmRecoveryServicesPolicyBase>();
-            AzureRmRecoveryServicesPolicyBase policyModel = null;
+            List<AzureRmRecoveryServicesBackupPolicyBase> policyModels = new List<AzureRmRecoveryServicesBackupPolicyBase>();
+            AzureRmRecoveryServicesBackupPolicyBase policyModel = null;
 
             foreach(ProtectionPolicyResource resource in hydraListResponse.ItemList.Value)
             {
