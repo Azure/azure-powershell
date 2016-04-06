@@ -42,25 +42,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public class TraceUtils
     {
-        public static string GetString(IEnumerable<Object> objList)
+        public static string GetString<T>(IEnumerable<T> objList)
         {
-            return (objList == null) ? "null" : "{" + string.Join("}, {", objList) + "}";
-        }
-
-        public static string GetEnumsString<T>(List<T> objList)
-        {
-            return (objList == null) ? "null" : "{" + string.Join(",", Enum.GetNames(typeof(T))) +"}";
-        }
-
-        public static string GetString(IEnumerable<DateTime> objList)
-        {
-            return (objList == null) ? "null" : "{" + string.Join("}, {", objList) + "}";
-        }
-
-        public static string GetString(IEnumerable<DayOfWeek> objList)
-        {
-            return (objList == null) ? "null" : "{" + string.Join("}, {", objList) + "}";
-        }
+            return (objList == null) ? "null" : "{" + string.Join(", ", objList.Select(e => e.ToString())) +"}";
+        }       
     }
 
     public class IdUtils
