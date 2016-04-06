@@ -88,15 +88,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             response.InstanceId = GetLastIdFromFullId(hydraJob.Id);
             response.StartTime = vmJob.StartTime.ToLocalTime();
-            // TODO: Fix this once Hydra is updated to use DateTime?
-            if (vmJob.EndTime > new DateTime(2001, 1, 1))
-            {
-                response.EndTime = vmJob.EndTime.ToLocalTime();
-            }
-            else
-            {
-                response.EndTime = null;
-            }
+            response.EndTime = vmJob.EndTime;
             response.Duration = vmJob.Duration;
             response.Status = vmJob.Status;
             response.VmVersion = vmJob.VirtualMachineVersion;
