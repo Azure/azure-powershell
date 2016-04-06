@@ -89,12 +89,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #endregion
 
         #region policy
-        public static AzureRmRecoveryServicesPolicyBase GetPolicyModel(ProtectionPolicyResource hydraResponse)
+        public static AzureRmRecoveryServicesBackupPolicyBase GetPolicyModel(ProtectionPolicyResource hydraResponse)
         {
-            AzureRmRecoveryServicesPolicyBase policyModel = null;
+            AzureRmRecoveryServicesBackupPolicyBase policyModel = null;
 
             if(hydraResponse == null || hydraResponse.Properties == null)
             {
+                Logger.Instance.WriteDebug("Policy Hydra response is Null/Empty");
                 throw new ArgumentException(Resources.EmptyHydraResponseException);
             }
 
@@ -103,7 +104,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if(((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType() !=
                                                                            typeof(LongTermRetentionPolicy))
                 {
-                    Logger.Instance.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                    Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                               ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType());                    
                     Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
@@ -111,7 +113,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType() != 
                                                                             typeof(SimpleSchedulePolicy))
                 {
-                    Logger.Instance.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                    Logger.Instance.WriteDebug("Unknown SchedulePolicy object received: " +
+                               ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType());
                     Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
@@ -122,34 +125,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
                 iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((LongTermRetentionPolicy)
                                                   ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy);
-                iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicyPolicy((SimpleSchedulePolicy)
+                iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((SimpleSchedulePolicy)
                                                  ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy);
             }
             else
-            {
-                // trace warning message, ignore and return
+            {                
                 // we will enter this case when service supports new workload and customer 
-                // still using old version of azure powershell
-                Logger.Instance.WriteDebug(Resources.UpdateToNewAzurePowershellWarning);
+                // still using old version of azure powershell. Trace warning message, ignore and return
+                Logger.Instance.WriteDebug("Unknown Policy object received: " +
+                                           hydraResponse.Properties.GetType());
                 Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                 return null;
             }
 
             policyModel.Name = hydraResponse.Name;
+            policyModel.Id = hydraResponse.Id;
 
             return policyModel;
         }
 
-        public static List<AzureRmRecoveryServicesPolicyBase> GetPolicyModelList(ProtectionPolicyListResponse hydraListResponse)
+        public static List<AzureRmRecoveryServicesBackupPolicyBase> GetPolicyModelList(
+            ProtectionPolicyListResponse hydraListResponse)
         {
             if(hydraListResponse == null || hydraListResponse.ItemList == null ||
                hydraListResponse.ItemList.Value == null || hydraListResponse.ItemList.Value.Count == 0)
             {
+                Logger.Instance.WriteDebug("Received empty list of policies from service");
                 return null;
             }
 
-            List<AzureRmRecoveryServicesPolicyBase> policyModels = new List<AzureRmRecoveryServicesPolicyBase>();
-            AzureRmRecoveryServicesPolicyBase policyModel = null;
+            List<AzureRmRecoveryServicesBackupPolicyBase> policyModels = new List<AzureRmRecoveryServicesBackupPolicyBase>();
+            AzureRmRecoveryServicesBackupPolicyBase policyModel = null;
 
             foreach(ProtectionPolicyResource resource in hydraListResponse.ItemList.Value)
             {
@@ -160,6 +166,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
             }
 
+            Logger.Instance.WriteDebug("Total policies in list: " + policyModels.Count);
             return policyModels;
         }
 
@@ -176,7 +183,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 if (protectedItem.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectedItem)))
                 {
-                    itemModel = new AzureRmRecoveryServicesIaasVmItem((AzureIaaSVMProtectedItem)protectedItem.Properties, container);
+                    itemModel = new AzureRmRecoveryServicesIaasVmItem(protectedItem, container);
                 }
             }
 

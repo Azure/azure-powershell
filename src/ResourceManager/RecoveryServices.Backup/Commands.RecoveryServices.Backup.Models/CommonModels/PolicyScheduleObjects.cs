@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesSimpleSchedulePolicy : AzureRmRecoveryServicesSchedulePolicyBase
+    public class AzureRmRecoveryServicesBackupSimpleSchedulePolicy : AzureRmRecoveryServicesBackupSchedulePolicyBase
     {
         public ScheduleRunType ScheduleRunFrequency { get; set; }
 
@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 ScheduleRunTimes[0].Millisecond != 0)
             {
                 throw new ArgumentException(Resources.InvalidScheduleTimeInScheduleException);
+            }
+
+            if(ScheduleRunTimes[0].Kind != DateTimeKind.Utc)
+            {
+                throw new ArgumentException(Resources.ScheduleTimeNotInUTCTimeZoneException);
             }
 
             if (ScheduleRunFrequency == ScheduleRunType.Weekly)

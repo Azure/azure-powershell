@@ -13,12 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Net;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using Hyak.Common;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
@@ -33,6 +35,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public static void ValidateProtectionPolicyName(string policyName)
         {
+            if(string.IsNullOrEmpty(policyName))
+            {
+                throw new ArgumentException(Resources.PolicyNameIsEmptyOrNull);
+            }
+
             if (policyName.Length < PolicyConstants.MinPolicyNameLength || 
                 policyName.Length > PolicyConstants.MaxPolicyNameLength)
             {
@@ -51,13 +58,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ProtectionPolicyResponse response = null;
 
             try
-            {
+            {                
                 response = hydraAdapter.GetProtectionPolicy(policyName);
+                Logger.Instance.WriteDebug("Successfully fetched policy from service: " + policyName);
             }
-            catch
+            catch (AggregateException exception)
             {
-                // if http response is NotFound - then ignore
-                // else rethrow the exception - TBD
+                // if http response is NotFound - then ignore and return NULL response
+                if (exception.InnerException != null && exception.InnerException is CloudException)
+                {
+                    var cloudEx = exception.InnerException as CloudException;
+                    if (cloudEx.Response != null)
+                    {
+                        if (cloudEx.Response.StatusCode != HttpStatusCode.NotFound)
+                        {
+                            Logger.Instance.WriteDebug("CloudException Response statusCode: " +
+                                                        cloudEx.Response.StatusCode);
+                            throw;
+                        }
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                else
+                {
+                    throw;
+                }
             }
 
             return response;

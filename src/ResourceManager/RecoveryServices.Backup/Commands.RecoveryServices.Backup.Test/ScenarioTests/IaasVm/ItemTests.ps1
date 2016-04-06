@@ -23,3 +23,43 @@ function Test-GetItemScenario
 	$item = Get-AzureRmRecoveryServicesItem -Container $namedContainer -WorkloadType "AzureVM";
 	echo $item.Name;
 }
+
+function Test-EnableAzureVMProtectionScenario
+{
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
+	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+
+	$policy = Get-AzureRmRecoveryServicesProtectionPolicy -Name "pwtest1"	
+
+	$job = Enable-AzureRmRecoveryServicesProtection -Name "mylinux1" -ResourceGroupName "mylinux1"  -WorkloadType "AzureVM" -Policy $policy;
+	Assert-AreEqual $job.Status "Completed";
+
+}
+
+function Test-DisableAzureVMProtectionScenario
+{
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
+	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+	
+	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
+	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
+
+	$item = Get-AzureRmRecoveryServicesItem -Container $namedContainer -WorkloadType "AzureVM";
+
+	$job = Disable-AzureRmRecoveryServicesProtection -Item $item -Force;
+	Assert-AreEqual $job.Status "Completed";
+}
+
+function Test-BackupItemScenario
+{
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
+	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+	
+	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "pstestv2vm1";
+	Assert-AreEqual $namedContainer.FriendlyName "pstestv2vm1";
+
+	$item = Get-AzureRmRecoveryServicesItem -Container $namedContainer -WorkloadType "AzureVM";
+	echo $item.Name;
+
+	Backup-AzureRmRecoveryServicesItem -Item $item | Wait-AzureRmBackupJob;
+}

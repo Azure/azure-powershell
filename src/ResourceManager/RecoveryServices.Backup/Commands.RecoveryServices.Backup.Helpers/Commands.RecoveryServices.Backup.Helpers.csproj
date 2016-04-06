@@ -66,6 +66,10 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.HydraAdapter\Commands.RecoveryServices.Backup.HydraAdapter.csproj">
+      <Project>{b758fec1-35c1-4f93-a954-66dd33f6e0ec}</Project>
+      <Name>Commands.RecoveryServices.Backup.HydraAdapter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.csproj">
       <Project>{5e675749-6139-464a-904c-59c0ffdfec82}</Project>
       <Name>Commands.RecoveryServices.Backup.Logger</Name>

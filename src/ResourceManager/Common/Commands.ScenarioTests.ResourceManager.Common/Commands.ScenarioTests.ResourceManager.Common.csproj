@@ -92,6 +92,10 @@
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -139,6 +143,7 @@
     <Compile Include="EnvironmentSetupHelper.cs" />
     <Compile Include="Mocks\MockClientFactory.cs" />
     <Compile Include="Mocks\MockCommandRuntime.cs" />
+    <Compile Include="Mocks\MockDeploymentClientFactory.cs" />
     <Compile Include="PermissiveRecordMatcherWithApiExclusion.cs" />
     <Compile Include="ProfileClient.cs" />
     <Compile Include="PSCmdletExtensions.cs" />

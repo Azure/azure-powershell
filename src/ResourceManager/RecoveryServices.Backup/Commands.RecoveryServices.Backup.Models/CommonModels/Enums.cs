@@ -79,6 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         IRPending = 1,
         ProtectionError,
         Protected,
+        ProtectionStopped
     }
 
     #region policy
