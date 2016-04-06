@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             };
 
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
+            triggerRestoreRequest.Item = new RestoreRequestResource();
+            triggerRestoreRequest.Item.Properties = new RestoreRequest();
             triggerRestoreRequest.Item.Properties = restoreRequest;
 
             var response = BmsAdapter.Client.Restore.TriggerRestoreAsync(resourceGroupName, resourceName, BmsAdapter.GetCustomRequestHeaders(),
