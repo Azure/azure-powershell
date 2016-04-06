@@ -45,65 +45,70 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
-                WriteDebug("InsideRestore. going to create ResourceManager Client");
-                ResourcesNS.ResourceManagementClient rmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-                WriteDebug("Client Created successfully");
-                ResourceIdentity identity = new ResourceIdentity();
-                identity.ResourceName = StorageAccountName;
-                identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
-                identity.ResourceProviderApiVersion = "2015-12-01";
+                //WriteDebug("InsideRestore. going to create ResourceManager Client");
+                //ResourcesNS.ResourceManagementClient rmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                //WriteDebug("Client Created successfully");
+                //ResourceIdentity identity = new ResourceIdentity();
+                //identity.ResourceName = StorageAccountName;
+                //identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
+                //identity.ResourceProviderApiVersion = "2015-12-01";
 
-                ResourcesNS.Models.ResourceGetResult resource;
-                try
-                { 
-                    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", StorageAccountName));
-                    resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
-                }
-                catch(Hyak.Common.CloudException exp)
-                {
-                    if(exp.Error.Code =="ResourceNotFound")
-                    {
-                        identity.ResourceType = "Microsoft.Storage/storageAccounts";
-                        identity.ResourceProviderApiVersion = "2016-01-01";
-                        resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                //ResourcesNS.Models.ResourceGetResult resource;
+                //try
+                //{ 
+                //    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", StorageAccountName));
+                //    resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
+                //}
+                //catch(Hyak.Common.CloudException exp)
+                //{
+                //    if(exp.Error.Code =="ResourceNotFound")
+                //    {
+                //        identity.ResourceType = "Microsoft.Storage/storageAccounts";
+                //        identity.ResourceProviderApiVersion = "2016-01-01";
+                //        resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
+                //    }
+                //    else
+                //    {
+                //        throw;
+                //    }
+                //}
 
-                string storageId = resource.Resource.Id;
-                WriteDebug(String.Format("StorageId = {0}", storageId));
+                string storageAccountId = string.Empty;
+                string storageAccountlocation = string.Empty;
+                string storageAccountType = string.Empty;
 
-                storageId = StorageAccountName; //TBD: once service will migrate to storageID we will remove this line;
+                GetStorageResource(StorageAccountName, out storageAccountId, out storageAccountlocation, out storageAccountType);
+
+                WriteDebug(String.Format("StorageId = {0}", storageAccountId));
+
+                storageAccountId = StorageAccountName; //TBD: once service will migrate to storageID we will remove this line;
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
                     {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
-                    {RestoreBackupItemParams.StorageAccountId, storageId}
+                    {RestoreBackupItemParams.StorageAccountId, storageAccountId}
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
-                var jobResponse = psBackupProvider.TriggerRestore();
+                //IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
+                //var jobResponse = psBackupProvider.TriggerRestore();
 
-                WriteDebug(String.Format("Restore submitted", storageId));
-                var response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
-                while (response.OperationStatus.Status == "InProgress")
-                {
-                    WriteDebug(String.Format("Restore inProgress", storageId));
-                    response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
-                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
-                }
+                //WriteDebug(String.Format("Restore submitted"));
+                //var response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
+                //while (response.OperationStatus.Status == "InProgress")
+                //{
+                //    WriteDebug(String.Format("Restore inProgress"));
+                //    response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
+                //    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
+                //}
 
-                if (response.OperationStatus.Status == "Completed")
-                {
-                    // TBD -- Hydra change to add jobId in OperationStatusExtendedInfo
-                    WriteDebug(String.Format("Restore Completed", storageId));
-                    string jobId = ""; //response.OperationStatus.Properties.jobId;
-                    var job = HydraAdapter.GetJob(jobId);
-                    //WriteObject(ConversionHelpers.GetJobModel(job));
-                }
+                //if (response.OperationStatus.Status == "Completed")
+                //{
+                //    // TBD -- Hydra change to add jobId in OperationStatusExtendedInfo
+                //    WriteDebug(String.Format("Restore Completed"));
+                //    string jobId = ""; //response.OperationStatus.Properties.jobId;
+                //    var job = HydraAdapter.GetJob(jobId);
+                //    //WriteObject(ConversionHelpers.GetJobModel(job));
+                //}
             });
         }
 
