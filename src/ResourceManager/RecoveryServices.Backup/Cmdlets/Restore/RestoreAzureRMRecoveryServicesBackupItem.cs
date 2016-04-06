@@ -53,16 +53,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
                 identity.ResourceProviderApiVersion = "2015-12-01";
 
-                WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", StorageAccountName));
-                ResourcesNS.Models.ResourceGetResult resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
-                if(resource == null)
-                {
-                    identity.ResourceType = "Microsoft.Storage/storageAccounts";
+                ResourcesNS.Models.ResourceGetResult resource;
+                try
+                { 
+                    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", StorageAccountName));
                     resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
                 }
-                if(resource == null)
+                catch(Hyak.Common.CloudException exp)
                 {
-                    throw new ArgumentException("Storage account doesnt exists");
+                    if(exp.Error.Code =="ResourceNotFound")
+                    {
+                        identity.ResourceType = "Microsoft.Storage/storageAccounts";
+                        identity.ResourceProviderApiVersion = "2016-01-01";
+                        resource = rmClient.Resources.GetAsync(StorageAccountName, identity, CancellationToken.None).Result;
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
 
                 string storageId = resource.Resource.Id;
