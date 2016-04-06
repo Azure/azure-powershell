@@ -377,4 +377,7 @@ Please contact Microsoft for further assistant.</value>
   <data name="VirtualMachineIdIsEmptyOrNull" xml:space="preserve">
     <value>VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId</value>
   </data>
+  <data name="JobFromNotProvided" xml:space="preserve">
+    <value>Please provide From filter along with To filter.</value>
+  </data>
 </root>

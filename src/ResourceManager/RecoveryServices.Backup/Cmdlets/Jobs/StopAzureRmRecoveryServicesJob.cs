@@ -23,17 +23,17 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet("Stop", "AzureRmBackupJob", DefaultParameterSetName = JobFilterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
+    [Cmdlet("Stop", "AzureRmRecoveryServicesJob", DefaultParameterSetName = JobFilterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
     public class StopAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobFilter, ParameterSetName = IdFilterSet)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobFilter, ParameterSetName = JobFilterSet)]
         [ValidateNotNull]
         public AzureRmRecoveryServicesJobBase Job { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobIdFilter, ParameterSetName = JobFilterSet)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobIdFilter, ParameterSetName = IdFilterSet)]
         [ValidateNotNull]
         public string JobId { get; set; }
 
@@ -47,6 +47,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     JobId = Job.InstanceId;
                 }
+
+                WriteDebug("Stoppingjob with ID: " + JobId);
 
                 var cancelResponse = HydraAdapter.CancelJob(JobId);
                 string opId = HydraHelpers.GetLastIdFromFullId(cancelResponse.Location);
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else
                 {
-                    WriteObject(JobConversions.GetPSJob(cancelStatus.Item));
+                    WriteObject(JobConversions.GetPSJob(HydraAdapter.GetJob(JobId)));
                 }
             });
         }
