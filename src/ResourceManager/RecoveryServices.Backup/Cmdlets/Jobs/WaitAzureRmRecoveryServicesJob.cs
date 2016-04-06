@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet("Wait", "AzureRmRecoveryServicesJob"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>), typeof(AzureRmRecoveryServicesJobBase))]
     public class WaitAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.WaitJobOrListFilter, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.WaitJobOrListFilter, ValueFromPipeline = true, Position = 1)]
         [ValidateNotNull]
         public object Job { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.WaitJobTimeoutFilter)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.WaitJobTimeoutFilter, Position = 2)]
         public long? Timeout { get; set; }
 
         public override void ExecuteCmdlet()

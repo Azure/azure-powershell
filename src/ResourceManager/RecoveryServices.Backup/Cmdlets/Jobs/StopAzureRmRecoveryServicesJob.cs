@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobFilter, ParameterSetName = JobFilterSet)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobFilter, ParameterSetName = JobFilterSet, Position = 1)]
         [ValidateNotNull]
         public AzureRmRecoveryServicesJobBase Job { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobIdFilter, ParameterSetName = IdFilterSet)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobIdFilter, ParameterSetName = IdFilterSet, Position = 2)]
         [ValidateNotNull]
         public string JobId { get; set; }
 
