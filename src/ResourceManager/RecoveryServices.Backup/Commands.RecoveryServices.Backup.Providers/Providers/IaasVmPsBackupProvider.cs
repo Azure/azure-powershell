@@ -328,6 +328,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return containerModels;
         }
 
+        public List<AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<AzureRmRecoveryServicesItemBase> ListProtectedItems()
         {
             AzureRmRecoveryServicesContainerBase container =

@@ -129,6 +129,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 case PsBackupProviderTypes.AzureSql:
                     psBackupProvider = new AzureSqlPsBackupProvider();
                     break;
+                case PsBackupProviderTypes.Mab:
+                    psBackupProvider = new MabPsBackupProvider();
+                    break;
+                case PsBackupProviderTypes.Dpm:
+                    psBackupProvider = new DpmPsBackupProvider();
+                    break;
                 default:
                     break;
             }

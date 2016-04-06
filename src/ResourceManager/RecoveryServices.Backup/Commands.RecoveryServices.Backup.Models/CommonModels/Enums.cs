@@ -27,6 +27,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Windows
     }
 
+    public enum BackupEngineType
+    {
+        Invalid = 0,
+
+        DpmEngine,
+
+        DpmVenusEngine
+    }
+
     public enum BackupManagementType
     {
         AzureVM = 1,
@@ -48,6 +57,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     public enum ContainerRegistrationStatus
+    {
+        Registered = 1,
+        Registering,
+    }
+
+    public enum BackupEngineRegistrationStatus
     {
         Registered = 1,
         Registering,

@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
@@ -90,13 +89,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryParams.FriendlyName = name;
 
             // 2. Filter by ContainerType
-            queryParams.ProviderType = ProviderType.Mab.ToString();
+            queryParams.ProviderType = ProviderType.MAB.ToString();
 
             var listResponse = HydraAdapter.ListContainers(queryParams);
 
             List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 
             return containerModels;
+        }
+
+        public List<AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers()
+        {
+            throw new NotImplementedException();
         }
 
         public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse GetPolicy()
