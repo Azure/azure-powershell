@@ -49,3 +49,17 @@ function Test-DisableAzureVMProtectionScenario
 	$job = Disable-AzureRmRecoveryServicesProtection -Item $item -Force;
 	Assert-AreEqual $job.Status "Completed";
 }
+
+function Test-BackupItemScenario
+{
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
+	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+	
+	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "pstestv2vm1";
+	Assert-AreEqual $namedContainer.FriendlyName "pstestv2vm1";
+
+	$item = Get-AzureRmRecoveryServicesItem -Container $namedContainer -WorkloadType "AzureVM";
+	echo $item.Name;
+
+	Backup-AzureRmRecoveryServicesItem -Item $item;
+}

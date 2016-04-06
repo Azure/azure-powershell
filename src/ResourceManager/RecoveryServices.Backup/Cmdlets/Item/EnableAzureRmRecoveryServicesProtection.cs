@@ -41,10 +41,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesPolicyBase Policy { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesItemBase Item { get; set; }
-
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
         public string Name { get; set; }
@@ -58,6 +54,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Position = 4, Mandatory = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         [Parameter(Position = 4, Mandatory = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         public WorkloadType WorkLoadType { get; set; }
+
+        [Parameter(Position = 5, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public AzureRmRecoveryServicesItemBase Item { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -83,29 +83,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 // Track Response and display job details
 
-                WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
-                                itemResponse.AzureAsyncOperation);
-
-                var response = WaitForOperationCompletionUsingStatusLink(
-                                                itemResponse.AzureAsyncOperation,
-                                                HydraAdapter.GetProtectedItemOperationStatusByURL);
-
-                WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
-
-                if (response.OperationStatus.Properties != null &&
-                       ((HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
-                {
-                    var jobStatusResponse = (HydraModel.OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
-                    WriteObject(GetJobObject(jobStatusResponse.JobId));
-                }
-
-                if(response.OperationStatus.Status == HydraModel.OperationStatusValues.Failed)
-                {
-                    var errorMessage = string.Format(Resources.EnableProtectionOperationFailed,
-                    response.OperationStatus.OperationStatusError.Code,
-                    response.OperationStatus.OperationStatusError.Message);
-                    throw new Exception(errorMessage);
-                }
+                HandleCreatedJob(itemResponse, Resources.EnableProtectionOperation);
             });
         }
     }

@@ -20,19 +20,21 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesIaasVmPolicy : AzureRmRecoveryServicesPolicyBase
+    public enum UriEnums
     {
-        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }
-
-        public AzureRmRecoveryServicesRetentionPolicyBase RetentionPolicy { get; set; }
-
-        public override void Validate()
-        {
-            base.Validate();
-
-            SchedulePolicy.Validate();
-            RetentionPolicy.Validate();
-        }
+        Subscriptions,
+        ResourceGroups,
+        Providers,
+        Vaults,
+        BackupFabrics,
+        ProtectionContainers,
+        ProtectableItems,
+        ProtectedItems,
+        RecoveryPoints,
+        BackupJobs,
+        OperationResults,
+        BackupPolicies,
+        Operations,
+        OperationsStatus
     }
-
 }
