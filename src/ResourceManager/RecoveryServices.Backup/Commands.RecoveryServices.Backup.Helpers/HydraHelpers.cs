@@ -92,6 +92,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <returns></returns>
         public static string GetLastIdFromFullId(string fullId)
         {
+            Uri fullUri = new Uri(fullId);
+            fullId = fullUri.AbsolutePath;
             string[] splitArr = fullId.Split("/".ToCharArray());
             return splitArr[splitArr.Length - 1];
         }
