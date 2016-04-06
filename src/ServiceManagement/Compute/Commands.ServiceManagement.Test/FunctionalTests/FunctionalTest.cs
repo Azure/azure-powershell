@@ -280,21 +280,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
                 Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
 
-                vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, string.Empty);
-                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
-                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, string.Empty));
-
-                vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, testAVSetName);
-                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
-                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
-
                 vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, null);
                 vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
                 Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
 
                 vm = vmPowershellCmdlets.RemoveAzureAvailabilitySet(vmName, serviceName);
                 vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
-                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
+                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, null));
 
                 pass = true;
             }
