@@ -61,5 +61,5 @@ function Test-BackupItemScenario
 	$item = Get-AzureRmRecoveryServicesItem -Container $namedContainer -WorkloadType "AzureVM";
 	echo $item.Name;
 
-	Backup-AzureRmRecoveryServicesItem -Item $item;
+	Backup-AzureRmRecoveryServicesItem -Item $item | Wait-AzureRmBackupJob;
 }
