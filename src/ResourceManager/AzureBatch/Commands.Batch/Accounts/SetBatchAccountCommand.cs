@@ -22,23 +22,27 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Set, Constants.AzureRmBatchAccount), OutputType(typeof(BatchAccountContext))]
     public class SetBatchAccountCommand : BatchCmdletBase
     {
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Batch service account to update.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
         [Alias("Tags")]
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents the tags to set on the account.")]
         public Hashtable[] Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "TODO")]
+        [ValidateNotNullOrEmpty]
+        public string StorageId { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            BatchAccountContext context = BatchClient.UpdateAccount(this.ResourceGroupName, this.AccountName, this.Tag);
+            BatchAccountContext context = BatchClient.UpdateAccount(this.ResourceGroupName, this.AccountName, this.Tag, this.StorageId);
             WriteObject(context);
         }
     }

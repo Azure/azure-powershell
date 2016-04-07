@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (pool != null)
             {
+                pool.omObject.ApplicationPackageReferences = CreateSyncedList(pool.ApplicationPackageReferences,
+                    (apr) =>
+                {
+                    return ConvertApplicationPackageReference(apr);
+                });
                 pool.omObject.CertificateReferences = CreateSyncedList(pool.CertificateReferences,
                 (c) =>
                 {
@@ -348,6 +353,17 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             certReference.ThumbprintAlgorithm = psCert.ThumbprintAlgorithm;
             certReference.Visibility = psCert.Visibility;
             return certReference;
+        }
+
+        /// <summary>
+        /// Converts a PSApplicationPackageReference to a ApplicationPackageReference
+        /// </summary>
+        private static ApplicationPackageReference ConvertApplicationPackageReference(PSApplicationPackageReference psApr)
+        {
+            ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference();
+            applicationPackageReference.ApplicationId = psApr.ApplicationId;
+            applicationPackageReference.Version = psApr.Version;
+            return applicationPackageReference;
         }
     }
 }

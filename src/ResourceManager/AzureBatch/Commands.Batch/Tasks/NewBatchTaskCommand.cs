@@ -72,13 +72,6 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public TaskDependencies TaskDependencies { get; set; }
 
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        public bool DependsOn { get; set; }
-
-
-
         public override void ExecuteCmdlet()
         {
             NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job,
@@ -93,7 +86,7 @@ namespace Microsoft.Azure.Commands.Batch
                 Constraints = this.Constraints,
                 MultiInstanceSettings = this.MultiInstanceSettings,
                 TaskDependencies = this.TaskDependencies,
-            };
+           };
 
             BatchClient.CreateTask(parameters);
         }

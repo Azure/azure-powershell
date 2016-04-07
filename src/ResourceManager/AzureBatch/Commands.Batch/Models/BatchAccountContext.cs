@@ -116,10 +116,20 @@ namespace Microsoft.Azure.Commands.Batch
         public int ActiveJobAndJobScheduleQuota { get; private set; }
 
         /// <summary>
+        /// TODO
+        /// </summary>
+        public string StorageAccountId { get; private set; }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public DateTime LastKeySync { get; private set; }
+
+        /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
         /// </summary>
-        public AccountKeyType KeyInUse 
-        { 
+        public AccountKeyType KeyInUse
+        {
             get { return this.keyInUse; }
             set
             {
@@ -129,7 +139,7 @@ namespace Microsoft.Azure.Commands.Batch
                     this.batchOMClient = null;
                 }
                 this.keyInUse = value;
-            } 
+            }
         }
 
         internal BatchClient BatchOMClient
@@ -153,11 +163,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         public BatchAccountContext()
         {
-            this.AccountName = Environment.GetEnvironmentVariable("temp_account_name", EnvironmentVariableTarget.User);
-            this.PrimaryAccountKey = Environment.GetEnvironmentVariable("temp_account_key", EnvironmentVariableTarget.User);
-            this.TaskTenantUrl = Environment.GetEnvironmentVariable("iaas_url", EnvironmentVariableTarget.User);
             this.KeyInUse = AccountKeyType.Primary;
-
         }
 
         internal BatchAccountContext(string accountEndpoint) : this()
@@ -177,6 +183,7 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 throw new ArgumentException(String.Format(Resources.InvalidEndpointType, accountEndpoint), "AccountEndpoint");
             }
+            System.Diagnostics.Debugger.Launch();
 
             this.Id = resource.Id;
             this.AccountEndpoint = accountEndpoint;
@@ -186,6 +193,12 @@ namespace Microsoft.Azure.Commands.Batch
             this.CoreQuota = resource.Properties.CoreQuota;
             this.PoolQuota = resource.Properties.PoolQuota;
             this.ActiveJobAndJobScheduleQuota = resource.Properties.ActiveJobAndJobScheduleQuota;
+
+            if (resource.Properties.AutoStorage != null)
+            {
+                this.StorageAccountId = resource.Properties.AutoStorage.StorageAccountId;
+                this.LastKeySync = resource.Properties.AutoStorage.LastKeySync;
+            }
 
             // extract the host and strip off the account name for the TaskTenantUrl and AccountName
             var hostParts = accountEndpoint.Split('.');

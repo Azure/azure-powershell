@@ -85,7 +85,5 @@ namespace Microsoft.Azure.Commands.Batch
 
             BatchClient.CreateJob(parameters);
         }
-
-
     }
 }

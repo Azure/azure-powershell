@@ -18,7 +18,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Applications
 {
-    [Cmdlet(VerbsCommon.Set, Constants.AzureRmBatchApplicationPackage)]
+    [Cmdlet(VerbsCommon.Set, Constants.AzureRmBatchApplication)]
     [OutputType(typeof(BatchAccountContext))]
     public class UpdateBatchApplicationCommand : BatchCmdletBase
     {
