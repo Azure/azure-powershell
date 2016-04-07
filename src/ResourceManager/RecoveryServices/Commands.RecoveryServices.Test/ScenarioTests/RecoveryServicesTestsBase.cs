@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             if (testEnvironment.UsesCustomUri())
             {
                 client = new RecoveryServicesManagementClient(
-                    "Microsoft.RecoveryServicesBVTD2",
+                    "Microsoft.RecoveryServicesBVTD",
                     testEnvironment.Credentials as SubscriptionCloudCredentials,
                     testEnvironment.BaseUri);
             }

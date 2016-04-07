@@ -47,6 +47,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        /// <summary>
+        /// Gets or sets BackupStorageRedundancy type
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets BackupStorageDeduplication type
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public string BackupStorageDeduplication { get; set; }
+
+
         #endregion
 
         /// <summary>
@@ -64,7 +77,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
                 VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
 
-                this.WriteObject(new ARSVault(response));
+                if (!(string.IsNullOrEmpty(this.BackupStorageRedundancy) && string.IsNullOrEmpty(this.BackupStorageDeduplication)))
+                {
+                    UpdateVaultStorageTypeRequest vaultStorageRequest = new UpdateVaultStorageTypeRequest();
+                    vaultStorageRequest.Properties = new StorageTypeProperties();
+                    vaultStorageRequest.Properties.StorageModelType = this.BackupStorageRedundancy;
+                    vaultStorageRequest.Properties.DedupState = this.BackupStorageDeduplication;
+                    AzureOperationResponse storageResponse = RecoveryServicesClient.UpdateVaultStorageType(this.ResourceGroupName, this.Name, vaultStorageRequest);
+                }
+
+                VaultListResponse vaultList = RecoveryServicesClient.GetVaultsInResouceGroup(this.ResourceGroupName);
+                foreach (Vault vault in vaultList.Vaults)
+                {
+                    if (vault.Name.Equals(this.Name, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        ARSVault rsVault = new ARSVault(vault);
+                        GetResourceStorageConfigResponse getStorageResponse = RecoveryServicesClient.GetVaultStorageType(this.ResourceGroupName, this.Name);
+                        rsVault.Properties.BackupStorageRedundancy = getStorageResponse.Properties.StorageType;
+                        rsVault.Properties.BackupStorageDeduplication = getStorageResponse.Properties.DedupState;
+                        this.WriteObject(rsVault);
+                        break;
+                    }
+                }
             }
             catch (Exception exception)
             {

@@ -94,18 +94,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vaults">List of Vaults</param>
         private void WriteVaults(IList<Vault> vaults)
         {
-            if (string.IsNullOrEmpty(this.Name))
+            foreach (Vault vault in vaults)
             {
-                this.WriteObject(vaults.Select(v => new ARSVault(v)), true);
-            }
-            else
-            {
-                foreach (Vault vault in vaults)
+                if (0 == string.Compare(this.Name, vault.Name, true))
                 {
-                    if (0 == string.Compare(this.Name, vault.Name, true))
-                    {
-                        this.WriteObject(new ARSVault(vault));
-                    }
+                    ARSVault rsVault = new ARSVault(vault);
+                    GetResourceStorageConfigResponse getStorageResponse = RecoveryServicesClient.GetVaultStorageType(this.ResourceGroupName, vault.Name);
+                    rsVault.Properties.BackupStorageRedundancy = getStorageResponse.Properties.StorageType;
+                    rsVault.Properties.BackupStorageDeduplication = getStorageResponse.Properties.DedupState;
+                    this.WriteObject(new ARSVault(vault));
                 }
             }
         }
