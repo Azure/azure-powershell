@@ -54,6 +54,7 @@
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmPolicy.cs" />
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmItem.cs" />
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmContainer.cs" />
+    <Compile Include="DpmModels\AzureRmRecoveryServicesDpmBackupEngine.cs" />
     <Compile Include="DpmModels\AzureRmRecoveryServicesDpmContainer.cs" />
     <Compile Include="MabModels\AzureRmRecoveryServicesMabContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

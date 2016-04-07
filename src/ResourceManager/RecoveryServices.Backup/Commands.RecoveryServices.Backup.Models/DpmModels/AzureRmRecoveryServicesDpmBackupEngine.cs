@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    /*public class AzureRmRecoveryServicesDpmBackupEngine : AzureRmRecoveryServicesBackupEngineBase
+    public class AzureRmRecoveryServicesDpmBackupEngine : AzureRmRecoveryServicesBackupEngineBase
     {
         /// <summary>
         /// Resource Group where the Container is present
@@ -46,5 +46,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             FriendlyName = dpmBackupEngine.FriendlyName;
             Status = EnumUtils.GetEnum<BackupEngineRegistrationStatus>(dpmBackupEngine.RegistrationStatus);
         }
-    }*/
+    }
 }

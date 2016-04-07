@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     containerModel = new AzureRmRecoveryServicesIaasVmContainer(protectionContainer);
                 }
-                if (protectionContainer.Properties.GetType().Name == typeof(MabProtectionContainer).Name)
+                if (protectionContainer.Properties.GetType() == typeof(MabProtectionContainer))
                 {
                     containerModel = new AzureRmRecoveryServicesMabContainer(protectionContainer);
                 }
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             if (backupEngine != null &&
                 backupEngine.Properties != null)
             {
-                if (backupEngine.Properties.GetType().Name == (typeof(DpmBackupEngine)).Name)
+                if (backupEngine.Properties.GetType() == (typeof(DpmBackupEngine)))
                 {
                     backupEngineModel = new AzureRmRecoveryServicesDpmBackupEngine(backupEngine);
                 }
