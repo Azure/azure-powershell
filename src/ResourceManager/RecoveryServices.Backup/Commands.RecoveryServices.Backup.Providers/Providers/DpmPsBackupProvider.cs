@@ -82,23 +82,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public List<Models.AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
         {
             throw new NotImplementedException();
+        }
 
+        public List<Models.AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers()
+        {
             string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
 
-            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
+            BackupEngineListQueryParams queryParams = new BackupEngineListQueryParams();
 
-            // 1. Filter by Name
-            queryParams.FriendlyName = name;
-
-            // 2. Filter by ContainerType
             queryParams.ProviderType = ProviderType.DPM.ToString();
 
-            //ToDo: Piyush to call Get Backup Engine
-            //var listResponse = HydraAdapter.ListContainers(queryParams);
+            var listResponse = HydraAdapter.ListBackupEngines(queryParams);
 
-            //List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
-            
-            //return containerModels;
+            queryParams.ProviderType = ProviderType.DPM.ToString();
+
+
+            List<AzureRmRecoveryServicesBackupEngineBase> backupEngineModels = ConversionHelpers.GetBackupEngineModelList(listResponse);
+
+            return backupEngineModels;
         }
 
         public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse GetPolicy()

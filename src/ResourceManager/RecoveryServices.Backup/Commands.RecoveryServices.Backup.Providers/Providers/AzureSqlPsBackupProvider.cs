@@ -76,7 +76,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public List<Models.AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
         {
             throw new NotImplementedException();
-        }      
+        }
+
+        public List<AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers()
+        {
+            throw new NotImplementedException();
+        }
        
         public AzureRmRecoveryServicesBackupSchedulePolicyBase GetDefaultSchedulePolicyObject()
         {

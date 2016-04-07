@@ -37,13 +37,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     containerModel = new AzureRmRecoveryServicesIaasVmContainer(protectionContainer);
                 }
-                if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(MabProtectionContainer)))
+                if (protectionContainer.Properties.GetType() == typeof(MabProtectionContainer))
                 {
                     containerModel = new AzureRmRecoveryServicesMabContainer(protectionContainer);
                 }
             }
 
             return containerModel;
+        }
+
+        public static AzureRmRecoveryServicesBackupEngineBase GetBackupEngineModel(BackupEngineResource backupEngine)
+        {
+            AzureRmRecoveryServicesBackupEngineBase backupEngineModel = null;
+
+            if (backupEngine != null &&
+                backupEngine.Properties != null)
+            {
+                if (backupEngine.Properties.GetType() == (typeof(DpmBackupEngine)))
+                {
+                    backupEngineModel = new AzureRmRecoveryServicesDpmBackupEngine(backupEngine);
+                }
+            }
+
+            return backupEngineModel;
         }
 
         public static List<AzureRmRecoveryServicesContainerBase> GetContainerModelList(IEnumerable<ProtectionContainerResource> protectionContainers)
@@ -56,6 +72,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return containerModels;
+        }
+
+        public static List<AzureRmRecoveryServicesBackupEngineBase> GetBackupEngineModelList(IEnumerable<BackupEngineResource> backupEngines)
+        {
+            List<AzureRmRecoveryServicesBackupEngineBase> backupEngineModel = new List<AzureRmRecoveryServicesBackupEngineBase>();
+
+            foreach (var backupEngine in backupEngines)
+            {
+                backupEngineModel.Add(GetBackupEngineModel(backupEngine));
+            }
+
+            return backupEngineModel;
         }
 
         #endregion

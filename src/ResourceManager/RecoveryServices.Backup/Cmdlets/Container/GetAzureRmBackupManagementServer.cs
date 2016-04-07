@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.Windows, BackupManagementType.Scdpm);
 
-                var containerModels = psBackupProvider.ListProtectionContainers();
+                var containerModels = psBackupProvider.ListBackupManagementServers();
 
                 if (containerModels.Count == 1)
                 {

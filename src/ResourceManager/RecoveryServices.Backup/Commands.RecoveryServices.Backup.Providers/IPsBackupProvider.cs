@@ -50,6 +50,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers();
 
+        List<AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers();
+
         List<AzureRmRecoveryServicesItemBase> ListProtectedItems();
     }
 }
