@@ -59,6 +59,10 @@ namespace Microsoft.Azure.Commands.Network
 
             var psVirtualNetworkGateway = ToPsVirtualNetworkGateway(vnetGateway);
             psVirtualNetworkGateway.ResourceGroupName = resourceGroupName;
+            if (string.IsNullOrEmpty(psVirtualNetworkGateway.Sku))
+            {
+                psVirtualNetworkGateway.Sku = PSVirtualNetworkGatewaySku.
+            }
 
             return psVirtualNetworkGateway;
         }
