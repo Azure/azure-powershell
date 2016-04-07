@@ -22,16 +22,21 @@ namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class ProfileModuleTests
     {
+        public XunitTracingInterceptor xunitLogger;
+
         public ProfileModuleTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            xunitLogger = new XunitTracingInterceptor(output);
         }
  
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WarningOnIncompatibleVersions()
         {
-            ProfileController.NewInstance.RunPsTest("db1ab6f0-4769-4b27-930e-01e2ef9c123c", "Test-LoadProfileModule");
+            ProfileController.NewInstance.RunPsTest(
+                xunitLogger, 
+                "db1ab6f0-4769-4b27-930e-01e2ef9c123c", 
+                "Test-LoadProfileModule");
         }
     }
 }

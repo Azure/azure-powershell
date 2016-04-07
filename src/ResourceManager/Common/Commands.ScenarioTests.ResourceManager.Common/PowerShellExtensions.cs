@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -116,38 +117,45 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// Log the PowerShell Streams from a PowerShell invocation
         /// </summary>
         /// <param name="powershell">The PowerShell instance to log</param>
-        public static void LogPowerShellResults(this System.Management.Automation.PowerShell powershell)
+        public static void LogPowerShellResults(
+            this System.Management.Automation.PowerShell powershell,
+            XunitTracingInterceptor xunitLogger)
         {
-            powershell.LogPowerShellResults(null);
+            powershell.LogPowerShellResults(null, xunitLogger);
         }
 
         /// <summary>
         /// Log the PowerShell Streams from a PowerShell invocation
         /// </summary>
         /// <param name="powershell">The PowerShell instance to log</param>
-        public static void LogPowerShellResults(this System.Management.Automation.PowerShell powershell, Collection<PSObject> output)
+        public static void LogPowerShellResults(
+            this System.Management.Automation.PowerShell powershell, 
+            Collection<PSObject> output, 
+            XunitTracingInterceptor xunitLogger)
         {
             if (output != null)
             {
-                LogPowerShellStream<PSObject>(output, "OUTPUT");
+                LogPowerShellStream<PSObject>(xunitLogger, output, "OUTPUT");
             }
-            if (powershell.Commands != null && powershell.Commands.Commands != null && 
+            if (xunitLogger != null &&
+                powershell.Commands != null && 
+                powershell.Commands.Commands != null && 
                 powershell.Commands.Commands.Count > 0)
             {
-                Console.WriteLine("================== COMMANDS =======================\n");
+                xunitLogger.Information("================== COMMANDS =======================\n");
                 foreach (Command command in powershell.Commands.Commands)
                 {
-                    Console.WriteLine("{0}\n", command.CommandText);
+                    xunitLogger.Information(string.Format("{0}\n", command.CommandText));
                 }
 
-                Console.WriteLine("===================================================\n");
+                xunitLogger.Information("===================================================\n");
             }
 
-            LogPowerShellStream<DebugRecord>(powershell.Streams.Debug, "DEBUG");
-            LogPowerShellStream<ErrorRecord>(powershell.Streams.Error, "ERROR");
-            LogPowerShellStream<ProgressRecord>(powershell.Streams.Progress, "PROGRESS");
-            LogPowerShellStream<VerboseRecord>(powershell.Streams.Verbose, "VERBOSE");
-            LogPowerShellStream<WarningRecord>(powershell.Streams.Warning, "WARNING");
+            LogPowerShellStream<DebugRecord>(xunitLogger, powershell.Streams.Debug, "DEBUG");
+            LogPowerShellStream<ErrorRecord>(xunitLogger, powershell.Streams.Error, "ERROR");
+            LogPowerShellStream<ProgressRecord>(xunitLogger, powershell.Streams.Progress, "PROGRESS");
+            LogPowerShellStream<VerboseRecord>(xunitLogger, powershell.Streams.Verbose, "VERBOSE");
+            LogPowerShellStream<WarningRecord>(xunitLogger, powershell.Streams.Warning, "WARNING");
         }
 
         /// <summary>
@@ -196,23 +204,25 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <typeparam name="T">The type of the internal data record (different for every stream)</typeparam>
         /// <param name="stream">The stream to log</param>
         /// <param name="name">The name of the stream to print in the log</param>
-        private static void LogPowerShellStream<T>(ICollection<T> stream, string name)
+        private static void LogPowerShellStream<T>(
+            XunitTracingInterceptor xunitLogger, 
+            ICollection<T> stream, 
+            string name)
         {
-            if (stream != null && stream.Count > 0)
+            if (xunitLogger != null && stream != null && stream.Count > 0)
             {
-
-                Console.WriteLine("---------------------------------------------------------------\n");
-                Console.WriteLine("{0} STREAM\n", name);
-                Console.WriteLine("---------------------------------------------------------------\n");
+                xunitLogger.Information("---------------------------------------------------------------\n");
+                xunitLogger.Information(string.Format("{0} STREAM\n", name));
+                xunitLogger.Information("---------------------------------------------------------------\n");
                 foreach (T item in stream)
                 {
                     if(item != null)
                     {
-                        Console.WriteLine("{0}\n", item.ToString());
+                        xunitLogger.Information(string.Format("{0}\n", item.ToString()));
                     }
                 }
-                Console.WriteLine("---------------------------------------------------------------\n");
-                Console.WriteLine("");
+                xunitLogger.Information("---------------------------------------------------------------\n");
+                xunitLogger.Information("");
             }
         }
     }

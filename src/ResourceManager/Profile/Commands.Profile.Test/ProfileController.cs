@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Collections.Generic;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public string UserDomain { get; private set; }
-
+        
         public static ProfileController NewInstance
         {
             get { return new ProfileController(); }
@@ -47,11 +48,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(string tenant, params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, string tenant, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
+            helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
@@ -62,7 +64,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 mockName, tenant);
         }
 
-        public void RunPsTestWorkflow(
+        private void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
             Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,

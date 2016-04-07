@@ -28,6 +28,7 @@ using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using System.Text;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -45,6 +46,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
         protected List<string> modules;
+
+        public XunitTracingInterceptor TracingInterceptor { get; set; }
 
         protected ProfileClient ProfileClient { get; set; }
 
@@ -331,7 +334,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
             finally
             {
-                powershell.LogPowerShellResults(output);
+                powershell.LogPowerShellResults(output, TracingInterceptor);
                 powershell.Streams.Error.Clear();
             }
         }

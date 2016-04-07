@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
                 }
                 finally
                 {
-                    powershell.LogPowerShellResults(output);
+                    powershell.LogPowerShellResults(output, null);
                 }
             }
         }

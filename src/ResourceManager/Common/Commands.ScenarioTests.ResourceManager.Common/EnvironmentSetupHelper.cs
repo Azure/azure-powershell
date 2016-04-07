@@ -30,6 +30,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -47,6 +48,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
         protected List<string> modules;
+
+        public XunitTracingInterceptor TracingInterceptor { get; set; }
 
         protected ProfileClient ProfileClient { get; set; }
 
@@ -346,7 +349,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 finally
                 {
-                    powershell.LogPowerShellResults(output);
+                    powershell.LogPowerShellResults(output, TracingInterceptor);
                     powershell.Streams.Error.Clear();
                 }
             }
@@ -361,8 +364,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             foreach (string moduleName in modules)
             {
-                powershell.AddScript(string.Format("Import-Module \"{0}\"",
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, moduleName)));
+                powershell.AddScript(string.Format("Import-Module \"{0}\"", moduleName.AsAbsoluteLocation()));
             }
 
             powershell.AddScript(
