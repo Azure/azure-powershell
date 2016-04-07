@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             // If Force flag is not avaliable than check if cache is already available or not
             try
             {
-                RedisGetResponse availableCache = CacheClient.GetCache(ResourceGroupName, Name);
+                RedisResource availableCache = CacheClient.GetCache(ResourceGroupName, Name);
                 if (availableCache != null)
                 {
                     throw new CloudException(string.Format(Resources.RedisCacheExists, Name));

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                 throw new ArgumentException(Resources.MaxMemoryPolicyException);
             }
 
-            RedisGetResponse response = CacheClient.GetCache(ResourceGroupName, Name);
+            RedisResource response = CacheClient.GetCache(ResourceGroupName, Name);
 
             string skuName;
             string skuFamily;
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
             if (string.IsNullOrEmpty(Sku))
             {
-                skuName = response.Resource.Properties.Sku.Name;
+                skuName = response.Sku.Name;
             }
             else
             {
@@ -85,8 +85,8 @@ namespace Microsoft.Azure.Commands.RedisCache
 
             if (string.IsNullOrEmpty(Size))
             {
-                skuFamily = response.Resource.Properties.Sku.Family;
-                skuCapacity = response.Resource.Properties.Sku.Capacity;
+                skuFamily = response.Sku.Family;
+                skuCapacity = response.Sku.Capacity;
             }
             else
             {
@@ -95,15 +95,15 @@ namespace Microsoft.Azure.Commands.RedisCache
                 int.TryParse(Size.Substring(1), out skuCapacity);
             }
 
-            if (!ShardCount.HasValue && response.Resource.Properties.ShardCount.HasValue)
+            if (!ShardCount.HasValue && response.ShardCount.HasValue)
             {
-                ShardCount = response.Resource.Properties.ShardCount;
+                ShardCount = response.ShardCount;
             }
             
             
             WriteObject(new RedisCacheAttributesWithAccessKeys(
-                CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, response.Resource.Location, skuFamily, skuCapacity, skuName, RedisConfiguration, EnableNonSslPort, 
-                    TenantSettings, ShardCount, response.Resource.Properties.VirtualNetwork, response.Resource.Properties.Subnet, response.Resource.Properties.StaticIP), 
+                CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, response.Location, skuFamily, skuCapacity, skuName, RedisConfiguration, EnableNonSslPort, 
+                    TenantSettings, ShardCount, response.VirtualNetwork, response.Subnet, response.StaticIP), 
                 ResourceGroupName));
         }
     }

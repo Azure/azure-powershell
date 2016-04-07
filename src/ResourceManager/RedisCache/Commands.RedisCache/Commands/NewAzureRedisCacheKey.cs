@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                 CacheClient.RegenerateAccessKeys(ResourceGroupName, Name, keyTypeToRegenerated);
             }
 
-            RedisListKeysResponse keysResponse = CacheClient.GetAccessKeys(ResourceGroupName, Name);
+            RedisListKeysResult keysResponse = CacheClient.GetAccessKeys(ResourceGroupName, Name);
             WriteObject(new RedisAccessKeys()
             {
                 PrimaryKey = keysResponse.PrimaryKey,
