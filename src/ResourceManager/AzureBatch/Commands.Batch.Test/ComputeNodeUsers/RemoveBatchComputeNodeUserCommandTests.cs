@@ -62,7 +62,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             cmdlet.Name = "testUser";
 
             // Don't go to the service on a Delete ComputeNodeUser call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeDeleteUserOptions, AzureOperationHeaderResponse<ComputeNodeDeleteUserHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ComputeNodeDeleteUserOptions, 
+                AzureOperationHeaderResponse<ComputeNodeDeleteUserHeaders>>();
+            
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

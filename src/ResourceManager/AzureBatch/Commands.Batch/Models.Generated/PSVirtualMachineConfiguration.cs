@@ -38,6 +38,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSWindowsConfiguration windowsConfiguration;
         
+        public PSVirtualMachineConfiguration(PSImageReference imageReference, string nodeAgentSkuId, PSWindowsConfiguration windowsConfiguration = default(PSWindowsConfiguration))
+        {
+            Microsoft.Azure.Batch.WindowsConfiguration windowsConfigurationOmObject = null;
+            if ((windowsConfiguration != null))
+            {
+                windowsConfigurationOmObject = windowsConfiguration.omObject;
+            }
+            this.omObject = new Microsoft.Azure.Batch.VirtualMachineConfiguration(imageReference.omObject, nodeAgentSkuId, windowsConfigurationOmObject);
+        }
+        
         internal PSVirtualMachineConfiguration(Microsoft.Azure.Batch.VirtualMachineConfiguration omObject)
         {
             if ((omObject == null))

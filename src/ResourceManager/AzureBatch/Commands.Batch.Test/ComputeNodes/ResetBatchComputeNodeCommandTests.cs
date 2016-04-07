@@ -63,7 +63,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "computeNode1";
 
             // Don't go to the service on a Reimage ComputeNode call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeReimageOption?, ComputeNodeReimageOptions, AzureOperationHeaderResponse<ComputeNodeReimageHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ComputeNodeReimageOption?, 
+                ComputeNodeReimageOptions, 
+                AzureOperationHeaderResponse<ComputeNodeReimageHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -93,7 +97,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     // Grab the reimage option from the outgoing request.
                     requestReimageOption = request.Parameters;
 
-                    AzureOperationHeaderResponse<ComputeNodeReimageHeaders> response = new AzureOperationHeaderResponse<ComputeNodeReimageHeaders>();
+                    var response = new AzureOperationHeaderResponse<ComputeNodeReimageHeaders>();
                     Task<AzureOperationHeaderResponse<ComputeNodeReimageHeaders>> task = Task.FromResult(response);
                     return task;
                 };

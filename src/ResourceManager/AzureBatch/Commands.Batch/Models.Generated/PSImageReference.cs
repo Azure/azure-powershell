@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.ImageReference omObject;
         
-        public PSImageReference(string offer, string publisher, string skuId, string version)
+        public PSImageReference(string offer, string publisher, string skuId, string version = null)
         {
             this.omObject = new Microsoft.Azure.Batch.ImageReference(offer, publisher, skuId, version);
         }

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.CloudServiceConfiguration omObject;
         
-        public PSCloudServiceConfiguration(string osFamily, string targetOSVersion)
+        public PSCloudServiceConfiguration(string osFamily, string targetOSVersion = null)
         {
             this.omObject = new Microsoft.Azure.Batch.CloudServiceConfiguration(osFamily, targetOSVersion);
         }

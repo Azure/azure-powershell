@@ -60,7 +60,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> response = BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.CloudTask, ProxyModels.TaskListHeaders>();
 
             // Build a CloudTask instead of querying the service on a List CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.TaskListOptions, AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.TaskListOptions, 
+                AzureOperationResponse<IPage<ProxyModels.CloudTask>, 
+                ProxyModels.TaskListHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -85,7 +88,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             // Build a CloudTask instead of querying the service on a Get CloudTask call
             AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> response = BatchTestHelpers.CreateCloudTaskGetResponse(cmdlet.Id);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.TaskGetOptions, AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.TaskGetOptions, 
+                AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -116,7 +122,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
             AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> getResponse = BatchTestHelpers.CreateCloudTaskGetResponse(cmdlet.Id);
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.TaskGetOptions, AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>>(getResponse);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.TaskGetOptions, 
+                AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>>(getResponse);
+
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
                 ProxyModels.TaskGetOptions options = (ProxyModels.TaskGetOptions) request.Options;
@@ -188,7 +197,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             // Build some CloudTasks instead of querying the service on a List CloudTasks call
             AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.TaskListOptions, AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.TaskListOptions, 
+                AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -230,7 +242,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             // Build some CloudTasks instead of querying the service on a List CloudTasks call
             AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.TaskListOptions, AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.TaskListOptions, 
+                AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

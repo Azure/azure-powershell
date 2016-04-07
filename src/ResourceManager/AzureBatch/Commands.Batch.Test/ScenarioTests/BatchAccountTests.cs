@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Fact]
         public void TestUpdateBatchAccountWithAutoStorage()
         {
-            string accountName = ScenarioTestHelpers.SharedAccount;
+            string accountName = ScenarioTestHelpers.BatchAccountName;
             string storageId = Environment.GetEnvironmentVariable(ScenarioTestHelpers.StorageResourceId);
 
             BatchController.NewInstance.RunPsTest(string.Format("Test-UpdateBatchAccountWithAutoStorage '{0}' '{1}'", accountName, storageId));

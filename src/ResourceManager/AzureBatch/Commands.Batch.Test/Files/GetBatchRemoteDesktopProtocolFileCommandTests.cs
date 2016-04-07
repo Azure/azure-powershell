@@ -59,7 +59,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             AzureOperationResponse<Stream, ComputeNodeGetRemoteDesktopHeaders> response = BatchTestHelpers.CreateGetRemoteDesktOperationResponse();
             
             // Don't go to the service on a Get ComputeNode Remote Desktop call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetRemoteDesktopOptions, AzureOperationResponse<Stream, ComputeNodeGetRemoteDesktopHeaders>>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ComputeNodeGetRemoteDesktopOptions, 
+                AzureOperationResponse<Stream, ComputeNodeGetRemoteDesktopHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())

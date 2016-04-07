@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchApplicationTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private const string commonAccountName = ScenarioTestHelpers.SharedAccount;
         private const string accountName = "testmatt2";
         private const string poolId = ScenarioTestHelpers.SharedPool;
 

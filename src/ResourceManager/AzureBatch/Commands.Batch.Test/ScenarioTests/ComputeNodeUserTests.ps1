@@ -18,7 +18,7 @@ Tests creating a compute node user
 #>
 function Test-CreateComputeNodeUser
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName, [string]$usePipeline)
+    param([string]$poolId, [string]$computeNodeId, [string]$userName, [string]$usePipeline)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $password = "Password1234!"
@@ -47,7 +47,7 @@ Tests updating a compute node user
 #>
 function Test-UpdateComputeNodeUser
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
+    param([string]$poolId, [string]$computeNodeId, [string]$userName)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -62,7 +62,7 @@ Tests deleting a compute node user
 #>
 function Test-DeleteComputeNodeUser
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
+    param([string]$poolId, [string]$computeNodeId, [string]$userName)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 

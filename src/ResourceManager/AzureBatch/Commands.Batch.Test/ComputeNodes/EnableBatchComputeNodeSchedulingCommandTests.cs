@@ -58,7 +58,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             cmdlet.Id = "computeNode01";
 
             // Don't go to the service on an Enable Compute Node Scheduling call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeEnableSchedulingOptions, AzureOperationHeaderResponse<ComputeNodeEnableSchedulingHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ComputeNodeEnableSchedulingOptions, 
+                AzureOperationHeaderResponse<ComputeNodeEnableSchedulingHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

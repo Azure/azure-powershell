@@ -83,8 +83,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                System.Diagnostics.Debugger.Launch();
-
                 if (((this.applicationPackageReferences == null) 
                             && (this.omObject.ApplicationPackageReferences != null)))
                 {

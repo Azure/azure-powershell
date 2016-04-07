@@ -26,20 +26,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class TaskDependenciesTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private const string accountName = ScenarioTestHelpers.SharedAccount;
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateUsingTaskDependencies()
+        public void TestCreateJobUsingTaskDependencies()
         {
             BatchController controller = BatchController.NewInstance;
             string jobId = "createTaskDependencieJob";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-CreateTask-using-td '{0}' '{1}'", ScenarioTestHelpers.MpiOnlineAccount, jobId) }; },
+                () => { return new string[] { string.Format("Test-CreateTask-using-td '{0}' '{1}'", ScenarioTestHelpers.BatchAccountName, jobId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, ScenarioTestHelpers.MpiOnlineAccount);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                 },
                 () =>

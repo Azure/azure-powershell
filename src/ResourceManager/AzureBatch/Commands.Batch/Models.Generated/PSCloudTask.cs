@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSTaskConstraints constraints;
         
-        private PSTaskDependencies taskDependencies;
+        private PSTaskDependencies dependsOn;
         
         private IList<PSEnvironmentSetting> environmentSettings;
         
@@ -149,16 +149,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSTaskDependencies TaskDependencies
+        public PSTaskDependencies DependsOn
         {
             get
             {
-                if (((this.taskDependencies == null) 
+                if (((this.dependsOn == null) 
                             && (this.omObject.DependsOn != null)))
                 {
-                    this.taskDependencies = new PSTaskDependencies(this.omObject.DependsOn);
+                    this.dependsOn = new PSTaskDependencies(this.omObject.DependsOn);
                 }
-                return this.taskDependencies;
+                
+                return this.dependsOn;
             }
             set
             {
@@ -170,7 +171,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 {
                     this.omObject.DependsOn = value.omObject;
                 }
-                this.taskDependencies = value;
+
+                this.dependsOn = value;
             }
         }
         
