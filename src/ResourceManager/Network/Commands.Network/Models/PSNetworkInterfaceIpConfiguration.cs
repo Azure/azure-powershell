@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 2)]
         public List<PSInboundNatRule> LoadBalancerInboundNatRules { get; set; }
 
+        [JsonProperty(Order = 2)]
+        public List<PSApplicationGatewayBackendAddressPool> ApplicationGatewayBackendAddressPools { get; set; }
 
         [JsonIgnore]
         public string LoadBalancerBackendAddressPoolsText
@@ -39,12 +41,23 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(LoadBalancerInboundNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+        [JsonIgnore]
+        public string ApplicationGatewayBackendAddressPoolsText
+        {
+            get { return JsonConvert.SerializeObject(ApplicationGatewayBackendAddressPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
         public bool ShouldSerializeLoadBalancerBackendAddressPools()
         {
             return !string.IsNullOrEmpty(this.Name);
         }
 
         public bool ShouldSerializeLoadBalancerInboundNatRules()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeApplicationGatewayBackendAddressPools()
         {
             return !string.IsNullOrEmpty(this.Name);
         }
