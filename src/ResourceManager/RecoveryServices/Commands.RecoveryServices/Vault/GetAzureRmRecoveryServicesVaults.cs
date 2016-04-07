@@ -96,10 +96,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             foreach (Vault vault in vaults)
             {
-                if (0 == string.Compare(this.Name, vault.Name, true))
+                if (0 == string.Compare(this.Name, vault.Name, true) || string.IsNullOrEmpty(this.Name))
                 {
                     ARSVault rsVault = new ARSVault(vault);
-                    GetResourceStorageConfigResponse getStorageResponse = RecoveryServicesClient.GetVaultStorageType(this.ResourceGroupName, vault.Name);
+                    GetResourceStorageConfigResponse getStorageResponse = RecoveryServicesClient.GetVaultStorageType(rsVault.ResouceGroupName, rsVault.Name);
                     rsVault.Properties.BackupStorageRedundancy = getStorageResponse.Properties.StorageType;
                     rsVault.Properties.BackupStorageDeduplication = getStorageResponse.Properties.DedupState;
                     this.WriteObject(new ARSVault(vault));
