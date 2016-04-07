@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -64,16 +66,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Fact]
         public void TestBatchAccountWithAutoStorage()
         {
-            BatchController.NewInstance.RunPsTest("Test-CreateNewBatchAccountWithAutoStorage");
+
+            BatchController.NewInstance.RunPsTest("Test-CreateNewBatchAccountWithAutoStorage", Environment.GetEnvironmentVariable(ScenarioTestHelpers.StorageAccountEnvVar));
         }
 
         [Fact]
         public void TestUpdateBatchAccountWithAutoStorage()
         {
             string accountName = ScenarioTestHelpers.SharedAccount;
-            string storageId = ScenarioTestHelpers.SharedAccount;
+            string storageId = Environment.GetEnvironmentVariable(ScenarioTestHelpers.StorageResourceId);
 
-            BatchController.NewInstance.RunPsTest(string.Format("Test-UpdateBatchAccountWithAutoStorage '{0}' '{1'", accountName, storageId));
+            BatchController.NewInstance.RunPsTest(string.Format("Test-UpdateBatchAccountWithAutoStorage '{0}' '{1}'", accountName, storageId));
         }
     }
 }

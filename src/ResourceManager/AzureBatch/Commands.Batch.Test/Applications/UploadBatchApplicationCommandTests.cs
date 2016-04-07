@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
             string applicationId = "applicationId";
-            string filePath = "name";
+            string filePath = "~/fake/filepath";
             string version = "version";
             string format = "zip";
 
@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             cmdlet.ApplicationId = applicationId;
             cmdlet.FilePath = filePath;
             cmdlet.ApplicationVersion = version;
+            cmdlet.Format = format;
 
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();

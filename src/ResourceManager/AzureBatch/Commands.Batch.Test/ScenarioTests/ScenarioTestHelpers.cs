@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         internal const string MpiSetupFileLocalPath = "Resources\\MSMpiSetup.exe";
         internal const string StorageAccountEnvVar = "AZURE_STORAGE_ACCOUNT";
         internal const string StorageKeyEnvVar = "AZURE_STORAGE_ACCESS_KEY";
+        public static string StorageResourceId = "AZURE_BATCH_STORAGE_ID";
 
         /// <summary>
         /// Creates an account and resource group for use with the Scenario tests

@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
             string storageId = "storageId";
+
             Hashtable[] tags = new[]
             {
                 new Hashtable
@@ -63,11 +64,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.Tag = tags;
+            cmdlet.StorageId = storageId;
 
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
         }
-
     }
 }
