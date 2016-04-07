@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmJob.cs" />
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmRecoveryPoint.cs" />
-    <Compile Include="BackupEngineModels\AzureRmRecoveryServicesBackupEngine.cs" />
     <Compile Include="BaseObjects.cs" />
     <Compile Include="CmdletParamEnums.cs" />
     <Compile Include="CommonModels\Utils.cs" />
