@@ -12,71 +12,95 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Management.Redis;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using LegacyTest = Microsoft.Azure.Test;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+
+
 
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
-    using System;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.Test;
-    using Microsoft.Azure.Management.Redis;
-    using WindowsAzure.Commands.Test.Utilities.Common;
-    using Microsoft.Azure.Management.Insights;
-    using Microsoft.Azure.Management.Internal.Resources;
-
-    public abstract class RedisCacheTestsBase : RMTestBase, IDisposable
+    public class RedisCacheController
     {
         private EnvironmentSetupHelper helper;
+        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
 
-        protected RedisCacheTestsBase()
+        public RedisCacheController()
         {
             helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        public static RedisCacheController NewInstance
+        {
+            get
+            {
+                return new RedisCacheController();
+            }
+        }
+
+        private void SetupManagementClients(MockContext context)
         {
             object[] managementClients = new object[3];
-            managementClients[0] = GetRedisManagementClient();
+            managementClients[0] = GetRedisManagementClient(context);
             managementClients[1] = GetInsightsManagementClient();
             managementClients[2] = GetResourceManagementClient();
             helper.SetupManagementClients(managementClients);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(params string[] scripts)
         {
-            using (UndoContext context = UndoContext.Current)
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
+                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
+                SetupManagementClients(context);
 
-                SetupManagementClients();
-
+                var callingClassName = callingClassType
+                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
+                                        .Last();
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
-                    helper.RMProfileModule, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule,
+                    helper.RMResourceModule, 
                     helper.GetRMModulePath(@"AzureRM.RedisCache.psd1"));
 
-                helper.RunPowerShellTest(scripts);
+                if (scripts != null)
+                {
+                    helper.RunPowerShellTest(scripts);
+                }
             }
         }
 
-        protected RedisManagementClient GetRedisManagementClient()
+        private RedisManagementClient GetRedisManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<RedisManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<RedisManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected InsightsManagementClient GetInsightsManagementClient()
+        private InsightsManagementClient GetInsightsManagementClient()
         {
-            return TestBase.GetServiceClient<InsightsManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<InsightsManagementClient>(this.csmTestFactory);
         }
 
-        protected ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
-        }
-
-        public void Dispose()
-        {
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
     }
 }
