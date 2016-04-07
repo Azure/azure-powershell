@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     throw new ArgumentException(String.Format("Please provide Container of containerType Windows and backupManagementType Mars. Provided Container has containerType {0} and backupManagementType {1}", Container.ContainerType, Container.BackupManagementType));
                 }
-                string containerName = Container.Name;
+                AzureRmRecoveryServicesMabContainer mabContainer = Container as AzureRmRecoveryServicesMabContainer;
+                string containerName = mabContainer.FriendlyName;
                 HydraAdapter.UnregisterContainers(containerName);
             });
         }
