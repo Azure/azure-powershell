@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Position = 7, Mandatory = false, HelpMessage = "The time when the automatic backups should begin. Backups will begin immediately if this is null.", ValueFromPipelineByPropertyName = true)]
         public DateTime StartTime { get; set; }
 
-        [Parameter(Position = 8, Mandatory = false, HelpMessage = "True if one backup should always be kept in the storage account, regardless of how old it is.", ValueFromPipelineByPropertyName = true)]
-        public SwitchParameter KeepAtLeastOneBackup { get; set; }
-
-        [Parameter(Position = 9, Mandatory = false, HelpMessage = "The databases to backup.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = "The databases to backup.", ValueFromPipelineByPropertyName = true)]
         public DatabaseBackupSetting[] Databases;
+
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = "True if one backup should always be kept in the storage account, regardless of how old it is.", ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter KeepAtLeastOneBackup { get; set; }
 
         public override void ExecuteCmdlet()
         {
