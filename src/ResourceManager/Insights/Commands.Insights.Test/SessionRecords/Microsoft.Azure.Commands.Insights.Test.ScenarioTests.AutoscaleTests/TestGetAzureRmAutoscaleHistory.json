@@ -1,0 +1,62 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp%20ge%20%272015-02-10T02%3A35%3A00.0000000Z%27%20and%20eventTimestamp%20le%20%272015-02-10T02%3A40%3A00.0000000Z%27%20and%20resourceType%20eq%20%27microsoft.insights%2Fautoscalesettings%27",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.15" ],
+                "Connection": [ "Keep-Alive" ]
+            },
+            "ResponseBody": "{\"value\":[{\"caller\":\"Microsoft.Insights/autoscaleSettings\",\"channels\":\"Admin, Operation\",\"claims\":{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn\":\"Microsoft.Insights/autoscaleSettings\"},\"correlationId\":\"ac5b03ca-05d4-4811-9c27-0314a145f785\",\"description\":\"The autoscale engine attempting to scale resource '/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm' from 1 instances count to 2 instances count.\",\"eventDataId\":\"8ac77f91-47ea-4fc5-bd56-a39c8bf52e6d\",\"eventName\":{\"value\":\"AutoscaleAction\",\"localizedValue\":\"Autoscale a resource.\"},\"category\":{\"value\":\"microsoft.insights/autoscalesettings\",\"localizedValue\":\"Microsoft Insights Autoscale Settings\"},\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm/events/8ac77f91-47ea-4fc5-bd56-a39c8bf52e6d/ticks/635591326997519815\",\"level\":\"Informational\",\"resourceGroupName\":\"Default-Web-EastUS\",\"resourceProviderName\":{\"value\":\"microsoft.web\",\"localizedValue\":\"Azure Web Sites\"},\"resourceUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\",\"operationId\":\"ac5b03ca-05d4-4811-9c27-0314a145f785\",\"operationName\":{\"value\":\"ScaleUp\",\"localizedValue\":\"Scale up\"},\"properties\":{\"Description\":\"The autoscale engine attempting to scale resource '/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm' from 1 instances count to 2 instances count.\",\"ResourceName\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\",\"OldInstancesCount\":\"1\",\"NewInstancesCount\":\"2\",\"ActiveAutoscaleProfile\":\"{\r\n  \\\"Name\\\": \\\"No scheduled times\\\",\r\n \\\"Capacity\\\": {\r\n    \\\"Minimum\\\": \\\"1\\\",\r\n    \\\"Maximum\\\": \\\"3\\\",\r\n    \\\"Default\\\": \\\"1\\\"\r\n  },\r\n  \\\"Rules\\\": [\r\n    {\r\n      \\\"MetricTrigger\\\": {\r\n        \\\"Name\\\": \\\"CpuPercentage\\\",\r\n        \\\"Namespace\\\": \\\"\\\",\r\n        \\\"Resource\\\": \\\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\\\",\r\n        \\\"ResourceLocation\\\": \\\"East US\\\",\r\n        \\\"TimeGrain\\\": \\\"PT1M\\\",\r\n        \\\"Statistic\\\": \\\"Average\\\",\r\n        \\\"TimeWindow\\\": \\\"PT45M\\\",\r\n        \\\"TimeAggregation\\\": \\\"Average\\\",\r\n        \\\"Operator\\\": \\\"GreaterThanOrEqual\\\",\r\n        \\\"Threshold\\\": 14.0,\r\n        \\\"Source\\\": \\\"WebsiteDedicated:eastuswebspace:DefaultServerFarm\\\"\r\n      },\r\n      \\\"ScaleAction\\\": {\r\n        \\\"Direction\\\": \\\"Increase\\\",\r\n        \\\"Type\\\": \\\"ChangeCount\\\",\r\n        \\\"Value\\\": \\\"1\\\",\r\n        \\\"Cooldown\\\": \\\"PT5M\\\"\r\n      }\r\n    },\r\n    {\r\n      \\\"MetricTrigger\\\": {\r\n        \\\"Name\\\": \\\"CpuPercentage\\\",\r\n        \\\"Namespace\\\": \\\"\\\",\r\n        \\\"Resource\\\": \\\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\\\",\r\n        \\\"ResourceLocation\\\": \\\"East US\\\",\r\n        \\\"TimeGrain\\\": \\\"PT1M\\\",\r\n        \\\"Statistic\\\": \\\"Average\\\",\r\n        \\\"TimeWindow\\\": \\\"PT45M\\\",\r\n        \\\"TimeAggregation\\\": \\\"Average\\\",\r\n        \\\"Operator\\\": \\\"LessThanOrEqual\\\",\r\n        \\\"Threshold\\\": 4.0,\r\n        \\\"Source\\\": \\\"WebsiteDedicated:eastuswebspace:DefaultServerFarm\\\"\r\n      },\r\n      \\\"ScaleAction\\\": {\r\n        \\\"Direction\\\": \\\"Decrease\\\",\r\n        \\\"Type\\\": \\\"ChangeCount\\\",\r\n        \\\"Value\\\": \\\"1\\\",\r\n        \\\"Cooldown\\\": \\\"PT2H\\\"\r\n      }\r\n    },\r\n    {\r\n      \\\"MetricTrigger\\\": {\r\n        \\\"Name\\\": \\\"BytesReceived\\\",\r\n        \\\"Namespace\\\": \\\"\\\",\r\n        \\\"Resource\\\": \\\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\\\",\r\n        \\\"ResourceLocation\\\": \\\"East US\\\",\r\n        \\\"TimeGrain\\\": \\\"PT1M\\\",\r\n        \\\"Statistic\\\": \\\"Average\\\",\r\n        \\\"TimeWindow\\\": \\\"PT10M\\\",\r\n        \\\"TimeAggregation\\\": \\\"Average\\\",\r\n        \\\"Operator\\\": \\\"LessThanOrEqual\\\",\r\n        \\\"Threshold\\\": 50.0,\r\n        \\\"Source\\\": \\\"WebsiteDedicated:eastuswebspace:DefaultServerFarm\\\"\r\n      },\r\n      \\\"ScaleAction\\\": {\r\n        \\\"Direction\\\": \\\"Decrease\\\",\r\n        \\\"Type\\\": \\\"ChangeCount\\\",\r\n        \\\"Value\\\": \\\"1\\\",\r\n        \\\"Cooldown\\\": \\\"PT10M\\\"\r\n      }\r\n    },\r\n    {\r\n      \\\"MetricTrigger\\\": {\r\n        \\\"Name\\\": \\\"BytesReceived\\\",\r\n        \\\"Namespace\\\": \\\"\\\",\r\n        \\\"Resource\\\": \\\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\\\",\r\n        \\\"ResourceLocation\\\": \\\"East US\\\",\r\n        \\\"TimeGrain\\\": \\\"PT1M\\\",\r\n        \\\"Statistic\\\": \\\"Average\\\",\r\n        \\\"TimeWindow\\\": \\\"PT5M\\\",\r\n        \\\"TimeAggregation\\\": \\\"Average\\\",\r\n        \\\"Operator\\\": \\\"GreaterThanOrEqual\\\",\r\n        \\\"Threshold\\\": 100.0,\r\n        \\\"Source\\\": \\\"WebsiteDedicated:eastuswebspace:DefaultServerFarm\\\"\r\n      },\r\n      \\\"ScaleAction\\\": {\r\n        \\\"Direction\\\": \\\"Increase\\\",\r\n        \\\"Type\\\": \\\"ChangeCount\\\",\r\n        \\\"Value\\\": \\\"1\\\",\r\n        \\\"Cooldown\\\": \\\"PT10M\\\"\r\n      }\r\n    }\r\n]\r\n\\\"}\"},\"status\":{\"value\":\"Succeeded\",\"localizedValue\":\"Succeeded\"},\"subStatus\":{\"value\":null},\"eventTimestamp\":\"2015-02-10T02:38:19.7519815Z\",\"submissionTimestamp\":\"2015-02-10T02:38:19.8527743Z\",\"subscriptionId\":\"a93fb07c-6c93-40be-bf3b-4f0deba10f4b\"},{\"caller\":\"Microsoft.Insights/autoscaleSettings\",\"channels\":\"Admin, Operation\",\"claims\":{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn\":\"Microsoft.Insights/autoscaleSettings\"},\"correlationId\":\"ac5b03ca-05d4-4811-9c27-0314a145f785\",\"description\":\"The autoscale engine attempting to scale resource '/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm' from 1 instances count to 2 instances count.\",\"eventDataId\":\"c554f7ed-514c-449c-9338-13e15b4b56a3\",\"eventName\":{\"value\":\"AutoscaleAction\",\"localizedValue\":\"Autoscale a resource.\"},\"category\":{\"value\":\"microsoft.insights/autoscalesettings\",\"localizedValue\":\"Microsoft Insights Autoscale Settings\"},\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS/events/c554f7ed-514c-449c-9338-13e15b4b56a3/ticks/635591326997519815\",\"level\":\"Informational\",\"resourceGroupName\":\"Default-Web-EastUS\",\"resourceProviderName\":{\"value\":\"microsoft.insights\",\"localizedValue\":\"Microsoft Insights\"},\"resourceUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS\",\"operationId\":\"ac5b03ca-05d4-4811-9c27-0314a145f785\",\"operationName\":{\"value\":\"ScaleUp\",\"localizedValue\":\"Scale up\"},\"properties\":{\"Description\":\"The autoscale engine attempting to scale resource '/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm' from 1 instances count to 2 instances count.\",\"ResourceName\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\",\"OldInstancesCount\":\"1\",\"NewInstancesCount\":\"2\",\"ActiveAutoscaleProfile\":\"\"},\"status\":{\"value\":\"Succeeded\",\"localizedValue\":\"Succeeded\"},\"subStatus\":{\"value\":null},\"eventTimestamp\":\"2015-02-10T02:38:19.7519815Z\",\"submissionTimestamp\":\"2015-02-10T02:38:19.8517742Z\",\"subscriptionId\":\"a93fb07c-6c93-40be-bf3b-4f0deba10f4b\"}]}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Web, 11 Mar 2015 18:42:46 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Vary": [
+                    "Accept-Encoding"
+                ],
+                "Content-Length": [
+                    "11455"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31999"
+                ],
+                "x-ms-request-id": [
+                    "WestUS_1578348495da4681ba50c27ab0f85f0a_635616961676543425"
+                ],
+                "x-ms-correlation-request-id": [
+                    "da3a768d-74fb-4381-a53a-8b08b7b64504"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150311T184247Z:da3a768d-74fb-4381-a53a-8b08b7b64504"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+  "Names": {
+    "Test-GetAutoscaleHistory": [
+      ""
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}

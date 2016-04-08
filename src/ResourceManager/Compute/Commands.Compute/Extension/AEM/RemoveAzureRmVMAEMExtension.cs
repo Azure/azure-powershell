@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (String.IsNullOrEmpty(this.OSType))
                 {
                     virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
-                    this.OSType = virtualMachine.StorageProfile.OsDisk.OsType;
+                    this.OSType = virtualMachine.StorageProfile.OsDisk.OsType.ToString();
                 }
                 if (String.IsNullOrEmpty(this.OSType))
                 {

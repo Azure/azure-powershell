@@ -15,10 +15,9 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Compute.Models;
-using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
@@ -47,7 +46,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private bool IsOsVolumeEncrypted(VirtualMachine vmParameters)
         {
-            return (GetOsVolumeEncryptionSettings(vmParameters) != null);
+            var osVolumeEncryptionSettings = GetOsVolumeEncryptionSettings(vmParameters);
+            if (osVolumeEncryptionSettings != null)
+            {
+                return (osVolumeEncryptionSettings.Enabled == true
+                    && !string.IsNullOrWhiteSpace(osVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl));
+            }
+
+            return false;
         }
 
         private DiskEncryptionSettings GetOsVolumeEncryptionSettings(VirtualMachine vmParameters)
@@ -116,9 +122,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     AzureDiskEncryptionExtensionContext adeExtension = new AzureDiskEncryptionExtensionContext(vmExtension.ToPSVirtualMachineExtension(this.ResourceGroupName));
                     if (DataVolumeInExtensionConfig(adeExtension))
                     {
-                        if (ExtensionProvisioningSucceeded(adeExtension))
+                        if (adeExtension.EncryptionOperation.Equals(AzureDiskEncryptionExtensionConstants.enableEncryptionOperation, StringComparison.InvariantCultureIgnoreCase))
                         {
-                            return true;
+                            if (ExtensionProvisioningSucceeded(adeExtension))
+                            {
+                                return true;
+                            }
                         }
                     }
                 }

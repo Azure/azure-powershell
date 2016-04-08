@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>System.Management.Automation.PSCustomObject#DeploymentOperation</Name>
+      <ViewSelectedBy>
+        <TypeName>System.Management.Automation.PSCustomObject#DeploymentOperation</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>OperationId</Label>
+                <PropertyName>OperationId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Properties</Label>
+                <PropertyName>Properties</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PropertiesText</Label>
+                <ScriptBlock>$_.Properties | Get-Member -MemberType *Property | ForEach-Object { $_.Name + ":" + $_.Definition.Split('=')[1]}</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

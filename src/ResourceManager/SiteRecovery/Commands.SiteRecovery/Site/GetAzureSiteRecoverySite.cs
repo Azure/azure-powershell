@@ -49,26 +49,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByName:
-                        this.GetByName();
-                        break;
-                    case ASRParameterSets.ByFriendlyName:
-                        this.GetByFriendlyName();
-                        break;
-                    case ASRParameterSets.Default:
-                        this.GetAll();
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
+                case ASRParameterSets.ByName:
+                    this.GetByName();
+                    break;
+                case ASRParameterSets.ByFriendlyName:
+                    this.GetByFriendlyName();
+                    break;
+                case ASRParameterSets.Default:
+                    this.GetAll();
+                    break;
             }
         }
 
@@ -87,9 +82,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
                     continue;
 
-                if (0 == string.Compare(this.FriendlyName, fabric.Properties.FriendlyName, true))
+                if (0 == string.Compare(this.FriendlyName, fabric.Properties.FriendlyName, StringComparison.OrdinalIgnoreCase))
                 {
-                    this.WriteSite(fabric);
+                    var fabricByName = RecoveryServicesClient.GetAzureSiteRecoveryFabric(fabric.Name).Fabric;
+                    this.WriteSite(fabricByName);
+
                     found = true;
                 }
             }
@@ -109,21 +106,30 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByName()
         {
-            FabricResponse fabricResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryFabric(this.Name);
-            bool found = false;
+            FabricListResponse fabricListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryFabric();
 
-            if (fabricResponse != null)
+            bool found = false;
+            foreach (Fabric fabric in fabricListResponse.Fabrics)
             {
-                this.WriteSite(fabricResponse.Fabric);
-                found = true;
+                // Do not process for fabrictype other than HyperVSite 
+                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                    continue;
+
+                if (0 == string.Compare(this.Name, fabric.Name, StringComparison.OrdinalIgnoreCase))
+                {
+                    var fabricByName = RecoveryServicesClient.GetAzureSiteRecoveryFabric(fabric.Name).Fabric;
+                    this.WriteSite(fabricByName);
+
+                    found = true;
+                }
             }
 
             if (!found)
             {
                 throw new InvalidOperationException(
                     string.Format(
-                    Properties.Resources.ServerNotFound,
+                    Properties.Resources.SiteNotFound,
                     this.Name,
                     PSRecoveryServicesClient.asrVaultCreds.ResourceName));
             }
@@ -154,6 +160,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         private void WriteSite(Fabric fabric)
         {
             this.WriteObject(new ASRSite(fabric));
-        }       
+        }
     }
 }

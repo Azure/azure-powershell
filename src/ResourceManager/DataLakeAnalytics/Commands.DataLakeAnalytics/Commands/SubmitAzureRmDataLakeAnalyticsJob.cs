@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
             var jobInfo = new JobInformation
             {
-                JobId = Guid.NewGuid().ToString(),
+                JobId = Guid.NewGuid(),
                 Name = Name,
                 Properties = properties,
                 Type = jobType,

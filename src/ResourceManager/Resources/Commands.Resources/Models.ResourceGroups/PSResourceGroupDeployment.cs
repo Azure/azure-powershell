@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public string TemplateLinkString { get; set; }
 
+        public string DeploymentDebugLogLevel { get; set; }
+
         public Dictionary<string, DeploymentVariable> Parameters { get; set; }
 
         public string ParametersString

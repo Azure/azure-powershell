@@ -66,7 +66,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.11-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm">
@@ -90,7 +90,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.0.1\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -254,10 +254,6 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Storage\Commands.Storage\Commands.Storage.csproj">
-      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
-      <Name>Commands.Storage</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

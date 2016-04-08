@@ -123,6 +123,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The virtual network gateway's ASN for BGP over VPN")]
+        public uint Asn { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The weight added to routes learned over BGP from this virtual network gateway")]
+        public int PeerWeight { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
 
@@ -221,6 +233,26 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 vnetGateway.VpnClientConfiguration = null;
+            }
+
+            if(this.Asn > 0 || this.PeerWeight > 0)
+            {
+                vnetGateway.BgpSettings = new PSBgpSettings();
+                vnetGateway.BgpSettings.BgpPeeringAddress = null; // We block modifying the gateway's BgpPeeringAddress (CA)
+
+                if(this.Asn > 0)
+                {
+                    vnetGateway.BgpSettings.Asn = this.Asn;
+                }
+
+                if(this.PeerWeight > 0)
+                {
+                    vnetGateway.BgpSettings.PeerWeight = this.PeerWeight;
+                }
+                else if(this.PeerWeight < 0)
+                {
+                    throw new ArgumentException("PeerWeight must be a positive integer");
+                }
             }
 
             // Map to the sdk object
