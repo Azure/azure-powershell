@@ -183,7 +183,6 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 throw new ArgumentException(String.Format(Resources.InvalidEndpointType, accountEndpoint), "AccountEndpoint");
             }
-            System.Diagnostics.Debugger.Launch();
 
             this.Id = resource.Id;
             this.AccountEndpoint = accountEndpoint;
