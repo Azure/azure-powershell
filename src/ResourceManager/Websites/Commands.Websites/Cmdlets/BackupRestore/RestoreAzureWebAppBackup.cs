@@ -61,6 +61,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             // to restore from a backup that is no longer stored in our Backups table.
             WebsitesClient.RestoreSite(ResourceGroupName, Name, Slot, "1", request);
         }
-
     }
 }
