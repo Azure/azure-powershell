@@ -45,10 +45,7 @@ namespace Microsoft.WindowsAzure.ServiceManagemenet.Common.Models
                     traceOutput.WriteLine(string.Format(message, arguments));
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            catch {}
         }
 
         public void Information(string message)
