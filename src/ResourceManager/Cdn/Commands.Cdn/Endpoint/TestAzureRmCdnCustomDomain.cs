@@ -21,8 +21,8 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet("Validate", "AzureRmCdnCustomDomain"), OutputType(typeof(PSValidateCustomDomainOutput))]
-    public class ValidateAzureRmCdnCustomDomain : AzureCdnCmdletBase
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmCdnCustomDomain"), OutputType(typeof(PSValidateCustomDomainOutput))]
+    public class TestAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn endpoint name.")]
         [ValidateNotNullOrEmpty]

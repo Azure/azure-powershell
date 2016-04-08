@@ -44,8 +44,9 @@ namespace StaticAnalysis
             var directories = new List<string>
             {
                 Path.Combine(installDir, @"ResourceManager\AzureResourceManager\"),
-                Path.Combine(installDir, @"ServiceManagement\Azure\")
-            };
+                Path.Combine(installDir, @"ServiceManagement\Azure\"),
+                Path.Combine(installDir, @"Storage\")
+           };
 
             var reportsDirectory = Directory.GetCurrentDirectory();
             bool logReportsDirectoryWarning = true;
