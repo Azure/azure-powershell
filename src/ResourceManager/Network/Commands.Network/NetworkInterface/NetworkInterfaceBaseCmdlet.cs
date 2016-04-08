@@ -89,6 +89,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 ipconfig.LoadBalancerBackendAddressPools = ipconfig.LoadBalancerBackendAddressPools ?? new List<PSBackendAddressPool>();
                 ipconfig.LoadBalancerInboundNatRules = ipconfig.LoadBalancerInboundNatRules ?? new List<PSInboundNatRule>();
+                ipconfig.ApplicationGatewayBackendAddressPools = ipconfig.ApplicationGatewayBackendAddressPools ?? new List<PSApplicationGatewayBackendAddressPool>();
             }
             
             return psNic;
