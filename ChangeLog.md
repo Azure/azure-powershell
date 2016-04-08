@@ -1,4 +1,17 @@
-﻿##2016.03.30 version 1.3.0
+﻿##2016.04.15 version 1.3.1
+* Azure Storage
+  * Add "Add" and "Create" permission to Blob SAS cmdlets
+    - New-AzureStorageBlobSASToken
+    - New-AzureStorageContainerSASToken
+    - New-AzureStorageContainerStoredAccessPolicy
+    - Set-AzureStorageContainerStoredAccessPolicy
+  * Add "Create" permission to File SAS cmdlets
+    - New-AzureStorageFileSASToken
+    - New-AzureStorageShareSASToken
+    - New-AzureStorageShareStoredAccessPolicy
+    - Set-AzureStorageShareStoredAccessPolicy
+	
+##2016.03.30 version 1.3.0
 * AzureRM module
   - Installation performance fix
 * New Azure CDN cmdlets
