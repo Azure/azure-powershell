@@ -20,15 +20,15 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using ServiceManagemenet.Common;
-    using ServiceManagemenet.Common.Models;
     using Microsoft.Azure.Management.Insights;
     using Microsoft.Azure.Management.Insights.Models;
-    using Microsoft.Azure.Management.Internal.Resources;
     using Microsoft.Azure.Management.Redis;
     using Microsoft.Azure.Management.Redis.Models;
+    using Microsoft.Azure.Management.Resources;
     using Microsoft.Rest.Azure;
-
+    using ServiceManagemenet.Common;
+    using ServiceManagemenet.Common.Models;
+    
     public class RedisCacheClient
     {
         private RedisManagementClient _client;

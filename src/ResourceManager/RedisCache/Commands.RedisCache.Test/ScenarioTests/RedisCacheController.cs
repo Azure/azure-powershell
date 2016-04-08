@@ -17,10 +17,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Redis;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -29,14 +29,18 @@ using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 
-
-
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     public class RedisCacheController
     {
         private EnvironmentSetupHelper helper;
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
+
+        public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public InsightsManagementClient InsightsManagementClient { get; private set; }
+
+        public RedisManagementClient RedisManagementClient { get; private set; }
 
         public RedisCacheController()
         {
@@ -53,11 +57,13 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            object[] managementClients = new object[3];
-            managementClients[0] = GetRedisManagementClient(context);
-            managementClients[1] = GetInsightsManagementClient();
-            managementClients[2] = GetResourceManagementClient();
-            helper.SetupManagementClients(managementClients);
+            RedisManagementClient = GetRedisManagementClient(context);
+            InsightsManagementClient = GetInsightsManagementClient();
+            ResourceManagementClient = GetResourceManagementClient();
+            helper.SetupManagementClients(ResourceManagementClient,
+                InsightsManagementClient,
+                RedisManagementClient
+                );
         }
 
         public void RunPowerShellTest(params string[] scripts)
@@ -76,6 +82,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
                                         .Last();
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1", 
                     "ScenarioTests\\" + callingClassName + ".ps1", 
                     helper.RMProfileModule,
                     helper.RMResourceModule, 
