@@ -10,7 +10,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public static FrequencyUnit StringToFrequencyUnit(string frequencyUnit)
         {
             FrequencyUnit freq;
-            Enum.TryParse(frequencyUnit, true, out freq);
+            try
+            {
+                freq = (FrequencyUnit) Enum.Parse(typeof (FrequencyUnit), frequencyUnit, true);
+            }
+            catch (ArgumentException)
+            {
+                throw new ArgumentException(string.Format("{0} is not a valid FrequencyUnit. Valid options are Hour and Day.", frequencyUnit));
+            }
             return freq;
         }
 
