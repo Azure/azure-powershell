@@ -10483,9 +10483,9 @@
         <maml:description>
           <maml:para>Specifies when to reboot the node and what to do with currently running tasks. The default is Requeue.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption</command:parameterValue>
         <dev:type>
-          <maml:name>ComputeNodeRebootOption]</maml:name>
+          <maml:name>ComputeNodeRebootOption</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -10583,6 +10583,329 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	  <command:details>
+		  <command:name>
+                     Get-AzureBatchComputeNodeRemoteLoginSettings
+		  </command:name>
+		  <maml:description>
+			  <maml:para>Gets the remote login settings under the compute node.</maml:para>
+		  </maml:description>
+		  <maml:copyright>
+			  <maml:para></maml:para>
+		  </maml:copyright>
+		  <command:verb>Get</command:verb>
+		  <command:noun>AzureBatchComputeNodeRemoteLoginSettings</command:noun>
+		  <dev:version></dev:version>
+	  </command:details>
+	  <maml:description>
+		  <maml:para>Retrieves the remote login settings for a specific compute node in a virtual machines infrastructure-based pool</maml:para>
+	  </maml:description>
+	  <!-- Cmdlet syntax section-->
+	  <command:syntax>
+		  <command:syntaxItem>
+			  <maml:name>Get-AzureBatchComputeNodeRemoteLoginSettings</maml:name>
+			  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				  <maml:name>PoolId</maml:name>
+				  <maml:description>
+					  <maml:para>The id of the pool.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			  </command:parameter>
+			  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				  <maml:name>BatchContext</maml:name>
+				  <maml:description>
+					  <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			  </command:parameter>
+		  </command:syntaxItem>
+		  <command:syntaxItem>
+			  <maml:name>Get-AzureBatchComputeNodeRemoteLoginSettings</maml:name>
+			  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				  <maml:name>BatchContext</maml:name>
+				  <maml:description>
+					  <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			  </command:parameter>
+			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				  <maml:name>ComputeNode</maml:name>
+				  <maml:description>
+					  <maml:para>The PSComputeNode object representing the compute node to get the remote login settings.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">PSComputeNode</command:parameterValue>
+			  </command:parameter>
+		  </command:syntaxItem>
+	  </command:syntax>
+	  <!-- Cmdlet parameter section  -->
+	  <command:parameters>
+		  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			  <maml:name>BatchContext</maml:name>
+			  <maml:description>
+				  <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			  <dev:type>
+				  <maml:name>BatchAccountContext</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			  <maml:name>ComputeNode</maml:name>
+			  <maml:description>
+				  <maml:para>The PSComputeNode object representing the compute node to get the remote login settings.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">PSComputeNode</command:parameterValue>
+			  <dev:type>
+				  <maml:name>PSComputeNode</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			  <maml:name>ComputeNodeId</maml:name>
+			  <maml:description>
+				  <maml:para>The id of the compute node.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			  <dev:type>
+				  <maml:name>string</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			  <maml:name>PoolId</maml:name>
+			  <maml:description>
+				  <maml:para>The id of the pool.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			  <dev:type>
+				  <maml:name>string</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+	  </command:parameters>
+	  <!-- Example section  --> 
+	  <command:examples>
+
+		  <command:example>
+			  <maml:title>
+				  -------------------------- EXAMPLE 1 --------------------------
+			  </maml:title> 
+			  <maml:introduction>
+				  <maml:para>C:\PS&gt;</maml:para>
+			  </maml:introduction> 
+  			  <dev:code>
+  Get-AzureBatchComputeNode -PoolId &quot;myPool&quot; -ComputeNodeId &quot;tvm-1900272697_1-20150330t205553z&quot; -BatchContext $context | Get-AzureBatchComputeNodeRemoteLoginSettings -BatchContext $context
+
+  IPAddress       Port
+  ---------       ----
+  104.214.75.221 50000                        </dev:code>
+       			  <dev:remarks>
+                                  <maml:para>Description</maml:para>
+                                  <maml:para>-----------</maml:para>
+  			          <maml:para>Gets the vm named &quot;tvm-1900272697_1-20150330t205553z&quot; in the pool named &quot;myPool&quot;. Then get the remote login settings of the vm.</maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+  			  </dev:remarks>
+			  <command:commandLines>
+				  <command:commandLine>
+					  <command:commandText></command:commandText>
+				  </command:commandLine>
+			  </command:commandLines>
+		  </command:example>
+
+		  <command:example>
+			  <maml:title>
+				  -------------------------- EXAMPLE 2 --------------------------
+			  </maml:title> 
+			  <maml:introduction>
+				  <maml:para>C:\PS&gt;</maml:para>
+			  </maml:introduction> 
+  			  <dev:code>
+  Get-AzureBatchComputeNodeRemoteLoginSettings -PoolId &quot;myPool&quot; -ComputeNodeId &quot;tvm-1900272697_1-20150330t205553z&quot; -BatchContext $context
+
+  IPAddress       Port
+  ---------       ----
+  104.214.75.221 50000                        </dev:code>
+       			  <dev:remarks>
+                                  <maml:para>Description</maml:para>
+                                  <maml:para>-----------</maml:para>
+  			          <maml:para>Using the given pool id and compute node id, get the remote login settings of the vm.</maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+  			  </dev:remarks>
+			  <command:commandLines>
+				  <command:commandLine>
+					  <command:commandText></command:commandText>
+				  </command:commandLine>
+			  </command:commandLines>
+		  </command:example>
+	  </command:examples>
+	  <!-- Link section  -->
+	  <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchComputeNode</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Azure Batch Cmdlets</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+	  </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	  <command:details>
+		  <command:name>
+                     Get-AzureBatchAccountNodeAgentSku
+		  </command:name>
+		  <maml:description>
+			  <maml:para>Gets Azure Batch node agent skus that are supported.</maml:para>
+		  </maml:description>
+		  <maml:copyright>
+			  <maml:para></maml:para>
+		  </maml:copyright>
+		  <command:verb>Get</command:verb>
+		  <command:noun>AzureBatchAccountNodeAgentSku</command:noun>
+		  <dev:version></dev:version>
+	  </command:details>
+	  <maml:description>
+      <maml:para>The Get-AzureBatchAccountNodeAgentSku cmdlet gets node agent skus that are supported by Batch with the BatchContext parameter. You can use the Filter parameter to get the pools that match an Open Data Protocol (OData) filter. </maml:para>
+    </maml:description>
+	  <!-- Cmdlet syntax section-->
+	  <command:syntax>
+		  <command:syntaxItem>
+			  <maml:name>Get-AzureBatchAccountNodeAgentSku</maml:name>
+			  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				  <maml:name>BatchContext</maml:name>
+				  <maml:description>
+					  <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			  </command:parameter>
+        <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			    <maml:name>Filter</maml:name>
+			    <maml:description>
+				    <maml:para>The OData filter clause to use when query node agent skus</maml:para>
+			    </maml:description>
+			    <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			    <dev:type>
+				    <maml:name>string</maml:name>
+				    <maml:uri/>
+			    </dev:type>
+			    <dev:defaultValue></dev:defaultValue>
+		    </command:parameter>
+			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				  <maml:name>MaxCount</maml:name>
+				  <maml:description>
+					  <maml:para>The maximum number of node agent skus to return.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			  </command:parameter>
+		  </command:syntaxItem>
+	  </command:syntax>
+	  <!-- Cmdlet parameter section  -->
+	  <command:parameters>
+		  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			  <maml:name>BatchContext</maml:name>
+			  <maml:description>
+				  <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			  <dev:type>
+				  <maml:name>BatchAccountContext</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			  <maml:name>Filter</maml:name>
+			  <maml:description>
+				  <maml:para>The OData filter clause to use when query node agent skus</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			  <dev:type>
+				  <maml:name>string</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			  <maml:name>MaxCount</maml:name>
+			  <maml:description>
+				  <maml:para>The maximum number of node agent skus to return.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			  <dev:type>
+				  <maml:name>int</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+	  </command:parameters>
+	  <!-- Example section  --> 
+	  <command:examples>
+
+		  <command:example>
+			  <maml:title>
+				  -------------------------- EXAMPLE 1 --------------------------
+			  </maml:title> 
+			  <maml:introduction>
+				  <maml:para>C:\PS&gt;</maml:para>
+			  </maml:introduction> 
+  			  <dev:code>
+  Get-AzureBatchAccountNodeAgentSku -BatchContext $context
+
+  Id                        OSType VerifiedImageReferences
+  --                        ------ -----------------------
+  batch.node.centos 7        Linux {7.0, 7.1, 7.2, OL70}
+  batch.node.debian 8        Linux {15.10, 8}
+  batch.node.opensuse 13.2   Linux {13.2}
+  batch.node.opensuse 42.1   Linux {42.1, 12, 12-SP1, 12}
+  batch.node.ubuntu 14.04    Linux {14.04.0-LTS, 14.04.1-LTS, 14.04.2-LTS, 14.04.3-LTS...}
+  batch.node.windows amd64 Windows {2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter, Windows-Server-Technical-Preview}                        </dev:code>
+       			  <dev:remarks>
+                                  <maml:para>Description</maml:para>
+                                  <maml:para>-----------</maml:para>
+  			          <maml:para>Get the available node agent skus supported by Batch</maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+  			  </dev:remarks>
+			  <command:commandLines>
+				  <command:commandLine>
+					  <command:commandText></command:commandText>
+				  </command:commandLine>
+			  </command:commandLines>
+		  </command:example>
+	  </command:examples>
+	  <!-- Link section  -->
+	  <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureBatchPool</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Azure Batch Cmdlets</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+	  </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>

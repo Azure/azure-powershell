@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Batch.ComputeNodes
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet,
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSComputeNode ComputeNode { get; set; }
