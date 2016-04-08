@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public int? BackupId { get; set; }
         public string BackupName { get; set; }
         public string BackupStatus { get; set; }
-        public bool Scheduled { get; set; }
+        public bool? Scheduled { get; set; }
         public long? BackupSizeInBytes { get; set; }
         public long? WebsiteSizeInBytes { get; set; }
         public DateTime? Created { get; set; }

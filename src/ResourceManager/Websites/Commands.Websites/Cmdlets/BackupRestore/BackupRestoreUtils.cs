@@ -16,6 +16,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         public static AzureWebAppBackup BackupItemToAppBackup(BackupItem backup, string resourceGroupName, string name, string slot)
         {
+            if (backup == null)
+            {
+                return new AzureWebAppBackup();
+            }
             var dbs = backup.Databases == null ? null : backup.Databases.ToArray();
             string status = backup.Status == null ? null : backup.Status.ToString();
             return new AzureWebAppBackup
