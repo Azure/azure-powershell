@@ -82,7 +82,6 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
                                         .Last();
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1", 
                     "ScenarioTests\\" + callingClassName + ".ps1", 
                     helper.RMProfileModule,
                     helper.RMResourceModule, 

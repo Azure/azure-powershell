@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Collections;
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
-    using Hyak.Common;
     using System;
         
     [Cmdlet(VerbsCommon.Set, "AzureRmRedisCache", DefaultParameterSetName = MaxMemoryParameterSetName), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
