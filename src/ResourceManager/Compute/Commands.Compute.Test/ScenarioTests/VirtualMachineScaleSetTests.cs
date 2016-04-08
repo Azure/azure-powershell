@@ -32,5 +32,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetReimageUpdate");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetLB()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetLB");
+        }
+
     }
 }
