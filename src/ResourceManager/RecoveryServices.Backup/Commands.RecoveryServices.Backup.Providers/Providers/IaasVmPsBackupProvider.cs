@@ -195,14 +195,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             AzureRmRecoveryServicesIaasVmRecoveryPoint rp = ProviderData.ProviderParameters[RestoreBackupItemParams.RecoveryPoint] 
                 as AzureRmRecoveryServicesIaasVmRecoveryPoint;
-            string storageId = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountId].ToString();
+            string storageAccountId = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountId].ToString();
+            string storageAccountLocation = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountLocation].ToString();
+            string storageAccountType = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountType].ToString();
 
-            if (rp == null)
-            {
-                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesIaasVmRecoveryPoint");
-            }
-
-            var response = HydraAdapter.RestoreDisk(rp, storageId);
+            var response = HydraAdapter.RestoreDisk(rp, storageAccountId, storageAccountLocation, storageAccountType);
             return response;
         }
 
@@ -218,15 +215,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             string recoveryPointId = ProviderData.ProviderParameters[GetRecoveryPointParams.RecoveryPointId].ToString();
 
-            if (item == null)
-            {
-                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesItemBase");
-            }
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
-            string containerName = item.ContainerName;
-            string protectedItemName = (item as AzureRmRecoveryServicesIaasVmItem).Name;
-
-            var rpResponse = HydraAdapter.GetRecoveryPointDetails(containerName, protectedItemName, recoveryPointId);
+            var rpResponse = HydraAdapter.GetRecoveryPointDetails(containerUri, protectedItemName, recoveryPointId);
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
         }
 
@@ -237,19 +230,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureRmRecoveryServicesIaasVmItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
                 as AzureRmRecoveryServicesIaasVmItem;
 
-            if (item == null)
-            {
-                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesItemBase");
-            }
-
-            string containerName = item.ContainerName;
-            string protectedItemName = (item as AzureRmRecoveryServicesIaasVmItem).Name;
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
             TimeSpan duration = endDate - startDate;
-
             if (duration.TotalDays > 30)
             {
-                throw new Exception("Time difference should not be more than 30 days"); //tbd: Correct nsg and exception type
+                throw new Exception(Resources.RestoreDiskTimeRangeError); //tbd: Correct nsg and exception type
             }
 
             //we need to fetch the list of RPs
@@ -257,7 +245,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryFilter.StartDate = CommonHelpers.GetDateTimeStringForService(startDate);
             queryFilter.EndDate = CommonHelpers.GetDateTimeStringForService(endDate);
             RecoveryPointListResponse rpListResponse = null;
-            rpListResponse = HydraAdapter.GetRecoveryPoints(containerName, protectedItemName, queryFilter);
+
+            rpListResponse = HydraAdapter.GetRecoveryPoints(containerUri, protectedItemName, queryFilter);
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
 
@@ -458,7 +447,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // 1. Filter by container
             itemModels = itemModels.Where(itemModel =>
             {
-                return itemModel.ContainerName == container.Name;
+                // return itemModel.ContainerName == container.Name;
+                return container.Name.Contains(itemModel.ContainerName);
             }).ToList();
 
             // 2. Filter by item's friendly name
