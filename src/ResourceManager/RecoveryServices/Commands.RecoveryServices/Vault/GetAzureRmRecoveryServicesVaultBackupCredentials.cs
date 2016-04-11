@@ -27,81 +27,57 @@ using System.Xml;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
-    /// <summary>
-    /// Command to download an azure backup vault's credentials.
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesVaultBackupCredentials"), OutputType(typeof(string))]
-    public class GetAzureRMBackupVaultCredentials : RecoveryServicesCmdletBase
+    public partial class GetAzureRmRecoveryServicesVaultSettingsFile
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The Azure Recovery Service vault object which is the parent resource.", ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ARSVault Vault { get; set; }
-
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The directory where the vault credentials file will be saved. This must be specified as an absolute path.")]
-        [ValidateNotNullOrEmpty]
-        public string TargetLocation { get; set; }
-
-        private const int VaultCertificateExpiryInHoursForBackup = 48;
-
-        public override void ExecuteCmdlet()
+        public void GetAzureRMRecoveryServicesVaultBackupCredentials(string targetLocation, int vaultCertificateExpiryInHoursForBackup)
         {
-                if (!Directory.Exists(TargetLocation))
-                {
-                    throw new ArgumentException("The target location provided is not a directory. Please provide a directory.");
-                }
-
-                string subscriptionId = DefaultContext.Subscription.Id.ToString();
-                string displayName = Vault.Name;
-
-                WriteDebug(string.Format(CultureInfo.InvariantCulture,
-                                          "Executing cmdlet with SubscriptionId = {0}, ResourceGroupName = {1}, ResourceName = {2}, TargetLocation = {3}",
-                                          subscriptionId, Vault.ResouceGroupName, Vault.Name, TargetLocation));
-
-                // Generate certificate
-                X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(VaultCertificateExpiryInHoursForBackup, subscriptionId.ToString(), this.Vault.Name);
-
-                AcsNamespace acsNamespace = null;
-                string channelIntegrityKey = string.Empty;
-                try
-                {
-                    // Upload cert into ID Mgmt
-                    WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Going to upload the certificate"));
-                    acsNamespace = UploadCert(cert, subscriptionId);
-                    WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Successfully uploaded the certificate"));
-                }
-                catch (Exception exception)
-                {
-                    throw exception;
-                }
-
-                // generate vault credentials
-                string vaultCredsFileContent = GenerateVaultCreds(cert, subscriptionId, acsNamespace);
-
-                // NOTE: One of the scenarios for this cmdlet is to generate a file which will be an input to DPM servers. 
-                //       We found a bug in the DPM UI which is looking for a particular namespace in the input file.
-                //       The below is a hack to circumvent this issue and this would be removed once the bug can be fixed.
-                vaultCredsFileContent = vaultCredsFileContent.Replace("Microsoft.Azure.Commands.AzureBackup.Models",
-                                                                      "Microsoft.Azure.Portal.RecoveryServices.Models.Common");
-
-                // prepare for download
-                string fileName = string.Format("{0}_{1:ddd MMM dd yyyy}.VaultCredentials", displayName, DateTime.UtcNow);
-                string filePath = Path.Combine(TargetLocation, fileName);
-                WriteDebug(string.Format("Saving Vault Credentials to file : {0}", filePath));
-
-                File.WriteAllBytes(filePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
-
-                // Output filename back to user
-                WriteObject(fileName);
+            if (!Directory.Exists(targetLocation))
+            {
+                throw new ArgumentException("The target location provided is not a directory. Please provide a directory.");
             }
 
-        /// <summary>
-        /// Method to return the Certificate Expiry time in hours
-        /// </summary>
-        /// <param name="resourceType"></param>
-        /// <returns></returns>
-        private int GetCertificateExpiryInHours(string resourceType = null)
-        {
-            return VaultCertificateExpiryInHoursForBackup;
+            string subscriptionId = DefaultContext.Subscription.Id.ToString();
+            string displayName = this.Vault.Name;
+
+            WriteDebug(string.Format(CultureInfo.InvariantCulture,
+                                      "Executing cmdlet with SubscriptionId = {0}, ResourceGroupName = {1}, ResourceName = {2}, TargetLocation = {3}",
+                                      subscriptionId, this.Vault.ResouceGroupName, this.Vault.Name, targetLocation));
+
+            // Generate certificate
+            X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(vaultCertificateExpiryInHoursForBackup, subscriptionId.ToString(), this.Vault.Name);
+
+            AcsNamespace acsNamespace = null;
+            string channelIntegrityKey = string.Empty;
+            try
+            {
+                // Upload cert into ID Mgmt
+                WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Going to upload the certificate"));
+                acsNamespace = UploadCert(cert, subscriptionId);
+                WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Successfully uploaded the certificate"));
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+
+            // generate vault credentials
+            string vaultCredsFileContent = GenerateVaultCreds(cert, subscriptionId, acsNamespace);
+
+            // NOTE: One of the scenarios for this cmdlet is to generate a file which will be an input to DPM servers. 
+            //       We found a bug in the DPM UI which is looking for a particular namespace in the input file.
+            //       The below is a hack to circumvent this issue and this would be removed once the bug can be fixed.
+            vaultCredsFileContent = vaultCredsFileContent.Replace("Microsoft.Azure.Commands.AzureBackup.Models",
+                                                                  "Microsoft.Azure.Portal.RecoveryServices.Models.Common");
+
+            // prepare for download
+            string fileName = string.Format("{0}_{1:ddd MMM dd yyyy}.VaultCredentials", displayName, DateTime.UtcNow);
+            string filePath = System.IO.Path.Combine(targetLocation, fileName);
+            WriteDebug(string.Format("Saving Vault Credentials to file : {0}", filePath));
+
+            File.WriteAllBytes(filePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
+
+            // Output filename back to user
+            WriteObject(fileName);
         }
 
         /// <summary>
@@ -157,7 +133,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 using (var writer = XmlWriter.Create(output, GetXmlWriterSettings()))
                 {
                     BackupVaultCreds backupVaultCreds = new BackupVaultCreds(subscriptionId,
-                                                                             Vault.Name,
+                                                                             this.Vault.Name,
                                                                              CertUtils.SerializeCert(cert, X509ContentType.Pfx),
                                                                              acsNamespace,
                                                                              GetAgentLinks());

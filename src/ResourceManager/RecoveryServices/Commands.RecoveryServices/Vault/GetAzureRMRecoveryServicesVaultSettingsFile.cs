@@ -25,21 +25,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Retrieves Azure Recovery Services Vault Settings File.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesVaultSettingsFile")]
-    [OutputType(typeof(VaultSettingsFilePath))]
-    public class GetAzureRmRecoveryServicesVaultSettingsFile : RecoveryServicesCmdletBase
+    [OutputType(typeof(VaultSettingsFilePath), typeof(string))]
+    public partial class GetAzureRmRecoveryServicesVaultSettingsFile : RecoveryServicesCmdletBase
     {
         /// <summary>
         /// Expiry in hours for generated certificate.
         /// </summary>
-        private const int VaultCertificateExpiryInHoursForHRM = 120; 
+        private const int VaultCertificateExpiryInHoursForHRM = 120;
+
+        /// <summary>
+        /// Expiry in hours for generated certificate.
+        /// </summary>
+        private const int VaultCertificateExpiryInHoursForBackup = 48;
 
         #region Parameters
 
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByDefault, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ForSite, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ValueFromPipeline = true, Position = 1)]
         [ValidateNotNullOrEmpty]
         public ARSVault Vault { get; set; }
 
@@ -63,9 +67,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByDefault)]
-        [Parameter(ParameterSetName = ASRParameterSets.ForSite)]
+        [Parameter(Mandatory = true, Position = 2)]
         public string Path { get; set; }
+
+        /// <summary>
+        /// Gets or sets the path where the credential file is to be generated
+        /// </summary>
+        /// <summary>
+        /// Gets or sets vault Object.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByDefault, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ForSite, Mandatory = true, ValueFromPipeline = true)]
+        public SwitchParameter ASR
+        {
+            get { return asr; }
+            set { asr = value; }
+        }
+        private bool asr;
+
+        /// <summary>
+        /// Gets or sets the path where the credential file is to be generated
+        /// </summary>
+        /// <summary>
+        /// Gets or sets vault Object.
+        /// </summary>
+        [Parameter(ParameterSetName = "ForBackup", Mandatory = true)]
+        public SwitchParameter Backup
+        {
+            get { return backup; }
+            set { backup = value; }
+        }
+        private bool backup;
 
         #endregion Parameters
 
@@ -76,7 +108,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                this.GetVaultSettingsFile();
+                if (asr)
+                {
+                    this.GetVaultSettingsFile();
+                }
+                if(backup)
+                {
+                    this.GetAzureRMRecoveryServicesVaultBackupCredentials(Path, VaultCertificateExpiryInHoursForBackup);
+                }
             }
             catch (AggregateException aggregateEx)
             {
