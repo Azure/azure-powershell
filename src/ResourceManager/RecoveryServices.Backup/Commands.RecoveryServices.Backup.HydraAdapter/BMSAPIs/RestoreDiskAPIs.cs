@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
@@ -19,15 +20,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// <param name="protectedItemName"></param>
         /// <param name="recoveryPointId"></param>
         /// <returns></returns>
-        public BaseRecoveryServicesJobResponse RestoreDisk(AzureRmRecoveryServicesIaasVmRecoveryPoint rp, string storageAccountId)
+        public BaseRecoveryServicesJobResponse RestoreDisk(AzureRmRecoveryServicesIaasVmRecoveryPoint rp, string storageAccountId, 
+            string storageAccountLocation, string storageAccountType)
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             string resourceName = BmsAdapter.GetResourceName();
-            string location = BmsAdapter.GetResourceLocation();            
-
+            string vaultLocation = BmsAdapter.GetResourceLocation();            
             string containerName = rp.ContainerName;
             string protectedItemName = rp.ItemName;
-            string recoveryPointId = rp.RecoveryPointId;
+            string recoveryPointId = rp.Name;
+            //validtion block
+            if(storageAccountLocation != vaultLocation)
+            {
+                throw new Exception(Resources.RestoreDiskIncorrectRegion);
+            }
+            string vmType = containerName.Split(';')[1].Equals("iaasvmcontainer", StringComparison.OrdinalIgnoreCase) ? "Classic" : "Compute";
+            string strType = storageAccountType.Equals("Microsoft.ClassicStorage/StorageAccounts", StringComparison.OrdinalIgnoreCase) ? "Classic" : "Compute";
+            if(vmType != strType)
+            {
+                throw new Exception(String.Format(Resources.RestoreDiskStorageTypeError, vmType));
+            }
 
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
@@ -36,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 CreateNewCloudService = false,
                 RecoveryPointId = recoveryPointId,
                 RecoveryType = RecoveryType.RestoreDisks,
-                Region = location,
+                Region = vaultLocation,
                 StorageAccountName = storageAccountId,
                 SubnetName = string.Empty,
                 VirtualMachineName = string.Empty,
@@ -44,6 +56,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             };
 
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
+            triggerRestoreRequest.Item = new RestoreRequestResource();
+            triggerRestoreRequest.Item.Properties = new RestoreRequest();
             triggerRestoreRequest.Item.Properties = restoreRequest;
 
             var response = BmsAdapter.Client.Restore.TriggerRestoreAsync(resourceGroupName, resourceName, BmsAdapter.GetCustomRequestHeaders(),

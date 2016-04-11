@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobIdFilter, ParameterSetName = IdFilterSet)]
-        [ValidateNotNullOrEmpty]
-        public string JobId { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobFilter, ParameterSetName = JobFilterSet)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobFilter, ParameterSetName = JobFilterSet, Position = 1)]
         [ValidateNotNull]
         public AzureRmRecoveryServicesJobBase Job { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobIdFilter, ParameterSetName = IdFilterSet, Position = 2)]
+        [ValidateNotNullOrEmpty]
+        public string JobId { get; set; }
 
         public override void ExecuteCmdlet()
         {
