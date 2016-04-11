@@ -69,6 +69,7 @@ RequiredModules = @(
     @{ ModuleName = 'AzureRM.NotificationHubs'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
     @{ ModuleName = 'AzureRM.OperationalInsights'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
     @{ ModuleName = 'AzureRM.RecoveryServices'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.7'},
+	@{ ModuleName = 'AzureRM.RecoveryServices.Backup'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.0'},
     @{ ModuleName = 'AzureRM.RedisCache'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.1.4'},
     @{ ModuleName = 'AzureRM.Resources'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.6'},
     @{ ModuleName = 'AzureRM.SiteRecovery'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.1.5'},

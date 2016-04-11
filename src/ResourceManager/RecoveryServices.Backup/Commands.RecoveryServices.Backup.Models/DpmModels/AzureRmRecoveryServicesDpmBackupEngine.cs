@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesMabContainer : AzureRmRecoveryServicesContainerBase
+    public class AzureRmRecoveryServicesDpmBackupEngine : AzureRmRecoveryServicesBackupEngineBase
     {
         /// <summary>
         /// Friendly name of the container
@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Registration Status
         /// </summary>
-        public ContainerRegistrationStatus Status { get; set; }
+        public string Status { get; set; }
 
-        public AzureRmRecoveryServicesMabContainer(ProtectionContainerResource protectionContainer)
-            : base(protectionContainer)
+        public AzureRmRecoveryServicesDpmBackupEngine(BackupEngineResource backupEngine)
+            : base(backupEngine)
         {
-            MabProtectionContainer mabProtectionContainer = (MabProtectionContainer)protectionContainer.Properties;
-            FriendlyName = mabProtectionContainer.FriendlyName;
-            Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(mabProtectionContainer.RegistrationStatus);
+            DpmBackupEngine dpmBackupEngine = (DpmBackupEngine)backupEngine.Properties;
+            FriendlyName = dpmBackupEngine.FriendlyName;
+            Status = dpmBackupEngine.RegistrationStatus;
         }
     }
 }

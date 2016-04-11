@@ -291,6 +291,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GetRecoveryPointResponse is null.
+        /// </summary>
+        public static string GetRPResponseIsNull {
+            get {
+                return ResourceManager.GetString("GetRPResponseIsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Azure VM name can not be null or empty.
         /// </summary>
         public static string InvalidAzureVMName {
@@ -615,6 +624,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End date should be greater than start date.
+        /// </summary>
+        public static string RecoveryPointEndDateShouldBeGreater {
+            get {
+                return ResourceManager.GetString("RecoveryPointEndDateShouldBeGreater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cant convert input Item to AzureRmRecoveryServicesItemBase.
+        /// </summary>
+        public static string RecoveryPointItemTypeConversionError {
+            get {
+                return ResourceManager.GetString("RecoveryPointItemTypeConversionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported Parameter set.
+        /// </summary>
+        public static string RecoveryPointUnsupportedParamet {
+            get {
+                return ResourceManager.GetString("RecoveryPointUnsupportedParamet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing the protection policy.
         /// </summary>
         public static string RemoveProtectionPolicyMessage {
@@ -638,6 +674,51 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string ResourceNotFoundMessage {
             get {
                 return ResourceManager.GetString("ResourceNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account not found.
+        /// </summary>
+        public static string RestoreAzureStorageNotFound {
+            get {
+                return ResourceManager.GetString("RestoreAzureStorageNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account location should be same as vault location.
+        /// </summary>
+        public static string RestoreDiskIncorrectRegion {
+            get {
+                return ResourceManager.GetString("RestoreDiskIncorrectRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found more than one StorageAccount with same name. Some thing went wrong.
+        /// </summary>
+        public static string RestoreDiskMoreThanOneAccFound {
+            get {
+                return ResourceManager.GetString("RestoreDiskMoreThanOneAccFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide {0} storage type to restore the vm.
+        /// </summary>
+        public static string RestoreDiskStorageTypeError {
+            get {
+                return ResourceManager.GetString("RestoreDiskStorageTypeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time difference should not be more than 30 days.
+        /// </summary>
+        public static string RestoreDiskTimeRangeError {
+            get {
+                return ResourceManager.GetString("RestoreDiskTimeRangeError", resourceCulture);
             }
         }
         

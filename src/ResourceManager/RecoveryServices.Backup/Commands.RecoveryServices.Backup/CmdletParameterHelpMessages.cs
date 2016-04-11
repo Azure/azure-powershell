@@ -87,7 +87,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal static class RestoreDisk
         {
 			public const string RecoveryPoint = "Recovery point objected to be restored";
-			public const string StorageAccountName = "Storage account name where the disk need to be recovered";
+            public const string StorageAccountName = "Storage account name where the disk need to be recovered";
+            public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disk need to be recovered";
         }
     }
 }
