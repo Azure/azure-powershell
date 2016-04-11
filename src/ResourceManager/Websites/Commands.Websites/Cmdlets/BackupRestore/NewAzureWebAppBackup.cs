@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The name of the backup.", ValueFromPipelineByPropertyName = true)]
         public string BackupName { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The databases to backup.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "The databases to backup.", ValueFromPipelineByPropertyName = true)]
         public DatabaseBackupSetting[] Databases;
 
         public override void ExecuteCmdlet()

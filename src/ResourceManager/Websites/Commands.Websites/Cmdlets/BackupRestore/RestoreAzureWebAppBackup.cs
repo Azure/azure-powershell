@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Utilities;
@@ -34,13 +33,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         [ValidateNotNullOrEmpty]
         public string BlobName;
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The databases to restore. Must match the list of databases in the backup.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "The databases to restore. Must match the list of databases in the backup.", ValueFromPipelineByPropertyName = true)]
         public DatabaseBackupSetting[] Databases { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, HelpMessage = "If specified, an existing web app will be overwritten by the contents of the backup.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "If specified, an existing web app will be overwritten by the contents of the backup.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter Overwrite;
 
-        [Parameter(Position = 7, Mandatory = false, HelpMessage = "If specified, custom domains are removed automatically during restore. Otherwise, custom domains are added to the site object when it is being restored, but the restore might fail due to conflicts.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "If specified, custom domains are removed automatically during restore. Otherwise, custom domains are added to the site object when it is being restored, but the restore might fail due to conflicts.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter IgnoreConflictingHostNames { get; set; }
 
         public override void ExecuteCmdlet()

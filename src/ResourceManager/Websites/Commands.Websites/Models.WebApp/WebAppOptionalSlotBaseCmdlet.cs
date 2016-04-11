@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Commands.WebApps
     // For some cmdlets, the slot is optional, but will be used if specified.
     public class WebAppOptionalSlotBaseCmdlet : WebAppBaseClientCmdLet
     {
-        protected const string ParameterSet1Name = "S1";
-        protected const string ParameterSet2Name = "S2";
+        protected const string ParameterSet1Name = "FromResourceName";
+        protected const string ParameterSet2Name = "FromWebApp";
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 0, Mandatory = true,
             HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
