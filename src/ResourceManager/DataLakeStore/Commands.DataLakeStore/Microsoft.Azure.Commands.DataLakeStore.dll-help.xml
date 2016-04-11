@@ -1690,7 +1690,7 @@
 	<command:details>
 		<command:name>Import-AzureRmDataLakeStoreItem</command:name>
 		<maml:description>
-			<maml:para>Uploads a file to Data Lake Store.</maml:para>
+			<maml:para>Uploads a local file or directory to a Data Lake Store.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1700,7 +1700,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Import-AzureRmDataLakeStoreItem cmdlet uploads a file to Data Lake Store.</maml:para>
+		<maml:para>The Import-AzureRmDataLakeStoreItem cmdlet uploads a local file or directory to a Data Lake Store.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>

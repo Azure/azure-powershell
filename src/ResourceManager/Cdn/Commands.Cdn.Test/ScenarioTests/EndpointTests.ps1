@@ -57,7 +57,7 @@ function Test-EndpointCrudAndAction
     $loaded = Publish-AzureRmCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$loaded}
 
-    $validateResult = Validate-AzureRmCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName "unverifiedcustomdomain.com"
+    $validateResult = Test-AzureRmCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResult.CustomDomainValidated}
 
     $endpointRemoved = Remove-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
@@ -113,7 +113,7 @@ function Test-EndpointCrudAndActionWithPiping
     $loaded = Publish-AzureRmCdnEndpointContent -CdnEndpoint $createdEndpoint -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$loaded}
 
-    $validateResultbyPiping = Validate-AzureRmCdnCustomDomain -CdnEndpoint $createdEndpoint -CustomDomainHostName "unverifiedcustomdomain.com"
+    $validateResultbyPiping = Test-AzureRmCdnCustomDomain -CdnEndpoint $createdEndpoint -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResultbyPiping.CustomDomainValidated}
 
     $startedEndpoint.OriginHostHeader = "www.microsoft.com"
@@ -201,7 +201,7 @@ function Test-EndpointCrudAndActionWithAllProperties
     $loaded = Publish-AzureRmCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$loaded}
 
-    $validateResult = Validate-AzureRmCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName "unverifiedcustomdomain.com"
+    $validateResult = Test-AzureRmCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResult.CustomDomainValidated}
 
     $endpointRemoved = Remove-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
@@ -337,7 +337,7 @@ function Test-EndpointCrudAndActionWithStoppedEndpoint
     $loaded = Publish-AzureRmCdnEndpointContent -CdnEndpoint $createdEndpoint -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
     Assert-True{$loaded}
 
-    $validateResultbyPiping = Validate-AzureRmCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostName "unverifiedcustomdomain.com"
+    $validateResultbyPiping = Test-AzureRmCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResultbyPiping.CustomDomainValidated}
 
     $startedEndpoint.OriginHostHeader = "www.microsoft.com"
