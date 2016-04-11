@@ -61,7 +61,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         internal const string MpiSetupFileLocalPath = "Resources\\MSMpiSetup.exe";
         internal const string StorageAccountEnvVar = "AZURE_STORAGE_ACCOUNT";
         internal const string StorageKeyEnvVar = "AZURE_STORAGE_ACCESS_KEY";
-        public static string StorageResourceId = "AZURE_BATCH_STORAGE_ID";
 
         internal const string BatchAccountName = "AZURE_BATCH_ACCOUNT";
         internal const string BatchAccountKey = "AZURE_BATCH_ACCESS_KEY";
@@ -99,9 +98,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             X509Certificate2 cert = new X509Certificate2(filePath);
-            ListCertificateOptions getParameters = new ListCertificateOptions(context) 
-            { 
-                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm, 
+            ListCertificateOptions getParameters = new ListCertificateOptions(context)
+            {
+                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm,
                 Thumbprint = cert.Thumbprint,
                 Select = "thumbprint,state"
             };
@@ -182,7 +181,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test pool for use in Scenario tests.
         /// </summary>
-        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated, 
+        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated,
             CertificateReference certReference = null, StartTask startTask = null)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
@@ -199,7 +198,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             }
 
             PSCloudServiceConfiguration paasConfiguration = new PSCloudServiceConfiguration("4", "*");
-            
+
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
                 VirtualMachineSize = "small",
@@ -462,7 +461,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 MultiInstanceSettings = multiInstanceSettings,
                 RunElevated = numInstances <= 1
             };
-            
+
             client.CreateTask(parameters);
         }
 
