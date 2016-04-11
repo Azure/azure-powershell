@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class PolicyTests : RecoveryServicesBackupTestsBase
     {
-        [Fact]
         public void TestPolicyScenario()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-PolicyScenario");

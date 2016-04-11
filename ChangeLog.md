@@ -1,4 +1,7 @@
-﻿##2016.03.30 version 1.2.3
+﻿##2016.03.30 version 1.3.0
+* AzureRM module
+  - Installation performance fix
+* New Azure CDN cmdlets
 * Azure Storage
   * Made Protocol parameter in following cmdlets to be nullable and optional
     - New-AzureStorageBlobSASToken
@@ -8,6 +11,10 @@
     - New-AzureStorageQueueSASToken
     - New-AzureStorageTableSASToken
     - New-AzureStorageAccountSASToken
+* Add Export-AzureRmResourceGroupTemplate cmdlet
+* Add VirtualMachineScaleSet cmdlet
+* Add "EA" value for permission parameter of Set-AzurePlatformVMImage
+* Documentation improvements in cmdlets 
 
 ##2016.03.03 version 1.2.2
 * Azure Compute (ARM):

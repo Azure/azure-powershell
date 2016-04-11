@@ -52,6 +52,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    public class AzureRmRecoveryServicesBackupEngineContext : AzureRmRecoveryServicesBackupManagementContext
+    {
+        public BackupEngineType BackupEngineType { get; set; }
+
+        public AzureRmRecoveryServicesBackupEngineContext() { }
+
+        public AzureRmRecoveryServicesBackupEngineContext(BackupEngineType backupEngineType, string backupManagementType)
+            : base(backupManagementType)
+        {
+            BackupEngineType = backupEngineType;
+        }
+    }
+
     public class AzureRmRecoveryServicesContainerBase : AzureRmRecoveryServicesContainerContext
     {
         /// <summary>
@@ -64,6 +77,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                    ((ProtectionContainer)protectionContainer.Properties).BackupManagementType)
         {
             Name = protectionContainer.Name;
+        }
+    }
+
+    public class AzureRmRecoveryServicesBackupEngineBase : AzureRmRecoveryServicesBackupEngineContext
+    {
+        /// <summary>
+        /// Container Name
+        /// </summary>
+        public string Name { get; set; }
+
+        public AzureRmRecoveryServicesBackupEngineBase(BackupEngineResource backupEngine)
+            : base(ConversionUtils.GetPsBackupEngineType(((BackupEngineBase)backupEngine.Properties).BackupEngineType),
+                   ((BackupEngineBase)backupEngine.Properties).BackupManagementType)
+        {
+            Name = backupEngine.Name;
         }
     }
 
@@ -172,7 +200,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
 
-    public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesBackupManagementContext
+    public class AzureRmRecoveryServicesBackupPolicyBase : AzureRmRecoveryServicesBackupManagementContext
     {
         public string Name { get; set; }
 
@@ -196,7 +224,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    public class AzureRmRecoveryServicesRetentionPolicyBase : AzureRmRecoveryServicesObjectBase
+    public class AzureRmRecoveryServicesBackupRetentionPolicyBase : AzureRmRecoveryServicesObjectBase
     {
         public override void Validate()
         {
@@ -204,7 +232,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    public class AzureRmRecoveryServicesSchedulePolicyBase : AzureRmRecoveryServicesObjectBase
+    public class AzureRmRecoveryServicesBackupSchedulePolicyBase : AzureRmRecoveryServicesObjectBase
     {
         public override void Validate()
         {

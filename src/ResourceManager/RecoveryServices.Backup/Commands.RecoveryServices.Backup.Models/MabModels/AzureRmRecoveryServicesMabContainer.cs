@@ -24,11 +24,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureRmRecoveryServicesMabContainer : AzureRmRecoveryServicesContainerBase
     {
         /// <summary>
-        /// Resource Group where the Container is present
-        /// </summary>
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
         /// Friendly name of the container
         /// </summary>
         public string FriendlyName { get; set; }
@@ -42,7 +37,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             : base(protectionContainer)
         {
             MabProtectionContainer mabProtectionContainer = (MabProtectionContainer)protectionContainer.Properties;
-            ResourceGroupName = IdUtils.GetResourceGroupName(protectionContainer.Id);
             FriendlyName = mabProtectionContainer.FriendlyName;
             Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(mabProtectionContainer.RegistrationStatus);
         }

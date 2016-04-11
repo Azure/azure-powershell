@@ -82,23 +82,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public List<Models.AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
         {
             throw new NotImplementedException();
+        }
 
+        public List<Models.AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers()
+        {
             string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
 
-            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
+            BackupEngineListQueryParams queryParams = new BackupEngineListQueryParams();
 
-            // 1. Filter by Name
-            queryParams.FriendlyName = name;
+            queryParams.ProviderType = ProviderType.DPM.ToString();
 
-            // 2. Filter by ContainerType
-            queryParams.ProviderType = ProviderType.Dpm.ToString();
+            var listResponse = HydraAdapter.ListBackupEngines(queryParams);
 
-            //ToDo: Piyush to call Get Backup Engine
-            //var listResponse = HydraAdapter.ListContainers(queryParams);
+            queryParams.ProviderType = ProviderType.DPM.ToString();
 
-            //List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
-            
-            //return containerModels;
+
+            List<AzureRmRecoveryServicesBackupEngineBase> backupEngineModels = ConversionHelpers.GetBackupEngineModelList(listResponse);
+
+            return backupEngineModels;
         }
 
         public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse GetPolicy()
@@ -111,12 +112,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesSchedulePolicyBase GetDefaultSchedulePolicyObject()
+        public AzureRmRecoveryServicesBackupSchedulePolicyBase GetDefaultSchedulePolicyObject()
         {
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesRetentionPolicyBase GetDefaultRetentionPolicyObject()
+        public AzureRmRecoveryServicesBackupRetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
             throw new NotImplementedException();
         }

@@ -29,6 +29,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 throw new ArgumentNullException("RPList"); 
             }
 
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
+
             List<AzureRmRecoveryServicesRecoveryPointBase> result = new List<AzureRmRecoveryServicesRecoveryPointBase>();
             foreach (RecoveryPointResource rp in rpList.RecoveryPointList.RecoveryPoints)
             {
@@ -37,8 +41,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     Name = rp.Name,
                     BackupManagementType = item.BackupManagementType,
-                    ItemName = item.Name,
-                    ContainerName = item.ContainerName,
+                    ItemName = protectedItemName,
+                    ContainerName = containerUri,
                     ContainerType = item.ContainerType,
                     RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
                     RecoveryPointType = recPoint.RecoveryPointType,
@@ -60,13 +64,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             RecoveryPoint recPoint = rpResponse.RecPoint.Properties as RecoveryPoint;
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
             AzureRmRecoveryServicesIaasVmRecoveryPoint result = new AzureRmRecoveryServicesIaasVmRecoveryPoint()
             {
                 Name = rpResponse.RecPoint.Name,
                 BackupManagementType = item.BackupManagementType,
-                ItemName = item.Name,
-                ContainerName = item.ContainerName,
+                ItemName = protectedItemName,
+                ContainerName = containerUri,
                 ContainerType = item.ContainerType,
                 RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
                 RecoveryPointType = recPoint.RecoveryPointType,

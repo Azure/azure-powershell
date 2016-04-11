@@ -36,6 +36,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         }
 
         /// <summary>
+        /// Fetches backup engine in the vault according to the query params
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public IEnumerable<BackupEngineResource> ListBackupEngines(BackupEngineListQueryParams queryParams)
+        {
+            var listResponse = BmsAdapter.Client.BackupEngine.ListAsync(BmsAdapter.GetResourceGroupName(), BmsAdapter.GetResourceName(), queryParams,
+                 null, BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
+            return listResponse.ItemList.BackupEngines;
+        }
+
+        /// <summary>
         /// Triggers refresh of container catalog in service
         /// </summary>
         /// <returns></returns>

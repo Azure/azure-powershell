@@ -59,19 +59,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return providerType;
         }
 
-        public static void GetSkipTokenFromNextLink(string url, out string nextLink)
+        public static void GetSkipTokenFromNextLink(string nextLink, out string skipToken)
         {
-            Uri uriObj = new Uri(url);
-            // This is sent by service and we don't expect this to be encoded.
-            // TODO: Need to make sure during testing that this is in fact true.
-            NameValueCollection queryParams = HttpUtility.ParseQueryString(uriObj.Query);
-            if (queryParams.Get(HydraConstants.SkipToken) != null)
+            if (nextLink != null)
             {
-                nextLink = queryParams.Get(HydraConstants.SkipToken);
+                Uri uriObj = new Uri(nextLink);
+                // This is sent by service and we don't expect this to be encoded.
+                // TODO: Need to make sure during testing that this is in fact true.
+                NameValueCollection queryParams = HttpUtility.ParseQueryString(uriObj.Query);
+                if (queryParams.Get(HydraConstants.SkipToken) != null)
+                {
+                    skipToken = queryParams.Get(HydraConstants.SkipToken);
+                }
+                else
+                {
+                    skipToken = null;
+                }
             }
             else
             {
-                nextLink = null;
+                skipToken = null;
             }
         }
 
@@ -85,6 +92,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <returns></returns>
         public static string GetLastIdFromFullId(string fullId)
         {
+            Uri fullUri = new Uri(fullId);
+            fullId = fullUri.AbsolutePath;
             string[] splitArr = fullId.Split("/".ToCharArray());
             return splitArr[splitArr.Length - 1];
         }

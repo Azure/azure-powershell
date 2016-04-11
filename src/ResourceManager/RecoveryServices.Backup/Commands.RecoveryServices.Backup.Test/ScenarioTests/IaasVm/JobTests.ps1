@@ -27,7 +27,7 @@ function SetVaultContext
 function Test-GetJobsScenario
 {
 	SetVaultContext;
-	$jobs = Get-AzureRmBackupJob -From $fixedStartDate -To $fixedEndDate
+	$jobs = Get-AzureRmRecoveryServicesJob -From $fixedStartDate -To $fixedEndDate
 	foreach ($job in $jobs)
 	{
 		Assert-NotNull $job.InstanceId
@@ -44,7 +44,7 @@ function Test-GetJobsTimeFilter
 
 	SetVaultContext;
 
-	$filteredJobs = Get-AzureRmBackupJob -From $startTime -To $endTime
+	$filteredJobs = Get-AzureRmRecoveryServicesJob -From $startTime -To $endTime
 
 	# Adding a second here and there to make sure comparison works fine
 	$startTime.AddSeconds(-1);
@@ -68,7 +68,7 @@ function Test-GetJobsStatusFilter
 
 	SetVaultContext;
 
-	$filteredJobs = Get-AzureRmBackupJob -From $fixedStartDate -To $fixedEndDate -Status $status;
+	$filteredJobs = Get-AzureRmRecoveryServicesJob -From $fixedStartDate -To $fixedEndDate -Status $status;
 
 	foreach ($job in $filteredJobs)
 	{
@@ -82,7 +82,7 @@ function Test-GetJobsOperationFilter
 
 	SetVaultContext;
 
-	$filteredJobs = Get-AzureRmBackupJob -From $fixedStartDate -To $fixedEndDate -Operation $operation;
+	$filteredJobs = Get-AzureRmRecoveryServicesJob -From $fixedStartDate -To $fixedEndDate -Operation $operation;
 
 	foreach ($job in $filteredJobs)
 	{
@@ -96,7 +96,7 @@ function Test-GetJobsBackupManagementTypeFilter
 
 	SetVaultContext;
 
-	$filteredJobs = Get-AzureRmBackupJob -From $fixedStartDate -To $fixedEndDate -BackupManagementType $type;
+	$filteredJobs = Get-AzureRmRecoveryServicesJob -From $fixedStartDate -To $fixedEndDate -BackupManagementType $type;
 
 	foreach ($job in $filteredJobs)
 	{
@@ -107,11 +107,11 @@ function Test-GetJobsBackupManagementTypeFilter
 function Test-GetJobDetails
 {
 	SetVaultContext;
-	$jobs = Get-AzureRmBackupJob -From $fixedStartDate -To $fixedEndDate
+	$jobs = Get-AzureRmRecoveryServicesJob -From $fixedStartDate -To $fixedEndDate
 	foreach ($job in $jobs)
 	{
-		$jobDetails = Get-AzureRmBackupJobDetails -Job $job;
-		$jobDetails2 = Get-AzureRmBackupJobDetails -JobId $job.InstanceId
+		$jobDetails = Get-AzureRmRecoveryServicesJobDetails -Job $job;
+		$jobDetails2 = Get-AzureRmRecoveryServicesJobDetails -JobId $job.InstanceId
 
 		Assert-AreEqual $jobDetails.InstanceId $job.InstanceId
 		Assert-AreEqual $jobDetails2.InstanceId $job.InstanceId
@@ -123,23 +123,36 @@ function Test-GetJobDetails
 function Test-WaitJobScenario
 {
 	SetVaultContext;
-	$jobs = Get-AzureRmBackupJob -From $fixedStartDate -To $fixedEndDate
+	$jobs = Get-AzureRmRecoveryServicesJob -From $fixedStartDate -To $fixedEndDate
 	foreach ($job in $jobs)
 	{
-		$waitedJob = Wait-AzureRmBackupJob -Job $job
+		$waitedJob = Wait-AzureRmRecoveryServicesJob -Job $job
 		Assert-AreNotEqual $waitedJob.Status "InProgress"
 		Assert-AreNotEqual $waitedJob.Status "Cancelling"
 	}
-	$waitedJobs = Wait-AzureRmBackupJob -Job $jobs
+	$waitedJobs = Wait-AzureRmRecoveryServicesJob -Job $jobs
 }
 
 function Test-WaitJobPipeScenario
 {
 	SetVaultContext;
-	$waitedJobs = Get-AzureRmBackupJob -From $fixedStartDate -To $fixedEndDate | Wait-AzureRmBackupJob
+	$waitedJobs = Get-AzureRmRecoveryServicesJob -From $fixedStartDate -To $fixedEndDate | Wait-AzureRmRecoveryServicesJob
 	foreach ($waitedJob in $waitedJobs)
 	{
 		Assert-AreNotEqual $waitedJob.Status "InProgress"
 		Assert-AreNotEqual $waitedJob.Status "Cancelling"
+	}
+}
+
+function Test-CancelJobScenario
+{
+	$startTime = Get-Date -Date "2016-04-04 21:00:00"
+	$endTime = Get-Date -Date "2016-04-05 13:40:00"
+
+	$runningJobs = Get-AzureRmRecoveryServicesJob -From $startTime -To $endTime -Status "InProgress"
+	foreach ($runningJob in $runningJobs)
+	{
+		$cancelledJob = Stop-AzureRmRecoveryServicesJob -Job $runningJob
+		Assert-AreNotEqual $cancelledJob.Status "InProgress"
 	}
 }

@@ -136,7 +136,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 1,
-                Mandatory = true
+                Mandatory = true,
+                ValueFromPipeline = false
             });
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
@@ -148,7 +149,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
-                Mandatory = true
+                Mandatory = true,
+                ValueFromPipeline = false
             });
             pName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Name", pName);
@@ -160,7 +162,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 3,
-                Mandatory = true
+                Mandatory = true,
+                ValueFromPipeline = true
             });
             pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineScaleSet", pParameters);
@@ -194,7 +197,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 1,
-                Mandatory = true
+                Mandatory = true,
+                ValueFromPipeline = false
             });
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
@@ -206,7 +210,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
-                Mandatory = true
+                Mandatory = true,
+                ValueFromPipeline = false
             });
             pName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Name", pName);
@@ -218,7 +223,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 3,
-                Mandatory = true
+                Mandatory = true,
+                ValueFromPipeline = true
             });
             pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineScaleSet", pParameters);

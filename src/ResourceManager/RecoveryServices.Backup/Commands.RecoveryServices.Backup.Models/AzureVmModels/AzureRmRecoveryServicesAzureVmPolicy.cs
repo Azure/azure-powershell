@@ -20,13 +20,13 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesIaasVmPolicy : AzureRmRecoveryServicesPolicyBase
+    public class AzureRmRecoveryServicesIaasVmPolicy : AzureRmRecoveryServicesBackupPolicyBase
     {
-        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }
+        public AzureRmRecoveryServicesBackupSchedulePolicyBase SchedulePolicy { get; set; }
 
-        public AzureRmRecoveryServicesRetentionPolicyBase RetentionPolicy { get; set; }
+        public AzureRmRecoveryServicesBackupRetentionPolicyBase RetentionPolicy { get; set; }
 
-        public virtual void Validate()
+        public override void Validate()
         {
             base.Validate();
 
