@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesContainerBase Container { get; set; }
+        public AzureRmRecoveryServicesBackupEngineBase AzureRmBackupManagementServer { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -37,13 +37,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
             {
                 base.ExecuteCmdlet();
 
-                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.Scdpm)
+                if ((AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.DpmEngine && AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.DpmVenusEngine)||
+                    AzureRmBackupManagementServer.BackupManagementType != BackupManagementType.SCDPM)
                 {
-                    throw new ArgumentException(String.Format("Please provide Container of containerType Windows and backupManagementType Scdpm. Provided Container has containerType {0} and backupManagementType {1}", Container.ContainerType, Container.BackupManagementType));
+                    throw new ArgumentException(String.Format("Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid.", AzureRmBackupManagementServer.BackupEngineType, AzureRmBackupManagementServer.BackupManagementType));
                 }
 
-                string containerName = Container.Name;
-                HydraAdapter.UnregisterContainers(containerName);
+                string azureRmBackupManagementServer = AzureRmBackupManagementServer.Name;
+                HydraAdapter.UnregisterContainers(azureRmBackupManagementServer);
             });
         }
     }

@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
                 
-                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.Mars)
+                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.MARS)
                 {
-                    throw new ArgumentException(String.Format("Please provide Container of containerType Windows and backupManagementType Mars. Provided Container has containerType {0} and backupManagementType {1}", Container.ContainerType, Container.BackupManagementType));
+                    throw new ArgumentException(String.Format("Please provide Container of containerType as Windows and backupManagementType as MARS. Provided Container has containerType {0} and backupManagementType {1} which is invalid.", Container.ContainerType, Container.BackupManagementType));
                 }
                 AzureRmRecoveryServicesMabContainer mabContainer = Container as AzureRmRecoveryServicesMabContainer;
                 string containerName = mabContainer.FriendlyName;
