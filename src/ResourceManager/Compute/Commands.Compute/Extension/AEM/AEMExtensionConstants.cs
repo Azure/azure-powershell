@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
         public static Dictionary<string, string> WADExtensionDefaultName = new Dictionary<string, string>() { { OSTypeWindows, "IaaSDiagnostics" }, { OSTypeLinux, "LinuxDiagnostic" } };
         public static Dictionary<string, string> WADExtensionPublisher = new Dictionary<string, string>() { { OSTypeWindows, "Microsoft.Azure.Diagnostics" }, { OSTypeLinux, "Microsoft.OSTCExtensions" } };
         public static Dictionary<string, string> WADExtensionType = new Dictionary<string, string>() { { OSTypeWindows, "IaaSDiagnostics" }, { OSTypeLinux, "LinuxDiagnostic" } };
-        public static Dictionary<string, Version> WADExtensionVersion = new Dictionary<string, Version>() { { OSTypeWindows, new Version(1,5) }, { OSTypeLinux, new Version(2,2) } };
+        public static Dictionary<string, Version> WADExtensionVersion = new Dictionary<string, Version>() { { OSTypeWindows, new Version(1,5) }, { OSTypeLinux, new Version(2,3) } };
 
         public const string OSTypeWindows = "Windows";
         public const string OSTypeLinux = "Linux";
