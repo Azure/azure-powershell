@@ -146,10 +146,15 @@ function Test-WaitJobPipeScenario
 
 function Test-CancelJobScenario
 {
-	$startTime = Get-Date -Date "2016-04-04 21:00:00"
-	$endTime = Get-Date -Date "2016-04-05 13:40:00"
+	$startTime = Get-Date -Date "2016-04-10 21:00:00"
+	$startTime = $startTime.ToUniversalTime();
+	$endTime = Get-Date -Date "2016-04-11 21:00:00"
+	$endTime = $endTime.ToUniversalTime();
 
-	$runningJobs = Get-AzureRmRecoveryServicesJob -From $startTime -To $endTime -Status "InProgress"
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "kazhengtest" -Name "pshtesting";
+	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+
+	$runningJobs = Get-AzureRmRecoveryServicesJob -From $startTime -To $endTime -Status "InProgress" -Operation "Backup"
 	foreach ($runningJob in $runningJobs)
 	{
 		$cancelledJob = Stop-AzureRmRecoveryServicesJob -Job $runningJob
