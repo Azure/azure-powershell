@@ -27,33 +27,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesJob"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>), typeof(AzureRmRecoveryServicesJobBase))]
     public class GetAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.FromFilter)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.StatusFilter, Position = 1)]
+        [ValidateNotNullOrEmpty]
+        public JobStatus? Status { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.OperationFilter, Position = 2)]
+        [ValidateNotNullOrEmpty]
+        public JobOperation? Operation { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.FromFilter, Position = 3)]
         [ValidateNotNull]
         public DateTime? From { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.ToFilter)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.ToFilter, Position = 4)]
         [ValidateNotNull]
         public DateTime? To { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.JobIdFilter)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.JobIdFilter, Position = 5)]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.JobFilter)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.JobFilter, Position = 6)]
         [ValidateNotNull]
         public AzureRmRecoveryServicesJobBase Job { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.BackupManagementTypeFilter)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.OperationFilter)]
-        [ValidateNotNullOrEmpty]
-        public JobOperation? Operation { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.StatusFilter)]
-        [ValidateNotNullOrEmpty]
-        public JobStatus? Status { get; set; }
 
         public override void ExecuteCmdlet()
         {
