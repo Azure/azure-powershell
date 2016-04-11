@@ -138,6 +138,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureRmRecoveryServicesRecoveryPointBase : AzureRmRecoveryServicesItemContext
     {
         private global::Microsoft.Azure.Management.RecoveryServices.Backup.Models.RecoveryPointResource rp;
+                
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Name { get; set; }
 
         /// <summary>
         /// 

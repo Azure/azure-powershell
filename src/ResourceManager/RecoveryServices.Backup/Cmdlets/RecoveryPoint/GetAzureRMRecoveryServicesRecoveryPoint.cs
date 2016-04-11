@@ -14,13 +14,13 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         StartDate, EndDate, Item.Name, Item.ContainerName));
                     if (StartDate >= EndDate)
                     {
-                        throw new Exception("End date should be greater than start date"); //tbd: Correct nsg and exception type
+                        throw new ArgumentException(Resources.RecoveryPointEndDateShouldBeGreater); 
                     }
 
                     parameter.Add(GetRecoveryPointParams.StartDate, StartDate);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else
                 {
-                    throw new Exception("Unsupported Parameter set");
+                    throw new Exception(Resources.RecoveryPointUnsupportedParamet);
                 }
             });
         }

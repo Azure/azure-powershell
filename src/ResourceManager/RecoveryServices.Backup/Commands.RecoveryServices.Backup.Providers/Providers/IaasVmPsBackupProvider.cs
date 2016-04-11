@@ -193,14 +193,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             AzureRmRecoveryServicesIaasVmRecoveryPoint rp = ProviderData.ProviderParameters[RestoreBackupItemParams.RecoveryPoint] 
                 as AzureRmRecoveryServicesIaasVmRecoveryPoint;
-            string storageId = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountId].ToString();
+            string storageAccountId = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountId].ToString();
+            string storageAccountLocation = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountLocation].ToString();
+            string storageAccountType = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountType].ToString();
 
-            if(rp == null)
-            {
-                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesIaasVmRecoveryPoint");
-            }
-
-            var response = HydraAdapter.RestoreDisk(rp, storageId);
+            var response = HydraAdapter.RestoreDisk(rp, storageAccountId, storageAccountLocation, storageAccountType);
             return response;
         }
 
@@ -216,11 +213,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             string recoveryPointId = ProviderData.ProviderParameters[GetRecoveryPointParams.RecoveryPointId].ToString();
 
-            if (item == null)
-            {
-                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesItemBase");
-            }
-
             string containerName = item.ContainerName;
             string protectedItemName = (item as AzureRmRecoveryServicesIaasVmItem).Name;
 
@@ -235,11 +227,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureRmRecoveryServicesIaasVmItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
                 as AzureRmRecoveryServicesIaasVmItem;
 
-            if (item == null)
-            {
-                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesItemBase");
-            }
-
             string containerName = item.ContainerName;
             string protectedItemName = (item as AzureRmRecoveryServicesIaasVmItem).Name;
 
@@ -247,7 +234,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             if (duration.TotalDays > 30)
             {
-                throw new Exception("Time difference should not be more than 30 days"); //tbd: Correct nsg and exception type
+                throw new Exception(Resource.RestoreDiskTimeRangeError); //tbd: Correct nsg and exception type
             }
 
             //we need to fetch the list of RPs

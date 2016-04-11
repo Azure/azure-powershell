@@ -25,6 +25,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ResourcesNS = Microsoft.Azure.Management.Resources;
 using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
+                StorageAccountName = StorageAccountName.ToLower();
                 WriteDebug("InsideRestore. going to create ResourceManager Client");
                 ResourcesNS.ResourceManagementClient rmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 WriteDebug("Client Created successfully");
@@ -63,17 +65,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", StorageAccountName));
                     resource = rmClient.Resources.GetAsync(StorageAccountResourceGroupName, identity, CancellationToken.None).Result;
                 }
-                catch (Hyak.Common.CloudException exp)
+                catch (Exception)
                 {
-                    string expType = exp.GetType().ToString();
                     identity.ResourceProviderNamespace = "Microsoft.Storage/storageAccounts";
                     identity.ResourceProviderApiVersion = "2016-01-01";
                     resource = rmClient.Resources.GetAsync(StorageAccountResourceGroupName, identity, CancellationToken.None).Result;
-                }
-                catch(Exception e)
-                {
-                    WriteDebug(e.Message);
-                    throw;
                 }
                 
                 string storageAccountId = resource.Resource.Id;
@@ -89,7 +85,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
                     {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
-                    {RestoreBackupItemParams.StorageAccountId, storageAccountId}
+                    {RestoreBackupItemParams.StorageAccountId, storageAccountId},
+                    {RestoreBackupItemParams.StorageAccountLocation, storageAccountlocation},
+                    {RestoreBackupItemParams.StorageAccountType, storageAccountType}
                 }, HydraAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
@@ -115,6 +113,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             });
         }
 
+        /// <summary>
+        /// This code is not getting used. Will delete it once things will be closed.
+        /// </summary>
+        /// <param name="storageAccountName"></param>
+        /// <param name="id"></param>
+        /// <param name="location"></param>
+        /// <param name="resourceType"></param>
         internal void GetStorageResource(string storageAccountName, out string id, out string location, out string resourceType)
         {
             using (System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create())
@@ -137,12 +142,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if(result.Count == 0)
                 {
                     WriteVerbose(string.Format("Storage Account not fount"));
-                    throw new ArgumentException("Storage account not found");
+                    throw new ArgumentException(Resources.RestoreAzureStorageNotFound);
                 }
                 else if (result.Count > 1)
                 {
                     WriteVerbose(string.Format("Found more than one StorageAccount with same name. Some thing went wrong"));
-                    throw new Exception(string.Format("Found more than one StorageAccount with same name. Some thing went wrong"));
+                    throw new Exception(Resources.RestoreDiskMoreThanOneAccFound);
                 }
                 id = result[0].Members["ResourceId"].Value.ToString();
                 location = result[0].Members["Location"].Value.ToString();

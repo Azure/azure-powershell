@@ -371,4 +371,22 @@ Please contact Microsoft for further assistant.</value>
   <data name="RecoveryPointItemTypeConversionError" xml:space="preserve">
     <value>Cant convert input Item to AzureRmRecoveryServicesItemBase</value>
   </data>
+  <data name="GetRPResponseIsNull" xml:space="preserve">
+    <value>GetRecoveryPointResponse is null</value>
+  </data>
+  <data name="RestoreAzureStorageNotFound" xml:space="preserve">
+    <value>Storage account not found</value>
+  </data>
+  <data name="RestoreDiskIncorrectRegion" xml:space="preserve">
+    <value>Storage account location should be same as vault location</value>
+  </data>
+  <data name="RestoreDiskMoreThanOneAccFound" xml:space="preserve">
+    <value>Found more than one StorageAccount with same name. Some thing went wrong</value>
+  </data>
+  <data name="RestoreDiskStorageTypeError" xml:space="preserve">
+    <value>Please provide {0} storage type to restore the vm</value>
+  </data>
+  <data name="RestoreDiskTimeRangeError" xml:space="preserve">
+    <value>Time difference should not be more than 30 days</value>
+  </data>
 </root>
