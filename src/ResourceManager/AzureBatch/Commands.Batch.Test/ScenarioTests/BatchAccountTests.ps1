@@ -239,39 +239,3 @@ function Test-BatchAccountKeys
         Clean-BatchAccountAndResourceGroup $account $resourceGroup
     }
 }
-
-<#
-.SYNOPSIS
-Tests getting a list of Batch node agent skus
-#>
-function Test-GetBatchNodeAgentSkus
-{
-	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-
-	# Get the node agent skus
-	$nodeAgentSkus = Get-AzureBatchAccountNodeAgentSku -BatchContext $context
-	
-	foreach($nodeAgentSku in $nodeAgentSkus)
-    {
-        Assert-True { $nodeAgentSku.Id.StartsWith("batch.node") }
-		Assert-True { $nodeAgentSku.OSType -match "^(Linux|Windows)$" }
-		Assert-AreNotEqual 0 $nodeAgentSku.VerifiedImageReferences.Count
-    }
-}
-
-<#
-.SYNOPSIS
-Tests getting a list of Batch node agent skus with filter
-#>
-function Test-GetBatchNodeAgentSkusWithFilter
-{
-	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-	$filter = "osType eq 'Linux'"
-	
-	$nodeAgentSkus = Get-AzureBatchAccountNodeAgentSku -Filter $filter -BatchContext $context
-
-	foreach($nodeAgentSku in $nodeAgentSkus)
-    {
-		Assert-AreEqual "Linux" $nodeAgentSku.OSType
-	}
-}

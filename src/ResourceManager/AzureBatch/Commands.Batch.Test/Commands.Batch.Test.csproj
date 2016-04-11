@@ -181,7 +181,7 @@
   <ItemGroup>
     <Compile Include="Accounts\GetBatchAccountCommandTests.cs" />
     <Compile Include="Accounts\GetBatchAccountKeysCommandTests.cs" />
-    <Compile Include="Accounts\GetBatchNodeAgentSkusCommandTests.cs" />
+    <Compile Include="Pools\GetBatchNodeAgentSkusCommandTests.cs" />
     <Compile Include="Accounts\NewBatchAccountCommandTests.cs" />
     <Compile Include="Accounts\RegenBatchAccountKeyCommandTests.cs" />
     <Compile Include="Accounts\RemoveBatchAccountCommandTests.cs" />

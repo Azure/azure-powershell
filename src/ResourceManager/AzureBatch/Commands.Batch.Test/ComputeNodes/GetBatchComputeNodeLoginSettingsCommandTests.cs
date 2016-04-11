@@ -15,13 +15,14 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.ComputeNodes;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchComputeNodeLoginSettingsParametersTest()
+        public void GetBatchComputeNodeLoginSettingsNullParametersTest()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
@@ -54,17 +55,36 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             cmdlet.ComputeNodeId = null;
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+        }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetBatchComputeNodeLoginSettingsParametersTest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
             cmdlet.PoolId = "testIaasPool";
             cmdlet.ComputeNodeId = "computeNode01";
 
+            string ipAddress = "104.214.75.220";
+
             // Don't go to the service on an Get RemoteLoginSettings call
-            AzureOperationResponse<ComputeNodeGetRemoteLoginSettingsResult, ComputeNodeGetRemoteLoginSettingsHeaders> response = BatchTestHelpers.CreateGenericAzureOperationResponse<ComputeNodeGetRemoteLoginSettingsResult, ComputeNodeGetRemoteLoginSettingsHeaders>();
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetRemoteLoginSettingsOptions, AzureOperationResponse<ComputeNodeGetRemoteLoginSettingsResult, ComputeNodeGetRemoteLoginSettingsHeaders>>(responseToUse: response);
+            AzureOperationResponse<ComputeNodeGetRemoteLoginSettingsResult, ComputeNodeGetRemoteLoginSettingsHeaders> response = BatchTestHelpers.CreateRemoteLoginSettingsGetResponse(ipAddress);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ComputeNodeGetRemoteLoginSettingsOptions, 
+                AzureOperationResponse<ComputeNodeGetRemoteLoginSettingsResult, ComputeNodeGetRemoteLoginSettingsHeaders>>(responseToUse: response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Setup the cmdlet to write pipeline output to a list that can be examined later
+            List<PSRemoteLoginSettings> pipeline = new List<PSRemoteLoginSettings>();
+            commandRuntimeMock.Setup(r =>
+                r.WriteObject(It.IsAny<PSRemoteLoginSettings>()))
+                .Callback<object>(p => pipeline.Add((PSRemoteLoginSettings)p));
 
             // Verify no exceptions when required parameter is set
             cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(ipAddress, pipeline[0].IPAddress);
         }
     }
 }

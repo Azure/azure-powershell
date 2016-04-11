@@ -17,19 +17,19 @@ using System.Management.Automation;
 using Microsoft.Azure.Batch;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
-namespace Microsoft.Azure.Commands.Batch.Pools
+namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchAccountNodeAgentSku, DefaultParameterSetName = Constants.ODataFilterParameterSet),
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchNodeAgentSku),
         OutputType(typeof(PSNodeAgentSku))]
     public class GetBatchAccountNodeAgentSkusCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public int MaxCount
         {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Batch.Pools
 
         public override void ExecuteCmdlet()
         {
-            foreach(PSNodeAgentSku nodeAgentSku in BatchClient.ListNodeAgentSkus(this.BatchContext, this.Filter, this.MaxCount, this.AdditionalBehaviors))
+            foreach (PSNodeAgentSku nodeAgentSku in BatchClient.ListNodeAgentSkus(this.BatchContext, this.Filter, this.MaxCount, this.AdditionalBehaviors))
             {
                 WriteObject(nodeAgentSku);
             }

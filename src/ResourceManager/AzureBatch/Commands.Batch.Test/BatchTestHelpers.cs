@@ -384,6 +384,23 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a GetRemoteLoginSettingsResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.ComputeNodeGetRemoteLoginSettingsResult, ProxyModels.ComputeNodeGetRemoteLoginSettingsHeaders> CreateRemoteLoginSettingsGetResponse(string ipAddress)
+        {
+            ProxyModels.ComputeNodeGetRemoteLoginSettingsResult settings = new ProxyModels.ComputeNodeGetRemoteLoginSettingsResult();
+            settings.RemoteLoginIPAddress = ipAddress;
+
+            var response = new AzureOperationResponse<ProxyModels.ComputeNodeGetRemoteLoginSettingsResult, ProxyModels.ComputeNodeGetRemoteLoginSettingsHeaders>()
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = settings
+            };
+            
+            return response;
+        }
+
+        /// <summary>
         /// Builds a ComputeNodeGetResponse object
         /// </summary>
         public static AzureOperationResponse<ProxyModels.ComputeNode, ProxyModels.ComputeNodeGetHeaders> CreateComputeNodeGetResponse(string computeNodeId)
@@ -559,6 +576,29 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             subtasksResult.Value = subtasks;
             response.Body = subtasksResult;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a NodeAgentSKUResponse object
+        /// </summary>
+        public static AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders> CreateNodeAgentSkuResponse(IEnumerable<string> skuIds)
+        {
+            List<ProxyModels.NodeAgentSku> nodeAgents = new List<ProxyModels.NodeAgentSku>();
+
+            foreach (string id in skuIds)
+            {
+                ProxyModels.NodeAgentSku nodeAgent = new ProxyModels.NodeAgentSku();
+                nodeAgent.Id = id;
+                nodeAgents.Add(nodeAgent);
+            }
+
+            var response = new AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders>()
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = new MockPagedEnumerable<ProxyModels.NodeAgentSku>(nodeAgents)
+            };
 
             return response;
         }

@@ -17,19 +17,19 @@ using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
-namespace Microsoft.Azure.Commands.Batch.ComputeNodes
+namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchComputeNodeRemoteLoginSettings, DefaultParameterSetName = Constants.IdParameterSet),
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchRemoteLoginSettings, DefaultParameterSetName = Constants.IdParameterSet),
         OutputType(typeof(PSRemoteLoginSettings))]
     public class GetBatchComputeNodeRemoteLoginSettingsCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
-            HelpMessage = "The id of the pool containing the compute node to get remote login settings.")]
+            HelpMessage = "The id of the pool containing the compute node for which to get remote login settings.")]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
         [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
-            HelpMessage = "The id of the compute node to get remote login settings.")]
+            HelpMessage = "The id of the compute node for which to get remote login settings.")]
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch.ComputeNodes
 
         public override void ExecuteCmdlet()
         {
-            ComputeNodeOperationParameters parameters = new ComputeNodeOperationParameters(this.BatchContext, PoolId, ComputeNodeId, ComputeNode, this.AdditionalBehaviors);
+            ComputeNodeOperationParameters parameters = new ComputeNodeOperationParameters(this.BatchContext, this.PoolId, this.ComputeNodeId, this.ComputeNode, this.AdditionalBehaviors);
 
             PSRemoteLoginSettings remoteLoginSettings = BatchClient.ListComputeNodeRemoteLoginSettings(parameters);
             WriteObject(remoteLoginSettings);

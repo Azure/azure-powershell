@@ -300,13 +300,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Lists the node agent skus matching the specified filter options.
+        /// Lists the node agent SKUs matching the specified filter options.
         /// </summary>
         /// <param name="context">The account to use.</param>
         /// <param name="detailLevel">The level of detail</param>
         /// <param name="maxCount">The number of results.</param>
         /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
-        /// <returns>The node agent skus matching the specified filter.</returns>
+        /// <returns>The node agent SKUs matching the specified filter.</returns>
         public IEnumerable<PSNodeAgentSku> ListNodeAgentSkus(BatchAccountContext context, string detailLevel = default(string), int maxCount = default(int), IEnumerable<BatchClientBehavior> additionalBehaviors = null)
         {
             PoolOperations poolOperations = context.BatchOMClient.PoolOperations;

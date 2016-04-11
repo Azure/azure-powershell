@@ -308,7 +308,7 @@
     <Compile Include="Pools\DisableBatchAutoScaleCommand.cs" />
     <Compile Include="Pools\EnableBatchAutoScaleCommand.cs" />
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
-    <Compile Include="Accounts\GetBatchAccountNodeAgentSkusCommand.cs" />
+    <Compile Include="Pools\GetBatchAccountNodeAgentSkusCommand.cs" />
     <Compile Include="Pools\NewBatchPoolCommand.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommand.cs" />
     <Compile Include="Pools\SetBatchPoolCommand.cs" />

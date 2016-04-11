@@ -419,6 +419,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             TestChangeOSVersion(true);
         }
 
+        [Fact]
+        public void TestBatchAccountListNodeAgentSkus()
+        {
+            BatchController.NewInstance.RunPsTest("Test-GetBatchNodeAgentSkus");
+        }
+
+        [Fact(Skip = "Filter bug in the client OM library, will be fixed")]
+        public void TestBatchAccountListNodeAgentSkusWithFilter()
+        {
+            BatchController.NewInstance.RunPsTest("Test-GetBatchNodeAgentSkusWithFilter");
+        }
+
         private void TestChangeOSVersion(bool usePipeline)
         {
             BatchController controller = BatchController.NewInstance;
