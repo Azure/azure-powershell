@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public string BlobName { get; set; }
 
         /// <summary>
-        /// Databases that are included in this backup
+        /// Databases backed up along with the web app
         /// </summary>
         public DatabaseBackupSetting[] Databases { get; set; }
 

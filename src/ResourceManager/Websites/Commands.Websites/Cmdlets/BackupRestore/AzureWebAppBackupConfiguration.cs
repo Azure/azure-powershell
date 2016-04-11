@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public DateTime? StartTime { get; set; }
 
         /// <summary>
-        /// The databases to be backed up automatically along with the website
+        /// The databases to be backed up automatically along with the web app
         /// </summary>
         public DatabaseBackupSetting[] Databases { get; set; }
 
