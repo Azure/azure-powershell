@@ -84,6 +84,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     var vLoadBalancerBackendAddressPools = new Microsoft.Azure.Management.Compute.Models.SubResource();
                     vLoadBalancerBackendAddressPools.Id = element;
+                    vIpConfigurations.LoadBalancerBackendAddressPools.Add(vLoadBalancerBackendAddressPools);
                 }
             }
 
@@ -93,6 +94,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     var vLoadBalancerInboundNatPools = new Microsoft.Azure.Management.Compute.Models.SubResource();
                     vLoadBalancerInboundNatPools.Id = element;
+                    vIpConfigurations.LoadBalancerInboundNatPools.Add(vLoadBalancerInboundNatPools);
                 }
             }
 
