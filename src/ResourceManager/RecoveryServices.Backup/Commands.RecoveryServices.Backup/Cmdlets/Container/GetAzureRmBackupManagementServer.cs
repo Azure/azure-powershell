@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {  
                     {ContainerParams.ContainerType, ContainerType.Windows},
-                    {ContainerParams.BackupManagementType, BackupManagementType.Scdpm},                    
+                    {ContainerParams.BackupManagementType, BackupManagementType.SCDPM},                    
                     {ContainerParams.Name, Name}
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.Windows, BackupManagementType.Scdpm);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.Windows, BackupManagementType.SCDPM);
 
                 var containerModels = psBackupProvider.ListBackupManagementServers();
                 if (!string.IsNullOrEmpty(this.Name))
