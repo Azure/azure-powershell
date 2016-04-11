@@ -62,21 +62,5 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             BatchController.NewInstance.RunPsTest("Test-BatchAccountKeys");
         }
-
-        [Fact]
-        public void TestBatchAccountWithAutoStorage()
-        {
-
-            BatchController.NewInstance.RunPsTest("Test-CreateNewBatchAccountWithAutoStorage", Environment.GetEnvironmentVariable(ScenarioTestHelpers.StorageAccountEnvVar));
-        }
-
-        [Fact]
-        public void TestUpdateBatchAccountWithAutoStorage()
-        {
-            string accountName = ScenarioTestHelpers.BatchAccountName;
-            string storageId = Environment.GetEnvironmentVariable(ScenarioTestHelpers.StorageResourceId);
-
-            BatchController.NewInstance.RunPsTest(string.Format("Test-UpdateBatchAccountWithAutoStorage '{0}' '{1}'", accountName, storageId));
-        }
     }
 }

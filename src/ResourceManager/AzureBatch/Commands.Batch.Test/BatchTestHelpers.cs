@@ -43,18 +43,24 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds an AccountResource object using the specified parameters
         /// </summary>
-        public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null)
+        public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null, string storageId = null)
         {
             string tenantUrlEnding = "batch-test.windows-int.net";
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
             string subscription = Guid.Empty.ToString();
             string resourceGroup = resourceGroupName;
 
+            AutoStorageProperties autoStorage = null;
+            if (storageId != null)
+            {
+                autoStorage = new AutoStorageProperties() { StorageAccountId = storageId };
+            }
+
             AccountResource resource = new AccountResource()
             {
                 Id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup),
                 Location = "location",
-                Properties = new AccountProperties() { AccountEndpoint = endpoint, ProvisioningState = AccountProvisioningState.Succeeded },
+                Properties = new AccountProperties() { AccountEndpoint = endpoint, ProvisioningState = AccountProvisioningState.Succeeded, AutoStorage = autoStorage},
                 Type = "type"
             };
             if (tags != null)
@@ -106,6 +112,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             Assert.Equal<string>(context1.Subscription, context2.Subscription);
             Assert.Equal<string>(context1.TagsTable, context2.TagsTable);
             Assert.Equal<string>(context1.TaskTenantUrl, context2.TaskTenantUrl);
+            Assert.Equal<string>(context1.StorageAccountId, context2.StorageAccountId);
         }
 
         /// <summary>

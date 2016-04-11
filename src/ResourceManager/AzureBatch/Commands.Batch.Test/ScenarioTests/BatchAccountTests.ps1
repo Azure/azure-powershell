@@ -59,60 +59,6 @@ function Test-CreatesNewBatchAccount
 
 <#
 .SYNOPSIS
-Tests creating new Batch account with auto storage
-#>
-function Test-CreateNewBatchAccountWithAutoStorage
-{
-    # Setup
-	param([string]$accountName, [string]$storageId)
-
-    try
-    {
-        # Test
-        $actual = New-AzureRmBatchAccount -Name $accountName -storageId $storageId -ResourceGroupName "default-eastus" -location "eastus" -Tag @{Name = "testtag"; Value = "testval"}
-        $expected = Get-AzureRmBatchAccount -Name $accountName
-
-        # Assert
-        Assert-AreEqual $storageId.StorageAccountId $expected.StorageAccountId
-    }
-    finally
-    {
-        # Cleanup
-		Clean-BatchAccountAndResourceGroup $account $resourceGroup
-	}
-}
-
-<#
-.SYNOPSIS
-Update an account to support auto storage.
-#>
-function Test-UpdateBatchAccountWithAutoStorage
-{
-
-    param([string]$accountName, [string]$storageId)
-
-    # Setup
-
-   try
-   {
-       # Test
-       $actual = Set-AzureRmBatchAccount -Name $accountName -storageId $storageId -Tag @{Name = "testtag"; Value = "testval"}
-       $expected = Get-AzureRmBatchAccount -Name $accountName
-
-       # Assert
-       Assert-AreEqual $storageId.StorageAccountId $expected.StorageAccountId
-       #Assert-AreEqual $actual.ResourceGroupName
-
-   }
-   finally
-   {
-       # Cleanup
-       #Clean-BatchAccountAndResourceGroup $account $resourceGroup
-   }
-}
-
-<#
-.SYNOPSIS
 Tests creating an account that already exists throws
 #>
 function Test-CreateExistingBatchAccount
@@ -199,7 +145,7 @@ function Test-GetBatchAccountsUnderResourceGroups
     {
         New-AzureRmResourceGroup -Name $resourceGroup1 -Location $location
         New-AzureRmResourceGroup -Name $resourceGroup2 -Location $location
-        New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup1 -Location $location 
+        New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup1 -Location $location
 
         # Test
         $resourceGroup1Accounts = Get-AzureRmBatchAccount -ResourceGroupName $resourceGroup1

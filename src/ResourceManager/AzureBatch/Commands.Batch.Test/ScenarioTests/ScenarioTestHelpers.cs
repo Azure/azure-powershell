@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         internal const string BatchAccountName = "AZURE_BATCH_ACCOUNT";
         internal const string BatchAccountKey = "AZURE_BATCH_ACCESS_KEY";
         internal const string BatchAccountEndpoint = "AZURE_BATCH_ENDPOINT";
+        internal const string BatchAccountResourceGroup = "AZURE_BATCH_RESOURCE_GROUP";
 
         /// <summary>
         /// Creates an account and resource group for use with the Scenario tests

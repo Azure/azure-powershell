@@ -60,5 +60,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 
             commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchWithAutoStorageAccountTest()
+        {
+            string accountName = "account01";
+            string resourceGroup = "resourceGroup";
+            string location = "location";
+            string storageId = "storageId";
+
+            AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
+            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+
+            batchClientMock.Setup(b => b.CreateAccount(resourceGroup, accountName, location, null, storageId)).Returns(expected);
+
+            cmdlet.AccountName = accountName;
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.Location = location;
+            cmdlet.StorageId = storageId;
+
+            cmdlet.ExecuteCmdlet();
+
+            commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public SetBatchAccountCommandTests(string storageId)
+        public SetBatchAccountCommandTests()
         {
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -56,7 +56,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
                     {"Value", "tagValue"}
                 }
             };
+
             AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, tags);
+
             BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
 
             batchClientMock.Setup(b => b.UpdateAccount(resourceGroup, accountName, tags, storageId)).Returns(expected);
