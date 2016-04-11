@@ -52,6 +52,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    public class AzureRmRecoveryServicesBackupEngineContext : AzureRmRecoveryServicesBackupManagementContext
+    {
+        public BackupEngineType BackupEngineType { get; set; }
+
+        public AzureRmRecoveryServicesBackupEngineContext() { }
+
+        public AzureRmRecoveryServicesBackupEngineContext(BackupEngineType backupEngineType, string backupManagementType)
+            : base(backupManagementType)
+        {
+            BackupEngineType = backupEngineType;
+        }
+    }
+
     public class AzureRmRecoveryServicesContainerBase : AzureRmRecoveryServicesContainerContext
     {
         /// <summary>
@@ -64,6 +77,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                    ((ProtectionContainer)protectionContainer.Properties).BackupManagementType)
         {
             Name = protectionContainer.Name;
+        }
+    }
+
+    public class AzureRmRecoveryServicesBackupEngineBase : AzureRmRecoveryServicesBackupEngineContext
+    {
+        /// <summary>
+        /// Container Name
+        /// </summary>
+        public string Name { get; set; }
+
+        public AzureRmRecoveryServicesBackupEngineBase(BackupEngineResource backupEngine)
+            : base(ConversionUtils.GetPsBackupEngineType(((BackupEngineBase)backupEngine.Properties).BackupEngineType),
+                   ((BackupEngineBase)backupEngine.Properties).BackupManagementType)
+        {
+            Name = backupEngine.Name;
         }
     }
 
@@ -138,6 +166,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureRmRecoveryServicesRecoveryPointBase : AzureRmRecoveryServicesItemContext
     {
         private global::Microsoft.Azure.Management.RecoveryServices.Backup.Models.RecoveryPointResource rp;
+                
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Name { get; set; }
 
         /// <summary>
         /// 

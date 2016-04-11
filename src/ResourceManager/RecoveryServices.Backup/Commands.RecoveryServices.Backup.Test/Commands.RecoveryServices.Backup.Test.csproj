@@ -70,7 +70,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -144,6 +144,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestBackupItemScenario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestCancelJobScenario.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestGetJobDetails.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -185,10 +186,6 @@
     <ProjectReference Include="..\..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
       <Project>{604260dc-b392-4cf4-81ec-34b14591e2d2}</Project>
       <Name>Commands.RecoveryServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Cmdlets.csproj">
-      <Project>{3b3e879a-f856-46bf-aff9-8ad6760cf7b9}</Project>
-      <Name>Commands.RecoveryServices.Backup.Cmdlets</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.csproj">
       <Project>{30b92759-50b3-494e-b9f0-ec9a2ce9d57b}</Project>
