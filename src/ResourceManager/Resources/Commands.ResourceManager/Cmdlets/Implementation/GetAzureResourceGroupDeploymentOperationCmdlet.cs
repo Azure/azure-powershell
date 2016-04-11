@@ -62,11 +62,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 this.SubscriptionId = DefaultContext.Subscription.Id;
             }
 
-            if(!string.IsNullOrEmpty(this.ApiVersion))
-            {
-                this.WriteWarning("The parameter ApiVersion in Get-AzureRmResourceGroupDeploymentOperation cmdlet is being deprecated and will be removed in a future release.");
-            }
-
             this.RunCmdlet();
         }
 
