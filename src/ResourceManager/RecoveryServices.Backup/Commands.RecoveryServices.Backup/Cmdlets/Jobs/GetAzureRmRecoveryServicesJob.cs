@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of jobs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesJob"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>), typeof(AzureRmRecoveryServicesJobBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesJob"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
     public class GetAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.StatusFilter, Position = 1)]
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 WriteDebug("Number of jobs fetched: " + result.Count);
                 if (resultCount != 1)
                 {
-                    WriteObject(result);
+                    WriteObject(result, enumerateCollection: true);
                 }
                 else
                 {

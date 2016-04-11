@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of items
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesItem"), OutputType(typeof(List<AzureRmRecoveryServicesItemBase>), typeof(AzureRmRecoveryServicesItemBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesItem"), OutputType(typeof(AzureRmRecoveryServicesItemBase))]
     public class GetAzureRmRecoveryServicesItem : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Item.Container)]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else
                 {
-                    WriteObject(itemModels);
+                    WriteObject(itemModels, enumerateCollection: true);
                 }
             });
         }

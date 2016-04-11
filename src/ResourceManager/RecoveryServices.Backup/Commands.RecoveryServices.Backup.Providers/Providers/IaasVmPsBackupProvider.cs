@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter;
-
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     var response = HydraAdapter.GetRefreshContainerOperationResultByURL(operationResultLink);
                     status = response.StatusCode;
 
-                    Thread.Sleep(checkFrequency);
+                    TestMockSupport.Delay(checkFrequency);
                 }
                 catch (Exception ex)
                 {
