@@ -107,6 +107,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Directory {0} Not Found.
+        /// </summary>
+        internal static string DirectoryNotFound {
+            get {
+                return ResourceManager.GetString("DirectoryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure want to disable protection on {0}.
         /// </summary>
         internal static string DisableProtectionWarning {
@@ -121,6 +130,33 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string DisableProtectionWhatIfMessage {
             get {
                 return ResourceManager.GetString("DisableProtectionWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File &quot;{0}&quot; already exists. Specify a different name or path..
+        /// </summary>
+        internal static string FileAlreadyExists {
+            get {
+                return ResourceManager.GetString("FileAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File {0} Not Found.
+        /// </summary>
+        internal static string FileNotFound {
+            get {
+                return ResourceManager.GetString("FileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group &quot;{0}&quot; not found for recovery plan &quot;{1}&quot;.
+        /// </summary>
+        internal static string GroupNotFoundInRecoveryPlan {
+            get {
+                return ResourceManager.GetString("GroupNotFoundInRecoveryPlan", resourceCulture);
             }
         }
         
@@ -432,6 +468,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generated JSON for Recovery Plan {0} at {1}.
+        /// </summary>
+        internal static string RPJSONPath {
+            get {
+                return ResourceManager.GetString("RPJSONPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Server {0} is not associated with the Vault {1}.
         /// </summary>
         internal static string ServerNotFound {
@@ -619,6 +664,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string VirtualMachineNotFound {
             get {
                 return ResourceManager.GetString("VirtualMachineNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Machine &quot;{0}&quot; is already part of Group &quot;{1}&quot; for recovery plan &quot;{2}&quot;.
+        /// </summary>
+        internal static string VMAlreadyPartOfGroup {
+            get {
+                return ResourceManager.GetString("VMAlreadyPartOfGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Machine &quot;{0}&quot; not found in Group &quot;{1}&quot; for recovery plan &quot;{2}&quot;.
+        /// </summary>
+        internal static string VMNotFoundInGroup {
+            get {
+                return ResourceManager.GetString("VMNotFoundInGroup", resourceCulture);
             }
         }
         

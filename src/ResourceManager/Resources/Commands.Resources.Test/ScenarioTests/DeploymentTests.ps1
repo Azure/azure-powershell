@@ -42,8 +42,7 @@ function Test-NewDeploymentFromTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
-	$location = Get-ProviderLocation "Microsoft.Web/sites"
+	$rglocation = "EastUS"
 
 	try
 	{
@@ -77,8 +76,7 @@ function Test-NestedDeploymentFromTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
-	$location = Get-ProviderLocation "Microsoft.Web/sites"
+	$rglocation = "EastUS"
 
 	try
 	{
@@ -94,6 +92,39 @@ function Test-NestedDeploymentFromTemplateFile
 		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
 		$getById = Get-AzureRmResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+	}
+	
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests save deployment template file.
+#>
+function Test-SaveDeploymentTemplateFile
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "EastUS"
+
+	try
+	{
+		# Test
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+		
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplate.json -TemplateParameterFile sampleTemplateParams.json
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+		
+		$saveOutput = Save-AzureRmResourceGroupDeploymentTemplate -ResourceGroupName $rgname -DeploymentName $rname -Force
+		Assert-NotNull $saveOutput
+		Assert-True { $saveOutput.Path.Contains($rname + ".json") }
 	}
 	
 	finally

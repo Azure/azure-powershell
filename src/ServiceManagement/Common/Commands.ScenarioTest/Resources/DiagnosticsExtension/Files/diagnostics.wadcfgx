@@ -28,6 +28,9 @@
           <PerformanceCounterConfiguration counterSpecifier="\ASP.NET\Requests Rejected" sampleRate="PT3M" />
           <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" />
         </PerformanceCounters>
+        <Metrics resourceId="dummy">
+          <MetricAggregation scheduledTransferPeriod="PT1M"/>
+        </Metrics>
       </DiagnosticMonitorConfiguration>
     </WadCfg>
     <StorageAccount></StorageAccount>

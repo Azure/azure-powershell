@@ -73,6 +73,8 @@ namespace Microsoft.WindowsAzure.Commands.WAPackIaaS.VirtualMachine
             vm.DynamicMemoryEnabled = VMSizeProfile.DynamicMemoryEnabled;
             vm.DynamicMemoryMaximumMB = VMSizeProfile.DynamicMemoryMaximumMB;
             vm.DynamicMemoryMinimumMB = VMSizeProfile.DynamicMemoryMinimumMB;
+            vm.HardwareProfileId = VMSizeProfile.ID;
+            
         }
     }
 }

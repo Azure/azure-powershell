@@ -209,6 +209,36 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 storageToAdd.Name, storageParams);
         }
 
+        public IEnumerable<DataLakeStoreAccountInfo> ListDataLakeStoreAccounts(string resourceGroupName, string accountName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccountName(accountName);
+            }
+
+            var response = _accountClient.Account.ListDataLakeStoreAccounts(resourceGroupName, accountName);
+            var toReturn = new List<DataLakeStoreAccountInfo>();
+            toReturn.AddRange(response);
+
+            while(!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = _accountClient.Account.ListDataLakeStoreAccountsNext(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
+        }
+
+        public DataLakeStoreAccountInfo GetDataLakeStoreAccount(string resourceGroupName, string accountName, string dataLakeStoreAccountName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccountName(accountName);
+            }
+
+            return _accountClient.Account.GetDataLakeStoreAccount(resourceGroupName, accountName, dataLakeStoreAccountName);
+        }
+
         public void RemoveDataLakeStoreAccount(string resourceGroupName, string accountName,
             string dataLakeStoreAccountName)
         {
@@ -251,6 +281,36 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             _accountClient.Account.UpdateStorageAccount(resourceGroupName, accountName,
                 storageToSet.Name, storageParams);
+        }
+
+        public IEnumerable<StorageAccountInfo> ListStorageAccounts(string resourceGroupName, string accountName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccountName(accountName);
+            }
+
+            var response = _accountClient.Account.ListStorageAccounts(resourceGroupName, accountName);
+            var toReturn = new List<StorageAccountInfo>();
+            toReturn.AddRange(response);
+
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = _accountClient.Account.ListStorageAccountsNext(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
+        }
+
+        public StorageAccountInfo GetStorageAccount(string resourceGroupName, string accountName, string storageAccountName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccountName(accountName);
+            }
+
+            return _accountClient.Account.GetStorageAccount(resourceGroupName, accountName, storageAccountName);
         }
 
         public void RemoveStorageAccount(string resourceGroupName, string accountName, string storageAccountName)
@@ -753,13 +813,13 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         public JobInformation GetJob(string accountName, Guid jobId)
         {
-            return _jobClient.Job.Get(jobId.ToString(), accountName);
+            return _jobClient.Job.Get(jobId, accountName);
         }
 
         public JobInformation SubmitJob(string accountName, JobInformation jobToSubmit)
         {
             return
-                _jobClient.Job.Create(jobToSubmit.JobId,
+                _jobClient.Job.Create(jobToSubmit.JobId.GetValueOrDefault(),
                     jobToSubmit, accountName);
         }
 
@@ -771,17 +831,17 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         public void CancelJob(string accountName, Guid jobId)
         {
-            _jobClient.Job.Cancel(jobId.ToString(), accountName);
+            _jobClient.Job.Cancel(jobId, accountName);
         }
 
         public JobDataPath GetDebugDataPaths(string accountName, Guid jobId)
         {
-            return _jobClient.Job.GetDebugDataPath(jobId.ToString(), accountName);
+            return _jobClient.Job.GetDebugDataPath(jobId, accountName);
         }
 
         public JobStatistics GetJobStatistics(string accountName, Guid jobId)
         {
-            return _jobClient.Job.GetStatistics(jobId.ToString(), accountName);
+            return _jobClient.Job.GetStatistics(jobId, accountName);
         }
 
         public List<JobInformation> ListJobs(string accountName, string filter, int? top,

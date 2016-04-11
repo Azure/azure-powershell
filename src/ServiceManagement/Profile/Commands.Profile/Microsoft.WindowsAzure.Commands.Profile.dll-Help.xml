@@ -28,7 +28,8 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Environment</maml:name>
           <maml:description>
-            <maml:para>Specifies an Azure environment for  the user account. This parameter is optional. The default is the AzureCloud environment.An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see Azure Pack.To get the available Azure environments, use the Get-AzureEnvironment cmdlet. To add an environment, use the Add-AzureEnvironment cmdlet.</maml:para>
+            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud. This parameter is optional.</maml:para>
+            <maml:para>An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure, AzureChinaCloud for Azure operated by 21Vianet in China, and AzureUSGoverment for the Azure US Government Cloud. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see Azure Pack. To get the available Azure environments, use the Get-AzureEnvironment cmdlet. To add an environment, use the Add-AzureEnvironment cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -52,7 +53,8 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Environment</maml:name>
           <maml:description>
-            <maml:para>Specifies an Azure environment for  the user account. This parameter is optional. The default is the AzureCloud environment.An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see Azure Pack.To get the available Azure environments, use the Get-AzureEnvironment cmdlet. To add an environment, use the Add-AzureEnvironment cmdlet.</maml:para>
+            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud. This parameter is optional.</maml:para>
+            <maml:para>An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure, AzureChinaCloud for Azure operated by 21Vianet in China, and AzureUSGoverment for the Azure US Government Cloud. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see Azure Pack. To get the available Azure environments, use the Get-AzureEnvironment cmdlet. To add an environment, use the Add-AzureEnvironment cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -90,7 +92,8 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Environment</maml:name>
         <maml:description>
-          <maml:para>Specifies an Azure environment for  the user account. This parameter is optional. The default is the AzureCloud environment.An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see Azure Pack.To get the available Azure environments, use the Get-AzureEnvironment cmdlet. To add an environment, use the Add-AzureEnvironment cmdlet.</maml:para>
+          <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud. This parameter is optional.</maml:para>
+          <maml:para>An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure, AzureChinaCloud for Azure operated by 21Vianet in China, and AzureUSGoverment for the Azure US Government Cloud. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see Azure Pack. To get the available Azure environments, use the Get-AzureEnvironment cmdlet. To add an environment, use the Add-AzureEnvironment cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1427,7 +1430,8 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
           <maml:name>Environment</maml:name>
           <maml:description>
-            <maml:para>Specifies an Azure environment.An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see Azure Pack (http://www.microsoft.com/en-us/server-cloud/products/windows-azure-pack/default.aspx).</maml:para>
+            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud. This parameter is optional.</maml:para>
+            <maml:para>An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure, AzureChinaCloud for Azure operated by 21Vianet in China, and AzureUSGoverment for the Azure US Government Cloud. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see Azure Pack. To get the available Azure environments, use the Get-AzureEnvironment cmdlet. To add an environment, use the Add-AzureEnvironment cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1458,7 +1462,8 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
         <maml:name>Environment</maml:name>
         <maml:description>
-          <maml:para>Specifies an Azure environment.An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see Azure Pack (http://www.microsoft.com/en-us/server-cloud/products/windows-azure-pack/default.aspx).</maml:para>
+          <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud. This parameter is optional.</maml:para>
+          <maml:para>An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure, AzureChinaCloud for Azure operated by 21Vianet in China, and AzureUSGoverment for the Azure US Government Cloud. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see Azure Pack. To get the available Azure environments, use the Get-AzureEnvironment cmdlet. To add an environment, use the Add-AzureEnvironment cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -2094,19 +2099,6 @@
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>SubscriptionDataFile</maml:name>
-        <maml:description>
-          <maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user's profile is used.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -2172,26 +2164,6 @@
       </command:example>
       <command:example>
         <maml:title>--------------------------  Example 2  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt;Import-AzurePublishSettingsFile –PublishSettingsFile C:\Temp\MyAccount.publishsettings –SubscriptionDataFile C:\Subs\Subscriptions.xml</dev:code>
-        <dev:remarks>
-          <maml:para>This command imports the "C:\Temp\MyAccountName-date-credentials.publishsettings" file and then saves the subscription data file in C:\Subs\Subscriptions.xml.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>When you use the SubscriptionDataFile parameter to save your subscription data file in an alternate location, be sure to use the SubscriptionDataFile parameter of cmdlets that use subscription data file, such as Select-AzureSubscription and Remove-AzureAccount.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Example 3  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>

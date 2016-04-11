@@ -23,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Network;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -85,14 +86,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
         protected void RunPowerShellTest(params string[] scripts)
         {
-            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            HttpMockServer.RecordsDirectory = "SessionRecords".AsAbsoluteLocation();
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
-                List<string> modules = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests\\ReservedIPs"), "*.ps1").ToList();
-                modules.AddRange(Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"ScenarioTests"), "*.ps1"));
-                modules.Add("Common.ps1");
+                List<string> modules = Directory.GetFiles("ScenarioTests\\ReservedIPs".AsAbsoluteLocation(), "*.ps1").ToList();
+                modules.AddRange(Directory.GetFiles("ScenarioTests".AsAbsoluteLocation(), "*.ps1"));
 
                 SetupManagementClients();
 

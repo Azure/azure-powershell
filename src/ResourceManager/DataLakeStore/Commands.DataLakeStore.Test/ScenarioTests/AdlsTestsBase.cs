@@ -89,8 +89,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             string mockName)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Authorization", AuthorizationApiVersion);
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
@@ -205,7 +209,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
                 ProviderRegistrationState.Registering != resultAfterRegister.Provider.RegistrationState,
                 string.Format("Provider registration state was not 'Registered' or 'Registering', instead it was '{0}'", resultAfterRegister.Provider.RegistrationState));
             ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes == null || resultAfterRegister.Provider.ResourceTypes.Count == 0, "Provider.ResourceTypes is empty.");
-            ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes[0].Locations == null || resultAfterRegister.Provider.ResourceTypes[0].Locations.Count == 0, "Provider.ResourceTypes[0].Locations is empty.");
         }
 
         private void TryCreateResourceGroup(string resourceGroupName, string location)
