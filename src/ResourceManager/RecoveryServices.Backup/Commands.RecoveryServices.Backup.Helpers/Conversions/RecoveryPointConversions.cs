@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -25,8 +26,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         {
             if (rpList == null || rpList.RecoveryPointList == null || rpList.RecoveryPointList.RecoveryPoints == null) 
             { 
-                throw new ArgumentNullException("rpList is null"); 
+                throw new ArgumentNullException("RPList"); 
             }
+
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
             List<AzureRmRecoveryServicesRecoveryPointBase> result = new List<AzureRmRecoveryServicesRecoveryPointBase>();
             foreach (RecoveryPointResource rp in rpList.RecoveryPointList.RecoveryPoints)
@@ -34,9 +39,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 RecoveryPoint recPoint = rp.Properties as RecoveryPoint;
                 AzureRmRecoveryServicesIaasVmRecoveryPoint rpBase = new AzureRmRecoveryServicesIaasVmRecoveryPoint()
                 {
+                    Name = rp.Name,
                     BackupManagementType = item.BackupManagementType,
-                    ItemName = item.Name,
-                    ContainerName = item.ContainerName,
+                    ItemName = protectedItemName,
+                    ContainerName = containerUri,
                     ContainerType = item.ContainerType,
                     RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
                     RecoveryPointType = recPoint.RecoveryPointType,
@@ -54,23 +60,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         {
             if (rpResponse == null || rpResponse.RecPoint == null)
             {
-                throw new ArgumentNullException("rpResponse is null");
+                throw new ArgumentNullException(Resources.GetRPResponseIsNull);
             }
 
             RecoveryPoint recPoint = rpResponse.RecPoint.Properties as RecoveryPoint;
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
             AzureRmRecoveryServicesIaasVmRecoveryPoint result = new AzureRmRecoveryServicesIaasVmRecoveryPoint()
-                {
-                    BackupManagementType = item.BackupManagementType,
-                    ItemName = item.Name,
-                    ContainerName = item.ContainerName,
-                    ContainerType = item.ContainerType,
-                    RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
-                    RecoveryPointType = recPoint.RecoveryPointType,
-                    RecoveryPointId = rpResponse.RecPoint.Id,
-                    WorkloadType = item.WorkloadType,
-                    RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
-                };
+            {
+                Name = rpResponse.RecPoint.Name,
+                BackupManagementType = item.BackupManagementType,
+                ItemName = protectedItemName,
+                ContainerName = containerUri,
+                ContainerType = item.ContainerType,
+                RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
+                RecoveryPointType = recPoint.RecoveryPointType,
+                RecoveryPointId = rpResponse.RecPoint.Id,
+                WorkloadType = item.WorkloadType,
+                RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
+            };
             return result;
         }
     }
