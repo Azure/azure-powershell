@@ -35,34 +35,34 @@
   <ItemGroup>
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServicesBackupManagement, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Commands.RecoveryServices.Backup.HydraAdapter\Resources\Microsoft.Azure.Management.RecoveryServicesBackupManagement.dll</HintPath>
+      <HintPath>..\Commands.RecoveryServices.Backup.HydraAdapter\Resources\Microsoft.Azure.Management.RecoveryServicesBackupManagement.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\portable-net45+wp8+wpa81+win\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\portable-net45+wp8+wpa81+win\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Scheduler">
-      <HintPath>..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -107,47 +107,45 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
       <Name>Commands.Common.Authentication</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.Common\Commands.Common.csproj">
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
+    <ProjectReference Include="..\..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
       <Project>{604260dc-b392-4cf4-81ec-34b14591e2d2}</Project>
       <Name>Commands.RecoveryServices</Name>
     </ProjectReference>
-    <ProjectReference Include="Commands.RecoveryServices.Backup.Helpers\Commands.RecoveryServices.Backup.Helpers.csproj">
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Helpers\Commands.RecoveryServices.Backup.Helpers.csproj">
       <Project>{0e1d3f36-e6c8-4764-8c7d-6f9ee537490c}</Project>
       <Name>Commands.RecoveryServices.Backup.Helpers</Name>
     </ProjectReference>
-    <ProjectReference Include="Commands.RecoveryServices.Backup.HydraAdapter\Commands.RecoveryServices.Backup.HydraAdapter.csproj">
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.HydraAdapter\Commands.RecoveryServices.Backup.HydraAdapter.csproj">
       <Project>{b758fec1-35c1-4f93-a954-66dd33f6e0ec}</Project>
       <Name>Commands.RecoveryServices.Backup.HydraAdapter</Name>
     </ProjectReference>
-    <ProjectReference Include="Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.csproj">
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.csproj">
       <Project>{5e675749-6139-464a-904c-59c0ffdfec82}</Project>
       <Name>Commands.RecoveryServices.Backup.Logger</Name>
     </ProjectReference>
-    <ProjectReference Include="Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.csproj">
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.csproj">
       <Project>{30b92759-50b3-494e-b9f0-ec9a2ce9d57b}</Project>
       <Name>Commands.RecoveryServices.Backup.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="Commands.RecoveryServices.Backup.Providers\Commands.RecoveryServices.Backup.Providers.csproj">
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Providers\Commands.RecoveryServices.Backup.Providers.csproj">
       <Project>{02234e90-bcde-4b20-b1f5-01b1005821db}</Project>
       <Name>Commands.RecoveryServices.Backup.Providers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AzureRM.RecoveryServices.Backup.psd1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="AzureRM.RecoveryServices.Backup.psd1" />
     <None Include="Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
