@@ -19,10 +19,11 @@ using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet("Wait", "AzureRmRecoveryServicesJob"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>), typeof(AzureRmRecoveryServicesJobBase))]
+    [Cmdlet("Wait", "AzureRmRecoveryServicesJob"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
     public class WaitAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.WaitJobOrListFilter, ValueFromPipeline = true, Position = 1)]
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
 
                     // sleep for 30 seconds before checking again
-                    Thread.Sleep(30 * 1000);
+                    TestMockSupport.Delay(30 * 1000);
                 }
 
                 if (finalJobs.Count == 1)
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else
                 {
-                    WriteObject(finalJobs);
+                    WriteObject(finalJobs, enumerateCollection: true);
                 }
             });
         }

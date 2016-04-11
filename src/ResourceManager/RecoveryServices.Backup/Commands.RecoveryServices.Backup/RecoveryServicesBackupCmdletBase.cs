@@ -30,6 +30,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -154,7 +155,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             while (response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
             {
                 WriteDebug("Tracking operation completion using status link: " + statusUrlLink);
-                Thread.Sleep(_defaultSleepForOperationTracking * 1000);
+                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
                 response = hydraFunc(statusUrlLink);
             }
 

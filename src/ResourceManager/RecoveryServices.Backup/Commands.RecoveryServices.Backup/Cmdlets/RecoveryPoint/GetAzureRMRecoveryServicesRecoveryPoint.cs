@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMRecoveryServicesRecoveryPoint"), OutputType(typeof(List<AzureRmRecoveryServicesRecoveryPointBase>), typeof(AzureRmRecoveryServicesRecoveryPointBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMRecoveryServicesRecoveryPoint"), OutputType(typeof(AzureRmRecoveryServicesRecoveryPointBase))]
     public class GetAzureRMRecoveryServicesRecoveryPoint : RecoveryServicesBackupCmdletBase
     {
         internal const string DateTimeFilterParameterSet = "DateTimeFilter";
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                     else
                     {
-                        WriteObject(rpList);
+                        WriteObject(rpList, enumerateCollection: true);
                     }
                 }
                 else if (this.ParameterSetName == RecoveryPointIdParameterSet)

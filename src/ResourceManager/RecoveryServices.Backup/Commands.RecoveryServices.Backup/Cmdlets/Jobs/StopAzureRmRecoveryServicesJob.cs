@@ -20,6 +20,7 @@ using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 while (cancelStatus.StatusCode == HttpStatusCode.Accepted)
                 {
-                    Thread.Sleep(15 * 1000);
+                    TestMockSupport.Delay(15 * 1000);
                     cancelStatus = HydraAdapter.GetJobOperationStatus(JobId, opId);
                 }
 
