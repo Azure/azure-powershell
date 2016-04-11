@@ -42,7 +42,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// <returns></returns>
         public IEnumerable<BackupEngineResource> ListBackupEngines(BackupEngineListQueryParams queryParams)
         {
-            var listResponse = BmsAdapter.Client.BackupEngine.ListAsync(BmsAdapter.GetResourceGroupName(), BmsAdapter.GetResourceName(), queryParams,
+            PaginationRequest paginationParam = new PaginationRequest();
+            paginationParam.Top = "200";
+            var listResponse = BmsAdapter.Client.BackupEngine.ListAsync(BmsAdapter.GetResourceGroupName(), BmsAdapter.GetResourceName(), queryParams, paginationParam,
                 BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
             return listResponse.ItemList.BackupEngines;
         }

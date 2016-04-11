@@ -24,11 +24,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureRmRecoveryServicesDpmBackupEngine : AzureRmRecoveryServicesBackupEngineBase
     {
         /// <summary>
-        /// Resource Group where the Container is present
-        /// </summary>
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
         /// Friendly name of the container
         /// </summary>
         public string FriendlyName { get; set; }
@@ -36,15 +31,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Registration Status
         /// </summary>
-        public BackupEngineRegistrationStatus Status { get; set; }
+        public string Status { get; set; }
 
         public AzureRmRecoveryServicesDpmBackupEngine(BackupEngineResource backupEngine)
             : base(backupEngine)
         {
             DpmBackupEngine dpmBackupEngine = (DpmBackupEngine)backupEngine.Properties;
-            ResourceGroupName = IdUtils.GetResourceGroupName(backupEngine.Id);
             FriendlyName = dpmBackupEngine.FriendlyName;
-            Status = EnumUtils.GetEnum<BackupEngineRegistrationStatus>(dpmBackupEngine.RegistrationStatus);
+            Status = dpmBackupEngine.RegistrationStatus;
         }
     }
 }
