@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Resources
                 DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
             };
 
-            if(!string.IsNullOrEmpty(DeploymentDebugLogLevel))
+            if(!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
             {
                 WriteWarning("The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation");
             }
