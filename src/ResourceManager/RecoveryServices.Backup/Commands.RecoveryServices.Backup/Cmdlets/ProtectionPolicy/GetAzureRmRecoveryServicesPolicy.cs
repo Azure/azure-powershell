@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of protection policies
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet), 
-            OutputType(typeof(List<AzureRmRecoveryServicesBackupPolicyBase>), typeof(AzureRmRecoveryServicesBackupPolicyBase))]
+            OutputType(typeof(AzureRmRecoveryServicesBackupPolicyBase))]
     public class GetAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         protected const string PolicyNameParamSet = "PolicyNameParamSet";
@@ -131,8 +131,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                    WriteDebug("Successfully got response from service");
 
                    policyList = ConversionHelpers.GetPolicyModelList(respList);
-                   WriteObject(policyList);
-               }               
+                   WriteObject(policyList, enumerateCollection: true);
+               }
            });
         }
     }

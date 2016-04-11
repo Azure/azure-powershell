@@ -26,6 +26,7 @@ using System.Threading.Tasks;
 using ResourcesNS = Microsoft.Azure.Management.Resources;
 using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     WriteDebug(String.Format("Restore inProgress"));
                     response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
-                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
+                    TestMockSupport.Delay(TimeSpan.FromSeconds(5));
                 }
 
                 if (response.OperationStatus.Status == "Completed")
