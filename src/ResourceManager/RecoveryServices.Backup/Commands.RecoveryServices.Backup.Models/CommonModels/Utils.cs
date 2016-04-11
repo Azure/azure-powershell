@@ -126,6 +126,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     return BackupManagementType.AzureVM;
                 case ProviderType.MAB:
                     return BackupManagementType.Mars;
+                case ProviderType.DPM:
+                    return BackupManagementType.Scdpm;
                 default:
                     throw new Exception("Unsupported BackupManagmentType: " + backupManagementType);
             }
