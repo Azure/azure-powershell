@@ -18,19 +18,19 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmBackupJobDetails", DefaultParameterSetName = JobFilterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesJobDetails", DefaultParameterSetName = JobFilterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
     public class GetAzureRmRecoveryServicesJobDetails : RecoveryServicesBackupCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobIdFilter, ParameterSetName = IdFilterSet)]
-        [ValidateNotNullOrEmpty]
-        public string JobId { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobFilter, ParameterSetName = JobFilterSet)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobFilter, ParameterSetName = JobFilterSet, Position = 1)]
         [ValidateNotNull]
         public AzureRmRecoveryServicesJobBase Job { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobIdFilter, ParameterSetName = IdFilterSet, Position = 2)]
+        [ValidateNotNullOrEmpty]
+        public string JobId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     JobId = Job.InstanceId;
                 }
+
+                WriteDebug("Fetching job with ID: " + JobId);
 
                 var adapterResponse = HydraAdapter.GetJob(JobId);
                 WriteObject(JobConversions.GetPSJob(adapterResponse));

@@ -326,8 +326,8 @@ Please contact Microsoft for further assistant.</value>
   <data name="BothCloudServiceNameAndResourceGroupNameShouldNotEmpty" xml:space="preserve">
     <value>For Azure VM, both cloud service name and resource group name can not be empty</value>
   </data>
-  <data name="EnableProtectionOperationFailed" xml:space="preserve">
-    <value>Enable Protection OperationFailed with error code: {0} , and error Message: {1}</value>
+  <data name="EnableProtectionOperation" xml:space="preserve">
+    <value>Enable Protection Operation</value>
   </data>
   <data name="RemoveProtectionPolicyMessage" xml:space="preserve">
     <value>Removing the protection policy</value>
@@ -347,8 +347,8 @@ Please contact Microsoft for further assistant.</value>
   <data name="DisableProtectionWarning" xml:space="preserve">
     <value>Are you sure you want to disable protection for the item '{0}'</value>
   </data>
-  <data name="DisableProtectionOperationFailed" xml:space="preserve">
-    <value>Disable Protection OperationFailed with error code: {0} , and error Message: {1}</value>
+  <data name="DisableProtectionOperation" xml:space="preserve">
+    <value>Disable Protection Operation</value>
   </data>
   <data name="FinalOperationStatus" xml:space="preserve">
     <value>Final operation status:</value>
@@ -388,5 +388,23 @@ Please contact Microsoft for further assistant.</value>
   </data>
   <data name="RestoreDiskTimeRangeError" xml:space="preserve">
     <value>Time difference should not be more than 30 days</value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>{0} failed. Error Code: {1}. Error Message: {2}</value>
+  </data>
+  <data name="TriggerBackupOperation" xml:space="preserve">
+    <value>Trigger Backup Operation</value>
+  </data>
+  <data name="URIValueNotFound" xml:space="preserve">
+    <value>{0} Uri value not found in Id {1}</value>
+  </data>
+  <data name="SetVaultContextFirst" xml:space="preserve">
+    <value>Set vault context first using cmdlet Set-AzureRmRecoveryServicesVaultContext</value>
+  </data>
+  <data name="VirtualMachineIdIsEmptyOrNull" xml:space="preserve">
+    <value>VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId</value>
+  </data>
+  <data name="JobFromNotProvided" xml:space="preserve">
+    <value>Please provide From filter along with To filter.</value>
   </data>
 </root>

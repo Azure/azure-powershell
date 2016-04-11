@@ -15,20 +15,21 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet("Wait", "AzureRmBackupJob"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>), typeof(AzureRmRecoveryServicesJobBase))]
+    [Cmdlet("Wait", "AzureRmRecoveryServicesJob"), OutputType(typeof(List<AzureRmRecoveryServicesJobBase>), typeof(AzureRmRecoveryServicesJobBase))]
     public class WaitAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.WaitJobOrListFilter, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.WaitJobOrListFilter, ValueFromPipeline = true, Position = 1)]
         [ValidateNotNull]
         public object Job { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.WaitJobTimeoutFilter)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.WaitJobTimeoutFilter, Position = 2)]
         public long? Timeout { get; set; }
 
         public override void ExecuteCmdlet()
@@ -40,7 +41,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 List<string> jobsToWaitOn = new List<string>();
                 List<AzureRmRecoveryServicesJobBase> finalJobs = new List<AzureRmRecoveryServicesJobBase>();
 
-                // TODO: Validate the following code
                 object castedObj;
                 if (GetCastedObjFromPSObj<AzureRmRecoveryServicesJobBase>(Job, out castedObj))
                 {
@@ -76,8 +76,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     bool hasUnfinishedJob = false;
                     finalJobs.Clear();
-                    foreach (string jobId in jobsToWaitOn)
+                    for (int i = 0; i < jobsToWaitOn.Count; i++)
                     {
+                        string jobId = jobsToWaitOn[i];
                         var updatedJob = JobConversions.GetPSJob(
                             HydraAdapter.GetJob(jobId)
                             );
@@ -85,6 +86,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         if (IsJobInProgress(updatedJob))
                         {
                             hasUnfinishedJob = true;
+                        }
+                        else
+                        {
+                            // removing finished job from list
+                            jobsToWaitOn.RemoveAt(i);
+                            i--;
                         }
 
                         finalJobs.Add(updatedJob);
@@ -94,6 +101,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         break;
                     }
+
+                    // sleep for 30 seconds before checking again
+                    Thread.Sleep(30 * 1000);
                 }
 
                 if (finalJobs.Count == 1)

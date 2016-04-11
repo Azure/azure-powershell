@@ -53,6 +53,7 @@
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmPolicy.cs" />
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmItem.cs" />
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmContainer.cs" />
+    <Compile Include="DpmModels\AzureRmRecoveryServicesDpmBackupEngine.cs" />
     <Compile Include="DpmModels\AzureRmRecoveryServicesDpmContainer.cs" />
     <Compile Include="MabModels\AzureRmRecoveryServicesMabContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +62,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="UriEnums.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

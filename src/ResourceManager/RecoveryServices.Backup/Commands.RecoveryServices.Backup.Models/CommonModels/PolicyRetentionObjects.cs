@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesLongTermRetentionPolicy : AzureRmRecoveryServicesRetentionPolicyBase
+    public class AzureRmRecoveryServicesBackupLongTermRetentionPolicy : AzureRmRecoveryServicesBackupRetentionPolicyBase
     {
         public bool IsDailyScheduleEnabled { get; set; }
         public bool IsWeeklyScheduleEnabled { get; set; }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public MonthlyRetentionSchedule MonthlySchedule { get; set; }
         public YearlyRetentionSchedule YearlySchedule { get; set; }
 
-        public AzureRmRecoveryServicesLongTermRetentionPolicy()
+        public AzureRmRecoveryServicesBackupLongTermRetentionPolicy()
         {
             IsDailyScheduleEnabled = false;
             IsWeeklyScheduleEnabled = false;
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                  base.ToString(),
                                  RetentionScheduleDaily == null ? "NULL" : RetentionScheduleDaily.ToString(),
                                  RetentionScheduleWeekly == null ? "NULL" : RetentionScheduleWeekly.ToString(),
-                                 MonthsOfYear.ToString(), base.ToString());
+                                 TraceUtils.GetString<Month>(MonthsOfYear), base.ToString());
         }
     }
         
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             return string.Format("DaysOfTheWeek:{0}, WeeksOfTheMonth:{1}",
                                   TraceUtils.GetString(DaysOfTheWeek),
-                                  WeeksOfTheMonth.ToString());
+                                  TraceUtils.GetString<WeekOfMonth>(WeeksOfTheMonth));
         }
     }
 

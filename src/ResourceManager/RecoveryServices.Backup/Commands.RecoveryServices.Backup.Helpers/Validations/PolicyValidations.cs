@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     public partial class PolicyHelpers
     {
         public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
-            AzureRmRecoveryServicesLongTermRetentionPolicy ltrPolicy,
-            AzureRmRecoveryServicesSimpleSchedulePolicy schPolicy)
+            AzureRmRecoveryServicesBackupLongTermRetentionPolicy ltrPolicy,
+            AzureRmRecoveryServicesBackupSimpleSchedulePolicy schPolicy)
         {
             // for daily schedule, daily retention policy is required
             if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Daily &&

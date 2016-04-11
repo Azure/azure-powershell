@@ -42,11 +42,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             switch (containerType)
             {
                 case ContainerType.AzureVM:
-                    if (backupManagementType.HasValue && backupManagementType != BackupManagementType.AzureVM)
-                    {
-                        throw new ArgumentException("BackupManagementType is not expected for ContainerType: " +
-                                                     containerType.ToString());
-                    }
                     providerType = PsBackupProviderTypes.IaasVm;
                     break;
                 case ContainerType.Windows:
@@ -128,6 +123,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     break;
                 case PsBackupProviderTypes.AzureSql:
                     psBackupProvider = new AzureSqlPsBackupProvider();
+                    break;
+                case PsBackupProviderTypes.Mab:
+                    psBackupProvider = new MabPsBackupProvider();
+                    break;
+                case PsBackupProviderTypes.Dpm:
+                    psBackupProvider = new DpmPsBackupProvider();
                     break;
                 default:
                     break;
