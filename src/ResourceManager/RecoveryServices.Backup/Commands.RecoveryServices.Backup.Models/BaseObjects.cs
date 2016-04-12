@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             : base(container.ContainerType, protectedItem.BackupManagementType)
         {
             WorkloadType = ConversionUtils.GetPsWorkloadType(protectedItem.WorkloadType);
-            ContainerName = protectedItem.ContainerName;
+            ContainerName = container.Name;
         }
     }
 
