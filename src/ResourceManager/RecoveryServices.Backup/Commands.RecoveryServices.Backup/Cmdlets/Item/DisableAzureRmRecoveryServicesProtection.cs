@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesProtection"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
-    public class DisableAzureRmRecoveryServicesProtection : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupProtection"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
+    public class DisableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
