@@ -569,9 +569,10 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="acsDetails">authenticating service Details name</param>
         public AcsNamespace(UploadCertificateResponse acsDetails)
         {
-            this.HostName = acsDetails.Properties.GlobalAcsHostName;
-            this.Namespace = acsDetails.Properties.GlobalAcsNamespace;
-            this.ResourceProviderRealm = acsDetails.Properties.GlobalAcsRPRealm;
+            this.HostName = (acsDetails.Properties as ACSCertificateProperties).GlobalAcsHostName;
+            this.Namespace = (acsDetails.Properties as ACSCertificateProperties).GlobalAcsNamespace;
+            this.ResourceProviderRealm = (acsDetails.Properties as ACSCertificateProperties).GlobalAcsRPRealm;  
+
         }
 
         /// <summary>
