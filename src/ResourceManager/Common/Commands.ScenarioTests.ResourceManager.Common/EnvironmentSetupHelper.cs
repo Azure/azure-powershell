@@ -371,7 +371,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
             powershell.AddScript(
-                string.Format(@"set-location {0}", AppDomain.CurrentDomain.BaseDirectory));
+                string.Format("set-location \"{0}\"", AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript(string.Format(@"$TestOutputRoot='{0}'", AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript("$VerbosePreference='Continue'");
             powershell.AddScript("$DebugPreference='Continue'");
