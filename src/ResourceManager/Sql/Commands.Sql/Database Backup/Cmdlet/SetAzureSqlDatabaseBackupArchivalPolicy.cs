@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Resource ID of the backup long term retention policy.")]
         [ValidateNotNullOrEmpty]
-        public string RecoveryServicesVaultPolicyId { get; set; }
+        public string RecoveryServicesBackupPolicyResourceId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ServerName = ServerName,
                 DatabaseName = DatabaseName,
                 State = State,
-                RecoveryServicesVaultPolicyId = RecoveryServicesVaultPolicyId,
+                RecoveryServicesBackupPolicyResourceId = RecoveryServicesBackupPolicyResourceId,
             });
             return newEntity;
         }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseBackupArchivalPolicyModel> PersistChanges(IEnumerable<AzureSqlDatabaseBackupArchivalPolicyModel> entity)
         {
             return new List<AzureSqlDatabaseBackupArchivalPolicyModel>() {
-                ModelAdapter.SetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.RecoveryServicesVaultPolicyId, entity.First())
+                ModelAdapter.SetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.BackupLongTermRetentionPolicyName, entity.First())
             };
         }
     }

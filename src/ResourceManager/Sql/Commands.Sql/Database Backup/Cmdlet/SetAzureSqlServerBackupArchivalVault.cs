@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The vault resource ID.")]
         [ValidateNotNullOrEmpty]
-        public string RecoveryServicesVaultId { get; set; }
+        public string RecoveryServicesVaultResourceId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                RecoveryServicesVaultId = RecoveryServicesVaultId,
+                RecoveryServicesVaultResourceId = RecoveryServicesVaultResourceId,
             });
             return newEntity;
         }

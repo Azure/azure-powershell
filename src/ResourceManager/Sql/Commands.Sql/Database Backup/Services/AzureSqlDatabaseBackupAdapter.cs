@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 {
                     ResourceGroupName = resourceGroup,
                     ServerName = serverName,
-                    RecoveryServicesVaultId = baVault.RecoveryServicesVaultId,
+                    RecoveryServicesVaultResourceId = baVault.RecoveryServicesVaultResourceId,
                 };
             }).ToList();
         }
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     ServerName = serverName,
                     DatabaseName = databaseName,
                     State = baPolicy.State,
-                    RecoveryServicesVaultPolicyId = baPolicy.RecoveryServicesVaultPolicyId,
+                    RecoveryServicesBackupPolicyResourceId = baPolicy.RecoveryServicesBackupPolicyResourceId,
                 };
             }).ToList();
         }
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             {
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
-                RecoveryServicesVaultId = baVault.RecoveryServicesVaultId,
+                RecoveryServicesVaultResourceId = baVault.RecoveryServicesVaultResourceId,
             };
         }
 
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ServerName = serverName,
                 DatabaseName = databaseName,
                 State = baPolicy.State,
-                RecoveryServicesVaultPolicyId = baPolicy.RecoveryServicesVaultPolicyId,
+                RecoveryServicesBackupPolicyResourceId = baPolicy.RecoveryServicesBackupPolicyResourceId,
             };
         }
 
@@ -279,16 +279,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         {
             var baVault = Communicator.SetBackupArchivalVault(resourceGroup, serverName, baVaultName, Util.GenerateTracingId(), new BackupArchivalVaultCreateOrUpdateParameters()
             {
-                Properties = new BackupArchivalVaultCreateOrUpdateProperties()
+                Properties = new BackupArchivalVaultProperties()
                 {
-                    ReocveryServiceVaultId = model.RecoveryServicesVaultId
+                    RecoveryServicesVaultResourceId = model.RecoveryServicesVaultResourceId
                 }
             });
             return new AzureSqlServerBackupArchivalVaultModel()
             {
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
-                RecoveryServicesVaultId = baVault.RecoveryServicesVaultId,
+                RecoveryServicesVaultResourceId = baVault.RecoveryServicesVaultResourceId,
             };
         }
 
@@ -304,10 +304,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         {
             var baPolicy = Communicator.SetDatabaseBackupArchivalPolicy(resourceGroup, serverName, databaseName, baPolicyName, Util.GenerateTracingId(), new DatabaseBackupArchivalPolicyCreateOrUpdateParameters()
             {
-                Properties = new DatabaseBackupArchivalPolicyCreateOrUpdateProperties()
+                Properties = new DatabaseBackupArchivalPolicyProperties()
                 {
                     State = model.State,
-                    RecoveryServicesVaultPolicyId = model.RecoveryServicesVaultPolicyId,
+                    RecoveryServicesBackupPolicyResourceId = model.RecoveryServicesBackupPolicyResourceId,
                 }
             });
             return new AzureSqlDatabaseBackupArchivalPolicyModel()
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ServerName = serverName,
                 DatabaseName = databaseName,
                 State = baPolicy.State,
-                RecoveryServicesVaultPolicyId = baPolicy.RecoveryServicesVaultPolicyId,
+                RecoveryServicesBackupPolicyResourceId = baPolicy.RecoveryServicesBackupPolicyResourceId,
             };
         }
 
@@ -325,9 +325,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="restorePointInTime">A point to time to restore to (for PITR and dropped DB restore)</param>
-        /// <param name="resourceId">The resource ID of the DB to restore (live, geo backup, or deleted database)</param>
+        /// <param name="resourceId">The resource ID of the DB to restore (live, geo backup, deleted database, long term retention backup, etc.)</param>
         /// <param name="model">An object modeling the database to create via restore</param>
-        /// <param name="parameters">Parameters describing the database restore request</param>
         /// <returns>Restored database object</returns>
         internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model)
         {

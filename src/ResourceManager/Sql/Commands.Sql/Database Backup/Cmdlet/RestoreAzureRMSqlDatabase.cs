@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public DateTime DeletionDate { get; set; }
 
         /// <summary>
-        /// The resource ID of the database to restore (deleted DB, geo backup DB, live DB, long term retention backup)
+        /// The resource ID of the database to restore (deleted DB, geo backup DB, live DB, long term retention backup, etc.)
         /// </summary>
         [Parameter(Mandatory = true,
                     ValueFromPipelineByPropertyName = true,
