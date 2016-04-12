@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Dns
                 return new MxRecord
                 {
                     Exchange = mamlRecord.Exchange,
-                    Preference = mamlRecord.Preference,
+                    Preference = (ushort) mamlRecord.Preference,
                 };
             }
             else if (record is Management.Dns.Models.SrvRecord)
@@ -152,10 +152,10 @@ namespace Microsoft.Azure.Commands.Dns
                 var mamlRecord = (Management.Dns.Models.SrvRecord)record;
                 return new SrvRecord
                 {
-                    Port = mamlRecord.Port,
-                    Priority = mamlRecord.Priority,
+                    Port = (ushort) mamlRecord.Port,
+                    Priority = (ushort) mamlRecord.Priority,
                     Target = mamlRecord.Target,
-                    Weight = mamlRecord.Weight,
+                    Weight = (ushort) mamlRecord.Weight,
                 };
             }
             else if (record is Management.Dns.Models.SoaRecord)
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Dns
                 var mamlRecord = (Management.Dns.Models.TxtRecord)record;
                 return new TxtRecord
                 {
-                    Value = mamlRecord.Value
+                    Value = mamlRecord.Value.Count > 0 ? mamlRecord.Value[0] : null,
                 };
             }
 
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Commands.Dns
         {
             return new Management.Dns.Models.TxtRecord
             {
-                Value = this.Value,
+                Value = new List<string>() { this.Value },
             };
         }
 

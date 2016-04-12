@@ -24,6 +24,9 @@ using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Dns.Models
 {
+    using System.Threading;
+    using System.Threading.Tasks;
+
     public class DnsClient
     {
         public const string DnsResourceLocation = "global";
@@ -42,12 +45,32 @@ namespace Microsoft.Azure.Commands.Dns.Models
 
         public DnsZone CreateDnsZone(string name, string resourceGroupName, Hashtable[] tags)
         {
+            //ZoneCreateOrUpdateResponse response = Task.Factory.StartNew((object s) => ((IZoneOperations)s).CreateOrUpdateAsync(
+            //    resourceGroupName,
+            //    name,
+            //    new ZoneCreateOrUpdateParameters
+            //    {
+            //        Zone = new Management.Dns.Models.Zone
+            //        {
+            //            Location = DnsResourceLocation,
+            //            Name = name,
+            //            Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
+            //            ETag = null,
+            //            Properties = new ZoneProperties
+            //            {
+            //                NumberOfRecordSets = null,
+            //                MaxNumberOfRecordSets = null,
+            //            }
+            //        }
+            //    },
+            //    ifMatch: null,
+            //    ifNoneMatch: "*"), this.DnsManagementClient.Zones, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+
             ZoneCreateOrUpdateResponse response = this.DnsManagementClient.Zones.CreateOrUpdate(
-                resourceGroupName, 
-                name, 
+                resourceGroupName,
+                name,
                 new ZoneCreateOrUpdateParameters
                 {
-                    IfNoneMatch = "*",
                     Zone = new Management.Dns.Models.Zone
                     {
                         Location = DnsResourceLocation,
@@ -60,7 +83,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                             MaxNumberOfRecordSets = null,
                         }
                     }
-                });
+                },
+                ifMatch: null,
+                ifNoneMatch: "*");
 
             return new DnsZone
             {
@@ -88,7 +113,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                         {
                         }
                     }
-                });
+                },
+                ifMatch: overwrite ? "*" : zone.Etag,
+                ifNoneMatch: null);
 
             return new DnsZone
             {
@@ -104,10 +131,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
             AzureOperationResponse resp = this.DnsManagementClient.Zones.Delete(
                 zone.ResourceGroupName,
                 zone.Name,
-                new ZoneDeleteParameters
-                {
-                    IfMatch = overwrite ? null : zone.Etag,
-                });
+                ifMatch: overwrite ? null : zone.Etag,
+                ifNoneMatch: null);
 
             return resp.StatusCode == System.Net.HttpStatusCode.NoContent || resp.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
         }
@@ -131,7 +156,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 Filter = endsWith == null ? null : string.Format("endswith(Name,'{0}')", endsWith)
             };
 
-            ZoneListResponse getResponse = this.DnsManagementClient.Zones.List(resourceGroupName, zoneListParameters);
+            ZoneListResponse getResponse = this.DnsManagementClient.Zones.ListZonesInResourceGroup(resourceGroupName, zoneListParameters);
             return getResponse.Zones.Select(zoneInResponse => new DnsZone
             {
                 Name = zoneInResponse.Name,
@@ -151,19 +176,18 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 recordType,
                 new RecordSetCreateOrUpdateParameters
                 {
-                    IfNoneMatch = overwrite ? null : "*",
                     RecordSet = new RecordSet
                     {
                         Name = relativeRecordSetName,
                         Location = DnsResourceLocation,
-                        Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
                         ETag = null,
                         Properties = new RecordSetProperties
                         {
                             Ttl = ttl,
+                            Metadata = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
                             AaaaRecords = recordType == RecordType.AAAA ? new List<Management.Dns.Models.AaaaRecord>() : null,
                             ARecords = recordType == RecordType.A ? new List<Management.Dns.Models.ARecord>() : null,
-                            CnameRecord = null,
+                            CnameRecord = recordType == RecordType.CNAME ? new Management.Dns.Models.CnameRecord(String.Empty) : null,
                             MxRecords = recordType == RecordType.MX ? new List<Management.Dns.Models.MxRecord>() : null,
                             NsRecords = recordType == RecordType.NS ? new List<Management.Dns.Models.NsRecord>() : null,
                             PtrRecords = recordType == RecordType.PTR ? new List<Management.Dns.Models.PtrRecord>() : null,
@@ -172,7 +196,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                             TxtRecords = recordType == RecordType.TXT ? new List<Management.Dns.Models.TxtRecord>() : null,
                         },
                     }
-                });
+                },
+                null,
+                overwrite ? null : "*");
 
             return GetPowerShellRecordSet(zoneName, resourceGroupName, response.RecordSet);
         }
@@ -186,16 +212,15 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 recordSet.RecordType,
                 new RecordSetCreateOrUpdateParameters
                 {
-                    IfNoneMatch = null,
                     RecordSet = new RecordSet
                     {
                         Name = recordSet.Name,
                         Location = DnsResourceLocation,
-                        Tags = TagsConversionHelper.CreateTagDictionary(recordSet.Tags, validate: true),
                         ETag = overwrite ? "*" : recordSet.Etag,
                         Properties = new RecordSetProperties
                         {
                             Ttl = recordSet.Ttl,
+                            Metadata = TagsConversionHelper.CreateTagDictionary(recordSet.Tags, validate: true),
                             AaaaRecords = recordSet.RecordType == RecordType.AAAA ? GetMamlRecords<AaaaRecord, Management.Dns.Models.AaaaRecord>(recordSet.Records) : null,
                             ARecords = recordSet.RecordType == RecordType.A ? GetMamlRecords<ARecord, Management.Dns.Models.ARecord>(recordSet.Records) : null,
                             MxRecords = recordSet.RecordType == RecordType.MX ? GetMamlRecords<MxRecord, Management.Dns.Models.MxRecord>(recordSet.Records) : null,
@@ -206,7 +231,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                             CnameRecord = recordSet.RecordType == RecordType.CNAME ? GetMamlRecords<CnameRecord, Management.Dns.Models.CnameRecord>(recordSet.Records).SingleOrDefault() : null,
                         }
                     }
-                });
+                },
+                ifMatch: overwrite ? "*" : recordSet.Etag,
+                ifNoneMatch: null);
 
             return GetPowerShellRecordSet(recordSet.ZoneName, recordSet.ResourceGroupName, response.RecordSet);
         }
@@ -218,10 +245,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 recordSet.ZoneName,
                 recordSet.Name,
                 recordSet.RecordType,
-                new RecordSetDeleteParameters
-                {
-                    IfMatch = overwrite ? "*" : recordSet.Etag
-                });
+                ifMatch: overwrite ? "*" : recordSet.Etag,
+                ifNoneMatch: null);
 
             return response.StatusCode == System.Net.HttpStatusCode.NoContent || response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
         }
@@ -232,12 +257,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return GetPowerShellRecordSet(zoneName, resourceGroupName, getResponse.RecordSet);
         }
 
-        public List<DnsRecordSet> ListRecordSets(string zoneName, string resourceGroupName, RecordType recordType, string endsWith)
+        public List<DnsRecordSet> ListRecordSets(string zoneName, string resourceGroupName, RecordType recordType)
         {
-            RecordSetListParameters recordListParameters = new RecordSetListParameters
-            {
-                Filter = endsWith == null ? null : string.Format("endswith(Name,'{0}')", endsWith)
-            };
+            RecordSetListParameters recordListParameters = new RecordSetListParameters();
 
             RecordSetListResponse listResponse = this.DnsManagementClient.RecordSets.List(resourceGroupName, zoneName, recordType, recordListParameters);
             return listResponse
@@ -246,12 +268,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 .ToList();
         }
 
-        public List<DnsRecordSet> ListRecordSets(string zoneName, string resourceGroupName, string endsWith)
+        public List<DnsRecordSet> ListRecordSets(string zoneName, string resourceGroupName)
         {
-            RecordSetListParameters recordListParameters = new RecordSetListParameters
-            {
-                Filter = endsWith == null ? null : string.Format("endswith(Name,'{0}')", endsWith)
-            };
+            RecordSetListParameters recordListParameters = new RecordSetListParameters();
 
             RecordSetListResponse listResponse = this.DnsManagementClient.RecordSets.ListAll(resourceGroupName, zoneName, recordListParameters);
             return listResponse
@@ -273,7 +292,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 Name = mamlRecordSet.Name,
                 RecordType = recordType,
                 Records = GetPowerShellRecords(mamlRecordSet),
-                Tags = TagsConversionHelper.CreateTagHashtable(mamlRecordSet.Tags),
+                Tags = TagsConversionHelper.CreateTagHashtable(mamlRecordSet.Properties.Metadata),
                 ResourceGroupName = resourceGroupName,
                 Ttl = mamlRecordSet.Properties.Ttl,
                 ZoneName = zoneName,

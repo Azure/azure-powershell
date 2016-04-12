@@ -23,13 +23,12 @@ namespace Microsoft.Azure.Commands.Dns.Test.UnitTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureDnsZoneThrowsExceptionWhenUsingNameAndEndsWith()
+        public void GetAzureDnsZoneThrowsExceptionWhenUsingName()
         {
             var cmdlet = new GetAzureDnsZone
             {
                 Name = "record",
-                ResourceGroupName = "resourceGroup",
-                EndsWith = ".com."
+                ResourceGroupName = "resourceGroup"
             };
 
             Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());

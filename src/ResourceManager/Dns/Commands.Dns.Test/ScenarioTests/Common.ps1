@@ -70,3 +70,8 @@ function TestSetup-CreateResourceGroup
     $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation
 	return $resourceGroup
 }
+
+function Get-RandomZoneName
+{
+	return [System.Guid]::NewGuid().ToString() + ".pstest.test" ;
+}

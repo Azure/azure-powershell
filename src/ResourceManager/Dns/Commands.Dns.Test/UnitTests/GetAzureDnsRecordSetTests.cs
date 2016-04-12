@@ -17,13 +17,14 @@ namespace Microsoft.Azure.Commands.Dns.Test.UnitTests
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using WindowsAzure.Commands.Test.Utilities.Common;
+    using Management.Dns.Models;
     using Xunit;
 
     public class GetAzureDnsRecordSetTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureDnsRecordSetThrowsExceptionWhenUsingNameAndEndsWith()
+        public void GetAzureDnsRecordSetThrowsExceptionWhenUsingName()
         {
             var cmdlet = new GetAzureDnsRecordSet
             {
@@ -35,8 +36,7 @@ namespace Microsoft.Azure.Commands.Dns.Test.UnitTests
                     Name = "zone.com",
                     ResourceGroupName = "resourceGroup"
                 },
-                RecordType = "A",
-                EndsWith = ".com."
+                RecordType = RecordType.A,
             };
 
             Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());

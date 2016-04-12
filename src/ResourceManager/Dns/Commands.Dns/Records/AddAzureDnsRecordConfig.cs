@@ -131,15 +131,23 @@ namespace Microsoft.Azure.Commands.Dns
                     }
                 case RecordType.CNAME:
                     {
-                        if (result.Records.Count == 0)
+                        if (result.Records.Count != 0)
                         {
-                            result.Records.Add(new CnameRecord { Cname = this.Cname });
-                        }
-                        else
-                        {
-                            throw new ArgumentException(ProjectResources.Error_AddRecordMultipleCnames);
+                            var currentCNameRecord = result.Records[0] as CnameRecord;
+                            if (currentCNameRecord == null)
+                            {
+                                throw new ArgumentException(ProjectResources.Error_AddRecordTypeMismatch);
+                            }
+
+                            if (!string.IsNullOrEmpty(currentCNameRecord.Cname))
+                            {
+                                throw new ArgumentException(ProjectResources.Error_AddRecordMultipleCnames);
+                            }
+
+                            result.Records.Clear();
                         }
 
+                        result.Records.Add(new CnameRecord { Cname = this.Cname });
                         break;
                     }
                 default:

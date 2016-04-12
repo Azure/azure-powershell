@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetPTR");
         }
 
-        [Fact(Skip = "If-None-Match header not supported yet on service")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetnewAlreadyExists()
         {
@@ -151,13 +151,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         public void TestRecordSetGet()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetGet");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRecordSetGetWithEndsWith()
-        {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetGetWithEndsWith");
         }
     }
 }
