@@ -24,6 +24,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Globalization;
 using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -196,14 +197,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string targetLocation = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
             if (!Directory.Exists(targetLocation))
             {
-                throw new ArgumentException("The target location provided is not a directory. Please provide a directory.");
+                throw new ArgumentException(Resources.VaultCredPathException);
             }
 
             string subscriptionId = DefaultContext.Subscription.Id.ToString();
             string displayName = this.Vault.Name;
 
             WriteDebug(string.Format(CultureInfo.InvariantCulture,
-                                      "Executing cmdlet with SubscriptionId = {0}, ResourceGroupName = {1}, ResourceName = {2}, TargetLocation = {3}",
+                                      Resources.ExecutingGetVaultCredCmdlet,
                                       subscriptionId, this.Vault.ResouceGroupName, this.Vault.Name, targetLocation));
 
             // Generate certificate
@@ -214,9 +215,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             try
             {
                 // Upload cert into ID Mgmt
-                WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Going to upload the certificate"));
+                WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadingCertToIdmgmt));
                 acsNamespace = UploadCert(cert);
-                WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Successfully uploaded the certificate"));
+                WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadedCertToIdmgmt));
             }
             catch (Exception exception)
             {
@@ -235,7 +236,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // prepare for download
             string fileName = string.Format("{0}_{1:ddd MMM dd yyyy}.VaultCredentials", displayName, DateTime.UtcNow);
             string filePath = System.IO.Path.Combine(targetLocation, fileName);
-            WriteDebug(string.Format("Saving Vault Credentials to file : {0}", filePath));
+            WriteDebug(string.Format(Resources.SavingVaultCred, filePath));
 
             File.WriteAllBytes(filePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
 
@@ -301,7 +302,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     DataContractSerializer serializer = new DataContractSerializer(typeof(BackupVaultCreds));
                     serializer.WriteObject(writer, backupVaultCreds);
 
-                    WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Backup Vault - Successfully serialized the file content"));
+                    WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.BackupVaultSerialized));
                 }
 
                 return Encoding.UTF8.GetString(output.ToArray());

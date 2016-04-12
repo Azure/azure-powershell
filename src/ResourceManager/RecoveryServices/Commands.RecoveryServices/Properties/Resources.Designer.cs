@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RecoveryService - Backup Vault - Successfully serialized the file content.
+        /// </summary>
+        internal static string BackupVaultSerialized {
+            get {
+                return ResourceManager.GetString("BackupVaultSerialized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation Failed.
         ///.
         /// </summary>
@@ -103,6 +112,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string DisableProtectionWhatIfMessage {
             get {
                 return ResourceManager.GetString("DisableProtectionWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executing cmdlet with SubscriptionId = {0}, ResourceGroupName = {1}, ResourceName = {2}, TargetLocation = {3}.
+        /// </summary>
+        internal static string ExecutingGetVaultCredCmdlet {
+            get {
+                return ResourceManager.GetString("ExecutingGetVaultCredCmdlet", resourceCulture);
             }
         }
         
@@ -369,6 +387,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saving Vault Credentials to file : {0}.
+        /// </summary>
+        internal static string SavingVaultCred {
+            get {
+                return ResourceManager.GetString("SavingVaultCred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Server {0} is not associated with the Vault {1}.
         /// </summary>
         internal static string ServerNotFound {
@@ -442,6 +469,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RecoveryService - Successfully uploaded the certificate.
+        /// </summary>
+        internal static string UploadedCertToIdmgmt {
+            get {
+                return ResourceManager.GetString("UploadedCertToIdmgmt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RecoveryService - Going to upload the certificate.
+        /// </summary>
+        internal static string UploadingCertToIdmgmt {
+            get {
+                return ResourceManager.GetString("UploadingCertToIdmgmt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not validate the storage account and subscription given.
         ///Are you sure you want to continue {0}?.
         /// </summary>
@@ -466,6 +511,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string VaultCreationSuccessMessage {
             get {
                 return ResourceManager.GetString("VaultCreationSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The target location provided is not a directory. Please provide a directory..
+        /// </summary>
+        internal static string VaultCredPathException {
+            get {
+                return ResourceManager.GetString("VaultCredPathException", resourceCulture);
             }
         }
         
