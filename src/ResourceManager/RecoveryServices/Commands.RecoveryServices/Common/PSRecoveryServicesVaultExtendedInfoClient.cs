@@ -135,13 +135,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             var certificateArgs = new CertificateArgs();
             certificateArgs.Properties = new Dictionary<string, string>();
             certificateArgs.Properties.Add("certificate", Convert.ToBase64String(managementCert.GetRawCertData()));
-            // CertificateArgs.Properties.Add("ContractVersion", "V2012_12");
 
             var response = this.recoveryServicesClient.VaultExtendedInfo.UploadCertificateAsync(
                 vault.ResouceGroupName,
                 vault.Name,
                 certificateArgs, managementCert.FriendlyName,
-                this.GetRequestHeaders()); ;
+                this.GetRequestHeaders());
             response.Wait();
             return response.Result;
         }

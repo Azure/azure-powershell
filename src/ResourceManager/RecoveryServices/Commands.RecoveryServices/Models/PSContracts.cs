@@ -358,6 +358,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="resourceName">resource name</param>
         /// <param name="managementCert">management cert</param>
         /// <param name="acsNamespace">authenticating service namespace</param>
+        /// <param name="resourceType">resource type backup vault or ASR vault</param>
         public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace, string resourceType = null)
         {
             this.SubscriptionId = subscriptionId;
@@ -507,7 +508,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     /// <summary>
     /// Class to define backup vault credentials
     /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Grouping classes based on entity")]
     [DataContract]
     public class BackupVaultCreds : VaultCreds
     {
