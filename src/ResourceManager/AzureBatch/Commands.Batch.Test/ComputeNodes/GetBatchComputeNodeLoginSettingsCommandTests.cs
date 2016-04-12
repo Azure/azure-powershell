@@ -76,15 +76,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSRemoteLoginSettings> pipeline = new List<PSRemoteLoginSettings>();
+            PSRemoteLoginSettings loginSettings = null;
             commandRuntimeMock.Setup(r =>
                 r.WriteObject(It.IsAny<PSRemoteLoginSettings>()))
-                .Callback<object>(p => pipeline.Add((PSRemoteLoginSettings)p));
+                .Callback<object>(p => loginSettings = (PSRemoteLoginSettings)p);
 
             // Verify no exceptions when required parameter is set
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(ipAddress, pipeline[0].IPAddress);
+            Assert.Equal(ipAddress, loginSettings.IPAddress);
         }
     }
 }
