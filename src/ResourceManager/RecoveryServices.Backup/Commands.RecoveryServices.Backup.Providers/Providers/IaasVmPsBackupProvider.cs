@@ -52,9 +52,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string azureVMResourceGroupName = (string)ProviderData.ProviderParameters[ItemParams.AzureVMResourceGroupName];
             string parameterSetName = (string)ProviderData.ProviderParameters[ItemParams.ParameterSetName];
 
-            Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType workloadType =
-                (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData.ProviderParameters[ItemParams.WorkloadType];
-
             AzureRmRecoveryServicesBackupPolicyBase policy = (AzureRmRecoveryServicesBackupPolicyBase)
                                                  ProviderData.ProviderParameters[ItemParams.Policy];
 
@@ -74,7 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 isComputeAzureVM = string.IsNullOrEmpty(azureVMCloudServiceName) ? true : false;
                 string azureVMRGName = (isComputeAzureVM) ? azureVMResourceGroupName : azureVMCloudServiceName;
 
-                ValidateAzureVMWorkloadType(workloadType, policy.WorkloadType);
+                ValidateAzureVMWorkloadType(policy.WorkloadType);
 
                 ValidateAzureVMEnableProtectionRequest(azureVMName, azureVMCloudServiceName, azureVMResourceGroupName, policy);
 

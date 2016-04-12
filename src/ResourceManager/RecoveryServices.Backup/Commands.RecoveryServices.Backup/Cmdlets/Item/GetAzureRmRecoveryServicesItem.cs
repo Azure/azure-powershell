@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of items
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesItem"), OutputType(typeof(AzureRmRecoveryServicesItemBase))]
-    public class GetAzureRmRecoveryServicesItem : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(AzureRmRecoveryServicesItemBase))]
+    public class GetAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Item.Container)]
         [ValidateNotNullOrEmpty]
