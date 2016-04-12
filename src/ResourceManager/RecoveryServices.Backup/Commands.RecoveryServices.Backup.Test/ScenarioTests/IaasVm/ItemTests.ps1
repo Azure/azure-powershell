@@ -20,7 +20,7 @@ function Test-GetItemScenario
 	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
 	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
 
-	$item = Get-AzureRmRecoveryServicesItem -Container $namedContainer -WorkloadType "AzureVM";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
 	echo $item.Name;
 }
 
@@ -31,7 +31,7 @@ function Test-EnableAzureVMProtectionScenario
 
 	$policy = Get-AzureRmRecoveryServicesProtectionPolicy -Name "pwtest1"	
 
-	$job = Enable-AzureRmRecoveryServicesProtection -Name "mylinux1" -ResourceGroupName "mylinux1"  -WorkloadType "AzureVM" -Policy $policy;
+	$job = Enable-AzureRmRecoveryServicesBackupProtection -Name "mylinux1" -ResourceGroupName "mylinux1"  -WorkloadType "AzureVM" -Policy $policy;
 	Assert-AreEqual $job.Status "Completed";
 
 }
@@ -44,9 +44,9 @@ function Test-DisableAzureVMProtectionScenario
 	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
 	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
 
-	$item = Get-AzureRmRecoveryServicesItem -Container $namedContainer -WorkloadType "AzureVM";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
 
-	$job = Disable-AzureRmRecoveryServicesProtection -Item $item -Force;
+	$job = Disable-AzureRmRecoveryServicesBackupProtection -Item $item -Force;
 	Assert-AreEqual $job.Status "Completed";
 }
 
@@ -59,7 +59,7 @@ function Test-GetAzureVMRecoveryPointsScenario
 	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
 	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
 
-	$item = Get-AzureRmRecoveryServicesItem -Container $namedContainer -WorkloadType "AzureVM";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
 	$startDate = (Get-Date).AddDays(-7)
 	$endDate = Get-Date
 	$rps = Get-AzureRMRecoveryServicesRecoveryPoint -Item $item -StartDate $startDate -EndDate $endDate
@@ -75,7 +75,7 @@ function Test-RestoreAzureVMRItemScenario
 	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
 	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
 
-	$item = Get-AzureRmRecoveryServicesItem -Container $namedContainer -WorkloadType "AzureVM";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
 	$startDate = (Get-Date).AddDays(-7)
 	$endDate = Get-Date
 	$rps = Get-AzureRMRecoveryServicesRecoveryPoint -Item $item -StartDate $startDate -EndDate $endDate
@@ -93,7 +93,7 @@ function Test-BackupItemScenario
 	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "pstestv2vm1";
 	Assert-AreEqual $namedContainer.FriendlyName "pstestv2vm1";
 
-	$item = Get-AzureRmRecoveryServicesItem -Container $namedContainer -WorkloadType "AzureVM";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
 	echo $item.Name;
 
 	Backup-AzureRmRecoveryServicesItem -Item $item | Wait-AzureRmBackupJob;
