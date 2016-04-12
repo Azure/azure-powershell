@@ -326,7 +326,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 Collection<PSObject> output = null;
                 for (int i = 0; i < scripts.Length; ++i)
                 {
-                    Console.WriteLine(scripts[i]);
+                    if (TracingInterceptor != null)
+                    {
+                        TracingInterceptor.Information(scripts[i]);
+                    }
                     powershell.AddScript(scripts[i]);
                 }
                 try
@@ -344,7 +347,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 catch (Exception psException)
                 {
-                    powershell.LogPowerShellException(psException);
+                    powershell.LogPowerShellException(psException, TracingInterceptor);
                     throw;
                 }
                 finally

@@ -302,7 +302,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             foreach (var script in scripts)
             {
-                Console.WriteLine(script);
+                if (TracingInterceptor != null)
+                {
+                    TracingInterceptor.Information(script);
+                }
                 powershell.AddScript(script);
             }
             try
@@ -329,7 +332,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
             catch (Exception psException)
             {
-                powershell.LogPowerShellException(psException);
+                powershell.LogPowerShellException(psException, TracingInterceptor);
                 throw;
             }
             finally

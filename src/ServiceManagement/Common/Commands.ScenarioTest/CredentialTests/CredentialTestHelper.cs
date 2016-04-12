@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
                 }
                 catch (Exception psException)
                 {
-                    powershell.LogPowerShellException(psException);
+                    powershell.LogPowerShellException(psException, null);
                     throw;
                 }
                 finally

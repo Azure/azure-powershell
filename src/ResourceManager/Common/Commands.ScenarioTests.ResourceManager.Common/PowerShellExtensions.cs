@@ -96,20 +96,37 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// PowerShell error record if available
         /// </summary>
         /// <param name="runtimeException">The exception to parse</param>
-        public static void LogPowerShellException(this System.Management.Automation.PowerShell powershell, Exception runtimeException)
+        public static void LogPowerShellException(
+            this System.Management.Automation.PowerShell powershell, 
+            Exception runtimeException,
+            XunitTracingInterceptor xunitLogger)
         {
-            Console.WriteLine("Caught Exception: {0}\n", runtimeException);
-            Console.WriteLine("Message: {0}\n", runtimeException.Message);
+            if (xunitLogger != null)
+            {
+                xunitLogger.Information(string.Format("Caught Exception: {0}", runtimeException));
+                xunitLogger.Information(string.Format("Message: {0}", runtimeException.Message));
+            }
+
             IContainsErrorRecord recordContainer = runtimeException as IContainsErrorRecord;
             if (recordContainer != null)
             {
                 ErrorRecord record = recordContainer.ErrorRecord;
-                Console.WriteLine("PowerShell Error Record: {0}\nException:{1}\nDetails:{2}\nScript Stack Trace: {3}\n: Target: {4}\n", record, record.Exception, record.ErrorDetails, record.ScriptStackTrace, record.TargetObject);
+
+                if (xunitLogger != null)
+                {
+                    xunitLogger.Information(string.Format(
+                        "PowerShell Error Record: {0}\nException:{1}\nDetails:{2}\nScript Stack Trace: {3}\n: Target: {4}\n", 
+                        record, 
+                        record.Exception, 
+                        record.ErrorDetails, 
+                        record.ScriptStackTrace, 
+                        record.TargetObject));
+                }
             }
 
             if (runtimeException.InnerException != null)
             {
-                powershell.LogPowerShellException(runtimeException.InnerException);
+                powershell.LogPowerShellException(runtimeException.InnerException, xunitLogger);
             }
         }
 
