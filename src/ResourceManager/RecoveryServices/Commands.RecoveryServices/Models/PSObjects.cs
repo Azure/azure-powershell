@@ -135,11 +135,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public class ASRVaultProperties
     {
         #region Properties
-        
+
         /// <summary>
         /// Gets or sets Provisioning State.
         /// </summary>
         public string ProvisioningState { get; set; }
+
+        #endregion
+    }
+
+    public class ASRVaultBackupProperties
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets BackupStorageRedundancy type.
+        /// </summary>
+        public string BackupStorageRedundancy { get; set; }
 
         #endregion
     }
