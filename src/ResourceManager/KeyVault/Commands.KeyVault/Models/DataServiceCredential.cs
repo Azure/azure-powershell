@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             try
             {
-                var accesstoken = authFactory.Authenticate(context.Account, context.Environment, TenantId, null, ShowDialog.Auto,
+                var accesstoken = authFactory.Authenticate(context.Account, context.Environment, TenantId, null, ShowDialog.Never,
                     resourceIdEndpoint);
 
                 return Tuple.Create(accesstoken, context.Environment.Endpoints[resourceIdEndpoint]);
