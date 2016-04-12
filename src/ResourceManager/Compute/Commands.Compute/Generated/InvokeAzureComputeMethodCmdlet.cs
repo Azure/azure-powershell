@@ -30,7 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsLifecycle.Invoke, "AzureComputeMethod", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    //[Cmdlet(VerbsLifecycle.Invoke, "AzureComputeMethod", DefaultParameterSetName = "InvokeByDynamicParameters")]
     [OutputType(typeof(object))]
     public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet, IDynamicParameters
     {
