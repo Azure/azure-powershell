@@ -120,6 +120,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // ExtensionProfile
             vVirtualMachineProfile.ExtensionProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtensionProfile();
+
             vSku.Name = this.SkuName;
             vSku.Tier = this.SkuTier;
             vSku.Capacity = this.SkuCapacity;
