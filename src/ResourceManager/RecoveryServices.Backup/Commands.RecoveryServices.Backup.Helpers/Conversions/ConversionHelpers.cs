@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         {
             AzureRmRecoveryServicesBackupPolicyBase policyModel = null;
 
-            if(hydraResponse == null || hydraResponse.Properties == null)
+            if (hydraResponse == null || hydraResponse.Properties == null)
             {
                 Logger.Instance.WriteDebug("Policy Hydra response is Null/Empty");
                 throw new ArgumentException(Resources.EmptyHydraResponseException);
@@ -101,16 +101,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             if (hydraResponse.Properties.GetType() == typeof(AzureIaaSVMProtectionPolicy))
             {
-                if(((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType() !=
+                if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType() !=
                                                                            typeof(LongTermRetentionPolicy))
                 {
                     Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
-                               ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType());                    
+                               ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType());
                     Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
 
-                if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType() != 
+                if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType() !=
                                                                             typeof(SimpleSchedulePolicy))
                 {
                     Logger.Instance.WriteDebug("Unknown SchedulePolicy object received: " +
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                                                  ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy);
             }
             else
-            {                
+            {
                 // we will enter this case when service supports new workload and customer 
                 // still using old version of azure powershell. Trace warning message, ignore and return
                 Logger.Instance.WriteDebug("Unknown Policy object received: " +
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         public static List<AzureRmRecoveryServicesBackupPolicyBase> GetPolicyModelList(
             ProtectionPolicyListResponse hydraListResponse)
         {
-            if(hydraListResponse == null || hydraListResponse.ItemList == null ||
+            if (hydraListResponse == null || hydraListResponse.ItemList == null ||
                hydraListResponse.ItemList.Value == null || hydraListResponse.ItemList.Value.Count == 0)
             {
                 Logger.Instance.WriteDebug("Received empty list of policies from service");
@@ -157,10 +157,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             List<AzureRmRecoveryServicesBackupPolicyBase> policyModels = new List<AzureRmRecoveryServicesBackupPolicyBase>();
             AzureRmRecoveryServicesBackupPolicyBase policyModel = null;
 
-            foreach(ProtectionPolicyResource resource in hydraListResponse.ItemList.Value)
+            foreach (ProtectionPolicyResource resource in hydraListResponse.ItemList.Value)
             {
                 policyModel = GetPolicyModel(resource);
-                if(policyModel != null)
+                if (policyModel != null)
                 {
                     policyModels.Add(policyModel);
                 }
@@ -183,10 +183,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 if (protectedItem.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectedItem)))
                 {
+                    string policyName = null;
                     string policyId = ((AzureIaaSVMProtectedItem)protectedItem.Properties).PolicyId;
-                    Dictionary<UriEnums, string> keyVauleDict = 
+                    if (policyId != null)
+                    {
+                        Dictionary<UriEnums, string> keyVauleDict =
                         HelperUtils.ParseUri(policyId);
-                    string policyName = HelperUtils.GetPolicyNameFromPolicyId(keyVauleDict, policyId);
+                        policyName = HelperUtils.GetPolicyNameFromPolicyId(keyVauleDict, policyId);
+                    }
                     itemModel = new AzureRmRecoveryServicesIaasVmItem(protectedItem, container, policyName);
                 }
             }
