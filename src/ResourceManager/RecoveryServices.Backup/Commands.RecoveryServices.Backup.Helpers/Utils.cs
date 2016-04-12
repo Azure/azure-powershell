@@ -126,6 +126,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             return protectableItemUri;
         }
+
+        public static string GetPolicyNameFromPolicyId(Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, string id)
+        {
+            string policyName = string.Empty;
+
+            if (keyValuePairDict.ContainsKey(CmdletModel.UriEnums.BackupPolicies))
+            {
+                policyName = keyValuePairDict[CmdletModel.UriEnums.BackupPolicies];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.BackupPolicies.ToString(), id));
+            }
+            return policyName;
+        }
     
     }
 }

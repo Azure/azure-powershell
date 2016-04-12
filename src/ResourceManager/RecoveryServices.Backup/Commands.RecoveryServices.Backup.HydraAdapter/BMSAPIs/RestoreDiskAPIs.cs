@@ -48,11 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 CreateNewCloudService = false,
                 RecoveryPointId = recoveryPointId,
                 RecoveryType = RecoveryType.RestoreDisks,
-                Region = vaultLocation,
-                StorageAccountName = storageAccountId,
-                SubnetName = string.Empty,
-                VirtualMachineName = string.Empty,
-                VirtualNetworkName = string.Empty,
+                Region = vaultLocation // TBD - To be fixed by Mkherani
             };
 
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
