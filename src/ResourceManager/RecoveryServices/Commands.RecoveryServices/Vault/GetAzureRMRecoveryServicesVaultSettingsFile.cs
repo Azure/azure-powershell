@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 2)]
+        [Parameter(Position = 2)]
         public string Path { get; set; }
 
         /// <summary>
