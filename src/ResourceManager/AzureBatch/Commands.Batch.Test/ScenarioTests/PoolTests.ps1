@@ -505,7 +505,7 @@ function Test-GetBatchNodeAgentSkus
 	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
 	# Get the node agent skus
-	$nodeAgentSkus = Get-AzureBatchAccountNodeAgentSku -BatchContext $context
+	$nodeAgentSkus = Get-AzureBatchNodeAgentSku -BatchContext $context
 	
 	foreach($nodeAgentSku in $nodeAgentSkus)
     {
@@ -524,7 +524,7 @@ function Test-GetBatchNodeAgentSkusWithFilter
 	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 	$filter = "osType eq 'Linux'"
 	
-	$nodeAgentSkus = Get-AzureBatchAccountNodeAgentSku -Filter $filter -BatchContext $context
+	$nodeAgentSkus = Get-AzureBatchNodeAgentSku -Filter $filter -BatchContext $context
 
 	foreach($nodeAgentSku in $nodeAgentSkus)
     {

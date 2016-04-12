@@ -420,13 +420,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        public void TestBatchAccountListNodeAgentSkus()
+        public void TestListNodeAgentSkus()
         {
             BatchController.NewInstance.RunPsTest("Test-GetBatchNodeAgentSkus");
         }
 
         [Fact(Skip = "Filter bug in the client OM library, will be fixed")]
-        public void TestBatchAccountListNodeAgentSkusWithFilter()
+        public void TestListNodeAgentSkusWithFilter()
         {
             BatchController.NewInstance.RunPsTest("Test-GetBatchNodeAgentSkusWithFilter");
         }

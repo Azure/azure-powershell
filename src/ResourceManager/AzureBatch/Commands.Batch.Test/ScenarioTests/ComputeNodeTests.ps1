@@ -307,7 +307,7 @@ function Test-DisableAndEnableComputeNodeScheduling
 .SYNOPSIS
 Tests getting remote login settings from compute node 
 #>
-function Test-GetComputeNodeRemoteLoginSettings
+function Test-GetRemoteLoginSettings
 {
 	param([string]$poolId, [string]$computeNodeId, [string]$usePipeline)
 	
@@ -316,11 +316,11 @@ function Test-GetComputeNodeRemoteLoginSettings
 
 	if ($usePipeline -eq '1')
     {
-        $remoteLoginSettings = Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Get-AzureBatchComputeNodeRemoteLoginSettings -BatchContext $context
+        $remoteLoginSettings = Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Get-AzureBatchRemoteLoginSettings -BatchContext $context
     }
     else
     {
-        $remoteLoginSettings = Get-AzureBatchComputeNodeRemoteLoginSettings $poolId $computeNodeId -BatchContext $context
+        $remoteLoginSettings = Get-AzureBatchRemoteLoginSettings $poolId $computeNodeId -BatchContext $context
     }
 
 	Assert-AreNotEqual $null $remoteLoginSettings.IPAddress
