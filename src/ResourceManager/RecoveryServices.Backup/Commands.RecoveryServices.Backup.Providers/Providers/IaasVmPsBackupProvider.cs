@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
     {
         private const int defaultOperationStatusRetryTimeInMilliSec = 5 * 1000; // 5 sec
         private const string separator = ";";
-        private const string computeAzureVMVersion = "Compute";
-        private const string classicComputeAzureVMVersion = "ClassicCompute";
+        private const string computeAzureVMVersion = "Microsoft.Compute";
+        private const string classicComputeAzureVMVersion = "Microsoft.ClassicCompute";
 
         ProviderData ProviderData { get; set; }
         HydraAdapter.HydraAdapter HydraAdapter { get; set; }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 properties = new AzureIaaSComputeVMProtectedItem();
             }
 
-            properties.PolicyName = policy.Name;
+            properties.PolicyId = policy.Id;
 
             ProtectedItemCreateOrUpdateRequest hydraRequest = new ProtectedItemCreateOrUpdateRequest()
             {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     properties = new AzureIaaSComputeVMProtectedItem();
                 }
 
-                properties.PolicyName = string.Empty;
+                properties.PolicyId = string.Empty;
                 properties.ProtectionState = ItemStatus.ProtectionStopped.ToString();
 
                 ProtectedItemCreateOrUpdateRequest hydraRequest = new ProtectedItemCreateOrUpdateRequest()
@@ -760,6 +760,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             protectableObjectResource = null;
             string vmVersion = string.Empty;
             vmVersion = (isComputeAzureVM) == true ? computeAzureVMVersion : classicComputeAzureVMVersion;
+            string virtualMachineId = GetAzureIaasVirtualMachineId(rgName, vmVersion, vmName);
 
             ProtectableObjectListQueryParameters queryParam = new ProtectableObjectListQueryParameters();
             // --- TBD To be added once bug is fixed in hydra and service
@@ -785,8 +786,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     AzureIaaSVMProtectableItem iaaSVMProtectableItem = (AzureIaaSVMProtectableItem)protectableItem.Properties;
                     if (iaaSVMProtectableItem != null &&
                         string.Compare(iaaSVMProtectableItem.FriendlyName, vmName, true) == 0
-                        && string.Compare(iaaSVMProtectableItem.ResourceGroup, rgName, true) == 0
-                        && string.Compare(iaaSVMProtectableItem.VirtualMachineVersion, vmVersion, true) == 0)
+                        && iaaSVMProtectableItem.VirtualMachineId.IndexOf(virtualMachineId,
+                        StringComparison.InvariantCultureIgnoreCase) >= 0)
                     {
                         protectableObjectResource = protectableItem;
                         isDiscoveryNeed = false;
@@ -860,6 +861,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             return status;
+        }
+
+        private static string GetAzureIaasVirtualMachineId(string resourceGroup, string vmVersion, string name)
+        {
+            string IaasVMIdFormat = "/resourceGroups/{0}/providers/{1}/virtualMachines/{2}";
+            return string.Format(IaasVMIdFormat, resourceGroup, vmVersion, name);
         }
 
         private void CopyScheduleTimeToRetentionTimes(AzureRmRecoveryServicesBackupLongTermRetentionPolicy retPolicy,

@@ -26,11 +26,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class AzureRmRecoveryServicesIaasVmItem : AzureRmRecoveryServicesItemBase
     {
-        /// <summary>
-        /// Friendly Name for the Item
-        /// </summary>
-        public string Name { get; set; }
-
         public string VirtualMachineId { get; set; }
 
         /// <summary>
@@ -59,16 +54,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public AzureRmRecoveryServicesIaasVmItemExtendedInfo ExtendedInfo { get; set; }
 
         public AzureRmRecoveryServicesIaasVmItem(ProtectedItemResource protectedItemResource,
-            AzureRmRecoveryServicesContainerBase container)
+            AzureRmRecoveryServicesContainerBase container, string policyName)
             : base(protectedItemResource, container)
         {
             AzureIaaSVMProtectedItem protectedItem = (AzureIaaSVMProtectedItem)protectedItemResource.Properties;
             LastBackupStatus = protectedItem.LastBackupStatus;
-            ProtectionPolicyName = protectedItem.PolicyName;
+            ProtectionPolicyName = policyName;
             ProtectionState = EnumUtils.GetEnum<ItemStatus>(protectedItem.ProtectionState);
             ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
             VirtualMachineId = protectedItem.VirtualMachineId;
-            Name = protectedItem.FriendlyName;
         }
     }
 
