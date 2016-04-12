@@ -308,10 +308,23 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.aadClientCertThumbprintKey, AadClientCertThumbprint ?? String.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultUrlKey, DiskEncryptionKeyVaultUrl ?? String.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyEncryptionKeyUrlKey, KeyEncryptionKeyUrl ?? String.Empty);
-            publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyEncryptionAlgorithmKey, KeyEncryptionAlgorithm ?? String.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.volumeTypeKey, VolumeType ?? String.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.enableEncryptionOperation);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.sequenceVersionKey, SequenceVersion ?? String.Empty);
+
+            string keyEncryptAlgorithm = string.Empty;
+            if (!string.IsNullOrEmpty(this.KeyEncryptionKeyUrl))
+            {
+                if(!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
+                {
+                    keyEncryptAlgorithm = KeyEncryptionAlgorithm;
+                }
+                else
+                {
+                    keyEncryptAlgorithm = AzureDiskEncryptionExtensionConstants.defaultKeyEncryptionAlgorithm;
+                }
+            }
+            publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyEncryptionAlgorithmKey, keyEncryptAlgorithm);
 
             return publicSettings;
         }
