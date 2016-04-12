@@ -183,7 +183,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 if (protectedItem.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectedItem)))
                 {
-                    itemModel = new AzureRmRecoveryServicesIaasVmItem(protectedItem, container);
+                    string policyId = ((AzureIaaSVMProtectedItem)protectedItem.Properties).PolicyId;
+                    Dictionary<UriEnums, string> keyVauleDict = 
+                        HelperUtils.ParseUri(policyId);
+                    string policyName = HelperUtils.GetPolicyNameFromPolicyId(keyVauleDict, policyId);
+                    itemModel = new AzureRmRecoveryServicesIaasVmItem(protectedItem, container, policyName);
                 }
             }
 
