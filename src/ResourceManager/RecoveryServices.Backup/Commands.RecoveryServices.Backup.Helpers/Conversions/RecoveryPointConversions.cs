@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     RecoveryPointType = recPoint.RecoveryPointType,
                     RecoveryPointId = rp.Id,
                     WorkloadType = item.WorkloadType,
-                    RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,                    
+                    RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
+                    SourceVMStorageType = recPoint.SourceVMStorageType,
                 };
                 result.Add(rpBase);
             }
