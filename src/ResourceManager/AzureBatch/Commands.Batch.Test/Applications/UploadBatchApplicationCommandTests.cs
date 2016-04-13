@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
 
             PSApplicationPackage applicationPackageResponse = new PSApplicationPackage();
 
-            batchClientMock.Setup(b => b.AddAndUploadApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format)).Returns(applicationPackageResponse);
+            batchClientMock.Setup(b => b.UploadApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format)).Returns(applicationPackageResponse);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
@@ -54,10 +54,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             cmdlet.ApplicationVersion = version;
             cmdlet.Format = format;
 
+
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
-            batchClientMock.Verify(b => b.AddAndUploadApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format), Times.Once());
+            batchClientMock.Verify(b => b.UploadApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format), Times.Once());
         }
     }
 }

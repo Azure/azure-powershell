@@ -21,9 +21,8 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Set, Constants.AzureRmBatchApplication)]
     public class SetBatchApplicationCommand : BatchCmdletBase
     {
-        private static string mamlCall = "UpdateApplication";
+        private static string mamlCall = "SetApplication";
 
-        [Alias("Name")]
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }

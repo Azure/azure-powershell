@@ -215,7 +215,6 @@ namespace Microsoft.Azure.Commands.Batch
             this.ResourceGroupName = idParts[4];
         }
 
-
         /// <summary>
         /// Create a new BAC and fill it in
         /// </summary>

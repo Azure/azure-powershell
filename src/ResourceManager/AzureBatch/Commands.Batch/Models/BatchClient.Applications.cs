@@ -104,9 +104,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 applicationId,
                 version);
 
-
-            PSApplicationPackage applicationPackage = this.ConvertGetApplicationPackageResponseToApplicationPackage(response);
-            return applicationPackage;
+            return this.ConvertGetApplicationPackageResponseToApplicationPackage(response);
         }
 
         public virtual IEnumerable<PSApplication> ListApplications(string resourceGroupName, string accountName)
@@ -164,56 +162,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 uap);
         }
 
-        public virtual PSApplicationPackage AddAndUploadApplicationPackage(
-            string resourceGroupName,
-            string accountName,
-            string applicationId,
-            string version,
-            string filePath,
-            string format)
-        {
-            if (!File.Exists(filePath))
-            {
-                throw new FileNotFoundException("File not found: " + filePath);
-            }
-
-            if (string.IsNullOrEmpty(resourceGroupName))
-            {
-                // use resource mgr to see if account exists and then use resource group name to do the actual lookup
-                resourceGroupName = GetGroupForAccount(accountName);
-            }
-
-            AddApplicationPackageResponse response = BatchManagementClient.Applications.AddApplicationPackage(
-                resourceGroupName,
-                accountName,
-                applicationId,
-                version);
-
-            CloudBlockBlob blob = new CloudBlockBlob(new Uri(response.StorageUrl));
-
-            try
-            {
-                blob.UploadFromFile(filePath, FileMode.Open);
-
-                BatchManagementClient.Applications.ActivateApplicationPackage(
-                    resourceGroupName,
-                    accountName,
-                    applicationId,
-                    version,
-                    new ActivateApplicationPackageParameters { Format = format });
-            }
-            catch
-            {
-                this.DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
-                throw;
-            }
-
-            PSApplicationPackage getResponse = this.GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
-
-            return getResponse;
-        }
-
-
         public virtual PSApplicationPackage UploadApplicationPackage(
             string resourceGroupName,
             string accountName,
@@ -232,7 +180,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 // use resource mgr to see if account exists and then use resource group name to do the actual lookup
                 resourceGroupName = GetGroupForAccount(accountName);
             }
-            
+
             bool needToCreateAnApplicationPackage;
             var storageUrl = GetStorageUrl(resourceGroupName, accountName, applicationId, version, out needToCreateAnApplicationPackage);
 

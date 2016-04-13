@@ -21,9 +21,8 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Remove, Constants.AzureRmBatchApplication)]
     public class RemoveBatchApplicationCommand : BatchCmdletBase
     {
-        private static string mamlCall = "DeleteApplication";
+        private static string mamlCall = "RemoveApplication";
 
-        [Alias("Name")]
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }

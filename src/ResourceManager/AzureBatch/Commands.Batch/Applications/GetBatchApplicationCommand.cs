@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchApplication), OutputType(typeof(PSApplication))]
     public class GetBatchApplicationCommand : BatchCmdletBase
     {
-        [Alias("Name")]
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
