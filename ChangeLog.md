@@ -1,4 +1,6 @@
-﻿##2016.03.30 version 1.3.0
+##2016.04.19 version 1.3.2
+
+##2016.03.30 version 1.3.0
 * AzureRM module
   - Installation performance fix
 * New Azure CDN cmdlets
