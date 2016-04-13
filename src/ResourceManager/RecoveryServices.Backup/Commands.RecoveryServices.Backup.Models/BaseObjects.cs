@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string Name { get; set; }
 
         public AzureRmRecoveryServicesContainerBase(ProtectionContainerResource protectionContainer)
-            : base(ConversionUtils.GetPsContainerType(((ProtectionContainer)protectionContainer.Properties).ContainerType), 
+            : base(ConversionUtils.GetPsContainerType(((ProtectionContainer)protectionContainer.Properties).ContainerType),
                    ((ProtectionContainer)protectionContainer.Properties).BackupManagementType)
         {
-            Name = protectionContainer.Name;
+            Name = IdUtils.GetNameFromUri(protectionContainer.Name);
         }
     }
 
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureRmRecoveryServicesRecoveryPointBase : AzureRmRecoveryServicesItemContext
     {
         private global::Microsoft.Azure.Management.RecoveryServices.Backup.Models.RecoveryPointResource rp;
-                
+
         /// <summary>
         /// 
         /// </summary>
@@ -212,12 +212,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             base.Validate();
 
-            if(string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(Name))
             {
                 throw new ArgumentException(Resources.PolicyNameIsEmptyOrNull);
             }
 
-            if(string.IsNullOrEmpty(Id))
+            if (string.IsNullOrEmpty(Id))
             {
                 throw new ArgumentException(Resources.PolicyIdIsEmptyOrNull);
             }
