@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Model
 {
-    public class AzureSqlDatabaseBackupArchivalPolicyModel
+    public class AzureSqlDatabaseBackupLongTermRetentionPolicyModel
     {
         /// <summary>
         /// Gets or sets the name of the resource group
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// <summary>
         /// Gets or sets the backup archival state
         /// </summary>
-        public string State { get; set; }
+        public bool State { get; set; }
 
         /// <summary>
         /// Gets or sets the backup archival policy resource ID

@@ -20,27 +20,20 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
-        ConfirmImpact = ConfirmImpact.None)]
-    public class GetAzureSqlDatabaseBackupArchivalPolicy : AzureSqlDatabaseBackupArchivalPolicyCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerBackupLongTermRetentionVault",
+         ConfirmImpact = ConfirmImpact.None)]
+    public class GetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
-        protected override IEnumerable<AzureSqlDatabaseBackupArchivalPolicyModel> GetEntity()
+        protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> GetEntity()
         {
-            ICollection<AzureSqlDatabaseBackupArchivalPolicyModel> results;
+            ICollection<AzureSqlServerBackupLongTermRetentionVaultModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("BackupLongTermRetentionPolicyName"))
-            {
-                results = new List<AzureSqlDatabaseBackupArchivalPolicyModel>();
-                results.Add(ModelAdapter.GetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.BackupLongTermRetentionPolicyName));
-            }
-            else
-            {
-                results = ModelAdapter.ListDatabaseBackupArchivalPolicies(this.ResourceGroupName, this.ServerName, this.DatabaseName);
-            }
+            results = new List<AzureSqlServerBackupLongTermRetentionVaultModel>();
+            results.Add(ModelAdapter.GetBackupArchivalVault(this.ResourceGroupName, this.ServerName));
 
             return results;
         }
@@ -50,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlDatabaseBackupArchivalPolicyModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseBackupArchivalPolicyModel> model)
+        protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> model)
         {
             return model;
         }
@@ -60,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlDatabaseBackupArchivalPolicyModel> PersistChanges(IEnumerable<AzureSqlDatabaseBackupArchivalPolicyModel> entity)
+        protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> PersistChanges(IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> entity)
         {
             return entity;
         }

@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    public abstract class AzureSqlDatabaseBackupArchivalPolicyCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseBackupArchivalPolicyModel>, AzureSqlDatabaseBackupAdapter>
+    public abstract class AzureSqlServerBackupLongTermRetentionVaultCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -34,25 +34,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             HelpMessage = "The name of the Azure SQL Server the database is in.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the database to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "The name of the Azure SQL Database to use.")]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the backup long term retention policy.
-        /// </summary>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the backup long term retention policy.")]
-        [ValidateNotNullOrEmpty]
-        public string BackupLongTermRetentionPolicyName { get; set; }
 
         /// <summary>
         /// Initializes the adapter

@@ -51,19 +51,19 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseBackupArchivalPolicyCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseGeoBackupCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDeletedDatabaseBackupCmdletBase.cs" />
-    <Compile Include="Database Backup\Cmdlet\AzureSqlServerBackupArchivalVaultCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\AzureSqlServerBackupLongTermRetentionVaultCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\GetAzureRMSqlDeletedDatabaseBackup.cs" />
     <Compile Include="Database Backup\Cmdlet\GetAzureRMSqlDatabaseGeoBackup.cs" />
-    <Compile Include="Database Backup\Cmdlet\GetAzureSqlDatabaseBackupArchivalPolicy.cs" />
-    <Compile Include="Database Backup\Cmdlet\GetAzureSqlServerBackupArchivalVault.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureSqlDatabaseBackupLongTermRetentionPolicy.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureSqlServerBackupLongTermRetentionVault.cs" />
     <Compile Include="Database Backup\Cmdlet\RestoreAzureRMSqlDatabase.cs" />
-    <Compile Include="Database Backup\Cmdlet\SetAzureSqlDatabaseBackupArchivalPolicy.cs" />
-    <Compile Include="Database Backup\Cmdlet\SetAzureSqlServerBackupArchivalVault.cs" />
-    <Compile Include="Database Backup\Model\AzureSqlDatabaseBackupArchivalPolicyModel.cs" />
-    <Compile Include="Database Backup\Model\AzureSqlServerBackupArchivalVaultModel.cs" />
+    <Compile Include="Database Backup\Cmdlet\SetAzureSqlDatabaseBackupLongTermRetentionPolicy.cs" />
+    <Compile Include="Database Backup\Cmdlet\SetAzureSqlServerBackupLongTermRetentionVault.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDatabaseBackupLongTermRetentionPolicyModel.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlServerBackupLongTermRetentionVaultModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDeletedDatabaseBackupModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseGeoBackupModel.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SqlDatabaseThreatDetectionCmdletBase.cs" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Model
 {
-    public class AzureSqlServerBackupArchivalVaultModel
+    public class AzureSqlServerBackupLongTermRetentionVaultModel
     {
         /// <summary>
         /// Gets or sets the name of the resource group

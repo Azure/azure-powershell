@@ -95,15 +95,45 @@ function Test-RestorePointInTimeBackup
 
 function Test-ServerBackupLongTermRetentionVault
 {
-	# Setup
+	$location = "Southeast Asia"
+	$serverVersion = "12.0"
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test
+	$vaultResourceId = "INSERT_RESOURCEID_HERE"
+
+	# set
+	Set-AzureSqlServerBackupLongTermRetentionVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -RecoveryServicesVaultResourceId $vaultResourceId
+	# get
+	$result = Get-AzureRmBackupVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName
+	#verify
+	Assert-True { $result.ResourceId -eq $vaultResourceId }
 }
 
 function Test-DatabaseBackupLongTermRetentionPolicy
 {
-    # Setup
+	$location = "Southeast Asia"
+	$serverVersion = "12.0"
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb -ResourceGroupName $rg.ResourceGroupName
+	$policyResourceId = "INSERT_RESOURCEID_HERE"
+
+	# set
+	Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName -State 1 -RecoveryServicesBackupPolicyResourceId $policyResourceId
+	# get
+	$result = Get-AzureRmBackupVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName
+	#verify
+	Assert-True { $result.ResourceId -eq $policyResourceId }
 }
 
 function Test-RestoreLongTermRetentionBackup
 {
-    # Setup
+	$location = "Southeast Asia"
+	$serverVersion = "12.0"
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test
+	$restoredDbName = "powershell_db_restored_ltr"
+	$recoveryPointResourceId = "INSERT_RESOURCEID_HERE"
+
+    Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $recoveryPointResourceId -TargetDatabaseName $restoredDbName -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 }

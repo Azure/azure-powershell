@@ -120,67 +120,42 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
-        /// Lists the backup vaults for a given Sql Azure Server.
+        /// Get a backup LongTermRetention vault for a given Azure SQL Server
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <returns>List of backup vaults</returns>
-        public IList<Management.Sql.Models.BackupArchivalVault> ListBackupArchivalVaults(string resourceGroupName, string serverName, string clientRequestId)
-        {
-            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.ListBackupArchivalVaults(resourceGroupName, serverName).BackupArchivalVaults;
-        }
-
-        /// <summary>
-        /// Lists the backup archival policies for a Azure SQL Database
-        /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <param name="databaseName">The name of the Azure SQL database</param>
-        /// <returns>List of backup archival policies</returns>
-        public IList<Management.Sql.Models.DatabaseBackupArchivalPolicy> ListDatabaseBackupArchivalPolicies(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
-        {
-            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.ListDatabaseBackupArchivalPolicies(resourceGroupName, serverName, databaseName).DatabaseBackupArchivalPolicies;
-        }
-
-        /// <summary>
-        /// Get a backup archival vault for a given Azure SQL Server
-        /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <param name="baVaultName">The name of the backup vault</param>
         /// <returns>A backup vault</returns>
-        public Management.Sql.Models.BackupArchivalVault GetBackupArchivalVault(string resourceGroupName, string serverName, string baVaultName, string clientRequestId)
+        public Management.Sql.Models.BackupLongTermRetentionVault GetBackupLongTermRetentionVault(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.GetBackupArchivalVault(resourceGroupName, serverName, baVaultName).BackupArchivalVault;
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.GetBackupLongTermRetentionVault(resourceGroupName, serverName, "RegisteredVault").BackupLongTermRetentionVault;
         }
 
         /// <summary>
-        /// Get a backup archival policy for a Azure SQL Database
+        /// Get a backup LongTermRetention policy for a Azure SQL Database
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
-        /// <param name="baPolicyName">THe name of the backup archival policy</param>
-        /// <returns>A backup archival policy</returns>
-        public Management.Sql.Models.DatabaseBackupArchivalPolicy GetDatabaseBackupArchivalPolicy(string resourceGroupName, string serverName, string databaseName, string baPolicyName, string clientRequestId)
+        /// <returns>A backup LongTermRetention policy</returns>
+        public Management.Sql.Models.DatabaseBackupLongTermRetentionPolicy GetDatabaseBackupLongTermRetentionPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.GetDatabaseBackupArchivalPolicy(resourceGroupName, serverName, databaseName, baPolicyName).DatabaseBackupArchivalPolicy;
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.GetDatabaseBackupLongTermRetentionPolicy(resourceGroupName, serverName, databaseName, "Default").DatabaseBackupLongTermRetentionPolicy;
         }
 
         /// <summary>
-        /// Creates or updates a backup archival vault
+        /// Creates or updates a backup LongTermRetention vault
         /// </summary>
-        public Management.Sql.Models.BackupArchivalVault SetBackupArchivalVault(string resourceGroupName, string serverName, string baVaultName, string clientRequestId, BackupArchivalVaultCreateOrUpdateParameters parameters)
+        public Management.Sql.Models.BackupLongTermRetentionVault SetBackupLongTermRetentionVault(string resourceGroupName, string serverName, string clientRequestId, BackupLongTermRetentionVaultCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.CreateOrUpdate(resourceGroupName, serverName, baVaultName, parameters).BackupArchivalVault;
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.CreateOrUpdate(resourceGroupName, serverName, "RegisteredVault", parameters).BackupLongTermRetentionVault;
         }
 
         /// <summary>
-        /// Creates or updates a backup archival policy
+        /// Creates or updates a backup LongTermRetention policy
         /// </summary>
-        public Management.Sql.Models.DatabaseBackupArchivalPolicy SetDatabaseBackupArchivalPolicy(string resourceGroupName, string serverName, string databaseName, string baPolicyName, string clientRequestId, DatabaseBackupArchivalPolicyCreateOrUpdateParameters parameters)
+        public Management.Sql.Models.DatabaseBackupLongTermRetentionPolicy SetDatabaseBackupLongTermRetentionPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseBackupLongTermRetentionPolicyCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.CreateOrUpdate(resourceGroupName, serverName, databaseName, baPolicyName, parameters).DatabaseBackupArchivalPolicy;
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.CreateOrUpdate(resourceGroupName, serverName, databaseName, "Default", parameters).DatabaseBackupLongTermRetentionPolicy;
         }
 
         /// <summary>
