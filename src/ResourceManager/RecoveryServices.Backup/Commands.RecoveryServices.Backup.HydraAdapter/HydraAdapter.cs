@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 using RecoveryServicesModelsNS = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices.Backup;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
 {
     public partial class HydraAdapter
     {

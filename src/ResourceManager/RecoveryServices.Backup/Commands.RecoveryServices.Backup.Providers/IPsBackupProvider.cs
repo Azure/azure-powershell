@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public interface IPsBackupProvider
     {
-        void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter);
+        void Initialize(ProviderData providerData, HydraAdapter hydraAdapter);
 
         BaseRecoveryServicesJobResponse EnableProtection();
 
