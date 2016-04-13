@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -37,6 +38,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             foreach (RecoveryPointResource rp in rpList.RecoveryPointList.RecoveryPoints)
             {
                 RecoveryPoint recPoint = rp.Properties as RecoveryPoint;
+
+                DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture).ToLocalTime();
                 AzureRmRecoveryServicesIaasVmRecoveryPoint rpBase = new AzureRmRecoveryServicesIaasVmRecoveryPoint()
                 {
                     Name = rp.Name,
@@ -44,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     ItemName = protectedItemName,
                     ContainerName = containerUri,
                     ContainerType = item.ContainerType,
-                    RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
+                    RecoveryPointTime = recPointTime,
                     RecoveryPointType = recPoint.RecoveryPointType,
                     RecoveryPointId = rp.Id,
                     WorkloadType = item.WorkloadType,
