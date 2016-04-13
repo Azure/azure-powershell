@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(ValueFromPipeline = true, Position = 1)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 1)]
         [ValidateNotNullOrEmpty]
         public ARSVault Vault { get; set; }
 
@@ -83,14 +83,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByDefault, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ForSite, Mandatory = true)]
-        public SwitchParameter ASR
+        [Parameter(ParameterSetName = ASRParameterSets.ByDefault, Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.ForSite, Mandatory = false)]
+        public SwitchParameter SiteRecovery
         {
-            get { return asr; }
-            set { asr = value; }
+            get { return siteRecovery; }
+            set { siteRecovery = value; }
         }
-        private bool asr;
+        private bool siteRecovery;
 
         /// <summary>
         /// Gets or sets the path where the credential file is to be generated
@@ -115,14 +115,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                if (asr)
-                {
-                    this.GetVaultSettingsFile();
-                }
                 if (backup)
                 {
                     this.GetAzureRMRecoveryServicesVaultBackupCredentials();
                 }
+                else
+                {
+                    this.GetVaultSettingsFile();
+                }
+
             }
             catch (AggregateException aggregateEx)
             {
