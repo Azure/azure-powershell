@@ -324,6 +324,7 @@
     <Compile Include="WAPackIaaS\Operations\StaticIPAddressPoolOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VirtualHardDiskOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VirtualMachineOperations.cs" />
+    <Compile Include="WAPackIaaS\Operations\VMRoleSizeProfileOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VMSubnetOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VMNetworkOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VMRoleOperations.cs" />
