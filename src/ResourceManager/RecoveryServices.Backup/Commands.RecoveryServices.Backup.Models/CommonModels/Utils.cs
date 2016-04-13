@@ -150,13 +150,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             }
         }
 
-        public static BackupEngineType GetPsBackupEngineType(string backupEngineType)
-        {
-            BackupEngineType type = 0;
-            Enum.TryParse(backupEngineType, out type);
-            return type;
-        }
-
         public static WorkloadType GetPsWorkloadType(string workloadType)
         {
             if (workloadType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.VM)
