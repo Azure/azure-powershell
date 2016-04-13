@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         public static string GetString<T>(IEnumerable<T> objList)
         {
-            return (objList == null) ? "null" : "{" + string.Join(", ", objList.Select(e => e.ToString())) +"}";
-        }       
+            return (objList == null) ? "null" : "{" + string.Join(", ", objList.Select(e => e.ToString())) + "}";
+        }
     }
 
     public class IdUtils
@@ -103,6 +103,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                .ToDictionary(x => x.k.Value, x => x.v.Value);
 
             return dict[idName];
+        }
+
+        /// <summary>
+        /// URI format: Type;Name
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <returns></returns>
+        public static string GetNameFromUri(string uri)
+        {
+            return uri.Substring(uri.IndexOf(NameDelimiter) + 1);
         }
     }
 
