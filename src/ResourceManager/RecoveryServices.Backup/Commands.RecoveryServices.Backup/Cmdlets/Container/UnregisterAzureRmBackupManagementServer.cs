@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,10 +38,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
             {
                 base.ExecuteCmdlet();
 
-                if ((AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.DpmEngine && AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.DpmVenusEngine)||
+                if ((AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.DpmBackupEngine.ToString() && AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.AzureBackupServerEngine.ToString())||
                     AzureRmBackupManagementServer.BackupManagementType != BackupManagementType.SCDPM)
                 {
-                    throw new ArgumentException(String.Format("Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid.", AzureRmBackupManagementServer.BackupEngineType, AzureRmBackupManagementServer.BackupManagementType));
+                    throw new ArgumentException(String.Format(Resources.UnsupportedAzureRmBackupManagementServerException, AzureRmBackupManagementServer.BackupEngineType, AzureRmBackupManagementServer.BackupManagementType));
                 }
 
                 string azureRmBackupManagementServer = AzureRmBackupManagementServer.Name;
