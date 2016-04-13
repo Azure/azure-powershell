@@ -28,7 +28,7 @@ function Test-PolicyScenario
 	$schedulePolicy = Get-AzureRmRecoveryServicesSchedulePolicyObject -WorkloadType "AzureVM"
 	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
 
-    $temp = Get-AzureRmRecoveryServicesProtectionPolicy -Name "pwtest1"	
+    $temp = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "pwtest1"	
 	Set-AzureRmRecoveryServicesBackupProtectionPolicy -RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy -Policy $temp
 
 	#cleanup 

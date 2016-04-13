@@ -723,6 +723,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Restore Azure Backup Item Operation.
+        /// </summary>
+        public static string RestoreOperation {
+            get {
+                return ResourceManager.GetString("RestoreOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999.
         /// </summary>
         public static string RetentionDurationCountInvalidException {
@@ -800,6 +809,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string UnExpectedWorkLoadTypeException {
             get {
                 return ResourceManager.GetString("UnExpectedWorkLoadTypeException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid..
+        /// </summary>
+        public static string UnsupportedAzureRmBackupManagementServerException {
+            get {
+                return ResourceManager.GetString("UnsupportedAzureRmBackupManagementServerException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide Container of containerType as Windows and backupManagementType as MARS. Provided Container has containerType {0} and backupManagementType {1} which is invalid..
+        /// </summary>
+        public static string UnsupportedContainerException {
+            get {
+                return ResourceManager.GetString("UnsupportedContainerException", resourceCulture);
             }
         }
         

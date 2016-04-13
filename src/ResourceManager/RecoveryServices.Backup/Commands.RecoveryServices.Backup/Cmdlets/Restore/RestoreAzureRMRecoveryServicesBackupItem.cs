@@ -77,11 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string storageAccountlocation = resource.Resource.Location;
                 string storageAccountType = resource.Resource.Type;
 
-                //GetStorageResource(StorageAccountName, out storageAccountId, out storageAccountlocation, out storageAccountType);
-
                 WriteDebug(String.Format("StorageId = {0}", storageAccountId));
-
-                storageAccountId = StorageAccountName; //TBD: once service will migrate to storageID we will remove this line;
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
@@ -95,22 +91,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 var jobResponse = psBackupProvider.TriggerRestore();
 
                 WriteDebug(String.Format("Restore submitted"));
-                var response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
-                while (response.OperationStatus.Status == "InProgress")
-                {
-                    WriteDebug(String.Format("Restore inProgress"));
-                    response = HydraAdapter.GetProtectedItemOperationStatusByURL(jobResponse.AzureAsyncOperation);
-                    TestMockSupport.Delay(TimeSpan.FromSeconds(5));
-                }
-
-                if (response.OperationStatus.Status == "Completed")
-                {
-                    // TBD -- Hydra change to add jobId in OperationStatusExtendedInfo
-                    WriteDebug(String.Format("Restore Completed"));
-                    string jobId = ""; //response.OperationStatus.Properties.jobId;
-                    var job = HydraAdapter.GetJob(jobId);
-                    //WriteObject(ConversionHelpers.GetJobModel(job));
-                }
+                HandleCreatedJob(jobResponse, Resources.RestoreOperation);
             });
         }
 
