@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 
                 if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.MARS)
                 {
-                    throw new ArgumentException(String.Format("Please provide Container of containerType as Windows and backupManagementType as MARS. Provided Container has containerType {0} and backupManagementType {1} which is invalid.", Container.ContainerType, Container.BackupManagementType));
+                    throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, Container.ContainerType, Container.BackupManagementType));
                 }
                 AzureRmRecoveryServicesMabContainer mabContainer = Container as AzureRmRecoveryServicesMabContainer;
                 string containerName = mabContainer.FriendlyName;
