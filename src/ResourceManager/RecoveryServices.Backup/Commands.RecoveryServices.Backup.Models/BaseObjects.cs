@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public class AzureRmRecoveryServicesBackupEngineContext : AzureRmRecoveryServicesBackupManagementContext
     {
-        public BackupEngineType BackupEngineType { get; set; }
+        public string BackupEngineType { get; set; }
 
         public AzureRmRecoveryServicesBackupEngineContext() { }
 
-        public AzureRmRecoveryServicesBackupEngineContext(BackupEngineType backupEngineType, string backupManagementType)
+        public AzureRmRecoveryServicesBackupEngineContext(string backupEngineType, string backupManagementType)
             : base(backupManagementType)
         {
             BackupEngineType = backupEngineType;
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string Name { get; set; }
 
         public AzureRmRecoveryServicesBackupEngineBase(BackupEngineResource backupEngine)
-            : base(ConversionUtils.GetPsBackupEngineType(((BackupEngineBase)backupEngine.Properties).BackupEngineType),
+            : base(((BackupEngineBase)backupEngine.Properties).BackupEngineType,
                    ((BackupEngineBase)backupEngine.Properties).BackupManagementType)
         {
             Name = backupEngine.Name;

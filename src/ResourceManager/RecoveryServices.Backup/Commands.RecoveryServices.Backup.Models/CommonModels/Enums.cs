@@ -27,20 +27,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Windows
     }
 
-    public enum BackupEngineType
-    {
-        Invalid = 0,
-
-        DpmEngine,
-
-        DpmVenusEngine
-    }
-
     public enum BackupManagementType
     {
         AzureVM = 1,
         MARS,
         SCDPM
+    }
+
+    public enum BackupEngineType
+    {
+        DpmBackupEngine = 1,
+        AzureBackupServerEngine
     }
 
     public enum WorkloadType
