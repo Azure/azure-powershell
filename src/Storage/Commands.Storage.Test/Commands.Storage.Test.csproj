@@ -205,6 +205,7 @@
     <Compile Include="Common\CmdletOperationContextTest.cs" />
     <Compile Include="Common\ResourceAlreadyExistExceptionTest.cs" />
     <Compile Include="Common\ResourceNotFoundExceptionTest.cs" />
+    <Compile Include="Common\AccessPolicyHelperTest.cs" />
     <Compile Include="Common\SasTokenHelperTest.cs" />
     <Compile Include="Common\StorageCloudCmdletBaseTest.cs" />
     <Compile Include="Common\StorageExceptionUtilTest.cs" />
