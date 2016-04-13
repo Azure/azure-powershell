@@ -410,4 +410,10 @@ Please contact Microsoft for further assistant.</value>
   <data name="RestoreOperation" xml:space="preserve">
     <value>Restore Azure Backup Item Operation</value>
   </data>
+  <data name="UnsupportedAzureRmBackupManagementServerException" xml:space="preserve">
+    <value>Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid.</value>
+  </data>
+  <data name="UnsupportedContainerException" xml:space="preserve">
+    <value>Please provide Container of containerType as Windows and backupManagementType as MARS. Provided Container has containerType {0} and backupManagementType {1} which is invalid.</value>
+  </data>
 </root>
