@@ -128,8 +128,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Upload cert to idmgmt
         /// </summary>
-        /// <param name="managementCert"></param>
-        /// <returns></returns>
+        /// <param name="managementCert">certificate to be uploaded</param>
+        /// <param name="vault">vault object</param>
+        /// <returns>Upload Certificate Response</returns>
         public UploadCertificateResponse UploadCertificate(X509Certificate2 managementCert, ARSVault vault)
         {
             var certificateArgs = new CertificateArgs();

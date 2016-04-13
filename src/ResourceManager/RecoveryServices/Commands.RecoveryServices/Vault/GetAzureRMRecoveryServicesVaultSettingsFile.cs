@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Retrieves Azure Recovery Services Vault Settings File.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesVaultSettingsFile")]
-    [OutputType(typeof(VaultSettingsFilePath), typeof(string))]
-    public partial class GetAzureRmRecoveryServicesVaultSettingsFile : RecoveryServicesCmdletBase
+    [OutputType(typeof(VaultSettingsFilePath))]
+    public class GetAzureRmRecoveryServicesVaultSettingsFile : RecoveryServicesCmdletBase
     {
         /// <summary>
         /// Expiry in hours for generated certificate.
@@ -192,6 +192,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         #region Backup Vault Credentials
+        /// <summary>
+        /// Get vault credentials for backup vault type.
+        /// </summary>
         public void GetAzureRMRecoveryServicesVaultBackupCredentials()
         {
             string targetLocation = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
@@ -253,7 +256,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Upload certificate
         /// </summary>
         /// <param name="cert">management certificate</param>
-        /// <param name="subscriptionId">subscription Id</param>
         /// <returns>acs namespace of the uploaded cert</returns>
         private AcsNamespace UploadCert(X509Certificate2 cert)
         {
@@ -309,6 +311,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
+        /// <summary>
+        /// Get Agent Links
+        /// </summary>
+        /// <returns>Agent links in string format</returns>
         private static string GetAgentLinks()
         {
             return "WABUpdateKBLink,http://go.microsoft.com/fwlink/p/?LinkId=229525;" +
