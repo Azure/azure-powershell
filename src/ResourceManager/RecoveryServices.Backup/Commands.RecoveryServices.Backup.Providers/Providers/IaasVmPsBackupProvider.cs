@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private const string classicComputeAzureVMVersion = "Microsoft.ClassicCompute";
 
         ProviderData ProviderData { get; set; }
-        HydraAdapter.HydraAdapter HydraAdapter { get; set; }
+        HydraAdapter HydraAdapter { get; set; }
 
-        public void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter)
+        public void Initialize(ProviderData providerData, HydraAdapter hydraAdapter)
         {
             this.ProviderData = providerData;
             this.HydraAdapter = hydraAdapter;

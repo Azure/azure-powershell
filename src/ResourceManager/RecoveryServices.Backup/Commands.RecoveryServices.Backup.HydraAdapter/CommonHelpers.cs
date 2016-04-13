@@ -15,7 +15,7 @@
 using System;
 using System.Globalization;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
 {
     public class CommonHelpers
     {

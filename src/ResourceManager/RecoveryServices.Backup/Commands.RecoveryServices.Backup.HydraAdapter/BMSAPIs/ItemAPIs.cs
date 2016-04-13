@@ -19,7 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
 {
     public partial class HydraAdapter
     {
