@@ -18,12 +18,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class AzureSqlPsBackupProvider : IPsBackupProvider
     {
-        public void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter)
+        public void Initialize(ProviderData providerData, HydraAdapter hydraAdapter)
         {
             throw new NotImplementedException();
         }
