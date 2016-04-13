@@ -23,7 +23,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using HydraAdapterNS = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -42,12 +42,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         // in seconds
         private int _defaultSleepForOperationTracking = 5;
 
-        protected HydraAdapterNS.HydraAdapter HydraAdapter { get; set; }
+        protected HydraAdapter HydraAdapter { get; set; }
 
         protected void InitializeAzureBackupCmdlet()
         {
             var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-            HydraAdapter = new HydraAdapterNS.HydraAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
+            HydraAdapter = new HydraAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
             Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
         }
 

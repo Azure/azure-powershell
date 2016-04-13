@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using System;
 using System.Collections.Generic;
@@ -24,12 +25,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
     public class PsBackupProviderManager
     {
         ProviderData providerData;
-        HydraAdapter.HydraAdapter hydraAdapter;
+        HydraAdapter hydraAdapter;
 
-        public PsBackupProviderManager(Dictionary<System.Enum, object> providerParams, HydraAdapter.HydraAdapter hydraAdapterIn)
+        public PsBackupProviderManager(Dictionary<System.Enum, object> providerParams, HydraAdapter hydraAdapterIn)
             : this(new ProviderData(providerParams), hydraAdapterIn) { }
 
-        public PsBackupProviderManager(ProviderData providerDataIn, HydraAdapter.HydraAdapter hydraAdapterIn)
+        public PsBackupProviderManager(ProviderData providerDataIn, HydraAdapter hydraAdapterIn)
         {
             providerData = providerDataIn;
             hydraAdapter = hydraAdapterIn;

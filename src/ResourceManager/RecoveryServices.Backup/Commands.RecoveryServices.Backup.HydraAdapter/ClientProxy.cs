@@ -20,7 +20,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
 {
     public partial class ClientProxy<TClient, THeader> : ClientProxyBase
         where TClient : ServiceClient<TClient>
