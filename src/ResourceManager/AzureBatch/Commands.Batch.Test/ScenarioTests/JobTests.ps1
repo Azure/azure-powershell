@@ -371,11 +371,7 @@ function Test-UpdateJob
 	$targetOS = "*"
 	$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
-	$osFamily = 4
-	$targetOS = "*"
-	$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
-
-    # Create the job with an auto pool
+	# Create the job with an auto pool
     $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
     $poolSpec.TargetDedicated = 3
     $poolSpec.VirtualMachineSize = "small"
@@ -530,14 +526,14 @@ function Test-TerminateJob
 
 <#
 .SYNOPSIS
-Tests terminating a job
+Tests create job with TaskDependencies
 #>
 function Test-JobWithTaskDependencies
 {
     param([string]$accountName)
 
 	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-	$jobId = "testJob2"
+	$jobId = "testJob4"
 
 	try
 	{
@@ -562,14 +558,15 @@ function Test-JobWithTaskDependencies
 
 		$taskIds = @("2","3")
 		$taskIdRange = New-Object Microsoft.Azure.Batch.TaskIdRange(1,10)
-		$taskDepen = New-Object Microsoft.Azure.Batch.TaskDependencies -ArgumentList @([string[]]$taskIds, [Microsoft.Azure.Batch.TaskIdRange[]]$taskIdRange)
-		New-AzureBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation2 -DependsOn $TRUE
-		New-AzureBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -TaskDependencies $taskDepen -JobId $jobId
-		#
+		$dependsOn = New-Object Microsoft.Azure.Batch.TaskDependencies -ArgumentList @([string[]]$taskIds, [Microsoft.Azure.Batch.TaskIdRange[]]$taskIdRange)
+		New-AzureBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation2 -usesTaskDependencies
+		New-AzureBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -DependsOn $dependsOn -JobId $jobId
 		$job = Get-AzureBatchJob -Id $jobId -BatchContext $context
-		#
-		Assert-AreEqual $job.UsesTaskDependencies $TRUE
 
+		Assert-AreEqual $job.UsesTaskDependencies $TRUE
+		$task2 = Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $context
+		Assert-AreEqual $task2.dependsOn.TaskIdRanges.End "10"
+		Assert-AreEqual $task2.dependsOn.TaskIdRanges.Start "1"
 	}
 	finally
 	{

@@ -116,9 +116,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 job.Constraints = parameters.Constraints.omObject;
             }
 
-            if (parameters.DependsOn != null)
+            if (parameters.UsesTaskDependencies != null)
             {
-                job.UsesTaskDependencies = parameters.DependsOn;
+                job.UsesTaskDependencies = parameters.UsesTaskDependencies;
             }
 
             if (parameters.JobManagerTask != null)

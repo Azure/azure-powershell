@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Tags.Model;
 
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -24,33 +25,30 @@ namespace Microsoft.Azure.Commands.Batch
     public class GetBatchApplicationCommand : BatchCmdletBase
     {
         [Alias("Name")]
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
         public override void ExecuteCmdlet()
         {
             if (string.IsNullOrEmpty(this.ApplicationId))
             {
-                foreach (PSApplication context in BatchClient.ListApplications(this.ResourceGroupName, AccountName))
+                foreach (PSApplication context in BatchClient.ListApplications(this.ResourceGroupName, this.AccountName))
                 {
                     WriteObject(context);
                 }
             }
             else
             {
-                PSApplication context = BatchClient.GetApplication(this.ResourceGroupName, this.AccountName, ApplicationId);
+                PSApplication context = BatchClient.GetApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId);
                 WriteObject(context);
             }
         }

@@ -91,7 +91,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             CloudTask task = new CloudTask(parameters.TaskId, parameters.CommandLine);
-
             task.DisplayName = parameters.DisplayName;
             task.RunElevated = parameters.RunElevated;
 
@@ -124,9 +123,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 task.Constraints = parameters.Constraints.omObject;
             }
-            if (parameters.TaskDependencies != null)
+
+            if (parameters.DependsOn != null)
             {
-                task.DependsOn = parameters.TaskDependencies;
+                task.DependsOn = parameters.DependsOn;
             }
 
             if (parameters.MultiInstanceSettings != null)

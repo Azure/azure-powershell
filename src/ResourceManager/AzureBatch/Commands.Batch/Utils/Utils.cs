@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             if (pool != null)
             {
                 pool.omObject.ApplicationPackageReferences = CreateSyncedList(pool.ApplicationPackageReferences,
-                    (apr) =>
+                (apr) =>
                 {
                     return ConvertApplicationPackageReference(apr);
                 });
@@ -261,15 +261,14 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
                 spec.omObject.ApplicationPackageReferences = CreateSyncedList(spec.ApplicationPackageReferences,
                     (apr) =>
+                    {
+                        ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference()
                         {
-                            ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference()
-                            {
-                                ApplicationId = apr.ApplicationId,
-                                Version = apr.Version
-                            };
-
-                            return applicationPackageReference;
-                        });
+                            ApplicationId = apr.ApplicationId,
+                            Version = apr.Version
+                        };
+                        return applicationPackageReference;
+                    });
 
                 if (spec.StartTask != null)
                 {
@@ -360,9 +359,11 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         /// </summary>
         private static ApplicationPackageReference ConvertApplicationPackageReference(PSApplicationPackageReference psApr)
         {
-            ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference();
-            applicationPackageReference.ApplicationId = psApr.ApplicationId;
-            applicationPackageReference.Version = psApr.Version;
+            ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference()
+            {
+                ApplicationId = psApr.ApplicationId,
+                Version = psApr.Version
+            };
             return applicationPackageReference;
         }
     }

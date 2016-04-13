@@ -14,8 +14,7 @@
 
 using System.Management.Automation;
 
-using Microsoft.Azure.Commands.Tags.Model;
-
+using Microsoft.Azure.Commands.Batch.Models;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
@@ -24,28 +23,25 @@ namespace Microsoft.Azure.Commands.Batch
     public class GetBatchApplicationPackageCommand : BatchCmdletBase
     {
         [Alias("Name")]
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string ApplicationVersion { get; set; }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
         public override void ExecuteCmdlet()
         {
-            PSApplicationPackage context = BatchClient.GetApplicationPackage(this.ResourceGroupName, this.AccountName, ApplicationId, ApplicationVersion);
+            PSApplicationPackage context = BatchClient.GetApplicationPackage(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.ApplicationVersion);
             WriteObject(context);
         }
     }

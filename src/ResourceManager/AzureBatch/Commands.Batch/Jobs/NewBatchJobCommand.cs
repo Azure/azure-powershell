@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using System.Runtime.Remoting;
+
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
@@ -65,7 +67,7 @@ namespace Microsoft.Azure.Commands.Batch
         public int Priority { get; set; }
 
         [Parameter]
-        public bool DependsOn { get; set; }
+        public SwitchParameter UsesTaskDependencies { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -80,7 +82,7 @@ namespace Microsoft.Azure.Commands.Batch
                 Metadata = this.Metadata,
                 PoolInformation = this.PoolInformation,
                 Priority = this.Priority,
-                DependsOn = this.DependsOn,
+                UsesTaskDependencies = this.UsesTaskDependencies.IsPresent,
             };
 
             BatchClient.CreateJob(parameters);

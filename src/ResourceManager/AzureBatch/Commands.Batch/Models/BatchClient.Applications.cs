@@ -16,6 +16,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+
+using Hyak.Common;
 
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Batch;
@@ -26,16 +29,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public partial class BatchClient
     {
-
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="accountName"></param>
-        /// <param name="applicationId"></param>
-        /// <param name="allowUpdates"></param>
-        /// <param name="displayName"></param>
-        /// <returns></returns>
         public virtual PSApplication AddApplication(string resourceGroupName, string accountName, string applicationId, bool allowUpdates, string displayName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -44,22 +37,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
+            AddApplicationParameters addApplicationParameters = new AddApplicationParameters();
+
+            if (displayName != null)
+            {
+                addApplicationParameters.DisplayName = displayName;
+            }
+
+            addApplicationParameters.AllowUpdates = allowUpdates;
+
             AddApplicationResponse response = BatchManagementClient.Applications.AddApplication(
                 resourceGroupName,
                 accountName,
                 applicationId,
-                new AddApplicationParameters() { AllowUpdates = allowUpdates, DisplayName = displayName });
+                addApplicationParameters);
 
             return ConvertApplicationToPSApplication(response.Application);
         }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="accountName"></param>
-        /// <param name="applicationId"></param>
-        /// <returns></returns>
         public virtual AzureOperationResponse DeleteApplication(string resourceGroupName, string accountName, string applicationId)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -71,14 +66,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return BatchManagementClient.Applications.DeleteApplication(resourceGroupName, accountName, applicationId);
         }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="accountName"></param>
-        /// <param name="applicationId"></param>
-        /// <param name="version"></param>
-        /// <returns></returns>
         public virtual AzureOperationResponse DeleteApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -90,13 +77,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return BatchManagementClient.Applications.DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
         }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="accountName"></param>
-        /// <param name="applicationId"></param>
-        /// <returns></returns>
         public virtual PSApplication GetApplication(string resourceGroupName, string accountName, string applicationId)
         {
             // single account lookup - find its resource group if not specified
@@ -105,19 +85,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            var response = BatchManagementClient.Applications.GetApplication(resourceGroupName, accountName, applicationId);
+            GetApplicationResponse response = BatchManagementClient.Applications.GetApplication(resourceGroupName, accountName, applicationId);
 
             return ConvertApplicationToPSApplication(response.Application);
         }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="accountName"></param>
-        /// <param name="applicationId"></param>
-        /// <param name="version"></param>
-        /// <returns></returns>
         public virtual PSApplicationPackage GetApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version)
         {
             // single account lookup - find its resource group if not specified
@@ -126,21 +98,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            GetApplicationPackageResponse response = BatchManagementClient.Applications.GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
+            GetApplicationPackageResponse response = BatchManagementClient.Applications.GetApplicationPackage(
+                resourceGroupName,
+                accountName,
+                applicationId,
+                version);
 
-            var context = this.ConvertGetApplicationPackageResponseToApplicationPackage(response);
-            return context;
+
+            PSApplicationPackage applicationPackage = this.ConvertGetApplicationPackageResponseToApplicationPackage(response);
+            return applicationPackage;
         }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="accountName"></param>
-        /// <returns></returns>
         public virtual IEnumerable<PSApplication> ListApplications(string resourceGroupName, string accountName)
         {
-
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 // use resource mgr to see if account exists and then use resource group name to do the actual lookup
@@ -148,87 +118,188 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             ListApplicationsResponse response = BatchManagementClient.Applications.List(resourceGroupName, accountName, new ListApplicationsParameters());
-
             List<PSApplication> psApplications = response.Applications.Select(ConvertApplicationToPSApplication).ToList();
 
             string nextLink = response.NextLink;
-
             while (nextLink != null)
             {
                 response = BatchManagementClient.Applications.ListNext(nextLink);
-
                 psApplications.AddRange(response.Applications.Select(ConvertApplicationToPSApplication));
-
                 nextLink = response.NextLink;
             }
 
             return psApplications;
         }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="accountName"></param>
-        /// <param name="applicationId"></param>
-        /// <param name="allowUpdates"></param>
-        /// <param name="defaultVersion"></param>
-        /// <param name="displayName"></param>
-        /// <returns></returns>
-        public virtual AzureOperationResponse UpdateApplication(string resourceGroupName, string accountName, string applicationId, bool allowUpdates, string defaultVersion, string displayName)
+        public virtual AzureOperationResponse UpdateApplication(
+            string resourceGroupName,
+            string accountName,
+            string applicationId,
+            bool allowUpdates,
+            string defaultVersion,
+            string displayName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 // use resource mgr to see if account exists and then use resource group name to do the actual lookup
                 resourceGroupName = GetGroupForAccount(accountName);
+            }
+
+            UpdateApplicationParameters uap = new UpdateApplicationParameters { AllowUpdates = allowUpdates };
+
+            if (defaultVersion != null)
+            {
+                uap.DefaultVersion = defaultVersion;
+            }
+
+            if (displayName != null)
+            {
+                uap.DisplayName = displayName;
             }
 
             return BatchManagementClient.Applications.UpdateApplication(
                 resourceGroupName,
                 accountName,
                 applicationId,
-                new UpdateApplicationParameters() { AllowUpdates = allowUpdates, DefaultVersion = defaultVersion, DisplayName = displayName, });
+                uap);
         }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="accountName"></param>
-        /// <param name="applicationId"></param>
-        /// <param name="version"></param>
-        /// <param name="filePath"></param>
-        /// <param name="format"></param>
-        /// <returns></returns>
-        public virtual PSApplicationPackage UploadApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version, string filePath, string format)
+        public virtual PSApplicationPackage AddAndUploadApplicationPackage(
+            string resourceGroupName,
+            string accountName,
+            string applicationId,
+            string version,
+            string filePath,
+            string format)
         {
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException("File not found: " + filePath);
+            }
+
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 // use resource mgr to see if account exists and then use resource group name to do the actual lookup
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            AddApplicationPackageResponse response = BatchManagementClient.Applications.AddApplicationPackage(resourceGroupName, accountName, applicationId, version);
-
-            CloudBlockBlob blob = new CloudBlockBlob(new Uri(response.StorageUrl));
-
-            blob.UploadFromFile(filePath, FileMode.Open);
-
-            BatchManagementClient.Applications.ActivateApplicationPackage(
+            AddApplicationPackageResponse response = BatchManagementClient.Applications.AddApplicationPackage(
                 resourceGroupName,
                 accountName,
                 applicationId,
-                version,
-                new ActivateApplicationPackageParameters { Format = format, });
+                version);
+
+            CloudBlockBlob blob = new CloudBlockBlob(new Uri(response.StorageUrl));
+
+            try
+            {
+                blob.UploadFromFile(filePath, FileMode.Open);
+
+                BatchManagementClient.Applications.ActivateApplicationPackage(
+                    resourceGroupName,
+                    accountName,
+                    applicationId,
+                    version,
+                    new ActivateApplicationPackageParameters { Format = format });
+            }
+            catch
+            {
+                this.DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
+                throw;
+            }
 
             PSApplicationPackage getResponse = this.GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
 
             return getResponse;
         }
 
+
+        public virtual PSApplicationPackage UploadApplicationPackage(
+            string resourceGroupName,
+            string accountName,
+            string applicationId,
+            string version,
+            string filePath,
+            string format)
+        {
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException("File not found: " + filePath);
+            }
+
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                // use resource mgr to see if account exists and then use resource group name to do the actual lookup
+                resourceGroupName = GetGroupForAccount(accountName);
+            }
+            
+            bool needToCreateAnApplicationPackage;
+            var storageUrl = GetStorageUrl(resourceGroupName, accountName, applicationId, version, out needToCreateAnApplicationPackage);
+
+            try
+            {
+                CloudBlockBlob blob = new CloudBlockBlob(new Uri(storageUrl));
+                blob.UploadFromFile(filePath, FileMode.Open);
+
+                BatchManagementClient.Applications.ActivateApplicationPackage(
+                    resourceGroupName,
+                    accountName,
+                    applicationId,
+                    version,
+                    new ActivateApplicationPackageParameters { Format = format });
+            }
+            catch
+            {
+                // If the application package has already been created we don't want to delete the application package mysteriously.
+                if (needToCreateAnApplicationPackage)
+                {
+                    // If we are creating a new application package and the upload fails we should delete the application package.
+                    this.DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
+                }
+
+                throw;
+            }
+
+            return this.GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
+        }
+
+        private string GetStorageUrl(string resourceGroupName, string accountName, string applicationId, string version, out bool neededToCreateAnApplicationPackage)
+        {
+            string storageUrl = null;
+            neededToCreateAnApplicationPackage = false;
+            try
+            {
+                // Checks to see if the package exists
+                GetApplicationPackageResponse response = BatchManagementClient.Applications.GetApplicationPackage(
+                    resourceGroupName,
+                    accountName,
+                    applicationId,
+                    version);
+                storageUrl = response.StorageUrl;
+            }
+            catch (CloudException exception)
+            {
+                neededToCreateAnApplicationPackage = exception.Response.StatusCode == HttpStatusCode.NotFound;
+                // This if for catching the error if we come back with HttpStatusCode.NotFound
+            }
+
+            // if package doesn't exist create a new one
+            if (neededToCreateAnApplicationPackage)
+            {
+                AddApplicationPackageResponse addResponse = BatchManagementClient.Applications.AddApplicationPackage(
+                    resourceGroupName,
+                    accountName,
+                    applicationId,
+                    version);
+
+                storageUrl = addResponse.StorageUrl;
+            }
+            return storageUrl;
+        }
+
         private PSApplicationPackage ConvertGetApplicationPackageResponseToApplicationPackage(GetApplicationPackageResponse response)
         {
-            return new PSApplicationPackage
+            return new PSApplicationPackage()
             {
                 Format = response.Format,
                 StorageUrl = response.StorageUrl,
@@ -243,13 +314,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
         private static PSApplication ConvertApplicationToPSApplication(Application application)
         {
             return new PSApplication()
-                       {
-                           AllowUpdates = application.AllowUpdates,
-                           ApplicationPackages = application.ApplicationPackages,
-                           DefaultVersion = application.DefaultVersion,
-                           DisplayName = application.DisplayName,
-                           Id = application.Id,
-                       };
+            {
+                AllowUpdates = application.AllowUpdates,
+                ApplicationPackages = application.ApplicationPackages,
+                DefaultVersion = application.DefaultVersion,
+                DisplayName = application.DisplayName,
+                Id = application.Id,
+            };
         }
     }
 }

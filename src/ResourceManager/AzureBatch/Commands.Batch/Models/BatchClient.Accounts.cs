@@ -45,13 +45,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             Dictionary<string, string> tagDictionary = Helpers.CreateTagDictionary(tags, validate: true);
 
-            AccountBaseProperties accountBaseProperties = (!string.IsNullOrEmpty(storageId)) ? new AccountBaseProperties
+            AccountBaseProperties accountBaseProperties = (string.IsNullOrEmpty(storageId)) ? null :new AccountBaseProperties
             {
                 AutoStorage = new AutoStorageBaseProperties
                 {
                     StorageAccountId = storageId
                 }
-            }: null;
+            };
 
             var response = BatchManagementClient.Accounts.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
             {
@@ -59,7 +59,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 Tags = tagDictionary,
                 Properties = accountBaseProperties,
             });
-
 
             var context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(response.Resource);
             return context;
@@ -83,13 +82,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             Dictionary<string, string> tagDictionary = Helpers.CreateTagDictionary(tags, validate: true);
 
-            AccountBaseProperties accountBaseProperties = (storageId != null) ? new AccountBaseProperties
+            // We need to be able to send "" to remove the auto storage from an account.
+            AccountBaseProperties accountBaseProperties = (storageId == null) ? null : new AccountBaseProperties
             {
                 AutoStorage = new AutoStorageBaseProperties
                 {
                     StorageAccountId = storageId
                 }
-            } : null;
+            };
 
             // need to the location in order to call
             var getResponse = BatchManagementClient.Accounts.Get(resourceGroupName, accountName);

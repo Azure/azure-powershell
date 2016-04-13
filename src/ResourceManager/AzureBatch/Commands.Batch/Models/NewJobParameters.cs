@@ -85,6 +85,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// TODO:
         /// </summary>
-        public bool? DependsOn { get; set; }
+        public bool? UsesTaskDependencies { get; set; }
     }
 }

@@ -58,9 +58,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Batch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Microsoft.Azure.Management.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Batch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.1.6.0\lib\net40\Microsoft.Azure.Management.Batch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.11-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -157,13 +157,15 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
-    <Compile Include="Applications\DeleteBatchApplicationCommand.cs" />
-    <Compile Include="Applications\DeleteBatchApplicationPackageCommand.cs" />
+    <Compile Include="Applications\UploadBatchApplicationCommand.cs" />
+    <Compile Include="Models\PSApplicationPackage.cs" />
+    <Compile Include="Models\PSApplication.cs" />
+    <Compile Include="Applications\RemoveBatchApplicationCommand.cs" />
+    <Compile Include="Applications\RemoveBatchApplicationPackageCommand.cs" />
     <Compile Include="Applications\GetBatchApplicationPackageCommand.cs" />
     <Compile Include="Applications\GetBatchApplicationCommand.cs" />
-    <Compile Include="Applications\UpdateBatchApplicationCommand.cs" />
+    <Compile Include="Applications\SetBatchApplicationCommand.cs" />
     <Compile Include="Applications\AddBatchApplicationCommand.cs" />
-    <Compile Include="Applications\UploadBatchApplicationCommand.cs" />
     <Compile Include="Certificates\GetBatchCertificateCommand.cs" />
     <Compile Include="Certificates\RemoveBatchCertificateCommand.cs" />
     <Compile Include="Certificates\NewBatchCertificateCommand.cs" />

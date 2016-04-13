@@ -16,48 +16,53 @@
 
 <#
 .SYNOPSIS
-Tests querying for a Batch account that does not exist throws
+Tests creating a new application
 #>
 function Test-UploadApplication
 {
     param([string]$accountName, [string]$resourceGroup)
 
 	# Setup
-    $location = Get-BatchAccountProviderLocation
 	$applicationId = "test"
 	$applicationVersion = "foo"
 
     try
     {
-		$addAppPack = Add-AzureRmBatchApplication -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId
+		$addAppPack = New-AzureRmBatchApplication -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId
 		$getapp = Get-AzureRmBatchApplication -ResourceGroupName $resourceGroup -AccountName $accountName  -ApplicationId $applicationId
 
 		Assert-AreEqual $getapp.Id $addAppPack.Id
     }
     finally
     {
-	 	Remove-AzureRmBatchApplication -AccountName $accountName -ApplicationId $applicationId -ResourceGroupName $resourceGroup
+		Remove-AzureRmBatchApplication -AccountName $accountName -ApplicationId $applicationId -ResourceGroupName $resourceGroup
     }
 }
 
 <#
 .SYNOPSIS
-Tests querying for a Batch account that does not exist throws
+Tests uploading an application package.
 #>
 function Test-UploadApplicationPackage
 {
-    param([string]$accountName, [string]$resourceGroup)
+    param([string]$accountName, [string]$resourceGroup, [string]$filePath)
 
 	# Setup
-    $location = Get-BatchAccountProviderLocation
 	$applicationId = "test"
 	$applicationVersion = "foo"
+	#Assert-AreEqual $filePath "Resources\foo.zip"
+	#Assert-AreEqual $filePath "Resources\foo.zip"
+
+	Assert-AreNotEqual $null $resourceGroup
+	Assert-AreNotEqual $null $accountName
+	Assert-AreNotEqual $null $applicationId
+	Assert-AreNotEqual $null $applicationVersion
 
     try
     {
-		$addAppPack = Add-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath "Resources\foo.zip" -format "zip"
+		$addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath "D:\ps\azure-powershell-pr\src\ResourceManager\AzureBatch\Commands.Batch.Test\bin\Debug\Resources\foo.zip" -format "zip"
 		$getapp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
-
+		##
 		Assert-AreEqual $getapp.Id $addAppPack.Id
 		Assert-AreEqual $getapp.Version $addAppPack.Version
 
@@ -70,29 +75,28 @@ function Test-UploadApplicationPackage
 
 <#
 .SYNOPSIS
-Tests querying for a Batch account that does not exist throws
+Tests can update an application settings
 #>
 function Test-UpdateApplicationPackage
 {
-    param([string]$accountName, [string]$resourceGroup)
+    param([string]$accountName, [string]$resourceGroup, [string]$filePath)
 
 	# Setup
-    $location = Get-BatchAccountProviderLocation
-	$applicationId = "test"
+    $applicationId = "test"
 	$applicationVersion = "foo"
 	$newDisplayName = "application-display-name"
 
     try
     {
-		$addAppPack = Add-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath "Resources\foo.zip" -format "zip"
+		$addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip"
 		$beforeUpdateApp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
 
-		Set-AzureRmBatchApplication -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -displayName $newDisplayName -defaultVersion $applicationVersion -allowUpdates $FALSE
+		Set-AzureRmBatchApplication -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -displayName $newDisplayName -defaultVersion $applicationVersion -allowUpdates 
 		$afterUpdateApp = Get-AzureRmBatchApplication -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId
 
 		Assert-AreEqual $afterUpdateApp.DefaultVersion "foo"
 		Assert-AreNotEqual $afterUpdateApp.DefaultVersion $beforeUpdateApp.DefaultVersion
-		Assert-AreEqual $afterUpdateApp.AllowUpdates $FALSE
+		Assert-AreEqual $afterUpdateApp.AllowUpdates $TRUE
     }
     finally
     {
@@ -102,13 +106,11 @@ function Test-UpdateApplicationPackage
 
 <#
 .SYNOPSIS
-Tests querying for a Batch account that does not exist throws
+Tests create pool with an application package.
 #>
 function Test-CreatePoolWithApplicationPackage
 {
-    param([string]$accountName, [string] $poolId, [string]$resourceGroup)
-
-    $location = Get-BatchAccountProviderLocation
+    param([string]$accountName, [string] $poolId, [string]$resourceGroup, [string]$filePath)
 	$applicationId = "test"
 	$applicationVersion = "foo"
 
@@ -118,7 +120,7 @@ function Test-CreatePoolWithApplicationPackage
 	try
 	{
 
-		$addAppPack = Add-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath "Resources\foo.zip" -format "zip"
+		$addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip"
 		$getapp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
 
 		Assert-AreEqual $getapp.Id $addAppPack.Id
@@ -149,12 +151,11 @@ function Test-CreatePoolWithApplicationPackage
 
 <#
 .SYNOPSIS
-Tests querying for a Batch account that does not exist throws
+Tests update pool with an application package.
 #>
 function Test-UpdatePoolWithApplicationPackage
 {
-    param([string]$accountName, [string] $poolId, [string]$resourceGroup)
-    $location = Get-BatchAccountProviderLocation
+    param([string]$accountName, [string] $poolId, [string]$resourceGroup, [string]$filePath)
 	$applicationId = "test"
 	$applicationVersion = "foo"
 
@@ -164,13 +165,12 @@ function Test-UpdatePoolWithApplicationPackage
 	try
 	{
 
-		$addAppPack = Add-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath "Resources\foo.zip" -format "zip"
+		$addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip"
 		$getapp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
 
 		Assert-AreEqual $getapp.Id $addAppPack.Id
 		Assert-AreEqual $getapp.Version $addAppPack.Version
 
-		# create a pool with apr
 		$startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
 		$startTask.CommandLine = "cmd /c echo hello"
 
@@ -181,17 +181,18 @@ function Test-UpdatePoolWithApplicationPackage
 		$addPool = New-AzureBatchPool -Id $poolId -CloudServiceConfiguration $paasConfiguration -TargetDedicated 3 -VirtualMachineSize "small" -StartTask $startTask -BatchContext $context
 		$getPool = get-AzureBatchPool -Id $poolId -BatchContext $context
 
-
+		# update pool with application package references
 		$apr1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
 		$apr1.ApplicationId = $applicationId
 		$apr1.Version = $applicationVersion
 		$apr = [Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]]$apr1
-		# adds APR to a pool
+
 		$getPool.ApplicationPackageReferences = $apr
 
 		$getPool | Set-AzureBatchPool -BatchContext $context
 
 		$getPoolWithAPR = get-AzureBatchPool -Id $poolId -BatchContext $context
+		# pool has application package references
 		Assert-AreNotEqual $getPoolWithAPR.ApplicationPackageReferences $null
 	}
 	finally

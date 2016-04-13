@@ -14,8 +14,7 @@
 
 using System;
 
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Batch.Models;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string accountName01 = "account01";
             string resourceGroup = "resourceGroup";
 
-            PSApplication expected01 = new PSApplication(){};
+            PSApplication expected01 = new PSApplication();
             PSApplication expected02 = new PSApplication();
 
             batchClientMock.Setup(b => b.ListApplications(resourceGroup, accountName01)).Returns(new List<PSApplication>() { expected01, expected02 });
@@ -73,6 +72,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
             string applicationId = "applicationId";
+
             PSApplication expected = new PSApplication();
             batchClientMock.Setup(b => b.GetApplication(resourceGroup, accountName, applicationId)).Returns(expected);
 

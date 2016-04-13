@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.Azure.Commands.Batch.Applications;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;

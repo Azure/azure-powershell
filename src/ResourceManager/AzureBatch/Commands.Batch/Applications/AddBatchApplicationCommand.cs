@@ -12,45 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.Batch.Models;
 
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
-namespace Microsoft.Azure.Commands.Batch.Applications
+namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Add, Constants.AzureRmBatchApplication)]
+    [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchApplication)]
     [OutputType(typeof(PSApplication))]
     public class AddBatchApplicationCommand : BatchCmdletBase
     {
-        [Alias("Name")]
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true,
+            HelpMessage = "The name of the Batch service account to create.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
-        public bool AllowUpdates { get; set; }
+        public string ApplicationId { get; set; }
 
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string ApplicationId { get; set; }
+        public SwitchParameter AllowUpdates { get; set; }
 
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
         public override void ExecuteCmdlet()
         {
-            PSApplication response = BatchClient.AddApplication(ResourceGroupName, AccountName, ApplicationId, AllowUpdates, DisplayName);
+            PSApplication response = BatchClient.AddApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.AllowUpdates.IsPresent, this.DisplayName);
 
             WriteObject(response);
         }

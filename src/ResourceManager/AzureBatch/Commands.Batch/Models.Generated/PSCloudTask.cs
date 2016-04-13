@@ -158,7 +158,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 {
                     this.dependsOn = new PSTaskDependencies(this.omObject.DependsOn);
                 }
-                
                 return this.dependsOn;
             }
             set
@@ -171,7 +170,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 {
                     this.omObject.DependsOn = value.omObject;
                 }
-
                 this.dependsOn = value;
             }
         }

@@ -16,34 +16,34 @@ using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
-namespace Microsoft.Azure.Commands.Batch.Applications
+namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureRmBatchApplication)]
-    public class DeleteBatchApplicationCommand : BatchCmdletBase
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureRmBatchApplicationPackage)]
+    public class RemoveBatchApplicationPackageCommand : BatchCmdletBase
     {
-        private static string mamlCall = "DeleteApplication";
+        private static string mamlCall = "DeleteApplicationPackage";
 
         [Alias("Name")]
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("id")]
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
+        [ValidateNotNullOrEmpty]
+        public string ApplicationVersion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
-            BatchClient.DeleteApplication(this.ResourceGroupName, this.AccountName, ApplicationId);
+            BatchClient.DeleteApplicationPackage(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.ApplicationVersion);
             WriteVerboseWithTimestamp(Resources.EndMAMLCall, mamlCall);
         }
     }

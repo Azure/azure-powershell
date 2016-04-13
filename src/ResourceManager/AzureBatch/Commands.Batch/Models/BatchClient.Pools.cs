@@ -138,13 +138,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     pool.CertificateReferences.Add(c.omObject);
                 }
             }
+
             if (parameters.ApplicationPackageReferences != null)
             {
-                pool.ApplicationPackageReferences = new List<ApplicationPackageReference>();
-                foreach (PSApplicationPackageReference apr in parameters.ApplicationPackageReferences)
-                {
-                    pool.ApplicationPackageReferences.Add(apr.omObject);
-                }
+                pool.ApplicationPackageReferences = parameters.ApplicationPackageReferences.ToList().ConvertAll(apr => apr.omObject);
             }
 
             if (parameters.CloudServiceConfiguration != null)

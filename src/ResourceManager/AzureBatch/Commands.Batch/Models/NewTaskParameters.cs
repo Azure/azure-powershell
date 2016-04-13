@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSMultiInstanceSettings MultiInstanceSettings { get; set; }
 
         /// <summary>
-        /// Information about how to run the multi-instance task.
+        /// TODO: Ivan
         /// </summary>
-        public TaskDependencies TaskDependencies { get; set; }
+        public TaskDependencies DependsOn { get; set; }
     }
 }

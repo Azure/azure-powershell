@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.Azure.Commands.Batch.Applications;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
@@ -17,7 +12,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
 {
     public class DeleteBatchApplicationPackageCommandTests
     {
-        private DeleteBatchApplicationPackageCommand cmdlet;
+        private RemoveBatchApplicationPackageCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -25,7 +20,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
         {
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new DeleteBatchApplicationPackageCommand()
+            cmdlet = new RemoveBatchApplicationPackageCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object

@@ -118,12 +118,8 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// TODO
         /// </summary>
-        public string StorageAccountId { get; private set; }
+        public AutoStorageProperties AutoStorageProperties { get; set; }
 
-        /// <summary>
-        /// TODO
-        /// </summary>
-        public DateTime LastKeySync { get; private set; }
 
         /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
@@ -161,7 +157,7 @@ namespace Microsoft.Azure.Commands.Batch
             }
         }
 
-        public BatchAccountContext()
+        internal BatchAccountContext()
         {
             this.KeyInUse = AccountKeyType.Primary;
         }
@@ -195,8 +191,11 @@ namespace Microsoft.Azure.Commands.Batch
 
             if (resource.Properties.AutoStorage != null)
             {
-                this.StorageAccountId = resource.Properties.AutoStorage.StorageAccountId;
-                this.LastKeySync = resource.Properties.AutoStorage.LastKeySync;
+                this.AutoStorageProperties = new AutoStorageProperties()
+                {
+                    StorageAccountId = resource.Properties.AutoStorage.StorageAccountId,
+                    LastKeySync = resource.Properties.AutoStorage.LastKeySync,
+                };
             }
 
             // extract the host and strip off the account name for the TaskTenantUrl and AccountName
@@ -215,6 +214,7 @@ namespace Microsoft.Azure.Commands.Batch
             this.Subscription = idParts[2];
             this.ResourceGroupName = idParts[4];
         }
+
 
         /// <summary>
         /// Create a new BAC and fill it in

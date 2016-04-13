@@ -16,46 +16,42 @@ using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
-namespace Microsoft.Azure.Commands.Batch.Applications
+namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet(VerbsCommon.Set, Constants.AzureRmBatchApplication)]
-    [OutputType(typeof(BatchAccountContext))]
-    public class UpdateBatchApplicationCommand : BatchCmdletBase
+    public class SetBatchApplicationCommand : BatchCmdletBase
     {
         private static string mamlCall = "UpdateApplication";
 
         [Alias("Name")]
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string displayName { get; set; }
+        public string DisplayName { get; set; }
 
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string defaultVersion { get; set; }
+        public string DefaultVersion { get; set; }
 
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public bool allowUpdates { get; set; }
+        public SwitchParameter AllowUpdates { get; set; }
 
-        /// <summary>
-        /// TODO: IVAN
-        /// </summary>
         public override void ExecuteCmdlet()
         {
             WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
-            BatchClient.UpdateApplication(ResourceGroupName, AccountName, ApplicationId, allowUpdates, defaultVersion, displayName);
+            BatchClient.UpdateApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.AllowUpdates.IsPresent, this.DefaultVersion, this.DisplayName);
             WriteVerboseWithTimestamp(Resources.EndMAMLCall, mamlCall);
         }
     }

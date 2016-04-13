@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public TaskDependencies TaskDependencies { get; set; }
+        public TaskDependencies DependsOn { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Batch
                 AffinityInformation = this.AffinityInformation,
                 Constraints = this.Constraints,
                 MultiInstanceSettings = this.MultiInstanceSettings,
-                TaskDependencies = this.TaskDependencies,
+                DependsOn = this.DependsOn,
            };
 
             BatchClient.CreateTask(parameters);

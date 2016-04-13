@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public string OSFamily { get; set; }
 
         /// <summary>
-        /// The configuration of virtual machines for an IaaS pool.
+        /// Pool configuration settings for a pool on the virtual machines infrastructure
         /// </summary>
         public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
 
         /// <summary>
-        /// The configuration of cloud service for a PaaS pool.
+        /// Pool configuration settings for a pool based on the Azure cloud service platform
         /// </summary>
         public PSCloudServiceConfiguration CloudServiceConfiguration { get; set; }
 
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSCertificateReference[] CertificateReferences { get; set; }
 
         /// <summary>
-        /// Certificate references for the pool.
+        /// Application package references for the pool.
         /// </summary>
         public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
     }

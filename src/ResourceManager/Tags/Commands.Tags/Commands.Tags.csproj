@@ -57,9 +57,6 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Batch">
-      <HintPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.Management.Batch.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.11-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -142,8 +139,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\PSApplication.cs" />
-    <Compile Include="Model\PSApplicationPackage.cs" />
     <Compile Include="Model\PSTag.cs" />
     <Compile Include="Model\PSTagValue.cs" />
     <Compile Include="Model\PSTagValuePair.cs" />

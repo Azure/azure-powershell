@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "TODO")]
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string StorageId { get; set; }
 
         [Alias("Tags")]

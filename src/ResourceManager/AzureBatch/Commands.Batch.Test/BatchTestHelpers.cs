@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             Assert.Equal<string>(context1.Subscription, context2.Subscription);
             Assert.Equal<string>(context1.TagsTable, context2.TagsTable);
             Assert.Equal<string>(context1.TaskTenantUrl, context2.TaskTenantUrl);
-            Assert.Equal<string>(context1.StorageAccountId, context2.StorageAccountId);
+            Assert.Equal<string>(context1.AutoStorageProperties.StorageAccountId, context2.AutoStorageProperties.StorageAccountId);
         }
 
         /// <summary>
@@ -773,6 +773,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             FieldInfo fieldInfo = t.GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
             fieldInfo.SetValue(obj, fieldValue);
         }
+
         internal static T MapEnum<T>(Enum otherEnum) where T : struct
         {
             if (otherEnum == null)
