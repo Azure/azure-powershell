@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -118,6 +119,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     arsVaultCreds.ResourceNamespace;
                 PSRecoveryServicesClient.arsVaultCreds.ARMResourceType =
                     arsVaultCreds.ARMResourceType;
+            }
+        }
+
+        /// <summary>
+        /// Updates current Vault context.
+        /// </summary>
+        /// <param name="arsVault">ARS Vault</param>
+        public static void UpdateCurrentVaultContext(ARSVault arsVault)
+        {
+            object updateVaultContextOneAtATime = new object();
+            lock (updateVaultContextOneAtATime)
+            {
+                PSRecoveryServicesClient.arsVault = arsVault;
             }
         }
 

@@ -129,6 +129,7 @@
     <Compile Include="Vault\GetAzureRmRecoveryServicesVaultSettingsFile.cs" />
     <Compile Include="Vault\NewAzureRmRecoveryServicesVault.cs" />
     <Compile Include="Vault\RemoveAzureRmRecoveryServicesVault.cs" />
+    <Compile Include="Vault\SetAzureRmRecoveryServicesVaultContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
