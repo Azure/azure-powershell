@@ -267,6 +267,22 @@ function Test-ZoneList
 	$result | Remove-AzureRmDnsZone -PassThru -Force
 }
 
+function Test-ZoneListSubscription
+{
+	$zoneName1 = Get-RandomZoneName
+	$zoneName2 = $zoneName1 + "A"
+	$resourceGroup = TestSetup-CreateResourceGroup
+    $createdZone1 = $resourceGroup | New-AzureRmDnsZone -Name $zoneName1 -Tags @{Name="tag1";Value="value1"}
+	$createdZone2 = $resourceGroup | New-AzureRmDnsZone -Name $zoneName2
+
+	$result = Get-AzureRmDnsZone -All
+
+	Assert-True   { $result.Count -gt 2 }
+
+	$createdZone1 | Remove-AzureRmDnsZone -PassThru -Force
+	$createdZone2 | Remove-AzureRmDnsZone -PassThru -Force
+}
+
 <#
 .SYNOPSIS
 Zone List With EndsWith

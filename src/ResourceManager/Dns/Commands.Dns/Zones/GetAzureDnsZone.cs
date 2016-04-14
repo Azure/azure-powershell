@@ -26,13 +26,19 @@ namespace Microsoft.Azure.Commands.Dns
     [Cmdlet(VerbsCommon.Get, "AzureRmDnsZone"), OutputType(typeof(DnsZone))]
     public class GetAzureDnsZone : DnsBaseCmdlet
     {
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).")]
+        private const string ParameterSetResourceGroup = "ResourceGroup";
+        private const string ParameterSetAll = "All";
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSetResourceGroup, HelpMessage = "The full name of the zone (without a terminating dot).")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group in which the zone exists.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSetResourceGroup, HelpMessage = "The resource group in which the zone exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSetAll, HelpMessage = "Lists all zones for the current subscription.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter All { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -46,9 +52,13 @@ namespace Microsoft.Azure.Commands.Dns
 
                 this.WriteObject(this.DnsClient.GetDnsZone(this.Name, this.ResourceGroupName));
             }
+            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                WriteObject(this.DnsClient.ListDnsZonesInResourceGroup(this.ResourceGroupName));
+            }
             else
             {
-                WriteObject(this.DnsClient.ListDnsZones(this.ResourceGroupName, null));
+                WriteObject(this.DnsClient.ListDnsZonesInSubscription());
             }
         }
     }

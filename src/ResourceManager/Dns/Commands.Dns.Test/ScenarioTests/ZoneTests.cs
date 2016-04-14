@@ -57,6 +57,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZoneListSubscription()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneListSubscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneNewAlreadyExists()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneNewAlreadyExists");
