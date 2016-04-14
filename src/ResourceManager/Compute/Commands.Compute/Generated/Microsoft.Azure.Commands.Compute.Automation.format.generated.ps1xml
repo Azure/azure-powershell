@@ -134,9 +134,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Rest.Azure.IPage`1[[Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet, Microsoft.Azure.Management.Compute, Version=10.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]</Name>
+      <Name>Microsoft.Rest.Azure.IPage`1[[Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet, Microsoft.Azure.Management.Compute, Version=13.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Rest.Azure.IPage`1[[Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet, Microsoft.Azure.Management.Compute, Version=10.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]</TypeName>
+        <TypeName>Microsoft.Rest.Azure.IPage`1[[Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet, Microsoft.Azure.Management.Compute, Version=13.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
