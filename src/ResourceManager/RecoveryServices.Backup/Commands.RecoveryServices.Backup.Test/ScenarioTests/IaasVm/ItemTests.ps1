@@ -14,13 +14,13 @@
 
 function Test-GetItemScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
-	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered";
+	Assert-AreEqual $namedContainer[2].FriendlyName "mkheranirmvm1";
 
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer[2] -WorkloadType "AzureVM" -Name "mkheranirmvm1";
 	echo $item.Name;
 }
 
