@@ -14,28 +14,23 @@
 
 function Test-GetContainerScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "swatitestrg" -Name "swatitestrn";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-	$containers = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType "Scdpm";
-	foreach ($container in $containers)
-	{
-		echo $container.Name $container.ResourceGroupName;
-	}
-	Assert-AreEqual $containers[0].FriendlyName "swatidpm";
+	$containers = Get-AzureRmRecoveryServicesBackupManagementServer;	
 
-	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType "Scdpm" -Name "swatidpm";
-	Assert-AreEqual $namedContainer.FriendlyName "swatidpm";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupManagementServer -Name "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
+	Assert-AreEqual $namedContainer.FriendlyName "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
 }
 
 function Test-UnregisterContainerScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "swatitestrg" -Name "swatitestrn";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
-	$container = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType "Scdpm" -Name "swatidpm";
-	Assert-AreEqual $container.FriendlyName "swatidpm";
+	$container = Get-AzureRmRecoveryServicesBackupManagementServer -Name "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
+	Assert-AreEqual $container.FriendlyName "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
 
-	Unregister-AzureRmRecoveryServicesBackupContainer -Container $container;
-	$contianer = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType "Scdpm" -Name "swatidpm";
+	Unregister-AzureRmRecoveryServicesBackupContainer -AzureRmBackupManagementServer $container;
+	$contianer = Get-AzureRmRecoveryServicesBackupManagementServer -Name "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
 	Assert-Null $container;
 }

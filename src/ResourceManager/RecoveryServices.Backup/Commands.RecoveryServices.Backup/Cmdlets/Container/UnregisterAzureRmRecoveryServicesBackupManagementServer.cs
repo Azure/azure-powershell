@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupManagementServer")]
     public class UnregisterAzureRmRecoveryServicesBackupManagementServer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesBackupEngineBase AzureRmBackupManagementServer { get; set; }
 
