@@ -16,13 +16,15 @@ using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Factories;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -32,12 +34,14 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User")]
     [Alias("Login-AzureRmAccount")]
     [OutputType(typeof(PSAzureProfile))]
-    public class AddAzureRMAccountCommand : AzureRMCmdlet , IModuleAssemblyInitializer
+    public class AddAzureRMAccountCommand : AzureRMCmdlet, IModuleAssemblyInitializer
     {
         private const string UserParameterSet = "User";
         private const string ServicePrincipalParameterSet = "ServicePrincipal";
         private const string ServicePrincipalCertificateParameterSet = "ServicePrincipalCertificate";
         private const string AccessTokenParameterSet = "AccessToken";
+        private const string RefreshTokenByIdParameterSet = "RefreshTokenById";
+        private const string RefreshTokenByNameParameterSet = "RefreshTokenByName";
         private const string SubscriptionNameParameterSet = "SubscriptionName";
         private const string SubscriptionIdParameterSet = "SubscriptionId";
 
@@ -62,6 +66,8 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Certificate Hash (Thumbprint)")]
         public string CertificateThumbprint { get; set; }
 
+        [Parameter(ParameterSetName = RefreshTokenByIdParameterSet, Mandatory = true, HelpMessage = "Application Id for the given refresh token")]
+        [Parameter(ParameterSetName = RefreshTokenByNameParameterSet, Mandatory = true, HelpMessage = "Application Id for the given refresh token")]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "SPN")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "SPN")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "SPN")]
@@ -71,6 +77,8 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true)]
         public SwitchParameter ServicePrincipal { get; set; }
 
+        [Parameter(ParameterSetName = RefreshTokenByIdParameterSet, Mandatory = false, HelpMessage = "Default tenantId")]
+        [Parameter(ParameterSetName = RefreshTokenByNameParameterSet, Mandatory = false, HelpMessage = "Default tenantId")]
         [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "TenantId name or ID")]
         [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID")]
@@ -87,21 +95,28 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string AccessToken { get; set; }
 
+        [Parameter(ParameterSetName = RefreshTokenByIdParameterSet, Mandatory = true, HelpMessage = "Account id for the logged on user")]
+        [Parameter(ParameterSetName = RefreshTokenByNameParameterSet, Mandatory = true, HelpMessage = "Account id for the logged on user")]
         [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = true, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
 
+        [Parameter(ParameterSetName = RefreshTokenByIdParameterSet, Mandatory = false, HelpMessage = "SubscriptionId of the default subscription")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
+        [Parameter(ParameterSetName = RefreshTokenByNameParameterSet, Mandatory = true, HelpMessage = "Subscription name of the default subscription")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionName { get; set; }
+
+        [Parameter(ParameterSetName = RefreshTokenByIdParameterSet, Mandatory = true, HelpMessage = "Base64 serialization of the token cache")]
+        public string RefreshToken { get; set; }
 
         protected override AzureContext DefaultContext
         {
@@ -116,7 +131,7 @@ namespace Microsoft.Azure.Commands.Profile
             base.BeginProcessing();
             if (Environment == null && EnvironmentName == null)
             {
-                Environment = AzureEnvironment.PublicEnvironments[Microsoft.Azure.Common.Authentication.Models.EnvironmentName.AzureCloud];
+                Environment = AzureEnvironment.PublicEnvironments[Common.Authentication.Models.EnvironmentName.AzureCloud];
             }
             else if (Environment == null && EnvironmentName != null)
             {
@@ -134,14 +149,14 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
                 !string.IsNullOrWhiteSpace(SubscriptionName))
             {
                 throw new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided);
             }
 
             Guid subscrptionIdGuid;
-            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
                 !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
             {
                 throw new PSInvalidOperationException(
@@ -149,16 +164,14 @@ namespace Microsoft.Azure.Commands.Profile
             }
 
             AzureAccount azureAccount = new AzureAccount();
-
             if (!string.IsNullOrEmpty(AccessToken))
             {
-                if (string.IsNullOrWhiteSpace(AccountId) )
+                if (string.IsNullOrWhiteSpace(AccountId))
                 {
                     throw new PSInvalidOperationException(Resources.AccountIdRequired);
                 }
 
                 azureAccount.Type = AzureAccount.AccountType.AccessToken;
-                azureAccount.Id = AccountId;
                 azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
             }
             else if (ServicePrincipal.IsPresent)
@@ -181,8 +194,11 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.Id = Credential.UserName;
                 password = Credential.Password;
             }
-
-            if (!string.IsNullOrEmpty(ApplicationId))
+            else if (!string.IsNullOrEmpty(AccountId))
+            {
+                azureAccount.Id = AccountId;
+            }
+            else if (!string.IsNullOrEmpty(ApplicationId))
             {
                 azureAccount.Id = ApplicationId;
             }
@@ -192,15 +208,26 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
 
-            if( AzureRmProfileProvider.Instance.Profile == null)
+            TokenCache tokenCache = null;
+            string commonTenantId = AuthenticationFactory.CommonAdTenant;
+
+            if (!string.IsNullOrEmpty(RefreshToken))
+            {
+                azureAccount.Type = AzureAccount.AccountType.RefreshToken;
+                azureAccount.SetProperty(AzureAccount.Property.RefreshToken, RefreshToken);
+                azureAccount.SetProperty(AzureAccount.Property.RefreshClientId, ApplicationId);
+            }
+
+            if (AzureRmProfileProvider.Instance.Profile == null)
             {
                 AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
             }
 
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-            
-            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId, 
-                SubscriptionName, password));
+
+
+            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
+                SubscriptionName, password, tokenCache, commonTenantId));
         }
 
         /// <summary>
