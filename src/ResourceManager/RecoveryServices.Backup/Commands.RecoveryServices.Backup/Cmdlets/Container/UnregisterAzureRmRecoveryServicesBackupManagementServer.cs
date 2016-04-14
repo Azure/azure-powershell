@@ -25,8 +25,8 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
 {
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmBackupManagementServer")]
-    public class UnregisterAzureRmBackupManagementServer : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupManagementServer")]
+    public class UnregisterAzureRmRecoveryServicesBackupManagementServer : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]

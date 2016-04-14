@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Status)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Status)]
         [ValidateNotNullOrEmpty]
         public ContainerRegistrationStatus Status { get; set; }
 
