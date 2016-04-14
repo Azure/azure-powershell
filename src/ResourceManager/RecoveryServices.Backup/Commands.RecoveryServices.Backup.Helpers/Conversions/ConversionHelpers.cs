@@ -26,16 +26,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     public class ConversionHelpers
     {
         #region containers
-        public static AzureRmRecoveryServicesContainerBase GetContainerModel(ProtectionContainerResource protectionContainer)
+        public static AzureRmRecoveryServicesBackupContainerBase GetContainerModel(ProtectionContainerResource protectionContainer)
         {
-            AzureRmRecoveryServicesContainerBase containerModel = null;
+            AzureRmRecoveryServicesBackupContainerBase containerModel = null;
 
             if (protectionContainer != null &&
                 protectionContainer.Properties != null)
             {
                 if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectionContainer)))
                 {
-                    containerModel = new AzureRmRecoveryServicesIaasVmContainer(protectionContainer);
+                    containerModel = new AzureRmRecoveryServicesBackupIaasVmContainer(protectionContainer);
                 }
                 if (protectionContainer.Properties.GetType() == typeof(MabProtectionContainer))
                 {
@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return backupEngineModel;
         }
 
-        public static List<AzureRmRecoveryServicesContainerBase> GetContainerModelList(IEnumerable<ProtectionContainerResource> protectionContainers)
+        public static List<AzureRmRecoveryServicesBackupContainerBase> GetContainerModelList(IEnumerable<ProtectionContainerResource> protectionContainers)
         {
-            List<AzureRmRecoveryServicesContainerBase> containerModels = new List<AzureRmRecoveryServicesContainerBase>();
+            List<AzureRmRecoveryServicesBackupContainerBase> containerModels = new List<AzureRmRecoveryServicesBackupContainerBase>();
 
             foreach (var protectionContainer in protectionContainers)
             {
@@ -174,9 +174,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region Item
 
-        public static AzureRmRecoveryServicesItemBase GetItemModel(ProtectedItemResource protectedItem, AzureRmRecoveryServicesContainerBase container)
+        public static AzureRmRecoveryServicesBackupItemBase GetItemModel(ProtectedItemResource protectedItem, AzureRmRecoveryServicesBackupContainerBase container)
         {
-            AzureRmRecoveryServicesItemBase itemModel = null;
+            AzureRmRecoveryServicesBackupItemBase itemModel = null;
 
             if (protectedItem != null &&
                 protectedItem.Properties != null)
@@ -191,16 +191,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         HelperUtils.ParseUri(policyId);
                         policyName = HelperUtils.GetPolicyNameFromPolicyId(keyVauleDict, policyId);
                     }
-                    itemModel = new AzureRmRecoveryServicesIaasVmItem(protectedItem, container, policyName);
+                    itemModel = new AzureRmRecoveryServicesBackupIaasVmItem(protectedItem, container, policyName);
                 }
             }
 
             return itemModel;
         }
 
-        public static List<AzureRmRecoveryServicesItemBase> GetItemModelList(IEnumerable<ProtectedItemResource> protectedItems, AzureRmRecoveryServicesContainerBase container)
+        public static List<AzureRmRecoveryServicesBackupItemBase> GetItemModelList(IEnumerable<ProtectedItemResource> protectedItems, AzureRmRecoveryServicesBackupContainerBase container)
         {
-            List<AzureRmRecoveryServicesItemBase> itemModels = new List<AzureRmRecoveryServicesItemBase>();
+            List<AzureRmRecoveryServicesBackupItemBase> itemModels = new List<AzureRmRecoveryServicesBackupItemBase>();
 
             foreach (var protectedItem in protectedItems)
             {

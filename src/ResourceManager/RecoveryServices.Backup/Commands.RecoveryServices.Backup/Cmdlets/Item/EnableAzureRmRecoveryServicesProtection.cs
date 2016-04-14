@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Position = 4, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesItemBase Item { get; set; }
+        public AzureRmRecoveryServicesBackupItemBase Item { get; set; }
 
         public override void ExecuteCmdlet()
         {

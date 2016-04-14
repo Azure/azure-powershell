@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
     public class RecoveryPointConversions
     {
-        public static List<AzureRmRecoveryServicesBackupRecoveryPointBase> GetPSAzureRecoveryPoints(RecoveryPointListResponse rpList, AzureRmRecoveryServicesIaasVmItem item)
+        public static List<AzureRmRecoveryServicesBackupRecoveryPointBase> GetPSAzureRecoveryPoints(RecoveryPointListResponse rpList, AzureRmRecoveryServicesBackupIaasVmItem item)
         {
             if (rpList == null || rpList.RecoveryPointList == null || rpList.RecoveryPointList.RecoveryPoints == null) 
             { 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return result;
         }
 
-        public static AzureRmRecoveryServicesBackupRecoveryPointBase GetPSAzureRecoveryPoints(RecoveryPointResponse rpResponse, AzureRmRecoveryServicesIaasVmItem item)
+        public static AzureRmRecoveryServicesBackupRecoveryPointBase GetPSAzureRecoveryPoints(RecoveryPointResponse rpResponse, AzureRmRecoveryServicesBackupIaasVmItem item)
         {
             if (rpResponse == null || rpResponse.RecPoint == null)
             {
