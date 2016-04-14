@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
     }
 
-    public class AzureRmRecoveryServicesRecoveryPointBase : AzureRmRecoveryServicesItemContext
+    public class AzureRmRecoveryServicesBackupRecoveryPointBase : AzureRmRecoveryServicesItemContext
     {
         private global::Microsoft.Azure.Management.RecoveryServices.Backup.Models.RecoveryPointResource rp;
                 
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public DateTime RecoveryPointTime { get; set; }
 
-        public AzureRmRecoveryServicesRecoveryPointBase()
+        public AzureRmRecoveryServicesBackupRecoveryPointBase()
             : base()
         {
         }
