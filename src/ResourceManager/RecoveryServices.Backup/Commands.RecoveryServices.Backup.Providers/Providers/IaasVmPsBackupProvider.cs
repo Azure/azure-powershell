@@ -439,14 +439,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             } while (skipToken != null);
 
-            List<AzureRmRecoveryServicesBackupItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems, container);
-
             // 1. Filter by container
-            itemModels = itemModels.Where(itemModel =>
+            protectedItems = protectedItems.Where(protectedItem =>
             {
-                // return itemModel.ContainerName == container.Name;
-                return container.Name.Contains(itemModel.ContainerName);
+                Dictionary<UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
+                string containerUri = HelperUtils.GetContainerUri(dictionary, protectedItem.Id);
+                return containerUri.Contains(container.Name);
             }).ToList();
+
+            List<AzureRmRecoveryServicesBackupItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems, container);
 
             // 2. Filter by item's friendly name
             if (!string.IsNullOrEmpty(name))
