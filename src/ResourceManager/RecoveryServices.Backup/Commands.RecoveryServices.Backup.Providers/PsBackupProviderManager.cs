@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     else if (backupManagementType == BackupManagementType.SCDPM)
                         providerType = PsBackupProviderTypes.Dpm;
                     else
-                        throw new ArgumentException(String.Format("BackupManagementType {0} is not expected for ContainerType {1}", backupManagementType, containerType));
+                        throw new ArgumentException(String.Format("BackupManagementType {0} is not expected for ContainerType {1}", backupManagementType.ToString(), containerType));
                     break;
                 //case ContainerType.AzureSqlContainer:
                 //    if (backupManagementType.HasValue)
