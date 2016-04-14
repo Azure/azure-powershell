@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         AzureRmRecoveryServicesBackupRetentionPolicyBase GetDefaultRetentionPolicyObject();        
 
-        List<AzureRmRecoveryServicesContainerBase> ListProtectionContainers();
+        List<AzureRmRecoveryServicesBackupContainerBase> ListProtectionContainers();
 
         List<AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers();
 
-        List<AzureRmRecoveryServicesItemBase> ListProtectedItems();
+        List<AzureRmRecoveryServicesBackupItemBase> ListProtectedItems();
     }
 }

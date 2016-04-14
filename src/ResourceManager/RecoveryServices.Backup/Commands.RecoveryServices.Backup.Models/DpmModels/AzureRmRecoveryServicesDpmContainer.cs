@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesDpmContainer : AzureRmRecoveryServicesContainerBase
+    public class AzureRmRecoveryServicesDpmContainer : AzureRmRecoveryServicesBackupContainerBase
     {
         /// <summary>
         /// Resource Group where the Container is present

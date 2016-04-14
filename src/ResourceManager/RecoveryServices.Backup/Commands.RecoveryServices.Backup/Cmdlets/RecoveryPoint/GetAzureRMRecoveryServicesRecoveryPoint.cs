@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = ParamHelpMsg.RecoveryPoint.Item)]
         [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsg.RecoveryPoint.Item)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesItemBase Item { get; set; }
+        public AzureRmRecoveryServicesBackupItemBase Item { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, ValueFromPipeline = false, Position = 1, HelpMessage = ParamHelpMsg.RecoveryPoint.RecoveryPointId)]
         [ValidateNotNullOrEmpty]

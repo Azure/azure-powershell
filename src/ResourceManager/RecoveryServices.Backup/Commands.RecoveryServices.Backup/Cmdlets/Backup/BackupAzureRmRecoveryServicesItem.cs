@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesItemBase Item { get; set; }
+        public AzureRmRecoveryServicesBackupItemBase Item { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.ExpiryDate, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
