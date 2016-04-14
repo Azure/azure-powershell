@@ -190,12 +190,12 @@
     <Compile Include="Accounts\RegenBatchAccountKeyCommandTests.cs" />
     <Compile Include="Accounts\RemoveBatchAccountCommandTests.cs" />
     <Compile Include="Accounts\SetBatchAccountCommandTests.cs" />
-    <Compile Include="Applications\AddBatchApplicationCommandTests.cs" />
-    <Compile Include="Applications\DeleteBatchApplicationPackageCommandTests.cs" />
+    <Compile Include="Applications\NewBatchApplicationCommandTests.cs" />
+    <Compile Include="Applications\RemoveBatchApplicationPackageCommandTests.cs" />
     <Compile Include="Applications\GetBatchApplicationCommandTests.cs" />
     <Compile Include="Applications\RemoveBatchApplicationCommandTests.cs" />
     <Compile Include="Applications\GetBatchApplicationPackageCommandTests.cs" />
-    <Compile Include="Applications\UpdateBatchApplicationCommandTests.cs" />
+    <Compile Include="Applications\SetBatchApplicationCommandTests.cs" />
     <Compile Include="Applications\UploadBatchApplicationCommandTests.cs" />
     <Compile Include="BatchTestHelpers.cs" />
     <Compile Include="Certificates\GetBatchCertificateCommandTests.cs" />

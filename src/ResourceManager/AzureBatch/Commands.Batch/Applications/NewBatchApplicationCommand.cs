@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchApplication)]
     [OutputType(typeof(PSApplication))]
-    public class AddBatchApplicationCommand : BatchCmdletBase
+    public class NewBatchApplicationCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true,
-            HelpMessage = "The name of the Batch service account to create.")]
+            HelpMessage = "The name of the Batch account to used in the service.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter AllowUpdates { get; set; }
+        public bool? AllowUpdates { get; set; }
 
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            PSApplication response = BatchClient.AddApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.AllowUpdates.IsPresent, this.DisplayName);
+            PSApplication response = BatchClient.AddApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.AllowUpdates, this.DisplayName);
 
             WriteObject(response);
         }

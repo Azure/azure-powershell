@@ -165,7 +165,7 @@
     <Compile Include="Applications\GetBatchApplicationPackageCommand.cs" />
     <Compile Include="Applications\GetBatchApplicationCommand.cs" />
     <Compile Include="Applications\SetBatchApplicationCommand.cs" />
-    <Compile Include="Applications\AddBatchApplicationCommand.cs" />
+    <Compile Include="Applications\NewBatchApplicationCommand.cs" />
     <Compile Include="Certificates\GetBatchCertificateCommand.cs" />
     <Compile Include="Certificates\RemoveBatchCertificateCommand.cs" />
     <Compile Include="Certificates\NewBatchCertificateCommand.cs" />
@@ -386,10 +386,6 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
-      <Project>{2493A8F7-1949-4F29-8D53-9D459046C3B8}</Project>
-      <Name>Commands.Tags</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

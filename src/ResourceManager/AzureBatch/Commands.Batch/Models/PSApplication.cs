@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     {
         public bool AllowUpdates { get; set; }
 
-        public IList<ApplicationPackage> ApplicationPackages { get; set; }
+        public IList<PSApplicationPackage> ApplicationPackages { get; set; }
 
         public string Id { get; set; }
 

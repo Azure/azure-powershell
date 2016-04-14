@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             Dictionary<string, string> tagDictionary = Helpers.CreateTagDictionary(tags, validate: true);
 
-            AccountBaseProperties accountBaseProperties = (string.IsNullOrEmpty(storageId)) ? null :new AccountBaseProperties
+            AccountBaseProperties accountBaseProperties = (string.IsNullOrEmpty(storageId)) ? null : new AccountBaseProperties
             {
                 AutoStorage = new AutoStorageBaseProperties
                 {

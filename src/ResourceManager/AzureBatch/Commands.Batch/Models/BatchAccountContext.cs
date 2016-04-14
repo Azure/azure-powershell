@@ -116,10 +116,9 @@ namespace Microsoft.Azure.Commands.Batch
         public int ActiveJobAndJobScheduleQuota { get; private set; }
 
         /// <summary>
-        /// TODO
+        /// Contains information about the auto storage associated with a Batch account.
         /// </summary>
         public AutoStorageProperties AutoStorageProperties { get; set; }
-
 
         /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.

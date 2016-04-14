@@ -10,13 +10,13 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Applications
 {
-    public class DeleteBatchApplicationPackageCommandTests
+    public class RemoveBatchApplicationPackageCommandTests
     {
         private RemoveBatchApplicationPackageCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public DeleteBatchApplicationPackageCommandTests()
+        public RemoveBatchApplicationPackageCommandTests()
         {
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

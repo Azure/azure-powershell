@@ -7,13 +7,13 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Applications
 {
-    public class UpdateBatchApplicationCommandTests
+    public class SetBatchApplicationCommandTests
     {
         private SetBatchApplicationCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public UpdateBatchApplicationCommandTests()
+        public SetBatchApplicationCommandTests()
         {
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void UpdateBatchApplicationTest2()
+        public void UpdateBatchApplicationAllowUpdatesOnlyTest()
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
@@ -61,7 +61,30 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
 
             AzureOperationResponse updateResponse = new AzureOperationResponse();
 
-            batchClientMock.Setup(b => b.UpdateApplication(resourceGroup, accountName, applicationId, false, null, null)).Returns(updateResponse);
+            batchClientMock.Setup(b => b.UpdateApplication(resourceGroup, accountName, applicationId, true, null, null)).Returns(updateResponse);
+
+            cmdlet.AccountName = accountName;
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.ApplicationId = applicationId;
+            cmdlet.AllowUpdates = true;
+
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            cmdlet.ExecuteCmdlet();
+
+            batchClientMock.Verify(b => b.UpdateApplication(resourceGroup, accountName, applicationId, true, null, null), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateBatchApplicationDefault()
+        {
+            string accountName = "account01";
+            string resourceGroup = "resourceGroup";
+            string applicationId = "applicationId";
+
+            AzureOperationResponse updateResponse = new AzureOperationResponse();
+
+            batchClientMock.Setup(b => b.UpdateApplication(resourceGroup, accountName, applicationId, null, null, null)).Returns(updateResponse);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
@@ -70,7 +93,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
-            batchClientMock.Verify(b => b.UpdateApplication(resourceGroup, accountName, applicationId, false, null, null), Times.Once());
+            batchClientMock.Verify(b => b.UpdateApplication(resourceGroup, accountName, applicationId, null, null, null), Times.Once());
         }
     }
 }

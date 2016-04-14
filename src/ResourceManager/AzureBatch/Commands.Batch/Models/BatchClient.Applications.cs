@@ -14,13 +14,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
 
 using Hyak.Common;
 
-using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public partial class BatchClient
     {
-        public virtual PSApplication AddApplication(string resourceGroupName, string accountName, string applicationId, bool allowUpdates, string displayName)
+        public virtual PSApplication AddApplication(string resourceGroupName, string accountName, string applicationId, bool? allowUpdates, string displayName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 addApplicationParameters.DisplayName = displayName;
             }
 
-            addApplicationParameters.AllowUpdates = allowUpdates;
+            if (allowUpdates != null)
+            {
+                addApplicationParameters.AllowUpdates = (bool)allowUpdates;
+            }
 
             AddApplicationResponse response = BatchManagementClient.Applications.AddApplication(
                 resourceGroupName,
@@ -133,7 +136,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             string resourceGroupName,
             string accountName,
             string applicationId,
-            bool allowUpdates,
+            bool? allowUpdates,
             string defaultVersion,
             string displayName)
         {
@@ -143,7 +146,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            UpdateApplicationParameters uap = new UpdateApplicationParameters { AllowUpdates = allowUpdates };
+            UpdateApplicationParameters uap = new UpdateApplicationParameters();
+
+            if (allowUpdates != null)
+            {
+                uap.AllowUpdates = (bool)allowUpdates;
+            }
 
             if (defaultVersion != null)
             {
@@ -172,7 +180,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             if (!File.Exists(filePath))
             {
-                throw new FileNotFoundException("File not found: " + filePath);
+                throw new FileNotFoundException("File not found", filePath);
             }
 
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -181,40 +189,34 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            bool needToCreateAnApplicationPackage;
-            var storageUrl = GetStorageUrl(resourceGroupName, accountName, applicationId, version, out needToCreateAnApplicationPackage);
+            bool appPackageAlreadyExists;
+            var storageUrl = this.GetStorageUrl(resourceGroupName, accountName, applicationId, version, out appPackageAlreadyExists);
 
             try
             {
                 CloudBlockBlob blob = new CloudBlockBlob(new Uri(storageUrl));
                 blob.UploadFromFile(filePath, FileMode.Open);
 
-                BatchManagementClient.Applications.ActivateApplicationPackage(
-                    resourceGroupName,
-                    accountName,
-                    applicationId,
-                    version,
-                    new ActivateApplicationPackageParameters { Format = format });
+                BatchManagementClient.Applications.ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, new ActivateApplicationPackageParameters { Format = format });
             }
             catch
             {
                 // If the application package has already been created we don't want to delete the application package mysteriously.
-                if (needToCreateAnApplicationPackage)
+                if (appPackageAlreadyExists)
                 {
                     // If we are creating a new application package and the upload fails we should delete the application package.
                     this.DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
                 }
 
+                // Need to throw if we fail to upload the file's content.
                 throw;
             }
 
             return this.GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
         }
 
-        private string GetStorageUrl(string resourceGroupName, string accountName, string applicationId, string version, out bool neededToCreateAnApplicationPackage)
+        private string GetStorageUrl(string resourceGroupName, string accountName, string applicationId, string version, out bool didCreateAppPackage)
         {
-            string storageUrl = null;
-            neededToCreateAnApplicationPackage = false;
             try
             {
                 // Checks to see if the package exists
@@ -223,26 +225,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     accountName,
                     applicationId,
                     version);
-                storageUrl = response.StorageUrl;
+
+                didCreateAppPackage = false;
+                return response.StorageUrl;
             }
             catch (CloudException exception)
             {
-                neededToCreateAnApplicationPackage = exception.Response.StatusCode == HttpStatusCode.NotFound;
-                // This if for catching the error if we come back with HttpStatusCode.NotFound
+                if (exception.Response.StatusCode != HttpStatusCode.NotFound)
+                {
+                    throw;
+                }
             }
 
-            // if package doesn't exist create a new one
-            if (neededToCreateAnApplicationPackage)
-            {
-                AddApplicationPackageResponse addResponse = BatchManagementClient.Applications.AddApplicationPackage(
-                    resourceGroupName,
-                    accountName,
-                    applicationId,
-                    version);
+            AddApplicationPackageResponse addResponse = BatchManagementClient.Applications.AddApplicationPackage(
+                resourceGroupName,
+                accountName,
+                applicationId,
+                version);
 
-                storageUrl = addResponse.StorageUrl;
-            }
-            return storageUrl;
+            // If Application was created be created we need to return.
+            didCreateAppPackage = true;
+            return addResponse.StorageUrl;
         }
 
         private PSApplicationPackage ConvertGetApplicationPackageResponseToApplicationPackage(GetApplicationPackageResponse response)
@@ -264,11 +267,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return new PSApplication()
             {
                 AllowUpdates = application.AllowUpdates,
-                ApplicationPackages = application.ApplicationPackages,
+                ApplicationPackages = ConvertApplicationPackage(application.ApplicationPackages),
                 DefaultVersion = application.DefaultVersion,
                 DisplayName = application.DisplayName,
                 Id = application.Id,
             };
+        }
+
+        private static IList<PSApplicationPackage> ConvertApplicationPackage(IList<ApplicationPackage> applicationPackages)
+        {
+            return applicationPackages.Select(applicationPackage => new PSApplicationPackage
+            {
+                Format = applicationPackage.Format,
+                LastActivationTime = applicationPackage.LastActivationTime,
+                State = applicationPackage.State,
+                Version = applicationPackage.Version,
+            }).ToList();
         }
     }
 }

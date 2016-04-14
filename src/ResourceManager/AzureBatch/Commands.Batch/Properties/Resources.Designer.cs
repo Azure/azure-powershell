@@ -1022,5 +1022,16 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
                 return ResourceManager.GetString("UpdatingTask", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to local file not found {0}..
+        /// </summary>
+        public static string LocalFileNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("LocalFileNotFound", resourceCulture);
+            }
+        }
     }
 }

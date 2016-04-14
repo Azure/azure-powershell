@@ -27,13 +27,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     {
         private string accountName = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountName);
         private string accountResourceGroup = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountResourceGroup);
-        private string filePath = "Resources\\foo.zip";
+        private const string filePath = "Resources\\foo.zip";
 
         [Fact]
         public void TestUploadApplication()
         {
             string accountName = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountName);
-            BatchController.NewInstance.RunPsTest(string.Format("Test-UploadApplication '{0}' '{1}' ", accountName, accountResourceGroup));
+            BatchController.NewInstance.RunPsTest(string.Format("Test-AddApplication '{0}' '{1}' ", accountName, accountResourceGroup));
         }
 
         [Fact]

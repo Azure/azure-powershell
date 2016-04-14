@@ -45,12 +45,12 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter AllowUpdates { get; set; }
+        public bool? AllowUpdates { get; set; }
 
         public override void ExecuteCmdlet()
         {
             WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
-            BatchClient.UpdateApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.AllowUpdates.IsPresent, this.DefaultVersion, this.DisplayName);
+            BatchClient.UpdateApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.AllowUpdates, this.DefaultVersion, this.DisplayName);
             WriteVerboseWithTimestamp(Resources.EndMAMLCall, mamlCall);
         }
     }
