@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return ContainerType.AzureVM;
             }
-            else if (containerType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.ContainerType.MABContainer.ToString())
+            else if (containerType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.ContainerType.Windows.ToString())
             {
                 return ContainerType.Windows;
             }
