@@ -62,7 +62,7 @@ function Test-GetAzureVMRecoveryPointsScenario
 	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
 	$startDate = (Get-Date).AddDays(-7)
 	$endDate = Get-Date
-	$rps = Get-AzureRMRecoveryServicesRecoveryPoint -Item $item -StartDate $startDate -EndDate $endDate
+	$rps = Get-AzureRMRecoveryServicesBackupRecoveryPoint -Item $item -StartDate $startDate -EndDate $endDate
 	Assert-NotNull "RPList should not be null"
 }
 
@@ -78,7 +78,7 @@ function Test-RestoreAzureVMRItemScenario
 	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
 	$startDate = (Get-Date).AddDays(-7)
 	$endDate = Get-Date
-	$rps = Get-AzureRMRecoveryServicesRecoveryPoint -Item $item -StartDate $startDate -EndDate $endDate
+	$rps = Get-AzureRMRecoveryServicesBackupRecoveryPoint -Item $item -StartDate $startDate -EndDate $endDate
 	
 	$job = Restore-AzureRMRecoveryServicesBackupItem -RecoveryPoint $rps[0] -StorageAccountName mkheranirestorestrtest -StorageAccountResourceGroupName mkheranirestorestrtest
 

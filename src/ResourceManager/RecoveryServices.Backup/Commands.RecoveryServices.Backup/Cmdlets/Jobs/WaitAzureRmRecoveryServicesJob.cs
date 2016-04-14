@@ -56,6 +56,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         jobsToWaitOn.Add(job.InstanceId);
                     }
                 }
+                else if (Job.GetType() == typeof(System.Object[]))
+                {
+                    System.Object[] castedJobsList = Job as System.Object[];
+                    object castedJob;
+                    foreach (var job in castedJobsList)
+                    {
+                        if (GetCastedObjFromPSObj<AzureRmRecoveryServicesJobBase>(job, out castedJob))
+                        {
+                            jobsToWaitOn.Add((castedJob as AzureRmRecoveryServicesJobBase).InstanceId);
+                        }
+                        else
+                        {
+                            throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, Job.GetType().FullName));
+                        }
+                    }
+                }
                 else
                 {
                     // not a valid object. throw exception.
