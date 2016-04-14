@@ -447,24 +447,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 return containerUri.Contains(container.Name);
             }).ToList();
 
-            List<AzureRmRecoveryServicesBackupItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems, container);
+            List<ProtectedItemResponse> protectedItemGetResponses = new List<ProtectedItemResponse>();
 
             // 2. Filter by item's friendly name
             if (!string.IsNullOrEmpty(name))
             {
-                itemModels = itemModels.Where(itemModel =>
+                protectedItems = protectedItems.Where(protectedItem =>
                 {
-                    return ((AzureRmRecoveryServicesBackupIaasVmItem)itemModel).Name == name;
+                    Dictionary<UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
+                    string protectedItemUri = HelperUtils.GetProtectedItemUri(dictionary, protectedItem.Id);
+                    return protectedItemUri.Contains(name);
                 }).ToList();
 
                 GetProtectedItemQueryParam getItemQueryParams = new GetProtectedItemQueryParam();
                 getItemQueryParams.Expand = "extendedinfo";
 
+                for (int i = 0; i < protectedItems.Count; i++)
+                {
+                    Dictionary<UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItems[i].Id);
+                    string containerUri = HelperUtils.GetContainerUri(dictionary, protectedItems[i].Id);
+                    string protectedItemUri = HelperUtils.GetProtectedItemUri(dictionary, protectedItems[i].Id);
+
+                    var getResponse = HydraAdapter.GetProtectedItem(containerUri, protectedItemUri, getItemQueryParams);
+                    protectedItemGetResponses.Add(getResponse);
+                }
+            }
+
+            List<AzureRmRecoveryServicesBackupItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems, container);
+
+            if (!string.IsNullOrEmpty(name))
+            {
                 for (int i = 0; i < itemModels.Count; i++)
                 {
-                    var getResponse = HydraAdapter.GetProtectedItem(container.Name, itemModels[i].Name, getItemQueryParams);
                     AzureRmRecoveryServicesBackupIaasVmItemExtendedInfo extendedInfo = new AzureRmRecoveryServicesBackupIaasVmItemExtendedInfo();
-                    var hydraExtendedInfo = ((AzureIaaSVMProtectedItem)getResponse.Item.Properties).ExtendedInfo;
+                    var hydraExtendedInfo = ((AzureIaaSVMProtectedItem)protectedItemGetResponses[i].Item.Properties).ExtendedInfo;
                     if (hydraExtendedInfo.OldestRecoveryPoint.HasValue)
                     {
                         extendedInfo.OldestRecoveryPoint = hydraExtendedInfo.OldestRecoveryPoint;
