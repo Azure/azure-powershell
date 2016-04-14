@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
     public class RecoveryPointConversions
     {
-        public static List<AzureRmRecoveryServicesRecoveryPointBase> GetPSAzureRecoveryPoints(RecoveryPointListResponse rpList, AzureRmRecoveryServicesIaasVmItem item)
+        public static List<AzureRmRecoveryServicesBackupRecoveryPointBase> GetPSAzureRecoveryPoints(RecoveryPointListResponse rpList, AzureRmRecoveryServicesIaasVmItem item)
         {
             if (rpList == null || rpList.RecoveryPointList == null || rpList.RecoveryPointList.RecoveryPoints == null) 
             { 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
-            List<AzureRmRecoveryServicesRecoveryPointBase> result = new List<AzureRmRecoveryServicesRecoveryPointBase>();
+            List<AzureRmRecoveryServicesBackupRecoveryPointBase> result = new List<AzureRmRecoveryServicesBackupRecoveryPointBase>();
             foreach (RecoveryPointResource rp in rpList.RecoveryPointList.RecoveryPoints)
             {
                 RecoveryPoint recPoint = rp.Properties as RecoveryPoint;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return result;
         }
 
-        public static AzureRmRecoveryServicesRecoveryPointBase GetPSAzureRecoveryPoints(RecoveryPointResponse rpResponse, AzureRmRecoveryServicesIaasVmItem item)
+        public static AzureRmRecoveryServicesBackupRecoveryPointBase GetPSAzureRecoveryPoints(RecoveryPointResponse rpResponse, AzureRmRecoveryServicesIaasVmItem item)
         {
             if (rpResponse == null || rpResponse.RecPoint == null)
             {

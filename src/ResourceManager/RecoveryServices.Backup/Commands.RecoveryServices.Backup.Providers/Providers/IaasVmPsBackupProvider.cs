@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails()
+        public AzureRmRecoveryServicesBackupRecoveryPointBase GetRecoveryPointDetails()
         {
             AzureRmRecoveryServicesIaasVmItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
                 as AzureRmRecoveryServicesIaasVmItem;
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
         }
 
-        public List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
+        public List<AzureRmRecoveryServicesBackupRecoveryPointBase> ListRecoveryPoints()
         {
             DateTime startDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.StartDate]);
             DateTime endDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.EndDate]);
