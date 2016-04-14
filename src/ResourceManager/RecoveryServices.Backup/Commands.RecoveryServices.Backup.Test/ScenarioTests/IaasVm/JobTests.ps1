@@ -13,9 +13,9 @@
 # ----------------------------------------------------------------------------------
 
 #Have to hard-code this because time keeps changing with every run and we cannot use recorded sessions
-$fixedStartDate = Get-Date -Date "2016-04-12 22:00:00"
+$fixedStartDate = Get-Date -Date "2016-04-13 22:00:00"
 $fixedStartDate = $fixedStartDate.ToUniversalTime()
-$fixedEndDate = Get-Date -Date "2016-04-13 20:00:00"
+$fixedEndDate = Get-Date -Date "2016-04-14 16:00:00"
 $fixedEndDate = $fixedEndDate.ToUniversalTime()
 
 function SetVaultContext
@@ -57,8 +57,8 @@ function Test-GetJobsTimeFilter
 	{
 		echo $job.StartTime;
 
-		Assert-AreEqual $job.StartTime.CompareTo($startTime) 1
-		Assert-AreEqual $endTime.CompareTo($job.StartTime) 1
+		Assert-AreEqual $job.StartTime.ToUniversalTime().CompareTo($startTime) 1
+		Assert-AreEqual $endTime.CompareTo($job.StartTime.ToUniversalTime()) 1
 	}
 }
 
