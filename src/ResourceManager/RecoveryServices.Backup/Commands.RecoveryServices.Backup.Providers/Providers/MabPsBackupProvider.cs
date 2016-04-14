@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails()
+        public AzureRmRecoveryServicesBackupRecoveryPointBase GetRecoveryPointDetails()
         {
             throw new NotImplementedException();
         }
 
-        public List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
+        public List<AzureRmRecoveryServicesBackupRecoveryPointBase> ListRecoveryPoints()
         {
             throw new NotImplementedException();
         }

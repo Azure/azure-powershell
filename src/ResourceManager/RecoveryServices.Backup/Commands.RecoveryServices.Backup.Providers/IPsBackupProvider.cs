@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         ProtectedItemResponse GetProtectedItem();
         
-        AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails();
+        AzureRmRecoveryServicesBackupRecoveryPointBase GetRecoveryPointDetails();
 
-        List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints();
+        List<AzureRmRecoveryServicesBackupRecoveryPointBase> ListRecoveryPoints();
 
         ProtectionPolicyResponse CreatePolicy();
 

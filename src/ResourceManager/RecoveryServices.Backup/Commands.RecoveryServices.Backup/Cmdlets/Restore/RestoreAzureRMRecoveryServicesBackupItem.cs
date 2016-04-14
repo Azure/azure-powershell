@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsg.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesRecoveryPointBase RecoveryPoint { get; set; }
+        public AzureRmRecoveryServicesBackupRecoveryPointBase RecoveryPoint { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.RestoreDisk.StorageAccountName)]
         [ValidateNotNullOrEmpty]
