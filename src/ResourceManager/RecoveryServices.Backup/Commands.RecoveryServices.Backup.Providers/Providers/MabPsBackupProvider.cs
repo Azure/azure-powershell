@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails()
+        public AzureRmRecoveryServicesBackupRecoveryPointBase GetRecoveryPointDetails()
         {
             throw new NotImplementedException();
         }
 
-        public List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
+        public List<AzureRmRecoveryServicesBackupRecoveryPointBase> ListRecoveryPoints()
         {
             throw new NotImplementedException();
         }
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public List<Models.AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
+        public List<Models.AzureRmRecoveryServicesBackupContainerBase> ListProtectionContainers()
         {
             string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
 
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             var listResponse = HydraAdapter.ListContainers(queryParams);
 
-            List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
+            List<AzureRmRecoveryServicesBackupContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 
             return containerModels;
         }
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public List<Models.AzureRmRecoveryServicesItemBase> ListProtectedItems()
+        public List<Models.AzureRmRecoveryServicesBackupItemBase> ListProtectedItems()
         {
             throw new NotImplementedException();
         }

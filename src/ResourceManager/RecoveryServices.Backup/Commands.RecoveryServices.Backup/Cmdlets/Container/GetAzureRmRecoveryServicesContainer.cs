@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(AzureRmRecoveryServicesContainerBase))]
-    public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"), OutputType(typeof(AzureRmRecoveryServicesBackupContainerBase))]
+    public class GetAzureRmRecoveryServicesBackupContainer : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.ContainerType)]
         [ValidateNotNullOrEmpty]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Status)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Status)]
         [ValidateNotNullOrEmpty]
         public ContainerRegistrationStatus Status { get; set; }
 
