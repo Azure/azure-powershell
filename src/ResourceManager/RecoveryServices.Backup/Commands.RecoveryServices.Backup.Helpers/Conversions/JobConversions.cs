@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             response.InstanceId = GetLastIdFromFullId(hydraJob.Id);
-            response.StartTime = vmJob.StartTime.ToLocalTime();
+            response.StartTime = vmJob.StartTime;
             response.EndTime = vmJob.EndTime;
             response.Duration = vmJob.Duration;
             response.Status = vmJob.Status;

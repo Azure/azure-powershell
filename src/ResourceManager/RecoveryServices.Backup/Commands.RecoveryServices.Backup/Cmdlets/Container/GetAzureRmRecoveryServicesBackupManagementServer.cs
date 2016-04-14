@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"), OutputType(typeof(AzureRmRecoveryServicesBackupEngineBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"), OutputType(typeof(AzureRmRecoveryServicesBackupEngineBase), typeof(List<AzureRmRecoveryServicesBackupEngineBase>))]
     public class GetAzureRmRecoveryServicesBackupManagementServer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Name)]
+        [Parameter(Mandatory = false, Position = 1, HelpMessage = ParamHelpMsg.Container.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -49,15 +49,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.Windows, BackupManagementType.SCDPM);
 
-                var containerModels = psBackupProvider.ListBackupManagementServers();
+                var backupServerModels = psBackupProvider.ListBackupManagementServers();
                 if (!string.IsNullOrEmpty(this.Name))
                 {
-                    if (containerModels != null)
+                    if (backupServerModels != null)
                     {
-                        containerModels = containerModels.Where(x => x.Name == this.Name).ToList();
+                        backupServerModels = backupServerModels.Where(x => x.Name == this.Name).ToList();
                     }
                 }
-                WriteObject(containerModels, enumerateCollection: true);
+                if (backupServerModels.Count == 1)
+                {
+                    WriteObject(backupServerModels.First());
+                }
+                else
+                {
+                    WriteObject(backupServerModels, enumerateCollection: true);
+                }
             });
         }
     }
