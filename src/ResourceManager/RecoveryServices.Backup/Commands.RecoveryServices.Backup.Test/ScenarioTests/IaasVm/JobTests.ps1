@@ -110,8 +110,8 @@ function Test-GetJobDetails
 	$jobs = Get-AzureRmRecoveryServicesBackupJob -From $fixedStartDate -To $fixedEndDate
 	foreach ($job in $jobs)
 	{
-		$jobDetails = Get-AzureRmRecoveryServicesBackupJob -Job $job;
-		$jobDetails2 = Get-AzureRmRecoveryServicesBackupJob -JobId $job.InstanceId
+		$jobDetails = Get-AzureRmRecoveryServicesBackupJobDetails -Job $job;
+		$jobDetails2 = Get-AzureRmRecoveryServicesBackupJobDetails -JobId $job.InstanceId
 
 		Assert-AreEqual $jobDetails.InstanceId $job.InstanceId
 		Assert-AreEqual $jobDetails2.InstanceId $job.InstanceId

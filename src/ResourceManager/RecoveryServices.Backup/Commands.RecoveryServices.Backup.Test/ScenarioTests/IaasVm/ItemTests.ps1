@@ -29,7 +29,7 @@ function Test-EnableAzureVMProtectionScenario
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
-	$policy = Get-AzureRmRecoveryServicesProtectionPolicy -Name "pwtest1"	
+	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "pwtest1"	
 
 	$job = Enable-AzureRmRecoveryServicesBackupProtection -Name "mylinux1" -ResourceGroupName "mylinux1"  -WorkloadType "AzureVM" -Policy $policy;
 	Assert-AreEqual $job.Status "Completed";
@@ -56,7 +56,7 @@ function Test-GetAzureVMRecoveryPointsScenario
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
-	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
 	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
 
 	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
@@ -72,7 +72,7 @@ function Test-RestoreAzureVMRItemScenario
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
-	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
 	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
 
 	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
@@ -90,7 +90,7 @@ function Test-BackupItemScenario
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
-	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "pstestv2vm1";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "pstestv2vm1";
 	Assert-AreEqual $namedContainer.FriendlyName "pstestv2vm1";
 
 	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
