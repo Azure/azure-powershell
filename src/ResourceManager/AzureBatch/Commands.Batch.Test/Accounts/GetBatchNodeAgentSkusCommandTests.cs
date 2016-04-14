@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
     public class GetBatchNodeAgentSkusCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private GetBatchAccountNodeAgentSkusCommand cmdlet;
+        private GetBatchAccountNodeAgentSkuCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
         {
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchAccountNodeAgentSkusCommand()
+            cmdlet = new GetBatchAccountNodeAgentSkuCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string[] idsOfNodeAgentSkus = new[] { "batch.node.centos 7", "batch.node.debian 8", "batch.node.opensuse 13.2" };
 
             // Don't go to the service on an Get NodeAgentSkus call
-            AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders>
-                response = BatchTestHelpers.CreateNodeAgentSkuResponse(idsOfNodeAgentSkus);
+            AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders> response =
+                BatchTestHelpers.CreateNodeAgentSkuResponse(idsOfNodeAgentSkus);
 
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.AccountListNodeAgentSkusOptions, 
+                ProxyModels.AccountListNodeAgentSkusOptions,
                 AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders>>(responseToUse: response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             Assert.Equal(idsOfNodeAgentSkus.Length, nodeAgentCount);
         }
 
-        [Fact(Skip = "Filter bug in the client OM library, will be fixed")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListBatchNodeAgentSkusWithFilterTest()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.Filter = "osType eq 'Linux'";
+            cmdlet.Filter = "osType eq 'linux'";
 
             string requestFilter = null;
 

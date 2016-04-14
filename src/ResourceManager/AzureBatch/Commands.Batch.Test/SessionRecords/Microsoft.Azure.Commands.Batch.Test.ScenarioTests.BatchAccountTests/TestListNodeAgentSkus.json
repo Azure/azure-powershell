@@ -7,19 +7,19 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9f4daeb1-9ccf-4dfa-ad14-d36692c6aefc"
+          "87f55208-ab40-4a7d-bb3b-c78f93a7dd0e"
         ],
         "accept-language": [
           "en-US"
         ],
         "client-request-id": [
-          "07fbb77e-4015-4e93-a5fa-1a1d926f704a"
+          "2b8f6c6e-869f-42f9-8db1-971e53be6be5"
         ],
         "ocp-date": [
-          "Tue, 12 Apr 2016 21:22:07 GMT"
+          "Thu, 14 Apr 2016 23:16:13 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/4.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/4.0.1.0",
           "AzurePowershell/v1.3.0"
         ]
       },
@@ -32,7 +32,7 @@
           "chunked"
         ],
         "request-id": [
-          "bd38a409-7a56-459e-938c-ffbf6d559f97"
+          "efa172c0-2267-49ad-a2cd-7b63ded8244a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -41,7 +41,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 12 Apr 2016 21:22:08 GMT"
+          "Thu, 14 Apr 2016 23:16:14 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

@@ -298,25 +298,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
             poolOperations.ChangeOSVersion(poolId, parameters.TargetOSVersion, parameters.AdditionalBehaviors);
         }
-
-        /// <summary>
-        /// Lists the node agent SKUs matching the specified filter options.
-        /// </summary>
-        /// <param name="context">The account to use.</param>
-        /// <param name="detailLevel">The level of detail</param>
-        /// <param name="maxCount">The number of results.</param>
-        /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
-        /// <returns>The node agent SKUs matching the specified filter.</returns>
-        public IEnumerable<PSNodeAgentSku> ListNodeAgentSkus(BatchAccountContext context, string detailLevel = default(string), int maxCount = default(int), IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-        {
-            PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
-            ODATADetailLevel filterClause = new ODATADetailLevel(filterClause: detailLevel);
-
-            IPagedEnumerable<NodeAgentSku> nodeAgentSkus = poolOperations.ListNodeAgentSkus(filterClause, additionalBehaviors);
-            Func<NodeAgentSku, PSNodeAgentSku> mappingFunction = p => { return new PSNodeAgentSku(p); };
-
-            return PSPagedEnumerable<PSNodeAgentSku, NodeAgentSku>.CreateWithMaxCount(nodeAgentSkus, mappingFunction,
-                maxCount, () => WriteVerbose(string.Format(Resources.MaxCount, maxCount)));
-        }
     }
 }

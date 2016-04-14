@@ -121,14 +121,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Fact]
         public void TestRemoveComputeNodeById()
         {
-            TestRemoveComputeNode(false, TestUtilities.GetCurrentMethodName());
+            TestRemoveComputeNode(usePipeline: false, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveComputeNodePipeline()
         {
-            TestRemoveComputeNode(true, TestUtilities.GetCurrentMethodName());
+            TestRemoveComputeNode(usePipeline: true, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
@@ -161,49 +161,49 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Fact]
         public void TestRebootComputeNodeById()
         {
-            TestRebootComputeNode(false, TestUtilities.GetCurrentMethodName());
+            TestRebootComputeNode(usePipeline: false, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
         public void TestRebootComputeNodePipeline()
         {
-            TestRebootComputeNode(true, TestUtilities.GetCurrentMethodName());
+            TestRebootComputeNode(usePipeline: true, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
         public void TestReimageComputeNodeById()
         {
-            TestReimageComputeNode(false, TestUtilities.GetCurrentMethodName());
+            TestReimageComputeNode(usePipeline: false, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
         public void TestReimageComputeNodePipeline()
         {
-            TestReimageComputeNode(true, TestUtilities.GetCurrentMethodName());
+            TestReimageComputeNode(usePipeline: true, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
         public void TestDisableAndEnableComputeNodeSchedulingById()
         {
-            TestDisableAndEnableComputeNodeScheduling(false, TestUtilities.GetCurrentMethodName());
+            TestDisableAndEnableComputeNodeScheduling(usePipeline: false, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
         public void TestDisableAndEnableComputeNodeSchedulingPipeline()
         {
-            TestDisableAndEnableComputeNodeScheduling(true, TestUtilities.GetCurrentMethodName());
+            TestDisableAndEnableComputeNodeScheduling(usePipeline: true, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
         public void TestGetComputeNodeRemoteLoginSettingsById()
         {
-            TestGetComputeNodeRemoteLoginSettings(false, TestUtilities.GetCurrentMethodName());
+            TestGetComputeNodeRemoteLoginSettings(usePipeline: false, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
         public void TestGetComputeNodeRemoteLoginSettingsPipeline()
         {
-            TestGetComputeNodeRemoteLoginSettings(true, TestUtilities.GetCurrentMethodName());
+            TestGetComputeNodeRemoteLoginSettings(usePipeline: true, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         private void TestRemoveComputeNode(bool usePipeline, string testMethodName)

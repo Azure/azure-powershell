@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
@@ -388,7 +389,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// </summary>
         public static AzureOperationResponse<ProxyModels.ComputeNodeGetRemoteLoginSettingsResult, ProxyModels.ComputeNodeGetRemoteLoginSettingsHeaders> CreateRemoteLoginSettingsGetResponse(string ipAddress)
         {
-            ProxyModels.ComputeNodeGetRemoteLoginSettingsResult settings = new ProxyModels.ComputeNodeGetRemoteLoginSettingsResult();
+            var settings = new ProxyModels.ComputeNodeGetRemoteLoginSettingsResult();
             settings.RemoteLoginIPAddress = ipAddress;
 
             var response = new AzureOperationResponse<ProxyModels.ComputeNodeGetRemoteLoginSettingsResult, ProxyModels.ComputeNodeGetRemoteLoginSettingsHeaders>()
@@ -585,14 +586,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// </summary>
         public static AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders> CreateNodeAgentSkuResponse(IEnumerable<string> skuIds)
         {
-            List<ProxyModels.NodeAgentSku> nodeAgents = new List<ProxyModels.NodeAgentSku>();
-
-            foreach (string id in skuIds)
-            {
-                ProxyModels.NodeAgentSku nodeAgent = new ProxyModels.NodeAgentSku();
-                nodeAgent.Id = id;
-                nodeAgents.Add(nodeAgent);
-            }
+            IEnumerable<ProxyModels.NodeAgentSku> nodeAgents =
+                skuIds.Select(id => new ProxyModels.NodeAgentSku() { Id = id });
 
             var response = new AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders>()
             {

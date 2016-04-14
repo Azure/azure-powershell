@@ -10742,6 +10742,22 @@
         </dev:remarks>
       </command:example>
     </command:examples>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSRemoteLoginSettings</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
     <!-- Link section  -->
     <maml:relatedLinks>
       <maml:navigationLink>
@@ -10869,6 +10885,22 @@
         </dev:remarks>
       </command:example>
     </command:examples>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSNodeAgentSku</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
     <!-- Link section  -->
     <maml:relatedLinks>
       <maml:navigationLink>

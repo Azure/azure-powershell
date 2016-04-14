@@ -69,7 +69,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string ipAddress = "104.214.75.220";
 
             // Don't go to the service on an Get RemoteLoginSettings call
-            AzureOperationResponse<ComputeNodeGetRemoteLoginSettingsResult, ComputeNodeGetRemoteLoginSettingsHeaders> response = BatchTestHelpers.CreateRemoteLoginSettingsGetResponse(ipAddress);
+            AzureOperationResponse<ComputeNodeGetRemoteLoginSettingsResult, ComputeNodeGetRemoteLoginSettingsHeaders> response =
+                BatchTestHelpers.CreateRemoteLoginSettingsGetResponse(ipAddress);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
                 ComputeNodeGetRemoteLoginSettingsOptions, 
                 AzureOperationResponse<ComputeNodeGetRemoteLoginSettingsResult, ComputeNodeGetRemoteLoginSettingsHeaders>>(responseToUse: response);
