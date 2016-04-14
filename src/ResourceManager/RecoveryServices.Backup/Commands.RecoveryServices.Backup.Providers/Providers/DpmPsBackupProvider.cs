@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public List<Models.AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
+        public List<Models.AzureRmRecoveryServicesBackupContainerBase> ListProtectionContainers()
         {
             throw new NotImplementedException();
         }
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public List<Models.AzureRmRecoveryServicesItemBase> ListProtectedItems()
+        public List<Models.AzureRmRecoveryServicesBackupItemBase> ListProtectedItems()
         {
             throw new NotImplementedException();
         }
