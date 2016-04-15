@@ -120,15 +120,21 @@ function Test-RestoreAzureVMRItemScenario
 
 function Test-BackupItemScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
+	# 1. Get the vault
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+
+	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "pstestv2vm1";
-	Assert-AreEqual $namedContainer.FriendlyName "pstestv2vm1";
+	# 3. Get the container
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
+	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
 
+	# 4: Get the item
 	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
-	echo $item.Name;
+	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
 
-	$job = Backup-AzureRmRecoveryServicesItem -Item $item;
+	# 5: Trigger backup
+	$job = Backup-AzureRmRecoveryServicesBackupItem -Item $item;
 	Assert-NotNull $job;
 }
