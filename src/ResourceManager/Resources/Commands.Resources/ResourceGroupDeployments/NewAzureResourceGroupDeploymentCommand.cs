@@ -38,6 +38,10 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
         public DeploymentMode Mode { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment debug log level.")]
+        [ValidateSet("RequestContent", "ResponseContent", "All", "None", IgnoreCase = true)]
+        public string DeploymentDebugLogLevel { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -55,8 +59,14 @@ namespace Microsoft.Azure.Commands.Resources
                 DeploymentMode = Mode,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                ParameterUri = TemplateParameterUri
+                ParameterUri = TemplateParameterUri,
+                DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
             };
+
+            if(!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
+            {
+                WriteWarning("The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation");
+            }
 
             if(this.Mode == DeploymentMode.Complete)
             {

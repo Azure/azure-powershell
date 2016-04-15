@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             base.ExecuteCmdlet();
 
             var virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, VMName);
-            string currentOSType = virtualMachineResponse.Body.StorageProfile.OsDisk.OsType;
+            var currentOSType = virtualMachineResponse.Body.StorageProfile.OsDisk.OsType;
 
-            if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
+            if (OperatingSystemTypes.Linux.Equals(currentOSType))
             {
                 AzureVMBackupExtensionUtil util = new AzureVMBackupExtensionUtil();
                 AzureVMBackupConfig vmConfig = new AzureVMBackupConfig();

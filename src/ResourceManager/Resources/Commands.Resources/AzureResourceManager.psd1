@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '1.2.1' 
+ModuleVersion = '1.2.3' 
   
 # ID used to uniquely identify this module  
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'  
@@ -57,12 +57,14 @@ ScriptsToProcess = @()
 TypesToProcess = @(  
     '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml',
     '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml',
-    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
+    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml',
+    '.\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'
 )  
   
 # Format files (.ps1xml) to be loaded when importing this module  
 FormatsToProcess = @(  
-    '.\AzureRM.Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',  
+    '.\AzureRM.Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',
+    '.\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml',
     '.\AzureRM.Tags\Microsoft.Azure.Commands.Tags.format.ps1xml',  
     '.\AzureRM.Profile\Microsoft.Azure.Commands.Profile.format.ps1xml',
     '.\AzureRM.DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',  
@@ -138,6 +140,27 @@ ModuleList = @()
 FileList =  @()  
   
 # Private data to pass to the module specified in ModuleToProcess  
-PrivateData = ''  
+PrivateData = @{
+
+    PSData = @{
+
+        # Tags applied to this module. These help with module discovery in online galleries.
+        # Tags = @()
+
+        # A URL to the license for this module.
+        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'
+
+        # A URL to the main website for this project.
+        ProjectUri = 'https://github.com/Azure/azure-powershell'
+
+        # A URL to an icon representing this module.
+        # IconUri = ''
+
+        # ReleaseNotes of this module
+        ReleaseNotes = 'https://github.com/Azure/azure-powershell/blob/dev/ChangeLog.md'
+
+    } # End of PSData hashtable
+
+} # End of PrivateData hashtable  
 
 } 

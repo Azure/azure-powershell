@@ -48,6 +48,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             overrides.Add(typeof(DataVirtualHardDisk), "MediaLink", ignoreAttrib);
             overrides.Add(typeof(DataVirtualHardDisk), "SourceMediaLink", ignoreAttrib);
             overrides.Add(typeof(OSVirtualHardDisk), "MediaLink", ignoreAttrib);
+            overrides.Add(typeof(CSM.DebugSettings), "ConsoleScreenshotBlobUri", ignoreAttrib);
+            overrides.Add(typeof(CSM.DebugSettings), "SerialOutputBlobUri", ignoreAttrib);
 
             var serializer = new System.Xml.Serialization.XmlSerializer(typeof(PersistentVM), overrides, new Type[] { typeof(NetworkConfigurationSet) }, null, null);
             using (TextWriter writer = new StreamWriter(filePath))
@@ -70,6 +72,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             overrides.Add(typeof(DataVirtualHardDisk), "SourceMediaLink", ignoreAttrib);
             overrides.Add(typeof(OSVirtualHardDisk), "MediaLink", ignoreAttrib);
             overrides.Add(typeof(OSVirtualHardDisk), "SourceImageName", ignoreAttrib);
+            overrides.Add(typeof(CSM.DebugSettings), "ConsoleScreenshotBlobUri", ignoreAttrib);
+            overrides.Add(typeof(CSM.DebugSettings), "SerialOutputBlobUri", ignoreAttrib);
 
             var serializer = new System.Xml.Serialization.XmlSerializer(typeof(PersistentVM), overrides, new Type[] { typeof(NetworkConfigurationSet) }, null, null);
 

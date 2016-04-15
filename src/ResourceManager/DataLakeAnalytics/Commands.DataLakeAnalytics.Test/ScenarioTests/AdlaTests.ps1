@@ -102,6 +102,14 @@ function Test-DataLakeAnalyticsAccount
 		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
 		Assert-AreEqual 2 $testStoreAdd.Properties.DataLakeStoreAccounts.Count
 
+		# get the specific data source added
+		$adlsAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
+		Assert-AreEqual $secondDataLakeAccountName $adlsAccountInfo.Name
+
+		# get the list of data lakes
+		$adlsAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataSource DataLakeStore
+		Assert-AreEqual 2 $adlsAccountInfos.Count
+
 		# remove the Data lake storage account
 		Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName -Force -PassThru} "Remove Data Lake Store account failed."
 
@@ -115,6 +123,14 @@ function Test-DataLakeAnalyticsAccount
 		# get the account and ensure that it contains one blob account
 		$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
 		Assert-AreEqual 1 $testStoreAdd.Properties.StorageAccounts.Count
+
+		# get the specific data source added
+		$blobAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName
+		Assert-AreEqual $blobAccountName $blobAccountInfo.Name
+
+		# get the list of blobs
+		$blobAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataSource Blob
+		Assert-AreEqual 1 $blobAccountInfos.Count
 
 		# remove the blob storage account
 		Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -Force -PassThru} "Remove blob Storage account failed."
@@ -534,7 +550,7 @@ function Test-DataLakeAnalyticsCatalog
 		$found = $false
 		foreach($item in $itemList)
 		{
-			if($item.DatabaseName -eq $databaseName)
+			if($item.Name -eq $databaseName)
 			{
 				$found = $true
 				break
@@ -546,7 +562,7 @@ function Test-DataLakeAnalyticsCatalog
 		# retrieve the specific DB
 		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Database -Path $databaseName
 		Assert-NotNull $specificItem "Could not retrieve the db by name"
-		Assert-AreEqual $databaseName $specificItem.DatabaseName
+		Assert-AreEqual $databaseName $specificItem.Name
 
 		# retrieve the list of tables and ensure the created table is in it
 		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName.dbo"
@@ -557,7 +573,7 @@ function Test-DataLakeAnalyticsCatalog
 		$found = $false
 		foreach($item in $itemList)
 		{
-			if($item.TableName -eq $tableName)
+			if($item.Name -eq $tableName)
 			{
 				$found = $true
 				break
@@ -569,7 +585,7 @@ function Test-DataLakeAnalyticsCatalog
 		# retrieve the specific table
 		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName.dbo.$tableName"
 		Assert-NotNull $specificItem "Could not retrieve the table by name"
-		Assert-AreEqual $tableName $specificItem.TableName
+		Assert-AreEqual $tableName $specificItem.Name
 
 		# retrieve the list of table valued functions and ensure the created tvf is in it
 		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo"
@@ -580,7 +596,7 @@ function Test-DataLakeAnalyticsCatalog
 		$found = $false
 		foreach($item in $itemList)
 		{
-			if($item.TvfName -eq $tvfName)
+			if($item.Name -eq $tvfName)
 			{
 				$found = $true
 				break
@@ -592,7 +608,7 @@ function Test-DataLakeAnalyticsCatalog
 		# retrieve the specific TVF
 		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo.$tvfName"
 		Assert-NotNull $specificItem "Could not retrieve the TVF by name"
-		Assert-AreEqual $tvfName $specificItem.TvfName
+		Assert-AreEqual $tvfName $specificItem.Name
 
 		# retrieve the list of procedures and ensure the created procedure is in it
 		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Procedure -Path "$databaseName.dbo"
@@ -603,7 +619,7 @@ function Test-DataLakeAnalyticsCatalog
 		$found = $false
 		foreach($item in $itemList)
 		{
-			if($item.ProcName -eq $procName)
+			if($item.Name -eq $procName)
 			{
 				$found = $true
 				break
@@ -615,7 +631,7 @@ function Test-DataLakeAnalyticsCatalog
 		# retrieve the specific procedure
 		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Procedure -Path "$databaseName.dbo.$procName"
 		Assert-NotNull $specificItem "Could not retrieve the procedure by name"
-		Assert-AreEqual $procName $specificItem.ProcName
+		Assert-AreEqual $procName $specificItem.Name
 
 		# retrieve the list of views and ensure the created view is in it
 		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName.dbo"
@@ -626,7 +642,7 @@ function Test-DataLakeAnalyticsCatalog
 		$found = $false
 		foreach($item in $itemList)
 		{
-			if($item.ViewName -eq $viewName)
+			if($item.Name -eq $viewName)
 			{
 				$found = $true
 				break
@@ -638,7 +654,7 @@ function Test-DataLakeAnalyticsCatalog
 		# retrieve the specific view
 		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName.dbo.$viewName"
 		Assert-NotNull $specificItem "Could not retrieve the view by name"
-		Assert-AreEqual $viewName $specificItem.ViewName
+		Assert-AreEqual $viewName $specificItem.Name
 
 		# create the secret
 		$pw = ConvertTo-SecureString -String $secretPwd -AsPlainText -Force
@@ -674,7 +690,7 @@ function Test-DataLakeAnalyticsCatalog
 		$found = $false
 		foreach($item in $itemList)
 		{
-			if($item.CredentialName -eq $credentialName)
+			if($item.Name -eq $credentialName)
 			{
 				$found = $true
 				break
@@ -684,7 +700,7 @@ function Test-DataLakeAnalyticsCatalog
 		# retrieve the specific credential
 		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"
 		Assert-NotNull $specificItem "Could not retrieve the credential by name"
-		Assert-AreEqual $credentialName $specificItem.CredentialName
+		Assert-AreEqual $credentialName $specificItem.Name
 
 		# credential job template
 		$credentialJobTemplate = @"

@@ -30,9 +30,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The virtual network gateway AddressSpace.")]
         public List<string> AddressSpace { get; set; }
 
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "On-premise BGP speaker's ASN")]
+        public uint Asn { get; set; }
+
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "On-premise BGP speaker's IP/BGP identifier")]
+        public string BgpPeeringAddress { get; set; }
+
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Weight for routes learned from this BGP speaker")]
+        public int PeerWeight { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.CreateLocalNetworkGateway(GatewayName, IpAddress, AddressSpace));
+            WriteObject(Client.CreateLocalNetworkGateway(GatewayName, IpAddress, AddressSpace, Asn, BgpPeeringAddress, PeerWeight));
         }
     }
 }

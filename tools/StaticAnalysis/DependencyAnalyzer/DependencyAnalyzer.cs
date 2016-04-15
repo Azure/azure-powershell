@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -26,6 +27,21 @@ namespace StaticAnalysis.DependencyAnalyzer
     /// </summary>
     public class DependencyAnalyzer : IStaticAnalyzer
     {
+        const int NoAssemblyVersionEvidence = 1000;
+        const int ReferenceDoesNotMatchAssemblyVersion = 1010;
+        const int ExtraAssemblyRecord = 2000;
+        const int MissingAssemblyRecord = 3000;
+        const int AssemblyVersionFileVersionMismatch = 7000;
+        const int CommonAuthenticationMismatch = 7010;
+
+        static List<string> FrameworkAssemblies = new List<string>
+        {
+            "Microsoft.CSharp",
+            "Microsoft.Management.Infrastructure",
+            "Microsoft.Build",
+            "Microsoft.Build.Framework"
+        };
+
         private Dictionary<string, AssemblyRecord> _assemblies =
             new Dictionary<string, AssemblyRecord>(StringComparer.OrdinalIgnoreCase);
         private Dictionary<AssemblyName, AssemblyRecord> _sharedAssemblyReferences =
@@ -130,6 +146,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                         },
                         AssemblyVersion = assembly.Version,
                         Severity = 0,
+                        ProblemId = AssemblyVersionFileVersionMismatch,
                         Description = "Shared assembly conflict, shared assemblies with the same assembly " +
                                       "version have differing file versions",
                         Remediation = string.Format("Update the assembly reference for {0} in one of the " +
@@ -170,6 +187,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                         AssemblyName = record.Name,
                         AssemblyVersion = record.Version,
                         Severity = 0,
+                        ProblemId = CommonAuthenticationMismatch,
                         AssemblyPathsAndFileVersions = new List<Tuple<string, Version>>()
                         {
                             new Tuple<string, Version>(record.Location, new Version(record.AssemblyFileMajorVersion, 
@@ -202,14 +220,15 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         private static bool IsFrameworkAssembly(AssemblyName name)
         {
-            return name.Name.StartsWith("System") || name.Name.Equals("mscorlib");
+            return name.Name.StartsWith("System") || name.Name.Equals("mscorlib") 
+                || FrameworkAssemblies.Contains(name.Name);
         }
 
         private void ProcessDirectory(string directoryPath)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
             Directory.SetCurrentDirectory(directoryPath);
-            _loader = AppDomainHelpers.CreateProxy<AssemblyLoader>(directoryPath, out _testDomain);
+            _loader = EnvironmentHelpers.CreateProxy<AssemblyLoader>(directoryPath, out _testDomain);
             foreach (var file in Directory.GetFiles(directoryPath).Where(file => file.EndsWith(".dll")))
             {
                 AssemblyRecord assembly = CreateAssemblyRecord(file);
@@ -258,6 +277,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                     {
                         AssemblyName = assembly.Name,
                         Severity = 2,
+                        ProblemId = ExtraAssemblyRecord,
                         Description = string.Format("Assembly {0} is not referenced from any cmdlets assembly", 
                         assembly.Name),
                         Remediation = string.Format("Remove assembly {0} from the project and regenerate the Wix " +
@@ -286,6 +306,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                        ActualVersion = stored.Version,
                        ExpectedVersion = reference.Version,
                        ParentAssembly = parent.Name,
+                       ProblemId = NoAssemblyVersionEvidence,
                        Severity = 2,
                        Description = string.Format("Assembly {0} referenced from {1}.dll does not specify any " +
                                                    "assembly version evidence.  The assembly will use version " +
@@ -304,6 +325,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                         ActualVersion = stored.Version,
                         ExpectedVersion = reference.Version,
                         ParentAssembly = parent.Name,
+                        ProblemId = ReferenceDoesNotMatchAssemblyVersion,
                         Severity = 1,
                         Description = string.Format("Assembly {0} version {1} referenced from {2}.dll does " +
                                                     "not match assembly version on disk: {3}", 
@@ -321,6 +343,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                     AssemblyVersion = reference.Version.ToString(),
                     ReferencingAssembly = parent.Name,
                     Severity = 0,
+                    ProblemId = MissingAssemblyRecord,
                     Description = string.Format("Missing assembly {0} referenced from {1}", reference.Name, 
                     parent.Name),
                     Remediation = "Ensure that the assembly is included in the Wix file or directory"

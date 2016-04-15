@@ -22,30 +22,44 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAutoscaleSetting()
+        public void TestAddAzureRmAutoscaleSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-AddAutoscaleSetting");
+            TestsController.NewInstance.RunPsTest("Test-AddAzureRmAutoscaleSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAutoscaleSetting()
+        public void TestGetAzureRmAutoscaleSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAutoscaleSetting");
+            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAutoscaleSetting()
+        public void TestRemoveAzureRmAutoscaleSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-RemoveAutoscaleSetting");
+            TestsController.NewInstance.RunPsTest("Test-RemoveAzureRmAutoscaleSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAutoscaleHistory()
+        public void TestGetAzureRmAutoscaleHistory()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAutoscaleHistory");
+            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleHistory");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureRmAutoscaleNotification()
+        {
+            TestsController.NewInstance.RunPsTest("Test-NewAzureRmAutoscaleNotification");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureRmAutoscaleWebhook()
+        {
+            TestsController.NewInstance.RunPsTest("Test-NewAzureRmAutoscaleWebhook");
         }
     }
 }
