@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Properties;
+using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using System.IO;
-using System.Xml;
 using System.Runtime.Serialization;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Globalization;
-using Microsoft.Azure.Management.RecoveryServices.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Properties;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -121,9 +121,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 }
                 else
                 {
-                this.GetVaultSettingsFile();
-            }
-
+                    this.GetVaultSettingsFile();
+                }
             }
             catch (AggregateException aggregateEx)
             {

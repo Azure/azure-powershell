@@ -99,6 +99,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             return this.recoveryServicesClient.Vaults.GetResourceStorageConfig(resouceGroupName, vaultName, this.GetRequestHeaders());
         }
-
     }
 }
