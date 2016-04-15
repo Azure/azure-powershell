@@ -34,9 +34,9 @@ function Test-GetContainerScenario
 
 	# VAR-3: Get Containers with friendly name and resource group filters
 	$rgFilteredContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1" -ResourceGroupName "RsvTestRG";
-	echo $rgFilteredContainer.Name $rgFilteredContainer.ResourceGroupName;
+	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
 
 	# VAR-4: Get Containers with resource group filter
 	$rgFilteredContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -ResourceGroupName "RsvTestRG";
-	echo $rgFilteredContainer.Name $rgFilteredContainer.ResourceGroupName;
+	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
 }
