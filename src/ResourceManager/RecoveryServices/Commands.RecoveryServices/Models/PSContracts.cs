@@ -524,7 +524,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
             this.HostName = (acsDetails.Properties as ACSCertificateProperties).GlobalAcsHostName;
             this.Namespace = (acsDetails.Properties as ACSCertificateProperties).GlobalAcsNamespace;
             this.ResourceProviderRealm = (acsDetails.Properties as ACSCertificateProperties).GlobalAcsRPRealm;
-
         }
 
         /// <summary>
