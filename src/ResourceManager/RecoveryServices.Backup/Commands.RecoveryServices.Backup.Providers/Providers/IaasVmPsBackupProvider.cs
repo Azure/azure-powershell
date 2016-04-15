@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     Dictionary<UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
                     string protectedItemUri = HelperUtils.GetProtectedItemUri(dictionary, protectedItem.Id);
-                    return protectedItemUri.Contains(name);
+                    return protectedItemUri.ToLower().Contains(name.ToLower());
                 }).ToList();
 
                 GetProtectedItemQueryParam getItemQueryParams = new GetProtectedItemQueryParam();
