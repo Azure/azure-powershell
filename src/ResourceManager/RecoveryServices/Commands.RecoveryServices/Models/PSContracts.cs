@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace, string resourceType = null)
         {
             this.SubscriptionId = subscriptionId;
-            this.ResourceType = string.IsNullOrEmpty(resourceType) ? Constants.ASRVaultType : resourceType;
+            this.ResourceType = string.IsNullOrEmpty(resourceType) ? Constants.VaultType : resourceType;
             this.ResourceName = resourceName;
             this.ManagementCert = managementCert;
             this.AcsNamespace = acsNamespace;

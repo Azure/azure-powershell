@@ -83,8 +83,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByDefault, Mandatory = false)]
-        [Parameter(ParameterSetName = ASRParameterSets.ForSite, Mandatory = false)]
+        [Parameter(ParameterSetName = ARSParameterSets.ByDefault, Mandatory = false)]
+        [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = false)]
         public SwitchParameter SiteRecovery
         {
             get { return siteRecovery; }
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = "ForBackup", Mandatory = true)]
+        [Parameter(ParameterSetName = ARSParameterSets.ForBackupVaultType, Mandatory = true)]
         public SwitchParameter Backup
         {
             get { return backup; }
