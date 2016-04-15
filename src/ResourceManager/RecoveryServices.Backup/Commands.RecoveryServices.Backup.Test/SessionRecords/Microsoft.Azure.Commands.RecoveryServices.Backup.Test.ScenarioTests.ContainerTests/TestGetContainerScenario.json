@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "33460d07-0d12-4ddb-9b0e-9984dcde14d7-2016-04-15 10:09:30Z-P"
+          "b6326530-a2e7-4060-823f-2be4584b059f-2016-04-15 10:45:12Z-P"
         ],
         "x-ms-version": [
           "2015-01-01"
@@ -31,20 +31,20 @@
           "no-cache"
         ],
         "x-ms-original-request-ids": [
-          "42afc662-e890-41db-b63a-c86a411b5e06",
-          "42afc662-e890-41db-b63a-c86a411b5e06"
+          "aa09de89-72fb-4e12-9a3f-74cf4732055b",
+          "aa09de89-72fb-4e12-9a3f-74cf4732055b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14305"
+          "14432"
         ],
         "x-ms-request-id": [
-          "42afc662-e890-41db-b63a-c86a411b5e06"
+          "aa09de89-72fb-4e12-9a3f-74cf4732055b"
         ],
         "x-ms-correlation-request-id": [
-          "42afc662-e890-41db-b63a-c86a411b5e06"
+          "aa09de89-72fb-4e12-9a3f-74cf4732055b"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160415T100933Z:42afc662-e890-41db-b63a-c86a411b5e06"
+          "CENTRALUS:20160415T104514Z:aa09de89-72fb-4e12-9a3f-74cf4732055b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -53,7 +53,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 15 Apr 2016 10:09:32 GMT"
+          "Fri, 15 Apr 2016 10:45:14 GMT"
         ]
       },
       "StatusCode": 200
@@ -65,7 +65,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "caded861-cadf-4c04-889f-b1704ae331a3-2016-04-15 10:09:33Z-P"
+          "a88a63a4-b01f-4d0e-8cf2-8ed17d51bbe6-2016-04-15 10:45:14Z-P"
         ],
         "x-ms-version": [
           "2015-01-01"
@@ -89,28 +89,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "fee1e8fc-6850-4614-981b-27f5c1142acd"
+          "d68db792-86b4-413b-a03e-4e4f1679c08d"
         ],
         "x-ms-client-request-id": [
-          "caded861-cadf-4c04-889f-b1704ae331a3-2016-04-15 10:09:33Z-P"
+          "a88a63a4-b01f-4d0e-8cf2-8ed17d51bbe6-2016-04-15 10:45:14Z-P"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14324"
+          "14439"
         ],
         "x-ms-correlation-request-id": [
-          "fee1e8fc-6850-4614-981b-27f5c1142acd"
+          "d68db792-86b4-413b-a03e-4e4f1679c08d"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160415T100935Z:fee1e8fc-6850-4614-981b-27f5c1142acd"
+          "CENTRALUS:20160415T104517Z:d68db792-86b4-413b-a03e-4e4f1679c08d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 15 Apr 2016 10:09:35 GMT"
+          "Fri, 15 Apr 2016 10:45:17 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -125,7 +125,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bcc46528-cbb3-49ca-91dc-130a70ebfca1-2016-04-15 10:09:36Z-PS"
+          "88094b82-455f-4835-b2bd-aeb901ebb86c-2016-04-15 10:45:17Z-PS"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupManagementClient/0.9.0.0"
@@ -146,29 +146,212 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "cbfdda3f-598d-4828-9595-8f6f8f2c1ec5"
+          "18d63954-6288-4bc4-aa54-496ec32b2360"
         ],
         "x-ms-client-request-id": [
-          "bcc46528-cbb3-49ca-91dc-130a70ebfca1-2016-04-15 10:09:36Z-PS",
-          "bcc46528-cbb3-49ca-91dc-130a70ebfca1-2016-04-15 10:09:36Z-PS"
+          "88094b82-455f-4835-b2bd-aeb901ebb86c-2016-04-15 10:45:17Z-PS",
+          "88094b82-455f-4835-b2bd-aeb901ebb86c-2016-04-15 10:45:17Z-PS"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14323"
+          "14431"
         ],
         "x-ms-correlation-request-id": [
-          "cbfdda3f-598d-4828-9595-8f6f8f2c1ec5"
+          "18d63954-6288-4bc4-aa54-496ec32b2360"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160415T100937Z:cbfdda3f-598d-4828-9595-8f6f8f2c1ec5"
+          "CENTRALUS:20160415T104520Z:18d63954-6288-4bc4-aa54-496ec32b2360"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 15 Apr 2016 10:09:37 GMT"
+          "Fri, 15 Apr 2016 10:45:19 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupProtectionContainers?api-version=2016-05-01&$filter=providerType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BzVGVzdFJzVmF1bHQvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxNi0wNS0wMSYkZmlsdGVyPXByb3ZpZGVyVHlwZSUyMGVxJTIwJ0F6dXJlSWFhc1ZNJyUyMGFuZCUyMHN0YXR1cyUyMGVxJTIwJ1JlZ2lzdGVyZWQn",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5cbf68e4-2864-4cc3-9ae1-011cabd70050-2016-04-15 10:45:21Z-PS"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainer;group-4;mkheranismvm1\",\r\n      \"name\": \"IaasVMContainer;iaasvmcontainer;group-4;mkheranismvm1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"virtualMachineId\": \"/subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/Group-4/providers/Microsoft.ClassicCompute/virtualMachines/mkheraniSMvm1\",\r\n        \"virtualMachineVersion\": \"ClassicCompute\",\r\n        \"resourceGroup\": \"Group-4\",\r\n        \"friendlyName\": \"mkheraniSMvm1\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"Microsoft.ClassicCompute/virtualMachines\",\r\n        \"protectableObjectType\": \"Microsoft.ClassicCompute/virtualMachines\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainer;mkherani008;mkherani008\",\r\n      \"name\": \"IaasVMContainer;iaasvmcontainer;mkherani008;mkherani008\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"virtualMachineId\": \"/subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/mkherani008/providers/Microsoft.ClassicCompute/virtualMachines/mkherani008\",\r\n        \"virtualMachineVersion\": \"ClassicCompute\",\r\n        \"resourceGroup\": \"mkherani008\",\r\n        \"friendlyName\": \"mkherani008\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"Microsoft.ClassicCompute/virtualMachines\",\r\n        \"protectableObjectType\": \"Microsoft.ClassicCompute/virtualMachines\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1\",\r\n      \"name\": \"IaasVMContainer;iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"virtualMachineId\": \"/subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/mkheraniRMVM1/providers/Microsoft.Compute/virtualMachines/mkheraniRMVM1\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"resourceGroup\": \"mkheraniRMVM1\",\r\n        \"friendlyName\": \"mkheraniRMVM1\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"protectableObjectType\": \"Microsoft.Compute/virtualMachines\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2647"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6f4ddecf-c89a-43f1-88e8-71d3ad0845fc"
+        ],
+        "x-ms-client-request-id": [
+          "5cbf68e4-2864-4cc3-9ae1-011cabd70050-2016-04-15 10:45:21Z-PS",
+          "5cbf68e4-2864-4cc3-9ae1-011cabd70050-2016-04-15 10:45:21Z-PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14428"
+        ],
+        "x-ms-correlation-request-id": [
+          "6f4ddecf-c89a-43f1-88e8-71d3ad0845fc"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160415T104522Z:6f4ddecf-c89a-43f1-88e8-71d3ad0845fc"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Apr 2016 10:45:22 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupProtectionContainers?api-version=2016-05-01&$filter=providerType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'%20and%20friendlyName%20eq%20'mkheraniRMVM1'",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BzVGVzdFJzVmF1bHQvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxNi0wNS0wMSYkZmlsdGVyPXByb3ZpZGVyVHlwZSUyMGVxJTIwJ0F6dXJlSWFhc1ZNJyUyMGFuZCUyMHN0YXR1cyUyMGVxJTIwJ1JlZ2lzdGVyZWQnJTIwYW5kJTIwZnJpZW5kbHlOYW1lJTIwZXElMjAnbWtoZXJhbmlSTVZNMSc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bd8d2625-0452-4567-906d-44ebc19983a2-2016-04-15 10:45:20Z-PS"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupFabrics/Azure/protectionContainers/iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1\",\r\n      \"name\": \"iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"virtualMachineId\": \"/subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/mkheraniRMVM1/providers/Microsoft.Compute/virtualMachines/mkheraniRMVM1\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"resourceGroup\": \"mkheraniRMVM1\",\r\n        \"friendlyName\": \"mkheraniRMVM1\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"protectableObjectType\": \"Microsoft.Compute/virtualMachines\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "855"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1309075f-a7f2-475a-a664-b80c4b5dc00c"
+        ],
+        "x-ms-client-request-id": [
+          "bd8d2625-0452-4567-906d-44ebc19983a2-2016-04-15 10:45:20Z-PS",
+          "bd8d2625-0452-4567-906d-44ebc19983a2-2016-04-15 10:45:20Z-PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14430"
+        ],
+        "x-ms-correlation-request-id": [
+          "1309075f-a7f2-475a-a664-b80c4b5dc00c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160415T104521Z:1309075f-a7f2-475a-a664-b80c4b5dc00c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Apr 2016 10:45:20 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupProtectionContainers?api-version=2016-05-01&$filter=providerType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'%20and%20friendlyName%20eq%20'mkheraniRMVM1'",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BzVGVzdFJzVmF1bHQvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxNi0wNS0wMSYkZmlsdGVyPXByb3ZpZGVyVHlwZSUyMGVxJTIwJ0F6dXJlSWFhc1ZNJyUyMGFuZCUyMHN0YXR1cyUyMGVxJTIwJ1JlZ2lzdGVyZWQnJTIwYW5kJTIwZnJpZW5kbHlOYW1lJTIwZXElMjAnbWtoZXJhbmlSTVZNMSc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "35418113-7124-4caa-8cb9-299adfa5288c-2016-04-15 10:45:21Z-PS"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupFabrics/Azure/protectionContainers/iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1\",\r\n      \"name\": \"iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"virtualMachineId\": \"/subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/mkheraniRMVM1/providers/Microsoft.Compute/virtualMachines/mkheraniRMVM1\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"resourceGroup\": \"mkheraniRMVM1\",\r\n        \"friendlyName\": \"mkheraniRMVM1\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"protectableObjectType\": \"Microsoft.Compute/virtualMachines\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "855"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "cc845c37-0e7b-4285-a35c-9dce4679d5e7"
+        ],
+        "x-ms-client-request-id": [
+          "35418113-7124-4caa-8cb9-299adfa5288c-2016-04-15 10:45:21Z-PS",
+          "35418113-7124-4caa-8cb9-299adfa5288c-2016-04-15 10:45:21Z-PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14429"
+        ],
+        "x-ms-correlation-request-id": [
+          "cc845c37-0e7b-4285-a35c-9dce4679d5e7"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160415T104521Z:cc845c37-0e7b-4285-a35c-9dce4679d5e7"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Apr 2016 10:45:21 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
