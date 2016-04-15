@@ -68,6 +68,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         throw new ArgumentException(Resources.RecoveryPointEndDateShouldBeGreater); 
                     }
 
+                    if(StartDate.Kind != DateTimeKind.Utc || EndDate.Kind != DateTimeKind.Utc)
+                    {
+                        throw new ArgumentException(Resources.GetRPErrorInputDatesShouldBeInUTC);
+                    }
+
                     parameter.Add(GetRecoveryPointParams.StartDate, StartDate);
                     parameter.Add(GetRecoveryPointParams.EndDate, EndDate);
                     PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);

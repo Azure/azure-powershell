@@ -291,6 +291,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Both EndDate and StartDate should be in UTC format.
+        /// </summary>
+        public static string GetRPErrorInputDatesShouldBeInUTC {
+            get {
+                return ResourceManager.GetString("GetRPErrorInputDatesShouldBeInUTC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GetRecoveryPointResponse is null.
         /// </summary>
         public static string GetRPResponseIsNull {
