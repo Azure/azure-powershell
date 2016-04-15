@@ -12,7 +12,7 @@
 ModuleVersion = '1.0.0' 
   
 # ID used to uniquely identify this module  
-GUID = 'BB030259-49F9-46EF-806F-2A3F5A2E018E'  
+GUID = '9B00B730-E4BF-11E5-93D9-40A8F066D050'  
   
 # Author of this module  
 Author = 'Microsoft Corporation'  
@@ -24,7 +24,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
-Description = 'Microsoft Azure PowerShell - Machine Learning Web Services cmdlets for Azure Resource Manager'  
+Description = ''  
   
 # Minimum version of the Windows PowerShell engine required by this module  
 PowerShellVersion = '3.0'  
@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.4'})
+RequiredModules = @()
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
@@ -84,7 +84,6 @@ FileList =  @()
   
 # Private data to pass to the module specified in ModuleToProcess  
 PrivateData = @{
-
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
@@ -103,7 +102,6 @@ PrivateData = @{
         ReleaseNotes = 'https://github.com/Azure/azure-powershell/blob/dev/ChangeLog.md'
 
     } # End of PSData hashtable
-
 } # End of PrivateData hashtable  
   
 
