@@ -1,35 +1,35 @@
 $AzureRMDependencies = @{
-  "Azure.Storage" = "1.0.4";
-  "AzureRM.Profile" = "1.0.4";
+  "Azure.Storage" = "1.0.4.1";
+  "AzureRM.Profile" = "1.0.4.1";
 }
 
 $AzureRMModules = @{
-  "AzureRM.ApiManagement" = "1.0.4";
-  "AzureRM.Automation" = "1.0.4";
-  "AzureRM.Backup" = "1.0.4";
-  "AzureRM.Batch" = "1.0.4";
-  "AzureRM.Compute" = "1.2.2";
-  "AzureRM.DataFactories" = "1.0.4";
-  "AzureRM.DataLakeAnalytics" = "1.0.4";
-  "AzureRM.DataLakeStore" = "1.0.4";
-  "AzureRM.Dns" = "1.0.4";
-  "AzureRM.HDInsight" = "1.0.5";
-  "AzureRM.Insights" = "1.0.4";
-  "AzureRM.KeyVault" = "1.1.3";
-  "AzureRM.Network" = "1.0.4";
-  "AzureRM.NotificationHubs" = "1.0.4";
-  "AzureRM.OperationalInsights" = "1.0.4";
-  "AzureRM.RecoveryServices" = "1.0.5";
-  "AzureRM.RedisCache" = "1.1.2";
-  "AzureRM.Resources" = "1.0.4";
-  "AzureRM.SiteRecovery" = "1.1.3";
-  "AzureRM.Sql" = "1.0.4";
-  "AzureRM.Storage" = "1.0.4";
-  "AzureRM.StreamAnalytics" = "1.0.4";
-  "AzureRM.Tags" = "1.0.4";
-  "AzureRM.TrafficManager" = "1.0.4";
-  "AzureRM.UsageAggregates" = "1.0.4";
-  "AzureRM.Websites" = "1.0.4";
+  "AzureRM.ApiManagement" = "1.0.4.1";
+  "AzureRM.Automation" = "1.0.4.1";
+  "AzureRM.Backup" = "1.0.4.1";
+  "AzureRM.Batch" = "1.0.4.1";
+  "AzureRM.Compute" = "1.2.2.1";
+  "AzureRM.DataFactories" = "1.0.4.1";
+  "AzureRM.DataLakeAnalytics" = "1.0.4.1";
+  "AzureRM.DataLakeStore" = "1.0.4.1";
+  "AzureRM.Dns" = "1.0.4.1";
+  "AzureRM.HDInsight" = "1.0.5.1";
+  "AzureRM.Insights" = "1.0.4.1";
+  "AzureRM.KeyVault" = "1.1.3.1";
+  "AzureRM.Network" = "1.0.4.1";
+  "AzureRM.NotificationHubs" = "1.0.4.1";
+  "AzureRM.OperationalInsights" = "1.0.4.1";
+  "AzureRM.RecoveryServices" = "1.0.5.1";
+  "AzureRM.RedisCache" = "1.1.2.1";
+  "AzureRM.Resources" = "1.0.4.1";
+  "AzureRM.SiteRecovery" = "1.1.3.1";
+  "AzureRM.Sql" = "1.0.4.1";
+  "AzureRM.Storage" = "1.0.4.1";
+  "AzureRM.StreamAnalytics" = "1.0.4.1";
+  "AzureRM.Tags" = "1.0.4.1";
+  "AzureRM.TrafficManager" = "1.0.4.1";
+  "AzureRM.UsageAggregates" = "1.0.4.1";
+  "AzureRM.Websites" = "1.0.4.1";
 }
 
 function Test-AdminRights([string]$Scope)

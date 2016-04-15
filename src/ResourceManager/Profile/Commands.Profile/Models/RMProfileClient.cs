@@ -13,19 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Properties;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Factories;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Common.Authentication.Properties;
 
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
@@ -52,21 +51,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string tenantId, 
             string subscriptionId, 
             string subscriptionName, 
-            SecureString password)
+            SecureString password,
+            TokenCache tokenCache = null,
+            string commonTenant = AuthenticationFactory.CommonAdTenant)
         {
             AzureSubscription newSubscription = null;
             AzureTenant newTenant = null;
             ShowDialog promptBehavior = 
                 (password == null && 
+                tokenCache == null &&
                  account.Type != AzureAccount.AccountType.AccessToken && 
                  !account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
                 ? ShowDialog.Always : ShowDialog.Never;
 
+            tokenCache = tokenCache ?? TokenCache.DefaultShared;
             // (tenant and subscription are present) OR
             // (tenant is present and subscription is not provided)
             if (!string.IsNullOrEmpty(tenantId))
             {
-                var token = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
+                var token = AcquireAccessToken(account, environment, tenantId, password, promptBehavior, tokenCache);
                 if(TryGetTenantSubscription(token, account, environment, tenantId, subscriptionId, subscriptionName, out newSubscription, out newTenant))
                 {
                     account.SetOrAppendProperty(AzureAccount.Property.Tenants, new[] { newTenant.Id.ToString() });
@@ -76,7 +79,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             // (tenant is not provided and subscription is not provided)
             else
             {
-                var tenants = ListAccountTenants(account, environment, password, promptBehavior).Select(s => s.Id.ToString()).ToArray();
+                var tenants = ListAccountTenants(account, environment, password, promptBehavior, tokenCache, commonTenant).Select(s => s.Id.ToString()).ToArray();
                 account.SetProperty(AzureAccount.Property.Tenants, null);
                 string accountId = null;
 
@@ -91,7 +94,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                     try
                     {
-                        token = AcquireAccessToken(account, environment, tenant, password, ShowDialog.Auto);
+                        token = AcquireAccessToken(account, environment, tenant, password, ShowDialog.Auto, tokenCache);
 
                         if (accountId == null)
                         {
@@ -152,7 +155,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
             
-            _profile.Context.TokenCache = TokenCache.DefaultShared.Serialize();
+            _profile.Context.TokenCache = tokenCache.Serialize();
 
             return _profile;
         }
@@ -464,8 +467,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             AzureEnvironment environment,
             string tenantId,
             SecureString password,
-            ShowDialog promptBehavior)
+            ShowDialog promptBehavior,
+            TokenCache tokenCache = null)
         {
+            tokenCache = tokenCache ?? TokenCache.DefaultShared;
             if (account.Type == AzureAccount.AccountType.AccessToken)
             {
                 tenantId = tenantId ?? "Common";
@@ -478,7 +483,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 tenantId,
                 password,
                 promptBehavior,
-                TokenCache.DefaultShared);
+                tokenCache);
         }
 
         private bool TryGetTenantSubscription(IAccessToken accessToken,
@@ -575,13 +580,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        private List<AzureTenant> ListAccountTenants(AzureAccount account, AzureEnvironment environment, SecureString password, ShowDialog promptBehavior)
+        private List<AzureTenant> ListAccountTenants(AzureAccount account, AzureEnvironment environment, SecureString password, ShowDialog promptBehavior, TokenCache tokenCache = null, string commonTenant = AuthenticationFactory.CommonAdTenant)
         {
+            tokenCache = tokenCache ?? TokenCache.DefaultShared; 
             List<AzureTenant> result = new List<AzureTenant>();
             try
             {
-                var commonTenantToken = AcquireAccessToken(account, environment, AuthenticationFactory.CommonAdTenant,
-                    password, promptBehavior);
+                var commonTenantToken = AcquireAccessToken(account, environment, commonTenant,
+                    password, promptBehavior, tokenCache);
 
                 using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
                     new TokenCloudCredentials(commonTenantToken.AccessToken),
