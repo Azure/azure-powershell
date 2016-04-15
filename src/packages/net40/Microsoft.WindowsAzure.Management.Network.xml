@@ -13220,6 +13220,15 @@
             Optional. Gets or sets the virtual network location.
             </summary>
         </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NetworkListResponse.VirtualNetworkSite.MigrationState">
+            <summary>
+            Optional. Specifies the IaaS Classic to ARM migration state of
+            the Virtual Network Site. Possible values are: None,
+            Preparing, Prepared, PrepareFailed, Committing, Committed,
+            CommitFailed, Aborting, AbortFailed. None is treated as null
+            value and it is not be visible.
+            </summary>
+        </member>
         <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NetworkListResponse.VirtualNetworkSite.Name">
             <summary>
             Optional. Name of the virtual network site.
