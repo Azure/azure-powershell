@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
     /// Migrate ASM virtual network to ARM
     /// </summary>
     [Cmdlet(VerbsCommon.Move, "AzureVirtualNetwork"), OutputType(typeof(OperationStatusResponse))]
-    public class MigrateAzureVirtualNetworkCommand : ServiceManagementBaseCmdlet
+    public class MoveVirtualNetworkCommand : ServiceManagementBaseCmdlet
     {
         private const string AbortParameterSetName = "AbortMigrationParameterSet";
         private const string CommitParameterSetName = "CommitMigrationParameterSet";

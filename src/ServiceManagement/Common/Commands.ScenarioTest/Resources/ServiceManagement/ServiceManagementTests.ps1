@@ -611,3 +611,165 @@ function Run-EnableAndDisableDataCollectionTests
 
     $st = Disable-AzureDataCollection;
 }
+
+<#
+.SYNOPSIS
+Tests Move-AzureService
+#>
+function Test-MigrateAzureDeployment
+{
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
+    # Setup
+    $location = Get-DefaultLocation
+    $imgName = Get-DefaultImage $location
+
+    $storageName = getAssetName
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location
+
+    Set-CurrentStorageAccountName $storageName
+
+    $vmName = "vm1"
+    $svcName = Get-CloudServiceName
+
+    # Test
+    New-AzureService -ServiceName $svcName -Location $location
+    New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd"
+
+    Get-AzureVM -ServiceName $svcName -Name $vmName
+
+    Move-AzureService -PrepareNew -ServiceName $svcName -DeploymentName $svcName;
+
+    $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
+
+    Assert-AreEqual "Prepared" $vm.VM.MigrationState;
+
+    Move-AzureService -Commit -ServiceName $svcName -DeploymentName $svcName;
+
+    $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
+
+    Assert-AreEqual "CommitFailed" $vm.VM.MigrationState
+
+    # Try again
+    #Move-AzureService -Commit -ServiceName $svcName -DeploymentName $svcName;
+    #Get-AzureVM -ServiceName $svcName -Name $vmName;
+
+    # Cleanup
+    Cleanup-CloudService $svcName
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureService with Abort
+#>
+function Test-MigrationAbortAzureDeployment
+{
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
+    # Setup
+    $location = Get-DefaultLocation
+    $imgName = Get-DefaultImage $location
+
+    $storageName = getAssetName
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location
+
+    Set-CurrentStorageAccountName $storageName
+
+    $vmName = "vm1"
+    $svcName = Get-CloudServiceName
+
+    # Test
+    New-AzureService -ServiceName $svcName -Location $location
+    New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd"
+
+    Get-AzureVM -ServiceName $svcName -Name $vmName
+
+    Move-AzureService -PrepareNew -ServiceName $svcName -DeploymentName $svcName;
+
+    Get-AzureVM -ServiceName $svcName -Name $vmName;
+
+    Assert-AreEqual "Prepared" $vm.VM.MigrationState;
+
+    Move-AzureService -Abort -ServiceName $svcName -DeploymentName $svcName;
+
+    Get-AzureVM -ServiceName $svcName -Name $vmName;
+
+    # Cleanup
+    Cleanup-CloudService $svcName
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureVirtualNetwork with Prepare and Commit
+#>
+function Test-MigrateAzureVNet
+{
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
+    # Setup
+    $location = Get-DefaultLocation
+    $affName = "WestUsAffinityGroup";
+    $vnetConfigPath = ".\Resources\ServiceManagement\Files\vnetconfig.netcfg";
+    $vnetName = "NewVNet1";
+
+    # Test
+
+    New-AzureAffinityGroup -Name $affName -Location $location;
+
+    Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath;
+
+    Get-AzureVNetSite;
+
+    Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName;
+
+    Get-AzureVNetSite;
+
+    Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName;
+
+    Get-AzureVNetSite;
+
+    # Cleanup
+    Remove-AzureVNetConfig
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureVirtualNetwork with Prepare and Abort
+#>
+function Test-MigrationAbortAzureVNet
+{
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
+    # Setup
+    $location = Get-DefaultLocation
+    $affName = "WestUsAffinityGroup";
+    $vnetConfigPath = ".\Resources\ServiceManagement\Files\vnetconfig.netcfg";
+    $vnetName = "NewVNet1";
+
+    # Test
+
+    New-AzureAffinityGroup -Name $affName -Location $location;
+
+    Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath;
+
+    Get-AzureVNetSite;
+
+    Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName;
+
+    Get-AzureVNetSite;
+
+    Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName;
+
+    Get-AzureVNetSite;
+
+    # Cleanup
+    Remove-AzureVNetConfig
+}

@@ -275,8 +275,8 @@
     <Compile Include="IaaS\Network\SetAzurePublicIP.cs" />
     <Compile Include="IaaS\Network\SetAzureReservedIPAssociation.cs" />
     <Compile Include="IaaS\PersistentVMs\SetAzureBootDiagnostics.cs" />
-    <Compile Include="Migration\MigrateAzureVirtualNetwork.cs" />
-    <Compile Include="Migration\MigrateAzureService.cs" />
+    <Compile Include="Migration\MoveAzureVirtualNetwork.cs" />
+    <Compile Include="Migration\MoveAzureService.cs" />
     <Compile Include="Model\DeploymentRebootEventContext.cs" />
     <Compile Include="Model\InternalLoadBalancerSetting.cs" />
     <Compile Include="Model\InternalLoadBalancerContext.cs" />

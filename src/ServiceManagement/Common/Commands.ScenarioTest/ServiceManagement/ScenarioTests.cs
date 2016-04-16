@@ -134,5 +134,41 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             this.RunPowerShellTest("Run-EnableAndDisableDataCollectionTests");
         }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrateAzureDeployment()
+        {
+            this.RunPowerShellTest("Test-MigrateAzureDeployment");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationAbortAzureDeployment()
+        {
+            this.RunPowerShellTest("Test-MigrationAbortAzureDeployment");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrateAzureVNet()
+        {
+            this.RunPowerShellTest("Test-MigrateAzureVNet");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationAbortAzureVNet()
+        {
+            this.RunPowerShellTest("Test-MigrationAbortAzureVNet");
+        }
     }
 }

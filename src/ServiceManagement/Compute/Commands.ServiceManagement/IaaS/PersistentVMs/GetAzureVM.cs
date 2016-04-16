@@ -191,7 +191,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     ResourceExtensionReferences       = vmRole == null ? null : Mapper.Map<PVM.ResourceExtensionReferenceList>(vmRole.ResourceExtensionReferences),
                     DataVirtualHardDisks              = vmRole == null ? null : Mapper.Map<Collection<PVM.DataVirtualHardDisk>>(vmRole.DataVirtualHardDisks),
                     OSVirtualHardDisk                 = vmRole == null ? null : Mapper.Map<PVM.OSVirtualHardDisk>(vmRole.OSVirtualHardDisk),
-                    ConfigurationSets                 = vmRole == null ? null : PersistentVMHelper.MapConfigurationSets(vmRole.ConfigurationSets)
+                    ConfigurationSets                 = vmRole == null ? null : PersistentVMHelper.MapConfigurationSets(vmRole.ConfigurationSets),
+                    MigrationState                    = vmRole == null ? string.Empty : vmRole.MigrationState
                 }
             };
 

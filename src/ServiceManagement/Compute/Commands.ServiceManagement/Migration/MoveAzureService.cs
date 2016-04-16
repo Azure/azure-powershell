@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
     /// Migrate ASM deployment to ARM
     /// </summary>
     [Cmdlet(VerbsCommon.Move, "AzureService"), OutputType(typeof(OperationStatusResponse))]
-    public class MigrateAzureServiceCommand : ServiceManagementBaseCmdlet
+    public class MoveAzureServiceCommand : ServiceManagementBaseCmdlet
     {
         private const string AbortParameterSetName = "AbortMigrationParameterSet";
         private const string CommitParameterSetName = "CommitMigrationParameterSet";
@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             Mandatory = true,
             ParameterSetName = PrepareDefaultParameterSetName,
             HelpMessage = "Prepare migration")]
-        public SwitchParameter PrepareDefaultDestinationVNet
+        public SwitchParameter PrepareDefault
         {
             get;
             set;
@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             Mandatory = true,
             ParameterSetName = PrepareNewParameterSetName,
             HelpMessage = "Prepare migration")]
-        public SwitchParameter PrepreNewDestinationVNet
+        public SwitchParameter PrepareNew
         {
             get;
             set;
@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Service name.")]
+            HelpMessage = "Service name to be migrated")]
         [ValidateNotNullOrEmpty]
         public string ServiceName
         {
@@ -106,7 +106,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
         [Parameter(
             Position = 2,
             Mandatory = true,
-            HelpMessage = "Deployment name")]
+            HelpMessage = "Deployment name to be migrated")]
         [ValidateNotNullOrEmpty]
         public string DeploymentName
         {
@@ -118,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             Position = 3,
             Mandatory = true,
             ParameterSetName = PrepareExistingParameterSetName,
-            HelpMessage = "Deployment slot. Staging | Production (default Production)")]
+            HelpMessage = "Resource group name for migration")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName
         {
@@ -130,7 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             Position = 4,
             Mandatory = true,
             ParameterSetName = PrepareExistingParameterSetName,
-            HelpMessage = "Deployment slot. Staging | Production (default Production)")]
+            HelpMessage = "Virtual network name for migration")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName
         {
@@ -142,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             Position = 5,
             Mandatory = true,
             ParameterSetName = PrepareExistingParameterSetName,
-            HelpMessage = "Deployment slot. Staging | Production (default Production)")]
+            HelpMessage = "Subnet Name for migration")]
         [ValidateNotNullOrEmpty]
         public string SubnetName
         {
@@ -170,11 +170,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             }
             else
             {
-                if (this.PrepareDefaultDestinationVNet.IsPresent)
+                if (this.PrepareDefault.IsPresent)
                 {
                     DestinationVNetType =  DestinationVirtualNetwork.Default;
                 }
-                else if (this.PrepreNewDestinationVNet.IsPresent)
+                else if (this.PrepareNew.IsPresent)
                 {
                     DestinationVNetType = DestinationVirtualNetwork.New;
                 }
