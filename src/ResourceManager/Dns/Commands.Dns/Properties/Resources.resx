@@ -141,6 +141,9 @@
   <data name="Error_RemoveRecordTypeMismatch" xml:space="preserve">
     <value>Cannot remove a record of type {0} from a record set of type {1}. The types must match.</value>
   </data>
+  <data name="Error_UnknownParameterSetName" xml:space="preserve">
+    <value>The parameter set {0} of cmdlet is unknown</value>
+  </data>
   <data name="Progress_CreatingEmptyRecordSet" xml:space="preserve">
     <value>Creating empty record set ...</value>
   </data>

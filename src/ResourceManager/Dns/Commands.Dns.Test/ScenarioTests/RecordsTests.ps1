@@ -253,6 +253,41 @@ function Test-RecordSetA
 .SYNOPSIS
 Full Record Set CRUD cycle
 #>
+function Test-RecordSetANonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup 
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
+
+	$aRecords=@()
+	$aRecords += New-AzureRmDnsRecord -IPv4Address "192.168.0.1"
+	$aRecords += New-AzureRmDnsRecord -IPv4Address "192.168.0.2"
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -DnsRecords $aRecord
+
+	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A 
+	
+	Assert-AreEqual 2 $getResult.Records.Count
+	Assert-AreEqual "192.168.0.1" $getResult.Records[0].Ipv4Address
+	Assert-AreEqual "192.168.0.2" $getResult.Records[0].Ipv4Address
+
+	$listResult = Get-AzureRmDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A
+
+	Assert-AreEqual 2 $listResult[0].Records.Count
+	Assert-AreEqual "192.168.0.1" $listResult[0].Records[0].Ipv4Address
+	Assert-AreEqual "192.168.0.2" $listResult[0].Records[0].Ipv4Address
+
+	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -Force -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Record Set CRUD cycle
+#>
 function Test-RecordSetAAAA
 {
 	$zoneName = Get-RandomZoneName
@@ -289,6 +324,32 @@ function Test-RecordSetAAAA
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
 }
 
+function Test-RecordSetAAAANonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup 
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
+
+	$aaaaRecords=@()
+	$aaaaRecords += New-AzureRmDnsRecord -IPv6Address "2002::1"
+	$aaaaRecords += New-AzureRmDnsRecord -IPv6Address "2002::2"
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType AAAA -DnsRecords $aaaaRecords
+
+	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType AAAA
+	
+	Assert-AreEqual 2 $getResult.Records.Count
+	Assert-AreEqual "2002::1" $getResult.Records[0].Ipv6Address
+	Assert-AreEqual "2002::1" $getResult.Records[0].Ipv6Address
+
+	$removed = $getResult | Remove-AzureRmDnsRecordSet -Force -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+}
+
+
 <#
 .SYNOPSIS
 Full Record Set CRUD cycle
@@ -320,6 +381,28 @@ function Test-RecordSetCNAME
 	Assert-AreEqual "www.contoso.com" $listResult[0].Records[0].Cname
 
 	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -Force -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+}
+
+function Test-RecordSetCNAMENonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup 
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
+
+	$records = New-AzureRmDnsRecord -Cname "www.contoso.com"
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType CNAME -DnsRecords $records
+
+	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CNAME 
+	
+	Assert-AreEqual 1 $getResult.Records.Count
+	Assert-AreEqual "www.contoso.com" $getResult.Records[0].Cname
+
+	$removed = $getResult | Remove-AzureRmDnsRecordSet -Force -PassThru
 
 	Assert-True { $removed }
 
@@ -369,6 +452,34 @@ function Test-RecordSetMX
 .SYNOPSIS
 Full Record Set CRUD cycle
 #>
+function Test-RecordSetMXNonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup 
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
+
+	$records = @();
+	$records += New-AzureRmDnsRecord -Exchange mail2.theg.com -Preference 0
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType MX -DnsRecords $records
+
+	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX 
+	
+	Assert-AreEqual 1 $getResult.Records.Count
+	Assert-AreEqual "mail2.theg.com" $getResult.Records[0].Exchange
+	Assert-AreEqual 0 $getResult.Records[0].Preference
+
+	$removed = $getResult[0] | Remove-AzureRmDnsRecordSet -Force -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Record Set CRUD cycle
+#>
 function Test-RecordSetNS
 {
 	$zoneName = Get-RandomZoneName
@@ -386,6 +497,39 @@ function Test-RecordSetNS
 	$record = $record | Remove-AzureRmDnsRecordConfig -Nsdname ns4.example.com
 
 	$record | Set-AzureRmDnsRecordSet
+	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NS 
+	
+	Assert-AreEqual 2 $getResult.Records.Count
+	Assert-AreEqual "ns1.example.com" $getResult.Records[0].Nsdname
+	Assert-AreEqual "ns2.example.com" $getResult.Records[1].Nsdname
+
+	$listResult = Get-AzureRmDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NS
+
+	# the authoritative NS record set will be the first result
+	Assert-AreEqual 2 $listResult.Count
+	Assert-AreEqual 2 $listResult[1].Records.Count
+	Assert-AreEqual "ns1.example.com" $listResult[1].Records[0].Nsdname
+	Assert-AreEqual "ns2.example.com" $listResult[1].Records[1].Nsdname
+
+	$removed = $listResult[1] | Remove-AzureRmDnsRecordSet -Force -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+}
+
+function Test-RecordSetNSNonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup 
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
+
+	$records = @()
+	$records += New-AzureRmDnsRecord -Nsdname ns1.example.com
+    $records += New-AzureRmDnsRecord -Nsdname ns2.example.com
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType NS -DnsRecords $records
+
 	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NS 
 	
 	Assert-AreEqual 2 $getResult.Records.Count
@@ -447,6 +591,35 @@ function Test-RecordSetTXT
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
 }
 
+function Test-RecordSetTXTNonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup 
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
+
+    $records = @()
+	$records += New-AzureRmDnsRecord -Value text2
+    $records += New-AzureRmDnsRecord -Value text3
+
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType TXT -DnsRecords $records
+
+	# add three records, remove one, remove another no-op
+
+	$record | Set-AzureRmDnsRecordSet
+	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT 
+	
+	Assert-AreEqual 2 $getResult.Records.Count
+	Assert-AreEqual text2 $getResult.Records[0].Value
+	Assert-AreEqual text3 $getResult.Records[1].Value
+
+	$removed = $getResult | Remove-AzureRmDnsRecordSet -Force -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+}
+
 <#
 .SYNOPSIS
 Full Record Set CRUD cycle
@@ -489,6 +662,34 @@ function Test-RecordSetSRV
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
 }
+
+function Test-RecordSetSRVNonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup 
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
+
+    $records = @()
+	$records += New-AzureRmDnsRecord -Port 53 -Priority 1 -Target ns1.example.com -Weight 5
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType SRV -DnsRecords $records
+
+	$record | Set-AzureRmDnsRecordSet
+	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SRV 
+	
+	Assert-AreEqual 1 $getResult.Records.Count
+	Assert-AreEqual 53 $getResult.Records[0].Port
+	Assert-AreEqual 1 $getResult.Records[0].Priority
+	Assert-AreEqual ns1.example.com $getResult.Records[0].Target
+	Assert-AreEqual 5 $getResult.Records[0].Weight
+
+	$removed = $getResult[0] | Remove-AzureRmDnsRecordSet -Force -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+}
+
 
 <#
 .SYNOPSIS
@@ -579,15 +780,12 @@ function Test-RecordSetAddRecordTypeMismatch
 	Remove-AzureRmDnsZone -Name $recordSet.ZoneName -ResourceGroupName $recordSet.ResourceGroupName -Force
 }
 
-<#
-.SYNOPSIS
-Full Record Set CRUD cycle
-#>
 function Test-RecordSetAddTwoCnames
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $recordSet = TestSetup-CreateResourceGroup | New-AzureRmDnsZone -Name $zoneName | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType CNAME
+
+    $recordSet = TestSetup-CreateResourceGroup | New-AzureRmDnsZone -Name $zoneName | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType CNAME 
 	
 	$recordSet | Add-AzureRmDnsRecordConfig -Cname www.goril.la
 	Assert-Throws { $recordSet | Add-AzureRmDnsRecordConfig -Cname rubadub.dub } "There already exists a CNAME record in this set. A CNAME record set can only contain one record."

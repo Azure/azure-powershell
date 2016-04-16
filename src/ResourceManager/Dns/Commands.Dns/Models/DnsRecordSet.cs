@@ -511,8 +511,8 @@ namespace Microsoft.Azure.Commands.Dns
         /// <returns>A clone of this object</returns>
         public override object Clone()
         {
-            return new SoaRecord 
-            { 
+            return new SoaRecord
+            {
                 Host = this.Host,
                 Email = this.Email,
                 SerialNumber = this.SerialNumber,
@@ -520,6 +520,38 @@ namespace Microsoft.Azure.Commands.Dns
                 RetryTime = this.RetryTime,
                 ExpireTime = this.ExpireTime,
                 MinimumTtl = this.MinimumTtl,
+            };
+        }
+    }
+
+    /// <summary>
+    /// Represents a DNS record of type NS that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
+    public class PtrRecord : DnsRecordBase
+    {
+        /// <summary>
+        /// Gets or sets the ptr for this record.
+        /// </summary>
+        public string Ptrdname { get; set; }
+
+        public override string ToString()
+        {
+            return this.Ptrdname;
+        }
+
+        public override object Clone()
+        {
+            return new PtrRecord()
+            {
+                Ptrdname = this.Ptrdname,
+            };
+        }
+
+        internal override object ToMamlRecord()
+        {
+            return new Management.Dns.Models.PtrRecord
+            {
+                Ptrdname = this.Ptrdname,
             };
         }
     }
