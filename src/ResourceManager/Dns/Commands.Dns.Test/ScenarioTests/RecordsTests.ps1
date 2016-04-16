@@ -223,7 +223,7 @@ function Test-RecordSetA
     $resourceGroup = TestSetup-CreateResourceGroup 
 	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
 
-	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A 
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -DnsRecords @()
 
 	# add two records, remove one, remove another no-op
 	$record = $record | Add-AzureRmDnsRecordConfig -Ipv4Address 1.1.1.1

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Dns
         public Hashtable[] Tag { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "The dns records that are part of this record set.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public DnsRecordBase[] DnsRecords { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
