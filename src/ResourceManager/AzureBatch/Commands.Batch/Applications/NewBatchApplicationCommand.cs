@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.Batch
         public override void ExecuteCmdlet()
         {
             PSApplication response = BatchClient.AddApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.AllowUpdates, this.DisplayName);
-
             WriteObject(response);
         }
     }

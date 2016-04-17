@@ -13,29 +13,27 @@
 # ----------------------------------------------------------------------------------
 
 
-
 <#
 .SYNOPSIS
 Tests creating a new application
 #>
 function Test-AddApplication
 {
-    param([string]$accountName, [string]$resourceGroup)
-
-    # Setup
+	# Setup
     $applicationId = "test"
     $applicationVersion = "foo"
+	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     try
     {
-        $addAppPack = New-AzureRmBatchApplication -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId
-        $getapp = Get-AzureRmBatchApplication -ResourceGroupName $resourceGroup -AccountName $accountName  -ApplicationId $applicationId
+        $addAppPack = New-AzureRmBatchApplication -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
+        $getapp = Get-AzureRmBatchApplication -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
 
         Assert-AreEqual $getapp.Id $addAppPack.Id
     }
     finally
     {
-        Remove-AzureRmBatchApplication -AccountName $accountName -ApplicationId $applicationId -ResourceGroupName $resourceGroup
+        Remove-AzureRmBatchApplication  -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
     }
 }
 
@@ -45,26 +43,24 @@ Tests uploading an application package.
 #>
 function Test-UploadApplicationPackage
 {
-    param([string]$accountName, [string]$resourceGroup, [string]$filePath)
+    param([string]$filePath)
 
     # Setup
     $applicationId = "test"
     $applicationVersion = "foo"
-
-    Assert-AreNotEqual $null $resourceGroup
-    Assert-AreNotEqual $null $accountName
+	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     try
     {
-        $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath "D:\ps\azure-powershell-pr\src\ResourceManager\AzureBatch\Commands.Batch.Test\bin\Debug\Resources\foo.zip" -format "zip"
-        $getapp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
+        $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip"
+        $getapp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
 
         Assert-AreEqual $getapp.Id $addAppPack.Id
         Assert-AreEqual $getapp.Version $addAppPack.Version
     }
     finally
     {
-        Remove-AzureRmBatchApplicationPackage -AccountName $accountName -ApplicationId $applicationId -ResourceGroupName $resourceGroup -ApplicationVersion $applicationVersion
+        Remove-AzureRmBatchApplicationPackage -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName -ApplicationVersion $applicationVersion
     }
 }
 
@@ -74,28 +70,29 @@ Tests can update an application settings
 #>
 function Test-UpdateApplicationPackage
 {
-    param([string]$accountName, [string]$resourceGroup, [string]$filePath)
+    param([string]$filePath)
 
     # Setup
     $applicationId = "test"
     $applicationVersion = "foo"
     $newDisplayName = "application-display-name"
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     try
     {
-        $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip"
-        $beforeUpdateApp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
+        $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip"
+        $beforeUpdateApp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
 
-        Set-AzureRmBatchApplication -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -displayName $newDisplayName -defaultVersion $applicationVersion -allowUpdates
-        $afterUpdateApp = Get-AzureRmBatchApplication -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId
+        Set-AzureRmBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -displayName $newDisplayName -defaultVersion $applicationVersion
+        $afterUpdateApp = Get-AzureRmBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId
 
         Assert-AreEqual $afterUpdateApp.DefaultVersion "foo"
         Assert-AreNotEqual $afterUpdateApp.DefaultVersion $beforeUpdateApp.DefaultVersion
-        Assert-AreEqual $afterUpdateApp.AllowUpdates $TRUE
+        Assert-AreEqual $afterUpdateApp.AllowUpdates $false
     }
     finally
     {
-        Remove-AzureRmBatchApplicationPackage -AccountName $accountName -ApplicationId $applicationId -ResourceGroupName $resourceGroup -ApplicationVersion $applicationVersion
+        Remove-AzureRmBatchApplicationPackage -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName -ApplicationVersion $applicationVersion
     }
 }
 
@@ -105,7 +102,7 @@ Tests create pool with an application package.
 #>
 function Test-CreatePoolWithApplicationPackage
 {
-    param([string]$accountName, [string] $poolId, [string]$resourceGroup, [string]$filePath)
+    param([string] $poolId, [string]$filePath)
 
     #setup
     $applicationId = "test"
@@ -114,9 +111,9 @@ function Test-CreatePoolWithApplicationPackage
 
     try
     {
-        $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip"
+        $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip"
 
-        $getapp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
+        $getapp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
 
         Assert-AreEqual $getapp.Id $addAppPack.Id
         Assert-AreEqual $getapp.Version $addAppPack.Version
@@ -131,11 +128,11 @@ function Test-CreatePoolWithApplicationPackage
         $targetOSVersion = "*"
         $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
-        New-AzureBatchPool -Id $poolId -CloudServiceConfiguration $paasConfiguration -TargetDedicated 3 -VirtualMachineSize "small" -StartTask $startTask -BatchContext $context -ApplicationPackageReferences $apr
+        New-AzureBatchPool -Id $poolId -CloudServiceConfiguration $paasConfiguration -TargetDedicated 3 -VirtualMachineSize "small" -BatchContext $context -ApplicationPackageReferences $apr
     }
     finally
     {
-        Remove-AzureRmBatchApplicationPackage -AccountName $accountName -ApplicationId $applicationId -ResourceGroupName $resourceGroup -ApplicationVersion $applicationVersion
+        Remove-AzureRmBatchApplicationPackage -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName -ApplicationVersion $applicationVersion
         Remove-AzureBatchPool -Id $poolId -Force -BatchContext $context
     }
 }
@@ -146,7 +143,7 @@ Tests update pool with an application package.
 #>
 function Test-UpdatePoolWithApplicationPackage
 {
-    param([string]$accountName, [string] $poolId, [string]$resourceGroup, [string]$filePath)
+    param([string] $poolId, [string]$filePath)
 
     $applicationId = "test"
     $applicationVersion = "foo"
@@ -154,20 +151,17 @@ function Test-UpdatePoolWithApplicationPackage
 
     try
     {
-        $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip"
-        $getapp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $resourceGroup -AccountName $accountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
+        $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip"
+        $getapp = Get-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion
 
         Assert-AreEqual $getapp.Id $addAppPack.Id
         Assert-AreEqual $getapp.Version $addAppPack.Version
-
-        $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
-        $startTask.CommandLine = "cmd /c echo hello"
 
         $osFamily = "4"
         $targetOSVersion = "*"
         $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
-        $addPool = New-AzureBatchPool -Id $poolId -CloudServiceConfiguration $paasConfiguration -TargetDedicated 3 -VirtualMachineSize "small" -StartTask $startTask -BatchContext $context
+        $addPool = New-AzureBatchPool -Id $poolId -CloudServiceConfiguration $paasConfiguration -TargetDedicated 3 -VirtualMachineSize "small" -BatchContext $context
         $getPool = Get-AzureBatchPool -Id $poolId -BatchContext $context
 
         # update pool with application package references
@@ -185,7 +179,7 @@ function Test-UpdatePoolWithApplicationPackage
     }
     finally
     {
-        Remove-AzureRmBatchApplicationPackage -AccountName $accountName -ApplicationId $applicationId -ResourceGroupName $resourceGroup -ApplicationVersion $applicationVersion
+        Remove-AzureRmBatchApplicationPackage -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName -ApplicationVersion $applicationVersion
         Remove-AzureBatchPool -Id $poolId -Force -BatchContext $context
     }
 }

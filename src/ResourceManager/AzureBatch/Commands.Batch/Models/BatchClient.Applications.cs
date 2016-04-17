@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             UpdateApplicationParameters uap = new UpdateApplicationParameters();
-
+            //TODO this needs to be changes when a fix comes in for patch bool? AllowUpdates 
             if (allowUpdates != null)
             {
                 uap.AllowUpdates = (bool)allowUpdates;

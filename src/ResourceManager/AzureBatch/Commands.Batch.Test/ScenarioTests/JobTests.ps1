@@ -530,8 +530,6 @@ Tests create job with TaskDependencies
 #>
 function Test-JobWithTaskDependencies
 {
-    param([string]$accountName)
-
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobId = "testJob4"
 

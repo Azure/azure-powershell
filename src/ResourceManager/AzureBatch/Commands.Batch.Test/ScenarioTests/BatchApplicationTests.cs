@@ -16,6 +16,7 @@ using System;
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Auth;
+using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Storage;
 
@@ -25,29 +26,27 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchApplicationTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private string accountName = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountName);
-        private string accountResourceGroup = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountResourceGroup);
+        private string accountName = BatchController.BatchAccount;
         private const string filePath = "Resources\\foo.zip";
 
         [Fact]
         public void TestUploadApplication()
         {
-            string accountName = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountName);
-            BatchController.NewInstance.RunPsTest(string.Format("Test-AddApplication '{0}' '{1}' ", accountName, accountResourceGroup));
+            BatchController.NewInstance.RunPsTest(string.Format("Test-AddApplication"));
         }
 
         [Fact]
         public void TestUploadApplicationPackage()
         {
             BatchController controller = BatchController.NewInstance;
-            controller.RunPsTest(string.Format("Test-UploadApplicationPackage '{0}' '{1}' '{2}'", accountName, accountResourceGroup, filePath));
+            controller.RunPsTest(string.Format("Test-UploadApplicationPackage '{0}'", filePath));
         }
 
         [Fact]
         public void TestUpdateApplicationPackage()
         {
             BatchController controller = BatchController.NewInstance;
-            controller.RunPsTest(string.Format("Test-UpdateApplicationPackage '{0}' '{1}' '{2}'", accountName, accountResourceGroup, filePath));
+            controller.RunPsTest(string.Format("Test-UpdateApplicationPackage '{0}'", filePath));
         }
 
         [Fact]
@@ -55,14 +54,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             BatchController controller = BatchController.NewInstance;
 
-            controller.RunPsTest(string.Format("Test-CreatePoolWithApplicationPackage '{0}' '{1}' '{2}' '{3}'", accountName, accountName + "pool-id" + Guid.NewGuid().ToString().Substring(0, 5), accountResourceGroup, filePath));
+            controller.RunPsTest(string.Format("Test-CreatePoolWithApplicationPackage '{0}' '{1}' ", accountName + "pool-id" + Guid.NewGuid().ToString().Substring(0, 5), filePath));
         }
 
         [Fact]
         public void TestUpdatePoolWithApplicationPackage()
         {
             BatchController controller = BatchController.NewInstance;
-            controller.RunPsTest(string.Format("Test-UpdatePoolWithApplicationPackage '{0}' '{1}' '{2}' '{3}'", accountName, accountName + "pool-id" + Guid.NewGuid().ToString().Substring(0, 5), accountResourceGroup, filePath));
+            controller.RunPsTest(string.Format("Test-UpdatePoolWithApplicationPackage '{0}' '{1}'", accountName + "pool-id" + Guid.NewGuid().ToString().Substring(0, 5), filePath));
         }
     }
 }

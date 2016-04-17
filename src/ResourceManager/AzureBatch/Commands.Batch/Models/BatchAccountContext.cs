@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The name of the resource group that the account resource is under.
         /// </summary>
-        public string ResourceGroupName { get; private set; }
+        public string ResourceGroupName { get; internal set; }
 
         /// <summary>
         /// The subscription Id that the account belongs to.
@@ -209,7 +209,6 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 throw new ArgumentException(String.Format(Resources.InvalidResourceId, resource.Id), "Id");
             }
-
             this.Subscription = idParts[2];
             this.ResourceGroupName = idParts[4];
         }
