@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
         /// <summary>
         /// Gets or sets the maximum size for the newly imported database
         /// </summary>
-        public int DatabaseMaxSize
+        public int DatabaseMaxSizeBytes
         {
             get; set;
         }       

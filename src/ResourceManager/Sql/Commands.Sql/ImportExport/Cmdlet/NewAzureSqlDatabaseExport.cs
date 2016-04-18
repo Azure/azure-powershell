@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// <summary>
     /// Defines the StartAzureSqlDatabaseExport cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseExport", ConfirmImpact = ConfirmImpact.Low)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseExport", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
     public class NewAzureSqlDatabaseExport : ImportExportCmdletBase
     {
         /// <summary>

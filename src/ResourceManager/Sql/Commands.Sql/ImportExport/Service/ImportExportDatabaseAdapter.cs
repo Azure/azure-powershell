@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
                 StorageKey = importRequest.StorageKey,
                 StorageKeyType = importRequest.StorageKeyType.ToString(),
                 StorageUri = importRequest.StorageUri,
-                DatabaseMaxSize = importRequest.DatabaseMaxSize,
+                DatabaseMaxSize = importRequest.DatabaseMaxSizeBytes,
                 Edition = importRequest.Edition != Database.Model.DatabaseEdition.None ? importRequest.Edition.ToString() : string.Empty,
                 ServiceObjectiveName = importRequest.ServiceObjectiveName,
                 DatabaseName = importRequest.DatabaseName

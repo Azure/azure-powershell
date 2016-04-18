@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// <summary>
     /// Defines the AzureRmSqlDatabaseImport cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseImport", ConfirmImpact = ConfirmImpact.Low)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseImport", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
     public class NewAzureSqlDatabaseImport : ImportExportCmdletBase
     {
         /// <summary>
@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <summary>
         /// Gets or sets the maximum size for the newly imported database
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The maximum size for the newly imported database")]
-        public int DatabaseMaxSize
+        [Parameter(Mandatory = true, HelpMessage = "The maximum size in bytes for the newly imported database")]
+        public int DatabaseMaxSizeBytes
         {
             get; set;
         }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
                 StorageUri = StorageUri,
                 Edition = Edition,
                 ServiceObjectiveName = ServiceObjectiveName,
-                DatabaseMaxSize = DatabaseMaxSize
+                DatabaseMaxSizeBytes = DatabaseMaxSizeBytes
             };
             return exportRequest;
         }

@@ -82,7 +82,7 @@ function Test-ImportDatabase
         }
 
         if($operationName -eq $import){
-            $importResponse = New-AzureRmSqlDatabaseImport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSize 5000000 -AuthenticationType Sql
+            $importResponse = New-AzureRmSqlDatabaseImport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSizeBytes 5000000 -AuthenticationType Sql
             Assert-NotNull $importResponse
             $operationStatusLink = $importResponse.OperationStatusLink
         }

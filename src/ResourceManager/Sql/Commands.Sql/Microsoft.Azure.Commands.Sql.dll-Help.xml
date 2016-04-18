@@ -8458,7 +8458,7 @@ ErrorMessage               :</maml:para>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DatabaseMaxSize</maml:name>
+				<maml:name>DatabaseMaxSizeBytes</maml:name>
 				<maml:description>
 					<maml:para>Specifies the maximum size for the newly imported database.</maml:para>
 				</maml:description>
@@ -8578,7 +8578,7 @@ ErrorMessage               :</maml:para>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>DatabaseMaxSize</maml:name>
+			<maml:name>DatabaseMaxSizeBytes</maml:name>
 			<maml:description>
 				<maml:para>Specifies the maximum size for the newly imported database.</maml:para>
 			</maml:description>
@@ -8752,7 +8752,7 @@ ErrorMessage               :</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; New-AzureRmSqlDatabaseImport -ResourceGroupName &quot;resourcegroup01&quot; -ServerName &quot;server01&quot; -DatabaseName &quot;database01&quot; -StorageKeyType &quot;StorageAccessKey&quot; -StorageKey &quot;storagekey01&quot; -StorageUri &quot;http://account01.blob.core.windows.net/bacpacs/database01.bacpac&quot; -AdministratorLogin &quot;user&quot; -AdministratorLoginPassword $secureString -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSize 5000000</dev:code>
+			<dev:code>PS C:\&gt; New-AzureRmSqlDatabaseImport -ResourceGroupName &quot;resourcegroup01&quot; -ServerName &quot;server01&quot; -DatabaseName &quot;database01&quot; -StorageKeyType &quot;StorageAccessKey&quot; -StorageKey &quot;storagekey01&quot; -StorageUri &quot;http://account01.blob.core.windows.net/bacpacs/database01.bacpac&quot; -AdministratorLogin &quot;user&quot; -AdministratorLoginPassword $secureString -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSizeBytes 5000000</dev:code>
 			<dev:remarks>
 				<maml:para>This command creates an import request to import a bacpac to a new database.</maml:para>
 				<maml:para />
