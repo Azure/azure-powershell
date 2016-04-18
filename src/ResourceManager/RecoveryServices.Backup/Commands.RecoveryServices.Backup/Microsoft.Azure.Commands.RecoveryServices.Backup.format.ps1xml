@@ -64,7 +64,11 @@
             <Width>16</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>BackupManagementType</Label>
+            <Label>Operation</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
             <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -75,6 +79,10 @@
             <Label>EndTime</Label>
             <Width>25</Width>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceID</Label>
+            <Width>37</Width>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -83,13 +91,19 @@
                 <PropertyName>WorkloadName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>BackupManagementType</PropertyName>
+                <PropertyName>Operation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StartTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceID</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

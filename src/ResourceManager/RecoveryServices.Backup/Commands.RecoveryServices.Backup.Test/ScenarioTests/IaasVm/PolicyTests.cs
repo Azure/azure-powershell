@@ -19,11 +19,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class PolicyTests : RecoveryServicesBackupTestsBase
     {
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyScenario()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-PolicyScenario");

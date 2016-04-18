@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 RecoveryPoint recPoint = rp.Properties as RecoveryPoint;
 
-                DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture).ToLocalTime();
+                DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 AzureRmRecoveryServicesIaasVmRecoveryPoint rpBase = new AzureRmRecoveryServicesIaasVmRecoveryPoint()
                 {
                     Name = rp.Name,

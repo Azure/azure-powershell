@@ -133,7 +133,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Backup,
         Restore,
         ConfigureBackup,
-        RemoveBackup
+        DisableBackup,
+        DeleteBackupData
     }
 
     public enum JobStatus
