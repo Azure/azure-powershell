@@ -1,4 +1,28 @@
 ##2016.04.19 version 1.3.2
+* Add support for specifying NIC/VMSS as application gateway backend address
+* Fix HDI ADL cluster creation and live test
+* Fix WAPack cmdlet Proxy issue for WAP
+* Fix Dynamic Memory Issue while setting VM
+* Update Azure Gov STS and Traffic Manager
+* Compute
+  - Upgrade to Microsoft.Azure.Management.Compute nuget package v13.0 
+* HDInsignt
+  - Upgrade to Microsoft.Azure.Management.HDInsight nuget package v1.0.14
+* Resource Manager 
+  - Change api-version for Policy and Locks operations
+  - Change api version for Deployments operations
+* Web Apps
+  - Add backup and restore cmdlets
+    - Restore-AzureWebApp
+    - Edit-AzureRmWebAppBackupConfiguration
+    - Get-AzureRmWebAppBackupConfiguration
+    - Get-AzureRmWebAppBackup
+    - New-AzureRmWebAppBackup
+    - Remove-AzureRmWebAppBackup
+    - Restore-AzureRmWebAppBackup
+    - Get-AzureRmWebAppBackupList
+    - New-AzureRmWebAppDatabaseBackupSetting
+  - Upgrade to Microsoft.WindowsAzure.Management.WebSite nuget package v5.0
 
 ##2016.03.30 version 1.3.0
 * AzureRM module
