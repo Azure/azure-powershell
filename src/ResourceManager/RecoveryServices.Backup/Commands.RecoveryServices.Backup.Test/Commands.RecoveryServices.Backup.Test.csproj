@@ -171,6 +171,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestGetItemScenario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.PolicyTests\TestPolicyScenario.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
