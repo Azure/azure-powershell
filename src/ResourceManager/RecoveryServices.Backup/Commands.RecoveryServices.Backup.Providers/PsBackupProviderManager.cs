@@ -48,10 +48,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 case ContainerType.Windows:
                     if (backupManagementType == BackupManagementType.MARS)
                         providerType = PsBackupProviderTypes.Mab;
-                    else if (backupManagementType == BackupManagementType.SCDPM)
-                        providerType = PsBackupProviderTypes.Dpm;
                     else
-                        throw new ArgumentException(String.Format("BackupManagementType {0} is not expected for ContainerType {1}", backupManagementType.ToString(), containerType));
+                        throw new ArgumentException(String.Format("BackupManagementType is required for ContainerType {1}.", backupManagementType.ToString(), containerType));
                     break;
                 //case ContainerType.AzureSqlContainer:
                 //    if (backupManagementType.HasValue)
@@ -66,6 +64,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             return GetProviderInstance(providerType);
+        }
+
+        public IPsBackupProvider GetProviderInstanceForBackupManagementServer()
+        {
+            return GetProviderInstance(PsBackupProviderTypes.Dpm);
         }
 
         public IPsBackupProvider GetProviderInstance(WorkloadType workloadType)
