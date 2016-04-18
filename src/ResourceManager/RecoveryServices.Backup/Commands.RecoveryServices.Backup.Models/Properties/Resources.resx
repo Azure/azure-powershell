@@ -420,7 +420,7 @@ Please contact Microsoft for further assistant.</value>
     <value>BackupManagementType is not expected for WorkloadType: {0}</value>
   </data>
   <data name="BackupManagementTypeRequiredForContainerType" xml:space="preserve">
-    <value>BackupManagementType provider for ContainerType {1} is incorrect.</value>
+    <value>BackupManagementType provider for ContainerType {0} is incorrect.</value>
   </data>
   <data name="BackupManagementTypeRequiredForWorkloadType" xml:space="preserve">
     <value>BackupManagementType is also required for WorkloadType: {0}</value>

@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BackupManagementType provider for ContainerType {1} is incorrect..
+        ///   Looks up a localized string similar to BackupManagementType provider for ContainerType {0} is incorrect..
         /// </summary>
         public static string BackupManagementTypeRequiredForContainerType {
             get {
