@@ -876,15 +876,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unsupported workloadType: {0}.
-        /// </summary>
-        public static string UnsupportedWorkloadType {
-            get {
-                return ResourceManager.GetString("UnsupportedWorkloadType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Unsupported WorkloadType: {0}.
         /// </summary>
         public static string UnsupportedWorkloadTypeException {
