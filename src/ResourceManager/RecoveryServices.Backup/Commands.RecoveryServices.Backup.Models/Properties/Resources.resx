@@ -419,4 +419,16 @@ Please contact Microsoft for further assistant.</value>
   <data name="GetRPErrorInputDatesShouldBeInUTC" xml:space="preserve">
     <value>Both EndDate and StartDate should be in UTC format</value>
   </data>
+  <data name="BackupManagementTypeNotExpectedForWorkloadType" xml:space="preserve">
+    <value>BackupManagementType is not expected for WorkloadType: {0}</value>
+  </data>
+  <data name="BackupManagementTypeRequiredForContainerType" xml:space="preserve">
+    <value>BackupManagementType provider for ContainerType {0} is incorrect.</value>
+  </data>
+  <data name="BackupManagementTypeRequiredForWorkloadType" xml:space="preserve">
+    <value>BackupManagementType is also required for WorkloadType: {0}</value>
+  </data>
+  <data name="UnsupportedContainerType" xml:space="preserve">
+    <value>Unsupported containerType: {0}</value>
+  </data>
 </root>
