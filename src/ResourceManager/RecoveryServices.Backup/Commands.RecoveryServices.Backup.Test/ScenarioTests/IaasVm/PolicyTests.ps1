@@ -14,7 +14,7 @@
 
 function Test-PolicyScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
 	# get default objects
