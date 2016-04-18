@@ -91,36 +91,59 @@ function Test-DisableAzureVMProtectionScenario
 function Test-GetAzureVMRecoveryPointsScenario
 {
 	#Set vault context
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
+		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+	
+	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+	
+	# 3. Get the container
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
+	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
 
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
-	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
-
+	# VAR-1: Get all items for container
 	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
-	$startDate = (Get-Date).AddDays(-7)
-	$endDate = Get-Date
-	$rps = Get-AzureRMRecoveryServicesBackupRecoveryPoint -Item $item -StartDate $startDate -EndDate $endDate
-	Assert-NotNull "RPList should not be null"
+	$fixedStartDate = Get-Date -Date "2016-04-13 22:00:00"
+	$startDate = $fixedStartDate.ToUniversalTime()
+	$fixedEndDate = Get-Date -Date "2016-04-18 16:00:00"
+	$endDate = $fixedEndDate.ToUniversalTime()
+
+	
+	$recoveryPoints = Get-AzureRMRecoveryServicesBackupRecoveryPoint -Item $item[0] -StartDate $startDate -EndDate $endDate
+	if (!($recoveryPoints -eq $null))
+	{
+		foreach($recoveryPoint in $recoveryPoints)
+		{
+			Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
+			Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
+			Assert-NotNull $recoveryPoint.Name  'RecoveryPointId should not be null'
+		}
+	}
 }
 
 function Test-RestoreAzureVMRItemScenario
 {
 	#Set vault context
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
-	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
-
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
-	$startDate = (Get-Date).AddDays(-7)
-	$endDate = Get-Date
-	$rps = Get-AzureRMRecoveryServicesBackupRecoveryPoint -Item $item -StartDate $startDate -EndDate $endDate
+		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
 	
-	$job = Restore-AzureRMRecoveryServicesBackupItem -RecoveryPoint $rps[0] -StorageAccountName mkheranirestorestrtest -StorageAccountResourceGroupName mkheranirestorestrtest
+	# 2. Set the vault context
+	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+	
+	# 3. Get the container
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
+	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
 
-	Assert-AreEqual $job.Status "Completed";
+	# VAR-1: Get all items for container
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
+
+	$fixedStartDate = Get-Date -Date "2016-04-13 22:00:00"
+	$startDate = $fixedStartDate.ToUniversalTime()
+	$fixedEndDate = Get-Date -Date "2016-04-18 16:00:00"
+	$endDate = $fixedEndDate.ToUniversalTime()
+	$recoveryPoints = Get-AzureRMRecoveryServicesBackupRecoveryPoint -Item $item[0] -StartDate $startDate -EndDate $endDate
+	
+	$job = Restore-AzureRMRecoveryServicesBackupItem -RecoveryPoint $recoveryPoints[0] -StorageAccountName mkheranirestorestrtest -StorageAccountResourceGroupName mkheranirestorestrtest
+
+	Assert-NotNull $job;
 }
 
 function Test-BackupItemScenario
