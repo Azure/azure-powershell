@@ -20,7 +20,7 @@
 function Test-ExportDatabase
 {
 	# Setup	
-    $testSuffix = 90051
+    $testSuffix = 90063
     $createServer = $true
     $createDatabase = $true
     $createFirewallRule = $true
@@ -33,7 +33,7 @@ function Test-ExportDatabase
 function Test-ImportDatabase
 {
 	# Setup	
-    $testSuffix = 90052
+    $testSuffix = 90062
     $createServer = $true
     $createDatabase = $false
     $createFirewallRule = $true

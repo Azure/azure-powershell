@@ -259,7 +259,7 @@ Gets the parameters for import/export tests
 function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
 {
     $databaseName = "sql-ie-cmdlet-db" + $testSuffix;
-    $password = "Testp@ssw0rd";
+    $password = [Microsoft.Azure.Test.TestUtilities]::GenerateName("IEp@ssw0rd");
     #Fake storage account data. Used for playback mode
     $exportBacpacUri = "http://test.blob.core.windows.net/bacpacs"
     $importBacpacUri = "http://test.blob.core.windows.net/bacpacs/test.bacpac"
