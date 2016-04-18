@@ -13,14 +13,14 @@
 # ----------------------------------------------------------------------------------
 
 #Have to hard-code this because time keeps changing with every run and we cannot use recorded sessions
-$fixedStartDate = Get-Date -Date "2016-04-13 22:00:00"
+$fixedStartDate = Get-Date -Date "2016-04-17 17:00:00"
 $fixedStartDate = $fixedStartDate.ToUniversalTime()
-$fixedEndDate = Get-Date -Date "2016-04-14 16:00:00"
+$fixedEndDate = Get-Date -Date "2016-04-18 17:00:00"
 $fixedEndDate = $fixedEndDate.ToUniversalTime()
 
 function SetVaultContext
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "kazhengtest" -Name "pshtesting";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 }
 

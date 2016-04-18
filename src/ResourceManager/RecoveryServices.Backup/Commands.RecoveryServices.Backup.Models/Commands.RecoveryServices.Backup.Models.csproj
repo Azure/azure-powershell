@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.RecoveryServicesBackupManagement">
-      <HintPath>..\Commands.RecoveryServices.Backup.HydraAdapter\Resources\Microsoft.Azure.Management.RecoveryServicesBackupManagement.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.RecoveryServices.Backup">
+      <HintPath>..\Commands.RecoveryServices.Backup.HydraAdapter\Resources\Microsoft.Azure.Management.RecoveryServices.Backup.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
