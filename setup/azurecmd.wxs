@@ -5,7 +5,7 @@
   <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
 
-  <?define version="1.2.2" ?>
+  <?define version="1.3.0" ?>
 
   <Product Id="*"
            Name="$(var.productName)"
@@ -75,7 +75,7 @@
       <Component Id="PSModulePath.System" Guid="273525B9-7AAB-421A-90C8-8E50A1840B8D">
         <CreateFolder />
         <!-- Work around bug that PowerShell does not always consider default module paths. -->
-        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[BaseModulesFolder];[PowerShellFolder]ResourceManager\AzureResourceManager\;[PowerShellFolder]ServiceManagement\;[PowerShellFolder]\Storage" System="yes" />
+        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[BaseModulesFolder];[PowerShellFolder]ResourceManager\AzureResourceManager\;[PowerShellFolder]ServiceManagement\;[PowerShellFolder]Storage\" System="yes" />
      </Component>
     </DirectoryRef>
 

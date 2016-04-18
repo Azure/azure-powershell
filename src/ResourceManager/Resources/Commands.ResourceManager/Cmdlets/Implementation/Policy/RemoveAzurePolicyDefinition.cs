@@ -71,6 +71,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             string resourceId = this.Id ?? this.GetResourceId();
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
+
             this.ConfirmAction(
                 this.Force,
                 string.Format("Are you sure you want to delete the following policy definition: {0}", resourceId),
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var operationResult = this.GetResourcesClient()
                         .DeleteResource(
                             resourceId: resourceId,
-                            apiVersion: Constants.PolicyApiVersion,
+                            apiVersion: apiVersion,
                             cancellationToken: this.CancellationToken.Value,
                             odataQuery: null)
                         .Result;
@@ -89,7 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var managementUri = this.GetResourcesClient()
                         .GetResourceManagementRequestUri(
                             resourceId: resourceId,
-                            apiVersion: Constants.PolicyApiVersion,
+                            apiVersion: apiVersion,
                             odataQuery: null);
 
                     var activity = string.Format("DELETE {0}", managementUri.PathAndQuery);

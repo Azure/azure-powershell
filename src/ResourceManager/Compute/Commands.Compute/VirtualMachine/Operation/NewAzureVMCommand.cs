@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public string LicenseType { get; set; }
 
