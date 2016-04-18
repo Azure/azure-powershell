@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     psProviderType = PsBackupProviderTypes.IaasVm;
                     break;
                 default:
-                    throw new ArgumentException(String.Format(Resources.UnsupportedWorkloadType, workloadType.ToString()));
+                    throw new ArgumentException(String.Format(Resources.UnsupportedWorkloadTypeException, workloadType.ToString()));
             }
 
             return GetProviderInstance(psProviderType);

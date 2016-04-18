@@ -428,7 +428,4 @@ Please contact Microsoft for further assistant.</value>
   <data name="UnsupportedContainerType" xml:space="preserve">
     <value>Unsupported containerType: {0}</value>
   </data>
-  <data name="UnsupportedWorkloadType" xml:space="preserve">
-    <value>Unsupported workloadType: {0}</value>
-  </data>
 </root>
