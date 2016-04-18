@@ -14,18 +14,29 @@
 
 function Test-GetContainerScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
+	# 1. Get the vault
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+
+	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-	$containers = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered";
+
+	# VAR-1: Get All Containers with only mandatory parameters
+	$containers = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered";
 	foreach ($container in $containers)
 	{
 		echo $container.Name $container.ResourceGroupName;
 	}
-	Assert-AreEqual $containers[0].FriendlyName "mylinux1";
+	Assert-AreEqual $containers[2].FriendlyName "mkheranirmvm1";
 
-	$namedContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1";
-	Assert-AreEqual $namedContainer.FriendlyName "mylinux1";
+	# VAR-2: Get Containers with friendly name filter
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
+	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
 
-	$rgFilteredContainer = Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "mylinux1" -ResourceGroupName "00prjai12";
-	echo $rgFilteredContainer.Name $rgFilteredContainer.ResourceGroupName;
+	# VAR-3: Get Containers with friendly name and resource group filters
+	$rgFilteredContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1" -ResourceGroupName "RsvTestRG";
+	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
+
+	# VAR-4: Get Containers with resource group filter
+	$rgFilteredContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -ResourceGroupName "RsvTestRG";
+	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
 }

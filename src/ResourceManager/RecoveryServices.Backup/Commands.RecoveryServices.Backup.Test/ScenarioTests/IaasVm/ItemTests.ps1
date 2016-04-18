@@ -14,14 +14,47 @@
 
 function Test-GetItemScenario
 {
+	# 1. Get the vault
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+	
+	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered";
-	Assert-AreEqual $namedContainer[2].FriendlyName "mkheranirmvm1";
+	# 3. Get the container
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
+	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
 
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer[2] -WorkloadType "AzureVM" -Name "mkheranirmvm1";
-	echo $item.Name;
+	# VAR-1: Get all items for container
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
+	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+
+	# VAR-2: Get items for container with friendly name filter
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1";
+	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+
+	# VAR-3: Get items for container with ProtectionStatus filter
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -ProtectionStatus "Healthy";
+	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+
+	# VAR-4: Get items for container with Status filter
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Status "Protected";
+	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+
+	# VAR-5: Get items for container with friendly name and ProtectionStatus filters
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1" -ProtectionStatus "Healthy";
+	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+
+	# VAR-6: Get items for container with friendly name and Status filters
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1" -Status "Protected";
+	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+
+	# VAR-7: Get items for container with Status and ProtectionStatus filters
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Status "Protected" -ProtectionStatus "Healthy";
+	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+
+	# VAR-8: Get items for container with friendly name, Status and ProtectionStatus filters
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1" -Status "Protected" -ProtectionStatus "Healthy";
+	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
 }
 
 function Test-EnableAzureVMProtectionScenario
@@ -87,15 +120,21 @@ function Test-RestoreAzureVMRItemScenario
 
 function Test-BackupItemScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
+	# 1. Get the vault
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+
+	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "pstestv2vm1";
-	Assert-AreEqual $namedContainer.FriendlyName "pstestv2vm1";
+	# 3. Get the container
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
+	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
 
+	# 4: Get the item
 	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
-	echo $item.Name;
+	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
 
-	$job = Backup-AzureRmRecoveryServicesItem -Item $item;
+	# 5: Trigger backup
+	$job = Backup-AzureRmRecoveryServicesBackupItem -Item $item;
 	Assert-NotNull $job;
 }
