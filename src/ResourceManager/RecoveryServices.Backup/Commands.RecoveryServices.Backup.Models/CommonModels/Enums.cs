@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum BackupManagementType
     {
         AzureVM = 1,
-        MARS
+        MARS,
+        SCDPM
     }
 
     public enum BackupEngineType

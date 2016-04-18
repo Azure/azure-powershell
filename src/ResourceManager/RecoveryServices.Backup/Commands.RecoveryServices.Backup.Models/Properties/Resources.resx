@@ -416,4 +416,19 @@ Please contact Microsoft for further assistant.</value>
   <data name="UnsupportedContainerException" xml:space="preserve">
     <value>Please provide Container of containerType as Windows and backupManagementType as MARS. Provided Container has containerType {0} and backupManagementType {1} which is invalid.</value>
   </data>
+  <data name="BackupManagementTypeNotExpectedForWorkloadType" xml:space="preserve">
+    <value>BackupManagementType is not expected for WorkloadType: {0}</value>
+  </data>
+  <data name="BackupManagementTypeRequiredForContainerType" xml:space="preserve">
+    <value>BackupManagementType provider for ContainerType {1} is incorrect.</value>
+  </data>
+  <data name="BackupManagementTypeRequiredForWorkloadType" xml:space="preserve">
+    <value>BackupManagementType is also required for WorkloadType: {0}</value>
+  </data>
+  <data name="UnsupportedContainerType" xml:space="preserve">
+    <value>Unsupported containerType: {0}</value>
+  </data>
+  <data name="UnsupportedWorkloadType" xml:space="preserve">
+    <value>Unsupported workloadType: {0}</value>
+  </data>
 </root>
