@@ -30,7 +30,5 @@ function Test-UnregisterContainerScenario
 	$container = Get-AzureRmRecoveryServicesBackupManagementServer -Name "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
 	Assert-AreEqual $container.FriendlyName "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
 
-	Unregister-AzureRmRecoveryServicesBackupContainer -AzureRmBackupManagementServer $container;
-	$contianer = Get-AzureRmRecoveryServicesBackupManagementServer -Name "NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM";
-	Assert-Null $container;
+	Unregister-AzureRmRecoveryServicesBackupManagementServer -AzureRmBackupManagementServer $container;
 }
