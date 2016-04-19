@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.TaskSchedulingPolicy omObject;
         
-        public PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType fillType)
+        public PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType computeNodeFillType)
         {
-            this.omObject = new Microsoft.Azure.Batch.TaskSchedulingPolicy(fillType);
+            this.omObject = new Microsoft.Azure.Batch.TaskSchedulingPolicy(computeNodeFillType);
         }
         
         internal PSTaskSchedulingPolicy(Microsoft.Azure.Batch.TaskSchedulingPolicy omObject)
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.ComputeNodeFillType? ComputeNodeFillType
+        public Microsoft.Azure.Batch.Common.ComputeNodeFillType ComputeNodeFillType
         {
             get
             {
