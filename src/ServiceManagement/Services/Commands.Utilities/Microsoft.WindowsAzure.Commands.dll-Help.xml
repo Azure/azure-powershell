@@ -17191,7 +17191,7 @@
           <maml:para>C:\PS&gt;</maml:para>
           C:\PS&gt;
         </maml:introduction>
-        <dev:code>New-AzureSchedulerStorageQueueJob -Location "North Central US" -JobCollectionName jobCollection1 -JobName job1 -StorageQueueAccount myStorageAccount -StorageQueueName myStorageQueue -SASToken "?sv=2012-02-12&amp;si=samplePolicy%2F30%2F2014%206%3A37%3A36%20PM&amp;sig=vLQEbSfZbTFh7q3YrzlxBeL%2BjiYKp0gE6lMJ0a5Nb4M%3D"</dev:code>
+        <dev:code>New-AzureSchedulerStorageQueueJob -Location "North Central US" -JobCollectionName jobCollection1 -JobName job1 -StorageQueueAccount myStorageAccount -StorageQueueName myStorageQueue -SASToken "mySASToken"</dev:code>
         <dev:remarks>
           <maml:para>Create a new scheduler storage job under jobCollection1 with the provided storage credentials (storage account, queue name, sas token). The job's schedule will be default - runs once immediately</maml:para>
           <maml:para>
@@ -17218,7 +17218,7 @@
           <maml:para>C:\PS&gt;</maml:para>
           C:\PS&gt;
         </maml:introduction>
-        <dev:code>New-AzureSchedulerStorageQueueJob -Location "North Central US" -JobCollectionName jobCollection1 -JobName job1 -StorageQueueAccount myStorageAccount -StorageQueueName myStorageQueue -SASToken "?sv=2012-02-12&amp;si=samplePolicy%2F30%2F2014%206%3A37%3A36%20PM&amp;sig=vLQEbSfZbTFh7q3YrzlxBeL%2BjiYKp0gE6lMJ0a5Nb4M%3D" -ExecutionCount 20 -Frequency Hour -Interval 2</dev:code>
+        <dev:code>New-AzureSchedulerStorageQueueJob -Location "North Central US" -JobCollectionName jobCollection1 -JobName job1 -StorageQueueAccount myStorageAccount -StorageQueueName myStorageQueue -SASToken "mySASToken" -ExecutionCount 20 -Frequency Hour -Interval 2</dev:code>
         <dev:remarks>
           <maml:para>Create a new scheduler storage job under jobCollection1 with the provided storage credentials (storage account, queue name, sas token). The job will execute 20 times in total, twice every hour</maml:para>
           <maml:para>
