@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectableObject.ListAsync(
+            return BmsAdapter.Client.ProtectableObjects.ListAsync(
                                      resourceGroupName,
                                      resourceName,
                                      queryFilter,
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
 
         public BaseRecoveryServicesJobResponse TriggerBackup(string containerName, string itemName)
         {
-            return BmsAdapter.Client.Backup.TriggerBackupAsync(
+            return BmsAdapter.Client.Backups.TriggerBackupAsync(
                 BmsAdapter.GetResourceGroupName(),
                 BmsAdapter.GetResourceName(),
                 BmsAdapter.GetCustomRequestHeaders(),
