@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         public void NewAzureSqlDatabaseExportAttributes()
         {
             Type type = typeof(NewAzureSqlDatabaseExport);
-            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Low);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: true);
@@ -46,8 +44,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         public void NewAzureSqlDatabaseImportAttributes()
         {
             Type type = typeof(NewAzureSqlDatabaseImport);
-            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Low);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: false);
@@ -59,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             UnitTestHelper.CheckCmdletParameterAttributes(type, "AuthenticationType", isMandatory: false, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "Edition", isMandatory: true, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServiceObjectiveName", isMandatory: true, valueFromPipelineByName: false);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseMaxSize", isMandatory: true, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseMaxSizeBytes", isMandatory: true, valueFromPipelineByName: false);
         }
 
         [Fact]
@@ -67,8 +63,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         public void AzureRmSqlDatabaseImportExportStatusAttributes()
         {
             Type type = typeof(GetAzureSqlDatabaseImportExportStatus);
-            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Low);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "OperationStatusLink", isMandatory: true, valueFromPipelineByName: true);
         }
