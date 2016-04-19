@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             var response = BmsAdapter.Client.Containers.RefreshAsync(
                 resourceGroupName, resourceName,
                 BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, BmsAdapter.CmdletCancellationToken).Result;

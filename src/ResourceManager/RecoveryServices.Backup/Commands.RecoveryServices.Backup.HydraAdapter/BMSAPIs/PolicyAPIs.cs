@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
 
         public BackUpOperationStatusResponse GetProtectionPolicyOperationStatusByURL(string url)
         {
-            return BmsAdapter.Client.ProtectionPolicies.GetOperationStatusByURLAsync(
+            return BmsAdapter.Client.GetOperationStatusByURLAsync(
                               url,
                               BmsAdapter.GetCustomRequestHeaders(),
                               BmsAdapter.CmdletCancellationToken).Result;                              
