@@ -832,16 +832,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         private void RefreshContainer()
         {
-            bool isDiscoverySuccessful = false;
             string errorMessage = string.Empty;
             var refreshContainerJobResponse = HydraAdapter.RefreshContainers();
 
             //Now wait for the operation to Complete
-            WaitForDiscoveryToComplete(refreshContainerJobResponse.Location, out isDiscoverySuccessful, out errorMessage);
-
-            if (!isDiscoverySuccessful)
+            if (refreshContainerJobResponse.StatusCode != System.Net.HttpStatusCode.NoContent)
             {
-                Logger.Instance.ThrowTerminatingError(new ErrorRecord(new Exception(errorMessage), string.Empty, ErrorCategory.InvalidArgument, null));
+                errorMessage = String.Format(Resources.DiscoveryFailureErrorCode, refreshContainerJobResponse.StatusCode);
+                Logger.Instance.WriteDebug(errorMessage);
             }
         }
 
