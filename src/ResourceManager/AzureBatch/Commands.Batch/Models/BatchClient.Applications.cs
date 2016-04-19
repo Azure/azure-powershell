@@ -21,6 +21,7 @@ using System.Net;
 
 using Hyak.Common;
 
+using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -147,7 +148,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             UpdateApplicationParameters uap = new UpdateApplicationParameters();
-            //TODO this needs to be changes when a fix comes in for patch bool? AllowUpdates 
+            //TODO this needs to be changes when a fix comes in for patch bool? AllowUpdates
             if (allowUpdates != null)
             {
                 uap.AllowUpdates = (bool)allowUpdates;
@@ -180,7 +181,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             if (!File.Exists(filePath))
             {
-                throw new FileNotFoundException("File not found", filePath);
+                throw new FileNotFoundException(Resources.LocalFileNotFound, filePath);
             }
 
             if (string.IsNullOrEmpty(resourceGroupName))

@@ -8697,7 +8697,7 @@
   <command:details>
     <command:name>Get-AzureRmBatchApplication</command:name>
     <maml:description>
-      <maml:para></maml:para>
+      <maml:para>TODO:IVAN</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -8707,7 +8707,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>TODO:IVAN</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -8716,14 +8716,14 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -8741,8 +8741,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para></maml:para>
-                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -8754,7 +8753,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -8766,7 +8765,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9007,35 +9006,35 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationVersion</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>FilePath</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Format</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -9053,7 +9052,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9065,7 +9064,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9077,7 +9076,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9089,7 +9088,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>FilePath</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9101,19 +9100,19 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>Format</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
         <maml:name>string</maml:name>
         <maml:uri/>
       </dev:type>
-      <dev:defaultValue></dev:defaultValue>
+      <dev:defaultValue>TODO:IVAN</dev:defaultValue>
     </command:parameter>
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9180,7 +9179,7 @@
   <command:details>
     <command:name>New-AzureRmBatchApplication</command:name>
     <maml:description>
-      <maml:para></maml:para>
+      <maml:para>TODO:IVAN</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -9199,28 +9198,28 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AllowUpdates</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DisplayName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -9238,7 +9237,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para></maml:para>
+        <maml:para>TODO:IVAN</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9250,7 +9249,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AllowUpdates</maml:name>
       <maml:description>
-        <maml:para></maml:para>
+        <maml:para>TODO:IVAN</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
       <dev:type>
@@ -9262,7 +9261,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para></maml:para>
+        <maml:para>TODO:IVAN</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9274,7 +9273,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>DisplayName</maml:name>
       <maml:description>
-        <maml:para></maml:para>
+        <maml:para>TODO:IVAN</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9286,7 +9285,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9353,7 +9352,7 @@
   <command:details>
     <command:name>Remove-AzureRmBatchApplicationPackage</command:name>
     <maml:description>
-      <maml:para></maml:para>
+      <maml:para>TODO:IVAN</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -9363,7 +9362,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>TODO:IVAN</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -9372,28 +9371,28 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationVersion</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -9404,7 +9403,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9416,7 +9415,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9428,7 +9427,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9440,7 +9439,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9507,7 +9506,7 @@
   <command:details>
     <command:name>Remove-AzureRmBatchApplication</command:name>
     <maml:description>
-      <maml:para></maml:para>
+      <maml:para>TODO:IVAN</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -9526,21 +9525,21 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -9551,7 +9550,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9563,7 +9562,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9575,7 +9574,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9642,7 +9641,7 @@
   <command:details>
     <command:name>Set-AzureRmBatchApplication</command:name>
     <maml:description>
-      <maml:para></maml:para>
+      <maml:para>TODO:IVAN</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -9652,7 +9651,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>TODO:IVAN</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -9661,42 +9660,42 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AllowUpdates</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DefaultVersion</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DisplayName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -9707,7 +9706,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9719,7 +9718,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AllowUpdates</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
       <dev:type>
@@ -9731,7 +9730,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9743,7 +9742,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>DefaultVersion</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9755,7 +9754,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>DisplayName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9767,7 +9766,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
