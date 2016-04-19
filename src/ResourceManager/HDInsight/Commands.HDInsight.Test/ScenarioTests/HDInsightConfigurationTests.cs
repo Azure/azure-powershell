@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConfigurationPipelining()
         {
-            RunPowerShellTest("Test-ConfigurationPipelining");
+            NewInstance.RunPsTest("Test-ConfigurationPipelining");
         }
     }
 }

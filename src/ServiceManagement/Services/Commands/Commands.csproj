@@ -148,9 +148,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.TrafficManager.0.16.0-preview\lib\net40\Microsoft.WindowsAzure.Management.TrafficManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.WebSites, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.WebSites, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.WebSites.4.5.0-prerelease\lib\net40\Microsoft.WindowsAzure.Management.WebSites.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.WebSites.5.0.0-prerelease\lib\net40\Microsoft.WindowsAzure.Management.WebSites.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -246,6 +247,7 @@
     <Compile Include="WAPackIaaS\CloudService\RemoveWAPackCloudService.cs" />
     <Compile Include="WAPackIaaS\IaaSCmdletBase.cs" />
     <Compile Include="WAPackIaaS\Networking\GetWAPackLogicalNetwork.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\GetWAPackCloudVMRoleSizeProfile.cs" />
     <Compile Include="WAPackIaaS\VirtualMachine\GetWAPackVM.cs" />
     <Compile Include="WAPackIaaS\VirtualMachine\GetWAPackVMOSDisk.cs" />
     <Compile Include="WAPackIaaS\Networking\GetWAPackStaticIPAddressPool.cs" />
