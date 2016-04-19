@@ -148,8 +148,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// Deletes the specified file from its compute node.
         /// </summary>
+        /// <param name="recursive">If the file-path parameter represents a directory instead of a file, you can set the optional 
+        /// recursive parameter to true to delete the directory and all of the files and subdirectories in it. If recursive is false 
+        /// then the directory must be empty or deletion will fail..</param>
         /// <param name="parameters">Specifies which node file to delete.</param>
-        public void DeleteNodeFile(NodeFileOperationParameters parameters)
+        public void DeleteNodeFile(bool? recursive, NodeFileOperationParameters parameters)
         {
             if (parameters == null)
             {
@@ -161,18 +164,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 case PSNodeFileType.Task:
                 {
                     JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
-                    jobOperations.DeleteNodeFile(parameters.JobId, parameters.TaskId, parameters.NodeFileName, parameters.AdditionalBehaviors);
+                    jobOperations.DeleteNodeFile(parameters.JobId, parameters.TaskId, parameters.NodeFileName, recursive: recursive, additionalBehaviors: parameters.AdditionalBehaviors);
                     break;
                 }
                 case PSNodeFileType.ComputeNode:
                 {
                     PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-                    poolOperations.DeleteNodeFile(parameters.PoolId, parameters.ComputeNodeId, parameters.NodeFileName, parameters.AdditionalBehaviors);
+                    poolOperations.DeleteNodeFile(parameters.PoolId, parameters.ComputeNodeId, parameters.NodeFileName, recursive: recursive, additionalBehaviors: parameters.AdditionalBehaviors);
                     break;
                 }
                 case PSNodeFileType.PSNodeFileInstance:
                 {
-                    parameters.NodeFile.omObject.Delete(parameters.AdditionalBehaviors);
+                    parameters.NodeFile.omObject.Delete(recursive: recursive, additionalBehaviors: parameters.AdditionalBehaviors);
                     break;
                 }
                 default:
