@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Common;
     using Newtonsoft.Json.Linq;
     using System.Collections.Generic;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 
     /// <summary>
     /// The base class for resource manager cmdlets.
@@ -52,6 +53,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 return this.cancellationSource == null ? null : (CancellationToken?)this.cancellationSource.Token;
             }
         }
+
+        /// <summary>
+        /// Field that holds the resource client instance
+        /// </summary>
+        private ResourceManagerSdkClient resourceManagerSdkClient;
 
         /// <summary>
         /// Gets or sets the API version.
@@ -262,6 +268,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext),
                         headerValues: AzureSession.ClientFactory.UserAgents,
                         cmdletHeaderValues: this.GetCmdletHeaders()));
+        }
+
+        /// <summary>
+        /// Gets or sets the resource manager sdk client
+        /// </summary>
+        public ResourceManagerSdkClient ResourceManagerSdkClient
+        {
+            get
+            {
+                if (this.resourceManagerSdkClient == null)
+                {
+                    this.resourceManagerSdkClient = new ResourceManagerSdkClient(DefaultContext)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
+                }
+                return this.resourceManagerSdkClient;
+            }
+
+            set { this.resourceManagerSdkClient = value; }
         }
 
         private Dictionary<string, string> GetCmdletHeaders()
