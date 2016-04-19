@@ -7843,6 +7843,13 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="4" aliases="none">
+          <maml:name>StorageId</maml:name>
+          <maml:description>
+            <maml:para>TODO:IVAN</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
           <maml:name>Tag</maml:name>
           <maml:description>
@@ -7886,6 +7893,18 @@
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the resource group in which this cmdlet creates the account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="3" aliases="none">
+        <maml:name>StorageId</maml:name>
+        <maml:description>
+          <maml:para>TODO:Ivan</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -7968,7 +7987,11 @@
 
         </dev:code>
         <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
           <maml:para>This command creates a Batch account named pfuller using the ResourceGroup03 resource group in the West US location.</maml:para>
+          <maml:para />
+          <maml:para />
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -8670,6 +8693,1143 @@
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>Get-AzureRmBatchApplication</command:name>
+    <maml:description>
+      <maml:para></maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Get</command:verb>
+    <command:noun>AzureRmBatchApplication</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Get-AzureRmBatchApplication</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>Get-AzureRmBatchApplicationPackage</command:name>
+    <maml:description>
+      <maml:para></maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Get</command:verb>
+    <command:noun>AzureRmBatchApplicationPackage</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Get-AzureRmBatchApplicationPackage</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationVersion</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationVersion</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>New-AzureRmBatchApplicationPackage
+    </command:name>
+    <maml:description>
+      <maml:para></maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>New</command:verb>
+    <command:noun>AzureRmBatchApplicationPackage</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>New-AzureRmBatchApplicationPackage</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationVersion</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>FilePath</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Format</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationVersion</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>FilePath</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Format</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->          
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>New-AzureRmBatchApplication</command:name>
+    <maml:description>
+      <maml:para></maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>New</command:verb>
+    <command:noun>AzureRmBatchApplication</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>New-AzureRmBatchApplication</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AllowUpdates</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DisplayName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AllowUpdates</maml:name>
+      <maml:description>
+        <maml:para></maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
+      <dev:type>
+        <maml:name>bool?</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para></maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>DisplayName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->          
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>Remove-AzureRmBatchApplicationPackage</command:name>
+    <maml:description>
+      <maml:para></maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Remove</command:verb>
+    <command:noun>AzureRmBatchApplicationPackage</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Remove-AzureRmBatchApplicationPackage</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationVersion</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationVersion</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>Remove-AzureRmBatchApplication</command:name>
+    <maml:description>
+      <maml:para></maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Remove</command:verb>
+    <command:noun>AzureRmBatchApplication</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Remove-AzureRmBatchApplication</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>Set-AzureRmBatchApplication</command:name>
+    <maml:description>
+      <maml:para></maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Set</command:verb>
+    <command:noun>AzureRmBatchApplication</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Set-AzureRmBatchApplication</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AllowUpdates</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DefaultVersion</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DisplayName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AllowUpdates</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
+      <dev:type>
+        <maml:name>bool?</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>DefaultVersion</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>DisplayName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para></maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureBatchComputeNodeUser</command:name>
@@ -11569,10 +12729,17 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the resource group of the account that this cmdlet updates.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>StorageId</maml:name>
+          <maml:description>
+            <maml:para>TODO:IVAN</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -11593,6 +12760,18 @@
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the resource group of the account that this cmdlet updates.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>StrorageId</maml:name>
         <maml:description>
           <maml:para>Specifies the resource group of the account that this cmdlet updates.</maml:para>
         </maml:description>

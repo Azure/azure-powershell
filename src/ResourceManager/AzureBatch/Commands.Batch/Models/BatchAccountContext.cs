@@ -209,6 +209,7 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 throw new ArgumentException(String.Format(Resources.InvalidResourceId, resource.Id), "Id");
             }
+
             this.Subscription = idParts[2];
             this.ResourceGroupName = idParts[4];
         }

@@ -14,12 +14,6 @@
 
 using System;
 
-using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Auth;
-using Microsoft.Azure.Test;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Storage;
-
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
