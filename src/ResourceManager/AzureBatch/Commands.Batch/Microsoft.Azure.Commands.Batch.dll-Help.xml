@@ -8697,7 +8697,7 @@
   <command:details>
     <command:name>Get-AzureRmBatchApplication</command:name>
     <maml:description>
-      <maml:para>TODO:IVAN</maml:para>
+      <maml:para>Gets information about the specified application.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -8707,7 +8707,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para>TODO:IVAN</maml:para>
+    <maml:para>The Get-AzureRmBatchApplication cmdlet gets information about an application in an Azure Batch account.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -8716,21 +8716,21 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the id of the application.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -8741,7 +8741,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -8753,7 +8753,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -8765,7 +8765,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -8872,7 +8872,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -8919,7 +8919,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -8987,7 +8987,7 @@
     <command:name>New-AzureRmBatchApplicationPackage
     </command:name>
     <maml:description>
-      <maml:para></maml:para>
+      <maml:para>Creates a new application package in an Azure Batch account.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -8997,7 +8997,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>The New-AzureRmBatchApplicationPackage cmdlet creates a new application package in an Azure Batch account.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -9006,42 +9006,42 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the id of the application.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationVersion</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the version of the application.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>FilePath</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Format</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the format of the application package binary file.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -9052,7 +9052,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9064,7 +9064,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9076,7 +9076,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the version of the application.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9088,7 +9088,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>FilePath</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9100,19 +9100,19 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>Format</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the format of the application package binary file.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
         <maml:name>string</maml:name>
         <maml:uri/>
       </dev:type>
-      <dev:defaultValue>TODO:IVAN</dev:defaultValue>
+      <dev:defaultValue></dev:defaultValue>
     </command:parameter>
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9179,7 +9179,7 @@
   <command:details>
     <command:name>New-AzureRmBatchApplication</command:name>
     <maml:description>
-      <maml:para>TODO:IVAN</maml:para>
+      <maml:para>Adds an application to the specified Batch account.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -9189,7 +9189,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>The New-AzureRmBatchApplication cmdlet adds an application to the specified Batch account.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -9198,35 +9198,35 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AllowUpdates</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the id of the application.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DisplayName</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the display name for the application.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -9237,7 +9237,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9249,7 +9249,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AllowUpdates</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>
+        <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>
       </maml:description>
       <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
       <dev:type>
@@ -9261,7 +9261,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9273,7 +9273,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>DisplayName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>
+        <maml:para>Specifies the display name for the application.</maml:para>
       </maml:description>
       <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9285,7 +9285,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9352,7 +9352,7 @@
   <command:details>
     <command:name>Remove-AzureRmBatchApplicationPackage</command:name>
     <maml:description>
-      <maml:para>TODO:IVAN</maml:para>
+      <maml:para>Deletes an application package record and the binary file.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -9362,7 +9362,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para>TODO:IVAN</maml:para>
+    <maml:para>The Remove-AzureRmBatchApplicationPackage cmdlet deletes an application package record and the binary file.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -9371,28 +9371,28 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the id of the application.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationVersion</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the version of the application.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -9403,7 +9403,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9415,7 +9415,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9427,7 +9427,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the version of the application.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9439,7 +9439,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9506,7 +9506,7 @@
   <command:details>
     <command:name>Remove-AzureRmBatchApplication</command:name>
     <maml:description>
-      <maml:para>TODO:IVAN</maml:para>
+      <maml:para>Deletes an application from an Azure Batch account.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -9516,7 +9516,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>The Remove-AzureRmBatchApplication cmdlet deletes an application from an Azure Batch account.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -9525,21 +9525,21 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the id of the application.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -9550,7 +9550,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9562,7 +9562,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9574,7 +9574,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9641,7 +9641,7 @@
   <command:details>
     <command:name>Set-AzureRmBatchApplication</command:name>
     <maml:description>
-      <maml:para>TODO:IVAN</maml:para>
+      <maml:para>Updates settings for the specified application.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -9651,7 +9651,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para>TODO:IVAN</maml:para>
+    <maml:para>The Set-AzureRmBatchApplication cmdlet updates settings for the specified application.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -9660,42 +9660,42 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AllowUpdates</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the id of the application.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DefaultVersion</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies which package to use if a client requests the application but does not specify a version.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DisplayName</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the display name for the application.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para>TODO:IVAN</maml:para>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -9706,7 +9706,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9718,7 +9718,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AllowUpdates</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>                
       </maml:description>
       <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
       <dev:type>
@@ -9730,7 +9730,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9742,7 +9742,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>DefaultVersion</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies which package to use if a client requests the application but does not specify a version.</maml:para>                
       </maml:description>
       <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9754,7 +9754,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>DisplayName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the display name for the application.</maml:para>                
       </maml:description>
       <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9766,7 +9766,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
-        <maml:para>TODO:IVAN</maml:para>                
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
