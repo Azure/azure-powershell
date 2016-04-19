@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Resources
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             this.ConfirmAction(
                 force: this.Force,
                 actionMessage: string.Format(ProjectResources.UnregisteringProvider, this.ProviderNamespace),
