@@ -843,21 +843,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        private void WaitForDiscoveryToComplete(string locationUri, out bool isDiscoverySuccessful, out string errorMessage)
-        {
-            var status = TrackRefreshContainerOperation(locationUri);
-            errorMessage = String.Empty;
-
-            isDiscoverySuccessful = true;
-            //If operation fails check if retry is needed or not
-            if (status != HttpStatusCode.NoContent)
-            {
-                isDiscoverySuccessful = false;
-                errorMessage = String.Format(Resources.DiscoveryFailureErrorCode, status);
-                Logger.Instance.WriteDebug(errorMessage);
-            }
-        }
-
         private HttpStatusCode TrackRefreshContainerOperation(string operationResultLink, int checkFrequency = defaultOperationStatusRetryTimeInMilliSec)
         {
             HttpStatusCode status = HttpStatusCode.Accepted;
