@@ -45,19 +45,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string TaskUrl
+        public PSTaskExecutionInformation ExecutionInformation
         {
             get
             {
-                return this.omObject.TaskUrl;
-            }
-        }
-        
-        public string JobScheduleId
-        {
-            get
-            {
-                return this.omObject.JobScheduleId;
+                if (((this.executionInformation == null) 
+                            && (this.omObject.ExecutionInformation != null)))
+                {
+                    this.executionInformation = new PSTaskExecutionInformation(this.omObject.ExecutionInformation);
+                }
+                return this.executionInformation;
             }
         }
         
@@ -69,19 +66,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public string TaskId
-        {
-            get
-            {
-                return this.omObject.TaskId;
-            }
-        }
-        
         public System.Int32? SubtaskId
         {
             get
             {
                 return this.omObject.SubtaskId;
+            }
+        }
+        
+        public string TaskId
+        {
+            get
+            {
+                return this.omObject.TaskId;
             }
         }
         
@@ -93,16 +90,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSTaskExecutionInformation ExecutionInformation
+        public string TaskUrl
         {
             get
             {
-                if (((this.executionInformation == null) 
-                            && (this.omObject.ExecutionInformation != null)))
-                {
-                    this.executionInformation = new PSTaskExecutionInformation(this.omObject.ExecutionInformation);
-                }
-                return this.executionInformation;
+                return this.omObject.TaskUrl;
             }
         }
     }

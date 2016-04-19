@@ -21,6 +21,8 @@ using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -60,7 +62,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.TargetOSVersion = "targetOS";
 
             // Don't go to the service on an Upgrade OS call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolUpgradeOSParameters, CloudPoolUpgradeOSResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<string, PoolUpgradeOSOptions, AzureOperationHeaderResponse<PoolUpgradeOSHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -83,16 +85,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             // Don't go to the service on an Upgrade OS call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                BatchRequest<CloudPoolUpgradeOSParameters, CloudPoolUpgradeOSResponse> request =
-                (BatchRequest<CloudPoolUpgradeOSParameters, CloudPoolUpgradeOSResponse>)baseRequest;
+                PoolUpgradeOSBatchRequest request = (PoolUpgradeOSBatchRequest) baseRequest;
 
                 // Grab the target OS version off the outgoing request
-                requestTargetOS = request.TypedParameters.TargetOSVersion;
+                requestTargetOS = request.Parameters;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    CloudPoolUpgradeOSResponse response = new CloudPoolUpgradeOSResponse();
-                    Task<CloudPoolUpgradeOSResponse> task = Task.FromResult(response);
+                    var response = new AzureOperationHeaderResponse<PoolUpgradeOSHeaders>();
+                    Task<AzureOperationHeaderResponse<PoolUpgradeOSHeaders>> task = Task.FromResult(response);
                     return task;
                 };
             });

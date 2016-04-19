@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Batch
             }
             catch (AggregateException ex)
             {
-                // When the OM encounters an error, it'll throw an AggregateException with a nested BatchException.
+                // When the OM encounters an error, it'll throw a BatchException.
                 // BatchExceptions have special handling to extract detailed failure information.  When an AggregateException
                 // is encountered, loop through the inner exceptions.  If there's a nested BatchException, perform the 
                 // special handling.  Otherwise, just write out the error.
@@ -155,21 +155,9 @@ namespace Microsoft.Azure.Commands.Batch
         {
             if (ex != null)
             {
-                if (ex.RequestInformation != null && ex.RequestInformation.AzureError != null)
+                if (ex.RequestInformation != null && ex.RequestInformation.BatchError != null)
                 {
-                    StringBuilder str = new StringBuilder(ex.Message).AppendLine();
-
-                    str.AppendFormat("Error Code: {0}", ex.RequestInformation.AzureError.Code).AppendLine();
-                    str.AppendFormat("Error Message: {0}", ex.RequestInformation.AzureError.Message.Value).AppendLine();
-                    str.AppendFormat("Client Request ID:{0}", ex.RequestInformation.ClientRequestId).AppendLine();
-                    if (ex.RequestInformation.AzureError.Values != null)
-                    {
-                        foreach (AzureErrorDetail detail in ex.RequestInformation.AzureError.Values)
-                        {
-                            str.AppendFormat("{0}:{1}", detail.Key, detail.Value).AppendLine();
-                        }
-                    }
-                    WriteExceptionError(new BatchException(ex.RequestInformation, str.ToString(), ex.InnerException));
+                    WriteExceptionError(new BatchException(ex.RequestInformation, ex.ToString(), ex.InnerException));
                 }
                 else
                 {
