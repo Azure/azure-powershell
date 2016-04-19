@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.WindowsAzure;
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
-    using Hyak.Common;
     using System.Collections;
     using System;
+    using Microsoft.Rest.Azure;
 
     [Cmdlet(VerbsCommon.New, "AzureRmRedisCache"), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class NewAzureRedisCache : RedisCacheCmdletBase
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             // If Force flag is not avaliable than check if cache is already available or not
             try
             {
-                RedisGetResponse availableCache = CacheClient.GetCache(ResourceGroupName, Name);
+                RedisResource availableCache = CacheClient.GetCache(ResourceGroupName, Name);
                 if (availableCache != null)
                 {
                     throw new CloudException(string.Format(Resources.RedisCacheExists, Name));
@@ -120,11 +120,11 @@ namespace Microsoft.Azure.Commands.RedisCache
             }
             catch (CloudException ex)
             {
-                if (ex.Error.Code == "ResourceNotFound" || ex.Message.Contains("ResourceNotFound"))
+                if (ex.Body.Code == "ResourceNotFound" || ex.Message.Contains("ResourceNotFound"))
                 {
                     // cache does not exists so go ahead and create one
                 }
-                else if (ex.Error.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
+                else if (ex.Body.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
                 {
                     // resource group not found, let create throw error don't throw from here
                 }
