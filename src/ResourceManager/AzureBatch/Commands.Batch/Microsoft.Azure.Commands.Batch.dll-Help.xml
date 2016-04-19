@@ -8823,8 +8823,28 @@
   <!-- Link section  -->
   <maml:relatedLinks>
     <maml:navigationLink>
-      <maml:linkText></maml:linkText>
-      <maml:uri/>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
     </maml:navigationLink>
   </maml:relatedLinks>
 </command:command>
@@ -8977,8 +8997,28 @@
   <!-- Link section  -->
   <maml:relatedLinks>
     <maml:navigationLink>
-      <maml:linkText></maml:linkText>
-      <maml:uri/>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
     </maml:navigationLink>
   </maml:relatedLinks>
 </command:command>
@@ -9170,8 +9210,28 @@
   <!-- Link section  -->
   <maml:relatedLinks>
     <maml:navigationLink>
-      <maml:linkText></maml:linkText>
-      <maml:uri/>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
     </maml:navigationLink>
   </maml:relatedLinks>
 </command:command>
@@ -9343,8 +9403,28 @@
   <!-- Link section  -->
   <maml:relatedLinks>
     <maml:navigationLink>
-      <maml:linkText></maml:linkText>
-      <maml:uri/>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
     </maml:navigationLink>
   </maml:relatedLinks>
 </command:command>
@@ -9497,8 +9577,28 @@
   <!-- Link section  -->
   <maml:relatedLinks>
     <maml:navigationLink>
-      <maml:linkText></maml:linkText>
-      <maml:uri/>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
     </maml:navigationLink>
   </maml:relatedLinks>
 </command:command>
@@ -9632,8 +9732,28 @@
   <!-- Link section  -->
   <maml:relatedLinks>
     <maml:navigationLink>
-      <maml:linkText></maml:linkText>
-      <maml:uri/>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
     </maml:navigationLink>
   </maml:relatedLinks>
 </command:command>
@@ -9824,8 +9944,28 @@
   <!-- Link section  -->
   <maml:relatedLinks>
     <maml:navigationLink>
-      <maml:linkText></maml:linkText>
-      <maml:uri/>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
     </maml:navigationLink>
   </maml:relatedLinks>
 </command:command>
