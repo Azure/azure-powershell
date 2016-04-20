@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Mandatory = false, Position = 2, HelpMessage = ParamHelpMsg.Container.BackupManagementType)]
         [ValidateNotNullOrEmpty]
-        public BackupManagementType BackupManagementType { get; set; }
+        [ValidateSet("AzureVM", "MARS")]
+        public string BackupManagementType { get; set; }
 
         [Parameter(Mandatory = false, Position = 3, HelpMessage = ParamHelpMsg.Container.Name)]
         [ValidateNotNullOrEmpty]
@@ -56,16 +57,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                BackupManagementType? backupManagementTypeNullable = null;
+                BackupManagementType backupManagementType;
+                if (BackupManagementType != null)
+                {
+                    Enum.TryParse<BackupManagementType>(BackupManagementType, out backupManagementType);
+                    backupManagementTypeNullable = backupManagementType;
+                }
+
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {  
                     {ContainerParams.ContainerType, ContainerType},
-                    {ContainerParams.BackupManagementType, BackupManagementType},
+                    {ContainerParams.BackupManagementType, backupManagementTypeNullable},
                     {ContainerParams.Name, Name},
                     {ContainerParams.ResourceGroupName, ResourceGroupName},
                     {ContainerParams.Status, Status},
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType, BackupManagementType);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType, backupManagementTypeNullable);
                 var containerModels = psBackupProvider.ListProtectionContainers();
 
                 if (containerModels.Count == 1)

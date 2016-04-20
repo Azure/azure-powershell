@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             switch (containerType)
             {
                 case ContainerType.AzureVM:
-                    providerType = PsBackupProviderTypes.IaasVm;
+                    if (backupManagementType == BackupManagementType.AzureVM || backupManagementType == null)
+                        providerType = PsBackupProviderTypes.IaasVm;
+                    else
+                        throw new ArgumentException(String.Format(Resources.BackupManagementTypeRequiredForContainerType, containerType));
                     break;
                 case ContainerType.Windows:
                     if (backupManagementType == BackupManagementType.MARS)

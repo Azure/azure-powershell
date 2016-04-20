@@ -139,6 +139,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     return BackupManagementType.MARS;
                 case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.DPM:
                     return BackupManagementType.SCDPM;
+                case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureBackupServer:
+                    return BackupManagementType.AzureBackupServer;
                 default:
                     throw new Exception("Unsupported BackupManagmentType: " + backupManagementType);
             }
