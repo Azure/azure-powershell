@@ -5,7 +5,7 @@ function Get-AzureRmStorageAccount
   [CmdletBinding()]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
-    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Name)
+    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] [alias("StorageAccountName")] $Name)
   BEGIN { 
     $context = Get-Context
 	$client = Get-StorageClient $context
@@ -13,7 +13,7 @@ function Get-AzureRmStorageAccount
   PROCESS {
     $getTask = $client.StorageAccounts.GetPropertiesAsync($ResourceGroupName, $name, [System.Threading.CancellationToken]::None)
 	$sa = $getTask.Result
-	$account = Get-StorageAccount $sa $ResourceGroupName
+	$account = Get-StorageAccount $ResourceGroupName $Name
 	Write-Output $account
   }
   END {}
@@ -25,7 +25,7 @@ function New-AzureRmStorageAccount
   [CmdletBinding()]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
-    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Name,
+    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
 	[string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Location,
 	[string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $Type)
   BEGIN { 
@@ -38,8 +38,6 @@ function New-AzureRmStorageAccount
 	$createParms.Location = $Location
     $getTask = $client.StorageAccounts.CreateAsync($ResourceGroupName, $name, $createParms, [System.Threading.CancellationToken]::None)
 	$sa = $getTask.Result
-	$account = Get-StorageAccount $ResourceGroupName $Name
-	Write-Output $account
   }
   END {}
 
@@ -50,7 +48,7 @@ function Get-AzureRmStorageAccountKey
   [CmdletBinding()]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
-    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Name)
+    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] [alias("StorageAccountName")] $Name)
   BEGIN {  
     $context = Get-Context
 	$client = Get-StorageClient $context
@@ -60,6 +58,25 @@ function Get-AzureRmStorageAccountKey
 	Write-Output $getTask.Result.StorageAccountKeys
   }
   END {}
+}
+
+function Remove-AzureRmStorageAccount
+{
+
+  [CmdletBinding()]
+  param(
+    [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
+    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] [alias("StorageAccountName")] $Name)
+  BEGIN { 
+    $context = Get-Context
+	$client = Get-StorageClient $context
+  }
+  PROCESS {
+    $getTask = $client.StorageAccounts.DeleteAsync($ResourceGroupName, $name, [System.Threading.CancellationToken]::None)
+	$sa = $getTask.Result
+  }
+  END {}
+
 }
 
 function Get-Context
@@ -88,6 +105,9 @@ function Get-StorageClient
 
 function Get-StorageAccount {
   param([string] $resourceGroupName, [string] $name)
-  $sa = New-Object PSObject -Property @{"Name" = $name; "ResourceGroupName" = $resourceGroupName}
+	$endpoints = New-Object PSObject -Property @{"Blob" = "https://$name.blob.core.windows.net/"}
+  $sa = New-Object PSObject -Property @{"Name" = $name; "ResourceGroupName" = $resourceGroupName; 
+	  "PrimaryEndpoints" = $endpoints
+  }
   return $sa
 }
