@@ -29,9 +29,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.Container.GetRefreshOperationResultByURLAsync(
+            return BmsAdapter.Client.Containers.GetRefreshOperationResultByURLAsync(
                                      operationResultLink,
-                                     BmsAdapter.GetCustomRequestHeaders(),
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
 
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectedItem.GetOperationStatusByURLAsync(
+            return BmsAdapter.Client.GetOperationStatusByURLAsync(
                                      operationResultLink,
                                      BmsAdapter.GetCustomRequestHeaders(),
                                      BmsAdapter.CmdletCancellationToken).Result;

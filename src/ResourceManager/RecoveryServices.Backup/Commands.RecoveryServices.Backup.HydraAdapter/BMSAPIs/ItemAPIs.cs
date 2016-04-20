@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectedItem.CreateOrUpdateProtectedItemAsync(
+            return BmsAdapter.Client.ProtectedItems.CreateOrUpdateProtectedItemAsync(
                                      resourceGroupName,
                                      resourceName,
                                      AzureFabricName,
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectedItem.DeleteProtectedItemAsync(
+            return BmsAdapter.Client.ProtectedItems.DeleteProtectedItemAsync(
                                      resourceGroupName,
                                      resourceName,
                                      AzureFabricName,
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectedItem.GetAsync(
+            return BmsAdapter.Client.ProtectedItems.GetAsync(
                                      resourceGroupName,
                                      resourceName,
                                      AzureFabricName,
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectedItem.ListAsync(
+            return BmsAdapter.Client.ProtectedItems.ListAsync(
                                      resourceGroupName,
                                      resourceName, 
                                      queryFilter,
