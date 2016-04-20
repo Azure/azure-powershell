@@ -121,8 +121,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupProtectionContainers?api-version=2016-05-01&$filter=providerType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BzVGVzdFJzVmF1bHQvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxNi0wNS0wMSYkZmlsdGVyPXByb3ZpZGVyVHlwZSUyMGVxJTIwJ0F6dXJlSWFhc1ZNJyUyMGFuZCUyMHN0YXR1cyUyMGVxJTIwJ1JlZ2lzdGVyZWQn",
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupProtectionContainers?api-version=2016-05-01&$filter=backupManagementType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BzVGVzdFJzVmF1bHQvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxNi0wNS0wMSYkZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVJYWFzVk0nJTIwYW5kJTIwc3RhdHVzJTIwZXElMjAnUmVnaXN0ZXJlZCc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -182,8 +182,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupProtectionContainers?api-version=2016-05-01&$filter=providerType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BzVGVzdFJzVmF1bHQvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxNi0wNS0wMSYkZmlsdGVyPXByb3ZpZGVyVHlwZSUyMGVxJTIwJ0F6dXJlSWFhc1ZNJyUyMGFuZCUyMHN0YXR1cyUyMGVxJTIwJ1JlZ2lzdGVyZWQn",
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupProtectionContainers?api-version=2016-05-01&$filter=backupManagementType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BzVGVzdFJzVmF1bHQvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxNi0wNS0wMSYkZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVJYWFzVk0nJTIwYW5kJTIwc3RhdHVzJTIwZXElMjAnUmVnaXN0ZXJlZCc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -243,8 +243,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupProtectionContainers?api-version=2016-05-01&$filter=providerType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'%20and%20friendlyName%20eq%20'mkheraniRMVM1'",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BzVGVzdFJzVmF1bHQvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxNi0wNS0wMSYkZmlsdGVyPXByb3ZpZGVyVHlwZSUyMGVxJTIwJ0F6dXJlSWFhc1ZNJyUyMGFuZCUyMHN0YXR1cyUyMGVxJTIwJ1JlZ2lzdGVyZWQnJTIwYW5kJTIwZnJpZW5kbHlOYW1lJTIwZXElMjAnbWtoZXJhbmlSTVZNMSc=",
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupProtectionContainers?api-version=2016-05-01&$filter=backupManagementType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'%20and%20friendlyName%20eq%20'mkheraniRMVM1'",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BzVGVzdFJzVmF1bHQvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxNi0wNS0wMSYkZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVJYWFzVk0nJTIwYW5kJTIwc3RhdHVzJTIwZXElMjAnUmVnaXN0ZXJlZCclMjBhbmQlMjBmcmllbmRseU5hbWUlMjBlcSUyMCdta2hlcmFuaVJNVk0xJw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -304,8 +304,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupProtectionContainers?api-version=2016-05-01&$filter=providerType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'%20and%20friendlyName%20eq%20'mkheraniRMVM1'",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BzVGVzdFJzVmF1bHQvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxNi0wNS0wMSYkZmlsdGVyPXByb3ZpZGVyVHlwZSUyMGVxJTIwJ0F6dXJlSWFhc1ZNJyUyMGFuZCUyMHN0YXR1cyUyMGVxJTIwJ1JlZ2lzdGVyZWQnJTIwYW5kJTIwZnJpZW5kbHlOYW1lJTIwZXElMjAnbWtoZXJhbmlSTVZNMSc=",
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault/backupProtectionContainers?api-version=2016-05-01&$filter=backupManagementType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'%20and%20friendlyName%20eq%20'mkheraniRMVM1'",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1BzVGVzdFJzVmF1bHQvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxNi0wNS0wMSYkZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVJYWFzVk0nJTIwYW5kJTIwc3RhdHVzJTIwZXElMjAnUmVnaXN0ZXJlZCclMjBhbmQlMjBmcmllbmRseU5hbWUlMjBlcSUyMCdta2hlcmFuaVJNVk0xJw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
