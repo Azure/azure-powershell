@@ -121,7 +121,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/RsvTestRN/backupJobs?api-version=2016-05-01&$filter=status%20eq%20'InProgress'%20and%20operation%20eq%20'Backup'%20and%20startTime%20eq%20'2016-04-19%2011:30:00%20AM'%20and%20endTime%20eq%20'2016-04-20%2011:30:00%20AM'",
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/RsvTestRN/backupJobs?api-version=2016-05-01&$filter=status%20eq%20'InProgress'%20and%20operation%20eq%20'Backup'%20and%20startTime%20eq%20'2016-04-19%2011%3A30%3A00%20AM'%20and%20endTime%20eq%20'2016-04-20%2011%3A30%3A00%20AM'",
       "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1JzdlRlc3RSTi9iYWNrdXBKb2JzP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDEmJGZpbHRlcj1zdGF0dXMlMjBlcSUyMCdJblByb2dyZXNzJyUyMGFuZCUyMG9wZXJhdGlvbiUyMGVxJTIwJ0JhY2t1cCclMjBhbmQlMjBzdGFydFRpbWUlMjBlcSUyMCcyMDE2LTA0LTE5JTIwMTElM0EzMCUzQTAwJTIwQU0nJTIwYW5kJTIwZW5kVGltZSUyMGVxJTIwJzIwMTYtMDQtMjAlMjAxMSUzQTMwJTNBMDAlMjBBTSc=",
       "RequestMethod": "GET",
       "RequestBody": "",
