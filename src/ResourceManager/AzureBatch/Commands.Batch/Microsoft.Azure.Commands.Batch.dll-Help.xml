@@ -8819,6 +8819,31 @@
   </maml:alertSet>
   <!-- Example section  --> 
   <command:examples>
+    <command:example>
+      <maml:title>Example 1: List the applications in a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmBatchApplication -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup"
+        ApplicationId AllowUpdates DisplayName
+
+        ------------- ------------ ----------------------------
+
+        litware       False        Litware Advanced Reticulator
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command lists all applications in the 'contosobatch' Batch account.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -8993,6 +9018,32 @@
   </maml:alertSet>
   <!-- Example section  --> 
   <command:examples>
+    <command:example>
+      <maml:title>Example 1: List the application packages for an application in a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmBatchApplicationPackage -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware"
+        Version State   Format
+
+        ------- ------- ------
+
+        1.0     active  zip
+        1.1     pending    
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command lists all packages for the 'litware' application in the 'contosobatch' Batch account.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -9206,6 +9257,26 @@
   </maml:alertSet>
   <!-- Example section  --> 
   <command:examples>
+    <command:example>
+      <maml:title>Example 1: Install an application package into a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;New-AzureRmBatchApplicationPackage -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -ApplicationVersion "1.0" -FilePath "litware.1.0.zip" -Format "zip"
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command creates and activates version 1.0 of the "litware" application, and uploads the contents of "litware.1.0.zip" as the application package content.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -9399,6 +9470,26 @@
   </maml:alertSet>
   <!-- Example section  --> 
   <command:examples>
+    <command:example>
+      <maml:title>Example 1: Add a new, empty application to a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;New-AzureRmBatchApplication -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -AllowUpdates True -DisplayName "Litware Advanced Reticulator"
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command creates the "litware" application in the "contosobatch" account. The application initially contains no packages.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -9573,6 +9664,26 @@
   </maml:alertSet>
   <!-- Example section  --> 
   <command:examples>
+    <command:example>
+      <maml:title>Example 1: Delete an application package from a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Remove-AzureRmBatchApplicationPackage -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -ApplicationVersion "1.0"
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command deletes version 1.0 of the "litware" application from the "contosobatch" account. Both the package record and the blob containing the package binary file are deleted.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -9728,6 +9839,26 @@
   </maml:alertSet>
   <!-- Example section  --> 
   <command:examples>
+    <command:example>
+      <maml:title>Example 1: Delete an application from a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Remove-AzureRmBatchApplication -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware"
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command deletes the "litware" application from the "contosobatch" account. The command fails if the application contains any packages.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -9940,6 +10071,26 @@
   </maml:alertSet>
   <!-- Example section  --> 
   <command:examples>
+    <command:example>
+      <maml:title>Example 1: Update an application in a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Set-AzureRmBatchApplication -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -AllowUpdates False
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command changes the AllowUpdates setting on the "litware" application in the "contosobatch" account, without modifying the default version or display name.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
