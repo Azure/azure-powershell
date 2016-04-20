@@ -146,8 +146,12 @@ function Test-WaitJobPipeScenario
 
 function Test-CancelJobScenario
 {
+	$1fixedStartDate = Get-Date -Date "2016-04-19 17:00:00"
+	$1fixedStartDate = $1fixedStartDate.ToUniversalTime()
+	$1fixedEndDate = Get-Date -Date "2016-04-20 17:00:00"
+	$1fixedEndDate = $1fixedEndDate.ToUniversalTime()
 	SetVaultContext;
-	$runningJobs = Get-AzureRmRecoveryServicesBackupJob -From $fixedStartDate -To $fixedEndDate -Status "InProgress" -Operation "Backup"
+	$runningJobs = Get-AzureRmRecoveryServicesBackupJob -From $1fixedStartDate -To $1fixedEndDate -Status "InProgress" -Operation "Backup"
 	foreach ($runningJob in $runningJobs)
 	{
 		$cancelledJob = Stop-AzureRmRecoveryServicesBackupJob -Job $runningJob

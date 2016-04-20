@@ -49,21 +49,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     JobId = Job.InstanceId;
                 }
 
-                WriteDebug("Stoppingjob with ID: " + JobId);
+                WriteDebug("Stopping job with ID: " + JobId);
 
                 var cancelResponse = HydraAdapter.CancelJob(JobId);
-                string opId = HydraHelpers.GetLastIdFromFullId(cancelResponse.Location);
-                var cancelStatus = HydraAdapter.GetJobOperationStatus(JobId, opId);
 
-                while (cancelStatus.StatusCode == HttpStatusCode.Accepted)
+                if (cancelResponse.StatusCode != HttpStatusCode.NoContent)
                 {
-                    TestMockSupport.Delay(15 * 1000);
-                    cancelStatus = HydraAdapter.GetJobOperationStatus(JobId, opId);
-                }
-
-                if (cancelStatus.StatusCode != HttpStatusCode.NoContent)
-                {
-                    throw new Exception(string.Format(Resources.JobCouldNotCancelJob, cancelStatus.StatusCode.ToString()));
+                    throw new Exception(string.Format(Resources.JobCouldNotCancelJob, cancelResponse.StatusCode.ToString()));
                 }
                 else
                 {
