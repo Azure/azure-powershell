@@ -665,7 +665,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Console.WriteLine("The VM, {0}, is imported.", pervm.RoleName);
             }
 
-
             for (int i = 0; i < 3; i++)
             {
                 try

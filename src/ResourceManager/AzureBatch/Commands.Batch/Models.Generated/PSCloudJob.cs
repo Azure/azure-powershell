@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.CloudJob omObject;
         
-        private IEnumerable<PSEnvironmentSetting> commonEnvironmentSettings;
-        
-        private PSJobExecutionInformation executionInformation;
+        private IList<PSEnvironmentSetting> commonEnvironmentSettings;
         
         private PSJobConstraints constraints;
+        
+        private PSJobExecutionInformation executionInformation;
         
         private PSJobManagerTask jobManagerTask;
         
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public IEnumerable<PSEnvironmentSetting> CommonEnvironmentSettings
+        public IList<PSEnvironmentSetting> CommonEnvironmentSettings
         {
             get
             {
@@ -93,6 +93,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.CommonEnvironmentSettings = new List<Microsoft.Azure.Batch.EnvironmentSetting>();
                 }
                 this.commonEnvironmentSettings = value;
+            }
+        }
+        
+        public PSJobConstraints Constraints
+        {
+            get
+            {
+                if (((this.constraints == null) 
+                            && (this.omObject.Constraints != null)))
+                {
+                    this.constraints = new PSJobConstraints(this.omObject.Constraints);
+                }
+                return this.constraints;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.Constraints = null;
+                }
+                else
+                {
+                    this.omObject.Constraints = value.omObject;
+                }
+                this.constraints = value;
             }
         }
         
@@ -146,31 +171,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.Id = value;
-            }
-        }
-        
-        public PSJobConstraints Constraints
-        {
-            get
-            {
-                if (((this.constraints == null) 
-                            && (this.omObject.Constraints != null)))
-                {
-                    this.constraints = new PSJobConstraints(this.omObject.Constraints);
-                }
-                return this.constraints;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.Constraints = null;
-                }
-                else
-                {
-                    this.omObject.Constraints = value.omObject;
-                }
-                this.constraints = value;
             }
         }
         
@@ -379,6 +379,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.Url;
+            }
+        }
+        
+        public System.Boolean? UsesTaskDependencies
+        {
+            get
+            {
+                return this.omObject.UsesTaskDependencies;
+            }
+            set
+            {
+                this.omObject.UsesTaskDependencies = value;
             }
         }
     }

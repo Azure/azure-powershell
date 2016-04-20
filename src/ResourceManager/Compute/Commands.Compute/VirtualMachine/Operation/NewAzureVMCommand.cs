@@ -244,11 +244,6 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 catch (Exception e)
                 {
-                    if (e.Message.Contains("Unable to find a matching HTTP request"))
-                    {
-                        throw;
-                    }
-
                     if (e.Message.Contains("ResourceNotFound"))
                     {
                         WriteWarning(string.Format(
@@ -303,11 +298,9 @@ namespace Microsoft.Azure.Commands.Compute
             }
             catch (InvalidOperationException e)
             {
-                if (e.Message.Contains("Sequence contains no matching element"))
-                {
-                    return null;
-                }
-                throw;
+                WriteWarning(string.Format(
+                            Properties.Resources.ErrorDuringChoosingStandardStorageAccount, e.Message));
+                return null;
             }
         }
         

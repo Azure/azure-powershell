@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
 using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -28,8 +29,8 @@ namespace Microsoft.Azure.Commands.Compute
     public class SetAzureSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         /// <summary>
-        /// The specific version of the SqlServer extension that Set-AzureRmVMSqlServerExtension will 
-        /// apply the settings to. 
+        /// The specific version of the SqlServer extension that Set-AzureRmVMSqlServerExtension will
+        /// apply the settings to.
         /// </summary>
         [Alias("HandlerVersion")]
         [Parameter(
@@ -105,6 +106,16 @@ namespace Microsoft.Azure.Commands.Compute
                 Settings = this.GetPublicConfiguration(),
                 ProtectedSettings = this.GetPrivateConfiguration(),
             };
+
+            VirtualMachine vm = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
+            if (vm != null)
+            {
+                VirtualMachineExtension extension = vm.Resources.Where(x => x.Publisher.Equals(parameters.Publisher)).FirstOrDefault();
+                if (extension != null)
+                {
+                    this.Name = extension.Name;
+                }
+            }
 
             // Add retry logic due to CRP service restart known issue CRP bug: 3564713
             // Similair approach taken in DSC cmdlet as well

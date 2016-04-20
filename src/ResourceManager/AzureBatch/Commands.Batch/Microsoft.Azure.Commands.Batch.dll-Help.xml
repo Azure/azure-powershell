@@ -6910,7 +6910,7 @@
           <maml:description>
             <maml:para>Specifies the maximum number of tasks that can run on a single compute node.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Metadata</maml:name>
@@ -6927,18 +6927,6 @@
           <command:parameterValue required="false" variableLength="false">PSStartTask</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>TargetOSVersion</maml:name>
-          <maml:description>
-            <maml:para>
-              Specifies the target operating system version of the compute nodes in the pool. You can use an asterisk (*) for the latest operating system version for the specified family. For more information about operating system families and versions, see <maml:navigationLink>
-                <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-                <maml:uri></maml:uri>
-              </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-            </maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>TaskSchedulingPolicy</maml:name>
           <maml:description>
             <maml:para>Specifies the task scheduling policy, such as the ComputeNodeFillType.</maml:para>
@@ -6952,17 +6940,19 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>OSFamily</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>CloudServiceConfiguration</maml:name>
           <maml:description>
-            <maml:para>
-              Specifies the operating system family of the compute nodes in the pool. For more information about operating system families and versions, see <maml:navigationLink>
-                <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-                <maml:uri></maml:uri>
-              </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-            </maml:para>
+            <maml:para>Specifies configuration settings for a pool based on the Azure cloud service platform.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">PSCloudServiceConfiguration</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>VirtualMachineConfiguration</maml:name>
+          <maml:description>
+            <maml:para>Specifies configuration settings for a pool on the virtual machines infrastructure.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVirtualMachineConfiguration</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>VirtualMachineSize</maml:name>
@@ -7011,7 +7001,7 @@
           <maml:description>
             <maml:para>Specifies the maximum number of tasks that can run on a single compute node.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Metadata</maml:name>
@@ -7025,7 +7015,7 @@
           <maml:description>
             <maml:para>Specifies the timeout for allocating compute nodes to the pool.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>StartTask</maml:name>
@@ -7042,18 +7032,6 @@
           <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>TargetOSVersion</maml:name>
-          <maml:description>
-            <maml:para>
-              Specifies the target operating system version of the compute nodes in the pool. You can use an asterisk (*) for the latest operating system version for the specified family. For more information about operating system families and versions, see <maml:navigationLink>
-                <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-                <maml:uri></maml:uri>
-              </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-            </maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>TaskSchedulingPolicy</maml:name>
           <maml:description>
             <maml:para>Specifies the task scheduling policy, such as the ComputeNodeFillType.</maml:para>
@@ -7067,17 +7045,19 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>OSFamily</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>CloudServiceConfiguration</maml:name>
           <maml:description>
-            <maml:para>
-              Specifies the operating system family of the compute nodes in the pool. For more information about operating system families and versions, see <maml:navigationLink>
-                <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-                <maml:uri></maml:uri>
-              </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-            </maml:para>
+            <maml:para>Specifies configuration settings for a pool based on the Azure cloud service platform.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">PSCloudServiceConfiguration</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>VirtualMachineConfiguration</maml:name>
+          <maml:description>
+            <maml:para>Specifies configuration settings for a pool on the virtual machines infrastructure.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">PSVirtualMachineConfiguration</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>VirtualMachineSize</maml:name>
@@ -7183,9 +7163,9 @@
         <maml:description>
           <maml:para>Specifies the maximum number of tasks that can run on a single compute node.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
         <dev:type>
-          <maml:name>Int32]</maml:name>
+          <maml:name>Int32</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -7202,31 +7182,14 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>OSFamily</maml:name>
-        <maml:description>
-          <maml:para>
-            Specifies the operating system family of the compute nodes in the pool. For more information about operating system families and versions, see <maml:navigationLink>
-              <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-              <maml:uri></maml:uri>
-            </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-          </maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>ResizeTimeout</maml:name>
         <maml:description>
           <maml:para>Specifies the timeout for allocating compute nodes to the pool.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         <dev:type>
-          <maml:name>TimeSpan]</maml:name>
+          <maml:name>TimeSpan</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -7248,28 +7211,27 @@
         <maml:description>
           <maml:para>Specifies the target number of compute nodes to allocate to the pool.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
         <dev:type>
-          <maml:name>Int32]</maml:name>
+          <maml:name>Int32</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>TargetOSVersion</maml:name>
+        <maml:name>CloudServiceConfiguration</maml:name>
         <maml:description>
-          <maml:para>
-            Specifies the target operating system version of the compute nodes in the pool. You can use an asterisk (*) for the latest operating system version for the specified family. For more information about operating system families and versions, see <maml:navigationLink>
-              <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-              <maml:uri></maml:uri>
-            </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-          </maml:para>
+          <maml:para>Specifies configuration settings for a pool based on the Azure cloud service platform.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
+        <command:parameterValue required="false" variableLength="false">PSCloudServiceConfiguration</command:parameterValue>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>VirtualMachineConfiguration</maml:name>
+        <maml:description>
+          <maml:para>Specifies configuration settings for a pool on the virtual machines infrastructure.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">PSVirtualMachineConfiguration</command:parameterValue>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -7346,7 +7308,10 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "Small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -BatchContext $Context
+          PS C:\&gt;$osFamily = "4"
+          PS C:\&gt;$targetOSVersion = "*"
+          PS C:\&gt;$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @($osFamily, $targetOSVersion)
+          PS C:\&gt;New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -TargetDedicated 3 -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new pool with ID MyPool using the TargetDedicated parameter set. The target allocation is three compute nodes. The pool is configured to use small virtual machines imaged with the latest operating system version of family four.</maml:para>
@@ -7366,7 +7331,10 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -OSFamily "4" -TargetOSVersion "*" -AutoScaleFormula '$TargetDedicated=2;' -BatchContext $Context
+          PS C:\&gt;$osFamily = "4"
+          PS C:\&gt;$targetOSVersion = "*"
+          PS C:\&gt;$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @($osFamily, $targetOSVersion)
+          PS C:\&gt;New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -AutoScaleFormula '$TargetDedicated=2;' -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new pool with ID AutoScalePool using the AutoScale parameter set. The pool is configured to use small virtual machines imaged with the latest operating system version of family four, and the target number of compute nodes are determined by the Autoscale formula.</maml:para>
@@ -9263,6 +9231,12 @@
             <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
           </maml:description>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Recursive</maml:name>
+          <maml:description>
+            <maml:para>If the file path is a directory, delete the directory and all of the files and subdirectories in it.</maml:para>
+          </maml:description>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
@@ -9321,6 +9295,12 @@
             <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
           </maml:description>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Recursive</maml:name>
+          <maml:description>
+            <maml:para>If the file path is a directory, delete the directory and all of the files and subdirectories in it.</maml:para>
+          </maml:description>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
@@ -9342,6 +9322,12 @@
           <maml:name>Force</maml:name>
           <maml:description>
             <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Recursive</maml:name>
+          <maml:description>
+            <maml:para>If the file path is a directory, delete the directory and all of the files and subdirectories in it.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
@@ -9382,6 +9368,18 @@
         <maml:name>Force</maml:name>
         <maml:description>
           <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Recursive</maml:name>
+        <maml:description>
+          <maml:para>If the file path is a directory, delete the directory and all of the files and subdirectories in it.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>

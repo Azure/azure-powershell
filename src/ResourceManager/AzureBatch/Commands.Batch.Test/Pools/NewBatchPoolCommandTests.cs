@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -54,10 +55,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.Id = "testPool";
             cmdlet.VirtualMachineSize = "small";
-            cmdlet.OSFamily = "4";
 
             // Don't go to the service on an Add CloudPool call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolAddParameters, CloudPoolAddResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolAddParameter, 
+                PoolAddOptions, 
+                AzureOperationHeaderResponse<PoolAddHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set
