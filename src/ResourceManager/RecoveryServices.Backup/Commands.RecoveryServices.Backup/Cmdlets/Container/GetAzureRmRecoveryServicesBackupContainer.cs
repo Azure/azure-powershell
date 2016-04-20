@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, Position = 2, HelpMessage = ParamHelpMsg.Container.BackupManagementType)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("AzureVM", "MARS")]
-        public BackupManagementType? BackupManagementType { get; set; }
+        public string BackupManagementType { get; set; }
 
         [Parameter(Mandatory = false, Position = 3, HelpMessage = ParamHelpMsg.Container.Name)]
         [ValidateNotNullOrEmpty]
@@ -57,16 +57,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                BackupManagementType backupManagementType;
+                Enum.TryParse<BackupManagementType>(BackupManagementType, out backupManagementType);
+
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {  
                     {ContainerParams.ContainerType, ContainerType},
-                    {ContainerParams.BackupManagementType, BackupManagementType},
+                    {ContainerParams.BackupManagementType, backupManagementType},
                     {ContainerParams.Name, Name},
                     {ContainerParams.ResourceGroupName, ResourceGroupName},
                     {ContainerParams.Status, Status},
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType, BackupManagementType);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType, backupManagementType);
                 var containerModels = psBackupProvider.ListProtectionContainers();
 
                 if (containerModels.Count == 1)
