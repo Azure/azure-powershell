@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
 
             ImportExportResponse response = Communicator.Export(exportRequest.ResourceGroupName, exportRequest.ServerName, 
                 exportRequest.DatabaseName, parameters, Util.GenerateTracingId());
-            return CreateImportExportResponse(response);
+            return CreateImportExportResponse(response, exportRequest);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
 
             ImportExportResponse response = Communicator.Import(importRequest.ResourceGroupName, importRequest.ServerName, parameters, Util.GenerateTracingId());
 
-            return CreateImportExportResponse(response);
+            return CreateImportExportResponse(response, importRequest);
         }
 
         /// <summary>
@@ -115,7 +115,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
                 LastModifiedTime = resposne.LastModifiedTime,
                 QueuedTime = resposne.QueuedTime,
                 StatusMessage = resposne.StatusMessage,
-                Status = resposne.Status.ToString()
+                Status = resposne.Status.ToString(),
+                OperationStatusLink = operationStatusLink
             };
 
             return status;
@@ -126,14 +127,13 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// </summary>
         /// <param name="response">Server Response</param>
         /// <returns>Response Model</returns>
-        private AzureSqlDatabaseImportExportBaseModel CreateImportExportResponse(ImportExportResponse response)
+        private AzureSqlDatabaseImportExportBaseModel CreateImportExportResponse(ImportExportResponse response, AzureSqlDatabaseImportExportBaseModel originalModel)
         {
-            return new AzureSqlDatabaseImportExportBaseModel()
-            {
-                OperationStatusLink = response.OperationStatusLink,
-                Status = response.Status.ToString(),
-                ErrorMessage = response.Error == null ? "" : response.Error.Message
-            };
+            AzureSqlDatabaseImportExportBaseModel model = originalModel == null ? new AzureSqlDatabaseImportExportBaseModel() : originalModel.Copy();
+            model.OperationStatusLink = response.OperationStatusLink;
+            model.Status = response.Status.ToString();
+            model.ErrorMessage = response.Error == null ? "" : response.Error.Message;
+            return model;
         }
     }
 }

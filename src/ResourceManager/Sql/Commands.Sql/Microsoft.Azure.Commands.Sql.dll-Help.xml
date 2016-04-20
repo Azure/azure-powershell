@@ -8390,13 +8390,13 @@ Tags                          :</maml:para>
 				<maml:para>This command creates an export request for a database.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>ResourceGroupName          :
-ServerName                 :
-DatabaseName               :
+				<maml:para>ResourceGroupName          : resourcegroup01
+ServerName                 : server01
+DatabaseName               : database01
 StorageKeyType             : StorageAccessKey
 StorageKey                 :
-StorageUri                 :
-AdministratorLogin         :
+StorageUri                 : http://account01.blob.core.windows.net/bacpacs/database01.bacpac
+AdministratorLogin         : user
 AdministratorLoginPassword :
 AuthenticationType         : None
 OperationStatusLink        : https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource01/providers/Microsoft.Sql/servers/server01/databases/database01/importExportOperationResults/00000000-00
@@ -8757,13 +8757,13 @@ ErrorMessage               :</maml:para>
 				<maml:para>This command creates an import request to import a bacpac to a new database.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>ResourceGroupName          :
-ServerName                 :
-DatabaseName               :
+				<maml:para>ResourceGroupName          : resourcegroup01
+ServerName                 : server01
+DatabaseName               : database01
 StorageKeyType             : StorageAccessKey
-StorageKey                 :
-StorageUri                 :
-AdministratorLogin         :
+StorageKey                 : 
+StorageUri                 : http://account01.blob.core.windows.net/bacpacs/database01.bacpac
+AdministratorLogin         : user
 AdministratorLoginPassword :
 AuthenticationType         : None
 OperationStatusLink        : https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource01/providers/Microsoft.Sql/servers/server01/databases/database01/importExportOperationResults/00000000-00
