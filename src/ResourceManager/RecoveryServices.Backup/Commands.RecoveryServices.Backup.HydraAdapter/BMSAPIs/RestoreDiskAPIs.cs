@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             triggerRestoreRequest.Item.Properties = new RestoreRequest();
             triggerRestoreRequest.Item.Properties = restoreRequest;
 
-            var response = BmsAdapter.Client.Restore.TriggerRestoreAsync(resourceGroupName, resourceName, BmsAdapter.GetCustomRequestHeaders(),
+            var response = BmsAdapter.Client.Restores.TriggerRestoreAsync(resourceGroupName, resourceName, BmsAdapter.GetCustomRequestHeaders(),
                 AzureFabricName, containerName, protectedItemName, recoveryPointId, triggerRestoreRequest, BmsAdapter.CmdletCancellationToken).Result;
 
             return response;

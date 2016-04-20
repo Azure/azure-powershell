@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
                 string policyName,
                 ProtectionPolicyRequest request)
         {           
-            return BmsAdapter.Client.ProtectionPolicy.CreateOrUpdateAsync(
+            return BmsAdapter.Client.ProtectionPolicies.CreateOrUpdateAsync(
                                      BmsAdapter.GetResourceGroupName(),
                                      BmsAdapter.GetResourceName(), 
                                      policyName, 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
 
         public ProtectionPolicyResponse GetProtectionPolicy(string policyName)
         {
-            return BmsAdapter.Client.ProtectionPolicy.GetAsync(
+            return BmsAdapter.Client.ProtectionPolicies.GetAsync(
                                      BmsAdapter.GetResourceGroupName(),
                                      BmsAdapter.GetResourceName(),
                                      policyName,
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
         public ProtectionPolicyListResponse ListProtectionPolicy(
                                             ProtectionPolicyQueryParameters queryFilter)
         {           
-            return BmsAdapter.Client.ProtectionPolicy.ListAsync(
+            return BmsAdapter.Client.ProtectionPolicies.ListAsync(
                                      BmsAdapter.GetResourceGroupName(),
                                      BmsAdapter.GetResourceName(),
                                      queryFilter,
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
 
         public BackUpOperationStatusResponse GetProtectionPolicyOperationStatusByURL(string url)
         {
-            return BmsAdapter.Client.ProtectionPolicy.GetOperationStatusByURLAsync(
+            return BmsAdapter.Client.GetOperationStatusByURLAsync(
                               url,
                               BmsAdapter.GetCustomRequestHeaders(),
                               BmsAdapter.CmdletCancellationToken).Result;                              
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
         public AzureOperationResponse RemoveProtectionPolicy(
                 string policyName)
         {
-            return BmsAdapter.Client.ProtectionPolicy.DeleteAsync(
+            return BmsAdapter.Client.ProtectionPolicies.DeleteAsync(
                                      BmsAdapter.GetResourceGroupName(),
                                      BmsAdapter.GetResourceName(),
                                      policyName,
