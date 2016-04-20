@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public AzureRmRecoveryServicesDpmBackupEngine(BackupEngineResource backupEngine)
             : base(backupEngine)
         {
-            DpmBackupEngine dpmBackupEngine = (DpmBackupEngine)backupEngine.Properties;
+            BackupEngineBase dpmBackupEngine = (BackupEngineBase)backupEngine.Properties;
             FriendlyName = dpmBackupEngine.FriendlyName;
             Status = dpmBackupEngine.RegistrationStatus;
         }

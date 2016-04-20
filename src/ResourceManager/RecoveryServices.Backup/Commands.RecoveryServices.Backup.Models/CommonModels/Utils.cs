@@ -128,16 +128,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         public static BackupManagementType GetPsBackupManagementType(string backupManagementType)
         {
-            ProviderType providerType = EnumUtils.GetEnum<ProviderType>(backupManagementType);
+            Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType providerType
+                = EnumUtils.GetEnum<Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType>(backupManagementType);
+
             switch (providerType)
             {
-                case ProviderType.AzureIaasVM:
+                case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM:
                     return BackupManagementType.AzureVM;
-                case ProviderType.MAB:
+                case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.MAB:
                     return BackupManagementType.MARS;
-                case ProviderType.DPM:
+                case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.DPM:
                     return BackupManagementType.SCDPM;
-                case ProviderType.AzureBackupServer:
+                case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureBackupServer:
                     return BackupManagementType.AzureBackupServer;
                 default:
                     throw new Exception("Unsupported BackupManagmentType: " + backupManagementType);
