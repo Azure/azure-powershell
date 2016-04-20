@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ForVault && !EnabledForDeployment.IsPresent &&
                 !EnabledForTemplateDeployment.IsPresent && !EnabledForDiskEncryption.IsPresent)
@@ -153,9 +153,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             var updatedPolicies = existingVault.AccessPolicies;
             if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != Guid.Empty))
             {
-                Guid objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
-               
-                updatedPolicies = existingVault.AccessPolicies.Where(ap => !ShallBeRemoved(ap, objId, this.ApplicationId)).ToArray();
+                if (ObjectId == Guid.Empty)
+                {
+                    ObjectId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
+                }
+                updatedPolicies = existingVault.AccessPolicies.Where(ap => !ShallBeRemoved(ap, ObjectId, this.ApplicationId)).ToArray();
             }
 
             // Update the vault

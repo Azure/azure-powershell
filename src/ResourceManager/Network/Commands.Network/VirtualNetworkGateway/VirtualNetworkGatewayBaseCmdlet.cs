@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class VirtualNetworkGatewayBaseCmdlet : NetworkBaseCmdlet
     {
-        public IVirtualNetworkGatewayOperations VirtualNetworkGatewayClient
+        public IVirtualNetworkGatewaysOperations VirtualNetworkGatewayClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.VirtualNetworkGateways;
+                return NetworkClient.NetworkManagementClient.VirtualNetworkGateways;
             }
         }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetVirtualNetworkGateway(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVirtualNetworkGateway GetVirtualNetworkGateway(string resourceGroupName, string name)
         {
-            var getVirtualNetworkGatewayResponse = this.VirtualNetworkGatewayClient.Get(resourceGroupName, name);
+            var vnetGateway = this.VirtualNetworkGatewayClient.Get(resourceGroupName, name);
 
-            var psVirtualNetworkGateway = ToPsVirtualNetworkGateway(getVirtualNetworkGatewayResponse.VirtualNetworkGateway);
+            var psVirtualNetworkGateway = ToPsVirtualNetworkGateway(vnetGateway);
             psVirtualNetworkGateway.ResourceGroupName = resourceGroupName;
 
             return psVirtualNetworkGateway;

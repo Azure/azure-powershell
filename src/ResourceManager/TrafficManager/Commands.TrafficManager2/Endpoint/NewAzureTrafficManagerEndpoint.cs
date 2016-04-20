@@ -68,7 +68,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
-        protected override void ProcessRecord()
+        [Parameter(Mandatory = false, HelpMessage = "The minimum number of endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.")]
+        [ValidateNotNullOrEmpty]
+        public uint? MinChildEndpoints { get; set; }
+
+        public override void ExecuteCmdlet()
         {
             // We are not supporting etags yet, NewAzureTrafficManagerEndpoint should not overwrite any existing endpoint.
             // Since our create operation is implemented using PUT, it will overwrite by default.
@@ -93,7 +97,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                         this.EndpointStatus,
                         this.Weight,
                         this.Priority,
-                        this.EndpointLocation);
+                        this.EndpointLocation,
+                        this.MinChildEndpoints);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(trafficManagerEndpoint);

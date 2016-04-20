@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public string NotificationHub { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // delete a notificationHub 
             var deleteHub = Client.DeleteNotificationHub(ResourceGroup, Namespace, NotificationHub);

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }    
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ConfirmAction(
                Force.IsPresent,
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                {
                    ExecutionBlock(() =>
                    {
-                       base.ProcessRecord();
+                       base.ExecuteCmdlet();
 
                        WriteDebug(Resources.MakingClientCall);
 

@@ -97,6 +97,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public SwitchParameter DeleteChefConfig { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Chef client version to be installed with the extension")]
+        [ValidateNotNullOrEmpty]
+        public string BootstrapVersion { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = LinuxParameterSetName,
             HelpMessage = "Set extension for Linux.")]
@@ -167,6 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
             string AutoUpdateChefClient = this.AutoUpdateChefClient.IsPresent ? "true" : "false";
             string DeleteChefConfig = this.DeleteChefConfig.IsPresent ? "true" : "false";
+            string BootstrapVersion = this.BootstrapVersion;
 
             //Cases handled:
             // 1. When clientRb given by user and:
@@ -220,41 +227,44 @@ validation_client_name 	\""{1}\""
             {
                 if (IsBootstrapOptionsEmpty)
                 {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
-                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                        string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
-                        string.Format(ClientRbTemplate, ClientConfig));
-                }
-                else
-                {
                     this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
                         string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
                         string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
                         string.Format(ClientRbTemplate, ClientConfig),
-                        string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                }
+                else
+                {
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
+                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                        string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
+                        string.Format(ClientRbTemplate, ClientConfig),
+                        string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
                 }
             }
             else
             {
                 if (IsBootstrapOptionsEmpty)
                 {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
                         string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
                         string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
                         string.Format(ClientRbTemplate, ClientConfig),
-                        string.Format(RunListTemplate, this.RunList));
+                        string.Format(RunListTemplate, this.RunList),
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
                 }
                 else
                 {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4},{5}}}",
                          string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
                          string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
                          string.Format(ClientRbTemplate, ClientConfig),
                          string.Format(RunListTemplate, this.RunList),
-                         string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                         string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
+                         string.Format(BootstrapVersionTemplate, BootstrapVersion));
                 }
             }
-
         }
 
         protected override void ValidateParameters()

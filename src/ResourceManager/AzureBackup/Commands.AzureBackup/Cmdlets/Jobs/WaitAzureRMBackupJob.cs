@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateRange(1, Int64.MaxValue)]
         public long? TimeOut { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             List<string> specifiedJobs = new List<string>();
             AzureRMBackupVault Vault = null;

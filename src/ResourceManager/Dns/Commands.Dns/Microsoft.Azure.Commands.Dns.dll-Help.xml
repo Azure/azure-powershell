@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <helpItems xmlns="http://msh" schema="maml">
-  <!-- Updatable Help Version 1.0.0.0 -->
+  <!-- Updatable Help Version 2.0.1.0 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Add-AzureRmDnsRecordConfig</command:name>
@@ -11,7 +11,7 @@
         <maml:para />
       </maml:copyright>
       <command:verb>Add</command:verb>
-      <command:noun>AzureDnsRecordConfig</command:noun>
+      <command:noun>AzureRmDnsRecordConfig</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
@@ -22,21 +22,14 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Add-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Cname</maml:name>
           <maml:description>
-            <maml:para>Specifies the domain name for a CNAME record.</maml:para>
+            <maml:para>Specifies the domain name for a canonical name (CNAME) record.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
             <maml:para>Specifies the RecordSet object to edit.</maml:para>
@@ -46,17 +39,10 @@
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Add-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Exchange</maml:name>
           <maml:description>
-            <maml:para>Specifies the mail exchange server name for an MX record.</maml:para>
+            <maml:para>Specifies the mail exchange server name for a mail exchange (MX) record.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -77,13 +63,6 @@
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Add-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Ipv4Address</maml:name>
           <maml:description>
@@ -101,13 +80,6 @@
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Add-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Ipv6Address</maml:name>
           <maml:description>
@@ -125,17 +97,10 @@
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Add-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Nsdname</maml:name>
           <maml:description>
-            <maml:para>Specifies the name server for an NS record.</maml:para>
+            <maml:para>Specifies the name server for a name server (NS) record.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -149,17 +114,10 @@
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Add-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Port</maml:name>
           <maml:description>
-            <maml:para>Specifies the port for an SRV record.</maml:para>
+            <maml:para>Specifies the port for a service (SRV) record.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
         </command:parameter>
@@ -170,7 +128,7 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
             <maml:para>Specifies the RecordSet object to edit.</maml:para>
@@ -194,17 +152,10 @@
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Add-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Ptrdname</maml:name>
           <maml:description>
-            <maml:para>Specifies the DNAME of a PTR record.</maml:para>
+            <maml:para>Specifies the DNAME of a pointer resource (PTR) record.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -218,13 +169,6 @@
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Add-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
@@ -245,7 +189,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Cname</maml:name>
         <maml:description>
-          <maml:para>Specifies the domain name for a CNAME record.</maml:para>
+          <maml:para>Specifies the domain name for a canonical name (CNAME) record.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -257,7 +201,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Exchange</maml:name>
         <maml:description>
-          <maml:para>Specifies the mail exchange server name for an MX record.</maml:para>
+          <maml:para>Specifies the mail exchange server name for a mail exchange (MX) record.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -293,7 +237,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Nsdname</maml:name>
         <maml:description>
-          <maml:para>Specifies the name server for an NS record.</maml:para>
+          <maml:para>Specifies the name server for a name server (NS) record.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -305,7 +249,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Port</maml:name>
         <maml:description>
-          <maml:para>Specifies the port for an SRV record.</maml:para>
+          <maml:para>Specifies the port for a service (SRV) record.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
         <dev:type>
@@ -338,22 +282,10 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para>Specifies an Azure profile.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Common.Authentication.Models.AzureProfile</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Ptrdname</maml:name>
         <maml:description>
-          <maml:para>Specifies the DNAME of a PTR record.</maml:para>
+          <maml:para>Specifies the DNAME of a pointer resource (PTR) record.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -437,7 +369,7 @@
           </maml:description>
         </dev:type>
         <maml:description>
-          <maml:para>This cmdlet returns the modified RecordSet object.</maml:para>
+          <maml:para>This cmdlet returns the modified RecordSet object. In addition, the object passed in is modified directly.</maml:para>
         </maml:description>
       </command:returnValue>
     </command:returnValues>
@@ -450,7 +382,7 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = Add-AzureRmDnsRecordConfig -RecordSet $RecordSet -Ipv4Address "172.16.0.0"
+        <dev:code>PS C:\&gt;Add-AzureRmDnsRecordConfig -RecordSet $RecordSet -Ipv4Address "172.16.0.0"
 </dev:code>
         <dev:remarks>
           <maml:para>This command adds an IPv4 address as an A record to the record set stored in the $RecordSet variable.</maml:para>
@@ -469,7 +401,7 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = Add-AzureRmDnsRecordConfig -RecordSet $RecordSet -Ipv6Address "2001:DB80:4009:1803::1005"
+        <dev:code>PS C:\&gt;Add-AzureRmDnsRecordConfig -RecordSet $RecordSet -Ipv6Address "2001:DB80:4009:1803::1005"
 </dev:code>
         <dev:remarks>
           <maml:para>This command adds an IPv6 address as an AAAA record to the record set stored in the $RecordSet variable.</maml:para>
@@ -488,7 +420,7 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = Add-AzureRmDnsRecordConfig -RecordSet $RecordSet -Cname "contoso.com"
+        <dev:code>PS C:\&gt;Add-AzureRmDnsRecordConfig -RecordSet $RecordSet -Cname "contoso.com"
 </dev:code>
         <dev:remarks>
           <maml:para>This command adds contoso.com as a CNAME record to the record set stored in the $RecordSet variable.</maml:para>
@@ -507,7 +439,7 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = Add-AzureRmDnsRecordConfig -Exchange "mail.microsoft.com" -Preference 5 -RecordSet $RecordSet 
+        <dev:code>PS C:\&gt;Add-AzureRmDnsRecordConfig -Exchange "mail.microsoft.com" -Preference 5 -RecordSet $RecordSet
 </dev:code>
         <dev:remarks>
           <maml:para>This command adds the specified mail exchange server as an MX record to the record set stored in the $RecordSet variable.</maml:para>
@@ -526,7 +458,7 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = Add-AzureRmDnsRecordConfig -Nsdname "contoso.myzone.com" -RecordSet $RecordSet
+        <dev:code>PS C:\&gt;Add-AzureRmDnsRecordConfig -Nsdname "contoso.myzone.com" -RecordSet $RecordSet
 </dev:code>
         <dev:remarks>
           <maml:para>This command adds a name server as an NS record to the record set stored in the $RecordSet variable.</maml:para>
@@ -545,7 +477,7 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = Add-AzureRmDnsRecordConfig -Port 8080 -Priority 0 -RecordSet $RecordSet -Target "target.example.com" -Weight 5 
+        <dev:code>PS C:\&gt;Add-AzureRmDnsRecordConfig -Port 8080 -Priority 0 -RecordSet $RecordSet -Target "target.example.com" -Weight 5
 </dev:code>
         <dev:remarks>
           <maml:para>This command adds the specified service locator as an SRV record to the record set stored in the $RecordSet variable.</maml:para>
@@ -564,7 +496,7 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = Add-AzureRmDnsRecordConfig -RecordSet $RecordSet -Value "This is a TXT Record"
+        <dev:code>PS C:\&gt;Add-AzureRmDnsRecordConfig -RecordSet $RecordSet -Value "This is a TXT Record"
 </dev:code>
         <dev:remarks>
           <maml:para>This command adds a TXT record to the record set stored in the $RecordSet variable.</maml:para>
@@ -592,11 +524,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -608,13 +535,13 @@
         <maml:para />
       </maml:copyright>
       <command:verb>Get</command:verb>
-      <command:noun>AzureDnsRecordSet</command:noun>
+      <command:noun>AzureRmDnsRecordSet</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRmDnsRecordSet cmdlet gets the Domain Name System (DNS) record set with the specified name and type, in the specified zone. If you do not specify the Name parameter, this cmdlet returns all record sets of the specified type in the zone. </maml:para>
-      <maml:para>If you do not specify the RecordType parameter, this cmdlet returns record sets of all types.</maml:para>
-      <maml:para>You can use the pipeline operator to pass a DnsZone object to this cmdlet, or you can pass a DnsZone object as the Zone parameter, or alternatively you can specify the zone by name.</maml:para>
+      <maml:para>The Get-AzureRmDnsRecordSet cmdlet gets the Domain Name System (DNS) record set with the specified name and type, in the specified zone. </maml:para>
+      <maml:para>If you do not specify the Name or RecordType parameters, this cmdlet returns all record sets of the specified type in the zone. If you specify the RecordType parameter but not the Name parameter, this cmdlet returns all record sets of the specified record type.</maml:para>
+      <maml:para>You can use the pipeline operator to pass a DnsZone object to this cmdlet, or you can pass a DnsZone object as the Zone parameter, or alternatively you can specify the zone and resource group by name.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -624,7 +551,7 @@
           <maml:description>
             <maml:para>Specifies a suffix to use as a filter when you get multiple record sets.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Name</maml:name>
@@ -633,35 +560,29 @@
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>RecordType</maml:name>
           <maml:description>
-            <maml:para>Specifies the type of DNS record to get. Valid values are: 
+            <maml:para>Specifies the type of DNS record that this cmdlet gets.</maml:para>
+            <maml:para>Valid values are:
 
--- A 
--- AAAA 
--- CNAME 
--- MS 
--- NS 
--- PTR 
+-- A
+-- AAAA
+-- CNAME
+-- MX
+-- NS
+-- PTR
 -- SOA
--- SRV 
--- TXT  </maml:para>
+-- SRV
+-- TXT</maml:para>
             <maml:para>If you do not specify the RecordType parameter, this cmdlet returns record sets of all types.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>Zone</maml:name>
           <maml:description>
-            <maml:para>Specifies the DNS zone that contains the record set to get.</maml:para>
+            <maml:para>Specifies the DNS zone that contains the record set that this cmdlet gets.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsZone</command:parameterValue>
         </command:parameter>
@@ -673,7 +594,7 @@
           <maml:description>
             <maml:para>Specifies a suffix to use as a filter when you get multiple record sets.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Name</maml:name>
@@ -682,27 +603,21 @@
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>RecordType</maml:name>
           <maml:description>
-            <maml:para>Specifies the type of DNS record to get. Valid values are: 
+            <maml:para>Specifies the type of DNS record that this cmdlet gets.</maml:para>
+            <maml:para>Valid values are:
 
--- A 
--- AAAA 
--- CNAME 
--- MS 
--- NS 
--- PTR 
+-- A
+-- AAAA
+-- CNAME
+-- MX
+-- NS
+-- PTR
 -- SOA
--- SRV 
--- TXT  </maml:para>
+-- SRV
+-- TXT</maml:para>
             <maml:para>If you do not specify the RecordType parameter, this cmdlet returns record sets of all types.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
@@ -729,9 +644,9 @@
         <maml:description>
           <maml:para>Specifies a suffix to use as a filter when you get multiple record sets.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -748,32 +663,21 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para>Specifies an Azure profile.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Common.Authentication.Models.AzureProfile</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>RecordType</maml:name>
         <maml:description>
-          <maml:para>Specifies the type of DNS record to get. Valid values are: 
+          <maml:para>Specifies the type of DNS record that this cmdlet gets.</maml:para>
+          <maml:para>Valid values are:
 
--- A 
--- AAAA 
--- CNAME 
--- MS 
--- NS 
--- PTR 
+-- A
+-- AAAA
+-- CNAME
+-- MX
+-- NS
+-- PTR
 -- SOA
--- SRV 
--- TXT  </maml:para>
+-- SRV
+-- TXT</maml:para>
           <maml:para>If you do not specify the RecordType parameter, this cmdlet returns record sets of all types.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
@@ -795,10 +699,10 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>Zone</maml:name>
         <maml:description>
-          <maml:para>Specifies the DNS zone that contains the record set to get.</maml:para>
+          <maml:para>Specifies the DNS zone that contains the record set that this cmdlet gets.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DnsZone</command:parameterValue>
         <dev:type>
@@ -846,7 +750,7 @@
           </maml:description>
         </dev:type>
         <maml:description>
-          <maml:para>This cmdlet returns one or more objects that represents the record sets that are found. There will be at most one RecordSet returned if the Name and RecordType are specified, otherwise multiple RecordSet objects are returned as an array.</maml:para>
+          <maml:para>This cmdlet returns one or more objects that represents the record sets that are found. There will be at most one RecordSet returned if the Name and RecordType parameters are specified, otherwise multiple RecordSet objects are returned as an array.</maml:para>
         </maml:description>
       </command:returnValue>
     </command:returnValues>
@@ -862,7 +766,7 @@
         <dev:code>PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "www" -RecordType A
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the record set of record type A named www in the specified resource group and zone, and then stores it in the $RecordSet variable. Because the RecordType parameter is specified, only one RecordSet object is returned.</maml:para>
+          <maml:para>This command gets the record set of record type A named www in the specified resource group and zone, and then stores it in the $RecordSet variable. Because the Name and RecordType parameters are specified, only one RecordSet object is returned.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -878,10 +782,10 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -RecordType A 
+        <dev:code>PS C:\&gt;$RecordSets = Get-AzureRmDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -RecordType A
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets all of record sets of record type A in the resource group named MyResourceGroup in the zone named myzone.com, and then stores them in the $RecordSet variable.</maml:para>
+          <maml:para>This command gets an array of all record sets of record type A in the zone named myzone.com in the resource group named MyResourceGroup, and then stores them in the $RecordSets variable.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -892,15 +796,15 @@
         </command:commandLines>
       </command:example>
       <command:example>
-        <maml:title>Example 3: Get record sets with a specified name</maml:title>
+        <maml:title>Example 3: Get all record sets in a zone</maml:title>
         <maml:introduction>
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -Name "www" -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
+        <dev:code>PS C:\&gt;$RecordSets = Get-AzureRmDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets all of the record sets named www in the resource group named MyResourceGroup in the zone named myzone.com, and then stores them in the $RecordSet variable.</maml:para>
+          <maml:para>This command gets an array of all record sets in the zone named myzone.com in the resource group named MyResourceGroup, and then stores them in the $RecordSets variable.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -925,11 +829,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -941,7 +840,7 @@
         <maml:para />
       </maml:copyright>
       <command:verb>Get</command:verb>
-      <command:noun>AzureDnsZone</command:noun>
+      <command:noun>AzureRmDnsZone</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
@@ -955,7 +854,7 @@
           <maml:description>
             <maml:para>Specifies a suffix to use as a filter when you get multiple zones.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Name</maml:name>
@@ -963,13 +862,6 @@
             <maml:para>Specifies the name of the DNS zone to get. If you do not specify the Name parameter, all zones in the specified resource group are returned.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
@@ -986,9 +878,9 @@
         <maml:description>
           <maml:para>Specifies a suffix to use as a filter when you get multiple zones.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -1001,18 +893,6 @@
         <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para>Specifies an Azure profile.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Common.Authentication.Models.AzureProfile</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -1041,7 +921,7 @@
           </maml:description>
         </dev:type>
         <maml:description>
-          <maml:para>You cannot pipe input to this cmdlet.</maml:para>
+          <maml:para>This cmdlet does not allow you to pipe input.</maml:para>
         </maml:description>
       </command:inputType>
     </command:inputTypes>
@@ -1088,10 +968,10 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$Zone = Get-AzureRmDnsZone -ResourceGroupName "MyResourceGroup"
+        <dev:code>PS C:\&gt;$Zones = Get-AzureRmDnsZone -ResourceGroupName "MyResourceGroup"
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets all of the zones in the specified resource group, and then stores it in the $Zone variable.</maml:para>
+          <maml:para>This command gets all of the zones in the specified resource group, and then stores it in the $Zones variable.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -1116,11 +996,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1132,13 +1007,14 @@
         <maml:para />
       </maml:copyright>
       <command:verb>New</command:verb>
-      <command:noun>AzureDnsRecordSet</command:noun>
+      <command:noun>AzureRmDnsRecordSet</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureRmDnsRecordSet cmdlet creates a new Domain Name System (DNS) record set with the specified name and type in the specified zone. A RecordSet is a set of DNS records with the same name and type. Note that the name is relative to the zone and not the fully qualified name. </maml:para>
+      <maml:para>The New-AzureRmDnsRecordSet cmdlet creates a new Domain Name System (DNS) record set with the specified name and type in the specified zone. A RecordSet object is a set of DNS records with the same name and type. Note that the name is relative to the zone and not the fully qualified name. </maml:para>
+      <maml:para>The record set will not contain any DNS records. Use Add-AzureRmDnsRecordConfig and Set-AzureRmDnsRecordSetto add records to the record set and commit changes.</maml:para>
       <maml:para>You can use the pipeline operator to pass a DnsZone object to this cmdlet, or you can pass a DnsZone object as the Zone parameter, or alternatively you can specify the zone by name. </maml:para>
-      <maml:para>If a matching RecordSet already exists, you must specify the Overwrite parameter, otherwise the cmdlet will not create a new RecordSet.</maml:para>
+      <maml:para>If a matching RecordSet already exists (same name and record type), you must specify the Overwrite parameter, otherwise the cmdlet will not create a new RecordSet.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1146,7 +1022,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>Forces the command to run without asking for user confirmation. You can use the Force parameter with the Overwrite parameter to overwrite an existing RecordSet. </maml:para>
+            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -1154,13 +1030,6 @@
           <maml:description>
             <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it exists. You will be prompted to confirm the operation unless you specify the Force parameter.</maml:para>
           </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
           <maml:name>Tag</maml:name>
@@ -1179,17 +1048,17 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>RecordType</maml:name>
           <maml:description>
-            <maml:para>Specifies the type of DNS record to create. Valid values are: 
-
+            <maml:para>Specifies the type of DNS record to create.</maml:para>
+            <maml:para>Valid values are:
 
 -- A 
 -- AAAA
 -- CNAME
--- MS
+-- MX
 -- NS
 -- PTR
 -- SRV 
--- TXT </maml:para>
+-- TXT</maml:para>
             <maml:para>SOA records are created automatically when the zone is created and cannot be created manually.</maml:para>
           </maml:description>
           <command:parameterValueGroup>
@@ -1214,7 +1083,7 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Ttl</maml:name>
           <maml:description>
-            <maml:para>Specifies the Time to Live (TTL).</maml:para>
+            <maml:para>Specifies the Time to Live (TTL) for the DNS RecordSet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
         </command:parameter>
@@ -1231,7 +1100,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>Forces the command to run without asking for user confirmation. You can use the Force parameter with the Overwrite parameter to overwrite an existing RecordSet. </maml:para>
+            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -1239,13 +1108,6 @@
           <maml:description>
             <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it exists. You will be prompted to confirm the operation unless you specify the Force parameter.</maml:para>
           </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
           <maml:name>Tag</maml:name>
@@ -1264,17 +1126,17 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>RecordType</maml:name>
           <maml:description>
-            <maml:para>Specifies the type of DNS record to create. Valid values are: 
-
+            <maml:para>Specifies the type of DNS record to create.</maml:para>
+            <maml:para>Valid values are:
 
 -- A 
 -- AAAA
 -- CNAME
--- MS
+-- MX
 -- NS
 -- PTR
 -- SRV 
--- TXT </maml:para>
+-- TXT</maml:para>
             <maml:para>SOA records are created automatically when the zone is created and cannot be created manually.</maml:para>
           </maml:description>
           <command:parameterValueGroup>
@@ -1292,7 +1154,7 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Ttl</maml:name>
           <maml:description>
-            <maml:para>Specifies the Time to Live (TTL).</maml:para>
+            <maml:para>Specifies the Time to Live (TTL) for the DNS RecordSet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
         </command:parameter>
@@ -1309,7 +1171,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Force</maml:name>
         <maml:description>
-          <maml:para>Forces the command to run without asking for user confirmation. You can use the Force parameter with the Overwrite parameter to overwrite an existing RecordSet. </maml:para>
+          <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -1342,32 +1204,20 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para>Specifies an Azure profile.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Common.Authentication.Models.AzureProfile</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>RecordType</maml:name>
         <maml:description>
-          <maml:para>Specifies the type of DNS record to create. Valid values are: 
-
+          <maml:para>Specifies the type of DNS record to create.</maml:para>
+          <maml:para>Valid values are:
 
 -- A 
 -- AAAA
 -- CNAME
--- MS
+-- MX
 -- NS
 -- PTR
 -- SRV 
--- TXT </maml:para>
+-- TXT</maml:para>
           <maml:para>SOA records are created automatically when the zone is created and cannot be created manually.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">RecordType</command:parameterValue>
@@ -1404,7 +1254,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Ttl</maml:name>
         <maml:description>
-          <maml:para>Specifies the Time to Live (TTL).</maml:para>
+          <maml:para>Specifies the Time to Live (TTL) for the DNS RecordSet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
         <dev:type>
@@ -1477,10 +1327,11 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" 
+        <dev:code>PS C:\&gt;$RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com"
 </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new RecordSet named www as type A in the zone named myzone.com with a TTL of 3600 seconds.</maml:para>
+          <maml:para>Note that the record set will not contain any DNS records. Use Add-AzureRmDnsRecordConfig and Set-AzureRmDnsRecordSet to add records to the record set and commit changes.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -1493,9 +1344,8 @@
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Using tags to organize your Azure resources</maml:linkText>
-        <maml:uri>
-        </maml:uri>
+        <maml:linkText>Add-AzureRmDnsRecordConfig</maml:linkText>
+        <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-AzureRmDnsRecordSet</maml:linkText>
@@ -1510,11 +1360,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1526,7 +1371,7 @@
         <maml:para />
       </maml:copyright>
       <command:verb>New</command:verb>
-      <command:noun>AzureDnsZone</command:noun>
+      <command:noun>AzureRmDnsZone</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
@@ -1535,13 +1380,6 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>New-AzureRmDnsZone</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
           <maml:name>Tag</maml:name>
           <maml:description>
@@ -1574,18 +1412,6 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para>Specifies an Azure profile.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Common.Authentication.Models.AzureProfile</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -1654,7 +1480,7 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$Zone = New-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup" 
+        <dev:code>PS C:\&gt;$Zone = New-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new DNS zone named myzone.com in the specified resource group, and then stores it in the $Zone variable. </maml:para>
@@ -1670,11 +1496,6 @@
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Using tags to organize your Azure resources</maml:linkText>
-        <maml:uri>
-        </maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
         <maml:linkText>Get-AzureRmDnsZone</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
@@ -1687,11 +1508,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1703,7 +1519,7 @@
         <maml:para />
       </maml:copyright>
       <command:verb>Remove</command:verb>
-      <command:noun>AzureDnsRecordConfig</command:noun>
+      <command:noun>AzureRmDnsRecordConfig</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
@@ -1714,41 +1530,27 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Remove-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies the domain name for a CNAME record.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Cname</maml:name>
           <maml:description>
-            <maml:para>Specifies the domain name for a CNAME record.</maml:para>
+            <maml:para>Specifies the domain name for a canonical name (CNAME) record.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
-            <maml:para>Specifies the RecordSet that contains the record to remove.</maml:para>
+            <maml:para>Specifies the RecordSet object that contains the record to remove.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Remove-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies the domain name for a CNAME record.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Exchange</maml:name>
           <maml:description>
-            <maml:para>Specifies the mail exchange server name for an MX record.</maml:para>
+            <maml:para>Specifies the mail exchange server name for a mail exchange (MX) record.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1762,20 +1564,13 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
-            <maml:para>Specifies the RecordSet that contains the record to remove.</maml:para>
+            <maml:para>Specifies the RecordSet object that contains the record to remove.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Remove-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies the domain name for a CNAME record.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Ipv4Address</maml:name>
           <maml:description>
@@ -1786,20 +1581,13 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
-            <maml:para>Specifies the RecordSet that contains the record to remove.</maml:para>
+            <maml:para>Specifies the RecordSet object that contains the record to remove.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Remove-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies the domain name for a CNAME record.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Ipv6Address</maml:name>
           <maml:description>
@@ -1810,48 +1598,34 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
-            <maml:para>Specifies the RecordSet that contains the record to remove.</maml:para>
+            <maml:para>Specifies the RecordSet object that contains the record to remove.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Remove-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies the domain name for a CNAME record.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Nsdname</maml:name>
           <maml:description>
-            <maml:para>Specifies the name server for an NS record.</maml:para>
+            <maml:para>Specifies the name server for a name server (NS) record.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
-            <maml:para>Specifies the RecordSet that contains the record to remove.</maml:para>
+            <maml:para>Specifies the RecordSet object that contains the record to remove.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Remove-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies the domain name for a CNAME record.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Port</maml:name>
           <maml:description>
-            <maml:para>Specifies the port for an SRV record.</maml:para>
+            <maml:para>Specifies the port for a service (SRV) record.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
         </command:parameter>
@@ -1862,10 +1636,10 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
-            <maml:para>Specifies the RecordSet that contains the record to remove.</maml:para>
+            <maml:para>Specifies the RecordSet object that contains the record to remove.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
         </command:parameter>
@@ -1886,41 +1660,27 @@
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Remove-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies the domain name for a CNAME record.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Ptrdname</maml:name>
           <maml:description>
-            <maml:para>Specifies the DNAME of a PTR record.</maml:para>
+            <maml:para>Specifies the DNAME of a pointer (PTR) record.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
-            <maml:para>Specifies the RecordSet that contains the record to remove.</maml:para>
+            <maml:para>Specifies the RecordSet object that contains the record to remove.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Remove-AzureRmDnsRecordConfig</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies the domain name for a CNAME record.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
-            <maml:para>Specifies the RecordSet that contains the record to remove.</maml:para>
+            <maml:para>Specifies the RecordSet object that contains the record to remove.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
         </command:parameter>
@@ -1937,7 +1697,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Cname</maml:name>
         <maml:description>
-          <maml:para>Specifies the domain name for a CNAME record.</maml:para>
+          <maml:para>Specifies the domain name for a canonical name (CNAME) record.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1949,7 +1709,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Exchange</maml:name>
         <maml:description>
-          <maml:para>Specifies the mail exchange server name for an MX record.</maml:para>
+          <maml:para>Specifies the mail exchange server name for a mail exchange (MX) record.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1985,7 +1745,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Nsdname</maml:name>
         <maml:description>
-          <maml:para>Specifies the name server for an NS record.</maml:para>
+          <maml:para>Specifies the name server for a name server (NS) record.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1997,7 +1757,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Port</maml:name>
         <maml:description>
-          <maml:para>Specifies the port for an SRV record.</maml:para>
+          <maml:para>Specifies the port for a service (SRV) record.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
         <dev:type>
@@ -2030,22 +1790,10 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para>Specifies the domain name for a CNAME record.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Common.Authentication.Models.AzureProfile</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Ptrdname</maml:name>
         <maml:description>
-          <maml:para>Specifies the DNAME of a PTR record.</maml:para>
+          <maml:para>Specifies the DNAME of a pointer (PTR) record.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -2057,7 +1805,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>RecordSet</maml:name>
         <maml:description>
-          <maml:para>Specifies the RecordSet that contains the record to remove.</maml:para>
+          <maml:para>Specifies the RecordSet object that contains the record to remove.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
         <dev:type>
@@ -2137,15 +1885,15 @@
     <command:nonTerminatingErrors />
     <command:examples>
       <command:example>
-        <maml:title>Example 1: Remove A records </maml:title>
+        <maml:title>Example 1: Remove a specified A record </maml:title>
         <maml:introduction>
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = Remove-AzureRmDnsRecordConfig -RecordSet $RecordSet -Ipv4Address "172.16.0.0"  
+        <dev:code>PS C:\&gt;$RecordSet = Remove-AzureRmDnsRecordConfig -RecordSet $RecordSet -Ipv4Address "172.16.0.0"
 </dev:code>
         <dev:remarks>
-          <maml:para>This command removes the A records with the specified IP address from the record set stored in $RecordSet.</maml:para>
+          <maml:para>This command removes the A record with the specified IP address from the record set stored in $RecordSet.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -2156,7 +1904,7 @@
         </command:commandLines>
       </command:example>
       <command:example>
-        <maml:title>Example 2: Remove specified SRV records</maml:title>
+        <maml:title>Example 2: Remove a specified SRV record</maml:title>
         <maml:introduction>
           <maml:para>
           </maml:para>
@@ -2164,7 +1912,7 @@
         <dev:code>PS C:\&gt;$RecordSet = Remove-AzureRmDnsRecordConfig -Port 8080 -Priority 0 -RecordSet $RecordSet -Target "target.example.com" -Weight 5
 </dev:code>
         <dev:remarks>
-          <maml:para>This command removes SRV records from the $RecordSet variable where Port=8080, Priority=0, Weight=5, and Target=target.example.com.</maml:para>
+          <maml:para>This command removes the SRV record from the $RecordSet variable where Port=8080, Priority=0, Weight=5, and Target=target.example.com.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -2189,11 +1937,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2205,12 +1948,12 @@
         <maml:para />
       </maml:copyright>
       <command:verb>Remove</command:verb>
-      <command:noun>AzureDnsRecordSet</command:noun>
+      <command:noun>AzureRmDnsRecordSet</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureRmDnsRecordSet cmdlet deletes the specified record set from the specified zone. You cannot delete SOA and NS records that are automatically created.</maml:para>
-      <maml:para>You can pass a RecordSet object to this cmdlet by using the pipeline operator or as a parameter. To identify a record set by name and type without using a RecordSet object, you must pass the zone as a DnsZone object to this cmdlet by using the pipeline operator or as a parameter, or alternatively you can specify the ZoneName parameter.</maml:para>
+      <maml:para>The Remove-AzureRmDnsRecordSet cmdlet deletes the specified record set from the specified zone. You cannot delete SOA or name server (NS) records that are automatically created at the zone apex.</maml:para>
+      <maml:para>You can pass a RecordSet object to this cmdlet by using the pipeline operator or as a parameter. To identify a record set by name and type without using a RecordSet object, you must pass the zone as a DnsZone object to this cmdlet by using the pipeline operator or as a parameter, or alternatively you can specify the ZoneName and ResourceGroupName parameters.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2227,13 +1970,6 @@
             <maml:para>Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Name</maml:name>
           <maml:description>
@@ -2244,18 +1980,18 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>RecordType</maml:name>
           <maml:description>
-            <maml:para>Specifies the type of DNS record. Valid values are: 
-
+            <maml:para>Specifies the type of DNS record. </maml:para>
+            <maml:para>Valid values are:
 
 -- A 
--- AAAA 
--- CNAME 
--- MS 
--- NS 
--- PTR 
+-- AAAA
+-- CNAME
+-- MX
+-- NS
+-- PTR
 -- SRV 
--- TXT  </maml:para>
-            <maml:para>You cannot remove record sets for SOA records.</maml:para>
+-- TXT</maml:para>
+            <maml:para>You cannot remove SOA record sets.</maml:para>
           </maml:description>
           <command:parameterValueGroup>
             <command:parameterValue required="true" variableLength="false">A</command:parameterValue>
@@ -2291,13 +2027,6 @@
             <maml:para>Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Name</maml:name>
           <maml:description>
@@ -2308,18 +2037,18 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>RecordType</maml:name>
           <maml:description>
-            <maml:para>Specifies the type of DNS record. Valid values are: 
-
+            <maml:para>Specifies the type of DNS record. </maml:para>
+            <maml:para>Valid values are:
 
 -- A 
--- AAAA 
--- CNAME 
--- MS 
--- NS 
--- PTR 
+-- AAAA
+-- CNAME
+-- MX
+-- NS
+-- PTR
 -- SRV 
--- TXT  </maml:para>
-            <maml:para>You cannot remove record sets for SOA records.</maml:para>
+-- TXT</maml:para>
+            <maml:para>You cannot remove SOA record sets.</maml:para>
           </maml:description>
           <command:parameterValueGroup>
             <command:parameterValue required="true" variableLength="false">A</command:parameterValue>
@@ -2359,7 +2088,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Overwrite</maml:name>
           <maml:description>
-            <maml:para>Indicates that this cmdlet ignores the Etag when deleting the record set, and that the record set is deleted even if it has changed since the last Get.</maml:para>
+            <maml:para>Indicates that this cmdlet ignores the entity tag (Etag) when the record set is deleted, and that the record set is deleted even if it has changed since the last retrieval.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -2368,17 +2097,10 @@
             <maml:para>Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
-            <maml:para>Specifies the RecordSet to remove.</maml:para>
+            <maml:para>Specifies the RecordSet object to remove.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
         </command:parameter>
@@ -2412,7 +2134,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Overwrite</maml:name>
         <maml:description>
-          <maml:para>Indicates that this cmdlet ignores the Etag when deleting the record set, and that the record set is deleted even if it has changed since the last Get.</maml:para>
+          <maml:para>Indicates that this cmdlet ignores the entity tag (Etag) when the record set is deleted, and that the record set is deleted even if it has changed since the last retrieval.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2433,22 +2155,10 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para>Specifies an Azure profile.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Common.Authentication.Models.AzureProfile</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>RecordSet</maml:name>
         <maml:description>
-          <maml:para>Specifies the RecordSet to remove.</maml:para>
+          <maml:para>Specifies the RecordSet object to remove.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
         <dev:type>
@@ -2460,18 +2170,18 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>RecordType</maml:name>
         <maml:description>
-          <maml:para>Specifies the type of DNS record. Valid values are: 
-
+          <maml:para>Specifies the type of DNS record. </maml:para>
+          <maml:para>Valid values are:
 
 -- A 
--- AAAA 
--- CNAME 
--- MS 
--- NS 
--- PTR 
+-- AAAA
+-- CNAME
+-- MX
+-- NS
+-- PTR
 -- SRV 
--- TXT  </maml:para>
-          <maml:para>You cannot remove record sets for SOA records.</maml:para>
+-- TXT</maml:para>
+          <maml:para>You cannot remove SOA record sets.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">RecordType</command:parameterValue>
         <dev:type>
@@ -2557,11 +2267,10 @@
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -Name "www" -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
-PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet 
+PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
 </dev:code>
         <dev:remarks>
-          <maml:para>The first command gets the specified record set, and then stores it in the $RecordSet variable.</maml:para>
-          <maml:para>The second command removes the record set in $RecordSet.</maml:para>
+          <maml:para>The first command gets the specified record set, and then stores it in the $RecordSet variable.The second command removes the record set in $RecordSet.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -2586,11 +2295,6 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2602,12 +2306,12 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
         <maml:para />
       </maml:copyright>
       <command:verb>Remove</command:verb>
-      <command:noun>AzureDnsZone</command:noun>
+      <command:noun>AzureRmDnsZone</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureRmDnsZone cmdlet removes a Domain Name System (DNS) zone from a specified resource group. Before you run this cmdlet, you must first remove all record sets from the zone that you want to remove. </maml:para>
-      <maml:para>You can pass a DnsZone object to this cmdlet as a parameter or by using the pipeline operator, or alternatively you can specify its name.</maml:para>
+      <maml:para>The Remove-AzureRmDnsZone cmdlet removes a Domain Name System (DNS) zone from a specified resource group. Before you run this cmdlet, you must first remove all record sets from the zone, except for the automatically-created SOA and NS record sets at the zone apex.</maml:para>
+      <maml:para>You can pass a DnsZone object as a parameter or by using the pipeline operator, or alternatively you can specify the ZoneName and ResourceGroupName parameters.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2624,18 +2328,10 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
             <maml:para>Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>
-            </maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Name</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of the DNS zone to remove.</maml:para>
+            <maml:para>Specifies the name of the DNS zone that this cmdlet removes.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -2658,7 +2354,7 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Overwrite</maml:name>
           <maml:description>
-            <maml:para>Indicates that this cmdlet ignores the Etag when deleting the resource group, and that the resource group is removed even if it has changed since the last Get.</maml:para>
+            <maml:para>Indicates that this cmdlet ignores the entity tag (Etag) when it deletes the resource group, and that the resource group is removed even if it has changed since the last retrieval.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -2666,14 +2362,6 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
           <maml:description>
             <maml:para>Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
           </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>
-            </maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>Zone</maml:name>
@@ -2700,7 +2388,7 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Name</maml:name>
         <maml:description>
-          <maml:para>Specifies the name of the DNS zone to remove.</maml:para>
+          <maml:para>Specifies the name of the DNS zone that this cmdlet removes.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -2712,7 +2400,7 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Overwrite</maml:name>
         <maml:description>
-          <maml:para>Indicates that this cmdlet ignores the Etag when deleting the resource group, and that the resource group is removed even if it has changed since the last Get.</maml:para>
+          <maml:para>Indicates that this cmdlet ignores the entity tag (Etag) when it deletes the resource group, and that the resource group is removed even if it has changed since the last retrieval.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2729,19 +2417,6 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para>
-          </maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Common.Authentication.Models.AzureProfile</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -2838,11 +2513,6 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2854,12 +2524,12 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
         <maml:para />
       </maml:copyright>
       <command:verb>Set</command:verb>
-      <command:noun>AzureDnsRecordSet</command:noun>
+      <command:noun>AzureRmDnsRecordSet</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Set-AzureRmDnsRecordSet cmdlet updates a RecordSet from an offline RecordSet object. If the Etag has changed since the last get, the call will fail unless the Overwrite switch is specified.</maml:para>
-      <maml:para>You can pass a RecordSet as a parameter or by using the pipeline operator. </maml:para>
+      <maml:para>The Set-AzureRmDnsRecordSet cmdlet updates a record set in the Azure DNS service from an offline RecordSet object. If the entity tag (Etag) has changed since the last retrieval, the call will fail unless the Overwrite parameter switch is specified.</maml:para>
+      <maml:para>You can pass a RecordSet object as a parameter or by using the pipeline operator. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2867,17 +2537,10 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Overwrite</maml:name>
           <maml:description>
-            <maml:para>Indicates that this cmdlet ignores the Etag when deleting the record set, and that the record set is deleted even if it has changed since the last Get.</maml:para>
+            <maml:para>Indicates that this cmdlet ignores the Etag when deleting the record set, and that the record set is deleted even if it has changed since the last retrieval.</maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>RecordSet</maml:name>
           <maml:description>
             <maml:para>Specifies the RecordSet to update.</maml:para>
@@ -2890,7 +2553,7 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Overwrite</maml:name>
         <maml:description>
-          <maml:para>Indicates that this cmdlet ignores the Etag when deleting the record set, and that the record set is deleted even if it has changed since the last Get.</maml:para>
+          <maml:para>Indicates that this cmdlet ignores the Etag when deleting the record set, and that the record set is deleted even if it has changed since the last retrieval.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2899,19 +2562,7 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para>Specifies an Azure profile.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Common.Authentication.Models.AzureProfile</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>RecordSet</maml:name>
         <maml:description>
           <maml:para>Specifies the RecordSet to update.</maml:para>
@@ -2950,7 +2601,7 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
           </maml:description>
         </dev:type>
         <maml:description>
-          <maml:para>This cmdlet returns an object that represents the updated RecordSet.</maml:para>
+          <maml:para>This cmdlet returns an object that represents the updated RecordSet object.</maml:para>
         </maml:description>
       </command:returnValue>
     </command:returnValues>
@@ -2964,15 +2615,12 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "www" -RecordType A
-PS C:\&gt; $RecordSet = $RecordSet | Add-AzureRmDnsRecordConfig -Ipv4Address "172.16.0.0"
-PS C:\&gt; $RecordSet = $RecordSet | Add-AzureRmDnsRecordConfig -Ipv4Address "172.31.255.255"
+PS C:\&gt; Add-AzureRmDnsRecordConfig –RecordSet $RecordSet -Ipv4Address "172.16.0.0"
+PS C:\&gt; Add-AzureRmDnsRecordConfig –RecordSet $RecordSet -Ipv4Address "172.31.255.255"
 PS C:\&gt; $RecordSet | Set-AzureRmDnsRecordSet
 </dev:code>
         <dev:remarks>
-          <maml:para>The first command uses the Get-AzureRmDnsRecordset cmdlet to get the specified record set, and then stores it in the $RecordSet variable. </maml:para>
-          <maml:para>The second command uses the pipeline operator to pass $RecordSet to the Add-AzureRmDnsRecordConfig cmdlet to add an IP address as an A record, and then stores it in $RecordSet.</maml:para>
-          <maml:para>The third command uses the pipeline operator to pass $RecordSet to the Add-AzureRmDnsRecordConfig cmdlet to add another IP address as an A record, and then stores it in $RecordSet.</maml:para>
-          <maml:para>The final command uses the pipeline operator to pass $RecordSet to the Set-AzureRmDnsRecordSet cmdlet to propagate the update.</maml:para>
+          <maml:para>The first command uses the Get-AzureRmDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable. The second and third commands are off-line operations to add two A records to the newly created record set. The final command uses the pipeline operator to pass $RecordSet to the Set-AzureRmDnsRecordSet cmdlet to propagate the update.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -2988,14 +2636,12 @@ PS C:\&gt; $RecordSet | Set-AzureRmDnsRecordSet
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
-PS C:\&gt; $RecordSet.Records[0].Email = "bob@test.com"
-PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet 
+        <dev:code>PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -Name "@" -RecordType SOA -Zone $ZonePS
+PS C:\&gt; $RecordSet.Records[0].Email = "pfuller.test.com"
+PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
 </dev:code>
         <dev:remarks>
-          <maml:para>The first command uses the Get-AzureRmDnsRecordset cmdlet to get the specified record set, and then stores it in the $RecordSet variable.</maml:para>
-          <maml:para>The second command updates the specified SOA record in $RecordSet.</maml:para>
-          <maml:para>The final command uses the Set-AzureRmDnsRecordSet cmdlet to propagate the update in $RecordSet.</maml:para>
+          <maml:para>The first command uses the Get-AzureRmDnsRecordset cmdlet to get the specified record set, and then stores it in the $RecordSet variable.The second command updates the specified SOA record in $RecordSet.The final command uses the Set-AzureRmDnsRecordSet cmdlet to propagate the update in $RecordSet.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -3020,11 +2666,6 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3036,26 +2677,20 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
         <maml:para />
       </maml:copyright>
       <command:verb>Set</command:verb>
-      <command:noun>AzureDnsZone</command:noun>
+      <command:noun>AzureRmDnsZone</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Set-AzureRmDnsZone cmdlet updates the specified DnsZone. This cmdlet does not update the RecordSet objects in the zone. You can pass a DnsZone object as a parameter or by using the pipeline operator, or alternatively you can specify the zone by name.</maml:para>
+      <maml:para>The Set-AzureRmDnsZone cmdlet updates the specified DnsZone. This cmdlet does not update the RecordSet objects in the zone. </maml:para>
+      <maml:para>You can pass a DnsZone object as a parameter or by using the pipeline operator, or alternatively you can specify the ZoneName and ResourceGroupName parameters</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Set-AzureRmDnsZone</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
           <maml:name>Tag</maml:name>
           <maml:description>
-            <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs that are represented as hashtables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
+            <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
@@ -3079,15 +2714,8 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Overwrite</maml:name>
           <maml:description>
-            <maml:para>Indicates that this cmdlet ignores the Etag when deleting the record set, and that the record set is deleted even if it has changed since the last Get.</maml:para>
+            <maml:para>Indicates that this cmdlet ignores the entity tag (Etag) when it deletes the record set, and that the record set is deleted even if it has changed since the last retrieval.</maml:para>
           </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para>Specifies an Azure profile.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>Zone</maml:name>
@@ -3114,23 +2742,11 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Overwrite</maml:name>
         <maml:description>
-          <maml:para>Indicates that this cmdlet ignores the Etag when deleting the record set, and that the record set is deleted even if it has changed since the last Get.</maml:para>
+          <maml:para>Indicates that this cmdlet ignores the entity tag (Etag) when it deletes the record set, and that the record set is deleted even if it has changed since the last retrieval.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para>Specifies an Azure profile.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Common.Authentication.Models.AzureProfile</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -3150,7 +2766,7 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
         <maml:name>Tag</maml:name>
         <maml:description>
-          <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs that are represented as hashtables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
+          <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         <dev:type>
@@ -3206,19 +2822,17 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
     <command:nonTerminatingErrors />
     <command:examples>
       <command:example>
-        <maml:title> Example 1: Update a DNS zone</maml:title>
+        <maml:title>Example 1: Update a DNS zone</maml:title>
         <maml:introduction>
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$Zone = Get-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"  
+        <dev:code>PS C:\&gt;$Zone = Get-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 PS C:\&gt; $Zone.Tags = @(@{"Name"="Dept"; "Value"="Electrical"})
 PS C:\&gt; $Zone | Set-AzureRmDnsZone
 </dev:code>
         <dev:remarks>
-          <maml:para>The first command gets the zone named myzone.com from the specified resource group, and then stores it in the $Zone variable. </maml:para>
-          <maml:para>The second command updates the tags for $Zone.</maml:para>
-          <maml:para>The final command passes $Zone to the Set-AzureRmDnsZone cmdlet by using the pipeline operator. </maml:para>
+          <maml:para>The first command gets the zone named myzone.com from the specified resource group, and then stores it in the $Zone variable. The second command updates the tags for $Zone.The final command passes $Zone to the Set-AzureRmDnsZone cmdlet by the pipeline operator. </maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -3250,11 +2864,6 @@ PS C:\&gt; $Zone | Set-AzureRmDnsZone
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Using tags to organize your Azure resources</maml:linkText>
-        <maml:uri>
-        </maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
         <maml:linkText>Get-AzureRmDnsZone</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
@@ -3267,10 +2876,6 @@ PS C:\&gt; $Zone | Set-AzureRmDnsZone
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
+
 </helpItems>

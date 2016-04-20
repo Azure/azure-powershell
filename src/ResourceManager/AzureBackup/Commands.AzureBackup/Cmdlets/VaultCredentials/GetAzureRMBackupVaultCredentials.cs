@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         private const int VaultCertificateExpiryInHoursForBackup = 48;
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 if (!Directory.Exists(TargetLocation))
                 {

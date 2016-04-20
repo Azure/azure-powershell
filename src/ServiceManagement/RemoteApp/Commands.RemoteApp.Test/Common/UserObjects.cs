@@ -65,6 +65,46 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test.Common
            return mockUsersConsents.Count;
         }
 
+        public static int SetUpRemoteAppSecurityPrincipalsForApp(Mock<IRemoteAppManagementClient> clientMock, string collectionName, string appAlias, string userName)
+        {
+            SecurityPrincipalInfoListResult response = new SecurityPrincipalInfoListResult();
+
+            response.SecurityPrincipalInfoList = new List<SecurityPrincipalInfo>()
+            {
+                new SecurityPrincipalInfo()
+                {
+                    SecurityPrincipal = new SecurityPrincipal()
+                    {
+                        Name = userName,
+                        SecurityPrincipalType = PrincipalType.User,
+                        UserIdType = PrincipalProviderType.OrgId,
+                    },
+                    Status = ConsentStatus.Pending
+                },
+                new SecurityPrincipalInfo()
+                {
+                    SecurityPrincipal = new SecurityPrincipal()
+                    {
+                        Name = "user2",
+                        SecurityPrincipalType = PrincipalType.User,
+                        UserIdType = PrincipalProviderType.OrgId,
+                    },
+                    Status = ConsentStatus.Pending
+                },
+            };
+
+            mockUsersConsents = new List<ConsentStatusModel>();
+            foreach (SecurityPrincipalInfo consent in response.SecurityPrincipalInfoList)
+            {
+                mockUsersConsents.Add(new ConsentStatusModel(consent));
+            };
+
+            ISetup<IRemoteAppManagementClient, Task<SecurityPrincipalInfoListResult>> setup = clientMock.Setup(c => c.Principals.ListForAppAsync(collectionName, appAlias, It.IsAny<CancellationToken>()));
+            setup.Returns(Task.Factory.StartNew(() => response));
+
+            return mockUsersConsents.Count;
+        }
+
         public static int SetUpRemoteAppUserToAdd(Mock<IRemoteAppManagementClient> clientMock, string collectionName, PrincipalProviderType userIdType, string[] userNames)
         {
             SecurityPrincipalOperationsResult response = new SecurityPrincipalOperationsResult()
@@ -141,6 +181,89 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test.Common
             }
 
             ISetup<IRemoteAppManagementClient, Task<SecurityPrincipalOperationsResult>> setup = clientMock.Setup(c => c.Principals.DeleteAsync(collectionName, It.IsAny<SecurityPrincipalList>(), It.IsAny<CancellationToken>()));
+            setup.Returns(Task.Factory.StartNew(() => response));
+
+            mockUsers = spRemove.SecurityPrincipals;
+
+            return mockUsers.Count;
+        }
+
+        public static int SetUpRemoteAppUserToAddForApp(Mock<IRemoteAppManagementClient> clientMock, string collectionName, string appAlias, PrincipalProviderType userIdType, string[] userNames)
+        {
+            SecurityPrincipalOperationsResult response = new SecurityPrincipalOperationsResult()
+            {
+                RequestId = "122-13342",
+                TrackingId = "2334-323456",
+                StatusCode = System.Net.HttpStatusCode.Accepted,
+                Errors = null,
+            };
+
+            mockSecurityPrincipalResult = new List<SecurityPrincipalOperationsResult>()
+            {
+                new SecurityPrincipalOperationsResult()
+                {
+                    RequestId = response.RequestId,
+                    TrackingId = response.TrackingId,
+                    StatusCode = response.StatusCode,
+                    Errors = response.Errors
+                },
+            };
+
+            SecurityPrincipalList spAdd = new SecurityPrincipalList();
+
+            foreach (string userName in userNames)
+            {
+                SecurityPrincipal mockUser = new SecurityPrincipal()
+                {
+                    Name = userName,
+                    SecurityPrincipalType = PrincipalType.User,
+                    UserIdType = userIdType,
+                };
+                spAdd.SecurityPrincipals.Add(mockUser);
+            }
+
+            ISetup<IRemoteAppManagementClient, Task<SecurityPrincipalOperationsResult>> setup = clientMock.Setup(c => c.Principals.AddToAppAsync(collectionName, appAlias, It.IsAny<SecurityPrincipalList>(), It.IsAny<CancellationToken>()));
+            setup.Returns(Task.Factory.StartNew(() => response));
+
+            mockUsers = spAdd.SecurityPrincipals;
+
+            return mockUsers.Count;
+        }
+
+        public static int SetUpRemoteAppUserToRemoveFromApp(Mock<IRemoteAppManagementClient> clientMock, string collectionName, string appAlias, PrincipalProviderType userIdType, string[] userNames)
+        {
+            SecurityPrincipalOperationsResult response = new SecurityPrincipalOperationsResult()
+            {
+                RequestId = "122-13342",
+                TrackingId = "1348570-182754",
+                StatusCode = System.Net.HttpStatusCode.Accepted,
+                Errors = null
+            };
+            mockSecurityPrincipalResult = new List<SecurityPrincipalOperationsResult>()
+            {
+                new SecurityPrincipalOperationsResult()
+                {
+                    RequestId = response.RequestId,
+                    TrackingId = response.TrackingId,
+                    StatusCode = response.StatusCode,
+                    Errors = response.Errors
+                },
+            };
+
+            SecurityPrincipalList spRemove = new SecurityPrincipalList();
+
+            foreach (string userName in userNames)
+            {
+                SecurityPrincipal mockUser = new SecurityPrincipal()
+                {
+                    Name = userName,
+                    SecurityPrincipalType = PrincipalType.User,
+                    UserIdType = userIdType,
+                };
+                spRemove.SecurityPrincipals.Add(mockUser);
+            }
+
+            ISetup<IRemoteAppManagementClient, Task<SecurityPrincipalOperationsResult>> setup = clientMock.Setup(c => c.Principals.DeleteFromAppAsync(collectionName, appAlias, It.IsAny<SecurityPrincipalList>(), It.IsAny<CancellationToken>()));
             setup.Returns(Task.Factory.StartNew(() => response));
 
             mockUsers = spRemove.SecurityPrincipals;

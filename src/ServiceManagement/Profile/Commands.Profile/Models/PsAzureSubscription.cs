@@ -38,8 +38,6 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             TenantId = subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
         }
 
-
-
         public string SubscriptionId { get; set; }
         
         public string SubscriptionName { get; set; }
@@ -57,5 +55,19 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
         public string CurrentStorageAccountName { get; set; }
         
         public string TenantId { get; set; }
+
+        public string GetAccountName()
+        {
+            string accountName = null;
+
+            if (!string.IsNullOrWhiteSpace(this.CurrentStorageAccountName))
+            {
+                accountName = this.CurrentStorageAccountName.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+                                              .Where(s => s.StartsWith("accountname", StringComparison.OrdinalIgnoreCase))
+                                              .Select( s => s.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries).Last())
+                                              .FirstOrDefault();
+            }
+            return accountName;
+        }
     }
 }

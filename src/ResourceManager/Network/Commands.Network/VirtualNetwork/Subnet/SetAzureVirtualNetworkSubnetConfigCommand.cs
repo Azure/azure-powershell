@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The virtualNetwork")]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             // Verify if the subnet exists in the VirtualNetwork
             var subnet = this.VirtualNetwork.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Commands.Network
             
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
-                subnet.NetworkSecurityGroup = new PSResourceId();
+                subnet.NetworkSecurityGroup = new PSNetworkSecurityGroup();
                 subnet.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
             if (!string.IsNullOrEmpty(this.RouteTableId))
             {
-                subnet.RouteTable = new PSResourceId();
+                subnet.RouteTable = new PSRouteTable();
                 subnet.RouteTable.Id = this.RouteTableId;
             }
 

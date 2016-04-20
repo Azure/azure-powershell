@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject(this.ProcessParameter());
         }

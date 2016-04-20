@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Expand { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ListJobOptions options = new ListJobOptions(this.BatchContext, this.AdditionalBehaviors)
             {

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public IDictionary Metadata { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             NewJobScheduleParameters parameters = new NewJobScheduleParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {

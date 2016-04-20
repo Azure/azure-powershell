@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [ValidateNotNullOrEmpty]
         public string Value { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject(TagsClient.CreateTag(Name, Value != null ? new List<string> { Value } : null));
         }

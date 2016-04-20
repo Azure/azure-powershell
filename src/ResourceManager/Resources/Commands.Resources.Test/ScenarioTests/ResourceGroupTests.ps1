@@ -306,3 +306,15 @@ function Test-FindResourceGroup
         Clean-ResourceGroup $rgname2
     }
 }
+
+<#
+.SYNOPSIS
+Tests remove non exist resource group and debug stream gets printed
+#>
+function Test-GetNonExistingResourceGroupWithDebugStream
+{
+    $ErrorActionPreference="Continue"
+    $output = $(Get-AzureRmResourceGroup -Name "InvalidNonExistRocks" -Debug) 2>&1 5>&1 | Out-String
+    $ErrorActionPreference="Stop"
+    Assert-True { $output -Like "*============================ HTTP RESPONSE ============================*" }
+}

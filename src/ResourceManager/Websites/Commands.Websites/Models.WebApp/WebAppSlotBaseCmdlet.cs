@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.WebApps
         [ValidateNotNullOrEmpty]
         public Site WebApp { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
             {

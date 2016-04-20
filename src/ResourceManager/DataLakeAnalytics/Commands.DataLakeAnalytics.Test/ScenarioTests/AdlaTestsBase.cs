@@ -40,6 +40,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         internal string secondDataLakeStoreAccountName { get; set; }
         internal string azureBlobStoreName { get; set; }
         internal string azureBlobStoreAccessKey { get; set; }
+        internal string dbName { get; set; }
+        internal string tableName { get; set; }
+        internal string tvfName { get; set; }
+        internal string procName { get; set; }
+        internal string viewName { get; set; }
+        internal string secretName { get; set; }
+        internal string secretPwd { get; set; }
+        internal string credName { get; set; }
         internal const string resourceGroupLocation = "East US 2";
 
         private EnvironmentSetupHelper helper;
@@ -65,6 +73,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             this.dataLakeStoreAccountName = TestUtilities.GenerateName("datalake01");
             this.secondDataLakeStoreAccountName = TestUtilities.GenerateName("datalake02");
             this.azureBlobStoreName = TestUtilities.GenerateName("azureblob01");
+            this.dbName = TestUtilities.GenerateName("adladb01");
+            this.tableName = TestUtilities.GenerateName("adlatable01");
+            this.tvfName = TestUtilities.GenerateName("adlatvf01");
+            this.procName = TestUtilities.GenerateName("adlaproc01");
+            this.viewName = TestUtilities.GenerateName("adlaview01");
+            this.secretName = TestUtilities.GenerateName("adlasecret01");
+            this.secretPwd = TestUtilities.GenerateName("adlasecretpwd01");
+            this.credName = TestUtilities.GenerateName("adlacred01");
         }
 
         protected void SetupManagementClients()
@@ -74,7 +90,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                 resourceManagementClient, dataLakeStoreManagementClient, storageManagementClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(bool createWasbAccount, params string[] scripts)
         {
             using (UndoContext context = UndoContext.Current)
             {
@@ -86,10 +102,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                 this.TryCreateResourceGroup(this.resourceGroupName, resourceGroupLocation);
                 this.TryCreateDataLakeStoreAccount(this.resourceGroupName, this.dataLakeStoreAccountName, resourceGroupLocation);
                 this.TryCreateDataLakeStoreAccount(this.resourceGroupName, this.secondDataLakeStoreAccountName, resourceGroupLocation);
-                string storageSuffix;
-                this.azureBlobStoreAccessKey = this.TryCreateStorageAccount(this.resourceGroupName, this.azureBlobStoreName,
-                    "DataLakeAnalyticsTestStorage", "DataLakeAnalyticsTestStorageDescription", resourceGroupLocation,
-                    out storageSuffix);
+                if (createWasbAccount)
+                {
+                    string storageSuffix;
+                    this.azureBlobStoreAccessKey = this.TryCreateStorageAccount(this.resourceGroupName,
+                        this.azureBlobStoreName,
+                        "DataLakeAnalyticsTestStorage", "DataLakeAnalyticsTestStorageDescription", resourceGroupLocation,
+                        out storageSuffix);
+                }
+
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule, helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"));

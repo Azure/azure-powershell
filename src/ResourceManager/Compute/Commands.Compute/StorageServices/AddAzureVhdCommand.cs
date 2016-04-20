@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             return storageCredentialsFactory;
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var parameters = ValidateParameters();
             var vhdUploadContext = VhdUploaderModel.Upload(parameters);

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you delete an Azure web app
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMWebApp")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmWebApp")]
     public class RemoveAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
             
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.RemoveWebsiteWarning, Name),

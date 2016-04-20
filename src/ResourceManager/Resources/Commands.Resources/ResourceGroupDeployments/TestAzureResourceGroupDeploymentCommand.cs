@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
             this.Mode = DeploymentMode.Incremental;
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
             {

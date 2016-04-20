@@ -140,6 +140,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     ApplicationObjectId = Guid.Parse(application.ObjectId),
                     Type = application.ObjectType,
                     ApplicationId = Guid.Parse(application.AppId),
+                    IdentifierUris = application.IdentifierUris,
+                    DisplayName= application.DisplayName,
+                    ReplyUrls = application.ReplyUrls,
                     AppPermissions = application.AppPermissions,
                     AvailableToOtherTenants = application.AvailableToOtherTenants
                 };

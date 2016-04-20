@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get Azure servce plan metrics
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMAppServicePlanMetrics")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAppServicePlanMetrics")]
     public class GetAzureAppServicePlanMetricsCmdlet : AppServicePlanBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "Names of web app metrics")]
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public SwitchParameter InstanceDetails { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WriteObject(WebsitesClient.GetAppServicePlanHistoricalUsageMetrics(ResourceGroupName, Name, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));
         }
     }

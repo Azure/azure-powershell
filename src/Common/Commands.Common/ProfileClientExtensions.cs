@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Common.Authentication.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -28,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 Id = account.Id,
                 Type = account.Type,
                 Subscriptions = subscriptionsList == null ? "" : subscriptionsList.Replace(",", "\r\n"),
-                Tenants = tenantsList == null ? "" : tenantsList.Replace(",", "\r\n")
+                Tenants = tenantsList == null ? null : new List<string>(tenantsList.Split(new [] {","}, StringSplitOptions.RemoveEmptyEntries))
             };
         }
     }

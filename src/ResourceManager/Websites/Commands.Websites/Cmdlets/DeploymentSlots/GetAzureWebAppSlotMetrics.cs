@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// this commandlet will let you get Azure Web App slot metrics
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppSlotMetrics")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSlotMetrics")]
     public class GetAzureWebAppSlotMetricsCmdlet : WebAppSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "Names of web app metrics")]
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public SwitchParameter InstanceDetails { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, Slot, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));
         }
     }

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             PSTag tag = null;
 

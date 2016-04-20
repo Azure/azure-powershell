@@ -28,5 +28,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         public const string ProviderNamespaceHelpMessage = "Extension Provider Namespace";
         public const string ExtensionNameHelpMessage = "Extension Name";
         public const string VersionHelpMessage = "Extension Version";
+        public const string ExtensionIdHelpMessage = "Extension ID";
     }
 }

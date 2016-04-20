@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Hyak.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -107,6 +108,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
+            if (!TestAccount(resourceGroupName, accountName))
+            {
+                throw new InvalidOperationException(string.Format(Properties.Resources.AccountDoesNotExist, accountName));
+            }
+
             var response = _client.DataLakeStoreAccount.Delete(resourceGroupName, accountName);
 
             if (response.Status != OperationStatus.Succeeded)
@@ -116,6 +122,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             return response;
+        }
+
+        public bool TestAccount(string resourceGroupName, string accountName)
+        {
+            try
+            {
+                GetAccount(resourceGroupName, accountName);
+                return true;
+            }
+            catch (CloudException ex)
+            {
+                if (ex.Response != null && ex.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+
+                throw;
+            }
         }
 
         public DataLakeStoreAccount GetAccount(string resourceGroupName, string accountName)

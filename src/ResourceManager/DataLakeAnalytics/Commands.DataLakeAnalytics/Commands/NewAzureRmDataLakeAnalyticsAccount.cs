@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNull]
         public Hashtable[] Tags { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {
-                if (DataLakeAnalyticsClient.GetAcount(ResourceGroupName, Name) != null)
+                if (DataLakeAnalyticsClient.GetAccount(ResourceGroupName, Name) != null)
                 {
                     throw new CloudException(string.Format(Resources.DataLakeAnalyticsAccountExists, Name));
                 }

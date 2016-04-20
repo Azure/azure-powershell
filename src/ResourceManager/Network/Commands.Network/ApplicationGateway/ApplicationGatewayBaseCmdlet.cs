@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class ApplicationGatewayBaseCmdlet : NetworkBaseCmdlet
     {
-        public IApplicationGatewayOperations ApplicationGatewayClient
+        public IApplicationGatewaysOperations ApplicationGatewayClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.ApplicationGateways;
+                return NetworkClient.NetworkManagementClient.ApplicationGateways;
             }
         }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetApplicationGateway(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -56,14 +56,14 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSApplicationGateway GetApplicationGateway(string resourceGroupName, string name)
         {
-            var getApplicationGatewayResponse = this.ApplicationGatewayClient.Get(resourceGroupName, name);
+            var appGateway = this.ApplicationGatewayClient.Get(resourceGroupName, name);
 
-            var applicationGateway = Mapper.Map<PSApplicationGateway>(getApplicationGatewayResponse.ApplicationGateway);
-            applicationGateway.ResourceGroupName = resourceGroupName;
-            applicationGateway.Tag =
-                TagsConversionHelper.CreateTagHashtable(getApplicationGatewayResponse.ApplicationGateway.Tags);
+            var psApplicationGateway = Mapper.Map<PSApplicationGateway>(appGateway);
+            psApplicationGateway.ResourceGroupName = resourceGroupName;
+            psApplicationGateway.Tag =
+                TagsConversionHelper.CreateTagHashtable(appGateway.Tags);
 
-            return applicationGateway;
+            return psApplicationGateway;
         }
 
         public PSApplicationGateway ToPsApplicationGateway(ApplicationGateway appGw)

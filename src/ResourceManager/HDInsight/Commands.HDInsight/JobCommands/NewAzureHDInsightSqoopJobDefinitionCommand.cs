@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             job = new AzureHDInsightSqoopJobDefinition();
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var sqoopJob = GetSqoopJob();
 

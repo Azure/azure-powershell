@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             )]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                 ? Acl.GetAclSpec(false)
@@ -94,14 +94,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Resources.RemovingDataLakeStoreItemAcl, string.Empty, Path.FullyQualifiedPath),
-                    string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.FullyQualifiedPath),
-                    Path.FullyQualifiedPath,
-                    () => { DataLakeStoreFileSystemClient.RemoveAclEntries(Path.Path, Account, aclSpec); });
+                    string.Format(Resources.RemovingDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
+                    string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
+                    Path.OriginalPath,
+                    () => { DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec); });
             }
             else
             {
-                DataLakeStoreFileSystemClient.RemoveAclEntries(Path.Path, Account, aclSpec);
+                DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec);
             }
         }
     }

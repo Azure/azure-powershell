@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Profile
     [OutputType(typeof(PSAzureContext))]
     public class GetAzureRMContextCommand : AzureRMCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
         }

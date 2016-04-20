@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Profile
             _client.WarningLog = (s) => WriteWarning(s);
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var tenant = TenantId;
             if (!string.IsNullOrWhiteSpace(this.SubscriptionName))

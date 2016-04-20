@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string testPoolId = ScenarioTestHelpers.SharedPool;
 
         // Get from WATaskOSFamilyVersions table, which lags behind https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/
-        private const string specificOSVersion = "WA-GUEST-OS-4.22_201507-01"; 
+        private const string specificOSVersion = "WA-GUEST-OS-4.25_201510-01"; 
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -425,14 +425,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact(Skip = "WATaskOSFamilyVersions table appears to be out of date, re-record when updated")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestChangeOSVersionById()
         {
             TestChangeOSVersion(false);
         }
 
-        [Fact(Skip = "WATaskOSFamilyVersions table appears to be out of date, re-record when updated")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestChangeOSVersionPipeline()
         {

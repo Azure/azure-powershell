@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class VirtualMachineAccessExtensionContext : PSVirtualMachineExtension
     {
-
         public const string ExtensionDefaultPublisher = "Microsoft.Compute";
         public const string ExtensionDefaultName = "VMAccessAgent";
         public const string ExtensionDefaultVersion = "2.0";

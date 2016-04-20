@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public string AuthorizationRule { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // Get a notificationHub ConnectionString for the specified AuthorizationRule
             var keys = Client.GetNotificationHubListKeys(ResourceGroup, Namespace, NotificationHub, AuthorizationRule);

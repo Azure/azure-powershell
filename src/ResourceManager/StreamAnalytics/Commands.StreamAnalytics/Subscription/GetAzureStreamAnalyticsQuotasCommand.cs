@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         public string Location { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (Location != null && string.IsNullOrWhiteSpace(Location))
             {

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "Boolean that indicates whether the intelligence pack will be enabled or disabled.")]
         public bool Enabled { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject(OperationalInsightsClient.SetIntelligencePack(ResourceGroupName, WorkspaceName, IntelligencePackName, Enabled), true);
         }

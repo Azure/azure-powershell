@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using Microsoft.Azure.Commands.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -74,6 +75,42 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         None
     }
 
+
+    /// <summary>
+    /// Fabric type class.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    public class FabricProviders
+    {
+        /// <summary>
+        /// Unknown type.
+        /// </summary>
+        public const string Other = "Other";
+
+        /// <summary>
+        /// VMM server type.
+        /// </summary>
+        public const string VMM = "VMM";
+
+        /// <summary>
+        /// Azure fabric type.
+        /// </summary>
+        public const string Azure = "Azure";
+
+        /// <summary>
+        /// HyperVSite server type.
+        /// </summary>
+        public const string HyperVSite = "HyperVSite";
+
+        /// <summary>
+        /// InMage server type.
+        /// </summary>
+        public const string VCenter = "VCenter";
+    }
+
     /// <summary>
     /// The RP service error code that needs to be handled by portal.
     /// </summary>
@@ -86,15 +123,107 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     }
 
     /// <summary>
-    /// Error contract returned when some exception occurs in ASR REST API.
+    /// ARM specified Error
     /// </summary>
-    [SuppressMessage(
+    public class ARMError
+    {
+        /// <summary>
+        /// Gets ARM formatted exception.
+        /// </summary>
+        [JsonProperty(PropertyName = "error")]
+        public ARMException Error { get; private set; }
+    }
+
+    /// <summary>
+    /// ARM exception class.
+    /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
-        Justification = "Keeping all contracts together.")]
-    [DataContract]
-    public class ErrorInException : Error
+        Justification = "Keeping all related classes together.")]
+    public class ARMException
     {
+        /// <summary>
+        /// Gets HTTP status code for the error.
+        /// </summary>
+        [JsonProperty(PropertyName = "code")]
+        public string ErrorCode { get; private set; }
+
+        /// <summary>
+        /// Gets exception message.
+        /// </summary>
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; private set; }
+
+        /// <summary>
+        /// Gets exception target.
+        /// </summary>
+        [JsonProperty(PropertyName = "target", 
+            NullValueHandling = NullValueHandling.Ignore, 
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Target { get; private set; }
+
+        /// <summary>
+        /// Gets service based error details.
+        /// </summary>
+        [JsonProperty(PropertyName = "details")]
+        public List<ARMExceptionDetails> Details { get; private set; }
+    }
+
+    /// <summary>
+    /// Service based exception details.
+    /// </summary>
+    public class ARMExceptionDetails
+    {
+        /// <summary>
+        /// Gets service error code.
+        /// </summary>
+        [JsonProperty(PropertyName = "code")]
+        public string ErrorCode { get; private set; }
+
+        /// <summary>
+        /// Gets error message.
+        /// </summary>
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; private set; }
+
+        /// <summary>
+        /// Gets possible cause for error.
+        /// </summary>
+        [JsonProperty(PropertyName = "possibleCauses",
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string PossibleCauses { get; private set; }
+
+        /// <summary>
+        /// Gets recommended action for the error.
+        /// </summary>
+        [JsonProperty(PropertyName = "recommendedAction",
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string RecommendedAction { get; private set; }
+
+        /// <summary>
+        /// Gets the client request Id for the session.
+        /// </summary>
+        [JsonProperty(PropertyName = "clientRequestId",
+        NullValueHandling = NullValueHandling.Ignore,
+        DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ClientRequestId { get; private set; }
+
+        /// <summary>
+        /// Gets the activity Id for the session.
+        /// </summary>
+        [JsonProperty(PropertyName = "activityId")]
+        public string ActivityId { get; private set; }
+
+        /// <summary>
+        /// Gets exception target.
+        /// </summary>
+        [JsonProperty(PropertyName = "target",
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Target { get; private set; }
     }
 
     /// <summary>
@@ -348,14 +477,13 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="resourceName">resource name</param>
         /// <param name="managementCert">management cert</param>
         /// <param name="acsNamespace">authenticating service namespace</param>
-        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace, string resourceNamespace)
+        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
         {
             this.SubscriptionId = subscriptionId;
             this.ResourceType = Constants.ASRVaultType;
             this.ResourceName = resourceName;
             this.ManagementCert = managementCert;
             this.AcsNamespace = acsNamespace;
-            this.ResourceNamespace = resourceNamespace;
         }
 
         #endregion
@@ -391,12 +519,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         [DataMember(Order = 4)]
         public AcsNamespace AcsNamespace { get; set; }
 
-        /// <summary>
-        /// Gets or sets the key name for HostName entry
-        /// </summary>
-        [DataMember(Order = 5)]
-        public string ResourceNamespace { get; set; }
-
         #endregion
     }
 
@@ -426,7 +548,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="managementCert">management cert</param>
         /// <param name="acsNamespace">authenticating service  namespace</param>
         /// <param name="channelIntegrityKey">Agent Channel Integrity Key</param>
-        /// <param name="cloudServiceName">cloud service name</param>
+        /// <param name="resourceGroupName">cloud service name</param>
         /// <param name="siteId">custom site Id</param>
         /// <param name="siteName">custom site name</param>
         public ASRVaultCreds(
@@ -435,13 +557,22 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
             string managementCert,
             AcsNamespace acsNamespace,
             string channelIntegrityKey,
-            string cloudServiceName,
-            string resourceNamespace = "Microsoft.SiteRecovery")
-            : base(subscriptionId, resourceName, managementCert, acsNamespace, resourceNamespace)
+            string resourceGroupName,
+            string siteId,
+            string siteName,
+            string resourceNamespace,
+            string resourceType)
+            : base(subscriptionId, resourceName, managementCert, acsNamespace)
         {
             this.ChannelIntegrityKey = channelIntegrityKey;
-            this.ResourceGroupName = cloudServiceName;
+            this.ResourceGroupName = resourceGroupName;
             this.Version = Constants.VaultCredentialVersion;
+
+            this.SiteId = siteId != null ? siteId : string.Empty;
+            this.SiteName = siteName != null ? siteName : string.Empty;
+
+            this.ResourceNamespace = resourceNamespace;
+            this.ARMResourceType = resourceType;
         }
 
         #endregion
@@ -464,6 +595,30 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 2)]
         public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site Id
+        /// </summary>
+        [DataMember(Order = 3)]
+        public string SiteId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site name
+        /// </summary>
+        [DataMember(Order = 4)]
+        public string SiteName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Resource namespace
+        /// </summary>
+        [DataMember(Order = 5)]
+        public string ResourceNamespace { get; set; }
+
+        /// <summary>
+        /// Gets or sets Resource type
+        /// </summary>
+        [DataMember(Order = 6)]
+        public string ARMResourceType { get; set; }
 
         #endregion
     }
@@ -508,169 +663,8 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         public string ResourceProviderRealm { get; set; }
     }
 
-    ///// <summary>
-    ///// Hyper-V Replica specific protection profile Input.
-    ///// </summary>
-    //[DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    //public class HyperVReplicaSP1ProtectionProfileInput
-    //{
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the number of recovery points.
-    //    /// </summary>
-    //    [DataMember(Name = "recoveryPoints")]
-    //    public int RecoveryPoints { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the application consistent frequency.
-    //    /// </summary>
-    //    [DataMember(Name = "applicationConsistentSnapshotFrequencyInHours")]
-    //    public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating whether compression has to be enabled.
-    //    /// </summary>
-    //    [DataMember(Name = "compressionEnabled")]
-    //    public bool CompressionEnabled { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating whether IR is online.
-    //    /// </summary>
-    //    [DataMember(Name = "onlineReplicationMethod")]
-    //    public bool OnlineReplicationMethod { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the online IR start time.
-    //    /// </summary>
-    //    [DataMember(Name = "onlineReplicationStartTime")]
-    //    public TimeSpan? OnlineReplicationStartTime { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the offline IR import path.
-    //    /// </summary>
-    //    [DataMember(Name = "offlineReplicationImportPath")]
-    //    public string OfflineReplicationImportPath { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the offline IR export path.
-    //    /// </summary>
-    //    [DataMember(Name = "offlineReplicationExportPath")]
-    //    public string OfflineReplicationExportPath { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the recovery HTTPS port.
-    //    /// </summary>
-    //    [DataMember(Name = "replicationPort")]
-    //    public ushort ReplicationPort { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the authentication type.
-    //    /// </summary>
-    //    [DataMember(Name = "allowedAuthenticationType")]
-    //    public ushort AllowedAuthenticationType { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating whether the VM has to be auto deleted.
-    //    /// </summary>
-    //    [DataMember(Name = "allowReplicaDeletion")]
-    //    public bool AllowReplicaDeletion { get; set; }
-    //}
-
-    ///// <summary>
-    ///// Hyper-V Replica specific protection profile Input.
-    ///// </summary>
-    //[DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    //public class HyperVReplicaProtectionProfileInput : HyperVReplicaSP1ProtectionProfileInput
-    //{
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the replication interval.
-    //    /// </summary>
-    //    [DataMember(Name = "replicationFrequencyInSeconds")]
-    //    public ushort ReplicationFrequencyInSeconds { get; set; }
-    //}
-
-    ///// <summary>
-    ///// Hyper-V Replica specific protection profile details.
-    ///// </summary>
-    //[DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    //public class HyperVReplicaSP1ProtectionProfileDetails
-    //{
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the number of recovery points.
-    //    /// </summary>
-    //    [DataMember]
-    //    public int RecoveryPoints { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the application consistent frequency.
-    //    /// </summary>
-    //    [DataMember]
-    //    public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating whether compression has to be enabled.
-    //    /// </summary>
-    //    [DataMember]
-    //    public bool CompressionEnabled { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating whether IR is online.
-    //    /// </summary>
-    //    [DataMember]
-    //    public bool OnlineReplicationMethod { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the online IR start time.
-    //    /// </summary>
-    //    [DataMember]
-    //    public TimeSpan? OnlineReplicationStartTime { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the offline IR import path.
-    //    /// </summary>
-    //    [DataMember]
-    //    public string OfflineReplicationImportPath { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the offline IR export path.
-    //    /// </summary>
-    //    [DataMember]
-    //    public string OfflineReplicationExportPath { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the recovery HTTPS port.
-    //    /// </summary>
-    //    [DataMember]
-    //    public ushort ReplicationPort { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the authentication type.
-    //    /// </summary>
-    //    [DataMember]
-    //    public ushort AllowedAuthenticationType { get; set; }
-
-    //    /// <summary>
-    //    /// Gets or sets a value indicating whether the VM has to be auto deleted.
-    //    /// Supported Values: String.Empty, None, OnRecoveryCloud
-    //    /// </summary>
-    //    [DataMember]
-    //    public string ReplicaDeletionOption { get; set; }
-    //}
-
-    ///// <summary>
-    ///// Hyper-V Replica Blue specific protection profile details.
-    ///// </summary>
-    //[DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    //public class HyperVReplicaProtectionProfileDetails : HyperVReplicaSP1ProtectionProfileDetails
-    //{
-    //    /// <summary>
-    //    /// Gets or sets a value indicating the replication interval.
-    //    /// </summary>
-    //    [DataMember]
-    //    public ushort ReplicationFrequencyInSeconds { get; set; }
-    //}
-
     /// <summary>
-    /// Azure Site Recovery Protection Profile HyperVReplicaProviderSettings.
+    /// Azure Site Recovery Policy HyperVReplicaProviderSettings.
     /// </summary>
     [SuppressMessage(
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
@@ -700,7 +694,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <summary>
         /// Gets or sets Association Details.
         /// </summary>
-        public List<ASRProtectionProfileAssociationDetails> AssociationDetail { get; set; }
+        public List<ASRPolicyAssociationDetails> AssociationDetail { get; set; }
 
         /// <summary>
         /// Gets or sets Replication Frequency in seconds.
@@ -744,72 +738,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
 
         #endregion
     }
-
-//    /*
-//    /// <summary>
-//    /// Disk details for E2A provider.
-//    /// </summary>
-//    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-//    [SuppressMessage(
-//        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
-//        "SA1402:FileMayOnlyContainASingleClass",
-//        Justification = "Keeping all related classes together.")]
-//    public class AzureVmDiskDetails
-//    {
-//        /// <summary>
-//        /// Gets or sets the List of all Disk in VM.
-//        /// </summary>
-//        [DataMember]
-//        public string OsType { get; set; }
-
-//        /// <summary>
-//        /// Gets or sets the Type of OS “Windows|Linux” as set.
-//        /// </summary>
-//        [DataMember]
-//        public List<VirtualHardDisk> Disks { get; set; }
-
-//        /// <summary>
-//        /// Gets or sets the Name of OS Disk as set.
-//        /// </summary>
-//        [DataMember]
-//        public string OsDisk { get; set; }
-
-//        /// <summary>
-//        /// Gets or sets the VHD id.
-//        /// </summary>
-//        [DataMember]
-//        public string VHDId { get; set; }
-
-//        /// <summary>
-//        /// Gets or sets MaxSizeMB.
-//        /// </summary>
-//        [DataMember]
-//        public ulong MaxSizeMB { get; set; }
-//    }
-//    */
-
-//    /// <summary>
-//    /// Replication provider specific settings.
-//    /// </summary>
-//    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-//    [SuppressMessage(
-//        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
-//        "SA1402:FileMayOnlyContainASingleClass",
-//        Justification = "Keeping all related classes together.")]
-//    public class ReplicationProviderSpecificSettings
-//    {
-//        /// <summary>
-//        /// Gets or sets Azure VM Disk details.
-//        /// </summary>
-//        [DataMember]
-//        public AzureVmDiskDetails AzureVMDiskDetails { get; set; }
-
-//        /// <summary>
-//        /// Gets or sets VM properties.
-//        /// </summary>
-//        [DataMember]
-//        public VMProps VMProperties { get; set; }
-//    }
 }
 
 namespace Microsoft.Azure.Portal.HybridServicesCore

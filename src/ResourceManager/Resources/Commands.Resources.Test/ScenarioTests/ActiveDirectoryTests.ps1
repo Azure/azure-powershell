@@ -467,6 +467,29 @@ function Test-NewADApplication
 
     # Assert
     Assert-NotNull $application
+
+	# Get Application by ApplicationObjectId
+	$app1 =  Get-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId
+	Assert-NotNull $app1
+	Assert-AreEqual $app1.Count 1
+
+	# Get Application by ApplicationId
+	$app1 =  Get-AzureRmADApplication -ApplicationId $application.ApplicationId
+	Assert-NotNull $app1
+	Assert-AreEqual $app1.Count 1
+
+	# Get Application by IdentifierUri
+	$app1 = Get-AzureRmADApplication -IdentifierUri $application.IdentifierUris[0]
+	Assert-NotNull $app1
+	Assert-AreEqual $app1.Count 1
+
+	# Get Application by DisplayName
+	$app1 = Get-AzureRmADApplication -DisplayNameStartWith $application.DisplayName
+	Assert-NotNull $app1
+	Assert-True { $app1.Count -ge 1}
+
+	# Delete 
+	Remove-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId -Force
 }
 
 <#

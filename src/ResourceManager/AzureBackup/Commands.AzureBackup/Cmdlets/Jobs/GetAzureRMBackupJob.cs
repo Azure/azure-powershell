@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateSet("Backup", "ConfigureBackup", "DeleteBackupData", "Register", "Restore", "UnProtect", "Unregister")]
         public string Operation { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {

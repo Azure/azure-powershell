@@ -73,14 +73,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var powerShellSourcePath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
 
             if (Directory.Exists(powerShellSourcePath))
             {
                 DataLakeStoreFileSystemClient.CopyDirectory(
-                    Destination.Path,
+                    Destination.TransformedPath,
                     Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             else if (File.Exists(powerShellSourcePath))
             {
                 DataLakeStoreFileSystemClient.CopyFile(
-                    Destination.Path,
+                    Destination.TransformedPath,
                     Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             // only attempt to write output if this cmdlet hasn't been cancelled.
             if (!CmdletCancellationToken.IsCancellationRequested && !Stopping)
             {
-                WriteObject(Destination.FullyQualifiedPath);
+                WriteObject(Destination.OriginalPath);
             }
         }
     }

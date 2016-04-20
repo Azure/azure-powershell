@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.WebApps
         [ValidateNotNullOrEmpty]
         public ServerFarmWithRichSku AppServicePlan { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (string.Equals(ParameterSetName, ParameterSet2Name, StringComparison.OrdinalIgnoreCase))
             {
