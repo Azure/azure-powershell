@@ -13,7 +13,7 @@ function Get-AzureRmStorageAccount
   PROCESS {
     $getTask = $client.StorageAccounts.GetPropertiesAsync($ResourceGroupName, $name, [System.Threading.CancellationToken]::None)
 	$sa = $getTask.Result
-	$account = Get-StorageAccount $sa $ResourceGroupName
+	$account = Get-StorageAccount $ResourceGroupName $Name
 	Write-Output $account
   }
   END {}
@@ -38,8 +38,6 @@ function New-AzureRmStorageAccount
 	$createParms.Location = $Location
     $getTask = $client.StorageAccounts.CreateAsync($ResourceGroupName, $name, $createParms, [System.Threading.CancellationToken]::None)
 	$sa = $getTask.Result
-	$account = Get-StorageAccount $ResourceGroupName $Name
-	Write-Output $account
   }
   END {}
 
@@ -88,6 +86,9 @@ function Get-StorageClient
 
 function Get-StorageAccount {
   param([string] $resourceGroupName, [string] $name)
-  $sa = New-Object PSObject -Property @{"Name" = $name; "ResourceGroupName" = $resourceGroupName}
+	$endpoints = New-Object PSObject -Property @{"Blob" = "https://$name.blob.core.windows.net/"}
+  $sa = New-Object PSObject -Property @{"Name" = $name; "ResourceGroupName" = $resourceGroupName; 
+	  "PrimaryEndpoints" = $endpoints
+  }
   return $sa
 }
