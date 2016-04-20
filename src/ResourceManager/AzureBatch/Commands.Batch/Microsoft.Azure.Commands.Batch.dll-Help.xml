@@ -189,7 +189,7 @@
             <maml:para>For example:</maml:para>
             <maml:para>-DisableSchedulingOption "TaskCompletion"</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -227,7 +227,7 @@
             <maml:para>For example:</maml:para>
             <maml:para>-DisableSchedulingOption "TaskCompletion"</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -285,9 +285,9 @@
           <maml:para>For example:</maml:para>
           <maml:para>-DisableSchedulingOption "TaskCompletion"</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption</command:parameterValue>
         <dev:type>
-          <maml:name>DisableComputeNodeSchedulingOption]</maml:name>
+          <maml:name>DisableComputeNodeSchedulingOption</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -7029,7 +7029,7 @@
           <maml:description>
             <maml:para>Specifies the target number of compute nodes to allocate to the pool.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>TaskSchedulingPolicy</maml:name>
@@ -8433,7 +8433,7 @@
           <maml:description>
             <maml:para>Specifies a deallocation option for the removal operation that this cmdlet starts. The default value is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
@@ -8446,7 +8446,7 @@
           <maml:description>
             <maml:para>Specifies the time-out interval for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -8470,7 +8470,7 @@
           <maml:description>
             <maml:para>Specifies a deallocation option for the removal operation that this cmdlet starts. The default value is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
@@ -8483,7 +8483,7 @@
           <maml:description>
             <maml:para>Specifies the time-out interval for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -8524,9 +8524,9 @@
         <maml:description>
           <maml:para>Specifies a deallocation option for the removal operation that this cmdlet starts. The default value is Requeue.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         <dev:type>
-          <maml:name>ComputeNodeDeallocationOption]</maml:name>
+          <maml:name>ComputeNodeDeallocationOption</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -8572,9 +8572,9 @@
         <maml:description>
           <maml:para>Specifies the time-out interval for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         <dev:type>
-          <maml:name>TimeSpan]</maml:name>
+          <maml:name>TimeSpan</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -8713,21 +8713,21 @@
   <command:syntax>
     <command:syntaxItem>
       <maml:name>Get-AzureRmBatchApplication</maml:name>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para></maml:para>
@@ -8738,7 +8738,7 @@
   </command:syntax>
   <!-- Cmdlet parameter section  -->
   <command:parameters>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -8750,7 +8750,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -8762,7 +8762,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -8848,28 +8848,28 @@
   <command:syntax>
     <command:syntaxItem>
       <maml:name>Get-AzureRmBatchApplicationPackage</maml:name>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
           <maml:para></maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
           <maml:para></maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationVersion</maml:name>
         <maml:description>
           <maml:para></maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para></maml:para>
@@ -8880,7 +8880,7 @@
   </command:syntax>
   <!-- Cmdlet parameter section  -->
   <command:parameters>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
         <maml:para></maml:para>                
@@ -8892,7 +8892,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
         <maml:para></maml:para>                
@@ -8904,7 +8904,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
         <maml:para></maml:para>                
@@ -8916,7 +8916,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
         <maml:para></maml:para>                
@@ -9003,42 +9003,42 @@
   <command:syntax>
     <command:syntaxItem>
       <maml:name>New-AzureRmBatchApplicationPackage</maml:name>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationVersion</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>FilePath</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Format</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para></maml:para>
@@ -9049,7 +9049,7 @@
   </command:syntax>
   <!-- Cmdlet parameter section  -->
   <command:parameters>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9061,7 +9061,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9073,7 +9073,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9085,7 +9085,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>FilePath</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9097,7 +9097,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>Format</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9109,7 +9109,7 @@
       </dev:type>
       <dev:defaultValue>TODO:IVAN</dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9195,7 +9195,7 @@
   <command:syntax>
     <command:syntaxItem>
       <maml:name>New-AzureRmBatchApplication</maml:name>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
@@ -9207,9 +9207,9 @@
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
@@ -9221,9 +9221,9 @@
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para></maml:para>
@@ -9234,7 +9234,7 @@
   </command:syntax>
   <!-- Cmdlet parameter section  -->
   <command:parameters>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>
@@ -9251,14 +9251,14 @@
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>
       </maml:description>
-      <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
+      <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
       <dev:type>
         <maml:name>bool?</maml:name>
         <maml:uri/>
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>
@@ -9275,14 +9275,14 @@
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>
       </maml:description>
-      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       <dev:type>
         <maml:name>string</maml:name>
         <maml:uri/>
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9368,28 +9368,28 @@
   <command:syntax>
     <command:syntaxItem>
       <maml:name>Remove-AzureRmBatchApplicationPackage</maml:name>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationVersion</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
@@ -9400,7 +9400,7 @@
   </command:syntax>
   <!-- Cmdlet parameter section  -->
   <command:parameters>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9412,7 +9412,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9424,7 +9424,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9436,7 +9436,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9522,21 +9522,21 @@
   <command:syntax>
     <command:syntaxItem>
       <maml:name>Remove-AzureRmBatchApplication</maml:name>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
@@ -9547,7 +9547,7 @@
   </command:syntax>
   <!-- Cmdlet parameter section  -->
   <command:parameters>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9559,7 +9559,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9571,7 +9571,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9657,7 +9657,7 @@
   <command:syntax>
     <command:syntaxItem>
       <maml:name>Set-AzureRmBatchApplication</maml:name>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
@@ -9669,9 +9669,9 @@
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
@@ -9683,16 +9683,16 @@
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DisplayName</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para>TODO:IVAN</maml:para>
@@ -9703,7 +9703,7 @@
   </command:syntax>
   <!-- Cmdlet parameter section  -->
   <command:parameters>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9720,14 +9720,14 @@
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
-      <command:parameterValue required="true" variableLength="false">bool?</command:parameterValue>
+      <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
       <dev:type>
         <maml:name>bool?</maml:name>
         <maml:uri/>
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -9744,7 +9744,7 @@
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
-      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       <dev:type>
         <maml:name>string</maml:name>
         <maml:uri/>
@@ -9756,14 +9756,14 @@
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
       </maml:description>
-      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       <dev:type>
         <maml:name>string</maml:name>
         <maml:uri/>
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
         <maml:para>TODO:IVAN</maml:para>                
@@ -11325,7 +11325,7 @@
           <maml:description>
             <maml:para>Specifies when to reimage the node and what to do with currently running tasks. The default is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -11349,7 +11349,7 @@
           <maml:description>
             <maml:para>Specifies when to reimage the node and what to do with currently running tasks. The default is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -11414,9 +11414,9 @@
         <maml:description>
           <maml:para>Specifies when to reimage the node and what to do with currently running tasks. The default is Requeue.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption</command:parameterValue>
         <dev:type>
-          <maml:name>ComputeNodeReimageOption]</maml:name>
+          <maml:name>ComputeNodeReimageOption</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -11553,7 +11553,7 @@
           <maml:description>
             <maml:para>Specifies when to reboot the node and what to do with currently running tasks. The default is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -11577,7 +11577,7 @@
           <maml:description>
             <maml:para>Specifies when to reboot the node and what to do with currently running tasks. The default is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -11642,9 +11642,9 @@
         <maml:description>
           <maml:para>Specifies when to reboot the node and what to do with currently running tasks. The default is Requeue.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption</command:parameterValue>
         <dev:type>
-          <maml:name>ComputeNodeRebootOption]</maml:name>
+          <maml:name>ComputeNodeRebootOption</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -12924,14 +12924,14 @@
           <maml:description>
             <maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ResizeTimeout</maml:name>
           <maml:description>
             <maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -12967,9 +12967,9 @@
         <maml:description>
           <maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         <dev:type>
-          <maml:name>ComputeNodeDeallocationOption]</maml:name>
+          <maml:name>ComputeNodeDeallocationOption</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -12991,9 +12991,9 @@
         <maml:description>
           <maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         <dev:type>
-          <maml:name>TimeSpan]</maml:name>
+          <maml:name>TimeSpan</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
