@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime StartTime
+        public System.TimeSpan DedicatedCoreTime
         {
             get
             {
-                return this.omObject.StartTime;
+                return this.omObject.DedicatedCoreTime;
             }
         }
         
@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.TimeSpan DedicatedCoreTime
+        public System.DateTime StartTime
         {
             get
             {
-                return this.omObject.DedicatedCoreTime;
+                return this.omObject.StartTime;
             }
         }
     }

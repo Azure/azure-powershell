@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -22,7 +22,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.Rest.Azure;
 using Xunit;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
@@ -56,8 +58,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             cmdlet.Filter = null;
 
             // Build a compute node instead of querying the service on a Get ComputeNode call
-            ComputeNodeGetResponse response = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetParameters, ComputeNodeGetResponse>(response);
+            AzureOperationResponse<ProxyModels.ComputeNode, ProxyModels.ComputeNodeGetHeaders> response = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.ComputeNodeGetOptions, 
+                AzureOperationResponse<ProxyModels.ComputeNode, ProxyModels.ComputeNodeGetHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -85,11 +90,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string requestSelect = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            ComputeNodeGetResponse getResponse = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetParameters, ComputeNodeGetResponse>(getResponse);
+            AzureOperationResponse<ProxyModels.ComputeNode, ProxyModels.ComputeNodeGetHeaders> getResponse = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.ComputeNodeGetOptions, 
+                AzureOperationResponse<ProxyModels.ComputeNode, ProxyModels.ComputeNodeGetHeaders>>(getResponse);
+
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                ProxyModels.ComputeNodeGetOptions computeNodeOptions = (ProxyModels.ComputeNodeGetOptions) request.Options;
+                requestSelect = computeNodeOptions.Select;
 
                 return Task.FromResult(response);
             });
@@ -115,16 +124,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string requestFilter = null;
             string requestSelect = null;
 
-            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeListParameters, ComputeNodeListResponse>();
-            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
-            {
-                requestFilter = request.Parameters.DetailLevel.FilterClause;
-                requestSelect = request.Parameters.DetailLevel.SelectClause;
+            AzureOperationResponse<IPage<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders> response = 
+                BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.ComputeNode, ProxyModels.ComputeNodeListHeaders>();
 
-                return Task.FromResult(response);
-            });
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
+            Action<BatchRequest<ProxyModels.ComputeNodeListOptions, AzureOperationResponse<IPage<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders>>> listComputeNodeAction =
+                (request) =>
+                {
+                    ProxyModels.ComputeNodeListOptions options = (ProxyModels.ComputeNodeListOptions)request.Options;
+
+                    requestFilter = options.Filter;
+                    requestSelect = options.Select;
+                };
+
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.ComputeNodeListOptions, AzureOperationResponse<IPage<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders>>(response, listComputeNodeAction);
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor };
 
             cmdlet.ExecuteCmdlet();
 
@@ -146,8 +160,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string[] idsOfConstructedComputeNodes = new[] { "computeNode1", "computeNode2", "computeNode3" };
 
             // Build some compute nodes instead of querying the service on a List ComputeNodes call
-            ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeListParameters, ComputeNodeListResponse>(response);
+            AzureOperationResponse<IPage<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders> response = 
+                BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.ComputeNodeListOptions, 
+                AzureOperationResponse<IPage<ProxyModels.ComputeNode>, 
+                ProxyModels.ComputeNodeListHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -188,8 +207,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string[] idsOfConstructedComputeNodes = new[] { "computeNode1", "computeNode2", "computeNode3" };
 
             // Build some compute nodes instead of querying the service on a List ComputeNodes call
-            ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeListParameters, ComputeNodeListResponse>(response);
+            AzureOperationResponse<IPage<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders> response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.ComputeNodeListOptions, 
+                AzureOperationResponse<IPage<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

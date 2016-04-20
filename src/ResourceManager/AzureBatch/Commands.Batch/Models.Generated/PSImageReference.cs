@@ -29,14 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSAutoScaleEvaluation
+    public class PSImageReference
     {
         
-        internal Microsoft.Azure.Batch.AutoScaleEvaluation omObject;
+        internal Microsoft.Azure.Batch.ImageReference omObject;
         
-        private PSAutoScaleRun autoScaleRun;
+        public PSImageReference(string offer, string publisher, string skuId, string version = null)
+        {
+            this.omObject = new Microsoft.Azure.Batch.ImageReference(offer, publisher, skuId, version);
+        }
         
-        internal PSAutoScaleEvaluation(Microsoft.Azure.Batch.AutoScaleEvaluation omObject)
+        internal PSImageReference(Microsoft.Azure.Batch.ImageReference omObject)
         {
             if ((omObject == null))
             {
@@ -45,24 +48,35 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public PSAutoScaleRun AutoScaleRun
+        public string Offer
         {
             get
             {
-                if (((this.autoScaleRun == null) 
-                            && (this.omObject.AutoScaleRun != null)))
-                {
-                    this.autoScaleRun = new PSAutoScaleRun(this.omObject.AutoScaleRun);
-                }
-                return this.autoScaleRun;
+                return this.omObject.Offer;
             }
         }
         
-        public string DataServiceId
+        public string Publisher
         {
             get
             {
-                return this.omObject.DataServiceId;
+                return this.omObject.Publisher;
+            }
+        }
+        
+        public string SkuId
+        {
+            get
+            {
+                return this.omObject.SkuId;
+            }
+        }
+        
+        public string Version
+        {
+            get
+            {
+                return this.omObject.Version;
             }
         }
     }

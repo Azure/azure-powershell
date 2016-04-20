@@ -24,23 +24,27 @@ function Test-ApplicationGatewayCRUD
 	$resourceTypeParent = "Microsoft.Network/applicationgateways"
 	$location = Get-ProviderLocation $resourceTypeParent
 
-	$rgname = "rg01"
-	$appgwName = "appgw01"
-	$vnetName = "vnet01"
-	$subnetName = "subnet01"
-	$publicIpName = "publicip01"
-	$gipconfigname = "gatewayip01"
-	$fipconfig01Name = "frontendip01"
-	$fipconfig02Name = "frontendip02"
-	$poolName = "pool01"
-	$frontendPort01Name = "frontendport01"
-	$frontendPort02Name = "frontendport02"
-	$poolSetting01Name = "setting01"
-	$poolSetting02Name = "setting02"
-	$listener01Name = "listener01"
-	$listener02Name = "listener02"
-	$rule01Name = "rule01"
-	$rule02Name = "rule02"
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$nicSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+	$fipconfig01Name = Get-ResourceName
+	$fipconfig02Name = Get-ResourceName
+	$poolName = Get-ResourceName
+	$nicPoolName = Get-ResourceName
+	$frontendPort01Name = Get-ResourceName
+	$frontendPort02Name = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+	$poolSetting02Name = Get-ResourceName
+	$listener01Name = Get-ResourceName
+	$listener02Name = Get-ResourceName
+	$rule01Name = Get-ResourceName
+	$rule02Name = Get-ResourceName
+	$nic01Name = Get-ResourceName
+	$nic02Name = Get-ResourceName
     
 	try 
 	{
@@ -48,21 +52,30 @@ function Test-ApplicationGatewayCRUD
 		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{Name = "testtag"; Value = "APPGw tag"} 
       
 		# Create the Virtual Network
-		$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-		$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+		$gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$nicSubnet = New-AzureRmVirtualNetworkSubnetConfig  -Name $nicSubnetName -AddressPrefix 10.0.2.0/24
+		$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
 		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-		$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
- 
+		$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+ 		$nicSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $nicSubnetName -VirtualNetwork $vnet
+
 		# Create public ip
 		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
+		#$publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName 
+
+		# create 2 nics to add to backend
+		$nic01 = New-AzureRmNetworkInterface -Name $nic01Name -ResourceGroupName $rgname -Location $location -Subnet $nicSubnet
+        $nic02 = New-AzureRmNetworkInterface -Name $nic02Name -ResourceGroupName $rgname -Location $location -Subnet $nicSubnet
 
 		# Create application gateway configuration
-		$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $subnet
+		$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
 
 		$fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfig01Name -PublicIPAddress $publicip
-		$fipconfig02 = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfig02Name  -Subnet $subnet
+		$fipconfig02 = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfig02Name  -Subnet $gwSubnet
 
 		$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
+		# Add an empty backend address pool
+		$nicPool = New-AzureRmApplicationGatewayBackendAddressPool -Name $nicPoolName
 
 		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
 		$fp02 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort02Name  -Port 8080
@@ -79,22 +92,30 @@ function Test-ApplicationGatewayCRUD
 		$sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01, $poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01, $poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku
 
 		# Get Application Gateway
 		$getgw =  Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
+		# add nics to application gateway backend address pool
+		$nicPool = Get-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $getgw -Name $nicPoolName
+        $nic01.IpConfigurations[0].ApplicationGatewayBackendAddressPools.Add($nicPool);
+        $nic02.IpConfigurations[0].ApplicationGatewayBackendAddressPools.Add($nicPool);
+
+		 # set the nics
+        $nic01 = $nic01 | Set-AzureRmNetworkInterface
+        $nic02 = $nic02 | Set-AzureRmNetworkInterface
 
 		# Add probe, request timeout, multi-hosting, URL routing to an exisitng gateway
 		# Probe, request timeout, multi-site and URL routing are optional.
-		$probeName = "probe01"
-		$frontendPort03Name = "frontendport03"
-		$poolSetting03Name = "setting03"
-		$listener03Name = "listener03"
-		$rule03Name = "rule03"
-		$PathRule01Name = "pathrule01"
-		$PathRule02Name = "pathrule02"
-		$urlPathMapName = "urlpathmap01"
+		$probeName = Get-ResourceName
+		$frontendPort03Name = Get-ResourceName
+		$poolSetting03Name = Get-ResourceName
+		$listener03Name = Get-ResourceName
+		$rule03Name = Get-ResourceName
+		$PathRule01Name = Get-ResourceName
+		$PathRule02Name = Get-ResourceName
+		$urlPathMapName = Get-ResourceName
 
 		# Adding new frontend port
 		$getgw = Add-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $getgw -Name $frontendPort03Name  -Port 8888

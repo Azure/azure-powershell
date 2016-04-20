@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayBackendAddressPool : PSChildResource
      {
-        public List<PSApplicationGatewayBackendAddress> BackendAddresses { get; set; }      
+        public List<PSApplicationGatewayBackendAddress> BackendAddresses { get; set; }
 
-        public List<PSResourceId> BackendIpConfigurations { get; set; }
+        public List<PSNetworkInterfaceIPConfiguration> BackendIpConfigurations { get; set; }
 
         public string ProvisioningState { get; set; }
 
@@ -36,6 +36,11 @@ namespace Microsoft.Azure.Commands.Network.Models
          public string BackendIpConfigurationsText
          {
              get { return JsonConvert.SerializeObject(BackendIpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+         }
+
+         public bool ShouldSerializeBackendIpConfigurations()
+         {
+             return !string.IsNullOrEmpty(this.Name);
          }
      }
 }
