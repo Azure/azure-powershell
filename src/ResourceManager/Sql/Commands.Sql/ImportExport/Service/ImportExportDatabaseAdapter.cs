@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// Creates a new export request
         /// </summary>
         /// <param name="exportRequest">Export request parameters</param>
-        /// <returns>Oprtation response including the OperationStatusLink to get the operation status</returns>
+        /// <returns>Operation response including the OperationStatusLink to get the operation status</returns>
         public AzureSqlDatabaseImportExportBaseModel Export(AzureSqlDatabaseImportExportBaseModel exportRequest)
         {
             ExportRequestParameters parameters = new ExportRequestParameters()
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// Creates a new import request
         /// </summary>
         /// <param name="importRequest">Import request parameters</param>
-        /// <returns>Oprtation response including the OperationStatusLink to get the operation status</returns>
+        /// <returns>Operation response including the OperationStatusLink to get the operation status</returns>
         public AzureSqlDatabaseImportExportBaseModel Import(AzureSqlDatabaseImportModel importRequest)
         {
             ImportRequestParameters parameters = new ImportRequestParameters()
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// Gets the status of an import/export operation
         /// </summary>
         /// <param name="operationStatusLink">The operation status link</param>
-        /// <returns>Oprtation status response</returns>
+        /// <returns>Operation status response</returns>
         public AzureSqlDatabaseImportExportStatusModel GetStatus(string operationStatusLink)
         {
             ImportExportOperationStatusResponse resposne = Communicator.GetStatus(operationStatusLink, Util.GenerateTracingId());

@@ -295,5 +295,9 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
               importBacpacUri = $importBacpacUri;
               location = "Australia East";
               version = "12.0";
+              databaseEdition = "Standard";
+              serviceObjectiveName = "S0";
+              databaseMaxSizeBytes = "5000000";
+              authType = "Sql";
              }
 }
