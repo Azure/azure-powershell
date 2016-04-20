@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage;
+    using System.Globalization;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.QueueSas), OutputType(typeof(String))]
     public class NewAzureStorageQueueSasTokenCommand : StorageQueueBaseCmdlet
@@ -136,39 +137,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime, out accessStartTime, out accessEndTime, shouldSetExpiryTime);
             policy.SharedAccessStartTime = accessStartTime;
             policy.SharedAccessExpiryTime = accessEndTime;
-            SetupAccessPolicyPermission(policy, Permission);
-        }
-
-        /// <summary>
-        /// Set up access policy permission
-        /// </summary>
-        /// <param name="policy">SharedAccessBlobPolicy object</param>
-        /// <param name="permission">Permisson</param>
-        internal void SetupAccessPolicyPermission(SharedAccessQueuePolicy policy, string permission)
-        {
-            if (string.IsNullOrEmpty(permission)) return;
-            policy.Permissions = SharedAccessQueuePermissions.None;
-            permission = permission.ToLower();
-            foreach (char op in permission)
-            {
-                switch(op)
-                {
-                    case StorageNouns.Permission.Read:
-                        policy.Permissions |= SharedAccessQueuePermissions.Read;
-                        break;
-                    case StorageNouns.Permission.Add:
-                        policy.Permissions |= SharedAccessQueuePermissions.Add;
-                        break;
-                    case StorageNouns.Permission.Update:
-                        policy.Permissions |= SharedAccessQueuePermissions.Update;
-                        break;
-                    case StorageNouns.Permission.Process:
-                        policy.Permissions |= SharedAccessQueuePermissions.ProcessMessages;
-                        break;
-                    default:
-                        throw new ArgumentException(string.Format(Resources.InvalidAccessPermission, op));
-                }
-            }
+            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
         }
     }
 }
