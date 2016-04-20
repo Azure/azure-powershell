@@ -91,8 +91,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             BackupEngineListQueryParams queryParams = new BackupEngineListQueryParams();
 
-            queryParams.ProviderType = ProviderType.DPM.ToString();
-
             var listResponse = HydraAdapter.ListBackupEngines(queryParams);
 
             List<AzureRmRecoveryServicesBackupEngineBase> backupEngineModels = ConversionHelpers.GetBackupEngineModelList(listResponse);

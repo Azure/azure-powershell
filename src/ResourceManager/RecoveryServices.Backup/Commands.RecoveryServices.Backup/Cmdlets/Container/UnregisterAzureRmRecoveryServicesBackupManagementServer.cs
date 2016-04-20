@@ -38,8 +38,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
             {
                 base.ExecuteCmdlet();
 
-                if ((AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.DpmBackupEngine.ToString() && AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.AzureBackupServerEngine.ToString())||
-                    AzureRmBackupManagementServer.BackupManagementType != BackupManagementType.SCDPM)
+                if ((AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.DpmBackupEngine.ToString() && 
+                    AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.AzureBackupServerEngine.ToString())||
+                    AzureRmBackupManagementServer.BackupManagementType.ToString() != BackupManagementServerType.SCDPM.ToString() &&
+                    AzureRmBackupManagementServer.BackupManagementType.ToString() != BackupManagementServerType.AzureBackupServer.ToString())
                 {
                     throw new ArgumentException(String.Format(Resources.UnsupportedAzureRmBackupManagementServerException, AzureRmBackupManagementServer.BackupEngineType, AzureRmBackupManagementServer.BackupManagementType));
                 }

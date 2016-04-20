@@ -57,6 +57,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     backupEngineModel = new AzureRmRecoveryServicesDpmBackupEngine(backupEngine);
                 }
+                else if (backupEngine.Properties.GetType() == (typeof(AzureBackupServerEngine)))
+                {
+                    backupEngineModel = new AzureRmRecoveryServicesAzureBackupServerEngine(backupEngine);
+                }
             }
 
             return backupEngineModel;
