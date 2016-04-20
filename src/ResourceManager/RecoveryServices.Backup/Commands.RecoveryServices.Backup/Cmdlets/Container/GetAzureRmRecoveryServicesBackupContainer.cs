@@ -57,19 +57,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                BackupManagementType? backupManagementTypeNullable = null;
                 BackupManagementType backupManagementType;
-                Enum.TryParse<BackupManagementType>(BackupManagementType, out backupManagementType);
+                if (BackupManagementType != null)
+                {
+                    Enum.TryParse<BackupManagementType>(BackupManagementType, out backupManagementType);
+                    backupManagementTypeNullable = backupManagementType;
+                }
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {  
                     {ContainerParams.ContainerType, ContainerType},
-                    {ContainerParams.BackupManagementType, backupManagementType},
+                    {ContainerParams.BackupManagementType, backupManagementTypeNullable},
                     {ContainerParams.Name, Name},
                     {ContainerParams.ResourceGroupName, ResourceGroupName},
                     {ContainerParams.Status, Status},
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType, backupManagementType);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType, backupManagementTypeNullable);
                 var containerModels = psBackupProvider.ListProtectionContainers();
 
                 if (containerModels.Count == 1)
