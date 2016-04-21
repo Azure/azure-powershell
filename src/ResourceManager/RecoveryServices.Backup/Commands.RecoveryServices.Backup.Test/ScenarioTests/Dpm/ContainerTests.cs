@@ -27,16 +27,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetDpmContainerScenario()
+        public void TestGetBackupManagementServer()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.Mab.ToString(), "Test-GetContainerScenario");
+            this.RunPowerShellTest(PsBackupProviderTypes.Dpm.ToString(), "Test-GetContainerScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUnregisterDpmContainerScenario()
+        public void TestUnregisterDpmContainer()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.Mab.ToString(), "Test-GetContainerScenario");
+            this.RunPowerShellTest(PsBackupProviderTypes.Dpm.ToString(), "Test-UnregisterContainerScenario");
         }
     }
 }

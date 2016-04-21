@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
         /// <returns></returns>
         public IEnumerable<ProtectionContainerResource> ListContainers(ProtectionContainerListQueryParams queryParams)
         {
-            var listResponse = BmsAdapter.Client.Container.ListAsync(BmsAdapter.GetResourceGroupName(), BmsAdapter.GetResourceName(), queryParams,
+            var listResponse = BmsAdapter.Client.Containers.ListAsync(BmsAdapter.GetResourceGroupName(), BmsAdapter.GetResourceName(), queryParams,
                 BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
             return listResponse.ItemList.ProtectionContainers;
         }
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
         {
             PaginationRequest paginationParam = new PaginationRequest();
             paginationParam.Top = "200";
-            var listResponse = BmsAdapter.Client.BackupEngine.ListAsync(BmsAdapter.GetResourceGroupName(), BmsAdapter.GetResourceName(), queryParams, paginationParam,
+            var listResponse = BmsAdapter.Client.BackupEngines.ListAsync(BmsAdapter.GetResourceGroupName(), BmsAdapter.GetResourceName(), queryParams, paginationParam,
                 BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
             return listResponse.ItemList.BackupEngines;
         }
@@ -57,8 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
-            var response = BmsAdapter.Client.Container.RefreshAsync(
+            var response = BmsAdapter.Client.Containers.RefreshAsync(
                 resourceGroupName, resourceName,
                 BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, BmsAdapter.CmdletCancellationToken).Result;
             return response;
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             
-            var response = BmsAdapter.Client.Container.UnregisterAsync(
+            var response = BmsAdapter.Client.Containers.UnregisterAsync(
                 resourceGroupName, resourceName, containerName,
                 BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
             return response;

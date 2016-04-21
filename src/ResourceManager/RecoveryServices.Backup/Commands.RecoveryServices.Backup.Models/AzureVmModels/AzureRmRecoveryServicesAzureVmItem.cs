@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Protection State of the item
         /// </summary>
-        public ItemStatus ProtectionState { get; set; }
+        public ItemProtectionState ProtectionState { get; set; }
 
         /// <summary>
         /// Last Backup Status for the item
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             AzureIaaSVMProtectedItem protectedItem = (AzureIaaSVMProtectedItem)protectedItemResource.Properties;
             LastBackupStatus = protectedItem.LastBackupStatus;
             ProtectionPolicyName = policyName;
-            ProtectionState = EnumUtils.GetEnum<ItemStatus>(protectedItem.ProtectionState);
+            ProtectionState = EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState);
             ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
             VirtualMachineId = protectedItem.VirtualMachineId;
         }

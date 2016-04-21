@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1b0681a4-6f0c-4086-b38a-c93cc768a8bc-2016-04-18 11:10:45Z-P"
+          "5910d881-e7c8-4f1c-913c-8a1dfdc93c52-2016-04-21 05:14:26Z-P"
         ],
         "x-ms-version": [
           "2015-01-01"
@@ -31,28 +31,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8c8c1bf8-7255-407c-adfb-186205cb074f"
+          "9cf46239-ad3f-4ea3-b723-132704be0881"
         ],
         "x-ms-client-request-id": [
-          "1b0681a4-6f0c-4086-b38a-c93cc768a8bc-2016-04-18 11:10:45Z-P"
+          "5910d881-e7c8-4f1c-913c-8a1dfdc93c52-2016-04-21 05:14:26Z-P"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14201"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "8c8c1bf8-7255-407c-adfb-186205cb074f"
+          "9cf46239-ad3f-4ea3-b723-132704be0881"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160418T111046Z:8c8c1bf8-7255-407c-adfb-186205cb074f"
+          "CENTRALUS:20160421T051429Z:9cf46239-ad3f-4ea3-b723-132704be0881"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 18 Apr 2016 11:10:46 GMT"
+          "Thu, 21 Apr 2016 05:14:28 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -67,7 +67,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8dbf07d7-907a-47fa-84f4-10c600b70646-2016-04-18 11:10:47Z-P"
+          "1f9f5067-f449-4dce-83dd-c96d786835c0-2016-04-21 05:14:29Z-P"
         ],
         "x-ms-version": [
           "2015-01-01"
@@ -91,28 +91,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f098c776-86ec-479e-9d2a-0ca50b0f9874"
+          "b071bede-c9c1-4237-94bc-69759d04a156"
         ],
         "x-ms-client-request-id": [
-          "8dbf07d7-907a-47fa-84f4-10c600b70646-2016-04-18 11:10:47Z-P"
+          "1f9f5067-f449-4dce-83dd-c96d786835c0-2016-04-21 05:14:29Z-P"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14211"
+          "14972"
         ],
         "x-ms-correlation-request-id": [
-          "f098c776-86ec-479e-9d2a-0ca50b0f9874"
+          "b071bede-c9c1-4237-94bc-69759d04a156"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160418T111048Z:f098c776-86ec-479e-9d2a-0ca50b0f9874"
+          "CENTRALUS:20160421T051431Z:b071bede-c9c1-4237-94bc-69759d04a156"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 18 Apr 2016 11:10:47 GMT"
+          "Thu, 21 Apr 2016 05:14:30 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -121,22 +121,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/RsvTestRN/backupJobs?api-version=2016-05-01&$filter=status%20eq%20'Failed'%20and%20startTime%20eq%20'2016-04-17%2011:30:00%20AM'%20and%20endTime%20eq%20'2016-04-18%2011:30:00%20AM'",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1JzdlRlc3RSTi9iYWNrdXBKb2JzP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDEmJGZpbHRlcj1zdGF0dXMlMjBlcSUyMCdGYWlsZWQnJTIwYW5kJTIwc3RhcnRUaW1lJTIwZXElMjAnMjAxNi0wNC0xNyUyMDExJTNBMzAlM0EwMCUyMEFNJyUyMGFuZCUyMGVuZFRpbWUlMjBlcSUyMCcyMDE2LTA0LTE4JTIwMTElM0EzMCUzQTAwJTIwQU0n",
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/RsvTestRN/backupEngines?api-version=2016-05-01&$top=200",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1JzdlRlc3RSTi9iYWNrdXBFbmdpbmVzP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDEmJHRvcD0yMDA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0cff1c76-b964-472b-883f-edbb70bb8db0-2016-04-18 11:10:48Z-PS"
+          "062f0219-95bf-4f0c-a32f-37d0c052400f-2016-04-21 05:14:32Z-PS"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/RsvTestRN/backupEngines/NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM\",\r\n      \"name\": \"NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupEngines\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM\",\r\n        \"backupManagementType\": \"DPM\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"backupEngineType\": \"DpmBackupEngine\",\r\n        \"canReRegister\": true,\r\n        \"backupEngineId\": \"236469\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "12"
+          "582"
         ],
         "Content-Type": [
           "application/json"
@@ -148,29 +148,90 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ae3b91ad-c4dc-4713-9b6e-905c37b53d6f"
+          "b4d4b89c-aa27-473b-a53a-e2c9cc1d1336"
         ],
         "x-ms-client-request-id": [
-          "0cff1c76-b964-472b-883f-edbb70bb8db0-2016-04-18 11:10:48Z-PS",
-          "0cff1c76-b964-472b-883f-edbb70bb8db0-2016-04-18 11:10:48Z-PS"
+          "062f0219-95bf-4f0c-a32f-37d0c052400f-2016-04-21 05:14:32Z-PS",
+          "062f0219-95bf-4f0c-a32f-37d0c052400f-2016-04-21 05:14:32Z-PS"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14199"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "ae3b91ad-c4dc-4713-9b6e-905c37b53d6f"
+          "b4d4b89c-aa27-473b-a53a-e2c9cc1d1336"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160418T111049Z:ae3b91ad-c4dc-4713-9b6e-905c37b53d6f"
+          "CENTRALUS:20160421T051434Z:b4d4b89c-aa27-473b-a53a-e2c9cc1d1336"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 18 Apr 2016 11:10:48 GMT"
+          "Thu, 21 Apr 2016 05:14:33 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/RsvTestRN/backupEngines?api-version=2016-05-01&$top=200",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1JzdlRlc3RSTi9iYWNrdXBFbmdpbmVzP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDEmJHRvcD0yMDA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6552a51b-ce48-40c8-bcce-baa7d4c5bc0c-2016-04-21 05:14:34Z-PS"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/RsvTestRN/backupEngines/NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM\",\r\n      \"name\": \"NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupEngines\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"NAGAASTHRAM.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM\",\r\n        \"backupManagementType\": \"DPM\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"backupEngineType\": \"DpmBackupEngine\",\r\n        \"canReRegister\": true,\r\n        \"backupEngineId\": \"236469\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "582"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ae10048f-29f6-4e94-be92-8b008615ef8b"
+        ],
+        "x-ms-client-request-id": [
+          "6552a51b-ce48-40c8-bcce-baa7d4c5bc0c-2016-04-21 05:14:34Z-PS",
+          "6552a51b-ce48-40c8-bcce-baa7d4c5bc0c-2016-04-21 05:14:34Z-PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-correlation-request-id": [
+          "ae10048f-29f6-4e94-be92-8b008615ef8b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160421T051435Z:ae10048f-29f6-4e94-be92-8b008615ef8b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 21 Apr 2016 05:14:34 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
