@@ -8896,21 +8896,21 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccountName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Specifies the id of the application.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationVersion</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Specifies the version of the application.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -8928,7 +8928,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -8940,7 +8940,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -8952,7 +8952,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
-        <maml:para></maml:para>                
+        <maml:para>Specifies the version of the application.</maml:para>                
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
