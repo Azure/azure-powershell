@@ -52,6 +52,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(Mandatory = true, ParameterSetName = "InvokeByDynamicParameters", Position = 0)]
         [Parameter(Mandatory = true, ParameterSetName = "InvokeByStaticParameters", Position = 0)]
         [ValidateSet(
+            "ContainerServiceCreateOrUpdate",
+            "ContainerServiceDelete",
+            "ContainerServiceGet",
+            "ContainerServiceList",
             "VirtualMachineScaleSetCreateOrUpdate",
             "VirtualMachineScaleSetDeallocate",
             "VirtualMachineScaleSetDelete",
@@ -110,6 +114,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 switch (MethodName)
                 {
+                    case "ContainerServiceCreateOrUpdate" :
+                        ExecuteContainerServiceCreateOrUpdateMethod(argumentList);
+                        break;
+                    case "ContainerServiceDelete" :
+                        ExecuteContainerServiceDeleteMethod(argumentList);
+                        break;
+                    case "ContainerServiceGet" :
+                        ExecuteContainerServiceGetMethod(argumentList);
+                        break;
+                    case "ContainerServiceList" :
+                        ExecuteContainerServiceListMethod(argumentList);
+                        break;
                     case "VirtualMachineScaleSetCreateOrUpdate" :
                         ExecuteVirtualMachineScaleSetCreateOrUpdateMethod(argumentList);
                         break;
@@ -201,6 +217,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             switch (MethodName)
             {
+                    case "ContainerServiceCreateOrUpdate" : return CreateContainerServiceCreateOrUpdateDynamicParameters();
+                    case "ContainerServiceDelete" : return CreateContainerServiceDeleteDynamicParameters();
+                    case "ContainerServiceGet" : return CreateContainerServiceGetDynamicParameters();
+                    case "ContainerServiceList" : return CreateContainerServiceListDynamicParameters();
                     case "VirtualMachineScaleSetCreateOrUpdate" : return CreateVirtualMachineScaleSetCreateOrUpdateDynamicParameters();
                     case "VirtualMachineScaleSetDeallocate" : return CreateVirtualMachineScaleSetDeallocateDynamicParameters();
                     case "VirtualMachineScaleSetDelete" : return CreateVirtualMachineScaleSetDeleteDynamicParameters();

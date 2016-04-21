@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected object CreateVirtualMachineScaleSetUpdateInstancesDynamicParameters()
+        protected object CreateContainerServiceGetDynamicParameters()
         {
             dynamicParameters = new RuntimeDefinedParameterDictionary();
             var pResourceGroupName = new RuntimeDefinedParameter();
@@ -47,29 +47,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
 
-            var pVMScaleSetName = new RuntimeDefinedParameter();
-            pVMScaleSetName.Name = "VMScaleSetName";
-            pVMScaleSetName.ParameterType = typeof(string);
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
+            var pContainerServiceName = new RuntimeDefinedParameter();
+            pContainerServiceName.Name = "ContainerServiceName";
+            pContainerServiceName.ParameterType = typeof(string);
+            pContainerServiceName.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
                 Mandatory = true
             });
-            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
-
-            var pInstanceIds = new RuntimeDefinedParameter();
-            pInstanceIds.Name = "InstanceId";
-            pInstanceIds.ParameterType = typeof(string[]);
-            pInstanceIds.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pInstanceIds.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("InstanceId", pInstanceIds);
+            pContainerServiceName.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("ContainerServiceName", pContainerServiceName);
 
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";
@@ -77,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pArgumentList.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByStaticParameters",
-                Position = 4,
+                Position = 3,
                 Mandatory = true
             });
             pArgumentList.Attributes.Add(new AllowNullAttribute());
@@ -86,39 +74,42 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return dynamicParameters;
         }
 
-        protected void ExecuteVirtualMachineScaleSetUpdateInstancesMethod(object[] invokeMethodInputParameters)
+        protected void ExecuteContainerServiceGetMethod(object[] invokeMethodInputParameters)
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            System.Collections.Generic.IList<string> instanceIds = null;
-            if (invokeMethodInputParameters[2] != null)
-            {
-                var inputArray2 = Array.ConvertAll((object[]) ParseParameter(invokeMethodInputParameters[2]), e => e.ToString());
-                instanceIds = inputArray2.ToList();
-            }
+            string containerServiceName = (string)ParseParameter(invokeMethodInputParameters[1]);
 
-            VirtualMachineScaleSetsClient.UpdateInstances(resourceGroupName, vmScaleSetName, instanceIds);
+            if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(containerServiceName))
+            {
+                var result = ContainerServiceClient.Get(resourceGroupName, containerServiceName);
+                WriteObject(result);
+            }
+            else if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                var result = ContainerServiceClient.List(resourceGroupName);
+                WriteObject(result);
+            }
         }
+
     }
 
     public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected PSArgument[] CreateVirtualMachineScaleSetUpdateInstancesParameters()
+        protected PSArgument[] CreateContainerServiceGetParameters()
         {
             string resourceGroupName = string.Empty;
-            string vmScaleSetName = string.Empty;
-            var instanceIds = new string[0];
+            string containerServiceName = string.Empty;
 
             return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "VMScaleSetName", "InstanceIds" },
-                 new object[] { resourceGroupName, vmScaleSetName, instanceIds });
+                 new string[] { "ResourceGroupName", "ContainerServiceName" },
+                 new object[] { resourceGroupName, containerServiceName });
         }
     }
 
-    [Cmdlet("Update", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
-    public partial class UpdateAzureRmVmss : InvokeAzureComputeMethodCmdlet
+    [Cmdlet("Get", "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    public partial class GetAzureRmContainerService : InvokeAzureComputeMethodCmdlet
     {
-        public UpdateAzureRmVmss()
+        public GetAzureRmContainerService()
         {
         }
 
@@ -126,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         protected override void ProcessRecord()
         {
-            this.MethodName = "VirtualMachineScaleSetUpdateInstances";
+            this.MethodName = "ContainerServiceGet";
             base.ProcessRecord();
         }
 
@@ -140,37 +131,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 1,
-                Mandatory = true,
+                Mandatory = false,
                 ValueFromPipeline = false
             });
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
 
-            var pVMScaleSetName = new RuntimeDefinedParameter();
-            pVMScaleSetName.Name = "VMScaleSetName";
-            pVMScaleSetName.ParameterType = typeof(string);
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
+            var pContainerServiceName = new RuntimeDefinedParameter();
+            pContainerServiceName.Name = "ContainerServiceName";
+            pContainerServiceName.ParameterType = typeof(string);
+            pContainerServiceName.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
-                Mandatory = true,
+                Mandatory = false,
                 ValueFromPipeline = false
             });
-            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
-
-            var pInstanceIds = new RuntimeDefinedParameter();
-            pInstanceIds.Name = "InstanceId";
-            pInstanceIds.ParameterType = typeof(string[]);
-            pInstanceIds.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true,
-                ValueFromPipeline = false
-            });
-            pInstanceIds.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("InstanceId", pInstanceIds);
+            pContainerServiceName.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("ContainerServiceName", pContainerServiceName);
 
             return dynamicParameters;
         }

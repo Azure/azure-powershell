@@ -73,6 +73,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return objects;
         }
 
+        public IContainerServiceOperations ContainerServiceClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.ContainerService;
+            }
+        }
+
         public IVirtualMachineScaleSetsOperations VirtualMachineScaleSetsClient
         {
             get

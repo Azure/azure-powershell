@@ -24,6 +24,164 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.Management.Compute.Models.ContainerService</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Compute.Models.ContainerService</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>OrchestratorProfile</Label>
+                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_.OrchestratorProfile,  [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>MasterProfile</Label>
+                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_.MasterProfile,  [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>AgentPoolProfiles.Count</Label>
+                <ScriptBlock> if ($_.AgentPoolProfiles -eq $null) { 0 } else { $_.AgentPoolProfiles.Count }</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>AgentPoolProfiles</Label>
+                <ScriptBlock> foreach ($item in $_.AgentPoolProfiles) { [Newtonsoft.Json.JsonConvert]::SerializeObject($item,  [Newtonsoft.Json.Formatting]::Indented) } </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>WindowsProfile</Label>
+                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_.WindowsProfile,  [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>LinuxProfile</Label>
+                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_.LinuxProfile,  [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>DiagnosticsProfile</Label>
+                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_.DiagnosticsProfile,  [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags.Count</Label>
+                <ScriptBlock> if ($_.Tags -eq $null) { 0 } else { $_.Tags.Count }</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <ScriptBlock> foreach ($item in $_.Tags) { [Newtonsoft.Json.JsonConvert]::SerializeObject($item,  [Newtonsoft.Json.Formatting]::Indented) } </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Management.Compute.Models.ContainerServiceAgentPoolProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Compute.Models.ContainerServiceAgentPoolProfile</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ContainerServiceAgentPoolProfile</Label>
+                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_,  [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Management.Compute.Models.ContainerService</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Compute.Models.ContainerService</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>OrchestratorProfile</Label>
+                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_.OrchestratorProfile,  [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>MasterProfile</Label>
+                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_.MasterProfile,  [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>AgentPoolProfiles.Count</Label>
+                <ScriptBlock> if ($_.AgentPoolProfiles -eq $null) { 0 } else { $_.AgentPoolProfiles.Count }</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>AgentPoolProfiles</Label>
+                <ScriptBlock> foreach ($item in $_.AgentPoolProfiles) { [Newtonsoft.Json.JsonConvert]::SerializeObject($item,  [Newtonsoft.Json.Formatting]::Indented) } </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>WindowsProfile</Label>
+                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_.WindowsProfile,  [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>LinuxProfile</Label>
+                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_.LinuxProfile,  [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>DiagnosticsProfile</Label>
+                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_.DiagnosticsProfile,  [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags.Count</Label>
+                <ScriptBlock> if ($_.Tags -eq $null) { 0 } else { $_.Tags.Count }</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <ScriptBlock> foreach ($item in $_.Tags) { [Newtonsoft.Json.JsonConvert]::SerializeObject($item,  [Newtonsoft.Json.Formatting]::Indented) } </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet</TypeName>
