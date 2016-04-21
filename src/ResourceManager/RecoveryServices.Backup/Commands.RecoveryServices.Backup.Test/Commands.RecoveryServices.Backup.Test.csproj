@@ -7,7 +7,7 @@
     <ProjectGuid>{65E15D74-1E24-4600-8671-D0B420524B17}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.RecoveryServices.Backup.Test</RootNamespace>
+    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup.Test</RootNamespace>
     <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
