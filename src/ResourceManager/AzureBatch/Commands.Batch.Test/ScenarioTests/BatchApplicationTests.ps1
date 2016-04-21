@@ -19,10 +19,10 @@ Tests creating a new application
 #>
 function Test-AddApplication
 {
-	# Setup
+    # Setup
     $applicationId = "test"
     $applicationVersion = "foo"
-	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     try
     {
@@ -48,7 +48,7 @@ function Test-UploadApplicationPackage
     # Setup
     $applicationId = "test"
     $applicationVersion = "foo"
-	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     try
     {
