@@ -16,10 +16,12 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Runtime.Serialization.Formatters;
+using System.Text;
 using System.Threading.Tasks;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
@@ -119,7 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             });
         }
 
-        public virtual PSObject UnregisterProvider(string providerName)
+        public virtual PSResourceProvider UnregisterProvider(string providerName)
         {
             var response = this.ResourceManagementClient.Providers.Unregister(providerName);
 
@@ -128,7 +130,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 throw new KeyNotFoundException(string.Format(ProjectResources.ResourceProviderUnregistrationFailed, providerName));
             }
 
-            return response.ToPSObject();
+            return response.ToPSResourceProvider();
         }
 
         private string GetTemplate(string templateFile)
@@ -721,6 +723,184 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Deletes a given resource group
+        /// </summary>
+        /// <param name="name">The resource group name</param>
+        public virtual void DeleteResourceGroup(string name)
+        {
+            if (!ResourceManagementClient.ResourceGroups.CheckExistence(name).Value)
+            {
+                throw new ArgumentException(ProjectResources.ResourceGroupDoesntExists);
+            }
+
+            ResourceManagementClient.ResourceGroups.Delete(name);
+        }
+
+        /// <summary>
+        /// Filters the resource group deployments
+        /// </summary>
+        /// <param name="options">The filtering options</param>
+        /// <returns>The filtered list of deployments</returns>
+        public virtual List<PSResourceGroupDeployment> FilterResourceGroupDeployments(FilterResourceGroupDeploymentOptions options)
+        {
+            List<PSResourceGroupDeployment> deployments = new List<PSResourceGroupDeployment>();
+            string resourceGroup = options.ResourceGroupName;
+            string name = options.DeploymentName;
+            List<string> excludedProvisioningStates = options.ExcludedProvisioningStates ?? new List<string>();
+
+            if (!string.IsNullOrEmpty(resourceGroup) && !string.IsNullOrEmpty(name))
+            {
+                deployments.Add(ResourceManagementClient.Deployments.Get(resourceGroup, name).ToPSResourceGroupDeployment(options.ResourceGroupName));
+            }
+            else if (!string.IsNullOrEmpty(resourceGroup))
+            {
+                var result = ResourceManagementClient.Deployments.List(resourceGroup, null);
+
+                deployments.AddRange(result.Select(d => d.ToPSResourceGroupDeployment(options.ResourceGroupName)));
+
+                while (!string.IsNullOrEmpty(result.NextPageLink))
+                {
+                    result = ResourceManagementClient.Deployments.ListNext(result.NextPageLink);
+                    deployments.AddRange(result.Select(d => d.ToPSResourceGroupDeployment(options.ResourceGroupName)));
+                }
+            }
+
+            if (excludedProvisioningStates.Count > 0)
+            {
+                return deployments.Where(d => excludedProvisioningStates
+                    .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
+            }
+            else
+            {
+                return deployments;
+            }
+        }
+
+        /// <summary>
+        /// Creates new deployment
+        /// </summary>
+        /// <param name="parameters">The create deployment parameters</param>
+        public virtual PSResourceGroupDeployment ExecuteDeployment(CreatePSResourceGroupDeploymentParameters parameters)
+        {
+            parameters.DeploymentName = GenerateDeploymentName(parameters);
+            Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel);
+
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+
+            if (validationInfo.Errors.Count != 0)
+            {
+                int counter = 1;
+                string errorFormat = "Error {0}: Code={1}; Message={2}\r\n";
+                StringBuilder errorsString = new StringBuilder();
+                validationInfo.Errors.ForEach(e => errorsString.AppendFormat(errorFormat, counter++, e.Code, e.Message));
+                throw new ArgumentException(errorsString.ToString());
+            }
+            else
+            {
+                WriteVerbose(ProjectResources.TemplateValid);
+            }
+
+            ResourceManagementClient.Deployments.CreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+            WriteVerbose(string.Format("Create template deployment '{0}'.", parameters.DeploymentName));
+            DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+
+            return result.ToPSResourceGroupDeployment(parameters.ResourceGroupName);
+        }
+
+        private string GenerateDeploymentName(CreatePSResourceGroupDeploymentParameters parameters)
+        {
+            if (!string.IsNullOrEmpty(parameters.DeploymentName))
+            {
+                return parameters.DeploymentName;
+            }
+            else if (!string.IsNullOrEmpty(parameters.TemplateFile))
+            {
+                return Path.GetFileNameWithoutExtension(parameters.TemplateFile);
+            }
+            else
+            {
+                return Guid.NewGuid().ToString();
+            }
+        }
+
+        /// <summary>
+        /// Deletes a deployment
+        /// </summary>
+        /// <param name="resourceGroup">The resource group name</param>
+        /// <param name="deploymentName">Deployment name</param>
+        public virtual void DeleteDeployment(string resourceGroup, string deploymentName)
+        {
+            if (!ResourceManagementClient.Deployments.CheckExistence(resourceGroup, deploymentName).Value)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExist, deploymentName, resourceGroup));
+            }
+
+            ResourceManagementClient.Deployments.Delete(resourceGroup, deploymentName);
+        }
+
+        /// <summary>
+        /// Cancels the active deployment.
+        /// </summary>
+        /// <param name="resourceGroup">The resource group name</param>
+        /// <param name="deploymentName">Deployment name</param>
+        public virtual void CancelDeployment(string resourceGroup, string deploymentName)
+        {
+            FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions
+            {
+                DeploymentName = deploymentName,
+                ResourceGroupName = resourceGroup
+            };
+
+            if (string.IsNullOrEmpty(deploymentName))
+            {
+                options.ExcludedProvisioningStates = new List<string>
+                {
+                    ProvisioningState.Failed.ToString(),
+                    ProvisioningState.Succeeded.ToString()
+                };
+            }
+
+            List<PSResourceGroupDeployment> deployments = FilterResourceGroupDeployments(options);
+
+            if (deployments.Count == 0)
+            {
+                if (string.IsNullOrEmpty(deploymentName))
+                {
+                    throw new ArgumentException(string.Format("There is no deployment called '{0}' to cancel", deploymentName));
+                }
+                else
+                {
+                    throw new ArgumentException(string.Format("There are no running deployments under resource group '{0}'", resourceGroup));
+                }
+            }
+            else if (deployments.Count == 1)
+            {
+                ResourceManagementClient.Deployments.Cancel(resourceGroup, deployments.First().DeploymentName);
+            }
+            else
+            {
+                throw new ArgumentException("There are more than one running deployment please specify one");
+            }
+        }
+
+        /// <summary>
+        /// Validates a given deployment.
+        /// </summary>
+        /// <param name="parameters">The deployment create options</param>
+        /// <returns>True if valid, false otherwise.</returns>
+        public virtual List<PSResourceManagerError> ValidatePSResourceGroupDeployment(ValidatePSResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode)
+        {
+            Deployment deployment = CreateBasicDeployment(parameters, deploymentMode, null);
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, Guid.NewGuid().ToString(), deployment);
+
+            if (validationInfo.Errors.Count == 0)
+            {
+                WriteVerbose(ProjectResources.TemplateValid);
+            }
+            return validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList();
         }
     }
 }

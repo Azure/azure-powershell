@@ -12,22 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
+using Newtonsoft.Json;
 
-namespace Microsoft.Azure.Commands.Resources.Models
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public partial class ResourcesClient
+    public class TemplateFileResource
     {
-        public const string ResourceGroupTypeName = "ResourceGroup";
+        [JsonProperty("type")]
+        public string Type { get; set; }
 
-        public static List<string> KnownLocations = new List<string>
-        {
-            "East Asia", "South East Asia", "East US", "West US", "North Central US", 
-            "South Central US", "Central US", "North Europe", "West Europe"
-        };
-
-        internal static List<string> KnownLocationsNormalized = KnownLocations
-            .Select(loc => loc.ToLower().Replace(" ", "")).ToList();
+        [JsonProperty("apiVersion")]
+        public string ApiVersion { get; set; }
     }
 }

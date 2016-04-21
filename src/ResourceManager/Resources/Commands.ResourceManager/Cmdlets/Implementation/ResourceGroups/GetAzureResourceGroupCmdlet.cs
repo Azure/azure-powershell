@@ -14,22 +14,18 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.Management.Automation;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using System.Collections.Generic;
     using System.IO;
-    using Microsoft.Azure.Commands.Common.Authentication;
+    using System.Management.Automation;
     using System.Reflection;
 
     /// <summary>
     /// Filters resource groups.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroup", DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(List<PSResourceGroup>))]
-    public class GetAzureResourceGroupCommand : ResourceManagerCmdletBase, IModuleAssemblyInitializer
+    public class GetAzureResourceGroupCmdlet : ResourceManagerCmdletBase, IModuleAssemblyInitializer
     {
         /// <summary>
         /// List resources group by name parameter set.
@@ -57,6 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 
             this.WriteObject(

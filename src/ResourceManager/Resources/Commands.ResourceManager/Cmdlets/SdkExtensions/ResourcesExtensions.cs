@@ -250,5 +250,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
             return deploymentObject;
         }
+
+        public static PSProviderFeature ToPSProviderFeature(this FeatureResult feature)
+        {
+            return new PSProviderFeature
+            {
+                FeatureName = feature.Name.Substring(feature.Name.IndexOf('/') + 1),
+                ProviderName = feature.Name.Substring(0, feature.Name.IndexOf('/')),
+                RegistrationState = feature.Properties.State,
+            };
+        }
     }
 }

@@ -14,17 +14,22 @@
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.Resources.Models;
+    using Microsoft.Azure.Management.Resources;
+    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Rest.Azure;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Moq;
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.Providers;
-    using Microsoft.Azure.Commands.Resources.Models;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Moq;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
@@ -46,13 +51,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// A mock of the client
         /// </summary>
-        private readonly Mock<IProviderOperations> providerOperationsMock;
+        private readonly Mock<IProvidersOperations> providerOperationsMock;
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderCmdletTests"/> class.
         /// </summary>
         public GetAzureProviderCmdletTests()
         {
-            this.providerOperationsMock = new Mock<IProviderOperations>();
+            this.providerOperationsMock = new Mock<IProvidersOperations>();
             var resourceManagementClient = new Mock<IResourceManagementClient>();
 
             resourceManagementClient
@@ -63,7 +68,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.cmdlet = new GetAzureProviderCmdletTest
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = new ResourcesClient
+                ResourceManagerSdkClient = new ResourceManagerSdkClient
                 {
                     ResourceManagementClient = resourceManagementClient.Object
                 }
@@ -85,44 +90,43 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             var unregisteredProvider = new Provider
             {
-                Namespace = UnregisteredProviderNamespace,
+                NamespaceProperty = UnregisteredProviderNamespace,
                 RegistrationState = "Unregistered",
                 ResourceTypes = new[]
                 {
                     new ProviderResourceType
                     {
                         Locations = new[] {"West US", "East US", "South US"},
-                        Name = "TestResource2"
+                        ResourceType = "TestResource2"
                     }
                 }
             };
 
-            var result = new ProviderListResult
+            var response = new AzureOperationResponse<IPage<Provider>>();
+           
+
+            var result = new List<Provider>            
             {
-                NextLink = null,
-                Providers = new[]
-                {
-                    new Provider
+               new Provider
                     {
-                        Namespace = RegisteredProviderNamespace,
+                        NamespaceProperty = RegisteredProviderNamespace,
                         RegistrationState = ResourcesClient.RegisteredStateName,
                         ResourceTypes = new[]
                         {
                             new ProviderResourceType
                             {
                                 Locations = new[] { "West US", "East US" },
-                                Name = ResourceTypeName,
+                                ResourceType = ResourceTypeName,
                             }
                         }
                     },
-                    
-                    unregisteredProvider,
-                }
             };
 
+            response.Body = (IPage<Provider>)result;
+
             this.providerOperationsMock
-                .Setup(f => f.ListAsync(It.IsAny<ProviderListParameters>(), It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult(result));
+                .Setup(f => f.ListNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .Returns(() => Task.FromResult((IPage<Provider>)result));
 
             // 1. List only registered providers
             this.commandRuntimeMock
@@ -172,12 +176,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             this.providerOperationsMock
               .Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-              .Returns(() => Task.FromResult(new ProviderGetResult
-              {
-                  Provider = unregisteredProvider,
-                  RequestId = "requestId",
-                  StatusCode = HttpStatusCode.OK,
-              }));
+              .Returns(() => Task.FromResult(unregisteredProvider));
 
             this.commandRuntimeMock
                 .Setup(m => m.WriteObject(It.IsAny<object>()))
@@ -260,7 +259,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private void VerifyGetCallPatternAndReset()
         {
             this.providerOperationsMock.Verify(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once());
-            this.providerOperationsMock.Verify(f => f.ListAsync(It.IsAny<ProviderListParameters>(), It.IsAny<CancellationToken>()), Times.Never);
             this.providerOperationsMock.Verify(f => f.ListNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
             this.ResetCalls();
@@ -271,7 +269,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyListCallPatternAndReset()
         {
-            this.providerOperationsMock.Verify(f => f.ListAsync(It.IsAny<ProviderListParameters>(), It.IsAny<CancellationToken>()), Times.Once());
             this.providerOperationsMock.Verify(f => f.ListNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
 
@@ -287,14 +284,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             /// Sets the parameter set name to return
             /// </summary>
             public string ParameterSetOverride { private get; set; }
-
-            /// <summary>
-            /// Determines the parameter set name based on the <see cref="ParameterSetOverride"/> property
-            /// </summary>
-            public override string DetermineParameterSetName()
-            {
-                return this.ParameterSetOverride;
-            }
         }
     }
 }

@@ -13,21 +13,31 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Linq;
+using Newtonsoft.Json;
 
-namespace Microsoft.Azure.Commands.Resources.Models
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public partial class ResourcesClient
+    public class TemplateFileParameterV1
     {
-        public const string ResourceGroupTypeName = "ResourceGroup";
+        [JsonProperty("type")]
+        public string Type { get; set; }
 
-        public static List<string> KnownLocations = new List<string>
-        {
-            "East Asia", "South East Asia", "East US", "West US", "North Central US", 
-            "South Central US", "Central US", "North Europe", "West Europe"
-        };
+        [JsonProperty("value")]
+        public object Value { get; set; }
 
-        internal static List<string> KnownLocationsNormalized = KnownLocations
-            .Select(loc => loc.ToLower().Replace(" ", "")).ToList();
+        [JsonProperty("reference")]
+        public object Reference { get; set; }
+
+        [JsonProperty("defaultValue")]
+        public object DefaultValue { get; set; }
+
+        [JsonProperty("allowedValues")]
+        public List<string> AllowedValues { get; set; }
+
+        [JsonProperty("minLength")]
+        public string MinLength { get; set; }
+
+        [JsonProperty("maxLength")]
+        public string MaxLength { get; set; }
     }
 }

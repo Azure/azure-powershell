@@ -12,24 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
-using Xunit;
-using System.IO;
 using System;
+using System.Collections;
+using System.IO;
+using System.Management.Automation;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
     public class NewAzureResourceGroupCommandTests : RMTestBase
     {
-        private NewAzureResourceGroupCommand cmdlet;
+        private NewAzureResourceGroupCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -45,12 +46,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         public NewAzureResourceGroupCommandTests()
         {
-            resourcesClientMock = new Mock<ResourcesClient>();
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new NewAzureResourceGroupCommand()
+            cmdlet = new NewAzureResourceGroupCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
 
             tags = new[]
@@ -80,7 +81,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             {
                 Location = expectedParameters.Location,
                 ResourceGroupName = expectedParameters.ResourceGroupName,
-                Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } },
                 Tags = expectedParameters.Tag
             };
             resourcesClientMock.Setup(f => f.CreatePSResourceGroup(It.IsAny<CreatePSResourceGroupParameters>()))

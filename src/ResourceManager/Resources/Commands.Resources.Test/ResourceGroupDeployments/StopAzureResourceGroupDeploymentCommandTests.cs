@@ -12,20 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Resources.ResourceGroups;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Moq;
+using System.Management.Automation;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
     public class StopAzureResourceGroupDeploymentCommandTests
     {
-        private StopAzureResourceGroupDeploymentCommand cmdlet;
+        private StopAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -33,12 +32,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         public StopAzureResourceGroupDeploymentCommandTests()
         {
-            resourcesClientMock = new Mock<ResourcesClient>();
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new StopAzureResourceGroupDeploymentCommand()
+            cmdlet = new StopAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 

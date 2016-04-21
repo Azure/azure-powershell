@@ -14,17 +14,20 @@
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.Resources.Models;
+    using Microsoft.Azure.Management.Resources;
+    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Moq;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.Resources.Models;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Moq;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
@@ -41,7 +44,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// A mock of the client
         /// </summary>
-        private readonly Mock<IProviderOperations> providerOperationsMock;
+        private readonly Mock<IProvidersOperations> providerOperationsMock;
 
         /// <summary>
         /// A mock of the command runtime
@@ -53,7 +56,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         public UnregisterAzureProviderCmdletTests()
         {
-            this.providerOperationsMock = new Mock<IProviderOperations>();
+            this.providerOperationsMock = new Mock<IProvidersOperations>();
             var resourceManagementClient = new Mock<IResourceManagementClient>();
 
             resourceManagementClient
@@ -69,7 +72,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.cmdlet = new UnregisterAzureProviderCmdlet
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = new ResourcesClient
+                ResourceManagerSdkClient = new ResourceManagerSdkClient
                 {
                     ResourceManagementClient = resourceManagementClient.Object
                 }
@@ -87,38 +90,27 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             var provider = new Provider
             {
-                Namespace = ProviderName,
+                NamespaceProperty = ProviderName,
                 RegistrationState = ResourcesClient.RegisteredStateName,
                 ResourceTypes = new[]
                 {
                     new ProviderResourceType
                     {
                         Locations = new[] {"West US", "East US"},
-                        Name = "TestResource2"
+                        ResourceType = "TestResource2"
                     }
                 }
-            };
-
-            var unregistrationResult = new ProviderUnregistionResult
-            {
-                Provider = provider,
-                RequestId = "requestId",
             };
 
             this.providerOperationsMock
                 .Setup(client => client.UnregisterAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .Callback((string providerName, CancellationToken ignored) =>
                         Assert.Equal(ProviderName, providerName, StringComparer.InvariantCultureIgnoreCase))
-                .Returns(() => Task.FromResult(unregistrationResult));
+                .Returns(() => Task.FromResult(provider));
 
             this.providerOperationsMock
               .Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-              .Returns(() => Task.FromResult(new ProviderGetResult
-              {
-                  Provider = provider,
-                  RequestId = "requestId",
-                  StatusCode = HttpStatusCode.OK,
-              }));
+              .Returns(() => Task.FromResult(provider));
 
             this.cmdlet.Force = true;
 
@@ -134,15 +126,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.Equal(ProviderName, providerResult.ProviderNamespace, StringComparer.InvariantCultureIgnoreCase);
                 });
 
-            unregistrationResult.StatusCode = HttpStatusCode.OK;
-
             this.cmdlet.ExecuteCmdlet();
 
             this.VerifyCallPatternAndReset(succeeded: true);
-
-            // 2. Unregister fails w/ error
-            unregistrationResult.StatusCode = HttpStatusCode.NotFound;
-            unregistrationResult.Provider = null;
 
             try
             {

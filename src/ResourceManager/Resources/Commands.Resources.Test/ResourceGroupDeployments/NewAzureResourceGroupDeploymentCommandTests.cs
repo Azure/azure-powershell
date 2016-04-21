@@ -12,24 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
-using Xunit;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Management.Automation;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
     public class NewAzureResourceGroupDeploymentCommandTests : RMTestBase
     {
-        private NewAzureResourceGroupDeploymentCommand cmdlet;
+        private NewAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -43,12 +46,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         public NewAzureResourceGroupDeploymentCommandTests()
         {
-            resourcesClientMock = new Mock<ResourcesClient>();
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new NewAzureResourceGroupDeploymentCommand()
+            cmdlet = new NewAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 
@@ -79,12 +82,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     { "Parameter2", new DeploymentVariable() { Value = "10", Type = "int" } },
                     { "Parameter3", new DeploymentVariable() { Value = "hello world", Type = "string" } }
                 },
-                ProvisioningState = ProvisioningState.Succeeded,
+                ProvisioningState = ProvisioningState.Succeeded.ToString(),
                 ResourceGroupName = resourceGroupName,
                 TemplateLink = new TemplateLink()
                 {
                     ContentVersion = "1.0",
-                    Uri = new Uri("http://mytemplate.com")
+                    Uri = "http://mytemplate.com"
                 },
                 Timestamp = new DateTime(2014, 2, 13)
             };

@@ -13,21 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Linq;
 
-namespace Microsoft.Azure.Commands.Resources.Models
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public partial class ResourcesClient
+    public class FilterResourceGroupDeploymentOptions
     {
-        public const string ResourceGroupTypeName = "ResourceGroup";
+        public string DeploymentName { get; set; }
 
-        public static List<string> KnownLocations = new List<string>
+        public string ResourceGroupName { get; set; }
+
+        public List<string> ProvisioningStates { get; set; }
+
+        public List<string> ExcludedProvisioningStates { get; set; }
+
+        public FilterResourceGroupDeploymentOptions()
         {
-            "East Asia", "South East Asia", "East US", "West US", "North Central US", 
-            "South Central US", "Central US", "North Europe", "West Europe"
-        };
-
-        internal static List<string> KnownLocationsNormalized = KnownLocations
-            .Select(loc => loc.ToLower().Replace(" ", "")).ToList();
+            DeploymentName = null;
+            ResourceGroupName = null;
+            ProvisioningStates = new List<string>();
+            ExcludedProvisioningStates = new List<string>();
+        }
     }
 }

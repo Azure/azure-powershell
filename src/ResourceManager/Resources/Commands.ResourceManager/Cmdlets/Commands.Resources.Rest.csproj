@@ -54,9 +54,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\packages\Microsoft.Azure.ResourceManager.2.0.0-preview\lib\net45\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\..\packages\Microsoft.Azure.ResourceManager.3.0.0-preview\lib\net45\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -145,9 +145,24 @@
     <Compile Include="Handlers\TracingHandler.cs" />
     <Compile Include="Handlers\CmdletInfoHandler.cs" />
     <Compile Include="Handlers\UserAgentHandler.cs" />
+    <Compile Include="Implementation\ProviderFeatureCmdletBase.cs" />
+    <Compile Include="Implementation\Features\GetAzureProviderFeatureCmdlet.cs" />
+    <Compile Include="Implementation\Features\RegisterAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Implementation\FindAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\ExportAzureResourceGroupCmdlet.cs" />
+    <Compile Include="Implementation\Providers\GetAzureProviderCmdlet.cs" />
+    <Compile Include="Implementation\Providers\RegisterAzureProviderCmdlet.cs" />
+    <Compile Include="Implementation\Providers\UnregisterAzureProviderCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroupDeployments\GetAzureResourceGroupDeploymentCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroupDeployments\NewAzureResourceGroupDeploymentCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroupDeployments\RemoveAzureResourceGroupDeploymentCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroupDeployments\StopAzureResourceGroupDeploymentCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroupDeployments\TestAzureResourceGroupDeploymentCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroups\RemoveAzureResourceGroupCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroups\SetAzureResourceGroupCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroups\NewAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\ResourceGroups\GetAzureResourceGroupCmdlet.cs" />
+    <Compile Include="Implementation\ResourceWithParameterCmdletBase.cs" />
     <Compile Include="Implementation\SaveAzureResourceGroupDeploymentTemplateCmdlet.cs" />
     <Compile Include="Implementation\GetAzureResourceGroupDeploymentOperationCmdlet.cs" />
     <Compile Include="Implementation\Lock\GetAzureResourceLockCmdlet.cs" />
@@ -181,9 +196,15 @@
     <Compile Include="Json\CamelCasePropertyNamesWithOverridesContractResolver.cs" />
     <Compile Include="Json\JsonPreserveCaseDictionaryAttribute.cs" />
     <Compile Include="Json\TimeSpanConverter.cs" />
+    <Compile Include="SdkClient\ProviderFeatureClient.cs" />
     <Compile Include="SdkModels\Deployments\CreatePSResourceGroupDeploymentParameters.cs" />
     <Compile Include="SdkModels\Deployments\DeploymentVariable.cs" />
+    <Compile Include="SdkModels\Deployments\FilterResourceGroupDeploymentOptions.cs" />
     <Compile Include="SdkModels\Deployments\PSResourceGroupDeployment.cs" />
+    <Compile Include="SdkModels\Deployments\TemplateFile.cs" />
+    <Compile Include="SdkModels\Deployments\TemplateFileParameterV1.cs" />
+    <Compile Include="SdkModels\Deployments\TemplateFileParameterv2.cs" />
+    <Compile Include="SdkModels\Deployments\TemplateFileResource.cs" />
     <Compile Include="SdkModels\Deployments\TemplateValidationInfo.cs" />
     <Compile Include="SdkModels\Deployments\ValidatePSResourceGroupDeploymentParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -198,6 +219,7 @@
     <Compile Include="SdkClient\ResourceManagerSdkClient.cs" />
     <Compile Include="SdkExtensions\ResourcesExtensions.cs" />
     <Compile Include="SdkModels\Errors\PSResourceManagerError.cs" />
+    <Compile Include="SdkModels\Features\PSProviderFeature.cs" />
     <Compile Include="SdkModels\ResourceGroups\CreatePSResourceGroupParameters.cs" />
     <Compile Include="SdkModels\ResourceGroups\PSResourceGroup.cs" />
     <Compile Include="SdkModels\ResourceGroups\UpdatePSResourceGroupParameters.cs" />
@@ -209,6 +231,7 @@
     <Compile Include="SdkModels\Resources\ResourceIdentifier.cs" />
     <Compile Include="Utilities\FileUtility.cs" />
     <Compile Include="Utilities\HttpUtility.cs" />
+    <Compile Include="Utilities\TemplateUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml">

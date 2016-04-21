@@ -12,24 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Resources.ResourceGroupDeployments;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Management.Resources.Models;
 using Moq;
-using Xunit;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.IO;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
     public class TestAzureResourceGroupDeploymentCommandTests
     {
-        private TestAzureResourceGroupDeploymentCommand cmdlet;
+        private TestAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -39,12 +39,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         public TestAzureResourceGroupDeploymentCommandTests()
         {
-            resourcesClientMock = new Mock<ResourcesClient>();
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new TestAzureResourceGroupDeploymentCommand()
+            cmdlet = new TestAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 

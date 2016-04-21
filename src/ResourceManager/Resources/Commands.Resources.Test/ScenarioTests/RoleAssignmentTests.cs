@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RaUserPermissions()
         {
             User newUser = null;
-            ResourceGroupExtended resourceGroup = null;
+            ResourceGroup resourceGroup = null;
             string roleAssignmentId = "1BAF0B29-608A-424F-B54F-92FCDB343FFF";
             string userName = null;
             string userPass = null;
@@ -125,8 +125,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = controllerAdmin.GraphClient.User.Create(parameter).User;
 
                     resourceGroup = controllerAdmin.ResourceManagementClient.ResourceGroups
-                                        .List(new ResourceGroupListParameters())
-                                        .ResourceGroups
+                                        .List()
                                         .First();
 
                     // Wait to allow newly created object changes to propagate

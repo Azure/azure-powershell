@@ -12,22 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Microsoft.Azure.Commands.Resources.Models
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public partial class ResourcesClient
+    /// <summary>
+    /// Represents a feature
+    /// </summary>
+    public class PSProviderFeature
     {
-        public const string ResourceGroupTypeName = "ResourceGroup";
+        /// <summary>
+        /// Gets the name of the feature
+        /// </summary>
+        public string FeatureName { get; internal set; }
 
-        public static List<string> KnownLocations = new List<string>
-        {
-            "East Asia", "South East Asia", "East US", "West US", "North Central US", 
-            "South Central US", "Central US", "North Europe", "West Europe"
-        };
+        /// <summary>
+        /// Gets the name of the feature
+        /// </summary>
+        public string ProviderName { get; internal set; }
 
-        internal static List<string> KnownLocationsNormalized = KnownLocations
-            .Select(loc => loc.ToLower().Replace(" ", "")).ToList();
+        /// <summary>
+        /// Gets the registration state of the feature
+        /// </summary>
+        public string RegistrationState { get; internal set; }
     }
 }
