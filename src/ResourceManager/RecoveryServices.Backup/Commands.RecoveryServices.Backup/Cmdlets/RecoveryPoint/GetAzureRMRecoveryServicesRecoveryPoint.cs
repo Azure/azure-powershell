@@ -24,8 +24,8 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMRecoveryServicesRecoveryPoint"), OutputType(typeof(AzureRmRecoveryServicesRecoveryPointBase))]
-    public class GetAzureRMRecoveryServicesRecoveryPoint : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRMRecoveryServicesBackupRecoveryPoint"), OutputType(typeof(AzureRmRecoveryServicesBackupRecoveryPointBase))]
+    public class GetAzureRMRecoveryServicesBackupRecoveryPoint : RecoveryServicesBackupCmdletBase
     {
         internal const string DateTimeFilterParameterSet = "DateTimeFilter";
         internal const string RecoveryPointIdParameterSet = "RecoveryPointId";
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = ParamHelpMsg.RecoveryPoint.Item)]
         [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsg.RecoveryPoint.Item)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesItemBase Item { get; set; }
+        public AzureRmRecoveryServicesBackupItemBase Item { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, ValueFromPipeline = false, Position = 1, HelpMessage = ParamHelpMsg.RecoveryPoint.RecoveryPointId)]
         [ValidateNotNullOrEmpty]
@@ -66,6 +66,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     if (StartDate >= EndDate)
                     {
                         throw new ArgumentException(Resources.RecoveryPointEndDateShouldBeGreater); 
+                    }
+
+                    if(StartDate.Kind != DateTimeKind.Utc || EndDate.Kind != DateTimeKind.Utc)
+                    {
+                        throw new ArgumentException(Resources.GetRPErrorInputDatesShouldBeInUTC);
                     }
 
                     parameter.Add(GetRecoveryPointParams.StartDate, StartDate);

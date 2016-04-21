@@ -26,6 +26,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {   
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
 
         public static ProtectionPolicyResponse GetProtectionPolicyByName(string policyName,
-                                                 HydraAdapter.HydraAdapter hydraAdapter)
+                                                 HydraAdapter hydraAdapter)
         {
             ProtectionPolicyResponse response = null;
 

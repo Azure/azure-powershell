@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,12 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
 {
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmBackupManagementServer")]
-    public class UnregisterAzureRmBackupManagementServer : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupManagementServer")]
+    public class UnregisterAzureRmRecoveryServicesBackupManagementServer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesContainerBase Container { get; set; }
+        public AzureRmRecoveryServicesBackupEngineBase AzureRmBackupManagementServer { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -37,13 +38,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
             {
                 base.ExecuteCmdlet();
 
-                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.Scdpm)
+                if ((AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.DpmBackupEngine.ToString() && 
+                    AzureRmBackupManagementServer.BackupEngineType != BackupEngineType.AzureBackupServerEngine.ToString())||
+                    AzureRmBackupManagementServer.BackupManagementType.ToString() != BackupManagementType.SCDPM.ToString() &&
+                    AzureRmBackupManagementServer.BackupManagementType.ToString() != BackupManagementType.AzureBackupServer.ToString())
                 {
-                    throw new ArgumentException(String.Format("Please provide Container of containerType Windows and backupManagementType Scdpm. Provided Container has containerType {0} and backupManagementType {1}", Container.ContainerType, Container.BackupManagementType));
+                    throw new ArgumentException(String.Format(Resources.UnsupportedAzureRmBackupManagementServerException, AzureRmBackupManagementServer.BackupEngineType, AzureRmBackupManagementServer.BackupManagementType));
                 }
 
-                string containerName = Container.Name;
-                HydraAdapter.UnregisterContainers(containerName);
+                string azureRmBackupManagementServer = AzureRmBackupManagementServer.Name;
+                HydraAdapter.UnregisterContainers(azureRmBackupManagementServer);
             });
         }
     }

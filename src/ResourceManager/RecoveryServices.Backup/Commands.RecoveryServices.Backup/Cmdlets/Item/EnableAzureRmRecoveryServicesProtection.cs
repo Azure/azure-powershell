@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesProtection", DefaultParameterSetName = ModifyProtectionParameterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
-    public class EnableAzureRmRecoveryServicesProtection : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection", DefaultParameterSetName = ModifyProtectionParameterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
+    public class EnableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
     {
         internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";
         internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
@@ -51,13 +51,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMResourceGroupName)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 4, Mandatory = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
-        [Parameter(Position = 4, Mandatory = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
-        public WorkloadType WorkLoadType { get; set; }
-
-        [Parameter(Position = 5, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
+        [Parameter(Position = 4, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesItemBase Item { get; set; }
+        public AzureRmRecoveryServicesBackupItemBase Item { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -70,14 +66,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {ItemParams.AzureVMName, Name},
                     {ItemParams.AzureVMCloudServiceName, ServiceName},
                     {ItemParams.AzureVMResourceGroupName, ResourceGroupName},
-                    {ItemParams.WorkloadType, WorkLoadType},
                     {ItemParams.Policy, Policy},
                     {ItemParams.Item, Item},
                     {ItemParams.ParameterSetName, this.ParameterSetName},
                 }, HydraAdapter);
 
                 IPsBackupProvider psBackupProvider = (Item != null) ? providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
-                    : providerManager.GetProviderInstance(WorkLoadType);
+                    : providerManager.GetProviderInstance(Policy.WorkloadType);
 
                 var itemResponse = psBackupProvider.EnableProtection();
 

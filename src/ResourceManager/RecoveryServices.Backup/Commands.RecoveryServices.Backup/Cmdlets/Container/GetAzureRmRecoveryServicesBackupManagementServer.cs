@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmBackupManagementServer"), OutputType(typeof(AzureRmRecoveryServicesContainerBase))]
-    public class GetAzureRmBackupManagementServer : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"), OutputType(typeof(AzureRmRecoveryServicesBackupEngineBase), typeof(List<AzureRmRecoveryServicesBackupEngineBase>))]
+    public class GetAzureRmRecoveryServicesBackupManagementServer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Name)]
+        [Parameter(Mandatory = false, Position = 1, HelpMessage = ParamHelpMsg.Container.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -42,22 +42,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {  
-                    {ContainerParams.ContainerType, ContainerType.Windows},
-                    {ContainerParams.BackupManagementType, BackupManagementType.Scdpm},                    
+                    {ContainerParams.ContainerType, ContainerType.Windows},                
                     {ContainerParams.Name, Name}
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.Windows, BackupManagementType.Scdpm);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstanceForBackupManagementServer();
 
-                var containerModels = psBackupProvider.ListBackupManagementServers();
+                var backupServerModels = psBackupProvider.ListBackupManagementServers();
                 if (!string.IsNullOrEmpty(this.Name))
                 {
-                    if (containerModels != null)
+                    if (backupServerModels != null)
                     {
-                        containerModels = containerModels.Where(x => x.Name == this.Name).ToList();
+                        backupServerModels = backupServerModels.Where(x => x.Name == this.Name).ToList();
                     }
                 }
-                WriteObject(containerModels, enumerateCollection: true);
+                if (backupServerModels.Count == 1)
+                {
+                    WriteObject(backupServerModels.First());
+                }
+                else
+                {
+                    WriteObject(backupServerModels, enumerateCollection: true);
+                }
             });
         }
     }

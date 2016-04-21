@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         public static string GetString<T>(IEnumerable<T> objList)
         {
-            return (objList == null) ? "null" : "{" + string.Join(", ", objList.Select(e => e.ToString())) +"}";
-        }       
+            return (objList == null) ? "null" : "{" + string.Join(", ", objList.Select(e => e.ToString())) + "}";
+        }
     }
 
     public class IdUtils
@@ -104,6 +104,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
             return dict[idName];
         }
+
+        /// <summary>
+        /// URI format: Type;Name
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <returns></returns>
+        public static string GetNameFromUri(string uri)
+        {
+            return uri.Substring(uri.IndexOf(NameDelimiter) + 1);
+        }
     }
 
     public class EnumUtils
@@ -118,16 +128,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         public static BackupManagementType GetPsBackupManagementType(string backupManagementType)
         {
-            ProviderType providerType = EnumUtils.GetEnum<ProviderType>(backupManagementType);
+            Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType providerType
+                = EnumUtils.GetEnum<Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType>(backupManagementType);
 
             switch (providerType)
             {
-                case ProviderType.AzureIaasVM:
+                case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM:
                     return BackupManagementType.AzureVM;
-                case ProviderType.MAB:
-                    return BackupManagementType.Mars;
-                case ProviderType.DPM:
-                    return BackupManagementType.Scdpm;
+                case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.MAB:
+                    return BackupManagementType.MARS;
+                case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.DPM:
+                    return BackupManagementType.SCDPM;
+                case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureBackupServer:
+                    return BackupManagementType.AzureBackupServer;
                 default:
                     throw new Exception("Unsupported BackupManagmentType: " + backupManagementType);
             }
@@ -140,7 +153,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return ContainerType.AzureVM;
             }
-            else if (containerType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.ContainerType.MABContainer.ToString())
+            else if (containerType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.ContainerType.Windows.ToString())
             {
                 return ContainerType.Windows;
             }
@@ -148,13 +161,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 throw new Exception("Unsupported ContainerType: " + containerType);
             }
-        }
-
-        public static BackupEngineType GetPsBackupEngineType(string backupEngineType)
-        {
-            BackupEngineType type = 0;
-            Enum.TryParse(backupEngineType, out type);
-            return type;
         }
 
         public static WorkloadType GetPsWorkloadType(string workloadType)

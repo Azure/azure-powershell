@@ -1,25 +1,25 @@
 {
   "Entries": [
     {
-      "RequestUri": "/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults?api-version=2015-08-15",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMDRjZjY4NGEtZDQxZi00NTUwLTlmNzAtNzcwOGEzYTIyODNiL3Jlc291cmNlR3JvdXBzL3BoYW5pa3RSU1YvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDE1LTA4LTE1",
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults?api-version=2016-05-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e83ae12e-0c12-403e-a361-c7fff07fc656-2016-03-23 05:07:39Z-P"
+          "1b0681a4-6f0c-4086-b38a-c93cc768a8bc-2016-04-18 11:10:45Z-P"
         ],
         "x-ms-version": [
           "2015-01-01"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westus\",\r\n      \"name\": \"phaniktRs1\",\r\n      \"etag\": \"5ac5016f-e720-4fbb-84df-7726c1b12e95\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\",\r\n        \"size\": null,\r\n        \"family\": null,\r\n        \"capacity\": null\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"eastus\",\r\n      \"name\": \"PsTestRsVault\",\r\n      \"etag\": \"d99734f6-9b94-46a3-8203-32500af246d6\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestRsVault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\",\r\n        \"size\": null,\r\n        \"family\": null,\r\n        \"capacity\": null\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"eastus\",\r\n      \"name\": \"PsTestVault\",\r\n      \"etag\": \"0d02cc5a-07b9-45ed-8e7b-ce710452f60e\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/PsTestVault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\",\r\n        \"size\": null,\r\n        \"family\": null,\r\n        \"capacity\": null\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"eastus\",\r\n      \"name\": \"RsvTestRN\",\r\n      \"etag\": \"5eeff9e7-4f6c-4db8-9152-b1a0335fd896\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/RsvTestRN\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\",\r\n        \"size\": null,\r\n        \"family\": null,\r\n        \"capacity\": null\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "422"
+          "1247"
         ],
         "Content-Type": [
           "application/json"
@@ -31,28 +31,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "4d3dcc54-360c-4240-a000-de2cde2e7d2e"
+          "8c8c1bf8-7255-407c-adfb-186205cb074f"
         ],
         "x-ms-client-request-id": [
-          "e83ae12e-0c12-403e-a361-c7fff07fc656-2016-03-23 05:07:39Z-P"
+          "1b0681a4-6f0c-4086-b38a-c93cc768a8bc-2016-04-18 11:10:45Z-P"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14519"
+          "14201"
         ],
         "x-ms-correlation-request-id": [
-          "4d3dcc54-360c-4240-a000-de2cde2e7d2e"
+          "8c8c1bf8-7255-407c-adfb-186205cb074f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160323T050740Z:4d3dcc54-360c-4240-a000-de2cde2e7d2e"
+          "CENTRALUS:20160418T111046Z:8c8c1bf8-7255-407c-adfb-186205cb074f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 Mar 2016 05:07:39 GMT"
+          "Mon, 18 Apr 2016 11:10:46 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -61,25 +61,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1?api-version=2015-08-15",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMDRjZjY4NGEtZDQxZi00NTUwLTlmNzAtNzcwOGEzYTIyODNiL3Jlc291cmNlR3JvdXBzL3BoYW5pa3RSU1YvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9waGFuaWt0UnMxP2FwaS12ZXJzaW9uPTIwMTUtMDgtMTU=",
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/RsvTestRN?api-version=2016-05-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1JzdlRlc3RSTj9hcGktdmVyc2lvbj0yMDE2LTA1LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "288329a8-3709-475a-b3b7-139dfcebaeb2-2016-03-23 05:07:40Z-P"
+          "8dbf07d7-907a-47fa-84f4-10c600b70646-2016-04-18 11:10:47Z-P"
         ],
         "x-ms-version": [
           "2015-01-01"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"westus\",\r\n  \"name\": \"phaniktRs1\",\r\n  \"etag\": \"5ac5016f-e720-4fbb-84df-7726c1b12e95\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"eastus\",\r\n  \"name\": \"RsvTestRN\",\r\n  \"etag\": \"5eeff9e7-4f6c-4db8-9152-b1a0335fd896\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/RsvTestRN\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "356"
+          "353"
         ],
         "Content-Type": [
           "application/json"
@@ -91,28 +91,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "43a8815b-7a8b-4582-82e0-cc81cc6f13c8"
+          "f098c776-86ec-479e-9d2a-0ca50b0f9874"
         ],
         "x-ms-client-request-id": [
-          "288329a8-3709-475a-b3b7-139dfcebaeb2-2016-03-23 05:07:40Z-P"
+          "8dbf07d7-907a-47fa-84f4-10c600b70646-2016-04-18 11:10:47Z-P"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14701"
+          "14211"
         ],
         "x-ms-correlation-request-id": [
-          "43a8815b-7a8b-4582-82e0-cc81cc6f13c8"
+          "f098c776-86ec-479e-9d2a-0ca50b0f9874"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160323T050741Z:43a8815b-7a8b-4582-82e0-cc81cc6f13c8"
+          "CENTRALUS:20160418T111048Z:f098c776-86ec-479e-9d2a-0ca50b0f9874"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 Mar 2016 05:07:41 GMT"
+          "Mon, 18 Apr 2016 11:10:47 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -121,25 +121,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1/backupJobs?api-version=2015-03-15&$filter=status%20eq%20'Failed'%20and%20startTime%20eq%20'2016-03-21%2006:30:00%20AM'%20and%20endTime%20eq%20'2016-03-22%2006:30:00%20AM'",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMDRjZjY4NGEtZDQxZi00NTUwLTlmNzAtNzcwOGEzYTIyODNiL3Jlc291cmNlR3JvdXBzL3BoYW5pa3RSU1YvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9waGFuaWt0UnMxL2JhY2t1cEpvYnM/YXBpLXZlcnNpb249MjAxNS0wMy0xNSYkZmlsdGVyPXN0YXR1cyUyMGVxJTIwJ0ZhaWxlZCclMjBhbmQlMjBzdGFydFRpbWUlMjBlcSUyMCcyMDE2LTAzLTIxJTIwMDYlM0EzMCUzQTAwJTIwQU0nJTIwYW5kJTIwZW5kVGltZSUyMGVxJTIwJzIwMTYtMDMtMjIlMjAwNiUzQTMwJTNBMDAlMjBBTSc=",
+      "RequestUri": "/Subscriptions/d22f872b-f3f1-425a-8100-c74a376452b1/resourceGroups/RsvTestRG/providers/Microsoft.RecoveryServices/vaults/RsvTestRN/backupJobs?api-version=2016-05-01&$filter=status%20eq%20'Failed'%20and%20startTime%20eq%20'2016-04-17%2011:30:00%20AM'%20and%20endTime%20eq%20'2016-04-18%2011:30:00%20AM'",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDIyZjg3MmItZjNmMS00MjVhLTgxMDAtYzc0YTM3NjQ1MmIxL3Jlc291cmNlR3JvdXBzL1JzdlRlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1JzdlRlc3RSTi9iYWNrdXBKb2JzP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDEmJGZpbHRlcj1zdGF0dXMlMjBlcSUyMCdGYWlsZWQnJTIwYW5kJTIwc3RhcnRUaW1lJTIwZXElMjAnMjAxNi0wNC0xNyUyMDExJTNBMzAlM0EwMCUyMEFNJyUyMGFuZCUyMGVuZFRpbWUlMjBlcSUyMCcyMDE2LTA0LTE4JTIwMTElM0EzMCUzQTAwJTIwQU0n",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "Accept-Language": [
-          "en-us"
-        ],
         "x-ms-client-request-id": [
-          "d9998f1f-bcb7-4db2-9d0d-558778609b28-2016-03-23 05:07:41Z-PS"
+          "0cff1c76-b964-472b-883f-edbb70bb8db0-2016-04-18 11:10:48Z-PS"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1/backupJobs/a5e97e69-50d8-4861-886d-646522b81f52\",\r\n      \"name\": \"a5e97e69-50d8-4861-886d-646522b81f52\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"eTag\": null,\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"duration\": \"00:00:00.3735779\",\r\n        \"actionsInfo\": [\r\n          1\r\n        ],\r\n        \"errorDetails\": [\r\n          {\r\n            \"errorCode\": 400001,\r\n            \"errorTitle\": \"\",\r\n            \"errorString\": \"Command execution failed.\",\r\n            \"recommendations\": [\r\n              \"Another operation is currently in progress on this item. Please wait until the previous operation is completed, and then retry.\"\r\n            ]\r\n          }\r\n        ],\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"extendedInfo\": null,\r\n        \"entityFriendlyName\": \"dc1vm0\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Failed\",\r\n        \"startTime\": \"2016-03-21T22:02:59.0700175Z\",\r\n        \"endTime\": \"2016-03-21T22:02:59.4435954Z\",\r\n        \"activityId\": \"1ff07ce0-462f-4428-8a62-aba23ad3fc6a\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1/backupJobs/44e7bd1a-ae53-40af-b77b-74ad26e8a2df\",\r\n      \"name\": \"44e7bd1a-ae53-40af-b77b-74ad26e8a2df\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"eTag\": null,\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"duration\": \"00:00:01.1040508\",\r\n        \"actionsInfo\": [\r\n          1\r\n        ],\r\n        \"errorDetails\": [\r\n          {\r\n            \"errorCode\": 400001,\r\n            \"errorTitle\": \"\",\r\n            \"errorString\": \"Command execution failed.\",\r\n            \"recommendations\": [\r\n              \"Another operation is currently in progress on this item. Please wait until the previous operation is completed, and then retry.\"\r\n            ]\r\n          }\r\n        ],\r\n        \"virtualMachineVersion\": \"ClassicCompute\",\r\n        \"extendedInfo\": null,\r\n        \"entityFriendlyName\": \"v1prjai1\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Failed\",\r\n        \"startTime\": \"2016-03-21T22:02:58.9174827Z\",\r\n        \"endTime\": \"2016-03-21T22:03:00.0215335Z\",\r\n        \"activityId\": \"57b76eb1-114b-476e-8e18-9a1b648f97e1\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1/backupJobs/882b89be-3e64-4b4c-adad-d224aa16e909\",\r\n      \"name\": \"882b89be-3e64-4b4c-adad-d224aa16e909\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"eTag\": null,\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"duration\": \"00:03:09.0914607\",\r\n        \"actionsInfo\": [\r\n          1\r\n        ],\r\n        \"errorDetails\": [\r\n          {\r\n            \"errorCode\": 400002,\r\n            \"errorTitle\": \"\",\r\n            \"errorString\": \"Backup failed with an internal error.\",\r\n            \"recommendations\": [\r\n              \"Please retry the operation in a few minutes. If the problem persists, please contact Microsoft Support.\"\r\n            ]\r\n          }\r\n        ],\r\n        \"virtualMachineVersion\": \"ClassicCompute\",\r\n        \"extendedInfo\": null,\r\n        \"entityFriendlyName\": \"anbhavm\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Failed\",\r\n        \"startTime\": \"2016-03-21T22:02:57.5073827Z\",\r\n        \"endTime\": \"2016-03-21T22:06:06.5988434Z\",\r\n        \"activityId\": \"02605c30-fe39-49e1-a882-6e592d9267b7\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1/backupJobs/d7f84123-4847-4efd-9c69-98bd355b0e00\",\r\n      \"name\": \"d7f84123-4847-4efd-9c69-98bd355b0e00\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"eTag\": null,\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"duration\": \"00:00:01.2377799\",\r\n        \"actionsInfo\": [\r\n          1\r\n        ],\r\n        \"errorDetails\": [\r\n          {\r\n            \"errorCode\": 400001,\r\n            \"errorTitle\": \"\",\r\n            \"errorString\": \"Command execution failed.\",\r\n            \"recommendations\": [\r\n              \"Another operation is currently in progress on this item. Please wait until the previous operation is completed, and then retry.\"\r\n            ]\r\n          }\r\n        ],\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"extendedInfo\": null,\r\n        \"entityFriendlyName\": \"oraclevm\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Failed\",\r\n        \"startTime\": \"2016-03-21T22:01:23.4280505Z\",\r\n        \"endTime\": \"2016-03-21T22:01:24.6658304Z\",\r\n        \"activityId\": \"dc0ad40e-c9b5-415b-a24d-720c856882bd\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1/backupJobs/329f169a-6456-44cf-8165-55328fa9ef2d\",\r\n      \"name\": \"329f169a-6456-44cf-8165-55328fa9ef2d\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"eTag\": null,\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"duration\": \"00:41:15.1043325\",\r\n        \"actionsInfo\": [\r\n          1\r\n        ],\r\n        \"errorDetails\": [\r\n          {\r\n            \"errorCode\": 400160,\r\n            \"errorTitle\": \"\",\r\n            \"errorString\": \"VM is in Failed Provisioning State.\",\r\n            \"recommendations\": [\r\n              \"Please make sure that the VM is in Running or Shut-down state.\"\r\n            ]\r\n          }\r\n        ],\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"extendedInfo\": null,\r\n        \"entityFriendlyName\": \"opcvm\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Failed\",\r\n        \"startTime\": \"2016-03-21T22:01:22.9050207Z\",\r\n        \"endTime\": \"2016-03-21T22:42:38.0093532Z\",\r\n        \"activityId\": \"3bcced62-a0a1-4e60-a282-2da7078459b7\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1/backupJobs/5f0f68c8-18fa-48c5-9783-e0d1b1e6c08d\",\r\n      \"name\": \"5f0f68c8-18fa-48c5-9783-e0d1b1e6c08d\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"eTag\": null,\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"duration\": \"00:00:01.3168859\",\r\n        \"actionsInfo\": [\r\n          1\r\n        ],\r\n        \"errorDetails\": [\r\n          {\r\n            \"errorCode\": 400001,\r\n            \"errorTitle\": \"\",\r\n            \"errorString\": \"Command execution failed.\",\r\n            \"recommendations\": [\r\n              \"Another operation is currently in progress on this item. Please wait until the previous operation is completed, and then retry.\"\r\n            ]\r\n          }\r\n        ],\r\n        \"virtualMachineVersion\": \"ClassicCompute\",\r\n        \"extendedInfo\": null,\r\n        \"entityFriendlyName\": \"v1prjai1\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Failed\",\r\n        \"startTime\": \"2016-03-21T22:01:21.7291638Z\",\r\n        \"endTime\": \"2016-03-21T22:01:23.0460497Z\",\r\n        \"activityId\": \"432ca3ff-d2a2-4c04-bb69-dbfdd52cb267\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1/backupJobs/54a62c92-ffe6-4d0a-a978-c583e59eb239\",\r\n      \"name\": \"54a62c92-ffe6-4d0a-a978-c583e59eb239\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"eTag\": null,\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"duration\": \"00:00:00\",\r\n        \"actionsInfo\": [\r\n          1\r\n        ],\r\n        \"errorDetails\": [\r\n          {\r\n            \"errorCode\": 400001,\r\n            \"errorTitle\": \"\",\r\n            \"errorString\": \"Command execution failed.\",\r\n            \"recommendations\": [\r\n              \"Another operation is currently in progress on this item. Please wait until the previous operation is completed, and then retry.\"\r\n            ]\r\n          }\r\n        ],\r\n        \"virtualMachineVersion\": \"ClassicCompute\",\r\n        \"extendedInfo\": null,\r\n        \"entityFriendlyName\": \"v1prjai1\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Failed\",\r\n        \"startTime\": \"2016-03-21T22:01:08.0380734Z\",\r\n        \"endTime\": \"2016-03-21T22:01:08.0380734Z\",\r\n        \"activityId\": \"ffb4aa5d-30d7-49bc-b22d-2ba4e34edf31\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1/backupJobs/4ff14a9d-5829-4bb9-a160-f33edefecb00\",\r\n      \"name\": \"4ff14a9d-5829-4bb9-a160-f33edefecb00\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"eTag\": null,\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"duration\": \"00:03:08.2376619\",\r\n        \"actionsInfo\": [\r\n          1\r\n        ],\r\n        \"errorDetails\": [\r\n          {\r\n            \"errorCode\": 400002,\r\n            \"errorTitle\": \"\",\r\n            \"errorString\": \"Backup failed with an internal error.\",\r\n            \"recommendations\": [\r\n              \"Please retry the operation in a few minutes. If the problem persists, please contact Microsoft Support.\"\r\n            ]\r\n          }\r\n        ],\r\n        \"virtualMachineVersion\": \"ClassicCompute\",\r\n        \"extendedInfo\": null,\r\n        \"entityFriendlyName\": \"mylinux1\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Failed\",\r\n        \"startTime\": \"2016-03-21T22:01:07.9308632Z\",\r\n        \"endTime\": \"2016-03-21T22:04:16.1685251Z\",\r\n        \"activityId\": \"eb0fdfde-3a97-42b3-b8d4-ae718fb90452\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1/backupJobs/74c5044e-0827-4b78-8fc4-12859578867d\",\r\n      \"name\": \"74c5044e-0827-4b78-8fc4-12859578867d\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"eTag\": null,\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"duration\": \"00:03:09.4546640\",\r\n        \"actionsInfo\": [\r\n          1\r\n        ],\r\n        \"errorDetails\": [\r\n          {\r\n            \"errorCode\": 400136,\r\n            \"errorTitle\": \"\",\r\n            \"errorString\": \"Virtual machine doesn't exist.\",\r\n            \"recommendations\": [\r\n              \"Please make sure that virtual machine exists or select a different virtual machine.\"\r\n            ]\r\n          }\r\n        ],\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"extendedInfo\": null,\r\n        \"entityFriendlyName\": \"dc1vm0\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Failed\",\r\n        \"startTime\": \"2016-03-21T22:01:07.2325307Z\",\r\n        \"endTime\": \"2016-03-21T22:04:16.6871947Z\",\r\n        \"activityId\": \"280eaaf5-d507-4d32-8218-6317e07c8f0c\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/phaniktRSV/providers/Microsoft.RecoveryServices/vaults/phaniktRs1/backupJobs/c29dd858-1419-4f00-9534-3b07ca9b2833\",\r\n      \"name\": \"c29dd858-1419-4f00-9534-3b07ca9b2833\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"eTag\": null,\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"duration\": \"00:03:11.3535068\",\r\n        \"actionsInfo\": [\r\n          1\r\n        ],\r\n        \"errorDetails\": [\r\n          {\r\n            \"errorCode\": 400002,\r\n            \"errorTitle\": \"\",\r\n            \"errorString\": \"Backup failed with an internal error.\",\r\n            \"recommendations\": [\r\n              \"Please retry the operation in a few minutes. If the problem persists, please contact Microsoft Support.\"\r\n            ]\r\n          }\r\n        ],\r\n        \"virtualMachineVersion\": \"ClassicCompute\",\r\n        \"extendedInfo\": null,\r\n        \"entityFriendlyName\": \"v1prjai1\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Failed\",\r\n        \"startTime\": \"2016-03-21T22:00:39.3328547Z\",\r\n        \"endTime\": \"2016-03-21T22:03:50.6863615Z\",\r\n        \"activityId\": \"0747e68f-10f9-447d-9283-195052bab1ac\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "9563"
+          "12"
         ],
         "Content-Type": [
           "application/json"
@@ -151,29 +148,29 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "317b70e8-5e11-44f4-a911-1de76ac8d163"
+          "ae3b91ad-c4dc-4713-9b6e-905c37b53d6f"
         ],
         "x-ms-client-request-id": [
-          "d9998f1f-bcb7-4db2-9d0d-558778609b28-2016-03-23 05:07:41Z-PS",
-          "d9998f1f-bcb7-4db2-9d0d-558778609b28-2016-03-23 05:07:41Z-PS"
+          "0cff1c76-b964-472b-883f-edbb70bb8db0-2016-04-18 11:10:48Z-PS",
+          "0cff1c76-b964-472b-883f-edbb70bb8db0-2016-04-18 11:10:48Z-PS"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14503"
+          "14199"
         ],
         "x-ms-correlation-request-id": [
-          "317b70e8-5e11-44f4-a911-1de76ac8d163"
+          "ae3b91ad-c4dc-4713-9b6e-905c37b53d6f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160323T050743Z:317b70e8-5e11-44f4-a911-1de76ac8d163"
+          "CENTRALUS:20160418T111049Z:ae3b91ad-c4dc-4713-9b6e-905c37b53d6f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 Mar 2016 05:07:43 GMT"
+          "Mon, 18 Apr 2016 11:10:48 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -187,6 +184,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "04cf684a-d41f-4550-9f70-7708a3a2283b"
+    "SubscriptionId": "d22f872b-f3f1-425a-8100-c74a376452b1"
   }
 }

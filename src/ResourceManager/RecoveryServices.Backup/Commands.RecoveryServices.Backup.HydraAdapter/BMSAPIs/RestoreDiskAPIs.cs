@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
 {
     public partial class HydraAdapter
     {
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 RecoveryPointId = recoveryPointId,
                 RecoveryType = RecoveryType.RestoreDisks,
                 Region = vaultLocation,
-                StorageAccountName = storageAccountId,
-                SubnetName = string.Empty,
+                StorageAccountId = storageAccountId,
+                SubnetId = string.Empty,
                 VirtualMachineName = string.Empty,
-                VirtualNetworkName = string.Empty,
+                VirtualNetworkId = string.Empty,
             };
 
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             triggerRestoreRequest.Item.Properties = new RestoreRequest();
             triggerRestoreRequest.Item.Properties = restoreRequest;
 
-            var response = BmsAdapter.Client.Restore.TriggerRestoreAsync(resourceGroupName, resourceName, BmsAdapter.GetCustomRequestHeaders(),
+            var response = BmsAdapter.Client.Restores.TriggerRestoreAsync(resourceGroupName, resourceName, BmsAdapter.GetCustomRequestHeaders(),
                 AzureFabricName, containerName, protectedItemName, recoveryPointId, triggerRestoreRequest, BmsAdapter.CmdletCancellationToken).Result;
 
             return response;
