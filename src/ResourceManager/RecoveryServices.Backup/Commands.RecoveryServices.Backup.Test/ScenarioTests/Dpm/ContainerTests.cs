@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetDpmContainerScenario()
+        public void TestGetBackupManagementServer()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.Dpm.ToString(), "Test-GetContainerScenario");
         }
