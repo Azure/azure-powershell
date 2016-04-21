@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = new Microsoft.Azure.Batch.CertificateReference();
         }
         
+        public PSCertificateReference(PSCertificate baseCertificate)
+        {
+            this.omObject = new Microsoft.Azure.Batch.CertificateReference(baseCertificate.omObject);
+        }
+        
         internal PSCertificateReference(Microsoft.Azure.Batch.CertificateReference omObject)
         {
             if ((omObject == null))

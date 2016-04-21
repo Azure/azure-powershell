@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -58,7 +59,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             cmdlet.Thumbprint = "123456789";
 
             // Don't go to the service on a Certificate Cancel Deletion call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateCancelDeletionParameters, CertificateCancelDeletionResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                CertificateCancelDeletionOptions, 
+                AzureOperationHeaderResponse<CertificateCancelDeletionHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

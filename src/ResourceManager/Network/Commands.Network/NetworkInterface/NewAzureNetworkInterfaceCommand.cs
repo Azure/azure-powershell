@@ -132,6 +132,20 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "ApplicationGatewayBackendAddressPoolId")]
+        public List<string> ApplicationGatewayBackendAddressPoolId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "ApplicationGatewayBackendAddressPools")]
+        public List<PSApplicationGatewayBackendAddressPool> ApplicationGatewayBackendAddressPool { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The IpConfiguration name." +
                           "default value: ipconfig1")]
         [ValidateNotNullOrEmpty]
@@ -222,6 +236,15 @@ namespace Microsoft.Azure.Commands.Network
                         this.LoadBalancerInboundNatRuleId.Add(natRule.Id);
                     }
                 }
+
+                if (this.ApplicationGatewayBackendAddressPool != null)
+                {
+                    this.ApplicationGatewayBackendAddressPoolId = new List<string>();
+                    foreach (var appgwBepool in this.ApplicationGatewayBackendAddressPool)
+                    {
+                        this.ApplicationGatewayBackendAddressPoolId.Add(appgwBepool.Id);
+                    }
+                }
             }
 
             var networkInterface = new PSNetworkInterface();
@@ -270,6 +293,15 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var natruleId in this.LoadBalancerInboundNatRuleId)
                 {
                     nicIpConfiguration.LoadBalancerInboundNatRules.Add(new PSInboundNatRule { Id = natruleId });
+                }
+            }
+
+            if (this.ApplicationGatewayBackendAddressPoolId != null)
+            {
+                nicIpConfiguration.ApplicationGatewayBackendAddressPools = new List<PSApplicationGatewayBackendAddressPool>();
+                foreach (var appgwBepoolId in this.ApplicationGatewayBackendAddressPoolId)
+                {
+                    nicIpConfiguration.ApplicationGatewayBackendAddressPools.Add(new PSApplicationGatewayBackendAddressPool { Id = appgwBepoolId });
                 }
             }
 

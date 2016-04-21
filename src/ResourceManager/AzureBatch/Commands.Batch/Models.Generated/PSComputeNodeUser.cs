@@ -43,15 +43,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Name
+        public System.DateTime ExpiryTime
         {
             get
             {
-                return this.omObject.Name;
+                return this.omObject.ExpiryTime;
             }
             set
             {
-                this.omObject.Name = value;
+                this.omObject.ExpiryTime = value;
             }
         }
         
@@ -67,23 +67,39 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime ExpiryTime
+        public string Name
         {
             get
             {
-                return this.omObject.ExpiryTime;
+                return this.omObject.Name;
             }
             set
             {
-                this.omObject.ExpiryTime = value;
+                this.omObject.Name = value;
             }
         }
         
         public string Password
         {
+            get
+            {
+                return this.omObject.Password;
+            }
             set
             {
                 this.omObject.Password = value;
+            }
+        }
+        
+        public string SshPublicKey
+        {
+            get
+            {
+                return this.omObject.SshPublicKey;
+            }
+            set
+            {
+                this.omObject.SshPublicKey = value;
             }
         }
     }
