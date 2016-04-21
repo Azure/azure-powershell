@@ -50,10 +50,6 @@
 					  <Label>BackupManagementType</Label>
 					  <Width>20</Width>
 				  </TableColumnHeader>
-				  <TableColumnHeader>
-					  <Label>Status</Label>
-					  <Width>20</Width>
-				  </TableColumnHeader>
 			  </TableHeaders>
 			  <TableRowEntries>
 				  <TableRowEntry>
@@ -66,60 +62,6 @@
 						  </TableColumnItem>
 						  <TableColumnItem>
 							  <PropertyName>BackupManagementType</PropertyName>
-						  </TableColumnItem>
-						  <TableColumnItem>
-							  <PropertyName>Status</PropertyName>
-						  </TableColumnItem>
-					  </TableColumnItems>
-				  </TableRowEntry>
-			  </TableRowEntries>
-		  </TableControl>
-	  </View>
-	  <View>
-		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupIaasVmContainer</Name>
-		  <ViewSelectedBy>
-			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupIaasVmContainer</TypeName>
-		  </ViewSelectedBy>
-		  <TableControl>
-			  <TableHeaders>
-				  <TableColumnHeader>
-					  <Label>Name</Label>
-					  <Width>40</Width>
-				  </TableColumnHeader>
-				  <TableColumnHeader>
-					  <Label>ContainerType</Label>
-					  <Width>18</Width>
-				  </TableColumnHeader>
-				  <TableColumnHeader>
-					  <Label>BackupManagementType</Label>
-					  <Width>20</Width>
-				  </TableColumnHeader>
-				  <TableColumnHeader>
-					  <Label>ResourceGroupName</Label>
-					  <Width>20</Width>
-				  </TableColumnHeader>
-				  <TableColumnHeader>
-					  <Label>Status</Label>
-					  <Width>20</Width>
-				  </TableColumnHeader>
-			  </TableHeaders>
-			  <TableRowEntries>
-				  <TableRowEntry>
-					  <TableColumnItems>
-						  <TableColumnItem>
-							  <PropertyName>Name</PropertyName>
-						  </TableColumnItem>
-						  <TableColumnItem>
-							  <PropertyName>ContainerType</PropertyName>
-						  </TableColumnItem>
-						  <TableColumnItem>
-							  <PropertyName>BackupManagementType</PropertyName>
-						  </TableColumnItem>
-						  <TableColumnItem>
-							  <PropertyName>ResourceGroupName</PropertyName>
-						  </TableColumnItem>
-						  <TableColumnItem>
-							  <PropertyName>Status</PropertyName>
 						  </TableColumnItem>
 					  </TableColumnItems>
 				  </TableRowEntry>
