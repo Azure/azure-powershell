@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 {
     public class WebsitesClient
     {
+        // Azure SDK requires a request parameter to be specified for a few Backup API calls, but
+        // the request is actually optional unless an update is needed
+        private static readonly BackupRequest EmptyRequest = new BackupRequest(location: "");
+
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
@@ -392,6 +396,144 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             catch
             {
                 //ignore if this call fails as it will for reader RBAC
+            }
+        }
+
+        public BackupRequest GetWebAppBackupConfiguration(string resourceGroupName, string webSiteName, string slotName)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupConfigurationSlot(resourceGroupName, webSiteName, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupConfiguration(resourceGroupName,
+                    webSiteName);
+            }
+        }
+
+        public BackupRequest UpdateWebAppBackupConfiguration(string resourceGroupName, string webSiteName,
+            string slotName, BackupRequest newSchedule)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.UpdateSiteBackupConfigurationSlot(resourceGroupName,
+                    webSiteName, newSchedule, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.UpdateSiteBackupConfiguration(resourceGroupName, webSiteName, newSchedule);
+            }
+        }
+
+        public BackupItem BackupSite(string resourceGroupName, string webSiteName, string slotName,
+            BackupRequest request)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                var backup = WrappedWebsitesClient.Sites.BackupSiteSlot(resourceGroupName, webSiteName, request, slotName);
+                return backup;
+            }
+            else
+            {
+                var backup = WrappedWebsitesClient.Sites.BackupSite(resourceGroupName, webSiteName, request);
+                return backup;
+            }
+        }
+
+        public BackupItemCollection ListSiteBackups(string resourceGroupName, string webSiteName, string slotName)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.ListSiteBackupsSlot(resourceGroupName, webSiteName, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.ListSiteBackups(resourceGroupName, webSiteName);
+            }
+        }
+
+        public BackupItem GetSiteBackupStatus(string resourceGroupName, string webSiteName, string slotName, string backupId)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecretsSlot(resourceGroupName, webSiteName, backupId, EmptyRequest, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecrets(resourceGroupName, webSiteName, backupId,
+                    EmptyRequest);
+            }
+        }
+
+        public BackupItem GetSiteBackupStatusSecrets(string resourceGroupName, string webSiteName, string slotName,
+            string backupId, BackupRequest request = null)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecretsSlot(resourceGroupName, webSiteName,
+                    backupId, request, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecrets(resourceGroupName, webSiteName, backupId, request);
+            }
+        }
+
+        public BackupItem DeleteBackup(string resourceGroupName, string webSiteName, string slotName,
+            string backupId)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.DeleteBackupSlot(resourceGroupName, webSiteName, backupId, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.DeleteBackup(resourceGroupName, webSiteName, backupId);
+            }
+        }
+
+        public RestoreResponse RestoreSite(string resourceGroupName, string webSiteName, string slotName,
+            string backupId, RestoreRequest request)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.RestoreSiteSlot(resourceGroupName, webSiteName, backupId, request, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.RestoreSite(resourceGroupName, webSiteName, backupId, request);
+            }
+        }
+
+        public void RecoverSite(string resourceGroupName, string webSiteName, string slotName,
+            CsmSiteRecoveryEntity recoveryEntity)
+        {
+            string qualifiedSiteName;
+            bool useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                WrappedWebsitesClient.Sites.RecoverSiteSlot(resourceGroupName, webSiteName, recoveryEntity, slotName);
+            }
+            else
+            {
+                WrappedWebsitesClient.Sites.RecoverSite(resourceGroupName, webSiteName, recoveryEntity);
             }
         }
 

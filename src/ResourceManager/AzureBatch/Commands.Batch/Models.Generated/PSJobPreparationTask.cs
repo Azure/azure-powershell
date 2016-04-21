@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.JobPreparationTask omObject;
         
-        private IList<PSResourceFile> resourceFiles;
+        private PSTaskConstraints constraints;
         
         private IList<PSEnvironmentSetting> environmentSettings;
         
-        private PSTaskConstraints constraints;
+        private IList<PSResourceFile> resourceFiles;
         
         public PSJobPreparationTask()
         {
@@ -54,18 +54,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Id
-        {
-            get
-            {
-                return this.omObject.Id;
-            }
-            set
-            {
-                this.omObject.Id = value;
-            }
-        }
-        
         public string CommandLine
         {
             get
@@ -78,38 +66,28 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public IList<PSResourceFile> ResourceFiles
+        public PSTaskConstraints Constraints
         {
             get
             {
-                if (((this.resourceFiles == null) 
-                            && (this.omObject.ResourceFiles != null)))
+                if (((this.constraints == null) 
+                            && (this.omObject.Constraints != null)))
                 {
-                    List<PSResourceFile> list;
-                    list = new List<PSResourceFile>();
-                    IEnumerator<Microsoft.Azure.Batch.ResourceFile> enumerator;
-                    enumerator = this.omObject.ResourceFiles.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(new PSResourceFile(enumerator.Current));
-                    }
-                    this.resourceFiles = list;
+                    this.constraints = new PSTaskConstraints(this.omObject.Constraints);
                 }
-                return this.resourceFiles;
+                return this.constraints;
             }
             set
             {
                 if ((value == null))
                 {
-                    this.omObject.ResourceFiles = null;
+                    this.omObject.Constraints = null;
                 }
                 else
                 {
-                    this.omObject.ResourceFiles = new List<Microsoft.Azure.Batch.ResourceFile>();
+                    this.omObject.Constraints = value.omObject;
                 }
-                this.resourceFiles = value;
+                this.constraints = value;
             }
         }
         
@@ -148,52 +126,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.Boolean? RunElevated
+        public string Id
         {
             get
             {
-                return this.omObject.RunElevated;
+                return this.omObject.Id;
             }
             set
             {
-                this.omObject.RunElevated = value;
-            }
-        }
-        
-        public PSTaskConstraints Constraints
-        {
-            get
-            {
-                if (((this.constraints == null) 
-                            && (this.omObject.Constraints != null)))
-                {
-                    this.constraints = new PSTaskConstraints(this.omObject.Constraints);
-                }
-                return this.constraints;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.Constraints = null;
-                }
-                else
-                {
-                    this.omObject.Constraints = value.omObject;
-                }
-                this.constraints = value;
-            }
-        }
-        
-        public System.Boolean? WaitForSuccess
-        {
-            get
-            {
-                return this.omObject.WaitForSuccess;
-            }
-            set
-            {
-                this.omObject.WaitForSuccess = value;
+                this.omObject.Id = value;
             }
         }
         
@@ -206,6 +147,65 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.RerunOnComputeNodeRebootAfterSuccess = value;
+            }
+        }
+        
+        public IList<PSResourceFile> ResourceFiles
+        {
+            get
+            {
+                if (((this.resourceFiles == null) 
+                            && (this.omObject.ResourceFiles != null)))
+                {
+                    List<PSResourceFile> list;
+                    list = new List<PSResourceFile>();
+                    IEnumerator<Microsoft.Azure.Batch.ResourceFile> enumerator;
+                    enumerator = this.omObject.ResourceFiles.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSResourceFile(enumerator.Current));
+                    }
+                    this.resourceFiles = list;
+                }
+                return this.resourceFiles;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ResourceFiles = null;
+                }
+                else
+                {
+                    this.omObject.ResourceFiles = new List<Microsoft.Azure.Batch.ResourceFile>();
+                }
+                this.resourceFiles = value;
+            }
+        }
+        
+        public System.Boolean? RunElevated
+        {
+            get
+            {
+                return this.omObject.RunElevated;
+            }
+            set
+            {
+                this.omObject.RunElevated = value;
+            }
+        }
+        
+        public System.Boolean? WaitForSuccess
+        {
+            get
+            {
+                return this.omObject.WaitForSuccess;
+            }
+            set
+            {
+                this.omObject.WaitForSuccess = value;
             }
         }
     }

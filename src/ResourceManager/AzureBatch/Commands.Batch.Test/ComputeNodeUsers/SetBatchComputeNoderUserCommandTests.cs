@@ -21,6 +21,8 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -61,7 +63,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             cmdlet.Name = "testUser";
 
             // Don't go to the service on an Update ComputeNodeUser call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeUpdateUserParameters, ComputeNodeUpdateUserResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                NodeUpdateUserParameter, 
+                ComputeNodeUpdateUserOptions, 
+                AzureOperationHeaderResponse<ComputeNodeUpdateUserHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set
@@ -84,11 +90,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             DateTime requestExpiryTime = DateTime.Now;
 
             // Don't go to the service on an Update ComputeNodeUser call
-            Action<BatchRequest<ComputeNodeUpdateUserParameters, ComputeNodeUpdateUserResponse>> extractUserUpdateParametersAction =
+            Action<BatchRequest<NodeUpdateUserParameter, ComputeNodeUpdateUserOptions, AzureOperationHeaderResponse<ComputeNodeUpdateUserHeaders>>> extractUserUpdateParametersAction =
                 (request) =>
                 {
-                    requestPassword = request.TypedParameters.Password;
-                    requestExpiryTime = request.TypedParameters.ExpiryTime.Value;
+                    requestPassword = request.Parameters.Password;
+                    requestExpiryTime = request.Parameters.ExpiryTime.GetValueOrDefault();
                 };
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractUserUpdateParametersAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
