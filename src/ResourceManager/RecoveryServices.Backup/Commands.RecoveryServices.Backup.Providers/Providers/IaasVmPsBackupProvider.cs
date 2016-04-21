@@ -387,8 +387,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryParams.BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
 
             // 3. Filter by Status
-            queryParams.RegistrationStatus = status.ToString();
-
+            if (status != 0)
+            {
+                queryParams.RegistrationStatus = status.ToString();
+            }
+            
             var listResponse = HydraAdapter.ListContainers(queryParams);
 
             List<AzureRmRecoveryServicesBackupContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
