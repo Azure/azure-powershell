@@ -168,6 +168,7 @@
     <Compile Include="ScenarioTests\AddVhdTests.cs" />
     <Compile Include="ScenarioTests\AEMExtensionTests.cs" />
     <Compile Include="ScenarioTests\ComputeCloudExceptionTests.cs" />
+    <Compile Include="ScenarioTests\ContainerServiceTests.cs" />
     <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
     <Compile Include="ScenarioTests\DscExtensionTests.cs" />
     <Compile Include="ScenarioTests\RunnerTests.cs" />
@@ -234,6 +235,9 @@
     <None Include="ScenarioTests\ComputeCloudExceptionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\ContainerServiceTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\DscExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -294,6 +298,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ComputeCloudExceptionTests\RunComputeCloudExceptionTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ContainerServiceTests\TestContainerService.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ContainerServiceTests\TestContainerServiceUpdate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\TestDiagnosticsExtensionBasic.json">
