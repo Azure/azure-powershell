@@ -161,6 +161,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestDisableAzureVMProtectionScenario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestGetAzureVMRecoveryPointsScenario.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestRestoreAzureVMItemScenario.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestCancelJobScenario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -194,8 +200,6 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.PolicyTests\TestPolicyScenario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\TestGetAzureVMRecoveryPointsScenario.json" />
-    <None Include="SessionRecords\TestRestoreAzureVMItemScenario.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
