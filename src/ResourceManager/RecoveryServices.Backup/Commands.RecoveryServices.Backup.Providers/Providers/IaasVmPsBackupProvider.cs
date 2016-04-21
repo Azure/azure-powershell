@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
 
                 properties.PolicyId = string.Empty;
-                properties.ProtectionState = ItemStatus.ProtectionStopped.ToString();
+                properties.ProtectionState = ItemProtectionState.ProtectionStopped.ToString();
 
                 ProtectedItemCreateOrUpdateRequest hydraRequest = new ProtectedItemCreateOrUpdateRequest()
                 {
@@ -374,9 +374,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<AzureRmRecoveryServicesBackupContainerBase> ListProtectionContainers()
         {
+            Models.ContainerType containerType = (Models.ContainerType)this.ProviderData.ProviderParameters[ContainerParams.ContainerType];
+            Models.BackupManagementType? backupManagementTypeNullable = (Models.BackupManagementType?)this.ProviderData.ProviderParameters[ContainerParams.BackupManagementType];
             string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
-            ContainerRegistrationStatus status = (ContainerRegistrationStatus)this.ProviderData.ProviderParameters[ContainerParams.Status];
             string resourceGroupName = (string)this.ProviderData.ProviderParameters[ContainerParams.ResourceGroupName];
+            ContainerRegistrationStatus status = (ContainerRegistrationStatus)this.ProviderData.ProviderParameters[ContainerParams.Status];
+
+            if (backupManagementTypeNullable.HasValue)
+            {
+                ValidateAzureVMBackupManagementType(backupManagementTypeNullable.Value);
+            }
 
             ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
 
@@ -418,7 +425,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string name = (string)this.ProviderData.ProviderParameters[ItemParams.AzureVMName];
             ItemProtectionStatus protectionStatus =
                 (ItemProtectionStatus)this.ProviderData.ProviderParameters[ItemParams.ProtectionStatus];
-            ItemStatus status = (ItemStatus)this.ProviderData.ProviderParameters[ItemParams.Status];
+            ItemProtectionState status = (ItemProtectionState)this.ProviderData.ProviderParameters[ItemParams.ProtectionState];
             Models.WorkloadType workloadType =
                 (Models.WorkloadType)this.ProviderData.ProviderParameters[ItemParams.WorkloadType];
 
@@ -655,6 +662,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(string.Format(Resources.UnExpectedContainerTypeException,
                                             Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType.AzureVM.ToString(),
                                             type.ToString()));
+            }
+        }
+
+        private void ValidateAzureVMBackupManagementType(Models.BackupManagementType backupManagementType)
+        {
+            if (backupManagementType != Models.BackupManagementType.AzureVM)
+            {
+                throw new ArgumentException(string.Format(Resources.UnExpectedBackupManagementTypeException,
+                                            Models.BackupManagementType.AzureVM.ToString(),
+                                            backupManagementType.ToString()));
             }
         }
 
