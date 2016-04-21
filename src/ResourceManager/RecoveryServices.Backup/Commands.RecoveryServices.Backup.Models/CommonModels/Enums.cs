@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Unhealthy,
     }
 
-    public enum ItemStatus
+    public enum ItemProtectionState
     {
         IRPending = 1,
         ProtectionError,

@@ -37,7 +37,7 @@ function Test-GetItemScenario
 	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
 
 	# VAR-4: Get items for container with Status filter
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Status "IRPending";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -ProtectionState "IRPending";
 	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
 
 	# VAR-5: Get items for container with friendly name and ProtectionStatus filters
@@ -45,15 +45,15 @@ function Test-GetItemScenario
 	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
 
 	# VAR-6: Get items for container with friendly name and Status filters
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1" -Status "IRPending";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1" -ProtectionState "IRPending";
 	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
 
 	# VAR-7: Get items for container with Status and ProtectionStatus filters
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Status "IRPending" -ProtectionStatus "Healthy";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -ProtectionState "IRPending" -ProtectionStatus "Healthy";
 	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
 
 	# VAR-8: Get items for container with friendly name, Status and ProtectionStatus filters
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1" -Status "IRPending" -ProtectionStatus "Healthy";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1" -ProtectionState "IRPending" -ProtectionStatus "Healthy";
 	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
 }
 
