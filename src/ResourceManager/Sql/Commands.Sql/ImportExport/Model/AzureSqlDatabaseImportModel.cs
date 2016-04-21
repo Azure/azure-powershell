@@ -48,6 +48,26 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
         public int DatabaseMaxSizeBytes
         {
             get; set;
-        }       
+        }
+
+        /// <summary>
+        /// Copies the model to a new class
+        /// </summary>
+        internal override AzureSqlDatabaseImportExportBaseModel Copy()
+        {
+            return new AzureSqlDatabaseImportModel()
+            {
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                AdministratorLogin = AdministratorLogin,
+                AuthenticationType = AuthenticationType,
+                DatabaseName = DatabaseName,
+                StorageKeyType = StorageKeyType,
+                StorageUri = StorageUri,
+                Edition = Edition,
+                ServiceObjectiveName = ServiceObjectiveName,
+                DatabaseMaxSizeBytes = DatabaseMaxSizeBytes
+            };
+        }
     }
 }
