@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
 
                 properties.PolicyId = string.Empty;
-                properties.ProtectionState = ItemStatus.ProtectionStopped.ToString();
+                properties.ProtectionState = ItemProtectionState.ProtectionStopped.ToString();
 
                 ProtectedItemCreateOrUpdateRequest hydraRequest = new ProtectedItemCreateOrUpdateRequest()
                 {
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string name = (string)this.ProviderData.ProviderParameters[ItemParams.AzureVMName];
             ItemProtectionStatus protectionStatus =
                 (ItemProtectionStatus)this.ProviderData.ProviderParameters[ItemParams.ProtectionStatus];
-            ItemStatus status = (ItemStatus)this.ProviderData.ProviderParameters[ItemParams.Status];
+            ItemProtectionState status = (ItemProtectionState)this.ProviderData.ProviderParameters[ItemParams.ProtectionState];
             Models.WorkloadType workloadType =
                 (Models.WorkloadType)this.ProviderData.ProviderParameters[ItemParams.WorkloadType];
 
