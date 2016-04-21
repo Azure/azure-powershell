@@ -30,7 +30,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
     {
         private const string AbortParameterSetName = "AbortMigrationParameterSet";
         private const string CommitParameterSetName = "CommitMigrationParameterSet";
-        private const string PrepareDefaultParameterSetName = "PrepareDefaultMigrationParameterSet";
         private const string PrepareNewParameterSetName = "PrepareNewMigrationParameterSet";
         private const string PrepareExistingParameterSetName = "PrepareExistingMigrationParameterSet";
 
@@ -61,31 +60,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ParameterSetName = PrepareDefaultParameterSetName,
-            HelpMessage = "Prepare migration")]
-        public SwitchParameter PrepareDefault
-        {
-            get;
-            set;
-        }
-
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
             ParameterSetName = PrepareNewParameterSetName,
             HelpMessage = "Prepare migration")]
-        public SwitchParameter PrepareNew
-        {
-            get;
-            set;
-        }
-
         [Parameter(
             Position = 0,
             Mandatory = true,
             ParameterSetName = PrepareExistingParameterSetName,
             HelpMessage = "Prepare migration")]
-        public SwitchParameter PrepareExistingDestinationVNet
+        public SwitchParameter Prepare
         {
             get;
             set;
@@ -117,17 +99,40 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
         [Parameter(
             Position = 3,
             Mandatory = true,
-            ParameterSetName = PrepareExistingParameterSetName,
-            HelpMessage = "Resource group name for migration")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName
+            ParameterSetName = PrepareNewParameterSetName,
+            HelpMessage = "Prepare migration to new virtual network")]
+        public SwitchParameter CreateNewVirtualNetwork
         {
             get;
             set;
         }
 
         [Parameter(
+            Position = 3,
+            Mandatory = true,
+            ParameterSetName = PrepareExistingParameterSetName,
+            HelpMessage = "Prepare migration to existing virtual network")]
+        public SwitchParameter UseExistingVirtualNetwork
+        {
+            get;
+            set;
+        }
+
+
+        [Parameter(
             Position = 4,
+            Mandatory = true,
+            ParameterSetName = PrepareExistingParameterSetName,
+            HelpMessage = "Resource group name of existing virtual network for migration")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualNetworkResourceGroupName
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+            Position = 5,
             Mandatory = true,
             ParameterSetName = PrepareExistingParameterSetName,
             HelpMessage = "Virtual network name for migration")]
@@ -139,10 +144,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
         }
 
         [Parameter(
-            Position = 5,
+            Position = 6,
             Mandatory = true,
             ParameterSetName = PrepareExistingParameterSetName,
-            HelpMessage = "Subnet Name for migration")]
+            HelpMessage = "Subnet name for migration")]
         [ValidateNotNullOrEmpty]
         public string SubnetName
         {
@@ -170,11 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             }
             else
             {
-                if (this.PrepareDefault.IsPresent)
-                {
-                    DestinationVNetType =  DestinationVirtualNetwork.Default;
-                }
-                else if (this.PrepareNew.IsPresent)
+                if (this.CreateNewVirtualNetwork.IsPresent)
                 {
                     DestinationVNetType = DestinationVirtualNetwork.New;
                 }
@@ -187,7 +188,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     ? new PrepareDeploymentMigrationParameters
                     {
                         DestinationVirtualNetwork = this.DestinationVNetType,
-                        ResourceGroupName = this.ResourceGroupName,
+                        ResourceGroupName = this.VirtualNetworkResourceGroupName,
                         SubNetName = this.SubnetName,
                         VirtualNetworkName = this.VirtualNetworkName
                     }

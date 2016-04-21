@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Network;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
 {
     /// <summary>
     /// Migrate ASM virtual network to ARM

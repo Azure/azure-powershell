@@ -640,7 +640,7 @@ function Test-MigrateAzureDeployment
 
     Get-AzureVM -ServiceName $svcName -Name $vmName
 
-    Move-AzureService -PrepareNew -ServiceName $svcName -DeploymentName $svcName;
+    Move-AzureService -Prepare -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
 
     $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
 
@@ -688,7 +688,7 @@ function Test-MigrationAbortAzureDeployment
 
     Get-AzureVM -ServiceName $svcName -Name $vmName
 
-    Move-AzureService -PrepareNew -ServiceName $svcName -DeploymentName $svcName;
+    Move-AzureService -Prepare -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
 
     Get-AzureVM -ServiceName $svcName -Name $vmName;
 
