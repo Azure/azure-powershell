@@ -19,11 +19,11 @@ Tests creating Batch jobs
 function Test-NewJob
 {
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-
+    
     $jobId1 = "simple"
     $jobId2 = "complex"
 
-    try
+    try 
     {
         # Create a simple job
         $poolInformation1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
@@ -149,9 +149,9 @@ function Test-NewJob
         $priority = 1
 
         New-AzureBatchJob -Id $jobId2 -DisplayName $displayName -CommonEnvironmentSettings $commonEnvSettings -Constraints $jobConstraints -JobManagerTask $jobMgr -JobPreparationTask $jobPrep -JobReleaseTask $jobRelease -PoolInformation $poolInformation2 -Metadata $metadata -Priority $priority -BatchContext $context
-
+        
         $job2 = Get-AzureBatchJob -Id $jobId2 -BatchContext $context
-
+        
         # Verify created job matches expectations
         Assert-AreEqual $jobId2 $job2.Id
         Assert-AreEqual $displayName $job2.DisplayName
@@ -346,7 +346,7 @@ function Test-ListJobsUnderSchedule
 
     # Verify that pipelining also works
     $scheduleJobs = $jobSchedule | Get-AzureBatchJob -BatchContext $context
-
+        
     Assert-AreEqual $count $scheduleJobs.Count
     Assert-True { $scheduleJobs.Count -lt $allJobs.Count }
 
@@ -365,13 +365,13 @@ function Test-UpdateJob
 {
     param([string]$jobId)
 
-	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-	$osFamily = 4
-	$targetOS = "*"
-	$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+    $osFamily = 4
+    $targetOS = "*"
+    $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
-	# Create the job with an auto pool
+    # Create the job with an auto pool
     $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
     $poolSpec.TargetDedicated = 3
     $poolSpec.VirtualMachineSize = "small"
