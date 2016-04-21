@@ -12,8 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.WindowsAzure;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -29,5 +38,59 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         internal static List<string> KnownLocationsNormalized = KnownLocations
             .Select(loc => loc.ToLower().Replace(" ", "")).ToList();
+
+        /// <summary>
+        /// Get an existing resource or resources.
+        /// </summary>
+        /// <param name="parameters">The get parameters</param>
+        /// <returns>List of resources</returns>
+        public virtual List<PSResource> FilterPSResources(BasePSResourceParameters parameters)
+        {
+            List<PSResource> resources = new List<PSResource>();
+
+            if (!string.IsNullOrEmpty(parameters.Name))
+            {
+                ResourceIdentity resourceIdentity = parameters.ToResourceIdentity();
+
+                ResourceGetResult getResult;
+
+                try
+                {
+                    getResult = ResourceManagementClient.Resources.Get(parameters.ResourceGroupName, resourceIdentity);
+                }
+                catch (CloudException)
+                {
+                    throw new ArgumentException(ProjectResources.ResourceDoesntExists);
+                }
+
+                //resources.Add(getResult.Resource.ToPSResource(this, false));
+            }
+            else
+            {
+                //PSTagValuePair tagValuePair = new PSTagValuePair();
+                //if (parameters.Tag != null && parameters.Tag.Length == 1 && parameters.Tag[0] != null)
+                //{
+                //    tagValuePair = TagsConversionHelper.Create(parameters.Tag[0]);
+                //    if (tagValuePair == null)
+                //    {
+                //        throw new ArgumentException(ProjectResources.InvalidTagFormat);
+                //    }
+                //}
+                //ResourceListResult listResult = ResourceManagementClient.Resources.List(new ResourceListParameters
+                //{
+                //    ResourceGroupName = parameters.ResourceGroupName,
+                //    ResourceType = parameters.ResourceType,
+                //    TagName = tagValuePair.Name,
+                //    TagValue = tagValuePair.Value
+                //});
+
+                //if (listResult.Resources != null)
+                //{
+                //    resources.AddRange(listResult.Resources.Select(r => r.ToPSResource(this, false)));
+                //}
+            }
+            return resources;
+        }
+
     }
 }
