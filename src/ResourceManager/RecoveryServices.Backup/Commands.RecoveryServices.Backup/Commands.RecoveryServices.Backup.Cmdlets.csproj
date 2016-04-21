@@ -145,6 +145,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\AzureRM.RecoveryServices.Backup.psd1" />
     <None Include="Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
