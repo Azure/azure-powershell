@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.SetAzureDedicatedCircuitBandwidthWarning, ServiceKey, Bandwidth, BillingType),
+                string.Format(Resources.SetAzureDedicatedCircuitBandwidthWarning, ServiceKey, Bandwidth, Sku, BillingType),
                 Resources.SetAzureDedicatedCircuitBandwidthMessage,
                 ServiceKey.ToString(),
                 () =>
