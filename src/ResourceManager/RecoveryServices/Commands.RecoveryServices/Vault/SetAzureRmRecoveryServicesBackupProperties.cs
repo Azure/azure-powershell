@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.RecoveryServices.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// Retrieves Azure Recovery Services Vault.
+    /// Sets Azure Recovery Services Vault Backup Properties.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProperties")]
     public class SetAzureRmRecoveryServicesBackupProperties : RecoveryServicesCmdletBase
