@@ -20,15 +20,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class DpmPsBackupProvider : IPsBackupProvider
     {
         ProviderData ProviderData { get; set; }
-        HydraAdapter.HydraAdapter HydraAdapter { get; set; }
+        HydraAdapter HydraAdapter { get; set; }
 
-        public void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter)
+        public void Initialize(ProviderData providerData, HydraAdapter hydraAdapter)
         {
             this.ProviderData = providerData;
             this.HydraAdapter = hydraAdapter;
@@ -59,12 +60,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesRecoveryPointBase GetRecoveryPointDetails()
+        public AzureRmRecoveryServicesBackupRecoveryPointBase GetRecoveryPointDetails()
         {
             throw new NotImplementedException();
         }
 
-        public List<AzureRmRecoveryServicesRecoveryPointBase> ListRecoveryPoints()
+        public List<AzureRmRecoveryServicesBackupRecoveryPointBase> ListRecoveryPoints()
         {
             throw new NotImplementedException();
         }
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public List<Models.AzureRmRecoveryServicesContainerBase> ListProtectionContainers()
+        public List<Models.AzureRmRecoveryServicesBackupContainerBase> ListProtectionContainers()
         {
             throw new NotImplementedException();
         }
@@ -89,8 +90,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
 
             BackupEngineListQueryParams queryParams = new BackupEngineListQueryParams();
-
-            queryParams.ProviderType = ProviderType.DPM.ToString();
 
             var listResponse = HydraAdapter.ListBackupEngines(queryParams);
 
@@ -119,7 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public List<Models.AzureRmRecoveryServicesItemBase> ListProtectedItems()
+        public List<Models.AzureRmRecoveryServicesBackupItemBase> ListProtectedItems()
         {
             throw new NotImplementedException();
         }

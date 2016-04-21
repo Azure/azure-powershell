@@ -19,7 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
 {
     public partial class HydraAdapter
     {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectableObject.ListAsync(
+            return BmsAdapter.Client.ProtectableObjects.ListAsync(
                                      resourceGroupName,
                                      resourceName,
                                      queryFilter,
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 
         public BaseRecoveryServicesJobResponse TriggerBackup(string containerName, string itemName)
         {
-            return BmsAdapter.Client.Backup.TriggerBackupAsync(
+            return BmsAdapter.Client.Backups.TriggerBackupAsync(
                 BmsAdapter.GetResourceGroupName(),
                 BmsAdapter.GetResourceName(),
                 BmsAdapter.GetCustomRequestHeaders(),

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,9 +31,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupContainer")]
     public class UnregisterAzureRmRecoveryServicesBackupContainer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesContainerBase Container { get; set; }        
+        public AzureRmRecoveryServicesBackupContainerBase Container { get; set; }        
 
         public override void ExecuteCmdlet()
         {
@@ -40,12 +41,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
                 
-                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.Mars)
+                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.MARS)
                 {
-                    throw new ArgumentException(String.Format("Please provide Container of containerType Windows and backupManagementType Mars. Provided Container has containerType {0} and backupManagementType {1}", Container.ContainerType, Container.BackupManagementType));
+                    throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, Container.ContainerType, Container.BackupManagementType));
                 }
                 AzureRmRecoveryServicesMabContainer mabContainer = Container as AzureRmRecoveryServicesMabContainer;
-                string containerName = mabContainer.FriendlyName;
+                string containerName = mabContainer.Name;
                 HydraAdapter.UnregisterContainers(containerName);
             });
         }

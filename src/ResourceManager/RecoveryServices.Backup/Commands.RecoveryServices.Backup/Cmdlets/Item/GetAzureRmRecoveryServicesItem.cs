@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of items
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesItem"), OutputType(typeof(AzureRmRecoveryServicesItemBase))]
-    public class GetAzureRmRecoveryServicesItem : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(AzureRmRecoveryServicesBackupItemBase))]
+    public class GetAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Item.Container)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesContainerBase Container { get; set; }
+        public AzureRmRecoveryServicesBackupContainerBase Container { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
         [ValidateNotNullOrEmpty]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.Status)]
         [ValidateNotNullOrEmpty]
-        public ItemStatus Status { get; set; }
+        public ItemProtectionState ProtectionState { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {ItemParams.Container, Container},
                     {ItemParams.AzureVMName, Name},
                     {ItemParams.ProtectionStatus, ProtectionStatus},
-                    {ItemParams.Status, Status},
+                    {ItemParams.ProtectionState, ProtectionState},
                     {ItemParams.WorkloadType, WorkloadType},
                 }, HydraAdapter);
 

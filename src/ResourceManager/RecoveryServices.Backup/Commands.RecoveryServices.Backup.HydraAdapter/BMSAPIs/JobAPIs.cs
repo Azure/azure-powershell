@@ -15,7 +15,7 @@
 using System;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
 {
     public partial class HydraAdapter
     {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.Job.GetAsync(
+            return BmsAdapter.Client.Jobs.GetAsync(
                 resourceGroupName,
                 resourceName,
                 jobId,
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
                 status,
                 operation);
 
-            return BmsAdapter.Client.Job.ListAsync(
+            return BmsAdapter.Client.Jobs.ListAsync(
                 resourceGroupName,
                 resourceName,
                 commonFilters,
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.Job.CancelJobAsync(
+            return BmsAdapter.Client.Jobs.CancelJobAsync(
                 resourceGroupName,
                 resourceName,
                 jobId,
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.Job.GetOperationResultAsync(
+            return BmsAdapter.Client.Jobs.GetOperationResultAsync(
                 resourceGroupName,
                 resourceName,
                 jobId,

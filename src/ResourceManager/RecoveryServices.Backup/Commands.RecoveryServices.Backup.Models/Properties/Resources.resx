@@ -151,16 +151,16 @@
     <value>The DaysOfWeek specified for monthly and yearly retention policies should be a subset of the DaysOfWeek value specified in the backup schedule</value>
   </data>
   <data name="PolicyAlreadyExistException" xml:space="preserve">
-    <value>A protection policy with the specified name already exists: {0}</value>
+    <value>A backup policy with the specified name already exists: {0}</value>
   </data>
   <data name="PolicyNotFoundException" xml:space="preserve">
-    <value>Protection Policy not found with name: {0}</value>
+    <value>Backup Policy not found with name: {0}</value>
   </data>
   <data name="ProtectionPolicyNameException" xml:space="preserve">
-    <value>The protection policy name should contain alphanumeric characters and cannot start with a number</value>
+    <value>Backup policy name should contain alphanumeric characters and cannot start with a number</value>
   </data>
   <data name="ProtectionPolicyNameLengthException" xml:space="preserve">
-    <value>The protection policy name must contain between 3 and 150 characters</value>
+    <value>Backup policy name must contain between 3 and 150 characters</value>
   </data>
   <data name="UnsupportedWorkloadBackupManagementTypeException" xml:space="preserve">
     <value>Unsupported combination for WorkloadType: {0}, BackupManagementType:{1}</value>
@@ -172,10 +172,10 @@
     <value>For a weekly retention policy, DaysOfTheWeek is mandatory and should not contain duplicate entries</value>
   </data>
   <data name="WeeklyScheduleDaysOfWeekException" xml:space="preserve">
-    <value>For a weekly backup schedule, using the DaysOfWeek parameter is mandatory</value>
+    <value>For a weekly backup schedule, DaysOfWeek parameter is mandatory</value>
   </data>
   <data name="AzureVMUnsupportedBackupManagementTypeException" xml:space="preserve">
-    <value>BackupManagementType value should be empty or AzureVM for WorkloadType=AzureVM</value>
+    <value>BackupManagementType value should be empty for WorkloadType AzureVM</value>
   </data>
   <data name="BothRetentionAndSchedulePoliciesEmpty" xml:space="preserve">
     <value>Both RetentionPolicy and SchedulePolicy are empty, nothing to update</value>
@@ -199,10 +199,10 @@
     <value>Unexpected ContainerType - expected:{0}, current:{1}</value>
   </data>
   <data name="AllRetentionSchedulesEmptyException" xml:space="preserve">
-    <value>All retention schedules are Empty in retentionPolicy. Alteast one is expected.</value>
+    <value>All retention schedules are empty in RetentionPolicy. Alteast one is expected.</value>
   </data>
   <data name="BackupAndRetentionTimesMismatch" xml:space="preserve">
-    <value>RetentionTime in retention schedule should be same as backup time in SchedulePolicy</value>
+    <value>RetentionTime in retention schedule should be same as backup time specified in SchedulePolicy</value>
   </data>
   <data name="DailyRetentionScheduleNullException" xml:space="preserve">
     <value>Daily Retention Schedule can't be null (or) IsDailyScheduleEnabled should be 'true'  if Daily Backup Schedule is enabled</value>
@@ -211,13 +211,13 @@
     <value>RetentionPolicy: IsDailyScheduleEnabled=true but DailySchedule is NULL</value>
   </data>
   <data name="InvalidBackupTimesInSchedulePolicyException" xml:space="preserve">
-    <value>ONE BackupTime is Allowed in SchedulePolicy</value>
+    <value>Only one BackupTime is Allowed in SchedulePolicy</value>
   </data>
   <data name="InvalidDurationTypeException" xml:space="preserve">
     <value>InvalidDurationType - {0}</value>
   </data>
   <data name="InvalidRetentionTimesInPolicyException" xml:space="preserve">
-    <value>ONE RetentionTime is Allowed in RententionSchedules</value>
+    <value>Only one RetentionTime is Allowed in RetentionSchedules</value>
   </data>
   <data name="MonthlyScheduleEnabledButScheduleIsNullException" xml:space="preserve">
     <value>RetentionPolicy: IsMonthlyScheduleEnabled=true but MonthlySchedule is NULL</value>
@@ -406,5 +406,32 @@ Please contact Microsoft for further assistant.</value>
   </data>
   <data name="JobFromNotProvided" xml:space="preserve">
     <value>Please provide From filter along with To filter.</value>
+  </data>
+  <data name="RestoreOperation" xml:space="preserve">
+    <value>Restore Azure Backup Item Operation</value>
+  </data>
+  <data name="UnsupportedAzureRmBackupManagementServerException" xml:space="preserve">
+    <value>Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid.</value>
+  </data>
+  <data name="UnsupportedContainerException" xml:space="preserve">
+    <value>Please provide Container of containerType as Windows and backupManagementType as MARS. Provided Container has containerType {0} and backupManagementType {1} which is invalid.</value>
+  </data>
+  <data name="GetRPErrorInputDatesShouldBeInUTC" xml:space="preserve">
+    <value>Please specify startdate and enddate in UTC format</value>
+  </data>
+  <data name="BackupManagementTypeNotExpectedForWorkloadType" xml:space="preserve">
+    <value>BackupManagementType is not expected for WorkloadType: {0}</value>
+  </data>
+  <data name="BackupManagementTypeRequiredForContainerType" xml:space="preserve">
+    <value>BackupManagementType provider for ContainerType {0} is incorrect.</value>
+  </data>
+  <data name="BackupManagementTypeRequiredForWorkloadType" xml:space="preserve">
+    <value>BackupManagementType is also required for WorkloadType: {0}</value>
+  </data>
+  <data name="UnsupportedContainerType" xml:space="preserve">
+    <value>Unsupported containerType: {0}</value>
+  </data>
+  <data name="UnExpectedBackupManagementTypeException" xml:space="preserve">
+    <value>Unexpected BackupManagementType - expected:{0}, current:{1}</value>
   </data>
 </root>

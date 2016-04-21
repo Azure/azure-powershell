@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (containerType)
             {
                 case CmdletModel.ContainerType.AzureVM:
-                    providerType = ProviderType.AzureIaasVM.ToString();
+                    providerType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
                     break;
                 default:
                     break;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (workloadType)
             {
                 case CmdletModel.WorkloadType.AzureVM:
-                    providerType = ProviderType.AzureIaasVM.ToString();
+                    providerType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
                     break;
                 default:
                     break;

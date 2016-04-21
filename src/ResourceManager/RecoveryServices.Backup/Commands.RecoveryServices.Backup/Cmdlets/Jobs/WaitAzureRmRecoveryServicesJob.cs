@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet("Wait", "AzureRmRecoveryServicesJob"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
+    [Cmdlet("Wait", "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
     public class WaitAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.WaitJobOrListFilter, ValueFromPipeline = true, Position = 1)]
@@ -54,6 +54,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     foreach (var job in jobsList)
                     {
                         jobsToWaitOn.Add(job.InstanceId);
+                    }
+                }
+                else if (Job.GetType() == typeof(System.Object[]))
+                {
+                    System.Object[] castedJobsList = Job as System.Object[];
+                    object castedJob;
+                    foreach (var job in castedJobsList)
+                    {
+                        if (GetCastedObjFromPSObj<AzureRmRecoveryServicesJobBase>(job, out castedJob))
+                        {
+                            jobsToWaitOn.Add((castedJob as AzureRmRecoveryServicesJobBase).InstanceId);
+                        }
+                        else
+                        {
+                            throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, Job.GetType().FullName));
+                        }
                     }
                 }
                 else

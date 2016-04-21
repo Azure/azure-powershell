@@ -27,20 +27,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Windows
     }
 
-    public enum BackupEngineType
-    {
-        Invalid = 0,
-
-        DpmEngine,
-
-        DpmVenusEngine
-    }
-
     public enum BackupManagementType
     {
         AzureVM = 1,
-        Mars,
-        Scdpm
+        MARS,
+        SCDPM,
+        AzureBackupServer,
+    }
+
+    public enum BackupEngineType
+    {
+        DpmBackupEngine = 1,
+        AzureBackupServerEngine
     }
 
     public enum WorkloadType
@@ -74,7 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Unhealthy,
     }
 
-    public enum ItemStatus
+    public enum ItemProtectionState
     {
         IRPending = 1,
         ProtectionError,
@@ -136,7 +134,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Backup,
         Restore,
         ConfigureBackup,
-        RemoveBackup
+        DisableBackup,
+        DeleteBackupData
     }
 
     public enum JobStatus

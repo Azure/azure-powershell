@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ParameterSetName,
         Container,
         ProtectionStatus,
-        Status,
+        ProtectionState,
         DeleteBackupData,
         ExpiryDate,
     }
