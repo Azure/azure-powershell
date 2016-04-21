@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchApplication), OutputType(typeof(PSApplication))]
     public class GetBatchApplicationCommand : BatchCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the Batch account.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "TODO")]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the resource group that contains the Batch account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

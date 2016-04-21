@@ -22,27 +22,27 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchApplicationPackage), OutputType(typeof(PSApplicationPackage))]
     public class UploadBatchApplicationCommand : BatchCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true)]
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the Batch account.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the resource group that contains the Batch account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true, Mandatory = true)]
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the version of the application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationVersion { get; set; }
 
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = true, Mandatory = true)]
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the file to be uploaded as the application package binary file.")]
         [ValidateNotNullOrEmpty]
         public string FilePath { get; set; }
 
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true, Mandatory = true)]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the format of the application package binary file.")]
         [ValidateNotNullOrEmpty]
         public string Format { get; set; }
 
