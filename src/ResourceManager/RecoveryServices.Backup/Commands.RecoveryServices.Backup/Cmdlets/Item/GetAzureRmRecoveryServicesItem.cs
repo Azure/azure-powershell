@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.Status)]
         [ValidateNotNullOrEmpty]
-        public ItemStatus Status { get; set; }
+        public ItemProtectionState ProtectionState { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {ItemParams.Container, Container},
                     {ItemParams.AzureVMName, Name},
                     {ItemParams.ProtectionStatus, ProtectionStatus},
-                    {ItemParams.Status, Status},
+                    {ItemParams.ProtectionState, ProtectionState},
                     {ItemParams.WorkloadType, WorkloadType},
                 }, HydraAdapter);
 

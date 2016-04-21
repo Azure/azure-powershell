@@ -2056,11 +2056,11 @@
                         <Component Id="cmp403248FE1CECDB2218740975E268E81C" Guid="*">
                             <File Id="fil6311352FB4850E9DAC49E5FCCA907E9B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Azure.Common.NetFramework.dll" />
                         </Component>
+                        <Component Id="cmpCB1E57631ACC09C97C35F61440812F1A" Guid="*">
+                            <File Id="filEE16C6D829A48ED4F843D5F901CFD331" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Azure.Management.RecoveryServices.Backup.dll" />
+                        </Component>
                         <Component Id="cmp16B849AA6669D83462B54D42D739CCCC" Guid="*">
                             <File Id="filE7E1056326FD5C43C9A9CDEBA5395825" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Azure.Management.RecoveryServices.dll" />
-                        </Component>
-                        <Component Id="cmpC96F162D3A5B03822697EB2BE5B4D5EB" Guid="*">
-                            <File Id="filBF5932AC23F8EBCB6F98F17FF84774EF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Azure.Management.RecoveryServicesBackupManagement.dll" />
                         </Component>
                         <Component Id="cmp13B3F08D31DD4410B1934B82517CAC9A" Guid="*">
                             <File Id="fil97E71F00473E72ABEB532AE5705FDBF6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Azure.ResourceManager.dll" />
@@ -5735,8 +5735,8 @@
             <ComponentRef Id="cmpDD61A35D79AF0DB08D533DDD646150DC" />
             <ComponentRef Id="cmp577E28EE57A416E3052CEE1BD21E5990" />
             <ComponentRef Id="cmp403248FE1CECDB2218740975E268E81C" />
+            <ComponentRef Id="cmpCB1E57631ACC09C97C35F61440812F1A" />
             <ComponentRef Id="cmp16B849AA6669D83462B54D42D739CCCC" />
-            <ComponentRef Id="cmpC96F162D3A5B03822697EB2BE5B4D5EB" />
             <ComponentRef Id="cmp13B3F08D31DD4410B1934B82517CAC9A" />
             <ComponentRef Id="cmpA2EFAF047A9595A3CA7DFC6031140F27" />
             <ComponentRef Id="cmp902DC2364C6FF451A60B4D115B5DC7A9" />

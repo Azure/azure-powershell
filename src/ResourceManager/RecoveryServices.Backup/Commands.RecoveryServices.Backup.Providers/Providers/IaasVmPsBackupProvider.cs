@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
 
                 properties.PolicyId = string.Empty;
-                properties.ProtectionState = ItemStatus.ProtectionStopped.ToString();
+                properties.ProtectionState = ItemProtectionState.ProtectionStopped.ToString();
 
                 ProtectedItemCreateOrUpdateRequest hydraRequest = new ProtectedItemCreateOrUpdateRequest()
                 {
@@ -374,9 +374,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<AzureRmRecoveryServicesBackupContainerBase> ListProtectionContainers()
         {
+            Models.ContainerType containerType = (Models.ContainerType)this.ProviderData.ProviderParameters[ContainerParams.ContainerType];
+            Models.BackupManagementType? backupManagementTypeNullable = (Models.BackupManagementType?)this.ProviderData.ProviderParameters[ContainerParams.BackupManagementType];
             string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
-            ContainerRegistrationStatus status = (ContainerRegistrationStatus)this.ProviderData.ProviderParameters[ContainerParams.Status];
             string resourceGroupName = (string)this.ProviderData.ProviderParameters[ContainerParams.ResourceGroupName];
+            ContainerRegistrationStatus status = (ContainerRegistrationStatus)this.ProviderData.ProviderParameters[ContainerParams.Status];
+
+            if (backupManagementTypeNullable.HasValue)
+            {
+                ValidateAzureVMBackupManagementType(backupManagementTypeNullable.Value);
+            }
 
             ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
 
@@ -384,11 +391,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryParams.FriendlyName = name;
 
             // 2. Filter by ContainerType
-            queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
+            queryParams.BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
 
             // 3. Filter by Status
-            queryParams.RegistrationStatus = status.ToString();
-
+            if (status != 0)
+            {
+                queryParams.RegistrationStatus = status.ToString();
+            }
+            
             var listResponse = HydraAdapter.ListContainers(queryParams);
 
             List<AzureRmRecoveryServicesBackupContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
@@ -415,13 +425,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string name = (string)this.ProviderData.ProviderParameters[ItemParams.AzureVMName];
             ItemProtectionStatus protectionStatus =
                 (ItemProtectionStatus)this.ProviderData.ProviderParameters[ItemParams.ProtectionStatus];
-            ItemStatus status = (ItemStatus)this.ProviderData.ProviderParameters[ItemParams.Status];
+            ItemProtectionState status = (ItemProtectionState)this.ProviderData.ProviderParameters[ItemParams.ProtectionState];
             Models.WorkloadType workloadType =
                 (Models.WorkloadType)this.ProviderData.ProviderParameters[ItemParams.WorkloadType];
 
             ProtectedItemListQueryParam queryParams = new ProtectedItemListQueryParam();
             queryParams.DatasourceType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.VM;
-            queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
+            queryParams.BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
 
             List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
             string skipToken = null;
@@ -655,6 +665,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
+        private void ValidateAzureVMBackupManagementType(Models.BackupManagementType backupManagementType)
+        {
+            if (backupManagementType != Models.BackupManagementType.AzureVM)
+            {
+                throw new ArgumentException(string.Format(Resources.UnExpectedBackupManagementTypeException,
+                                            Models.BackupManagementType.AzureVM.ToString(),
+                                            backupManagementType.ToString()));
+            }
+        }
+
         private void ValidateAzureVMProtectionPolicy(AzureRmRecoveryServicesBackupPolicyBase policy)
         {
             if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesIaasVmPolicy))
@@ -832,30 +852,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         private void RefreshContainer()
         {
-            bool isDiscoverySuccessful = false;
             string errorMessage = string.Empty;
             var refreshContainerJobResponse = HydraAdapter.RefreshContainers();
 
             //Now wait for the operation to Complete
-            WaitForDiscoveryToComplete(refreshContainerJobResponse.Location, out isDiscoverySuccessful, out errorMessage);
-
-            if (!isDiscoverySuccessful)
+            if (refreshContainerJobResponse.StatusCode != System.Net.HttpStatusCode.NoContent)
             {
-                Logger.Instance.ThrowTerminatingError(new ErrorRecord(new Exception(errorMessage), string.Empty, ErrorCategory.InvalidArgument, null));
-            }
-        }
-
-        private void WaitForDiscoveryToComplete(string locationUri, out bool isDiscoverySuccessful, out string errorMessage)
-        {
-            var status = TrackRefreshContainerOperation(locationUri);
-            errorMessage = String.Empty;
-
-            isDiscoverySuccessful = true;
-            //If operation fails check if retry is needed or not
-            if (status != HttpStatusCode.NoContent)
-            {
-                isDiscoverySuccessful = false;
-                errorMessage = String.Format(Resources.DiscoveryFailureErrorCode, status);
+                errorMessage = String.Format(Resources.DiscoveryFailureErrorCode, refreshContainerJobResponse.StatusCode);
                 Logger.Instance.WriteDebug(errorMessage);
             }
         }

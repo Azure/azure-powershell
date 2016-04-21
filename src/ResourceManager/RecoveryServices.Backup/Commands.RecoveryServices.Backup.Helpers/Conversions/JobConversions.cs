@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             response.VmVersion = vmJob.VirtualMachineVersion;
             response.WorkloadName = vmJob.EntityFriendlyName;
             response.ActivityId = vmJob.ActivityId;
-            response.BackupManagementType = EnumUtils.GetEnum<BackupManagementType>(GetPSBackupManagementType(vmJob.BackupManagementType));
+            response.BackupManagementType = EnumUtils.GetEnum<Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType>(GetPSBackupManagementType(vmJob.BackupManagementType));
             response.Operation = vmJob.Operation;
 
             if (vmJob.ErrorDetails != null)
@@ -165,12 +165,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region Enum translators
 
-        public static string GetJobTypeForService(BackupManagementType mgmtType)
+        public static string GetJobTypeForService(Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType mgmtType)
         {
             switch (mgmtType)
             {
-                case BackupManagementType.AzureVM:
-                    return ProviderType.AzureIaasVM.ToString();
+                case Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureVM:
+                    return Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
                 default:
                     throw new Exception("Invalid BackupManagementType provided: " + mgmtType);
             }
@@ -178,9 +178,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         public static string GetPSBackupManagementType(string jobType)
         {
-            if (jobType == ProviderType.AzureIaasVM.ToString())
+            if (jobType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString())
             {
-                return BackupManagementType.AzureVM.ToString();
+                return Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureVM.ToString();
             }
             else
             {
