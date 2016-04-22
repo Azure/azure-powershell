@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureSqlModels\AzureRmRecoveryServicesAzureSqlContainer.cs" />
+    <Compile Include="AzureSqlModels\AzureRmRecoveryServicesAzureSqlItem.cs" />
+    <Compile Include="AzureSqlModels\AzureRmRecoveryServicesAzureSqlPolicy.cs" />
+    <Compile Include="AzureSqlModels\AzureRmRecoveryServicesAzureSqlRecoveryPoint.cs" />
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmJob.cs" />
     <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmRecoveryPoint.cs" />
     <Compile Include="BaseObjects.cs" />
