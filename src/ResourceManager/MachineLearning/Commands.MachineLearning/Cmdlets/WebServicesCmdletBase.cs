@@ -17,11 +17,11 @@ using System.Linq;
 using System.Management.Automation;
 using System.Runtime.ExceptionServices;
 using System.Threading;
-using Microsoft.Azure.Commands.MachineLearning.WebServices.Extensions;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.MachineLearning.WebServices.Utilities;
+using Microsoft.Azure.Commands.MachineLearning.Extensions;
+using Microsoft.Azure.Commands.MachineLearning.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest.Azure;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
@@ -85,26 +85,6 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             set { this.webServicesClient = value; }
         }
-
-        #region Temporary parameters for development
-
-        [Parameter(Mandatory = false)]
-        public bool Allow_CP_RP_Create { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public bool Allow_CP_RP_Delete { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public bool Allow_RRS_Create { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public bool Allow_RRS_Delete { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public bool Allow_UserAsset_Resolve { get; set; }
-
-        #endregion
-
 
         #region Processing life cycle
 

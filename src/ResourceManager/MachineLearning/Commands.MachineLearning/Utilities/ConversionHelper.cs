@@ -12,13 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Xunit;
+using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
+using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
 
-namespace Microsoft.Azure.Commands.MachineLearning.WebServices.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 {
-    public class WebServiceTests : RMTestBase
+    public static class ConversionHelper
     {
+        public static WebService GetAzureMLWebServiceFromJsonDefinition(string jsonDefinition)
+        {
+            return ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);
+        }
+
+        public static string GetAzureMLWebServiceJsonDefinitionFromObject(WebService webService)
+        {
+            return ModelsSerializationUtil.GetAzureMLWebServiceDefinitionJsonFromObject(webService);
+        }
     }
 }

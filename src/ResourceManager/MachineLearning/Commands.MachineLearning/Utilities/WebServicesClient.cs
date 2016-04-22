@@ -24,11 +24,11 @@ using Microsoft.Azure.Management.MachineLearning.WebServices;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using APIClient = Microsoft.Azure.Management.MachineLearning.WebServices.AzureMLWebServicesManagementClient;
 
-namespace Microsoft.Azure.Commands.MachineLearning.WebServices.Utilities
+namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 {
     public class WebServicesClient
     {
-        private const int AsyncOperationPollingIntervalSeconds = 10;
+        private const int AsyncOperationPollingIntervalSeconds = 5;
 
         private readonly APIClient apiClient;
 

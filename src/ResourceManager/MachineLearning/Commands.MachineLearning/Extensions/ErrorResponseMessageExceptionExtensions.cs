@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 
-namespace Microsoft.Azure.Commands.MachineLearning.WebServices.Extensions
+namespace Microsoft.Azure.Commands.MachineLearning.Extensions
 {
     /// <summary>
     /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>

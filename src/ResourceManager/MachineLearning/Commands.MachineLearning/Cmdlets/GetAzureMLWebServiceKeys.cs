@@ -12,21 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
-using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
 
-namespace Microsoft.Azure.Commands.MachineLearning.WebServices.Utilities
+namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    public static class ConversionHelper
+    [Cmdlet(VerbsCommon.Get, WebServicesCmdletBase.CommandletSuffix + "Keys")]
+    public class GetAzureMLWebServiceKeys : WebServicesCmdletBase
     {
-        public static WebService GetAzureMLWebServiceFromJsonDefinition(string jsonDefinition)
-        {
-            return ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);
-        }
+        [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web services.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
-        public static string GetAzureMLWebServiceJsonDefinitionFromObject(WebService webService)
+        [Parameter(Mandatory = true, HelpMessage = "The name of the web service.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        protected override void RunCmdlet()
         {
-            return ModelsSerializationUtil.GetAzureMLWebServiceDefinitionJsonFromObject(webService);
+            WebServiceKeys storageKeys = this.WebServicesClient.GetAzureMlWebServiceKeys(this.SubscriptionId, this.ResourceGroupName, this.Name);
+            this.WriteObject(storageKeys);
         }
     }
 }

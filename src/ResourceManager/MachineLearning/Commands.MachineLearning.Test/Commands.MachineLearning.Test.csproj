@@ -9,8 +9,8 @@
     <ProjectGuid>{1C4B42F4-439E-4C5B-AA02-4C8DF1033B77}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.MachineLearning.WebServices.Test</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.MachineLearning.WebServices.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.MachineLearning.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.MachineLearning.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -169,9 +169,9 @@
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.MLWebServices\Commands.MLWebServices.csproj">
+    <ProjectReference Include="..\Commands.MachineLearning\Commands.MachineLearning.csproj">
       <Project>{A9558AF1-827B-482A-98AF-9AC5F0A866DE}</Project>
-      <Name>Commands.MLWebServices</Name>
+      <Name>Commands.MachineLearning</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
