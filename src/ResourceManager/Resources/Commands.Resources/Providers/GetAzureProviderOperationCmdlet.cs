@@ -34,10 +34,9 @@ namespace Microsoft.Azure.Commands.Resources
         /// <summary>
         /// Gets or sets the provider namespace
         /// </summary>
-        [Alias("OperationSearchString")]
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string OperationSearchString { get; set; }
 
         /// <summary>
         /// Executes the cmdlet
@@ -46,19 +45,19 @@ namespace Microsoft.Azure.Commands.Resources
         {
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             // remove leading and trailing whitespaces
-            this.Name = this.Name.Trim();
+            this.OperationSearchString = this.OperationSearchString.Trim();
 
-            ValidateActionSearchString(this.Name);
+            ValidateActionSearchString(this.OperationSearchString);
            
             List<PSResourceProviderOperation> operationsToDisplay;                  
 
-            if (this.Name.Contains(WildCardCharacter))
+            if (this.OperationSearchString.Contains(WildCardCharacter))
             {
-                operationsToDisplay = this.ProcessProviderOperationsWithWildCard(Name);
+                operationsToDisplay = this.ProcessProviderOperationsWithWildCard(OperationSearchString);
             }
             else
             {
-                operationsToDisplay = this.ProcessProviderOperationsWithoutWildCard(Name);
+                operationsToDisplay = this.ProcessProviderOperationsWithoutWildCard(OperationSearchString);
             }
 
             this.WriteObject(operationsToDisplay, enumerateCollection: true);
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.Commands.Resources
             WildcardPattern wildcard = new WildcardPattern(actionSearchString, WildcardOptions.IgnoreCase | WildcardOptions.Compiled);
 
             List<ProviderOperationsMetadata> providers = new List<ProviderOperationsMetadata>();
-            string provider = this.Name.Split(Separator).First();
+            string provider = this.OperationSearchString.Split(Separator).First();
             if (provider.Equals(WildCardCharacter))
             {
                 // 'Get-AzureRmProviderOperation *' or 'Get-AzureRmProviderOperation */virtualmachines/*'
