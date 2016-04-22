@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSMultiInstanceSettings MultiInstanceSettings { get; set; }
 
         /// <summary>
-        /// TODO: Ivan
+        /// Tasks that this task depends on. The task will not be scheduled until all depended-on tasks have completed successfully.
         /// </summary>
         public TaskDependencies DependsOn { get; set; }
     }

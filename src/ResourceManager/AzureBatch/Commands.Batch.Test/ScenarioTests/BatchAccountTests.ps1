@@ -42,7 +42,7 @@ function Test-CreatesNewBatchAccount
 
         # Assert
         Assert-AreEqual $expected.AccountName $actual.AccountName
-        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName   
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
         Assert-AreEqual $expected.Location $actual.Location
         Assert-AreEqual $expected.Tags[0]["Name"] $actual.Tags[0]["Name"]
         Assert-AreEqual $expected.Tags[0]["Value"] $actual.Tags[0]["Value"]
@@ -114,7 +114,7 @@ function Test-UpdatesExistingBatchAccount
 
         # Assert
         Assert-AreEqual $expected.AccountName $actual.AccountName
-        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName   
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
         Assert-AreEqual $expected.Location $actual.Location
         Assert-AreEqual 1 $expected.Tags.Count
         Assert-AreEqual $tagName2 $expected.Tags[0]["Name"]
@@ -149,7 +149,7 @@ function Test-GetBatchAccountsUnderResourceGroups
 
         # Test
         $resourceGroup1Accounts = Get-AzureRmBatchAccount -ResourceGroupName $resourceGroup1
-        $resourceGroup2Accounts = Get-AzureRmBatchAccount -ResourceGroupName $resourceGroup2
+		$resourceGroup2Accounts = Get-AzureRmBatchAccount -ResourceGroupName $resourceGroup2
 
         # Assert
         Assert-AreEqual 1 $resourceGroup1Accounts.Count
@@ -159,7 +159,7 @@ function Test-GetBatchAccountsUnderResourceGroups
     {
         # Cleanup
         Clean-BatchAccountAndResourceGroup $account $resourceGroup1
-        Clean-ResourceGroup $resourceGroup2
+		Clean-ResourceGroup $resourceGroup2
     }
 }
 
