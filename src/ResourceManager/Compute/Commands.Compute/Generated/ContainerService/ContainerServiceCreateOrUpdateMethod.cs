@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
 
             var pContainerServiceName = new RuntimeDefinedParameter();
-            pContainerServiceName.Name = "ContainerServiceName";
+            pContainerServiceName.Name = "Name";
             pContainerServiceName.ParameterType = typeof(string);
             pContainerServiceName.Attributes.Add(new ParameterAttribute
             {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Mandatory = true
             });
             pContainerServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ContainerServiceName", pContainerServiceName);
+            dynamicParameters.Add("Name", pContainerServiceName);
 
             var pParameters = new RuntimeDefinedParameter();
             pParameters.Name = "ContainerService";
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
 
             var pContainerServiceName = new RuntimeDefinedParameter();
-            pContainerServiceName.Name = "ContainerServiceName";
+            pContainerServiceName.Name = "Name";
             pContainerServiceName.ParameterType = typeof(string);
             pContainerServiceName.Attributes.Add(new ParameterAttribute
             {
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ValueFromPipeline = false
             });
             pContainerServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ContainerServiceName", pContainerServiceName);
+            dynamicParameters.Add("Name", pContainerServiceName);
 
             var pParameters = new RuntimeDefinedParameter();
             pParameters.Name = "ContainerService";
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
 
             var pContainerServiceName = new RuntimeDefinedParameter();
-            pContainerServiceName.Name = "ContainerServiceName";
+            pContainerServiceName.Name = "Name";
             pContainerServiceName.ParameterType = typeof(string);
             pContainerServiceName.Attributes.Add(new ParameterAttribute
             {
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ValueFromPipeline = false
             });
             pContainerServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ContainerServiceName", pContainerServiceName);
+            dynamicParameters.Add("Name", pContainerServiceName);
 
             var pParameters = new RuntimeDefinedParameter();
             pParameters.Name = "ContainerService";

@@ -83,17 +83,17 @@ function Test-ContainerService
 		#$st = New-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName -ContainerService $container;
 
 
-		$container = New-AzureRmContainerServiceConfig -Location $loc -OrchestratorProfileOrchestratorType $orchestratorType `
-		    -MasterProfileDnsPrefix $masterDnsPrefixName -AdminUsername $adminUserName -Ssh $sshPublicKey `
+		$container = New-AzureRmContainerServiceConfig -Location $loc -OrchestratorType $orchestratorType `
+		    -MasterDnsPrefix $masterDnsPrefixName -AdminUsername $adminUserName -SshPublicKey $sshPublicKey `
 		| Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName -VmSize $vmSize -DnsPrefix $agentPoolDnsPrefixName `
-		| New-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName;
+		| New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 
 
-		$cs = Get-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName;
+		$cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 
 		$cslist = Get-AzureRmContainerService -ResourceGroupName $rgname;
 
-		$st = Remove-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName;
+		$st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
     }
     finally
     {
@@ -163,27 +163,24 @@ function Test-ContainerServiceUpdate
 
 
 		$container = New-AzureRmContainerServiceConfig -Location $loc `
-		    -OrchestratorProfileOrchestratorType $orchestratorType `
-		    -MasterProfileDnsPrefix $masterDnsPrefixName `
-		    -MasterProfileCount 1 `
+		    -OrchestratorType $orchestratorType `
+		    -MasterDnsPrefix $masterDnsPrefixName `
+		    -MasterCount 1 `
 		    -AdminUsername $adminUserName `
-		    -Ssh $sshPublicKey `
+		    -SshPublicKey $sshPublicKey `
 		| Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
 		    -VmSize $vmSize `
 		    -DnsPrefix $agentPoolDnsPrefixName `
 		    -Count 1 `
-		| New-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName;
+		| New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 
-
-
-
-		Get-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName `
+		Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName `
 		| Remove-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
 		| Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
 		    -VmSize $vmSize `
 		    -DnsPrefix $agentPoolDnsPrefixName `
 		    -Count 2 `
-		| Update-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName;
+		| Update-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 
 		#$cs = Get-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName;
 
@@ -197,9 +194,9 @@ function Test-ContainerServiceUpdate
 
 		#$st = Update-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName -ContainerService $cs;
 
-		$cs = Get-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName;
+		$cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 		
-		$st = Remove-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName;
+		$st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
     }
     finally
     {

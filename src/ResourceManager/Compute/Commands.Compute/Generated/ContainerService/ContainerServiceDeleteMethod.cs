@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
 
             var pContainerServiceName = new RuntimeDefinedParameter();
-            pContainerServiceName.Name = "ContainerServiceName";
+            pContainerServiceName.Name = "Name";
             pContainerServiceName.ParameterType = typeof(string);
             pContainerServiceName.Attributes.Add(new ParameterAttribute
             {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Mandatory = true
             });
             pContainerServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ContainerServiceName", pContainerServiceName);
+            dynamicParameters.Add("Name", pContainerServiceName);
 
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
 
             var pContainerServiceName = new RuntimeDefinedParameter();
-            pContainerServiceName.Name = "ContainerServiceName";
+            pContainerServiceName.Name = "Name";
             pContainerServiceName.ParameterType = typeof(string);
             pContainerServiceName.Attributes.Add(new ParameterAttribute
             {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ValueFromPipeline = false
             });
             pContainerServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ContainerServiceName", pContainerServiceName);
+            dynamicParameters.Add("Name", pContainerServiceName);
 
             return dynamicParameters;
         }

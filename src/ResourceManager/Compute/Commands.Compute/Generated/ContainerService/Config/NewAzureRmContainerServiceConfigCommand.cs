@@ -48,19 +48,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public ContainerServiceOchestratorTypes? OrchestratorProfileOrchestratorType { get; set; }
+        public ContainerServiceOchestratorTypes? OrchestratorType { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        public int? MasterProfileCount { get; set; }
+        public int? MasterCount { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true)]
-        public string MasterProfileDnsPrefix { get; set; }
+        public string MasterDnsPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true)]
-        public string [] Ssh { get; set; }
+        public string [] SshPublicKey { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -115,31 +115,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // DiagnosticsProfile
             Microsoft.Azure.Management.Compute.Models.ContainerServiceDiagnosticsProfile vDiagnosticsProfile = null;
 
-            if (this.OrchestratorProfileOrchestratorType != null)
+            if (this.OrchestratorType != null)
             {
                 if (vOrchestratorProfile == null)
                 {
                     vOrchestratorProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceOrchestratorProfile();
                 }
-                vOrchestratorProfile.OrchestratorType = this.OrchestratorProfileOrchestratorType;
+                vOrchestratorProfile.OrchestratorType = this.OrchestratorType;
             }
 
-            if (this.MasterProfileCount != null)
+            if (this.MasterCount != null)
             {
                 if (vMasterProfile == null)
                 {
                     vMasterProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceMasterProfile();
                 }
-                vMasterProfile.Count = this.MasterProfileCount;
+                vMasterProfile.Count = this.MasterCount;
             }
 
-            if (this.MasterProfileDnsPrefix != null)
+            if (this.MasterDnsPrefix != null)
             {
                 if (vMasterProfile == null)
                 {
                     vMasterProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceMasterProfile();
                 }
-                vMasterProfile.DnsPrefix = this.MasterProfileDnsPrefix;
+                vMasterProfile.DnsPrefix = this.MasterDnsPrefix;
             }
 
             if (this.WindowsProfileAdminUsername != null)
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
 
-            if (this.Ssh != null)
+            if (this.SshPublicKey != null)
             {
                 if (vLinuxProfile == null)
                 {
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vLinuxProfile.Ssh.PublicKeys = new List<Microsoft.Azure.Management.Compute.Models.ContainerServiceSshPublicKey>();
                 }
-                foreach (var element in this.Ssh)
+                foreach (var element in this.SshPublicKey)
                 {
                     var vPublicKeys = new Microsoft.Azure.Management.Compute.Models.ContainerServiceSshPublicKey();
                     vPublicKeys.KeyData = element;
