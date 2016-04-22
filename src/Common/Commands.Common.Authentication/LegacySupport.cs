@@ -22,13 +22,11 @@ namespace Microsoft.Azure.Common.Authentication
     public static class AzureSession
     {
         /// <summary>
-        /// The ClientFactory used to produce manageemnt clients in this session
+        /// The ClientFactory used to produce management clients in this session
         /// </summary>
         public static IClientFactory ClientFactory
         {
             get { return Commands.Common.Authentication.AzureSession.ClientFactory; }
         }
     }
-
-    
 }
