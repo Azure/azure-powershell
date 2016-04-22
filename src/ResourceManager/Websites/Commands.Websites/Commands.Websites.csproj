@@ -170,7 +170,6 @@
     <Compile Include="Cmdlets\BackupRestore\RemoveAzureWebAppBackup.cs" />
     <Compile Include="Cmdlets\WebApps\ResetAzureWebAppPublishingProfile.cs" />
     <Compile Include="Cmdlets\WebApps\RestartAzureWebApp.cs" />
-    <Compile Include="Cmdlets\WebApps\RestoreAzureWebApp.cs" />
     <Compile Include="Cmdlets\WebApps\SetAzureWebApp.cs" />
     <Compile Include="Cmdlets\WebApps\StartAzureWebApp.cs" />
     <Compile Include="Cmdlets\WebApps\StopAzureWebApp.cs" />
