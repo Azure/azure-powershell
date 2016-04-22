@@ -14,7 +14,7 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.MachineLearning.WebServices.Utilities;
+using Microsoft.Azure.Commands.MachineLearning.Utilities;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 string subscriptionId, resourceGroup, webServiceName;
                 if (!CmdletHelpers.TryParseMlWebServiceMetadataFromResourceId(this.MlWebService.Id, out subscriptionId, out resourceGroup, out webServiceName))
                 {
-                    throw new ValidationMetadataException(WebServices.Resources.InvalidWebServiceIdOnObject);
+                    throw new ValidationMetadataException(Resources.InvalidWebServiceIdOnObject);
                 }
 
                 this.ResourceGroupName = resourceGroup;
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
             this.ConfirmAction(
                 force: this.Force.IsPresent,
-                actionMessage: WebServices.Resources.RemoveMlServiceWarning.FormatInvariant(this.Name),
+                actionMessage: Resources.RemoveMlServiceWarning.FormatInvariant(this.Name),
                 processMessage: @"Deleting machine learning web service..",
                 target: this.Name,
                 action: () =>

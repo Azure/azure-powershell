@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.MLWebServices", "Commands.MLWebServices\Commands.MLWebServices.csproj", "{A9558AF1-827B-482A-98AF-9AC5F0A866DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.MachineLearning", "Commands.MachineLearning\Commands.MachineLearning.csproj", "{A9558AF1-827B-482A-98AF-9AC5F0A866DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "..\..\Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
 EndProject
@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Prof
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication", "..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj", "{D3804B64-C0D3-48F8-82EC-1F632F833C9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.MLWebServices.Test", "Commands.MLWebServices.Test\Commands.MLWebServices.Test.csproj", "{1C4B42F4-439E-4C5B-AA02-4C8DF1033B77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.MachineLearning.Test", "Commands.MachineLearning.Test\Commands.MachineLearning.Test.csproj", "{1C4B42F4-439E-4C5B-AA02-4C8DF1033B77}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.ResourceManager.Common", "..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj", "{3436A126-EDC9-4060-8952-9A1BE34CDD95}"
 EndProject

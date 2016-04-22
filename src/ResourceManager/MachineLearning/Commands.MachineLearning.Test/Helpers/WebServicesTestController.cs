@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using LegacyTest = Microsoft.Azure.Test;
 
-namespace Microsoft.Azure.Commands.MachineLearning.WebServices.Test.Helpers
+namespace Microsoft.Azure.Commands.MachineLearning.Test.Helpers
 {
     internal class WebServicesTestController
     {

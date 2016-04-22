@@ -15,23 +15,31 @@
 using System.Management.Automation;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 
-namespace Microsoft.Azure.Commands.MachineLearning.WebServices.Cmdlets
+namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, WebServicesCmdletBase.CommandletSuffix + "Keys")]
-    public class GetAzureMLWebServiceKeys : WebServicesCmdletBase
+    [Cmdlet(VerbsCommon.New, WebServicesCmdletBase.CommandletSuffix)]
+    public class NewAzureMLWebService : WebServicesCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web services.")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web service.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = "The name of the web service.")]
+        
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web service.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the AzureML.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The definition of the new web service")]
+        [ValidateNotNullOrEmpty]
+        public WebService NewWebServiceDefinition { get; set; }
+
         protected override void RunCmdlet()
         {
-            WebServiceKeys storageKeys = this.WebServicesClient.GetAzureMlWebServiceKeys(this.SubscriptionId, this.ResourceGroupName, this.Name);
-            this.WriteObject(storageKeys);
+            WebService newWebService = this.WebServicesClient.CreateAzureMlWebService(this.SubscriptionId, this.ResourceGroupName, this.Location, this.Name, this.NewWebServiceDefinition);
+            this.WriteObject(newWebService);
         }
     }
 }

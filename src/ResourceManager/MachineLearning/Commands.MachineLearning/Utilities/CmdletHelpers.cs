@@ -14,7 +14,7 @@
 
 using System.Text.RegularExpressions;
 
-namespace Microsoft.Azure.Commands.MachineLearning.WebServices.Utilities
+namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 {
     internal static class CmdletHelpers
     {
