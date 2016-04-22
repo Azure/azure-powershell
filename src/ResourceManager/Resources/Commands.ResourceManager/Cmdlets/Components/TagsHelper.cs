@@ -32,19 +32,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="tags">The enumerable of tags</param>
         internal static InsensitiveDictionary<string> GetTagsDictionary(IEnumerable<Hashtable> tags)
         {
-            return tags == null
-                ? null
-                : tags
-                    .CoalesceEnumerable()
-                    .Select(hashTable => hashTable.OfType<DictionaryEntry>()
-                        .ToInsensitiveDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value))
-                    .Where(tagDictionary => tagDictionary.ContainsKey("Name"))
-                    .Select(tagDictionary => Tuple
-                        .Create(
-                            tagDictionary["Name"].ToString(),
-                            tagDictionary.ContainsKey("Value") ? tagDictionary["Value"].ToString() : string.Empty))
-                    .Distinct(kvp => kvp.Item1)
-                    .ToInsensitiveDictionary(kvp => kvp.Item1, kvp => kvp.Item2);
+            if(tags == null)
+            {
+                return null;
+            }
+
+            Dictionary<string, string> tagsDic = new Dictionary<string, string>();
+            foreach(var tag in tags)
+            {
+                foreach(DictionaryEntry entry in tag)
+                {
+                    tagsDic.Add(entry.Key.ToString(), entry.Value == null ? string.Empty : entry.Value.ToString());
+                }
+            }
+            return tagsDic.Distinct(kvp => kvp.Key).ToInsensitiveDictionary(kvp => kvp.Key, kvp => kvp.Value);
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         {
             return tags == null
                 ? null
-                : tags.Select(kvp => new Hashtable { { "Name", kvp.Key }, { "Value", kvp.Value } }).ToList();
+                : tags.Select(kvp => new Hashtable { { kvp.Key, kvp.Value } }).ToList();
         }
     }
 }
