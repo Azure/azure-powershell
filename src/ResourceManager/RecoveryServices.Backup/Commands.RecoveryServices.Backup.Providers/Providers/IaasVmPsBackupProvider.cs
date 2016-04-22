@@ -182,7 +182,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public BaseRecoveryServicesJobResponse TriggerBackup()
         {
             AzureRmRecoveryServicesBackupItemBase item = (AzureRmRecoveryServicesBackupItemBase)ProviderData.ProviderParameters[ItemParams.Item];
-            DateTime expiryDate = (DateTime)ProviderData.ProviderParameters[ItemParams.ExpiryDate];
             AzureRmRecoveryServicesBackupIaasVmItem iaasVmItem = item as AzureRmRecoveryServicesBackupIaasVmItem;
             return HydraAdapter.TriggerBackup(IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectionContainerName),
                 IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectedItemName));

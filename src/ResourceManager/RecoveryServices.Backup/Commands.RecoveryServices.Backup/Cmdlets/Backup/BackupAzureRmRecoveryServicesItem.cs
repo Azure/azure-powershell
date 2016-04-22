@@ -35,10 +35,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesBackupItemBase Item { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.ExpiryDate, ValueFromPipeline = false)]
-        [ValidateNotNullOrEmpty]
-        public DateTime ExpiryDate { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -46,7 +42,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
                     {ItemParams.Item, Item},
-                    {ItemParams.ExpiryDate, ExpiryDate},
                 }, HydraAdapter);
 
             IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
