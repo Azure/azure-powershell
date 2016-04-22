@@ -467,14 +467,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 PersistentVMHelper.MapConfigurationSets(persistentVM.ConfigurationSets).ForEach(c => result.ConfigurationSets.Add(c));
             }
 
-            if (persistentVM.DebugSettings != null)
-            {
-                result.DebugSettings = new DebugSettings
-                {
-                    BootDiagnosticsEnabled = persistentVM.DebugSettings.BootDiagnosticsEnabled
-                };
-            }
-
             return result;
         }
 

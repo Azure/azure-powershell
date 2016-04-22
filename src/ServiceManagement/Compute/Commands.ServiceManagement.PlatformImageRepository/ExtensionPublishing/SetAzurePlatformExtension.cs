@@ -142,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                 () => 
                 {
                     var publisherExtension = this.ComputeClient.HostedServices
-                                          .ListPublisherExtensions()
+                                          .ListAvailableExtensions()
                                           .FirstOrDefault(e => e.ProviderNameSpace.Equals(this.Publisher)
                                               && e.Type.Equals(this.ExtensionName)
                                               && e.Version.Equals(this.Version));
