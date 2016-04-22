@@ -1283,7 +1283,7 @@
       <command:syntaxItem>
         <maml:name>Get-AzureRmProviderOperation</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
-          <maml:name>OperationSearchString</maml:name>
+          <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>The operation search string (with possible wildcard (*) characters)</maml:para>
           </maml:description>
@@ -1307,7 +1307,7 @@
     </command:syntax>
     <command:parameters>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
-        <maml:name>OperationSearchString</maml:name>
+        <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>The operation search string (with possible wildcard (*) characters)</maml:para>
         </maml:description>
