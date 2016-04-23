@@ -323,9 +323,12 @@ function Test-DataLakeStoreFileSystemPermissions
 		Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId)) -force
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $currentCount $result.UserAces.Count
+
 		# verify that removal of full acl and default acl fail
-		Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force }
-		Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force -Default }
+		# NOTE: commenting these tests out as these cmdlets have been temporarily removed until
+		# They are actually supported. This avoids confusion for our customers who might try to use them.
+		# Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force }
+		# Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force -Default }
 
 		# Delete Data Lake account
 		Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
