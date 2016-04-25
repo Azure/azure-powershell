@@ -23,6 +23,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using TestBase = Microsoft.Azure.Test.TestBase;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -63,7 +67,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -84,11 +88,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
-            using (UndoContext context = UndoContext.Current)
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
                 this.csmTestFactory = SetupCSMTestEnvironmentFactory();
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
@@ -138,12 +141,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             return factory;
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(MockContext context)
         {
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
             ResourceManagementClient = GetResourceManagementClient();
-            BatchManagementClient = GetBatchManagementClient();
+            BatchManagementClient = GetBatchManagementClient(context);
 
             helper.SetupManagementClients(AuthorizationManagementClient,
                                           GalleryClient,
@@ -166,7 +169,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
-        private BatchManagementClient GetBatchManagementClient()
+        private BatchManagementClient GetBatchManagementClient(MockContext context)
         {
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
@@ -184,7 +187,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 BatchAccountUrl = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountEndpoint];
             }
 
-            return TestBase.GetServiceClient<BatchManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<BatchManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
