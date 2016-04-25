@@ -102,13 +102,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             var tUpdate = new Task<ExpressRouteOperationStatusResponse>(() => expectedUpdateStatus);
             tUpdate.Start();
 
-            //Task<ExpressRouteOperationStatusResponse> NewAsync(DedicatedCircuitNewParameters parameters, CancellationToken cancellationToken);
-            dcMock.Setup(f => f.NewAsync(It.Is<DedicatedCircuitNewParameters>(x => x.Bandwidth == bandwidth && x.CircuitName == circuitName && x.Location == location && x.ServiceProviderName == serviceProviderName), 
+            dcMock.Setup(f => f.NewAsync(It.Is<DedicatedCircuitNewParameters>(x => x.Bandwidth == bandwidth && 
+                x.CircuitName == circuitName && x.Location == location && x.ServiceProviderName == serviceProviderName), 
                 It.IsAny<CancellationToken>())).Returns((DedicatedCircuitNewParameters param, CancellationToken cancellation) => tNew);
-            dcMock.Setup(f => f.GetAsync(It.Is<string>(sKey => sKey == serviceKey), It.IsAny<CancellationToken>())).Returns((string sKey, CancellationToken cancellation) => tGet);
             
-            //Task<ExpressRouteOperationStatusResponse> UpdateAsync(string serviceKey, DedicatedCircuitUpdateParameters parameters, CancellationToken cancellationToken);
-            // UpdateAsync(this IDedicatedCircuitOperations operations, string serviceKey, DedicatedCircuitUpdateParameters parameters)
+            dcMock.Setup(f => f.GetAsync(It.Is<string>(sKey => sKey == serviceKey), It.IsAny<CancellationToken>())).Returns((string sKey, CancellationToken cancellation) => tGet);
             
             dcMock.Setup(f => f.UpdateAsync(It.Is<string>(sKey => sKey == serviceKey), 
                 It.Is<DedicatedCircuitUpdateParameters>(y => y.Bandwidth == bandwidth.ToString() && y.BillingType == billingType && y.Sku == sku.ToString()),
