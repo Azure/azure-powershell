@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             BmsAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders>(
                 clientRequestId => new RecoveryServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId },
                                        creds, baseUri);
+            BmsAdapter.Client.ResourceNamespace = recoveryServicesResourceNamespace;
         }
     }
 }
