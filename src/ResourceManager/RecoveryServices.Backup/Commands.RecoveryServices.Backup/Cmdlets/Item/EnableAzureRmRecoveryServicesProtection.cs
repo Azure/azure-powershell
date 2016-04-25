@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection", DefaultParameterSetName = AzureVMComputeParameterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection", DefaultParameterSetName = AzureVMComputeParameterSet), OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
     public class EnableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
     {
         internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";
