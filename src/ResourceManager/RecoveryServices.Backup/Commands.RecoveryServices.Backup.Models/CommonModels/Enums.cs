@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum ContainerRegistrationStatus
     {
         Registered = 1,
-        Registering,
     }
 
     public enum BackupEngineRegistrationStatus
