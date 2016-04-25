@@ -189,11 +189,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     string policyName = null;
                     string policyId = ((AzureIaaSVMProtectedItem)protectedItem.Properties).PolicyId;
-                    if (policyId != null)
+                    if (!string.IsNullOrEmpty(policyId))
                     {
-                        Dictionary<UriEnums, string> keyVauleDict =
+                        Dictionary<UriEnums, string> keyValueDict =
                         HelperUtils.ParseUri(policyId);
-                        policyName = HelperUtils.GetPolicyNameFromPolicyId(keyVauleDict, policyId);
+                        policyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policyId);
                     }
                     itemModel = new AzureRmRecoveryServicesBackupIaasVmItem(protectedItem, container, policyName);
                 }
