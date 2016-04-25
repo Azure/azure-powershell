@@ -773,3 +773,69 @@ function Test-MigrationAbortAzureVNet
     # Cleanup
     Remove-AzureVNetConfig
 }
+
+
+function Test-NewAzureVMWithBYOL
+{
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
+    # Setup
+    $location = "Central US";
+    $storageName = "mybyolosimagerdfe";
+
+    $vm1Name = "vm1";
+    $vm2Name = "vm2";
+    $svcName = Get-CloudServiceName;
+
+    $vmSize = "Small";
+    $licenseType = "Windows_Server";
+    $imgName = getAssetName;
+    $userName = "User" + $svcName;
+    $pass = "User@" + $svcName;
+
+    $media1 = "http://mybyolosimagerdfe.blob.core.windows.net/myvhd/" + $svcName + "0.vhd";
+    $media2 = "http://mybyolosimagerdfe.blob.core.windows.net/myvhd/" + $svcName + "1.vhd";
+
+    Set-CurrentStorageAccountName $storageName;
+
+    Add-AzureVMImage -ImageName $imgName `
+        -MediaLocation "https://mybyolosimagerdfe.blob.core.windows.net/vhdsrc/win2012-tag0.vhd" `
+        -OS "Windows" `
+        -Label "BYOL Image" `
+        -RecommendedVMSize $vmSize `
+        -IconUri "http://www.bing.com" `
+        -SmallIconUri "http://www.bing.com" `
+        -ShowInGui;
+
+    # Test
+    New-AzureService -ServiceName $svcName -Location $location;
+
+    $vm1 = New-AzureVMConfig -Name $vm1Name -ImageName $imgName -InstanceSize $vmSize `
+         -LicenseType $licenseType -HostCaching ReadWrite -MediaLocation $media1;
+
+    $vm1 = Add-AzureProvisioningConfig -VM $vm1 -Windows -Password $pass -AdminUsername $userName;
+
+    $vm2 = New-AzureVMConfig -Name $vm2Name -ImageName $imgName -InstanceSize $vmSize `
+         -LicenseType $licenseType -HostCaching ReadWrite -MediaLocation $media2;
+
+    $vm2 = Add-AzureProvisioningConfig -VM $vm2 -Windows -Password $pass -AdminUsername $userName;
+
+    New-AzureVM -ServiceName $svcName -VMs $vm1,$vm2
+
+    $vm1result = Get-AzureVM -ServiceName $svcName -Name $vm1Name;
+    $vm2result = Get-AzureVM -ServiceName $svcName -Name $vm2Name;
+
+    Update-AzureVM -ServiceName $svcName -Name $vm1Name -VM $vm1result.VM;
+
+    $vm1result = Get-AzureVM -ServiceName $svcName -Name $vm1Name;
+    $vm2result = Get-AzureVM -ServiceName $svcName -Name $vm2Name;
+
+    Remove-AzureService -ServiceName $svcName;
+
+    Remove-AzureVMImage -ImageName $imgName;
+
+    # Cleanup
+    Cleanup-CloudService $svcName
+}
