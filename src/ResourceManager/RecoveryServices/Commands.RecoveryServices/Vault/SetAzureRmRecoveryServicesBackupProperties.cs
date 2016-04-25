@@ -55,6 +55,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     vaultStorageRequest.Properties.StorageModelType = BackupStorageRedundancy.ToString();
                     AzureOperationResponse storageResponse = RecoveryServicesClient.UpdateVaultStorageType(this.Vault.ResouceGroupName, this.Vault.Name, vaultStorageRequest);
                 }
+                else
+                {
+                    this.HandleException(new Exception("You need to provide the BackupStorageRedundancy input parameter"));
+                }
             }
             catch (Exception exception)
             {
