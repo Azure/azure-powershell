@@ -1,18 +1,32 @@
-using System.IO;
-using System.Management.Automation;
-using Microsoft.Azure.Management.ServerManagement;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
+// Copyright Microsoft Corporation
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// 
+// You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
 {
-    [Cmdlet(VerbsData.Save, "AzureRmServerManagementGatewayProfile"), OutputType(typeof(System.IO.FileInfo))]
-    public class SaveServerManagementGatewayProfileCmdlet : ServerManagementGatewayProfileCmdletBase
+    using System.IO;
+    using System.Management.Automation;
+    using Base;
+    using Management.ServerManagement;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+    using Newtonsoft.Json.Serialization;
+
+    [Cmdlet(VerbsData.Save, "AzureRmServerManagementGatewayProfile"), OutputType(typeof(FileInfo))]
+    public class SaveServerManagementGatewayProfileCmdlet : ServerManagementGatewayProfileCmdlet
     {
         // downloads and saves the gateway profile 
 
-        [Parameter(Mandatory = true, HelpMessage = "The filename to save the gateway profile" )]
+        [Parameter(Mandatory = true, HelpMessage = "The filename to save the gateway profile", Position = 2)]
         [ValidateNotNullOrEmpty]
         public FileInfo OutputFile { get; set; }
 
@@ -30,13 +44,13 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
                     Formatting.None,
                     new JsonSerializerSettings
                     {
-                        Converters = new JsonConverter[] { new StringEnumConverter() },
+                        Converters = new JsonConverter[] {new StringEnumConverter()},
                         ContractResolver = new CamelCasePropertyNamesContractResolver(),
                         NullValueHandling = NullValueHandling.Ignore,
-                        ObjectCreationHandling = ObjectCreationHandling.Reuse,
+                        ObjectCreationHandling = ObjectCreationHandling.Reuse
                     });
 
-                File.WriteAllText(OutputFile.FullName,profileText);
+                File.WriteAllText(OutputFile.FullName, profileText);
                 WriteVerbose($"Successfully saved plaintext profile to {OutputFile.FullName}");
                 WriteObject(OutputFile);
             }

@@ -1,4 +1,5 @@
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ServerManagement.Commands.Base;
 using Microsoft.Azure.Management.ServerManagement;
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
@@ -6,7 +7,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
     [Cmdlet(VerbsCommon.Get, "AzureRmServerManagementGateway"), OutputType(typeof(Model.Gateway))]
     public class GetServerManagementGatewayCmdlet : ServerManagementCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "The targeted resource group.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "The targeted resource group.", ValueFromPipelineByPropertyName = true,Position = 0)]
         public string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()

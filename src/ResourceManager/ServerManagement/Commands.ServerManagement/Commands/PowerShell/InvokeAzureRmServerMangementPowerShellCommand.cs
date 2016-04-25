@@ -1,40 +1,63 @@
-using System;
-using System.Linq;
-using System.Management.Automation;
-using Microsoft.Azure.Management.ServerManagement;
-using Microsoft.Azure.Management.ServerManagement.Models;
+// Copyright Microsoft Corporation
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// 
+// You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
 {
-    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmServerManagementPowerShellCommand"), OutputType(typeof(PowerShellCommandResult))]
+    using System;
+    using System.Linq;
+    using System.Management.Automation;
+    using Base;
+    using Management.ServerManagement;
+    using Management.ServerManagement.Models;
+    using Model;
+
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmServerManagementPowerShellCommand"), OutputType(typeof(object))]
     public class InvokeAzureRmServerManagementPowerShellCommand : ServerManagementCmdlet
     {
-        #region ByName
-        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.", ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName")]
+        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
+            ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 0)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the node.", ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the node.", ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "ByName", Position = 1)]
         [ValidateNotNullOrEmpty]
         public string NodeName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the session.", ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the session.", ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "ByName", Position = 2)]
         [ValidateNotNullOrEmpty]
         public string SessionName { get; set; }
-        #endregion
 
-        #region BySession
-        [Parameter(Mandatory = true, HelpMessage = "The session.", ValueFromPipeline = true, ParameterSetName = "BySession")]
+        [Parameter(Mandatory = true, HelpMessage = "The session.", ValueFromPipeline = true,
+            ParameterSetName = "BySession", Position = 0)]
         [ValidateNotNullOrEmpty]
-        public Model.Session Session { get; set; }
-        #endregion
+        public Session Session { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The script to execute.")]
+        [Parameter(Mandatory = true, HelpMessage = "The script to execute.", Position = 3)]
         [ValidateNotNull]
         public ScriptBlock Command { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The name of the powershell session to use. (defaults to last PS Session used, or creates a new PS session)")]
+        [Parameter(Mandatory = false,
+            HelpMessage =
+                "The name of the powershell session to use. (defaults to last PS Session used, or creates a new PS session)"
+            )]
         public string PowerShellSessionName { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "When specified, returns the raw PowerShellCommandResult objects instead of just the output.")
+        ]
+        public SwitchParameter RawOutput { get; set; }
 
         private PowerShellSessionResource PSSession
         {
@@ -45,7 +68,8 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
                 {
                     if (PowerShellSessionName != null)
                     {
-                        WriteVerbose($"Checking for PowerShell Session with {ResourceGroupName}/{NodeName}/{SessionName}");
+                        WriteVerbose(
+                            $"Checking for PowerShell Session with {ResourceGroupName}/{NodeName}/{SessionName}");
 
                         ps = Client.PowerShell.ListSession(ResourceGroupName, NodeName, SessionName)
                             .Value.FirstOrDefault(each => each.PowerShellSessionResourceName == PowerShellSessionName);
@@ -58,9 +82,8 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
 
                 if (PowerShellSessionName == null)
                 {
-                    PowerShellSessionName = new Guid().ToString();
+                    PowerShellSessionName = Guid.NewGuid().ToString();
                     WriteVerbose($"Generating PowerShell Session name {PowerShellSessionName}");
-
                 }
 
                 if (ps == null)
@@ -90,7 +113,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
                 }
             }
 
-            PowerShellSessionResource ps = PSSession;
+            var ps = PSSession;
             if (Session != null)
             {
                 Session.LastPowerShellSessionName = ps.Name;
@@ -98,23 +121,45 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
 
             WriteVerbose($"Invoking PowerShell command on {ResourceGroupName}/{NodeName}/{SessionName}/{ps.Name}");
             // call powershell on node.
-            var results = Client.PowerShell.InvokeCommand(ResourceGroupName, NodeName, SessionName, ps.Name,
+            var results = Client.PowerShell.InvokeCommand(ResourceGroupName,
+                NodeName,
+                SessionName,
+                ps.Name,
                 Command.ToString());
+
+            var items = results.Results;
+            var done = results.Completed;
+
             do
             {
                 WriteVerbose($"Iterating on results ");
                 // spit out results.
-                foreach (var r in results.Results)
+                foreach (var r in items)
                 {
-                    WriteObject(r);
+                    if (RawOutput)
+                    {
+                        WriteObject(r);
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrWhiteSpace(r.Value))
+                        {
+                            WriteObject(r.Value);
+                        }
+                    }
                 }
-                if (results.Completed ?? false)
+                if (done ?? false)
                 {
                     break;
                 }
                 WriteVerbose($"Command is still executing, getting updates.");
-                results = Client.PowerShell.GetCommandStatus(ResourceGroupName, NodeName, SessionName, SessionName, PowerShellExpandOption.Output);
-
+                var more = Client.PowerShell.GetCommandStatus(ResourceGroupName,
+                    NodeName,
+                    SessionName,
+                    ps.Name,
+                    PowerShellExpandOption.Output);
+                done = more.Completed;
+                items = more.Results;
             } while (true);
         }
     }
