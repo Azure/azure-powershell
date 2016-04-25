@@ -15,6 +15,10 @@
     - New-AzureStorageShareStoredAccessPolicy
     - Set-AzureStorageShareStoredAccessPolicy
   * Added Recovery Services Backup cmdlets
+    - Set-AzureRmRecoveryServicesVaultContext
+    - Set-AzureRmRecoveryServicesBackupProperties
+    - Get-AzureRmRecoveryServicesBackupProperties
+    - Get-AzureRmRecoveryServicesVaultSettingsFile
     - Backup-AzureRmRecoveryServicesBackupItem
     - Get-AzureRmRecoveryServicesBackupContainer
     - Get-AzureRmRecoveryServicesBackupManagementServer
