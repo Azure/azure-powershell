@@ -188,6 +188,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
+    /// Class to define the vault BackupStorageRedundancy settings.
+    /// </summary>
+    public enum AzureRmRecoveryServicesBackupStorageRedundancyType
+    {
+        GeoRedundant = 1,
+        LocallyRedundant
+    }
+
+    /// <summary>
     /// Class to define the output object for the vault operations.
     /// </summary>
     public class VaultOperationOutput
