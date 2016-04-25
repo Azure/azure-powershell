@@ -19,14 +19,25 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class AzureSqlPsBackupProvider : IPsBackupProvider
     {
+        private const int defaultOperationStatusRetryTimeInMilliSec = 5 * 1000; // 5 sec
+        private const string separator = ";";
+        private const string computeAzureVMVersion = "Microsoft.Compute";
+        private const string classicComputeAzureVMVersion = "Microsoft.ClassicCompute";
+
+        ProviderData ProviderData { get; set; }
+        HydraAdapter HydraAdapter { get; set; }
+
         public void Initialize(ProviderData providerData, HydraAdapter hydraAdapter)
         {
-            throw new NotImplementedException();
+            this.ProviderData = providerData;
+            this.HydraAdapter = hydraAdapter;
         }
 
         public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse EnableProtection()
@@ -94,9 +105,119 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public List<Models.AzureRmRecoveryServicesBackupItemBase> ListProtectedItems()
+        public List<AzureRmRecoveryServicesBackupItemBase> ListProtectedItems()
         {
-            throw new NotImplementedException();
+            AzureRmRecoveryServicesBackupContainerBase container = new AzureRmRecoveryServicesBackupContainerBase(new ProtectionContainerResource());
+                //(AzureRmRecoveryServicesBackupContainerBase)this.ProviderData.ProviderParameters[ItemParams.Container];
+            string name = (string)this.ProviderData.ProviderParameters[ItemParams.AzureVMName];
+            ItemProtectionStatus protectionStatus =
+                (ItemProtectionStatus)this.ProviderData.ProviderParameters[ItemParams.ProtectionStatus];
+            ItemProtectionState status = (ItemProtectionState)this.ProviderData.ProviderParameters[ItemParams.ProtectionState];
+            Models.WorkloadType workloadType =
+                (Models.WorkloadType)this.ProviderData.ProviderParameters[ItemParams.WorkloadType];
+
+            ProtectedItemListQueryParam queryParams = new ProtectedItemListQueryParam();
+            queryParams.DatasourceType = "AzureSqlDb";//Take from Hydra :Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.;
+            queryParams.BackupManagementType = "AzureSql";//Take from Hydra Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
+
+            List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
+            string skipToken = null;
+            PaginationRequest paginationRequest = null;
+            do
+            {
+                var listResponse = HydraAdapter.ListProtectedItem(queryParams, paginationRequest);
+                protectedItems.AddRange(listResponse.ItemList.Value);
+
+                HydraHelpers.GetSkipTokenFromNextLink(listResponse.ItemList.NextLink, out skipToken);
+                if (skipToken != null)
+                {
+                    paginationRequest = new PaginationRequest();
+                    paginationRequest.SkipToken = skipToken;
+                }
+            } while (skipToken != null);
+
+            // 1. Filter by container
+            protectedItems = protectedItems.Where(protectedItem =>
+            {
+                Dictionary<UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
+                string containerUri = HelperUtils.GetContainerUri(dictionary, protectedItem.Id);
+                return containerUri.Contains(container.Name);
+            }).ToList();
+
+            List<ProtectedItemResponse> protectedItemGetResponses = new List<ProtectedItemResponse>();
+
+            // 2. Filter by item's friendly name
+            if (!string.IsNullOrEmpty(name))
+            {
+                protectedItems = protectedItems.Where(protectedItem =>
+                {
+                    Dictionary<UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
+                    string protectedItemUri = HelperUtils.GetProtectedItemUri(dictionary, protectedItem.Id);
+                    return protectedItemUri.ToLower().Contains(name.ToLower());
+                }).ToList();
+
+                GetProtectedItemQueryParam getItemQueryParams = new GetProtectedItemQueryParam();
+                getItemQueryParams.Expand = "extendedinfo";
+
+                for (int i = 0; i < protectedItems.Count; i++)
+                {
+                    Dictionary<UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItems[i].Id);
+                    string containerUri = HelperUtils.GetContainerUri(dictionary, protectedItems[i].Id);
+                    string protectedItemUri = HelperUtils.GetProtectedItemUri(dictionary, protectedItems[i].Id);
+
+                    var getResponse = HydraAdapter.GetProtectedItem(containerUri, protectedItemUri, getItemQueryParams);
+                    protectedItemGetResponses.Add(getResponse);
+                }
+            }
+
+            List<AzureRmRecoveryServicesBackupItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems, container);
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                for (int i = 0; i < itemModels.Count; i++)
+                {
+                    AzureRmRecoveryServicesBackupAzureSqlItemExtendedInfo extendedInfo = new AzureRmRecoveryServicesBackupAzureSqlItemExtendedInfo();
+                    var hydraExtendedInfo = ((AzureSqlProtectedItem)protectedItemGetResponses[i].Item.Properties).ExtendedInfo;
+                    if (hydraExtendedInfo.OldestRecoveryPoint.HasValue)
+                    {
+                        extendedInfo.OldestRecoveryPoint = hydraExtendedInfo.OldestRecoveryPoint;
+                    }
+                    extendedInfo.PolicyState = hydraExtendedInfo.PolicyState;
+                    extendedInfo.RecoveryPointCount = hydraExtendedInfo.RecoveryPointCount;
+                    ((AzureRmRecoveryServicesBackupAzureSqlItem)itemModels[i]).ExtendedInfo = extendedInfo;
+                }
+            }
+
+            // 3. Filter by item's Protection Status
+            if (protectionStatus != 0)
+            {
+                throw new Exception(string.Format("Protection Status is not allowed for AzureSqlItem. protectionStatus : {0}", protectionStatus.ToString()));
+            }
+
+            // 4. Filter by item's Protection State
+            if (status != 0)
+            {
+                if(status != ItemProtectionState.Protected)
+                {
+                    throw new Exception(string.Format("Givene Protection state is not valid for AzureSqlItem. Provided state : {0}", status.ToString()));
+                }
+
+                itemModels = itemModels.Where(itemModel =>
+                {
+                    return ((AzureRmRecoveryServicesBackupAzureSqlItem)itemModel).ProtectionState == status.ToString();
+                }).ToList();
+            }
+
+            // 5. Filter by workload type
+            if (workloadType != 0)
+            {
+                itemModels = itemModels.Where(itemModel =>
+                {
+                    return itemModel.WorkloadType == workloadType;
+                }).ToList();
+            }
+
+            return itemModels;
         }
     }
 }
