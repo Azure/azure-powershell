@@ -117,9 +117,9 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.RMStorageDataPlaneModule,
-                    helper.RMStorageModule,
                     helper.RMResourceModule,
-                    helper.GetRMModulePath(@"AzureRM.WebSites.psd1"));
+                    helper.GetRMModulePath(@"AzureRM.WebSites.psd1"),
+                    "AzureRM.Storage.ps1");
 
                 try
                 {
