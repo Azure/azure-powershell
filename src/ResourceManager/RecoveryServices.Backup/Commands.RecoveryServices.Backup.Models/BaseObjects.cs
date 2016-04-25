@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    public class AzureRmRecoveryServicesJobBase : AzureRmRecoveryServicesBackupManagementContext
+    public class AzureRmRecoveryServicesBackupJobBase : AzureRmRecoveryServicesBackupManagementContext
     {
         public string ActivityId { get; set; }
 
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// This class is does not represent first class resource. So, we are not inheriting from the base class.
     /// </summary>
-    public class AzureRmRecoveryServicesJobErrorInfoBase
+    public class AzureRmRecoveryServicesBackupJobErrorInfoBase
     {
         public string ErrorMessage { get; set; }
 
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// This class is does not represent a first class resource. So, we are not inheriting from the common base class.
     /// </summary>
-    public class AzureRmRecoveryServicesJobSubTaskBase
+    public class AzureRmRecoveryServicesBackupJobSubTaskBase
     {
         public string Name { get; set; }
 
