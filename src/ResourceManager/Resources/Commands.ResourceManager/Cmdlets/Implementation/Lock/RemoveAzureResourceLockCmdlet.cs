@@ -56,12 +56,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceId,
                 () =>
                 {
-                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
-
                     var operationResult = this.GetResourcesClient()
                         .DeleteResource(
                             resourceId: resourceId,
-                            apiVersion: apiVersion,
+                            apiVersion: this.LockApiVersion,
                             cancellationToken: this.CancellationToken.Value)
                         .Result;
 
@@ -73,7 +71,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var managementUri = this.GetResourcesClient()
                         .GetResourceManagementRequestUri(
                             resourceId: resourceId,
-                            apiVersion: apiVersion);
+                            apiVersion: this.LockApiVersion);
 
                     var activity = string.Format("DELETE {0}", managementUri.PathAndQuery);
 

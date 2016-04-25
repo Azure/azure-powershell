@@ -20,6 +20,8 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -55,7 +57,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
 
             // Don't go to the service on an Enable AutoScale call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolEnableAutoScaleParameters, CloudPoolEnableAutoScaleResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolEnableAutoScaleParameter, 
+                PoolEnableAutoScaleOptions, 
+                AzureOperationHeaderResponse<PoolEnableAutoScaleHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -79,11 +85,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.AutoScaleEvaluationInterval = interval;
 
             // Don't go to the service on an Enable AutoScale call
-            Action<BatchRequest<CloudPoolEnableAutoScaleParameters, CloudPoolEnableAutoScaleResponse>> extractFormulaAction =
+            Action<BatchRequest<PoolEnableAutoScaleParameter, PoolEnableAutoScaleOptions, AzureOperationHeaderResponse<PoolEnableAutoScaleHeaders>>> extractFormulaAction =
                 (request) =>
                 {
-                    requestFormula = request.TypedParameters.AutoScaleFormula;
-                    requestInterval = request.TypedParameters.AutoScaleEvaluationInterval;
+                    requestFormula = request.Parameters.AutoScaleFormula;
+                    requestInterval = request.Parameters.AutoScaleEvaluationInterval;
                 };
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractFormulaAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };

@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             Guid tenantId = GetTenantId(AadTenantId);
 
-            SubscriptionCloudCredentials cred = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultProfile.Context);
+            SubscriptionCloudCredentials cred = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
             GraphRbacManagementClient graphClient = new GraphRbacManagementClient(tenantId.ToString(), cred);
 
             ServicePrincipalGetResult res = graphClient.ServicePrincipal.Get(ObjectId.ToString());

@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Id = "testTask";
 
             // Don't go to the service on a Terminate CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskTerminateParameters, CloudTaskTerminateResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskTerminateOptions, AzureOperationHeaderResponse<TaskTerminateHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

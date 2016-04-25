@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Resources
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             // remove leading and trailing whitespaces
             this.OperationSearchString = this.OperationSearchString.Trim();
 
