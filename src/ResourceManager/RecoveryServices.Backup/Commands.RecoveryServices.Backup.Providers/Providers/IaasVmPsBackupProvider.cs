@@ -189,8 +189,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse TriggerRestore()
         {
-            AzureRmRecoveryServicesIaasVmRecoveryPoint rp = ProviderData.ProviderParameters[RestoreBackupItemParams.RecoveryPoint]
-                as AzureRmRecoveryServicesIaasVmRecoveryPoint;
+            AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rp = ProviderData.ProviderParameters[RestoreBackupItemParams.RecoveryPoint]
+                as AzureRmRecoveryServicesBackupIaasVmRecoveryPoint;
             string storageAccountId = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountId].ToString();
             string storageAccountLocation = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountLocation].ToString();
             string storageAccountType = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountType].ToString();
