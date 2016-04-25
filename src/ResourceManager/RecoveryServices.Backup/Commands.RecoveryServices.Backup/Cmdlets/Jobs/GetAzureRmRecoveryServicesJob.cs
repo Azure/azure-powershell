@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of jobs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
-    public class GetAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
+    public class GetAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.StatusFilter, Position = 1)]
         [ValidateNotNullOrEmpty]
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.JobFilter, Position = 6)]
         [ValidateNotNull]
-        public AzureRmRecoveryServicesJobBase Job { get; set; }
+        public AzureRmRecoveryServicesBackupJobBase Job { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.BackupManagementTypeFilter)]
         [ValidateNotNullOrEmpty]
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     JobId = Job.JobId;
                 }
 
-                List<AzureRmRecoveryServicesJobBase> result = new List<AzureRmRecoveryServicesJobBase>();
+                List<AzureRmRecoveryServicesBackupJobBase> result = new List<AzureRmRecoveryServicesBackupJobBase>();
 
                 WriteDebug(string.Format("Filters provided are: StartTime - {0} EndTime - {1} Status - {2} Operation - {3} Type - {4}",
                     From,

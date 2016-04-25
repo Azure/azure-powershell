@@ -128,14 +128,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             InitializeAzureBackupCmdlet();
         }
 
-        public AzureRmRecoveryServicesJobBase GetJobObject(string jobId)
+        public AzureRmRecoveryServicesBackupJobBase GetJobObject(string jobId)
         {
             return JobConversions.GetPSJob(HydraAdapter.GetJob(jobId));
         }
 
-        public List<AzureRmRecoveryServicesJobBase> GetJobObject(IList<string> jobIds)
+        public List<AzureRmRecoveryServicesBackupJobBase> GetJobObject(IList<string> jobIds)
         {
-            List<AzureRmRecoveryServicesJobBase> result = new List<AzureRmRecoveryServicesJobBase>();
+            List<AzureRmRecoveryServicesBackupJobBase> result = new List<AzureRmRecoveryServicesBackupJobBase>();
             foreach (string jobId in jobIds)
             {
                 result.Add(GetJobObject(jobId));

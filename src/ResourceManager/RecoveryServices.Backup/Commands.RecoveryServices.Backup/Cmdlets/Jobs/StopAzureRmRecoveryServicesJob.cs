@@ -24,15 +24,15 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet("Stop", "AzureRmRecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
-    public class StopAzureRmRecoveryServicesJob : RecoveryServicesBackupCmdletBase
+    [Cmdlet("Stop", "AzureRmRecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet), OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
+    public class StopAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
 
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobFilter, ParameterSetName = JobFilterSet, Position = 1)]
         [ValidateNotNull]
-        public AzureRmRecoveryServicesJobBase Job { get; set; }
+        public AzureRmRecoveryServicesBackupJobBase Job { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobIdFilter, ParameterSetName = IdFilterSet, Position = 2)]
         [ValidateNotNull]

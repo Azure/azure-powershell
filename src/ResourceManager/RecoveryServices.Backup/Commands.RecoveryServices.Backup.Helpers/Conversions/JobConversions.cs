@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// </summary>
         /// <param name="hydraJob"></param>
         /// <returns></returns>
-        public static AzureRmRecoveryServicesJobBase GetPSJob(JobResponse hydraJob)
+        public static AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResponse hydraJob)
         {
             return GetPSJob(hydraJob.Item);
         }
 
-        public static AzureRmRecoveryServicesJobBase GetPSJob(JobResource hydraJob)
+        public static AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResource hydraJob)
         {
-            AzureRmRecoveryServicesJobBase response = null;
+            AzureRmRecoveryServicesBackupJobBase response = null;
 
             // hydra doesn't initialize Properties if the type of job is not known to current version of hydra.
             if (hydraJob.Properties == null)
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return response;
         }
 
-        public static void AddHydraJobsToPSList(JobListResponse hydraJobs, List<AzureRmRecoveryServicesJobBase> psJobs, ref int jobsCount)
+        public static void AddHydraJobsToPSList(JobListResponse hydraJobs, List<AzureRmRecoveryServicesBackupJobBase> psJobs, ref int jobsCount)
         {
             if (hydraJobs.ItemList != null && hydraJobs.ItemList.Value != null)
             {
                 foreach (var job in hydraJobs.ItemList.Value)
                 {
-                    AzureRmRecoveryServicesJobBase convertedJob = GetPSJob(job);
+                    AzureRmRecoveryServicesBackupJobBase convertedJob = GetPSJob(job);
                     if (convertedJob != null)
                     {
                         jobsCount++;
@@ -71,19 +71,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region AzureVm job private helpers
 
-        private static AzureRmRecoveryServicesAzureVmJob GetPSAzureVmJob(JobResource hydraJob)
+        private static AzureRmRecoveryServicesBackupAzureVmJob GetPSAzureVmJob(JobResource hydraJob)
         {
-            AzureRmRecoveryServicesAzureVmJob response;
+            AzureRmRecoveryServicesBackupAzureVmJob response;
 
             AzureIaaSVMJob vmJob = hydraJob.Properties as AzureIaaSVMJob;
 
             if (vmJob.ExtendedInfo != null)
             {
-                response = new AzureRmRecoveryServicesAzureVmJobDetails();
+                response = new AzureRmRecoveryServicesBackupAzureVmJobDetails();
             }
             else
             {
-                response = new AzureRmRecoveryServicesAzureVmJob();
+                response = new AzureRmRecoveryServicesBackupAzureVmJob();
             }
 
             response.JobId = GetLastIdFromFullId(hydraJob.Id);
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             if (vmJob.ErrorDetails != null)
             {
-                response.ErrorDetails = new List<AzureRmRecoveryServicesAzureVmJobErrorInfo>();
+                response.ErrorDetails = new List<AzureRmRecoveryServicesBackupAzureVmJobErrorInfo>();
                 foreach (var vmError in vmJob.ErrorDetails)
                 {
                     response.ErrorDetails.Add(GetPSAzureVmErrorInfo(vmError));
@@ -109,8 +109,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             // fill extended info if present
             if (vmJob.ExtendedInfo != null)
             {
-                AzureRmRecoveryServicesAzureVmJobDetails detailedResponse =
-                    response as AzureRmRecoveryServicesAzureVmJobDetails;
+                AzureRmRecoveryServicesBackupAzureVmJobDetails detailedResponse =
+                    response as AzureRmRecoveryServicesBackupAzureVmJobDetails;
 
                 detailedResponse.DynamicErrorMessage = vmJob.ExtendedInfo.DynamicErrorMessage;
                 if (vmJob.ExtendedInfo.PropertyBag != null)
@@ -124,10 +124,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 if (vmJob.ExtendedInfo.TasksList != null)
                 {
-                    detailedResponse.SubTasks = new List<AzureRmRecoveryServicesAzureVmJobSubTask>();
+                    detailedResponse.SubTasks = new List<AzureRmRecoveryServicesBackupAzureVmJobSubTask>();
                     foreach (var vmJobTask in vmJob.ExtendedInfo.TasksList)
                     {
-                        detailedResponse.SubTasks.Add(new AzureRmRecoveryServicesAzureVmJobSubTask()
+                        detailedResponse.SubTasks.Add(new AzureRmRecoveryServicesBackupAzureVmJobSubTask()
                         {
                             Name = vmJobTask.TaskId,
                             Status = vmJobTask.Status
@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return response;
         }
 
-        private static AzureRmRecoveryServicesAzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo hydraError)
+        private static AzureRmRecoveryServicesBackupAzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo hydraError)
         {
-            AzureRmRecoveryServicesAzureVmJobErrorInfo psErrorInfo = new AzureRmRecoveryServicesAzureVmJobErrorInfo();
+            AzureRmRecoveryServicesBackupAzureVmJobErrorInfo psErrorInfo = new AzureRmRecoveryServicesBackupAzureVmJobErrorInfo();
             psErrorInfo.ErrorCode = hydraError.ErrorCode;
             psErrorInfo.ErrorMessage = hydraError.ErrorString;
             if (hydraError.Recommendations != null)
