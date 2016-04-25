@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 RecoveryPoint recPoint = rp.Properties as RecoveryPoint;
 
                 DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                AzureRmRecoveryServicesIaasVmRecoveryPoint rpBase = new AzureRmRecoveryServicesIaasVmRecoveryPoint()
+                AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rpBase = new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
                 {
                     Name = rp.Name,
                     BackupManagementType = item.BackupManagementType,
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
-            AzureRmRecoveryServicesIaasVmRecoveryPoint result = new AzureRmRecoveryServicesIaasVmRecoveryPoint()
+            AzureRmRecoveryServicesBackupIaasVmRecoveryPoint result = new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
             {
                 Name = rpResponse.RecPoint.Name,
                 BackupManagementType = item.BackupManagementType,
