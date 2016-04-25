@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesIaasVmPolicy : AzureRmRecoveryServicesBackupPolicyBase
+    public class AzureRmRecoveryServicesBackupIaasVmPolicy : AzureRmRecoveryServicesBackupPolicyBase
     {
         public AzureRmRecoveryServicesBackupSchedulePolicyBase SchedulePolicy { get; set; }
 
