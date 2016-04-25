@@ -132,28 +132,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             };
         }
 
-        public static PSResourceProviderLocationInfo ToPSResourceProviderLocationInfo(this ProviderResourceType resourceType, string providerNamespace)
-        {
-            PSResourceProviderLocationInfo result = new PSResourceProviderLocationInfo();
-            if (resourceType != null)
-            {
-                resourceType.Locations = resourceType.Locations ?? new List<string>();
-                for (int i = 0; i < ResourcesClient.KnownLocationsNormalized.Count; i++)
-                {
-                    if (resourceType.Locations.Remove(ResourcesClient.KnownLocationsNormalized[i]))
-                    {
-                        resourceType.Locations.Add(ResourcesClient.KnownLocations[i]);
-                    }
-                }
-
-                result.Name = string.IsNullOrEmpty(providerNamespace) ? resourceType.Name : string.Join("/", providerNamespace, resourceType.Name);
-                result.Locations = resourceType.Locations.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct(StringComparer.CurrentCultureIgnoreCase).ToList();
-                result.LocationsString = string.Join(", ", result.Locations);
-            }
-
-            return result;
-        }
-
         public static PSGalleryItem ToPSGalleryItem(this GalleryItem gallery)
         {
             PSGalleryItem psGalleryItem = new PSGalleryItem();

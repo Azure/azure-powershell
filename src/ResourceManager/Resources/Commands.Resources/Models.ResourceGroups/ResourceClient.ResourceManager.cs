@@ -568,46 +568,5 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             return validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList();
         }
-
-        /// <summary>
-        /// Gets available locations for the specified resource type.
-        /// </summary>
-        /// <param name="resourceTypes">The resource types</param>
-        /// <returns>Mapping between each resource type and its available locations</returns>
-        public virtual List<PSResourceProviderLocationInfo> GetLocations(params string[] resourceTypes)
-        {
-            if (resourceTypes == null)
-            {
-                resourceTypes = new string[0];
-            }
-            List<string> providerNames = resourceTypes.Select(r => r.Split('/').First()).ToList();
-            List<PSResourceProviderLocationInfo> result = new List<PSResourceProviderLocationInfo>();
-            List<Provider> providers = new List<Provider>();
-
-            if (resourceTypes.Length == 0 || resourceTypes.Any(r => r.Equals(ResourceGroupTypeName, StringComparison.OrdinalIgnoreCase)))
-            {
-                result.Add(new ProviderResourceType
-                {
-                    Name = ResourceGroupTypeName,
-                    Locations = KnownLocations
-                }.ToPSResourceProviderLocationInfo(null));
-            }
-
-            if (resourceTypes.Length > 0)
-            {
-                providers.AddRange(ListResourceProviders()
-                    .Where(p => providerNames.Any(pn => pn.Equals(p.Namespace, StringComparison.OrdinalIgnoreCase))));
-            }
-            else
-            {
-                providers.AddRange(ListResourceProviders());
-            }
-
-            result.AddRange(providers.SelectMany(p => p.ResourceTypes
-                .Select(r => r.ToPSResourceProviderLocationInfo(p.Namespace)))
-                .Where(r => r.Locations != null && r.Locations.Count > 0));
-
-            return result;
-        }
     }
 }

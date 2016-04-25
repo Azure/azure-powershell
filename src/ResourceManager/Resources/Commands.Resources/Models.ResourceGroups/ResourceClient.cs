@@ -23,12 +23,15 @@ using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Subscriptions.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
@@ -60,6 +63,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
 
+        public ISubscriptionClient SubscriptionClient { get; set; }
+
         public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
@@ -76,7 +81,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
             : this(
                 AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 new GalleryTemplatesClient(context),
-                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+                AzureSession.ClientFactory.CreateClient<SubscriptionClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }
@@ -90,11 +96,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
             GalleryTemplatesClient galleryTemplatesClient,
-            IAuthorizationManagementClient authorizationManagementClient)
+            IAuthorizationManagementClient authorizationManagementClient,
+            ISubscriptionClient subscriptionClient)
         {
             GalleryTemplatesClient = galleryTemplatesClient;
             AuthorizationManagementClient = authorizationManagementClient;
             this.ResourceManagementClient = resourceManagementClient;
+            this.SubscriptionClient = subscriptionClient;
         }
 
         /// <summary>
@@ -503,6 +511,16 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     ? returnList
                     : returnList.Where(this.IsProviderRegistered).ToList();
             }
+        }
+
+        public List<Location> ListLocations(string subscriptionId)
+        {
+            var locationList = new List<Location>();
+
+            var tempResult = this.SubscriptionClient.Subscriptions.ListLocations(subscriptionId);
+            locationList.AddRange(tempResult.Locations);
+
+            return locationList;
         }
 
         private bool ContainsNormalizedLocation(string[] locations, string location)

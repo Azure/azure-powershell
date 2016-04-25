@@ -29,6 +29,7 @@ using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Subscriptions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
@@ -44,6 +45,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         private Mock<IResourceManagementClient> resourceManagementClientMock;
 
         private Mock<IAuthorizationManagementClient> authorizationManagementClientMock;
+
+        private Mock<ISubscriptionClient> subscriptionClientMock;
 
         private Mock<IDeploymentOperations> deploymentsMock;
 
@@ -152,7 +155,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 galleryTemplatesClientMock.Object,
                 // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
                 //eventsClientMock.Object,
-                authorizationManagementClientMock.Object)
+                authorizationManagementClientMock.Object, 
+                subscriptionClientMock.Object)
                 {
                     VerboseLogger = progressLoggerMock.Object,
                     ErrorLogger = errorLoggerMock.Object
@@ -1956,120 +1960,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             resourcesClient.CancelDeployment(resourceGroupName, null);
 
             deploymentsMock.Verify(f => f.CancelAsync(resourceGroupName, deploymentName + 3, new CancellationToken()), Times.Once());
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetsLocations()
-        {
-            providersMock.Setup(f => f.ListAsync(null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new ProviderListResult()
-                {
-                    Providers = new List<Provider>()
-                    {
-                        new Provider()
-                        {
-                            Namespace = "Microsoft.Web",
-                            RegistrationState = "Registered",
-                            ResourceTypes = new List<ProviderResourceType>()
-                            {
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "East US"},
-                                    Name = "database"
-                                },
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "South Central US"},
-                                    Name = "servers"
-                                }
-                            }
-                        },
-                        new Provider()
-                        {
-                            Namespace = "Microsoft.HDInsight",
-                            RegistrationState = "UnRegistered",
-                            ResourceTypes = new List<ProviderResourceType>()
-                            {
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "East US"},
-                                    Name = "hadoop"
-                                },
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "South Central US"},
-                                    Name = "websites"
-                                }
-                            }
-                        }
-                    }
-                }));
-            List<PSResourceProviderLocationInfo> resourceTypes = resourcesClient.GetLocations(
-                ResourcesClient.ResourceGroupTypeName,
-                "Microsoft.HDInsight");
-
-            Assert.Equal(3, resourceTypes.Count);
-            Assert.Equal(ResourcesClient.ResourceGroupTypeName, resourceTypes[0].Name);
-            Assert.Equal(ResourcesClient.KnownLocations.Count, resourceTypes[0].Locations.Count);
-            Assert.Equal("East Asia", resourceTypes[0].Locations[0]);
-            Assert.Equal("Microsoft.HDInsight/hadoop", resourceTypes[1].Name);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void IgnoresResourceTypesWithEmptyLocations()
-        {
-            providersMock.Setup(f => f.ListAsync(null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new ProviderListResult()
-                {
-                    Providers = new List<Provider>()
-                    {
-                        new Provider()
-                        {
-                            Namespace = "Microsoft.Web",
-                            RegistrationState = "Registered",
-                            ResourceTypes = new List<ProviderResourceType>()
-                            {
-                                new ProviderResourceType()
-                                {
-                                    Name = "database"
-                                },
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>(),
-                                    Name = "servers"
-                                }
-                            }
-                        },
-                        new Provider()
-                        {
-                            Namespace = "Microsoft.HDInsight",
-                            RegistrationState = "UnRegistered",
-                            ResourceTypes = new List<ProviderResourceType>()
-                            {
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "East US"},
-                                    Name = "hadoop"
-                                },
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "South Central US"},
-                                    Name = "websites"
-                                }
-                            }
-                        }
-                    }
-                }));
-            List<PSResourceProviderLocationInfo> resourceTypes = resourcesClient.GetLocations(
-                ResourcesClient.ResourceGroupTypeName,
-                "Microsoft.Web");
-
-            Assert.Equal(1, resourceTypes.Count);
-            Assert.Equal(ResourcesClient.ResourceGroupTypeName, resourceTypes[0].Name);
-            Assert.Equal(ResourcesClient.KnownLocations.Count, resourceTypes[0].Locations.Count);
-            Assert.Equal("East Asia", resourceTypes[0].Locations[0]);
         }
 
         [Fact]
