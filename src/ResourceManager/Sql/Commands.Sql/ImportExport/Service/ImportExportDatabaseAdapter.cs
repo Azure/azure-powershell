@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// Creates a new export request
         /// </summary>
         /// <param name="exportRequest">Export request parameters</param>
-        /// <returns>Oprtation response including the OperationStatusLink to get the operation status</returns>
+        /// <returns>Operation response including the OperationStatusLink to get the operation status</returns>
         public AzureSqlDatabaseImportExportBaseModel Export(AzureSqlDatabaseImportExportBaseModel exportRequest)
         {
             ExportRequestParameters parameters = new ExportRequestParameters()
@@ -67,14 +67,14 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
 
             ImportExportResponse response = Communicator.Export(exportRequest.ResourceGroupName, exportRequest.ServerName, 
                 exportRequest.DatabaseName, parameters, Util.GenerateTracingId());
-            return CreateImportExportResponse(response);
+            return CreateImportExportResponse(response, exportRequest);
         }
 
         /// <summary>
         /// Creates a new import request
         /// </summary>
         /// <param name="importRequest">Import request parameters</param>
-        /// <returns>Oprtation response including the OperationStatusLink to get the operation status</returns>
+        /// <returns>Operation response including the OperationStatusLink to get the operation status</returns>
         public AzureSqlDatabaseImportExportBaseModel Import(AzureSqlDatabaseImportModel importRequest)
         {
             ImportRequestParameters parameters = new ImportRequestParameters()
@@ -97,14 +97,14 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
 
             ImportExportResponse response = Communicator.Import(importRequest.ResourceGroupName, importRequest.ServerName, parameters, Util.GenerateTracingId());
 
-            return CreateImportExportResponse(response);
+            return CreateImportExportResponse(response, importRequest);
         }
 
         /// <summary>
         /// Gets the status of an import/export operation
         /// </summary>
         /// <param name="operationStatusLink">The operation status link</param>
-        /// <returns>Oprtation status response</returns>
+        /// <returns>Operation status response</returns>
         public AzureSqlDatabaseImportExportStatusModel GetStatus(string operationStatusLink)
         {
             ImportExportOperationStatusResponse resposne = Communicator.GetStatus(operationStatusLink, Util.GenerateTracingId());
@@ -115,7 +115,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
                 LastModifiedTime = resposne.LastModifiedTime,
                 QueuedTime = resposne.QueuedTime,
                 StatusMessage = resposne.StatusMessage,
-                Status = resposne.Status.ToString()
+                Status = resposne.Status.ToString(),
+                OperationStatusLink = operationStatusLink
             };
 
             return status;
@@ -126,14 +127,13 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// </summary>
         /// <param name="response">Server Response</param>
         /// <returns>Response Model</returns>
-        private AzureSqlDatabaseImportExportBaseModel CreateImportExportResponse(ImportExportResponse response)
+        private AzureSqlDatabaseImportExportBaseModel CreateImportExportResponse(ImportExportResponse response, AzureSqlDatabaseImportExportBaseModel originalModel)
         {
-            return new AzureSqlDatabaseImportExportBaseModel()
-            {
-                OperationStatusLink = response.OperationStatusLink,
-                Status = response.Status.ToString(),
-                ErrorMessage = response.Error == null ? "" : response.Error.Message
-            };
+            AzureSqlDatabaseImportExportBaseModel model = originalModel == null ? new AzureSqlDatabaseImportExportBaseModel() : originalModel.Copy();
+            model.OperationStatusLink = response.OperationStatusLink;
+            model.Status = response.Status.ToString();
+            model.ErrorMessage = response.Error == null ? "" : response.Error.Message;
+            return model;
         }
     }
 }
