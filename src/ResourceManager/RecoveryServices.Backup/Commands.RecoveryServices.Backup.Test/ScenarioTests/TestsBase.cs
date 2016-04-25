@@ -101,7 +101,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             if (testEnvironment.UsesCustomUri())
             {
                 client = new RecoveryServicesBackupManagementClient(
-                    ResourceNamespace,
                     testEnvironment.Credentials as SubscriptionCloudCredentials,
                     testEnvironment.BaseUri);
             }
@@ -109,9 +108,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             else
             {
                 client = new RecoveryServicesBackupManagementClient(
-                    ResourceNamespace,
                     testEnvironment.Credentials as SubscriptionCloudCredentials);
             }
+
+            client.ResourceNamespace = this.ResourceNamespace;
 
             return GetServiceClient<RecoveryServicesBackupManagementClient>(factory, client);
         }
