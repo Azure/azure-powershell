@@ -14,6 +14,31 @@
     - New-AzureStorageShareSASToken
     - New-AzureStorageShareStoredAccessPolicy
     - Set-AzureStorageShareStoredAccessPolicy
+  * Added Recovery Services Backup cmdlets
+    - Set-AzureRmRecoveryServicesVaultContext
+    - Set-AzureRmRecoveryServicesBackupProperties
+    - Get-AzureRmRecoveryServicesBackupProperties
+    - Get-AzureRmRecoveryServicesVaultSettingsFile
+    - Backup-AzureRmRecoveryServicesBackupItem
+    - Get-AzureRmRecoveryServicesBackupContainer
+    - Get-AzureRmRecoveryServicesBackupManagementServer
+    - Unregister-AzureRmRecoveryServicesBackupContainer
+    - Unregister-AzureRmRecoveryServicesBackupManagementServer
+    - Disable-AzureRmRecoveryServicesBackupProtection
+    - Enable-AzureRmRecoveryServicesBackupProtection
+    - Get-AzureRmRecoveryServicesBackupItem
+    - Get-AzureRmRecoveryServicesBackupJob
+    - Get-AzureRmRecoveryServicesBackupJobDetails
+    - Stop-AzureRmRecoveryServicesBackupJob
+    - Wait-AzureRmRecoveryServicesBackupJob
+    - Get-AzureRmRecoveryServicesBackupRetentionPolicyObject
+    - Get-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Get-AzureRmRecoveryServicesBackupSchedulePolicyObject
+    - New-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Remove-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Set-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Get-AzureRMRecoveryServicesBackupRecoveryPoint
+    - Restore-AzureRMRecoveryServicesBackupItem
 
 ##2016.04.19 version 1.3.2
 * Add support for specifying NIC/VMSS as application gateway backend address
