@@ -138,12 +138,12 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 if (this.batchOMClient == null)
                 {
-                    if ((KeyInUse == AccountKeyType.Primary && string.IsNullOrEmpty(PrimaryAccountKey)) ||
-                        (KeyInUse == AccountKeyType.Secondary && string.IsNullOrEmpty(SecondaryAccountKey)))
+                    if ((KeyInUse == AccountKeyType.PrimaryKey && string.IsNullOrEmpty(PrimaryAccountKey)) ||
+                        (KeyInUse == AccountKeyType.SecondaryKey && string.IsNullOrEmpty(SecondaryAccountKey)))
                     {
                         throw new InvalidOperationException(string.Format(Resources.KeyNotPresent, KeyInUse));
                     }
-                    string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
+                    string key = KeyInUse == AccountKeyType.PrimaryKey ? PrimaryAccountKey : SecondaryAccountKey;
                     BatchServiceClient restClient = CreateBatchRestClient(TaskTenantUrl, AccountName, key);
                     this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Open(restClient);
                 }
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         internal BatchAccountContext()
         {
-            this.KeyInUse = AccountKeyType.Primary;
+            this.KeyInUse = AccountKeyType.PrimaryKey;
         }
 
         internal BatchAccountContext(string accountEndpoint) : this()
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <returns>Void</returns>
         internal void ConvertAccountResourceToAccountContext(AccountResource resource)
         {
-            var accountEndpoint = resource.Properties.AccountEndpoint;
+            var accountEndpoint = resource.AccountEndpoint;
             if (Uri.CheckHostName(accountEndpoint) != UriHostNameType.Dns)
             {
                 throw new ArgumentException(String.Format(Resources.InvalidEndpointType, accountEndpoint), "AccountEndpoint");
@@ -177,11 +177,11 @@ namespace Microsoft.Azure.Commands.Batch
             this.Id = resource.Id;
             this.AccountEndpoint = accountEndpoint;
             this.Location = resource.Location;
-            this.State = resource.Properties.ProvisioningState.ToString();
+            this.State = resource.ProvisioningState.ToString();
             this.Tags = Helpers.CreateTagHashtable(resource.Tags);
-            this.CoreQuota = resource.Properties.CoreQuota;
-            this.PoolQuota = resource.Properties.PoolQuota;
-            this.ActiveJobAndJobScheduleQuota = resource.Properties.ActiveJobAndJobScheduleQuota;
+            this.CoreQuota = resource.CoreQuota.GetValueOrDefault();
+            this.PoolQuota = resource.PoolQuota.GetValueOrDefault();
+            this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota.GetValueOrDefault();
 
             // extract the host and strip off the account name for the TaskTenantUrl and AccountName
             var hostParts = accountEndpoint.Split('.');

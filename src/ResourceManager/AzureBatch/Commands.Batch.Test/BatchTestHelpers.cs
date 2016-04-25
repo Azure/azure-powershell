@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Commands.Batch.Test
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
             string subscription = Guid.Empty.ToString();
             string resourceGroup = resourceGroupName;
+            string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
 
-            AccountResource resource = new AccountResource()
+            AccountResource resource = new AccountResource(id: id, type: "type")
             {
-                Id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup),
                 Location = "location",
-                Properties = new AccountProperties() { AccountEndpoint = endpoint, ProvisioningState = AccountProvisioningState.Succeeded },
-                Type = "type"
+                AccountEndpoint = endpoint,
+                ProvisioningState = AccountProvisioningState.Succeeded,
             };
             if (tags != null)
             {

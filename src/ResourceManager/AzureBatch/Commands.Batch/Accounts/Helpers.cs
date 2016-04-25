@@ -21,9 +21,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Batch
-{  
+{
     internal class Helpers
     {
         // copied from Resources\Commands.Resources
@@ -154,10 +155,10 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// Filters the subscription's accounts.
         /// </summary>
-        /// <param name="name">The account name.</param>
+        /// <param name="accounts">The list of accounts.</param>
         /// <param name="tag">The tag to filter on.</param>
         /// <returns>The filtered accounts</returns>
-        public static List<AccountResource> FilterAccounts(IList<AccountResource>accounts, Hashtable tag)
+        public static List<AccountResource> FilterAccounts(IPage<AccountResource>accounts, Hashtable tag)
         {
             List<AccountResource> result = new List<AccountResource>();
 
@@ -170,21 +171,25 @@ namespace Microsoft.Azure.Commands.Batch
                 }
                 if (string.IsNullOrEmpty(tagValuePair.Value))
                 {
-                    accounts =
-                        accounts.Where(acct => acct.Tags != null
-                                               && acct.Tags.Keys.Contains(tagValuePair.Name, StringComparer.OrdinalIgnoreCase))
-                                .Select(acct => acct).ToList();
+                    result.AddRange(
+                        accounts.Where(
+                            acct =>
+                                acct.Tags != null &&
+                                acct.Tags.Keys.Contains(tagValuePair.Name, StringComparer.OrdinalIgnoreCase))
+                            .Select(acct => acct).ToList());
                 }
                 else
                 {
-                    accounts =
-                        accounts.Where(acct => acct.Tags != null && acct.Tags.Keys.Contains(tagValuePair.Name, StringComparer.OrdinalIgnoreCase))
-                                .Where(rg => rg.Tags.Values.Contains(tagValuePair.Value, StringComparer.OrdinalIgnoreCase))
-                                .Select(acct => acct).ToList();
+                    result.AddRange(
+                        accounts.Where(
+                            acct =>
+                                acct.Tags != null &&
+                                acct.Tags.Keys.Contains(tagValuePair.Name, StringComparer.OrdinalIgnoreCase))
+                            .Where(rg => rg.Tags.Values.Contains(tagValuePair.Value, StringComparer.OrdinalIgnoreCase))
+                            .Select(acct => acct).ToList());
                 }
             }
 
-            result.AddRange(accounts);
             return result;
         }
 
