@@ -109,5 +109,22 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
         /// Gets or sets the error message returned from the server.
         /// </summary>
         public string ErrorMessage { get; set; }
+
+        /// <summary>
+        /// Copies the model to a new class
+        /// </summary>
+        internal virtual AzureSqlDatabaseImportExportBaseModel Copy()
+        {
+            return new AzureSqlDatabaseImportExportBaseModel()
+            {
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                AdministratorLogin = AdministratorLogin,
+                AuthenticationType = AuthenticationType,
+                DatabaseName = DatabaseName,
+                StorageKeyType = StorageKeyType,
+                StorageUri = StorageUri
+            };
+        }
     }
 }
