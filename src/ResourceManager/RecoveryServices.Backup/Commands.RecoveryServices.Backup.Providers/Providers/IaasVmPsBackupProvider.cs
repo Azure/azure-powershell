@@ -330,26 +330,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (schedulePolicy != null)
             {
                 ValidateAzureVMSchedulePolicy(schedulePolicy);
-                ((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy = schedulePolicy;
+                ((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).SchedulePolicy = schedulePolicy;
                 Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
             }
             if (retentionPolicy != null)
             {
                 ValidateAzureVMRetentionPolicy(retentionPolicy);
-                ((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy = retentionPolicy;
+                ((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).RetentionPolicy = retentionPolicy;
                 Logger.Instance.WriteDebug("Validation of Retention policy is successful");
             }
 
             // copy the backupSchedule time to retentionPolicy after converting to UTC
             CopyScheduleTimeToRetentionTimes(
-                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy,
-                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy);
+                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).RetentionPolicy,
+                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).SchedulePolicy);
             Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
 
             // Now validate both RetentionPolicy and SchedulePolicy matches or not
             PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
-                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy,
-                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy);
+                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).RetentionPolicy,
+                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).SchedulePolicy);
             Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
             // construct Hydra policy request            
@@ -360,9 +360,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     Properties = new AzureIaaSVMProtectionPolicy()
                     {
                         RetentionPolicy = PolicyHelpers.GetHydraLongTermRetentionPolicy(
-                                  (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).RetentionPolicy),
+                                  (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).RetentionPolicy),
                         SchedulePolicy = PolicyHelpers.GetHydraSimpleSchedulePolicy(
-                                  (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesIaasVmPolicy)policy).SchedulePolicy)
+                                  (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).SchedulePolicy)
                     }
                 }
             };
@@ -676,10 +676,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         private void ValidateAzureVMProtectionPolicy(AzureRmRecoveryServicesBackupPolicyBase policy)
         {
-            if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesIaasVmPolicy))
+            if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesBackupIaasVmPolicy))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
-                                            typeof(AzureRmRecoveryServicesIaasVmPolicy).ToString()));
+                                            typeof(AzureRmRecoveryServicesBackupIaasVmPolicy).ToString()));
             }
 
             ValidateAzureVMWorkloadType(policy.WorkloadType);
