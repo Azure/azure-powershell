@@ -32,7 +32,7 @@
 		  </TableControl>
 	  </View>
 	  <View>
-		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesMabContainer</Name>
+		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupMabContainer</Name>
 		  <ViewSelectedBy>
 			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesMabContainer</TypeName>
 		  </ViewSelectedBy>
@@ -69,9 +69,9 @@
 		  </TableControl>
 	  </View>
     <View>
-      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesIaasVmPolicy</Name>
+      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupIaasVmPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesIaasVmPolicy</TypeName>
+        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupIaasVmPolicy</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -120,9 +120,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesJobBase</Name>
+      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupJobBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesJobBase</TypeName>
+        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupJobBase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -273,9 +273,9 @@
       </TableControl>
     </View>
 	  <View>
-		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesIaasVmRecoveryPoint</Name>
+		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupIaasVmRecoveryPoint</Name>
 		  <ViewSelectedBy>
-			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesIaasVmRecoveryPoint</TypeName>
+			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupIaasVmRecoveryPoint</TypeName>
 		  </ViewSelectedBy>
 		  <TableControl>
 			  <TableHeaders>
