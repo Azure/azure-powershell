@@ -19,18 +19,27 @@ function Test-PolicyScenario
 
 	# get default objects
 	$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
+	Assert-NotNull $schedulePolicy
 	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
+	Assert-NotNull $retPolicy
 
 	# now create new policy
 	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "pwtest1" -WorkloadType "AzureVM" -RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy
+	Assert-NotNull $policy
+	Assert-AreEqual $policy.Name "pwtest1"
 		
 	# now get policy and update it with new schedule/retention
 	$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
+	Assert-NotNull $schedulePolicy
 	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
+	Assert-NotNull $retPolicy
 
     $temp = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "pwtest1"	
-	Set-AzureRmRecoveryServicesBackupProtectionPolicy -RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy -Policy $temp
+	Assert-NotNull $temp
+	Assert-AreEqual $temp.Name "pwtest1"
+
+	Set-AzureRmRecoveryServicesBackupProtectionPolicy -RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy -Policy $temp	
 
 	#cleanup 
-	Remove-AzureRmRecoveryServicesProtectionPolicy -Policy $temp -Force
+	Remove-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $temp -Force
 }
