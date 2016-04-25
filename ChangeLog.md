@@ -37,8 +37,8 @@
     - New-AzureRmRecoveryServicesBackupProtectionPolicy
     - Remove-AzureRmRecoveryServicesBackupProtectionPolicy
     - Set-AzureRmRecoveryServicesBackupProtectionPolicy
-    - Get-AzureRMRecoveryServicesBackupRecoveryPoint
-    - Restore-AzureRMRecoveryServicesBackupItem
+    - Get-AzureRmRecoveryServicesBackupRecoveryPoint
+    - Restore-AzureRmRecoveryServicesBackupItem
 
 ##2016.04.19 version 1.3.2
 * Add support for specifying NIC/VMSS as application gateway backend address
