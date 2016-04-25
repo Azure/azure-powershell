@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Create new protection policy
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesBackupProtectionPolicy"), OutputType(typeof(AzureRmRecoveryServicesBackupPolicyBase))]
-    public class NewAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
+    public class NewAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name)]
         [ValidateNotNullOrEmpty]

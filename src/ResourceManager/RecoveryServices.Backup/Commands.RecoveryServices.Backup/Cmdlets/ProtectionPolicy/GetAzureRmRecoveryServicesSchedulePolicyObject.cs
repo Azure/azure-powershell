@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupSchedulePolicyObject"), OutputType(typeof(AzureRmRecoveryServicesBackupSchedulePolicyBase))]
-    public class GetAzureRmRecoveryServicesSchedulePolicyObject : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesBackupSchedulePolicyObject : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
