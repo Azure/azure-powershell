@@ -30,7 +30,7 @@ function Test-GetJobsScenario
 	$jobs = Get-AzureRmRecoveryServicesBackupJob -From $fixedStartDate -To $fixedEndDate
 	foreach ($job in $jobs)
 	{
-		Assert-NotNull $job.InstanceId
+		Assert-NotNull $job.JobId
 		Assert-NotNull $job.Operation
 		Assert-NotNull $job.Status
 		Assert-NotNull $job.WorkloadName
@@ -111,10 +111,10 @@ function Test-GetJobDetails
 	foreach ($job in $jobs)
 	{
 		$jobDetails = Get-AzureRmRecoveryServicesBackupJobDetails -Job $job;
-		$jobDetails2 = Get-AzureRmRecoveryServicesBackupJobDetails -JobId $job.InstanceId
+		$jobDetails2 = Get-AzureRmRecoveryServicesBackupJobDetails -JobId $job.JobId
 
-		Assert-AreEqual $jobDetails.InstanceId $job.InstanceId
-		Assert-AreEqual $jobDetails2.InstanceId $job.InstanceId
+		Assert-AreEqual $jobDetails.JobId $job.JobId
+		Assert-AreEqual $jobDetails2.JobId $job.JobId
 
 		break;
 	}

@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 response = new AzureRmRecoveryServicesAzureVmJob();
             }
 
-            response.InstanceId = GetLastIdFromFullId(hydraJob.Id);
+            response.JobId = GetLastIdFromFullId(hydraJob.Id);
             response.StartTime = vmJob.StartTime;
             response.EndTime = vmJob.EndTime;
             response.Duration = vmJob.Duration;

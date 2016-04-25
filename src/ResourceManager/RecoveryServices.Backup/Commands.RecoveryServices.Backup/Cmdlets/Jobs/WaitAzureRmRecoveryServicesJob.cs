@@ -46,14 +46,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if (GetCastedObjFromPSObj<AzureRmRecoveryServicesJobBase>(Job, out castedObj))
                 {
                     AzureRmRecoveryServicesJobBase justJob = castedObj as AzureRmRecoveryServicesJobBase;
-                    jobsToWaitOn.Add(justJob.InstanceId);
+                    jobsToWaitOn.Add(justJob.JobId);
                 }
                 else if (GetCastedObjFromPSObj<List<AzureRmRecoveryServicesJobBase>>(Job, out castedObj))
                 {
                     List<AzureRmRecoveryServicesJobBase> jobsList = castedObj as List<AzureRmRecoveryServicesJobBase>;
                     foreach (var job in jobsList)
                     {
-                        jobsToWaitOn.Add(job.InstanceId);
+                        jobsToWaitOn.Add(job.JobId);
                     }
                 }
                 else if (Job.GetType() == typeof(System.Object[]))
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         if (GetCastedObjFromPSObj<AzureRmRecoveryServicesJobBase>(job, out castedJob))
                         {
-                            jobsToWaitOn.Add((castedJob as AzureRmRecoveryServicesJobBase).InstanceId);
+                            jobsToWaitOn.Add((castedJob as AzureRmRecoveryServicesJobBase).JobId);
                         }
                         else
                         {

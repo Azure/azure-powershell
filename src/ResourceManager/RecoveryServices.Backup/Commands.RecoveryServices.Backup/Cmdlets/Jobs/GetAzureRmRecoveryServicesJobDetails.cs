@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (ParameterSetName == JobFilterSet)
                 {
-                    JobId = Job.InstanceId;
+                    JobId = Job.JobId;
                 }
 
                 WriteDebug("Fetching job with ID: " + JobId);

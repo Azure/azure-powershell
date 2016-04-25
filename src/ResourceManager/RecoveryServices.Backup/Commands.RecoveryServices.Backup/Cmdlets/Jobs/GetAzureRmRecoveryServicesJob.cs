@@ -99,14 +99,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if (!string.IsNullOrEmpty(JobId))
                 {
                     // if JobId and Job are provided together and they don't match then throw exception
-                    if (Job != null && JobId != Job.InstanceId)
+                    if (Job != null && JobId != Job.JobId)
                     {
                         throw new Exception(Resources.JobJobIdAndJobMismatch);
                     }
                 }
                 else if (Job != null)
                 {
-                    JobId = Job.InstanceId;
+                    JobId = Job.JobId;
                 }
 
                 List<AzureRmRecoveryServicesJobBase> result = new List<AzureRmRecoveryServicesJobBase>();

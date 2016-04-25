@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         public string ActivityId { get; set; }
 
-        public string InstanceId { get; set; }
+        public string JobId { get; set; }
 
         public string Operation { get; set; }
 
