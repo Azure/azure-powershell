@@ -1,3 +1,20 @@
+##2016.05.03 version 1.4.0
+* Azure Storage
+  * Upgrade to Microsoft.Azure.Management.Storage nuget package v5.0 preview
+  * Add Encryption and Hot/Cool features support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+  * Add "Add" and "Create" permission to Blob SAS cmdlets
+    - New-AzureStorageBlobSASToken
+    - New-AzureStorageContainerSASToken
+    - New-AzureStorageContainerStoredAccessPolicy
+    - Set-AzureStorageContainerStoredAccessPolicy
+  * Add "Create" permission to File SAS cmdlets
+    - New-AzureStorageFileSASToken
+    - New-AzureStorageShareSASToken
+    - New-AzureStorageShareStoredAccessPolicy
+    - Set-AzureStorageShareStoredAccessPolicy
+
 ##2016.04.19 version 1.3.2
 * Add support for specifying NIC/VMSS as application gateway backend address
 * Fix HDI ADL cluster creation and live test
