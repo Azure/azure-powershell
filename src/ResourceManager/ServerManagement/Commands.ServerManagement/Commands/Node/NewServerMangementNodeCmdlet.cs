@@ -1,46 +1,65 @@
-using System.Collections;
-using System.Management.Automation;
-using Microsoft.Azure.Management.ServerManagement;
+// Copyright Microsoft Corporation
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// 
+// You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmServerManagementNode"), OutputType(typeof(Model.Node))]
+    using System.Collections;
+    using System.Management.Automation;
+    using Base;
+    using Management.ServerManagement;
+    using Model;
+
+    [Cmdlet(VerbsCommon.New, "AzureRmServerManagementNode"), OutputType(typeof(Node))]
     public class NewServerManagementNodeCmdlet : ServerManagementCmdlet
     {
-        #region ByName
-        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.", ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName")]
+        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
+            ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 0)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the gateway.", ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the gateway.", ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "ByName", Position = 1)]
         [ValidateNotNullOrEmpty]
         public string GatewayName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group location.", ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group location.",
+            ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 2)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
-        #endregion
 
-        #region ByObject
-        [Parameter(Mandatory = true, HelpMessage = "The gateway to place the node in.", ValueFromPipeline = true, ParameterSetName = "ByObject")]
+        [Parameter(Mandatory = true, HelpMessage = "The gateway to place the node in.", ValueFromPipeline = true,
+            ParameterSetName = "ByObject", Position = 0)]
         [ValidateNotNull]
-        public Model.Gateway Gateway { get; set; }
-        #endregion
+        public Gateway Gateway { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the node to create.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the node to create.",
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string NodeName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The computer name of the node to connect to (will default to NodeName).", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The computer name of the node to connect to (will default to NodeName).",
+            ValueFromPipelineByPropertyName = true)]
         public string ComputerName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The credentials to connect to the node.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public PSCredential Credential { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Key/value pairs associated with the object.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "Key/value pairs associated with the object.",
+            ValueFromPipelineByPropertyName = true)]
         public Hashtable Tags { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -52,9 +71,20 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
                 GatewayName = Gateway.Name;
                 Location = Gateway.Location;
             }
+            // the Node.Create call actually uses gatewayId, not gateway name, but that's easy enough to make.
+            string gatewayId =
+                $"/subscriptions/{{{Client.SubscriptionId}}}/resourceGroups/{{{ResourceGroupName}}}/providers/Microsoft.ServerManagement/gateways/{{{GatewayName}}}";
 
             WriteVerbose($"Creating new Node for {ResourceGroupName}/{NodeName}/{Location}/{GatewayName}");
-            WriteObject(new Model.Node(Client.Node.Create(ResourceGroupName, NodeName ,Location, Tags, GatewayName, ComputerName ?? NodeName, Credential.UserName, ToPlainText(Credential.Password))){ Credential = Credential});
+            WriteObject(
+                new Node(Client.Node.Create(ResourceGroupName,
+                    NodeName,
+                    Location,
+                    Tags,
+                    gatewayId,
+                    ComputerName ?? NodeName,
+                    Credential.UserName,
+                    ToPlainText(Credential.Password))) {Credential = Credential});
         }
     }
 }

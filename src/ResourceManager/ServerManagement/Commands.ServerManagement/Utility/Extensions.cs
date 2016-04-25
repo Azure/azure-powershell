@@ -1,27 +1,27 @@
-﻿using System;
-using System.Globalization;
-using System.Reflection;
+﻿// Copyright Microsoft Corporation
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// 
+// You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 namespace Microsoft.Azure.Commands.ServerManagement.Utility
 {
+    using System.Reflection;
+    using System.Text.RegularExpressions;
+
     internal static class Extensions
     {
-
-        internal static T Safe<T>(Func<T> expression)
-        {
-            try
-            {
-                return expression();
-            }
-            catch
-            {
-            }
-            return default(T);
-        }
-
         private static void SetMember<T>(this T target, string memberName, object value)
         {
-            var dField = typeof(T).GetField(memberName, BindingFlags.NonPublic | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.IgnoreCase);
+            var dField = typeof(T).GetField(memberName,
+                BindingFlags.NonPublic | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.IgnoreCase);
             if (dField != null)
             {
                 try
@@ -33,12 +33,11 @@ namespace Microsoft.Azure.Commands.ServerManagement.Utility
                 {
                     // skip it
                 }
-                
             }
             try
             {
                 var dProp = typeof(T).GetProperty(memberName,
-                    BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase );
+                    BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
                 if (dProp != null)
                 {
                     if (dProp.DeclaringType != null)
@@ -48,30 +47,28 @@ namespace Microsoft.Azure.Commands.ServerManagement.Utility
                             BindingFlags.IgnoreCase) ?? dProp;
                     }
 
-                    dProp.GetSetMethod(true).Invoke(target, new object[] { value });
+                    dProp.GetSetMethod(true).Invoke(target, new[] {value});
                 }
             }
             catch
             {
-
             }
         }
 
-        internal static string FromResourceId(this string resourceId, string prefix)
+        internal static string ExtractFieldFromResourceId(this string resourceId, string prefix)
         {
             try
             {
-                return System.Text.RegularExpressions.Regex.Match(resourceId+"/", $"/{prefix}/(.*?)/").Groups[1].Value;
+                return Regex.Match(resourceId + "/", $"/{prefix}/(.*?)/").Groups[1].Value;
             }
             catch
             {
-                
             }
 
             return null;
         }
 
-        internal static TDest CloneInto<TSrc, TDest>(this TSrc source, TDest destination )
+        internal static TDest CloneInto<TSrc, TDest>(this TSrc source, TDest destination)
         {
             // run thru public properties
             foreach (var property in typeof(TSrc).GetProperties(BindingFlags.Instance | BindingFlags.Public))
@@ -80,7 +77,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Utility
             }
 
             // run thru public fields
-            foreach ( var field in typeof(TSrc).GetFields(BindingFlags.Instance | BindingFlags.Public))
+            foreach (var field in typeof(TSrc).GetFields(BindingFlags.Instance | BindingFlags.Public))
             {
                 destination.SetMember(field.Name, field.GetValue(source));
             }

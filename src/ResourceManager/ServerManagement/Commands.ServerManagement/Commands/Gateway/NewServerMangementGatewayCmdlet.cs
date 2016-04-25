@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ServerManagement.Commands.Base;
 using Microsoft.Azure.Management.ServerManagement;
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
@@ -7,15 +8,15 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
     [Cmdlet(VerbsCommon.New, "AzureRmServerManagementGateway"), OutputType(typeof(Model.Gateway))]
     public class NewServerManagementGatewayCmdlet : ServerManagementCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.", ValueFromPipelineByPropertyName = true, Position = 0)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the gateway to create.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the gateway to create.", ValueFromPipelineByPropertyName = true, Position = 1)]
         [ValidateNotNullOrEmpty]
         public string GatewayName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group location.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group location.", ValueFromPipelineByPropertyName = true, Position = 2)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -24,7 +25,6 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
 
         [Parameter(Mandatory = false, HelpMessage = "Key/value pairs associated with the gateway.", ValueFromPipelineByPropertyName = true)]
         public Hashtable Tags { get; set; }
-
 
         public override void ExecuteCmdlet()
         {
@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
                 AutoUpgrade.IsPresent
                     ? Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade.On
                     : Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade.Off));
-
 
             // create the gawe
             WriteObject(gateway);
