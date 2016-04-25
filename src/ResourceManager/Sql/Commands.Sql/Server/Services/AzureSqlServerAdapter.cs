@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <param name="secureString">The encrypted <see cref="System.Security.SecureString"/>.</param>
         /// <returns>The plain-text string representation.</returns>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        private static string Decrypt(SecureString secureString)
+        internal static string Decrypt(SecureString secureString)
         {
             IntPtr unmanagedString = IntPtr.Zero;
             try

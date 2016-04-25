@@ -22,11 +22,11 @@
       <command:syntaxItem>
         <maml:name>Add-AzureRmAccount</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Environment</maml:name>
+          <maml:name>EnvironmentName</maml:name>
           <maml:description>
-            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud. The default is AzureCloud.</maml:para>
+            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">AzureEnvironment</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>SubscriptionId</maml:name>
@@ -69,11 +69,11 @@
           <command:parameterValue required="false" variableLength="false">PSCredential</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Environment</maml:name>
+          <maml:name>EnvironmentName</maml:name>
           <maml:description>
-            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud. The default is AzureCloud.</maml:para>
+            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">AzureEnvironment</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>SubscriptionId</maml:name>
@@ -109,11 +109,11 @@
           <command:parameterValue required="false" variableLength="false">PSCredential</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Environment</maml:name>
+          <maml:name>EnvironmentName</maml:name>
           <maml:description>
-            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud. The default is AzureCloud.</maml:para>
+            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">AzureEnvironment</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>SubscriptionId</maml:name>
@@ -172,13 +172,13 @@
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Environment</maml:name>
+        <maml:name>EnvironmentName</maml:name>
         <maml:description>
-          <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud. The default is AzureCloud.</maml:para>
+          <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">AzureEnvironment</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>AzureEnvironment</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>

@@ -146,12 +146,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                         { AzureEnvironment.Endpoint.Gallery, AzureEnvironmentConstants.USGovernmentGalleryEndpoint },
                         { AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, AzureEnvironmentConstants.USGovernmentSqlDatabaseDnsSuffix },
                         { AzureEnvironment.Endpoint.Graph, AzureEnvironmentConstants.USGovernmentGraphEndpoint },
-                        { AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, null },
+                        { AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, AzureEnvironmentConstants.USGovernmentTrafficManagerDnsSuffix },
                         { AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, AzureEnvironmentConstants.USGovernmentKeyVaultDnsSuffix},
                         { AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureEnvironmentConstants.USGovernmentKeyVaultServiceEndpointResourceId},
                         { AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, null},
                         { AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, null},
-                        {AzureEnvironment.Endpoint.GraphEndpointResourceId, AzureEnvironmentConstants.USGovernmentGraphEndpoint}
+                        { AzureEnvironment.Endpoint.GraphEndpointResourceId, AzureEnvironmentConstants.USGovernmentGraphEndpoint }
                     }
                 }
             }
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public const string ChinaActiveDirectoryEndpoint = "https://login.chinacloudapi.cn/";
 
-        public const string USGovernmentActiveDirectoryEndpoint = "https://login.microsoftonline.com/";
+        public const string USGovernmentActiveDirectoryEndpoint = "https://login-us.microsoftonline.com/";
 
         public const string AzureGraphEndpoint = "https://graph.windows.net/";
 
@@ -402,6 +402,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public const string AzureTrafficManagerDnsSuffix = "trafficmanager.net";
 
         public const string ChinaTrafficManagerDnsSuffix = "trafficmanager.cn";
+
+        public const string USGovernmentTrafficManagerDnsSuffix = "usgovtrafficmanager.net";
 
         public const string AzureKeyVaultDnsSuffix = "vault.azure.net";
 
