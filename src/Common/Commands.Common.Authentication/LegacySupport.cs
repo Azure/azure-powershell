@@ -12,29 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Management.Storage;
 
-namespace Microsoft.Azure.Commands.Management.Storage
+namespace Microsoft.Azure.Common.Authentication
 {
-    public partial class StorageManagementClientWrapper
+    /// <summary>
+    /// Provide backward compatibility for setting User Agent values
+    /// </summary>
+    public static class AzureSession
     {
-        public IStorageManagementClient StorageManagementClient { get; set; }
-
-        public Action<string> VerboseLogger { get; set; }
-
-        public Action<string> ErrorLogger { get; set; }
-
-        public StorageManagementClientWrapper(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        /// <summary>
+        /// The ClientFactory used to produce management clients in this session
+        /// </summary>
+        public static IClientFactory ClientFactory
         {
-        }
-
-        public StorageManagementClientWrapper(IStorageManagementClient resourceManagementClient)
-        {
-            StorageManagementClient = resourceManagementClient;
+            get { return Commands.Common.Authentication.AzureSession.ClientFactory; }
         }
     }
 }

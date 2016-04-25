@@ -76,15 +76,36 @@ function Test-ImportDatabase
                 
         if($operationName -eq $export){
             # Export database.       
-            $exportResponse = New-AzureRmSqlDatabaseExport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.exportBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType Sql
+            $exportResponse = New-AzureRmSqlDatabaseExport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.exportBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -AuthenticationType $params.authType
             Assert-NotNull $exportResponse
-            $operationStatusLink = $exportResponse.OperationStatusLink            
+            $operationStatusLink = $exportResponse.OperationStatusLink        
+            Assert-AreEqual $exportResponse.ResourceGroupName $params.rgname
+            Assert-AreEqual $exportResponse.ServerName $params.serverName
+            Assert-AreEqual $exportResponse.DatabaseName $params.databaseName
+            Assert-AreEqual $exportResponse.StorageKeyType $params.storageKeyType
+            Assert-Null $exportResponse.StorageKey
+            Assert-AreEqual $exportResponse.StorageUri $params.exportBacpacUri
+            Assert-AreEqual $exportResponse.AdministratorLogin $params.userName
+            Assert-Null $exportResponse.AdministratorLoginPassword
+            Assert-AreEqual $exportResponse.AuthenticationType $params.authType
         }
 
         if($operationName -eq $import){
-            $importResponse = New-AzureRmSqlDatabaseImport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSizeBytes 5000000 -AuthenticationType Sql
+            $importResponse = New-AzureRmSqlDatabaseImport -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageKeyType $params.storageKeyType -StorageKey $params.storageKey -StorageUri $params.importBacpacUri -AdministratorLogin $params.userName -AdministratorLoginPassword $secureString -Edition $params.databaseEdition -ServiceObjectiveName $params.serviceObjectiveName -DatabaseMaxSizeBytes $params.databaseMaxSizeBytes -AuthenticationType $params.authType
             Assert-NotNull $importResponse
             $operationStatusLink = $importResponse.OperationStatusLink
+            Assert-AreEqual $importResponse.ResourceGroupName $params.rgname
+            Assert-AreEqual $importResponse.ServerName $params.serverName
+            Assert-AreEqual $importResponse.DatabaseName $params.databaseName
+            Assert-AreEqual $importResponse.StorageKeyType $params.storageKeyType
+            Assert-Null $importResponse.StorageKey
+            Assert-AreEqual $importResponse.StorageUri $params.importBacpacUri
+            Assert-AreEqual $importResponse.AdministratorLogin $params.userName
+            Assert-Null $importResponse.AdministratorLoginPassword
+            Assert-AreEqual $importResponse.AuthenticationType $params.authType
+            Assert-AreEqual $importResponse.Edition $params.databaseEdition
+            Assert-AreEqual $importResponse.ServiceObjectiveName $params.serviceObjectiveName
+            Assert-AreEqual $importResponse.DatabaseMaxSizeBytes $params.databaseMaxSizeBytes
         }
 		
         Assert-NotNull $operationStatusLink		
@@ -98,8 +119,14 @@ function Test-ImportDatabase
             Write-Output "Getting Status" 
             while($status -eq $statusInProgress){
                 $statusResponse = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $operationStatusLink
-                Write-Output "Import Export Status Message:" + $statusResponse.StatusMessage           
+                Write-Output "Import Export Status Message:" + $statusResponse.StatusMessage  
+                Assert-AreEqual $statusResponse.OperationStatusLink $operationStatusLink
                 $status = $statusResponse.Status
+                 if($status -eq $statusInProgress){
+                    Assert-NotNull $statusResponse.LastModifiedTime
+                    Assert-NotNull $statusResponse.QueuedTime
+                    Assert-NotNull $statusResponse.StatusMessage
+                 }
             }
             Assert-AreEqual $status $statusSucceeded
             Write-Output "ImportExportStatus:" + $status 
