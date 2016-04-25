@@ -218,6 +218,9 @@
       <Link>ScenarioTests\Assert.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1">
+      <Link>ScenarioTests\AzureRM.Storage.ps1</Link>
+    </None>
     <None Include="..\..\Resources\Commands.Resources.Test\ScenarioTests\Common.ps1">
       <Link>ScenarioTests\Common.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
