@@ -204,7 +204,7 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             // Verify Environment migration
-            Assert.Equal(5, client.Profile.Environments.Count);
+            Assert.Equal(6, client.Profile.Environments.Count);
             Assert.Equal("Current", client.Profile.Environments["Current"].Name);
             Assert.Equal("Dogfood", client.Profile.Environments["Dogfood"].Name);
             Assert.Equal("https://login.windows-ppe.net/", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.AdTenant]);
