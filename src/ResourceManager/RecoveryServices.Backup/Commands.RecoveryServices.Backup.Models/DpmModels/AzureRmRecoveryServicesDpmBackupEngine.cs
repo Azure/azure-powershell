@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesDpmBackupEngine : AzureRmRecoveryServicesBackupEngineBase
+    public class AzureRmRecoveryServicesBackupDpmBackupEngine : AzureRmRecoveryServicesBackupEngineBase
     {
         /// <summary>
         /// Friendly name of the container
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Status { get; set; }
 
-        public AzureRmRecoveryServicesDpmBackupEngine(BackupEngineResource backupEngine)
+        public AzureRmRecoveryServicesBackupDpmBackupEngine(BackupEngineResource backupEngine)
             : base(backupEngine)
         {
             BackupEngineBase dpmBackupEngine = (BackupEngineBase)backupEngine.Properties;
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    public class AzureRmRecoveryServicesAzureBackupServerEngine : AzureRmRecoveryServicesBackupEngineBase
+    public class AzureRmRecoveryServicesBackupAzureBackupServerEngine : AzureRmRecoveryServicesBackupEngineBase
     {
         /// <summary>
         /// Friendly name of the container
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Status { get; set; }
 
-        public AzureRmRecoveryServicesAzureBackupServerEngine(BackupEngineResource backupEngine)
+        public AzureRmRecoveryServicesBackupAzureBackupServerEngine(BackupEngineResource backupEngine)
             : base(backupEngine)
         {
             AzureBackupServerEngine azureBackupServerEngine = (AzureBackupServerEngine)backupEngine.Properties;

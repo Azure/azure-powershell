@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, Container.ContainerType, Container.BackupManagementType));
                 }
-                AzureRmRecoveryServicesMabContainer mabContainer = Container as AzureRmRecoveryServicesMabContainer;
+                AzureRmRecoveryServicesBackupMabContainer mabContainer = Container as AzureRmRecoveryServicesBackupMabContainer;
                 string containerName = mabContainer.Name;
                 HydraAdapter.UnregisterContainers(containerName);
             });

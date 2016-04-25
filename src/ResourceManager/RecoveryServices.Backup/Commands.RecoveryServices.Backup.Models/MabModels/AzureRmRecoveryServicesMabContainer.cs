@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesMabContainer : AzureRmRecoveryServicesBackupContainerBase
+    public class AzureRmRecoveryServicesBackupMabContainer : AzureRmRecoveryServicesBackupContainerBase
     {
         /// <summary>
         /// Friendly name of the container
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public ContainerRegistrationStatus Status { get; set; }
 
-        public AzureRmRecoveryServicesMabContainer(ProtectionContainerResource protectionContainer)
+        public AzureRmRecoveryServicesBackupMabContainer(ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
             MabProtectionContainer mabProtectionContainer = (MabProtectionContainer)protectionContainer.Properties;
