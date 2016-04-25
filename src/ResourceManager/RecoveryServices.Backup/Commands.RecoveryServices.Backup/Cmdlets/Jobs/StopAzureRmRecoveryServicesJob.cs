@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (ParameterSetName == JobFilterSet)
                 {
-                    JobId = Job.InstanceId;
+                    JobId = Job.JobId;
                 }
 
                 WriteDebug("Stopping job with ID: " + JobId);
