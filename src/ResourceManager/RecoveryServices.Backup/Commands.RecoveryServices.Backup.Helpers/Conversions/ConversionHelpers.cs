@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
                 if (protectionContainer.Properties.GetType() == typeof(MabProtectionContainer))
                 {
-                    containerModel = new AzureRmRecoveryServicesMabContainer(protectionContainer);
+                    containerModel = new AzureRmRecoveryServicesBackupMabContainer(protectionContainer);
                 }
             }
 
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 if (backupEngine.Properties.GetType() == (typeof(DpmBackupEngine)))
                 {
-                    backupEngineModel = new AzureRmRecoveryServicesDpmBackupEngine(backupEngine);
+                    backupEngineModel = new AzureRmRecoveryServicesBackupDpmBackupEngine(backupEngine);
                 }
                 else if (backupEngine.Properties.GetType() == (typeof(AzureBackupServerEngine)))
                 {
-                    backupEngineModel = new AzureRmRecoveryServicesAzureBackupServerEngine(backupEngine);
+                    backupEngineModel = new AzureRmRecoveryServicesBackupAzureBackupServerEngine(backupEngine);
                 }
             }
 
