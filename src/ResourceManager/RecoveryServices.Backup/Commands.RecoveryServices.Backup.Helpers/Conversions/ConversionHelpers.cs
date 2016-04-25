@@ -123,8 +123,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     return null;
                 }
 
-                policyModel = new AzureRmRecoveryServicesIaasVmPolicy();
-                AzureRmRecoveryServicesIaasVmPolicy iaasPolicyModel = policyModel as AzureRmRecoveryServicesIaasVmPolicy;
+                policyModel = new AzureRmRecoveryServicesBackupIaasVmPolicy();
+                AzureRmRecoveryServicesBackupIaasVmPolicy iaasPolicyModel = policyModel as AzureRmRecoveryServicesBackupIaasVmPolicy;
                 iaasPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureVM;
                 iaasPolicyModel.BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureVM;
                 iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((LongTermRetentionPolicy)

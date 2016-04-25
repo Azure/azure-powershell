@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Update existing protection policy
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = PolicyNameParameterSet)]
-    public class RemoveAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
+    public class RemoveAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         internal const string PolicyNameParameterSet = "PolicyName";
         internal const string PolicyObjectParameterSet = "PolicyObject";
