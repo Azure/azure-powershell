@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
         /// <param name="protectedItemName"></param>
         /// <param name="recoveryPointId"></param>
         /// <returns></returns>
-        public BaseRecoveryServicesJobResponse RestoreDisk(AzureRmRecoveryServicesIaasVmRecoveryPoint rp, string storageAccountId, 
+        public BaseRecoveryServicesJobResponse RestoreDisk(AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rp, string storageAccountId, 
             string storageAccountLocation, string storageAccountType)
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();

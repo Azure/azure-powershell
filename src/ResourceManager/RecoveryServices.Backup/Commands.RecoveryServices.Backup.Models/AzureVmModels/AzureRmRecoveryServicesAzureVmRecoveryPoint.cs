@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesIaasVmRecoveryPoint : AzureRmRecoveryServicesBackupRecoveryPointBase
+    public class AzureRmRecoveryServicesBackupIaasVmRecoveryPoint : AzureRmRecoveryServicesBackupRecoveryPointBase
     {
         /// <summary>
         /// 
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public string SourceVMStorageType { get; set; }
 
-        public AzureRmRecoveryServicesIaasVmRecoveryPoint()
+        public AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
         {
 
         }
