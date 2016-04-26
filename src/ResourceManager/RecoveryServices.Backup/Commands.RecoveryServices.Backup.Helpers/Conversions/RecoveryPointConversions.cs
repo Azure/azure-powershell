@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rpBase = new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
                 {
-                    Name = rp.Name,
+                    RecoveryPointId = rp.Name,
                     BackupManagementType = item.BackupManagementType,
                     ItemName = protectedItemName,
                     ContainerName = containerUri,
                     ContainerType = item.ContainerType,
                     RecoveryPointTime = recPointTime,
                     RecoveryPointType = recPoint.RecoveryPointType,
-                    RecoveryPointId = rp.Id,
+                    Id = rp.Id,
                     WorkloadType = item.WorkloadType,
                     RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
                     SourceVMStorageType = recPoint.SourceVMStorageType,
@@ -74,14 +74,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             AzureRmRecoveryServicesBackupIaasVmRecoveryPoint result = new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
             {
-                Name = rpResponse.RecPoint.Name,
+                RecoveryPointId = rpResponse.RecPoint.Name,
                 BackupManagementType = item.BackupManagementType,
                 ItemName = protectedItemName,
                 ContainerName = containerUri,
                 ContainerType = item.ContainerType,
                 RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
                 RecoveryPointType = recPoint.RecoveryPointType,
-                RecoveryPointId = rpResponse.RecPoint.Id,
+                Id = rpResponse.RecPoint.Id,
                 WorkloadType = item.WorkloadType,
                 RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
             };

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             string vaultLocation = BmsAdapter.GetResourceLocation();            
             string containerName = rp.ContainerName;
             string protectedItemName = rp.ItemName;
-            string recoveryPointId = rp.Name;
+            string recoveryPointId = rp.RecoveryPointId;
             //validtion block
             if(storageAccountLocation != vaultLocation)
             {
