@@ -86,14 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 var itemModels = psBackupProvider.ListProtectedItems();
 
-                if (itemModels.Count == 1)
-                {
-                    WriteObject(itemModels.First());
-                }
-                else
-                {
-                    WriteObject(itemModels, enumerateCollection: true);
-                }
+                WriteObject(itemModels, enumerateCollection: true);
             });
         }
     }

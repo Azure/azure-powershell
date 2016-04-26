@@ -123,14 +123,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     TestMockSupport.Delay(30 * 1000);
                 }
 
-                if (finalJobs.Count == 1)
-                {
-                    WriteObject(finalJobs[0]);
-                }
-                else
-                {
-                    WriteObject(finalJobs, enumerateCollection: true);
-                }
+                WriteObject(finalJobs, enumerateCollection: true);
             });
         }
 
