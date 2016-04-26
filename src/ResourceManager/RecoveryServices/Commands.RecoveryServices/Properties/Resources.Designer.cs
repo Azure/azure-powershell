@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You need to provide the BackupStorageRedundancy input parameter.
+        ///   Looks up a localized string similar to BackupStorageRedundancy is either null or empty..
         /// </summary>
         internal static string NoBackupPropertiesProvided {
             get {

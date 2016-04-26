@@ -58,9 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 }
                 else
                 {
-                    throw new ArgumentException(
-                        Properties.Resources.NoBackupPropertiesProvided,
-                        this.BackupStorageRedundancy.ToString());
+                    throw new Exception(Properties.Resources.NoBackupPropertiesProvided);
                 }
             }
             catch (Exception exception)

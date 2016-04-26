@@ -299,6 +299,6 @@ Please provide a storage account with the same location as that of the vault.</v
     <value>Resource Group name mentioned is either null or empty</value>
   </data>
   <data name="NoBackupPropertiesProvided" xml:space="preserve">
-    <value>You need to provide the BackupStorageRedundancy input parameter</value>
+    <value>BackupStorageRedundancy is either null or empty.</value>
   </data>
 </root>
