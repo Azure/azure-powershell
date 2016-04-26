@@ -120,9 +120,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 case PsBackupProviderTypes.IaasVm:
                     psBackupProvider = new IaasVmPsBackupProvider();
                     break;
-                case PsBackupProviderTypes.AzureSql:
-                    psBackupProvider = new AzureSqlPsBackupProvider();
-                    break;
                 case PsBackupProviderTypes.Mab:
                     psBackupProvider = new MabPsBackupProvider();
                     break;
