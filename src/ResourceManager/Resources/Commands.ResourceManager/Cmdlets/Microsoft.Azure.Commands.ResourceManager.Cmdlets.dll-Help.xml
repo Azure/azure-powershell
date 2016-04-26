@@ -904,7 +904,7 @@
     </command:details>
     <maml:description>
       <maml:para>This lists all the operations that were part of a deployment. It can be used for debugging deployment failures as it will help you identify and give more information about the exact operations that failed for a particular deployment. It can also give out the response and the request content for each deployment operation. This is the same information that you get from the deployment details on the portal. </maml:para>
-      <maml:para>For getting the request and the response content, the setting will have to be enabled when submitting a deployment through New-AzureRmResourceGroupDeployment. log and expose secrets like passwords used in the resource property or listKeys operations that are then returned when you retrieve the deployment operations. For more details on this setting and how to enable it, please see the help for New-AzureRmResourceGroupDeployment</maml:para>
+      <maml:para>For getting the request and the response content, the setting will have to be enabled when submitting a deployment through New-AzureRmResourceGroupDeployment. It can potentially log and expose secrets like passwords used in the resource property or listKeys operations that are then returned when you retrieve the deployment operations. For more details on this setting and how to enable it, please see the help for New-AzureRmResourceGroupDeployment or https://aka.ms/deploymentdebug </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1138,7 +1138,7 @@
         </command:commandLines>
       </command:example>
     <command:example>
-        <maml:title>-------  Example 2 -------</maml:title>
+        <maml:title>--------------------------  Example 1 --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>

@@ -4847,14 +4847,18 @@ Resources</dev:code>
         </command:commandLines>
       </command:example>
       <command:example>
-        <maml:title>--------------------------  Example 2: Use a custom template uri and parameter uri with Incremental mode --------------------------</maml:title>
+        <maml:title>--------------------------  Example 2: Use a custom template uri and parameter uri with "Incremental" mode --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRmResourceGroupDeployment -Name testDeployment -ResourceGroupName ContosoEngineering -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json -Mode Incremental -DeploymentDebugSetting All</dev:code>
+        <dev:code>PS C:\&gt;New-AzureRmResourceGroupDeployment -Name testDeployment -ResourceGroupName ContosoEngineering 
+        -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json 
+        -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json 
+        -Mode Incremental 
+        -DeploymentDebugSetting All</dev:code>
         <dev:remarks>
-          <maml:para>This command creates a new deployment by using a custom template and a template file on from the quickstart gallery on github. The command uses the TemplateUri parameter to specify the template and the TemplateParameterUri to specify a file of parameters and parameter values.</maml:para>
-          <maml:para>It also sets the Mode to be Incremental which will do an update to the deployment. If a resource already exists in the resource group it will skip that resource and deploy the next one. </maml:para>
+          <maml:para>This command creates a new deployment by using a custom template and a template file from the quickstart gallery on github. The command uses the TemplateUri parameter to specify the template and the TemplateParameterUri to specify the parameters.</maml:para>
+          <maml:para>It also sets the Mode to "Incremental" which will do an update to the deployment. If a resource already exists in the resource group it will skip that resource and deploy the next one. </maml:para>
           <maml:para>It sets the DeploymentDebugLevel to All. This setting will log the request content and response content for each deployment operation associated with the deployment. This data can be later retrieved by using the Get-AzureRmResourceGroupDeploymentOperation cmdlet. </maml:para>
           <maml:para />
           <maml:para>
