@@ -304,7 +304,7 @@
 				  <TableRowEntry>
 					  <TableColumnItems>
 						  <TableColumnItem>
-							  <PropertyName>Name</PropertyName>
+							  <PropertyName>RecoveryPointId</PropertyName>
 						  </TableColumnItem>
 						  <TableColumnItem>
 							  <PropertyName>RecoveryPointType</PropertyName>
