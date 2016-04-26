@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
+            DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
             AzureRmRecoveryServicesBackupIaasVmRecoveryPoint result = new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
             {
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 ItemName = protectedItemName,
                 ContainerName = containerUri,
                 ContainerType = item.ContainerType,
-                RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
+                RecoveryPointTime = recPointTime,
                 RecoveryPointType = recPoint.RecoveryPointType,
                 Id = rpResponse.RecPoint.Id,
                 WorkloadType = item.WorkloadType,
