@@ -25,13 +25,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class PsBackupProviderManager
     {
-        ProviderData providerData;
+        Dictionary<System.Enum, object> providerData;
         HydraAdapter hydraAdapter;
 
-        public PsBackupProviderManager(Dictionary<System.Enum, object> providerParams, HydraAdapter hydraAdapterIn)
-            : this(new ProviderData(providerParams), hydraAdapterIn) { }
-
-        public PsBackupProviderManager(ProviderData providerDataIn, HydraAdapter hydraAdapterIn)
+        public PsBackupProviderManager(Dictionary<System.Enum, object> providerDataIn, HydraAdapter hydraAdapterIn)
         {
             providerData = providerDataIn;
             hydraAdapter = hydraAdapterIn;

@@ -61,7 +61,6 @@
     <Compile Include="Providers\DpmPsBackupProvider.cs" />
     <Compile Include="Providers\MabPsBackupProvider.cs" />
     <Compile Include="PsBackupProviderManager.cs" />
-    <Compile Include="PsBackupProviderDC.cs" />
     <Compile Include="Providers\IaasVmPsBackupProvider.cs" />
   </ItemGroup>
   <ItemGroup>
