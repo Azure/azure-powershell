@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }, HydraAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType,
-                    BackupManagementType.AzureSql);
+                    (Container as AzureRmRecoveryServicesBackupManagementContext).BackupManagementType);
                 var itemModels = psBackupProvider.ListProtectedItems();
 
                 if (itemModels.Count == 1)
