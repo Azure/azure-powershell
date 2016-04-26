@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.RecoveryServices.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// Retrieves Azure Recovery Services Vault.
+    /// Gets Azure Recovery Services Vault Backup Properties.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProperties")]
     [OutputType(typeof(ASRVaultBackupProperties))]
@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                GetResourceStorageConfigResponse getStorageResponse = RecoveryServicesClient.GetVaultStorageType(this.Vault.ResouceGroupName, this.Vault.Name);
+                GetResourceStorageConfigResponse getStorageResponse = RecoveryServicesClient.GetVaultStorageType(
+                                                                        this.Vault.ResouceGroupName, this.Vault.Name);
                 ASRVaultBackupProperties vaultBackupProperties = new ASRVaultBackupProperties();
                 vaultBackupProperties.BackupStorageRedundancy = getStorageResponse.Properties.StorageType;
                 this.WriteObject(vaultBackupProperties);

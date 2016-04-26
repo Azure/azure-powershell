@@ -26,26 +26,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of items
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(AzureRmRecoveryServicesBackupItemBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem", DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(AzureRmRecoveryServicesBackupItemBase))]
     public class GetAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Item.Container)]
+        internal const string GetItemsForContainerParamSet = "GetItemsForContainer";
+        internal const string GetItemsForVaultParamSet = "GetItemsForVault";
+
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Item.Container, ParameterSetName = GetItemsForContainerParamSet)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesBackupContainerBase Container { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Common.BackupManagementType, ParameterSetName = GetItemsForVaultParamSet)]
+        [ValidateNotNullOrEmpty]
+        public BackupManagementType BackupManagementType { get; set; }
+
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.ProtectionStatus)]
+        [Parameter(Mandatory = false, Position = 3, HelpMessage = ParamHelpMsg.Item.ProtectionStatus)]
         [ValidateNotNullOrEmpty]
         public ItemProtectionStatus ProtectionStatus { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.Status)]
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = ParamHelpMsg.Item.Status)]
         [ValidateNotNullOrEmpty]
         public ItemProtectionState ProtectionState { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
@@ -58,14 +65,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
                     {ItemParams.Container, Container},
+                    {ItemParams.BackupManagementType, BackupManagementType},
                     {ItemParams.AzureVMName, Name},
                     {ItemParams.ProtectionStatus, ProtectionStatus},
                     {ItemParams.ProtectionState, ProtectionState},
                     {ItemParams.WorkloadType, WorkloadType},
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType,
+                IPsBackupProvider psBackupProvider = null;
+
+                if (this.ParameterSetName == GetItemsForVaultParamSet)
+                {
+                    psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                }
+                else
+                {
+                    psBackupProvider = providerManager.GetProviderInstance(WorkloadType,
                     (Container as AzureRmRecoveryServicesBackupManagementContext).BackupManagementType);
+                }
+
                 var itemModels = psBackupProvider.ListProtectedItems();
 
                 if (itemModels.Count == 1)
