@@ -45,6 +45,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
+        public System.DateTime? EndTime
+        {
+            get
+            {
+                return this.omObject.EndTime;
+            }
+        }
+        
         public System.DateTime? NextRunTime
         {
             get
@@ -63,14 +71,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.recentJob = new PSRecentJob(this.omObject.RecentJob);
                 }
                 return this.recentJob;
-            }
-        }
-        
-        public System.DateTime? EndTime
-        {
-            get
-            {
-                return this.omObject.EndTime;
             }
         }
     }
