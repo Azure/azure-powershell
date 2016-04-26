@@ -32,27 +32,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string GetItemsForContainerParamSet = "GetItemsForContainer";
         internal const string GetItemsForVaultParamSet = "GetItemsForVault";
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Item.Container, ParameterSetName = GetItemsForContainerParamSet)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Item.Container, ParameterSetName = GetItemsForContainerParamSet)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesBackupContainerBase Container { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Common.BackupManagementType, ParameterSetName = GetItemsForVaultParamSet)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Common.BackupManagementType, ParameterSetName = GetItemsForVaultParamSet)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType BackupManagementType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.ProtectionStatus)]
+        [Parameter(Mandatory = false, Position = 3, HelpMessage = ParamHelpMsg.Item.ProtectionStatus)]
         [ValidateNotNullOrEmpty]
         public ItemProtectionStatus ProtectionStatus { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.Status)]
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = ParamHelpMsg.Item.Status)]
         [ValidateNotNullOrEmpty]
         public ItemProtectionState ProtectionState { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
