@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// This class is does not represent first class resource. So, we are not inheriting from the base class.
+    /// This class contains job error message details.
     /// </summary>
     public class AzureRmRecoveryServicesBackupJobErrorInfoBase
     {
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// This class is does not represent a first class resource. So, we are not inheriting from the common base class.
+    /// This class contains job sub tasks detail.
     /// </summary>
     public class AzureRmRecoveryServicesBackupJobSubTaskBase
     {
