@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class AzureSqlPsBackupProvider : IPsBackupProvider
     {
-        public void Initialize(ProviderData providerData, HydraAdapter hydraAdapter)
+        public void Initialize(Dictionary<System.Enum, object> providerData, HydraAdapter hydraAdapter)
         {
             throw new NotImplementedException();
         }
