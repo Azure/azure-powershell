@@ -107,7 +107,9 @@
     <Compile Include="CmdletParameterHelpMessages.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.RecoveryServices.Backup.dll-help.xml" />
+    <Content Include="Microsoft.Azure.Commands.RecoveryServices.Backup.dll-help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
@@ -151,6 +153,7 @@
     <None Include="..\AzureRM.RecoveryServices.Backup.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Microsoft.Azure.Commands.RecoveryServices.Backup.dll-help.psd1" />
     <None Include="Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
