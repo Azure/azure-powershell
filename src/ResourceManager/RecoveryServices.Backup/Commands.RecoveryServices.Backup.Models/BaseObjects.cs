@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// 
         /// </summary>
-        public string Name { get; set; }
+        public string RecoveryPointId { get; set; }
 
         /// <summary>
         /// 
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// 
         /// </summary>
-        public string RecoveryPointId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         ///Type of recovery point (appConsistent\CrashConsistent etc) 
