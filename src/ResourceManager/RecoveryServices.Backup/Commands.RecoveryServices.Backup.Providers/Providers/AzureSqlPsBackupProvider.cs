@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -67,12 +68,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public AzureRmRecoveryServicesBackupRecoveryPointBase GetRecoveryPointDetails()
         {
-            throw new NotImplementedException();
+            AzureRmRecoveryServicesBackupAzureSqlItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
+                as AzureRmRecoveryServicesBackupAzureSqlItem;
+
+            string recoveryPointId = ProviderData.ProviderParameters[GetRecoveryPointParams.RecoveryPointId].ToString();
+
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
+
+            var rpResponse = HydraAdapter.GetRecoveryPointDetails(containerUri, protectedItemName, recoveryPointId);
+            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
         }
 
         public List<AzureRmRecoveryServicesBackupRecoveryPointBase> ListRecoveryPoints()
         {
-            throw new NotImplementedException();
+            DateTime startDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.StartDate]);
+            DateTime endDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.EndDate]);
+            AzureRmRecoveryServicesBackupIaasVmItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
+                as AzureRmRecoveryServicesBackupIaasVmItem;
+
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
+
+            TimeSpan duration = endDate - startDate;
+            if (duration.TotalDays > 30)
+            {
+                throw new Exception(Resources.RestoreDiskTimeRangeError); //tbd: Correct nsg and exception type
+            }
+
+            //we need to fetch the list of RPs
+            RecoveryPointQueryParameters queryFilter = new RecoveryPointQueryParameters();
+            queryFilter.StartDate = CommonHelpers.GetDateTimeStringForService(startDate);
+            queryFilter.EndDate = CommonHelpers.GetDateTimeStringForService(endDate);
+            RecoveryPointListResponse rpListResponse = null;
+
+            rpListResponse = HydraAdapter.GetRecoveryPoints(containerUri, protectedItemName, queryFilter);
+            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
 
         public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse CreatePolicy()
@@ -107,8 +140,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<AzureRmRecoveryServicesBackupItemBase> ListProtectedItems()
         {
-            AzureRmRecoveryServicesBackupContainerBase container = new AzureRmRecoveryServicesBackupContainerBase(new ProtectionContainerResource());
-                //(AzureRmRecoveryServicesBackupContainerBase)this.ProviderData.ProviderParameters[ItemParams.Container];
+            AzureRmRecoveryServicesBackupContainerBase container = (AzureRmRecoveryServicesBackupContainerBase)this.ProviderData.ProviderParameters[ItemParams.Container];
             string name = (string)this.ProviderData.ProviderParameters[ItemParams.AzureVMName];
             ItemProtectionStatus protectionStatus =
                 (ItemProtectionStatus)this.ProviderData.ProviderParameters[ItemParams.ProtectionStatus];
@@ -117,8 +149,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (Models.WorkloadType)this.ProviderData.ProviderParameters[ItemParams.WorkloadType];
 
             ProtectedItemListQueryParam queryParams = new ProtectedItemListQueryParam();
-            queryParams.DatasourceType = "AzureSqlDb";//Take from Hydra :Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.;
-            queryParams.BackupManagementType = "AzureSql";//Take from Hydra Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
+            queryParams.DatasourceType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.AzureSqlDb.ToString();
+            queryParams.BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureSql.ToString();
 
             List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
             string skipToken = null;

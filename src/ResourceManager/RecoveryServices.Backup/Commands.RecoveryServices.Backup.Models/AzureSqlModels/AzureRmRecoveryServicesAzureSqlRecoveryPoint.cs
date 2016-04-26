@@ -21,7 +21,15 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesAzureSqlRecoveryPoint : AzureRmRecoveryServicesBackupRecoveryPointBase
+    public class AzureRmRecoveryServicesBackupAzureSqlRecoveryPoint : AzureRmRecoveryServicesBackupRecoveryPointBase
     {
+        public string RecoveryPointAdditionalInfo { get; set; }
+
+        public string FriendlyName { get; set; }
+
+        public AzureRmRecoveryServicesBackupAzureSqlRecoveryPoint()
+        {
+
+        }
     }
 }

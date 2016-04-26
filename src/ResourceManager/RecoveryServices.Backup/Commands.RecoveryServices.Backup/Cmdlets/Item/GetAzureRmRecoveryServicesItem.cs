@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(AzureRmRecoveryServicesBackupItemBase))]
     public class GetAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.Container)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Item.Container)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesBackupContainerBase Container { get; set; }
 

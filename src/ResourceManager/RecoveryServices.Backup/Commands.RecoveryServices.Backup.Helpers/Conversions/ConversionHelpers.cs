@@ -197,6 +197,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     }
                     itemModel = new AzureRmRecoveryServicesBackupIaasVmItem(protectedItem, container, policyName);
                 }
+
+                if (protectedItem.Properties.GetType() == typeof(AzureSqlProtectedItem))
+                {
+                    string policyName = null;
+                    string policyId = ((AzureSqlProtectedItem)protectedItem.Properties).PolicyId;
+                    if (policyId != null)
+                    {
+                        Dictionary<UriEnums, string> keyVauleDict =
+                        HelperUtils.ParseUri(policyId);
+                        policyName = HelperUtils.GetPolicyNameFromPolicyId(keyVauleDict, policyId);
+                    }
+                    itemModel = new AzureRmRecoveryServicesBackupAzureSqlItem(protectedItem, container, policyName);
+                }
             }
 
             return itemModel;
