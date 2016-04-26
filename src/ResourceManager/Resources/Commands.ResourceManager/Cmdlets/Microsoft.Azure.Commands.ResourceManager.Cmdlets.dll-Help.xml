@@ -4861,17 +4861,26 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  RemoveLock1  --------------------------</maml:title>
+        <maml:title>-------------------------- Example 1: RemoveLock using ResourceId  --------------------------</maml:title>
         <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
         <dev:code>Remove-AzureRmResourceLock -ResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Storage-SouthCentralUS/providers/Microsoft.ClassicStorage/storageAccounts/mystorageaccount/providers/Microsoft.Authorization/locks/test</dev:code>
         <dev:remarks>
-          <maml:para />
-          <maml:para />
-          <maml:para />
-          <maml:para>
-          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+          <command:example>
+        <maml:title>-------------------------- Example 2: RemoveLock using LockId  --------------------------</maml:title>
+        <maml:introduction>
+        </maml:introduction>
+        <dev:code>Remove-AzureRmResourceLock -LockId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Storage-SouthCentralUS/providers/Microsoft.ClassicStorage/storageAccounts/mystorageaccount/providers/Microsoft.Authorization/locks/test</dev:code>
+        <dev:remarks>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
