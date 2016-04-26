@@ -29,7 +29,6 @@ using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
@@ -45,8 +44,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         private Mock<IResourceManagementClient> resourceManagementClientMock;
 
         private Mock<IAuthorizationManagementClient> authorizationManagementClientMock;
-
-        private Mock<ISubscriptionClient> subscriptionClientMock;
 
         private Mock<IDeploymentOperations> deploymentsMock;
 
@@ -155,8 +152,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 galleryTemplatesClientMock.Object,
                 // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
                 //eventsClientMock.Object,
-                authorizationManagementClientMock.Object, 
-                subscriptionClientMock.Object)
+                authorizationManagementClientMock.Object)
                 {
                     VerboseLogger = progressLoggerMock.Object,
                     ErrorLogger = errorLoggerMock.Object

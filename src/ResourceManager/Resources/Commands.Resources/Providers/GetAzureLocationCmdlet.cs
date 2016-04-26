@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Providers
         {
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
-            var allLocations = this.ResourcesClient.ListLocations(DefaultContext.Subscription.Id.ToString());
+            var allLocations = this.SubscriptionsClient.ListLocations(DefaultContext.Subscription.Id.ToString());
             var providers = this.ResourcesClient.ListResourceProviders(providerName: null, listAvailable: true);
             var providerLocations = ConstructResourceProviderLocations(allLocations, providers);
 

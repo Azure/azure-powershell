@@ -63,8 +63,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
 
-        public ISubscriptionClient SubscriptionClient { get; set; }
-
         public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
@@ -81,8 +79,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             : this(
                 AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 new GalleryTemplatesClient(context),
-                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-                AzureSession.ClientFactory.CreateClient<SubscriptionClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }
@@ -96,13 +93,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
             GalleryTemplatesClient galleryTemplatesClient,
-            IAuthorizationManagementClient authorizationManagementClient,
-            ISubscriptionClient subscriptionClient)
+            IAuthorizationManagementClient authorizationManagementClient)
         {
             GalleryTemplatesClient = galleryTemplatesClient;
             AuthorizationManagementClient = authorizationManagementClient;
             this.ResourceManagementClient = resourceManagementClient;
-            this.SubscriptionClient = subscriptionClient;
         }
 
         /// <summary>
@@ -511,16 +506,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     ? returnList
                     : returnList.Where(this.IsProviderRegistered).ToList();
             }
-        }
-
-        public List<Location> ListLocations(string subscriptionId)
-        {
-            var locationList = new List<Location>();
-
-            var tempResult = this.SubscriptionClient.Subscriptions.ListLocations(subscriptionId);
-            locationList.AddRange(tempResult.Locations);
-
-            return locationList;
         }
 
         private bool ContainsNormalizedLocation(string[] locations, string location)
