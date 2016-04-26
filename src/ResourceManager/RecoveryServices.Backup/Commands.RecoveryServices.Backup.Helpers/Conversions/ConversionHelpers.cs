@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     itemModel = new AzureRmRecoveryServicesBackupIaasVmItem(
                         protectedItem,
                         IdUtils.GetNameFromUri(containerUri),
-                        Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType.AzureVM, 
+                        Cmdlets.Models.ContainerType.AzureVM,
                         policyName);
                 }
             }
