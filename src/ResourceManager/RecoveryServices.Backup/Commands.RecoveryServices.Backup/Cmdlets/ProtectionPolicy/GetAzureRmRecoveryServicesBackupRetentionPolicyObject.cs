@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRetentionPolicyObject"), OutputType(typeof(AzureRmRecoveryServicesBackupRetentionPolicyBase))]
     public class GetAzureRmRecoveryServicesBackupRetentionPolicyObject : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Common.BackupManagementType)]
+        [Parameter(Mandatory = false, Position = 1, HelpMessage = ParamHelpMsg.Common.BackupManagementType)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 
