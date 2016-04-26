@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private const string computeAzureVMVersion = "Microsoft.Compute";
         private const string classicComputeAzureVMVersion = "Microsoft.ClassicCompute";
 
-        ProviderData ProviderData { get; set; }
+        Dictionary<System.Enum, object> ProviderData { get; set; }
         HydraAdapter HydraAdapter { get; set; }
 
-        public void Initialize(ProviderData providerData, HydraAdapter hydraAdapter)
+        public void Initialize(Dictionary<System.Enum, object> providerData, HydraAdapter hydraAdapter)
         {
             this.ProviderData = providerData;
             this.HydraAdapter = hydraAdapter;
@@ -47,19 +47,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse EnableProtection()
         {
-            string azureVMName = (string)ProviderData.ProviderParameters[ItemParams.AzureVMName];
-            string azureVMCloudServiceName = (string)ProviderData.ProviderParameters[ItemParams.AzureVMCloudServiceName];
-            string azureVMResourceGroupName = (string)ProviderData.ProviderParameters[ItemParams.AzureVMResourceGroupName];
-            string parameterSetName = (string)ProviderData.ProviderParameters[ItemParams.ParameterSetName];
+            string azureVMName = (string)ProviderData[ItemParams.AzureVMName];
+            string azureVMCloudServiceName = (string)ProviderData[ItemParams.AzureVMCloudServiceName];
+            string azureVMResourceGroupName = (string)ProviderData[ItemParams.AzureVMResourceGroupName];
+            string parameterSetName = (string)ProviderData[ItemParams.ParameterSetName];
 
             AzureRmRecoveryServicesBackupPolicyBase policy = (AzureRmRecoveryServicesBackupPolicyBase)
-                                                 ProviderData.ProviderParameters[ItemParams.Policy];
+                                                 ProviderData[ItemParams.Policy];
 
             AzureRmRecoveryServicesBackupItemBase itemBase = (AzureRmRecoveryServicesBackupItemBase)
-                                                 ProviderData.ProviderParameters[ItemParams.Item];
+                                                 ProviderData[ItemParams.Item];
 
             AzureRmRecoveryServicesBackupIaasVmItem item = (AzureRmRecoveryServicesBackupIaasVmItem)
-                                                 ProviderData.ProviderParameters[ItemParams.Item];
+                                                 ProviderData[ItemParams.Item];
             // do validations
 
             string containerUri = "";
@@ -122,13 +122,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse DisableProtection()
         {
-            bool deleteBackupData = (bool)ProviderData.ProviderParameters[ItemParams.DeleteBackupData];
+            bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
 
             AzureRmRecoveryServicesBackupItemBase itemBase = (AzureRmRecoveryServicesBackupItemBase)
-                                                 ProviderData.ProviderParameters[ItemParams.Item];
+                                                 ProviderData[ItemParams.Item];
 
             AzureRmRecoveryServicesBackupIaasVmItem item = (AzureRmRecoveryServicesBackupIaasVmItem)
-                                                 ProviderData.ProviderParameters[ItemParams.Item];
+                                                 ProviderData[ItemParams.Item];
             // do validations
 
             ValidateAzureVMDisableProtectionRequest(itemBase);
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse TriggerBackup()
         {
-            AzureRmRecoveryServicesBackupItemBase item = (AzureRmRecoveryServicesBackupItemBase)ProviderData.ProviderParameters[ItemParams.Item];
+            AzureRmRecoveryServicesBackupItemBase item = (AzureRmRecoveryServicesBackupItemBase)ProviderData[ItemParams.Item];
             AzureRmRecoveryServicesBackupIaasVmItem iaasVmItem = item as AzureRmRecoveryServicesBackupIaasVmItem;
             return HydraAdapter.TriggerBackup(IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectionContainerName),
                 IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectedItemName));
@@ -189,11 +189,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse TriggerRestore()
         {
-            AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rp = ProviderData.ProviderParameters[RestoreBackupItemParams.RecoveryPoint]
+            AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rp = ProviderData[RestoreBackupItemParams.RecoveryPoint]
                 as AzureRmRecoveryServicesBackupIaasVmRecoveryPoint;
-            string storageAccountId = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountId].ToString();
-            string storageAccountLocation = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountLocation].ToString();
-            string storageAccountType = ProviderData.ProviderParameters[RestoreBackupItemParams.StorageAccountType].ToString();
+            string storageAccountId = ProviderData[RestoreBackupItemParams.StorageAccountId].ToString();
+            string storageAccountLocation = ProviderData[RestoreBackupItemParams.StorageAccountLocation].ToString();
+            string storageAccountType = ProviderData[RestoreBackupItemParams.StorageAccountType].ToString();
 
             var response = HydraAdapter.RestoreDisk(rp, storageAccountId, storageAccountLocation, storageAccountType);
             return response;
@@ -206,10 +206,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public AzureRmRecoveryServicesBackupRecoveryPointBase GetRecoveryPointDetails()
         {
-            AzureRmRecoveryServicesBackupIaasVmItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
+            AzureRmRecoveryServicesBackupIaasVmItem item = ProviderData[GetRecoveryPointParams.Item]
                 as AzureRmRecoveryServicesBackupIaasVmItem;
 
-            string recoveryPointId = ProviderData.ProviderParameters[GetRecoveryPointParams.RecoveryPointId].ToString();
+            string recoveryPointId = ProviderData[GetRecoveryPointParams.RecoveryPointId].ToString();
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
@@ -221,9 +221,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<AzureRmRecoveryServicesBackupRecoveryPointBase> ListRecoveryPoints()
         {
-            DateTime startDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.StartDate]);
-            DateTime endDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.EndDate]);
-            AzureRmRecoveryServicesBackupIaasVmItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
+            DateTime startDate = (DateTime)(ProviderData[GetRecoveryPointParams.StartDate]);
+            DateTime endDate = (DateTime)(ProviderData[GetRecoveryPointParams.EndDate]);
+            AzureRmRecoveryServicesBackupIaasVmItem item = ProviderData[GetRecoveryPointParams.Item]
                 as AzureRmRecoveryServicesBackupIaasVmItem;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
@@ -248,16 +248,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public ProtectionPolicyResponse CreatePolicy()
         {
-            string policyName = (string)ProviderData.ProviderParameters[PolicyParams.PolicyName];
+            string policyName = (string)ProviderData[PolicyParams.PolicyName];
             Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType workloadType =
-                (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData.ProviderParameters[PolicyParams.WorkloadType];
+                (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData[PolicyParams.WorkloadType];
             AzureRmRecoveryServicesBackupRetentionPolicyBase retentionPolicy =
-                ProviderData.ProviderParameters.ContainsKey(PolicyParams.RetentionPolicy) ?
-                (AzureRmRecoveryServicesBackupRetentionPolicyBase)ProviderData.ProviderParameters[PolicyParams.RetentionPolicy] :
+                ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ?
+                (AzureRmRecoveryServicesBackupRetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
                 null;
             AzureRmRecoveryServicesBackupSchedulePolicyBase schedulePolicy =
-                ProviderData.ProviderParameters.ContainsKey(PolicyParams.SchedulePolicy) ?
-                (AzureRmRecoveryServicesBackupSchedulePolicyBase)ProviderData.ProviderParameters[PolicyParams.SchedulePolicy] :
+                ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ?
+                (AzureRmRecoveryServicesBackupSchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
                 null;
 
             // do validations
@@ -303,17 +303,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public ProtectionPolicyResponse ModifyPolicy()
         {
             AzureRmRecoveryServicesBackupRetentionPolicyBase retentionPolicy =
-               ProviderData.ProviderParameters.ContainsKey(PolicyParams.RetentionPolicy) ?
-               (AzureRmRecoveryServicesBackupRetentionPolicyBase)ProviderData.ProviderParameters[PolicyParams.RetentionPolicy] :
+               ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ?
+               (AzureRmRecoveryServicesBackupRetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
                null;
             AzureRmRecoveryServicesBackupSchedulePolicyBase schedulePolicy =
-                ProviderData.ProviderParameters.ContainsKey(PolicyParams.SchedulePolicy) ?
-                (AzureRmRecoveryServicesBackupSchedulePolicyBase)ProviderData.ProviderParameters[PolicyParams.SchedulePolicy] :
+                ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ?
+                (AzureRmRecoveryServicesBackupSchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
                 null;
 
             AzureRmRecoveryServicesBackupPolicyBase policy =
-                ProviderData.ProviderParameters.ContainsKey(PolicyParams.ProtectionPolicy) ?
-                (AzureRmRecoveryServicesBackupPolicyBase)ProviderData.ProviderParameters[PolicyParams.ProtectionPolicy] :
+                ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ?
+                (AzureRmRecoveryServicesBackupPolicyBase)ProviderData[PolicyParams.ProtectionPolicy] :
                 null;
 
             // do validations
@@ -373,11 +373,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<AzureRmRecoveryServicesBackupContainerBase> ListProtectionContainers()
         {
-            Models.ContainerType containerType = (Models.ContainerType)this.ProviderData.ProviderParameters[ContainerParams.ContainerType];
-            Models.BackupManagementType? backupManagementTypeNullable = (Models.BackupManagementType?)this.ProviderData.ProviderParameters[ContainerParams.BackupManagementType];
-            string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
-            string resourceGroupName = (string)this.ProviderData.ProviderParameters[ContainerParams.ResourceGroupName];
-            ContainerRegistrationStatus status = (ContainerRegistrationStatus)this.ProviderData.ProviderParameters[ContainerParams.Status];
+            Models.ContainerType containerType = (Models.ContainerType)this.ProviderData[ContainerParams.ContainerType];
+            Models.BackupManagementType? backupManagementTypeNullable = (Models.BackupManagementType?)this.ProviderData[ContainerParams.BackupManagementType];
+            string name = (string)this.ProviderData[ContainerParams.Name];
+            string resourceGroupName = (string)this.ProviderData[ContainerParams.ResourceGroupName];
+            ContainerRegistrationStatus status = (ContainerRegistrationStatus)this.ProviderData[ContainerParams.Status];
 
             if (backupManagementTypeNullable.HasValue)
             {
@@ -420,13 +420,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public List<AzureRmRecoveryServicesBackupItemBase> ListProtectedItems()
         {
             AzureRmRecoveryServicesBackupContainerBase container =
-                (AzureRmRecoveryServicesBackupContainerBase)this.ProviderData.ProviderParameters[ItemParams.Container];
-            string name = (string)this.ProviderData.ProviderParameters[ItemParams.AzureVMName];
+                (AzureRmRecoveryServicesBackupContainerBase)this.ProviderData[ItemParams.Container];
+            string name = (string)this.ProviderData[ItemParams.AzureVMName];
             ItemProtectionStatus protectionStatus =
-                (ItemProtectionStatus)this.ProviderData.ProviderParameters[ItemParams.ProtectionStatus];
-            ItemProtectionState status = (ItemProtectionState)this.ProviderData.ProviderParameters[ItemParams.ProtectionState];
+                (ItemProtectionStatus)this.ProviderData[ItemParams.ProtectionStatus];
+            ItemProtectionState status = (ItemProtectionState)this.ProviderData[ItemParams.ProtectionState];
             Models.WorkloadType workloadType =
-                (Models.WorkloadType)this.ProviderData.ProviderParameters[ItemParams.WorkloadType];
+                (Models.WorkloadType)this.ProviderData[ItemParams.WorkloadType];
 
             ProtectedItemListQueryParam queryParams = new ProtectedItemListQueryParam();
             queryParams.DatasourceType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.VM;

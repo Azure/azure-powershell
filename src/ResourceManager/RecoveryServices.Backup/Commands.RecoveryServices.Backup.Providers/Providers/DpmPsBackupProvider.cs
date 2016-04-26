@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class DpmPsBackupProvider : IPsBackupProvider
     {
-        ProviderData ProviderData { get; set; }
+        Dictionary<System.Enum, object> ProviderData { get; set; }
         HydraAdapter HydraAdapter { get; set; }
 
-        public void Initialize(ProviderData providerData, HydraAdapter hydraAdapter)
+        public void Initialize(Dictionary<System.Enum, object> providerData, HydraAdapter hydraAdapter)
         {
             this.ProviderData = providerData;
             this.HydraAdapter = hydraAdapter;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<Models.AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers()
         {
-            string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
+            string name = (string)this.ProviderData[ContainerParams.Name];
 
             BackupEngineListQueryParams queryParams = new BackupEngineListQueryParams();
 
