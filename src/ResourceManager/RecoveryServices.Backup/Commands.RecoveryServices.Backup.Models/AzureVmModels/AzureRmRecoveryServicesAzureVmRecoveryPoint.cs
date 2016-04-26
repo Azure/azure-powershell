@@ -22,10 +22,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     public class AzureRmRecoveryServicesBackupIaasVmRecoveryPoint : AzureRmRecoveryServicesBackupRecoveryPointBase
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// 
         public string RecoveryPointAdditionalInfo { get; set; }
 
         public string SourceVMStorageType { get; set; }
