@@ -13,6 +13,7 @@
 //  limitations under the License.
 //
 
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using System;
@@ -20,10 +21,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement;
     using ResourceManager.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
     abstract public class AzureApiManagementCmdletBase : AzureRMCmdlet
     {
-        protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
+        protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromSeconds(30);
 
         private ApiManagementClient _client;
 
@@ -64,6 +67,65 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         protected virtual void HandleException(Exception ex)
         {
             WriteExceptionError(ex);
+        }
+        
+        protected void WriteProgress(TenantConfigurationLongRunningOperation operation)
+        {
+            WriteProgress(new ProgressRecord(0, operation.OperationName, operation.Status.ToString()));
+        }
+
+        protected TenantConfigurationLongRunningOperation WaitForOperationToComplete(TenantConfigurationLongRunningOperation longRunningOperation)
+        {
+            do
+            {
+                var retryAfter = longRunningOperation.RetryAfter == null || longRunningOperation.RetryAfter.Value < LongRunningOperationDefaultTimeout ?
+                    LongRunningOperationDefaultTimeout : longRunningOperation.RetryAfter.Value;
+
+                WriteProgress(longRunningOperation);
+               
+                TestMockSupport.Delay(retryAfter);
+
+                longRunningOperation = Client.GetLongRunningOperationStatus(longRunningOperation);
+
+                WriteVerboseWithTimestamp(Resources.VerboseGetOperationStateTimeoutMessage,
+                   longRunningOperation.OperationResult.State);
+            } while (longRunningOperation.OperationResult.State == TenantConfigurationState.InProgress);
+
+            return longRunningOperation;
+        }
+
+        protected void ExecuteTenantConfigurationLongRunningCmdletWrap(
+            Func<TenantConfigurationLongRunningOperation> func,
+            bool passThru = false,
+            object passThruValue = null)
+        {
+            try
+            {
+                var longRunningOperation = func();
+
+                longRunningOperation = WaitForOperationToComplete(longRunningOperation);
+                if (longRunningOperation.OperationResult.State != TenantConfigurationState.Succeeded)
+                {
+                    var errorMessage = longRunningOperation.OperationResult.Error != null ?
+                        longRunningOperation.OperationResult.Error.Message
+                        : longRunningOperation.OperationName;
+
+                    WriteErrorWithTimestamp(errorMessage);
+                    WriteObject(passThruValue ?? longRunningOperation.OperationResult);
+                }
+                else if (passThru)
+                {
+                    WriteObject(passThruValue ?? longRunningOperation.OperationResult);
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                WriteError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidArgument, null));
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
+            }
         }
     }
 }

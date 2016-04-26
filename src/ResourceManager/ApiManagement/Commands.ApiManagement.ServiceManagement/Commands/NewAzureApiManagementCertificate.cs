@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Security.Cryptography.X509Certificates;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementCertificate", DefaultParameterSetName = FromFile)]
+    [Cmdlet(VerbsCommon.New, Constants.ApiManagementCertificate, DefaultParameterSetName = FromFile)]
     [OutputType(typeof(PsApiManagementCertificate))]
     public class NewAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {

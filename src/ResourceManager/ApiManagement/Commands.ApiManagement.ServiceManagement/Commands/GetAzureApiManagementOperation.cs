@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementOperation", DefaultParameterSetName = AllApiOperations)]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementOperation, DefaultParameterSetName = AllApiOperations)]
     [OutputType(typeof(IList<PsApiManagementOperation>))]
     public class GetAzureApiManagementOperation : AzureApiManagementCmdletBase
     {

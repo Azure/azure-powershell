@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementProduct")]
+    [Cmdlet(VerbsCommon.New, Constants.ApiManagementProduct)]
     [OutputType(typeof(PsApiManagementProduct))]
     public class NewAzureApiManagementProduct : AzureApiManagementCmdletBase
     {
@@ -82,6 +82,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             string productId = ProductId ?? Guid.NewGuid().ToString("N");
 
+            bool? approvalRequired = null;
+            if (SubscriptionRequired.HasValue && SubscriptionRequired.Value)
+            {
+                approvalRequired = ApprovalRequired ?? false;
+            }
+
             var product = Client.ProductCreate(
                 Context,
                 productId,
@@ -89,7 +95,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 Description,
                 LegalTerms,
                 SubscriptionRequired ?? true,
-                ApprovalRequired ?? false,
+                approvalRequired,
                 SubscriptionsLimit,
                 State);
 

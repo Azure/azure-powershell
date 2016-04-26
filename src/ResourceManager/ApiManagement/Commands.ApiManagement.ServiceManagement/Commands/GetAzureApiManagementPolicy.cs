@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementPolicy", DefaultParameterSetName = TenantLevel)]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementPolicy, DefaultParameterSetName = TenantLevel)]
     [OutputType(typeof(string))]
     public class GetAzureApiManagementPolicy : AzureApiManagementCmdletBase
     {
