@@ -106,7 +106,9 @@
     <Compile Include="RecoveryServicesBackupCmdletBase.cs" />
     <Compile Include="CmdletParameterHelpMessages.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="AzureRM.RecoveryServices.Backup.dll-help.xml" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
