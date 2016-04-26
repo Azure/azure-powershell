@@ -41,4 +41,8 @@ function Test-ResourceLockCRUD
 	$removed = Remove-AzureRMResourceLock -LockId $expectedSet.LockId -Force
 	Assert-AreEqual True $removed
 
+	$actual = New-AzureRMResourceLock -LockName $rname -LockLevel CanNotDelete -Force -Scope $rg.ResourceId
+	$removed = Remove-AzureRMResourceLock -ResourceId $actual.ResourceId -Force
+	Assert-AreEqual True $removed
+
 }
