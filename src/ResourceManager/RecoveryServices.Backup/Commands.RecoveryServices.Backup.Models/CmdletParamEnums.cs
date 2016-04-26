@@ -73,5 +73,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ProtectionStatus,
         ProtectionState,
         DeleteBackupData,
+        BackupManagementType,
     }
 }

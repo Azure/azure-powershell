@@ -2023,6 +2023,9 @@
                         <Component Id="cmpB5BF9FBFFC4EDD83B9F7135CF42CB617" Guid="*">
                             <File Id="fil64AAA98F94DB6985D3A60FF7570C5E4A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Azure.Commands.RecoveryServices.Backup.dll" />
                         </Component>
+                        <Component Id="cmpC9D832735AB0EF3B4F1309E307393863" Guid="*">
+                            <File Id="filD8627CE27070E2BB01C54678020911BB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Azure.Commands.RecoveryServices.Backup.dll-help.xml" />
+                        </Component>
                         <Component Id="cmp7E42CC4AEA15FEF46E621AD38CC09F5A" Guid="*">
                             <File Id="filB3BB12CA661C1C8E6E7BE93BD77D781D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml" />
                         </Component>
@@ -5721,6 +5724,7 @@
             <ComponentRef Id="cmp787B2B1E92B4AEF145134D74C17913C9" />
             <ComponentRef Id="cmpE5C4E7687DB1C6113A30F1D9CE41182F" />
             <ComponentRef Id="cmpB5BF9FBFFC4EDD83B9F7135CF42CB617" />
+            <ComponentRef Id="cmpC9D832735AB0EF3B4F1309E307393863" />
             <ComponentRef Id="cmp7E42CC4AEA15FEF46E621AD38CC09F5A" />
             <ComponentRef Id="cmpB7B864E9C70EE65B799C79119DF7E80B" />
             <ComponentRef Id="cmp298EE60DD6AAA12C33CA9E9EDDE4D674" />
