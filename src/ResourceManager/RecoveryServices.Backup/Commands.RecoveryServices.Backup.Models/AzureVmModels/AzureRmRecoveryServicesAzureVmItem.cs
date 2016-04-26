@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public AzureRmRecoveryServicesBackupIaasVmItemExtendedInfo ExtendedInfo { get; set; }
 
         public AzureRmRecoveryServicesBackupIaasVmItem(ProtectedItemResource protectedItemResource,
-            AzureRmRecoveryServicesBackupContainerBase container, string policyName)
-            : base(protectedItemResource, container)
+            string containerName, ContainerType containerType, string policyName)
+            : base(protectedItemResource, containerName, containerType)
         {
             AzureIaaSVMProtectedItem protectedItem = (AzureIaaSVMProtectedItem)protectedItemResource.Properties;
             LastBackupStatus = protectedItem.LastBackupStatus;

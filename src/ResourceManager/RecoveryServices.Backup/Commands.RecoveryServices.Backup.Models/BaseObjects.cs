@@ -50,6 +50,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             ContainerType = containerType;
         }
+
+        public AzureRmRecoveryServicesBackupContainerContext(string backupManagementType)
+            : base(backupManagementType)
+        {
+            
+        }
     }
 
     public class AzureRmRecoveryServicesBackupEngineContext : AzureRmRecoveryServicesBackupManagementContext
@@ -117,11 +123,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
 
         public AzureRmRecoveryServicesBackupItemContext(ProtectedItem protectedItem,
-            AzureRmRecoveryServicesBackupContainerBase container)
-            : base(container.ContainerType, protectedItem.BackupManagementType)
+            string containerName, ContainerType containerType)
+            : base(containerType, protectedItem.BackupManagementType)
         {
             WorkloadType = ConversionUtils.GetPsWorkloadType(protectedItem.WorkloadType);
-            ContainerName = container.Name;
+            ContainerName = containerName;
         }
     }
 
@@ -146,8 +152,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public DateTime? LatestRecoveryPoint { get; set; }
 
         public AzureRmRecoveryServicesBackupItemBase(ProtectedItemResource protectedItemResource,
-            AzureRmRecoveryServicesBackupContainerBase container)
-            : base((ProtectedItem)protectedItemResource.Properties, container)
+            string containerName, ContainerType containerType)
+            : base((ProtectedItem)protectedItemResource.Properties, containerName, containerType)
         {
             ProtectedItem protectedItem = (ProtectedItem)protectedItemResource.Properties;
             Name = protectedItemResource.Name;

@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region Item
 
-        public static AzureRmRecoveryServicesBackupItemBase GetItemModel(ProtectedItemResource protectedItem, AzureRmRecoveryServicesBackupContainerBase container)
+        public static AzureRmRecoveryServicesBackupItemBase GetItemModel(ProtectedItemResource protectedItem)
         {
             AzureRmRecoveryServicesBackupItemBase itemModel = null;
 
@@ -195,25 +195,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         HelperUtils.ParseUri(policyId);
                         policyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policyId);
                     }
-                    itemModel = new AzureRmRecoveryServicesBackupIaasVmItem(protectedItem, container, policyName);
+
+                    string containerUri = HelperUtils.GetContainerUri(
+                        HelperUtils.ParseUri(protectedItem.Id),
+                        protectedItem.Id);
+
+                    itemModel = new AzureRmRecoveryServicesBackupIaasVmItem(
+                        protectedItem,
+                        IdUtils.GetNameFromUri(containerUri),
+                        Cmdlets.Models.ContainerType.AzureVM,
+                        policyName);
                 }
             }
 
             return itemModel;
         }
 
-        public static List<AzureRmRecoveryServicesBackupItemBase> GetItemModelList(IEnumerable<ProtectedItemResource> protectedItems, AzureRmRecoveryServicesBackupContainerBase container)
+        public static List<AzureRmRecoveryServicesBackupItemBase> GetItemModelList(IEnumerable<ProtectedItemResource> protectedItems)
         {
             List<AzureRmRecoveryServicesBackupItemBase> itemModels = new List<AzureRmRecoveryServicesBackupItemBase>();
 
             foreach (var protectedItem in protectedItems)
             {
-                itemModels.Add(GetItemModel(protectedItem, container));
+                itemModels.Add(GetItemModel(protectedItem));
             }
 
             return itemModels;
         }
-
         #endregion
     }
 }
