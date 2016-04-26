@@ -34,7 +34,7 @@
 	  <View>
 		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupMabContainer</Name>
 		  <ViewSelectedBy>
-			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesMabContainer</TypeName>
+			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupMabContainer</TypeName>
 		  </ViewSelectedBy>
 		  <TableControl>
 			  <TableHeaders>
