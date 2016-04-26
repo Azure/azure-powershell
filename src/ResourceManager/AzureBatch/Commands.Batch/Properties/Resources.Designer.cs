@@ -1024,13 +1024,13 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to local file not found {0}..
+        ///   Looks up a localized string similar to file not found {0}..
         /// </summary>
-        public static string LocalFileNotFound
+        public static string FileNotFound
         {
             get
             {
-                return ResourceManager.GetString("LocalFileNotFound", resourceCulture);
+                return ResourceManager.GetString("FileNotFound", resourceCulture);
             }
         }
     }

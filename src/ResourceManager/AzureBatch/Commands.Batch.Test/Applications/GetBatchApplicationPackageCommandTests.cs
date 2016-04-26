@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.Azure.Commands.Batch.Models;
-using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 using Moq;

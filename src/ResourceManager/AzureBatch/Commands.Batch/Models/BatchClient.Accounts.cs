@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="accountName">The account name</param>
         /// <param name="location">The location to use when creating the account</param>
         /// <param name="tags">The tags to associate with the account</param>
-        /// <param name="storageId">TODO</param>
+        /// <param name="storageId">The resource id of the storage account to be used for auto storage.</param>
         /// <returns>A BatchAccountContext object representing the new account</returns>
         public virtual BatchAccountContext CreateAccount(string resourceGroupName, string accountName, string location, Hashtable[] tags, string storageId)
         {

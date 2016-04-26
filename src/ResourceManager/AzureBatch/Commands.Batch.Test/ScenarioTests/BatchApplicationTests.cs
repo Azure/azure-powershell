@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchApplicationTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private string accountName = BatchController.BatchAccount;
-        private const string filePath = "Resources\\foo.zip";
+        private const string filePath = "Resources\\TestApplicationPackage.zip";
 
         [Fact]
         public void TestUploadApplication()
@@ -48,14 +47,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             BatchController controller = BatchController.NewInstance;
 
-            controller.RunPsTest(string.Format("Test-CreatePoolWithApplicationPackage '{0}' '{1}' ", accountName + "pool-id" + Guid.NewGuid().ToString().Substring(0, 5), filePath));
+            controller.RunPsTest(string.Format("Test-CreatePoolWithApplicationPackage '{0}' '{1}' ", "pool-id" + Guid.NewGuid().ToString().Substring(0, 5), filePath));
         }
 
         [Fact]
         public void TestUpdatePoolWithApplicationPackage()
         {
             BatchController controller = BatchController.NewInstance;
-            controller.RunPsTest(string.Format("Test-UpdatePoolWithApplicationPackage '{0}' '{1}'", accountName + "pool-id" + Guid.NewGuid().ToString().Substring(0, 5), filePath));
+            controller.RunPsTest(string.Format("Test-UpdatePoolWithApplicationPackage '{0}' '{1}'", "pool-id" + Guid.NewGuid().ToString().Substring(0, 5), filePath));
         }
     }
 }

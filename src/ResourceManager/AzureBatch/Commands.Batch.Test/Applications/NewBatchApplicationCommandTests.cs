@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Batch.Models;
-using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 

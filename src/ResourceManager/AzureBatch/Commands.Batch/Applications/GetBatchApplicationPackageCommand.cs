@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchApplicationPackage), OutputType(typeof(PSApplicationPackage))]
     public class GetBatchApplicationPackageCommand : BatchCmdletBase
     {
-        [Alias("Name")]
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the Batch account.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }

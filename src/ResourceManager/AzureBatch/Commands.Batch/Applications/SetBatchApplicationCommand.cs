@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string DefaultVersion { get; set; }
 
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public bool? AllowUpdates { get; set; }
 

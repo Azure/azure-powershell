@@ -284,7 +284,7 @@
     <None Include="Resources\BatchTestCert05.pfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Resources\foo.zip">
+    <Content Include="Resources\TestApplicationPackage.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="ScenarioTests\BatchApplicationTests.ps1">
@@ -694,10 +694,6 @@
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
-      <Project>{2493A8F7-1949-4F29-8D53-9D459046C3B8}</Project>
-      <Name>Commands.Tags</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.Batch\Commands.Batch.csproj">
       <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>

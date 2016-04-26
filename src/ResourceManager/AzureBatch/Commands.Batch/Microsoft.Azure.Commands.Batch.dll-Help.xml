@@ -6884,6 +6884,13 @@
             <maml:para>Specifies the formula for automatically scaling the pool. </maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>        
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ApplicationPackageReference</maml:name>
+          <maml:description>
+            <maml:para>Specifies application package associated with the pool. The Batch service installs the referenced application package on each compute node of the pool.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">PSCertificateReference[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>CertificateReferences</maml:name>
@@ -6975,6 +6982,13 @@
             <maml:para>Specifies the ID of the pool to create.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ApplicationPackageReference</maml:name>
+          <maml:description>
+            <maml:para>Specifies application package associated with the pool. The Batch service installs the referenced application package on each compute node of the pool.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">PSCertificateReference[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>CertificateReferences</maml:name>
@@ -7106,6 +7120,18 @@
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
           <maml:name>BatchAccountContext</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ApplicationPackageReferences</maml:name>
+        <maml:description>
+          <maml:para>Specifies application package associated with the pool. The Batch service installs the referenced application package on each compute node of the pool.</maml:para>
+          </maml:description>
+        <command:parameterValue required="false" variableLength="true">PSCertificateReference[]</command:parameterValue>
+        <dev:type>
+          <maml:name>PSApplicationPackageReference[]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -7367,6 +7393,11 @@
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
+
+
+
+
+
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureBatchTask</command:name>
@@ -8720,7 +8751,7 @@
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
           <maml:para>Specifies the id of the application.</maml:para>
@@ -8750,7 +8781,7 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
         <maml:para>Specifies the id of the application.</maml:para>                
@@ -8877,7 +8908,7 @@
   <command:details>
     <command:name>Get-AzureRmBatchApplicationPackage</command:name>
     <maml:description>
-      <maml:para></maml:para>
+      <maml:para>Gets information about an application package in an Azure Batch account." and the one below would be "The Get-AzureRmBatchApplicationPackage cmdlet gets information about an application package in an Azure Batch account.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -8887,7 +8918,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Gets information about an application package in an Azure Batch account." and the one below would be "The Get-AzureRmBatchApplicationPackage cmdlet gets information about an application package in an Azure Batch account.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
