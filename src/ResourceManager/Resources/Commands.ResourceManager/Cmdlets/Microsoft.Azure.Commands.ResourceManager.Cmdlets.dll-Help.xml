@@ -843,13 +843,34 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  GetByType  --------------------------</maml:title>
+        <maml:title>-------------------------- Example 1 GetByType  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
         <dev:code>Get-AzureRmResource -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -ResourceName myWebsite</dev:code>
         <dev:remarks>
           <maml:para>Gets resource of type microsoft.web/sites and name myWebsite under myResourceGroup</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>Get-AzureRmResource -ResourceId /subscriptions/{subID}/resourceGroups/myRG/providers/Microsoft.Storage/storageAccounts/mystaccount</dev:code>
+        <dev:remarks>
+          <maml:para>Gets resource with Id as specified by the fully qualified resourceId. In the above command, replace subId with a valid subscriptionId.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>
@@ -1096,7 +1117,7 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  Example1  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 1 --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
@@ -1117,7 +1138,7 @@
         </command:commandLines>
       </command:example>
     <command:example>
-        <maml:title>-------  Example2 Get the request and response content for each deployment operation if enabled on new deployment  -------</maml:title>
+        <maml:title>-------  Example 2 -------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
@@ -1767,7 +1788,7 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  Get1  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 1  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
@@ -2079,7 +2100,7 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  Move1  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 1  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
@@ -3716,7 +3737,7 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  Example1  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 1  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
