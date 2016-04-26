@@ -14,8 +14,9 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -31,19 +32,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// </summary>
         /// <param name="hydraJob"></param>
         /// <returns></returns>
-        public static AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResponse hydraJob)
+        public static CmdletModel.AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResponse hydraJob)
         {
             return GetPSJob(hydraJob.Item);
         }
 
-        public static AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResource hydraJob)
+        public static CmdletModel.AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResource hydraJob)
         {
-            AzureRmRecoveryServicesBackupJobBase response = null;
+            CmdletModel.AzureRmRecoveryServicesBackupJobBase response = null;
 
             // hydra doesn't initialize Properties if the type of job is not known to current version of hydra.
             if (hydraJob.Properties == null)
             {
-                // unsupported job type.
+                Logger.Instance.WriteWarning(Resources.UnsupportedJobWarning);
             }
             else if (hydraJob.Properties.GetType() == typeof(AzureIaaSVMJob))
             {
@@ -53,13 +54,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return response;
         }
 
-        public static void AddHydraJobsToPSList(JobListResponse hydraJobs, List<AzureRmRecoveryServicesBackupJobBase> psJobs, ref int jobsCount)
+        public static void AddHydraJobsToPSList(JobListResponse hydraJobs, List<CmdletModel.AzureRmRecoveryServicesBackupJobBase> psJobs, ref int jobsCount)
         {
             if (hydraJobs.ItemList != null && hydraJobs.ItemList.Value != null)
             {
                 foreach (var job in hydraJobs.ItemList.Value)
                 {
-                    AzureRmRecoveryServicesBackupJobBase convertedJob = GetPSJob(job);
+                    CmdletModel.AzureRmRecoveryServicesBackupJobBase convertedJob = GetPSJob(job);
                     if (convertedJob != null)
                     {
                         jobsCount++;
@@ -71,19 +72,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region AzureVm job private helpers
 
-        private static AzureRmRecoveryServicesBackupAzureVmJob GetPSAzureVmJob(JobResource hydraJob)
+        private static CmdletModel.AzureRmRecoveryServicesBackupAzureVmJob GetPSAzureVmJob(JobResource hydraJob)
         {
-            AzureRmRecoveryServicesBackupAzureVmJob response;
+            CmdletModel.AzureRmRecoveryServicesBackupAzureVmJob response;
 
             AzureIaaSVMJob vmJob = hydraJob.Properties as AzureIaaSVMJob;
 
             if (vmJob.ExtendedInfo != null)
             {
-                response = new AzureRmRecoveryServicesBackupAzureVmJobDetails();
+                response = new CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobDetails();
             }
             else
             {
-                response = new AzureRmRecoveryServicesBackupAzureVmJob();
+                response = new CmdletModel.AzureRmRecoveryServicesBackupAzureVmJob();
             }
 
             response.JobId = GetLastIdFromFullId(hydraJob.Id);
@@ -94,12 +95,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             response.VmVersion = vmJob.VirtualMachineVersion;
             response.WorkloadName = vmJob.EntityFriendlyName;
             response.ActivityId = vmJob.ActivityId;
-            response.BackupManagementType = EnumUtils.GetEnum<Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType>(GetPSBackupManagementType(vmJob.BackupManagementType));
+            response.BackupManagementType = CmdletModel.EnumUtils.GetEnum<Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType>(GetPSBackupManagementType(vmJob.BackupManagementType));
             response.Operation = vmJob.Operation;
 
             if (vmJob.ErrorDetails != null)
             {
-                response.ErrorDetails = new List<AzureRmRecoveryServicesBackupAzureVmJobErrorInfo>();
+                response.ErrorDetails = new List<CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo>();
                 foreach (var vmError in vmJob.ErrorDetails)
                 {
                     response.ErrorDetails.Add(GetPSAzureVmErrorInfo(vmError));
@@ -109,8 +110,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             // fill extended info if present
             if (vmJob.ExtendedInfo != null)
             {
-                AzureRmRecoveryServicesBackupAzureVmJobDetails detailedResponse =
-                    response as AzureRmRecoveryServicesBackupAzureVmJobDetails;
+                CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobDetails detailedResponse =
+                    response as CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobDetails;
 
                 detailedResponse.DynamicErrorMessage = vmJob.ExtendedInfo.DynamicErrorMessage;
                 if (vmJob.ExtendedInfo.PropertyBag != null)
@@ -124,10 +125,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 if (vmJob.ExtendedInfo.TasksList != null)
                 {
-                    detailedResponse.SubTasks = new List<AzureRmRecoveryServicesBackupAzureVmJobSubTask>();
+                    detailedResponse.SubTasks = new List<CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobSubTask>();
                     foreach (var vmJobTask in vmJob.ExtendedInfo.TasksList)
                     {
-                        detailedResponse.SubTasks.Add(new AzureRmRecoveryServicesBackupAzureVmJobSubTask()
+                        detailedResponse.SubTasks.Add(new CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobSubTask()
                         {
                             Name = vmJobTask.TaskId,
                             Status = vmJobTask.Status
@@ -139,9 +140,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return response;
         }
 
-        private static AzureRmRecoveryServicesBackupAzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo hydraError)
+        private static CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo hydraError)
         {
-            AzureRmRecoveryServicesBackupAzureVmJobErrorInfo psErrorInfo = new AzureRmRecoveryServicesBackupAzureVmJobErrorInfo();
+            CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo psErrorInfo = new CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo();
             psErrorInfo.ErrorCode = hydraError.ErrorCode;
             psErrorInfo.ErrorMessage = hydraError.ErrorString;
             if (hydraError.Recommendations != null)

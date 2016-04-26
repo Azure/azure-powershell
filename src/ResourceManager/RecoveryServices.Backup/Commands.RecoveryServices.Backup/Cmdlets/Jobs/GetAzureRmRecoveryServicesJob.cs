@@ -157,14 +157,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 WriteDebug("Number of jobs fetched: " + result.Count);
-                if (resultCount != 1)
-                {
-                    WriteObject(result, enumerateCollection: true);
-                }
-                else
-                {
-                    WriteObject(result[0]);
-                }
+                WriteObject(result, enumerateCollection: true);
             });
         }
     }
