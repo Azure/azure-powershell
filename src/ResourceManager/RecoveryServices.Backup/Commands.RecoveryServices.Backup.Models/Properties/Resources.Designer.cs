@@ -894,6 +894,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Got some unsupported jobs.
+        /// </summary>
+        public static string UnsupportedJobWarning {
+            get {
+                return ResourceManager.GetString("UnsupportedJobWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unsupported combination for WorkloadType: {0}, BackupManagementType:{1}.
         /// </summary>
         public static string UnsupportedWorkloadBackupManagementTypeException {

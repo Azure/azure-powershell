@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"), OutputType(typeof(AzureRmRecoveryServicesBackupEngineBase), typeof(List<AzureRmRecoveryServicesBackupEngineBase>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"), OutputType(typeof(AzureRmRecoveryServicesBackupEngineBase))]
     public class GetAzureRmRecoveryServicesBackupManagementServer : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = false, Position = 1, HelpMessage = ParamHelpMsg.Container.Name)]
@@ -56,14 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         backupServerModels = backupServerModels.Where(x => x.Name == this.Name).ToList();
                     }
                 }
-                if (backupServerModels.Count == 1)
-                {
-                    WriteObject(backupServerModels.First());
-                }
-                else
-                {
-                    WriteObject(backupServerModels, enumerateCollection: true);
-                }
+                WriteObject(backupServerModels, enumerateCollection: true);
             });
         }
     }
