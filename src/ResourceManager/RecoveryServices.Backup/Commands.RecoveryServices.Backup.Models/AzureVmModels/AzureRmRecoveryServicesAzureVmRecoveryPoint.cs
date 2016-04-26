@@ -34,9 +34,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
 
         }
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

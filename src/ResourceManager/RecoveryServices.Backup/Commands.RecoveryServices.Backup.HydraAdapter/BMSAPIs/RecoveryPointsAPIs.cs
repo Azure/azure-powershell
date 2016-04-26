@@ -24,10 +24,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
     public partial class HydraAdapter
     {
         /// <summary>
-        /// 
+        /// Fetch the details of given Recovery point
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="resourceName"></param>
         /// <param name="containerName"></param>
         /// <param name="protectedItemName"></param>
         /// <param name="recoveryPointId"></param>
@@ -44,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
         }
 
         /// <summary>
-        /// 
+        /// Fetch the Recovery points of protectedItem which satisfy specified query
         /// </summary>
         /// <param name="resourceGroupName"></param>
         /// <param name="resourceName"></param>
