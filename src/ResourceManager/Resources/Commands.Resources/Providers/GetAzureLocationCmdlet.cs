@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Providers
 
             var allLocations = this.ResourcesClient.ListLocations(DefaultContext.Subscription.Id.ToString());
             var providers = this.ResourcesClient.ListResourceProviders(providerName: null, listAvailable: true);
-
             var providerLocations = ConstructResourceProviderLocations(allLocations, providers);
 
             this.WriteObject(providerLocations, enumerateCollection: true);   
@@ -69,8 +68,7 @@ namespace Microsoft.Azure.Commands.Providers
 
         private Dictionary<string, List<string>> GetLocationProviderMap(List<Provider> providers)
         {
-            var locationMap = new Dictionary<string, List<string>>();
-
+            var locationMap = new Dictionary<string, List<string>>(StringComparer.InvariantCultureIgnoreCase);
             providers.CoalesceEnumerable()
                 .ForEach(provider => AddResourceProvider(provider, locationMap));
 

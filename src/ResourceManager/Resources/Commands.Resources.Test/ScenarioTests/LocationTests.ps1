@@ -20,11 +20,9 @@ function Test-AzureLocation
 {
     $providerLocations = Get-AzureRmLocation
 
-    Assert-AreEqual 22 $providerLocations.Count
-	
-    $eastAsiaLocation = $providerLocations[0]
-
-    Assert-AreEqual "eastasia" $eastAsiaLocation.Location
-    Assert-AreEqual "East Asia" $eastAsiaLocation.DisplayName
-    Assert-AreEqual 36 $eastAsiaLocation.Providers.Count
+    Assert-True { $providerLocations.Count -gt 0 }
+    foreach ($location in $providerLocations)
+    {
+        Assert-True { $location.Providers.Count -gt 0 }
+    }
  }
