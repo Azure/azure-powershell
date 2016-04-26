@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"), OutputType(typeof(AzureRmRecoveryServicesBackupContainerBase), typeof(List<AzureRmRecoveryServicesBackupContainerBase>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"), OutputType(typeof(AzureRmRecoveryServicesBackupContainerBase))]
     public class GetAzureRmRecoveryServicesBackupContainer : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Container.ContainerType)]
@@ -76,15 +76,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType, backupManagementTypeNullable);
                 var containerModels = psBackupProvider.ListProtectionContainers();
-
-                if (containerModels.Count == 1)
-                {
-                    WriteObject(containerModels.First());
-                }
-                else
-                {
-                    WriteObject(containerModels, enumerateCollection: true);
-                }
+                WriteObject(containerModels, enumerateCollection: true);
             });
         }
     }

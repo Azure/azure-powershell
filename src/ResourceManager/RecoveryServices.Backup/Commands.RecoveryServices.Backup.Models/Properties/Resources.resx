@@ -437,4 +437,7 @@ Please contact Microsoft for further assistant.</value>
   <data name="BackupManagementTypeIncorrectForContainerType" xml:space="preserve">
     <value>BackupManagementType provider for ContainerType {0} is incorrect.</value>
   </data>
+  <data name="UnsupportedJobWarning" xml:space="preserve">
+    <value>Got some unsupported jobs</value>
+  </data>
 </root>
