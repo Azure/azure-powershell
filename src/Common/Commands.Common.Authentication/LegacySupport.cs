@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 
-using System.Collections.Generic;
-namespace Microsoft.Azure.Commands.Resources.Models
+namespace Microsoft.Azure.Common.Authentication
 {
-    public class PSResourceManagerError
+    /// <summary>
+    /// Provide backward compatibility for setting User Agent values
+    /// </summary>
+    public static class AzureSession
     {
-        public string Code { get; set; }
-
-        public string Message { get; set; }
-
-        public string Target { get; set; }
-
-        public List<PSResourceManagerError> Details { get; set; }
+        /// <summary>
+        /// The ClientFactory used to produce management clients in this session
+        /// </summary>
+        public static IClientFactory ClientFactory
+        {
+            get { return Commands.Common.Authentication.AzureSession.ClientFactory; }
+        }
     }
 }
