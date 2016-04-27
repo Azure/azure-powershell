@@ -30,10 +30,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Update existing protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy"), OutputType(typeof(List<CmdletModel.JobBase>))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy"), 
+    OutputType(typeof(List<CmdletModel.JobBase>))]
     public class SetAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy, ValueFromPipeline = true)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy, 
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     Policy.WorkloadType,
-                                                                                         Policy.BackupManagementType);                
+                    Policy.BackupManagementType);                
                 ProtectionPolicyResponse policyResponse = psBackupProvider.ModifyPolicy();
                 WriteDebug("ModifyPolicy http response from service: " + 
                     policyResponse.StatusCode.ToString());
