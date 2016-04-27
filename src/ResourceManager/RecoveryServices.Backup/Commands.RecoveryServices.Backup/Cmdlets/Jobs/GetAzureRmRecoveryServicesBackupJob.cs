@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of jobs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(JobBase), typeof(IList<JobBase>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"), 
+    OutputType(typeof(JobBase), typeof(IList<JobBase>))]
     public class GetAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.StatusFilter, Position = 1)]
@@ -125,7 +126,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     Operation.HasValue ? Operation.ToString() : null,
                     rangeStart,
                     rangeEnd,
-                    BackupManagementType.HasValue ? Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null);
+                    BackupManagementType.HasValue ? 
+                    Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null);
                 JobConversions.AddServiceClientJobsToPSList(adapterResponse, result, ref resultCount);
 
                 while (!string.IsNullOrEmpty(adapterResponse.ItemList.NextLink))
@@ -138,7 +140,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
 
                     string skipToken;
-                    ServiceClientHelpers.GetSkipTokenFromNextLink(adapterResponse.ItemList.NextLink, out skipToken);
+                    ServiceClientHelpers.GetSkipTokenFromNextLink(
+                        adapterResponse.ItemList.NextLink, out skipToken);
                     if (skipToken != null)
                     {
                         adapterResponse = ServiceClientAdapter.GetJobs(JobId,

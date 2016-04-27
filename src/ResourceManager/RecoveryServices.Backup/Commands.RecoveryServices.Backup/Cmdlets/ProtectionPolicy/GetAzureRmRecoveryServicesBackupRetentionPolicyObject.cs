@@ -23,14 +23,17 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRetentionPolicyObject"), OutputType(typeof(RetentionPolicyBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRetentionPolicyObject"),
+    OutputType(typeof(RetentionPolicyBase))]
     public class GetAzureRmRecoveryServicesBackupRetentionPolicyObject : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, Position = 0, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+        [Parameter(Mandatory = true, Position = 0, 
+            HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
-        [Parameter(Mandatory = false, Position = 1, HelpMessage = ParamHelpMsgs.Common.BackupManagementType)]
+        [Parameter(Mandatory = false, Position = 1, 
+            HelpMessage = ParamHelpMsgs.Common.BackupManagementType)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 
@@ -40,7 +43,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>(), ServiceClientAdapter);
+                PsBackupProviderManager providerManager = 
+                    new PsBackupProviderManager(new Dictionary<System.Enum, object>(), ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = 
                     providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
