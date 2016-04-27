@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
     public partial class PolicyHelpers
     {
+        // <summary>
+        /// Helper function to validate long term rentention policy and simple schedule policy.
+        /// </summary>
         public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
             AzureRmRecoveryServicesBackupLongTermRetentionPolicy ltrPolicy,
             AzureRmRecoveryServicesBackupSimpleSchedulePolicy schPolicy)

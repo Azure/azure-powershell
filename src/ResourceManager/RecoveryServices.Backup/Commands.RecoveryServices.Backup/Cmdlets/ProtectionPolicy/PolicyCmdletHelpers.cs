@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {   
     public class PolicyCmdletHelpers 
     {
-        public static Regex rgx = new Regex(@"^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$");
+        public static Regex policyNameRgx = new Regex(@"^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$");
 
         public static void ValidateProtectionPolicyName(string policyName)
         {
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 throw new ArgumentException(Resources.ProtectionPolicyNameLengthException);
             }
 
-            if (!rgx.IsMatch(policyName))
+            if (!policyNameRgx.IsMatch(policyName))
             {
                 throw new ArgumentException(Resources.ProtectionPolicyNameException);
             }

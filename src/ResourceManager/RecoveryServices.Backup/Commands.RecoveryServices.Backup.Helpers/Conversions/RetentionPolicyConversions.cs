@@ -23,11 +23,18 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Backup policy conversion helper
+    /// </summary>
     public partial class PolicyHelpers
     {
         #region HydraToPSObject conversions
 
         #region public
+
+        // <summary>
+        /// Helper function to convert ps long term retention policy from service response.
+        /// </summary>
         public static AzureRmRecoveryServicesBackupLongTermRetentionPolicy GetPSLongTermRetentionPolicy(
             HydraModels.LongTermRetentionPolicy hydraRetPolicy)
         {
@@ -68,6 +75,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return ltrPolicy;            
         }
 
+        // <summary>
+        /// Helper function to convert ps simple retention policy from service response.
+        /// </summary>
         public static AzureRmRecoveryServicesBackupLongTermRetentionPolicy GetPSSimpleRetentionPolicy(
            HydraModels.SimpleRetentionPolicy hydraRetPolicy)
         {
@@ -323,6 +333,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #endregion
 
         #region PStoHydraObject conversions
+
+        // <summary>
+        /// Helper function to convert service long term retention policy from ps retention policy.
+        /// </summary>
         public static HydraModels.LongTermRetentionPolicy GetHydraLongTermRetentionPolicy(
             AzureRmRecoveryServicesBackupLongTermRetentionPolicy psRetPolicy)
         {
@@ -356,6 +370,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return hydraRetPolicy;
         }
 
+        // <summary>
+        /// Helper function to convert service simple retention policy from ps simple policy.
+        /// </summary>
         public static HydraModels.SimpleRetentionPolicy GetHydraSimpleRetentionPolicy(
             AzureRmRecoveryServicesBackupSimpleSchedulePolicy psRetPolicy)
         {

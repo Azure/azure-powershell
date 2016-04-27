@@ -21,6 +21,9 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// Backup long term retention policy class.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupLongTermRetentionPolicy : AzureRmRecoveryServicesBackupRetentionPolicyBase
     {
         public bool IsDailyScheduleEnabled { get; set; }
@@ -111,7 +114,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                   YearlySchedule == null ? "NULL" : YearlySchedule.ToString());
         }
     }
-       
+
+    /// <summary>
+    /// Base class for retention schedule.
+    /// </summary>
     public abstract class RetentionScheduleBase
     {
         public List<DateTime> RetentionTimes { get; set; }
@@ -130,6 +136,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
       
+    /// <summary>
+    /// Daily rentention schedule.
+    /// </summary>
     public class DailyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInDays { get; set; }
@@ -151,7 +160,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                   DurationCountInDays, base.ToString());
         }
     }
-   
+
+    /// <summary>
+    /// Weekly rentention schedule.
+    /// </summary>
     public class WeeklyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInWeeks { get; set; }
@@ -180,7 +192,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                   base.ToString());
         }
     }
-  
+
+    /// <summary>
+    /// Monthly rentention schedule.
+    /// </summary>
     public class MonthlyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInMonths { get; set; }
@@ -235,7 +250,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                  base.ToString());
         }
     }
-  
+
+    /// <summary>
+    /// Yearly rentention schedule.
+    /// </summary>
     public class YearlyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInYears { get; set; }
@@ -298,7 +316,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                  TraceUtils.GetString<Month>(MonthsOfYear), base.ToString());
         }
     }
-        
+
+    /// <summary>
+    /// Daily rentention format.
+    /// </summary>
     public class DailyRetentionFormat
     {
         public List<Day> DaysOfTheMonth { get; set; }
@@ -339,7 +360,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             return string.Format("DaysOfTheMonth:{0}", TraceUtils.GetString(DaysOfTheMonth));
         }
     }
-      
+
+    /// <summary>
+    /// Weekly rentention format.
+    /// </summary>
     public class WeeklyRetentionFormat
     {
         public List<DayOfWeek> DaysOfTheWeek { get; set; }
@@ -369,6 +393,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Day class to be used by retention policy.
+    /// </summary>
     public class Day
     {
         public int Date { get; set; }
