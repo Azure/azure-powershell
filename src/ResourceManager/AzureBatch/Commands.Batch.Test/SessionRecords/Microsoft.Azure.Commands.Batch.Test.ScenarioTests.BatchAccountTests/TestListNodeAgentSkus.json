@@ -7,20 +7,20 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "87f55208-ab40-4a7d-bb3b-c78f93a7dd0e"
+          "504a7a37-f36a-4da0-83c4-4f7740205750"
         ],
         "accept-language": [
           "en-US"
         ],
         "client-request-id": [
-          "2b8f6c6e-869f-42f9-8db1-971e53be6be5"
+          "6d5e2525-7913-48d6-9246-0479cf0039dd"
         ],
         "ocp-date": [
-          "Thu, 14 Apr 2016 23:16:13 GMT"
+          "Wed, 27 Apr 2016 01:18:42 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/4.0.1.0",
-          "AzurePowershell/v1.3.0"
+          "AzurePowershell/v1.3.2"
         ]
       },
       "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#nodeagentskus\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"batch.node.centos 7\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"OpenLogic\",\r\n          \"offer\": \"CentOS\",\r\n          \"sku\": \"7.0\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"OpenLogic\",\r\n          \"offer\": \"CentOS\",\r\n          \"sku\": \"7.1\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"OpenLogic\",\r\n          \"offer\": \"CentOS\",\r\n          \"sku\": \"7.2\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Oracle\",\r\n          \"offer\": \"Oracle-Linux-7\",\r\n          \"sku\": \"OL70\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"linux\"\r\n    },\r\n    {\r\n      \"id\": \"batch.node.debian 8\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"15.10\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Credativ\",\r\n          \"offer\": \"Debian\",\r\n          \"sku\": \"8\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"linux\"\r\n    },\r\n    {\r\n      \"id\": \"batch.node.opensuse 13.2\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"SUSE\",\r\n          \"offer\": \"openSUSE\",\r\n          \"sku\": \"13.2\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"linux\"\r\n    },\r\n    {\r\n      \"id\": \"batch.node.opensuse 42.1\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"SUSE\",\r\n          \"offer\": \"openSUSE-Leap\",\r\n          \"sku\": \"42.1\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"SUSE\",\r\n          \"offer\": \"SLES\",\r\n          \"sku\": \"12\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"SUSE\",\r\n          \"offer\": \"SLES\",\r\n          \"sku\": \"12-SP1\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"SUSE\",\r\n          \"offer\": \"SLES-HPC\",\r\n          \"sku\": \"12\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"linux\"\r\n    },\r\n    {\r\n      \"id\": \"batch.node.ubuntu 14.04\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.0-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.1-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.2-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.3-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.4-LTS\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"linux\"\r\n    },\r\n    {\r\n      \"id\": \"batch.node.windows amd64\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2008-R2-SP1\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2012-Datacenter\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2012-R2-Datacenter\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"Windows-Server-Technical-Preview\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"windows\"\r\n    }\r\n  ]\r\n}",
@@ -32,7 +32,7 @@
           "chunked"
         ],
         "request-id": [
-          "efa172c0-2267-49ad-a2cd-7b63ded8244a"
+          "2da762d1-21a7-43d9-b388-ab6e98413180"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -41,7 +41,7 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 14 Apr 2016 23:16:14 GMT"
+          "Wed, 27 Apr 2016 01:18:41 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
