@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class PolicyTests : RecoveryServicesBackupTestsBase
+    public partial class PolicyTests : TestsBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

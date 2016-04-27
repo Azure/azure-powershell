@@ -30,24 +30,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"), OutputType(typeof(ContainerBase))]
     public class GetAzureRmRecoveryServicesBackupContainer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Container.ContainerType)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Container.ContainerType)]
         [ValidateNotNullOrEmpty]
         public ContainerType ContainerType { get; set; }
 
-        [Parameter(Mandatory = false, Position = 2, HelpMessage = ParamHelpMsg.Container.BackupManagementType)]
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = ParamHelpMsgs.Container.BackupManagementType)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("AzureVM", "MARS")]
         public string BackupManagementType { get; set; }
 
-        [Parameter(Mandatory = false, Position = 3, HelpMessage = ParamHelpMsg.Container.Name)]
+        [Parameter(Mandatory = false, Position = 3, HelpMessage = ParamHelpMsgs.Container.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, Position = 4, HelpMessage = ParamHelpMsg.Container.ResourceGroupName)]
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = ParamHelpMsgs.Container.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, Position = 5, HelpMessage = ParamHelpMsg.Container.Status)]
+        [Parameter(Mandatory = false, Position = 5, HelpMessage = ParamHelpMsgs.Container.Status)]
         [ValidateNotNullOrEmpty]
         public ContainerRegistrationStatus Status { get; set; }
 
