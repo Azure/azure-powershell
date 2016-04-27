@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     Policy.WorkloadType,
-                    Policy.BackupManagementType);                
+                                                                                         Policy.BackupManagementType);                
                 ProtectionPolicyResponse policyResponse = psBackupProvider.ModifyPolicy();
                 WriteDebug("ModifyPolicy http response from service: " + 
                     policyResponse.StatusCode.ToString());
