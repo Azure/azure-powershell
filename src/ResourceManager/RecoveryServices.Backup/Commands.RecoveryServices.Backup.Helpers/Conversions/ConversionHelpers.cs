@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
                 if (protectionContainer.Properties.GetType() == typeof(ServiceClientModel.MabProtectionContainer))
                 {
-                    containerModel = new AzureRmRecoveryServicesBackupMabContainer(protectionContainer);
+                    containerModel = new MabContainer(protectionContainer);
                 }
             }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
                 else if (backupEngine.Properties.GetType() == (typeof(ServiceClientModel.AzureBackupServerEngine)))
                 {
-                    backupEngineModel = new AzureRmRecoveryServicesBackupAzureBackupServerEngine(backupEngine);
+                    backupEngineModel = new AzureBackupServerEngine(backupEngine);
                 }
             }
 

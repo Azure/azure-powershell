@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// MAB specific container class.
     /// </summary>
-    public class AzureRmRecoveryServicesBackupMabContainer : ContainerBase
+    public class MabContainer : ContainerBase
     {
         /// <summary>
         /// Friendly name of the container
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public ContainerRegistrationStatus Status { get; set; }
 
-        public AzureRmRecoveryServicesBackupMabContainer(ProtectionContainerResource protectionContainer)
+        public MabContainer(ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
             MabProtectionContainer mabProtectionContainer = (MabProtectionContainer)protectionContainer.Properties;
