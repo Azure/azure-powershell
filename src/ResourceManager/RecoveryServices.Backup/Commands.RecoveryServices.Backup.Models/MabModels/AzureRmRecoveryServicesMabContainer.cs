@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesBackupMabContainer : AzureRmRecoveryServicesBackupContainerBase
+    public class AzureRmRecoveryServicesBackupMabContainer : ContainerBase
     {
         /// <summary>
         /// Friendly name of the container
