@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet("Wait", "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(JobBase), typeof(IList<JobBase>))]
     public class WaitAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.WaitJobOrListFilter, ValueFromPipeline = true, Position = 1)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.WaitJobOrListFilter, 
+            ValueFromPipeline = true, Position = 1)]
         [ValidateNotNull]
         public object Job { get; set; }
 
