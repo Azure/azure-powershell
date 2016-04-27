@@ -231,19 +231,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     public class AzureRmRecoveryServicesBackupRetentionPolicyBase : AzureRmRecoveryServicesObjectBase
-    {
-        public override void Validate()
-        {
-            base.Validate();
-        }
+    {      
     }
 
     public class AzureRmRecoveryServicesBackupSchedulePolicyBase : AzureRmRecoveryServicesObjectBase
-    {
-        public override void Validate()
-        {
-            base.Validate();
-        }
+    {      
     }
 
     public class AzureRmRecoveryServicesBackupJobBase : AzureRmRecoveryServicesBackupManagementContext
@@ -262,12 +254,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public DateTime? EndTime { get; set; }
 
-        public TimeSpan Duration { get; set; }
-
-        public override void Validate()
-        {
-            base.Validate();
-        }
+        public TimeSpan Duration { get; set; }       
     }
 
     /// <summary>
