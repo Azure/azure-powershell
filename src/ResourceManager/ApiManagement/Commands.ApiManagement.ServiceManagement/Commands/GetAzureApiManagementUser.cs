@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementUser, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementUser>))]
+    [OutputType(typeof(IList<PsApiManagementUser>), ParameterSetName = new [] { GetAll, FindBy })]
+    [OutputType(typeof(PsApiManagementUser), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementUser : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all users";

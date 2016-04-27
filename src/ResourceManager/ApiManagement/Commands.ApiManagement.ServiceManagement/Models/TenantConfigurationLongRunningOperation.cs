@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 
         public TimeSpan? RetryAfter { get; private set; }
 
-        public string OperationLink { get; private set; }
+        public string OperationLink { get; set; }
         
         public PsApiManagementOperationResult OperationResult { get; private set; }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
             var result = new TenantConfigurationLongRunningOperation
             {
                 OperationName = operationName,
-                OperationLink = longRunningResponse.OperationStatusLink,
+                OperationLink = longRunningResponse.OperationStatusLink ?? string.Empty,
                 RetryAfter = TimeSpan.FromSeconds(longRunningResponse.RetryAfter)
             };
 

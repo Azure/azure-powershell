@@ -39,13 +39,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Name of the property. Maximum length is 100 characters. It may contain only letters, digits, period, dash, and underscore characters. This parameter is optional.")]
+            HelpMessage = "Name of the property. Maximum length is 100 characters. " +
+                          "It may contain only letters, digits, period, dash, and underscore characters. " +
+                          "This parameter is optional.")]
         public String Name { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Value of the property. Can contain policy expressions. Maximum length is 1000 characters. It may not be empty or consist only of whitespace. This parameter is optional.")]
+            HelpMessage = "Value of the property. Can contain policy expressions. Maximum length is 1000 characters. " +
+                          "It may not be empty or consist only of whitespace." +
+                          " This parameter is optional.")]
         public String Value { get; set; }
 
         [Parameter(
@@ -63,7 +67,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty type representing the modified property.")]
+            HelpMessage = "If specified then instance of " +
+                          "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty type " +
+                          "representing the modified property.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

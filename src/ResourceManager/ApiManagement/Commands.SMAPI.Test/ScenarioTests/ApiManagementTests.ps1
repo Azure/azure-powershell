@@ -1390,7 +1390,7 @@ Param($resourceGroupName, $serviceName)
     {        
         $newLoggerDescription = getAssetName
 		$eventHubName = "sdkeventhub"
-		$eventHubConnectionString = "TestStringToBeReplaced"
+		$eventHubConnectionString = "TestConnectionString"
 
         $logger = New-AzureRmApiManagementLogger -Context $context -LoggerId $loggerId -Name $eventHubName -ConnectionString $eventHubConnectionString -Description $newLoggerDescription
 
@@ -1403,7 +1403,7 @@ Param($resourceGroupName, $serviceName)
         $newLoggerDescription = getAssetName
 
 		$logger = $null
-        $logger = Set-AzureRmApiManagementLogger -Context $context -LoggerId $loggerId -IsBuffered $false -Description $newLoggerDescription -PassThru
+        $logger = Set-AzureRmApiManagementLogger -Context $context -LoggerId $loggerId -Description $newLoggerDescription -PassThru
 
         Assert-AreEqual $loggerId $logger.LoggerId
         Assert-AreEqual $newLoggerDescription $logger.Description

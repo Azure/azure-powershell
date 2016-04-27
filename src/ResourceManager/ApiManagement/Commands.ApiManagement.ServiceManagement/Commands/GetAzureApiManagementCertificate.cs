@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementCertificate, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementCertificate>))]
+    [OutputType(typeof(IList<PsApiManagementCertificate>), ParameterSetName = new [] { GetAll })]
+    [OutputType(typeof(PsApiManagementCertificate), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all certificates";

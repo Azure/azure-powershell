@@ -32,40 +32,46 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Identifier of new openIdConnectProvider. This parameter is optional. If not specified will be generated.")]
+            HelpMessage = "Identifier of new openIdConnectProvider. This parameter is optional." +
+                          " If not specified will be generated.")]
         public String OpenIdConnectProviderId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "OpenId Connect Provider User friendly name. This parameter is required.")]
+            HelpMessage = "OpenId Connect Provider User friendly name." +
+                          " This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String Name { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Metadata Endpoint URI of the OpenID Connect Provider. This parameter is required.")]
+            HelpMessage = "Metadata Endpoint URI of the OpenID Connect Provider." +
+                          " This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String MetadataEndpointUri { get; set; }
         
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "ClientID of the developer console . This parameter is required.")]
+            HelpMessage = "ClientID of the developer Console. " +
+                          "This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ClientId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "ClientSecret of the developer Console. This parameter is optional.")]
+            HelpMessage = "ClientSecret of the developer Console. " +
+                          "This parameter is optional.")]
         public String ClientSecret { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "OpenId Connect Provider user friendly description. This parameter is optional.")]
+            HelpMessage = "OpenId Connect Provider user friendly description. " +
+                          "This parameter is optional.")]
         public String Description { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

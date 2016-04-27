@@ -73,7 +73,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Array or parameters defined in UrlTemplate. This parameter is optional. If not specified default value will be generated based on the UrlTemplate. Use the parameter to give more details on parameters like description, type, possible values.")]
+            HelpMessage = "Array or parameters defined in UrlTemplate. This parameter is optional. " +
+                          "If not specified default value will be generated based on the UrlTemplate." +
+                          " Use the parameter to give more details on parameters like description, type, possible values.")]
         public PsApiManagementParameter[] TemplateParameters { get; set; }
 
         [Parameter(
@@ -91,7 +93,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation type representing the modified operation.")]
+            HelpMessage = "If specified then instance of " +
+                          "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation type" +
+                          " representing the modified operation.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

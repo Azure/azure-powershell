@@ -1211,6 +1211,30 @@ true/false</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureRmApiManagementAuthorizationServer</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Context</maml:name>
+				<maml:description>
+					<maml:para>Instance of PsApiManagementContext. This parameter is required.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ServerId</maml:name>
 				<maml:description>
@@ -6174,9 +6198,10 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>New-AzureRmApiManagementProduct –Context $apimContext –ProductId 9876543210 –Title Unlimited –Description &apos;Subscribers have completely unlimited access to the API. Administrator approval is required.&apos; –LegalTerms &apos;Free for all&apos; –ApprovalRequired $true –State Published –NotificationPeriod &apos;D10&apos; –SubscriptionPeriod &apos;Y1&apos;</dev:code>
+			<dev:code>New-AzureRmApiManagementProduct -Context $apimContext –ProductId 0123456789 –Title &apos;Starter&apos; –Description &apos;Product requiring approval&apos; –LegalTerms &apos;Strict Terms&apos; –SubscriptionRequired $true
+ –ApprovalRequired $true –State &apos;Published&apos; -SubscriptionsLimit 10</dev:code>
 			<dev:remarks>
-				<maml:para>Crete new product. Subscription and approval required. Notification period – 10 days. Subscription period – 1 year.</maml:para>
+				<maml:para>Create a product which requires approval</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -13861,12 +13886,12 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>IsBuffered</maml:name>
 				<maml:description>
 					<maml:para>Determines whether the records in the logger are buffered before publishing. This property is optional and the default value is true. </maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>PassThru</maml:name>
@@ -13917,9 +13942,9 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Description</maml:name>
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>Description of the Logger. This parameter is optional.</maml:para>
+				<maml:para>Event hub name from Azure classic portal. This parameter is optional. </maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -13928,14 +13953,38 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ConnectionString</maml:name>
+			<maml:description>
+				<maml:para>EventHub Connection String with Send Policy Rights. This parameter is optional.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>IsBuffered</maml:name>
 			<maml:description>
 				<maml:para>Determines whether the records in the logger are buffered before publishing. This property is optional and the default value is true. </maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
-				<maml:name>Nullable`1[Boolean]</maml:name>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Description</maml:name>
+			<maml:description>
+				<maml:para>Description of the Logger. This parameter is optional.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -13968,30 +14017,6 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
 			<maml:name>InformationVariable</maml:name>
 			<maml:description>
 				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Name</maml:name>
-			<maml:description>
-				<maml:para>Event hub name from Azure classic portal. This parameter is optional. </maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ConnectionString</maml:name>
-			<maml:description>
-				<maml:para>EventHub Connection String with Send Policy Rights. This parameter is optional.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -15635,12 +15660,12 @@ OpenId Connect Provider.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
 					<maml:para>Enforce deleting subscriptions to products that are deleted in this update. This parameter is optional. Default value is false.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ValidateOnly</maml:name>
@@ -15697,14 +15722,14 @@ OpenId Connect Provider.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
 				<maml:para>Enforce deleting subscriptions to products that are deleted in this update. This parameter is optional. Default value is false.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
-				<maml:name>Nullable`1[Boolean]</maml:name>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -15869,12 +15894,12 @@ OpenId Connect Provider.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
 					<maml:para>If true, the current configuration database is committed to the Git repository, even if the Git repository has newer changes that would be overwritten. This parameter is optional. Default value is false.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>PassThru</maml:name>
@@ -15924,14 +15949,14 @@ OpenId Connect Provider.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
 				<maml:para>If true, the current configuration database is committed to the Git repository, even if the Git repository has newer changes that would be overwritten. This parameter is optional. Default value is false.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
-				<maml:name>Nullable`1[Boolean]</maml:name>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -16057,7 +16082,7 @@ OpenId Connect Provider.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Enabled</maml:name>
 				<maml:description>
 					<maml:para>Enable Git access. Set to true for enabling and false for disabling. This parameter is required.</maml:para>
@@ -16100,7 +16125,7 @@ OpenId Connect Provider.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Enabled</maml:name>
 			<maml:description>
 				<maml:para>Enable Git access. Set to true for enabling and false for disabling. This parameter is required.</maml:para>

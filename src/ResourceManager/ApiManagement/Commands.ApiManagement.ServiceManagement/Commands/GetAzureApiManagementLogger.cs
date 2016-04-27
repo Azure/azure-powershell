@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementLogger, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementLogger>))]
+    [OutputType(typeof(IList<PsApiManagementLogger>), ParameterSetName = new [] { GetAll })]
+    [OutputType(typeof(PsApiManagementLogger), ParameterSetName = new [] { GetById })]
     public class GetAzureApiManagementLogger : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all loggers";

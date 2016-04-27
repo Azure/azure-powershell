@@ -74,6 +74,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             WriteProgress(new ProgressRecord(0, operation.OperationName, operation.Status.ToString()));
         }
 
+        /// <summary>
+        /// TODO: Revert to standard long running operation once /operationResults endpoint start returning 
+        /// 202 Code for not Completed Operation.
+        /// </summary>
+        /// <see cref="https://msdn.microsoft.com/en-us/library/azure/dn781420.aspx#GetOperation"/>
         protected TenantConfigurationLongRunningOperation WaitForOperationToComplete(TenantConfigurationLongRunningOperation longRunningOperation)
         {
             do
@@ -85,7 +90,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                
                 TestMockSupport.Delay(retryAfter);
 
+                // the operation link is present in the first call to Operation. 
+                // The next calls to /operationResults do not return Location header, hence preserving this value across calls
+                // this is the service side bug.
+                var operationStatusLink = longRunningOperation.OperationLink;
+
                 longRunningOperation = Client.GetLongRunningOperationStatus(longRunningOperation);
+                longRunningOperation.OperationLink = operationStatusLink;
 
                 WriteVerboseWithTimestamp(Resources.VerboseGetOperationStateTimeoutMessage,
                    longRunningOperation.OperationResult.State);

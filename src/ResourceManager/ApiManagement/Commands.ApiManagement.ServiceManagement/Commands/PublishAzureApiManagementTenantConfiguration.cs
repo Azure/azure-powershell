@@ -12,9 +12,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using System;
+    using System.Globalization;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
@@ -32,26 +35,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of the Git branch from which the configuration is to be deployed to the configuration database. This parameter is required.")]
+            HelpMessage = "Name of the Git branch from which the configuration is to be deployed to the configuration database." +
+                          " This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String Branch { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Enforce deleting subscriptions to products that are deleted in this update. This parameter is optional. Default value is false.")]
-        public bool? Force { get; set; }
+            HelpMessage = "Enforce deleting subscriptions to products that are deleted in this update. " +
+                          "This parameter is optional. Default value is false.")]
+        public SwitchParameter Force { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If specified will only validate the changes in the specified git Branch and not deploy. This parameter is optional. Default value is false.")]
+            HelpMessage = "If specified will only validate the changes in the specified git Branch and not deploy. " +
+                          "This parameter is optional. Default value is false.")]
         public SwitchParameter ValidateOnly { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperationResult type representing the operation result.")]
+            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperationResult" +
+                          " type representing the operation result.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
@@ -62,17 +69,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     () => Client.BeginValidateTenantGitConfiguration(
                         Context,
                         Branch,
-                        Force ?? false),
+                        Force.IsPresent),
                     PassThru.IsPresent
                     );
             }
             else
             {
+                // confirm with user before pushing the update.
+                if (!Force.IsPresent &&
+                    !ShouldProcess(
+                    Resources.PublishTenantConfigurationDescription,
+                    Resources.PublishTenantConfigurationDescription,
+                    Resources.ShouldProcessCaption))
+                {
+                    return;
+                }
+
                 ExecuteTenantConfigurationLongRunningCmdletWrap(
                     () => Client.BeginPublishTenantGitConfiguration(
                         Context,
                         Branch,
-                        Force ?? false),
+                        Force.IsPresent),
                     PassThru.IsPresent
                     );
             }

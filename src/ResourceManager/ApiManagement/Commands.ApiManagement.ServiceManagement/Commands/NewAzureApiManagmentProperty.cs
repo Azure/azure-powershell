@@ -32,27 +32,32 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Identifier of new property. This parameter is optional. If not specified will be generated.")]
+            HelpMessage = "Identifier of new property. This parameter is optional." +
+                          " If not specified will be generated.")]
         public String PropertyId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of the property. Maximum length is 100 characters. It may contain only letters, digits, period, dash, and underscore characters. This parameter is required.")]
+            HelpMessage = "Name of the property. Maximum length is 100 characters." +
+                          " It may contain only letters, digits, period, dash, and underscore characters." +
+                          " This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String Name { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Value of the property. Can contain policy expressions. Maximum length is 1000 characters. It may not be empty or consist only of whitespace. This parameter is required.")]
+            HelpMessage = "Value of the property. Can contain policy expressions. Maximum length is 1000 characters." +
+                          " It may not be empty or consist only of whitespace. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String Value { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Determines whether the value is a secret and should be encrypted or not. This parameter is optional. Default Value is not Secret.")]
+            HelpMessage = "Determines whether the value is a secret and should be encrypted or not." +
+                          " This parameter is optional. Default Value is not Secret.")]
         public SwitchParameter Secret { get; set; }
 
         [Parameter(

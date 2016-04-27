@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementOpenIdConnectProvider, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementOpenIdConnectProvider>))]
+    [OutputType(typeof(IList<PsApiManagementOpenIdConnectProvider>), ParameterSetName = new [] { GetAll })]
+    [OutputType(typeof(PsApiManagementOpenIdConnectProvider), ParameterSetName = new [] { GetById })]
     public class GetAzureApiManagementOpenIdConnectProvider : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all OpenID Connect Providers";
@@ -38,14 +39,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ParameterSetName = GetById,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Identifier of a OpenID Connect Provider. If specified will try to find openId Connect Provider by the identifier. This parameter is optional.")]
+            HelpMessage = "Identifier of a OpenID Connect Provider. " +
+                          "If specified will try to find openId Connect Provider by the identifier. " +
+                          "This parameter is optional.")]
         public String OpenIdConnectProviderId { get; set; }
 
         [Parameter(
             ParameterSetName = FindByName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "OpenID Connect Provider friendly name. If specified will try to find openID Connect Provider by the name. This parameter is optional.")]
+            HelpMessage = "OpenID Connect Provider friendly name." +
+                          " If specified will try to find openID Connect Provider by the name. " +
+                          "This parameter is optional.")]
         public String Name { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

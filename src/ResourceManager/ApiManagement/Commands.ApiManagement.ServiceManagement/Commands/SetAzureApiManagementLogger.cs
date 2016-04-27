@@ -59,13 +59,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Determines whether the records in the logger are buffered before publishing. This parameter is optional and the default value is true. ")]
-        public bool? IsBuffered { get; set; }
+            HelpMessage = "Determines whether the records in the logger are buffered before publishing." +
+                          " This parameter is optional and the default value is true. ")]
+        public SwitchParameter IsBuffered { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger type  representing the modified logger.")]
+            HelpMessage = "If specified then instance of " +
+                          "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger type " +
+                          " representing the modified logger.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
@@ -80,11 +83,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             else if ((string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(ConnectionString)) ||
                 (!string.IsNullOrWhiteSpace(Name) && string.IsNullOrWhiteSpace(ConnectionString)))
             {
-                WriteCommandDetail("When updating Logger Credentials, we need to Provide both Name and ConnectionString parameters");
+                WriteWarning("When updating Logger Credentials, we need to Provide both -Name and -ConnectionString parameters");
                 return;
             }
 
-            Client.LoggerSet(Context, LoggerTypeContract.AzureEventHub, LoggerId, Description, credentials, IsBuffered);
+            Client.LoggerSet(Context, LoggerTypeContract.AzureEventHub, LoggerId, Description, credentials, IsBuffered.IsPresent);
 
             if (PassThru)
             {

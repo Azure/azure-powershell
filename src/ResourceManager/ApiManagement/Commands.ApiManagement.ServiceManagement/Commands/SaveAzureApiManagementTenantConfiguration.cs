@@ -14,6 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using System.Globalization;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
@@ -39,22 +41,39 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If true, the current configuration database is committed to the Git repository, even if the Git repository has newer changes that would be overwritten. This parameter is optional.")]
-        public bool? Force { get; set; }
+            HelpMessage = "If true, the current configuration database is committed to the Git repository," +
+                          " even if the Git repository has newer changes that would be overwritten. " +
+                          "This parameter is optional.")]
+        public SwitchParameter Force { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperationResult type representing the operation result.")]
+            HelpMessage = "If specified then instance of" +
+                          " Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperationResult type" +
+                          " representing the operation result.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
+            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.SaveTenantConfigurationDescription, Branch);
+            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.SaveTenantConfigurationWarning, Branch);
+
+            // Do nothing if force is not specified and user cancelled the operation
+            if (!Force.IsPresent &&
+                !ShouldProcess(
+                    actionDescription,
+                    actionWarning,
+                    Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
             ExecuteTenantConfigurationLongRunningCmdletWrap(
                 () => Client.BeginSaveTenantGitConfiguration(
                     Context,
                     Branch,
-                    Force ?? false),
+                    Force.IsPresent),
                 PassThru.IsPresent
                 );
         }

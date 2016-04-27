@@ -81,7 +81,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct type representing the modified product.")]
+            HelpMessage = "If specified then instance of" +
+                          " Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct " +
+                          "type representing the modified product.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

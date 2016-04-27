@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApi, DefaultParameterSetName = AllApis)]
-    [OutputType(typeof(IList<PsApiManagementApi>))]
+    [OutputType(typeof(IList<PsApiManagementApi>), ParameterSetName = new [] { AllApis, FindByName, FindByProductId })]
+    [OutputType(typeof(PsApiManagementApi), ParameterSetName = new[] { FindById })]
     public class GetAzureApiManagementApi : AzureApiManagementCmdletBase
     {
         private const string FindByProductId = "Find by product ID";

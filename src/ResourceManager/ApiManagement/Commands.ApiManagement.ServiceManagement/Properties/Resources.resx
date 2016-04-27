@@ -205,12 +205,28 @@
     <value>Are you sure you want to remove Property "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="PublishTenantConfigurationDescription" xml:space="preserve">
+    <value>Subscriptions to products which are deleted will be also be deleted.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="PublishTenantConfigurationWarning" xml:space="preserve">
+    <value>Are you sure you want to enforce deleting subscriptions to products that are deleted in this update?</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="SavePolicyDescription" xml:space="preserve">
     <value>Saving "{0}" policy to file "{1}".</value>
     <comment>Process workflow</comment>
   </data>
   <data name="SavePolicyWarning" xml:space="preserve">
     <value>File "{0}" already exists. Override?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SaveTenantConfigurationDescription" xml:space="preserve">
+    <value>Overwriting changes in Git repository "{0}" with Configuration Database.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SaveTenantConfigurationWarning" xml:space="preserve">
+    <value>Are you sure  you want to overwrite your changes in Git repository "{0}" with Configuration Database?</value>
     <comment>Process workflow</comment>
   </data>
   <data name="ShouldProcessCaption" xml:space="preserve">

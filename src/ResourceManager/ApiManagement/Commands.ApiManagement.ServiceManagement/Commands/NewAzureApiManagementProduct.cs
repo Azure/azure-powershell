@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Identifier of new Product. This parameter is optional. If not specified will be generated.")]
+            HelpMessage = "Identifier of new Product. This parameter is optional. " +
+                          "If not specified will be generated.")]
         public String ProductId { get; set; }
 
         [Parameter(
@@ -57,25 +58,29 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Whether the product requires subscription or not. This parameter is optional. Default value is $true.")]
+            HelpMessage = "Whether the product requires subscription or not. This parameter is optional." +
+                          " Default value is $true.")]
         public bool? SubscriptionRequired { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Whether subscription to the product requires approval or not. This parameter is optional. Default value is $false.")]
+            HelpMessage = "Whether subscription to the product requires approval or not. This parameter is optional." +
+                          " Default value is $false.")]
         public bool? ApprovalRequired { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Maximum number of simultaneous subscriptions. This parameter is optional. Default value is 1.")]
+            HelpMessage = "Maximum number of simultaneous subscriptions. This parameter is optional." +
+                          " Default value is 1.")]
         public Int32? SubscriptionsLimit { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Product state. One of: NotPublished, Published. This parameter is optional. Default value is NotPublished.")]
+            HelpMessage = "Product state. One of: NotPublished, Published. This parameter is optional." +
+                          " Default value is NotPublished.")]
         public PsApiManagementProductState? State { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
@@ -88,6 +93,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 approvalRequired = ApprovalRequired ?? false;
             }
 
+            Int32? subscriptionsLimit = null;
+            if (SubscriptionRequired.HasValue && SubscriptionRequired.Value)
+            {
+                subscriptionsLimit = SubscriptionsLimit ?? 1;
+            }
+
             var product = Client.ProductCreate(
                 Context,
                 productId,
@@ -96,7 +107,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 LegalTerms,
                 SubscriptionRequired ?? true,
                 approvalRequired,
-                SubscriptionsLimit,
+                subscriptionsLimit,
                 State);
 
             WriteObject(product);

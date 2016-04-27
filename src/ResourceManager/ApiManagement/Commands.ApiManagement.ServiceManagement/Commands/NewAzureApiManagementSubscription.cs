@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Identifier of new subscription. This parameter is optional. If not specified will be generated.")]
+            HelpMessage = "Identifier of new subscription. This parameter is optional." +
+                          " If not specified will be generated.")]
         public String SubscriptionId { get; set; }
 
         [Parameter(
@@ -59,13 +60,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Subscription primary key. This parameter is optional. If not specified will be generated automatically. Must be 1 to 300 characters long.")]
+            HelpMessage = "Subscription primary key. This parameter is optional. If not specified will be generated automatically." +
+                          " Must be 1 to 300 characters long.")]
         public String PrimaryKey { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Subscription secondary key. This parameter is optional. If not specified will be generated automatically. Must be 1 to 300 characters long.")]
+            HelpMessage = "Subscription secondary key. This parameter is optional. If not specified will be generated automatically." +
+                          " Must be 1 to 300 characters long.")]
         public String SecondaryKey { get; set; }
 
         [Parameter(

@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementGroup, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementGroup>))]
+    [OutputType(typeof(IList<PsApiManagementGroup>), ParameterSetName = new [] { GetAll, FindByUser, FindByProduct })]
+    [OutputType(typeof(PsApiManagementGroup), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementGroup : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all groups";
@@ -52,14 +53,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ParameterSetName = FindByUser,
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Identifier of existing user. If specified will return all groups the user belongs to. This parameter is optional.")]
+            HelpMessage = "Identifier of existing user. If specified will return all groups the user belongs to. " +
+                          "This parameter is optional.")]
         public String UserId { get; set; }
 
         [Parameter(
             ParameterSetName = FindByProduct,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Identifier of existing product. If specified will return all groups the product assigned to. This parameter is optional.")]
+            HelpMessage = "Identifier of existing product. If specified will return all groups the product assigned to. " +
+                          "This parameter is optional.")]
         public String ProductId { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

@@ -259,6 +259,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Subscriptions to products which are deleted will be also be deleted..
+        /// </summary>
+        internal static string PublishTenantConfigurationDescription {
+            get {
+                return ResourceManager.GetString("PublishTenantConfigurationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to enforce deleting subscriptions to products that are deleted in this update?.
+        /// </summary>
+        internal static string PublishTenantConfigurationWarning {
+            get {
+                return ResourceManager.GetString("PublishTenantConfigurationWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saving &quot;{0}&quot; policy to file &quot;{1}&quot;..
         /// </summary>
         internal static string SavePolicyDescription {
@@ -273,6 +291,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         internal static string SavePolicyWarning {
             get {
                 return ResourceManager.GetString("SavePolicyWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwriting changes in Git repository &quot;{0}&quot; with Configuration Database..
+        /// </summary>
+        internal static string SaveTenantConfigurationDescription {
+            get {
+                return ResourceManager.GetString("SaveTenantConfigurationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure  you want to overwrite your changes in Git repository &quot;{0}&quot; with Configuration Database?.
+        /// </summary>
+        internal static string SaveTenantConfigurationWarning {
+            get {
+                return ResourceManager.GetString("SaveTenantConfigurationWarning", resourceCulture);
             }
         }
         

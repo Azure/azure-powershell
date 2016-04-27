@@ -67,15 +67,6 @@
           <Description>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -171,15 +162,6 @@
           </Attributes>
           <Aliases />
           <Description>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -279,15 +261,6 @@
           <Description>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -378,15 +351,6 @@ true/false</ReturnTypeDescription>
           </Attributes>
           <Aliases />
           <Description>Specification format (Wadl or Swagger). This parameter is required.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -491,15 +455,6 @@ true/false</ReturnTypeDescription>
           <Description>Instance of PsApiManagementContext. This parameter is required.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ApiId</Name>
           <Attributes>
@@ -591,9 +546,11 @@ true/false</ReturnTypeDescription>
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Context ServerId Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Get all authorization server" Params="Context Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Get by Id" Params="Context ServerId Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
+        <string>Get-AzureRmApiManagementAuthorizationServer -Context &lt;PsApiManagementContext&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
         <string>Get-AzureRmApiManagementAuthorizationServer -Context &lt;PsApiManagementContext&gt; [-ServerId &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
@@ -614,15 +571,6 @@ true/false</ReturnTypeDescription>
           </Attributes>
           <Aliases />
           <Description>Identifier of the authorization server. If specified will find authorization server by the identifier. This parameter is optional.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -699,15 +647,6 @@ true/false</ReturnTypeDescription>
           </Attributes>
           <Aliases />
           <Description>Instance of PsApiManagementContext. This parameter is required.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -806,15 +745,6 @@ true/false</ReturnTypeDescription>
           </Attributes>
           <Aliases />
           <Description>Group name. If specified will try to find group by the name. This parameter is optional.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -945,15 +875,6 @@ true/false</ReturnTypeDescription>
           <Description>Identifier of API Operation belongs to. This parameter is required.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>OperationId</Name>
           <Attributes>
@@ -1068,15 +989,6 @@ true/false</ReturnTypeDescription>
           </Attributes>
           <Aliases />
           <Description>Identifier of existing operation. If specified with ApiId will return operation-scope policy. This parameters is optional.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1199,15 +1111,6 @@ true/false</ReturnTypeDescription>
           <Description>Instance of PsApiManagementContext. This parameter is required.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ProductId</Name>
           <Attributes>
@@ -1305,15 +1208,6 @@ true/false</ReturnTypeDescription>
           </Attributes>
           <Aliases />
           <Description>Instance of PsApiManagementContext. This parameter is required.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1431,15 +1325,6 @@ true/false</ReturnTypeDescription>
           </Attributes>
           <Aliases />
           <Description>Instance of PsApiManagementContext. This parameter is required.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1598,15 +1483,6 @@ true/false</ReturnTypeDescription>
           <Description>Identifier of existing user. This parameter is required.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -1714,15 +1590,6 @@ Imported API</ReturnTypeDescription>
           </Attributes>
           <Aliases />
           <Description>Web API Path. Last part of the API's public URL. This URL will be used by API consumers for sending requests to the web service. Must be 1 to 400 characters long. This parameter is optional. Default value is $null.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1917,15 +1784,6 @@ Imported API</ReturnTypeDescription>
           <Aliases />
           <Description>Array of products IDs to add the new API to. This parameter is optional.</Description>
           <DefaultValue>$null</DefaultValue>
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
@@ -2156,15 +2014,6 @@ Imported API</ReturnTypeDescription>
           <Description>Resource owner password. This parameter is required if ‘ResourceOwnerPassword’ is present in -GrantTypes.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -2263,15 +2112,6 @@ Imported API</ReturnTypeDescription>
           <Description>Password for the certificate. This parameter is required.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="Byte[]" varLen="true" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>PfxBytes</Name>
           <Attributes>
@@ -2357,15 +2197,6 @@ Imported API</ReturnTypeDescription>
           </Attributes>
           <Aliases />
           <Description>Name of deployed API Management service.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2462,15 +2293,6 @@ Imported API</ReturnTypeDescription>
           </Attributes>
           <Aliases />
           <Description>Group description. This parameter is optional.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2624,15 +2446,6 @@ Imported API</ReturnTypeDescription>
           </Attributes>
           <Aliases />
           <Description>Array of possible operation responses. This parameter is optional.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2804,26 +2617,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>Maximum number of simultaneous subscriptions. This parameter is optional. Default value is 1.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>SubscriptionPeriod</Name>
-          <Attributes>
-            <string>System.Management.Automation.ValidatePatternAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>The period user subscriptions stays active once approved. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>NotificationPeriod</Name>
-          <Attributes>
-            <string>System.Management.Automation.ValidatePatternAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Specifies upcoming subscription expiration notification period. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="Nullable`1[PsApiManagementProductState]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>State</Name>
           <Attributes>
@@ -2831,15 +2624,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>Product state. One of: NotPublished, Published. This parameter is optional. Default value is NotPublished.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2877,8 +2661,9 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
         </Example>
         <Example>
           <Name>Example 2</Name>
-          <Cmd>New-AzureRmApiManagementProduct –Context $apimContext –ProductId 9876543210 –Title Unlimited –Description 'Subscribers have completely unlimited access to the API. Administrator approval is required.' –LegalTerms 'Free for all' –ApprovalRequired $true –State Published –NotificationPeriod 'D10' –SubscriptionPeriod 'Y1'</Cmd>
-          <Description>Crete new product. Subscription and approval required. Notification period – 10 days. Subscription period – 1 year.</Description>
+          <Cmd>New-AzureRmApiManagementProduct -Context $apimContext –ProductId 0123456789 –Title 'Starter' –Description 'Product requiring approval' –LegalTerms 'Strict Terms' –SubscriptionRequired $true
+ –ApprovalRequired $true –State 'Published' -SubscriptionsLimit 10</Cmd>
+          <Description>Create a product which requires approval</Description>
           <Output />
         </Example>
       </Examples>
@@ -2980,15 +2765,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>Subscription state. This parameter is optional. Default value is $null.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -3126,15 +2902,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>Note on the user. This parameter is optional. Default value is $null.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -3229,15 +2996,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>If specified will write true in case operation succeeds. This parameter is optional.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -3337,15 +3095,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -3440,15 +3189,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -3547,15 +3287,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -3650,15 +3381,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -3767,15 +3489,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>If specified will write true in case operation succeeds. This parameter is optional.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -3866,15 +3579,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -4028,15 +3732,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>If specified will write true in case operation succeeds. This parameter is optional.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -4134,15 +3829,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -4237,15 +3923,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -4353,15 +4030,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -4457,15 +4125,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -4637,15 +4296,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi type representing the set API.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -4887,15 +4537,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>If specified will write Instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer type . This parameter is optional.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -5002,15 +4643,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate type  representing the modified group.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Byte[]" varLen="true" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -5125,15 +4757,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup type  representing the modified group.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -5299,15 +4922,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation type representing the modified operation.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -5416,15 +5030,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -5605,24 +5210,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>Maximum number of simultaneous subscriptions. This parameter is optional. Default value is 1.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
-          <Name>SubscriptionPeriod</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>The period user subscriptions stays active once approved. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
-          <Name>NotificationPeriod</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Specifies upcoming subscription expiration notification period. This parameter is optional. Default value is $null. The format is: {period}{value}. Examples: D2 (two days), M6 (six months), Y1(one year).</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="Nullable`1[PsApiManagementProductState]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>State</Name>
           <Attributes>
@@ -5639,15 +5226,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           </Attributes>
           <Aliases />
           <Description>If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct type representing the modified product.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -5791,15 +5369,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscripition type representing the modified subscription.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -5941,15 +5510,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
           <Description>If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser type representing the modified user.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>In-memory profile.</Description>
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationAction</Name>
           <Attributes>
@@ -6089,7 +5649,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <ParamSets>
         <CommandParameterSetInfo2 Name="Get all properties" Params="Context Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="Get by property ID" Params="Context PropertyId Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="Find by property Name" Params="Context Name Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Find properties containing Name" Params="Context Name Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="Find properties by Tag" Params="Context Tag Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
@@ -6638,7 +6198,7 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
         <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Context LoggerId Name ConnectionString Description IsBuffered PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureRmApiManagementLogger -Context &lt;PsApiManagementContext&gt; -LoggerId &lt;String&gt; [-Name &lt;String&gt;] [-ConnectionString &lt;String&gt;] [-Description &lt;String&gt;] [-IsBuffered &lt;Nullable`1[Boolean]&gt;] [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmApiManagementLogger -Context &lt;PsApiManagementContext&gt; -LoggerId &lt;String&gt; [-Name &lt;String&gt;] [-ConnectionString &lt;String&gt;] [-Description &lt;String&gt;] [-IsBuffered] [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="PsApiManagementContext" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -6662,21 +6222,39 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
-          <Name>Description</Name>
+          <Name>Name</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>Description of the Logger. This parameter is optional.</Description>
+          <Description>Event hub name from Azure classic portal. This parameter is optional. </Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="Nullable`1[Boolean]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>ConnectionString</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>EventHub Connection String with Send Policy Rights. This parameter is optional.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>IsBuffered</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Determines whether the records in the logger are buffered before publishing. This property is optional and the default value is true. </Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>Description</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Description of the Logger. This parameter is optional.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -6711,24 +6289,6 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
             <string>iv</string>
           </Aliases>
           <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
-          <Name>Name</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Event hub name from Azure classic portal. This parameter is optional. </Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
-          <Name>ConnectionString</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>EventHub Connection String with Send Policy Rights. This parameter is optional.</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -7483,7 +7043,7 @@ OpenId Connect Provider.</Description>
         <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Context Branch Force ValidateOnly PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Publish-AzureRmApiManagementTenantGitConfiguration -Context &lt;PsApiManagementContext&gt; -Branch &lt;String&gt; [-Force &lt;Nullable`1[Boolean]&gt;] [-ValidateOnly] [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Publish-AzureRmApiManagementTenantGitConfiguration -Context &lt;PsApiManagementContext&gt; -Branch &lt;String&gt; [-Force] [-ValidateOnly] [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="PsApiManagementContext" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -7506,7 +7066,7 @@ OpenId Connect Provider.</Description>
           <Description>Name of the Git branch from which the configuration is to be deployed to the configuration database. This parameter is required.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="Nullable`1[Boolean]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>Force</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -7594,7 +7154,7 @@ OpenId Connect Provider.</Description>
         <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Context Branch Force PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Save-AzureRmApiManagementTenantGitConfiguration -Context &lt;PsApiManagementContext&gt; -Branch &lt;String&gt; [-Force &lt;Nullable`1[Boolean]&gt;] [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Save-AzureRmApiManagementTenantGitConfiguration -Context &lt;PsApiManagementContext&gt; -Branch &lt;String&gt; [-Force] [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="PsApiManagementContext" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -7617,7 +7177,7 @@ OpenId Connect Provider.</Description>
           <Description>Name of the Git branch in which to commit the current configuration snapshot. This parameter is required.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="Nullable`1[Boolean]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>Force</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -7703,7 +7263,7 @@ OpenId Connect Provider.</Description>
           <Description>Instance of PsApiManagementContext. This parameter is required.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="Boolean" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+        <ParameterDescription type="Boolean" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>Enabled</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>

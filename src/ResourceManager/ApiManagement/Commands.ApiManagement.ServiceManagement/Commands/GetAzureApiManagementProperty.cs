@@ -20,12 +20,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementProperty, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementProperty>))]
+    [OutputType(typeof(IList<PsApiManagementProperty>), ParameterSetName = new []{ GetAll, FindByName, FindByTag })]
+    [OutputType(typeof(PsApiManagementProperty), ParameterSetName = new [] { GetById })]
     public class GetAzureApiManagementProperty : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all properties";
         private const string GetById = "Get by property ID";
-        private const string FindByName = "Find by property Name";
+        private const string FindByName = "Find properties containing Name";
         private const string FindByTag = "Find properties by Tag";
 
         [Parameter(
