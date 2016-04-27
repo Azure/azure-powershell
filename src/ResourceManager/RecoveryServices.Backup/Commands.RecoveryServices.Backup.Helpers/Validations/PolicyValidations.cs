@@ -18,7 +18,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
@@ -26,8 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     public partial class PolicyHelpers
     {
         public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
-            AzureRmRecoveryServicesBackupLongTermRetentionPolicy ltrPolicy,
-            AzureRmRecoveryServicesBackupSimpleSchedulePolicy schPolicy)
+            LongTermRetentionPolicy ltrPolicy,
+            SimpleSchedulePolicy schPolicy)
         {
             // for daily schedule, daily retention policy is required
             if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Daily &&

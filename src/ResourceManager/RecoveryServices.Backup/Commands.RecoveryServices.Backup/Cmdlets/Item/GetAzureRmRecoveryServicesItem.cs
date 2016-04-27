@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of items
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem", DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(AzureRmRecoveryServicesBackupItemBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem", DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase))]
     public class GetAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         internal const string GetItemsForContainerParamSet = "GetItemsForContainer";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Item.Container, ParameterSetName = GetItemsForContainerParamSet)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupContainerBase Container { get; set; }
+        public ContainerBase Container { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Common.BackupManagementType, ParameterSetName = GetItemsForVaultParamSet)]
         [ValidateNotNullOrEmpty]
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 else
                 {
                     psBackupProvider = providerManager.GetProviderInstance(WorkloadType,
-                    (Container as AzureRmRecoveryServicesBackupManagementContext).BackupManagementType);
+                    (Container as ManagementContext).BackupManagementType);
                 }
 
                 var itemModels = psBackupProvider.ListProtectedItems();

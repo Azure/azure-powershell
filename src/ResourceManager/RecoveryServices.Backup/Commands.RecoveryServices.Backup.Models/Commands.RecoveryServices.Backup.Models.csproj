@@ -43,18 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmJob.cs" />
-    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmRecoveryPoint.cs" />
+    <Compile Include="AzureVmModels\AzureVmJob.cs" />
+    <Compile Include="AzureVmModels\AzureVmRecoveryPoint.cs" />
     <Compile Include="BaseObjects.cs" />
     <Compile Include="CmdletParamEnums.cs" />
     <Compile Include="CommonModels\Utils.cs" />
     <Compile Include="CommonModels\Enums.cs" />
     <Compile Include="CommonModels\PolicyRetentionObjects.cs" />
     <Compile Include="CommonModels\PolicyScheduleObjects.cs" />
-    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmPolicy.cs" />
-    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmItem.cs" />
-    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmContainer.cs" />
-    <Compile Include="DpmModels\AzureRmRecoveryServicesDpmBackupEngine.cs" />
+    <Compile Include="AzureVmModels\AzureVmPolicy.cs" />
+    <Compile Include="AzureVmModels\AzureVmItem.cs" />
+    <Compile Include="AzureVmModels\AzureVmContainer.cs" />
+    <Compile Include="DpmModels\DpmBackupEngine.cs" />
     <Compile Include="MabModels\AzureRmRecoveryServicesMabContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

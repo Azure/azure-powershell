@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesBackupDpmBackupEngine : AzureRmRecoveryServicesBackupEngineBase
+    public class DpmBackupEngine : BackupEngineBase
     {
         /// <summary>
         /// Friendly name of the container
@@ -33,16 +33,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Status { get; set; }
 
-        public AzureRmRecoveryServicesBackupDpmBackupEngine(BackupEngineResource backupEngine)
+        public DpmBackupEngine(ServiceClientModel.BackupEngineResource backupEngine)
             : base(backupEngine)
         {
-            BackupEngineBase dpmBackupEngine = (BackupEngineBase)backupEngine.Properties;
+            ServiceClientModel.BackupEngineBase dpmBackupEngine = (ServiceClientModel.BackupEngineBase)backupEngine.Properties;
             FriendlyName = dpmBackupEngine.FriendlyName;
             Status = dpmBackupEngine.RegistrationStatus;
         }
     }
 
-    public class AzureRmRecoveryServicesBackupAzureBackupServerEngine : AzureRmRecoveryServicesBackupEngineBase
+    public class AzureRmRecoveryServicesBackupAzureBackupServerEngine : BackupEngineBase
     {
         /// <summary>
         /// Friendly name of the container
@@ -54,10 +54,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Status { get; set; }
 
-        public AzureRmRecoveryServicesBackupAzureBackupServerEngine(BackupEngineResource backupEngine)
+        public AzureRmRecoveryServicesBackupAzureBackupServerEngine(ServiceClientModel.BackupEngineResource backupEngine)
             : base(backupEngine)
         {
-            AzureBackupServerEngine azureBackupServerEngine = (AzureBackupServerEngine)backupEngine.Properties;
+            ServiceClientModel.AzureBackupServerEngine azureBackupServerEngine = (ServiceClientModel.AzureBackupServerEngine)backupEngine.Properties;
             FriendlyName = azureBackupServerEngine.FriendlyName;
             Status = azureBackupServerEngine.RegistrationStatus;
         }

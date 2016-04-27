@@ -20,8 +20,10 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
@@ -52,13 +54,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string azureVMResourceGroupName = (string)ProviderData[ItemParams.AzureVMResourceGroupName];
             string parameterSetName = (string)ProviderData[ItemParams.ParameterSetName];
 
-            AzureRmRecoveryServicesBackupPolicyBase policy = (AzureRmRecoveryServicesBackupPolicyBase)
+            PolicyBase policy = (PolicyBase)
                                                  ProviderData[ItemParams.Policy];
 
-            AzureRmRecoveryServicesBackupItemBase itemBase = (AzureRmRecoveryServicesBackupItemBase)
+            ItemBase itemBase = (ItemBase)
                                                  ProviderData[ItemParams.Item];
 
-            AzureRmRecoveryServicesBackupIaasVmItem item = (AzureRmRecoveryServicesBackupIaasVmItem)
+            AzureVmItem item = (AzureVmItem)
                                                  ProviderData[ItemParams.Item];
             // do validations
 
@@ -124,10 +126,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
 
-            AzureRmRecoveryServicesBackupItemBase itemBase = (AzureRmRecoveryServicesBackupItemBase)
+            ItemBase itemBase = (ItemBase)
                                                  ProviderData[ItemParams.Item];
 
-            AzureRmRecoveryServicesBackupIaasVmItem item = (AzureRmRecoveryServicesBackupIaasVmItem)
+            AzureVmItem item = (AzureVmItem)
                                                  ProviderData[ItemParams.Item];
             // do validations
 
@@ -181,16 +183,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public BaseRecoveryServicesJobResponse TriggerBackup()
         {
-            AzureRmRecoveryServicesBackupItemBase item = (AzureRmRecoveryServicesBackupItemBase)ProviderData[ItemParams.Item];
-            AzureRmRecoveryServicesBackupIaasVmItem iaasVmItem = item as AzureRmRecoveryServicesBackupIaasVmItem;
+            ItemBase item = (ItemBase)ProviderData[ItemParams.Item];
+            AzureVmItem iaasVmItem = item as AzureVmItem;
             return ServiceClientAdapter.TriggerBackup(IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectionContainerName),
                 IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectedItemName));
         }
 
         public BaseRecoveryServicesJobResponse TriggerRestore()
         {
-            AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rp = ProviderData[RestoreBackupItemParams.RecoveryPoint]
-                as AzureRmRecoveryServicesBackupIaasVmRecoveryPoint;
+            AzureVmRecoveryPoint rp = ProviderData[RestoreBackupItemParams.RecoveryPoint]
+                as AzureVmRecoveryPoint;
             string storageAccountId = ProviderData[RestoreBackupItemParams.StorageAccountId].ToString();
             string storageAccountLocation = ProviderData[RestoreBackupItemParams.StorageAccountLocation].ToString();
             string storageAccountType = ProviderData[RestoreBackupItemParams.StorageAccountType].ToString();
@@ -204,10 +206,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesBackupRecoveryPointBase GetRecoveryPointDetails()
+        public CmdletModel.RecoveryPointBase GetRecoveryPointDetails()
         {
-            AzureRmRecoveryServicesBackupIaasVmItem item = ProviderData[GetRecoveryPointParams.Item]
-                as AzureRmRecoveryServicesBackupIaasVmItem;
+            AzureVmItem item = ProviderData[GetRecoveryPointParams.Item]
+                as AzureVmItem;
 
             string recoveryPointId = ProviderData[GetRecoveryPointParams.RecoveryPointId].ToString();
 
@@ -219,12 +221,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
         }
 
-        public List<AzureRmRecoveryServicesBackupRecoveryPointBase> ListRecoveryPoints()
+        public List<CmdletModel.RecoveryPointBase> ListRecoveryPoints()
         {
             DateTime startDate = (DateTime)(ProviderData[GetRecoveryPointParams.StartDate]);
             DateTime endDate = (DateTime)(ProviderData[GetRecoveryPointParams.EndDate]);
-            AzureRmRecoveryServicesBackupIaasVmItem item = ProviderData[GetRecoveryPointParams.Item]
-                as AzureRmRecoveryServicesBackupIaasVmItem;
+            AzureVmItem item = ProviderData[GetRecoveryPointParams.Item]
+                as AzureVmItem;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
@@ -251,13 +253,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string policyName = (string)ProviderData[PolicyParams.PolicyName];
             Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType workloadType =
                 (Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType)ProviderData[PolicyParams.WorkloadType];
-            AzureRmRecoveryServicesBackupRetentionPolicyBase retentionPolicy =
+            RetentionPolicyBase retentionPolicy =
                 ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ?
-                (AzureRmRecoveryServicesBackupRetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
+                (RetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
                 null;
-            AzureRmRecoveryServicesBackupSchedulePolicyBase schedulePolicy =
+            SchedulePolicyBase schedulePolicy =
                 ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ?
-                (AzureRmRecoveryServicesBackupSchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
+                (SchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
                 null;
 
             // do validations
@@ -270,14 +272,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Logger.Instance.WriteDebug("Validation of Retention policy is successful");
 
             // update the retention times from backupSchedule to retentionPolicy after converting to UTC           
-            CopyScheduleTimeToRetentionTimes((AzureRmRecoveryServicesBackupLongTermRetentionPolicy)retentionPolicy,
-                                             (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)schedulePolicy);
+            CopyScheduleTimeToRetentionTimes((CmdletModel.LongTermRetentionPolicy)retentionPolicy,
+                                             (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
             Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
 
             // Now validate both RetentionPolicy and SchedulePolicy together
             PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
-                                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)retentionPolicy,
-                                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)schedulePolicy);
+                                (CmdletModel.LongTermRetentionPolicy)retentionPolicy,
+                                (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
             Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
             // construct Service Client policy request            
@@ -288,9 +290,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     Properties = new AzureIaaSVMProtectionPolicy()
                     {
                         RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
-                                                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)retentionPolicy),
+                                                (CmdletModel.LongTermRetentionPolicy)retentionPolicy),
                         SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
-                                                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)schedulePolicy)
+                                                (CmdletModel.SimpleSchedulePolicy)schedulePolicy)
                     }
                 }
             };
@@ -302,18 +304,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public ProtectionPolicyResponse ModifyPolicy()
         {
-            AzureRmRecoveryServicesBackupRetentionPolicyBase retentionPolicy =
+            RetentionPolicyBase retentionPolicy =
                ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ?
-               (AzureRmRecoveryServicesBackupRetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
+               (RetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
                null;
-            AzureRmRecoveryServicesBackupSchedulePolicyBase schedulePolicy =
+            SchedulePolicyBase schedulePolicy =
                 ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ?
-                (AzureRmRecoveryServicesBackupSchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
+                (SchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
                 null;
 
-            AzureRmRecoveryServicesBackupPolicyBase policy =
+            PolicyBase policy =
                 ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ?
-                (AzureRmRecoveryServicesBackupPolicyBase)ProviderData[PolicyParams.ProtectionPolicy] :
+                (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy] :
                 null;
 
             // do validations
@@ -330,26 +332,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (schedulePolicy != null)
             {
                 ValidateAzureVMSchedulePolicy(schedulePolicy);
-                ((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).SchedulePolicy = schedulePolicy;
+                ((AzureVmPolicy)policy).SchedulePolicy = schedulePolicy;
                 Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
             }
             if (retentionPolicy != null)
             {
                 ValidateAzureVMRetentionPolicy(retentionPolicy);
-                ((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).RetentionPolicy = retentionPolicy;
+                ((AzureVmPolicy)policy).RetentionPolicy = retentionPolicy;
                 Logger.Instance.WriteDebug("Validation of Retention policy is successful");
             }
 
             // copy the backupSchedule time to retentionPolicy after converting to UTC
             CopyScheduleTimeToRetentionTimes(
-                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).RetentionPolicy,
-                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).SchedulePolicy);
+                (CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy,
+                (CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy);
             Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
 
             // Now validate both RetentionPolicy and SchedulePolicy matches or not
             PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
-                (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).RetentionPolicy,
-                (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).SchedulePolicy);
+                (CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy,
+                (CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy);
             Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
             // construct Service Client policy request            
@@ -360,9 +362,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     Properties = new AzureIaaSVMProtectionPolicy()
                     {
                         RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
-                                  (AzureRmRecoveryServicesBackupLongTermRetentionPolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).RetentionPolicy),
+                                  (CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy),
                         SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
-                                  (AzureRmRecoveryServicesBackupSimpleSchedulePolicy)((AzureRmRecoveryServicesBackupIaasVmPolicy)policy).SchedulePolicy)
+                                  (CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy)
                     }
                 }
             };
@@ -371,7 +373,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                                                serviceClientRequest);
         }
 
-        public List<AzureRmRecoveryServicesBackupContainerBase> ListProtectionContainers()
+        public List<ContainerBase> ListProtectionContainers()
         {
             Models.ContainerType containerType = (Models.ContainerType)this.ProviderData[ContainerParams.ContainerType];
             Models.BackupManagementType? backupManagementTypeNullable = (Models.BackupManagementType?)this.ProviderData[ContainerParams.BackupManagementType];
@@ -400,27 +402,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             var listResponse = ServiceClientAdapter.ListContainers(queryParams);
 
-            List<AzureRmRecoveryServicesBackupContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
+            List<ContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 
             // 4. Filter by RG Name
             if (!string.IsNullOrEmpty(resourceGroupName))
             {
                 containerModels = containerModels.Where(containerModel =>
-                    (containerModel as AzureRmRecoveryServicesBackupIaasVmContainer).ResourceGroupName == resourceGroupName).ToList();
+                    (containerModel as AzureVmContainer).ResourceGroupName == resourceGroupName).ToList();
             }
 
             return containerModels;
         }
 
-        public List<AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers()
+        public List<CmdletModel.BackupEngineBase> ListBackupManagementServers()
         {
             throw new NotImplementedException();
         }
 
-        public List<AzureRmRecoveryServicesBackupItemBase> ListProtectedItems()
+        public List<ItemBase> ListProtectedItems()
         {
-            AzureRmRecoveryServicesBackupContainerBase container =
-                (AzureRmRecoveryServicesBackupContainerBase)this.ProviderData[ItemParams.Container];
+            ContainerBase container =
+                (ContainerBase)this.ProviderData[ItemParams.Container];
             string name = (string)this.ProviderData[ItemParams.AzureVMName];
             ItemProtectionStatus protectionStatus =
                 (ItemProtectionStatus)this.ProviderData[ItemParams.ProtectionStatus];
@@ -485,13 +487,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             }
 
-            List<AzureRmRecoveryServicesBackupItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems);
+            List<ItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems);
 
             if (!string.IsNullOrEmpty(name))
             {
                 for (int i = 0; i < itemModels.Count; i++)
                 {
-                    AzureRmRecoveryServicesBackupIaasVmItemExtendedInfo extendedInfo = new AzureRmRecoveryServicesBackupIaasVmItemExtendedInfo();
+                    AzureVmItemExtendedInfo extendedInfo = new AzureVmItemExtendedInfo();
                     var serviceClientExtendedInfo = ((AzureIaaSVMProtectedItem)protectedItemGetResponses[i].Item.Properties).ExtendedInfo;
                     if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
                     {
@@ -499,7 +501,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     }
                     extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyInconsistent.ToString();
                     extendedInfo.RecoveryPointCount = serviceClientExtendedInfo.RecoveryPointCount;
-                    ((AzureRmRecoveryServicesBackupIaasVmItem)itemModels[i]).ExtendedInfo = extendedInfo;
+                    ((AzureVmItem)itemModels[i]).ExtendedInfo = extendedInfo;
                 }
             }
 
@@ -508,7 +510,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 itemModels = itemModels.Where(itemModel =>
                 {
-                    return ((AzureRmRecoveryServicesBackupIaasVmItem)itemModel).ProtectionStatus == protectionStatus;
+                    return ((AzureVmItem)itemModel).ProtectionStatus == protectionStatus;
                 }).ToList();
             }
 
@@ -517,7 +519,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 itemModels = itemModels.Where(itemModel =>
                 {
-                    return ((AzureRmRecoveryServicesBackupIaasVmItem)itemModel).ProtectionState == status;
+                    return ((AzureVmItem)itemModel).ProtectionState == status;
                 }).ToList();
             }
 
@@ -533,9 +535,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return itemModels;
         }
 
-        public AzureRmRecoveryServicesBackupSchedulePolicyBase GetDefaultSchedulePolicyObject()
+        public SchedulePolicyBase GetDefaultSchedulePolicyObject()
         {
-            AzureRmRecoveryServicesBackupSimpleSchedulePolicy defaultSchedule = new AzureRmRecoveryServicesBackupSimpleSchedulePolicy();
+            CmdletModel.SimpleSchedulePolicy defaultSchedule = new CmdletModel.SimpleSchedulePolicy();
             //Default is daily scedule at 10:30 AM local time
             defaultSchedule.ScheduleRunFrequency = ScheduleRunType.Daily;
 
@@ -549,9 +551,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return defaultSchedule;
         }
 
-        public AzureRmRecoveryServicesBackupRetentionPolicyBase GetDefaultRetentionPolicyObject()
+        public RetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
-            AzureRmRecoveryServicesBackupLongTermRetentionPolicy defaultRetention = new AzureRmRecoveryServicesBackupLongTermRetentionPolicy();
+            CmdletModel.LongTermRetentionPolicy defaultRetention = new CmdletModel.LongTermRetentionPolicy();
 
             //Default time is 10:30 local time
             DateTime retentionTime = GenerateRandomTime();
@@ -677,12 +679,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        private void ValidateAzureVMProtectionPolicy(AzureRmRecoveryServicesBackupPolicyBase policy)
+        private void ValidateAzureVMProtectionPolicy(PolicyBase policy)
         {
-            if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesBackupIaasVmPolicy))
+            if (policy == null || policy.GetType() != typeof(AzureVmPolicy))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
-                                            typeof(AzureRmRecoveryServicesBackupIaasVmPolicy).ToString()));
+                                            typeof(AzureVmPolicy).ToString()));
             }
 
             ValidateAzureVMWorkloadType(policy.WorkloadType);
@@ -691,24 +693,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             policy.Validate();
         }
 
-        private void ValidateAzureVMSchedulePolicy(AzureRmRecoveryServicesBackupSchedulePolicyBase policy)
+        private void ValidateAzureVMSchedulePolicy(SchedulePolicyBase policy)
         {
-            if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesBackupSimpleSchedulePolicy))
+            if (policy == null || policy.GetType() != typeof(CmdletModel.SimpleSchedulePolicy))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidSchedulePolicyException,
-                                            typeof(AzureRmRecoveryServicesBackupSimpleSchedulePolicy).ToString()));
+                                            typeof(CmdletModel.SimpleSchedulePolicy).ToString()));
             }
 
             // call validation
             policy.Validate();
         }
 
-        private void ValidateAzureVMRetentionPolicy(AzureRmRecoveryServicesBackupRetentionPolicyBase policy)
+        private void ValidateAzureVMRetentionPolicy(RetentionPolicyBase policy)
         {
-            if (policy == null || policy.GetType() != typeof(AzureRmRecoveryServicesBackupLongTermRetentionPolicy))
+            if (policy == null || policy.GetType() != typeof(CmdletModel.LongTermRetentionPolicy))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidRetentionPolicyException,
-                                            typeof(AzureRmRecoveryServicesBackupLongTermRetentionPolicy).ToString()));
+                                            typeof(CmdletModel.LongTermRetentionPolicy).ToString()));
             }
 
             // call validation
@@ -716,7 +718,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         private void ValidateAzureVMEnableProtectionRequest(string vmName, string serviceName, string rgName,
-            AzureRmRecoveryServicesBackupPolicyBase policy)
+            PolicyBase policy)
         {
             if (string.IsNullOrEmpty(vmName))
             {
@@ -728,31 +730,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        private void ValidateAzureVMModifyProtectionRequest(AzureRmRecoveryServicesBackupItemBase itemBase,
-            AzureRmRecoveryServicesBackupPolicyBase policy)
+        private void ValidateAzureVMModifyProtectionRequest(ItemBase itemBase,
+            PolicyBase policy)
         {
-            if (itemBase == null || itemBase.GetType() != typeof(AzureRmRecoveryServicesBackupIaasVmItem))
+            if (itemBase == null || itemBase.GetType() != typeof(AzureVmItem))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
-                                            typeof(AzureRmRecoveryServicesBackupIaasVmItem).ToString()));
+                                            typeof(AzureVmItem).ToString()));
             }
 
-            if (string.IsNullOrEmpty(((AzureRmRecoveryServicesBackupIaasVmItem)itemBase).VirtualMachineId))
+            if (string.IsNullOrEmpty(((AzureVmItem)itemBase).VirtualMachineId))
             {
                 throw new ArgumentException(Resources.VirtualMachineIdIsEmptyOrNull);
             }
         }
 
-        private void ValidateAzureVMDisableProtectionRequest(AzureRmRecoveryServicesBackupItemBase itemBase)
+        private void ValidateAzureVMDisableProtectionRequest(ItemBase itemBase)
         {
 
-            if (itemBase == null || itemBase.GetType() != typeof(AzureRmRecoveryServicesBackupIaasVmItem))
+            if (itemBase == null || itemBase.GetType() != typeof(AzureVmItem))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
-                                            typeof(AzureRmRecoveryServicesBackupIaasVmItem).ToString()));
+                                            typeof(AzureVmItem).ToString()));
             }
 
-            if (string.IsNullOrEmpty(((AzureRmRecoveryServicesBackupIaasVmItem)itemBase).VirtualMachineId))
+            if (string.IsNullOrEmpty(((AzureVmItem)itemBase).VirtualMachineId))
             {
                 throw new ArgumentException(Resources.VirtualMachineIdIsEmptyOrNull);
             }
@@ -905,8 +907,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return string.Format(IaasVMIdFormat, resourceGroup, vmVersion, name);
         }
 
-        private void CopyScheduleTimeToRetentionTimes(AzureRmRecoveryServicesBackupLongTermRetentionPolicy retPolicy,
-                                                      AzureRmRecoveryServicesBackupSimpleSchedulePolicy schPolicy)
+        private void CopyScheduleTimeToRetentionTimes(CmdletModel.LongTermRetentionPolicy retPolicy,
+                                                      CmdletModel.SimpleSchedulePolicy schPolicy)
         {
             // schedule runTimes is already validated if in UTC/not during validate()
             // now copy times from schedule to retention policy

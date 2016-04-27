@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesBackupAzureVmJob : AzureRmRecoveryServicesBackupJobBase
+    public class AzureVmJob : JobBase
     {
         public bool IsCancellable { get; set; }
 
@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public string VmVersion { get; set; }
 
-        public List<AzureRmRecoveryServicesBackupAzureVmJobErrorInfo> ErrorDetails { get; set; }
+        public List<AzureVmJobErrorInfo> ErrorDetails { get; set; }
     }
 
-    public class AzureRmRecoveryServicesBackupAzureVmJobDetails : AzureRmRecoveryServicesBackupAzureVmJob
+    public class AzureVmJobDetails : AzureVmJob
     {
         /// <summary>
         /// Context sensitive error message that might be helpful in debugging the issue. 
@@ -37,15 +37,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public Dictionary<string, string> Properties { get; set; }
 
-        public List<AzureRmRecoveryServicesBackupAzureVmJobSubTask> SubTasks { get; set; }
+        public List<AzureVmJobSubTask> SubTasks { get; set; }
     }
 
-    public class AzureRmRecoveryServicesBackupAzureVmJobErrorInfo : AzureRmRecoveryServicesBackupJobErrorInfoBase
+    public class AzureVmJobErrorInfo : JobErrorInfoBase
     {
         public int ErrorCode { get; set; }
     }
 
-    public class AzureRmRecoveryServicesBackupAzureVmJobSubTask : AzureRmRecoveryServicesBackupJobSubTaskBase
+    public class AzureVmJobSubTask : JobSubTaskBase
     {
     }
 }

@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesBackupLongTermRetentionPolicy : AzureRmRecoveryServicesBackupRetentionPolicyBase
+    public class LongTermRetentionPolicy : RetentionPolicyBase
     {
         public bool IsDailyScheduleEnabled { get; set; }
         public bool IsWeeklyScheduleEnabled { get; set; }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public MonthlyRetentionSchedule MonthlySchedule { get; set; }
         public YearlyRetentionSchedule YearlySchedule { get; set; }
 
-        public AzureRmRecoveryServicesBackupLongTermRetentionPolicy()
+        public LongTermRetentionPolicy()
         {
             IsDailyScheduleEnabled = false;
             IsWeeklyScheduleEnabled = false;
