@@ -30,14 +30,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupProtection"), OutputType(typeof(JobBase))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupProtection"), 
+    OutputType(typeof(JobBase))]
     public class DisableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem, ValueFromPipeline = true)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem, 
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsgs.Item.RemoveProtectionOption)]
+        [Parameter(Position = 2, Mandatory = false, 
+            HelpMessage = ParamHelpMsgs.Item.RemoveProtectionOption)]
         public SwitchParameter RemoveRecoveryPoints
         {
             get { return DeleteBackupData; }
@@ -68,7 +71,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider = 
-                            providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
+                            providerManager.GetProviderInstance(Item.WorkloadType, 
+                            Item.BackupManagementType);
 
                         var itemResponse = psBackupProvider.DisableProtection();
 

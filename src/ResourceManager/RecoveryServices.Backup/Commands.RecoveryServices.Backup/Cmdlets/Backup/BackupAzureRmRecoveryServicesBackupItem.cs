@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsData.Backup, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(JobBase))]
     public class BackupAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem, 
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
 
@@ -39,12 +40,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+            PsBackupProviderManager providerManager = 
+                new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
                     {ItemParams.Item, Item},
                 }, ServiceClientAdapter);
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
+            IPsBackupProvider psBackupProvider = 
+                providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
             var jobResponse = psBackupProvider.TriggerBackup();
 
             HandleCreatedJob(jobResponse, Resources.TriggerBackupOperation);

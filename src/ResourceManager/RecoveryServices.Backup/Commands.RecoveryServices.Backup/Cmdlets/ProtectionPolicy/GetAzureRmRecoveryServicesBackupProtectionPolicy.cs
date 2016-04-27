@@ -38,16 +38,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected const string NoParamSet = "NoParamSet";
         protected const string WorkloadBackupMangementTypeParamSet = "WorkloadBackupManagementTypeParamSet";
 
-        [Parameter(ParameterSetName = PolicyNameParamSet, Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.Name)]
+        [Parameter(ParameterSetName = PolicyNameParamSet, Position = 1, 
+            Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = WorkloadParamSet, Position = 2, Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
-        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 2, Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+        [Parameter(ParameterSetName = WorkloadParamSet, Position = 2, 
+            Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 2, 
+            Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
         public WorkloadType? WorkloadType { get; set; }
 
-        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 3, Mandatory = true, HelpMessage = ParamHelpMsgs.Common.BackupManagementType)]
+        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 3, 
+            Mandatory = true, HelpMessage = ParamHelpMsgs.Common.BackupManagementType)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 
@@ -72,7 +76,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                    PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
 
                    // query service
-                   ServiceClientModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                   ServiceClientModel.ProtectionPolicyResponse policy = 
+                       PolicyCmdletHelpers.GetProtectionPolicyByName(
                                                      Name,
                                                      ServiceClientAdapter);
                    if (policy == null)
@@ -92,7 +97,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                        case WorkloadParamSet:
                            if (WorkloadType == Models.WorkloadType.AzureVM)
                            {
-                               serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureVM);
+                               serviceClientProviderType = 
+                                   ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureVM);
                            }
                            break;
 
@@ -104,7 +110,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                    throw new ArgumentException(
                                        Resources.AzureVMUnsupportedBackupManagementTypeException);
                                }
-                               serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureVM);
+                               serviceClientProviderType = ServiceClientHelpers.
+                                   GetServiceClientProviderType(Models.WorkloadType.AzureVM);
                            }
                            else
                            {
@@ -119,13 +126,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                            break;
                    }
 
-                   ServiceClientModel.ProtectionPolicyQueryParameters queryParams = new ServiceClientModel.ProtectionPolicyQueryParameters()
+                   ServiceClientModel.ProtectionPolicyQueryParameters queryParams = 
+                       new ServiceClientModel.ProtectionPolicyQueryParameters()
                    {
                        BackupManagementType = serviceClientProviderType
                    };
 
                    WriteDebug("going to query service to get list of policies");
-                   ServiceClientModel.ProtectionPolicyListResponse respList = ServiceClientAdapter.ListProtectionPolicy(queryParams);
+                   ServiceClientModel.ProtectionPolicyListResponse respList = 
+                       ServiceClientAdapter.ListProtectionPolicy(queryParams);
                    WriteDebug("Successfully got response from service");
 
                    policyList = ConversionHelpers.GetPolicyModelList(respList);
