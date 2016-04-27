@@ -24,6 +24,10 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
+    /// <summary>
+    /// This interface contains methods 
+    /// which needs to be implemented by different providers.
+    /// </summary>
     public interface IPsBackupProvider
     {
         void Initialize(Dictionary<System.Enum, object> providerData, ServiceClientAdapter serviceClientAdapter);
