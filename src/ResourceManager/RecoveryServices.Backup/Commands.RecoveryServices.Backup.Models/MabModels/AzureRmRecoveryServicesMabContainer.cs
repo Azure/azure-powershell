@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// MAB specific container class.
     /// </summary>
-    public class AzureRmRecoveryServicesBackupMabContainer : AzureRmRecoveryServicesBackupContainerBase
+    public class AzureRmRecoveryServicesBackupMabContainer : ContainerBase
     {
         /// <summary>
         /// Friendly name of the container
