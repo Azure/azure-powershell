@@ -70,13 +70,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Class representing backup engine context.
     /// </summary>
-    public class AzureRmRecoveryServicesBackupEngineContext : ManagementContext
+    public class BackupEngineContext : ManagementContext
     {
         public string BackupEngineType { get; set; }
 
-        public AzureRmRecoveryServicesBackupEngineContext() { }
+        public BackupEngineContext() { }
 
-        public AzureRmRecoveryServicesBackupEngineContext(string backupEngineType, string backupManagementType)
+        public BackupEngineContext(string backupEngineType, string backupManagementType)
             : base(backupManagementType)
         {
             BackupEngineType = backupEngineType;
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Base class for backup engine.
     /// </summary>
-    public class BackupEngineBase : AzureRmRecoveryServicesBackupEngineContext
+    public class BackupEngineBase : BackupEngineContext
     {
         /// <summary>
         /// Container Name
