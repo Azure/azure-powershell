@@ -75,13 +75,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 temp = localTime;
                 if (localTime.Kind != DateTimeKind.Utc)
                 {
-                    temp = localTime.ToUniversalTime();                    
+                    temp = localTime.ToUniversalTime();
                 }                
                 utcTimes.Add(temp);
             }
 
             return utcTimes;
-        }       
+        }
 
         // <summary>
         /// Helper function to convert service simple schedule policy from ps scheduel policy.
