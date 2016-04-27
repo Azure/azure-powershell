@@ -68,14 +68,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         }
                         else
                         {
-                            throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, Job.GetType().FullName));
+                            throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, 
+                                Job.GetType().FullName));
                         }
                     }
                 }
                 else
                 {
                     // not a valid object. throw exception.
-                    throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, Job.GetType().FullName));
+                    throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, 
+                        Job.GetType().FullName));
                 }
 
                 // now wait until timeout happens or all jobs complete execution
@@ -85,7 +87,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     if (Timeout.HasValue)
                     {
-                        if (DateTime.UtcNow.Subtract(waitBeginning) >= TimeSpan.FromSeconds(Timeout.Value))
+                        if (DateTime.UtcNow.Subtract(waitBeginning) >= 
+                            TimeSpan.FromSeconds(Timeout.Value))
                         {
                             break;
                         }

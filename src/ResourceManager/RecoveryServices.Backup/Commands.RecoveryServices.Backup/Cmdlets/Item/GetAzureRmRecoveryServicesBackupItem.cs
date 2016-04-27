@@ -62,7 +62,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                PsBackupProviderManager providerManager = 
+                    new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
                     {ItemParams.Container, Container},
                     {ItemParams.BackupManagementType, BackupManagementType},
@@ -76,7 +77,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (this.ParameterSetName == GetItemsForVaultParamSet)
                 {
-                    psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                    psBackupProvider = 
+                        providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                 }
                 else
                 {

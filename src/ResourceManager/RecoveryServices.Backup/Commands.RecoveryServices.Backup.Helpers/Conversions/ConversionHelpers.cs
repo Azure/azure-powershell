@@ -18,6 +18,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using CmdletModels = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 

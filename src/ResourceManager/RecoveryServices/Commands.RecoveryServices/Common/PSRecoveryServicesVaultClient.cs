@@ -83,10 +83,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vaultName">Name of the vault</param>  
         /// <param name="vaultStorageUpdateRequest">Backup Properties Update</param>  
         /// <returns>Azure Operation response object.</returns>  
-        public AzureOperationResponse UpdateVaultStorageType(string resouceGroupName, string vaultName, UpdateVaultStorageTypeRequest vaultStorageUpdateRequest)
+        public AzureOperationResponse UpdateVaultStorageType(string resouceGroupName, string vaultName, 
+            UpdateVaultStorageTypeRequest vaultStorageUpdateRequest)
         {
             return this.recoveryServicesClient.Vaults.UpdateStorageType(resouceGroupName, vaultName,
-                                                            vaultStorageUpdateRequest, this.GetRequestHeaders());
+                vaultStorageUpdateRequest, this.GetRequestHeaders());
         }
 
         /// <summary>  
@@ -97,7 +98,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>Azure Resource Storage response object.</returns>  
         public GetResourceStorageConfigResponse GetVaultStorageType(string resouceGroupName, string vaultName)
         {
-            return this.recoveryServicesClient.Vaults.GetResourceStorageConfig(resouceGroupName, vaultName, this.GetRequestHeaders());
+            return this.recoveryServicesClient.Vaults.GetResourceStorageConfig(resouceGroupName, 
+                vaultName, this.GetRequestHeaders());
         }
     }
 }

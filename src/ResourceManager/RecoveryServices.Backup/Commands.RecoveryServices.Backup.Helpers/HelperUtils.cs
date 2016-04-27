@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <returns>dictionary of UriEnum as key and value as value of corresponding URI enum</returns>
         public static Dictionary<CmdletModel.UriEnums, string> ParseUri(string id)
         {
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict = new Dictionary<CmdletModel.UriEnums, string>();
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict = 
+                new Dictionary<CmdletModel.UriEnums, string>();
             if (!string.IsNullOrEmpty(id))
             {
                 string idPattern = @"/[a-zA-Z]*/[a-zA-Z0-9-;.]*";
@@ -76,7 +77,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 while (match.Success)
                 {
-                    string[] keyValuePair = match.Value.Split(new string[] { uriPattern }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] keyValuePair = match.Value.Split(
+                        new string[] { uriPattern }, 
+                        StringSplitOptions.RemoveEmptyEntries
+                        );
                     CmdletModel.UriEnums key;
                     CmdletModel.UriEnums value;
                     if (keyValuePair.Length == 2)
@@ -93,7 +97,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return keyValuePairDict;
         }
 
-        public static string GetContainerUri(Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, string id)
+        public static string GetContainerUri(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            string id
+            )
         {
             string containerUri = string.Empty;
 
@@ -109,7 +116,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return containerUri;
         }
 
-        public static string GetProtectedItemUri(Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, string id)
+        public static string GetProtectedItemUri(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            string id
+            )
         {
             string itemUri = string.Empty;
 
@@ -125,7 +135,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return itemUri;
         }
 
-        public static string GetProtectableItemUri(Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, string id)
+        public static string GetProtectableItemUri(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            string id
+            )
         {
             string protectableItemUri = string.Empty;
 
@@ -141,7 +154,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return protectableItemUri;
         }
 
-        public static string GetPolicyNameFromPolicyId(Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, string id)
+        public static string GetPolicyNameFromPolicyId(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            string id
+            )
         {
             string policyName = string.Empty;
 

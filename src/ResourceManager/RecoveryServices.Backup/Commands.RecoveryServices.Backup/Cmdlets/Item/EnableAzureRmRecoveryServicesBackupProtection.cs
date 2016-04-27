@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
                 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                PsBackupProviderManager providerManager = 
+                    new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {  
                     {ItemParams.AzureVMName, Name},
                     {ItemParams.AzureVMCloudServiceName, ServiceName},
@@ -71,7 +72,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {ItemParams.ParameterSetName, this.ParameterSetName},
                 }, ServiceClientAdapter);
 
-                IPsBackupProvider psBackupProvider = (Item != null) ? providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
+                IPsBackupProvider psBackupProvider = (Item != null) ? 
+                    providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
                     : providerManager.GetProviderInstance(Policy.WorkloadType);
 
                 var itemResponse = psBackupProvider.EnableProtection();

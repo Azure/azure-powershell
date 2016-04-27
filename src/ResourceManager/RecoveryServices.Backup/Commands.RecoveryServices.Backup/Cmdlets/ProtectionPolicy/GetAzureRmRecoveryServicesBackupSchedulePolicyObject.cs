@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>(), ServiceClientAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
+                    WorkloadType, BackupManagementType);
                 WriteObject(psBackupProvider.GetDefaultSchedulePolicyObject());
             });
         }

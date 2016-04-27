@@ -185,26 +185,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             if (response != null && response.OperationStatus != null)
             {
-                WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
+            WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
 
-                if (response.OperationStatus.Properties != null &&
-                       ((OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
-                {
-                    var jobStatusResponse = (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
-                    WriteObject(GetJobObject(jobStatusResponse.JobId));
-                }
+            if (response.OperationStatus.Properties != null &&
+                   ((OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
+            {
+                var jobStatusResponse = (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+                WriteObject(GetJobObject(jobStatusResponse.JobId));
+            }
 
                 if (response.OperationStatus.Status == OperationStatusValues.Failed &&
                     response.OperationStatus.OperationStatusError != null)
-                {
-                    var errorMessage = string.Format(
-                        Resources.OperationFailed,
-                        operationName,
-                        response.OperationStatus.OperationStatusError.Code,
-                        response.OperationStatus.OperationStatusError.Message);
-                    throw new Exception(errorMessage);
-                }
+            {
+                var errorMessage = string.Format(
+                    Resources.OperationFailed,
+                    operationName,
+                    response.OperationStatus.OperationStatusError.Code,
+                    response.OperationStatus.OperationStatusError.Message);
+                throw new Exception(errorMessage);
             }
         }
     }
+}
 }

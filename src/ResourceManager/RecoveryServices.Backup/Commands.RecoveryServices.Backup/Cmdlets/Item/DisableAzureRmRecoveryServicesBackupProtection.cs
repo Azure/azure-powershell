@@ -60,13 +60,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     ExecutionBlock(() =>
                     {
                         base.ExecuteCmdlet();
-                        PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                        PsBackupProviderManager providerManager = 
+                            new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                         {
                             {ItemParams.Item, Item},
                             {ItemParams.DeleteBackupData, this.DeleteBackupData},
                         }, ServiceClientAdapter);
 
-                        IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
+                        IPsBackupProvider psBackupProvider = 
+                            providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
 
                         var itemResponse = psBackupProvider.DisableProtection();
 

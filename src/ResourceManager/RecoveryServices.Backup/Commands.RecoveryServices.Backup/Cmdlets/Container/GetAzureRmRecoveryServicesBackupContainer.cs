@@ -65,7 +65,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     backupManagementTypeNullable = backupManagementType;
                 }
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                PsBackupProviderManager providerManager = 
+                    new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {  
                     {ContainerParams.ContainerType, ContainerType},
                     {ContainerParams.BackupManagementType, backupManagementTypeNullable},
@@ -74,7 +75,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {ContainerParams.Status, Status},
                 }, ServiceClientAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType, backupManagementTypeNullable);
+                IPsBackupProvider psBackupProvider = 
+                    providerManager.GetProviderInstance(ContainerType, backupManagementTypeNullable);
                 var containerModels = psBackupProvider.ListProtectionContainers();
                 WriteObject(containerModels, enumerateCollection: true);
             });

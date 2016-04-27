@@ -111,7 +111,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 List<JobBase> result = new List<JobBase>();
 
-                WriteDebug(string.Format("Filters provided are: StartTime - {0} EndTime - {1} Status - {2} Operation - {3} Type - {4}",
+                WriteDebug(string.Format("Filters provided are: StartTime - {0} " + 
+                    "EndTime - {1} Status - {2} Operation - {3} Type - {4}",
                     From,
                     To,
                     Status,
@@ -145,7 +146,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             Operation.HasValue ? Operation.ToString() : null,
                             rangeStart,
                             rangeEnd,
-                            BackupManagementType.HasValue ? Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null,
+                            BackupManagementType.HasValue ? 
+                            Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null,
                             null,
                             skipToken);
                         JobConversions.AddServiceClientJobsToPSList(adapterResponse, result, ref resultCount);

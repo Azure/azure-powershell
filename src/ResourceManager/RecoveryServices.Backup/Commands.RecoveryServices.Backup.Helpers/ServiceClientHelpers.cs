@@ -16,7 +16,7 @@ using System;
 using System.Collections.Specialized;
 using System.Web;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (containerType)
             {
                 case CmdletModel.ContainerType.AzureVM:
-                    providerType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
+                    providerType = ServiceClientModel.BackupManagementType.AzureIaasVM.ToString();
                     break;
                 default:
                     break;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (workloadType)
             {
                 case CmdletModel.WorkloadType.AzureVM:
-                    providerType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
+                    providerType = ServiceClientModel.BackupManagementType.AzureIaasVM.ToString();
                     break;
                 default:
                     break;
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (containerType)
             {
                 case CmdletModel.ContainerType.AzureVM:
-                    serviceClientContainerType = ContainerType.IaasVMContainer.ToString();
+                    serviceClientContainerType = ServiceClientModel.ContainerType.IaasVMContainer.ToString();
                     break;
                 default:
                     break;
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (workloadType)
             {
                 case CmdletModel.WorkloadType.AzureVM:
-                    serviceClientWorkloadType = WorkloadType.VM.ToString();
+                    serviceClientWorkloadType = ServiceClientModel.WorkloadType.VM.ToString();
                     break;
                 default:
                     break;

@@ -29,10 +29,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public IEnumerable<ProtectionContainerResource> ListContainers(ProtectionContainerListQueryParams queryParams)
+        public IEnumerable<ProtectionContainerResource> ListContainers(
+            ProtectionContainerListQueryParams queryParams)
         {
-            var listResponse = BmsAdapter.Client.Containers.ListAsync(BmsAdapter.GetResourceGroupName(), BmsAdapter.GetResourceName(), queryParams,
-                BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
+            var listResponse = BmsAdapter.Client.Containers.ListAsync(
+                                        BmsAdapter.GetResourceGroupName(), 
+                                        BmsAdapter.GetResourceName(), 
+                                        queryParams,
+                                        BmsAdapter.GetCustomRequestHeaders(), 
+                                        BmsAdapter.CmdletCancellationToken).Result;
             return listResponse.ItemList.ProtectionContainers;
         }
 
@@ -45,8 +50,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             PaginationRequest paginationParam = new PaginationRequest();
             paginationParam.Top = "200";
-            var listResponse = BmsAdapter.Client.BackupEngines.ListAsync(BmsAdapter.GetResourceGroupName(), BmsAdapter.GetResourceName(), queryParams, paginationParam,
-                BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
+            var listResponse = BmsAdapter.Client.BackupEngines.ListAsync(
+                                        BmsAdapter.GetResourceGroupName(), 
+                                        BmsAdapter.GetResourceName(), 
+                                        queryParams, 
+                                        paginationParam, 
+                                        BmsAdapter.GetCustomRequestHeaders(),
+                                        BmsAdapter.CmdletCancellationToken).Result;
             return listResponse.ItemList.BackupEngines;
         }
 
@@ -59,8 +69,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             var response = BmsAdapter.Client.Containers.RefreshAsync(
-                resourceGroupName, resourceName,
-                BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, BmsAdapter.CmdletCancellationToken).Result;
+                                        resourceGroupName, 
+                                        resourceName, 
+                                        BmsAdapter.GetCustomRequestHeaders(), 
+                                        AzureFabricName, 
+                                        BmsAdapter.CmdletCancellationToken).Result;
             return response;
         }
 
@@ -74,8 +87,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             
             var response = BmsAdapter.Client.Containers.UnregisterAsync(
-                resourceGroupName, resourceName, containerName,
-                BmsAdapter.GetCustomRequestHeaders(), BmsAdapter.CmdletCancellationToken).Result;
+                                        resourceGroupName, 
+                                        resourceName, 
+                                        containerName,
+                                        BmsAdapter.GetCustomRequestHeaders(), 
+                                        BmsAdapter.CmdletCancellationToken).Result;
             return response;
         }
     }
