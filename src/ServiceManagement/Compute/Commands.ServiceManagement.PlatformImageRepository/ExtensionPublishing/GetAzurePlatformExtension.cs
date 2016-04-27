@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 CommandRuntime.ToString(),
                 () =>
                 {
-                    var op = this.ComputeClient.HostedServices.ListAvailableExtensions();
+                    var op = this.ComputeClient.HostedServices.ListPublisherExtensions();
                     return op;
                 },
                 (op, response) => response.Select(
