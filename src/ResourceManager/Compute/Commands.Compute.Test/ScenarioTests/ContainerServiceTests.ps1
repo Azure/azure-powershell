@@ -15,17 +15,6 @@
 <#
 .SYNOPSIS
 Test Container Service
-
-PS C:\> Get-Command *VMSS* | ft Name,Version,ModuleName
-
-Name                                            Version ModuleName
-----                                            ------- ----------
-
-#>
-
-<#
-.SYNOPSIS
-Test Virtual Machine Scale Set
 #>
 function Test-ContainerService
 {
@@ -39,15 +28,15 @@ function Test-ContainerService
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
 
-		$csName = 'cs' + $rgname;
-		$masterDnsPrefixName = 'master' + $rgname;
-		$agentPoolDnsPrefixName = 'ap' + $rgname;
-		$agentPoolProfileName = 'AgentPool1';
-		$vmSize = 'Standard_A1';
+        $csName = 'cs' + $rgname;
+        $masterDnsPrefixName = 'master' + $rgname;
+        $agentPoolDnsPrefixName = 'ap' + $rgname;
+        $agentPoolProfileName = 'AgentPool1';
+        $vmSize = 'Standard_A1';
 
-		$orchestratorType = 'DCOS';
-		$adminUserName = 'acsLinuxAdmin';
-		$sshPublicKey =
+        $orchestratorType = 'DCOS';
+        $adminUserName = 'acsLinuxAdmin';
+        $sshPublicKey =
             "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV" +
             "BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX" +
             "aWRnaXRzIFB0eSBMdGQwHhcNMTUwMzIyMjI1NDQ5WhcNMTYwMzIxMjI1NDQ5WjBF" +
@@ -69,31 +58,17 @@ function Test-ContainerService
             "oe6IQTw7zJF7xuBIzTYwjOCM197GKW7xc4GU4JZIN+faZ7njl/fxfUNdlqvgZUUn" +
             "kfdrzU3PZPl0w9NuncgEje/PZ+YtZvIsnH7MLSPeIGNQwW6V2kc8";
 
-		#$container = New-AzureRmContainerServiceConfig -Location $loc `
-		#    -OrchestratorProfileOrchestratorType $orchestratorType `
-		#    -MasterProfileDnsPrefix $masterDnsPrefixName `
-		#    -AdminUsername $adminUserName `
-		#    -Ssh $sshPublicKey;
-
-		#$container = Add-AzureRmContainerServiceAgentPoolProfile -ContainerService $container `
-		#    -Name $agentPoolProfileName `
-		#    -VmSize $vmSize `
-		#    -DnsPrefix $agentPoolDnsPrefixName;
-
-		#$st = New-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName -ContainerService $container;
+        $container = New-AzureRmContainerServiceConfig -Location $loc -OrchestratorType $orchestratorType `
+            -MasterDnsPrefix $masterDnsPrefixName -AdminUsername $adminUserName -SshPublicKey $sshPublicKey `
+        | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName -VmSize $vmSize -DnsPrefix $agentPoolDnsPrefixName `
+        | New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 
 
-		$container = New-AzureRmContainerServiceConfig -Location $loc -OrchestratorType $orchestratorType `
-		    -MasterDnsPrefix $masterDnsPrefixName -AdminUsername $adminUserName -SshPublicKey $sshPublicKey `
-		| Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName -VmSize $vmSize -DnsPrefix $agentPoolDnsPrefixName `
-		| New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
+        $cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 
+        $cslist = Get-AzureRmContainerService -ResourceGroupName $rgname;
 
-		$cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
-
-		$cslist = Get-AzureRmContainerService -ResourceGroupName $rgname;
-
-		$st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
+        $st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
     }
     finally
     {
@@ -104,7 +79,7 @@ function Test-ContainerService
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set
+Test Container Service Update
 #>
 function Test-ContainerServiceUpdate
 {
@@ -118,15 +93,15 @@ function Test-ContainerServiceUpdate
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
 
-		$csName = 'cs' + $rgname;
-		$masterDnsPrefixName = 'master' + $rgname;
-		$agentPoolDnsPrefixName = 'ap' + $rgname;
-		$agentPoolProfileName = 'AgentPool1';
-		$vmSize = 'Standard_A1';
+        $csName = 'cs' + $rgname;
+        $masterDnsPrefixName = 'master' + $rgname;
+        $agentPoolDnsPrefixName = 'ap' + $rgname;
+        $agentPoolProfileName = 'AgentPool1';
+        $vmSize = 'Standard_A1';
 
-		$orchestratorType = 'DCOS';
-		$adminUserName = 'acsLinuxAdmin';
-		$sshPublicKey =
+        $orchestratorType = 'DCOS';
+        $adminUserName = 'acsLinuxAdmin';
+        $sshPublicKey =
             "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV" +
             "BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX" +
             "aWRnaXRzIFB0eSBMdGQwHhcNMTUwMzIyMjI1NDQ5WhcNMTYwMzIxMjI1NDQ5WjBF" +
@@ -148,55 +123,28 @@ function Test-ContainerServiceUpdate
             "oe6IQTw7zJF7xuBIzTYwjOCM197GKW7xc4GU4JZIN+faZ7njl/fxfUNdlqvgZUUn" +
             "kfdrzU3PZPl0w9NuncgEje/PZ+YtZvIsnH7MLSPeIGNQwW6V2kc8";
 
-		#$container = New-AzureRmContainerServiceConfig -Location $loc `
-		#    -OrchestratorProfileOrchestratorType $orchestratorType `
-		#    -MasterProfileDnsPrefix $masterDnsPrefixName `
-		#    -AdminUsername $adminUserName `
-		#    -Ssh $sshPublicKey;
+        $container = New-AzureRmContainerServiceConfig -Location $loc `
+            -OrchestratorType $orchestratorType `
+            -MasterDnsPrefix $masterDnsPrefixName `
+            -MasterCount 1 `
+            -AdminUsername $adminUserName `
+            -SshPublicKey $sshPublicKey `
+        | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
+            -VmSize $vmSize `
+            -DnsPrefix $agentPoolDnsPrefixName `
+            -Count 1 `
+        | New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 
-		#$container = Add-AzureRmContainerServiceAgentPoolProfile -ContainerService $container `
-		#    -Name $agentPoolProfileName `
-		#    -VmSize $vmSize `
-		#    -DnsPrefix $agentPoolDnsPrefixName;
+        Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName `
+        | Remove-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
+        | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
+            -VmSize $vmSize `
+            -DnsPrefix $agentPoolDnsPrefixName `
+            -Count 2 `
+        | Update-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 
-		#$st = New-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName -ContainerService $container;
-
-
-		$container = New-AzureRmContainerServiceConfig -Location $loc `
-		    -OrchestratorType $orchestratorType `
-		    -MasterDnsPrefix $masterDnsPrefixName `
-		    -MasterCount 1 `
-		    -AdminUsername $adminUserName `
-		    -SshPublicKey $sshPublicKey `
-		| Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
-		    -VmSize $vmSize `
-		    -DnsPrefix $agentPoolDnsPrefixName `
-		    -Count 1 `
-		| New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
-
-		Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName `
-		| Remove-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
-		| Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
-		    -VmSize $vmSize `
-		    -DnsPrefix $agentPoolDnsPrefixName `
-		    -Count 2 `
-		| Update-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
-
-		#$cs = Get-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName;
-
-		#$cs = Remove-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName -ContainerService $cs;
-
-		#$cs = Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
-		#    -VmSize $vmSize `
-		#    -DnsPrefix $agentPoolDnsPrefixName `
-		#    -Count 2 `
-		#    -ContainerService $cs;
-
-		#$st = Update-AzureRmContainerService -ResourceGroupName $rgname -ContainerServiceName $csName -ContainerService $cs;
-
-		$cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
-		
-		$st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
+        $cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
+        $st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
     }
     finally
     {
