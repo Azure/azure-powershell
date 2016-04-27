@@ -15,9 +15,9 @@
 using System;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
-    public partial class HydraAdapter
+    public partial class ServiceClientAdapter
     {
         public JobResponse GetJob(string jobId)
         {

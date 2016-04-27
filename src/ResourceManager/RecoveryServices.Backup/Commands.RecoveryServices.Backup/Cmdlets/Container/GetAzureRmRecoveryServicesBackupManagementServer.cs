@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {  
                     {ContainerParams.ContainerType, ContainerType.Windows},                
                     {ContainerParams.Name, Name}
-                }, HydraAdapter);
+                }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstanceForBackupManagementServer();
 

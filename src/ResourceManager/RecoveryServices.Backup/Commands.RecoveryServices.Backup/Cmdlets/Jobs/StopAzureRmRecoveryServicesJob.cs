@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 WriteDebug("Stopping job with ID: " + JobId);
 
-                var cancelResponse = HydraAdapter.CancelJob(JobId);
+                var cancelResponse = ServiceClientAdapter.CancelJob(JobId);
 
                 if (cancelResponse.StatusCode != HttpStatusCode.NoContent)
                 {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else
                 {
-                    WriteObject(JobConversions.GetPSJob(HydraAdapter.GetJob(JobId)));
+                    WriteObject(JobConversions.GetPSJob(ServiceClientAdapter.GetJob(JobId)));
                 }
             });
         }

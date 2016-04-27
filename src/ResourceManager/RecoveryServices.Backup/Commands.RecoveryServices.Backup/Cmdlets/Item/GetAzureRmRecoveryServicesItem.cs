@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {ItemParams.ProtectionStatus, ProtectionStatus},
                     {ItemParams.ProtectionState, ProtectionState},
                     {ItemParams.WorkloadType, WorkloadType},
-                }, HydraAdapter);
+                }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = null;
 

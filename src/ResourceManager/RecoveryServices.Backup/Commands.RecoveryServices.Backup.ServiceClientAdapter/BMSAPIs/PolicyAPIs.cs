@@ -19,9 +19,9 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
-    public partial class HydraAdapter
+    public partial class ServiceClientAdapter
     {
         public ProtectionPolicyResponse CreateOrUpdateProtectionPolicy(
                 string policyName,

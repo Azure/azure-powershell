@@ -119,13 +119,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     BackupManagementType));
 
                 int resultCount = 0;
-                var adapterResponse = HydraAdapter.GetJobs(JobId,
+                var adapterResponse = ServiceClientAdapter.GetJobs(JobId,
                     Status.HasValue ? Status.ToString() : null,
                     Operation.HasValue ? Operation.ToString() : null,
                     rangeStart,
                     rangeEnd,
                     BackupManagementType.HasValue ? Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null);
-                JobConversions.AddHydraJobsToPSList(adapterResponse, result, ref resultCount);
+                JobConversions.AddServiceClientJobsToPSList(adapterResponse, result, ref resultCount);
 
                 while (!string.IsNullOrEmpty(adapterResponse.ItemList.NextLink))
                 {
@@ -137,10 +137,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
 
                     string skipToken;
-                    HydraHelpers.GetSkipTokenFromNextLink(adapterResponse.ItemList.NextLink, out skipToken);
+                    ServiceClientHelpers.GetSkipTokenFromNextLink(adapterResponse.ItemList.NextLink, out skipToken);
                     if (skipToken != null)
                     {
-                        adapterResponse = HydraAdapter.GetJobs(JobId,
+                        adapterResponse = ServiceClientAdapter.GetJobs(JobId,
                             Status.HasValue ? Status.ToString() : null,
                             Operation.HasValue ? Operation.ToString() : null,
                             rangeStart,
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             BackupManagementType.HasValue ? Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null,
                             null,
                             skipToken);
-                        JobConversions.AddHydraJobsToPSList(adapterResponse, result, ref resultCount);
+                        JobConversions.AddServiceClientJobsToPSList(adapterResponse, result, ref resultCount);
                     }
                     else
                     {

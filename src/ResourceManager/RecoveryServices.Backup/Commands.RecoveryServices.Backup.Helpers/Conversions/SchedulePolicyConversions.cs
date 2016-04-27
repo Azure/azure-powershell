@@ -24,22 +24,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
     public partial class PolicyHelpers
     {
-        #region HydraToPSObject conversions
+        #region ServiceClientToPSObject conversions
 
         public static AzureRmRecoveryServicesBackupSimpleSchedulePolicy GetPSSimpleSchedulePolicy(
-            SimpleSchedulePolicy hydraPolicy)
+            SimpleSchedulePolicy serviceClientPolicy)
         {
-            if (hydraPolicy == null)
+            if (serviceClientPolicy == null)
             {
                 return null;
             }
 
             AzureRmRecoveryServicesBackupSimpleSchedulePolicy psPolicy = new AzureRmRecoveryServicesBackupSimpleSchedulePolicy();
 
-            psPolicy.ScheduleRunDays = HelperUtils.GetEnumListFromStringList<DayOfWeek>(hydraPolicy.ScheduleRunDays);
+            psPolicy.ScheduleRunDays = HelperUtils.GetEnumListFromStringList<DayOfWeek>(serviceClientPolicy.ScheduleRunDays);
             psPolicy.ScheduleRunFrequency = (ScheduleRunType)Enum.Parse(typeof(ScheduleRunType),
-                                                                        hydraPolicy.ScheduleRunFrequency);
-            psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(hydraPolicy.ScheduleRunTimes);
+                                                                        serviceClientPolicy.ScheduleRunFrequency);
+            psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.ScheduleRunTimes);
 
             // safe side validation
             psPolicy.Validate();
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #endregion
 
-        #region PStoHydraObject conversions
+        #region PStoServiceClientObject conversions
 
         public static List<DateTime> ParseDateTimesToUTC(IList<DateTime> localTimes)
         {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return utcTimes;
         }       
 
-        public static SimpleSchedulePolicy GetHydraSimpleSchedulePolicy(
+        public static SimpleSchedulePolicy GetServiceClientSimpleSchedulePolicy(
             AzureRmRecoveryServicesBackupSimpleSchedulePolicy psPolicy)
         {
             if (psPolicy == null)
@@ -82,15 +82,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 return null;
             }
 
-            SimpleSchedulePolicy hydraPolicy = new SimpleSchedulePolicy();            
-            hydraPolicy.ScheduleRunFrequency = psPolicy.ScheduleRunFrequency.ToString();
+            SimpleSchedulePolicy serviceClientPolicy = new SimpleSchedulePolicy();            
+            serviceClientPolicy.ScheduleRunFrequency = psPolicy.ScheduleRunFrequency.ToString();
             if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
             {
-                hydraPolicy.ScheduleRunDays = HelperUtils.GetStringListFromEnumList<DayOfWeek>(psPolicy.ScheduleRunDays);
+                serviceClientPolicy.ScheduleRunDays = HelperUtils.GetStringListFromEnumList<DayOfWeek>(psPolicy.ScheduleRunDays);
             }
-            hydraPolicy.ScheduleRunTimes = psPolicy.ScheduleRunTimes;
+            serviceClientPolicy.ScheduleRunTimes = psPolicy.ScheduleRunTimes;
 
-            return hydraPolicy;
+            return serviceClientPolicy;
         }
 
         #endregion

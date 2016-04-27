@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         string jobId = jobsToWaitOn[i];
                         var updatedJob = JobConversions.GetPSJob(
-                            HydraAdapter.GetJob(jobId)
+                            ServiceClientAdapter.GetJob(jobId)
                             );
 
                         if (IsJobInProgress(updatedJob))

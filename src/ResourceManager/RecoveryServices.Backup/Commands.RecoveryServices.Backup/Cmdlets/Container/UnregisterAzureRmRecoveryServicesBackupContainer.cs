@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 AzureRmRecoveryServicesBackupMabContainer mabContainer = Container as AzureRmRecoveryServicesBackupMabContainer;
                 string containerName = mabContainer.Name;
-                HydraAdapter.UnregisterContainers(containerName);
+                ServiceClientAdapter.UnregisterContainers(containerName);
             });
         }
     }
