@@ -17,23 +17,23 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Resources.Models
 {
     /// <summary>
-    /// Represents the location info for a resource provider
+    /// Represents the location with supported providers
     /// </summary>
-    public class PSResourceProviderLocationInfo
+    public class PSResourceProviderLocation
     {
         /// <summary>
-        /// Gets or sets the name of the resource provider
+        /// Gets or sets the location name
         /// </summary>
-        public string Name { get; set; }
+        public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets the locations that the resource provider exists in
+        /// Gets or sets the location display name
         /// </summary>
-        public List<string> Locations { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets the locations that the resource provider exists in, as a single string
+        /// Gets or sets the providers that are supported in this location
         /// </summary>
-        public string LocationsString { get; set; }
+        public List<string> Providers { get; set; }
     }
 }
