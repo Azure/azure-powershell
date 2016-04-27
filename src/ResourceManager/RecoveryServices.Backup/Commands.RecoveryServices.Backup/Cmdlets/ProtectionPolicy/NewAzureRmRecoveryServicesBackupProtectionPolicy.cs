@@ -32,23 +32,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesBackupProtectionPolicy"), OutputType(typeof(PolicyBase))]
     public class NewAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = ParamHelpMsg.Common.WorkloadType, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsg.Common.BackupManagementType, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsgs.Common.BackupManagementType, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.RetentionPolicy, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.RetentionPolicy, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public RetentionPolicyBase RetentionPolicy { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.SchedulePolicy, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SchedulePolicy, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public SchedulePolicyBase SchedulePolicy { get; set; }
 

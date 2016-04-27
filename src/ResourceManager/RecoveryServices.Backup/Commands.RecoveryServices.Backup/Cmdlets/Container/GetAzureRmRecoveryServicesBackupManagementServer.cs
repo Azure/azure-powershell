@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"), OutputType(typeof(BackupEngineBase))]
     public class GetAzureRmRecoveryServicesBackupManagementServer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, Position = 1, HelpMessage = ParamHelpMsg.Container.Name)]
+        [Parameter(Mandatory = false, Position = 1, HelpMessage = ParamHelpMsgs.Container.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

@@ -37,21 +37,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
         internal const string ModifyProtectionParameterSet = "ModifyProtection";
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.AzureVMName)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.AzureVMName)]
         public string Name { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMServiceName)]
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.AzureVMServiceName)]
         public string ServiceName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMResourceGroupName)]
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.AzureVMResourceGroupName)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 4, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
+        [Parameter(Position = 4, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsgs.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
 

@@ -30,20 +30,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string DateTimeFilterParameterSet = "DateTimeFilter";
         internal const string RecoveryPointIdParameterSet = "RecoveryPointId";
 
-        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = false, Position = 0, HelpMessage = ParamHelpMsg.RecoveryPoint.StartDate)]        
+        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = false, Position = 0, HelpMessage = ParamHelpMsgs.RecoveryPoint.StartDate)]        
         [ValidateNotNullOrEmpty]
         public DateTime StartDate { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = false, Position = 1, HelpMessage = ParamHelpMsg.RecoveryPoint.EndDate)]        
+        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = false, Position = 1, HelpMessage = ParamHelpMsgs.RecoveryPoint.EndDate)]        
         [ValidateNotNullOrEmpty]
         public DateTime EndDate { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = ParamHelpMsg.RecoveryPoint.Item)]
-        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsg.RecoveryPoint.Item)]
+        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
+        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, ValueFromPipeline = false, Position = 1, HelpMessage = ParamHelpMsg.RecoveryPoint.RecoveryPointId)]
+        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, ValueFromPipeline = false, Position = 1, HelpMessage = ParamHelpMsgs.RecoveryPoint.RecoveryPointId)]
         [ValidateNotNullOrEmpty]
         public string RecoveryPointId { get; set; }
 

@@ -27,31 +27,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(JobBase))]
     public class GetAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.StatusFilter, Position = 1)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.StatusFilter, Position = 1)]
         [ValidateNotNullOrEmpty]
         public JobStatus? Status { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.OperationFilter, Position = 2)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.OperationFilter, Position = 2)]
         [ValidateNotNullOrEmpty]
         public JobOperation? Operation { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.FromFilter, Position = 3)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.FromFilter, Position = 3)]
         [ValidateNotNull]
         public DateTime? From { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.ToFilter, Position = 4)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.ToFilter, Position = 4)]
         [ValidateNotNull]
         public DateTime? To { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.JobIdFilter, Position = 5)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.JobIdFilter, Position = 5)]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.JobFilter, Position = 6)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.JobFilter, Position = 6)]
         [ValidateNotNull]
         public JobBase Job { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.BackupManagementTypeFilter)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.BackupManagementTypeFilter)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 

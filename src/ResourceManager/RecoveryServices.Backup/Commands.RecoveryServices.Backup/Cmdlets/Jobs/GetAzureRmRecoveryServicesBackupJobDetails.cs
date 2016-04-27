@@ -12,27 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupSchedulePolicyObject"), OutputType(typeof(SchedulePolicyBase))]
-    public class GetAzureRmRecoveryServicesBackupSchedulePolicyObject : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJobDetails", DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
+    public class GetAzureRmRecoveryServicesBackupJobDetails : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, Position = 0, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
-        [ValidateNotNullOrEmpty]
-        public WorkloadType WorkloadType { get; set; }
+        protected const string IdFilterSet = "IdFilterSet";
+        protected const string JobFilterSet = "JobFilterSet";
 
-        [Parameter(Mandatory = false, Position = 1, HelpMessage = ParamHelpMsg.Common.BackupManagementType)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.JobFilter, ParameterSetName = JobFilterSet, Position = 1)]
+        [ValidateNotNull]
+        public JobBase Job { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.JobIdFilter, ParameterSetName = IdFilterSet, Position = 2)]
         [ValidateNotNullOrEmpty]
-        public BackupManagementType? BackupManagementType { get; set; }
+        public string JobId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -40,10 +38,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>(), ServiceClientAdapter);
+                if (ParameterSetName == JobFilterSet)
+                {
+                    JobId = Job.JobId;
+                }
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
-                WriteObject(psBackupProvider.GetDefaultSchedulePolicyObject());
+                WriteDebug("Fetching job with ID: " + JobId);
+
+                var adapterResponse = ServiceClientAdapter.GetJob(JobId);
+                WriteObject(JobConversions.GetPSJob(adapterResponse));
             });
         }
     }

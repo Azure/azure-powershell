@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    internal static class ParamHelpMsg
+    internal static class ParamHelpMsgs
     {
         internal static class Container
         {

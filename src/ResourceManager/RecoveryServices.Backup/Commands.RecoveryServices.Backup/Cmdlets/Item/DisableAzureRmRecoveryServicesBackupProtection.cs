@@ -33,18 +33,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupProtection"), OutputType(typeof(JobBase))]
     public class DisableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsg.Item.RemoveProtectionOption)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsgs.Item.RemoveProtectionOption)]
         public SwitchParameter RemoveRecoveryPoints
         {
             get { return DeleteBackupData; }
             set { DeleteBackupData = value; }
         }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.ForceOption)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.ForceOption)]
         public SwitchParameter Force { get; set; }
 
         private bool DeleteBackupData;
