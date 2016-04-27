@@ -22,6 +22,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {

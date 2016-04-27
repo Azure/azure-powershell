@@ -27,9 +27,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             if (validationResult.Error != null)
             {
                 Errors.Add(validationResult.Error);
-                if (validationResult.Error.Details != null && validationResult.Error.Details.Count > 0)
-                {
-                    Errors.AddRange(validationResult.Error.Details);
                 }
             }
 

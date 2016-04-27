@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Models
+namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class PSTagValuePair
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Xunit;
+
+    public class LocationTests
     {
-        public string Name { get; set; }
-        public string Value { get; set; }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureLocation()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-AzureLocation");
+        }
     }
 }

@@ -12,28 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Authentication;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
+namespace Microsoft.Azure.Common.Authentication
 {
     /// <summary>
-    /// Represents the location info for a resource provider
+    /// Provide backward compatibility for setting User Agent values
     /// </summary>
-    public class PSResourceProviderLocationInfo
+    public static class AzureSession
     {
         /// <summary>
-        /// Gets or sets the name of the resource provider
+        /// The ClientFactory used to produce management clients in this session
         /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the locations that the resource provider exists in
-        /// </summary>
-        public List<string> Locations { get; set; }
-
-        /// <summary>
-        /// Gets or sets the locations that the resource provider exists in, as a single string
-        /// </summary>
-        public string LocationsString { get; set; }
+        public static IClientFactory ClientFactory
+        {
+            get { return Commands.Common.Authentication.AzureSession.ClientFactory; }
+        }
     }
 }

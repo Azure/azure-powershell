@@ -177,40 +177,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 out accessStartTime, out accessEndTime, shouldSetExpiryTime);
             policy.SharedAccessStartTime = accessStartTime;
             policy.SharedAccessExpiryTime = accessEndTime;
-            SetupAccessPolicyPermission(policy, Permission);
-        }
-
-        /// <summary>
-        /// Set up access policy permission
-        /// </summary>
-        /// <param name="policy">SharedAccessBlobPolicy object</param>
-        /// <param name="permission">Permission</param>
-        internal void SetupAccessPolicyPermission(SharedAccessTablePolicy policy, string permission)
-        {
-            if (string.IsNullOrEmpty(permission)) return;
-            policy.Permissions = SharedAccessTablePermissions.None;
-            permission = permission.ToLower();
-            foreach (char op in permission)
-            {
-                switch (op)
-                {
-                    case StorageNouns.Permission.Add:
-                        policy.Permissions |= SharedAccessTablePermissions.Add;
-                        break;
-                    case StorageNouns.Permission.Update:
-                        policy.Permissions |= SharedAccessTablePermissions.Update;
-                        break;
-                    case StorageNouns.Permission.Delete:
-                        policy.Permissions |= SharedAccessTablePermissions.Delete;
-                        break;
-                    case StorageNouns.Permission.Read:
-                    case StorageNouns.Permission.Query:
-                        policy.Permissions |= SharedAccessTablePermissions.Query;
-                        break;
-                    default:
-                        throw new ArgumentException(string.Format(Resources.InvalidAccessPermission, op));
-                }
-            }
+            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
         }
     }
 }
