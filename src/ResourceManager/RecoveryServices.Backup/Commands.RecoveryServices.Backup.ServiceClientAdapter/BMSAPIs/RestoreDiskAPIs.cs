@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
     public partial class ServiceClientAdapter
     {
         
-        public BaseRecoveryServicesJobResponse RestoreDisk(AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rp, string storageAccountId, 
+        public BaseRecoveryServicesJobResponse RestoreDisk(AzureVmRecoveryPoint rp, string storageAccountId, 
             string storageAccountLocation, string storageAccountType)
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Create new protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesBackupProtectionPolicy"), OutputType(typeof(AzureRmRecoveryServicesBackupPolicyBase))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesBackupProtectionPolicy"), OutputType(typeof(PolicyBase))]
     public class NewAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.Name)]
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.RetentionPolicy, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupRetentionPolicyBase RetentionPolicy { get; set; }
+        public RetentionPolicyBase RetentionPolicy { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.SchedulePolicy, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupSchedulePolicyBase SchedulePolicy { get; set; }
+        public SchedulePolicyBase SchedulePolicy { get; set; }
 
         public override void ExecuteCmdlet()
         {

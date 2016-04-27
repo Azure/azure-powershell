@@ -30,12 +30,12 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
+    [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(JobBase))]
     public class RestoreAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsg.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupRecoveryPointBase RecoveryPoint { get; set; }
+        public RecoveryPointBase RecoveryPoint { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.RestoreDisk.StorageAccountName)]
         [ValidateNotNullOrEmpty]

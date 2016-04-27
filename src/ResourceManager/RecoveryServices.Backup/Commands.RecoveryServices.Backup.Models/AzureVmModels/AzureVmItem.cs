@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Represents IaaSVM Item Class
     /// </summary>
-    public class AzureRmRecoveryServicesBackupIaasVmItem : AzureRmRecoveryServicesBackupItemBase
+    public class AzureVmItem : ItemBase
     {
         public string VirtualMachineId { get; set; }
 
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// ExtendedInfo for the Item
         /// </summary
-        public AzureRmRecoveryServicesBackupIaasVmItemExtendedInfo ExtendedInfo { get; set; }
+        public AzureVmItemExtendedInfo ExtendedInfo { get; set; }
 
-        public AzureRmRecoveryServicesBackupIaasVmItem(ProtectedItemResource protectedItemResource,
+        public AzureVmItem(ProtectedItemResource protectedItemResource,
             string containerName, ContainerType containerType, string policyName)
             : base(protectedItemResource, containerName, containerType)
         {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Represents IaaSVM Item ExtendedInfo Class
     /// </summary>
-    public class AzureRmRecoveryServicesBackupIaasVmItemExtendedInfo : AzureRmRecoveryServicesBackupItemExtendedInfoBase
+    public class AzureVmItemExtendedInfo : ItemExtendedInfoBase
     {
         /// <summary>
         /// Oldest Recovery Point for the Item

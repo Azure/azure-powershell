@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -29,20 +30,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Update existing protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy"), OutputType(typeof(List<AzureRmRecoveryServicesBackupJobBase>))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy"), OutputType(typeof(List<CmdletModel.JobBase>))]
     public class SetAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupPolicyBase Policy { get; set; }
+        public PolicyBase Policy { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.RetentionPolicy)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupRetentionPolicyBase RetentionPolicy { get; set; }
+        public RetentionPolicyBase RetentionPolicy { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsg.Policy.SchedulePolicy)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupSchedulePolicyBase SchedulePolicy { get; set; }
+        public SchedulePolicyBase SchedulePolicy { get; set; }
        
         public override void ExecuteCmdlet()
         {

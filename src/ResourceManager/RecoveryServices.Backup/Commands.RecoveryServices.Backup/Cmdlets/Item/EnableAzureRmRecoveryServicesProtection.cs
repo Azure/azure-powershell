@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection", DefaultParameterSetName = AzureVMComputeParameterSet), OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection", DefaultParameterSetName = AzureVMComputeParameterSet), OutputType(typeof(JobBase))]
     public class EnableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
     {
         internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupPolicyBase Policy { get; set; }
+        public PolicyBase Policy { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsg.Item.AzureVMName)]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Position = 4, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupItemBase Item { get; set; }
+        public ItemBase Item { get; set; }
 
         public override void ExecuteCmdlet()
         {

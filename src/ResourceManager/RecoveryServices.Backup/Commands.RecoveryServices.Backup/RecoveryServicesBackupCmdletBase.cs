@@ -24,6 +24,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -128,14 +129,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             InitializeAzureBackupCmdlet();
         }
 
-        public AzureRmRecoveryServicesBackupJobBase GetJobObject(string jobId)
+        public CmdletModel.JobBase GetJobObject(string jobId)
         {
             return JobConversions.GetPSJob(ServiceClientAdapter.GetJob(jobId));
         }
 
-        public List<AzureRmRecoveryServicesBackupJobBase> GetJobObject(IList<string> jobIds)
+        public List<CmdletModel.JobBase> GetJobObject(IList<string> jobIds)
         {
-            List<AzureRmRecoveryServicesBackupJobBase> result = new List<AzureRmRecoveryServicesBackupJobBase>();
+            List<CmdletModel.JobBase> result = new List<CmdletModel.JobBase>();
             foreach (string jobId in jobIds)
             {
                 result.Add(GetJobObject(jobId));

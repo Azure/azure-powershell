@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// </summary>
         /// <param name="ServiceClientJob"></param>
         /// <returns></returns>
-        public static CmdletModel.AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResponse serviceClientJob)
+        public static CmdletModel.JobBase GetPSJob(JobResponse serviceClientJob)
         {
             return GetPSJob(serviceClientJob.Item);
         }
 
-        public static CmdletModel.AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResource serviceClientJob)
+        public static CmdletModel.JobBase GetPSJob(JobResource serviceClientJob)
         {
-            CmdletModel.AzureRmRecoveryServicesBackupJobBase response = null;
+            CmdletModel.JobBase response = null;
 
             // ServiceClient doesn't initialize Properties if the type of job is not known to current version of ServiceClient.
             if (serviceClientJob.Properties == null)
@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return response;
         }
 
-        public static void AddServiceClientJobsToPSList(JobListResponse serviceClientJobs, List<CmdletModel.AzureRmRecoveryServicesBackupJobBase> psJobs, ref int jobsCount)
+        public static void AddServiceClientJobsToPSList(JobListResponse serviceClientJobs, List<CmdletModel.JobBase> psJobs, ref int jobsCount)
         {
             if (serviceClientJobs.ItemList != null && serviceClientJobs.ItemList.Value != null)
             {
                 foreach (var job in serviceClientJobs.ItemList.Value)
                 {
-                    CmdletModel.AzureRmRecoveryServicesBackupJobBase convertedJob = GetPSJob(job);
+                    CmdletModel.JobBase convertedJob = GetPSJob(job);
                     if (convertedJob != null)
                     {
                         jobsCount++;
@@ -72,19 +72,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region AzureVm job private helpers
 
-        private static CmdletModel.AzureRmRecoveryServicesBackupAzureVmJob GetPSAzureVmJob(JobResource serviceClientJob)
+        private static CmdletModel.AzureVmJob GetPSAzureVmJob(JobResource serviceClientJob)
         {
-            CmdletModel.AzureRmRecoveryServicesBackupAzureVmJob response;
+            CmdletModel.AzureVmJob response;
 
             AzureIaaSVMJob vmJob = serviceClientJob.Properties as AzureIaaSVMJob;
 
             if (vmJob.ExtendedInfo != null)
             {
-                response = new CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobDetails();
+                response = new CmdletModel.AzureVmJobDetails();
             }
             else
             {
-                response = new CmdletModel.AzureRmRecoveryServicesBackupAzureVmJob();
+                response = new CmdletModel.AzureVmJob();
             }
 
             response.JobId = GetLastIdFromFullId(serviceClientJob.Id);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             if (vmJob.ErrorDetails != null)
             {
-                response.ErrorDetails = new List<CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo>();
+                response.ErrorDetails = new List<CmdletModel.AzureVmJobErrorInfo>();
                 foreach (var vmError in vmJob.ErrorDetails)
                 {
                     response.ErrorDetails.Add(GetPSAzureVmErrorInfo(vmError));
@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             // fill extended info if present
             if (vmJob.ExtendedInfo != null)
             {
-                CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobDetails detailedResponse =
-                    response as CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobDetails;
+                CmdletModel.AzureVmJobDetails detailedResponse =
+                    response as CmdletModel.AzureVmJobDetails;
 
                 detailedResponse.DynamicErrorMessage = vmJob.ExtendedInfo.DynamicErrorMessage;
                 if (vmJob.ExtendedInfo.PropertyBag != null)
@@ -125,10 +125,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 if (vmJob.ExtendedInfo.TasksList != null)
                 {
-                    detailedResponse.SubTasks = new List<CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobSubTask>();
+                    detailedResponse.SubTasks = new List<CmdletModel.AzureVmJobSubTask>();
                     foreach (var vmJobTask in vmJob.ExtendedInfo.TasksList)
                     {
-                        detailedResponse.SubTasks.Add(new CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobSubTask()
+                        detailedResponse.SubTasks.Add(new CmdletModel.AzureVmJobSubTask()
                         {
                             Name = vmJobTask.TaskId,
                             Status = vmJobTask.Status
@@ -140,9 +140,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return response;
         }
 
-        private static CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo serviceClientError)
+        private static CmdletModel.AzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo serviceClientError)
         {
-            CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo psErrorInfo = new CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo();
+            CmdletModel.AzureVmJobErrorInfo psErrorInfo = new CmdletModel.AzureVmJobErrorInfo();
             psErrorInfo.ErrorCode = serviceClientError.ErrorCode;
             psErrorInfo.ErrorMessage = serviceClientError.ErrorString;
             if (serviceClientError.Recommendations != null)

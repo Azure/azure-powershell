@@ -18,7 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel  =Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     {
         #region ServiceClientToPSObject conversions
 
-        public static AzureRmRecoveryServicesBackupSimpleSchedulePolicy GetPSSimpleSchedulePolicy(
-            SimpleSchedulePolicy serviceClientPolicy)
+        public static SimpleSchedulePolicy GetPSSimpleSchedulePolicy(
+            ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy)
         {
             if (serviceClientPolicy == null)
             {
                 return null;
             }
 
-            AzureRmRecoveryServicesBackupSimpleSchedulePolicy psPolicy = new AzureRmRecoveryServicesBackupSimpleSchedulePolicy();
+            SimpleSchedulePolicy psPolicy = new SimpleSchedulePolicy();
 
             psPolicy.ScheduleRunDays = HelperUtils.GetEnumListFromStringList<DayOfWeek>(serviceClientPolicy.ScheduleRunDays);
             psPolicy.ScheduleRunFrequency = (ScheduleRunType)Enum.Parse(typeof(ScheduleRunType),
@@ -72,17 +72,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return utcTimes;
-        }       
+        }
 
-        public static SimpleSchedulePolicy GetServiceClientSimpleSchedulePolicy(
-            AzureRmRecoveryServicesBackupSimpleSchedulePolicy psPolicy)
+        public static ServiceClientModel.SimpleSchedulePolicy GetServiceClientSimpleSchedulePolicy(
+            SimpleSchedulePolicy psPolicy)
         {
             if (psPolicy == null)
             {
                 return null;
             }
 
-            SimpleSchedulePolicy serviceClientPolicy = new SimpleSchedulePolicy();            
+            ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy = new ServiceClientModel.SimpleSchedulePolicy();            
             serviceClientPolicy.ScheduleRunFrequency = psPolicy.ScheduleRunFrequency.ToString();
             if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
             {

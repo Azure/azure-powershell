@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRetentionPolicyObject"), OutputType(typeof(AzureRmRecoveryServicesBackupRetentionPolicyBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRetentionPolicyObject"), OutputType(typeof(RetentionPolicyBase))]
     public class GetAzureRmRecoveryServicesBackupRetentionPolicyObject : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = ParamHelpMsg.Common.WorkloadType)]

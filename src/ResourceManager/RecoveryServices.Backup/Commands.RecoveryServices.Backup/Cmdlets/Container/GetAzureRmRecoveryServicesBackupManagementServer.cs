@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"), OutputType(typeof(AzureRmRecoveryServicesBackupEngineBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"), OutputType(typeof(BackupEngineBase))]
     public class GetAzureRmRecoveryServicesBackupManagementServer : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = false, Position = 1, HelpMessage = ParamHelpMsg.Container.Name)]

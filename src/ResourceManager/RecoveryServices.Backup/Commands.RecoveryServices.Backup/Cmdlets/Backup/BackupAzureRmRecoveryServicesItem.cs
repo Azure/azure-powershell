@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Backup Item
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
+    [Cmdlet(VerbsData.Backup, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(JobBase))]
     public class BackupAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupItemBase Item { get; set; }
+        public ItemBase Item { get; set; }
 
         public override void ExecuteCmdlet()
         {

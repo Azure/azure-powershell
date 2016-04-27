@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
     {
         [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupEngineBase AzureRmBackupManagementServer { get; set; }
+        public BackupEngineBase AzureRmBackupManagementServer { get; set; }
 
         public override void ExecuteCmdlet()
         {

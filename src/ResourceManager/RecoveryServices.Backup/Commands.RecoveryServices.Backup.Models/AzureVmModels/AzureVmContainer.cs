@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesBackupIaasVmContainer : AzureRmRecoveryServicesBackupContainerBase
+    public class AzureVmContainer : ContainerBase
     {
         /// <summary>
         /// Resource Group where the Container is present
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public ContainerRegistrationStatus Status { get; set; }
 
-        public AzureRmRecoveryServicesBackupIaasVmContainer(ProtectionContainerResource protectionContainer)
+        public AzureVmContainer(ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
             AzureIaaSVMProtectionContainer iaasVmProtectionContainer = (AzureIaaSVMProtectionContainer)protectionContainer.Properties;

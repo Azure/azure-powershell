@@ -20,15 +20,19 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesBackupIaasVmRecoveryPoint : AzureRmRecoveryServicesBackupRecoveryPointBase
+    public class AzureVmPolicy : PolicyBase
     {
-        public string RecoveryPointAdditionalInfo { get; set; }
+        public SchedulePolicyBase SchedulePolicy { get; set; }
 
-        public string SourceVMStorageType { get; set; }
+        public RetentionPolicyBase RetentionPolicy { get; set; }
 
-        public AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
+        public override void Validate()
         {
+            base.Validate();
 
+            SchedulePolicy.Validate();
+            RetentionPolicy.Validate();
         }
     }
+
 }
