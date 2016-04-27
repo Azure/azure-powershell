@@ -22,10 +22,16 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Backup policy conversion helper
+    /// </summary>
     public partial class PolicyHelpers
     {
         #region HydraToPSObject conversions
 
+        // <summary>
+        /// Helper function to convert ps simple schedule policy from service response.
+        /// </summary>
         public static AzureRmRecoveryServicesBackupSimpleSchedulePolicy GetPSSimpleSchedulePolicy(
             SimpleSchedulePolicy hydraPolicy)
         {
@@ -51,6 +57,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region PStoHydraObject conversions
 
+        // <summary>
+        /// Helper function to parse utc time from local time.
+        /// </summary>
         public static List<DateTime> ParseDateTimesToUTC(IList<DateTime> localTimes)
         {
             if (localTimes == null || localTimes.Count == 0)
@@ -72,8 +81,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return utcTimes;
-        }       
+        }
 
+        // <summary>
+        /// Helper function to convert service simple schedule policy from ps scheduel policy.
+        /// </summary>
         public static SimpleSchedulePolicy GetHydraSimpleSchedulePolicy(
             AzureRmRecoveryServicesBackupSimpleSchedulePolicy psPolicy)
         {

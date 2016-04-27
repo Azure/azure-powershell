@@ -19,11 +19,17 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// Base class for AzureRm recovery services objects.
+    /// </summary>
     public class AzureRmRecoveryServicesObjectBase
     {
         public virtual void Validate() { }
     }
 
+    /// <summary>
+    /// Class containing common properties across different contexts.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupManagementContext : AzureRmRecoveryServicesObjectBase
     {
         /// <summary>
@@ -39,6 +45,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Class representing backup container context.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupContainerContext : AzureRmRecoveryServicesBackupManagementContext
     {
         public ContainerType ContainerType { get; set; }
@@ -58,6 +67,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Class representing backup engine context.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupEngineContext : AzureRmRecoveryServicesBackupManagementContext
     {
         public string BackupEngineType { get; set; }
@@ -71,6 +83,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Base class for backup container.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupContainerBase : AzureRmRecoveryServicesBackupContainerContext
     {
         /// <summary>
@@ -86,6 +101,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Base class for backup engine.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupEngineBase : AzureRmRecoveryServicesBackupEngineContext
     {
         /// <summary>
@@ -169,6 +187,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
     }
 
+    /// <summary>
+    /// Base class for recovery point.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupRecoveryPointBase : AzureRmRecoveryServicesBackupItemContext
     {
         private global::Microsoft.Azure.Management.RecoveryServices.Backup.Models.RecoveryPointResource rp;
@@ -205,7 +226,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-
+    /// <summary>
+    /// Base class for backup policy.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupPolicyBase : AzureRmRecoveryServicesBackupManagementContext
     {
         public string Name { get; set; }
@@ -230,14 +253,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Base class for backup rentention policy.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupRetentionPolicyBase : AzureRmRecoveryServicesObjectBase
     {      
     }
 
+    /// <summary>
+    /// Base class for backup schedule policy.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupSchedulePolicyBase : AzureRmRecoveryServicesObjectBase
     {      
     }
 
+    /// <summary>
+    /// Base class for backup job.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupJobBase : AzureRmRecoveryServicesBackupManagementContext
     {
         public string ActivityId { get; set; }

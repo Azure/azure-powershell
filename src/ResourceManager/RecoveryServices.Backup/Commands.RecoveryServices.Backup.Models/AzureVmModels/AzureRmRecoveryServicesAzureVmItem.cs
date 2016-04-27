@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Represents IaaSVM Item Class
+    /// IaaSVM Item Class
     /// </summary>
     public class AzureRmRecoveryServicesBackupIaasVmItem : AzureRmRecoveryServicesBackupItemBase
     {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Represents IaaSVM Item ExtendedInfo Class
+    /// IaaSVM Item ExtendedInfo Class
     /// </summary>
     public class AzureRmRecoveryServicesBackupIaasVmItemExtendedInfo : AzureRmRecoveryServicesBackupItemExtendedInfoBase
     {

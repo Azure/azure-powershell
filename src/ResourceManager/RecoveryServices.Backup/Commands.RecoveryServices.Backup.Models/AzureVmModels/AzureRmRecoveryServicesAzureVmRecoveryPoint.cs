@@ -20,6 +20,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// IaasVm specific recovery point class.
+    /// </summary>
     public class AzureRmRecoveryServicesBackupIaasVmRecoveryPoint : AzureRmRecoveryServicesBackupRecoveryPointBase
     {
         public string RecoveryPointAdditionalInfo { get; set; }
