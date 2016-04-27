@@ -152,7 +152,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             // protected item and policy.
             BackUpOperationStatusResponse response = hydraFunc(statusUrlLink);
 
-            while (response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
+            while (
+                response != null &&
+                response.OperationStatus != null &&
+                response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
             {
                 WriteDebug("Tracking operation completion using status link: " + statusUrlLink);
                 TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
@@ -171,23 +174,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                             itemResponse.AzureAsyncOperation,
                                             HydraAdapter.GetProtectedItemOperationStatusByURL);
 
-            WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
-
-            if (response.OperationStatus.Properties != null &&
-                   ((OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
+            if (response != null && response.OperationStatus != null)
             {
-                var jobStatusResponse = (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
-                WriteObject(GetJobObject(jobStatusResponse.JobId));
-            }
+                WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
 
-            if (response.OperationStatus.Status == OperationStatusValues.Failed)
-            {
-                var errorMessage = string.Format(
-                    Resources.OperationFailed,
-                    operationName,
-                    response.OperationStatus.OperationStatusError.Code,
-                    response.OperationStatus.OperationStatusError.Message);
-                throw new Exception(errorMessage);
+                if (response.OperationStatus.Properties != null &&
+                       ((OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
+                {
+                    var jobStatusResponse = (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+                    WriteObject(GetJobObject(jobStatusResponse.JobId));
+                }
+
+                if (response.OperationStatus.Status == OperationStatusValues.Failed &&
+                    response.OperationStatus.OperationStatusError != null)
+                {
+                    var errorMessage = string.Format(
+                        Resources.OperationFailed,
+                        operationName,
+                        response.OperationStatus.OperationStatusError.Code,
+                        response.OperationStatus.OperationStatusError.Message);
+                    throw new Exception(errorMessage);
+                }
             }
         }
     }
