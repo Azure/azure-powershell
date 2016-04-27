@@ -11,15 +11,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
 {
     public partial class HydraAdapter
     {
-        /// <summary>
-        /// Restore the given Recovery point of protectedItem to given storage account
-        /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="resourceName"></param>
-        /// <param name="containerName"></param>
-        /// <param name="protectedItemName"></param>
-        /// <param name="recoveryPointId"></param>
-        /// <returns></returns>
+        
         public BaseRecoveryServicesJobResponse RestoreDisk(AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rp, string storageAccountId, 
             string storageAccountLocation, string storageAccountType)
         {

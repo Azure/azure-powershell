@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             set { DeleteBackupData = value; }
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Item.ForceOption)]
         public SwitchParameter Force { get; set; }
 
         private bool DeleteBackupData;
