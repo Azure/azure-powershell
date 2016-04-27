@@ -20,14 +20,14 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
-    public class HydraConstants
+    public class ServiceClientConstants
     {
         public const string SkipToken = "skipToken";
     }
 
-    public class HydraHelpers
+    public class ServiceClientHelpers
     {
-        public static string GetHydraProviderType(CmdletModel.ContainerType containerType)
+        public static string GetServiceClientProviderType(CmdletModel.ContainerType containerType)
         {
             string providerType = string.Empty;
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return providerType;
         }
 
-        public static string GetHydraProviderType(CmdletModel.WorkloadType workloadType)
+        public static string GetServiceClientProviderType(CmdletModel.WorkloadType workloadType)
         {
             string providerType = string.Empty;
 
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 // This is sent by service and we don't expect this to be encoded.
                 // TODO: Need to make sure during testing that this is in fact true.
                 NameValueCollection queryParams = HttpUtility.ParseQueryString(uriObj.Query);
-                if (queryParams.Get(HydraConstants.SkipToken) != null)
+                if (queryParams.Get(ServiceClientConstants.SkipToken) != null)
                 {
-                    skipToken = queryParams.Get(HydraConstants.SkipToken);
+                    skipToken = queryParams.Get(ServiceClientConstants.SkipToken);
                 }
                 else
                 {
@@ -98,36 +98,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return splitArr[splitArr.Length - 1];
         }
 
-        public static string GetHydraContainerType(CmdletModel.ContainerType containerType)
+        public static string GetServiceClientContainerType(CmdletModel.ContainerType containerType)
         {
-            string hydraContainerType = string.Empty;
+            string serviceClientContainerType = string.Empty;
 
             switch (containerType)
             {
                 case CmdletModel.ContainerType.AzureVM:
-                    hydraContainerType = ContainerType.IaasVMContainer.ToString();
+                    serviceClientContainerType = ContainerType.IaasVMContainer.ToString();
                     break;
                 default:
                     break;
             }
 
-            return hydraContainerType;
+            return serviceClientContainerType;
         }
 
-        public static string GetHydraWorkloadType(CmdletModel.WorkloadType workloadType)
+        public static string GetServiceClientWorkloadType(CmdletModel.WorkloadType workloadType)
         {
-            string hydraWorkloadType = string.Empty;
+            string serviceClientWorkloadType = string.Empty;
 
             switch (workloadType)
             {
                 case CmdletModel.WorkloadType.AzureVM:
-                    hydraWorkloadType = WorkloadType.VM.ToString();
+                    serviceClientWorkloadType = WorkloadType.VM.ToString();
                     break;
                 default:
                     break;
             }
 
-            return hydraWorkloadType;
+            return serviceClientWorkloadType;
         }
     }
 }

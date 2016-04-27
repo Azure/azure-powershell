@@ -20,9 +20,9 @@ using System.Threading.Tasks;
 using RecoveryServicesModelsNS = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices.Backup;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
-    public partial class HydraAdapter
+    public partial class ServiceClientAdapter
     {
         const string AppSettingsSectionName = "appSettings";
         const string RecoveryServicesResourceNamespace = "Microsoft.RecoveryServices";
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
 
         ClientProxy<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders> BmsAdapter;
 
-        public HydraAdapter(SubscriptionCloudCredentials creds, Uri baseUri)
+        public ServiceClientAdapter(SubscriptionCloudCredentials creds, Uri baseUri)
         {
             System.Configuration.Configuration exeConfiguration = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
             System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)exeConfiguration.GetSection(AppSettingsSectionName);

@@ -19,9 +19,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
-    public partial class HydraAdapter
+    public partial class ServiceClientAdapter
     {
         public ProtectableObjectListResponse ListProtectableItem(
                 ProtectableObjectListQueryParameters queryFilter,
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
                 BmsAdapter.GetResourceGroupName(),
                 BmsAdapter.GetResourceName(),
                 BmsAdapter.GetCustomRequestHeaders(),
-                HydraAdapter.AzureFabricName,
+                ServiceClientAdapter.AzureFabricName,
                 containerName,
                 itemName,
                 BmsAdapter.CmdletCancellationToken).Result;

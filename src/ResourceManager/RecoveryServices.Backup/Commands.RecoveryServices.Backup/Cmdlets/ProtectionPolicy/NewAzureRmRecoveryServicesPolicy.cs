@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
 
                // Validate if policy already exists               
-               if (PolicyCmdletHelpers.GetProtectionPolicyByName(Name, HydraAdapter) != null)
+               if (PolicyCmdletHelpers.GetProtectionPolicyByName(Name, ServiceClientAdapter) != null)
                {
                    throw new ArgumentException(string.Format(Resources.PolicyAlreadyExistException, Name));
                }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                    {PolicyParams.WorkloadType, WorkloadType},                   
                    {PolicyParams.RetentionPolicy, RetentionPolicy},
                    {PolicyParams.SchedulePolicy, SchedulePolicy},                
-               }, HydraAdapter);
+               }, ServiceClientAdapter);
 
                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                psBackupProvider.CreatePolicy();
@@ -89,10 +89,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                WriteDebug("Successfully created policy, now fetching it from service: " + Name);
 
                // now get the created policy and return
-               HydraModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+               ServiceClientModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
                                                                            Name,
-                                                                           HydraAdapter);
-               // now convert hydraPolicy to PSObject
+                                                                           ServiceClientAdapter);
+               // now convert service Policy to PSObject
                WriteObject(ConversionHelpers.GetPolicyModel(policy.Item));
            });
         }

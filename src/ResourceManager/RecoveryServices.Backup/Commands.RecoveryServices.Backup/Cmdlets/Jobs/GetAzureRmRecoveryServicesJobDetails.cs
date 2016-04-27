@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 WriteDebug("Fetching job with ID: " + JobId);
 
-                var adapterResponse = HydraAdapter.GetJob(JobId);
+                var adapterResponse = ServiceClientAdapter.GetJob(JobId);
                 WriteObject(JobConversions.GetPSJob(adapterResponse));
             });
         }

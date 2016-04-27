@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {RestoreBackupItemParams.StorageAccountId, storageAccountId},
                     {RestoreBackupItemParams.StorageAccountLocation, storageAccountlocation},
                     {RestoreBackupItemParams.StorageAccountType, storageAccountType}
-                }, HydraAdapter);
+                }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerRestore();

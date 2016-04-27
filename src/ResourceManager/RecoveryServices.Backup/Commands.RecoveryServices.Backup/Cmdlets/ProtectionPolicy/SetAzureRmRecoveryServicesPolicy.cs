@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 // Validate if policy already exists               
                 ProtectionPolicyResponse servicePolicy = PolicyCmdletHelpers.GetProtectionPolicyByName(
-                                                                              Policy.Name, HydraAdapter);
+                                                                              Policy.Name, ServiceClientAdapter);
                 if (servicePolicy == null)
                 {
                     throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Policy.Name));
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {PolicyParams.ProtectionPolicy, Policy},
                     {PolicyParams.RetentionPolicy, RetentionPolicy},
                     {PolicyParams.SchedulePolicy, SchedulePolicy},                
-                }, HydraAdapter);
+                }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType,
                                                                                          Policy.BackupManagementType);                
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     // Track OperationStatus URL for operation completion
                     BackUpOperationStatusResponse operationResponse =  WaitForOperationCompletionUsingStatusLink(
                                                 policyResponse.AzureAsyncOperation,
-                                                HydraAdapter.GetProtectionPolicyOperationStatusByURL);
+                                                ServiceClientAdapter.GetProtectionPolicyOperationStatusByURL);
 
                     WriteDebug("Final operation status: " + operationResponse.OperationStatus.Status);
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else
                 {
-                    // Hydra will return OK if NO datasources are associated with this policy
+                    // ServiceClient will return OK if NO datasources are associated with this policy
                     WriteDebug("No datasources are associated with Policy, http response code: " +
                                 policyResponse.StatusCode.ToString());
                 }

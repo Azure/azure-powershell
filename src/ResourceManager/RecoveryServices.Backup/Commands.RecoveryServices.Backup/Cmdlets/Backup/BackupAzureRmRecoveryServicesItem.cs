@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
                     {ItemParams.Item, Item},
-                }, HydraAdapter);
+                }, ServiceClientAdapter);
 
             IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
             var jobResponse = psBackupProvider.TriggerBackup();

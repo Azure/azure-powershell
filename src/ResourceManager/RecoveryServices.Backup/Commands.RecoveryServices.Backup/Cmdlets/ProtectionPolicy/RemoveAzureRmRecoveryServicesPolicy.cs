@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                        WriteDebug(Resources.MakingClientCall);
 
-                       HydraAdapter.RemoveProtectionPolicy(PolicyName);
+                       ServiceClientAdapter.RemoveProtectionPolicy(PolicyName);
                        WriteDebug(Resources.ProtectionPolicyDeleted);
                    });
 

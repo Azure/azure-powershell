@@ -93,32 +93,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #endregion
 
         #region policy
-        public static AzureRmRecoveryServicesBackupPolicyBase GetPolicyModel(ProtectionPolicyResource hydraResponse)
+        public static AzureRmRecoveryServicesBackupPolicyBase GetPolicyModel(ProtectionPolicyResource serviceClientResponse)
         {
             AzureRmRecoveryServicesBackupPolicyBase policyModel = null;
 
-            if (hydraResponse == null || hydraResponse.Properties == null)
+            if (serviceClientResponse == null || serviceClientResponse.Properties == null)
             {
-                Logger.Instance.WriteDebug("Policy Hydra response is Null/Empty");
-                throw new ArgumentException(Resources.EmptyHydraResponseException);
+                Logger.Instance.WriteDebug("Policy Service Client response is Null/Empty");
+                throw new ArgumentException(Resources.EmptyServiceClientResponseException);
             }
 
-            if (hydraResponse.Properties.GetType() == typeof(AzureIaaSVMProtectionPolicy))
+            if (serviceClientResponse.Properties.GetType() == typeof(AzureIaaSVMProtectionPolicy))
             {
-                if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType() !=
+                if (((AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType() !=
                                                                            typeof(LongTermRetentionPolicy))
                 {
                     Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
-                               ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType());
+                               ((AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType());
                     Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
 
-                if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType() !=
+                if (((AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType() !=
                                                                             typeof(SimpleSchedulePolicy))
                 {
                     Logger.Instance.WriteDebug("Unknown SchedulePolicy object received: " +
-                               ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType());
+                               ((AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType());
                     Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
@@ -128,31 +128,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 iaasPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureVM;
                 iaasPolicyModel.BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureVM;
                 iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((LongTermRetentionPolicy)
-                                                  ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy);
+                                                  ((AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy);
                 iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((SimpleSchedulePolicy)
-                                                 ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy);
+                                                 ((AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy);
             }
             else
             {
                 // we will enter this case when service supports new workload and customer 
                 // still using old version of azure powershell. Trace warning message, ignore and return
                 Logger.Instance.WriteDebug("Unknown Policy object received: " +
-                                           hydraResponse.Properties.GetType());
+                                           serviceClientResponse.Properties.GetType());
                 Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                 return null;
             }
 
-            policyModel.Name = hydraResponse.Name;
-            policyModel.Id = hydraResponse.Id;
+            policyModel.Name = serviceClientResponse.Name;
+            policyModel.Id = serviceClientResponse.Id;
 
             return policyModel;
         }
 
         public static List<AzureRmRecoveryServicesBackupPolicyBase> GetPolicyModelList(
-            ProtectionPolicyListResponse hydraListResponse)
+            ProtectionPolicyListResponse serviceClientListResponse)
         {
-            if (hydraListResponse == null || hydraListResponse.ItemList == null ||
-               hydraListResponse.ItemList.Value == null || hydraListResponse.ItemList.Value.Count == 0)
+            if (serviceClientListResponse == null || serviceClientListResponse.ItemList == null ||
+               serviceClientListResponse.ItemList.Value == null || serviceClientListResponse.ItemList.Value.Count == 0)
             {
                 Logger.Instance.WriteDebug("Received empty list of policies from service");
                 return null;
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             List<AzureRmRecoveryServicesBackupPolicyBase> policyModels = new List<AzureRmRecoveryServicesBackupPolicyBase>();
             AzureRmRecoveryServicesBackupPolicyBase policyModel = null;
 
-            foreach (ProtectionPolicyResource resource in hydraListResponse.ItemList.Value)
+            foreach (ProtectionPolicyResource resource in serviceClientListResponse.ItemList.Value)
             {
                 policyModel = GetPolicyModel(resource);
                 if (policyModel != null)

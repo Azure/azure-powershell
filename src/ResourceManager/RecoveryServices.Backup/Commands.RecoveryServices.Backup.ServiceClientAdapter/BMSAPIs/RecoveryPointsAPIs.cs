@@ -19,9 +19,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
-    public partial class HydraAdapter
+    public partial class ServiceClientAdapter
     {
         
         public RecoveryPointResponse GetRecoveryPointDetails(string containerName, string protectedItemName, string recoveryPointId)

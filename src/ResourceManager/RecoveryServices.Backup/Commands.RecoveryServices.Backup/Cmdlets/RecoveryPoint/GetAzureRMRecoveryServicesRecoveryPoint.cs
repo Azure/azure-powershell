@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     parameter.Add(GetRecoveryPointParams.StartDate, StartDate);
                     parameter.Add(GetRecoveryPointParams.EndDate, EndDate);
-                    PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);
+                    PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, ServiceClientAdapter);
                     IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
                     var rpList = psBackupProvider.ListRecoveryPoints();
 
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         StartDate, EndDate, RecoveryPointId));
 
                     parameter.Add(GetRecoveryPointParams.RecoveryPointId, RecoveryPointId);
-                    PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, HydraAdapter);
+                    PsBackupProviderManager providerManager = new PsBackupProviderManager(parameter, ServiceClientAdapter);
                     IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
                     WriteObject(psBackupProvider.GetRecoveryPointDetails());
                 }

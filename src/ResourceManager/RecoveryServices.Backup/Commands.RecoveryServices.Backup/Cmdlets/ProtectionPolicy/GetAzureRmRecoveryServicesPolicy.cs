@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                    PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
 
                    // query service
-                   HydraModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                   ServiceClientModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
                                                      Name,
-                                                     HydraAdapter);
+                                                     ServiceClientAdapter);
                    if (policy == null)
                    {
                        throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
@@ -84,14 +84,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                else
                {
                    List<AzureRmRecoveryServicesBackupPolicyBase> policyList = new List<AzureRmRecoveryServicesBackupPolicyBase>();
-                   string hydraProviderType = null;                   
+                   string serviceClientProviderType = null;                   
 
                    switch (this.ParameterSetName)
                    {
                        case WorkloadParamSet:
                            if (WorkloadType == Models.WorkloadType.AzureVM)
                            {
-                               hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureVM);
+                               serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureVM);
                            }
                            break;
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                {
                                    throw new ArgumentException(Resources.AzureVMUnsupportedBackupManagementTypeException);
                                }
-                               hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureVM);
+                               serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureVM);
                            }
                            else
                            {
@@ -117,13 +117,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                            break;
                    }
 
-                   HydraModel.ProtectionPolicyQueryParameters queryParams = new HydraModel.ProtectionPolicyQueryParameters()
+                   ServiceClientModel.ProtectionPolicyQueryParameters queryParams = new ServiceClientModel.ProtectionPolicyQueryParameters()
                    {
-                       BackupManagementType = hydraProviderType
+                       BackupManagementType = serviceClientProviderType
                    };
 
                    WriteDebug("going to query service to get list of policies");
-                   HydraModel.ProtectionPolicyListResponse respList = HydraAdapter.ListProtectionPolicy(queryParams);
+                   ServiceClientModel.ProtectionPolicyListResponse respList = ServiceClientAdapter.ListProtectionPolicy(queryParams);
                    WriteDebug("Successfully got response from service");
 
                    policyList = ConversionHelpers.GetPolicyModelList(respList);

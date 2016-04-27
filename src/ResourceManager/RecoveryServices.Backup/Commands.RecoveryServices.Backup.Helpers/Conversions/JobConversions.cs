@@ -22,43 +22,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
     public class JobConversions
     {
-        #region Hydra to PS convertors
+        #region ServiceClient to PS convertors
 
         /// <summary>
         /// This function returns either job object or job details object based on 
-        /// what hydra object contains.
-        /// To elaborate, if hydra job's ExtendedInfo is filled then this function will
+        /// what ServiceClient object contains.
+        /// To elaborate, if ServiceClient job's ExtendedInfo is filled then this function will
         /// return a job details object. Otherwise it will return a job object.
         /// </summary>
-        /// <param name="hydraJob"></param>
+        /// <param name="ServiceClientJob"></param>
         /// <returns></returns>
-        public static CmdletModel.AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResponse hydraJob)
+        public static CmdletModel.AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResponse serviceClientJob)
         {
-            return GetPSJob(hydraJob.Item);
+            return GetPSJob(serviceClientJob.Item);
         }
 
-        public static CmdletModel.AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResource hydraJob)
+        public static CmdletModel.AzureRmRecoveryServicesBackupJobBase GetPSJob(JobResource serviceClientJob)
         {
             CmdletModel.AzureRmRecoveryServicesBackupJobBase response = null;
 
-            // hydra doesn't initialize Properties if the type of job is not known to current version of hydra.
-            if (hydraJob.Properties == null)
+            // ServiceClient doesn't initialize Properties if the type of job is not known to current version of ServiceClient.
+            if (serviceClientJob.Properties == null)
             {
                 Logger.Instance.WriteWarning(Resources.UnsupportedJobWarning);
             }
-            else if (hydraJob.Properties.GetType() == typeof(AzureIaaSVMJob))
+            else if (serviceClientJob.Properties.GetType() == typeof(AzureIaaSVMJob))
             {
-                response = GetPSAzureVmJob(hydraJob);
+                response = GetPSAzureVmJob(serviceClientJob);
             }
 
             return response;
         }
 
-        public static void AddHydraJobsToPSList(JobListResponse hydraJobs, List<CmdletModel.AzureRmRecoveryServicesBackupJobBase> psJobs, ref int jobsCount)
+        public static void AddServiceClientJobsToPSList(JobListResponse serviceClientJobs, List<CmdletModel.AzureRmRecoveryServicesBackupJobBase> psJobs, ref int jobsCount)
         {
-            if (hydraJobs.ItemList != null && hydraJobs.ItemList.Value != null)
+            if (serviceClientJobs.ItemList != null && serviceClientJobs.ItemList.Value != null)
             {
-                foreach (var job in hydraJobs.ItemList.Value)
+                foreach (var job in serviceClientJobs.ItemList.Value)
                 {
                     CmdletModel.AzureRmRecoveryServicesBackupJobBase convertedJob = GetPSJob(job);
                     if (convertedJob != null)
@@ -72,11 +72,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region AzureVm job private helpers
 
-        private static CmdletModel.AzureRmRecoveryServicesBackupAzureVmJob GetPSAzureVmJob(JobResource hydraJob)
+        private static CmdletModel.AzureRmRecoveryServicesBackupAzureVmJob GetPSAzureVmJob(JobResource serviceClientJob)
         {
             CmdletModel.AzureRmRecoveryServicesBackupAzureVmJob response;
 
-            AzureIaaSVMJob vmJob = hydraJob.Properties as AzureIaaSVMJob;
+            AzureIaaSVMJob vmJob = serviceClientJob.Properties as AzureIaaSVMJob;
 
             if (vmJob.ExtendedInfo != null)
             {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 response = new CmdletModel.AzureRmRecoveryServicesBackupAzureVmJob();
             }
 
-            response.JobId = GetLastIdFromFullId(hydraJob.Id);
+            response.JobId = GetLastIdFromFullId(serviceClientJob.Id);
             response.StartTime = vmJob.StartTime;
             response.EndTime = vmJob.EndTime;
             response.Duration = vmJob.Duration;
@@ -140,15 +140,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return response;
         }
 
-        private static CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo hydraError)
+        private static CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo serviceClientError)
         {
             CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo psErrorInfo = new CmdletModel.AzureRmRecoveryServicesBackupAzureVmJobErrorInfo();
-            psErrorInfo.ErrorCode = hydraError.ErrorCode;
-            psErrorInfo.ErrorMessage = hydraError.ErrorString;
-            if (hydraError.Recommendations != null)
+            psErrorInfo.ErrorCode = serviceClientError.ErrorCode;
+            psErrorInfo.ErrorMessage = serviceClientError.ErrorString;
+            if (serviceClientError.Recommendations != null)
             {
                 psErrorInfo.Recommendations = new List<string>();
-                psErrorInfo.Recommendations.AddRange(hydraError.Recommendations);
+                psErrorInfo.Recommendations.AddRange(serviceClientError.Recommendations);
             }
 
             return psErrorInfo;

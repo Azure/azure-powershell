@@ -128,10 +128,6 @@
       <Project>{0e1d3f36-e6c8-4764-8c7d-6f9ee537490c}</Project>
       <Name>Commands.RecoveryServices.Backup.Helpers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.HydraAdapter\Commands.RecoveryServices.Backup.HydraAdapter.csproj">
-      <Project>{b758fec1-35c1-4f93-a954-66dd33f6e0ec}</Project>
-      <Name>Commands.RecoveryServices.Backup.HydraAdapter</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.csproj">
       <Project>{5e675749-6139-464a-904c-59c0ffdfec82}</Project>
       <Name>Commands.RecoveryServices.Backup.Logger</Name>
@@ -143,6 +139,10 @@
     <ProjectReference Include="..\Commands.RecoveryServices.Backup.Providers\Commands.RecoveryServices.Backup.Providers.csproj">
       <Project>{02234e90-bcde-4b20-b1f5-01b1005821db}</Project>
       <Name>Commands.RecoveryServices.Backup.Providers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.ServiceClientAdapter\Commands.RecoveryServices.Backup.ServiceClientAdapter.csproj">
+      <Project>{b758fec1-35c1-4f93-a954-66dd33f6e0ec}</Project>
+      <Name>Commands.RecoveryServices.Backup.ServiceClientAdapter</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
                 }
 
                 string azureRmBackupManagementServer = AzureRmBackupManagementServer.Name;
-                HydraAdapter.UnregisterContainers(azureRmBackupManagementServer);
+                ServiceClientAdapter.UnregisterContainers(azureRmBackupManagementServer);
             });
         }
     }
