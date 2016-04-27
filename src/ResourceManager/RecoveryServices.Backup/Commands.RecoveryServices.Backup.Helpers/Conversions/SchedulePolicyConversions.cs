@@ -22,10 +22,16 @@ using ServiceClientModel  =Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Backup policy conversion helper
+    /// </summary>
     public partial class PolicyHelpers
     {
         #region ServiceClientToPSObject conversions
 
+        // <summary>
+        /// Helper function to convert ps simple schedule policy from service response.
+        /// </summary>
         public static SimpleSchedulePolicy GetPSSimpleSchedulePolicy(
             ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy)
         {
@@ -51,6 +57,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region PStoServiceClientObject conversions
 
+        // <summary>
+        /// Helper function to parse utc time from local time.
+        /// </summary>
         public static List<DateTime> ParseDateTimesToUTC(IList<DateTime> localTimes)
         {
             if (localTimes == null || localTimes.Count == 0)
@@ -66,7 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 temp = localTime;
                 if (localTime.Kind != DateTimeKind.Utc)
                 {
-                    temp = localTime.ToUniversalTime();                    
+                    temp = localTime.ToUniversalTime();
                 }                
                 utcTimes.Add(temp);
             }
@@ -74,6 +83,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return utcTimes;
         }
 
+        // <summary>
+        /// Helper function to convert service simple schedule policy from ps scheduel policy.
+        /// </summary>
         public static ServiceClientModel.SimpleSchedulePolicy GetServiceClientSimpleSchedulePolicy(
             SimpleSchedulePolicy psPolicy)
         {

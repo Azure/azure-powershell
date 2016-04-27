@@ -21,8 +21,14 @@ using System.Globalization;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Recovery Point conversion helper.
+    /// </summary>
     public class RecoveryPointConversions
     {
+        /// <summary>
+        /// Helper function to convert ps recovery points list model from service response.
+        /// </summary>
         public static List<RecoveryPointBase> GetPSAzureRecoveryPoints(ServiceClientModel.RecoveryPointListResponse rpList, AzureVmItem item)
         {
             if (rpList == null || rpList.RecoveryPointList == null || 
@@ -61,6 +67,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return result;
         }
 
+        // <summary>
+        /// Helper function to convert ps recovery point model from service response.
+        /// </summary>
         public static RecoveryPointBase GetPSAzureRecoveryPoints(ServiceClientModel.RecoveryPointResponse rpResponse, AzureVmItem item)
         {
             if (rpResponse == null || rpResponse.RecPoint == null)

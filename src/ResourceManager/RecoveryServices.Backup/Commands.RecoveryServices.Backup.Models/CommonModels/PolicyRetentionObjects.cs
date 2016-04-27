@@ -21,6 +21,9 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// Backup long term retention policy class.
+    /// </summary>
     public class LongTermRetentionPolicy : RetentionPolicyBase
     {
         public bool IsDailyScheduleEnabled { get; set; }
@@ -112,6 +115,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
        
+    /// <summary>
+    /// Base class for retention schedule.
+    /// </summary>
     public abstract class RetentionScheduleBase
     {
         public List<DateTime> RetentionTimes { get; set; }
@@ -130,6 +136,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
       
+    /// <summary>
+    /// Daily rentention schedule.
+    /// </summary>
     public class DailyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInDays { get; set; }
@@ -152,6 +161,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
    
+    /// <summary>
+    /// Weekly rentention schedule.
+    /// </summary>
     public class WeeklyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInWeeks { get; set; }
@@ -181,6 +193,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
   
+    /// <summary>
+    /// Monthly rentention schedule.
+    /// </summary>
     public class MonthlyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInMonths { get; set; }
@@ -236,6 +251,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
   
+    /// <summary>
+    /// Yearly rentention schedule.
+    /// </summary>
     public class YearlyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInYears { get; set; }
@@ -299,6 +317,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
         
+    /// <summary>
+    /// Daily rentention format.
+    /// </summary>
     public class DailyRetentionFormat
     {
         public List<Day> DaysOfTheMonth { get; set; }
@@ -340,6 +361,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
       
+    /// <summary>
+    /// Weekly rentention format.
+    /// </summary>
     public class WeeklyRetentionFormat
     {
         public List<DayOfWeek> DaysOfTheWeek { get; set; }
@@ -369,6 +393,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Day class to be used by retention policy.
+    /// </summary>
     public class Day
     {
         public int Date { get; set; }

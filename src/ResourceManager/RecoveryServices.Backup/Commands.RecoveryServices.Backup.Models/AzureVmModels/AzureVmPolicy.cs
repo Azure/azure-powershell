@@ -20,6 +20,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// Azure VM specific backup policy class.
+    /// </summary>
     public class AzureVmPolicy : PolicyBase
     {
         public SchedulePolicyBase SchedulePolicy { get; set; }

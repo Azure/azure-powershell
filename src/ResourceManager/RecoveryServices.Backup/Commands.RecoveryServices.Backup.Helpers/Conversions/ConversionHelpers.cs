@@ -24,9 +24,16 @@ using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Conversion helpers.
+    /// </summary>
     public class ConversionHelpers
     {
         #region containers
+
+        /// <summary>
+        /// Helper function to convert ps backup container model from service response.
+        /// </summary>
         public static ContainerBase GetContainerModel(ServiceClientModel.ProtectionContainerResource protectionContainer)
         {
             ContainerBase containerModel = null;
@@ -47,6 +54,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return containerModel;
         }
 
+        /// <summary>
+        /// Helper function to convert ps backup engine model from service response.
+        /// </summary>
         public static BackupEngineBase GetBackupEngineModel(ServiceClientModel.BackupEngineResource backupEngine)
         {
             BackupEngineBase backupEngineModel = null;
@@ -67,6 +77,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return backupEngineModel;
         }
 
+        /// <summary>
+        /// Helper function to convert ps backup container model list from service response.
+        /// </summary>
         public static List<ContainerBase> GetContainerModelList(IEnumerable<ServiceClientModel.ProtectionContainerResource> protectionContainers)
         {
             List<ContainerBase> containerModels = new List<ContainerBase>();
@@ -79,6 +92,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return containerModels;
         }
 
+        /// <summary>
+        /// Helper function to convert ps backup engine model list from service response.
+        /// </summary>
         public static List<BackupEngineBase> GetBackupEngineModelList(IEnumerable<ServiceClientModel.BackupEngineResource> backupEngines)
         {
             List<BackupEngineBase> backupEngineModel = new List<BackupEngineBase>();
@@ -94,6 +110,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #endregion
 
         #region policy
+
+        /// <summary>
+        /// Helper function to convert ps backup policy model from service response.
+        /// </summary>
         public static PolicyBase GetPolicyModel(ServiceClientModel.ProtectionPolicyResource serviceClientResponse)
         {
             PolicyBase policyModel = null;
@@ -149,6 +169,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return policyModel;
         }
 
+        /// <summary>
+        /// Helper function to convert ps backup policy list model from service response.
+        /// </summary>
         public static List<PolicyBase> GetPolicyModelList(
             ServiceClientModel.ProtectionPolicyListResponse serviceClientListResponse)
         {
@@ -179,6 +202,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region Item
 
+        /// <summary>
+        /// Helper function to convert ps backup policy item from service response.
+        /// </summary>
         public static ItemBase GetItemModel(ServiceClientModel.ProtectedItemResource protectedItem)
         {
             ItemBase itemModel = null;
@@ -212,6 +238,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return itemModel;
         }
 
+        /// <summary>
+        /// Helper function to convert ps backup policy item list from service response.
+        /// </summary>
         public static List<ItemBase> GetItemModelList(IEnumerable<ServiceClientModel.ProtectedItemResource> protectedItems)
         {
             List<ItemBase> itemModels = new List<ItemBase>();
