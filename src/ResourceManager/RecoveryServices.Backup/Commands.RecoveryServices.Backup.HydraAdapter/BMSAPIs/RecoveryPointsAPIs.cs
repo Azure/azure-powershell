@@ -23,13 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
 {
     public partial class HydraAdapter
     {
-        /// <summary>
-        /// Fetch the details of given Recovery point
-        /// </summary>
-        /// <param name="containerName"></param>
-        /// <param name="protectedItemName"></param>
-        /// <param name="recoveryPointId"></param>
-        /// <returns></returns>
+        
         public RecoveryPointResponse GetRecoveryPointDetails(string containerName, string protectedItemName, string recoveryPointId)
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
@@ -41,15 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
             return response;
         }
 
-        /// <summary>
-        /// Fetch the Recovery points of protectedItem which satisfy specified query
-        /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="resourceName"></param>
-        /// <param name="containerName"></param>
-        /// <param name="protectedItemName"></param>
-        /// <param name="queryFilter"></param>
-        /// <returns></returns>
+        
         public RecoveryPointListResponse GetRecoveryPoints(string containerName, string protectedItemName, RecoveryPointQueryParameters queryFilter)
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();

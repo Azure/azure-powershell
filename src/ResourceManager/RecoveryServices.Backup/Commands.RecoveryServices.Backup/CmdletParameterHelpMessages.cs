@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string Container = "Container where the item resides";
             public const string RemoveProtectionOption = "If this option is used, all the backup data for this item will also be deleted and restoring data will not be possible.";
             public const string ExpiryDate = "Retention period for the recovery points created by this backup operaiton";
+            public const string ForceOption = "Force disables backup protection (prevents confirmation dialog). This parameter is optional.";
         }
 
         internal static class RecoveryPoint
