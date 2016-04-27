@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Batch;
 using Microsoft.Azure.Management.Batch.Models;
+using Microsoft.Azure.Commands.Batch.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using Xunit;
@@ -43,7 +44,12 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
             string resourceGroup = "resourceGroup";
             string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
 
-            AccountResource resource = new AccountResource(id: id, type: "type")
+            AccountResource resource = new AccountResource(
+                coreQuota: BatchTestHelpers.DefaultQuotaCount,
+                poolQuota: BatchTestHelpers.DefaultQuotaCount,
+                activeJobAndJobScheduleQuota: BatchTestHelpers.DefaultQuotaCount,
+                id: id,
+                type: "type")
             {
                 Location = "location",
                 AccountEndpoint = endpoint,

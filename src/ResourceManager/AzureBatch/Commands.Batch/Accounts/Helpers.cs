@@ -92,6 +92,11 @@ namespace Microsoft.Azure.Commands.Batch
 
         public static Hashtable[] CreateTagHashtable(IDictionary<string, string> dictionary)
         {
+            if (dictionary == null)
+            {
+                return null;
+            }
+
             List<Hashtable> tagHashtable = new List<Hashtable>();
             foreach (string key in dictionary.Keys)
             {

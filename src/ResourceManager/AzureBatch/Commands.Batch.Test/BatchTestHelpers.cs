@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         internal static readonly string TestCertificateFileName2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\BatchTestCert02.cer");
         internal const string TestCertificateAlgorithm = "sha1";
         internal const string TestCertificatePassword = "Passw0rd";
+        internal static readonly int DefaultQuotaCount = 20;
 
         /// <summary>
         /// Builds an AccountResource object using the specified parameters
@@ -51,7 +52,12 @@ namespace Microsoft.Azure.Commands.Batch.Test
             string resourceGroup = resourceGroupName;
             string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
 
-            AccountResource resource = new AccountResource(id: id, type: "type")
+            AccountResource resource = new AccountResource(
+                coreQuota: DefaultQuotaCount,
+                poolQuota: DefaultQuotaCount,
+                activeJobAndJobScheduleQuota: DefaultQuotaCount,
+                id: id,
+                type: "type")
             {
                 Location = "location",
                 AccountEndpoint = endpoint,

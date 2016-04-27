@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             AccountResource createResponse = controller.BatchManagementClient.Account.Create(resourceGroupName, accountName, new BatchAccountCreateParameters() { Location = location });
             BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(createResponse);
             BatchAccountListKeyResult response = controller.BatchManagementClient.Account.ListKeys(resourceGroupName, accountName);
-            context.PrimaryAccountKey = response.PrimaryKey;
-            context.SecondaryAccountKey = response.SecondaryKey;
+            context.PrimaryAccountKey = response.Primary;
+            context.SecondaryAccountKey = response.Secondary;
             return context;
         }
 

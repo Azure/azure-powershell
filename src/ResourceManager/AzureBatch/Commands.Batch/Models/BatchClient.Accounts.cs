@@ -123,8 +123,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             var context = GetAccount(resourceGroupName, accountName);
             var keysResponse = BatchManagementClient.Account.ListKeys(resourceGroupName, accountName);
-            context.PrimaryAccountKey = keysResponse.PrimaryKey;
-            context.SecondaryAccountKey = keysResponse.SecondaryKey;
+            context.PrimaryAccountKey = keysResponse.Primary;
+            context.SecondaryAccountKey = keysResponse.Secondary;
 
             return context;
         }
@@ -201,8 +201,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 KeyName = keyType
             });
 
-            context.PrimaryAccountKey = regenResponse.PrimaryKey;
-            context.SecondaryAccountKey = regenResponse.SecondaryKey;
+            context.PrimaryAccountKey = regenResponse.Primary;
+            context.SecondaryAccountKey = regenResponse.Secondary;
             return context;
         }
 

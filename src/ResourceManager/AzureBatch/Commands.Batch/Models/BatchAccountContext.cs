@@ -179,9 +179,9 @@ namespace Microsoft.Azure.Commands.Batch
             this.Location = resource.Location;
             this.State = resource.ProvisioningState.ToString();
             this.Tags = Helpers.CreateTagHashtable(resource.Tags);
-            this.CoreQuota = resource.CoreQuota.GetValueOrDefault();
-            this.PoolQuota = resource.PoolQuota.GetValueOrDefault();
-            this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota.GetValueOrDefault();
+            this.CoreQuota = resource.CoreQuota;
+            this.PoolQuota = resource.PoolQuota;
+            this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;
 
             // extract the host and strip off the account name for the TaskTenantUrl and AccountName
             var hostParts = accountEndpoint.Split('.');
