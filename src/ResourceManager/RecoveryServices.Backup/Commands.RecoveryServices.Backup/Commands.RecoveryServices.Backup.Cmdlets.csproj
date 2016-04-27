@@ -80,31 +80,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\Backup\BackupAzureRmRecoveryServicesItem.cs" />
+    <Compile Include="Cmdlets\Backup\BackupAzureRmRecoveryServicesBackupItem.cs" />
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesBackupManagementServer.cs" />
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureRmRecoveryServicesBackupManagementServer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureRmRecoveryServicesBackupContainer.cs" />
-    <Compile Include="Cmdlets\Item\DisableAzureRmRecoveryServicesProtection.cs" />
-    <Compile Include="Cmdlets\Item\EnableAzureRmRecoveryServicesProtection.cs" />
-    <Compile Include="Cmdlets\Item\GetAzureRmRecoveryServicesItem.cs" />
-    <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJob.cs" />
-    <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesJobDetails.cs" />
-    <Compile Include="Cmdlets\Jobs\StopAzureRmRecoveryServicesJob.cs" />
-    <Compile Include="Cmdlets\Jobs\WaitAzureRmRecoveryServicesJob.cs" />
+    <Compile Include="Cmdlets\Item\DisableAzureRmRecoveryServicesBackupProtection.cs" />
+    <Compile Include="Cmdlets\Item\EnableAzureRmRecoveryServicesBackupProtection.cs" />
+    <Compile Include="Cmdlets\Item\GetAzureRmRecoveryServicesBackupItem.cs" />
+    <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesBackupJob.cs" />
+    <Compile Include="Cmdlets\Jobs\GetAzureRmRecoveryServicesBackupJobDetails.cs" />
+    <Compile Include="Cmdlets\Jobs\StopAzureRmRecoveryServicesBackupJob.cs" />
+    <Compile Include="Cmdlets\Jobs\WaitAzureRmRecoveryServicesBackupJob.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesBackupRetentionPolicyObject.cs" />
-    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesPolicy.cs" />
-    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesSchedulePolicyObject.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesBackupSchedulePolicyObject.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRmRecoveryServicesBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\PolicyCmdletHelpers.cs" />
-    <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureRmRecoveryServicesPolicy.cs" />
-    <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesPolicy.cs" />
-    <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRmRecoveryServicesPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureRmRecoveryServicesBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\RecoveryPoint\GetAzureRmRecoveryServicesBackupRecoveryPoint.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Cmdlets\RecoveryPoint\GetAzureRMRecoveryServicesRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Restore\RestoreAzureRMRecoveryServicesBackupItem.cs" />
+    <Compile Include="ParamHelpMsgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecoveryServicesBackupCmdletBase.cs" />
-    <Compile Include="CmdletParameterHelpMessages.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.RecoveryServices.Backup.dll-help.xml">
