@@ -21,6 +21,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// Azure VM specific container class.
+    /// </summary>
     public class AzureVmContainer : ContainerBase
     {
         /// <summary>

@@ -16,6 +16,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// Represents Azure VM specific job class.
+    /// </summary>
     public class AzureVmJob : JobBase
     {
         public bool IsCancellable { get; set; }
@@ -27,6 +30,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public List<AzureVmJobErrorInfo> ErrorDetails { get; set; }
     }
 
+    /// <summary>
+    /// Azure VM specific job details class.
+    /// </summary>
     public class AzureVmJobDetails : AzureVmJob
     {
         /// <summary>
@@ -40,11 +46,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public List<AzureVmJobSubTask> SubTasks { get; set; }
     }
 
+    /// <summary>
+    /// Azure VM specific job error info class.
+    /// </summary>
     public class AzureVmJobErrorInfo : JobErrorInfoBase
     {
         public int ErrorCode { get; set; }
     }
 
+    /// <summary>
+    /// Azure VM specific job sub-task class.
+    /// </summary>
     public class AzureVmJobSubTask : JobSubTaskBase
     {
     }

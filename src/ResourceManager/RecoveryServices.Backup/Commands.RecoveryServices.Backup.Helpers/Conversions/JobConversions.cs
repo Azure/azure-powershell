@@ -20,6 +20,9 @@ using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Mod
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Job conversions helper.
+    /// </summary>
     public class JobConversions
     {
         #region ServiceClient to PS convertors
@@ -37,6 +40,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return GetPSJob(serviceClientJob.Item);
         }
 
+        /// <summary>
+        /// Helper function to convert ps backup job model from service response.
+        /// </summary>
         public static CmdletModel.JobBase GetPSJob(JobResource serviceClientJob)
         {
             CmdletModel.JobBase response = null;
@@ -54,6 +60,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return response;
         }
 
+        /// <summary>
+        /// Helper function to convert ps backup job list model from service response.
+        /// </summary>
         public static void AddServiceClientJobsToPSList(JobListResponse serviceClientJobs, List<CmdletModel.JobBase> psJobs, ref int jobsCount)
         {
             if (serviceClientJobs.ItemList != null && serviceClientJobs.ItemList.Value != null)
@@ -72,6 +81,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region AzureVm job private helpers
 
+        /// <summary>
+        /// Helper function to convert ps auzre vm backup policy job from service response.
+        /// </summary>
         private static CmdletModel.AzureVmJob GetPSAzureVmJob(JobResource serviceClientJob)
         {
             CmdletModel.AzureVmJob response;
@@ -141,6 +153,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return response;
         }
 
+        /// <summary>
+        /// Helper function to convert ps auzre vm backup job error info from service response.
+        /// </summary>
         private static CmdletModel.AzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo serviceClientError)
         {
             CmdletModel.AzureVmJobErrorInfo psErrorInfo = new CmdletModel.AzureVmJobErrorInfo();
@@ -155,6 +170,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return psErrorInfo;
         }
 
+        /// <summary>
+        /// Helper function to get last index value from full id.
+        /// </summary>
         public static string GetLastIdFromFullId(string fullId)
         {
             string[] splitArr = fullId.Split("/".ToCharArray());
@@ -167,6 +185,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region Enum translators
 
+
+        /// <summary>
+        /// Helper function to get job type from ps backupmanagement type.
+        /// </summary>
         public static string GetJobTypeForService(CmdletModel.BackupManagementType mgmtType)
         {
             switch (mgmtType)
@@ -178,6 +200,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
         }
 
+        /// <summary>
+        /// Helper function to get ps backup management type from job type.
+        /// </summary>
         public static string GetPSBackupManagementType(string jobType)
         {
             if (jobType == BackupManagementType.AzureIaasVM.ToString())

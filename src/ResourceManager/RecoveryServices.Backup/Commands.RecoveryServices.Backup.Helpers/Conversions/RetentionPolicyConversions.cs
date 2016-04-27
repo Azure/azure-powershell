@@ -23,11 +23,18 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Backup policy conversion helper
+    /// </summary>
     public partial class PolicyHelpers
     {
         #region ServiceClientToPSObject conversions
 
         #region public
+
+        // <summary>
+        /// Helper function to convert ps long term retention policy from service response.
+        /// </summary>
         public static LongTermRetentionPolicy GetPSLongTermRetentionPolicy(
             ServiceClientModel.LongTermRetentionPolicy serviceClientRetPolicy)
         {
@@ -68,6 +75,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return ltrPolicy;            
         }
 
+        // <summary>
+        /// Helper function to convert ps simple retention policy from service response.
+        /// </summary>
         public static LongTermRetentionPolicy GetPSSimpleRetentionPolicy(
            ServiceClientModel.SimpleRetentionPolicy serviceClientRetPolicy)
         {
@@ -323,6 +333,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #endregion
 
         #region PStoServiceClientObject conversions
+        // <summary>
+        /// Helper function to convert service long term retention policy from ps retention policy.
+        /// </summary>
         public static ServiceClientModel.LongTermRetentionPolicy GetServiceClientLongTermRetentionPolicy(
             LongTermRetentionPolicy psRetPolicy)
         {
@@ -356,6 +369,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return serviceClientRetPolicy;
         }
 
+        // <summary>
+        /// Helper function to convert service simple retention policy from ps simple policy.
+        /// </summary>
         public static ServiceClientModel.SimpleRetentionPolicy GetServiceClientSimpleRetentionPolicy(
             SimpleSchedulePolicy psRetPolicy)
         {

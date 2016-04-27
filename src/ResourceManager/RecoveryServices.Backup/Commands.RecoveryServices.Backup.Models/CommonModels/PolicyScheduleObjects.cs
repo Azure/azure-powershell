@@ -21,6 +21,9 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// Recovery services simple schedule policy.
+    /// </summary>
     public class SimpleSchedulePolicy : SchedulePolicyBase
     {
         public ScheduleRunType ScheduleRunFrequency { get; set; }

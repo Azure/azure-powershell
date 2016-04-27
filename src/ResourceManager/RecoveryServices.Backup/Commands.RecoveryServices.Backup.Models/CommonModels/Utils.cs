@@ -22,6 +22,9 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// Backup policy constants.
+    /// </summary>
     public class PolicyConstants
     {
         public const int MaxAllowedRetentionDurationCount = 9999;
@@ -40,6 +43,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public const int NumOfMonthsInYear = 12;
     }
 
+    /// <summary>
+    /// Trace utilities.
+    /// </summary>
     public class TraceUtils
     {
         public static string GetString<T>(IEnumerable<T> objList)
@@ -48,6 +54,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Id utilities.
+    /// </summary>
     public class IdUtils
     {
         static readonly string UriFormat = @"/Subscriptions/(?<subscriptionsId>.+)/resourceGroups" + 
@@ -119,6 +128,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Enum utilities.
+    /// </summary>
     public class EnumUtils
     {
         public static T GetEnum<T>(string enumValue)
@@ -127,6 +139,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+   /// <summary>
+   /// Conversion utilities.
+   /// </summary>
     public class ConversionUtils
     {
         public static BackupManagementType GetPsBackupManagementType(string backupManagementType)
