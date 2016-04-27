@@ -92,9 +92,18 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(this.Location))
+
+            VirtualMachine vm = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
+            if (vm != null)
             {
-                this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                VirtualMachineExtension extension = vm.Resources.Where(x => x.Publisher.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace)).FirstOrDefault();
+                if (extension != null)
+                {
+                    this.Name = extension.Name;
+                    this.Version = extension.TypeHandlerVersion;
+                }
+
+                this.Location = vm.Location;
             }
 
             var parameters = new VirtualMachineExtension
@@ -106,16 +115,6 @@ namespace Microsoft.Azure.Commands.Compute
                 Settings = this.GetPublicConfiguration(),
                 ProtectedSettings = this.GetPrivateConfiguration(),
             };
-
-            VirtualMachine vm = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
-            if (vm != null)
-            {
-                VirtualMachineExtension extension = vm.Resources.Where(x => x.Publisher.Equals(parameters.Publisher)).FirstOrDefault();
-                if (extension != null)
-                {
-                    this.Name = extension.Name;
-                }
-            }
 
             // Add retry logic due to CRP service restart known issue CRP bug: 3564713
             // Similair approach taken in DSC cmdlet as well
@@ -130,6 +129,7 @@ namespace Microsoft.Azure.Commands.Compute
                         VMName,
                         Name ?? VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace + "." + VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
                         parameters).GetAwaiter().GetResult();
+                    break;
                 }
                 catch (Rest.Azure.CloudException ex)
                 {
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        break;
+                        base.ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
                     }
                 }
             }
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 AutoPatchingSettings = this.AutoPatchingSettings,
                 AutoBackupSettings = this.AutoBackupSettings,
-                AutoTelemetrySettings = new AutoTelemetrySettings() {Region = this.Location}
+                AutoTelemetrySettings = new AutoTelemetrySettings() { Region = this.Location }
             };
         }
 
