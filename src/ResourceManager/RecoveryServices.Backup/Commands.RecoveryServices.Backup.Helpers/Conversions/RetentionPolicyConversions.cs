@@ -332,8 +332,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #endregion
 
-        #region PStoHydraObject conversions
-
         #region PStoServiceClientObject conversions
         // <summary>
         /// Helper function to convert service long term retention policy from ps retention policy.
