@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -23,10 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
     public class RecoveryPointConversions
     {
-        public static List<AzureRmRecoveryServicesBackupRecoveryPointBase> GetPSAzureRecoveryPoints(
-            RecoveryPointListResponse rpList, 
-            AzureRmRecoveryServicesBackupIaasVmItem item
-            )
+        public static List<RecoveryPointBase> GetPSAzureRecoveryPoints(ServiceClientModel.RecoveryPointListResponse rpList, AzureVmItem item)
         {
             if (rpList == null || rpList.RecoveryPointList == null || 
                 rpList.RecoveryPointList.RecoveryPoints == null) 
@@ -38,17 +35,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
-            List<AzureRmRecoveryServicesBackupRecoveryPointBase> result = 
-                new List<AzureRmRecoveryServicesBackupRecoveryPointBase>();
-            foreach (RecoveryPointResource rp in rpList.RecoveryPointList.RecoveryPoints)
+            List<RecoveryPointBase> result = new List<RecoveryPointBase>();
+            foreach (ServiceClientModel.RecoveryPointResource rp in rpList.RecoveryPointList.RecoveryPoints)
             {
-                RecoveryPoint recPoint = rp.Properties as RecoveryPoint;
+                ServiceClientModel.RecoveryPoint recPoint = rp.Properties as ServiceClientModel.RecoveryPoint;
 
-                DateTime recPointTime = DateTime.ParseExact(
-                    recPoint.RecoveryPointTime, 
-                    @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rpBase = 
-                    new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
+                DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                AzureVmRecoveryPoint rpBase = new AzureVmRecoveryPoint()
                 {
                     RecoveryPointId = rp.Name,
                     BackupManagementType = item.BackupManagementType,
@@ -68,18 +61,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return result;
         }
 
-        public static AzureRmRecoveryServicesBackupRecoveryPointBase GetPSAzureRecoveryPoints
-            (
-            RecoveryPointResponse rpResponse, 
-            AzureRmRecoveryServicesBackupIaasVmItem item
-            )
+        public static RecoveryPointBase GetPSAzureRecoveryPoints(ServiceClientModel.RecoveryPointResponse rpResponse, AzureVmItem item)
         {
             if (rpResponse == null || rpResponse.RecPoint == null)
             {
                 throw new ArgumentNullException(Resources.GetRPResponseIsNull);
             }
 
-            RecoveryPoint recPoint = rpResponse.RecPoint.Properties as RecoveryPoint;
+            ServiceClientModel.RecoveryPoint recPoint = rpResponse.RecPoint.Properties as ServiceClientModel.RecoveryPoint;
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
@@ -88,8 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 @"MM/dd/yyyy HH:mm:ss", 
                 CultureInfo.InvariantCulture);
 
-            AzureRmRecoveryServicesBackupIaasVmRecoveryPoint result = 
-                new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
+            AzureRmRecoveryServicesBackupIaasVmRecoveryPoint result = new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
             {
                 RecoveryPointId = rpResponse.RecPoint.Name,
                 BackupManagementType = item.BackupManagementType,

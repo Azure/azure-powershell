@@ -18,21 +18,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class DpmPsBackupProvider : IPsBackupProvider
     {
         Dictionary<System.Enum, object> ProviderData { get; set; }
-        HydraAdapter HydraAdapter { get; set; }
+        ServiceClientAdapter ServiceClientAdapter { get; set; }
 
-        public void Initialize(Dictionary<System.Enum, object> providerData, HydraAdapter hydraAdapter)
+        public void Initialize(Dictionary<System.Enum, object> providerData, ServiceClientAdapter serviceClientAdapter)
         {
             this.ProviderData = providerData;
-            this.HydraAdapter = hydraAdapter;
+            this.ServiceClientAdapter = serviceClientAdapter;
         }       
 
         public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse EnableProtection()
@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesBackupRecoveryPointBase GetRecoveryPointDetails()
+        public RecoveryPointBase GetRecoveryPointDetails()
         {
             throw new NotImplementedException();
         }
 
-        public List<AzureRmRecoveryServicesBackupRecoveryPointBase> ListRecoveryPoints()
+        public List<RecoveryPointBase> ListRecoveryPoints()
         {
             throw new NotImplementedException();
         }
@@ -75,26 +75,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public ProtectionPolicyResponse ModifyPolicy()
+        public ServiceClientModel.ProtectionPolicyResponse ModifyPolicy()
         {
             throw new NotImplementedException();
         }
 
-        public List<Models.AzureRmRecoveryServicesBackupContainerBase> ListProtectionContainers()
+        public List<Models.ContainerBase> ListProtectionContainers()
         {
             throw new NotImplementedException();
         }
 
-        public List<Models.AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers()
+        public List<Models.BackupEngineBase> ListBackupManagementServers()
         {
             string name = (string)this.ProviderData[ContainerParams.Name];
 
-            BackupEngineListQueryParams queryParams = new BackupEngineListQueryParams();
+            ServiceClientModel.BackupEngineListQueryParams queryParams = new ServiceClientModel.BackupEngineListQueryParams();
 
-            var listResponse = HydraAdapter.ListBackupEngines(queryParams);
+            var listResponse = ServiceClientAdapter.ListBackupEngines(queryParams);
 
-            List<AzureRmRecoveryServicesBackupEngineBase> backupEngineModels = 
-                ConversionHelpers.GetBackupEngineModelList(listResponse);
+            List<BackupEngineBase> backupEngineModels = ConversionHelpers.GetBackupEngineModelList(listResponse);
 
             return backupEngineModels;
         }
@@ -109,17 +108,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesBackupSchedulePolicyBase GetDefaultSchedulePolicyObject()
+        public SchedulePolicyBase GetDefaultSchedulePolicyObject()
         {
             throw new NotImplementedException();
         }
 
-        public AzureRmRecoveryServicesBackupRetentionPolicyBase GetDefaultRetentionPolicyObject()
+        public RetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
             throw new NotImplementedException();
         }
 
-        public List<Models.AzureRmRecoveryServicesBackupItemBase> ListProtectedItems()
+        public List<Models.ItemBase> ListProtectedItems()
         {
             throw new NotImplementedException();
         }

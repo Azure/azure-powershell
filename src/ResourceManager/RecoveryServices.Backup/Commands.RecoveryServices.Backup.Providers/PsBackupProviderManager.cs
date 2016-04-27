@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
@@ -26,16 +26,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
     public class PsBackupProviderManager
     {
         Dictionary<System.Enum, object> providerData;
-        HydraAdapter hydraAdapter;
+        ServiceClientAdapter serviceClientAdapter;
 
-        public PsBackupProviderManager
-            (
-            Dictionary<System.Enum, object> providerDataIn, 
-            HydraAdapter hydraAdapterIn
-            )
+        public PsBackupProviderManager(Dictionary<System.Enum, object> providerDataIn, ServiceClientAdapter serviceClientAdapterIn)
         {
             providerData = providerDataIn;
-            hydraAdapter = hydraAdapterIn;
+            serviceClientAdapter = serviceClientAdapterIn;
         }
 
         public IPsBackupProvider GetProviderInstance
@@ -158,7 +154,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     break;
             }
 
-            psBackupProvider.Initialize(providerData, hydraAdapter);
+            psBackupProvider.Initialize(providerData, serviceClientAdapter);
+
             return psBackupProvider;
         }
     }

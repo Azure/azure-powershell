@@ -23,7 +23,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ContainerTests : RecoveryServicesBackupTestsBase
+    public partial class ContainerTests : TestsBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
