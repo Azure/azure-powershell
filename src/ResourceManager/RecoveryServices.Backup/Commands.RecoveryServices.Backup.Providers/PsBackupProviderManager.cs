@@ -29,7 +29,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
     /// </summary>
     public class PsBackupProviderManager
     {
+        /// <summary>
+        /// Dictionary of cmdlet param enums and provider specific objects.
+        /// </summary>
         Dictionary<System.Enum, object> providerData;
+
+        /// <summary>
+        /// Service client adapter object.
+        /// </summary>
         ServiceClientAdapter serviceClientAdapter;
 
         public PsBackupProviderManager(Dictionary<System.Enum, object> providerDataIn, ServiceClientAdapter serviceClientAdapterIn)
@@ -83,11 +90,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return GetProviderInstance(providerType);
         }
 
+        /// <summary>
+        /// To get provider instance for backup management server.
+        /// </summary>
         public IPsBackupProvider GetProviderInstanceForBackupManagementServer()
         {
             return GetProviderInstance(PsBackupProviderTypes.Dpm);
         }
 
+        /// <summary>
+        /// To get provider instance using workload type.
+        /// </summary>
         public IPsBackupProvider GetProviderInstance(WorkloadType workloadType)
         {
             PsBackupProviderTypes providerType = 0;
@@ -106,11 +119,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return GetProviderInstance(providerType);
         }
 
+        /// <summary>
+        /// To get provider instance using container type.
+        /// </summary>
         public IPsBackupProvider GetProviderInstance(ContainerType containerType)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// To get provider instance using workload and backup management type.
+        /// </summary>
         public IPsBackupProvider GetProviderInstance(
             WorkloadType workloadType, BackupManagementType? backupManagementType)
         {
@@ -139,6 +158,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return GetProviderInstance(psProviderType);
         }
 
+        /// <summary>
+        /// To get provider instance using provider type.
+        /// </summary>
         public IPsBackupProvider GetProviderInstance(PsBackupProviderTypes providerType)
         {
             IPsBackupProvider psBackupProvider = null;
