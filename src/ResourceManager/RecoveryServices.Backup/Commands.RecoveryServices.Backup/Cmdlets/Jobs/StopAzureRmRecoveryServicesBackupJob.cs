@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (cancelResponse.StatusCode != HttpStatusCode.NoContent)
                 {
-                    throw new Exception(string.Format(Resources.JobCouldNotCancelJob, cancelResponse.StatusCode.ToString()));
+                    throw new Exception(string.Format(Resources.JobCouldNotCancelJob, 
+                        cancelResponse.StatusCode.ToString()));
                 }
                 else
                 {

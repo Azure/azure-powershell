@@ -1,6 +1,6 @@
 ﻿// ----------------------------------------------------------------------------------
 //
-// Copyright Microsoft Corporation
+// Copyright Microsoft CorporationMicrosoft.Azure.Managemen
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -95,7 +95,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             response.VmVersion = vmJob.VirtualMachineVersion;
             response.WorkloadName = vmJob.EntityFriendlyName;
             response.ActivityId = vmJob.ActivityId;
-            response.BackupManagementType = CmdletModel.EnumUtils.GetEnum<CmdletModel.BackupManagementType>(GetPSBackupManagementType(vmJob.BackupManagementType));
+            response.BackupManagementType = CmdletModel.EnumUtils.GetEnum<CmdletModel.BackupManagementType>(
+                GetPSBackupManagementType(vmJob.BackupManagementType));
             response.Operation = vmJob.Operation;
 
             if (vmJob.ErrorDetails != null)

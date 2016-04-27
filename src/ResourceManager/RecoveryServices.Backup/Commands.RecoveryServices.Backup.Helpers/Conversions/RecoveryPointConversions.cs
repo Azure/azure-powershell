@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     {
         public static List<RecoveryPointBase> GetPSAzureRecoveryPoints(ServiceClientModel.RecoveryPointListResponse rpList, AzureVmItem item)
         {
-            if (rpList == null || rpList.RecoveryPointList == null || rpList.RecoveryPointList.RecoveryPoints == null) 
+            if (rpList == null || rpList.RecoveryPointList == null || 
+                rpList.RecoveryPointList.RecoveryPoints == null) 
             { 
                 throw new ArgumentNullException("RPList"); 
             }
@@ -71,7 +72,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
-            DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            DateTime recPointTime = DateTime.ParseExact(
+                recPoint.RecoveryPointTime, 
+                @"MM/dd/yyyy HH:mm:ss", 
+                CultureInfo.InvariantCulture);
 
             AzureVmRecoveryPoint result = new AzureVmRecoveryPoint()
             {

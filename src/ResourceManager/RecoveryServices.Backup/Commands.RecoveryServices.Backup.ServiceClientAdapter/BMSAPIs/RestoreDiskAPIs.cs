@@ -40,8 +40,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             {
                 throw new Exception(Resources.RestoreDiskIncorrectRegion);
             }
-            string vmType = containerName.Split(';')[1].Equals("iaasvmcontainer", StringComparison.OrdinalIgnoreCase) ? "Classic" : "Compute";
-            string strType = storageAccountType.Equals("Microsoft.ClassicStorage/StorageAccounts", StringComparison.OrdinalIgnoreCase) ? "Classic" : "Compute";
+            string vmType = containerName.Split(';')[1].Equals("iaasvmcontainer", StringComparison.OrdinalIgnoreCase) 
+                ? "Classic" : "Compute";
+            string strType = storageAccountType.Equals("Microsoft.ClassicStorage/StorageAccounts", 
+                StringComparison.OrdinalIgnoreCase) ? "Classic" : "Compute";
             if(vmType != strType)
             {
                 throw new Exception(String.Format(Resources.RestoreDiskStorageTypeError, vmType));
@@ -66,8 +68,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             triggerRestoreRequest.Item.Properties = new RestoreRequest();
             triggerRestoreRequest.Item.Properties = restoreRequest;
 
-            var response = BmsAdapter.Client.Restores.TriggerRestoreAsync(resourceGroupName, resourceName, BmsAdapter.GetCustomRequestHeaders(),
-                AzureFabricName, containerName, protectedItemName, recoveryPointId, triggerRestoreRequest, BmsAdapter.CmdletCancellationToken).Result;
+            var response = BmsAdapter.Client.Restores.TriggerRestoreAsync(
+                resourceGroupName, 
+                resourceName, 
+                BmsAdapter.GetCustomRequestHeaders(),
+                AzureFabricName, 
+                containerName, 
+                protectedItemName, 
+                recoveryPointId, 
+                triggerRestoreRequest, 
+                BmsAdapter.CmdletCancellationToken).Result;
 
             return response;
         }

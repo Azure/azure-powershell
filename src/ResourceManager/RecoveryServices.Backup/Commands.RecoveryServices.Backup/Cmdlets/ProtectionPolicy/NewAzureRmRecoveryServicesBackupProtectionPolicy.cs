@@ -75,7 +75,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                    throw new ArgumentException(string.Format(Resources.PolicyAlreadyExistException, Name));
                }
 
-               PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+               PsBackupProviderManager providerManager = 
+                   new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                {  
                    {PolicyParams.PolicyName, Name},
                    {PolicyParams.WorkloadType, WorkloadType},                   
@@ -83,7 +84,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                    {PolicyParams.SchedulePolicy, SchedulePolicy},                
                }, ServiceClientAdapter);
 
-               IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+               IPsBackupProvider psBackupProvider = 
+                   providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                psBackupProvider.CreatePolicy();
 
                WriteDebug("Successfully created policy, now fetching it from service: " + Name);

@@ -62,7 +62,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                      "ParameterSetName: {3}",
                                      Name == null ? "NULL" : Name,
                                      WorkloadType.HasValue ? WorkloadType.ToString() : "NULL",
-                                     BackupManagementType.HasValue ? BackupManagementType.ToString() : "NULL",
+                                     BackupManagementType.HasValue ? 
+                                     BackupManagementType.ToString() : "NULL",
                                      this.ParameterSetName));
                
                if (this.ParameterSetName == PolicyNameParamSet)
@@ -100,7 +101,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                            {
                                if (BackupManagementType != Models.BackupManagementType.AzureVM)
                                {
-                                   throw new ArgumentException(Resources.AzureVMUnsupportedBackupManagementTypeException);
+                                   throw new ArgumentException(
+                                       Resources.AzureVMUnsupportedBackupManagementTypeException);
                                }
                                serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureVM);
                            }
@@ -112,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                            BackupManagementType.ToString()));
                            }
                            break;
-                      
+
                        default:
                            break;
                    }
