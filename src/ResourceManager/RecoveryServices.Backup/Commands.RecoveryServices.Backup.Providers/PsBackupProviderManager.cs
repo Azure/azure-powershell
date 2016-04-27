@@ -23,6 +23,10 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
+    /// <summary>
+    /// This class implements provider intialization based on workload
+    /// and backup management type.
+    /// </summary>
     public class PsBackupProviderManager
     {
         Dictionary<System.Enum, object> providerData;
