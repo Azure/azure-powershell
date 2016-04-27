@@ -24,17 +24,20 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet("Stop", "AzureRmRecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet), OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
+    [Cmdlet("Stop", "AzureRmRecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet), 
+    OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
     public class StopAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobFilter, ParameterSetName = JobFilterSet, Position = 1)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobFilter, 
+            ParameterSetName = JobFilterSet, Position = 1)]
         [ValidateNotNull]
         public AzureRmRecoveryServicesBackupJobBase Job { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobIdFilter, ParameterSetName = IdFilterSet, Position = 2)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.StopJobJobIdFilter, 
+            ParameterSetName = IdFilterSet, Position = 2)]
         [ValidateNotNull]
         public string JobId { get; set; }
 
@@ -55,7 +58,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (cancelResponse.StatusCode != HttpStatusCode.NoContent)
                 {
-                    throw new Exception(string.Format(Resources.JobCouldNotCancelJob, cancelResponse.StatusCode.ToString()));
+                    throw new Exception(string.Format(Resources.JobCouldNotCancelJob, 
+                        cancelResponse.StatusCode.ToString()));
                 }
                 else
                 {

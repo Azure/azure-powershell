@@ -33,14 +33,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
 
         public HydraAdapter(SubscriptionCloudCredentials creds, Uri baseUri)
         {
-            System.Configuration.Configuration exeConfiguration = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)exeConfiguration.GetSection(AppSettingsSectionName);
+            System.Configuration.Configuration exeConfiguration = 
+                System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            System.Configuration.AppSettingsSection appSettings = 
+                (System.Configuration.AppSettingsSection)exeConfiguration.GetSection(AppSettingsSectionName);
             string recoveryServicesResourceNamespace = RecoveryServicesResourceNamespace;
             if (appSettings.Settings[ProviderNamespaceKey] != null)
             {
                 recoveryServicesResourceNamespace = appSettings.Settings[ProviderNamespaceKey].Value;
             }
-            BmsAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders>(
+            BmsAdapter = 
+                new ClientProxy<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders>(
                 clientRequestId => new RecoveryServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId },
                                        creds, baseUri);
             BmsAdapter.Client.ResourceNamespace = recoveryServicesResourceNamespace;

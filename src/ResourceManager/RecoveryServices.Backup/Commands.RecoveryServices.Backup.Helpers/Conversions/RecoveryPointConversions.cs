@@ -23,9 +23,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
     public class RecoveryPointConversions
     {
-        public static List<AzureRmRecoveryServicesBackupRecoveryPointBase> GetPSAzureRecoveryPoints(RecoveryPointListResponse rpList, AzureRmRecoveryServicesBackupIaasVmItem item)
+        public static List<AzureRmRecoveryServicesBackupRecoveryPointBase> GetPSAzureRecoveryPoints(
+            RecoveryPointListResponse rpList, 
+            AzureRmRecoveryServicesBackupIaasVmItem item
+            )
         {
-            if (rpList == null || rpList.RecoveryPointList == null || rpList.RecoveryPointList.RecoveryPoints == null) 
+            if (rpList == null || rpList.RecoveryPointList == null || 
+                rpList.RecoveryPointList.RecoveryPoints == null) 
             { 
                 throw new ArgumentNullException("RPList"); 
             }
@@ -34,13 +38,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
-            List<AzureRmRecoveryServicesBackupRecoveryPointBase> result = new List<AzureRmRecoveryServicesBackupRecoveryPointBase>();
+            List<AzureRmRecoveryServicesBackupRecoveryPointBase> result = 
+                new List<AzureRmRecoveryServicesBackupRecoveryPointBase>();
             foreach (RecoveryPointResource rp in rpList.RecoveryPointList.RecoveryPoints)
             {
                 RecoveryPoint recPoint = rp.Properties as RecoveryPoint;
 
-                DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rpBase = new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
+                DateTime recPointTime = DateTime.ParseExact(
+                    recPoint.RecoveryPointTime, 
+                    @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                AzureRmRecoveryServicesBackupIaasVmRecoveryPoint rpBase = 
+                    new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
                 {
                     RecoveryPointId = rp.Name,
                     BackupManagementType = item.BackupManagementType,
@@ -60,7 +68,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return result;
         }
 
-        public static AzureRmRecoveryServicesBackupRecoveryPointBase GetPSAzureRecoveryPoints(RecoveryPointResponse rpResponse, AzureRmRecoveryServicesBackupIaasVmItem item)
+        public static AzureRmRecoveryServicesBackupRecoveryPointBase GetPSAzureRecoveryPoints
+            (
+            RecoveryPointResponse rpResponse, 
+            AzureRmRecoveryServicesBackupIaasVmItem item
+            )
         {
             if (rpResponse == null || rpResponse.RecPoint == null)
             {
@@ -71,9 +83,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
-            DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            DateTime recPointTime = DateTime.ParseExact(
+                recPoint.RecoveryPointTime, 
+                @"MM/dd/yyyy HH:mm:ss", 
+                CultureInfo.InvariantCulture);
 
-            AzureRmRecoveryServicesBackupIaasVmRecoveryPoint result = new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
+            AzureRmRecoveryServicesBackupIaasVmRecoveryPoint result = 
+                new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
             {
                 RecoveryPointId = rpResponse.RecPoint.Name,
                 BackupManagementType = item.BackupManagementType,

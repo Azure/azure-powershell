@@ -26,17 +26,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of items
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem", DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(AzureRmRecoveryServicesBackupItemBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem", 
+        DefaultParameterSetName = GetItemsForContainerParamSet), 
+    OutputType(typeof(AzureRmRecoveryServicesBackupItemBase))]
     public class GetAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         internal const string GetItemsForContainerParamSet = "GetItemsForContainer";
         internal const string GetItemsForVaultParamSet = "GetItemsForVault";
 
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Item.Container, ParameterSetName = GetItemsForContainerParamSet)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Item.Container, 
+            ParameterSetName = GetItemsForContainerParamSet)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesBackupContainerBase Container { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Common.BackupManagementType, ParameterSetName = GetItemsForVaultParamSet)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Common.BackupManagementType, 
+            ParameterSetName = GetItemsForVaultParamSet)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType BackupManagementType { get; set; }
 
@@ -62,7 +66,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                PsBackupProviderManager providerManager = 
+                    new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
                     {ItemParams.Container, Container},
                     {ItemParams.BackupManagementType, BackupManagementType},
@@ -76,7 +81,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (this.ParameterSetName == GetItemsForVaultParamSet)
                 {
-                    psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                    psBackupProvider = 
+                        providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                 }
                 else
                 {
