@@ -169,6 +169,9 @@
     <Compile Include="ScenarioTests\AEMExtensionTests.cs" />
     <Compile Include="ScenarioTests\ComputeCloudExceptionTests.cs" />
     <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
+    <Compile Include="ScenarioTests\SqlIaaSExtensionTests.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="ScenarioTests\DscExtensionTests.cs" />
     <Compile Include="ScenarioTests\RunnerTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineBootDiagnosticsTests.cs" />
@@ -246,6 +249,9 @@
     <None Include="ScenarioTests\RunnerTests.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\SqlIaaSExtensionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\VirtualMachineBootDiagnosticsTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -312,6 +318,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DscExtensionTests\TestGetAzureRmVMDscExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.SqlIaaSExtensionTests\TestSqlIaaSExtension.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineBootDiagnosticsTests\TestLinuxVirtualMachineBootDiagnostics.json">
