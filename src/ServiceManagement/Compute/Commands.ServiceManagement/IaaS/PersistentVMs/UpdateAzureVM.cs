@@ -153,6 +153,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 }
             }
 
+            if (VM.DebugSettings != null)
+            {
+                parameters.DebugSettings = new DebugSettings
+                {
+                    BootDiagnosticsEnabled = VM.DebugSettings.BootDiagnosticsEnabled
+                };
+            }
+
             ExecuteClientActionNewSM(
                 parameters,
                 CommandRuntime.ToString(),
