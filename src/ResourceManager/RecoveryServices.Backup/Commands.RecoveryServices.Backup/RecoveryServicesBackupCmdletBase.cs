@@ -32,6 +32,7 @@ using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using ResourcesNS = Microsoft.Azure.Management.Resources;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -45,10 +46,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         protected ServiceClientAdapter ServiceClientAdapter { get; set; }
 
+        protected ResourcesNS.ResourceManagementClient RmClient { get; set; }
+
         protected void InitializeAzureBackupCmdlet()
         {
             var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
             ServiceClientAdapter = new ServiceClientAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
+
+            WriteDebug("InsideRestore. going to create ResourceManager Client");
+            RmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            WriteDebug("Client Created successfully");
+
             Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
         }
 
