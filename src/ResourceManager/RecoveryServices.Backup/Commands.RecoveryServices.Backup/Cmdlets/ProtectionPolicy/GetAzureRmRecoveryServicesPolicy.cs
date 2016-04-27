@@ -112,11 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                            BackupManagementType.ToString()));
                            }
                            break;
-
-                       case NoParamSet:
-                           // query params should be null by default
-                           break;
-
+                      
                        default:
                            break;
                    }
