@@ -18,17 +18,21 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJobDetails", DefaultParameterSetName = JobFilterSet), OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJobDetails", 
+        DefaultParameterSetName = JobFilterSet), 
+    OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
     public class GetAzureRmRecoveryServicesBackupJobDetails : RecoveryServicesBackupCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobFilter, ParameterSetName = JobFilterSet, Position = 1)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobFilter, 
+            ParameterSetName = JobFilterSet, Position = 1)]
         [ValidateNotNull]
         public AzureRmRecoveryServicesBackupJobBase Job { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobIdFilter, ParameterSetName = IdFilterSet, Position = 2)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.JobIdFilter, 
+            ParameterSetName = IdFilterSet, Position = 2)]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 

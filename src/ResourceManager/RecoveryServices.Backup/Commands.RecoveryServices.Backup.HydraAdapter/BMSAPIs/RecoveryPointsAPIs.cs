@@ -24,25 +24,49 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterN
     public partial class HydraAdapter
     {
         
-        public RecoveryPointResponse GetRecoveryPointDetails(string containerName, string protectedItemName, string recoveryPointId)
+        public RecoveryPointResponse GetRecoveryPointDetails
+            (
+            string containerName, 
+            string protectedItemName, 
+            string recoveryPointId
+            )
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             string resourceName = BmsAdapter.GetResourceName();
 
-            var response = BmsAdapter.Client.RecoveryPoints.GetAsync(resourceGroupName, resourceName,
-                BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, containerName, protectedItemName, recoveryPointId, BmsAdapter.CmdletCancellationToken).Result;
+            var response = BmsAdapter.Client.RecoveryPoints.GetAsync(
+                resourceGroupName, 
+                resourceName,
+                BmsAdapter.GetCustomRequestHeaders(), 
+                AzureFabricName, 
+                containerName, 
+                protectedItemName, 
+                recoveryPointId, 
+                BmsAdapter.CmdletCancellationToken).Result;
 
             return response;
         }
 
         
-        public RecoveryPointListResponse GetRecoveryPoints(string containerName, string protectedItemName, RecoveryPointQueryParameters queryFilter)
+        public RecoveryPointListResponse GetRecoveryPoints
+            (
+            string containerName, 
+            string protectedItemName, 
+            RecoveryPointQueryParameters queryFilter
+            )
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             string resourceName = BmsAdapter.GetResourceName();
 
-            var response = BmsAdapter.Client.RecoveryPoints.ListAsync(resourceGroupName, resourceName,
-                BmsAdapter.GetCustomRequestHeaders(), AzureFabricName, containerName, protectedItemName, queryFilter, BmsAdapter.CmdletCancellationToken).Result;
+            var response = BmsAdapter.Client.RecoveryPoints.ListAsync(
+                resourceGroupName, 
+                resourceName,
+                BmsAdapter.GetCustomRequestHeaders(), 
+                AzureFabricName, 
+                containerName, 
+                protectedItemName, 
+                queryFilter, 
+                BmsAdapter.CmdletCancellationToken).Result;
 
             return response;
         }

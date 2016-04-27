@@ -93,7 +93,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             var listResponse = HydraAdapter.ListBackupEngines(queryParams);
 
-            List<AzureRmRecoveryServicesBackupEngineBase> backupEngineModels = ConversionHelpers.GetBackupEngineModelList(listResponse);
+            List<AzureRmRecoveryServicesBackupEngineBase> backupEngineModels = 
+                ConversionHelpers.GetBackupEngineModelList(listResponse);
 
             return backupEngineModels;
         }

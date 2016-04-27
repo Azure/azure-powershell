@@ -23,7 +23,8 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupSchedulePolicyObject"), OutputType(typeof(AzureRmRecoveryServicesBackupSchedulePolicyBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupSchedulePolicyObject"), 
+    OutputType(typeof(AzureRmRecoveryServicesBackupSchedulePolicyBase))]
     public class GetAzureRmRecoveryServicesBackupSchedulePolicyObject : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = ParamHelpMsg.Common.WorkloadType)]
@@ -40,9 +41,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>(), HydraAdapter);
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(
+                    new Dictionary<System.Enum, object>(), HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
+                    WorkloadType, BackupManagementType);
                 WriteObject(psBackupProvider.GetDefaultSchedulePolicyObject());
             });
         }

@@ -16,7 +16,7 @@ using System;
 using System.Collections.Specialized;
 using System.Web;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (containerType)
             {
                 case CmdletModel.ContainerType.AzureVM:
-                    providerType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
+                    providerType = HydraModel.BackupManagementType.AzureIaasVM.ToString();
                     break;
                 default:
                     break;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (workloadType)
             {
                 case CmdletModel.WorkloadType.AzureVM:
-                    providerType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
+                    providerType = HydraModel.BackupManagementType.AzureIaasVM.ToString();
                     break;
                 default:
                     break;
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (containerType)
             {
                 case CmdletModel.ContainerType.AzureVM:
-                    hydraContainerType = ContainerType.IaasVMContainer.ToString();
+                    hydraContainerType = HydraModel.ContainerType.IaasVMContainer.ToString();
                     break;
                 default:
                     break;
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (workloadType)
             {
                 case CmdletModel.WorkloadType.AzureVM:
-                    hydraWorkloadType = WorkloadType.VM.ToString();
+                    hydraWorkloadType = HydraModel.WorkloadType.VM.ToString();
                     break;
                 default:
                     break;

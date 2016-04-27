@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of jobs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"), 
+    OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
     public class GetAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Job.StatusFilter, Position = 1)]
@@ -109,9 +110,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     JobId = Job.JobId;
                 }
 
-                List<AzureRmRecoveryServicesBackupJobBase> result = new List<AzureRmRecoveryServicesBackupJobBase>();
+                List<AzureRmRecoveryServicesBackupJobBase> result = 
+                    new List<AzureRmRecoveryServicesBackupJobBase>();
 
-                WriteDebug(string.Format("Filters provided are: StartTime - {0} EndTime - {1} Status - {2} Operation - {3} Type - {4}",
+                WriteDebug(string.Format("Filters provided are: StartTime - {0} " + 
+                    "EndTime - {1} Status - {2} Operation - {3} Type - {4}",
                     From,
                     To,
                     Status,
@@ -124,7 +127,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     Operation.HasValue ? Operation.ToString() : null,
                     rangeStart,
                     rangeEnd,
-                    BackupManagementType.HasValue ? Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null);
+                    BackupManagementType.HasValue ? 
+                    Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null);
                 JobConversions.AddHydraJobsToPSList(adapterResponse, result, ref resultCount);
 
                 while (!string.IsNullOrEmpty(adapterResponse.ItemList.NextLink))
@@ -145,7 +149,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             Operation.HasValue ? Operation.ToString() : null,
                             rangeStart,
                             rangeEnd,
-                            BackupManagementType.HasValue ? Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null,
+                            BackupManagementType.HasValue ? 
+                            Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null,
                             null,
                             skipToken);
                         JobConversions.AddHydraJobsToPSList(adapterResponse, result, ref resultCount);

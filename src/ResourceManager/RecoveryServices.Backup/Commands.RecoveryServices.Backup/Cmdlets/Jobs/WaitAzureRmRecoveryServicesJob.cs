@@ -23,10 +23,12 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet("Wait", "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
+    [Cmdlet("Wait", "AzureRmRecoveryServicesBackupJob"), 
+    OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
     public class WaitAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.WaitJobOrListFilter, ValueFromPipeline = true, Position = 1)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Job.WaitJobOrListFilter, 
+            ValueFromPipeline = true, Position = 1)]
         [ValidateNotNull]
         public object Job { get; set; }
 
@@ -40,17 +42,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 base.ExecuteCmdlet();
 
                 List<string> jobsToWaitOn = new List<string>();
-                List<AzureRmRecoveryServicesBackupJobBase> finalJobs = new List<AzureRmRecoveryServicesBackupJobBase>();
+                List<AzureRmRecoveryServicesBackupJobBase> finalJobs = 
+                    new List<AzureRmRecoveryServicesBackupJobBase>();
 
                 object castedObj;
                 if (GetCastedObjFromPSObj<AzureRmRecoveryServicesBackupJobBase>(Job, out castedObj))
                 {
-                    AzureRmRecoveryServicesBackupJobBase justJob = castedObj as AzureRmRecoveryServicesBackupJobBase;
+                    AzureRmRecoveryServicesBackupJobBase justJob = 
+                        castedObj as AzureRmRecoveryServicesBackupJobBase;
                     jobsToWaitOn.Add(justJob.JobId);
                 }
-                else if (GetCastedObjFromPSObj<List<AzureRmRecoveryServicesBackupJobBase>>(Job, out castedObj))
+                else if (GetCastedObjFromPSObj<List<AzureRmRecoveryServicesBackupJobBase>>(Job, 
+                    out castedObj))
                 {
-                    List<AzureRmRecoveryServicesBackupJobBase> jobsList = castedObj as List<AzureRmRecoveryServicesBackupJobBase>;
+                    List<AzureRmRecoveryServicesBackupJobBase> jobsList = 
+                        castedObj as List<AzureRmRecoveryServicesBackupJobBase>;
                     foreach (var job in jobsList)
                     {
                         jobsToWaitOn.Add(job.JobId);
@@ -68,14 +74,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         }
                         else
                         {
-                            throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, Job.GetType().FullName));
+                            throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, 
+                                Job.GetType().FullName));
                         }
                     }
                 }
                 else
                 {
                     // not a valid object. throw exception.
-                    throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, Job.GetType().FullName));
+                    throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, 
+                        Job.GetType().FullName));
                 }
 
                 // now wait until timeout happens or all jobs complete execution
@@ -85,7 +93,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     if (Timeout.HasValue)
                     {
-                        if (DateTime.UtcNow.Subtract(waitBeginning) >= TimeSpan.FromSeconds(Timeout.Value))
+                        if (DateTime.UtcNow.Subtract(waitBeginning) >= 
+                            TimeSpan.FromSeconds(Timeout.Value))
                         {
                             break;
                         }

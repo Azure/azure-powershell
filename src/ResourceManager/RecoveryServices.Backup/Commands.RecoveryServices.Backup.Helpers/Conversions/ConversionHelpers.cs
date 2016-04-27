@@ -18,6 +18,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using CmdletModels = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
@@ -26,7 +27,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     public class ConversionHelpers
     {
         #region containers
-        public static AzureRmRecoveryServicesBackupContainerBase GetContainerModel(ProtectionContainerResource protectionContainer)
+        public static AzureRmRecoveryServicesBackupContainerBase GetContainerModel(
+            ProtectionContainerResource protectionContainer
+            )
         {
             AzureRmRecoveryServicesBackupContainerBase containerModel = null;
 
@@ -66,9 +69,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return backupEngineModel;
         }
 
-        public static List<AzureRmRecoveryServicesBackupContainerBase> GetContainerModelList(IEnumerable<ProtectionContainerResource> protectionContainers)
+        public static List<AzureRmRecoveryServicesBackupContainerBase> GetContainerModelList(
+            IEnumerable<ProtectionContainerResource> protectionContainers
+            )
         {
-            List<AzureRmRecoveryServicesBackupContainerBase> containerModels = new List<AzureRmRecoveryServicesBackupContainerBase>();
+            List<AzureRmRecoveryServicesBackupContainerBase> containerModels = 
+                new List<AzureRmRecoveryServicesBackupContainerBase>();
 
             foreach (var protectionContainer in protectionContainers)
             {
@@ -78,9 +84,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return containerModels;
         }
 
-        public static List<AzureRmRecoveryServicesBackupEngineBase> GetBackupEngineModelList(IEnumerable<BackupEngineResource> backupEngines)
+        public static List<AzureRmRecoveryServicesBackupEngineBase> GetBackupEngineModelList(
+            IEnumerable<BackupEngineResource> backupEngines
+            )
         {
-            List<AzureRmRecoveryServicesBackupEngineBase> backupEngineModel = new List<AzureRmRecoveryServicesBackupEngineBase>();
+            List<AzureRmRecoveryServicesBackupEngineBase> backupEngineModel = 
+                new List<AzureRmRecoveryServicesBackupEngineBase>();
 
             foreach (var backupEngine in backupEngines)
             {
@@ -125,8 +134,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 policyModel = new AzureRmRecoveryServicesBackupIaasVmPolicy();
                 AzureRmRecoveryServicesBackupIaasVmPolicy iaasPolicyModel = policyModel as AzureRmRecoveryServicesBackupIaasVmPolicy;
-                iaasPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureVM;
-                iaasPolicyModel.BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureVM;
+                iaasPolicyModel.WorkloadType = CmdletModels.WorkloadType.AzureVM;
+                iaasPolicyModel.BackupManagementType = CmdletModels.BackupManagementType.AzureVM;
                 iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((LongTermRetentionPolicy)
                                                   ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy);
                 iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((SimpleSchedulePolicy)
@@ -211,9 +220,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return itemModel;
         }
 
-        public static List<AzureRmRecoveryServicesBackupItemBase> GetItemModelList(IEnumerable<ProtectedItemResource> protectedItems)
+        public static List<AzureRmRecoveryServicesBackupItemBase> GetItemModelList(
+            IEnumerable<ProtectedItemResource> protectedItems
+            )
         {
-            List<AzureRmRecoveryServicesBackupItemBase> itemModels = new List<AzureRmRecoveryServicesBackupItemBase>();
+            List<AzureRmRecoveryServicesBackupItemBase> itemModels = 
+                new List<AzureRmRecoveryServicesBackupItemBase>();
 
             foreach (var protectedItem in protectedItems)
             {

@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal static class Container
         {
             public const string Name = "The name of the resource being managed by the Azure Backup service (for example: resource name of the VM).";
-            public const string ResourceGroupName = "The ResourceGroup of the resource being managed by the Azure Backup service (for example: ResourceGroup name of the VM).";
+            public const string ResourceGroupName = "The ResourceGroup of the resource being managed by the Azure Backup service" + 
+                " (for example: ResourceGroup name of the VM).";
             public const string Status = "The registration status of the Azure Backup container.";
             public const string ContainerType = "The type of the Azure Backup container (for example:  Windows Server or Azure IaaS VM).";
             public const string BackupManagementType = "The backup management type of the Azure Backup container";
@@ -72,7 +73,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ProtectionStatus = "Protection status of Item";
             public const string Status = "Status of the data source";
             public const string Container = "Container where the item resides";
-            public const string RemoveProtectionOption = "If this option is used, all the backup data for this item will also be deleted and restoring data will not be possible.";
+            public const string RemoveProtectionOption = "If this option is used, all the backup data for this item will " + 
+                "also be deleted and restoring data will not be possible.";
             public const string ExpiryDate = "Retention period for the recovery points created by this backup operaiton";
             public const string ForceOption = "Force disables backup protection (prevents confirmation dialog). This parameter is optional.";
         }

@@ -29,10 +29,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Update existing protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy"), OutputType(typeof(List<AzureRmRecoveryServicesBackupJobBase>))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy"), 
+    OutputType(typeof(List<AzureRmRecoveryServicesBackupJobBase>))]
     public class SetAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy, ValueFromPipeline = true)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsg.Policy.ProtectionPolicy, 
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesBackupPolicyBase Policy { get; set; }
 
@@ -64,20 +66,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                                                               Policy.Name, HydraAdapter);
                 if (servicePolicy == null)
                 {
-                    throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Policy.Name));
+                    throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, 
+                        Policy.Name));
                 }
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(
+                    new Dictionary<System.Enum, object>()
                 { 
                     {PolicyParams.ProtectionPolicy, Policy},
                     {PolicyParams.RetentionPolicy, RetentionPolicy},
                     {PolicyParams.SchedulePolicy, SchedulePolicy},                
                 }, HydraAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType,
-                                                                                         Policy.BackupManagementType);                
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
+                    Policy.WorkloadType,
+                    Policy.BackupManagementType);                
                 ProtectionPolicyResponse policyResponse = psBackupProvider.ModifyPolicy();
-                WriteDebug("ModifyPolicy http response from service: " + policyResponse.StatusCode.ToString());
+                WriteDebug("ModifyPolicy http response from service: " + 
+                    policyResponse.StatusCode.ToString());
 
                 if(policyResponse.StatusCode == System.Net.HttpStatusCode.Accepted)
                 {
@@ -85,9 +91,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 policyResponse.AzureAsyncOperation);
 
                     // Track OperationStatus URL for operation completion
-                    BackUpOperationStatusResponse operationResponse =  WaitForOperationCompletionUsingStatusLink(
-                                                policyResponse.AzureAsyncOperation,
-                                                HydraAdapter.GetProtectionPolicyOperationStatusByURL);
+                    BackUpOperationStatusResponse operationResponse =  
+                        WaitForOperationCompletionUsingStatusLink(
+                        policyResponse.AzureAsyncOperation,
+                        HydraAdapter.GetProtectionPolicyOperationStatusByURL);
 
                     WriteDebug("Final operation status: " + operationResponse.OperationStatus.Status);
 
@@ -95,7 +102,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                        ((OperationStatusJobsExtendedInfo)operationResponse.OperationStatus.Properties).JobIds != null)
                     {
                         // get list of jobIds and return jobResponses                    
-                        WriteObject(GetJobObject(((OperationStatusJobsExtendedInfo)operationResponse.OperationStatus.Properties).JobIds));
+                        WriteObject(GetJobObject(
+                            ((OperationStatusJobsExtendedInfo)operationResponse.OperationStatus.Properties).JobIds));
                     }
 
                     if (operationResponse.OperationStatus.Status == OperationStatusValues.Failed.ToString())
