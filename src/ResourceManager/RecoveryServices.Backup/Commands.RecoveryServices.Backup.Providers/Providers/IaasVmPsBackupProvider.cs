@@ -28,6 +28,9 @@ using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
+    /// <summary>
+    /// This class implements implements methods for IaasVm backup provider
+    /// </summary>
     public class IaasVmPsBackupProvider : IPsBackupProvider
     {
         private const int defaultOperationStatusRetryTimeInMilliSec = 5 * 1000; // 5 sec

@@ -26,6 +26,9 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdap
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
+    /// <summary>
+    /// This class implements implements methods for MAB backup provider
+    /// </summary>
     public class MabPsBackupProvider : IPsBackupProvider
     {
         Dictionary<System.Enum, object> ProviderData { get; set; }
