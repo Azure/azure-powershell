@@ -127,6 +127,9 @@ function Test-VirtualMachine
         $a = $vm1 | Out-String;
         Write-Verbose("Get-AzureRmVM output:");
         Write-Verbose($a);
+        $a = $vm1 | Format-Table | Out-String;
+        Write-Verbose("Get-AzureRmVM | Format-Table output:");
+        Write-Verbose($a);
 
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
@@ -650,8 +653,9 @@ function Test-VirtualMachineSizeAndUsage
         $usageOutput = $u1 | Out-String;
         Write-Verbose("Get-AzureRmVMUsage: ");
         Write-Verbose($usageOutput);
+        $usageOutput =  $u1 | Out-String;
+        Write-Verbose("Get-AzureRmVMUsage | Format-Custom : ");
         $usageOutput =  $u1 | Format-Custom | Out-String;
-        Write-Verbose("Get-AzureRmVMUsage | Format-List : ");
         Write-Verbose($usageOutput);
         Validate-VirtualMachineUsage $u1;
     }
