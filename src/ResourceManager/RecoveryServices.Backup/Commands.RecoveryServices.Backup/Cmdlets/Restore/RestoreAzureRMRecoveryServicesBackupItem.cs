@@ -30,18 +30,18 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(AzureRmRecoveryServicesBackupJobBase))]
+    [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(JobBase))]
     public class RestoreAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsg.RestoreDisk.RecoveryPoint)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupRecoveryPointBase RecoveryPoint { get; set; }
+        public RecoveryPointBase RecoveryPoint { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.RestoreDisk.StorageAccountName)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 2, HelpMessage = ParamHelpMsg.RestoreDisk.StorageAccountResourceGroupName)]
+        [Parameter(Mandatory = true, Position = 2, HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceGroupName { get; set; }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {RestoreBackupItemParams.StorageAccountId, storageAccountId},
                     {RestoreBackupItemParams.StorageAccountLocation, storageAccountlocation},
                     {RestoreBackupItemParams.StorageAccountType, storageAccountType}
-                }, HydraAdapter);
+                }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerRestore();
