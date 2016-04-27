@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 @"MM/dd/yyyy HH:mm:ss", 
                 CultureInfo.InvariantCulture);
 
-            AzureRmRecoveryServicesBackupIaasVmRecoveryPoint result = new AzureRmRecoveryServicesBackupIaasVmRecoveryPoint()
+            AzureVmRecoveryPoint result = new AzureVmRecoveryPoint()
             {
                 RecoveryPointId = rpResponse.RecPoint.Name,
                 BackupManagementType = item.BackupManagementType,

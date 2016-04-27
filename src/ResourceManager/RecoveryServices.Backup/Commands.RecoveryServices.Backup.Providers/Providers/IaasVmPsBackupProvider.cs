@@ -12,24 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using HydraModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using CmdletsModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -408,7 +403,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             // 2. Filter by ContainerType
             queryParams.BackupManagementType =
-                HydraModel.BackupManagementType.AzureIaasVM.ToString();
+                ServiceClientModel.BackupManagementType.AzureIaasVM.ToString();
 
             // 3. Filter by Status
             if (status != 0)
@@ -448,8 +443,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (Models.WorkloadType)this.ProviderData[ItemParams.WorkloadType];
 
             ProtectedItemListQueryParam queryParams = new ProtectedItemListQueryParam();
-            queryParams.DatasourceType = HydraModel.WorkloadType.VM;
-            queryParams.BackupManagementType = HydraModel.BackupManagementType.AzureIaasVM.ToString();
+            queryParams.DatasourceType = ServiceClientModel.WorkloadType.VM;
+            queryParams.BackupManagementType = ServiceClientModel.BackupManagementType.AzureIaasVM.ToString();
 
             List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
             string skipToken = null;
@@ -661,35 +656,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
 
         #region private
-        private void ValidateAzureVMWorkloadType(CmdletsModel.WorkloadType type)
+        private void ValidateAzureVMWorkloadType(CmdletModel.WorkloadType type)
         {
-            if (type != CmdletsModel.WorkloadType.AzureVM)
+            if (type != CmdletModel.WorkloadType.AzureVM)
             {
                 throw new ArgumentException(string.Format(Resources.UnExpectedWorkLoadTypeException,
-                                            CmdletsModel.WorkloadType.AzureVM.ToString(),
+                                            CmdletModel.WorkloadType.AzureVM.ToString(),
                                             type.ToString()));
             }
         }
 
-        private void ValidateAzureVMWorkloadType(CmdletsModel.WorkloadType itemWorkloadType,
-            CmdletsModel.WorkloadType policyWorkloadType)
+        private void ValidateAzureVMWorkloadType(CmdletModel.WorkloadType itemWorkloadType,
+            CmdletModel.WorkloadType policyWorkloadType)
         {
             ValidateAzureVMWorkloadType(itemWorkloadType);
             ValidateAzureVMWorkloadType(policyWorkloadType);
             if (itemWorkloadType != policyWorkloadType)
             {
                 throw new ArgumentException(string.Format(Resources.UnExpectedWorkLoadTypeException,
-                                            CmdletsModel.WorkloadType.AzureVM.ToString(),
+                                            CmdletModel.WorkloadType.AzureVM.ToString(),
                                             itemWorkloadType.ToString()));
             }
         }
 
-        private void ValidateAzureVMContainerType(CmdletsModel.ContainerType type)
+        private void ValidateAzureVMContainerType(CmdletModel.ContainerType type)
         {
-            if (type != CmdletsModel.ContainerType.AzureVM)
+            if (type != CmdletModel.ContainerType.AzureVM)
             {
                 throw new ArgumentException(string.Format(Resources.UnExpectedContainerTypeException,
-                                            CmdletsModel.ContainerType.AzureVM.ToString(),
+                                            CmdletModel.ContainerType.AzureVM.ToString(),
                                             type.ToString()));
             }
         }
