@@ -121,9 +121,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             }
         }
 
-        public override void ExecuteCmdlet()
+        protected override void BeginProcessing()
         {
-            base.ExecuteCmdlet();
+            base.BeginProcessing();
 
             InitializeAzureBackupCmdlet();
         }
