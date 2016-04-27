@@ -59,7 +59,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class IdUtils
     {
-        static readonly Regex ResourceGroupRegex = new Regex(@"/Subscriptions/(?<subscriptionsId>.+)/resourceGroups/(?<resourceGroupName>.+)/providers/(?<providersName>.+)/vaults/(?<BackupVaultName>.+)/backupFabrics/(?<BackupFabricName>.+)/protectionContainers/(?<containersName>.+)", RegexOptions.Compiled);
+        static readonly string UriFormat = @"/Subscriptions/(?<subscriptionsId>.+)/resourceGroups" + 
+            @"/(?<resourceGroupName>.+)/providers/(?<providersName>.+)/vaults/(?<BackupVaultName>.+)" + 
+            "/backupFabrics/(?<BackupFabricName>.+)/protectionContainers/(?<containersName>.+)";
+        static readonly Regex ResourceGroupRegex = new Regex(UriFormat, RegexOptions.Compiled);
         const string NameDelimiter = ";";
         const string IdDelimiter = "/";
 

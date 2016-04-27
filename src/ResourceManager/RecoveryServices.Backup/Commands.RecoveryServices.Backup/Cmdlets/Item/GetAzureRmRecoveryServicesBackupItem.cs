@@ -26,17 +26,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of items
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem", DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase), typeof(IList<ItemBase>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem", 
+        DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase),
+            typeof(IList<ItemBase>))]
     public class GetAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         internal const string GetItemsForContainerParamSet = "GetItemsForContainer";
         internal const string GetItemsForVaultParamSet = "GetItemsForVault";
 
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Item.Container, ParameterSetName = GetItemsForContainerParamSet)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Item.Container,
+            ParameterSetName = GetItemsForContainerParamSet)]
         [ValidateNotNullOrEmpty]
         public ContainerBase Container { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Common.BackupManagementType, ParameterSetName = GetItemsForVaultParamSet)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Common.BackupManagementType,
+            ParameterSetName = GetItemsForVaultParamSet)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType BackupManagementType { get; set; }
 
