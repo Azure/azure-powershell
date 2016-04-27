@@ -220,19 +220,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 out accessStartTime, out accessEndTime, shouldSetExpiryTime);
             policy.SharedAccessStartTime = accessStartTime;
             policy.SharedAccessExpiryTime = accessEndTime;
-            SetupAccessPolicyPermission(policy, Permission);
-        }
-
-        /// <summary>
-        /// Set up access policy permission
-        /// </summary>
-        /// <param name="policy">SharedAccessFilePolicy object</param>
-        /// <param name="permission">Permission</param>
-        internal void SetupAccessPolicyPermission(SharedAccessFilePolicy policy, string permission)
-        {
-            if (string.IsNullOrEmpty(permission)) return;
-            permission = permission.ToLower(CultureInfo.CurrentCulture);
-            policy.Permissions = SharedAccessFilePolicy.PermissionsFromString(permission);
+            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
         }
     }
 }
