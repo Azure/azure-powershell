@@ -44,8 +44,8 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Batch, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.4.0.0\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Batch, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Azure.Batch.4.0.1\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
@@ -181,6 +181,7 @@
   <ItemGroup>
     <Compile Include="Accounts\GetBatchAccountCommandTests.cs" />
     <Compile Include="Accounts\GetBatchAccountKeysCommandTests.cs" />
+    <Compile Include="Accounts\GetBatchNodeAgentSkusCommandTests.cs" />
     <Compile Include="Accounts\NewBatchAccountCommandTests.cs" />
     <Compile Include="Accounts\RegenBatchAccountKeyCommandTests.cs" />
     <Compile Include="Accounts\RemoveBatchAccountCommandTests.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Certificates\StopBatchCertificateDeletionCommandTests.cs" />
     <Compile Include="ComputeNodes\DisableBatchComputeNodeSchedulingCommandTests.cs" />
     <Compile Include="ComputeNodes\EnableBatchComputeNodeSchedulingCommandTests.cs" />
+    <Compile Include="ComputeNodes\GetBatchComputeNodeLoginSettingsCommandTests.cs" />
     <Compile Include="ComputeNodes\RemoveBatchComputeNodeCommandTests.cs" />
     <Compile Include="ComputeNodes\ResetBatchComputeNodeCommandTests.cs" />
     <Compile Include="ComputeNodes\RestartBatchComputeNodeCommandTests.cs" />
@@ -360,6 +362,12 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestGetComputeNodeById.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestGetComputeNodeRemoteLoginSettingsById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestGetComputeNodeRemoteLoginSettingsPipeline.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestListAllComputeNodes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -584,6 +592,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestListAllPools.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchAccountTests\TestListNodeAgentSkus.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestListPoolsByFilter.json">
