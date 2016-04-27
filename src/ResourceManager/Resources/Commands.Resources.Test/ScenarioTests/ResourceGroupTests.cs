@@ -76,6 +76,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-ExportResourceGroup");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResourceGroupWithPositionalParams()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-ResourceGroupWithPositionalParams");
+        }
+
         [Fact (Skip = "TODO: Fix the broken test.")]
         public void TestAzureTagsEndToEnd()
         {
