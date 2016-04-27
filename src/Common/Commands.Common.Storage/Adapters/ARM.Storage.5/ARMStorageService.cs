@@ -83,7 +83,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             }
             return null;
         }
-
         public static Uri GetUri(string uriString)
         {
             return uriString == null ? null : new Uri(uriString);
