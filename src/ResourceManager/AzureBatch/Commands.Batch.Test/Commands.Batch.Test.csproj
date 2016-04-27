@@ -363,8 +363,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestGetComputeNodeById.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestGetComputeNodeRemoteLoginSettingsById.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestGetComputeNodeRemoteLoginSettingsPipeline.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestGetComputeNodeRemoteLoginSettingsById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestGetComputeNodeRemoteLoginSettingsPipeline.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestListAllComputeNodes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -590,7 +594,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestListAllPools.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchAccountTests\TestListNodeAgentSkus.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchAccountTests\TestListNodeAgentSkus.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestListPoolsByFilter.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
