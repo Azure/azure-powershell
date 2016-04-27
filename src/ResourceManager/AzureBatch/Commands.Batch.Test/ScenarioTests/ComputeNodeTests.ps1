@@ -302,3 +302,28 @@ function Test-DisableAndEnableComputeNodeScheduling
     $computeNode = Get-AzureBatchComputeNode -PoolId $poolId -Filter "id eq '$computeNodeId'" -Select "id,schedulingState" -BatchContext $context
     Assert-AreEqual 'Enabled' $computeNode.SchedulingState
 }
+
+<#
+.SYNOPSIS
+Tests getting remote login settings from compute node 
+#>
+function Test-GetRemoteLoginSettings
+{
+	param([string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+	
+	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+	$remoteLoginSettings = $null
+
+	if ($usePipeline -eq '1')
+    {
+        $remoteLoginSettings = Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Get-AzureBatchRemoteLoginSettings -BatchContext $context
+    }
+    else
+    {
+        $remoteLoginSettings = Get-AzureBatchRemoteLoginSettings $poolId $computeNodeId -BatchContext $context
+    }
+
+	Assert-AreNotEqual $null $remoteLoginSettings.IPAddress
+	Assert-AreNotEqual $null $remoteLoginSettings.Port
+}
+
