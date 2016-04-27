@@ -53,8 +53,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     UpdateVaultStorageTypeRequest vaultStorageRequest = new UpdateVaultStorageTypeRequest();
                     vaultStorageRequest.Properties = new StorageTypeProperties();
                     vaultStorageRequest.Properties.StorageModelType = BackupStorageRedundancy.ToString();
-                    AzureOperationResponse storageResponse = RecoveryServicesClient.UpdateVaultStorageType(
-                                                                this.Vault.ResouceGroupName, this.Vault.Name, vaultStorageRequest);
+                    AzureOperationResponse storageResponse = 
+                        RecoveryServicesClient.UpdateVaultStorageType(
+                        this.Vault.ResouceGroupName, this.Vault.Name, vaultStorageRequest);
                 }
                 else
                 {

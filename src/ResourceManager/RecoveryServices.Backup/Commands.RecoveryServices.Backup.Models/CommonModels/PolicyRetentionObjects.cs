@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Backup long term retention policy class.
     /// </summary>
-    public class AzureRmRecoveryServicesBackupLongTermRetentionPolicy : AzureRmRecoveryServicesBackupRetentionPolicyBase
+    public class LongTermRetentionPolicy : RetentionPolicyBase
     {
         public bool IsDailyScheduleEnabled { get; set; }
         public bool IsWeeklyScheduleEnabled { get; set; }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public MonthlyRetentionSchedule MonthlySchedule { get; set; }
         public YearlyRetentionSchedule YearlySchedule { get; set; }
 
-        public AzureRmRecoveryServicesBackupLongTermRetentionPolicy()
+        public LongTermRetentionPolicy()
         {
             IsDailyScheduleEnabled = false;
             IsWeeklyScheduleEnabled = false;
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                   YearlySchedule == null ? "NULL" : YearlySchedule.ToString());
         }
     }
-
+       
     /// <summary>
     /// Base class for retention schedule.
     /// </summary>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                   DurationCountInDays, base.ToString());
         }
     }
-
+   
     /// <summary>
     /// Weekly rentention schedule.
     /// </summary>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                   base.ToString());
         }
     }
-
+  
     /// <summary>
     /// Monthly rentention schedule.
     /// </summary>
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                  base.ToString());
         }
     }
-
+  
     /// <summary>
     /// Yearly rentention schedule.
     /// </summary>
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                  TraceUtils.GetString<Month>(MonthsOfYear), base.ToString());
         }
     }
-
+        
     /// <summary>
     /// Daily rentention format.
     /// </summary>
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             return string.Format("DaysOfTheMonth:{0}", TraceUtils.GetString(DaysOfTheMonth));
         }
     }
-
+      
     /// <summary>
     /// Weekly rentention format.
     /// </summary>

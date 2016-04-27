@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Recovery services simple schedule policy.
     /// </summary>
-    public class AzureRmRecoveryServicesBackupSimpleSchedulePolicy : AzureRmRecoveryServicesBackupSchedulePolicyBase
+    public class SimpleSchedulePolicy : SchedulePolicyBase
     {
         public ScheduleRunType ScheduleRunFrequency { get; set; }
 

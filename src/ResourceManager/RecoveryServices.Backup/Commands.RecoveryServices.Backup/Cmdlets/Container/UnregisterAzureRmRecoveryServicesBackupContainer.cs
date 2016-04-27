@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupContainer")]
     public class UnregisterAzureRmRecoveryServicesBackupContainer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupContainerBase Container { get; set; }        
+        public ContainerBase Container { get; set; }        
 
         public override void ExecuteCmdlet()
         {
@@ -41,13 +41,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
                 
-                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.MARS)
+                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType 
+                    != BackupManagementType.MARS)
                 {
-                    throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, Container.ContainerType, Container.BackupManagementType));
+                    throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, 
+                        Container.ContainerType, Container.BackupManagementType));
                 }
-                AzureRmRecoveryServicesBackupMabContainer mabContainer = Container as AzureRmRecoveryServicesBackupMabContainer;
+                AzureRmRecoveryServicesBackupMabContainer mabContainer = 
+                    Container as AzureRmRecoveryServicesBackupMabContainer;
                 string containerName = mabContainer.Name;
-                HydraAdapter.UnregisterContainers(containerName);
+                ServiceClientAdapter.UnregisterContainers(containerName);
             });
         }
     }
