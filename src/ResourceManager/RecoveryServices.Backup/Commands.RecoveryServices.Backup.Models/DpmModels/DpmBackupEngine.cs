@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Azure backup specific backup server engine class.
     /// </summary>
-    public class AzureRmRecoveryServicesBackupAzureBackupServerEngine : BackupEngineBase
+    public class AzureBackupServerEngine : BackupEngineBase
     {
         /// <summary>
         /// Friendly name of the container
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Status { get; set; }
 
-        public AzureRmRecoveryServicesBackupAzureBackupServerEngine(ServiceClientModel.BackupEngineResource backupEngine)
+        public AzureBackupServerEngine(ServiceClientModel.BackupEngineResource backupEngine)
             : base(backupEngine)
         {
             ServiceClientModel.AzureBackupServerEngine azureBackupServerEngine = (ServiceClientModel.AzureBackupServerEngine)backupEngine.Properties;
