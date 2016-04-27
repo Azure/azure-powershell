@@ -54,11 +54,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
                 StorageAccountName = StorageAccountName.ToLower();
-                WriteDebug("InsideRestore. going to create ResourceManager Client");
-                ResourcesNS.ResourceManagementClient rmClient = 
-                    AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(
-                    DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-                WriteDebug("Client Created successfully");
                 ResourceIdentity identity = new ResourceIdentity();
                 identity.ResourceName = StorageAccountName;
                 identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
@@ -70,14 +65,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", 
                         StorageAccountName));
-                    resource = rmClient.Resources.GetAsync(StorageAccountResourceGroupName, 
+                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName, 
                         identity, CancellationToken.None).Result;
                 }
                 catch (Exception)
                 {
                     identity.ResourceProviderNamespace = "Microsoft.Storage/storageAccounts";
                     identity.ResourceProviderApiVersion = "2016-01-01";
-                    resource = rmClient.Resources.GetAsync(StorageAccountResourceGroupName, 
+                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName, 
                         identity, CancellationToken.None).Result;
                 }
                 
