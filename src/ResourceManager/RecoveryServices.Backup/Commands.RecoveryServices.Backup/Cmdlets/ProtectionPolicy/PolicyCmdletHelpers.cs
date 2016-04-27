@@ -26,13 +26,13 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {   
     public class PolicyCmdletHelpers 
     {
-        public static Regex rgx = new Regex(@"^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$");
+        public static Regex policyNameRgx = new Regex(@"^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$");
 
         public static void ValidateProtectionPolicyName(string policyName)
         {
@@ -47,20 +47,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 throw new ArgumentException(Resources.ProtectionPolicyNameLengthException);
             }
 
-            if (!rgx.IsMatch(policyName))
+            if (!policyNameRgx.IsMatch(policyName))
             {
                 throw new ArgumentException(Resources.ProtectionPolicyNameException);
             }
         }
 
         public static ProtectionPolicyResponse GetProtectionPolicyByName(string policyName,
-                                                 HydraAdapter hydraAdapter)
+                                                 ServiceClientAdapter serviceClientAdapter)
         {
             ProtectionPolicyResponse response = null;
 
             try
             {                
-                response = hydraAdapter.GetProtectionPolicy(policyName);
+                response = serviceClientAdapter.GetProtectionPolicy(policyName);
                 Logger.Instance.WriteDebug("Successfully fetched policy from service: " + policyName);
             }
             catch (AggregateException exception)

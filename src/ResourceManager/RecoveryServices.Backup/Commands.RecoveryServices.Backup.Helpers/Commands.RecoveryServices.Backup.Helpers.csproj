@@ -36,7 +36,7 @@
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.RecoveryServices.Backup, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.RecoveryServices.Backup, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.Backup.0.1.0-preview\lib\net40\Microsoft.Azure.Management.RecoveryServices.Backup.dll</HintPath>
     </Reference>
@@ -52,22 +52,18 @@
   <ItemGroup>
     <Compile Include="Conversions\JobConversions.cs" />
     <Compile Include="Conversions\RecoveryPointConversions.cs" />
-    <Compile Include="Utils.cs" />
+    <Compile Include="HelperUtils.cs" />
     <Compile Include="Validations\PolicyValidations.cs" />
     <Compile Include="Conversions\SchedulePolicyConversions.cs" />
     <Compile Include="Conversions\RetentionPolicyConversions.cs" />
     <Compile Include="Conversions\ConversionHelpers.cs" />
-    <Compile Include="HydraHelpers.cs" />
+    <Compile Include="ServiceClientHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.HydraAdapter\Commands.RecoveryServices.Backup.HydraAdapter.csproj">
-      <Project>{b758fec1-35c1-4f93-a954-66dd33f6e0ec}</Project>
-      <Name>Commands.RecoveryServices.Backup.HydraAdapter</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.csproj">
       <Project>{5e675749-6139-464a-904c-59c0ffdfec82}</Project>

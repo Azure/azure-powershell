@@ -180,8 +180,8 @@
   <data name="BothRetentionAndSchedulePoliciesEmpty" xml:space="preserve">
     <value>Both RetentionPolicy and SchedulePolicy are empty, nothing to update</value>
   </data>
-  <data name="EmptyHydraResponseException" xml:space="preserve">
-    <value>Empty response received from Service/Hydra</value>
+  <data name="EmptyServiceClientResponseException" xml:space="preserve">
+    <value>Empty response received from Service Client</value>
   </data>
   <data name="InvalidProtectionPolicyException" xml:space="preserve">
     <value>Invalid ProtectionPolicy - either NULL or NOT of type: {0}</value>

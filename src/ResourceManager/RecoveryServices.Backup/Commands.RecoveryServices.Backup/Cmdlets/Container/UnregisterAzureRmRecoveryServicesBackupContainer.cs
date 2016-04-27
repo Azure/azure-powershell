@@ -29,11 +29,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of containers
     /// </summary>
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupContainer")]
-    public class UnregisterAzureRmRecoveryServicesBackupContainer : RecoveryServicesBackupCmdletBase
+    public class UnregisterAzureRmRecoveryServicesBackupContainer 
+        : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.Container.RegisteredContainer)]
+        [Parameter(Mandatory = true, Position = 1, 
+            HelpMessage = ParamHelpMsgs.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupContainerBase Container { get; set; }        
+        public ContainerBase Container { get; set; }        
 
         public override void ExecuteCmdlet()
         {
@@ -41,13 +43,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
                 
-                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.MARS)
+                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType 
+                    != BackupManagementType.MARS)
                 {
-                    throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, Container.ContainerType, Container.BackupManagementType));
+                    throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, 
+                        Container.ContainerType, Container.BackupManagementType));
                 }
-                AzureRmRecoveryServicesBackupMabContainer mabContainer = Container as AzureRmRecoveryServicesBackupMabContainer;
+                MabContainer mabContainer = 
+                    Container as MabContainer;
                 string containerName = mabContainer.Name;
-                HydraAdapter.UnregisterContainers(containerName);
+                ServiceClientAdapter.UnregisterContainers(containerName);
             });
         }
     }
