@@ -147,7 +147,7 @@
             <Width>25</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>InstanceID</Label>
+            <Label>JobID</Label>
             <Width>37</Width>
           </TableColumnHeader>
         </TableHeaders>
@@ -170,7 +170,7 @@
                 <PropertyName>EndTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>InstanceID</PropertyName>
+                <PropertyName>JobId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
