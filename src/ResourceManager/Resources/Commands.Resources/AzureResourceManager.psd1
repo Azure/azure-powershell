@@ -82,8 +82,7 @@ FormatsToProcess = @(
     '.\AzureRM.UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml',
     '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.format.ps1xml',
 	'.\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.DataLakeAnalytics.format.ps1xml',
-	'.\AzureRM.DataLakeStore\Microsoft.Azure.Commands.DataLakeStoreFileSystem.format.ps1xml',
-    '.\AzureRM.RecoveryServices.Backup\Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml'
+	'.\AzureRM.DataLakeStore\Microsoft.Azure.Commands.DataLakeStoreFileSystem.format.ps1xml'
 )  
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
@@ -118,7 +117,6 @@ NestedModules = @(
     '.\AzureRM.DataLakeStore',
     '.\AzureRM.Intune',
     '.\AzureRM.RecoveryServices',
-    '.\AzureRM.RecoveryServices.Backup',
     '.\AzureRM.AzureStackAdmin',
     '.\AzureRM.AzureStackStorage'
 )  

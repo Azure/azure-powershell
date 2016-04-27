@@ -18,57 +18,71 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using CmdletModels = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Conversion helpers.
+    /// </summary>
     public class ConversionHelpers
     {
         #region containers
-        public static AzureRmRecoveryServicesBackupContainerBase GetContainerModel(ProtectionContainerResource protectionContainer)
+
+        /// <summary>
+        /// Helper function to convert ps backup container model from service response.
+        /// </summary>
+        public static ContainerBase GetContainerModel(ServiceClientModel.ProtectionContainerResource protectionContainer)
         {
-            AzureRmRecoveryServicesBackupContainerBase containerModel = null;
+            ContainerBase containerModel = null;
 
             if (protectionContainer != null &&
                 protectionContainer.Properties != null)
             {
-                if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectionContainer)))
+                if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(ServiceClientModel.AzureIaaSVMProtectionContainer)))
                 {
-                    containerModel = new AzureRmRecoveryServicesBackupIaasVmContainer(protectionContainer);
+                    containerModel = new AzureVmContainer(protectionContainer);
                 }
-                if (protectionContainer.Properties.GetType() == typeof(MabProtectionContainer))
+                if (protectionContainer.Properties.GetType() == typeof(ServiceClientModel.MabProtectionContainer))
                 {
-                    containerModel = new AzureRmRecoveryServicesBackupMabContainer(protectionContainer);
+                    containerModel = new MabContainer(protectionContainer);
                 }
             }
 
             return containerModel;
         }
 
-        public static AzureRmRecoveryServicesBackupEngineBase GetBackupEngineModel(BackupEngineResource backupEngine)
+        /// <summary>
+        /// Helper function to convert ps backup engine model from service response.
+        /// </summary>
+        public static BackupEngineBase GetBackupEngineModel(ServiceClientModel.BackupEngineResource backupEngine)
         {
-            AzureRmRecoveryServicesBackupEngineBase backupEngineModel = null;
+            BackupEngineBase backupEngineModel = null;
 
             if (backupEngine != null &&
                 backupEngine.Properties != null)
             {
-                if (backupEngine.Properties.GetType() == (typeof(DpmBackupEngine)))
+                if (backupEngine.Properties.GetType() == (typeof(ServiceClientModel.DpmBackupEngine)))
                 {
-                    backupEngineModel = new AzureRmRecoveryServicesBackupDpmBackupEngine(backupEngine);
+                    backupEngineModel = new DpmBackupEngine(backupEngine);
                 }
-                else if (backupEngine.Properties.GetType() == (typeof(AzureBackupServerEngine)))
+                else if (backupEngine.Properties.GetType() == (typeof(ServiceClientModel.AzureBackupServerEngine)))
                 {
-                    backupEngineModel = new AzureRmRecoveryServicesBackupAzureBackupServerEngine(backupEngine);
+                    backupEngineModel = new AzureBackupServerEngine(backupEngine);
                 }
             }
 
             return backupEngineModel;
         }
 
-        public static List<AzureRmRecoveryServicesBackupContainerBase> GetContainerModelList(IEnumerable<ProtectionContainerResource> protectionContainers)
+        /// <summary>
+        /// Helper function to convert ps backup container model list from service response.
+        /// </summary>
+        public static List<ContainerBase> GetContainerModelList(IEnumerable<ServiceClientModel.ProtectionContainerResource> protectionContainers)
         {
-            List<AzureRmRecoveryServicesBackupContainerBase> containerModels = new List<AzureRmRecoveryServicesBackupContainerBase>();
+            List<ContainerBase> containerModels = new List<ContainerBase>();
 
             foreach (var protectionContainer in protectionContainers)
             {
@@ -78,9 +92,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return containerModels;
         }
 
-        public static List<AzureRmRecoveryServicesBackupEngineBase> GetBackupEngineModelList(IEnumerable<BackupEngineResource> backupEngines)
+        /// <summary>
+        /// Helper function to convert ps backup engine model list from service response.
+        /// </summary>
+        public static List<BackupEngineBase> GetBackupEngineModelList(IEnumerable<ServiceClientModel.BackupEngineResource> backupEngines)
         {
-            List<AzureRmRecoveryServicesBackupEngineBase> backupEngineModel = new List<AzureRmRecoveryServicesBackupEngineBase>();
+            List<BackupEngineBase> backupEngineModel = new List<BackupEngineBase>();
 
             foreach (var backupEngine in backupEngines)
             {
@@ -93,75 +110,82 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #endregion
 
         #region policy
-        public static AzureRmRecoveryServicesBackupPolicyBase GetPolicyModel(ProtectionPolicyResource hydraResponse)
-        {
-            AzureRmRecoveryServicesBackupPolicyBase policyModel = null;
 
-            if (hydraResponse == null || hydraResponse.Properties == null)
+        /// <summary>
+        /// Helper function to convert ps backup policy model from service response.
+        /// </summary>
+        public static PolicyBase GetPolicyModel(ServiceClientModel.ProtectionPolicyResource serviceClientResponse)
+        {
+            PolicyBase policyModel = null;
+
+            if (serviceClientResponse == null || serviceClientResponse.Properties == null)
             {
-                Logger.Instance.WriteDebug("Policy Hydra response is Null/Empty");
-                throw new ArgumentException(Resources.EmptyHydraResponseException);
+                Logger.Instance.WriteDebug("Policy Service Client response is Null/Empty");
+                throw new ArgumentException(Resources.EmptyServiceClientResponseException);
             }
 
-            if (hydraResponse.Properties.GetType() == typeof(AzureIaaSVMProtectionPolicy))
+            if (serviceClientResponse.Properties.GetType() == typeof(ServiceClientModel.AzureIaaSVMProtectionPolicy))
             {
-                if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType() !=
-                                                                           typeof(LongTermRetentionPolicy))
+                if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType() !=
+                                                                           typeof(ServiceClientModel.LongTermRetentionPolicy))
                 {
                     Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
-                               ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType());
+                               ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType());
                     Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
 
-                if (((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType() !=
-                                                                            typeof(SimpleSchedulePolicy))
+                if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType() !=
+                                                                            typeof(ServiceClientModel.SimpleSchedulePolicy))
                 {
                     Logger.Instance.WriteDebug("Unknown SchedulePolicy object received: " +
-                               ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy.GetType());
+                               ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType());
                     Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
 
-                policyModel = new AzureRmRecoveryServicesBackupIaasVmPolicy();
-                AzureRmRecoveryServicesBackupIaasVmPolicy iaasPolicyModel = policyModel as AzureRmRecoveryServicesBackupIaasVmPolicy;
+                policyModel = new AzureVmPolicy();
+                AzureVmPolicy iaasPolicyModel = policyModel as AzureVmPolicy;
                 iaasPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureVM;
                 iaasPolicyModel.BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureVM;
-                iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((LongTermRetentionPolicy)
-                                                  ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).RetentionPolicy);
-                iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((SimpleSchedulePolicy)
-                                                 ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy);
+                iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((ServiceClientModel.LongTermRetentionPolicy)
+                                                  ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy);
+                iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
+                                                 ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy);
             }
             else
             {
                 // we will enter this case when service supports new workload and customer 
                 // still using old version of azure powershell. Trace warning message, ignore and return
                 Logger.Instance.WriteDebug("Unknown Policy object received: " +
-                                           hydraResponse.Properties.GetType());
+                                           serviceClientResponse.Properties.GetType());
                 Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                 return null;
             }
 
-            policyModel.Name = hydraResponse.Name;
-            policyModel.Id = hydraResponse.Id;
+            policyModel.Name = serviceClientResponse.Name;
+            policyModel.Id = serviceClientResponse.Id;
 
             return policyModel;
         }
 
-        public static List<AzureRmRecoveryServicesBackupPolicyBase> GetPolicyModelList(
-            ProtectionPolicyListResponse hydraListResponse)
+        /// <summary>
+        /// Helper function to convert ps backup policy list model from service response.
+        /// </summary>
+        public static List<PolicyBase> GetPolicyModelList(
+            ServiceClientModel.ProtectionPolicyListResponse serviceClientListResponse)
         {
-            if (hydraListResponse == null || hydraListResponse.ItemList == null ||
-               hydraListResponse.ItemList.Value == null || hydraListResponse.ItemList.Value.Count == 0)
+            if (serviceClientListResponse == null || serviceClientListResponse.ItemList == null ||
+               serviceClientListResponse.ItemList.Value == null || serviceClientListResponse.ItemList.Value.Count == 0)
             {
                 Logger.Instance.WriteDebug("Received empty list of policies from service");
                 return null;
             }
 
-            List<AzureRmRecoveryServicesBackupPolicyBase> policyModels = new List<AzureRmRecoveryServicesBackupPolicyBase>();
-            AzureRmRecoveryServicesBackupPolicyBase policyModel = null;
+            List<PolicyBase> policyModels = new List<PolicyBase>();
+            PolicyBase policyModel = null;
 
-            foreach (ProtectionPolicyResource resource in hydraListResponse.ItemList.Value)
+            foreach (ServiceClientModel.ProtectionPolicyResource resource in serviceClientListResponse.ItemList.Value)
             {
                 policyModel = GetPolicyModel(resource);
                 if (policyModel != null)
@@ -178,17 +202,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region Item
 
-        public static AzureRmRecoveryServicesBackupItemBase GetItemModel(ProtectedItemResource protectedItem)
+        /// <summary>
+        /// Helper function to convert ps backup policy item from service response.
+        /// </summary>
+        public static ItemBase GetItemModel(ServiceClientModel.ProtectedItemResource protectedItem)
         {
-            AzureRmRecoveryServicesBackupItemBase itemModel = null;
+            ItemBase itemModel = null;
 
             if (protectedItem != null &&
                 protectedItem.Properties != null)
             {
-                if (protectedItem.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectedItem)))
+                if (protectedItem.Properties.GetType().IsSubclassOf(typeof(ServiceClientModel.AzureIaaSVMProtectedItem)))
                 {
                     string policyName = null;
-                    string policyId = ((AzureIaaSVMProtectedItem)protectedItem.Properties).PolicyId;
+                    string policyId = ((ServiceClientModel.AzureIaaSVMProtectedItem)protectedItem.Properties).PolicyId;
                     if (!string.IsNullOrEmpty(policyId))
                     {
                         Dictionary<UriEnums, string> keyValueDict =
@@ -200,7 +227,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         HelperUtils.ParseUri(protectedItem.Id),
                         protectedItem.Id);
 
-                    itemModel = new AzureRmRecoveryServicesBackupIaasVmItem(
+                    itemModel = new AzureVmItem(
                         protectedItem,
                         IdUtils.GetNameFromUri(containerUri),
                         Cmdlets.Models.ContainerType.AzureVM,
@@ -211,9 +238,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return itemModel;
         }
 
-        public static List<AzureRmRecoveryServicesBackupItemBase> GetItemModelList(IEnumerable<ProtectedItemResource> protectedItems)
+        /// <summary>
+        /// Helper function to convert ps backup policy item list from service response.
+        /// </summary>
+        public static List<ItemBase> GetItemModelList(IEnumerable<ServiceClientModel.ProtectedItemResource> protectedItems)
         {
-            List<AzureRmRecoveryServicesBackupItemBase> itemModels = new List<AzureRmRecoveryServicesBackupItemBase>();
+            List<ItemBase> itemModels = new List<ItemBase>();
 
             foreach (var protectedItem in protectedItems)
             {

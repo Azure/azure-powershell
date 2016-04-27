@@ -25,7 +25,7 @@
 				<maml:description>
 					<maml:para>Specifies a Backup item for which this cmdlet starts a backup operation.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupItemBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">ItemBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -44,18 +44,6 @@
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>Item</maml:name>
-			<maml:description>
-				<maml:para>Specifies a Backup item for which this cmdlet starts a backup operation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupItemBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupItemBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -76,6 +64,18 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Item</maml:name>
+			<maml:description>
+				<maml:para>Specifies a Backup item for which this cmdlet starts a backup operation.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ItemBase</command:parameterValue>
+			<dev:type>
+				<maml:name>ItemBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -191,7 +191,7 @@ recovery points for the backup item.</maml:para>
 					<maml:para>Specifies the Backup item for which this cmdlet disables protection. To obtain an 
         AzureRmRecoveryServicesBackupItem, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupItemBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">ItemBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>RemoveRecoveryPoints</maml:name>
@@ -225,19 +225,6 @@ recovery points for the backup item.</maml:para>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
-			<maml:name>Item</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Backup item for which this cmdlet disables protection. To obtain an 
-        AzureRmRecoveryServicesBackupItem, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupItemBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupItemBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>RemoveRecoveryPoints</maml:name>
 			<maml:description>
@@ -283,6 +270,19 @@ recovery points for the backup item.</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>Item</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Backup item for which this cmdlet disables protection. To obtain an 
+        AzureRmRecoveryServicesBackupItem, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ItemBase</command:parameterValue>
+			<dev:type>
+				<maml:name>ItemBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -392,7 +392,7 @@ The last command disables backup protection but retains the data</maml:para>
         To obtain an AzureRmRecoveryServicesBackupProtectionPolicy object, use the 
         Get-AzureRmRecoveryServicesBackupProtectionPolicy cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupPolicyBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">PolicyBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Name</maml:name>
@@ -432,7 +432,7 @@ The last command disables backup protection but retains the data</maml:para>
         To obtain an AzureRmRecoveryServicesBackupProtectionPolicy object, use the 
         Get-AzureRmRecoveryServicesBackupProtectionPolicy cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupPolicyBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">PolicyBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Name</maml:name>
@@ -472,7 +472,7 @@ The last command disables backup protection but retains the data</maml:para>
         To obtain an AzureRmRecoveryServicesBackupProtectionPolicy object, use the 
         Get-AzureRmRecoveryServicesBackupProtectionPolicy cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupPolicyBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">PolicyBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="4">
 				<maml:name>Item</maml:name>
@@ -480,7 +480,7 @@ The last command disables backup protection but retains the data</maml:para>
 					<maml:para>    Specifies the Backup item for which this cmdlet enables protection. To 
         obtain an AzureRmRecoveryServicesBackupItem, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupItemBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">ItemBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -499,33 +499,6 @@ The last command disables backup protection but retains the data</maml:para>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-			<maml:name>Policy</maml:name>
-			<maml:description>
-				<maml:para>Specifies protection policy that this cmdlet associates with an item. 
-        To obtain an AzureRmRecoveryServicesBackupProtectionPolicy object, use the 
-        Get-AzureRmRecoveryServicesBackupProtectionPolicy cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupPolicyBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupPolicyBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="4">
-			<maml:name>Item</maml:name>
-			<maml:description>
-				<maml:para>    Specifies the Backup item for which this cmdlet enables protection. To 
-        obtain an AzureRmRecoveryServicesBackupItem, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupItemBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupItemBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -582,6 +555,33 @@ The last command disables backup protection but retains the data</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Policy</maml:name>
+			<maml:description>
+				<maml:para>Specifies protection policy that this cmdlet associates with an item. 
+        To obtain an AzureRmRecoveryServicesBackupProtectionPolicy object, use the 
+        Get-AzureRmRecoveryServicesBackupProtectionPolicy cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PolicyBase</command:parameterValue>
+			<dev:type>
+				<maml:name>PolicyBase</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="4">
+			<maml:name>Item</maml:name>
+			<maml:description>
+				<maml:para>    Specifies the Backup item for which this cmdlet enables protection. To 
+        obtain an AzureRmRecoveryServicesBackupItem, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ItemBase</command:parameterValue>
+			<dev:type>
+				<maml:name>ItemBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -945,7 +945,7 @@ The second cmdlet enables protection for ARM VM using the specified policy</maml
 					<maml:para>Specifies a container object for which this cmdlet gets backup items. To obtain an 
         AzureRmRecoveryServicesBackupContainer, use the Get-AzureRmRecoveryServicesBackupContainer cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupContainerBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">ContainerBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>Name</maml:name>
@@ -1052,19 +1052,6 @@ ProtectionStopped -&gt; Disabled</maml:para>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-			<maml:name>Container</maml:name>
-			<maml:description>
-				<maml:para>Specifies a container object for which this cmdlet gets backup items. To obtain an 
-        AzureRmRecoveryServicesBackupContainer, use the Get-AzureRmRecoveryServicesBackupContainer cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupContainerBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupContainerBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>Name</maml:name>
 			<maml:description>
@@ -1149,6 +1136,19 @@ ProtectionStopped -&gt; Disabled</maml:para>
 			<command:parameterValue required="true" variableLength="false">BackupManagementType</command:parameterValue>
 			<dev:type>
 				<maml:name>BackupManagementType</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Container</maml:name>
+			<maml:description>
+				<maml:para>Specifies a container object for which this cmdlet gets backup items. To obtain an 
+        AzureRmRecoveryServicesBackupContainer, use the Get-AzureRmRecoveryServicesBackupContainer cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ContainerBase</command:parameterValue>
+			<dev:type>
+				<maml:name>ContainerBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1309,9 +1309,10 @@ The second command gets a specific backup item for the corresponding container</
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
 				<maml:name>Job</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para> Specifies a job that this cmdlet gets. To obtain an AzureRmRecoveryServicesBackupJob object, use the 
+        Get-AzureRmRecoveryServicesBackupJob cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupJobBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">JobBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>BackupManagementType</maml:name>
@@ -1461,6 +1462,19 @@ The second command gets a specific backup item for the corresponding container</
 			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupJobBase</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureRmRecoveryServicesBackupJobBase</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
+			<maml:name>Job</maml:name>
+			<maml:description>
+				<maml:para> Specifies a job that this cmdlet gets. To obtain an AzureRmRecoveryServicesBackupJob object, use the 
+        Get-AzureRmRecoveryServicesBackupJob cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">JobBase</command:parameterValue>
+			<dev:type>
+				<maml:name>JobBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1615,9 +1629,10 @@ Set the vault context before getting started Set-AzureRmRecoveryServicesVaultCon
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Job</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>  Specifies a job for which this cmdlet gets details. To obtain an AzureRmRecoveryServicesBackupJob object, 
+        use the Get-AzureRmRecoveryServicesBackupJob cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupJobBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">JobBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -1703,11 +1718,12 @@ Set the vault context before getting started Set-AzureRmRecoveryServicesVaultCon
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>Job</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>  Specifies a job for which this cmdlet gets details. To obtain an AzureRmRecoveryServicesBackupJob object, 
+        use the Get-AzureRmRecoveryServicesBackupJob cmdlet.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupJobBase</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">JobBase</command:parameterValue>
 			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupJobBase</maml:name>
+				<maml:name>JobBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1990,6 +2006,13 @@ The second command returns the error details of the first failed job.  </maml:pa
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[WorkloadType]</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="3">
+				<maml:name>BackupManagementType</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BackupManagementType.   Specify AzureVM for VM backup</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[BackupManagementType]</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -2013,13 +2036,6 @@ The second command returns the error details of the first failed job.  </maml:pa
 					<maml:para>Specifies the WorkloadType.   Specify AzureVM for VM backup</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[WorkloadType]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="3">
-				<maml:name>BackupManagementType</maml:name>
-				<maml:description>
-					<maml:para>Specifies the BackupManagementType.   Specify AzureVM for VM backup</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[BackupManagementType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -2240,7 +2256,7 @@ NewPolicy2           AzureVM            AzureVM              4/24/2016 1:30:00 A
 					<maml:para>  Specifies the item for which this cmdlet gets recovery points. To obtain an 
         AzureRmRecoveryServicesBackupItem, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupItemBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">ItemBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -2265,7 +2281,7 @@ NewPolicy2           AzureVM            AzureVM              4/24/2016 1:30:00 A
 					<maml:para>  Specifies the item for which this cmdlet gets recovery points. To obtain an 
         AzureRmRecoveryServicesBackupItem, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupItemBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">ItemBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>RecoveryPointId</maml:name>
@@ -2315,19 +2331,6 @@ NewPolicy2           AzureVM            AzureVM              4/24/2016 1:30:00 A
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="2">
-			<maml:name>Item</maml:name>
-			<maml:description>
-				<maml:para>  Specifies the item for which this cmdlet gets recovery points. To obtain an 
-        AzureRmRecoveryServicesBackupItem, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupItemBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupItemBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -2360,6 +2363,19 @@ NewPolicy2           AzureVM            AzureVM              4/24/2016 1:30:00 A
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="2">
+			<maml:name>Item</maml:name>
+			<maml:description>
+				<maml:para>  Specifies the item for which this cmdlet gets recovery points. To obtain an 
+        AzureRmRecoveryServicesBackupItem, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ItemBase</command:parameterValue>
+			<dev:type>
+				<maml:name>ItemBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2866,14 +2882,14 @@ PS C:\&gt; New-AzureRmRecoveryServicesBackupProtectionPolicy -Name &quot;NewPoli
 					<maml:para>Specifies the base Retention policy object obtained from Get-AzureRmRecoveryServicesBackupRetentionPolicyObject 
 </maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupRetentionPolicyBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">RetentionPolicyBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
 				<maml:name>SchedulePolicy</maml:name>
 				<maml:description>
 					<maml:para>Specifies the base Schedule policy object obtained from Get-AzureRmRecoveryServicesBackupSchedulePolicyObject </maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupSchedulePolicyBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">SchedulePolicyBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -2929,31 +2945,6 @@ PS C:\&gt; New-AzureRmRecoveryServicesBackupProtectionPolicy -Name &quot;NewPoli
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-			<maml:name>RetentionPolicy</maml:name>
-			<maml:description>
-				<maml:para>Specifies the base Retention policy object obtained from Get-AzureRmRecoveryServicesBackupRetentionPolicyObject 
-</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupRetentionPolicyBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupRetentionPolicyBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
-			<maml:name>SchedulePolicy</maml:name>
-			<maml:description>
-				<maml:para>Specifies the base Schedule policy object obtained from Get-AzureRmRecoveryServicesBackupSchedulePolicyObject </maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupSchedulePolicyBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupSchedulePolicyBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -2974,6 +2965,31 @@ PS C:\&gt; New-AzureRmRecoveryServicesBackupProtectionPolicy -Name &quot;NewPoli
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>RetentionPolicy</maml:name>
+			<maml:description>
+				<maml:para>Specifies the base Retention policy object obtained from Get-AzureRmRecoveryServicesBackupRetentionPolicyObject 
+</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">RetentionPolicyBase</command:parameterValue>
+			<dev:type>
+				<maml:name>RetentionPolicyBase</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+			<maml:name>SchedulePolicy</maml:name>
+			<maml:description>
+				<maml:para>Specifies the base Schedule policy object obtained from Get-AzureRmRecoveryServicesBackupSchedulePolicyObject </maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">SchedulePolicyBase</command:parameterValue>
+			<dev:type>
+				<maml:name>SchedulePolicyBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3130,7 +3146,7 @@ PS C:\&gt;  New-AzureRmRecoveryServicesBackupProtectionPolicy -Name &quot;NewPol
 					<maml:para>  Specifies protection policy that this cmdlet removes. To obtain an AzureRMRecoveryServicesBackupProtectionPolicy, use the 
         Get-AzureRMRecoveryServicesBackupProtectionPolicy cmdlet</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupPolicyBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">PolicyBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -3210,9 +3226,9 @@ PS C:\&gt;  New-AzureRmRecoveryServicesBackupProtectionPolicy -Name &quot;NewPol
 				<maml:para>  Specifies protection policy that this cmdlet removes. To obtain an AzureRMRecoveryServicesBackupProtectionPolicy, use the 
         Get-AzureRMRecoveryServicesBackupProtectionPolicy cmdlet</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupPolicyBase</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">PolicyBase</command:parameterValue>
 			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupPolicyBase</maml:name>
+				<maml:name>PolicyBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3312,7 +3328,7 @@ PS C:\WINDOWS\system32&gt; Remove-AzureRmRecoveryServicesBackupProtectionPolicy 
 					<maml:para>Specifies the recovery point to which to restore the virtual machine. To obtain an AzureRmRecoveryServicesBackupRecoveryPoint, use 
         the Get-AzureRmRecoveryServicesBackupRecoveryPoint cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupRecoveryPointBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">RecoveryPointBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>StorageAccountName</maml:name>
@@ -3347,19 +3363,6 @@ PS C:\WINDOWS\system32&gt; Remove-AzureRmRecoveryServicesBackupProtectionPolicy 
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
-			<maml:name>RecoveryPoint</maml:name>
-			<maml:description>
-				<maml:para>Specifies the recovery point to which to restore the virtual machine. To obtain an AzureRmRecoveryServicesBackupRecoveryPoint, use 
-        the Get-AzureRmRecoveryServicesBackupRecoveryPoint cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupRecoveryPointBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupRecoveryPointBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>StorageAccountName</maml:name>
 			<maml:description>
@@ -3406,6 +3409,19 @@ PS C:\WINDOWS\system32&gt; Remove-AzureRmRecoveryServicesBackupProtectionPolicy 
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
+			<maml:name>RecoveryPoint</maml:name>
+			<maml:description>
+				<maml:para>Specifies the recovery point to which to restore the virtual machine. To obtain an AzureRmRecoveryServicesBackupRecoveryPoint, use 
+        the Get-AzureRmRecoveryServicesBackupRecoveryPoint cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">RecoveryPointBase</command:parameterValue>
+			<dev:type>
+				<maml:name>RecoveryPointBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3522,21 +3538,21 @@ Set the vault context before getting started Set-AzureRmRecoveryServicesVaultCon
 					<maml:para>  Specifies protection policy that this cmdlet modifies. To obtain an AzureRMRecoveryServicesBackupProtectionPolicy, use the 
         Get-AzureRMRecoveryServicesBackupProtectionPolicy cmdlet</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupPolicyBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">PolicyBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>RetentionPolicy</maml:name>
 				<maml:description>
 					<maml:para>Specifies the base Retention policy object obtained from Get-AzureRmRecoveryServicesBackupRetentionPolicyObject </maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupRetentionPolicyBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">RetentionPolicyBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>SchedulePolicy</maml:name>
 				<maml:description>
 					<maml:para>Specifies the base Schedule policy object obtained from Get-AzureRmRecoveryServicesBackupSchedulePolicyObject </maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupSchedulePolicyBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">SchedulePolicyBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -3555,43 +3571,6 @@ Set the vault context before getting started Set-AzureRmRecoveryServicesVaultCon
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
-			<maml:name>Policy</maml:name>
-			<maml:description>
-				<maml:para>  Specifies protection policy that this cmdlet modifies. To obtain an AzureRMRecoveryServicesBackupProtectionPolicy, use the 
-        Get-AzureRMRecoveryServicesBackupProtectionPolicy cmdlet</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupPolicyBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupPolicyBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-			<maml:name>RetentionPolicy</maml:name>
-			<maml:description>
-				<maml:para>Specifies the base Retention policy object obtained from Get-AzureRmRecoveryServicesBackupRetentionPolicyObject </maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupRetentionPolicyBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupRetentionPolicyBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
-			<maml:name>SchedulePolicy</maml:name>
-			<maml:description>
-				<maml:para>Specifies the base Schedule policy object obtained from Get-AzureRmRecoveryServicesBackupSchedulePolicyObject </maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupSchedulePolicyBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupSchedulePolicyBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -3612,6 +3591,43 @@ Set the vault context before getting started Set-AzureRmRecoveryServicesVaultCon
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>Policy</maml:name>
+			<maml:description>
+				<maml:para>  Specifies protection policy that this cmdlet modifies. To obtain an AzureRMRecoveryServicesBackupProtectionPolicy, use the 
+        Get-AzureRMRecoveryServicesBackupProtectionPolicy cmdlet</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PolicyBase</command:parameterValue>
+			<dev:type>
+				<maml:name>PolicyBase</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>RetentionPolicy</maml:name>
+			<maml:description>
+				<maml:para>Specifies the base Retention policy object obtained from Get-AzureRmRecoveryServicesBackupRetentionPolicyObject </maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">RetentionPolicyBase</command:parameterValue>
+			<dev:type>
+				<maml:name>RetentionPolicyBase</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<maml:name>SchedulePolicy</maml:name>
+			<maml:description>
+				<maml:para>Specifies the base Schedule policy object obtained from Get-AzureRmRecoveryServicesBackupSchedulePolicyObject </maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">SchedulePolicyBase</command:parameterValue>
+			<dev:type>
+				<maml:name>SchedulePolicyBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3727,9 +3743,10 @@ PS C:\&gt;  Set-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $pol -Sche
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Job</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>       Specifies a job that this cmdlet cancels. To obtain an AzureRmRecoveryServicesBackupJob object, use the 
+        Get-AzureRmRecoveryServicesBackupJob cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupJobBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">JobBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -3813,11 +3830,12 @@ PS C:\&gt;  Set-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $pol -Sche
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>Job</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>       Specifies a job that this cmdlet cancels. To obtain an AzureRmRecoveryServicesBackupJob object, use the 
+        Get-AzureRmRecoveryServicesBackupJob cmdlet.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupJobBase</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">JobBase</command:parameterValue>
 			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupJobBase</maml:name>
+				<maml:name>JobBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3918,7 +3936,7 @@ PS C:\&gt;  Set-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $pol -Sche
 					<maml:para>Specifies a container object to unregister. To obtain an 
         AzureRmRecoveryServicesBackupContainer, use the Get-AzureRmRecoveryServicesBackupContainer cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupContainerBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">ContainerBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -3937,19 +3955,6 @@ PS C:\&gt;  Set-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $pol -Sche
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-			<maml:name>Container</maml:name>
-			<maml:description>
-				<maml:para>Specifies a container object to unregister. To obtain an 
-        AzureRmRecoveryServicesBackupContainer, use the Get-AzureRmRecoveryServicesBackupContainer cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupContainerBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupContainerBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -3970,6 +3975,19 @@ PS C:\&gt;  Set-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $pol -Sche
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Container</maml:name>
+			<maml:description>
+				<maml:para>Specifies a container object to unregister. To obtain an 
+        AzureRmRecoveryServicesBackupContainer, use the Get-AzureRmRecoveryServicesBackupContainer cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ContainerBase</command:parameterValue>
+			<dev:type>
+				<maml:name>ContainerBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4066,7 +4084,7 @@ PS C:\&gt; Unregister-AzureRmRecoveryServiceBackupContainer -Container $cont
 					<maml:para>Specifies a DPM server object to unregister. To obtain an 
         AzureRmRecoveryServicesBackupManagementServer, use the Get-AzureRmRecoveryServicesBackupManagementServer cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupEngineBase</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">BackupEngineBase</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -4085,19 +4103,6 @@ PS C:\&gt; Unregister-AzureRmRecoveryServiceBackupContainer -Container $cont
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-			<maml:name>AzureRmBackupManagementServer</maml:name>
-			<maml:description>
-				<maml:para>Specifies a DPM server object to unregister. To obtain an 
-        AzureRmRecoveryServicesBackupManagementServer, use the Get-AzureRmRecoveryServicesBackupManagementServer cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureRmRecoveryServicesBackupEngineBase</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureRmRecoveryServicesBackupEngineBase</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -4118,6 +4123,19 @@ PS C:\&gt; Unregister-AzureRmRecoveryServiceBackupContainer -Container $cont
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>AzureRmBackupManagementServer</maml:name>
+			<maml:description>
+				<maml:para>Specifies a DPM server object to unregister. To obtain an 
+        AzureRmRecoveryServicesBackupManagementServer, use the Get-AzureRmRecoveryServicesBackupManagementServer cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">BackupEngineBase</command:parameterValue>
+			<dev:type>
+				<maml:name>BackupEngineBase</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
