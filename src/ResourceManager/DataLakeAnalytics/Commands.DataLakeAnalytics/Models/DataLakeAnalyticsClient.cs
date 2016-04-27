@@ -149,7 +149,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
             catch (CloudException ex)
             {
-                if (ex.Response != null && ex.Response.StatusCode == HttpStatusCode.NotFound)
+                if ((ex.Response != null && ex.Response.StatusCode == HttpStatusCode.NotFound) || ex.Message.Contains(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, accountName,
+                    _subscriptionId)))
                 {
                     return false;
                 }

@@ -15,6 +15,12 @@ function Test-DataLakeStoreAccount
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AzureRMDataLakeStoreAccount -Name $accountName}
+
 		$accountCreated = New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
 		Assert-AreEqual $accountName $accountCreated.Name
@@ -39,6 +45,11 @@ function Test-DataLakeStoreAccount
 			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
 		}
+
+		# Test to make sure the account does exist
+		Assert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-True {Test-AzureRMDataLakeStoreAccount -Name $accountName}
 
 		# Updating Account
 		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
