@@ -103,7 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
             this.RunPowerShellTest("Test-SetNetworkSecurityGroupToSubnetInDifferentRegion");
         }
 
-        [Fact]
+        [Fact(Skip = "No recording file")]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void SetNSGOnRoleAndUpdateVM()
@@ -111,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
             this.RunPowerShellTest("Test-SetNSGOnRoleAndUpdateVM");
         }
 
-        [Fact]
+        [Fact(Skip = "No recording file")]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void SetNSGOnNICAndUpdateVM()

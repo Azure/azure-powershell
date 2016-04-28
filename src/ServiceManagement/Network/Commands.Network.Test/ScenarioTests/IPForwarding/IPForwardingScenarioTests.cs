@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
     {
         private readonly EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
-        [Fact]
+        [Fact(Skip = "No recording file")]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void SetIPForwardingOnVMAndUpdateVM()
@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
             RunPowerShellTest("Test-SetIPForwardingOnVMAndUpdateVM");
         }
 
-        [Fact]
+        [Fact(Skip = "No recording file")]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void SetIPForwardingOnNICAndUpdateVM()
