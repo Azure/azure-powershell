@@ -46,9 +46,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse DisableProtection()
+        public BaseRecoveryServicesJobResponse DisableProtection()
         {
-            throw new NotImplementedException();
+            bool deleteBackupData = (bool)ProviderData.ProviderParameters[ItemParams.DeleteBackupData];
+
+            AzureRmRecoveryServicesBackupItemBase itemBase = (AzureRmRecoveryServicesBackupItemBase)
+                                                 ProviderData.ProviderParameters[ItemParams.Item];
+            // do validations
+
+            ValidateAzureSQLDisableProtectionRequest(itemBase);
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(itemBase.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, itemBase.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, itemBase.Id);
+
+            if (deleteBackupData)
+            {
+                return HydraAdapter.DeleteProtectedItem(
+                                containerUri,
+                                protectedItemUri);
+            }
+            else
+            {
+                throw new Exception("Azure Sql does not support disable protection with retain data");
+            }
         }
 
         public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse TriggerBackup()
@@ -251,5 +272,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             return itemModels;
         }
+
+        #region private
+
+        private void ValidateAzureSQLDisableProtectionRequest(AzureRmRecoveryServicesBackupItemBase itemBase)
+        {
+
+            if (itemBase == null || itemBase.GetType() != typeof(AzureRmRecoveryServicesBackupAzureSqlItem))
+            {
+                throw new ArgumentException(string.Format(Resources.InvalidProtectionItemException,
+                                            typeof(AzureRmRecoveryServicesBackupAzureSqlItem).ToString()));
+            }
+
+            ValidateAzureVMWorkloadType(itemBase.WorkloadType);
+            ValidateAzureVMContainerType(itemBase.ContainerType);
+        }
+
+        private void ValidateAzureVMWorkloadType(Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType type)
+        {
+            if (type != Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureSqlDb)
+            {
+                throw new ArgumentException(string.Format(Resources.UnExpectedWorkLoadTypeException,
+                                            Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureSqlDb.ToString(),
+                                            type.ToString()));
+            }
+        }
+
+        private void ValidateAzureVMContainerType(Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType type)
+        {
+            if (type != Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType.AzureSqlContainer)
+            {
+                throw new ArgumentException(string.Format(Resources.UnExpectedContainerTypeException,
+                                            Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType.AzureSqlContainer.ToString(),
+                                            type.ToString()));
+            }
+        }
+        #endregion
     }
 }
