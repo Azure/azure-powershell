@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = ResourceGroupName,
@@ -62,6 +63,11 @@ namespace Microsoft.Azure.Commands.Resources
                 ParameterUri = TemplateParameterUri,
                 DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
             };
+
+            if(!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
+            {
+                WriteWarning("The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation");
+            }
 
             if(this.Mode == DeploymentMode.Complete)
             {

@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.PoolStatistics omObject;
         
-        private PSUsageStatistics usageStatistics;
-        
         private PSResourceStatistics resourceStatistics;
+        
+        private PSUsageStatistics usageStatistics;
         
         internal PSPoolStatistics(Microsoft.Azure.Batch.PoolStatistics omObject)
         {
@@ -47,40 +47,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Url
-        {
-            get
-            {
-                return this.omObject.Url;
-            }
-        }
-        
-        public System.DateTime StartTime
-        {
-            get
-            {
-                return this.omObject.StartTime;
-            }
-        }
-        
         public System.DateTime LastUpdateTime
         {
             get
             {
                 return this.omObject.LastUpdateTime;
-            }
-        }
-        
-        public PSUsageStatistics UsageStatistics
-        {
-            get
-            {
-                if (((this.usageStatistics == null) 
-                            && (this.omObject.UsageStatistics != null)))
-                {
-                    this.usageStatistics = new PSUsageStatistics(this.omObject.UsageStatistics);
-                }
-                return this.usageStatistics;
             }
         }
         
@@ -94,6 +65,35 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.resourceStatistics = new PSResourceStatistics(this.omObject.ResourceStatistics);
                 }
                 return this.resourceStatistics;
+            }
+        }
+        
+        public System.DateTime StartTime
+        {
+            get
+            {
+                return this.omObject.StartTime;
+            }
+        }
+        
+        public string Url
+        {
+            get
+            {
+                return this.omObject.Url;
+            }
+        }
+        
+        public PSUsageStatistics UsageStatistics
+        {
+            get
+            {
+                if (((this.usageStatistics == null) 
+                            && (this.omObject.UsageStatistics != null)))
+                {
+                    this.usageStatistics = new PSUsageStatistics(this.omObject.UsageStatistics);
+                }
+                return this.usageStatistics;
             }
         }
     }

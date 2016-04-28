@@ -6,6 +6,12 @@
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "763ff976-657f-474c-b804-a4b661a066e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
           "Microsoft.Azure.Management.Redis.RedisManagementClient/1.0.0.0"
         ]
@@ -28,13 +34,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "32e18158-273e-4f40-84e6-2f8512c26e3f"
+          "8ae69e88-d1e3-4f16-b8fa-83d568a67a98"
         ],
         "x-ms-correlation-request-id": [
-          "32e18158-273e-4f40-84e6-2f8512c26e3f"
+          "8ae69e88-d1e3-4f16-b8fa-83d568a67a98"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151216T190413Z:32e18158-273e-4f40-84e6-2f8512c26e3f"
+          "NORTHCENTRALUS:20160408T015145Z:8ae69e88-d1e3-4f16-b8fa-83d568a67a98"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,7 +49,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 16 Dec 2015 19:04:12 GMT"
+          "Fri, 08 Apr 2016 01:51:45 GMT"
         ]
       },
       "StatusCode": 404

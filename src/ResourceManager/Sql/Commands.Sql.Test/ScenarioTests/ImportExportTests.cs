@@ -12,28 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
+using Microsoft.Azure.Test;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.Resources.Models
+namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    /// <summary>
-    /// Represents the location info for a resource provider
-    /// </summary>
-    public class PSResourceProviderLocationInfo
+    public class ImportExportTests : SqlTestsBase
     {
-        /// <summary>
-        /// Gets or sets the name of the resource provider
-        /// </summary>
-        public string Name { get; set; }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Sql)]
+        public void TestExportDatabase() 
+        {
+            RunPowerShellTest("Test-ExportDatabase");
+        }
 
-        /// <summary>
-        /// Gets or sets the locations that the resource provider exists in
-        /// </summary>
-        public List<string> Locations { get; set; }
-
-        /// <summary>
-        /// Gets or sets the locations that the resource provider exists in, as a single string
-        /// </summary>
-        public string LocationsString { get; set; }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Sql)]
+        public void TestImportDatabase()
+        {
+            RunPowerShellTest("Test-ImportDatabase");
+        }       
     }
 }

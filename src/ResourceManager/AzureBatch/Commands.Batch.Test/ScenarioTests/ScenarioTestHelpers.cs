@@ -41,20 +41,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     public static class ScenarioTestHelpers
     {
         // NOTE: To save time on setup and compute node allocation when recording, many tests assume the following:
-        //     - The SharedAccount exists under the subscription being used for recording.
         //     - The following commands were run to create a pool, and all 3 compute nodes are allocated:
-        //          $context = Get-AzureRmBatchAccountKeys "<SharedAccount>"
+        //          $context = Get-AzureRmBatchAccountKeys "<Account that will be used for recorded tests>"
         //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         //          $startTask.CommandLine = "cmd /c echo hello"
-        //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
-        internal const string SharedAccount = "pstestaccount";
+        //          $osFamily = "4"
+        //          $targetOSVersion = "*"
+        //          $configuration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+        //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -CloudServiceConfiguration $configuration -TargetDedicated 3 -StartTask $startTask -BatchContext $context
         internal const string SharedPool = "testPool";
+        internal const string SharedIaasPool = "testIaasPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
         internal const string SharedPoolStartTaskStdOutContent = "hello";
-
-        // TO DO: MPI and online/offline node scheduling are only enabled in a few regions, so they need a dedicated account.  Once the features are
-        // enabled everywhere, the tests for these features can just use the default shared account.
-        internal const string MpiOnlineAccount = "batchtest";
 
         // MPI requires a special pool configuration. When recording, the Storage environment variables need to be
         // set so we can upload the MPI installer for use as a start task resource file.
@@ -64,6 +62,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         internal const string MpiSetupFileLocalPath = "Resources\\MSMpiSetup.exe";
         internal const string StorageAccountEnvVar = "AZURE_STORAGE_ACCOUNT";
         internal const string StorageKeyEnvVar = "AZURE_STORAGE_ACCESS_KEY";
+
+        internal const string BatchAccountName = "AZURE_BATCH_ACCOUNT";
+        internal const string BatchAccountKey = "AZURE_BATCH_ACCESS_KEY";
+        internal const string BatchAccountEndpoint = "AZURE_BATCH_ENDPOINT";
 
         /// <summary>
         /// Creates an account and resource group for use with the Scenario tests
@@ -77,19 +79,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             context.PrimaryAccountKey = response.PrimaryKey;
             context.SecondaryAccountKey = response.SecondaryKey;
             return context;
-        }
-
-        /// <summary>
-        /// Get Batch Context with keys
-        /// </summary>
-        public static BatchAccountContext GetBatchAccountContextWithKeys(BatchController controller, string accountName)
-        {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-            BatchAccountContext context = client.ListKeys(null, accountName);
-
-            ScenarioTestContext testContext = new ScenarioTestContext(context);
-
-            return testContext;
         }
 
         /// <summary>
@@ -133,16 +122,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     existingCert = client.ListCertificates(getParameters).FirstOrDefault();
                 }
             }
-            catch (AggregateException ex)
+            catch (BatchException ex)
             {
-                foreach (Exception inner in ex.InnerExceptions)
+                // When the cert doesn't exist, we get a 404 error. For all other errors, throw.
+                if (ex == null || !ex.Message.Contains("NotFound"))
                 {
-                    BatchException batchEx = inner as BatchException;
-                    // When the cert doesn't exist, we get a 404 error. For all other errors, throw.
-                    if (batchEx == null || !batchEx.Message.Contains("CertificateNotFound"))
-                    {
-                        throw;
-                    }
+                    throw;
                 }
             }
 
@@ -212,11 +197,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 psStartTask = new PSStartTask(startTask);
             }
 
+            PSCloudServiceConfiguration paasConfiguration = new PSCloudServiceConfiguration("4", "*");
+            
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
                 VirtualMachineSize = "small",
-                OSFamily = "4",
-                TargetOSVersion = "*",
+                CloudServiceConfiguration = paasConfiguration,
                 TargetDedicated = targetDedicated,
                 CertificateReferences = certReferences,
                 StartTask = psStartTask,
@@ -245,8 +231,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             catch (AggregateException aex)
             {
                 BatchException innerException = aex.InnerException as BatchException;
-                if (innerException == null || innerException.RequestInformation == null || innerException.RequestInformation.AzureError == null ||
-                    innerException.RequestInformation.AzureError.Code != BatchErrorCodeStrings.PoolNotFound)
+                if (innerException == null || innerException.RequestInformation == null || innerException.RequestInformation.BatchError == null ||
+                    innerException.RequestInformation.BatchError.Code != BatchErrorCodeStrings.PoolNotFound)
                 {
                     throw;
                 }
@@ -297,7 +283,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             DateTime timeout = DateTime.Now.AddMinutes(5);
             PSCloudPool pool = client.ListPools(options).First();
-            while (pool.CurrentOSVersion != pool.TargetOSVersion)
+            while (pool.CloudServiceConfiguration.CurrentOSVersion != pool.CloudServiceConfiguration.TargetOSVersion)
             {
                 if (DateTime.Now > timeout)
                 {
@@ -307,7 +293,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 pool = client.ListPools(options).First();
             }
 
-            return pool.TargetOSVersion;
+            return pool.CloudServiceConfiguration.TargetOSVersion;
         }
 
         public static void ResizePool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated)

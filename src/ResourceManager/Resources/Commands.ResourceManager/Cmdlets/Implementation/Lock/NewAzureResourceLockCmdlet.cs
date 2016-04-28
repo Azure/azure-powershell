@@ -74,13 +74,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceId,
                 () =>
                 {
-                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
                     var resourceBody = this.GetResourceBody();
 
                     var operationResult = this.GetResourcesClient()
                         .PutResource(
                             resourceId: resourceId,
-                            apiVersion: apiVersion,
+                            apiVersion: this.LockApiVersion,
                             resource: resourceBody,
                             cancellationToken: this.CancellationToken.Value)
                         .Result;
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var managementUri = this.GetResourcesClient()
                       .GetResourceManagementRequestUri(
                           resourceId: resourceId,
-                          apiVersion: apiVersion);
+                          apiVersion: this.LockApiVersion);
 
                     var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
