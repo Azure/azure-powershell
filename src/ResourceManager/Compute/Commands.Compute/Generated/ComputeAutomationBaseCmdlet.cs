@@ -98,6 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMs;
             }
         }
+
         public static string FormatObject(Object obj)
         {
             var objType = obj.GetType();
