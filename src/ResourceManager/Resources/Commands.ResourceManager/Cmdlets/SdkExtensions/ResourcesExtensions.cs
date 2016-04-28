@@ -59,11 +59,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
         public static PSResourceManagerError ToPSResourceManagerError(this ResourceManagementErrorWithDetails error)
         {
-            return new PSResourceManagerError
-                {
-                    Code = error.Code,
-                    Message = error.Message
-                };
+            PSResourceManagerError rmError = new PSResourceManagerError
+            {
+                Code = error.Code,
+                Message = error.Message,
+                Target = string.IsNullOrEmpty(error.Target) ? null : error.Target
+            };
+
+            if(error.Details != null)
+            {
+                List<PSResourceManagerError> innerRMError = new List<PSResourceManagerError>();
+                error.Details.ForEach(detail => innerRMError.Add(detail.ToPSResourceManagerError()));
+                rmError.Details = innerRMError;
+            }
+
+            return rmError;
         }
 
         public static PSResourceProvider ToPSResourceProvider(this Provider provider)
