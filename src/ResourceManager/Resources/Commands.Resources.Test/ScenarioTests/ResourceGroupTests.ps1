@@ -52,7 +52,7 @@ function Test-UpdatesExistingResourceGroup
     try 
     {
         # Test update without tag
-        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "ResourceGroupNotFound: Resource group '$rgname' could not be found."
+        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "Resource group '$rgname' could not be found."
         
         $new = New-AzureRmResourceGroup -Name $rgname -Location $location
         
