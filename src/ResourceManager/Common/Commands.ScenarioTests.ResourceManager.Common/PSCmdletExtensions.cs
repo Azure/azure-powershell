@@ -44,5 +44,24 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 throw e.InnerException;
             }
         }
+
+        private static PropertyInfo GetInternalProperty(string name, Type type)
+        {
+            PropertyInfo prop = typeof(PSCmdlet).GetProperty(name, BindingFlags.Instance | BindingFlags.NonPublic);
+            return prop;
+        }
+
+        public static void SetCommandRuntimeMock(this PSCmdlet cmdlet, ICommandRuntime value)
+        {
+            var property = GetInternalProperty("CommandRuntime", typeof(ICommandRuntime));
+            property.SetValue(cmdlet, value);
+        }
+
+        public static ICommandRuntime GetCommandRuntimeMock(this PSCmdlet cmdlet)
+        {
+            var property = GetInternalProperty("CommandRuntime", typeof(ICommandRuntime));
+            return (ICommandRuntime)property.GetValue(cmdlet);
+        }
+
     }
 }
