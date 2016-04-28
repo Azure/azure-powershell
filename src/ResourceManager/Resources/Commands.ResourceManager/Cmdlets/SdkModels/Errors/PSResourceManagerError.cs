@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public class PSResourceManagerError
