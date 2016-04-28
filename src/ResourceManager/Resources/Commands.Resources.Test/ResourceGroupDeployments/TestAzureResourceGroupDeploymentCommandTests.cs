@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Moq;
 using System;
 using System.Collections.Generic;

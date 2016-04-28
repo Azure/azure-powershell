@@ -56,7 +56,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             string serviceProviderName = "TestProvider";
             string location = "us-west";
             string serviceKey = "aa28cd19-b10a-41ff-981b-53c6bbf15ead";
-            BillingType billingType = BillingType.UnlimitedData;
+            BillingType billingType = BillingType.MeteredData;
+            CircuitSku sku = CircuitSku.Premium;
 
             MockCommandRuntime mockCommandRuntime = new MockCommandRuntime();
             Mock<ExpressRouteManagementClient> client = InitExpressRouteManagementClient();
@@ -75,6 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
                         ServiceKey = serviceKey,
                         ServiceProviderProvisioningState = ProviderProvisioningState.NotProvisioned,
                         Status = DedicatedCircuitState.Enabled,
+                        Sku = sku
                     },
                     RequestId = "",
                     StatusCode = new HttpStatusCode()
@@ -91,8 +93,25 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             var tNew = new Task<ExpressRouteOperationStatusResponse>(() => expectedStatus);
             tNew.Start();
 
-            dcMock.Setup(f => f.NewAsync(It.Is<DedicatedCircuitNewParameters>(x => x.Bandwidth == bandwidth && x.CircuitName == circuitName && x.Location == location && x.ServiceProviderName == serviceProviderName), It.IsAny<CancellationToken>())).Returns((DedicatedCircuitNewParameters param, CancellationToken cancellation) => tNew);
+            ExpressRouteOperationStatusResponse expectedUpdateStatus = new ExpressRouteOperationStatusResponse()
+            {
+                HttpStatusCode = HttpStatusCode.OK,
+                Data = serviceKey
+            };
+
+            var tUpdate = new Task<ExpressRouteOperationStatusResponse>(() => expectedUpdateStatus);
+            tUpdate.Start();
+
+            dcMock.Setup(f => f.NewAsync(It.Is<DedicatedCircuitNewParameters>(x => x.Bandwidth == bandwidth && 
+                x.CircuitName == circuitName && x.Location == location && x.ServiceProviderName == serviceProviderName), 
+                It.IsAny<CancellationToken>())).Returns((DedicatedCircuitNewParameters param, CancellationToken cancellation) => tNew);
+            
             dcMock.Setup(f => f.GetAsync(It.Is<string>(sKey => sKey == serviceKey), It.IsAny<CancellationToken>())).Returns((string sKey, CancellationToken cancellation) => tGet);
+            
+            dcMock.Setup(f => f.UpdateAsync(It.Is<string>(sKey => sKey == serviceKey), 
+                It.Is<DedicatedCircuitUpdateParameters>(y => y.Bandwidth == bandwidth.ToString() && y.BillingType == billingType && y.Sku == sku.ToString()),
+                It.IsAny<CancellationToken>())).Returns((string sKey, DedicatedCircuitUpdateParameters updateParam, 
+                    CancellationToken cancellation) => tUpdate);
             client.SetupGet(f => f.DedicatedCircuits).Returns(dcMock.Object);
 
             NewAzureDedicatedCircuitCommand cmdlet = new NewAzureDedicatedCircuitCommand()
@@ -102,6 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
                 BillingType = billingType,
                 Location = location,
                 ServiceProviderName = serviceProviderName,
+                Sku = sku,
                 CommandRuntime = mockCommandRuntime,
                 ExpressRouteClient = new ExpressRouteClient(client.Object)
             };
@@ -118,6 +138,28 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             Assert.Equal(expected.DedicatedCircuit.ServiceProviderProvisioningState, actual.ServiceProviderProvisioningState);
             Assert.Equal(expected.DedicatedCircuit.Status, actual.Status);
             Assert.Equal<string>(expected.DedicatedCircuit.ServiceKey, actual.ServiceKey);
+            Assert.Equal<CircuitSku>(expected.DedicatedCircuit.Sku, actual.Sku);
+
+            SetAzureDedicatedCircuitPropertiesCommand setCmdlet = new SetAzureDedicatedCircuitPropertiesCommand()
+                                                                      {
+                                                                          ServiceKey = Guid.Parse(actual.ServiceKey),
+                                                                          Bandwidth =  bandwidth,
+                                                                          BillingType = billingType,
+                                                                          Sku = sku,
+                                                                          CommandRuntime = mockCommandRuntime,
+                                                                          ExpressRouteClient = new ExpressRouteClient(client.Object)
+                                                                      };
+            setCmdlet.ExecuteCmdlet();
+            actual = mockCommandRuntime.OutputPipeline[0] as AzureDedicatedCircuit;
+            Assert.Equal<string>(expected.DedicatedCircuit.CircuitName, actual.CircuitName);
+            Assert.Equal<string>(expected.DedicatedCircuit.BillingType, actual.BillingType);
+            Assert.Equal<uint>(expected.DedicatedCircuit.Bandwidth, actual.Bandwidth);
+            Assert.Equal<string>(expected.DedicatedCircuit.Location, actual.Location);
+            Assert.Equal<string>(expected.DedicatedCircuit.ServiceProviderName, actual.ServiceProviderName);
+            Assert.Equal(expected.DedicatedCircuit.ServiceProviderProvisioningState, actual.ServiceProviderProvisioningState);
+            Assert.Equal(expected.DedicatedCircuit.Status, actual.Status);
+            Assert.Equal<string>(expected.DedicatedCircuit.ServiceKey, actual.ServiceKey);
+            Assert.Equal<CircuitSku>(expected.DedicatedCircuit.Sku, actual.Sku);
         }
 
         [Fact]

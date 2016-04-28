@@ -7,12 +7,13 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -125,7 +126,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             var response = this.ResourceManagementClient.Providers.Unregister(providerName);
 
-            if (response.RegistrationState == null)
+            if (response == null)
             {
                 throw new KeyNotFoundException(string.Format(ProjectResources.ResourceProviderUnregistrationFailed, providerName));
             }
@@ -376,7 +377,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                deployment.Properties.Template = FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile);
+                deployment.Properties.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
             }
 
             if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
@@ -388,7 +389,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                deployment.Properties.Parameters = GetDeploymentParameters(parameters.TemplateParameterObject);
+                deployment.Properties.Parameters = JObject.Parse(GetDeploymentParameters(parameters.TemplateParameterObject));
             }
 
             return deployment;

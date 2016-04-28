@@ -18,8 +18,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Rest.Azure;
     using System;
     using System.Linq;
