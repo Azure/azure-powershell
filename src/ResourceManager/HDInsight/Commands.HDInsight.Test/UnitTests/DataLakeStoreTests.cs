@@ -42,8 +42,9 @@ namespace Commands.HDInsight.Test.UnitTests
         private Guid AadTenantId = new Guid("11111111-1111-1111-1111-111111111111");
         private string Certificate = "";
         private string CertificatePassword = "";
-
+        private byte[] CertificateFileContents = { };
         private readonly PSCredential _httpCred;
+        private Mock<AzureHDInsightConfig> AzureHDInsightconfigMock;
 
         public DataLakeStoreTests()
         {
@@ -54,103 +55,7 @@ namespace Commands.HDInsight.Test.UnitTests
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object
             };
-        }
-
-        [Fact(Skip="Test currently failing. To be fixed in next release.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanCreateNewHDInsightDataLakeStoreCluster()
-        {
-            cmdlet.ClusterName = ClusterName;
-            cmdlet.ResourceGroupName = ResourceGroupName;
-            cmdlet.ClusterSizeInNodes = ClusterSize;
-            cmdlet.Location = Location;
-            cmdlet.HttpCredential = _httpCred;
-            cmdlet.DefaultStorageAccountName = StorageName;
-            cmdlet.DefaultStorageAccountKey = StorageKey;
-            cmdlet.AadTenantId = AadTenantId;
-            cmdlet.ObjectId = ObjectId;
-            cmdlet.CertificateFilePath = Certificate;
-            cmdlet.CertificatePassword = CertificatePassword;
-
-            var cluster = new Cluster
-            {
-                Id = "id",
-                Name = ClusterName,
-                Location = Location,
-                Properties = new ClusterGetProperties
-                {
-                    ClusterVersion = "3.2",
-                    ClusterState = "Running",
-                    ClusterDefinition = new ClusterDefinition
-                    {
-                        ClusterType = ClusterType
-                    },
-                    QuotaInfo = new QuotaInfo
-                    {
-                        CoresUsed = 24
-                    },
-                    OperatingSystemType = OSType.Windows
-                }
-            };
-            var coreConfigs = new Dictionary<string, string>
-            {
-                {"fs.defaultFS", "wasb://dummycsmv2@" + StorageName},
-                {
-                    "fs.azure.account.key." + StorageName,
-                    StorageKey
-                }
-            };
-            var gatewayConfigs = new Dictionary<string, string>
-            {
-                {"restAuthCredential.isEnabled", "true"},
-                {"restAuthCredential.username", _httpCred.UserName},
-                {"restAuthCredential.password", _httpCred.Password.ConvertToString()}
-            };
-            var datalakeStoreConfigs = new Dictionary<string, string>
-            {
-                {"clusterIdentity.applicationId", ObjectId.ToString()},
-                {"clusterIdentity.certificate", Certificate},
-                {"clusterIdentity.certificatePassword", CertificatePassword},
-                {"clusterIdentity.aadTenantId", AadTenantId.ToString()}
-            };
-            var configurations = new Dictionary<string, Dictionary<string, string>>
-            {
-                {"core-site", coreConfigs},
-                {"gateway", gatewayConfigs},
-                {"clusterIdentity", datalakeStoreConfigs}
-            };
-            var serializedConfig = JsonConvert.SerializeObject(configurations);
-            cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
-
-            var getresponse = new ClusterGetResponse {Cluster = cluster};
-
-            hdinsightManagementMock.Setup(
-                c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
-                    parameters =>
-                        parameters.ClusterSizeInNodes == ClusterSize &&
-                        parameters.DefaultStorageAccountName == StorageName &&
-                        parameters.DefaultStorageAccountKey == StorageKey &&
-                        parameters.Location == Location &&
-                        parameters.UserName == _httpCred.UserName &&
-                        parameters.Password == _httpCred.Password.ConvertToString() &&
-                        parameters.ClusterType == ClusterType &&
-                        parameters.OSType == OSType.Windows)))
-                .Returns(getresponse)
-                .Verifiable();
-
-            cmdlet.ExecuteCmdlet();
-
-            commandRuntimeMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightCluster>(
-                clusterout =>
-                    clusterout.ClusterState == "Running" &&
-                    clusterout.ClusterType == ClusterType &&
-                    clusterout.ClusterVersion == "3.2" &&
-                    clusterout.CoresUsed == 24 &&
-                    clusterout.Location == Location &&
-                    clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Windows)),
-                Times.Once);
+            AzureHDInsightconfigMock = new Mock<AzureHDInsightConfig>();
         }
 
         [Fact]
@@ -161,8 +66,8 @@ namespace Commands.HDInsight.Test.UnitTests
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
-                CertificateFilePath = Certificate,
                 ObjectId = ObjectId,
+                CertificateFilePath = Certificate,
                 AadTenantId = AadTenantId,
                 CertificatePassword = CertificatePassword
             };
@@ -179,6 +84,68 @@ namespace Commands.HDInsight.Test.UnitTests
                                 c.CertificateFilePath == Certificate
                                 )),
                 Times.Once); 
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateDataLakeClusterWithCertificationFileContents()
+        {
+            var clusterIdentityCmdlet = new NewAzureHDInsightClusterConfigCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
+                ObjectId = ObjectId,
+                CertificateFileContents = CertificateFileContents,
+                AadTenantId = AadTenantId,
+                CertificatePassword = CertificatePassword
+            };
+
+            clusterIdentityCmdlet.ExecuteCmdlet();
+            commandRuntimeMock.Verify(
+                f =>
+                    f.WriteObject(
+                        It.Is<AzureHDInsightConfig>(
+                            c =>
+                                c.AADTenantId == AadTenantId &&
+                                c.CertificatePassword == CertificatePassword &&
+                                c.ObjectId == ObjectId &&
+                                c.CertificateFileContents == CertificateFileContents
+                                )),
+                Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ShouldThrowIfCertificateOptionsAreNotPassed()
+        {
+            var clusterIdentityCmdlet = new AddAzureHDInsightClusterIdentity()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
+                ObjectId = ObjectId,
+                AadTenantId = AadTenantId,
+                CertificatePassword = CertificatePassword
+            };
+
+            Assert.Throws<ArgumentException>(() => clusterIdentityCmdlet.ExecuteCmdlet());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ShouldThrowIfBothCertificateOptionsArePassed()
+        {
+            var clusterIdentityCmdlet = new AddAzureHDInsightClusterIdentity()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
+                ObjectId = ObjectId,
+                AadTenantId = AadTenantId,
+                CertificatePassword = CertificatePassword,
+                CertificateFileContents = CertificateFileContents,
+                CertificateFilePath = Certificate
+            };
+
+            Assert.Throws<ArgumentException>(() => clusterIdentityCmdlet.ExecuteCmdlet());
         }
     }
 }
