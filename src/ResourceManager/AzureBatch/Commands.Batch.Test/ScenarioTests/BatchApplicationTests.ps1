@@ -104,7 +104,7 @@ function Test-CreatePoolWithApplicationPackage
 {
     param([string] $poolId, [string]$filePath)
 
-    #setup
+    # Setup
     $applicationId = "test"
     $applicationVersion = "foo"
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext

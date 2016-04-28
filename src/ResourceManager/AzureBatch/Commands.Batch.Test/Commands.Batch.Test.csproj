@@ -196,7 +196,7 @@
     <Compile Include="Applications\RemoveBatchApplicationCommandTests.cs" />
     <Compile Include="Applications\GetBatchApplicationPackageCommandTests.cs" />
     <Compile Include="Applications\SetBatchApplicationCommandTests.cs" />
-    <Compile Include="Applications\UploadBatchApplicationCommandTests.cs" />
+    <Compile Include="Applications\NewBatchApplicationPackageCommandTests.cs" />
     <Compile Include="BatchTestHelpers.cs" />
     <Compile Include="Certificates\GetBatchCertificateCommandTests.cs" />
     <Compile Include="Certificates\NewBatchCertificateCommandTests.cs" />

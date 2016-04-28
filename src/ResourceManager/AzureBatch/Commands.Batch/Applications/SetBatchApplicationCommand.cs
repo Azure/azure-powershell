@@ -31,19 +31,19 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string DefaultVersion { get; set; }
 
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public bool? AllowUpdates { get; set; }
 

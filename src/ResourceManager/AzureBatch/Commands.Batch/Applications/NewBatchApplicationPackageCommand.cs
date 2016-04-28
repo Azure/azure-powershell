@@ -20,7 +20,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchApplicationPackage), OutputType(typeof(PSApplicationPackage))]
-    public class UploadBatchApplicationCommand : BatchCmdletBase
+    public class NewBatchApplicationPackageCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the Batch account.")]
         [ValidateNotNullOrEmpty]
@@ -46,9 +46,13 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Format { get; set; }
 
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter ActivateOnly { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            PSApplicationPackage response = BatchClient.UploadApplicationPackage(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.ApplicationVersion, this.FilePath, this.Format);
+            PSApplicationPackage response = BatchClient.UploadApplicationPackage(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.ApplicationVersion, this.FilePath, this.Format, this.ActivateOnly.IsPresent);
             WriteObject(response);
         }
     }

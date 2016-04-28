@@ -2007,21 +2007,22 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context
-          Id                    : tvm-2316545714_1-20150725t213220z
-          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
-          State                 : Idle
-          StateTransitionTime   : 7/25/2015 9:36:53 PM
-          LastBootTime          : 7/25/2015 9:36:53 PM
-          AllocationTime        : 7/25/2015 9:32:20 PM
-          IPAddress             : 10.14.121.1
-          AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-          VirtualMachineSize    : small
-          TotalTasksRun         : 1
-          StartTaskInformation  :
-          RecentTasks           : {}
-          StartTask             :
-          CertificateReferences :
-          Errors                :
+          Id                           : tvm-2316545714_1-20150725t213220z
+          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
+          State                        : Idle
+          StateTransitionTime          : 7/25/2015 9:36:53 PM
+          LastBootTime                 : 7/25/2015 9:36:53 PM
+          AllocationTime               : 7/25/2015 9:32:20 PM
+          IPAddress                    : 10.14.121.1
+          AffinityId                   : TVM:tvm-2316545714_1-20150725t213220z
+          VirtualMachineSize           : small
+          TotalTasksRun                : 1
+          StartTaskInformation         :
+          RecentTasks                  : {}
+          StartTask                    :
+          ApplicationPackageReferences :
+          CertificateReferences        :
+          Errors                       :
 
         </dev:code>
         <dev:remarks>
@@ -2043,37 +2044,39 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Filter "state eq 'idle'" -BatchContext $Context
-          Id                    : tvm-2316545714_1-20150725t213220z
-          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
-          State                 : Idle
-          StateTransitionTime   : 7/25/2015 9:36:53 PM
-          LastBootTime          : 7/25/2015 9:36:53 PM
-          AllocationTime        : 7/25/2015 9:32:20 PM
-          IPAddress             : 10.14.121.1
-          AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-          VirtualMachineSize    : small
-          TotalTasksRun         : 1
-          StartTaskInformation  :
-          RecentTasks           : {}
-          StartTask             :
-          CertificateReferences :
-          Errors                :
+          Id                           : tvm-2316545714_1-20150725t213220z
+          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
+          State                        : Idle
+          StateTransitionTime          : 7/25/2015 9:36:53 PM
+          LastBootTime                 : 7/25/2015 9:36:53 PM
+          AllocationTime               : 7/25/2015 9:32:20 PM
+          IPAddress                    : 10.14.121.1
+          AffinityId                   : TVM:tvm-2316545714_1-20150725t213220z
+          VirtualMachineSize           : small
+          TotalTasksRun                : 1
+          StartTaskInformation         :
+          RecentTasks                  : {}
+          StartTask                    :
+          ApplicationPackageReferences :
+          CertificateReferences        :
+          Errors                       :
 
-          Id                    : tvm-2316545714_2-20150726t172920z
-          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
-          State                 : Idle
-          StateTransitionTime   : 7/26/2015 5:33:58 PM
-          LastBootTime          : 7/26/2015 5:33:58 PM
-          AllocationTime        : 7/26/2015 5:29:20 PM
-          IPAddress             : 10.14.121.38
-          AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
-          VirtualMachineSize    : small
-          TotalTasksRun         : 0
-          StartTaskInformation  :
-          RecentTasks           :
-          StartTask             :
-          CertificateReferences :
-          Errors                :
+          Id                           : tvm-2316545714_2-20150726t172920z
+          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
+          State                        : Idle
+          StateTransitionTime          : 7/26/2015 5:33:58 PM
+          LastBootTime                 : 7/26/2015 5:33:58 PM
+          AllocationTime               : 7/26/2015 5:29:20 PM
+          IPAddress                    : 10.14.121.38
+          AffinityId                   : TVM:tvm-2316545714_2-20150726t172920z
+          VirtualMachineSize           : small
+          TotalTasksRun                : 0
+          StartTaskInformation         :
+          RecentTasks                  :
+          StartTask                    :
+          ApplicationPackageReferences :
+          CertificateReferences        :
+          Errors                       :
 
         </dev:code>
         <dev:remarks>
@@ -2095,39 +2098,41 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchPool -Id "Pool07" -BatchContext $Context | Get-AzureBatchComputeNode -BatchContext $Context
-          Id                    : tvm-2316545714_1-20150725t213220z
-          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
-          State                 : Idle
-          StateTransitionTime   : 7/25/2015 9:36:53 PM
-          LastBootTime          : 7/25/2015 9:36:53 PM
-          AllocationTime        : 7/25/2015 9:32:20 PM
-          IPAddress             : 10.14.121.1
-          AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-          VirtualMachineSize    : small
-          TotalTasksRun         : 1
-          StartTaskInformation  :
-          RecentTasks           : {}
-          StartTask             :
-          CertificateReferences :
-          Errors                :
+          Id                           : tvm-2316545714_1-20150725t213220z
+          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
+          State                        : Idle
+          StateTransitionTime          : 7/25/2015 9:36:53 PM
+          LastBootTime                 : 7/25/2015 9:36:53 PM
+          AllocationTime               : 7/25/2015 9:32:20 PM
+          IPAddress                    : 10.14.121.1
+          AffinityId                   : TVM:tvm-2316545714_1-20150725t213220z
+          VirtualMachineSize           : small
+          TotalTasksRun                : 1
+          StartTaskInformation         :
+          RecentTasks                  : {}
+          StartTask                    :
+          ApplicationPackageReferences :
+          CertificateReferences        :
+          Errors                       :
 
 
-          Id                    : tvm-2316545714_2-20150726t172920z
-          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
-          State                 : Idle
-          StateTransitionTime   : 7/26/2015 5:33:58 PM
-          LastBootTime          : 7/26/2015 5:33:58 PM
-          AllocationTime        : 7/26/2015 5:29:20 PM
+          Id                           : tvm-2316545714_2-20150726t172920z
+          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
+          State                        : Idle
+          StateTransitionTime          : 7/26/2015 5:33:58 PM
+          LastBootTime                 : 7/26/2015 5:33:58 PM
+          AllocationTime               : 7/26/2015 5:29:20 PM
 
-          IPAddress             : 10.14.121.38
-          AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
-          VirtualMachineSize    : small
-          TotalTasksRun         : 0
-          StartTaskInformation  :
-          RecentTasks           :
-          StartTask             :
-          CertificateReferences :
-          Errors                :
+          IPAddress                    : 10.14.121.38
+          AffinityId                   : TVM:tvm-2316545714_2-20150726t172920z
+          VirtualMachineSize           : small
+          TotalTasksRun                : 0
+          StartTaskInformation         :
+          RecentTasks                  :
+          StartTask                    :
+          ApplicationPackageReferences :
+          CertificateReferences        :
+          Errors                       :
 
         </dev:code>
         <dev:remarks>
@@ -4222,6 +4227,7 @@
           PS C:\&gt;Get-AzureBatchPool -Id "MyPool" -BatchContext $Context
           AllocationState                      : Resizing
           AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
+          ApplicationPackageReferences         :
           AutoScaleEnabled                     : False
           AutoScaleFormula                     :
           AutoScaleRun                         :
@@ -4270,6 +4276,7 @@
           PS C:\&gt;Get-AzureBatchPool -Filter "startswith(id,'My')" -BatchContext $Context
           AllocationState                      : Resizing
           AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
+          ApplicationPackageReferences         :
           AutoScaleEnabled                     : False
           AutoScaleFormula                     :
           AutoScaleRun                         :
@@ -6886,11 +6893,11 @@
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>        
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>ApplicationPackageReference</maml:name>
+        <maml:name>ApplicationPackageReferences</maml:name>
           <maml:description>
-            <maml:para>Specifies application package associated with the pool. The Batch service installs the referenced application package on each compute node of the pool.</maml:para>
+            <maml:para>Specifies application packages associated with the pool. The Batch service installs the referenced application packages on each compute node of the pool.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="true">PSCertificateReference[]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>CertificateReferences</maml:name>
@@ -6984,11 +6991,11 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>ApplicationPackageReference</maml:name>
+          <maml:name>ApplicationPackageReferences</maml:name>
           <maml:description>
-            <maml:para>Specifies application package associated with the pool. The Batch service installs the referenced application package on each compute node of the pool.</maml:para>
+            <maml:para>Specifies application packages associated with the pool. The Batch service installs the referenced application packages on each compute node of the pool.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="true">PSCertificateReference[]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>CertificateReferences</maml:name>
@@ -7127,9 +7134,9 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>ApplicationPackageReferences</maml:name>
         <maml:description>
-          <maml:para>Specifies application package associated with the pool. The Batch service installs the referenced application package on each compute node of the pool.</maml:para>
+          <maml:para>Specifies application packages associated with the pool. The Batch service installs the referenced application packages on each compute node of the pool.</maml:para>
           </maml:description>
-        <command:parameterValue required="false" variableLength="true">PSCertificateReference[]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
         <dev:type>
           <maml:name>PSApplicationPackageReference[]</maml:name>
           <maml:uri />
@@ -8903,7 +8910,7 @@
   <command:details>
     <command:name>Get-AzureRmBatchApplicationPackage</command:name>
     <maml:description>
-      <maml:para>Gets information about an application package in an Azure Batch account." and the one below would be "The Get-AzureRmBatchApplicationPackage cmdlet gets information about an application package in an Azure Batch account.</maml:para>
+      <maml:para>Gets information about an application package in an Azure Batch account.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -8913,7 +8920,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para>Gets information about an application package in an Azure Batch account." and the one below would be "The Get-AzureRmBatchApplicationPackage cmdlet gets information about an application package in an Azure Batch account.</maml:para>
+    <maml:para>The Get-AzureRmBatchApplicationPackage cmdlet gets information about an application package in an Azure Batch account.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -9045,7 +9052,7 @@
   <!-- Example section  --> 
   <command:examples>
     <command:example>
-      <maml:title>Example 1: List the application packages for an application in a Batch account</maml:title>
+      <maml:title>Example 1: Get details of an application package in the Batch account.</maml:title>
       <maml:introduction>
         <maml:para>
         </maml:para>
@@ -9060,7 +9067,7 @@
         1.1     pending    
       </dev:code>
       <dev:remarks>
-        <maml:para>This command lists all packages for the 'litware' application in the 'contosobatch' Batch account.</maml:para>
+        <maml:para>This command gets the details of version 1.0 of the 'litware' package.</maml:para>
         <maml:para />
         <maml:para />
       </dev:remarks>
@@ -9127,6 +9134,13 @@
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ActivateOnly</maml:name>
+        <maml:description>
+          <maml:para>Activates an application package that has already been uploaded.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+      </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
@@ -9178,6 +9192,13 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ActivateOnly</maml:name>
+        <maml:description>
+          <maml:para>Activates an application package that has already been uploaded.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+      </command:parameter>
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>

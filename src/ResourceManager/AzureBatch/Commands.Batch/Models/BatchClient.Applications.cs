@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             AddApplicationParameters addApplicationParameters = new AddApplicationParameters()
             {
                 DisplayName = displayName,
-                AllowUpdates = allowUpdates.Value
+                AllowUpdates = allowUpdates != null && allowUpdates.Value
             };
 
             AddApplicationResponse response = BatchManagementClient.Applications.AddApplication(
@@ -171,24 +171,43 @@ namespace Microsoft.Azure.Commands.Batch.Models
             string applicationId,
             string version,
             string filePath,
-            string format)
+            string format,
+            bool activateOnly)
         {
-            if (!File.Exists(filePath))
+            // Checks File path and resourceGroupName is valid
+            resourceGroupName = PreConditionsCheck(resourceGroupName, accountName, filePath);
+
+            // If the package has already been uploaded but wasn't activated.
+            if (activateOnly)
             {
-                throw new FileNotFoundException(string.Format(Resources.FileNotFound, filePath));
+                ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, true);
+                return GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
             }
 
-            if (string.IsNullOrEmpty(resourceGroupName))
-            {
-                // use resource mgr to see if account exists and then use resource group name to do the actual lookup
-                resourceGroupName = GetGroupForAccount(accountName);
-            }
-
+            // Else create Application Package and upload.
             bool appPackageAlreadyExists;
 
             // Get storageUrl to upload the application
-            var storageUrl = this.GetStorageUrl(resourceGroupName, accountName, applicationId, version, out appPackageAlreadyExists);
+            var storageUrl = GetStorageUrl(resourceGroupName, accountName, applicationId, version, out appPackageAlreadyExists);
 
+            // Upload file to application packages
+            UploadFileToApplicationPackage(resourceGroupName, accountName, applicationId, version, filePath, storageUrl, appPackageAlreadyExists);
+
+            // If the application package has been uploaded we activate it.
+            ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, false);
+
+            return GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
+        }
+
+        private void UploadFileToApplicationPackage(
+            string resourceGroupName,
+            string accountName,
+            string applicationId,
+            string version,
+            string filePath,
+            string storageUrl,
+            bool appPackageAlreadyExists)
+        {
             try
             {
                 CloudBlockBlob blob = new CloudBlockBlob(new Uri(storageUrl));
@@ -200,26 +219,61 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 if (appPackageAlreadyExists)
                 {
                     // If we are creating a new application package and the upload fails we should delete the application package.
-                    this.DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
+                    try
+                    {
+                        DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
+                    }
+                    catch
+                    {
+                        // Need to throw if we fail to delete the application while attempting to clean it up.
+                        var deleteMessage = string.Format("Uploading {0} to storage failed and the attempt to delete the application package afterwards failed ({1})", filePath, exception.Message);
+                        throw new UploadApplicationPackageException(deleteMessage, exception);
+                    }
                 }
 
                 // Need to throw if we fail to upload the file's content.
-                var message = string.Format("Failed to upload {0} to storage ({1})", filePath, exception.Message);
-                throw new Exception(message, exception);
+                var uploadMessage = string.Format("Failed to upload {0} to storage ({1})", filePath, exception.Message);
+                throw new UploadApplicationPackageException(uploadMessage, exception);
+            }
+        }
+
+        private string PreConditionsCheck(string resourceGroupName, string accountName, string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException(string.Format(Resources.FileNotFound, filePath), filePath);
             }
 
-            // If the application package has been uploaded we activate it.
+            // use resource mgr to see if account exists and then use resource group name to do the actual lookup
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetGroupForAccount(accountName);
+            }
+
+            return resourceGroupName;
+        }
+
+        private void ActivateApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version, string format, bool activateOnly)
+        {
             try
             {
-                BatchManagementClient.Applications.ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, new ActivateApplicationPackageParameters { Format = format });
+                BatchManagementClient.Applications.ActivateApplicationPackage(
+                    resourceGroupName,
+                    accountName,
+                    applicationId,
+                    version,
+                    new ActivateApplicationPackageParameters { Format = format });
             }
             catch (Exception exception)
             {
-                var message = string.Format("Failed to activate application package {0} version {1} ({2})", applicationId, version, exception.Message);
-                throw new Exception(message, exception);
-            }
+                string message = string.Format("Application package {0} version {1} successfully uploaded but failed to activate ({2})", applicationId, version, exception.Message);
+                if (activateOnly)
+                {
+                    message = string.Format("Application package {0} version {1} failed to activate ({2})", applicationId, version, exception.Message);
+                }
 
-            return this.GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
+                throw new ActivateApplicationPackageException(message, exception);
+            }
         }
 
         private string GetStorageUrl(string resourceGroupName, string accountName, string applicationId, string version, out bool didCreateAppPackage)
@@ -238,22 +292,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             catch (CloudException exception)
             {
+                // If the application package is not found we want to create a new application package.
                 if (exception.Response.StatusCode != HttpStatusCode.NotFound)
                 {
-                    var message = string.Format("Failed to get reference to application package {0} version {1} ({2})", applicationId, version, exception.Message);
+                    var message = string.Format("Failed to get application {0} package {1}. You may need to delete the application package and try uploading again ({2})", applicationId, version, exception.Message);
                     throw new CloudException(message, exception);
                 }
             }
 
-            AddApplicationPackageResponse addResponse = BatchManagementClient.Applications.AddApplicationPackage(
-                resourceGroupName,
-                accountName,
-                applicationId,
-                version);
+            try
+            {
+                AddApplicationPackageResponse addResponse = BatchManagementClient.Applications.AddApplicationPackage(
+                    resourceGroupName,
+                    accountName,
+                    applicationId,
+                    version);
 
-            // If Application was created we need to return a flag.
-            didCreateAppPackage = true;
-            return addResponse.StorageUrl;
+                // If Application was created we need to return a flag.
+                didCreateAppPackage = true;
+                return addResponse.StorageUrl;
+            }
+            catch (Exception exception)
+            {
+                var message = string.Format("Failed to add application package {0} version {1} ({2})", applicationId, version, exception.Message);
+                throw new AddApplicationPackageException(message, exception);
+            }
         }
 
         private PSApplicationPackage ConvertGetApplicationPackageResponseToApplicationPackage(GetApplicationPackageResponse response)
@@ -275,14 +338,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return new PSApplication()
             {
                 AllowUpdates = application.AllowUpdates,
-                ApplicationPackages = convertApplicationPackagesToPsApplicationPackages(application.ApplicationPackages),
+                ApplicationPackages = ConvertApplicationPackagesToPsApplicationPackages(application.ApplicationPackages),
                 DefaultVersion = application.DefaultVersion,
                 DisplayName = application.DisplayName,
                 Id = application.Id,
             };
         }
 
-        private static IList<PSApplicationPackage> convertApplicationPackagesToPsApplicationPackages(IEnumerable<ApplicationPackage> applicationPackages)
+        private static IList<PSApplicationPackage> ConvertApplicationPackagesToPsApplicationPackages(IEnumerable<ApplicationPackage> applicationPackages)
         {
             return applicationPackages.Select(applicationPackage => new PSApplicationPackage
             {
