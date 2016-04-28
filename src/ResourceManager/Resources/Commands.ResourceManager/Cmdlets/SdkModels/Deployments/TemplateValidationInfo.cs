@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
@@ -21,23 +21,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     {
         public TemplateValidationInfo(DeploymentValidateResult validationResult)
         {
-            Errors = new List<ResourceManagementError>();
+            Errors = new List<ResourceManagementErrorWithDetails>();
             RequiredProviders = new List<Provider>();
+
             
             if (validationResult.Error != null)
             {
                 Errors.Add(validationResult.Error);
-                }
             }
 
-            if(validationResult.Properties != null &&
-               validationResult.Properties.Providers !=null)
+            if (validationResult.Properties != null &&
+               validationResult.Properties.Providers != null)
             {
                 RequiredProviders.AddRange(validationResult.Properties.Providers);
             }
         }
 
-        public List<ResourceManagementError> Errors { get; set; }
+        public List<ResourceManagementErrorWithDetails> Errors { get; set; }
 
         public List<Provider> RequiredProviders { get; set; }
     }
