@@ -13,18 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Newtonsoft.Json.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -40,74 +39,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             return psGalleryItem;
         }
-
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //public static PSDeploymentEventData ToPSDeploymentEventData(this EventData eventData)
-        //{
-        //    if (eventData == null)
-        //    {
-        //        return null;
-        //    }
-        //    PSDeploymentEventData psObject = new PSDeploymentEventData
-        //        {
-        //            Authorization = eventData.Authorization.ToPSDeploymentEventDataAuthorization(),
-        //            ResourceUri = eventData.ResourceUri,
-        //            SubscriptionId = eventData.SubscriptionId,
-        //            EventId = eventData.EventDataId,
-        //            EventName = eventData.EventName.LocalizedValue,
-        //            EventSource = eventData.EventSource.LocalizedValue,
-        //            Channels = eventData.EventChannels.ToString(),
-        //            Level = eventData.Level.ToString(),
-        //            Description = eventData.Description,
-        //            Timestamp = eventData.EventTimestamp,
-        //            OperationId = eventData.OperationId,
-        //            OperationName = eventData.OperationName.LocalizedValue,
-        //            Status = eventData.Status.LocalizedValue,
-        //            SubStatus = eventData.SubStatus.LocalizedValue,
-        //            Caller = GetEventDataCaller(eventData.Claims),
-        //            CorrelationId = eventData.CorrelationId,
-        //            ResourceGroupName = eventData.ResourceGroupName,
-        //            ResourceProvider = eventData.ResourceProviderName.LocalizedValue,
-        //            HttpRequest = eventData.HttpRequest.ToPSDeploymentEventDataHttpRequest(),
-        //            Claims = eventData.Claims,
-        //            Properties = eventData.Properties
-        //        };
-        //    return psObject;
-        //}
-
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //public static PSDeploymentEventDataHttpRequest ToPSDeploymentEventDataHttpRequest(this HttpRequestInfo httpRequest)
-        //{
-        //    if (httpRequest == null)
-        //    {
-        //        return null;
-        //    }
-        //    PSDeploymentEventDataHttpRequest psObject = new PSDeploymentEventDataHttpRequest
-        //    {
-        //        ClientId = httpRequest.ClientRequestId,
-        //        Method = httpRequest.Method,
-        //        Url = httpRequest.Uri,
-        //        ClientIpAddress = httpRequest.ClientIpAddress
-        //    };
-        //    return psObject;
-        //}
-
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //public static PSDeploymentEventDataAuthorization ToPSDeploymentEventDataAuthorization(this SenderAuthorization authorization)
-        //{
-        //    if (authorization == null)
-        //    {
-        //        return null;
-        //    }
-        //    PSDeploymentEventDataAuthorization psObject = new PSDeploymentEventDataAuthorization
-        //    {
-        //        Action = authorization.Action,
-        //        Role = authorization.Role,
-        //        Scope = authorization.Scope,
-        //        Condition = authorization.Condition
-        //    };
-        //    return psObject;
-        //}
 
         private static string ConstructTemplateLinkView(TemplateLink templateLink)
         {
@@ -139,53 +70,78 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
         }
 
+        public static string ConstructDeploymentVariableTable(Dictionary<string, DeploymentVariable> dictionary)
+        {
+            if (dictionary == null)
+            {
+                return null;
+            }
+
+            StringBuilder result = new StringBuilder();
+
+            if (dictionary.Count > 0)
+            {
+                string rowFormat = "{0, -15}  {1, -25}  {2, -10}\r\n";
+                result.AppendLine();
+                result.AppendFormat(rowFormat, "Name", "Type", "Value");
+                result.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(15, "="), GeneralUtilities.GenerateSeparator(25, "="), GeneralUtilities.GenerateSeparator(10, "="));
+
+                foreach (KeyValuePair<string, DeploymentVariable> pair in dictionary)
+                {
+                    result.AppendFormat(rowFormat, pair.Key, pair.Value.Type, pair.Value.Value);
+                }
+            }
+
+            return result.ToString();
+
+        }
+
         public static string ConstructTagsTable(Hashtable[] tags)
         {
-            //if (tags == null)
-            //{
-            //    return null;
-            //}
+            if (tags == null)
+            {
+                return null;
+            }
 
-            //Hashtable emptyHashtable = new Hashtable
-            //    {
-            //        {"Name", string.Empty},
-            //        {"Value", string.Empty}
-            //    };
-            //StringBuilder resourcesTable = new StringBuilder();
+            Hashtable emptyHashtable = new Hashtable
+                {
+                    {"Name", string.Empty},
+                    {"Value", string.Empty}
+                };
+            StringBuilder resourcesTable = new StringBuilder();
 
-            //if (tags.Length > 0)
-            //{
-            //    int maxNameLength = Math.Max("Name".Length, tags.Where(ht => ht.ContainsKey("Name")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Name"].ToString().Length));
-            //    int maxValueLength = Math.Max("Value".Length, tags.Where(ht => ht.ContainsKey("Value")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Value"].ToString().Length));
+            if (tags.Length > 0)
+            {
+                int maxNameLength = Math.Max("Name".Length, tags.Where(ht => ht.ContainsKey("Name")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Name"].ToString().Length));
+                int maxValueLength = Math.Max("Value".Length, tags.Where(ht => ht.ContainsKey("Value")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Value"].ToString().Length));
 
-            //    string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
-            //    resourcesTable.AppendLine();
-            //    resourcesTable.AppendFormat(rowFormat, "Name", "Value");
-            //    resourcesTable.AppendFormat(rowFormat,
-            //        GeneralUtilities.GenerateSeparator(maxNameLength, "="),
-            //        GeneralUtilities.GenerateSeparator(maxValueLength, "="));
+                string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
+                resourcesTable.AppendLine();
+                resourcesTable.AppendFormat(rowFormat, "Name", "Value");
+                resourcesTable.AppendFormat(rowFormat,
+                    GeneralUtilities.GenerateSeparator(maxNameLength, "="),
+                    GeneralUtilities.GenerateSeparator(maxValueLength, "="));
 
-            //    foreach (Hashtable tag in tags)
-            //    {
-            //        PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
-            //        if (tagValuePair != null)
-            //        {
-            //            if (tagValuePair.Name.StartsWith(TagsClient.ExecludedTagPrefix))
-            //            {
-            //                continue;
-            //            }
+                foreach (Hashtable tag in tags)
+                {
+                    PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
+                    if (tagValuePair != null)
+                    {
+                        if (tagValuePair.Name.StartsWith(TagsClient.ExecludedTagPrefix))
+                        {
+                            continue;
+                        }
 
-            //            if (tagValuePair.Value == null)
-            //            {
-            //                tagValuePair.Value = string.Empty;
-            //            }
-            //            resourcesTable.AppendFormat(rowFormat, tagValuePair.Name, tagValuePair.Value);
-            //        }
-            //    }
-            //}
+                        if (tagValuePair.Value == null)
+                        {
+                            tagValuePair.Value = string.Empty;
+                        }
+                        resourcesTable.AppendFormat(rowFormat, tagValuePair.Name, tagValuePair.Value);
+                    }
+                }
+            }
 
-            //return resourcesTable.ToString();
-            return null;
+            return resourcesTable.ToString();
         }
 
         public static string ConstructPermissionsTable(List<PSPermission> permissions)
@@ -224,5 +180,60 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
         }
 
+        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this DeploymentExtended result, string resourceGroup)
+        {
+            PSResourceGroupDeployment deployment = new PSResourceGroupDeployment();
+
+            if (result != null)
+            {
+                deployment = CreatePSResourceGroupDeployment(result.Name, resourceGroup, result.Properties);
+            }
+
+            return deployment;
+        }
+
+        private static PSResourceGroupDeployment CreatePSResourceGroupDeployment(
+            string name,
+            string gesourceGroup,
+            DeploymentPropertiesExtended properties)
+        {
+            PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment();
+
+            deploymentObject.DeploymentName = name;
+            deploymentObject.ResourceGroupName = gesourceGroup;
+
+            if (properties != null)
+            {
+                deploymentObject.Mode = properties.Mode;
+                deploymentObject.ProvisioningState = properties.ProvisioningState;
+                deploymentObject.TemplateLink = properties.TemplateLink;
+                deploymentObject.Timestamp = properties.Timestamp;
+                deploymentObject.CorrelationId = properties.CorrelationId;
+
+                if (properties.DebugSettingResponse != null && !string.IsNullOrEmpty(properties.DebugSettingResponse.DeploymentDebugDetailLevel))
+                {
+                    deploymentObject.DeploymentDebugLogLevel = properties.DebugSettingResponse.DeploymentDebugDetailLevel;
+                }
+
+                if (!string.IsNullOrEmpty(properties.Outputs))
+                {
+                    Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs);
+                    deploymentObject.Outputs = outputs;
+                }
+
+                if (!string.IsNullOrEmpty(properties.Parameters))
+                {
+                    Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters);
+                    deploymentObject.Parameters = parameters;
+                }
+
+                if (properties.TemplateLink != null)
+                {
+                    deploymentObject.TemplateLinkString = ConstructTemplateLinkView(properties.TemplateLink);
+                }
+            }
+
+            return deploymentObject;
+        }
     }
 }
