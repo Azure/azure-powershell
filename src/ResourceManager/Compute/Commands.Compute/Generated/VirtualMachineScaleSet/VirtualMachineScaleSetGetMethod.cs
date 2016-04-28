@@ -116,10 +116,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Get", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class GetAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
-        public GetAzureRmVmss()
-        {
-        }
-
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()

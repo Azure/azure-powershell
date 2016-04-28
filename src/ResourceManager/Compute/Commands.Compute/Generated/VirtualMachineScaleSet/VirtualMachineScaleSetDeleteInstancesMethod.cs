@@ -128,10 +128,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Remove", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class RemoveAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
-        public RemoveAzureRmVmss()
-        {
-        }
-
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()

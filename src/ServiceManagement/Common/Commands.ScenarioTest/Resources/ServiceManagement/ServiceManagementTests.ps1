@@ -20,6 +20,7 @@ function Test-GetAzureVM
 {
     # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
     # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $tempErrorActionPreference = $ErrorActionPreference;
     $ErrorActionPreference='SilentlyContinue';
 
     # Setup
@@ -44,6 +45,7 @@ function Test-GetAzureVM
 
     # Cleanup
     Cleanup-CloudService $svcName
+    $ErrorActionPreference = $tempErrorActionPreference;
 }
 
 
@@ -79,6 +81,7 @@ function Run-StartAndStopMultipleVirtualMachinesTest
 {
     # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
     # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $tempErrorActionPreference = $ErrorActionPreference;
     $ErrorActionPreference='SilentlyContinue';
 
     # Setup
@@ -135,6 +138,7 @@ function Run-StartAndStopMultipleVirtualMachinesTest
     {
         # Cleanup
         Cleanup-CloudService $svcName;
+        $ErrorActionPreference = $tempErrorActionPreference;
     }
 }
 
@@ -620,6 +624,7 @@ function Test-MigrateAzureDeployment
 {
     # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
     # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $tempErrorActionPreference = $ErrorActionPreference;
     $ErrorActionPreference='SilentlyContinue';
 
     # Setup
@@ -658,6 +663,7 @@ function Test-MigrateAzureDeployment
 
     # Cleanup
     Cleanup-CloudService $svcName
+    $ErrorActionPreference = $tempErrorActionPreference;
 }
 
 <#
@@ -668,6 +674,7 @@ function Test-MigrationAbortAzureDeployment
 {
     # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
     # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $tempErrorActionPreference = $ErrorActionPreference;
     $ErrorActionPreference='SilentlyContinue';
 
     # Setup
@@ -700,6 +707,7 @@ function Test-MigrationAbortAzureDeployment
 
     # Cleanup
     Cleanup-CloudService $svcName
+    $ErrorActionPreference = $tempErrorActionPreference;
 }
 
 <#
@@ -708,10 +716,6 @@ Tests Move-AzureVirtualNetwork with Prepare and Commit
 #>
 function Test-MigrateAzureVNet
 {
-    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
-    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
-    $ErrorActionPreference='SilentlyContinue';
-
     # Setup
     $location = Get-DefaultLocation
     $affName = "WestUsAffinityGroup";
@@ -719,8 +723,6 @@ function Test-MigrateAzureVNet
     $vnetName = "NewVNet1";
 
     # Test
-
-    New-AzureAffinityGroup -Name $affName -Location $location;
 
     Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath;
 
@@ -744,10 +746,6 @@ Tests Move-AzureVirtualNetwork with Prepare and Abort
 #>
 function Test-MigrationAbortAzureVNet
 {
-    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
-    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
-    $ErrorActionPreference='SilentlyContinue';
-
     # Setup
     $location = Get-DefaultLocation
     $affName = "WestUsAffinityGroup";
@@ -755,8 +753,6 @@ function Test-MigrationAbortAzureVNet
     $vnetName = "NewVNet1";
 
     # Test
-
-    New-AzureAffinityGroup -Name $affName -Location $location;
 
     Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath;
 
@@ -779,6 +775,7 @@ function Test-NewAzureVMWithBYOL
 {
     # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
     # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $tempErrorActionPreference = $ErrorActionPreference;
     $ErrorActionPreference='SilentlyContinue';
 
     # Setup
@@ -838,4 +835,5 @@ function Test-NewAzureVMWithBYOL
 
     # Cleanup
     Cleanup-CloudService $svcName
+    $ErrorActionPreference = $tempErrorActionPreference;
 }
