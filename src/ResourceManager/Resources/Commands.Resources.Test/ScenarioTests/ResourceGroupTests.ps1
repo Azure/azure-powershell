@@ -351,3 +351,33 @@ function Test-ExportResourceGroup
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests resource group new, get and remove using positional parameters.
+#>
+function Test-ResourceGroupWithPositionalParams
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $location = "West US"
+
+    try
+    {
+        $ErrorActionPreference = "SilentlyContinue"
+        $Error.Clear()
+        # Test
+        $actual = New-AzureRmResourceGroup $rgname $location
+        $expected = Get-AzureRmResourceGroup $rgname
+
+        # Assert
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+
+        #Test
+        Remove-AzureRmResourceGroup $rgname -Force
+    }
+    catch
+    {
+        Assert-True { $Error[0].Contains("Provided resource group does not exist.") }
+    }
+}
