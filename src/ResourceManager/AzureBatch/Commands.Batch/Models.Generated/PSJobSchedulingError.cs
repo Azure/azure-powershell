@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.JobSchedulingError omObject;
         
-        private IEnumerable<PSNameValuePair> details;
+        private IReadOnlyList<PSNameValuePair> details;
         
         internal PSJobSchedulingError(Microsoft.Azure.Batch.JobSchedulingError omObject)
         {
@@ -61,15 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public string Message
-        {
-            get
-            {
-                return this.omObject.Message;
-            }
-        }
-        
-        public IEnumerable<PSNameValuePair> Details
+        public IReadOnlyList<PSNameValuePair> Details
         {
             get
             {
@@ -86,9 +78,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSNameValuePair(enumerator.Current));
                     }
-                    this.details = list;
+                    this.details = list.AsReadOnly();
                 }
                 return this.details;
+            }
+        }
+        
+        public string Message
+        {
+            get
+            {
+                return this.omObject.Message;
             }
         }
     }

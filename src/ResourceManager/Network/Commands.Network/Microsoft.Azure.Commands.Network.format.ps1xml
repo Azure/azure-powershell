@@ -287,6 +287,10 @@
                 <PropertyName>LoadBalancerBackendAddressPoolsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ApplicationGatewayBackendAddressPools</Label>
+                <PropertyName>ApplicationGatewayBackendAddressPoolsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>LoadBalancerInboundNatRules</Label>
                 <PropertyName>LoadBalancerInboundNatRulesText</PropertyName>
               </ListItem>

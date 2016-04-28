@@ -35,12 +35,17 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.New,
-        Constants.CommandNames.AzureHDInsightCluster),
+        Constants.CommandNames.AzureHDInsightCluster,
+        DefaultParameterSetName = DefaultParameterSet),
     OutputType(
         typeof(AzureHDInsightCluster))]
     public class NewAzureHDInsightClusterCommand : HDInsightCmdletBase
     {
         private ClusterCreateParameters parameters;
+        private const string CertificateFilePathSet = "CertificateFilePath";
+        private const string CertificateFileContentsSet = "CertificateFileContents";
+        private const string DefaultParameterSet = "Default";
+
         #region Input Parameter Definitions
 
         [Parameter(
@@ -118,6 +123,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     OozieMetastore = OozieMetastore,
                     ObjectId = ObjectId,
                     AADTenantId = AadTenantId,
+                    CertificateFileContents = CertificateFileContents,
                     CertificateFilePath = CertificateFilePath,
                     CertificatePassword = CertificatePassword
                 };
@@ -155,6 +161,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 parameters.ZookeeperNodeSize = value.ZookeeperNodeSize;
                 HiveMetastore = value.HiveMetastore;
                 OozieMetastore = value.OozieMetastore;
+                CertificateFileContents = value.CertificateFileContents;
                 CertificateFilePath = value.CertificateFilePath;
                 AadTenantId = value.AADTenantId;
                 ObjectId = value.ObjectId;
@@ -282,13 +289,18 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the Service Principal Object Id for accessing Azure Data Lake.")]
         public Guid ObjectId { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate for accessing Azure Data Lake.")]
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate file path for accessing Azure Data Lake.",
+            ParameterSetName = CertificateFilePathSet)]
         public string CertificateFilePath { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate file contents for accessing Azure Data Lake.",
+            ParameterSetName = CertificateFileContentsSet)]
+        public byte[] CertificateFileContents { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate Password for accessing Azure Data Lake.")]
         public string CertificatePassword { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the Service Principal AAD Tenant Id for accessing Azure Data Lake.", ParameterSetName = "ServicePrincipal")]
+        [Parameter(HelpMessage = "Gets or sets the Service Principal AAD Tenant Id for accessing Azure Data Lake.")]
         public Guid AadTenantId { get; set; }
 
         #endregion
@@ -352,14 +364,18 @@ namespace Microsoft.Azure.Commands.HDInsight
                 var metastore = HiveMetastore;
                 parameters.HiveMetastore = new Metastore(metastore.SqlAzureServerName, metastore.DatabaseName, metastore.Credential.UserName, metastore.Credential.Password.ConvertToString());
             }
-            if (CertificateFilePath != null && CertificatePassword != null)
+            if(!string.IsNullOrEmpty(CertificatePassword))
             {
+                if (!string.IsNullOrEmpty(CertificateFilePath)){
+                    CertificateFileContents = File.ReadAllBytes(CertificateFilePath);
+                }
                 var servicePrincipal = new Management.HDInsight.Models.ServicePrincipal(
-                    GetApplicationId(), GetTenantId(AadTenantId), File.ReadAllBytes(CertificateFilePath),
+                    GetApplicationId(), GetTenantId(AadTenantId), CertificateFileContents,  
                     CertificatePassword);
+
                 parameters.Principal = servicePrincipal;
             }
-
+            
             var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, parameters);
 
             if (cluster != null)
@@ -397,7 +413,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             Guid tenantId = GetTenantId(AadTenantId);
 
-            SubscriptionCloudCredentials cred = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultProfile.Context);
+            SubscriptionCloudCredentials cred = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
             GraphRbacManagementClient graphClient = new GraphRbacManagementClient(tenantId.ToString(), cred);
 
             ServicePrincipalGetResult res = graphClient.ServicePrincipal.Get(ObjectId.ToString());

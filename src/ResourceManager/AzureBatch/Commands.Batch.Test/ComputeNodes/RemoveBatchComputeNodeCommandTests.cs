@@ -22,6 +22,8 @@ using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -65,7 +67,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Ids = new string[] { "computeNode1" };
 
             // Don't go to the service on a Remove ComputeNode call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeRemoveParameters, ComputeNodeRemoveResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                NodeRemoveParameter, 
+                PoolRemoveNodesOptions, 
+                AzureOperationHeaderResponse<PoolRemoveNodesHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -85,28 +91,27 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.PoolId = "testPool";
             cmdlet.Ids = new string[] { "computeNode1", "computeNode2" };
-            cmdlet.DeallocationOption = ComputeNodeDeallocationOption.Terminate;
+            cmdlet.DeallocationOption = Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption.Terminate;
             cmdlet.ResizeTimeout = TimeSpan.FromMinutes(8);
 
-            ComputeNodeDeallocationOption? requestDeallocationOption = null;
+            Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption? requestDeallocationOption = null;
             TimeSpan? requestResizeTimeout = null;
             IList<string> requestComputeNodeIds = null;
 
             // Don't go to the service on a Remove ComputeNode call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                BatchRequest<ComputeNodeRemoveParameters, ComputeNodeRemoveResponse> request =
-                (BatchRequest<ComputeNodeRemoveParameters, ComputeNodeRemoveResponse>)baseRequest;
+                PoolRemoveNodesBatchRequest request = (PoolRemoveNodesBatchRequest) baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     // Grab the parameters from the outgoing request.
-                    requestDeallocationOption = request.TypedParameters.ComputeNodeDeallocationOption;
-                    requestResizeTimeout = request.TypedParameters.ResizeTimeout;
-                    requestComputeNodeIds = request.TypedParameters.ComputeNodeIds;
+                    requestDeallocationOption = BatchTestHelpers.MapEnum<Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption>(request.Parameters.NodeDeallocationOption);
+                    requestResizeTimeout = request.Parameters.ResizeTimeout;
+                    requestComputeNodeIds = request.Parameters.NodeList;
 
-                    ComputeNodeRemoveResponse response = new ComputeNodeRemoveResponse();
-                    Task<ComputeNodeRemoveResponse> task = Task.FromResult(response);
+                    var response = new AzureOperationHeaderResponse<PoolRemoveNodesHeaders>();
+                    Task<AzureOperationHeaderResponse<PoolRemoveNodesHeaders>> task = Task.FromResult(response);
                     return task;
                 };
             });

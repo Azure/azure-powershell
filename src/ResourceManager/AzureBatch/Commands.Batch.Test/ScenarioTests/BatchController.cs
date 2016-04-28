@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchController
     {
+        internal static string BatchAccount, BatchAccountKey, BatchAccountUrl;
+
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
@@ -166,6 +168,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         private BatchManagementClient GetBatchManagementClient()
         {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                BatchAccount = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountName);
+                BatchAccountKey = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountKey);
+                BatchAccountUrl = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountEndpoint);
+
+                HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountName] = BatchAccount;
+                HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountEndpoint] = BatchAccountUrl;
+            }
+            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                BatchAccount = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountName];
+                BatchAccountKey = "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000==";
+                BatchAccountUrl = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountEndpoint];
+            }
+
             return TestBase.GetServiceClient<BatchManagementClient>(this.csmTestFactory);
         }
     }
