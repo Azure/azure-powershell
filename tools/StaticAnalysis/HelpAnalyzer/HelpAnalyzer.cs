@@ -80,7 +80,6 @@ namespace StaticAnalysis.HelpAnalyzer
             {
                 foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
                 {
-                    
                     var commandAssemblies = Directory.EnumerateFiles(directory, "*.Commands.*.dll")
                         .Where (f => IsAssemblyFile(f) && !File.Exists(f + "-Help.xml"));
                     foreach (var orphanedAssembly in commandAssemblies)
@@ -98,10 +97,6 @@ namespace StaticAnalysis.HelpAnalyzer
                         });
                     }
 
-                    if (Directory.EnumerateFiles(directory, "*.Commands.*.dll").Any())
-                    {
-                        
-                    }
                     var helpFiles = Directory.EnumerateFiles(directory, "*.dll-Help.xml")
                         .Where(f => !processedHelpFiles.Contains(Path.GetFileName(f), 
                             StringComparer.OrdinalIgnoreCase)).ToList();
