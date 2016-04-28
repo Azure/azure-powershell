@@ -111,10 +111,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Get", "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class GetAzureRmContainerService : InvokeAzureComputeMethodCmdlet
     {
-        public GetAzureRmContainerService()
-        {
-        }
-
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()

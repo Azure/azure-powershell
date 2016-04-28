@@ -101,10 +101,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Remove", "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class RemoveAzureRmContainerService : InvokeAzureComputeMethodCmdlet
     {
-        public RemoveAzureRmContainerService()
-        {
-        }
-
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()

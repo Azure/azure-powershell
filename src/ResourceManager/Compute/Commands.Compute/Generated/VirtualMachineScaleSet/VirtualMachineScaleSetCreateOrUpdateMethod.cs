@@ -116,10 +116,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("New", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class NewAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
-        public NewAzureRmVmss()
-        {
-        }
-
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()
@@ -177,10 +173,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Update", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class UpdateAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
-        public UpdateAzureRmVmss()
-        {
-        }
-
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()
