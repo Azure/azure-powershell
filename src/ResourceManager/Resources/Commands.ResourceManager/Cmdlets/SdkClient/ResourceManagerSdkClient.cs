@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             var response = this.ResourceManagementClient.Providers.Unregister(providerName);
 
-            if (response.RegistrationState == null)
+            if (response == null)
             {
                 throw new KeyNotFoundException(string.Format(ProjectResources.ResourceProviderUnregistrationFailed, providerName));
             }

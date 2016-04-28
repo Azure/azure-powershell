@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                             new PSResourceProviderResourceType
                             {
                                 ResourceTypeName = resourceType.ResourceType,
-                                Locations = resourceType.Locations.ToArray(),
-                                ApiVersions = resourceType.ApiVersions.ToArray(),
+                                Locations = resourceType.Locations != null ? resourceType.Locations.ToArray() : null,
+                                ApiVersions = resourceType.ApiVersions != null ? resourceType.ApiVersions.ToArray() : null,
                             }).ToArray(),
             };
         }
