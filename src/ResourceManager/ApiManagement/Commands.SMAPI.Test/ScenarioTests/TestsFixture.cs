@@ -23,11 +23,11 @@
 
             //Environment.SetEnvironmentVariable(
             //    "TEST_CSM_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=;Environment=;AADTenant=");
+            //    "SubscriptionId=;Environment=Prod");
 
             //Environment.SetEnvironmentVariable(
             //    "TEST_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=;Environment=");
+            //    "SubscriptionId=;Environment=Prod");
 #endif
 
             TestUtilities.StartTest();

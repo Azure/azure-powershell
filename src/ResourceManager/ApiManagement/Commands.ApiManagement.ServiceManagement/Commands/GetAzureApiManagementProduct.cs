@@ -19,8 +19,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementProduct", DefaultParameterSetName = GetAllProducts)]
-    [OutputType(typeof(IList<PsApiManagementProduct>))]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementProduct, DefaultParameterSetName = GetAllProducts)]
+    [OutputType(typeof(IList<PsApiManagementProduct>), ParameterSetName = new [] { GetAllProducts , GetByTitle })]
+    [OutputType(typeof(PsApiManagementProduct), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementProduct : AzureApiManagementCmdletBase
     {
         private const string GetAllProducts = "Get all producst";
