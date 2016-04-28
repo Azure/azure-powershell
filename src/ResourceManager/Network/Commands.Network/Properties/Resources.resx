@@ -225,4 +225,10 @@
   <data name="ApplicationGatewayUrlPathMapName" xml:space="preserve">
     <value>urlPathMaps</value>
   </data>
+  <data name="SetByIpConfiguration" xml:space="preserve">
+    <value>SetByIpConfiguration</value>
+  </data>
+  <data name="SetByIpConfigurationResourceId" xml:space="preserve">
+    <value>SetByIpConfigurationResourceId</value>
+  </data>
 </root>

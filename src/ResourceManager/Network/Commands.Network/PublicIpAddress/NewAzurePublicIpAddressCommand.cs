@@ -20,7 +20,6 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -56,8 +55,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The public IP address allocation method.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            MNM.IPAllocationMethod.Dynamic,
-            MNM.IPAllocationMethod.Static,
+            MNM.IPVersion.IPv4,
+            MNM.IPVersion.IPv6,
             IgnoreCase = true)]
         public string AllocationMethod { get; set; }
 

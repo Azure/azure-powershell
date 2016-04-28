@@ -322,6 +322,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SetByIpConfiguration.
+        /// </summary>
+        public static string SetByIpConfiguration {
+            get {
+                return ResourceManager.GetString("SetByIpConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SetByIpConfigurationResourceId.
+        /// </summary>
+        public static string SetByIpConfigurationResourceId {
+            get {
+                return ResourceManager.GetString("SetByIpConfigurationResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SetByResource.
         /// </summary>
         public static string SetByResource {
