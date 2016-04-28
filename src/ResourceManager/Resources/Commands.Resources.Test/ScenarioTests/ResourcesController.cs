@@ -24,6 +24,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using LegacyTest = Microsoft.Azure.Test;
+using LegacyRMClient = Microsoft.Azure.Management.Resources;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 using System;
@@ -47,6 +48,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public GraphRbacManagementClient GraphClient { get; private set; }
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public LegacyRMClient.ResourceManagementClient LegacyResourceManagementClient { get; private set; }
 
         public FeatureClient FeatureClient { get; private set; }
 
@@ -101,6 +104,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
@@ -149,6 +153,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
+            LegacyResourceManagementClient = GetLegacyResourceManagementClient();
             ResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient(context);
             GalleryClient = GetGalleryClient();
@@ -159,6 +164,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
 
             helper.SetupManagementClients(ResourceManagementClient,
+                LegacyResourceManagementClient,
                 SubscriptionClient,
                 GalleryClient,
                 AuthorizationManagementClient,
@@ -212,6 +218,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private LegacyRMClient.ResourceManagementClient GetLegacyResourceManagementClient()
+        {
+            return LegacyTest.TestBase.GetServiceClient<LegacyRMClient.ResourceManagementClient>(this.csmTestFactory);
         }
 
         private SubscriptionClient GetSubscriptionClient(MockContext context)
