@@ -384,7 +384,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         public void DeleteSecret(string accountName, string databaseName, string secretName)
         {
-            _catalogClient.Catalog.DeleteSecret(accountName, databaseName, secretName);
+            if (string.IsNullOrEmpty(secretName))
+            {
+                _catalogClient.Catalog.DeleteAllSecrets(accountName, databaseName);
+            }
+            else
+            {
+                _catalogClient.Catalog.DeleteSecret(accountName, databaseName, secretName);
+            }
         }
 
         public USqlSecret GetSecret(string accountName, string databaseName, string secretName)
