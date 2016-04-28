@@ -34,7 +34,7 @@ function Test-DataLakeStoreClusterCreate{
 	$workernodeSize = "Standard_D3"
 	$username = "admin"
 	$passwd = " "
-	$certPasswd = " "
+	$certPasswd = ""
 	$certPath = " "
 	$certFile = "sp.pfx"
 	$servPrincipal = "sp"
