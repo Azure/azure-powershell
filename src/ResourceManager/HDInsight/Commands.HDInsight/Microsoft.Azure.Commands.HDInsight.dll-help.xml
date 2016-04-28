@@ -54,6 +54,13 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
+		    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+				<maml:name>CertificateFileContents</maml:name>
+				<maml:description>
+					<maml:para>Specifies the file contents of the certificate that will be used to authenticate as the Service Principal. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">byte[]</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -127,6 +134,18 @@
 			<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			<dev:type>
 				<maml:name>Guid</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+			<maml:name>CertificateFileContents</maml:name>
+			<maml:description>
+				<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">byte[]</command:parameterValue>
+			<dev:type>
+				<maml:name>byte[]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -230,23 +249,24 @@
         $objectId = &quot;&lt;Azure AD Service Principal Object ID&gt;&quot;
         $certificateFilePath = &quot;&lt;Path to Azure AD Service Principal Certificate&gt;&quot;
         $certificatePassword = &quot;&lt;Password for Azure AD Service Principal Certificate&gt;&quot;
+        $CertificateFileContents = &quot;&lt;File contents of Azure AD Service Principal Certificate&gt;&quot;
 
-        # Create the cluster
+        # Create the cluster, pass either $certificateFilePath or $CertificateFileContents
         New-AzureRmHDInsightClusterConfig `
-            | Add-AzureRmHDInsightClusterIdentity `
-                -AadTenantId $tenantId `
-                -ObjectId $objectId `
-                -CertificateFilePath $certificateFilePath `
-                -CertificatePassword $certificatePassword `
-            | New-AzureRmHDInsightCluster `
-                -ClusterType Hadoop `
-                -OSType Windows `
-                -ClusterSizeInNodes 4 `
-                -ResourceGroupName $clusterResourceGroupName `
-                -ClusterName $clusterName `
-                -HttpCredential $clusterCreds `
-                -Location $location `
-                -DefaultStorageAccountName &quot;$storageAccountName.blob.core.windows.net&quot; `
+        | Add-AzureRmHDInsightClusterIdentity `
+        -AadTenantId $tenantId `
+        -ObjectId $objectId `
+        -CertificateFilePath $certificateFilePath `
+        -CertificatePassword $certificatePassword `
+        | New-AzureRmHDInsightCluster `
+        -ClusterType Hadoop `
+        -OSType Windows `
+        -ClusterSizeInNodes 4 `
+        -ResourceGroupName $clusterResourceGroupName `
+        -ClusterName $clusterName `
+        -HttpCredential $clusterCreds `
+        -Location $location `
+        -DefaultStorageAccountName &quot;$storageAccountName.blob.core.windows.net&quot; `
                 -DefaultStorageAccountKey $storageAccountKey `
                 -DefaultStorageContainer $storageAccountContainer</dev:code>
 			<dev:remarks>
@@ -3761,6 +3781,13 @@
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>CertificateFileContents</maml:name>
+				<maml:description>
+					<maml:para>Specifies the file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
 					<maml:para />
@@ -4150,6 +4177,18 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>CertificateFileContents</maml:name>
+			<maml:description>
+				<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">byte[]</command:parameterValue>
+			<dev:type>
+				<maml:name>byte[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
 				<maml:para />
@@ -4389,6 +4428,13 @@
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>CertificateFileContents</maml:name>
+				<maml:description>
+					<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">byte[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
 					<maml:para />
@@ -4557,6 +4603,18 @@
 			<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			<dev:type>
 				<maml:name>Guid</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>CertificateFileContents</maml:name>
+			<maml:description>
+				<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">byte[]</command:parameterValue>
+			<dev:type>
+				<maml:name>byte[]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
