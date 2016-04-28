@@ -19,19 +19,21 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRemoteAppUserDisk", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRemoteAppUserDisk", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureRemoteAppUserDisk : RdsCmdlet
     {
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "RemoteApp user upn")]
+        [ValidatePattern(UserPrincipalValdatorString)]
         public string UserUpn { get; set; }
 
         public override void ExecuteCmdlet()

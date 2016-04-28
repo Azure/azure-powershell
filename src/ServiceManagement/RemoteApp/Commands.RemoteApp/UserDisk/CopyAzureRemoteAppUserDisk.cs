@@ -18,38 +18,39 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Copy, "AzureRemoteAppUserDisk", SupportsShouldProcess = false)]
+    [Cmdlet(VerbsCommon.Copy, "AzureRemoteAppUserDisk")]
     public class CopyAzureRemoteAppUserDisk : RdsCmdlet
     {
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "RemoteApp source collection name")]
-        public string SrcCollectionName { get; set; }
+        [ValidatePattern(NameValidatorString)]
+        public string SourceCollectionName { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "RemoteApp destination collection name")]
-        public string DstCollectionName { get; set; }
+        [ValidatePattern(NameValidatorString)]
+        public string DestinationCollectionName { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "RemoteApp user upn")]
+        [ValidatePattern(UserPrincipalValdatorString)]
         public string UserUpn { get; set; }
 
-        [Parameter(Mandatory = true,
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "overwrite the existing user disk if it exsits")]
-        public bool OverwriteExistingUserDisk { get; set; }
+        [Parameter(Mandatory = false,
+            HelpMessage = "Overwrite existing user disk")]
+        public SwitchParameter OverwriteExistingUserDisk { get; set; }
 
         public override void ExecuteCmdlet()
         {
             AzureOperationResponse response = null;
-
-            response = CallClient(() => Client.UserDisks.Copy(SrcCollectionName, DstCollectionName, UserUpn, OverwriteExistingUserDisk), Client.UserDisks);
+            bool overwriteExistingUserDisk = OverwriteExistingUserDisk ? true : false;
+            response = CallClient(() => Client.UserDisks.Copy(SourceCollectionName, DestinationCollectionName, UserUpn, overwriteExistingUserDisk), Client.UserDisks);
         }
     }
 }

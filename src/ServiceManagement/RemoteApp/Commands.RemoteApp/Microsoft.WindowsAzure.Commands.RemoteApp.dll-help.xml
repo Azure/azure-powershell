@@ -4814,12 +4814,11 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
           </maml:description>
           <command:parameterValue required="true" variableLength="true">string</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>OverwriteExistingUserDisk</maml:name>
           <maml:description>
             <maml:para>Overwrite the existing user disk.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -4864,14 +4863,14 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>OverwriteExistingUserDisk</maml:name>
         <maml:description>
-          <maml:para>Overwrite the existing user disk.</maml:para>
+          <maml:para>Overwrite the existing user disk</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean</maml:name>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -4936,7 +4935,7 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Copy-AzureRemoteAppUserDisk -DstCollectionName Contoso1 -OverwriteExistingUserDisk $true -SrcCollectionName Contoso2 -UserUpn user@contoso.com
+          Copy-AzureRemoteAppUserDisk -DestinationCollectionName Contoso1 -SourceCollectionName Contoso2 -UserUpn user@contoso.com -OverwriteExistingUserDisk
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
