@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -23,7 +22,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.Rest.Azure;
 using Xunit;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
@@ -56,8 +57,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Filter = null;
 
             // Build a CloudPool instead of querying the service on a Get CloudPool call
-            CloudPoolGetResponse response = BatchTestHelpers.CreateCloudPoolGetResponse(cmdlet.Id);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolGetParameters, CloudPoolGetResponse>(response);
+            AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders> response = BatchTestHelpers.CreateCloudPoolGetResponse(cmdlet.Id);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.PoolGetOptions, 
+                AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -86,12 +90,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             string requestExpand = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            CloudPoolGetResponse getResponse = BatchTestHelpers.CreateCloudPoolGetResponse(cmdlet.Id);
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolGetParameters, CloudPoolGetResponse>(getResponse);
+            AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders> getResponse = BatchTestHelpers.CreateCloudPoolGetResponse(cmdlet.Id);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.PoolGetOptions, 
+                AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>>(getResponse);
+
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                requestSelect = request.Parameters.DetailLevel.SelectClause;
-                requestExpand = request.Parameters.DetailLevel.ExpandClause;
+                ProxyModels.PoolGetOptions options = (ProxyModels.PoolGetOptions) request.Options;
+                requestSelect = options.Select;
+                requestExpand = options.Expand;
 
                 return Task.FromResult(response);
             });
@@ -119,17 +127,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             string requestSelect = null;
             string requestExpand = null;
 
-            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolListParameters, CloudPoolListResponse>();
-            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
-            {
-                requestFilter = request.Parameters.DetailLevel.FilterClause;
-                requestSelect = request.Parameters.DetailLevel.SelectClause;
-                requestExpand = request.Parameters.DetailLevel.ExpandClause;
+            AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> response = BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.CloudPool, ProxyModels.PoolListHeaders>();
+            Action<BatchRequest<ProxyModels.PoolListOptions, AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>> extractPoolListAction =
+                (request) =>
+                {
+                    ProxyModels.PoolListOptions options = request.Options;
+                    requestFilter = options.Filter;
+                    requestSelect = options.Select;
+                    requestExpand = options.Expand;
+                };
 
-                return Task.FromResult(response);
-            });
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(responseToUse: response, requestAction: extractPoolListAction);
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor };
 
             cmdlet.ExecuteCmdlet();
 
@@ -151,8 +160,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             string[] idsOfConstructedPools = new[] { "pool1", "pool2", "pool3" };
 
             // Build some CloudPools instead of querying the service on a List CloudPools call
-            CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolListParameters, CloudPoolListResponse>(response);
+            AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.PoolListOptions, 
+                AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -192,8 +204,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             string[] idsOfConstructedPools = new[] { "pool1", "pool2", "pool3" };
 
             // Build some CloudPools instead of querying the service on a List CloudPools call
-            CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolListParameters, CloudPoolListResponse>(response);
+            AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.PoolListOptions, 
+                AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

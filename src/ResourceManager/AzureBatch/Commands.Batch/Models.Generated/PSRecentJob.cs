@@ -43,19 +43,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Url
-        {
-            get
-            {
-                return this.omObject.Url;
-            }
-        }
-        
         public string Id
         {
             get
             {
                 return this.omObject.Id;
+            }
+        }
+        
+        public string Url
+        {
+            get
+            {
+                return this.omObject.Url;
             }
         }
     }

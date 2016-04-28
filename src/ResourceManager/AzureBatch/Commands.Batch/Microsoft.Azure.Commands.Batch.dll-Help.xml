@@ -6910,7 +6910,7 @@
           <maml:description>
             <maml:para>Specifies the maximum number of tasks that can run on a single compute node.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Metadata</maml:name>
@@ -6927,18 +6927,6 @@
           <command:parameterValue required="false" variableLength="false">PSStartTask</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>TargetOSVersion</maml:name>
-          <maml:description>
-            <maml:para>
-              Specifies the target operating system version of the compute nodes in the pool. You can use an asterisk (*) for the latest operating system version for the specified family. For more information about operating system families and versions, see <maml:navigationLink>
-                <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-                <maml:uri></maml:uri>
-              </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-            </maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>TaskSchedulingPolicy</maml:name>
           <maml:description>
             <maml:para>Specifies the task scheduling policy, such as the ComputeNodeFillType.</maml:para>
@@ -6952,17 +6940,19 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>OSFamily</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>CloudServiceConfiguration</maml:name>
           <maml:description>
-            <maml:para>
-              Specifies the operating system family of the compute nodes in the pool. For more information about operating system families and versions, see <maml:navigationLink>
-                <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-                <maml:uri></maml:uri>
-              </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-            </maml:para>
+            <maml:para>Specifies configuration settings for a pool based on the Azure cloud service platform.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">PSCloudServiceConfiguration</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>VirtualMachineConfiguration</maml:name>
+          <maml:description>
+            <maml:para>Specifies configuration settings for a pool on the virtual machines infrastructure.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVirtualMachineConfiguration</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>VirtualMachineSize</maml:name>
@@ -7011,7 +7001,7 @@
           <maml:description>
             <maml:para>Specifies the maximum number of tasks that can run on a single compute node.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Metadata</maml:name>
@@ -7025,7 +7015,7 @@
           <maml:description>
             <maml:para>Specifies the timeout for allocating compute nodes to the pool.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>StartTask</maml:name>
@@ -7042,18 +7032,6 @@
           <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>TargetOSVersion</maml:name>
-          <maml:description>
-            <maml:para>
-              Specifies the target operating system version of the compute nodes in the pool. You can use an asterisk (*) for the latest operating system version for the specified family. For more information about operating system families and versions, see <maml:navigationLink>
-                <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-                <maml:uri></maml:uri>
-              </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-            </maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>TaskSchedulingPolicy</maml:name>
           <maml:description>
             <maml:para>Specifies the task scheduling policy, such as the ComputeNodeFillType.</maml:para>
@@ -7067,17 +7045,19 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>OSFamily</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>CloudServiceConfiguration</maml:name>
           <maml:description>
-            <maml:para>
-              Specifies the operating system family of the compute nodes in the pool. For more information about operating system families and versions, see <maml:navigationLink>
-                <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-                <maml:uri></maml:uri>
-              </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-            </maml:para>
+            <maml:para>Specifies configuration settings for a pool based on the Azure cloud service platform.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">PSCloudServiceConfiguration</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>VirtualMachineConfiguration</maml:name>
+          <maml:description>
+            <maml:para>Specifies configuration settings for a pool on the virtual machines infrastructure.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">PSVirtualMachineConfiguration</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>VirtualMachineSize</maml:name>
@@ -7183,9 +7163,9 @@
         <maml:description>
           <maml:para>Specifies the maximum number of tasks that can run on a single compute node.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
         <dev:type>
-          <maml:name>Int32]</maml:name>
+          <maml:name>Int32</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -7202,31 +7182,14 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>OSFamily</maml:name>
-        <maml:description>
-          <maml:para>
-            Specifies the operating system family of the compute nodes in the pool. For more information about operating system families and versions, see <maml:navigationLink>
-              <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-              <maml:uri></maml:uri>
-            </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-          </maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>ResizeTimeout</maml:name>
         <maml:description>
           <maml:para>Specifies the timeout for allocating compute nodes to the pool.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         <dev:type>
-          <maml:name>TimeSpan]</maml:name>
+          <maml:name>TimeSpan</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -7248,28 +7211,27 @@
         <maml:description>
           <maml:para>Specifies the target number of compute nodes to allocate to the pool.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
         <dev:type>
-          <maml:name>Int32]</maml:name>
+          <maml:name>Int32</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>TargetOSVersion</maml:name>
+        <maml:name>CloudServiceConfiguration</maml:name>
         <maml:description>
-          <maml:para>
-            Specifies the target operating system version of the compute nodes in the pool. You can use an asterisk (*) for the latest operating system version for the specified family. For more information about operating system families and versions, see <maml:navigationLink>
-              <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
-              <maml:uri></maml:uri>
-            </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in the Microsoft Azure site.
-          </maml:para>
+          <maml:para>Specifies configuration settings for a pool based on the Azure cloud service platform.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
+        <command:parameterValue required="false" variableLength="false">PSCloudServiceConfiguration</command:parameterValue>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>VirtualMachineConfiguration</maml:name>
+        <maml:description>
+          <maml:para>Specifies configuration settings for a pool on the virtual machines infrastructure.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">PSVirtualMachineConfiguration</command:parameterValue>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -7346,7 +7308,10 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "Small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -BatchContext $Context
+          PS C:\&gt;$osFamily = "4"
+          PS C:\&gt;$targetOSVersion = "*"
+          PS C:\&gt;$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @($osFamily, $targetOSVersion)
+          PS C:\&gt;New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -TargetDedicated 3 -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new pool with ID MyPool using the TargetDedicated parameter set. The target allocation is three compute nodes. The pool is configured to use small virtual machines imaged with the latest operating system version of family four.</maml:para>
@@ -7366,7 +7331,10 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -OSFamily "4" -TargetOSVersion "*" -AutoScaleFormula '$TargetDedicated=2;' -BatchContext $Context
+          PS C:\&gt;$osFamily = "4"
+          PS C:\&gt;$targetOSVersion = "*"
+          PS C:\&gt;$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @($osFamily, $targetOSVersion)
+          PS C:\&gt;New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -AutoScaleFormula '$TargetDedicated=2;' -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new pool with ID AutoScalePool using the AutoScale parameter set. The pool is configured to use small virtual machines imaged with the latest operating system version of family four, and the target number of compute nodes are determined by the Autoscale formula.</maml:para>
@@ -9263,6 +9231,12 @@
             <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
           </maml:description>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Recursive</maml:name>
+          <maml:description>
+            <maml:para>If the file path is a directory, delete the directory and all of the files and subdirectories in it.</maml:para>
+          </maml:description>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
@@ -9321,6 +9295,12 @@
             <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
           </maml:description>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Recursive</maml:name>
+          <maml:description>
+            <maml:para>If the file path is a directory, delete the directory and all of the files and subdirectories in it.</maml:para>
+          </maml:description>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
@@ -9342,6 +9322,12 @@
           <maml:name>Force</maml:name>
           <maml:description>
             <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Recursive</maml:name>
+          <maml:description>
+            <maml:para>If the file path is a directory, delete the directory and all of the files and subdirectories in it.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
@@ -9382,6 +9368,18 @@
         <maml:name>Force</maml:name>
         <maml:description>
           <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Recursive</maml:name>
+        <maml:description>
+          <maml:para>If the file path is a directory, delete the directory and all of the files and subdirectories in it.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -10485,9 +10483,9 @@
         <maml:description>
           <maml:para>Specifies when to reboot the node and what to do with currently running tasks. The default is Requeue.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption</command:parameterValue>
         <dev:type>
-          <maml:name>ComputeNodeRebootOption]</maml:name>
+          <maml:name>ComputeNodeRebootOption</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -10578,6 +10576,335 @@
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Reset-AzureBatchComputeNode</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Azure Batch Cmdlets</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchRemoteLoginSettings
+      </command:name>
+      <maml:description>
+        <maml:para>Gets the remote login settings for the specified node.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchRemoteLoginSettings</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Retrieves the remote login settings for a specific compute node in a virtual machines infrastructure-based pool</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchRemoteLoginSettings</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>PoolId</maml:name>
+          <maml:description>
+            <maml:para>The id of the pool.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+          <maml:name>ComputeNodeId</maml:name>
+          <maml:description>
+            <maml:para>The id of the compute node for which to get the remote login settings.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchRemoteLoginSettings</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ComputeNode</maml:name>
+          <maml:description>
+            <maml:para>The PSComputeNode object representing the compute node for which to get the remote login settings.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSComputeNode</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ComputeNode</maml:name>
+        <maml:description>
+          <maml:para>The PSComputeNode object representing the compute node for which to get the remote login settings.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSComputeNode</command:parameterValue>
+        <dev:type>
+          <maml:name>PSComputeNode</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ComputeNodeId</maml:name>
+        <maml:description>
+          <maml:para>The id of the compute node for which to get the remote login settings.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>PoolId</maml:name>
+        <maml:description>
+          <maml:para>The id of the pool containing the node.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Example section  -->
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code> 
+          Get-AzureBatchComputeNode -PoolId &quot;myPool&quot; -BatchContext $context | Get-AzureBatchRemoteLoginSettings -BatchContext $context
+
+          IPAddress       Port
+          ---------       ----
+          104.214.75.221 50002
+          104.214.75.221 50001
+          104.214.75.221 50000
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command gets the remote login setting for each compute nodes in the pool &quot;myPool&quot;.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchRemoteLoginSettings -PoolId &quot;myPool&quot; -ComputeNodeId &quot;tvm-1900272697_1-20150330t205553z&quot; -BatchContext $context
+
+          IPAddress       Port
+          ---------       ----
+          104.214.75.221 50000
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command gets the remote login settings for the compute node with ID tvm-1900272697_1-20150330t205553z in my pool MyPool.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSRemoteLoginSettings</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchComputeNode</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Azure Batch Cmdlets</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchNodeAgentSku
+      </command:name>
+      <maml:description>
+        <maml:para>Gets Azure Batch node agent SKUs that are supported. </maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchNodeAgentSku</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-AzureBatchNodeAgentSku cmdlet gets node agent SKUs that are available in the Batch account identified by the BatchContext parameter. You can use the Filter parameter to get the SKUs that match an Open Data Protocol (OData) filter. </maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchNodeAgentSku</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData filter clause for node agent SKUs. If you do not specify a filter, this cmdlet returns all node agent SKUs supported by Batch.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+          <dev:type>
+            <maml:name>string</maml:name>
+            <maml:uri/>
+          </dev:type>
+          <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MaxCount</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of node agent SKUs to return.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>Specifies an OData filter clause for node agent SKUs. If you do not specify a filter, this cmdlet returns all node agent SKUs supported by Batch.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of node agent SKUs to return.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchNodeAgentSku -BatchContext $context
+
+          Id                        OSType VerifiedImageReferences
+          --                        ------ -----------------------
+          batch.node.centos 7        Linux {7.0, 7.1, 7.2, OL70}
+          batch.node.debian 8        Linux {15.10, 8}
+          batch.node.opensuse 13.2   Linux {13.2}
+          batch.node.opensuse 42.1   Linux {42.1, 12, 12-SP1, 12}
+          batch.node.ubuntu 14.04    Linux {14.04.0-LTS, 14.04.1-LTS, 14.04.2-LTS, 14.04.3-LTS...}
+          batch.node.windows amd64 Windows {2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter, Windows-Server-Technical-Preview}
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command gets all the available node agent SKUs supported by Batch</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSNodeAgentSku</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureBatchPool</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>

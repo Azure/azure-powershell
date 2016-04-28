@@ -57,7 +57,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default policy API version.
         /// </summary>
-        public static readonly string PolicyApiVersion = "2015-10-01-preview";
+        public static readonly string PolicyApiVersion = "2016-04-01";
+
+        /// <summary>
+        /// The default Lock API version.
+        /// </summary>
+        public static readonly string LockApiVersion = "2015-01-01";
+
+        /// <summary>
+        /// The default deployment operation API version.
+        /// </summary>
+        public static readonly string DeploymentOperationApiVersion = "2016-02-01";
 
         /// <summary>
         /// The move action.

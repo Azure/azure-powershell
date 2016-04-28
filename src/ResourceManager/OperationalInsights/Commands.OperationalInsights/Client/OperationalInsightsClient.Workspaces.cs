@@ -260,9 +260,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             List<PSIntelligencePack> intelligencePacks = new List<PSIntelligencePack>();
 
             var listResponse = OperationalInsightsManagementClient.Workspaces.ListIntelligencePacks(resourceGroupName, workspaceName);
-            if (listResponse != null)
+            if (listResponse != null && listResponse.IntelligencePacks != null)
             {
-                listResponse.ForEach(ip => intelligencePacks.Add(new PSIntelligencePack(ip.Name, ip.Enabled)));
+                listResponse.IntelligencePacks.ForEach(ip => intelligencePacks.Add(new PSIntelligencePack(ip.Name, ip.Enabled)));
             }
 
             return intelligencePacks;
@@ -272,12 +272,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             if (enabled)
             {
-                OperationalInsightsManagementClient.Workspaces.EnableIntelligencePackAsync(resourceGroupName, workspaceName, intelligencePackName);
+                OperationalInsightsManagementClient.Workspaces.EnableIntelligencePack(resourceGroupName, workspaceName, intelligencePackName);
                 return new PSIntelligencePack(intelligencePackName, enabled); ;
             }
             else
             {
-                OperationalInsightsManagementClient.Workspaces.DisableIntelligencePackAsync(resourceGroupName, workspaceName, intelligencePackName);
+                OperationalInsightsManagementClient.Workspaces.DisableIntelligencePack(resourceGroupName, workspaceName, intelligencePackName);
                 return new PSIntelligencePack(intelligencePackName, enabled);
             }
         }

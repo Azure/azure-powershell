@@ -17,7 +17,37 @@
               <ListItem>
                 <Label>Message</Label>
                 <PropertyName>Message</PropertyName>
-              </ListItem>              
+              </ListItem>
+              <ListItem>
+                <Label>Details</Label>
+                <PropertyName>Details</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Resources.Models.PSResourceProviderLocation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Resources.Models.PSResourceProviderLocation</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DisplayName</Label>
+                <PropertyName>DisplayName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Providers</Label>
+                <PropertyName>Providers</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

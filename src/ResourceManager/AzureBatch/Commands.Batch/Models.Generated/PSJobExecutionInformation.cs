@@ -45,14 +45,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime StartTime
-        {
-            get
-            {
-                return this.omObject.StartTime;
-            }
-        }
-        
         public System.DateTime? EndTime
         {
             get
@@ -79,6 +71,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.schedulingError = new PSJobSchedulingError(this.omObject.SchedulingError);
                 }
                 return this.schedulingError;
+            }
+        }
+        
+        public System.DateTime StartTime
+        {
+            get
+            {
+                return this.omObject.StartTime;
             }
         }
         
