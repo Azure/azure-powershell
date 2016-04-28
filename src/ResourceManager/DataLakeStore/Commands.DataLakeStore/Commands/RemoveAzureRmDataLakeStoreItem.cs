@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                             success[0] && DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.TransformedPath, Account,
                                 Recurse));
 
-                if (pathExists && testClean == FileType.Directory && Clean)
+                if (pathExists && testClean == FileType.DIRECTORY && Clean)
                 {
                     // recreate the directory as an empty directory if clean was specified.
                     DataLakeStoreFileSystemClient.CreateDirectory(path.TransformedPath, Account);

@@ -833,21 +833,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = false,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                     {
                         Code = "404",
-                        Message = "Awesome error message",
-                        Details = new List<ResourceManagementError>(new[] { new ResourceManagementError
-                            {
-                                Code = "SubError",
-                                Message = "Sub error message"
-                            }})
+                        Message = "Awesome error message"
                     }
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
 
             IEnumerable<PSResourceManagerError> error = resourcesClient.ValidatePSResourceGroupDeployment(parameters, DeploymentMode.Incremental);
-            Assert.Equal(2, error.Count());
+            Assert.Equal(1, error.Count());
         }
 
         [Fact]
@@ -870,15 +865,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = true,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                     {
                         Code = "404",
-                        Message = "Awesome error message",
-                        Details = new List<ResourceManagementError>(new[] { new ResourceManagementError
-                            {
-                                Code = "SubError",
-                                Message = "Sub error message"
-                            }})
+                        Message = "Awesome error message"
                     }
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
@@ -907,7 +897,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = true,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
 
@@ -1109,7 +1099,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = true,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
             SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });
@@ -1210,7 +1200,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = true,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
             SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });
@@ -1311,7 +1301,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = true,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
             SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });
@@ -1956,120 +1946,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             resourcesClient.CancelDeployment(resourceGroupName, null);
 
             deploymentsMock.Verify(f => f.CancelAsync(resourceGroupName, deploymentName + 3, new CancellationToken()), Times.Once());
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetsLocations()
-        {
-            providersMock.Setup(f => f.ListAsync(null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new ProviderListResult()
-                {
-                    Providers = new List<Provider>()
-                    {
-                        new Provider()
-                        {
-                            Namespace = "Microsoft.Web",
-                            RegistrationState = "Registered",
-                            ResourceTypes = new List<ProviderResourceType>()
-                            {
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "East US"},
-                                    Name = "database"
-                                },
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "South Central US"},
-                                    Name = "servers"
-                                }
-                            }
-                        },
-                        new Provider()
-                        {
-                            Namespace = "Microsoft.HDInsight",
-                            RegistrationState = "UnRegistered",
-                            ResourceTypes = new List<ProviderResourceType>()
-                            {
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "East US"},
-                                    Name = "hadoop"
-                                },
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "South Central US"},
-                                    Name = "websites"
-                                }
-                            }
-                        }
-                    }
-                }));
-            List<PSResourceProviderLocationInfo> resourceTypes = resourcesClient.GetLocations(
-                ResourcesClient.ResourceGroupTypeName,
-                "Microsoft.HDInsight");
-
-            Assert.Equal(3, resourceTypes.Count);
-            Assert.Equal(ResourcesClient.ResourceGroupTypeName, resourceTypes[0].Name);
-            Assert.Equal(ResourcesClient.KnownLocations.Count, resourceTypes[0].Locations.Count);
-            Assert.Equal("East Asia", resourceTypes[0].Locations[0]);
-            Assert.Equal("Microsoft.HDInsight/hadoop", resourceTypes[1].Name);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void IgnoresResourceTypesWithEmptyLocations()
-        {
-            providersMock.Setup(f => f.ListAsync(null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new ProviderListResult()
-                {
-                    Providers = new List<Provider>()
-                    {
-                        new Provider()
-                        {
-                            Namespace = "Microsoft.Web",
-                            RegistrationState = "Registered",
-                            ResourceTypes = new List<ProviderResourceType>()
-                            {
-                                new ProviderResourceType()
-                                {
-                                    Name = "database"
-                                },
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>(),
-                                    Name = "servers"
-                                }
-                            }
-                        },
-                        new Provider()
-                        {
-                            Namespace = "Microsoft.HDInsight",
-                            RegistrationState = "UnRegistered",
-                            ResourceTypes = new List<ProviderResourceType>()
-                            {
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "East US"},
-                                    Name = "hadoop"
-                                },
-                                new ProviderResourceType()
-                                {
-                                    Locations = new List<string>() {"West US", "South Central US"},
-                                    Name = "websites"
-                                }
-                            }
-                        }
-                    }
-                }));
-            List<PSResourceProviderLocationInfo> resourceTypes = resourcesClient.GetLocations(
-                ResourcesClient.ResourceGroupTypeName,
-                "Microsoft.Web");
-
-            Assert.Equal(1, resourceTypes.Count);
-            Assert.Equal(ResourcesClient.ResourceGroupTypeName, resourceTypes[0].Name);
-            Assert.Equal(ResourcesClient.KnownLocations.Count, resourceTypes[0].Locations.Count);
-            Assert.Equal("East Asia", resourceTypes[0].Locations[0]);
         }
 
         [Fact]

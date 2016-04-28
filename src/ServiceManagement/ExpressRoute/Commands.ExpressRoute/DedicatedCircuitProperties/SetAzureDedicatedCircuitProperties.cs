@@ -33,6 +33,10 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Circuit Sku")]
         public CircuitSku? Sku { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Circuit Billing Type")]
+        [ValidateSet("MeteredData", "UnlimitedData", IgnoreCase = true)]
+        public BillingType? BillingType { get; set; }
+
         [Parameter(HelpMessage = "Do not confirm Azure Dedicated Circuit Update")]
         public SwitchParameter Force { get; set; }
 
@@ -40,12 +44,12 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.SetAzureDedicatedCircuitBandwidthWarning, ServiceKey, Bandwidth),
+                string.Format(Resources.SetAzureDedicatedCircuitBandwidthWarning, ServiceKey, Bandwidth, Sku, BillingType),
                 Resources.SetAzureDedicatedCircuitBandwidthMessage,
                 ServiceKey.ToString(),
                 () =>
                 {
-                    var circuit = ExpressRouteClient.SetAzureDedicatedCircuitProperties(ServiceKey, Bandwidth, Sku);
+                    var circuit = ExpressRouteClient.SetAzureDedicatedCircuitProperties(ServiceKey, Bandwidth, Sku, BillingType);
                     
                     WriteObject(circuit);
                     

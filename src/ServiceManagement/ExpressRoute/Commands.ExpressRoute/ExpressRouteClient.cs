@@ -167,7 +167,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             return (Client.DedicatedCircuits.List().DedicatedCircuits);
         }
 
-        public AzureDedicatedCircuit SetAzureDedicatedCircuitProperties(Guid serviceKey, UInt32? bandwidth, CircuitSku? sku)
+        public AzureDedicatedCircuit SetAzureDedicatedCircuitProperties(Guid serviceKey, UInt32? bandwidth, CircuitSku? sku, BillingType? billingType)
         {
             var updateParams = new DedicatedCircuitUpdateParameters() { };
 
@@ -179,6 +179,11 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             if (sku.HasValue)
             {
                 updateParams.Sku = sku.Value.ToString();
+            }
+
+            if (billingType.HasValue)
+            {
+                updateParams.BillingType = billingType.Value;
             }
 
             var result = Client.DedicatedCircuits.Update(serviceKey.ToString(), updateParams);

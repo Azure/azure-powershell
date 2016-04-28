@@ -17,19 +17,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 using Hyak.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
     public partial class ResourcesClient
     {
         public const string ResourceGroupTypeName = "ResourceGroup";
+
+        public const string ErrorFormat = "Error: Code={0}; Message={1}\r\n";
 
         public static List<string> KnownLocations = new List<string>
         {
@@ -302,11 +306,15 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             if (validationInfo.Errors.Count != 0)
             {
-                int counter = 1;
-                string errorFormat = "Error {0}: Code={1}; Message={2}\r\n";
-                StringBuilder errorsString = new StringBuilder();
-                validationInfo.Errors.ForEach(e => errorsString.AppendFormat(errorFormat, counter++, e.Code, e.Message));
-                throw new ArgumentException(errorsString.ToString());
+                foreach(var error in validationInfo.Errors)
+                {
+                    WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+                    if(!string.IsNullOrEmpty(error.Details))
+                    {
+                        DisplayDetailedErrorMessage(error.Details);
+                    }
+                }
+                throw new InvalidOperationException("The deployment validation failed.");
             }
             else
             {
@@ -318,6 +326,40 @@ namespace Microsoft.Azure.Commands.Resources.Models
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
             return result.ToPSResourceGroupDeployment(parameters.ResourceGroupName);
+        }
+
+        private void DisplayDetailedErrorMessage(string details)
+        {
+            dynamic errorMessage = JsonConvert.DeserializeObject(details);
+            if (errorMessage != null)
+            {
+                var token = JToken.Parse(errorMessage.ToString());
+                if(token is JArray)
+                {
+                    var errors = details.FromJson<ExtendedErrorInfo[]>();
+                    foreach(var error in errors)
+                    {
+                        DisplayInnerDetailErrorMessage(error);
+                    }
+                }
+                else if (token is JObject)
+                {
+                    var error = details.FromJson<ExtendedErrorInfo>();
+                    DisplayInnerDetailErrorMessage(error);
+                }
+            }
+        }
+
+        private void DisplayInnerDetailErrorMessage(ExtendedErrorInfo error)
+        {
+            WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+            if(error.Details != null)
+            {
+                foreach(var innerError in error.Details)
+                {
+                    DisplayInnerDetailErrorMessage(innerError);
+                }
+            }
         }
 
         private string GenerateDeploymentName(CreatePSResourceGroupDeploymentParameters parameters)
@@ -567,47 +609,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 WriteVerbose(ProjectResources.TemplateValid);
             }
             return validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList();
-        }
-
-        /// <summary>
-        /// Gets available locations for the specified resource type.
-        /// </summary>
-        /// <param name="resourceTypes">The resource types</param>
-        /// <returns>Mapping between each resource type and its available locations</returns>
-        public virtual List<PSResourceProviderLocationInfo> GetLocations(params string[] resourceTypes)
-        {
-            if (resourceTypes == null)
-            {
-                resourceTypes = new string[0];
-            }
-            List<string> providerNames = resourceTypes.Select(r => r.Split('/').First()).ToList();
-            List<PSResourceProviderLocationInfo> result = new List<PSResourceProviderLocationInfo>();
-            List<Provider> providers = new List<Provider>();
-
-            if (resourceTypes.Length == 0 || resourceTypes.Any(r => r.Equals(ResourceGroupTypeName, StringComparison.OrdinalIgnoreCase)))
-            {
-                result.Add(new ProviderResourceType
-                {
-                    Name = ResourceGroupTypeName,
-                    Locations = KnownLocations
-                }.ToPSResourceProviderLocationInfo(null));
-            }
-
-            if (resourceTypes.Length > 0)
-            {
-                providers.AddRange(ListResourceProviders()
-                    .Where(p => providerNames.Any(pn => pn.Equals(p.Namespace, StringComparison.OrdinalIgnoreCase))));
-            }
-            else
-            {
-                providers.AddRange(ListResourceProviders());
-            }
-
-            result.AddRange(providers.SelectMany(p => p.ResourceTypes
-                .Select(r => r.ToPSResourceProviderLocationInfo(p.Namespace)))
-                .Where(r => r.Locations != null && r.Locations.Count > 0));
-
-            return result;
         }
     }
 }
