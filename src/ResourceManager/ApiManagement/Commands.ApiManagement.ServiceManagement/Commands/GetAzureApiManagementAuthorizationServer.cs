@@ -19,10 +19,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementAuthorizationServer")]
-    [OutputType(typeof(IList<PsApiManagementOAuth2AuthrozationServer>))]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementAuthorizationServer, DefaultParameterSetName = GetAll)]
+    [OutputType(typeof(IList<PsApiManagementOAuth2AuthrozationServer>), ParameterSetName = new [] { GetAll })]
+    [OutputType(typeof(PsApiManagementOAuth2AuthrozationServer), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase
     {
+        private const string GetAll = "Get all authorization server";
+        private const string GetById = "Get by Id";
+
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
@@ -31,9 +35,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
+            ParameterSetName = GetById,
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Identifier of the authorization server. If specified will find authorization server by the identifier. This parameter is optional. ")]
+            HelpMessage = "Identifier of the authorization server. If specified will find authorization server by the identifier." +
+                          " This parameter is optional. ")]
         public String ServerId { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
