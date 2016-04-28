@@ -717,9 +717,10 @@ Tests Move-AzureVirtualNetwork with Prepare and Commit
 function Test-MigrateAzureVNet
 {
     # Setup
+    $TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
     $location = Get-DefaultLocation
     $affName = "WestUsAffinityGroup";
-    $vnetConfigPath = ".\Resources\ServiceManagement\Files\vnetconfig.netcfg";
+    $vnetConfigPath = "$TestOutputRoot\Resources\ServiceManagement\Files\vnetconfig.netcfg";
     $vnetName = "NewVNet1";
 
     # Test
@@ -747,9 +748,10 @@ Tests Move-AzureVirtualNetwork with Prepare and Abort
 function Test-MigrationAbortAzureVNet
 {
     # Setup
+    $TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
     $location = Get-DefaultLocation
     $affName = "WestUsAffinityGroup";
-    $vnetConfigPath = ".\Resources\ServiceManagement\Files\vnetconfig.netcfg";
+    $vnetConfigPath = "$TestOutputRoot\Resources\ServiceManagement\Files\vnetconfig.netcfg";
     $vnetName = "NewVNet1";
 
     # Test
