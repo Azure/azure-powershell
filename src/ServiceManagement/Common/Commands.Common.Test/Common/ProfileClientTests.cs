@@ -345,6 +345,61 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        public void AddAzureAccountFiltersEmptyAdClientsInRdfeMode()
+        {
+            var emptyTenantIdrdfeSubscription = new RDFESubscription
+            {
+                SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
+                SubscriptionName = "RdfeSub1",
+                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Active,
+                ActiveDirectoryTenantId = ""
+            };
+
+            var disabledTenantIdrdfeSubscription = new RDFESubscription
+            {
+                SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
+                SubscriptionName = "RdfeSub1",
+                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Disabled,
+                ActiveDirectoryTenantId = "B59BE059-5E3F-463B-8C1A-831A29819B52"
+            };
+            
+            var deletedTenantIdrdfeSubscription = new RDFESubscription
+            {
+                SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
+                SubscriptionName = "RdfeSub1",
+                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Deleted,
+                ActiveDirectoryTenantId = "B59BE059-5E3F-463B-8C1A-831A29819B52"
+            };
+
+            var deletingTenantIdrdfeSubscription = new RDFESubscription
+            {
+                SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
+                SubscriptionName = "RdfeSub1",
+                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Deleting,
+                ActiveDirectoryTenantId = "B59BE059-5E3F-463B-8C1A-831A29819B52"
+            };
+
+            SetMocks(
+                new[] { rdfeSubscription1, emptyTenantIdrdfeSubscription, disabledTenantIdrdfeSubscription, deletedTenantIdrdfeSubscription, deletingTenantIdrdfeSubscription }.ToList(), 
+                new[] { csmSubscription1 }.ToList());
+            MemoryDataStore dataStore = new MemoryDataStore();
+            dataStore.VirtualStore[oldProfileDataPath] = oldProfileData;
+            AzureSession.DataStore = dataStore;
+            currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            ProfileClient client = new ProfileClient(currentProfile);
+
+            var account = client.AddAccountAndLoadSubscriptions(
+                new AzureAccount { Id = "test", Type = AzureAccount.AccountType.User }, 
+                AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], 
+                null);
+
+            Assert.Equal("test", account.Id);
+            Assert.Equal(1, account.GetSubscriptions(client.Profile).Count);
+            Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId)));
+            Assert.False(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
+        }
+
+        [Fact]
         public void AddAzureAccountReturnsAccountWithAllSubscriptionsInCsmMode()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1 }.ToList());
@@ -1388,7 +1443,7 @@ namespace Common.Authentication.Test
             {
                 SubscriptionId = "26E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
                 SubscriptionName = "RdfeSub2",
-                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Active,
+                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Warned,
                 ActiveDirectoryTenantId = "Common"
             };
             guestRdfeSubscription = new RDFESubscription
