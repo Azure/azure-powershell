@@ -140,6 +140,7 @@
     <Compile Include="Models.Authorization\AuthorizationHelper.cs" />
     <Compile Include="Models.Authorization\FilterRoleDefinitionOptions.cs" />
     <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />
+    <Compile Include="Models.ResourceGroups\FilterResourcesOptions.cs" />
     <Compile Include="Models.ResourceGroups\PSResource.cs" />
     <Compile Include="Models.ResourceGroups\PSResourceProviderOperation.cs" />
     <Compile Include="Models.ResourceGroups\SubscriptionsClient.cs" />
