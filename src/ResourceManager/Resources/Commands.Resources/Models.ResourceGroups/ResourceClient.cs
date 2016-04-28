@@ -115,8 +115,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public IList<ProviderOperationsMetadata> ListProviderOperationsMetadata()
         {
-           ProviderOperationsMetadataListResult result = this.ResourceManagementClient.ProviderOperationsMetadata.List();
-           return result.Providers;
+            ProviderOperationsMetadataListResult result = this.ResourceManagementClient.ProviderOperationsMetadata.List();
+            return result.Providers;
         }
     }
 }

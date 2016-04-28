@@ -18,8 +18,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.Resources.Models;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Rest.Azure;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Moq;
     using System;
@@ -97,20 +98,22 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     new ProviderResourceType
                     {
                         Locations = new[] {"West US", "East US"},
-                        ResourceType = "TestResource2"
+                        //Name = "TestResource2"
                     }
                 }
             };
 
-            this.providerOperationsMock
-                .Setup(client => client.UnregisterAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Callback((string providerName, CancellationToken ignored) =>
-                        Assert.Equal(ProviderName, providerName, StringComparer.InvariantCultureIgnoreCase))
-                .Returns(() => Task.FromResult(provider));
+            var unregistrationResult = provider;
 
             this.providerOperationsMock
-              .Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-              .Returns(() => Task.FromResult(provider));
+                .Setup(client => client.UnregisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+                .Callback((string providerName, Dictionary<string, List<string>> customHeaders, CancellationToken ignored) =>
+                        Assert.Equal(ProviderName, providerName, StringComparer.OrdinalIgnoreCase))
+                .Returns(() => Task.FromResult(new AzureOperationResponse<Provider>() { Body = unregistrationResult }));
+
+            this.providerOperationsMock
+              .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+              .Returns(() => Task.FromResult(new AzureOperationResponse<Provider>() { Body = provider }));
 
             this.cmdlet.Force = true;
 
@@ -123,12 +126,18 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 {
                     Assert.IsType<PSResourceProvider>(obj);
                     var providerResult = (PSResourceProvider)obj;
-                    Assert.Equal(ProviderName, providerResult.ProviderNamespace, StringComparer.InvariantCultureIgnoreCase);
+                    Assert.Equal(ProviderName, providerResult.ProviderNamespace, StringComparer.OrdinalIgnoreCase);
                 });
+
+            //unregistrationResult.StatusCode = HttpStatusCode.OK;
 
             this.cmdlet.ExecuteCmdlet();
 
             this.VerifyCallPatternAndReset(succeeded: true);
+
+            // 2. Unregister fails w/ error
+            //unregistrationResult.StatusCode = HttpStatusCode.NotFound;
+            unregistrationResult = null;
 
             try
             {
@@ -146,7 +155,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyCallPatternAndReset(bool succeeded)
         {
-            this.providerOperationsMock.Verify(f => f.UnregisterAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once());
+            this.providerOperationsMock.Verify(f => f.UnregisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Once() : Times.Never());
 
             this.providerOperationsMock.ResetCalls();

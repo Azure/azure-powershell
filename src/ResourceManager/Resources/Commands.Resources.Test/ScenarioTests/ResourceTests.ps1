@@ -360,7 +360,6 @@ function Test-GetResourceWithCollection
 	$rname = Get-ResourceName
 	$rglocation = "East US"
 	$apiversion = "2015-08-01"
-	$resourceType = "Providers.Test/statefulResources"
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation

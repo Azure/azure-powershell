@@ -54,9 +54,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\packages\Microsoft.Azure.ResourceManager.3.0.0-preview\lib\net45\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.1.1-preview\lib\net45\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -224,7 +224,6 @@
     <Compile Include="SdkModels\ResourceGroups\PSResourceGroup.cs" />
     <Compile Include="SdkModels\ResourceGroups\UpdatePSResourceGroupParameters.cs" />
     <Compile Include="SdkModels\ResourceProvider\PSResourceProvider.cs" />
-    <Compile Include="SdkModels\ResourceProvider\PSResourceProviderLocationInfo.cs" />
     <Compile Include="SdkModels\ResourceProvider\PSResourceProviderOperation.cs" />
     <Compile Include="SdkModels\ResourceProvider\PSResourceProviderResourceType.cs" />
     <Compile Include="SdkModels\Resources\PSResource.cs" />

@@ -47,11 +47,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 {
                     WriteObject(true);
                 }
-                else if (PathType == DataLakeStoreEnums.PathType.File && fileType == FileType.File)
+                else if (PathType == DataLakeStoreEnums.PathType.File && fileType == FileType.FILE)
                 {
                     WriteObject(true);
                 }
-                else if (PathType == DataLakeStoreEnums.PathType.Folder && fileType == FileType.Directory)
+                else if (PathType == DataLakeStoreEnums.PathType.Folder && fileType == FileType.DIRECTORY)
                 {
                     WriteObject(true);
                 }

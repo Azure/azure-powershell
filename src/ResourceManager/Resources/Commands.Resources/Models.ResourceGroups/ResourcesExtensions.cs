@@ -12,11 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
+using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -130,5 +138,91 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 return claims[name];
             }
         }
+
+        public static string ConstructTagsTable(Hashtable[] tags)
+        {
+            //if (tags == null)
+            //{
+            //    return null;
+            //}
+
+            //Hashtable emptyHashtable = new Hashtable
+            //    {
+            //        {"Name", string.Empty},
+            //        {"Value", string.Empty}
+            //    };
+            //StringBuilder resourcesTable = new StringBuilder();
+
+            //if (tags.Length > 0)
+            //{
+            //    int maxNameLength = Math.Max("Name".Length, tags.Where(ht => ht.ContainsKey("Name")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Name"].ToString().Length));
+            //    int maxValueLength = Math.Max("Value".Length, tags.Where(ht => ht.ContainsKey("Value")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Value"].ToString().Length));
+
+            //    string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
+            //    resourcesTable.AppendLine();
+            //    resourcesTable.AppendFormat(rowFormat, "Name", "Value");
+            //    resourcesTable.AppendFormat(rowFormat,
+            //        GeneralUtilities.GenerateSeparator(maxNameLength, "="),
+            //        GeneralUtilities.GenerateSeparator(maxValueLength, "="));
+
+            //    foreach (Hashtable tag in tags)
+            //    {
+            //        PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
+            //        if (tagValuePair != null)
+            //        {
+            //            if (tagValuePair.Name.StartsWith(TagsClient.ExecludedTagPrefix))
+            //            {
+            //                continue;
+            //            }
+
+            //            if (tagValuePair.Value == null)
+            //            {
+            //                tagValuePair.Value = string.Empty;
+            //            }
+            //            resourcesTable.AppendFormat(rowFormat, tagValuePair.Name, tagValuePair.Value);
+            //        }
+            //    }
+            //}
+
+            //return resourcesTable.ToString();
+            return null;
+        }
+
+        public static string ConstructPermissionsTable(List<PSPermission> permissions)
+        {
+            StringBuilder permissionsTable = new StringBuilder();
+
+            if (permissions != null && permissions.Count > 0)
+            {
+                int maxActionsLength = Math.Max("Actions".Length, permissions.Where(p => p.Actions != null).DefaultIfEmpty(EmptyPermission).Max(p => p.ActionsString.Length));
+                int maxNotActionsLength = Math.Max("NotActions".Length, permissions.Where(p => p.NotActions != null).DefaultIfEmpty(EmptyPermission).Max(p => p.NotActionsString.Length));
+
+                string rowFormat = "{0, -" + maxActionsLength + "}  {1, -" + maxNotActionsLength + "}\r\n";
+                permissionsTable.AppendLine();
+                permissionsTable.AppendFormat(rowFormat, "Actions", "NotActions");
+                permissionsTable.AppendFormat(rowFormat,
+                    GeneralUtilities.GenerateSeparator(maxActionsLength, "="),
+                    GeneralUtilities.GenerateSeparator(maxNotActionsLength, "="));
+
+                foreach (PSPermission permission in permissions)
+                {
+                    permissionsTable.AppendFormat(rowFormat, permission.ActionsString, permission.NotActionsString);
+                }
+            }
+
+            return permissionsTable.ToString();
+        }
+        private static PSPermission EmptyPermission
+        {
+            get
+            {
+                return new PSPermission()
+                {
+                    Actions = new List<string>(),
+                    NotActions = new List<string>()
+                };
+            }
+        }
+
     }
 }

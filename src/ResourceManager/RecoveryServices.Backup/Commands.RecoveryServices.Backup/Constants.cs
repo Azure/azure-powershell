@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    public class PSTagValuePair
+    public class JobConstants
     {
-        public string Name { get; set; }
-        public string Value { get; set; }
+        public const int MaximumJobsToFetch = 1000;
+    }
+
+    public class PolicyConstants
+    {
+        public const int MinPolicyNameLength = 3;
+        public const int MaxPolicyNameLength = 150;                
     }
 }

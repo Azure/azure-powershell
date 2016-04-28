@@ -12,28 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Represents the location info for a resource provider
+    /// MAB specific container class.
     /// </summary>
-    public class PSResourceProviderLocationInfo
+    public class MabContainer : ContainerBase
     {
         /// <summary>
-        /// Gets or sets the name of the resource provider
+        /// Friendly name of the container
         /// </summary>
-        public string Name { get; set; }
+        public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets the locations that the resource provider exists in
+        /// Registration Status
         /// </summary>
-        public List<string> Locations { get; set; }
+        public ContainerRegistrationStatus Status { get; set; }
 
-        /// <summary>
-        /// Gets or sets the locations that the resource provider exists in, as a single string
-        /// </summary>
-        public string LocationsString { get; set; }
+        public MabContainer(ProtectionContainerResource protectionContainer)
+            : base(protectionContainer)
+        {
+            MabProtectionContainer mabProtectionContainer = (MabProtectionContainer)protectionContainer.Properties;
+            FriendlyName = mabProtectionContainer.FriendlyName;
+            Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(mabProtectionContainer.RegistrationStatus);
+        }
     }
 }

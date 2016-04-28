@@ -85,17 +85,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
             var result = new PSStorageAccount(storageAccount);
-            var credentials = StorageAccountBaseCmdlet.GenerateStorageCredentials(client, result.ResourceGroupName, result.StorageAccountName);
+            var credentials = StorageUtilities.GenerateStorageCredentials(new ARMStorageProvider(client), result.ResourceGroupName, result.StorageAccountName);
             CloudStorageAccount account = new CloudStorageAccount(credentials,
-                StorageAccountBaseCmdlet.GetUri(storageAccount.PrimaryEndpoints.Blob),
-                StorageAccountBaseCmdlet.GetUri(storageAccount.PrimaryEndpoints.Queue),
-                StorageAccountBaseCmdlet.GetUri(storageAccount.PrimaryEndpoints.Table),
-                StorageAccountBaseCmdlet.GetUri(storageAccount.PrimaryEndpoints.File));
+                ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Blob),
+                ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Queue),
+                ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Table),
+                ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.File));
             result.Context = new AzureStorageContext(account);
             return result;
         }
-
-
 
         private static string ParseResourceGroupFromId(string idFromServer)
         {

@@ -15,6 +15,7 @@
 using System.IO;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Subscriptions;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -41,6 +42,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// Field that holds the policies client instance
         /// </summary>
         private AuthorizationClient policiesClient;
+
+        /// <summary>
+        /// Field that holds the subscripotions client instance
+        /// </summary>
+        private SubscriptionsClient subscriptionsClient;
 
         /// <summary>
         /// Gets or sets the resources client
@@ -99,6 +105,23 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
 
             set { this.policiesClient = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the subscriptions client
+        /// </summary>
+        public SubscriptionsClient SubscriptionsClient
+        {
+            get
+            {
+                if (this.subscriptionsClient == null)
+                {
+                    this.subscriptionsClient = new SubscriptionsClient(DefaultContext);
+                }
+                return this.subscriptionsClient;
+            }
+
+            set { this.subscriptionsClient = value; }
         }
 
         /// <summary>
