@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private static int GetTabLength(Object obj, int max, int depth, List<Tuple<string, string, int>> tupleList)
         {
             var objType = obj.GetType();
-            var propertySet = new List<PropertyInfo> ();
+            var propertySet = new List<PropertyInfo>();
             if (objType.BaseType != null)
             {
                 foreach (var property in objType.BaseType.GetProperties())
@@ -135,50 +135,60 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             foreach (var property in propertySet)
             {
                 Object childObject = property.GetValue(obj, null);
-                var elem = childObject as IList;
-                if (elem != null)
-                {
-                    if (elem.Count != 0)
-                    {
-                        max = Math.Max(max, depth * 2 + property.Name.Length + 4);
-                        for (int i = 0; i < elem.Count; i++)
-                        {
-                            Type propType = elem[i].GetType();
 
-                            if (propType.IsSerializable)
-                            {
-                                tupleList.Add(MakeTuple(property.Name + "[" + i + "]", elem[i].ToString(), depth));
-                            }
-                            else
-                            {
-                                tupleList.Add(MakeTuple(property.Name + "[" + i + "]", "", depth));
-                                max = Math.Max(max, GetTabLength((Object)elem[i], max, depth + 1, tupleList));
-                            }
-                        }
-                    }
+                var isJObject = childObject as Newtonsoft.Json.Linq.JObject;
+                if (isJObject != null)
+                {
+                    tupleList.Add(MakeTuple(property.Name, Newtonsoft.Json.JsonConvert.SerializeObject(childObject), depth));
+                    max = Math.Max(max, depth * 2 + property.Name.Length);
                 }
                 else
                 {
-                    if (property.PropertyType.IsSerializable)
+                    var elem = childObject as IList;
+                    if (elem != null)
                     {
-                        if (childObject != null)
+                        if (elem.Count != 0)
                         {
-                            tupleList.Add(MakeTuple(property.Name, childObject.ToString(), depth));
-							max = Math.Max(max, depth * 2 + property.Name.Length);
+                            max = Math.Max(max, depth * 2 + property.Name.Length + 4);
+                            for (int i = 0; i < elem.Count; i++)
+                            {
+                                Type propType = elem[i].GetType();
+
+                                if (propType.IsSerializable)
+                                {
+                                    tupleList.Add(MakeTuple(property.Name + "[" + i + "]", elem[i].ToString(), depth));
+                                }
+                                else
+                                {
+                                    tupleList.Add(MakeTuple(property.Name + "[" + i + "]", "", depth));
+                                    max = Math.Max(max, GetTabLength((Object)elem[i], max, depth + 1, tupleList));
+                                }
+                            }
                         }
                     }
                     else
                     {
-                        var isDictionary = childObject as IDictionary;
-                        if (isDictionary != null)
+                        if (property.PropertyType.IsSerializable)
                         {
-                            tupleList.Add(MakeTuple(property.Name, Newtonsoft.Json.JsonConvert.SerializeObject(childObject), depth));
-							max = Math.Max(max, depth * 2 + property.Name.Length);
+                            if (childObject != null)
+                            {
+                                tupleList.Add(MakeTuple(property.Name, childObject.ToString(), depth));
+                                max = Math.Max(max, depth * 2 + property.Name.Length);
+                            }
                         }
-                        else if (childObject != null)
+                        else
                         {
-                            tupleList.Add(MakeTuple(property.Name, "", depth));
-                            max = Math.Max(max, GetTabLength(childObject, max, depth + 1, tupleList));
+                            var isDictionary = childObject as IDictionary;
+                            if (isDictionary != null)
+                            {
+                                tupleList.Add(MakeTuple(property.Name, Newtonsoft.Json.JsonConvert.SerializeObject(childObject), depth));
+                                max = Math.Max(max, depth * 2 + property.Name.Length);
+                            }
+                            else if (childObject != null)
+                            {
+                                tupleList.Add(MakeTuple(property.Name, "", depth));
+                                max = Math.Max(max, GetTabLength(childObject, max, depth + 1, tupleList));
+                            }
                         }
                     }
                 }
