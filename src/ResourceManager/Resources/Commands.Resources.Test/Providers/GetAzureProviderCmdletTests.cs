@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 unregisteredProvider,
             };
             var pagableResult = new Page<Provider>();
-            pagableResult.SetItemValue<Provider>(listResult);
+            //pagableResult.SetItemValue<Provider>(listResult);
             var result = new AzureOperationResponse<IPage<Provider>>()
             {
                 Body = pagableResult
