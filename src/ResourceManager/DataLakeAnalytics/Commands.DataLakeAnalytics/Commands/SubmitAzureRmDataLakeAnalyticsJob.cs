@@ -184,7 +184,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
                 if (!string.IsNullOrEmpty(CompileMode))
                 {
-                    sqlIpProperties.CompileMode = CompileMode;
+                    CompileMode toUse;
+                    if(Enum.TryParse(CompileMode, out toUse))
+                    {
+                        sqlIpProperties.CompileMode = toUse;
+                    }
                 }
 
                 if (!string.IsNullOrEmpty(Runtime))

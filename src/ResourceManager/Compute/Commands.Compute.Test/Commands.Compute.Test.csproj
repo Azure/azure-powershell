@@ -77,7 +77,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.3.0.0\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5896.19355-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
@@ -169,6 +169,9 @@
     <Compile Include="ScenarioTests\AEMExtensionTests.cs" />
     <Compile Include="ScenarioTests\ComputeCloudExceptionTests.cs" />
     <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
+    <Compile Include="ScenarioTests\SqlIaaSExtensionTests.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="ScenarioTests\DscExtensionTests.cs" />
     <Compile Include="ScenarioTests\RunnerTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineBootDiagnosticsTests.cs" />
@@ -218,6 +221,9 @@
       <Link>ScenarioTests\Assert.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1">
+      <Link>ScenarioTests\AzureRM.Storage.ps1</Link>
+    </None>
     <None Include="..\..\Resources\Commands.Resources.Test\ScenarioTests\Common.ps1">
       <Link>ScenarioTests\Common.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -241,6 +247,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\RunnerTests.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\SqlIaaSExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VirtualMachineBootDiagnosticsTests.ps1">
@@ -309,6 +318,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DscExtensionTests\TestGetAzureRmVMDscExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.SqlIaaSExtensionTests\TestSqlIaaSExtension.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineBootDiagnosticsTests\TestLinuxVirtualMachineBootDiagnostics.json">

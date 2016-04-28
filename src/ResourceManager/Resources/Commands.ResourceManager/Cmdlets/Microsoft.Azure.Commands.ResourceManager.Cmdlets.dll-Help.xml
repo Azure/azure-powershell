@@ -843,13 +843,34 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  GetByType  --------------------------</maml:title>
+        <maml:title>-------------------------- Example 1 GetByType  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
         <dev:code>Get-AzureRmResource -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -ResourceName myWebsite</dev:code>
         <dev:remarks>
           <maml:para>Gets resource of type microsoft.web/sites and name myWebsite under myResourceGroup</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>Get-AzureRmResource -ResourceId /subscriptions/{subID}/resourceGroups/myRG/providers/Microsoft.Storage/storageAccounts/mystaccount</dev:code>
+        <dev:remarks>
+          <maml:para>Gets resource with Id as specified by the fully qualified resourceId. In the above command, replace subId with a valid subscriptionId.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>
@@ -882,7 +903,8 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>Gets the resource group deployment operation</maml:para>
+      <maml:para>This lists all the operations that were part of a deployment. It can be used for debugging deployment failures as it will help you identify and give more information about the exact operations that failed for a particular deployment. It can also give out the response and the request content for each deployment operation. This is the same information that you get from the deployment details on the portal. </maml:para>
+      <maml:para>For getting the request and the response content, the setting will have to be enabled when submitting a deployment through New-AzureRmResourceGroupDeployment. It can potentially log and expose secrets like passwords used in the resource property or listKeys operations that are then returned when you retrieve the deployment operations. For more details on this setting and how to enable it, please see the help for New-AzureRmResourceGroupDeployment or https://aka.ms/deploymentdebug </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1095,13 +1117,44 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  Get1  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 1 --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
         <dev:code>Get-AzureRmResourceGroupDeploymentOperation -DeploymentName test -ResourceGroupName test</dev:code>
         <dev:remarks>
           <maml:para>Gets deployment operation with name "test" under resource group "test"</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    <command:example>
+        <maml:title>--------------------------  Example 2 --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>
+          $operations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName test -ResourceGroupName test
+          foreach($operation in $operations)
+          {
+              Write-Host $operation.id
+              Write-Host "Request:"
+              $operation.Properties.Request | ConvertTo-Json -Depth 10
+              Write-Host "Response:"
+              $operation.Properties.Response | ConvertTo-Json -Depth 10
+          }
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Gets deployment operation with name "test" under resource group "test" and lists all the request and response content associated with each deployment operation.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>
@@ -1735,7 +1788,7 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  Get1  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 1  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
@@ -2047,7 +2100,7 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  Move1  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 1  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
@@ -2863,7 +2916,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>Create a new resource lock.</maml:para>
+      <maml:para>Create a new resource lock. Resource Locks are useful to prevent accidental deletions of your azure resources. Once a lock is placed on a resource, it can't be deleted unless the lock is removed. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2871,14 +2924,14 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock.</maml:para>
+            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockNotes</maml:name>
           <maml:description>
-            <maml:para>The notes of the lock.</maml:para>
+            <maml:para>The notes of the lock. This should not exceed 512 characters.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -2965,14 +3018,14 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock.</maml:para>
+            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockNotes</maml:name>
           <maml:description>
-            <maml:para>The notes of the lock.</maml:para>
+            <maml:para>The notes of the lock. This should not exceed 512 characters.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -3052,14 +3105,14 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock.</maml:para>
+            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockNotes</maml:name>
           <maml:description>
-            <maml:para>The notes of the lock.</maml:para>
+            <maml:para>The notes of the lock. This should not exceed 512 characters.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -3153,14 +3206,14 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock.</maml:para>
+            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockNotes</maml:name>
           <maml:description>
-            <maml:para>The notes of the lock.</maml:para>
+            <maml:para>The notes of the lock. This should not exceed 512 characters.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -3254,14 +3307,14 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock.</maml:para>
+            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockNotes</maml:name>
           <maml:description>
-            <maml:para>The notes of the lock.</maml:para>
+            <maml:para>The notes of the lock. This should not exceed 512 characters.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -3334,14 +3387,14 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock.</maml:para>
+            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockNotes</maml:name>
           <maml:description>
-            <maml:para>The notes of the lock.</maml:para>
+            <maml:para>The notes of the lock. This should not exceed 512 characters.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -3421,7 +3474,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>LockLevel</maml:name>
         <maml:description>
-          <maml:para>The level of the lock.</maml:para>
+          <maml:para>TThe level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         <dev:type>
@@ -3434,7 +3487,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>LockNotes</maml:name>
         <maml:description>
-          <maml:para>The notes of the lock.</maml:para>
+          <maml:para>The notes of the lock. This should not exceed 512 characters.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -3684,7 +3737,7 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  New1  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 1  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
@@ -4861,17 +4914,26 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  RemoveLock1  --------------------------</maml:title>
+        <maml:title>-------------------------- Example 1: RemoveLock using ResourceId  --------------------------</maml:title>
         <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
         <dev:code>Remove-AzureRmResourceLock -ResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Storage-SouthCentralUS/providers/Microsoft.ClassicStorage/storageAccounts/mystorageaccount/providers/Microsoft.Authorization/locks/test</dev:code>
         <dev:remarks>
-          <maml:para />
-          <maml:para />
-          <maml:para />
-          <maml:para>
-          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+          <command:example>
+        <maml:title>-------------------------- Example 2: RemoveLock using LockId  --------------------------</maml:title>
+        <maml:introduction>
+        </maml:introduction>
+        <dev:code>Remove-AzureRmResourceLock -LockId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Storage-SouthCentralUS/providers/Microsoft.ClassicStorage/storageAccounts/mystorageaccount/providers/Microsoft.Authorization/locks/test</dev:code>
+        <dev:remarks>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -4915,7 +4977,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>Properties</maml:name>
           <maml:description>
-            <maml:para>A hash table which represents resource properties.</maml:para>
+            <maml:para>A hash table which represents resource properties. You should always provide the full properties set to Set-AzureResource. You can fetch all the current properties using Get-AzureRmResource, modify the properties you want to and then pass it to this cmdlet for updating.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
         </command:parameter>
@@ -5023,7 +5085,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>Properties</maml:name>
           <maml:description>
-            <maml:para>A hash table which represents resource properties.</maml:para>
+            <maml:para>A hash table which represents resource properties. You should always provide the full properties set to Set-AzureResource. You can fetch all the current properties using Get-AzureRmResource, modify the properties you want to and then pass it to this cmdlet for updating.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
         </command:parameter>
@@ -5159,7 +5221,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>Properties</maml:name>
           <maml:description>
-            <maml:para>A hash table which represents resource properties.</maml:para>
+            <maml:para>A hash table which represents resource properties. You should always provide the full properties set to Set-AzureResource. You can fetch all the current properties using Get-AzureRmResource, modify the properties you want to and then pass it to this cmdlet for updating.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
         </command:parameter>
@@ -5301,7 +5363,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Properties</maml:name>
         <maml:description>
-          <maml:para>A hash table which represents resource properties.</maml:para>
+          <maml:para>A hash table which represents resource properties. You should always provide the full properties set to Set-AzureResource. You can fetch all the current properties using Get-AzureRmResource, modify the properties you want to and then pass it to this cmdlet for updating.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
         <dev:type>
