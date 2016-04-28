@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementAuthorizationServer")]
+    [Cmdlet(VerbsCommon.New, Constants.ApiManagementAuthorizationServer)]
     [OutputType(typeof(PsApiManagementOAuth2AuthrozationServer))]
     public class NewAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase
     {
@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
-            HelpMessage = "Client registration endpoint is used for registering clients with the authorization server and obtaining client credentials. This parameter is required.")]
+            HelpMessage = "Client registration endpoint is used for registering clients with the authorization server and obtaining client credentials." +
+                          " This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ClientRegistrationPageUrl { get; set; }
 
@@ -66,7 +67,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
-            HelpMessage = "Token endpoint is used by clients to obtain access tokens in exchange for presenting authorization grants or refresh tokens. This parameter is required.")]
+            HelpMessage = "Token endpoint is used by clients to obtain access tokens in exchange for presenting authorization grants or refresh tokens." +
+                          " This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String TokenEndpointUrl { get; set; }
 
