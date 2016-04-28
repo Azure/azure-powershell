@@ -20,15 +20,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagementAuthorizationServer")]
+    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementAuthorizationServer)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementAuthorizationServer : AzureApiManagementRemoveCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Identifier of existing authorization server. This parameter is required.")]
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Identifier of existing authorization server. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ServerId { get; set; }
 
