@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             
             cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.Name = "myDeployment";
             cmdlet.Force = true;
 
             cmdlet.ExecuteCmdlet();
