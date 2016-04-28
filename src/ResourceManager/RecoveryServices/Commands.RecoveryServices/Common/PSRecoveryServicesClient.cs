@@ -67,6 +67,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public static ASRVaultCreds arsVaultCreds = new ASRVaultCreds();
 
         /// <summary>
+        /// Resource credentials holds vault, resource group name, location and other details.
+        /// </summary>
+        [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1401:FieldsMustBePrivate",
+        Justification = "For Resource Credentials.")]
+        public static ARSVault arsVault = new ARSVault();
+        /// <summary>
         /// Recovery Services client.
         /// </summary>
         private RecoveryServicesManagementClient recoveryServicesClient;
