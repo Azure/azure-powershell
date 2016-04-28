@@ -20,7 +20,7 @@ using System.Reflection;
 using System.Text;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         }
 
 
-        public static PSResourceManagerError ToPSResourceManagerError(this ResourceManagementError error)
+        public static PSResourceManagerError ToPSResourceManagerError(this ResourceManagementErrorWithDetails error)
         {
             return new PSResourceManagerError
                 {
@@ -93,28 +93,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 ProviderNamespace = resourceProviderOperationDefinition.Display.Provider,
                 ResourceName = resourceProviderOperationDefinition.Display.Resource
             };
-        }
-
-        public static PSResourceProviderLocationInfo ToPSResourceProviderLocationInfo(this ProviderResourceType resourceType, string providerNamespace)
-        {
-            PSResourceProviderLocationInfo result = new PSResourceProviderLocationInfo();
-            if (resourceType != null)
-            {
-                resourceType.Locations = resourceType.Locations ?? new List<string>();
-                for (int i = 0; i < ResourceManagerSdkClient.KnownLocationsNormalized.Count; i++)
-                {
-                    if (resourceType.Locations.Remove(ResourceManagerSdkClient.KnownLocationsNormalized[i]))
-                    {
-                        resourceType.Locations.Add(ResourceManagerSdkClient.KnownLocations[i]);
-                    }
-                }
-
-                result.Name = string.IsNullOrEmpty(providerNamespace) ? resourceType.ResourceType : string.Join("/", providerNamespace, resourceType.ResourceType);
-                result.Locations = resourceType.Locations.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct(StringComparer.CurrentCultureIgnoreCase).ToList();
-                result.LocationsString = string.Join(", ", result.Locations);
-            }
-
-            return result;
         }
 
         public static string ConstructTagsTable(Hashtable[] tags)
