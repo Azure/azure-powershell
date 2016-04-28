@@ -60,7 +60,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll'
+NestedModules = '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll'
 
 # Functions to export from this module
 FunctionsToExport = '*'

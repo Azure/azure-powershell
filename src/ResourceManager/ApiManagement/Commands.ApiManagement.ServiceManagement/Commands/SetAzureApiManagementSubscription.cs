@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementSubscription")]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementSubscription)]
     [OutputType(typeof(PsApiManagementSubscription))]
     public class SetAzureApiManagementSubscription : AzureApiManagementCmdletBase
     {
@@ -45,13 +45,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false,
-            HelpMessage = "Subscription primary key. This parameter is optional. If not specified will be generated automatically. Must be 1 to 300 characters long.")]
+            HelpMessage = "Subscription primary key. This parameter is optional." +
+                          " If not specified will be generated automatically." +
+                          " Must be 1 to 300 characters long.")]
         public String PrimaryKey { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Subscription secondary key. This parameter is optional. If not specified will be generated automatically. Must be 1 to 300 characters long.")]
+            HelpMessage = "Subscription secondary key. This parameter is optional." +
+                          " If not specified will be generated automatically." +
+                          " Must be 1 to 300 characters long.")]
         public String SecondaryKey { get; set; }
 
         [Parameter(
@@ -76,7 +80,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscripition type representing the modified subscription.")]
+            HelpMessage = "If specified then instance of" +
+                          " Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscripition type" +
+                          " representing the modified subscription.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

@@ -823,7 +823,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                             environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
             {
                 var subscriptionListResult = SubscriptionClient.Subscriptions.List();
-                return subscriptionListResult.Subscriptions.Select(s => s.ActiveDirectoryTenantId).Distinct().ToArray();
+                return subscriptionListResult.Subscriptions.Where(s => s.SubscriptionStatus == WindowsAzure.Subscriptions.Models.SubscriptionStatus.Active ||
+                                                                       s.SubscriptionStatus == WindowsAzure.Subscriptions.Models.SubscriptionStatus.Warned)
+                                                           .Select(s => s.ActiveDirectoryTenantId)
+                                                           .Where(s => !string.IsNullOrWhiteSpace(s))
+                                                           .Distinct().ToArray();
             }
         }
 
