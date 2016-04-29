@@ -76,6 +76,10 @@
       <Link>AzureRM.ServerManagement.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Microsoft.Azure.Commands.ServerManagement.dll-help.psd1" />
+    <None Include="Microsoft.Azure.Commands.ServerManagement.Format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config">
@@ -163,7 +167,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.ServerManagement.dll-Help.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup />

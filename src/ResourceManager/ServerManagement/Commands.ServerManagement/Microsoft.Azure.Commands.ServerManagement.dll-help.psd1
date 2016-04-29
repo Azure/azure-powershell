@@ -60,7 +60,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\ServerManagement\Microsoft.Azure.Commands.ServerManagement.dll'
+NestedModules = @( '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRm.ServerManagement\Microsoft.Azure.Commands.ServerManagement.dll' )
 
 # Functions to export from this module
 FunctionsToExport = '*'
