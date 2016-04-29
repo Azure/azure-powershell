@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.Resources
     public class NewAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         [Alias("ResourceGroupName")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [Parameter(Position=0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group location.")]
+        [Parameter(Position=1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters
             {
                 ResourceGroupName = Name,

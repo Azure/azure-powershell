@@ -71,14 +71,14 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.45.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.46.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5896.19355-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
@@ -231,6 +231,9 @@
     <None Include="ScenarioTests\ElasticPoolCrudTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+	<None Include="ScenarioTests\ImportExportTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Compile Include="ScenarioTests\LocationCapabilitiesTests.cs" />
     <Compile Include="ScenarioTests\ServerActiveDirectoryAdministratorTest.cs" />
     <Compile Include="ScenarioTests\ServerCommunicationLinkCrudTests.cs" />
@@ -245,6 +248,8 @@
     <Compile Include="ScenarioTests\SqlTestsBase.cs" />
     <Compile Include="ScenarioTests\TransparentDataEncryptionCrudTests.cs" />
     <Compile Include="ScenarioTests\IndexRecommendationTests.cs" />
+	<Compile Include="ScenarioTests\ImportExportTests.cs" />
+	<Compile Include="UnitTests\AzureSqlDatabaseImportExportTests.cs" />
     <Compile Include="UnitTests\AzureSqlCmdletBaseAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseActivationAttributeTest.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseAttributeTests.cs" />
@@ -599,6 +604,12 @@
     </None>
     <None Include="Templates\sql-ddm-test-env-setup.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+	<None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ImportExportTests\TestExportDatabase.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ImportExportTests\TestImportDatabase.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup />

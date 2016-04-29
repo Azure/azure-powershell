@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementApi")]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementApi)]
     [OutputType(typeof(PsApiManagementApi))]
     public class SetAzureApiManagementApi : AzureApiManagementCmdletBase
     {
@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Web API name. Public name of the API as it would appear on the developer and admin portals. This parameter is required.")]
+            HelpMessage = "Web API name. Public name of the API as it would appear on the developer and admin portals. " +
+                          "This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String Name { get; set; }
 
@@ -53,27 +54,33 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. Must be 1 to 2000 characters long. This parameter is required.")]
+            HelpMessage = "A URL of the web service exposing the API. " +
+                          "This URL will be used by Azure API Management only, and will not be made public." +
+                          " Must be 1 to 2000 characters long. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ServiceUrl { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Web API Path. Last part of the API's public URL. This URL will be used by API consumers for sending requests to the web service. Must be 1 to 400 characters long. This parameter is optional. Default value is $null.")]
+            HelpMessage = "Web API Path. Last part of the API's public URL." +
+                          " This URL will be used by API consumers for sending requests to the web service." +
+                          " Must be 1 to 400 characters long. This parameter is optional. Default value is $null.")]
         public String Path { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Web API protocols (http, https). Protocols over which API is made available. This parameter is required. Default value is $null.")]
+            HelpMessage = "Web API protocols (http, https). Protocols over which API is made available." +
+                          " This parameter is required. Default value is $null.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementSchema[] Protocols { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "OAuth authorization server identifier. This parameter is optional. Default value is $null. Must be specified if AuthorizationScope specified.")]
+            HelpMessage = "OAuth authorization server identifier. This parameter is optional. Default value is $null. " +
+                          "Must be specified if AuthorizationScope specified.")]
         public String AuthorizationServerId { get; set; }
 
         [Parameter(
@@ -97,7 +104,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi type representing the set API.")]
+            HelpMessage = "If specified then instance of" +
+                          " Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi type " +
+                          "representing the set API.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

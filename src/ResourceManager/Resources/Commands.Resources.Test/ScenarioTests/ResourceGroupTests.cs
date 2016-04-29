@@ -76,6 +76,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-ExportResourceGroup");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResourceGroupWithPositionalParams()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-ResourceGroupWithPositionalParams");
+        }
+
         [Fact (Skip = "TODO: Fix the broken test.")]
         public void TestAzureTagsEndToEnd()
         {
@@ -95,7 +102,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RemoveDeployment");
         }
 
-        [Fact]
+        [Fact(Skip = "Doesn't add any value. Will improve negative tests in a future release")]
         public void TestGetNonExistingResourceGroupWithDebugStream()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetNonExistingResourceGroupWithDebugStream");

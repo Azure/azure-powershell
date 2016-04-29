@@ -51,6 +51,17 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ImportExport\Cmdlet\GetAzureSqlDatabaseImportExportStatus.cs" />
+    <Compile Include="ImportExport\Model\AzureSqlDatabaseImportExportStatusModel.cs" />
+    <Compile Include="ImportExport\Cmdlet\ImportExportCmdletBase.cs" />
+    <Compile Include="ImportExport\Cmdlet\NewAzureSqlDatabaseExport.cs" />
+    <Compile Include="ImportExport\Cmdlet\NewAzureSqlDatabaseImport.cs" />
+    <Compile Include="ImportExport\Model\AuthenticationType.cs" />
+    <Compile Include="ImportExport\Model\AzureSqlDatabaseImportExportBaseModel.cs" />
+    <Compile Include="ImportExport\Model\AzureSqlDatabaseImportModel.cs" />
+    <Compile Include="ImportExport\Model\StorageKeyType.cs" />
+    <Compile Include="ImportExport\Service\ImportExportDatabaseAdapter.cs" />
+    <Compile Include="ImportExport\Service\ImportExportDatabaseCommunicator.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseGeoBackupCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDeletedDatabaseBackupCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\GetAzureRMSqlDeletedDatabaseBackup.cs" />
@@ -297,7 +308,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.45.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.46.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -305,7 +316,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm">

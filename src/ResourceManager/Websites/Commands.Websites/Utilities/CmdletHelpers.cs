@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         private static readonly Dictionary<string, int> WorkerSizes = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) { { "Small", 1 }, { "Medium", 2 }, { "Large", 3 }, { "ExtraLarge", 4 } };
 
+        private const string ProductionSlotName = "Production";
+
+        private const string FmtSiteWithSlotName = "{0}({1})";
         public const string ApplicationServiceEnvironmentResourcesName = "hostingEnvironments";
         private const string ApplicationServiceEnvironmentResourceIdFormat =
             "/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/{2}/{3}";
@@ -222,6 +225,16 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             slotName = null;
 
             return false;
+        }
+
+        public static string GenerateSiteWithSlotName(string siteName, string slotName)
+        {
+            if (!string.IsNullOrEmpty(slotName) && !string.Equals(slotName, ProductionSlotName, StringComparison.OrdinalIgnoreCase))
+            {
+                return string.Format(FmtSiteWithSlotName, siteName, slotName);
+            }
+
+            return siteName;
         }
 
         internal static string GetApplicationServiceEnvironmentResourceId(string subscriptionId, string resourceGroupName, string applicationServiceEnvironmentName)

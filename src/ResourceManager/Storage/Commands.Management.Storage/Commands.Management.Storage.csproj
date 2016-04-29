@@ -60,9 +60,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.3.0.0\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.5.0.0-preview\lib\net45\Microsoft.Azure.Management.Storage.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -88,8 +88,9 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.2.5.4\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.1.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.0.1-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
@@ -135,11 +136,11 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.3\ARMStorageProvider.cs">
-      <Link>Models\ARMStorageProvider.cs</Link>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.5\ARMStorageProvider.cs">
+      <Link>Common\ARMStorageProvider.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.3\ARMStorageService.cs">
-      <Link>Models\ARMStorageService.cs</Link>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.5\ARMStorageService.cs">
+      <Link>Common\ARMStorageService.cs</Link>
     </Compile>
     <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Models\PSUsage.cs" />
