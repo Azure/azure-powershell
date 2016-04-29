@@ -4431,6 +4431,44 @@ Resources</dev:code>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>TemplateFile</maml:name>
+          <maml:description>
+            <maml:para>Specifies the path and file name of a JSON template file on disk. This can be a custom template or a gallery template that is saved to disk as a JSON file.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmResourceGroupDeployment</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the deployment project for the resource group. Use -Name or its alias -DeploymentName. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the resource group to which this deployment is added. This parameter is required. If the resource group does not exist, the command fails.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>TemplateUri</maml:name>
+          <maml:description>
+            <maml:para>Specifies the URI of a JSON template file. This file can be a custom template or a gallery template that is saved as a JSON file.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Profile</maml:name>
           <maml:description>
@@ -4504,68 +4542,6 @@ Resources</dev:code>
           <maml:name>TemplateFile</maml:name>
           <maml:description>
             <maml:para>Specifies the path and file name of a JSON template file on disk. This can be a custom template or a gallery template that is saved to disk as a JSON file.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>New-AzureRmResourceGroupDeployment</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the deployment project for the resource group. Use -Name or its alias -DeploymentName. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ResourceGroupName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the resource group to which this deployment is added. This parameter is required. If the resource group does not exist, the command fails.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>TemplateParameterObject</maml:name>
-          <maml:description>
-            <maml:para>Specifies a hash table of template parameter names and values. This parameter is optional. For help with hash tables in Windows PowerShell, type: Get-Help about_Hash_Tables.If a template has parameters, you must specify parameter values, but you can use this parameter or the TemplateParameterObject parameter. Also, the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>New-AzureRmResourceGroupDeployment</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the deployment project for the resource group. Use -Name or its alias -DeploymentName. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ResourceGroupName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the resource group to which this deployment is added. This parameter is required. If the resource group does not exist, the command fails.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>TemplateParameterFile</maml:name>
-          <maml:description>
-            <maml:para>Specifies the path and name of a JSON file with the names and values of the template parameters. This parameter is optional.If a template has parameters, you must specify parameter values, but you can use this parameter or the TemplateParameterObject parameter. Also, the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -4669,58 +4645,10 @@ Resources</dev:code>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>New-AzureRmResourceGroupDeployment</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the deployment project for the resource group. Use -Name or its alias -DeploymentName. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>TemplateParameterUri</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of the resource group to which this deployment is added. This parameter is required. If the resource group does not exist, the command fails.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>TemplateFile</maml:name>
-          <maml:description>
-            <maml:para>Specifies the path and file name of a JSON template file on disk. This can be a custom template or a gallery template that is saved to disk as a JSON file.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>New-AzureRmResourceGroupDeployment</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the deployment project for the resource group. Use -Name or its alias -DeploymentName. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ResourceGroupName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the resource group to which this deployment is added. This parameter is required. If the resource group does not exist, the command fails.</maml:para>
+            <maml:para>Specifies the URI of a JSON template parameter file. This file includes all the parameters for the template.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -4728,6 +4656,44 @@ Resources</dev:code>
           <maml:name>TemplateUri</maml:name>
           <maml:description>
             <maml:para>Specifies the URI of a JSON template file. This file can be a custom template or a gallery template that is saved as a JSON file.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmResourceGroupDeployment</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the deployment project for the resource group. Use -Name or its alias -DeploymentName. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the resource group to which this deployment is added. This parameter is required. If the resource group does not exist, the command fails.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>TemplateParameterUri</maml:name>
+          <maml:description>
+            <maml:para>Specifies the URI of a JSON template parameter file. This file includes all the parameters for the template.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>TemplateFile</maml:name>
+          <maml:description>
+            <maml:para>Specifies the path and file name of a JSON template file on disk. This can be a custom template or a gallery template that is saved to disk as a JSON file.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -4781,19 +4747,6 @@ Resources</dev:code>
         </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>TemplateParameterObject</maml:name>
-        <maml:description>
-          <maml:para>Specifies a hash table of template parameter names and values. This parameter is optional. For help with hash tables in Windows PowerShell, type: Get-Help about_Hash_Tables.If a template has parameters, you must specify parameter values, but you can use this parameter or the TemplateParameterObject parameter. Also, the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-        <dev:type>
-          <maml:name>Hashtable</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>TemplateUri</maml:name>
         <maml:description>
           <maml:para>Specifies the URI of a JSON template file. This file can be a custom template or a gallery template that is saved as a JSON file.</maml:para>
@@ -4820,9 +4773,35 @@ Resources</dev:code>
         </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>TemplateParameterObject</maml:name>
+        <maml:description>
+          <maml:para>Specifies a hash table of template parameter names and values. This parameter is optional. For help with hash tables in Windows PowerShell, type: Get-Help about_Hash_Tables.If a template has parameters, you must specify parameter values, but you can use this parameter or the TemplateParameterObject parameter. Also, the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>TemplateParameterFile</maml:name>
         <maml:description>
           <maml:para>Specifies the path and name of a JSON file with the names and values of the template parameters. This parameter is optional.If a template has parameters, you must specify parameter values, but you can use this parameter or the TemplateParameterObject parameter. Also, the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>TemplateParameterUri</maml:name>
+        <maml:description>
+          <maml:para>Specifies the URI of a JSON template parameter file. This file includes all the parameters for the template.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
