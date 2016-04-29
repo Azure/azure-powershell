@@ -53,5 +53,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-ReverseFqdn");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpAddressIpVersion()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressIpVersion");
+        }        
     }
 }

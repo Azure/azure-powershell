@@ -74,5 +74,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceExpandResource");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceIpv6()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceIpv6");
+        }
     }
 }
