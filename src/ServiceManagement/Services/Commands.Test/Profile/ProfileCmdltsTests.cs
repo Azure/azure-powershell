@@ -85,7 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.Equal(0, client.Profile.Subscriptions.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
-            Assert.Equal(3, client.Profile.Environments.Count); //only default environments
+            Assert.Equal(4, client.Profile.Environments.Count); //only default environments
         }
 
         [Fact]
@@ -115,7 +115,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             client = new ProfileClient(new AzureSMProfile(subscriptionDataFile));
             Assert.Equal(0, client.Profile.Subscriptions.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
-            Assert.Equal(3, client.Profile.Environments.Count); //only default environments
+            Assert.Equal(4, client.Profile.Environments.Count); //only default environments
         }
 
         [Fact]

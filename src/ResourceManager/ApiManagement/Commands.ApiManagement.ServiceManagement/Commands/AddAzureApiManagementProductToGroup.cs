@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Add, "AzureRmApiManagementProductToGroup")]
+    [Cmdlet(VerbsCommon.Add, Constants.ApiManagementProductToGroup)]
     [OutputType(typeof(bool))]
     public class AddAzureApiManagementProductToGroup : AzureApiManagementCmdletBase
     {
