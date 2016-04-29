@@ -4794,14 +4794,14 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
       <command:syntaxItem>
         <maml:name>Copy-AzureRemoteAppUserDisk</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-          <maml:name>SrcCollectionName</maml:name>
+          <maml:name>SourceCollectionName</maml:name>
           <maml:description>
             <maml:para>Name of the source Microsoft Azure RemoteApp collection.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-          <maml:name>DstCollectionName</maml:name>
+          <maml:name>DestinationCollectionName</maml:name>
           <maml:description>
             <maml:para>Name of the destination Microsoft Azure RemoteApp collection.</maml:para>
           </maml:description>
@@ -4825,7 +4825,7 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
     <!-- Cmdlet parameter section  -->
     <command:parameters>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-        <maml:name>SrcCollectionName</maml:name>
+        <maml:name>SourceCollectionName</maml:name>
         <maml:description>
           <maml:para>Name of the source Microsoft Azure RemoteApp collection.</maml:para>
         </maml:description>
@@ -4838,7 +4838,7 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
         </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-        <maml:name>DstCollectionName</maml:name>
+        <maml:name>DestinationCollectionName</maml:name>
         <maml:description>
           <maml:para>Name of the destination Microsoft Azure RemoteApp collection.</maml:para>
         </maml:description>
