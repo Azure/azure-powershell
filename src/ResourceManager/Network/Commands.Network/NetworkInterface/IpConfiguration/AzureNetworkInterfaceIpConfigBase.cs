@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -43,13 +44,14 @@ namespace Microsoft.Azure.Commands.Network
         public string PrivateIpAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "SubnetId")]
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
         [Parameter(
+            Mandatory = false,
             ParameterSetName = "SetByResource",
             HelpMessage = "Subnet")]
         public PSSubnet Subnet { get; set; }
@@ -63,7 +65,49 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByResource",
             HelpMessage = "PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
-        
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "LoadBalancerBackendAddressPoolId")]
+        public List<string> LoadBalancerBackendAddressPoolId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "LoadBalancerBackendAddressPools")]
+        public List<PSBackendAddressPool> LoadBalancerBackendAddressPool { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "LoadBalancerInboundNatRuleId")]
+        public List<string> LoadBalancerInboundNatRuleId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "LoadBalancerInboundNatRule")]
+        public List<PSInboundNatRule> LoadBalancerInboundNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "ApplicationGatewayBackendAddressPoolId")]
+        public List<string> ApplicationGatewayBackendAddressPoolId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "ApplicationGatewayBackendAddressPools")]
+        public List<PSApplicationGatewayBackendAddressPool> ApplicationGatewayBackendAddressPool { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

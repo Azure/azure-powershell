@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             base.ExecuteCmdlet();
 
             // Get the subnetId and publicIpAddressId from the object if specified
-            if (string.Equals(ParameterSetName, "object"))
+            if (string.Equals(ParameterSetName, "SetByResource"))
             {
                 this.SubnetId = this.Subnet.Id;
 

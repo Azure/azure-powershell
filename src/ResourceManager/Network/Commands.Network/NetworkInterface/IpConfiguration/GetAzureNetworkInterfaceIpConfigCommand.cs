@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureNetworkInterfaceIpConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The name of the IpConfiguration")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

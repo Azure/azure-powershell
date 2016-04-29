@@ -45,9 +45,8 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("FrontendIpConfiguration with the specified name already exists");
             }
 
-
             // Get the subnetId and publicIpAddressId from the object if specified
-            if (string.Equals(ParameterSetName, "id"))
+            if (string.Equals(ParameterSetName, "SetByResource"))
             {
                 this.SubnetId = this.Subnet.Id;
 

@@ -55,10 +55,21 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The public IP address allocation method.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
+            MNM.IPAllocationMethod.Dynamic,
+            MNM.IPAllocationMethod.Static,
+            IgnoreCase = true)]
+        public string AllocationMethod { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The public IP address version.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
             MNM.IPVersion.IPv4,
             MNM.IPVersion.IPv6,
             IgnoreCase = true)]
-        public string AllocationMethod { get; set; }
+        public string IpAddressVersion { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -118,6 +129,7 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.Name = this.Name;
             publicIp.Location = this.Location;
             publicIp.PublicIpAllocationMethod = this.AllocationMethod;
+            publicIp.PublicIpAddressVersion = this.IpAddressVersion;
 
             if (this.IdleTimeoutInMinutes > 0)
             {

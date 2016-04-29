@@ -21,12 +21,11 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNetworkInterface"), OutputType(typeof(PSNetworkInterface))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNetworkInterface", DefaultParameterSetName = "SetByIpConfigurationResource"), OutputType(typeof(PSNetworkInterface))]
     public class NewAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -50,13 +49,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The public IP address location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The private ip address of the Network Interface " +
-                          "if static allocation is specified.")]
-        public string PrivateIpAddress { get; set; }
 
         //[Parameter(
         //    Mandatory = false,
@@ -178,6 +170,27 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "The private ip address of the Network Interface " +
+                          "if static allocation is specified.")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "The private ip address of the Network Interface " +
+                          "if static allocation is specified.")]
+        public string PrivateIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceId",
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The IpConfiguration name." +
+                          "default value: ipconfig1")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResource",
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The IpConfiguration name." +
                           "default value: ipconfig1")]
