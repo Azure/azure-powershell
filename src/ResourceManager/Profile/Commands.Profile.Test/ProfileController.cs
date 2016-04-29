@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
+            logger.Information(string.Format("Test method entered: {0}.{1}", callingClassType, mockName));
             helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 null,
                 callingClassType,
                 mockName, tenant);
+            logger.Information(string.Format("Test method finished: {0}.{1}", callingClassType, mockName));
         }
 
         private void RunPsTestWorkflow(
