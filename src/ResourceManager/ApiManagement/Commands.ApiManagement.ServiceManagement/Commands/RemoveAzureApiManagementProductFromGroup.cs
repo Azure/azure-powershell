@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagementProductFromGroup")]
+    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementProductFromGroup)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementProductFromGroup : AzureApiManagementCmdletBase
     {

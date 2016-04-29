@@ -44,8 +44,8 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Batch, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.4.0.0\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Batch, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Azure.Batch.4.0.1\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
@@ -63,7 +63,7 @@
       <HintPath>..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\Batch\BatchManagement\bin\Net45-Debug\Microsoft.Azure.Management.Batch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -163,6 +163,7 @@
     <Compile Include="Certificates\StopBatchCertificateDeletionCommand.cs" />
     <Compile Include="ComputeNodes\DisableBatchComputeNodeSchedulingCommand.cs" />
     <Compile Include="ComputeNodes\EnableBatchComputeNodeSchedulingCommand.cs" />
+    <Compile Include="ComputeNodes\GetBatchComputeNodeRemoteLoginSettingsCommand.cs" />
     <Compile Include="ComputeNodes\RemoveBatchComputeNodeCommand.cs" />
     <Compile Include="ComputeNodes\ResetBatchComputeNodeCommand.cs" />
     <Compile Include="ComputeNodes\RestartBatchComputeNodeCommand.cs" />
@@ -308,6 +309,7 @@
     <Compile Include="Pools\DisableBatchAutoScaleCommand.cs" />
     <Compile Include="Pools\EnableBatchAutoScaleCommand.cs" />
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
+    <Compile Include="Accounts\GetBatchAccountNodeAgentSkuCommand.cs" />
     <Compile Include="Pools\NewBatchPoolCommand.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommand.cs" />
     <Compile Include="Pools\SetBatchPoolCommand.cs" />

@@ -15,65 +15,66 @@
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.Azure.Test;
     using Xunit;
-
-    public class RedisCacheTests : RedisCacheTestsBase
+    
+    public class RedisCacheTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCache()
         {
-            RunPowerShellTest("Test-RedisCache");
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCache");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetNonExistingRedisCacheTest()
         {
-            RunPowerShellTest("Test-SetNonExistingRedisCacheTest");
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-SetNonExistingRedisCacheTest");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCachePipeline()
         {
-            RunPowerShellTest("Test-RedisCachePipeline");
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCachePipeline");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRedisCacheBugFixTest()
         {
-            RunPowerShellTest("Test-SetRedisCacheBugFixTest");
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-SetRedisCacheBugFixTest");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMaxMemoryPolicyErrorCheck()
         {
-            RunPowerShellTest("Test-MaxMemoryPolicyErrorCheck");
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-MaxMemoryPolicyErrorCheck");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCacheClustering()
         {
-            RunPowerShellTest("Test-RedisCacheClustering");
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCacheClustering");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRedisCacheDiagnostics()
         {
-            RunPowerShellTest("Test-SetAzureRedisCacheDiagnostics");
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-SetAzureRedisCacheDiagnostics");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRedisCacheDiagnostics()
         {
-            RunPowerShellTest("Test-RemoveAzureRedisCacheDiagnostics");
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-RemoveAzureRedisCacheDiagnostics");
         }
     }
 }
