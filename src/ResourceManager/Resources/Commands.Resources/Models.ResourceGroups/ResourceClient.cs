@@ -352,8 +352,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     newOperations.Add(operation);
                 }
 
-                //If nested deployment, get the operations under those deployments as well
-                if(operation.Properties.TargetResource != null && operation.Properties.TargetResource.ResourceType.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase))
+                //If nested deployment, get the operations under those deployments as well. Check if the deployment exists before calling list operations on it
+                if(operation.Properties.TargetResource != null && 
+                    operation.Properties.TargetResource.ResourceType.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase) &&
+                    ResourceManagementClient.Deployments.CheckExistence(
+                        resourceGroupName: ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id),
+                        deploymentName: operation.Properties.TargetResource.ResourceName).Exists)
                 {
                     HttpStatusCode statusCode;
                     Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
