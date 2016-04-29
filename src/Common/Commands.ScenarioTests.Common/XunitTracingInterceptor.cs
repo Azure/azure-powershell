@@ -20,14 +20,19 @@ using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Xunit.Abstractions;
+using System.IO;
+using System.Reflection;
 
 namespace Microsoft.WindowsAzure.ServiceManagemenet.Common.Models
 {
     public class XunitTracingInterceptor : Hyak.Common.ICloudTracingInterceptor
     {
+        private readonly string callingAssembly;
+
         public XunitTracingInterceptor(ITestOutputHelper output)
         {
             traceOutput = output;
+            callingAssembly = Assembly.GetCallingAssembly().FullName.Split(new[] { ',' })[0];
         }
 
         public ITestOutputHelper traceOutput;
@@ -36,13 +41,10 @@ namespace Microsoft.WindowsAzure.ServiceManagemenet.Common.Models
         {
             try
             {
-                if (arguments == null || arguments.Length == 0)
+                traceOutput.WriteLine(string.Format(message, arguments));
+                using (StreamWriter file = new StreamWriter(string.Format("{0}.test.log", callingAssembly), true))
                 {
-                    traceOutput.WriteLine(message);
-                }
-                else
-                {
-                    traceOutput.WriteLine(string.Format(message, arguments));
+                    file.WriteLine(string.Format(message, arguments));
                 }
             }
             catch {}
