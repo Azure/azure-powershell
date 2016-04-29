@@ -26,27 +26,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
 
-        [JsonIgnore]
-        public string BootDiagnosticsText
-        {
-            get { return JsonConvert.SerializeObject(BootDiagnostics, Formatting.Indented); }
-        }
-
         public IList<DiskInstanceView> Disks { get; set; }
 
-        [JsonIgnore]
-        public string DisksText
-        {
-            get { return JsonConvert.SerializeObject(Disks, Formatting.Indented); }
-        }
-
         public IList<VirtualMachineExtensionInstanceView> Extensions { get; set; }
-
-        [JsonIgnore]
-        public string ExtensionsText
-        {
-            get { return JsonConvert.SerializeObject(Extensions, Formatting.Indented); }
-        }
 
         public int? PlatformFaultDomain { get; set; }
 
@@ -56,19 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public VirtualMachineAgentInstanceView VMAgent { get; set; }
 
-        [JsonIgnore]
-        public string VMAgentText
-        {
-            get { return JsonConvert.SerializeObject(VMAgent, Formatting.Indented); }
-        }
-
         public IList<InstanceViewStatus> Statuses { get; set; }
-
-        [JsonIgnore]
-        public string StatusesText
-        {
-            get { return JsonConvert.SerializeObject(Statuses, Formatting.Indented); }
-        }
     }
 
     public static class PSVirtualMachineInstanceViewExtension

@@ -24,9 +24,11 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsCommon.New, "AzureVMConfig", DefaultParameterSetName = "ImageName"), OutputType(typeof(PersistentVM))]
+    [Cmdlet(VerbsCommon.New, "AzureVMConfig", DefaultParameterSetName = ImageNameParamterSet), OutputType(typeof(PersistentVM))]
     public class NewAzureVMConfigCommand : ServiceManagementBaseCmdlet
     {
+        private const string ImageNameParamterSet = "ImageName";
+        private const string DiskNameParamterSet = "DiskName";
         private const string RoleType = "PersistentVMRole";
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The virtual machine name.")]
@@ -69,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Position = 5, Mandatory = true, ParameterSetName = "DiskName", HelpMessage = "Friendly name of the OS disk in the disk repository.")]
+        [Parameter(Position = 5, Mandatory = true, ParameterSetName = DiskNameParamterSet, HelpMessage = "Friendly name of the OS disk in the disk repository.")]
         [ValidateNotNullOrEmpty]
         public string DiskName
         {
@@ -77,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Position = 5, Mandatory = true, ParameterSetName = "ImageName", HelpMessage = "Reference to a platform stock image or a user image from the image repository.")]
+        [Parameter(Position = 5, Mandatory = true, ParameterSetName = ImageNameParamterSet, HelpMessage = "Reference to a platform stock image or a user image from the image repository.")]
         [ValidateNotNullOrEmpty]
         public string ImageName
         {
@@ -85,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Position = 6, Mandatory = false, ParameterSetName = "ImageName", HelpMessage = "Location of the where the VHD should be created. This link refers to a blob in a storage account. If not specified the VHD will be created in the default storage account with the following format :vhds/servicename-vmname-year-month-day-ms")]
+        [Parameter(Position = 6, Mandatory = false, ParameterSetName = ImageNameParamterSet, HelpMessage = "Location of the where the VHD should be created. This link refers to a blob in a storage account. If not specified the VHD will be created in the default storage account with the following format :vhds/servicename-vmname-year-month-day-ms")]
         [ValidateNotNullOrEmpty]
         public string MediaLocation
         {
@@ -93,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Position = 7, Mandatory = false, ParameterSetName = "ImageName", HelpMessage = "Label of the new disk to be created.")]
+        [Parameter(Position = 7, Mandatory = false, ParameterSetName = ImageNameParamterSet, HelpMessage = "Label of the new disk to be created.")]
         [ValidateNotNullOrEmpty]
         public string DiskLabel
         {
@@ -108,6 +110,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.VMLicenseType)]
+        [ValidateSet("Windows_Client", "Windows_Server", IgnoreCase = true)]
+        public string LicenseType
+        {
+            get;
+            set;
+        }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -116,27 +126,28 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
             var role = new PersistentVM
             {
-                AvailabilitySetName = AvailabilitySetName,
+                AvailabilitySetName = this.AvailabilitySetName,
                 ConfigurationSets = new Collection<ConfigurationSet>(),
                 DataVirtualHardDisks = new Collection<DataVirtualHardDisk>(),
-                RoleName = Name,
-                RoleSize = InstanceSize,
+                RoleName = this.Name,
+                RoleSize = this.InstanceSize,
                 RoleType = RoleType,
-                Label = Label,
+                Label = this.Label,
                 ProvisionGuestAgent = true,
-                DebugSettings = new DebugSettings()
+                DebugSettings = new DebugSettings(),
+                LicenseType = this.LicenseType
             };
 
             role.OSVirtualHardDisk = new OSVirtualHardDisk()
             {
-                DiskName = DiskName,
-                SourceImageName = ImageName,
-                MediaLink = string.IsNullOrEmpty(MediaLocation) ? null : new Uri(MediaLocation),
-                HostCaching = HostCaching,
-                DiskLabel = string.IsNullOrEmpty(DiskLabel) ? null : DiskLabel
+                DiskName = this.DiskName,
+                SourceImageName = this.ImageName,
+                MediaLink = string.IsNullOrEmpty(MediaLocation) ? null : new Uri(this.MediaLocation),
+                HostCaching = this.HostCaching,
+                DiskLabel = string.IsNullOrEmpty(DiskLabel) ? null : this.DiskLabel
             };
 
-            role.DebugSettings.BootDiagnosticsEnabled = !(DisableBootDiagnostics.IsPresent);
+            role.DebugSettings.BootDiagnosticsEnabled = !(this.DisableBootDiagnostics.IsPresent);
             WriteObject(role, true);
         }
 
