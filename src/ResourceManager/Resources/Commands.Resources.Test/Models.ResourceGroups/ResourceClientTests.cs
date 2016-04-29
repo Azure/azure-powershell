@@ -833,21 +833,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = false,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                     {
                         Code = "404",
-                        Message = "Awesome error message",
-                        Details = new List<ResourceManagementError>(new[] { new ResourceManagementError
-                            {
-                                Code = "SubError",
-                                Message = "Sub error message"
-                            }})
+                        Message = "Awesome error message"
                     }
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
 
             IEnumerable<PSResourceManagerError> error = resourcesClient.ValidatePSResourceGroupDeployment(parameters, DeploymentMode.Incremental);
-            Assert.Equal(2, error.Count());
+            Assert.Equal(1, error.Count());
         }
 
         [Fact]
@@ -870,15 +865,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = true,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                     {
                         Code = "404",
-                        Message = "Awesome error message",
-                        Details = new List<ResourceManagementError>(new[] { new ResourceManagementError
-                            {
-                                Code = "SubError",
-                                Message = "Sub error message"
-                            }})
+                        Message = "Awesome error message"
                     }
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
@@ -907,7 +897,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = true,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
 
@@ -1109,7 +1099,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = true,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
             SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });
@@ -1210,7 +1200,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = true,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
             SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });
@@ -1311,7 +1301,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
                 {
                     IsValid = true,
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ResourceManagementError()
                 }))
                 .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
             SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });

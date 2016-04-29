@@ -17,7 +17,11 @@
               <ListItem>
                 <Label>Message</Label>
                 <PropertyName>Message</PropertyName>
-              </ListItem>              
+              </ListItem>
+              <ListItem>
+                <Label>Details</Label>
+                <PropertyName>Details</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
