@@ -116,15 +116,15 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
             var ps = PSSession;
             if (Session != null)
             {
-                Session.LastPowerShellSessionName = ps.Name;
+                Session.LastPowerShellSessionName = ps.SessionId;
             }
 
-            WriteVerbose($"Invoking PowerShell command on {ResourceGroupName}/{NodeName}/{SessionName}/{ps.Name}");
+            WriteVerbose($"Invoking PowerShell command on {ResourceGroupName}/{NodeName}/{SessionName}/{ps.SessionId}");
             // call powershell on node.
             var results = Client.PowerShell.InvokeCommand(ResourceGroupName,
                 NodeName,
                 SessionName,
-                ps.Name,
+                ps.SessionId,
                 Command.ToString());
 
             var items = results.Results;
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
                 var more = Client.PowerShell.GetCommandStatus(ResourceGroupName,
                     NodeName,
                     SessionName,
-                    ps.Name,
+                    ps.SessionId,
                     PowerShellExpandOption.Output);
                 done = more.Completed;
                 items = more.Results;

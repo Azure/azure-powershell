@@ -21,27 +21,58 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
     [Cmdlet(VerbsCommon.Get, "AzureRmServerManagementSession"), OutputType(typeof(Session))]
     public class GetServerManagementSessionCmdlet : ServerManagementCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
+        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.", ParameterSetName = "ByNodeName",
             ValueFromPipelineByPropertyName = true, Position = 0)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the node.", ValueFromPipelineByPropertyName = true,
-            Position = 1)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the node.", ParameterSetName = "ByNodeName",
+            ValueFromPipelineByPropertyName = true, Position = 1)]
         [ValidateNotNullOrEmpty]
         public string NodeName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the session.", ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, HelpMessage = "The name of the session.", ParameterSetName = "ByNodeName",
             Position = 2)]
+        [Parameter(Mandatory = false, HelpMessage = "The name of the session.", ParameterSetName = "BySession",
+            Position = 1)]
         [ValidateNotNullOrEmpty]
         public string SessionName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The the node to retrieve a session for.", ValueFromPipeline = true,
+            ParameterSetName = "ByNode", Position = 0)]
+        [ValidateNotNull]
+        public Node Node { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The the session to retrieve.", ValueFromPipeline = true,
+            ParameterSetName = "BySession", Position = 0)]
+        [ValidateNotNull]
+        public Session Session { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
+            if (Node != null)
+            {
+                WriteVerbose($"Using object for NodeName/ResourceGroup.");
+                NodeName = Node.Name;
+                ResourceGroupName = Node.ResourceGroupName;
+            }
+
+            if (Session != null)
+            {
+                WriteVerbose($"Using object for NodeName/ResourceGroup/SessionName");
+
+                NodeName = Session.NodeName;
+                ResourceGroupName = Session.ResourceGroupName;
+                if (string.IsNullOrWhiteSpace(SessionName))
+                {
+                    SessionName = Session.Name;
+                }
+            }
+
             WriteVerbose($"Getting Session resource for {ResourceGroupName}/{NodeName}/{SessionName}");
-            WriteObject(new Session(Client.Session.Get(ResourceGroupName, NodeName, SessionName)));
+            WriteObject(Session.Create(Client.Session.Get(ResourceGroupName, NodeName, SessionName)));
         }
     }
 }

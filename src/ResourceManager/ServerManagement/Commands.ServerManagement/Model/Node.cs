@@ -25,13 +25,18 @@ namespace Microsoft.Azure.Commands.ServerManagement.Model
 
         internal PSCredential Credential { get; set; }
 
-        public Node(NodeResource resource)
+        protected Node(NodeResource resource)
         {
             // copy data from API object.
             resource.CloneInto(this);
 
             GatewayName = GatewayId.ExtractFieldFromResourceId("gateways");
             ResourceGroupName = Id.ExtractFieldFromResourceId("resourcegroups");
+        }
+
+        public static Node Create(NodeResource resource)
+        {
+            return resource == null ? null : new Node(resource);
         }
     }
 }

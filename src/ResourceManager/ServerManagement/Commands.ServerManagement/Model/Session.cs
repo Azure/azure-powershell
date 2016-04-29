@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Model
 
         internal string LastPowerShellSessionName { get; set; }
 
-        public Session(SessionResource resource)
+        protected Session(SessionResource resource)
         {
             // copy data from API object.
             resource.CloneInto(this);
@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Commands.ServerManagement.Model
             ResourceGroupName = Id.ExtractFieldFromResourceId("resourcegroups");
 
             NodeName = Id.ExtractFieldFromResourceId("nodes");
+        }
+
+        public static Session Create(SessionResource resource)
+        {
+            return resource == null ? null : new Session(resource);
         }
     }
 }

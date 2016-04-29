@@ -59,7 +59,6 @@
     <Compile Include="Commands\Base\ServerMangementGatewayProfileCmdletBase.cs" />
     <Compile Include="Commands\Gateway\NewServerMangementGatewayCmdlet.cs" />
     <Compile Include="Commands\Gateway\GetServerMangementGatewayCmdlet.cs" />
-    <Compile Include="Commands\Gateway\GetServerMangementGatewayStatusCmdlet.cs" />
     <Compile Include="Commands\Node\GetServerMangementNodeCmdlet.cs" />
     <Compile Include="Commands\Session\GetServerMangementSessionCmdlet.cs" />
     <Compile Include="Commands\PowerShell\InvokeAzureRmServerMangementPowerShellCommand.cs" />
@@ -91,7 +90,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ServerManagement, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServerManagement.1.0.4\lib\net45\Microsoft.Azure.Management.ServerManagement.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServerManagement.1.0.6\lib\net45\Microsoft.Azure.Management.ServerManagement.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime">

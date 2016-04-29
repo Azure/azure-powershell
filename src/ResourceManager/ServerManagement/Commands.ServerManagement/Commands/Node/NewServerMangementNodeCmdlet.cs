@@ -73,18 +73,24 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
             }
             // the Node.Create call actually uses gatewayId, not gateway name, but that's easy enough to make.
             string gatewayId =
-                $"/subscriptions/{{{Client.SubscriptionId}}}/resourceGroups/{{{ResourceGroupName}}}/providers/Microsoft.ServerManagement/gateways/{{{GatewayName}}}";
+                $"/subscriptions/{Client.SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ServerManagement/gateways/{GatewayName}";
 
             WriteVerbose($"Creating new Node for {ResourceGroupName}/{NodeName}/{Location}/{GatewayName}");
-            WriteObject(
-                new Node(Client.Node.Create(ResourceGroupName,
-                    NodeName,
-                    Location,
-                    Tags,
-                    gatewayId,
-                    ComputerName ?? NodeName,
-                    Credential.UserName,
-                    ToPlainText(Credential.Password))) {Credential = Credential});
+
+            var node = Node.Create(Client.Node.Create(ResourceGroupName,
+                NodeName,
+                Location,
+                Tags,
+                gatewayId,
+                ComputerName ?? NodeName,
+                Credential.UserName,
+                ToPlainText(Credential.Password)));
+            if (node != null)
+            {
+                node.Credential = Credential;
+            }
+
+            WriteObject(node);
         }
     }
 }

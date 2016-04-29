@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the node.", ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "ByName", Position = 1)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the node.", ParameterSetName = "ByName", Position = 1)]
         [ValidateNotNullOrEmpty]
         public string NodeName { get; set; }
 
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
         public Node Node { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The name of the session to create. (Defaults to random)",
-            ValueFromPipelineByPropertyName = true, Position = 2)]
+            ValueFromPipelineByPropertyName = true)]
         public string SessionName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The credentials to connect to the node.")]
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
 
             WriteVerbose($"Getting Session resource for {ResourceGroupName}/{NodeName}/{SessionName}");
             WriteObject(
-                new Session(Client.Session.Create(ResourceGroupName,
+                Session.Create(Client.Session.Create(ResourceGroupName,
                     NodeName,
                     SessionName,
                     Credential.UserName,
