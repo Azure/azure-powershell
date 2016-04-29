@@ -31,13 +31,15 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
         [ValidateNotNullOrEmpty]
         public string NodeName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the session to delete.",
-            ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 2)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the session to delete.", ParameterSetName = "ByName",
+            Position = 2)]
+        [Parameter(Mandatory = false, HelpMessage = "The name of the session to delete.", ParameterSetName = "ByObject",
+            Position = 1)]
         [ValidateNotNullOrEmpty]
         public string SessionName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The session to delete.", ParameterSetName = "ByObject", Position = 0
-            )]
+        [Parameter(Mandatory = true, HelpMessage = "The session to delete.", ParameterSetName = "ByObject", Position = 0,
+            ValueFromPipeline = true)]
         [ValidateNotNull]
         public Session Session { get; set; }
 

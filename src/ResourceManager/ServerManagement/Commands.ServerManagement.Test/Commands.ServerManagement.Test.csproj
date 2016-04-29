@@ -58,7 +58,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ServerManagement, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServerManagement.1.0.4\lib\net45\Microsoft.Azure.Management.ServerManagement.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServerManagement.1.0.6\lib\net45\Microsoft.Azure.Management.ServerManagement.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder">
@@ -94,6 +94,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -174,6 +175,9 @@
     <None Include="ScenarioTests\ServerManagementTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SessionRecords\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

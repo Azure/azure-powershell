@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
     using System.Security.Principal;
     using System.Text;
     using Base;
-    using Utility;
 
     [Cmdlet(VerbsLifecycle.Install, "AzureRmServerManagementGatewayProfile")]
     public class InstallServerManagementGatewayProfileCmdlet : ServerManagementCmdlet
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
             WriteVerbose($"Reading text from file {InputFile.FullName}");
             var profile = File.ReadAllText(InputFile.FullName);
             WriteVerbose($"Profile read:\r\n{profile}");
-
 
             WriteVerbose($"Encrypting profile.");
             var encrypted = ProtectedData.Protect(Encoding.UTF8.GetBytes(profile),

@@ -20,12 +20,17 @@ namespace Microsoft.Azure.Commands.ServerManagement.Model
     {
         public string ResourceGroupName { get; set; }
 
-        public Gateway(GatewayResource resource)
+        protected Gateway(GatewayResource resource)
         {
             // copy data from API object.
             resource.CloneInto(this);
 
             ResourceGroupName = Id.ExtractFieldFromResourceId("resourcegroups");
+        }
+
+        public static Gateway Create(GatewayResource resource)
+        {
+            return resource == null ? null : new Gateway(resource);
         }
     }
 }

@@ -1,4 +1,4 @@
-// Copyright Microsoft Corporation
+﻿// Copyright Microsoft Corporation
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,16 +11,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
+namespace Microsoft.Azure.Commands.ServerManagement.Commands.Base
 {
     using System.Management.Automation;
-    using Base;
-    using Management.ServerManagement;
-    using Management.ServerManagement.Models;
     using Model;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmServerManagementGatewayStatus"), OutputType(typeof(Gateway))]
-    public class GetServerManagementGatewayStatusCmdlet : ServerManagementCmdlet
+    public class ServerManagementGatewayProfileCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 0)]
@@ -46,9 +42,6 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
                 ResourceGroupName = Gateway.ResourceGroupName;
                 GatewayName = Gateway.Name;
             }
-
-            WriteVerbose($"Getting gatewway status for {ResourceGroupName}/{GatewayName}");
-            WriteObject(new Gateway(Client.Gateway.Get(ResourceGroupName, GatewayName, GatewayExpandOption.Status)));
         }
     }
 }

@@ -22,23 +22,35 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
     public class GetServerManagementNodeCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "The targeted resource group.",
-            ValueFromPipelineByPropertyName = true, Position = 0)]
+            ParameterSetName = "ByNodeName", ValueFromPipelineByPropertyName = true, Position = 0)]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The name of the node to retrieve.",
-            ValueFromPipelineByPropertyName = true, Position = 1)]
+            ParameterSetName = "ByNodeName", ValueFromPipelineByPropertyName = true, Position = 1)]
         [ValidateNotNullOrEmpty]
         public string NodeName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The the node to retrieve.", ValueFromPipeline = true,
+            ParameterSetName = "ByNode", Position = 0)]
+        [ValidateNotNull]
+        public Node Node { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
+            if (Node != null)
+            {
+                WriteVerbose($"Using object for NodeName/ResourceGroup.");
+                NodeName = Node.Name;
+                ResourceGroupName = Node.ResourceGroupName;
+            }
+
             // lookup just one node
             if (NodeName != null)
             {
                 WriteVerbose($"Getting Node for {NodeName}");
-                WriteObject(new Node(Client.Node.Get(ResourceGroupName, NodeName)));
+                WriteObject(Node.Create(Client.Node.Get(ResourceGroupName, NodeName)));
                 return;
             }
 
@@ -48,7 +60,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
                 WriteVerbose($"Getting Nodes in resource group {ResourceGroupName}");
                 foreach (var node in Client.Node.ListForResourceGroup(ResourceGroupName))
                 {
-                    WriteObject(new Node(node));
+                    WriteObject(Node.Create(node));
                 }
                 return;
             }
@@ -57,7 +69,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
             foreach (var node in Client.Node.List())
             {
                 WriteVerbose($"Getting all Nodes in entire subscription ");
-                WriteObject(new Node(node));
+                WriteObject(Node.Create(node));
             }
         }
     }
