@@ -41,11 +41,11 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 if (value == "Primary")
                 {
-                    keyType = AccountKeyType.PrimaryKey;
+                    keyType = AccountKeyType.Primary;
                 }
                 else if (value == "Secondary")
                 {
-                    keyType = AccountKeyType.SecondaryKey;
+                    keyType = AccountKeyType.Secondary;
                 }
             }
         }

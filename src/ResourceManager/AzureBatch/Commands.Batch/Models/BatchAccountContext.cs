@@ -118,8 +118,8 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
         /// </summary>
-        public AccountKeyType KeyInUse 
-        { 
+        public AccountKeyType KeyInUse
+        {
             get { return this.keyInUse; }
             set
             {
@@ -138,12 +138,12 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 if (this.batchOMClient == null)
                 {
-                    if ((KeyInUse == AccountKeyType.PrimaryKey && string.IsNullOrEmpty(PrimaryAccountKey)) ||
-                        (KeyInUse == AccountKeyType.SecondaryKey && string.IsNullOrEmpty(SecondaryAccountKey)))
+                    if ((KeyInUse == AccountKeyType.Primary && string.IsNullOrEmpty(PrimaryAccountKey)) ||
+                        (KeyInUse == AccountKeyType.Secondary && string.IsNullOrEmpty(SecondaryAccountKey)))
                     {
                         throw new InvalidOperationException(string.Format(Resources.KeyNotPresent, KeyInUse));
                     }
-                    string key = KeyInUse == AccountKeyType.PrimaryKey ? PrimaryAccountKey : SecondaryAccountKey;
+                    string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
                     BatchServiceClient restClient = CreateBatchRestClient(TaskTenantUrl, AccountName, key);
                     this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Open(restClient);
                 }
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         internal BatchAccountContext()
         {
-            this.KeyInUse = AccountKeyType.PrimaryKey;
+            this.KeyInUse = AccountKeyType.Primary;
         }
 
         internal BatchAccountContext(string accountEndpoint) : this()
