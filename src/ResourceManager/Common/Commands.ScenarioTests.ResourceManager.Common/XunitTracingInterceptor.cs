@@ -40,7 +40,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
             try
             {
                 traceOutput.WriteLine(string.Format(message, arguments));
-                using (StreamWriter file = new StreamWriter(string.Format("{0}.test.log", callingAssembly), true))
+                using (StreamWriter file = new StreamWriter(string.Format("{0}.test.log", callingAssembly).AsAbsoluteLocation(), true))
                 {
                     file.WriteLine(string.Format(message, arguments));
                 }
