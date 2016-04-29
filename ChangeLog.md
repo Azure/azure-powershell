@@ -1,3 +1,45 @@
+##2016.05.03 version 1.4.0
+* Azure Storage
+  * Upgrade to Microsoft.Azure.Management.Storage nuget package v5.0 preview
+  * Add Encryption and Hot/Cool features support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+  * Add "Add" and "Create" permission to Blob SAS cmdlets
+    - New-AzureStorageBlobSASToken
+    - New-AzureStorageContainerSASToken
+    - New-AzureStorageContainerStoredAccessPolicy
+    - Set-AzureStorageContainerStoredAccessPolicy
+  * Add "Create" permission to File SAS cmdlets
+    - New-AzureStorageFileSASToken
+    - New-AzureStorageShareSASToken
+    - New-AzureStorageShareStoredAccessPolicy
+    - Set-AzureStorageShareStoredAccessPolicy
+  * Added Recovery Services Backup cmdlets
+    - Set-AzureRmRecoveryServicesVaultContext
+    - Set-AzureRmRecoveryServicesBackupProperties
+    - Get-AzureRmRecoveryServicesBackupProperties
+    - Get-AzureRmRecoveryServicesVaultSettingsFile
+    - Backup-AzureRmRecoveryServicesBackupItem
+    - Get-AzureRmRecoveryServicesBackupContainer
+    - Get-AzureRmRecoveryServicesBackupManagementServer
+    - Unregister-AzureRmRecoveryServicesBackupContainer
+    - Unregister-AzureRmRecoveryServicesBackupManagementServer
+    - Disable-AzureRmRecoveryServicesBackupProtection
+    - Enable-AzureRmRecoveryServicesBackupProtection
+    - Get-AzureRmRecoveryServicesBackupItem
+    - Get-AzureRmRecoveryServicesBackupJob
+    - Get-AzureRmRecoveryServicesBackupJobDetails
+    - Stop-AzureRmRecoveryServicesBackupJob
+    - Wait-AzureRmRecoveryServicesBackupJob
+    - Get-AzureRmRecoveryServicesBackupRetentionPolicyObject
+    - Get-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Get-AzureRmRecoveryServicesBackupSchedulePolicyObject
+    - New-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Remove-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Set-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Get-AzureRmRecoveryServicesBackupRecoveryPoint
+    - Restore-AzureRmRecoveryServicesBackupItem
+
 ##2016.04.19 version 1.3.2
 * Add support for specifying NIC/VMSS as application gateway backend address
 * Fix HDI ADL cluster creation and live test

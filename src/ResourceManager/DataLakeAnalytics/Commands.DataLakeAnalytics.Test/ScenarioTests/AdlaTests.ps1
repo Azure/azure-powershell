@@ -19,6 +19,12 @@ function Test-DataLakeAnalyticsAccount
 	{
 		# Creating Account and initial setup
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
+
 		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $secondDataLakeAccountName -Location $location
 		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
@@ -45,6 +51,11 @@ function Test-DataLakeAnalyticsAccount
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics account is not in succeeded state even after 30 min."
 		}
+
+		# Test to make sure the account does exist now
+		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
 
 		# Updating Account
 		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
@@ -659,8 +670,11 @@ function Test-DataLakeAnalyticsCatalog
 		# create the secret
 		$pw = ConvertTo-SecureString -String $secretPwd -AsPlainText -Force
 		$secret = New-Object System.Management.Automation.PSCredential($secretName,$pw)
+		$secretName2 = $secretName + "dup"
+		$secret2 = New-Object System.Management.Automation.PSCredential($secretName2,$pw)
 
 		New-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -secret $secret -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
+		New-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -secret $secret2 -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
 
 		# verify that the credential can be retrieved
 		$getSecret = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"
@@ -718,6 +732,12 @@ function Test-DataLakeAnalyticsCatalog
 
 		# verify that the secret cannot be retrieved
 		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"}
+
+		# delete all secrets
+		Remove-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -DatabaseName $databaseName -Force
+
+		# verify that the second secret cannot be retrieved
+		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName2"}
 
 		# Delete the DataLakeAnalytics account
 		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."

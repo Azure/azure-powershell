@@ -162,6 +162,34 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             RunPowerShellTest("AuthorizationServer-CrudTest");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void LoggerCrudTest()
+        {
+            RunPowerShellTest("Logger-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PropertiesCrudTest()
+        {
+            RunPowerShellTest("Properties-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void OpenIdConnectProviderCrudTest()
+        {
+            RunPowerShellTest("OpenIdConnectProvider-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TenantGitConfigurationCrudTest()
+        {
+            RunPowerShellTest("TenantGitConfiguration-CrudTest");
+        }
+
         private void RunPowerShellTest(params string[] scripts)
         {
             for (int i = 0; i < scripts.Length; i++)
