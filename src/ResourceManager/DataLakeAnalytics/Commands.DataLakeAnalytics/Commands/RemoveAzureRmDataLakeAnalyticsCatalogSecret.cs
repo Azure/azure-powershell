@@ -48,12 +48,24 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         {
             if (!Force.IsPresent)
             {
-                ConfirmAction(
+                if (string.IsNullOrEmpty(Name))
+                {
+                    ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Resources.RemovingDataLakeAnalyticsCatalogSecret, Name),
-                    string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecret, Name),
-                    Name,
+                    string.Format(Resources.RemovingDataLakeAnalyticsCatalogSecrets, DatabaseName),
+                    string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecrets, DatabaseName),
+                    DatabaseName,
                     () => DataLakeAnalyticsClient.DeleteSecret(Account, DatabaseName, Name));
+                }
+                else
+                {
+                    ConfirmAction(
+                        Force.IsPresent,
+                        string.Format(Resources.RemovingDataLakeAnalyticsCatalogSecret, Name),
+                        string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecret, Name),
+                        Name,
+                        () => DataLakeAnalyticsClient.DeleteSecret(Account, DatabaseName, Name));
+                }
             }
             else
             {
