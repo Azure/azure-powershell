@@ -60,6 +60,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private ResourceManagerSdkClient resourceManagerSdkClient;
 
         /// <summary>
+        /// Field that holds the subscripotions client instance
+        /// </summary>
+        private SubscriptionSdkClient subscriptionSdkClient;
+
+        /// <summary>
         /// Gets or sets the API version.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
@@ -290,6 +295,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             set { this.resourceManagerSdkClient = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the subscription sdk client
+        /// </summary>
+        public SubscriptionSdkClient SubscriptionSdkClient
+        {
+            get
+            {
+                if (this.subscriptionSdkClient == null)
+                {
+                    this.subscriptionSdkClient = new SubscriptionSdkClient(DefaultContext)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
+                }
+                return this.subscriptionSdkClient;
+            }
+
+            set { this.subscriptionSdkClient = value; }
         }
 
         private Dictionary<string, string> GetCmdletHeaders()
