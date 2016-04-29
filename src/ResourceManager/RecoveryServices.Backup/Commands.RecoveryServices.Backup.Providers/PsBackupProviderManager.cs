@@ -47,13 +47,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     if (backupManagementType == BackupManagementType.AzureVM || backupManagementType == null)
                         providerType = PsBackupProviderTypes.IaasVm;
                     else
-                        throw new ArgumentException(String.Format(Resources.BackupManagementTypeRequiredForContainerType, containerType));
+                        throw new ArgumentException(String.Format(Resources.BackupManagementTypeIncorrectForContainerType, containerType));
                     break;
                 case ContainerType.Windows:
                     if (backupManagementType == BackupManagementType.MARS)
                         providerType = PsBackupProviderTypes.Mab;
-                    else
+                    else if (backupManagementType == null)
                         throw new ArgumentException(String.Format(Resources.BackupManagementTypeRequiredForContainerType, containerType));
+                    else
+                        throw new ArgumentException(String.Format(Resources.BackupManagementTypeIncorrectForContainerType, containerType));
                     break;
                 default:
                     throw new ArgumentException(String.Format(Resources.UnsupportedContainerType, containerType.ToString()));
@@ -104,6 +106,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                                      workloadType.ToString()));
                     }
                     psProviderType = PsBackupProviderTypes.IaasVm;
+                    break;
+                case WorkloadType.AzureSql:
+                    if (backupManagementType.HasValue && backupManagementType != BackupManagementType.AzureSql)
+                    {
+                        // throw exception that it is not expected
+                        throw new ArgumentException(String.Format(Resources.BackupManagementTypeNotExpectedForWorkloadType,
+                                                     workloadType.ToString()));
+                    }
+                    psProviderType = PsBackupProviderTypes.AzureSql;
                     break;
                 default:
                     throw new ArgumentException(String.Format(Resources.UnsupportedWorkloadTypeException, workloadType.ToString()));

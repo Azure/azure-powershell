@@ -23,5 +23,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     public class AzureRmRecoveryServicesAzureSqlPolicy : AzureRmRecoveryServicesBackupPolicyBase
     {
+        public AzureRmRecoveryServicesBackupRetentionPolicyBase RetentionPolicy { get; set; }
+        public override void Validate()
+        {
+            base.Validate();
+            RetentionPolicy.Validate();
+        }
+
     }
 }

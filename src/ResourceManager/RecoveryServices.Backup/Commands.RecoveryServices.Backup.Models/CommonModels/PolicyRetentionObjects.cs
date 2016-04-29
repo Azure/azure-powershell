@@ -21,6 +21,24 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    public class AzureRmRecoveryServicesBackupSimpleRetentionPolicy : AzureRmRecoveryServicesBackupRetentionPolicyBase
+    {
+        public RetentionDuration RetentionDuration { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("RetentionDurationType: {0}, Retention Count : {1}",
+                        RetentionDuration.RetentionDurationType.ToString(),
+                        RetentionDuration.RetentionCount);            
+        }
+
+        public override void Validate()
+        {
+            base.Validate();
+            RetentionDuration.Validate();
+        }
+    }
+
     public class AzureRmRecoveryServicesBackupLongTermRetentionPolicy : AzureRmRecoveryServicesBackupRetentionPolicyBase
     {
         public bool IsDailyScheduleEnabled { get; set; }
@@ -392,5 +410,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             return string.Format("Date:{0}, IsLast:{1}", Date, IsLast);
         }
-    }   
+    }
+
+    public class RetentionDuration
+    {
+        public RetentionDurationType RetentionDurationType { get; set; }
+
+        public int RetentionCount { get; set; }
+
+        public void Validate()
+        {
+            if (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCount)
+            {
+                throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
+            }
+        }
+    }
 }

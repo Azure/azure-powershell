@@ -68,10 +68,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return ltrPolicy;            
         }
 
-        public static AzureRmRecoveryServicesBackupLongTermRetentionPolicy GetPSSimpleRetentionPolicy(
+        public static AzureRmRecoveryServicesBackupSimpleRetentionPolicy GetPSSimpleRetentionPolicy(
            HydraModels.SimpleRetentionPolicy hydraRetPolicy)
         {
-            throw new NotSupportedException();
+            if(hydraRetPolicy == null)
+            {
+                return null;
+            }
+
+            AzureRmRecoveryServicesBackupSimpleRetentionPolicy simplePolicy = new AzureRmRecoveryServicesBackupSimpleRetentionPolicy();
+
+            if (hydraRetPolicy.RetentionDuration != null)
+            {
+                simplePolicy.RetentionDuration = new RetentionDuration();
+                simplePolicy.RetentionDuration.RetentionDurationType = (RetentionDurationType)Enum.Parse(typeof(RetentionDurationType), hydraRetPolicy.RetentionDuration.DurationType);
+                simplePolicy.RetentionDuration.RetentionCount = hydraRetPolicy.RetentionDuration.Count;
+            }
+            
+            simplePolicy.Validate();
+            return simplePolicy;
         }
 
         #endregion
@@ -323,6 +338,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #endregion
 
         #region PStoHydraObject conversions
+
+        public static HydraModels.SimpleRetentionPolicy GetHydraSimpleRetentionPolicy(
+            AzureRmRecoveryServicesBackupSimpleRetentionPolicy psRetPolicy)
+        {
+            if (psRetPolicy == null)
+            {
+                return null;
+            }
+            else
+            {
+
+                HydraModels.SimpleRetentionPolicy simpleRetPolicy = new HydraModels.SimpleRetentionPolicy();
+
+                simpleRetPolicy.RetentionDuration = new HydraModels.RetentionDuration();
+                simpleRetPolicy.RetentionDuration.DurationType = psRetPolicy.RetentionDuration.RetentionDurationType.ToString();
+                simpleRetPolicy.RetentionDuration.Count = psRetPolicy.RetentionDuration.RetentionCount;
+
+                return simpleRetPolicy;
+            }            
+        }
+
         public static HydraModels.LongTermRetentionPolicy GetHydraLongTermRetentionPolicy(
             AzureRmRecoveryServicesBackupLongTermRetentionPolicy psRetPolicy)
         {
