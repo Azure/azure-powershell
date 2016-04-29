@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             FileType type;
 
             if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type) ||
-                type != FileType.File)
+                type != FileType.FILE)
             {
                 throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
             }

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementGroup")]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementGroup)]
     [OutputType(typeof(PsApiManagementGroup))]
     public class SetAzureApiManagementGroup : AzureApiManagementCmdletBase
     {
@@ -51,7 +51,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup type  representing the modified group.")]
+            HelpMessage = "If specified then instance of " +
+                          "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup type " +
+                          "representing the modified group.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

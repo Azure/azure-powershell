@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementUser")]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementUser)]
     [OutputType(typeof(PsApiManagementUser))]
     public class SetAzureApiManagementUser : AzureApiManagementCmdletBase
     {
@@ -75,7 +75,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false,
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser type representing the modified user.")]
+            HelpMessage = "If specified then instance of " +
+                          "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser type" +
+                          " representing the modified user.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

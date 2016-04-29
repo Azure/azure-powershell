@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof (bool))]
+    //[Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof (bool))]
     public class RemoveAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

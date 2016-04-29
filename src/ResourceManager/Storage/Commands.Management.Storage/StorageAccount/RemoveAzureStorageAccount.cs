@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group StorageAccountName.")]
+            HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account StorageAccountName.")]
+            HelpMessage = "Storage Account Name.")]
         [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
