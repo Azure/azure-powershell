@@ -226,13 +226,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     catch
                     {
                         // Need to throw if we fail to delete the application while attempting to clean it up.
-                        var deleteMessage = string.Format("Uploading {0} to storage failed and the attempt to delete the application package afterwards failed ({1})", filePath, exception.Message);
+                        var deleteMessage = string.Format(Resources.FailedToUploadAndDelete, filePath, exception.Message);
                         throw new UploadApplicationPackageException(deleteMessage, exception);
                     }
                 }
 
                 // Need to throw if we fail to upload the file's content.
-                var uploadMessage = string.Format("Failed to upload {0} to storage ({1})", filePath, exception.Message);
+                var uploadMessage = string.Format(Resources.FailedToUpload, filePath, exception.Message);
                 throw new UploadApplicationPackageException(uploadMessage, exception);
             }
         }
@@ -266,10 +266,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             catch (Exception exception)
             {
-                string message = string.Format("Application package {0} version {1} successfully uploaded but failed to activate ({2})", applicationId, version, exception.Message);
+                string message = string.Format(Resources.UploadedApplicationButFailedToActivate, applicationId, version, exception.Message);
                 if (activateOnly)
                 {
-                    message = string.Format("Application package {0} version {1} failed to activate ({2})", applicationId, version, exception.Message);
+                    message = string.Format(Resources.FailedToActivate, applicationId, version, exception.Message);
                 }
 
                 throw new ActivateApplicationPackageException(message, exception);
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 // If the application package is not found we want to create a new application package.
                 if (exception.Response.StatusCode != HttpStatusCode.NotFound)
                 {
-                    var message = string.Format("Failed to get application {0} package {1}. You may need to delete the application package and try uploading again ({2})", applicationId, version, exception.Message);
+                    var message = string.Format(Resources.FailedToGetApplicationPackage, applicationId, version, exception.Message);
                     throw new CloudException(message, exception);
                 }
             }
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             catch (Exception exception)
             {
-                var message = string.Format("Failed to add application package {0} version {1} ({2})", applicationId, version, exception.Message);
+                var message = string.Format(Resources.FailedToAddApplicationPackage, applicationId, version, exception.Message);
                 throw new AddApplicationPackageException(message, exception);
             }
         }

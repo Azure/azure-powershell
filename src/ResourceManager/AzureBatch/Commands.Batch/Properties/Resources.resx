@@ -442,4 +442,22 @@
   <data name="FileNotFound" xml:space="preserve">
     <value>File not found {0}.</value>
   </data>
+  <data name="FailedToUpload" xml:space="preserve">
+    <value>Failed to upload {0} to storage ({1}).</value>
+  </data>
+  <data name="FailedToUploadAndDelete" xml:space="preserve">
+    <value>Uploading {0} to storage failed and the attempt to delete the application package afterwards failed ({1}).</value>
+  </data>
+  <data name="UploadedApplicationButFailedToActivate" xml:space="preserve">
+    <value>Application package {0} version {1} successfully uploaded but failed to activate ({2}).</value>
+  </data>
+  <data name="FailedToActivate" xml:space="preserve">
+    <value>Application package {0} version {1} failed to activate ({2}).</value>
+  </data>
+  <data name="FailedToGetApplicationPackage" xml:space="preserve">
+    <value>Failed to get application {0} package {1}. You may need to delete the application package and try uploading again ({2}).</value>
+  </data>
+  <data name="FailedToAddApplicationPackage" xml:space="preserve">
+    <value>"Failed to add application package {0} version {1} ({2})."</value>
+  </data>
 </root>
