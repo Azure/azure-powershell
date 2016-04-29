@@ -107,8 +107,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         protected void ExecuteTenantConfigurationLongRunningCmdletWrap(
             Func<TenantConfigurationLongRunningOperation> func,
-            bool passThru = false,
-            object passThruValue = null)
+            bool passThru = false)
         {
             try
             {
@@ -121,12 +120,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                         longRunningOperation.OperationResult.Error.Message
                         : longRunningOperation.OperationName;
 
+                    WriteObject(longRunningOperation.OperationResult);
+                    if (longRunningOperation.OperationResult.Error != null)
+                    {
+                        WriteObject(longRunningOperation.OperationResult.Error);
+                        if (longRunningOperation.OperationResult.Error.Details != null)
+                        {
+                            WriteObject(longRunningOperation.OperationResult.Error.Details, true);
+                        }
+                    }
+
                     WriteErrorWithTimestamp(errorMessage);
-                    WriteObject(passThruValue ?? longRunningOperation.OperationResult);
                 }
                 else if (passThru)
                 {
-                    WriteObject(passThruValue ?? longRunningOperation.OperationResult);
+                    WriteObject(longRunningOperation.OperationResult);
                 }
             }
             catch (ArgumentException ex)
