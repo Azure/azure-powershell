@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 {
     public class JobTests : HDInsightTestBase
     {
-        public JobTests()
+        public JobTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForData();
         }
 

@@ -26,6 +26,8 @@ using Xunit;
 using CSMSubscription = Microsoft.Azure.Subscriptions.Models.Subscription;
 using RDFESubscription = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit.Abstractions;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 namespace Common.Authentication.Test
 {
@@ -55,8 +57,9 @@ namespace Common.Authentication.Test
         private CSMSubscription guestCsmSubscription;
         private AzureSMProfile currentProfile;
 
-        public ProfileClientTests()
+        public ProfileClientTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             SetMockData();
             currentProfile = new AzureSMProfile();
         }

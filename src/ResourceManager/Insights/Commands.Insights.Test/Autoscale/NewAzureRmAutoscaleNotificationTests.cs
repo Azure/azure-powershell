@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public NewAzureRmAutoscaleNotificationCommand Cmdlet { get; set; }
 
-        public NewAzureRmAutoscaleNotificationTests()
+        public NewAzureRmAutoscaleNotificationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             Cmdlet = new NewAzureRmAutoscaleNotificationCommand()
             {

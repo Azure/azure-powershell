@@ -16,11 +16,18 @@ using System;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
     public class ResourceIdentifierTests
     {
+        public ResourceIdentifierTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IdentifierIsConstructedFromProvidedValues()

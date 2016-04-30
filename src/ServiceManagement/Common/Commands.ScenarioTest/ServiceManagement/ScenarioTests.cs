@@ -12,12 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public partial class ServiceManagementTests
     {
+        public ServiceManagementTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

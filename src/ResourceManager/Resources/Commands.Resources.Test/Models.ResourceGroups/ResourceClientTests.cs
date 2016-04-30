@@ -36,6 +36,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
 using System.IO;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
@@ -119,8 +121,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 normalized2.ToLowerInvariant());
         }
 
-        public ResourceClientTests()
+        public ResourceClientTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             resourceManagementClientMock = new Mock<IResourceManagementClient>();
             authorizationManagementClientMock = new Mock<IAuthorizationManagementClient>();
             deploymentsMock = new Mock<IDeploymentOperations>();
