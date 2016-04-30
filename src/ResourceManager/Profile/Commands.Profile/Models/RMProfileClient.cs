@@ -513,6 +513,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                             .Where(s => "enabled".Equals(s.State, StringComparison.OrdinalIgnoreCase) ||
                                                         "warned".Equals(s.State, StringComparison.OrdinalIgnoreCase));
 
+                        account.SetProperty(AzureAccount.Property.Subscriptions, subscriptions.Select(i => i.SubscriptionId).ToArray());
+
                         if (subscriptions.Any())
                         {
                             if (subscriptionName != null)
