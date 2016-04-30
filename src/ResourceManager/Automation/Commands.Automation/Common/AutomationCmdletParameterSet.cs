@@ -60,6 +60,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
         internal const string ByHourly = "ByHourly";
 
         /// <summary>
+        /// The weekly schedule parameter set.
+        /// </summary>
+        internal const string ByWeekly = "ByWeekly";
+
+        /// <summary>
+        /// The monthly schedule parameter set.
+        /// </summary>
+        internal const string ByMonthly = "ByMonthly";
+
+        /// <summary>
         /// The Job Id parameter set.
         /// </summary>
         internal const string ByJobId = "ByJobId";

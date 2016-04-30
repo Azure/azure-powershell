@@ -63,9 +63,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.5.2-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Automation, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.Automation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.2.0.0\lib\portable-net45+wp8+wpa81+win\Microsoft.Azure.Management.Automation.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\OAASMain\Online\Common\Ext_Dependencies\AutomationARMSDK\03142016\Microsoft.Azure.Management.Automation.2.0.0.0-prerelease\Microsoft.Azure.Management.Automation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -217,6 +217,8 @@
     <Compile Include="DataContract\ErrorResponse.cs" />
     <Compile Include="DataContract\OdataError.cs" />
     <Compile Include="DataContract\OdataErrorMessage.cs" />
+    <Compile Include="Model\AdvancedSchedule.cs" />
+    <Compile Include="Model\AdvancedScheduleMonthlyOccurrence.cs" />
     <Compile Include="Model\AgentRegistration.cs" />
     <Compile Include="Model\AutomationAccount.cs" />
     <Compile Include="Model\CertificateInfo.cs" />

@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
@@ -58,6 +60,30 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Description { get; set; }
 
         /// <summary>
+        /// Gets or sets the schedule days of the week.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of days of the week for weekly schedule.")]
+        public DayOfWeek[] WeekDays { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule days of the month.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of days of the month for monthly schedule.")]
+        public int[] MonthDays { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule day of the week.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The day of week for monthly occurrence.")]
+        public DayOfWeek? DayOfWeek { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule day of the week.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Occurrence of the week within the month.")]
+        public int? Occurrence { get; set; }
+
+        /// <summary>
         /// Gets or sets the switch parameter to create a one time schedule.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByOneTime, Mandatory = true, HelpMessage = "To create a one time schedule.")]
@@ -68,6 +94,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByDaily, Mandatory = false, HelpMessage = "The schedule expiry time.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByHourly, Mandatory = false, HelpMessage = "The schedule expiry time.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByWeekly, Mandatory = false, HelpMessage = "The schedule expiry time.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthly, Mandatory = false, HelpMessage = "The schedule expiry time.")]
         public DateTimeOffset ExpiryTime { get; set; }
 
         /// <summary>
@@ -85,6 +113,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public byte HourInterval { get; set; }
 
         /// <summary>
+        /// Gets or sets the weekly schedule week interval.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByWeekly, Mandatory = true, HelpMessage = "The weekly schedule hour interval.")]
+        [ValidateRange(1, byte.MaxValue)]
+        public byte WeekInterval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the weekly schedule week interval.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthly, Mandatory = true, HelpMessage = "The monthly schedule hour interval.")]
+        [ValidateRange(1, byte.MaxValue)]
+        public byte MonthInterval { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -98,23 +140,80 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 ExpiryTime = this.ExpiryTime
             };
 
-            if (this.ParameterSetName == AutomationCmdletParameterSets.ByOneTime)
+            switch (this.ParameterSetName)
             {
-                schedule.Frequency = ScheduleFrequency.Onetime;
-            }
-            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByDaily)
-            {
-                schedule.Frequency = ScheduleFrequency.Day;
-                schedule.Interval = this.DayInterval;
-            }
-            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByHourly)
-            {
-                schedule.Frequency = ScheduleFrequency.Hour;
-                schedule.Interval = this.HourInterval;
+                case AutomationCmdletParameterSets.ByOneTime:
+                    schedule.Frequency = ScheduleFrequency.Onetime;
+                    break;
+                case AutomationCmdletParameterSets.ByDaily:
+                    schedule.Frequency = ScheduleFrequency.Day;
+                    schedule.Interval = this.DayInterval;
+                    break;
+                case AutomationCmdletParameterSets.ByHourly:
+                    schedule.Frequency = ScheduleFrequency.Hour;
+                    schedule.Interval = this.HourInterval;
+                    break;
+                case AutomationCmdletParameterSets.ByWeekly:
+                    schedule.Frequency = ScheduleFrequency.Week;
+                    schedule.Interval = this.WeekInterval;
+                    schedule.WeekDays = this.WeekDays == null
+                        ? null
+                        : this.WeekDays.Select(day => day.ToString()).ToList();
+                    break;
+                case AutomationCmdletParameterSets.ByMonthly:
+                    schedule = this.CreateMonthlyScheduleModel(
+                        schedule,
+                        this.MonthDays,
+                        this.DayOfWeek.ToString(),
+                        this.Occurrence);
+                   
+                    break;
             }
 
             Schedule createdSchedule = this.AutomationClient.CreateSchedule(this.ResourceGroupName, this.AutomationAccountName, schedule);
             this.WriteObject(createdSchedule);
+        }
+
+        /// <summary>
+        /// The validate.
+        /// </summary>
+        /// <param name="schedule">
+        /// The schedule.
+        /// </param>
+        /// <param name="monthDays">
+        /// The month days.
+        /// </param>
+        /// <param name="day">
+        /// The day.
+        /// </param>
+        /// <param name="occurrence">
+        /// The occurrence.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Schedule"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// throws exception
+        /// </exception>
+        private Schedule CreateMonthlyScheduleModel(Schedule schedule, IList<int> monthDays, string day, int? occurrence)
+        {
+            if (monthDays != null && (!string.IsNullOrWhiteSpace(day) || occurrence != null))
+            {
+                throw new Exception("Both month days and monthly occurrence can not be selected at the same time.");
+            }
+            else if ((!string.IsNullOrWhiteSpace(day) && occurrence == null) || (string.IsNullOrWhiteSpace(day) && occurrence != null))
+            {
+                throw new Exception("for monthly occurrence, both day and occurrence need to be specified");
+            }
+
+            var newSchedule = schedule;
+            newSchedule.Frequency = ScheduleFrequency.Month;
+            newSchedule.Interval = this.MonthInterval;
+            newSchedule.MonthDays = monthDays == null ? null : monthDays.ToList();
+            newSchedule.DayOfWeek = day;
+            newSchedule.Occurrence = occurrence;
+
+            return newSchedule;
         }
     }
 }

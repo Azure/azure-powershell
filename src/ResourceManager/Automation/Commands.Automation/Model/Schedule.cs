@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
 using System;
@@ -52,6 +55,18 @@ namespace Microsoft.Azure.Commands.Automation.Model
                                : this.NextRun;
             this.Interval = schedule.Properties.Interval.HasValue ? schedule.Properties.Interval.Value : this.Interval;
             this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Properties.Frequency, true);
+            this.WeekDays = schedule.Properties.AdvancedSchedule == null
+                ? null
+                : schedule.Properties.AdvancedSchedule.WeekDays;
+            this.MonthDays = schedule.Properties.AdvancedSchedule == null
+                ? null
+                : schedule.Properties.AdvancedSchedule.MonthDays;
+            this.DayOfWeek = schedule.Properties.AdvancedSchedule == null || this.IsNullOrEmptyList(schedule.Properties.AdvancedSchedule.MonthlyOccurrences)
+                ? null
+                : schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Day;
+            this.Occurrence = schedule.Properties.AdvancedSchedule == null || this.IsNullOrEmptyList(schedule.Properties.AdvancedSchedule.MonthlyOccurrences)
+                ? null
+                : schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Occurrence;
         }
 
         /// <summary>
@@ -90,5 +105,41 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the schedule frequency.
         /// </summary>
         public ScheduleFrequency Frequency { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule days of the week.
+        /// </summary>
+        public IList<string> WeekDays { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule days of the month.
+        /// </summary>
+        public IList<int> MonthDays { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule day of the week.
+        /// </summary>
+        public string DayOfWeek { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule day of the week.
+        /// </summary>
+        public int? Occurrence { get; set; }
+        
+        /// <summary>
+        /// The is null or empty list.
+        /// </summary>
+        /// <param name="list">
+        /// The list.
+        /// </param>
+        /// <typeparam name="T">
+        /// </typeparam>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        private bool IsNullOrEmptyList<T>(IList<T> list)
+        {
+            return list == null || list.Count == 0;
+        }
     }
 }

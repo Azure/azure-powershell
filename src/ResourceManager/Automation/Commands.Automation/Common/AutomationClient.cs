@@ -335,7 +335,24 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     ExpiryTime = schedule.ExpiryTime,
                     Description = schedule.Description,
                     Interval = schedule.Interval,
-                    Frequency = schedule.Frequency.ToString()
+                    Frequency = schedule.Frequency.ToString(),
+                    AdvancedSchedule = this.AdvancedScheduleIsNull(schedule) 
+                        ? null 
+                        : new AutomationManagement.Models.AdvancedSchedule()
+                        {
+                            WeekDays = schedule.WeekDays,
+                            MonthDays = schedule.MonthDays,
+                            MonthlyOccurrences = string.IsNullOrWhiteSpace(schedule.DayOfWeek) && schedule.Occurrence == null
+                            ? null
+                            : new AutomationManagement.Models.AdvancedScheduleMonthlyOccurrence[]
+                            {
+                                new AutomationManagement.Models.AdvancedScheduleMonthlyOccurrence()
+                                {
+                                    Day = schedule.DayOfWeek,
+                                    Occurrence = schedule.Occurrence
+                                }
+                            }
+                        }
                 }
             };
 
@@ -1568,6 +1585,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
             Requires.Argument("schedule", schedule).NotNull();
 
             return new Schedule(resourceGroupName, automationAccountName, schedule);
+        }
+
+        private bool AdvancedScheduleIsNull(Schedule schedule)
+        {
+            return (schedule.WeekDays == null
+                && schedule.MonthDays == null
+                && string.IsNullOrWhiteSpace(schedule.DayOfWeek)
+                &&schedule.Occurrence == null);
         }
 
         private JobSchedule CreateJobScheduleFromJobScheduleModel(string resourceGroupName, string automationAccountName,
