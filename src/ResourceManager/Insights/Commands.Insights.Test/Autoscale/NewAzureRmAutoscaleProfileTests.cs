@@ -38,6 +38,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             };
         }
 
+        public NewAzureRmAutoscaleProfileTests(Xunit.Abstractions.ITestOutputHelper output)
+            : this()
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAutoscaleProfileCommandParametersProcessing()

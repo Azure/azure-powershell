@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         private RuntimeScriptActionDetail scriptActionDetail;
 
-        public ScriptActionTests()
+        public ScriptActionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
 
             scriptActionDetail = new RuntimeScriptActionDetail 

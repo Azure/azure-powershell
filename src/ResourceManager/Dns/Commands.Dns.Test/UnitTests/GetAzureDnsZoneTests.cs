@@ -21,6 +21,11 @@ namespace Microsoft.Azure.Commands.Dns.Test.UnitTests
 
     public class GetAzureDnsZoneTests : RMTestBase
     {
+        public GetAzureDnsZoneTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureDnsZoneThrowsExceptionWhenUsingNameAndEndsWith()

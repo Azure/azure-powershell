@@ -29,6 +29,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string poolId = ScenarioTestHelpers.SharedPool;
         private const string iaasPoolId = ScenarioTestHelpers.SharedIaasPool;
 
+        public ComputeNodeTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         public void TestGetComputeNodeById()
         {

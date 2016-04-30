@@ -20,12 +20,19 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Xunit.Abstractions;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public class AutomationTests
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
+
+        public AutomationTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         [Fact(Skip = "Fix to make x86 compatible.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

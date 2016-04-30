@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class CertificateTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public CertificateTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddCertificate()
