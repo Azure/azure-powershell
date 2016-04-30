@@ -16,8 +16,6 @@
 using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
@@ -32,9 +30,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {
@@ -174,10 +172,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             List<string> blobUris = this.GetDiskBlobUris(virtualMachineResponse.Body);
 
             Dictionary<string, string> snapshotQuery = new Dictionary<string, string>();
-            List<CloudPageBlob> snapshots = this.FindSnapshot(blobUris, snapshotQuery, storageCredentialsFactory);
-            foreach (CloudPageBlob snapshot in snapshots)
+            snapshotQuery.Add(backupExtensionMetadataName, snapshotTag);
+            List <CloudPageBlob> snapshots = this.FindSnapshot(blobUris, snapshotQuery, storageCredentialsFactory);
+            if (snapshots == null || snapshots.Count == 0)
             {
-                snapshot.Delete();
+                throw new AzureVMBackupException(AzureVMBackupErrorCodes.NoSnapshotFound, "snapshot with the tag not found.");
+            }
+            else
+            {
+                foreach (CloudPageBlob snapshot in snapshots)
+                {
+                    snapshot.Delete();
+                }
             }
         }
 
