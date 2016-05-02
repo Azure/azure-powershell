@@ -1022,5 +1022,82 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
                 return ResourceManager.GetString("UpdatingTask", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to file not found {0}..
+        /// </summary>
+        public static string FileNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("FileNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Failed to upload {0} to storage ({1})..
+        /// </summary>
+        public static string FailedToUpload
+        {
+            get
+            {
+                return ResourceManager.GetString("FailedToUpload", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Uploading {0} to storage failed and the attempt to delete the application package afterwards failed ({1})..
+        /// </summary>
+        public static string FailedToUploadAndDelete
+        {
+            get
+            {
+                return ResourceManager.GetString("FailedToUploadAndDelete", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Application package {0} version {1} successfully uploaded but failed to activate ({2})..
+        /// </summary>
+        public static string UploadedApplicationButFailedToActivate
+        {
+            get
+            {
+                return ResourceManager.GetString("UploadedApplicationButFailedToActivate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Application package {0} version {1} failed to activate ({2})..
+        /// </summary>
+        public static string FailedToActivate
+        {
+            get
+            {
+                return ResourceManager.GetString("FailedToActivate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Failed to get application {0} package {1}. You may need to delete the application package and try uploading again ({2})..
+        /// </summary>
+        public static string FailedToGetApplicationPackage
+        {
+            get
+            {
+                return ResourceManager.GetString("FailedToGetApplicationPackage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Failed to add application package {0} version {1} ({2})..
+        /// </summary>
+        public static string FailedToAddApplicationPackage
+        {
+            get
+            {
+                return ResourceManager.GetString("FailedToAddApplicationPackage", resourceCulture);
+            }
+        }
     }
 }

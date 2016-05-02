@@ -45,12 +45,13 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds an AccountResource object using the specified parameters
         /// </summary>
-        public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null)
+        public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null, string storageId = null)
         {
             string tenantUrlEnding = "batch-test.windows-int.net";
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
             string subscription = Guid.Empty.ToString();
             string resourceGroup = resourceGroupName;
+
             string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
 
             AccountResource resource = new AccountResource(
@@ -63,7 +64,9 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 Location = "location",
                 AccountEndpoint = endpoint,
                 ProvisioningState = AccountProvisioningState.Succeeded,
+                AutoStorage = new AutoStorageProperties() { StorageAccountId = storageId }
             };
+
             if (tags != null)
             {
                 resource.Tags = Microsoft.Azure.Commands.Batch.Helpers.CreateTagDictionary(tags, true);
@@ -113,6 +116,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             Assert.Equal<string>(context1.Subscription, context2.Subscription);
             Assert.Equal<string>(context1.TagsTable, context2.TagsTable);
             Assert.Equal<string>(context1.TaskTenantUrl, context2.TaskTenantUrl);
+            Assert.Equal<string>(context1.AutoStorageProperties.StorageAccountId, context2.AutoStorageProperties.StorageAccountId);
         }
 
         /// <summary>
@@ -223,7 +227,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 Body = new MockPagedEnumerable<TBody>(),
                 Headers = new THeader()
             };
-
             return response;
         }
 

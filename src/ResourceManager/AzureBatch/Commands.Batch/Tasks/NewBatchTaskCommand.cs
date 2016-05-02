@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureBatchTask)]
     public class NewBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the job to create the task under.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
@@ -68,9 +68,13 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSMultiInstanceSettings MultiInstanceSettings { get; set; }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public TaskDependencies DependsOn { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job, 
+            NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job,
                 this.Id, this.AdditionalBehaviors)
             {
                 DisplayName = this.DisplayName,
@@ -80,8 +84,9 @@ namespace Microsoft.Azure.Commands.Batch
                 RunElevated = this.RunElevated.IsPresent,
                 AffinityInformation = this.AffinityInformation,
                 Constraints = this.Constraints,
-                MultiInstanceSettings = this.MultiInstanceSettings
-            };
+                MultiInstanceSettings = this.MultiInstanceSettings,
+                DependsOn = this.DependsOn,
+           };
 
             BatchClient.CreateTask(parameters);
         }
