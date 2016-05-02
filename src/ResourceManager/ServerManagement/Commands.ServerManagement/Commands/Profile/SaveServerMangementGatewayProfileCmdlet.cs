@@ -13,6 +13,7 @@
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
 {
+    using System;
     using System.IO;
     using System.Management.Automation;
     using Base;
@@ -34,11 +35,11 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
         {
             base.ExecuteCmdlet();
 
-            WriteVerbose($"Downloading profile for {ResourceGroupName}/{GatewayName}");
+            WriteVerbose(string.Format("Downloading profile for {0}/{1}", ResourceGroupName, GatewayName));
             var gatewayProfile = Client.Gateway.GetProfile(ResourceGroupName, GatewayName);
             if (gatewayProfile != null)
             {
-                WriteVerbose($"Saving plaintext profile to {OutputFile.FullName}");
+                WriteVerbose(string.Format("Saving plaintext profile to {0}", OutputFile.FullName));
                 var profileText = JsonConvert.SerializeObject(
                     gatewayProfile,
                     Formatting.None,
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
                     });
 
                 File.WriteAllText(OutputFile.FullName, profileText);
-                WriteVerbose($"Successfully saved plaintext profile to {OutputFile.FullName}");
+                WriteVerbose(string.Format("Successfully saved plaintext profile to {0}", OutputFile.FullName));
                 WriteObject(OutputFile);
             }
         }

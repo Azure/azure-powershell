@@ -13,6 +13,7 @@
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
 {
+    using System;
     using System.Management.Automation;
     using Base;
     using Management.ServerManagement;
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
 
             if (Node != null)
             {
-                WriteVerbose($"Using object for NodeName/ResourceGroup.");
+                WriteVerbose("Using object for NodeName/ResourceGroup.");
                 NodeName = Node.Name;
                 ResourceGroupName = Node.ResourceGroupName;
             }
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
             // lookup just one node
             if (NodeName != null)
             {
-                WriteVerbose($"Getting Node for {NodeName}");
+                WriteVerbose(string.Format("Getting Node for {0}", NodeName));
                 WriteObject(Node.Create(Client.Node.Get(ResourceGroupName, NodeName)));
                 return;
             }
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
             // lookup by resource group
             if (!string.IsNullOrWhiteSpace(ResourceGroupName))
             {
-                WriteVerbose($"Getting Nodes in resource group {ResourceGroupName}");
+                WriteVerbose(string.Format("Getting Nodes in resource group {0}", ResourceGroupName));
                 foreach (var node in Client.Node.ListForResourceGroup(ResourceGroupName))
                 {
                     WriteObject(Node.Create(node));
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
             // grab everything for the whole subscription
             foreach (var node in Client.Node.List())
             {
-                WriteVerbose($"Getting all Nodes in entire subscription ");
+                WriteVerbose("Getting all Nodes in entire subscription ");
                 WriteObject(Node.Create(node));
             }
         }

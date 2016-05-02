@@ -13,6 +13,7 @@
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
 {
+    using System;
     using System.Management.Automation;
     using Base;
     using Management.ServerManagement;
@@ -42,12 +43,12 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
 
             if (Gateway != null)
             {
-                WriteVerbose($"Using Gateway object for resource/gateway name");
+                WriteVerbose("Using Gateway object for resource/gateway name");
                 ResourceGroupName = Gateway.ResourceGroupName;
                 GatewayName = Gateway.Name;
             }
 
-            WriteVerbose($"Removing gateway for {ResourceGroupName}/{GatewayName}");
+            WriteVerbose(string.Format("Removing gateway for {0}/{1}", ResourceGroupName, GatewayName));
             // delete the gateway.
             Client.Gateway.Delete(ResourceGroupName, GatewayName);
         }

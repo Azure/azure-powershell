@@ -13,6 +13,7 @@
 
 namespace Microsoft.Azure.Commands.ServerManagement.Utility
 {
+    using System;
     using System.Reflection;
     using System.Text.RegularExpressions;
 
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Utility
         {
             try
             {
-                return Regex.Match(resourceId + "/", $"/{prefix}/(.*?)/").Groups[1].Value;
+                return Regex.Match(resourceId + "/", string.Format("/{0}/(.*?)/", prefix)).Groups[1].Value;
             }
             catch
             {

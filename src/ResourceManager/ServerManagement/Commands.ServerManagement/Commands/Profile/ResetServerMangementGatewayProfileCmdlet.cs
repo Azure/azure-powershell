@@ -13,6 +13,7 @@
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
 {
+    using System;
     using System.Management.Automation;
     using Base;
     using Management.ServerManagement;
@@ -26,9 +27,9 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
         {
             base.ExecuteCmdlet();
 
-            WriteVerbose($"Regenerating profile for {ResourceGroupName}/{GatewayName}");
+            WriteVerbose(string.Format("Regenerating profile for {0}/{1}", ResourceGroupName, GatewayName));
             Client.Gateway.RegenerateProfile(ResourceGroupName, GatewayName);
-            WriteVerbose($"Successfully regenerated profile for {ResourceGroupName}/{GatewayName}");
+            WriteVerbose(string.Format("Successfully regenerated profile for {0}/{1}", ResourceGroupName, GatewayName));
         }
     }
 }

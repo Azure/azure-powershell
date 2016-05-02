@@ -13,6 +13,7 @@
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
 {
+    using System;
     using System.Collections;
     using System.Management.Automation;
     using Base;
@@ -66,16 +67,24 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
 
             if (Gateway != null)
             {
-                WriteVerbose($"Using Gateway object for resource/gateway name/location");
+                WriteVerbose("Using Gateway object for resource/gateway name/location");
                 ResourceGroupName = Gateway.ResourceGroupName;
                 GatewayName = Gateway.Name;
                 Location = Gateway.Location;
             }
             // the Node.Create call actually uses gatewayId, not gateway name, but that's easy enough to make.
             string gatewayId =
-                $"/subscriptions/{Client.SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ServerManagement/gateways/{GatewayName}";
+                string.Format(
+                    "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ServerManagement/gateways/{2}",
+                    Client.SubscriptionId,
+                    ResourceGroupName,
+                    GatewayName);
 
-            WriteVerbose($"Creating new Node for {ResourceGroupName}/{NodeName}/{Location}/{GatewayName}");
+            WriteVerbose(string.Format("Creating new Node for {0}/{1}/{2}/{3}",
+                ResourceGroupName,
+                NodeName,
+                Location,
+                GatewayName));
 
             var node = Node.Create(Client.Node.Create(ResourceGroupName,
                 NodeName,

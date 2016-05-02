@@ -13,6 +13,7 @@
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
 {
+    using System;
     using System.Management.Automation;
     using System.Net;
     using Base;
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
             base.ExecuteCmdlet();
             if (Gateway != null)
             {
-                WriteVerbose($"Using Gateway object for resource/gateway name");
+                WriteVerbose("Using Gateway object for resource/gateway name");
                 ResourceGroupName = Gateway.ResourceGroupName;
                 GatewayName = Gateway.Name;
             }
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
             // a single gateway? 
             if (!string.IsNullOrWhiteSpace(GatewayName))
             {
-                WriteVerbose($"Getting gateway status for {ResourceGroupName}/{GatewayName}");
+                WriteVerbose(string.Format("Getting gateway status for {0}/{1}", ResourceGroupName, GatewayName));
                 WriteObject(
                     Gateway.Create(Client.Gateway.Get(ResourceGroupName, GatewayName, GatewayExpandOption.Status)));
                 return;
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
                 if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                 {
                     // list the gateways for the Resource Group
-                    WriteVerbose($"Listing gateways in resource group {ResourceGroupName}");
+                    WriteVerbose(string.Format("Listing gateways in resource group {0}", ResourceGroupName));
 
                     foreach (var gateway in Client.Gateway.ListForResourceGroup(ResourceGroupName))
                     {
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
                     return;
                 }
 
-                WriteVerbose($"Listing gateways in whole subscription");
+                WriteVerbose("Listing gateways in whole subscription");
                 // list the gateways for the subscription
                 foreach (var gateway in Client.Gateway.List())
                 {

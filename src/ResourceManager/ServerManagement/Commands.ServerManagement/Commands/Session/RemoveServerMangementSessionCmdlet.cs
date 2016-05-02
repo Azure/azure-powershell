@@ -13,6 +13,7 @@
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
 {
+    using System;
     using System.Management.Automation;
     using Base;
     using Management.ServerManagement;
@@ -52,10 +53,10 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
                 ResourceGroupName = Session.ResourceGroupName;
                 NodeName = Session.NodeName;
                 SessionName = Session.Name;
-                WriteVerbose($"Using Session object for resourcegroup/node name/session name");
+                WriteVerbose("Using Session object for resourcegroup/node name/session name");
             }
 
-            WriteVerbose($"Deleting session for {ResourceGroupName}/{NodeName}/{SessionName}");
+            WriteVerbose(string.Format("Deleting session for {0}/{1}/{2}", ResourceGroupName, NodeName, SessionName));
             Client.Session.Delete(ResourceGroupName, NodeName, SessionName);
         }
     }

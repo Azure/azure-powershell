@@ -13,6 +13,7 @@
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
 {
+    using System;
     using System.Collections;
     using System.Management.Automation;
     using Base;
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
             base.ExecuteCmdlet();
 
             // create the gateway object
-            WriteVerbose($"Creating gateway for {ResourceGroupName}/{GatewayName}/{Location}");
+            WriteVerbose(string.Format("Creating gateway for {0}/{1}/{2}", ResourceGroupName, GatewayName, Location));
             var gateway = Gateway.Create(Client.Gateway.Create(ResourceGroupName,
                 GatewayName,
                 Location,

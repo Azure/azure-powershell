@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            WriteVerbose($"Checking for administrative permissions");
+            WriteVerbose("Checking for administrative permissions");
             if (!IsAdmin)
             {
                 throw new InvalidOperationException("Installation of the profile requires Administrator privileges.");
@@ -57,24 +57,24 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
 
             base.ExecuteCmdlet();
 
-            WriteVerbose($"Reading text from file {InputFile.FullName}");
+            WriteVerbose(string.Format("Reading text from file {0}", InputFile.FullName));
             var profile = File.ReadAllText(InputFile.FullName);
-            WriteVerbose($"Profile read:\r\n{profile}");
+            WriteVerbose(string.Format("Profile read:\r\n{0}", profile));
 
-            WriteVerbose($"Encrypting profile.");
+            WriteVerbose("Encrypting profile.");
             var encrypted = ProtectedData.Protect(Encoding.UTF8.GetBytes(profile),
                 null,
                 DataProtectionScope.LocalMachine);
 
             var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
                 "ManagementGateway");
-            WriteVerbose($"Ensuring destination folder {path}.");
+            WriteVerbose(string.Format("Ensuring destination folder {0}.", path));
             Directory.CreateDirectory(path);
 
-            WriteVerbose($"Writing encrypted profile to {path}\\GatewayProfile.json");
+            WriteVerbose(string.Format("Writing encrypted profile to {0}\\GatewayProfile.json", path));
             File.WriteAllBytes(Path.Combine(path, "GatewayProfile.json"), encrypted);
 
-            WriteVerbose($"Successfully written encrypted profile.");
+            WriteVerbose("Successfully written encrypted profile.");
         }
     }
 }

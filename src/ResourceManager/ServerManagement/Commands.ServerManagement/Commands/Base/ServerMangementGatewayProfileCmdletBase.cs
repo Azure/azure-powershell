@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Base
             base.ExecuteCmdlet();
             if (Gateway != null)
             {
-                WriteVerbose($"Using Gateway object for resource/gateway name");
+                WriteVerbose("Using Gateway object for resource/gateway name");
                 ResourceGroupName = Gateway.ResourceGroupName;
                 GatewayName = Gateway.Name;
             }

@@ -69,7 +69,10 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
                     if (PowerShellSessionName != null)
                     {
                         WriteVerbose(
-                            $"Checking for PowerShell Session with {ResourceGroupName}/{NodeName}/{SessionName}");
+                            string.Format("Checking for PowerShell Session with {0}/{1}/{2}",
+                                ResourceGroupName,
+                                NodeName,
+                                SessionName));
 
                         ps = Client.PowerShell.ListSession(ResourceGroupName, NodeName, SessionName)
                             .Value.FirstOrDefault(each => each.PowerShellSessionResourceName == PowerShellSessionName);
@@ -83,12 +86,12 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
                 if (PowerShellSessionName == null)
                 {
                     PowerShellSessionName = Guid.NewGuid().ToString();
-                    WriteVerbose($"Generating PowerShell Session name {PowerShellSessionName}");
+                    WriteVerbose(string.Format("Generating PowerShell Session name {0}", PowerShellSessionName));
                 }
 
                 if (ps == null)
                 {
-                    WriteVerbose($"Can't find existing PowerShell Session, creating new one.");
+                    WriteVerbose("Can\'t find existing PowerShell Session, creating new one.");
                     ps = Client.PowerShell.CreateSession(ResourceGroupName, NodeName, SessionName, PowerShellSessionName);
                 }
 
@@ -102,14 +105,15 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
 
             if (Session != null)
             {
-                WriteVerbose($"Using Session object for resource group/node name/session name");
+                WriteVerbose("Using Session object for resource group/node name/session name");
                 ResourceGroupName = Session.ResourceGroupName;
                 NodeName = Session.NodeName;
                 SessionName = Session.Name;
                 if (PowerShellSessionName == null && Session.LastPowerShellSessionName != null)
                 {
                     PowerShellSessionName = Session.LastPowerShellSessionName;
-                    WriteVerbose($"Using previous PowerShell Session {Session.LastPowerShellSessionName}");
+                    WriteVerbose(string.Format("Using previous PowerShell Session {0}",
+                        Session.LastPowerShellSessionName));
                 }
             }
 
@@ -119,7 +123,11 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
                 Session.LastPowerShellSessionName = ps.SessionId;
             }
 
-            WriteVerbose($"Invoking PowerShell command on {ResourceGroupName}/{NodeName}/{SessionName}/{ps.SessionId}");
+            WriteVerbose(string.Format("Invoking PowerShell command on {0}/{1}/{2}/{3}",
+                ResourceGroupName,
+                NodeName,
+                SessionName,
+                ps.SessionId));
             // call powershell on node.
             var results = Client.PowerShell.InvokeCommand(ResourceGroupName,
                 NodeName,
@@ -132,7 +140,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
 
             do
             {
-                WriteVerbose($"Iterating on results ");
+                WriteVerbose("Iterating on results ");
                 // spit out results.
                 foreach (var r in items)
                 {
@@ -152,7 +160,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
                 {
                     break;
                 }
-                WriteVerbose($"Command is still executing, getting updates.");
+                WriteVerbose("Command is still executing, getting updates.");
                 var more = Client.PowerShell.GetCommandStatus(ResourceGroupName,
                     NodeName,
                     SessionName,

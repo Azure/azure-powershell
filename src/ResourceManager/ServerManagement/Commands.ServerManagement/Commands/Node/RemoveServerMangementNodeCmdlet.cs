@@ -13,6 +13,7 @@
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
 {
+    using System;
     using System.Management.Automation;
     using Base;
     using Management.ServerManagement;
@@ -41,12 +42,12 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
             base.ExecuteCmdlet();
             if (Node != null)
             {
-                WriteVerbose($"Using Gateway object for resource/gateway name");
+                WriteVerbose("Using Gateway object for resource/gateway name");
                 ResourceGroupName = Node.ResourceGroupName;
                 NodeName = Node.Name;
             }
 
-            WriteVerbose($"Removing Node {ResourceGroupName}/{NodeName}");
+            WriteVerbose(string.Format("Removing Node {0}/{1}", ResourceGroupName, NodeName));
             Client.Node.Delete(ResourceGroupName, NodeName);
         }
     }

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Base
         {
             if (secureString == null)
             {
-                throw new ArgumentNullException(nameof(secureString));
+                throw new ArgumentNullException("secureString");
             }
 
             var valuePtr = IntPtr.Zero;
