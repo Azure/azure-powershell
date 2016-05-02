@@ -55,16 +55,19 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
                 {
                     Credential = Node.Credential;
                 }
-                WriteVerbose($"Using Node object to for resourcegroup/node name");
+                WriteVerbose("Using Node object to for resourcegroup/node name");
             }
 
             if (SessionName == null)
             {
                 SessionName = Guid.NewGuid().ToString();
-                WriteVerbose($"Generating Session name {SessionName}");
+                WriteVerbose(string.Format("Generating Session name {0}", SessionName));
             }
 
-            WriteVerbose($"Getting Session resource for {ResourceGroupName}/{NodeName}/{SessionName}");
+            WriteVerbose(string.Format("Getting Session resource for {0}/{1}/{2}",
+                ResourceGroupName,
+                NodeName,
+                SessionName));
             WriteObject(
                 Session.Create(Client.Session.Create(ResourceGroupName,
                     NodeName,

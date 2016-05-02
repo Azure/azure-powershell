@@ -13,6 +13,7 @@
 
 namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
 {
+    using System;
     using System.Management.Automation;
     using Base;
     using Management.ServerManagement;
@@ -54,14 +55,14 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
 
             if (Node != null)
             {
-                WriteVerbose($"Using object for NodeName/ResourceGroup.");
+                WriteVerbose("Using object for NodeName/ResourceGroup.");
                 NodeName = Node.Name;
                 ResourceGroupName = Node.ResourceGroupName;
             }
 
             if (Session != null)
             {
-                WriteVerbose($"Using object for NodeName/ResourceGroup/SessionName");
+                WriteVerbose("Using object for NodeName/ResourceGroup/SessionName");
 
                 NodeName = Session.NodeName;
                 ResourceGroupName = Session.ResourceGroupName;
@@ -71,7 +72,10 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
                 }
             }
 
-            WriteVerbose($"Getting Session resource for {ResourceGroupName}/{NodeName}/{SessionName}");
+            WriteVerbose(string.Format("Getting Session resource for {0}/{1}/{2}",
+                ResourceGroupName,
+                NodeName,
+                SessionName));
             WriteObject(Session.Create(Client.Session.Get(ResourceGroupName, NodeName, SessionName)));
         }
     }

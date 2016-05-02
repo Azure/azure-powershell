@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Test.ScenarioTests
 
         internal static void InitializeEnvironment()
         {
-#if !DEBUG_INTERACTIVE
+#if DEBUG_INTERACTIVE
             Environment.SetEnvironmentVariable("AZURE_TEST_ENVIRONMENT", "production");
             Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Record");
             Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION",
