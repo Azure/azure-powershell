@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -90,11 +90,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
                     "Microsoft.Azure.Commands.Batch.Test.dll",
-                    helper.RMProfileModule, 
+                    helper.RMProfileModule,
                     helper.RMResourceModule,
                     helper.GetRMModulePath("AzureRM.Batch.psd1"));
 

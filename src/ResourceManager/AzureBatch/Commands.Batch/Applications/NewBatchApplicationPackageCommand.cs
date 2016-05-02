@@ -52,7 +52,14 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            PSApplicationPackage response = BatchClient.UploadApplicationPackage(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.ApplicationVersion, this.FilePath, this.Format, this.ActivateOnly.IsPresent);
+            PSApplicationPackage response = BatchClient.UploadAndActivateApplicationPackage(
+                this.ResourceGroupName,
+                this.AccountName,
+                this.ApplicationId,
+                this.ApplicationVersion,
+                this.FilePath,
+                this.Format,
+                this.ActivateOnly.IsPresent);
             WriteObject(response);
         }
     }

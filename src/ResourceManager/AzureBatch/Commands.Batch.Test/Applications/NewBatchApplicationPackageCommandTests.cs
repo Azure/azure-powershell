@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
 
             PSApplicationPackage applicationPackageResponse = new PSApplicationPackage();
 
-            batchClientMock.Setup(b => b.UploadApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format, false)).Returns(applicationPackageResponse);
+            batchClientMock.Setup(b => b.UploadAndActivateApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format, false)).Returns(applicationPackageResponse);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
-            batchClientMock.Verify(b => b.UploadApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format, false), Times.Once());
+            batchClientMock.Verify(b => b.UploadAndActivateApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format, false), Times.Once());
         }
 
         [Fact]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
 
             PSApplicationPackage applicationPackageResponse = new PSApplicationPackage();
 
-            batchClientMock.Setup(b => b.UploadApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format, true)).Returns(applicationPackageResponse);
+            batchClientMock.Setup(b => b.UploadAndActivateApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format, true)).Returns(applicationPackageResponse);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
-            batchClientMock.Verify(b => b.UploadApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format, true), Times.Once());
+            batchClientMock.Verify(b => b.UploadAndActivateApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format, true), Times.Once());
         }
     }
 }
