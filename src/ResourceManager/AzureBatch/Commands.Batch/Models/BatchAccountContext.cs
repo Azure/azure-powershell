@@ -188,12 +188,12 @@ namespace Microsoft.Azure.Commands.Batch
             this.PoolQuota = resource.PoolQuota;
             this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;
 
-            if (resource.Properties.AutoStorage != null)
+            if (resource.AutoStorage != null)
             {
                 this.AutoStorageProperties = new AutoStorageProperties()
                 {
-                    StorageAccountId = resource.Properties.AutoStorage.StorageAccountId,
-                    LastKeySync = resource.Properties.AutoStorage.LastKeySync,
+                    StorageAccountId = resource.AutoStorage.StorageAccountId,
+                    LastKeySync = resource.AutoStorage.LastKeySync,
                 };
             }
 

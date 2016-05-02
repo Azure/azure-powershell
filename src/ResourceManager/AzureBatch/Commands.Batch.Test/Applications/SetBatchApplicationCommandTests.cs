@@ -34,10 +34,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             string displayName = "name";
             string defaultVersion = "version";
 
-            AzureOperationResponse updateResponse = new AzureOperationResponse();
-
-            batchClientMock.Setup(b => b.UpdateApplication(resourceGroup, accountName, applicationId, true, defaultVersion, displayName)).Returns(updateResponse);
-
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.ApplicationId = applicationId;
@@ -59,10 +55,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             string resourceGroup = "resourceGroup";
             string applicationId = "applicationId";
 
-            AzureOperationResponse updateResponse = new AzureOperationResponse();
-
-            batchClientMock.Setup(b => b.UpdateApplication(resourceGroup, accountName, applicationId, true, null, null)).Returns(updateResponse);
-
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.ApplicationId = applicationId;
@@ -81,10 +73,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
             string applicationId = "applicationId";
-
-            AzureOperationResponse updateResponse = new AzureOperationResponse();
-
-            batchClientMock.Setup(b => b.UpdateApplication(resourceGroup, accountName, applicationId, null, null, null)).Returns(updateResponse);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
