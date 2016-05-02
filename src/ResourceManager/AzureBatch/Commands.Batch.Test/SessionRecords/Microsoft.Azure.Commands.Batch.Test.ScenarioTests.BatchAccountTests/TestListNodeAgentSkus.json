@@ -7,16 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "504a7a37-f36a-4da0-83c4-4f7740205750"
+          "afde6756-0470-4dd8-bef0-3f2ba21035fd"
         ],
         "accept-language": [
           "en-US"
         ],
         "client-request-id": [
-          "6d5e2525-7913-48d6-9246-0479cf0039dd"
+          "00ad53d3-50da-401f-a335-099d8771d018"
         ],
         "ocp-date": [
-          "Wed, 27 Apr 2016 01:18:42 GMT"
+          "Wed, 04 May 2016 22:41:28 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/4.0.1.0",
@@ -32,7 +32,7 @@
           "chunked"
         ],
         "request-id": [
-          "2da762d1-21a7-43d9-b388-ab6e98413180"
+          "7e2912ee-a00d-46c1-9fed-ec6190465a89"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -41,7 +41,7 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 01:18:41 GMT"
+          "Wed, 04 May 2016 22:41:28 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -54,6 +54,7 @@
   "Variables": {
     "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925",
     "AZURE_BATCH_ACCOUNT": "pstestaccount",
-    "AZURE_BATCH_ENDPOINT": "https://pstestaccount.centralus.batch.azure.com"
+    "AZURE_BATCH_ENDPOINT": "https://pstestaccount.centralus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "accountmgmtsamplegroup"
   }
 }

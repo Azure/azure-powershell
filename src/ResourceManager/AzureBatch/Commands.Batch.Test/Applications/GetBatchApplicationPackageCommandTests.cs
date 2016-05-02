@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchApplicationsTest()
+        public void GetBatchApplicationPackageTest()
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";

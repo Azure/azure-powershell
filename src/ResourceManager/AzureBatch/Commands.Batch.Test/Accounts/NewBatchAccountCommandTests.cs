@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.Location = location;
-            cmdlet.StorageId = storageId;
+            cmdlet.AutoStorageAccountId = storageId;
 
             cmdlet.ExecuteCmdlet();
 
