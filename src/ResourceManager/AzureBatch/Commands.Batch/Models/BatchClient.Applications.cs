@@ -12,19 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Net;
-
-using Hyak.Common;
-
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -41,19 +38,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             AddApplicationParameters addApplicationParameters = new AddApplicationParameters()
             {
                 DisplayName = displayName,
-                AllowUpdates = allowUpdates != null && allowUpdates.Value
+                AllowUpdates = allowUpdates
             };
 
-            AddApplicationResponse response = BatchManagementClient.Applications.AddApplication(
+             var response = BatchManagementClient.Application.AddApplication(
                 resourceGroupName,
                 accountName,
                 applicationId,
                 addApplicationParameters);
 
-            return ConvertApplicationToPSApplication(response.Application);
+            return ConvertApplicationToPSApplication(response);
         }
 
-        public virtual AzureOperationResponse DeleteApplication(string resourceGroupName, string accountName, string applicationId)
+        public virtual void DeleteApplication(string resourceGroupName, string accountName, string applicationId)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -61,10 +58,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            return BatchManagementClient.Applications.DeleteApplication(resourceGroupName, accountName, applicationId);
+            BatchManagementClient.Application.DeleteApplication(resourceGroupName, accountName, applicationId);
         }
 
-        public virtual AzureOperationResponse DeleteApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version)
+        public virtual void DeleteApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -72,7 +69,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            return BatchManagementClient.Applications.DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
+            BatchManagementClient.Application.DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
         }
 
         public virtual PSApplication GetApplication(string resourceGroupName, string accountName, string applicationId)
@@ -83,9 +80,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            GetApplicationResponse response = BatchManagementClient.Applications.GetApplication(resourceGroupName, accountName, applicationId);
+            Application response = BatchManagementClient.Application.GetApplication(resourceGroupName, accountName, applicationId);
 
-            return ConvertApplicationToPSApplication(response.Application);
+            return ConvertApplicationToPSApplication(response);
         }
 
         public virtual PSApplicationPackage GetApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version)
@@ -96,7 +93,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            GetApplicationPackageResponse response = BatchManagementClient.Applications.GetApplicationPackage(
+            GetApplicationPackageResult response = BatchManagementClient.Application.GetApplicationPackage(
                 resourceGroupName,
                 accountName,
                 applicationId,
@@ -113,21 +110,21 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            ListApplicationsResponse response = BatchManagementClient.Applications.List(resourceGroupName, accountName, new ListApplicationsParameters());
-            List<PSApplication> psApplications = response.Applications.Select(ConvertApplicationToPSApplication).ToList();
+            IPage<Application> response = BatchManagementClient.Application.List(resourceGroupName, accountName);
+            List<PSApplication> psApplications = response.Select(ConvertApplicationToPSApplication).ToList();
 
-            string nextLink = response.NextLink;
+            string nextLink = response.NextPageLink;
             while (nextLink != null)
             {
-                response = BatchManagementClient.Applications.ListNext(nextLink);
-                psApplications.AddRange(response.Applications.Select(ConvertApplicationToPSApplication));
-                nextLink = response.NextLink;
+                response = BatchManagementClient.Application.ListNext(nextLink);
+                psApplications.AddRange(response.Select(ConvertApplicationToPSApplication));
+                nextLink = response.NextPageLink;
             }
 
             return psApplications;
         }
 
-        public virtual AzureOperationResponse UpdateApplication(
+        public virtual void UpdateApplication(
             string resourceGroupName,
             string accountName,
             string applicationId,
@@ -142,10 +139,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             UpdateApplicationParameters uap = new UpdateApplicationParameters();
-            //TODO this needs to be changes when a fix comes in for patch bool? AllowUpdates
+
             if (allowUpdates != null)
             {
-                uap.AllowUpdates = (bool)allowUpdates;
+                uap.AllowUpdates = allowUpdates;
             }
 
             if (defaultVersion != null)
@@ -158,14 +155,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 uap.DisplayName = displayName;
             }
 
-            return BatchManagementClient.Applications.UpdateApplication(
+            BatchManagementClient.Application.UpdateApplication(
                 resourceGroupName,
                 accountName,
                 applicationId,
                 uap);
         }
 
-        public virtual PSApplicationPackage UploadApplicationPackage(
+        public virtual PSApplicationPackage UploadAndActivateApplicationPackage(
             string resourceGroupName,
             string accountName,
             string applicationId,
@@ -175,12 +172,20 @@ namespace Microsoft.Azure.Commands.Batch.Models
             bool activateOnly)
         {
             // Checks File path and resourceGroupName is valid
-            resourceGroupName = PreConditionsCheck(resourceGroupName, accountName, filePath);
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException(string.Format(Resources.FileNotFound, filePath), filePath);
+            }
+
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetGroupForAccount(accountName);
+            }
 
             // If the package has already been uploaded but wasn't activated.
             if (activateOnly)
             {
-                ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, true);
+                ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, Resources.FailedToActivate);
                 return GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
             }
 
@@ -194,7 +199,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             UploadFileToApplicationPackage(resourceGroupName, accountName, applicationId, version, filePath, storageUrl, appPackageAlreadyExists);
 
             // If the application package has been uploaded we activate it.
-            ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, false);
+            ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, Resources.UploadedApplicationButFailedToActivate);
 
             return GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
         }
@@ -237,27 +242,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
 
-        private string PreConditionsCheck(string resourceGroupName, string accountName, string filePath)
-        {
-            if (!File.Exists(filePath))
-            {
-                throw new FileNotFoundException(string.Format(Resources.FileNotFound, filePath), filePath);
-            }
-
-            // use resource mgr to see if account exists and then use resource group name to do the actual lookup
-            if (string.IsNullOrEmpty(resourceGroupName))
-            {
-                resourceGroupName = GetGroupForAccount(accountName);
-            }
-
-            return resourceGroupName;
-        }
-
-        private void ActivateApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version, string format, bool activateOnly)
+        private void ActivateApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version, string format, string errorMessageFormat)
         {
             try
             {
-                BatchManagementClient.Applications.ActivateApplicationPackage(
+                BatchManagementClient.Application.ActivateApplicationPackage(
                     resourceGroupName,
                     accountName,
                     applicationId,
@@ -266,12 +255,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             catch (Exception exception)
             {
-                string message = string.Format(Resources.UploadedApplicationButFailedToActivate, applicationId, version, exception.Message);
-                if (activateOnly)
-                {
-                    message = string.Format(Resources.FailedToActivate, applicationId, version, exception.Message);
-                }
-
+                string message = string.Format(errorMessageFormat, applicationId, version, exception.Message);
                 throw new ActivateApplicationPackageException(message, exception);
             }
         }
@@ -281,7 +265,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             try
             {
                 // Checks to see if the package exists
-                GetApplicationPackageResponse response = BatchManagementClient.Applications.GetApplicationPackage(
+                GetApplicationPackageResult response = BatchManagementClient.Application.GetApplicationPackage(
                     resourceGroupName,
                     accountName,
                     applicationId,
@@ -302,7 +286,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             try
             {
-                AddApplicationPackageResponse addResponse = BatchManagementClient.Applications.AddApplicationPackage(
+                AddApplicationPackageResult addResponse = BatchManagementClient.Application.AddApplicationPackage(
                     resourceGroupName,
                     accountName,
                     applicationId,
@@ -319,14 +303,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
 
-        private PSApplicationPackage ConvertGetApplicationPackageResponseToApplicationPackage(GetApplicationPackageResponse response)
+        private PSApplicationPackage ConvertGetApplicationPackageResponseToApplicationPackage(GetApplicationPackageResult response)
         {
             return new PSApplicationPackage()
             {
                 Format = response.Format,
                 StorageUrl = response.StorageUrl,
-                StorageUrlExpiry = response.StorageUrlExpiry,
-                State = response.State,
+                StorageUrlExpiry = response.StorageUrlExpiry.Value,
+                State = response.State.Value,
                 Id = response.Id,
                 Version = response.Version,
                 LastActivationTime = response.LastActivationTime,
@@ -337,8 +321,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             return new PSApplication()
             {
-                AllowUpdates = application.AllowUpdates,
-                ApplicationPackages = ConvertApplicationPackagesToPsApplicationPackages(application.ApplicationPackages),
+                AllowUpdates = application.AllowUpdates.Value,
+                ApplicationPackages = ConvertApplicationPackagesToPsApplicationPackages(application.Packages),
                 DefaultVersion = application.DefaultVersion,
                 DisplayName = application.DisplayName,
                 Id = application.Id,
@@ -351,7 +335,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 Format = applicationPackage.Format,
                 LastActivationTime = applicationPackage.LastActivationTime,
-                State = applicationPackage.State,
+                State = applicationPackage.State.Value,
                 Version = applicationPackage.Version,
             }).ToList();
         }

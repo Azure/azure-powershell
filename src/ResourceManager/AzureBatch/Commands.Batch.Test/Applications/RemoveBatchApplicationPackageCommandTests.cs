@@ -36,10 +36,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             string applicationId = "applicationId";
             string version = "version";
 
-            AzureOperationResponse deleteResponse = new AzureOperationResponse();
-
-            batchClientMock.Setup(b => b.DeleteApplicationPackage(resourceGroup, accountName, applicationId, version)).Returns(deleteResponse);
-
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.ApplicationId = applicationId;

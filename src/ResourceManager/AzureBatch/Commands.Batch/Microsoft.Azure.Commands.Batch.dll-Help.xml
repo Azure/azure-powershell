@@ -2020,7 +2020,6 @@
           StartTaskInformation         :
           RecentTasks                  : {}
           StartTask                    :
-          ApplicationPackageReferences :
           CertificateReferences        :
           Errors                       :
 
@@ -2057,7 +2056,6 @@
           StartTaskInformation         :
           RecentTasks                  : {}
           StartTask                    :
-          ApplicationPackageReferences :
           CertificateReferences        :
           Errors                       :
 
@@ -2074,7 +2072,6 @@
           StartTaskInformation         :
           RecentTasks                  :
           StartTask                    :
-          ApplicationPackageReferences :
           CertificateReferences        :
           Errors                       :
 
@@ -2111,7 +2108,6 @@
           StartTaskInformation         :
           RecentTasks                  : {}
           StartTask                    :
-          ApplicationPackageReferences :
           CertificateReferences        :
           Errors                       :
 
@@ -2130,7 +2126,6 @@
           StartTaskInformation         :
           RecentTasks                  :
           StartTask                    :
-          ApplicationPackageReferences :
           CertificateReferences        :
           Errors                       :
 
@@ -7877,7 +7872,7 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="4" aliases="none">
-          <maml:name>StorageId</maml:name>
+          <maml:name>AutoStorageAccountId</maml:name>
           <maml:description>
             <maml:para>Specifies the resource id of the storage account to be used for auto storage.</maml:para>
           </maml:description>
@@ -7935,7 +7930,7 @@
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="3" aliases="none">
-        <maml:name>StorageId</maml:name>
+        <maml:name>AutoStorageAccountId</maml:name>
         <maml:description>
           <maml:para>Specifies the resource id of the storage account to be used for auto storage.</maml:para>
         </maml:description>
@@ -13403,7 +13398,7 @@
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
-          <maml:name>StorageId</maml:name>
+          <maml:name>AutoStorageAccountId</maml:name>
           <maml:description>
             <maml:para>Specifies the resource id of the storage account to be used for auto storage.</maml:para>
           </maml:description>
@@ -13437,7 +13432,7 @@
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
-        <maml:name>StrorageId</maml:name>
+        <maml:name>AutoStorageAccountId</maml:name>
         <maml:description>
           <maml:para>Specifies the resource group of the account that this cmdlet updates.</maml:para>
         </maml:description>
