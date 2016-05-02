@@ -175,10 +175,17 @@
     <None Include="ScenarioTests\ServerManagementTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServerManagement.Test.ScenarioTests.ServerManagementTests\TestGateway.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServerManagement.Test.ScenarioTests.ServerManagementTests\TestNode.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServerManagement.Test.ScenarioTests.ServerManagementTests\TestSession.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SessionRecords\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>REM xcopy "$(SolutionDir)Package\$(ConfigurationName)\*.*" $(TargetDir) /Y /E</PostBuildEvent>
