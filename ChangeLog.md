@@ -1,6 +1,11 @@
-##2016.05.03 version 1.4.0
+##2016.05.04 version 1.4.0
+* Azure Resource Manager
+  - Get-AzureRmLocation cmdley: New cmdlet Lists all public Azure locatiosn with available provider namespaces
+  - Get-AzureRMResourceGroupDeploymentOperations: Improved output format
+  - Get-AzureRMDeployment: Responses contain all error details
+  - Added cmdlet help anbd examples
+  - Normalized cmdlet parameter defaults and position
 * Azure Storage
-  * Upgrade to Microsoft.Azure.Management.Storage nuget package v5.0 preview
   * Add Encryption and Hot/Cool features support to resource mode storage account cmdlets
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
@@ -14,6 +19,30 @@
     - New-AzureStorageShareSASToken
     - New-AzureStorageShareStoredAccessPolicy
     - Set-AzureStorageShareStoredAccessPolicy
+* Azure Compute
+  * Added cmdlets for Contaner Service support
+  * Bug and help fixes
+* Azure APIManagement
+  *  Added Tenant Git Configuration cmdlets
+    - Get-AzureRmApiManagementTenantGitAccess
+    - Set-AzureRmApiManagementTenantGitAccess
+    - Get-AzureRmApiManagementTenantSyncState
+    - Publish-AzureRmApiManagementTenantGitConfiguration
+    - Save-AzureRmApiManagementTenantGitConfiguration
+  * Added ApiManagement Properties cmdlets
+    - Get-AzureRmApiManagementProperty
+    - New-AzureRmApiManagementProperty
+    - Remove-AzureRmApiManagementProperty
+    - Set-AzureRmApiManagementProperty
+  * Added Logger cmdlets
+    - Get-AzureRmApiManagementLogger
+    - Remove-AzureRmApiManagementLogger
+    - Set-AzureRmApiManagementLogger
+    - New-AzureRmApiManagementLogger
+  * Fixed cmdlet bugs
+    - NewAzureRMApiManagementAPI: changed Path to optional
+    - NewAzureRMApiManagementProduct: fixed issue with creating products without Subscriptions
+* Azure Recovery Services Backup
   * Added Recovery Services Backup cmdlets
     - Set-AzureRmRecoveryServicesVaultContext
     - Set-AzureRmRecoveryServicesBackupProperties
