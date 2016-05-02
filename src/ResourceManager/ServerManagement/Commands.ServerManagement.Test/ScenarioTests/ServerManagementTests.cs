@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Test.ScenarioTests
         [Fact]
         public void TestNode()
         {
-             ServerManagementTestController.NewInstance.RunPsTest("Test-Node");
+            ServerManagementTestController.NewInstance.RunPsTest("Test-Node");
         }
 
         [Fact]
