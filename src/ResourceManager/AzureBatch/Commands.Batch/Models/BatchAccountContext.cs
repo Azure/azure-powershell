@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The name of the resource group that the account resource is under.
         /// </summary>
-        public string ResourceGroupName { get; private set; }
+        public string ResourceGroupName { get; internal set; }
 
         /// <summary>
         /// The subscription Id that the account belongs to.
@@ -116,6 +116,11 @@ namespace Microsoft.Azure.Commands.Batch
         public int ActiveJobAndJobScheduleQuota { get; private set; }
 
         /// <summary>
+        /// Contains information about the auto storage associated with a Batch account.
+        /// </summary>
+        public AutoStorageProperties AutoStorageProperties { get; set; }
+
+        /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
         /// </summary>
         public AccountKeyType KeyInUse
@@ -129,7 +134,7 @@ namespace Microsoft.Azure.Commands.Batch
                     this.batchOMClient = null;
                 }
                 this.keyInUse = value;
-            } 
+            }
         }
 
         internal BatchClient BatchOMClient
@@ -183,6 +188,15 @@ namespace Microsoft.Azure.Commands.Batch
             this.PoolQuota = resource.PoolQuota;
             this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;
 
+            if (resource.Properties.AutoStorage != null)
+            {
+                this.AutoStorageProperties = new AutoStorageProperties()
+                {
+                    StorageAccountId = resource.Properties.AutoStorage.StorageAccountId,
+                    LastKeySync = resource.Properties.AutoStorage.LastKeySync,
+                };
+            }
+
             // extract the host and strip off the account name for the TaskTenantUrl and AccountName
             var hostParts = accountEndpoint.Split('.');
             this.AccountName = hostParts[0];
@@ -217,7 +231,6 @@ namespace Microsoft.Azure.Commands.Batch
             ServiceClientCredentials credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
 
             BatchServiceClient restClient = handler == null ? new BatchServiceClient(new Uri(url), credentials) : new BatchServiceClient(new Uri(url), credentials, handler);
-            
             restClient.HttpClient.DefaultRequestHeaders.UserAgent.Add(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue);
 
             restClient.SetRetryPolicy(null); //Force there to be no retries

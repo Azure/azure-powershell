@@ -5,6 +5,7 @@ In order to run the scenario tests, run these commands with your batch account c
 $env:AZURE_BATCH_ACCOUNT = "YOUR_BATCH_ACCOUNT_NAME"
 $env:AZURE_BATCH_ACCESS_KEY = "YOUR_BATCH_ACCOUNT_ACCESS_KEY"
 $env:AZURE_BATCH_ENDPOINT = "YOUR_BATCH_ACCOUNT_ENDPOINT"
+$env:AZURE_BATCH_RESOURCE_GROUP = "YOUR_BATCH_RESOURCE_GROUP"
 
 ==================================================================================================================================
 This project is divided into Unit Tests and Scenario Tests.  

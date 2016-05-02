@@ -80,6 +80,10 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
+        public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
+
+        [Parameter]
+        [ValidateNotNullOrEmpty]
         public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
 
         [Parameter]
@@ -102,6 +106,7 @@ namespace Microsoft.Azure.Commands.Batch
                 InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,
                 StartTask = this.StartTask,
                 CertificateReferences = this.CertificateReferences,
+                ApplicationPackageReferences = this.ApplicationPackageReferences,
                 VirtualMachineConfiguration =  this.VirtualMachineConfiguration,
                 CloudServiceConfiguration = this.CloudServiceConfiguration
             };
