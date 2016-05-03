@@ -43,6 +43,24 @@ function New-AzureRmResourceGroup
 
 }
 
+function Remove-AzureRmResourceGroup
+{
+  [CmdletBinding()]
+  param(
+    [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
+	[switch] $Force)
+  BEGIN {
+    $context = Get-Context
+	$client = Get-ResourcesClient $context
+  }
+  PROCESS {
+    $deleteTask = $client.ResourceGroups.DeleteAsync($Name, [System.Threading.CancellationToken]::None)
+	$rg = $deleteTask.Result
+  }
+  END {}
+
+}
+
 function Get-Context
 {
     [Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext]$context = $null
