@@ -66,14 +66,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             this.backoffStep = backoffStep;
             this.maxDelay = maxDelay;
-
             this.nextDelay = firstDelay;
         }
 
         public int GetNextDelay()
         {
             int delay = this.nextDelay;
-
             this.nextDelay += this.backoffStep;
             this.nextDelay = Math.Min(maxDelay, this.nextDelay);
 
