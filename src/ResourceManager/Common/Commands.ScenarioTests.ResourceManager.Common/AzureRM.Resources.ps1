@@ -43,7 +43,7 @@ function New-AzureRmResourceGroup
 
 }
 
-function Remove-AzureRmResourceGroup
+function Remove-AzureRmResourceGroup 
 {
   [CmdletBinding()]
   param(
