@@ -1,5 +1,4 @@
-﻿
-function Get-AzureRmResourceGroup
+﻿function Get-AzureRmResourceGroup
 {
   [CmdletBinding()]
   param(
@@ -53,8 +52,6 @@ function Get-Context
 
 	return $context
 }
-
-
 
 function Get-ResourcesClient
 {
