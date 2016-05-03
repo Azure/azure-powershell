@@ -34,13 +34,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.PoolSpecification omObject;
         
+        private IList<PSApplicationPackageReference> applicationPackageReferences;
+        
         private IList<PSCertificateReference> certificateReferences;
+        
+        private PSCloudServiceConfiguration cloudServiceConfiguration;
         
         private IList<PSMetadataItem> metadata;
         
+        private PSStartTask startTask;
+        
         private PSTaskSchedulingPolicy taskSchedulingPolicy;
         
-        private PSStartTask startTask;
+        private PSVirtualMachineConfiguration virtualMachineConfiguration;
         
         public PSPoolSpecification()
         {
@@ -54,6 +60,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public IList<PSApplicationPackageReference> ApplicationPackageReferences
+        {
+            get
+            {
+                if (((this.applicationPackageReferences == null) 
+                            && (this.omObject.ApplicationPackageReferences != null)))
+                {
+                    List<PSApplicationPackageReference> list;
+                    list = new List<PSApplicationPackageReference>();
+                    IEnumerator<Microsoft.Azure.Batch.ApplicationPackageReference> enumerator;
+                    enumerator = this.omObject.ApplicationPackageReferences.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSApplicationPackageReference(enumerator.Current));
+                    }
+                    this.applicationPackageReferences = list;
+                }
+                return this.applicationPackageReferences;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ApplicationPackageReferences = null;
+                }
+                else
+                {
+                    this.omObject.ApplicationPackageReferences = new List<Microsoft.Azure.Batch.ApplicationPackageReference>();
+                }
+                this.applicationPackageReferences = value;
+            }
         }
         
         public System.Boolean? AutoScaleEnabled
@@ -124,6 +165,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.CertificateReferences = new List<Microsoft.Azure.Batch.CertificateReference>();
                 }
                 this.certificateReferences = value;
+            }
+        }
+        
+        public PSCloudServiceConfiguration CloudServiceConfiguration
+        {
+            get
+            {
+                if (((this.cloudServiceConfiguration == null) 
+                            && (this.omObject.CloudServiceConfiguration != null)))
+                {
+                    this.cloudServiceConfiguration = new PSCloudServiceConfiguration(this.omObject.CloudServiceConfiguration);
+                }
+                return this.cloudServiceConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.CloudServiceConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.CloudServiceConfiguration = value.omObject;
+                }
+                this.cloudServiceConfiguration = value;
             }
         }
         
@@ -198,18 +264,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public string OSFamily
-        {
-            get
-            {
-                return this.omObject.OSFamily;
-            }
-            set
-            {
-                this.omObject.OSFamily = value;
-            }
-        }
-        
         public System.TimeSpan? ResizeTimeout
         {
             get
@@ -219,31 +273,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.ResizeTimeout = value;
-            }
-        }
-        
-        public PSTaskSchedulingPolicy TaskSchedulingPolicy
-        {
-            get
-            {
-                if (((this.taskSchedulingPolicy == null) 
-                            && (this.omObject.TaskSchedulingPolicy != null)))
-                {
-                    this.taskSchedulingPolicy = new PSTaskSchedulingPolicy(this.omObject.TaskSchedulingPolicy);
-                }
-                return this.taskSchedulingPolicy;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.TaskSchedulingPolicy = null;
-                }
-                else
-                {
-                    this.omObject.TaskSchedulingPolicy = value.omObject;
-                }
-                this.taskSchedulingPolicy = value;
             }
         }
         
@@ -284,15 +313,53 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public string TargetOSVersion
+        public PSTaskSchedulingPolicy TaskSchedulingPolicy
         {
             get
             {
-                return this.omObject.TargetOSVersion;
+                if (((this.taskSchedulingPolicy == null) 
+                            && (this.omObject.TaskSchedulingPolicy != null)))
+                {
+                    this.taskSchedulingPolicy = new PSTaskSchedulingPolicy(this.omObject.TaskSchedulingPolicy);
+                }
+                return this.taskSchedulingPolicy;
             }
             set
             {
-                this.omObject.TargetOSVersion = value;
+                if ((value == null))
+                {
+                    this.omObject.TaskSchedulingPolicy = null;
+                }
+                else
+                {
+                    this.omObject.TaskSchedulingPolicy = value.omObject;
+                }
+                this.taskSchedulingPolicy = value;
+            }
+        }
+        
+        public PSVirtualMachineConfiguration VirtualMachineConfiguration
+        {
+            get
+            {
+                if (((this.virtualMachineConfiguration == null) 
+                            && (this.omObject.VirtualMachineConfiguration != null)))
+                {
+                    this.virtualMachineConfiguration = new PSVirtualMachineConfiguration(this.omObject.VirtualMachineConfiguration);
+                }
+                return this.virtualMachineConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.VirtualMachineConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.VirtualMachineConfiguration = value.omObject;
+                }
+                this.virtualMachineConfiguration = value;
             }
         }
         

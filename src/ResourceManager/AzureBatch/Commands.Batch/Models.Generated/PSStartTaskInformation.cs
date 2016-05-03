@@ -45,22 +45,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.StartTaskState State
-        {
-            get
-            {
-                return this.omObject.State;
-            }
-        }
-        
-        public System.DateTime StartTime
-        {
-            get
-            {
-                return this.omObject.StartTime;
-            }
-        }
-        
         public System.DateTime? EndTime
         {
             get
@@ -77,6 +61,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public System.DateTime? LastRetryTime
+        {
+            get
+            {
+                return this.omObject.LastRetryTime;
+            }
+        }
+        
+        public int RetryCount
+        {
+            get
+            {
+                return this.omObject.RetryCount;
+            }
+        }
+        
         public PSTaskSchedulingError SchedulingError
         {
             get
@@ -90,19 +90,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public int RetryCount
+        public System.DateTime StartTime
         {
             get
             {
-                return this.omObject.RetryCount;
+                return this.omObject.StartTime;
             }
         }
         
-        public System.DateTime? LastRetryTime
+        public Microsoft.Azure.Batch.Common.StartTaskState State
         {
             get
             {
-                return this.omObject.LastRetryTime;
+                return this.omObject.State;
             }
         }
     }

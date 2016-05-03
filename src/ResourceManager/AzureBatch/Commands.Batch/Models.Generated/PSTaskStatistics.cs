@@ -43,19 +43,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Url
+        public System.TimeSpan KernelCpuTime
         {
             get
             {
-                return this.omObject.Url;
-            }
-        }
-        
-        public System.DateTime StartTime
-        {
-            get
-            {
-                return this.omObject.StartTime;
+                return this.omObject.KernelCpuTime;
             }
         }
         
@@ -67,27 +59,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.TimeSpan UserCpuTime
+        public double ReadIOGiB
         {
             get
             {
-                return this.omObject.UserCpuTime;
-            }
-        }
-        
-        public System.TimeSpan KernelCpuTime
-        {
-            get
-            {
-                return this.omObject.KernelCpuTime;
-            }
-        }
-        
-        public System.TimeSpan WallClockTime
-        {
-            get
-            {
-                return this.omObject.WallClockTime;
+                return this.omObject.ReadIOGiB;
             }
         }
         
@@ -99,19 +75,43 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public long WriteIOps
+        public System.DateTime StartTime
         {
             get
             {
-                return this.omObject.WriteIOps;
+                return this.omObject.StartTime;
             }
         }
         
-        public double ReadIOGiB
+        public string Url
         {
             get
             {
-                return this.omObject.ReadIOGiB;
+                return this.omObject.Url;
+            }
+        }
+        
+        public System.TimeSpan UserCpuTime
+        {
+            get
+            {
+                return this.omObject.UserCpuTime;
+            }
+        }
+        
+        public System.TimeSpan WaitTime
+        {
+            get
+            {
+                return this.omObject.WaitTime;
+            }
+        }
+        
+        public System.TimeSpan WallClockTime
+        {
+            get
+            {
+                return this.omObject.WallClockTime;
             }
         }
         
@@ -123,11 +123,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.TimeSpan WaitTime
+        public long WriteIOps
         {
             get
             {
-                return this.omObject.WaitTime;
+                return this.omObject.WriteIOps;
             }
         }
     }

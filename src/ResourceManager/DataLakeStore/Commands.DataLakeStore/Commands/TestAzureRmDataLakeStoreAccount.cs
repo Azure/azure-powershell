@@ -34,22 +34,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            try
-            {
-                DataLakeStoreClient.GetAccount(ResourceGroupName, Name);
-                WriteObject(true);
-            }
-            catch (CloudException e)
-            {
-                if (e.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    WriteObject(false);
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            WriteObject(DataLakeStoreClient.TestAccount(ResourceGroupName, Name));
         }
     }
 }
