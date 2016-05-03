@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.JobReleaseTask omObject;
         
-        private IList<PSResourceFile> resourceFiles;
-        
         private IList<PSEnvironmentSetting> environmentSettings;
+        
+        private IList<PSResourceFile> resourceFiles;
         
         public PSJobReleaseTask()
         {
@@ -61,53 +61,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.CommandLine = value;
-            }
-        }
-        
-        public string Id
-        {
-            get
-            {
-                return this.omObject.Id;
-            }
-            set
-            {
-                this.omObject.Id = value;
-            }
-        }
-        
-        public IList<PSResourceFile> ResourceFiles
-        {
-            get
-            {
-                if (((this.resourceFiles == null) 
-                            && (this.omObject.ResourceFiles != null)))
-                {
-                    List<PSResourceFile> list;
-                    list = new List<PSResourceFile>();
-                    IEnumerator<Microsoft.Azure.Batch.ResourceFile> enumerator;
-                    enumerator = this.omObject.ResourceFiles.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(new PSResourceFile(enumerator.Current));
-                    }
-                    this.resourceFiles = list;
-                }
-                return this.resourceFiles;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.ResourceFiles = null;
-                }
-                else
-                {
-                    this.omObject.ResourceFiles = new List<Microsoft.Azure.Batch.ResourceFile>();
-                }
-                this.resourceFiles = value;
             }
         }
         
@@ -146,15 +99,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.Boolean? RunElevated
+        public string Id
         {
             get
             {
-                return this.omObject.RunElevated;
+                return this.omObject.Id;
             }
             set
             {
-                this.omObject.RunElevated = value;
+                this.omObject.Id = value;
             }
         }
         
@@ -170,6 +123,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public IList<PSResourceFile> ResourceFiles
+        {
+            get
+            {
+                if (((this.resourceFiles == null) 
+                            && (this.omObject.ResourceFiles != null)))
+                {
+                    List<PSResourceFile> list;
+                    list = new List<PSResourceFile>();
+                    IEnumerator<Microsoft.Azure.Batch.ResourceFile> enumerator;
+                    enumerator = this.omObject.ResourceFiles.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSResourceFile(enumerator.Current));
+                    }
+                    this.resourceFiles = list;
+                }
+                return this.resourceFiles;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ResourceFiles = null;
+                }
+                else
+                {
+                    this.omObject.ResourceFiles = new List<Microsoft.Azure.Batch.ResourceFile>();
+                }
+                this.resourceFiles = value;
+            }
+        }
+        
         public System.TimeSpan? RetentionTime
         {
             get
@@ -179,6 +167,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.RetentionTime = value;
+            }
+        }
+        
+        public System.Boolean? RunElevated
+        {
+            get
+            {
+                return this.omObject.RunElevated;
+            }
+            set
+            {
+                this.omObject.RunElevated = value;
             }
         }
     }

@@ -15,6 +15,12 @@ function Test-DataLakeStoreAccount
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AzureRMDataLakeStoreAccount -Name $accountName}
+
 		$accountCreated = New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
 		Assert-AreEqual $accountName $accountCreated.Name
@@ -39,6 +45,11 @@ function Test-DataLakeStoreAccount
 			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
 		}
+
+		# Test to make sure the account does exist
+		Assert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-True {Test-AzureRMDataLakeStoreAccount -Name $accountName}
 
 		# Updating Account
 		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
@@ -323,9 +334,12 @@ function Test-DataLakeStoreFileSystemPermissions
 		Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId)) -force
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $currentCount $result.UserAces.Count
+
 		# verify that removal of full acl and default acl fail
-		Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force }
-		Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force -Default }
+		# NOTE: commenting these tests out as these cmdlets have been temporarily removed until
+		# They are actually supported. This avoids confusion for our customers who might try to use them.
+		# Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force }
+		# Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force -Default }
 
 		# Delete Data Lake account
 		Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
