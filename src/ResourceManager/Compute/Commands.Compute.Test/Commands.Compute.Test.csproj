@@ -264,6 +264,9 @@
     <None Include="ScenarioTests\VMDynamicTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="....CommonCommands.ScenarioTests.ResourceManager.CommonAzureRM.Resources.ps1">
+      <Link>ScenarioTestsAzureRM.Resources.ps1</Link>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\VirtualMachineProfileTests.ps1">

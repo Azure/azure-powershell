@@ -135,7 +135,8 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     _helper.RMResourceModule,
-                    @"AzureRM.Cdn.psd1");
+                    @"AzureRM.Cdn.psd1",
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
