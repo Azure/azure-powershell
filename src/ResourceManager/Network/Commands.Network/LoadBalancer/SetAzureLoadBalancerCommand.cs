@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Normalize the IDs
-            ChildResourceHelper.NormalizeChildResourcesId(this.LoadBalancer);
+            ChildResourceHelper.NormalizeChildResourcesId(this.LoadBalancer, this.NetworkClient.NetworkManagementClient.SubscriptionId);
 
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancer>(this.LoadBalancer);
