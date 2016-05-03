@@ -334,8 +334,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 if (job != null)
                 {
                     job(resourceGroup, deploymentName, basicDeployment);
-                }
-                
+                }                
                 deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName).Deployment;
 
             } while (!status.Any(s => s.Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
