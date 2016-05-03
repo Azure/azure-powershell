@@ -106,8 +106,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             DateTime startDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.StartDate]);
             DateTime endDate = (DateTime)(ProviderData.ProviderParameters[GetRecoveryPointParams.EndDate]);
-            AzureRmRecoveryServicesBackupIaasVmItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
-                as AzureRmRecoveryServicesBackupIaasVmItem;
+            AzureRmRecoveryServicesBackupAzureSqlItem item = ProviderData.ProviderParameters[GetRecoveryPointParams.Item]
+                as AzureRmRecoveryServicesBackupAzureSqlItem;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
