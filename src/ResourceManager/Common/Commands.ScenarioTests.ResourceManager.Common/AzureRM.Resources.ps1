@@ -64,6 +64,8 @@ function New-AzureRmResourceGroup
 	#$createParms.Tags = $Tags
     $createTask = $client.ResourceGroups.CreateOrUpdateAsync($Name, $createParms, [System.Threading.CancellationToken]::None)
 	$rg = $createTask.Result
+	$resourceGroup = Get-ResourceGroup $Name
+	Write-Output $resourceGroup
   }
   END {}
 
