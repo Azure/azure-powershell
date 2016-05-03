@@ -163,8 +163,11 @@ namespace Microsoft.Azure.Commands.Network
                 loadBalancer.InboundNatPools = this.InboundNatPool;
             }
 
+            loadBalancer.ResourceGroupName = this.ResourceGroupName;
+            loadBalancer.Name = this.Name;
+
             // Normalize the IDs
-            ChildResourceHelper.NormalizeChildResourcesId(loadBalancer);
+            ChildResourceHelper.NormalizeChildResourcesId(loadBalancer, this.NetworkClient.NetworkManagementClient.SubscriptionId);
 
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancer>(loadBalancer);
