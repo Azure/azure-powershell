@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             AddApplicationParameters addApplicationParameters = new AddApplicationParameters()
             {
                 DisplayName = displayName,
-                AllowUpdates = allowUpdates != null && allowUpdates.Value
+                // AllowUpdates = allowUpdates TODO uncomment this when AllowUpdates is "bool?" This is a swagger change. 
             };
 
              var response = BatchManagementClient.Application.AddApplication(
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 uap);
         }
 
-        public virtual PSApplicationPackage UploadApplicationPackage(
+        public virtual PSApplicationPackage UploadAndActivateApplicationPackage(
             string resourceGroupName,
             string accountName,
             string applicationId,
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // If the package has already been uploaded but wasn't activated.
             if (activateOnly)
             {
-                ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, true);
+                ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, Resources.FailedToActivate);
                 return GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
             }
 
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             UploadFileToApplicationPackage(resourceGroupName, accountName, applicationId, version, filePath, storageUrl, appPackageAlreadyExists);
 
             // If the application package has been uploaded we activate it.
-            ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, false);
+            ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, Resources.UploadedApplicationButFailedToActivate);
 
             return GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
         }
@@ -234,6 +234,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
 
+        /// <summary>
+        /// Checks the file path is valid and the resourceGroupName is valid
+        /// </summary>
         private string PreConditionsCheck(string resourceGroupName, string accountName, string filePath)
         {
             if (!File.Exists(filePath))
@@ -250,7 +253,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return resourceGroupName;
         }
 
-        private void ActivateApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version, string format, bool activateOnly)
+        private void ActivateApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version, string format, string errorMessageFormat)
         {
             try
             {
@@ -263,12 +266,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             catch (Exception exception)
             {
-                string message = string.Format(Resources.UploadedApplicationButFailedToActivate, applicationId, version, exception.Message);
-                if (activateOnly)
-                {
-                    message = string.Format(Resources.FailedToActivate, applicationId, version, exception.Message);
-                }
-
+                string message = string.Format(errorMessageFormat, applicationId, version, exception.Message);
                 throw new ActivateApplicationPackageException(message, exception);
             }
         }
