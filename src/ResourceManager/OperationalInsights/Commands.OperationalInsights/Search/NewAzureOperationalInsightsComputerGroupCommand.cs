@@ -20,8 +20,8 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.New, Constants.SavedSearch)]
-    public class NewAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet(VerbsCommon.New, Constants.ComputerGroup)]
+    public class NewAzureOperationalInsightsComputerGroupCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -55,11 +55,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string Query { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The saved search tags.")]
-        [ValidateNotNullOrEmpty]
-        public Hashtable Tags { get; set; }
-
-        [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The saved search version.")]
         [ValidateNotNullOrEmpty]
         public int Version { get; set; }
@@ -74,10 +69,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Category = this.Category,
                 DisplayName = this.DisplayName,
                 Query = this.Query,
-                Version = this.Version
+                Version = this.Version,
+                Tags = new List<Tag>() { new Tag() { Name = "Group", Value = "Computer" } }
             };
 
-            properties.Tags = SearchCommandHelper.PopulateAndValidateTagsForProperties(this.Tags, properties.Query);
+            if (!SearchCommandHelper.IsListOfComputers(this.Query))
+            {
+                throw new PSArgumentException("Query is not a list of computers. Please use aggregations such as: distinct Computer or measure count() by Computer.");
+            }
 
             WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, Force, ConfirmAction), true);
         }
