@@ -171,6 +171,9 @@
     <Compile Include="ScenarioTests\OperationalInsightsScenarioTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="....CommonCommands.ScenarioTests.ResourceManager.CommonAzureRM.Resources.ps1">
+      <Link>ScenarioTestsAzureRM.Resources.ps1</Link>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
