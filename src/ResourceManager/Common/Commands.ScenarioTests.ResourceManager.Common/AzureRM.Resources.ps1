@@ -145,9 +145,9 @@ function Get-ResourceGroup {
 
 function Get-Provider {
   param([string] $name)
-  $rtype = New-Object PSObject -Property @{"ResourceTypeName" = New-Object System.Collections.ArrayList; "Locations" = @("West US"); 
+  $rtype = New-Object PSObject -Property @{"ResourceTypeName" = @("virtualMachines"); "Locations" = @("East US"); 
   "ApiVersions" = @("2015-01-01"); }
-  $pr = New-Object PSObject -Property @{"ProviderNamespace" = $name; "RegistrationState" = "Registered"; "Locations" = @("West US"); 
+  $pr = New-Object PSObject -Property @{"ProviderNamespace" = $name; "RegistrationState" = "Registered"; "Locations" = @("East US"); 
   "ResourceTypes" = $rtype;}
   return $pr
 }
