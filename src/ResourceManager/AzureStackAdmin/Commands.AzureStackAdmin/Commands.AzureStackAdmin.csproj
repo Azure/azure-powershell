@@ -124,9 +124,7 @@
       <Link>AzureRM.AzureStackAdmin.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.AzureStack.Commands.dll-help.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Microsoft.AzureStack.Commands.dll-help.psd1" />
     <Compile Include="CommonPSConst.cs" />
     <Compile Include="Microsoft.Subscriptions\ManagedLocations\GetManagedLocation.cs" />
     <Compile Include="Microsoft.Subscriptions\ManagedLocations\NewManagedLocation.cs" />
@@ -182,9 +180,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.AzureStack.Commands.dll-help.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Microsoft.AzureStack.Commands.dll-help.xml" />
     <Content Include="Token\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
