@@ -11,10 +11,17 @@
 	$client = Get-ResourcesClient $context
   }
   PROCESS {
-    $getTask = $client.ResourceGroups.GetAsync($Name, [System.Threading.CancellationToken]::None)
-	$rg = $getTask.Result
-	$resourceGroup = Get-ResourceGroup $Name $Location
-	Write-Output $resourceGroup
+    if($Name -eq $null) {
+	  $getTask = $client.ResourceGroups.ListAsync($null, [System.Threading.CancellationToken]::None)
+	  $rg = $getTask.Result
+	  $resourceGroup = List-ResourceGroup
+	  Write-Output $resourceGroup
+	} else {
+	  $getTask = $client.ResourceGroups.GetAsync($Name, [System.Threading.CancellationToken]::None)
+	  $rg = $getTask.Result
+	  $resourceGroup = Get-ResourceGroup $Name $Location
+	  Write-Output $resourceGroup
+	}
   }
   END {}
 
@@ -37,6 +44,32 @@ function New-AzureRmResourceGroup
 	$createParms.Location = $Location
 	#$createParms.Tags = $Tags
     $createTask = $client.ResourceGroups.CreateOrUpdateAsync($Name, $createParms, [System.Threading.CancellationToken]::None)
+	$rg = $createTask.Result
+  }
+  END {}
+
+}
+
+function New-AzureRmResourceGroupDeployment
+{
+  [CmdletBinding()]
+  param(
+    [string] [alias("ResourceGroupName")] $Name,
+    [string] $TemplateFile,
+	[string] $serverName,
+	[string] $databaseName,
+	[string] $storageName,
+	[string] $version,
+	[string] $EnvLocation,
+	[string] $administratorLogin,
+	[switch] $Force)
+  BEGIN { 
+    $context = Get-Context
+	$client = Get-ResourcesClient $context
+  }
+  PROCESS {
+    $createParms = New-Object -Type Microsoft.Azure.Management.Resources.Models.Deployment
+    $createTask = $client.Deployments.CreateOrUpdateAsync($Name, $Name, $createParms, [System.Threading.CancellationToken]::None)
 	$rg = $createTask.Result
   }
   END {}
@@ -87,6 +120,11 @@ function Get-ResourcesClient
 
 function Get-ResourceGroup {
   param([string] $name, [string] $location)
+  $rg = New-Object PSObject -Property @{"ResourceGroupName" = $name; "Location" = $location; }
+  return $rg
+}
+
+function List-ResourceGroup {
   $rg = New-Object PSObject -Property @{"ResourceGroupName" = $name; "Location" = $location; }
   return $rg
 }
