@@ -27,6 +27,25 @@
 
 }
 
+function Get-AzureRmResourceProvider
+{
+  [CmdletBinding()]
+  param(
+    [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ProviderNamespace)
+  BEGIN { 
+    $context = Get-Context
+	$client = Get-ResourcesClient $context
+  }
+  PROCESS {
+	$getTask = $client.Providers.GetAsync($ProviderNamespace, [System.Threading.CancellationToken]::None)
+	$pr = $getTask.Result
+	$provider = Get-Provider $ProviderNamespace
+	Write-Output $provider
+  }
+  END {}
+
+}
+
 function New-AzureRmResourceGroup
 {
   [CmdletBinding()]
@@ -122,6 +141,15 @@ function Get-ResourceGroup {
   param([string] $name, [string] $location)
   $rg = New-Object PSObject -Property @{"ResourceGroupName" = $name; "Location" = $location; }
   return $rg
+}
+
+function Get-Provider {
+  param([string] $name)
+  $rtype = New-Object PSObject -Property @{"ResourceTypeName" = New-Object System.Collections.ArrayList; "Locations" = @("West US"); 
+  "ApiVersions" = @("2015-01-01"); }
+  $pr = New-Object PSObject -Property @{"ProviderNamespace" = $name; "RegistrationState" = "Registered"; "Locations" = @("West US"); 
+  "ResourceTypes" = $rtype;}
+  return $pr
 }
 
 function List-ResourceGroup {
