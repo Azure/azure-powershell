@@ -11,7 +11,7 @@ function Get-AzureRmResourceGroup
 	$client = Get-ResourcesClient $context
   }
   PROCESS {
-    $getTask = $client.ResourceGroups.Get($Name, [System.Threading.CancellationToken]::None)
+    $getTask = $client.ResourceGroups.GetAsync($Name, [System.Threading.CancellationToken]::None)
 	$rg = $getTask.Result
 	$resourceGroup = Get-ResourceGroup $Name $Location
 	Write-Output $resourceGroup
@@ -32,11 +32,10 @@ function New-AzureRmResourceGroup
 	$client = Get-ResourcesClient $context
   }
   PROCESS {
-    $createParms = New-Object -Type Microsoft.Azure.Management.ResourceManager.Models.ResourceGroup
-	$createParms.Name = $Name
+    $createParms = New-Object -Type Microsoft.Azure.Management.Resources.Models.ResourceGroup
 	$createParms.Location = $Location
-	$createParms.Tags = $Tags
-    $createTask = $client.ResourceGroups.CreateOrUpdate($Name, $createParms, [System.Threading.CancellationToken]::None)
+	#$createParms.Tags = $Tags
+    $createTask = $client.ResourceGroups.CreateOrUpdateAsync($Name, $createParms, [System.Threading.CancellationToken]::None)
 	$rg = $createTask.Result
   }
   END {}
@@ -55,13 +54,15 @@ function Get-Context
 	return $context
 }
 
+
+
 function Get-ResourcesClient
 {
   param([Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext] $context)
   $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::ClientFactory
   [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext], [Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint]
-  $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateArmClient", $types)
-  $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.ResourceManager.ResourceManagementClient])
+  $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateClient", $types)
+  $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Resources.ResourceManagementClient])
   $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint]::ResourceManager
   $client = $closedMethod.Invoke($factory, $arguments)
   return $client
