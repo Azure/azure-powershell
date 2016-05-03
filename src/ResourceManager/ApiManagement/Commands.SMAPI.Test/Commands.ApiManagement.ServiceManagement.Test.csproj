@@ -232,6 +232,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests.ApiManagementTests\SubscriptionCrudTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests.ApiManagementTests\TenantAccessConfigurationCrudTest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests.ApiManagementTests\TenantGitConfigurationCrudTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
