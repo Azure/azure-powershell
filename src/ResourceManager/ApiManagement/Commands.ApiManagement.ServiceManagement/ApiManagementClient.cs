@@ -1739,5 +1739,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         #endregion
+
+        #region TenantAccessInformation
+        public PsApiManagementAccessInformation GetTenantAccessInformation(PsApiManagementContext context)
+        {
+            var response = Client.TenantAccess.Get(
+                context.ResourceGroupName,
+                context.ServiceName);
+
+            return Mapper.Map<PsApiManagementAccessInformation>(response.Value);
+        }
+
+        public void TenantAccessSet(
+            PsApiManagementContext context,
+            bool enabledTenantAccess)
+        {
+            var accessInformationParams = new AccessInformationUpdateParameters
+            {
+                Enabled = enabledTenantAccess
+            };
+            Client.TenantAccess.Update(context.ResourceGroupName, context.ServiceName, accessInformationParams, "*");
+        }
+        #endregion
     }
 }
