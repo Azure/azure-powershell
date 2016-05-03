@@ -595,9 +595,6 @@
                         <Component Id="cmpC7297788AE102ED861765ADE84F7A59B" Guid="*">
                             <File Id="filEA714AAE425D2451466447C9AFFE825E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRmProfileStartup.ps1" />
                         </Component>
-                        <Component Id="cmpE2DA894B67E7F107B24A69AD6B87F8B3" Guid="*">
-                            <File Id="fil6EA712045B160BE36B4A3D2068D50F9F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\CheckVersions.ps1" />
-                        </Component>
                         <Component Id="cmpCC409403AF670A9E0538AC743C61BD66" Guid="*">
                             <File Id="fil68CB35902CE5A11BE50C9DE228B61D12" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Hyak.Common.dll" />
                         </Component>
@@ -1572,9 +1569,6 @@
                         <Component Id="cmpFE91A142C4108B5EB50D6C5C5F4A4FA9" Guid="*">
                             <File Id="fil6D69005A7EDC2EEA35252F1E602D935C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\AzureRmProfileStartup.ps1" />
                         </Component>
-                        <Component Id="cmp065EDC002BB63B6AA573F18152B7240F" Guid="*">
-                            <File Id="fil559CC58FC4CFCF2A101739440A55FBC7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\CheckVersions.ps1" />
-                        </Component>
                         <Component Id="cmp02E49F28BB0FA3174A478847B857A4D0" Guid="*">
                             <File Id="fil379E46A4E79152D00FBBBF3BF85A0BA2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\Hyak.Common.dll" />
                         </Component>
@@ -1859,9 +1853,6 @@
                         </Component>
                         <Component Id="cmp6F865A1998C9B6DAE0E8844D0EECF40A" Guid="*">
                             <File Id="filAF2791E9DF9A44B6D0F375786A415C61" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRmProfileStartup.ps1" />
-                        </Component>
-                        <Component Id="cmp9002DD73D47754F2109499247914700F" Guid="*">
-                            <File Id="filA918B8D44812C6306881A86655EAA785" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\CheckVersions.ps1" />
                         </Component>
                         <Component Id="cmpD738842B230F04E64FD98E3E850E6338" Guid="*">
                             <File Id="fil73F9971478A8661859398F414D5BDE00" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Hyak.Common.dll" />
@@ -5261,7 +5252,6 @@
             <ComponentRef Id="cmp4F1B147652795AAF834377CCD9CAF2A7" />
             <ComponentRef Id="cmp0BDDC10BCAFF9EC25710B20367203609" />
             <ComponentRef Id="cmpC7297788AE102ED861765ADE84F7A59B" />
-            <ComponentRef Id="cmpE2DA894B67E7F107B24A69AD6B87F8B3" />
             <ComponentRef Id="cmpCC409403AF670A9E0538AC743C61BD66" />
             <ComponentRef Id="cmp8F649774D57C8E90EC765D8FCE36E32A" />
             <ComponentRef Id="cmp97D0BCD046DCE5E1A3DA3611DDBA27AB" />
@@ -5580,7 +5570,6 @@
             <ComponentRef Id="cmp9F97686A6D38F8B72B2FB1D62529AF0F" />
             <ComponentRef Id="cmpA398972142ABD0AC819F613EE832B65C" />
             <ComponentRef Id="cmpFE91A142C4108B5EB50D6C5C5F4A4FA9" />
-            <ComponentRef Id="cmp065EDC002BB63B6AA573F18152B7240F" />
             <ComponentRef Id="cmp02E49F28BB0FA3174A478847B857A4D0" />
             <ComponentRef Id="cmp53B7AE5C484C188098FEE906B381461C" />
             <ComponentRef Id="cmp246D81BDC7381CDCA512555564D15DF8" />
@@ -5674,7 +5663,6 @@
             <ComponentRef Id="cmpBBEEE168902DFD205E35F47468881929" />
             <ComponentRef Id="cmpCDBCF0967EA30044FF3F4478A30C1D5B" />
             <ComponentRef Id="cmp6F865A1998C9B6DAE0E8844D0EECF40A" />
-            <ComponentRef Id="cmp9002DD73D47754F2109499247914700F" />
             <ComponentRef Id="cmpD738842B230F04E64FD98E3E850E6338" />
             <ComponentRef Id="cmp2BE62623A92CD0986F0915CB16373E90" />
             <ComponentRef Id="cmp95E80D6E42ED3C994C89564D15A4E501" />
