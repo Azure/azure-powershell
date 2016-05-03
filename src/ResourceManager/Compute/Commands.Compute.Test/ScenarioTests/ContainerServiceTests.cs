@@ -12,19 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Profile.Test
+namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class ProfileModuleTests
+    public partial class ContainerServiceTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void WarningOnIncompatibleVersions()
+        public void TestContainerService()
         {
-            ProfileController.NewInstance.RunPsTest("db1ab6f0-4769-4b27-930e-01e2ef9c123c", "Test-LoadProfileModule");
+            ComputeTestController.NewInstance.RunPsTest("Test-ContainerService");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestContainerServiceUpdate()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-ContainerServiceUpdate");
         }
     }
 }

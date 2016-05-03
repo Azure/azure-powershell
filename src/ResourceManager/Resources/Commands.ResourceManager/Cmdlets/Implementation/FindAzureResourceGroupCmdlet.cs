@@ -48,6 +48,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
+            this.WriteWarning("The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
             PaginatedResponseHelper.ForEach(
                getFirstPage: () => this.GetResourceGroups(),
                getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
