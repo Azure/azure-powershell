@@ -325,16 +325,18 @@ namespace Microsoft.Azure.Commands.Resources.Models
             params string[] status)
         {
             DeploymentExtended deployment;
+            Delay stepedDelay = new Delay(firstDelay: 0);
 
             do
             {
+                TestMockSupport.Delay(stepedDelay.GetNextDelay());
+
                 if (job != null)
                 {
                     job(resourceGroup, deploymentName, basicDeployment);
                 }
-
+                
                 deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName).Deployment;
-                TestMockSupport.Delay(10000);
 
             } while (!status.Any(s => s.Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 
