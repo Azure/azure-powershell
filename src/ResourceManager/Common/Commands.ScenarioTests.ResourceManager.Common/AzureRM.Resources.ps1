@@ -4,7 +4,8 @@
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Location,
-	[string] [Parameter(ValueFromPipelineByPropertyName=$true)] $Id)
+	[string] [Parameter(ValueFromPipelineByPropertyName=$true)] $Id,
+	[switch] $Force)
   BEGIN { 
     $context = Get-Context
 	$client = Get-ResourcesClient $context
@@ -25,7 +26,8 @@ function New-AzureRmResourceGroup
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Location,
-	[string] [Parameter(ValueFromPipelineByPropertyName=$true)] $Tags)
+	[string] [Parameter(ValueFromPipelineByPropertyName=$true)] $Tags,
+	[switch] $Force)
   BEGIN { 
     $context = Get-Context
 	$client = Get-ResourcesClient $context

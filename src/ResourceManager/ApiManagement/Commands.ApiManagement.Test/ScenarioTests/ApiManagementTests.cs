@@ -177,7 +177,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                     _helper.RMResourceModule, 
                     _helper.RMStorageDataPlaneModule, 
                     _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"),
-                    "AzureRM.Storage.ps1");
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 _helper.RunPowerShellTest(scripts);
             }
