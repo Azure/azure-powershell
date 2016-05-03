@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         AzureVM = 1,
         AzureSqlDb,
+        AzureSql
     }
 
     public enum PsBackupProviderTypes

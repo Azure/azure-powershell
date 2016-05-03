@@ -132,6 +132,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((SimpleSchedulePolicy)
                                                  ((AzureIaaSVMProtectionPolicy)hydraResponse.Properties).SchedulePolicy);
             }
+            else if (hydraResponse.Properties.GetType() == typeof(AzureSqlProtectionPolicy))
+            {
+                if (((AzureSqlProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType() !=
+                                                                           typeof(SimpleRetentionPolicy))
+                {
+                    Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                               ((AzureSqlProtectionPolicy)hydraResponse.Properties).RetentionPolicy.GetType());
+                    Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                    return null;
+                }
+
+                policyModel = new AzureRmRecoveryServicesAzureSqlPolicy();
+                AzureRmRecoveryServicesAzureSqlPolicy sqlPolicyModel = policyModel as AzureRmRecoveryServicesAzureSqlPolicy;
+                sqlPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureSql;
+                sqlPolicyModel.BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureSql;
+                sqlPolicyModel.RetentionPolicy = PolicyHelpers.GetPSSimpleRetentionPolicy((SimpleRetentionPolicy)
+                                                  ((AzureSqlProtectionPolicy)hydraResponse.Properties).RetentionPolicy);
+            }
             else
             {
                 // we will enter this case when service supports new workload and customer 

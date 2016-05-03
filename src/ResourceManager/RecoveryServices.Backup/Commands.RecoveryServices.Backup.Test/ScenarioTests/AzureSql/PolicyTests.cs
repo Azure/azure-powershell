@@ -12,23 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public class AzureRmRecoveryServicesAzureSqlPolicy : AzureRmRecoveryServicesBackupPolicyBase
+    public partial class PolicyTests : RecoveryServicesBackupTestsBase
     {
-        public AzureRmRecoveryServicesBackupRetentionPolicyBase RetentionPolicy { get; set; }
-        public override void Validate()
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureSqlPolicyScenario()
         {
-            base.Validate();
-            RetentionPolicy.Validate();
+            this.RunPowerShellTest(PsBackupProviderTypes.AzureSql.ToString(), "Test-AzureSqlPolicyScenario");
         }
-
     }
 }
