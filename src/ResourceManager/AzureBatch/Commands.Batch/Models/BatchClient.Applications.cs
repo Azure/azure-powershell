@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             AddApplicationParameters addApplicationParameters = new AddApplicationParameters()
             {
                 DisplayName = displayName,
-                // AllowUpdates = allowUpdates TODO uncomment this when AllowUpdates is "bool?" This is a swagger change. 
+                AllowUpdates = allowUpdates
             };
 
              var response = BatchManagementClient.Application.AddApplication(

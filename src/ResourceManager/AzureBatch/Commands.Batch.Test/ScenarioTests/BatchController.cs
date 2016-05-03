@@ -180,6 +180,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
                 HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountName] = BatchAccount;
                 HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountEndpoint] = BatchAccountUrl;
+                HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountResourceGroup] = ResourceGroup;
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
