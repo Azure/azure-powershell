@@ -47,4 +47,37 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
     }
+
+    public class Delay
+    {
+        public const int DefaultMaxDelayInMilliseconds = 60000;
+
+        public const int DefaultBackoffStepInMilliseconds = 5000;
+
+        public const int DefaultDelayInMilliseconds = 0;
+
+        private int backoffStep;
+
+        private int maxDelay;
+
+        private int nextDelay;
+
+        public Delay(int backoffStep = DefaultBackoffStepInMilliseconds, int firstDelay = DefaultDelayInMilliseconds, int maxDelay = DefaultMaxDelayInMilliseconds)
+        {
+            this.backoffStep = backoffStep;
+            this.maxDelay = maxDelay;
+
+            this.nextDelay = firstDelay;
+        }
+
+        public int GetNextDelay()
+        {
+            int delay = this.nextDelay;
+
+            this.nextDelay += this.backoffStep;
+            this.nextDelay = Math.Min(maxDelay, this.nextDelay);
+
+            return delay;
+        }
+    }
 }
