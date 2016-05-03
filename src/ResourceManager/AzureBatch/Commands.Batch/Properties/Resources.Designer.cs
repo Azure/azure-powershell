@@ -1024,7 +1024,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to file not found {0}..
+        ///   Looks up a localized string similar to file not found {0}.
         /// </summary>
         public static string FileNotFound
         {
@@ -1035,7 +1035,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
 
         /// <summary>
-        ///   Failed to upload {0} to storage ({1})..
+        ///   Failed to upload {0} to storage. {1}.
         /// </summary>
         public static string FailedToUpload
         {
@@ -1046,7 +1046,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
 
         /// <summary>
-        ///   Uploading {0} to storage failed and the attempt to delete the application package afterwards failed ({1})..
+        ///   Uploading {0} to storage failed and the attempt to delete the application package afterwards failed. {1}.
         /// </summary>
         public static string FailedToUploadAndDelete
         {
@@ -1057,7 +1057,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
 
         /// <summary>
-        ///   Application package {0} version {1} successfully uploaded but failed to activate ({2})..
+        ///   Application package {0} version {1} successfully uploaded but failed to activate. {2}.
         /// </summary>
         public static string UploadedApplicationButFailedToActivate
         {
@@ -1068,7 +1068,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
 
         /// <summary>
-        ///   Application package {0} version {1} failed to activate ({2})..
+        ///   Application package {0} version {1} failed to activate. {2}.
         /// </summary>
         public static string FailedToActivate
         {
@@ -1079,7 +1079,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
 
         /// <summary>
-        ///   Failed to get application {0} package {1}. You may need to delete the application package and try uploading again ({2})..
+        ///   Failed to get application {0} package {1}. You may need to delete the application package and try uploading again. {2}.
         /// </summary>
         public static string FailedToGetApplicationPackage
         {
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
 
         /// <summary>
-        ///   Failed to add application package {0} version {1} ({2})..
+        ///   Failed to add application package {0} version {1}. {2}.
         /// </summary>
         public static string FailedToAddApplicationPackage
         {

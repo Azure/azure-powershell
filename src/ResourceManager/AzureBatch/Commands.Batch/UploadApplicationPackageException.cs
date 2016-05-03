@@ -4,7 +4,7 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.Batch
 {
     /// <summary>
-    /// The exception that is thrown when failing to upload a file to a storage
+    /// The exception that is thrown when failing to upload a file to Azure Storage
     /// </summary>
     [Serializable]
     internal class UploadApplicationPackageException : Exception
