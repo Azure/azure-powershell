@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable Plan { get; set; }
 
         /// <summary>  
-        /// Gets or sets the plan object.  
+        /// Gets or sets the Sku object.  
         /// </summary>  
         [Alias("SkuObject")]  
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]  
