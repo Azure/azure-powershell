@@ -57,6 +57,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     else
                         throw new ArgumentException(String.Format(Resources.BackupManagementTypeIncorrectForContainerType, containerType));
                     break;
+                case ContainerType.AzureSqlContainer:
+                    if (backupManagementType == BackupManagementType.AzureSql)
+                        providerType = PsBackupProviderTypes.AzureSql;
+                    else
+                        throw new ArgumentException(String.Format(Resources.BackupManagementTypeRequiredForContainerType, containerType));
+                    break;
                 default:
                     throw new ArgumentException(String.Format(Resources.UnsupportedContainerType, containerType.ToString()));
             }
@@ -107,7 +113,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     }
                     psProviderType = PsBackupProviderTypes.IaasVm;
                     break;
-                case WorkloadType.AzureSql:
+                case WorkloadType.AzureSqlDb:
+                    // validate backupManagementType is valid
                     if (backupManagementType.HasValue && backupManagementType != BackupManagementType.AzureSql)
                     {
                         // throw exception that it is not expected

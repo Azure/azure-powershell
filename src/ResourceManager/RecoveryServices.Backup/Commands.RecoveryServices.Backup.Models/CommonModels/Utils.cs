@@ -141,6 +141,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     return BackupManagementType.SCDPM;
                 case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureBackupServer:
                     return BackupManagementType.AzureBackupServer;
+                case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureSql:
+                    return BackupManagementType.AzureSql;
                 default:
                     throw new Exception("Unsupported BackupManagmentType: " + backupManagementType);
             }
@@ -168,6 +170,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if (workloadType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.VM)
             {
                 return WorkloadType.AzureVM;
+            }
+            if (workloadType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.AzureSqlDb)
+            {
+                return WorkloadType.AzureSqlDb;
             }
             else
             {

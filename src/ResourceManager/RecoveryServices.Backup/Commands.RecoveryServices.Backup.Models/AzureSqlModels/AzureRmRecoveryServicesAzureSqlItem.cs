@@ -21,13 +21,52 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesAzureSqlItem : AzureRmRecoveryServicesBackupItemBase
+    public class AzureRmRecoveryServicesBackupAzureSqlItem : AzureRmRecoveryServicesBackupItemBase
     {
-        public AzureRmRecoveryServicesAzureSqlItem(ProtectedItemResource protectedItemResource,
+        public string ProtectedItemDataId { get; set; }
+
+        public string ProtectionState { get; set; }
+
+
+        /// <summary>
+        /// Protection Policy Name for the Item
+        /// </summary>
+        public string ProtectionPolicyName { get; set; }
+
+        /// <summary>
+        /// ExtendedInfo for the Item
+        /// </summary
+        public AzureRmRecoveryServicesBackupAzureSqlItemExtendedInfo ExtendedInfo { get; set; }
+
+        public AzureRmRecoveryServicesBackupAzureSqlItem(ProtectedItemResource protectedItemResource,
             AzureRmRecoveryServicesBackupContainerBase container, string policyName)
             : base(protectedItemResource, container)
         {
             AzureSqlProtectedItem protectedItem = (AzureSqlProtectedItem)protectedItemResource.Properties;
+            ProtectedItemDataId = protectedItem.ProtectedItemDataId;
+            ProtectionState = protectedItem.ProtectionState;
+            ProtectionPolicyName = policyName;
         }
+    }
+
+    /// <summary>
+    /// Represents IaaSVM Item ExtendedInfo Class
+    /// </summary>
+    public class AzureRmRecoveryServicesBackupAzureSqlItemExtendedInfo : AzureRmRecoveryServicesBackupItemExtendedInfoBase
+    {
+        /// <summary>
+        /// Oldest Recovery Point for the Item
+        /// </summary
+        public DateTime? OldestRecoveryPoint { get; set; }
+
+        /// <summary>
+        /// Recovery Points Count for the Item
+        /// </summary
+        public int? RecoveryPointCount { get; set; }
+
+        /// <summary>
+        /// PolicyState for the Item
+        /// </summary
+        public string PolicyState { get; set; }
     }
 }

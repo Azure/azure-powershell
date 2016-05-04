@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 policyModel = new AzureRmRecoveryServicesAzureSqlPolicy();
                 AzureRmRecoveryServicesAzureSqlPolicy sqlPolicyModel = policyModel as AzureRmRecoveryServicesAzureSqlPolicy;
-                sqlPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureSql;
+                sqlPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureSqlDb;
                 sqlPolicyModel.BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureSql;
                 sqlPolicyModel.RetentionPolicy = PolicyHelpers.GetPSSimpleRetentionPolicy((SimpleRetentionPolicy)
                                                   ((AzureSqlProtectionPolicy)hydraResponse.Properties).RetentionPolicy);
@@ -214,6 +214,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         policyName = HelperUtils.GetPolicyNameFromPolicyId(keyVauleDict, policyId);
                     }
                     itemModel = new AzureRmRecoveryServicesBackupIaasVmItem(protectedItem, container, policyName);
+                }
+
+                if (protectedItem.Properties.GetType() == typeof(AzureSqlProtectedItem))
+                {
+                    string policyName = null;
+                    string policyId = ((AzureSqlProtectedItem)protectedItem.Properties).PolicyId;
+                    if (policyId != null)
+                    {
+                        Dictionary<UriEnums, string> keyVauleDict =
+                        HelperUtils.ParseUri(policyId);
+                        policyName = HelperUtils.GetPolicyNameFromPolicyId(keyVauleDict, policyId);
+                    }
+                    itemModel = new AzureRmRecoveryServicesBackupAzureSqlItem(protectedItem, container, policyName);
                 }
             }
 

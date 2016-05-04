@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                            {
                                hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureVM);
                            }
-                           else if (WorkloadType == Models.WorkloadType.AzureSql)
+                           else if (WorkloadType == Models.WorkloadType.AzureSqlDb)
                            {
-                               hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureSql);
+                               hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureSqlDb);
                            }
                            break;
 
@@ -108,13 +108,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                }
                                hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureVM);
                            }
-                           else if (WorkloadType == Models.WorkloadType.AzureSql)
+                           else if (WorkloadType == Models.WorkloadType.AzureSqlDb)
                            {
                                if (BackupManagementType != Models.BackupManagementType.AzureSql)
                                {
                                    throw new ArgumentException(Resources.AzureSqlUnsupportedBackupManagementTypeException);
                                }
-                               hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureSql);
+                               hydraProviderType = HydraHelpers.GetHydraProviderType(Models.WorkloadType.AzureSqlDb);
                            }
                            else
                            {
