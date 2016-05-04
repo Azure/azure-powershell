@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ScenarioTest;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Rest.Azure;
@@ -27,7 +28,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
     using WindowsAzure.Commands.Test.Utilities.Common;
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             var pagableResult = new Page<FeatureResult>();
             //var listResult = new[] { provider1RegisteredFeature, provider1UnregisteredFeature, provider2UnregisteredFeature };
             var listResult = new List<FeatureResult>() { provider1RegisteredFeature, provider1UnregisteredFeature, provider2UnregisteredFeature };
-            //pagableResult.SetItemValue<FeatureResult>(listResult);
+            pagableResult.SetItemValue<FeatureResult>(listResult);
             var result = new AzureOperationResponse<IPage<FeatureResult>>()
             {
                 Body = pagableResult
