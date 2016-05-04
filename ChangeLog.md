@@ -22,6 +22,8 @@
 * Azure Compute
   * Added cmdlets for Contaner Service support
   * Bug and help fixes
+* Azure Profile
+  * Added support for German national cloud (AzureGermanCloud)
 * Azure APIManagement
   *  Added Tenant Git Configuration cmdlets
     - Get-AzureRmApiManagementTenantGitAccess
