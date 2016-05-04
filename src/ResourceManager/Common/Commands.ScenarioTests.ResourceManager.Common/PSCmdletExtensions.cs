@@ -17,7 +17,7 @@ using System.Diagnostics;
 using System.Management.Automation;
 using System.Reflection;
 
-namespace Microsoft.Azure.Commands.ScenarioTest
+namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public static class PSCmdletExtensions
     {
