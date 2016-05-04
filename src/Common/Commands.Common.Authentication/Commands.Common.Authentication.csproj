@@ -186,4 +186,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+<<<<<<< HEAD
 </Project>
+=======
+</Project>
+>>>>>>> 432b3c1138af6a597962f3881bc3110a480b7c81
