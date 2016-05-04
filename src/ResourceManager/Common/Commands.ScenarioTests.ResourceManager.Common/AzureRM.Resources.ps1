@@ -19,7 +19,7 @@
 	} else {
 	  $getTask = $client.ResourceGroups.GetAsync($Name, [System.Threading.CancellationToken]::None)
 	  $rg = $getTask.Result
-	  $resourceGroup = Get-ResourceGroup $Name $Location
+	  $resourceGroup = Get-ResourceGroup $Name $Location $rg.ResourceGroup.Id
 	  Write-Output $resourceGroup
 	}
   }
@@ -140,17 +140,15 @@ function Get-ResourcesClient
 }
 
 function Get-ResourceGroup {
-  param([string] $name, [string] $location)
-  $rg = New-Object PSObject -Property @{"ResourceGroupName" = $name; "Location" = $location; }
+  param([string] $name, [string] $location, [string] $id)
+  $rg = New-Object PSObject -Property @{"ResourceGroupName" = $name; "Location" = $location; "ResourceId" = $id}
   return $rg
 }
 
 function Get-Provider {
   param([string] $name)
-  $rtype = New-Object PSObject -Property @{"ResourceTypeName" = @("virtualMachines"); "Locations" = @("East US"); 
-  "ApiVersions" = @("2015-01-01"); }
-  $pr = New-Object PSObject -Property @{"ProviderNamespace" = $name; "RegistrationState" = "Registered"; "Locations" = @("East US"); 
-  "ResourceTypes" = $rtype;}
+  $rtype = New-Object PSObject -Property @{"ResourceTypeName" = "virtualMachines"; "Locations" = @("East US"); "ApiVersions" = @("2015-01-01"); }
+  $pr = New-Object PSObject -Property @{"ProviderNamespace" = $name; "RegistrationState" = "Registered"; "Locations" = @("East US"); "ResourceTypes" = $rtype;}
   return $pr
 }
 

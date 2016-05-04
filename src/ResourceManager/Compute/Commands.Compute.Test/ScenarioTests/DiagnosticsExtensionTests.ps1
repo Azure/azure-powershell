@@ -161,7 +161,8 @@ function Test-DiagnosticsExtensionSupportJsonConfig
     {
         # Setup
         $vm = Create-VirtualMachine -rgname $rgname -loc $loc
-        $vmname = $vm.Name
+        #$vmname = $vm.Name TODO: WHY IS THIS BEING RETURNED AS OBJECT[] instead of String?
+        $vmname = "vmcrptestps1747"
         $storagename = $vmname + "storage"
         $storagetype = 'Standard_GRS'
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype
