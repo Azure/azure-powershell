@@ -49,14 +49,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             Dictionary<string, string> tagDictionary = Helpers.CreateTagDictionary(tags, validate: true);
 
+            AutoStorageBaseProperties autoStorage = (string.IsNullOrEmpty(storageId)) ? null : new AutoStorageBaseProperties
+            {
+                StorageAccountId = storageId
+            };
+
             var response = BatchManagementClient.Account.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
             {
                 Location = location,
                 Tags = tagDictionary,
-                AutoStorage = new AutoStorageBaseProperties()
-                {
-                    StorageAccountId = storageId
-                }
+                AutoStorage = autoStorage
             });
 
             var context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(response);
@@ -84,14 +86,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // need to the location in order to call
             var getResponse = BatchManagementClient.Account.Get(resourceGroupName, accountName);
 
+            AutoStorageBaseProperties autoStorage = (storageId == null) ? null : new AutoStorageBaseProperties
+            {
+                StorageAccountId = storageId
+            };
+
             var response = BatchManagementClient.Account.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
             {
                 Location = getResponse.Location,
                 Tags = tagDictionary,
-                AutoStorage = new AutoStorageBaseProperties()
-                {
-                    StorageAccountId = storageId
-                }
+                AutoStorage = autoStorage
             });
 
             BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(response);

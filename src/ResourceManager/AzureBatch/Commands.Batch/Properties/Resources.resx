@@ -443,10 +443,10 @@
     <value>File not found {0}.</value>
   </data>
   <data name="FailedToUpload" xml:space="preserve">
-    <value>Failed to upload {0} to storage ({1}).</value>
+    <value>Failed to upload {0} to Azure storage ({1}).</value>
   </data>
   <data name="FailedToUploadAndDelete" xml:space="preserve">
-    <value>Uploading {0} to storage failed and the attempt to delete the application package afterwards failed. {1}.</value>
+    <value>Uploading {0} to Azure storage failed and the attempt to delete the application package afterwards failed. {1}.</value>
   </data>
   <data name="UploadedApplicationButFailedToActivate" xml:space="preserve">
     <value>Application package {0} version {1} successfully uploaded but failed to activate. {2}.</value>
