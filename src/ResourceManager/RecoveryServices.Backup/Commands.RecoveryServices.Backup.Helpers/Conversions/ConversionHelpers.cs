@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 policyModel = new AzureRmRecoveryServicesAzureSqlPolicy();
                 AzureRmRecoveryServicesAzureSqlPolicy sqlPolicyModel = policyModel as AzureRmRecoveryServicesAzureSqlPolicy;
-                sqlPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureSql;
+                sqlPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureSqlDb;
                 sqlPolicyModel.BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureSql;
                 sqlPolicyModel.RetentionPolicy = PolicyHelpers.GetPSSimpleRetentionPolicy((SimpleRetentionPolicy)
                                                   ((AzureSqlProtectionPolicy)hydraResponse.Properties).RetentionPolicy);

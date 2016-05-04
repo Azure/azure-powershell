@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 case CmdletModel.WorkloadType.AzureVM:
                     providerType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
                     break;
-                case CmdletModel.WorkloadType.AzureSql:
+                case CmdletModel.WorkloadType.AzureSqlDb:
                     providerType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureSql.ToString();
                     break;
                 default:
