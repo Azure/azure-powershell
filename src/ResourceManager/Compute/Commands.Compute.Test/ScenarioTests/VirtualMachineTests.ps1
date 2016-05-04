@@ -304,6 +304,10 @@ function Test-VirtualMachinePiping
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
+        Assert-AreEqual $vm1.Extensions[0].AutoUpgradeMinorVersion $true;
+        Assert-AreEqual $vm1.Extensions[0].Publisher "Microsoft.Compute"
+        Assert-AreEqual $vm1.Extensions[0].VirtualMachineExtensionType "BGInfo";
+
         Get-AzureRmVM -ResourceGroupName $rgname | Start-AzureRmVM;
         Get-AzureRmVM -ResourceGroupName $rgname | Restart-AzureRmVM;
         Get-AzureRmVM -ResourceGroupName $rgname | Stop-AzureRmVM -Force -StayProvisioned;
