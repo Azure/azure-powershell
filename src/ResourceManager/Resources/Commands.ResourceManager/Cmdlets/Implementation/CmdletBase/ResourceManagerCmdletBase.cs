@@ -444,5 +444,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 this.DisposeOfCancellationSource();
             }
         }
+
+        /// <summary>
+        /// Determines the parameter set name.
+        /// </summary>
+        public virtual string DetermineParameterSetName()
+        {
+            return this.ParameterSetName;
+        }
     }
 }

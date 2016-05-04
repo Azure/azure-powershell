@@ -151,6 +151,7 @@
     <Compile Include="Mocks\MockCommandRuntime.cs" />
     <Compile Include="Mocks\MockDeploymentClientFactory.cs" />
     <Compile Include="PermissiveRecordMatcherWithApiExclusion.cs" />
+    <Compile Include="PageExtensions.cs" />
     <Compile Include="ProfileClient.cs" />
     <Compile Include="PSCmdletExtensions.cs" />
     <Compile Include="Constants.cs" />

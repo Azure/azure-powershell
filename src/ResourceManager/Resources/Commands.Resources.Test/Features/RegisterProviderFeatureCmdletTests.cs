@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ScenarioTest;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Rest.Azure;
@@ -26,7 +27,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
     using WindowsAzure.Commands.Test.Utilities.Common;

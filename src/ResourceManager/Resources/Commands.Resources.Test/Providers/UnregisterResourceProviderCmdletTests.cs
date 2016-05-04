@@ -18,15 +18,16 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.Resources.Models;
+    using Microsoft.Azure.Commands.ScenarioTest;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Rest.Azure;
+    using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Moq;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
     using WindowsAzure.Commands.Test.Utilities.Common;
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// A mock of the command runtime
         /// </summary>
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
+        private MockCommandRuntime mockRuntime;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderCmdletTests"/> class.
@@ -78,6 +80,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     ResourceManagementClient = resourceManagementClient.Object
                 }
             };
+            PSCmdletExtensions.SetCommandRuntimeMock(cmdlet, commandRuntimeMock.Object);
+            mockRuntime = new MockCommandRuntime();
+            commandRuntimeMock.Setup(f => f.Host).Returns(mockRuntime.Host);
         }
 
         /// <summary>

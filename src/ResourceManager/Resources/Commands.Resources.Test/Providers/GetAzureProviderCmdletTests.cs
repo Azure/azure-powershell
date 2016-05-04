@@ -17,19 +17,19 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-    using Microsoft.Azure.Commands.Resources.Models;
+    using Microsoft.Azure.Commands.ScenarioTest;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
-    using Microsoft.Rest.Azure;
     using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Moq;
+    using Rest.Azure;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using System.Threading;
     using System.Threading.Tasks;
-    using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
     /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         public GetAzureProviderCmdletTests()
         {
             this.providerOperationsMock = new Mock<IProvidersOperations>();
-            var resourceManagementClient = new Mock<IResourceManagementClient>();
+            var resourceManagementClient = new Mock<Microsoft.Azure.Management.ResourceManager.IResourceManagementClient>();
 
             resourceManagementClient
                 .SetupGet(client => client.Providers)
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 //CommandRuntime = commandRuntimeMock.Object,
                 ResourceManagerSdkClient = new ResourceManagerSdkClient
                 {
-                    ResourceManagementClient = resourceManagementClient.Object
+                    ResourceManagementClient = resourceManagementClient.Object,
                 }
             };
             PSCmdletExtensions.SetCommandRuntimeMock(cmdlet, commandRuntimeMock.Object);
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 new Provider
                 {
                     NamespaceProperty = RegisteredProviderNamespace,
-                    RegistrationState = ResourcesClient.RegisteredStateName,
+                    RegistrationState = ResourceManagerSdkClient.RegisteredStateName,
                     ResourceTypes = new[]
                     {
                         new ProviderResourceType
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 unregisteredProvider,
             };
             var pagableResult = new Page<Provider>();
-            //pagableResult.SetItemValue<Provider>(listResult);
+            pagableResult.SetItemValue<Provider>(listResult);
             var result = new AzureOperationResponse<IPage<Provider>>()
             {
                 Body = pagableResult
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
                     var provider = providers.Single();
                     Assert.Equal(RegisteredProviderNamespace, provider.ProviderNamespace);
-                    Assert.Equal(ResourcesClient.RegisteredStateName, provider.RegistrationState);
+                    Assert.Equal(ResourceManagerSdkClient.RegisteredStateName, provider.RegistrationState);
 
                     Assert.Equal(1, provider.ResourceTypes.Length);
 
@@ -293,6 +293,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
             /// Sets the parameter set name to return
             /// </summary>
             public string ParameterSetOverride { private get; set; }
+
+            /// <summary>
+            /// Determines the parameter set name based on the <see cref="ParameterSetOverride"/> property
+            /// </summary>
+            public override string DetermineParameterSetName()
+            {
+                return this.ParameterSetOverride;
+            }
         }
     }
 }
