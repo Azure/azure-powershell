@@ -56,17 +56,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the plan object.
         /// </summary>
+        [Alias("PlanObject")]
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource plan properties.")]
         [ValidateNotNullOrEmpty]
-        public Hashtable PlanObject { get; set; }
+        public Hashtable Plan { get; set; }
 
         /// <summary>  
-        /// Gets or sets the plan object.  
+        /// Gets or sets the Sku object.  
         /// </summary>  
+        [Alias("SkuObject")]  
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]  
         [ValidateNotNullOrEmpty]  
-        public Hashtable SkuObject { get; set; }  
-
+        public Hashtable Sku { get; set; }  
 
         /// <summary>
         /// Gets or sets the tags.
@@ -142,8 +143,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 Location = this.Location,
                 Kind = this.Kind,
-                Plan = this.PlanObject.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
-                Sku = this.SkuObject.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>(),
+                Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
+                Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>(),
                 Tags = TagsHelper.GetTagsDictionary(this.Tag),
                 Properties = this.Properties.ToResourcePropertiesBody(),
             };
