@@ -38,24 +38,26 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public Schedule(string resourceGroupName, string automationAccountName, Azure.Management.Automation.Models.Schedule schedule)
         {
             Requires.Argument("schedule", schedule).NotNull();
+
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
             this.Name = schedule.Name;
             this.Description = schedule.Properties.Description;
-            this.StartTime = schedule.Properties.StartTime.ToLocalTime();
-            this.ExpiryTime = schedule.Properties.ExpiryTime.ToLocalTime();
+            this.StartTime = AdjustOffset(schedule.Properties.StartTime, schedule.Properties.StartTimeOffsetMinutes);
+            this.ExpiryTime = AdjustOffset(schedule.Properties.ExpiryTime, schedule.Properties.ExpiryTimeOffsetMinutes);
             this.CreationTime = schedule.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = schedule.Properties.LastModifiedTime.ToLocalTime();
             this.IsEnabled = schedule.Properties.IsEnabled;
-            this.NextRun = schedule.Properties.NextRun.HasValue
-                               ? schedule.Properties.NextRun.Value.ToLocalTime()
-                               : this.NextRun;
-            this.Interval = schedule.Properties.Interval.HasValue ? schedule.Properties.Interval.Value : this.Interval;
+            this.NextRun = AdjustOffset(schedule.Properties.NextRun, schedule.Properties.NextRunOffsetMinutes);
+            this.Interval = schedule.Properties.Interval ?? this.Interval;
             this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Properties.Frequency, true);
+            this.TimeZone = schedule.Properties.TimeZone;
         }
 
+        #region Public Properties
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="HourlySchedule"/> class.
+        /// Initializes a new instance of the <see cref="Schedule"/> class.
         /// </summary>
         public Schedule()
         {
@@ -90,5 +92,32 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the schedule frequency.
         /// </summary>
         public ScheduleFrequency Frequency { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule time zone.
+        /// </summary>
+        public string TimeZone { get; set; }
+
+        #endregion Public Properties
+
+        #region Private Methods
+
+        private static DateTimeOffset? AdjustOffset(DateTimeOffset? dateTimeOffset, double offsetMinutes)
+        {
+            if (dateTimeOffset.HasValue)
+            {
+                return AdjustOffset(dateTimeOffset.Value, offsetMinutes);
+            }
+
+            return null;
+        }
+
+        private static DateTimeOffset AdjustOffset(DateTimeOffset dateTimeOffset, double offsetMinutes)
+        {
+            var timeSpan = TimeSpan.FromMinutes(offsetMinutes);
+            return dateTimeOffset.ToOffset(timeSpan);
+        }
+
+        #endregion Private Methods
     }
 }

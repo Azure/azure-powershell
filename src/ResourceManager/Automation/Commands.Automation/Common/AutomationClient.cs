@@ -335,7 +335,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     ExpiryTime = schedule.ExpiryTime,
                     Description = schedule.Description,
                     Interval = schedule.Interval,
-                    Frequency = schedule.Frequency.ToString()
+                    Frequency = schedule.Frequency.ToString(),
+                    TimeZone = schedule.TimeZone,
                 }
             };
 
