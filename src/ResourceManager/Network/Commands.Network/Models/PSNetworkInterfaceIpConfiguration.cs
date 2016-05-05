@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSNetworkInterfaceIPConfiguration : PSIPConfiguration
     {
         [JsonProperty(Order = 2)]
+        public string PrivateIpAddressVersion { get; set; }
+
+        [JsonProperty(Order = 2)]
         public List<PSBackendAddressPool> LoadBalancerBackendAddressPools { get; set; }
 
         [JsonProperty(Order = 2)]
