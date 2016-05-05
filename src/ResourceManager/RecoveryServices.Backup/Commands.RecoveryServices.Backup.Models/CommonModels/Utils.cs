@@ -38,6 +38,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         // month constants
         public const int NumOfMonthsInYear = 12;
+
+        public const int MaxAllowedRetentionDurationCountWeeklySql = 520;
+        public const int MaxAllowedRetentionDurationCountMonthlySql = 120;
+        public const int MaxAllowedRetentionDurationCountYearlySql = 10;
     }
 
     public class TraceUtils

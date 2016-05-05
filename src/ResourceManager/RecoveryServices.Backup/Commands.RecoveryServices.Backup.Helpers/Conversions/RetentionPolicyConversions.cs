@@ -80,9 +80,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             if (hydraRetPolicy.RetentionDuration != null)
             {
-                simplePolicy.RetentionDuration = new RetentionDuration();
-                simplePolicy.RetentionDuration.RetentionDurationType = (RetentionDurationType)Enum.Parse(typeof(RetentionDurationType), hydraRetPolicy.RetentionDuration.DurationType);
-                simplePolicy.RetentionDuration.RetentionCount = hydraRetPolicy.RetentionDuration.Count;
+                simplePolicy.RetentionDurationType = (RetentionDurationType)Enum.Parse(typeof(RetentionDurationType), hydraRetPolicy.RetentionDuration.DurationType);
+                simplePolicy.RetentionCount = hydraRetPolicy.RetentionDuration.Count;
             }
             
             simplePolicy.Validate();
@@ -352,8 +351,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 HydraModels.SimpleRetentionPolicy simpleRetPolicy = new HydraModels.SimpleRetentionPolicy();
 
                 simpleRetPolicy.RetentionDuration = new HydraModels.RetentionDuration();
-                simpleRetPolicy.RetentionDuration.DurationType = psRetPolicy.RetentionDuration.RetentionDurationType.ToString();
-                simpleRetPolicy.RetentionDuration.Count = psRetPolicy.RetentionDuration.RetentionCount;
+                simpleRetPolicy.RetentionDuration.DurationType = psRetPolicy.RetentionDurationType.ToString();
+                simpleRetPolicy.RetentionDuration.Count = psRetPolicy.RetentionCount;
 
                 return simpleRetPolicy;
             }            
