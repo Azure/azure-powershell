@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Compute
                         var psResult = Mapper.Map<PSVirtualMachine>(result);
                         if (result.Body != null)
                         {
-                            psResult = Mapper.Map<PSVirtualMachine>(result.Body);
+                            psResult = Mapper.Map(result.Body, psResult);
                         }
                         WriteObject(psResult);
                     }
