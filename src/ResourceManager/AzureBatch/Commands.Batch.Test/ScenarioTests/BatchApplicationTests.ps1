@@ -157,11 +157,6 @@ function Test-UpdatePoolWithApplicationPackage
         Assert-AreEqual $getapp.Id $addAppPack.Id
         Assert-AreEqual $getapp.Version $addAppPack.Version
 
-        $osFamily = "4"
-        $targetOSVersion = "*"
-        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
-
-        $addPool = New-AzureBatchPool -Id $poolId -CloudServiceConfiguration $paasConfiguration -TargetDedicated 3 -VirtualMachineSize "small" -BatchContext $context
         $getPool = Get-AzureBatchPool -Id $poolId -BatchContext $context
 
         # update pool with application package references
@@ -180,6 +175,5 @@ function Test-UpdatePoolWithApplicationPackage
     finally
     {
         Remove-AzureRmBatchApplicationPackage -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName -ApplicationVersion $applicationVersion
-        Remove-AzureBatchPool -Id $poolId -Force -BatchContext $context
     }
 }
