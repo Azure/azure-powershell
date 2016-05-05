@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Resources
 {
     public abstract class ResourceWithParameterBaseCmdlet : ResourcesBaseCmdlet
     {
-        protected const string BaseParameterSetName = "Default";
         protected const string TemplateFileParameterObjectParameterSetName = "Deployment via template file and template parameters object";
         protected const string TemplateFileParameterFileParameterSetName = "Deployment via template file and template parameters file";
         protected const string TemplateFileParameterUriParameterSetName = "Deployment via template file template parameters uri";
