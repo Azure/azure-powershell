@@ -336,23 +336,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Description = schedule.Description,
                     Interval = schedule.Interval,
                     Frequency = schedule.Frequency.ToString(),
-                    AdvancedSchedule = this.AdvancedScheduleIsNull(schedule) 
-                        ? null 
-                        : new AutomationManagement.Models.AdvancedSchedule()
-                        {
-                            WeekDays = schedule.WeekDays,
-                            MonthDays = schedule.MonthDays,
-                            MonthlyOccurrences = string.IsNullOrWhiteSpace(schedule.DayOfWeek) && schedule.Occurrence == null
-                            ? null
-                            : new AutomationManagement.Models.AdvancedScheduleMonthlyOccurrence[]
-                            {
-                                new AutomationManagement.Models.AdvancedScheduleMonthlyOccurrence()
-                                {
-                                    Day = schedule.DayOfWeek,
-                                    Occurrence = schedule.Occurrence
-                                }
-                            }
-                        }
+                    AdvancedSchedule = this.CreateAdvancedSchedule(schedule)
                 }
             };
 
@@ -1585,6 +1569,32 @@ namespace Microsoft.Azure.Commands.Automation.Common
             Requires.Argument("schedule", schedule).NotNull();
 
             return new Schedule(resourceGroupName, automationAccountName, schedule);
+        }
+
+        private AdvancedSchedule CreateAdvancedSchedule(Schedule schedule)
+        {
+            if (this.AdvancedScheduleIsNull(schedule))
+            {
+                return null;
+            }
+
+            var advancedSchedule = new AdvancedSchedule()
+            {
+                WeekDays = schedule.WeekDays,
+                MonthDays = schedule.MonthDays,
+                MonthlyOccurrences = string.IsNullOrWhiteSpace(schedule.DayOfWeek) && schedule.Occurrence == null
+                    ? null
+                    : new AdvancedScheduleMonthlyOccurrence[]
+                    {
+                        new AdvancedScheduleMonthlyOccurrence()
+                        {
+                            Day = schedule.DayOfWeek,
+                            Occurrence = schedule.Occurrence
+                        }
+                    }
+            };
+
+            return advancedSchedule;
         }
 
         private bool AdvancedScheduleIsNull(Schedule schedule)

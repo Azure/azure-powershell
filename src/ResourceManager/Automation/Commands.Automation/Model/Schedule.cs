@@ -61,10 +61,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.MonthDays = schedule.Properties.AdvancedSchedule == null
                 ? null
                 : schedule.Properties.AdvancedSchedule.MonthDays;
-            this.DayOfWeek = schedule.Properties.AdvancedSchedule == null || this.IsNullOrEmptyList(schedule.Properties.AdvancedSchedule.MonthlyOccurrences)
+            this.DayOfWeek = this.isMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
                 ? null
                 : schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Day;
-            this.Occurrence = schedule.Properties.AdvancedSchedule == null || this.IsNullOrEmptyList(schedule.Properties.AdvancedSchedule.MonthlyOccurrences)
+            this.Occurrence = this.isMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
                 ? null
                 : schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Occurrence;
         }
@@ -140,6 +140,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
         private bool IsNullOrEmptyList<T>(IList<T> list)
         {
             return list == null || list.Count == 0;
+        }
+
+        private bool isMonthlyOccurrenceNull(Azure.Management.Automation.Models.AdvancedSchedule advancedSchedule)
+        {
+            return advancedSchedule == null || this.IsNullOrEmptyList(advancedSchedule.MonthlyOccurrences);
         }
     }
 }
