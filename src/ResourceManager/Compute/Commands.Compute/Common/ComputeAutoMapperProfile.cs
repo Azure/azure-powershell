@@ -125,7 +125,8 @@ namespace Microsoft.Azure.Commands.Compute
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
             // Usage => PSUsage
-            Mapper.CreateMap<FROM.Usage, TO.PSUsage>();
+            Mapper.CreateMap<FROM.Usage, TO.PSUsage>()
+                .ForMember(c => c.Unit, o => o.MapFrom(r => Microsoft.Azure.Management.Compute.Models.Usage.Unit));
 
             Mapper.CreateMap<AzureOperationResponse<FROM.Usage>, TO.PSUsage>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));

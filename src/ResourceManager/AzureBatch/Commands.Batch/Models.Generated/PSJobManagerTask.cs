@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.JobManagerTask omObject;
         
+        private PSTaskConstraints constraints;
+        
         private IList<PSEnvironmentSetting> environmentSettings;
         
         private IList<PSResourceFile> resourceFiles;
-        
-        private PSTaskConstraints constraints;
         
         public PSJobManagerTask()
         {
@@ -63,6 +63,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.CommandLine = value;
+            }
+        }
+        
+        public PSTaskConstraints Constraints
+        {
+            get
+            {
+                if (((this.constraints == null) 
+                            && (this.omObject.Constraints != null)))
+                {
+                    this.constraints = new PSTaskConstraints(this.omObject.Constraints);
+                }
+                return this.constraints;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.Constraints = null;
+                }
+                else
+                {
+                    this.omObject.Constraints = value.omObject;
+                }
+                this.constraints = value;
             }
         }
         
@@ -193,31 +218,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.RunExclusive = value;
-            }
-        }
-        
-        public PSTaskConstraints Constraints
-        {
-            get
-            {
-                if (((this.constraints == null) 
-                            && (this.omObject.Constraints != null)))
-                {
-                    this.constraints = new PSTaskConstraints(this.omObject.Constraints);
-                }
-                return this.constraints;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.Constraints = null;
-                }
-                else
-                {
-                    this.omObject.Constraints = value.omObject;
-                }
-                this.constraints = value;
             }
         }
     }
