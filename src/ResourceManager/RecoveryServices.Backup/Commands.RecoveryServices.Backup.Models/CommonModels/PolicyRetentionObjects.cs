@@ -23,19 +23,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     public class AzureRmRecoveryServicesBackupSimpleRetentionPolicy : AzureRmRecoveryServicesBackupRetentionPolicyBase
     {
-        public RetentionDuration RetentionDuration { get; set; }
+        public RetentionDurationType RetentionDurationType { get; set; }
+
+        public int RetentionCount { get; set; }
 
         public override string ToString()
         {
             return string.Format("RetentionDurationType: {0}, Retention Count : {1}",
-                        RetentionDuration.RetentionDurationType.ToString(),
-                        RetentionDuration.RetentionCount);            
+                        RetentionDurationType.ToString(),
+                        RetentionCount);            
         }
 
         public override void Validate()
         {
             base.Validate();
-            RetentionDuration.Validate();
+
+            if ((RetentionDurationType == RetentionDurationType.Days) ||
+            (RetentionDurationType == RetentionDurationType.Weeks && (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCountWeeklySql))||
+            (RetentionDurationType == RetentionDurationType.Months && (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCountMonthlySql))||
+            (RetentionDurationType == RetentionDurationType.Years && (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCountYearlySql)))
+            {
+                throw new ArgumentException(Resources.AllowedSqlRetentionRange);
+            }
         }
     }
 

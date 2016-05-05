@@ -204,9 +204,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public AzureRmRecoveryServicesBackupRetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
             AzureRmRecoveryServicesBackupSimpleRetentionPolicy defaultRetention = new AzureRmRecoveryServicesBackupSimpleRetentionPolicy();
-            defaultRetention.RetentionDuration = new Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionDuration();
-            defaultRetention.RetentionDuration.RetentionDurationType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionDurationType.Days;
-            defaultRetention.RetentionDuration.RetentionCount = 180;
+            defaultRetention.RetentionDurationType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionDurationType.Months;
+            defaultRetention.RetentionCount = 10;
             return defaultRetention;
         }
 

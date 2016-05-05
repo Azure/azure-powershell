@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RetentionCount in Weeks should be 1-520, in Months should be 1-120 and Years should be 1-10.
+        /// </summary>
+        public static string AllowedSqlRetentionRange {
+            get {
+                return ResourceManager.GetString("AllowedSqlRetentionRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All retention schedules are empty in RetentionPolicy. Alteast one is expected..
         /// </summary>
         public static string AllRetentionSchedulesEmptyException {

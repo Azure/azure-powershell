@@ -446,4 +446,7 @@ Please contact Microsoft for further assistant.</value>
   <data name="BackupManagementTypeIncorrectForContainerType" xml:space="preserve">
     <value>BackupManagementType provider for ContainerType {0} is incorrect.</value>
   </data>
+  <data name="AllowedSqlRetentionRange" xml:space="preserve">
+    <value>RetentionCount in Weeks should be 1-520, in Months should be 1-120 and Years should be 1-10</value>
+  </data>
 </root>
