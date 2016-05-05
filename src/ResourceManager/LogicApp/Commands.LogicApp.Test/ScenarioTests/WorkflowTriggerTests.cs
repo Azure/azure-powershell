@@ -17,13 +17,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-
+    using Xunit.Abstractions;
     /// <summary>
     /// Scenario tests for the Workflow trigger commands
     /// </summary>
     public class WorkflowTriggerTests : RMTestBase
     {
+        public WorkflowTriggerTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         /// <summary>
         /// Test Test-GetAzureLogicAppTrigger command to verify the trigger in the workflow.

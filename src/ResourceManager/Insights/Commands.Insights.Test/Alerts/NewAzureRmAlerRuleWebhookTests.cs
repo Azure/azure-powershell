@@ -20,6 +20,8 @@ using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
@@ -28,9 +30,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         public NewAzureRmAlertRuleWebhookCommand Cmdlet { get; set; }
-
-        public NewAzureRmAlerRuleWebhookTests()
+        
+        public NewAzureRmAlerRuleWebhookTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             Cmdlet = new NewAzureRmAlertRuleWebhookCommand()
             {

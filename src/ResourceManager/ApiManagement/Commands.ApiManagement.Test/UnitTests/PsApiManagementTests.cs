@@ -10,6 +10,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
 {
     public class PsApiManagementTests
     {
+        public PsApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCtor()

@@ -23,6 +23,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -31,8 +33,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
 
-        public ProfileCmdletTests()
+        public ProfileCmdletTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
