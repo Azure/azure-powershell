@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementProduct")]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementProduct)]
     [OutputType(typeof(PsApiManagementProduct))]
     public class SetAzureApiManagementProduct : AzureApiManagementCmdletBase
     {
@@ -81,7 +81,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct type representing the modified product.")]
+            HelpMessage = "If specified then instance of" +
+                          " Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct " +
+                          "type representing the modified product.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagementUser")]
+    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementUser)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementUser : AzureApiManagementCmdletBase
     {
@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Whether to delete subscriptions to the product or not. If not set and subscription exists exception will be thrown. This parameter is optional. ")]
+            HelpMessage = "Whether to delete subscriptions to the product or not. If not set and subscription exists exception will be thrown. " +
+                          "This parameter is optional. ")]
         public SwitchParameter DeleteSubscriptions { get; set; }
 
         [Parameter(

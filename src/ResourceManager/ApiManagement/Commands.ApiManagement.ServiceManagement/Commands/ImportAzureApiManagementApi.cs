@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsData.Import, "AzureRmApiManagementApi", DefaultParameterSetName = FromLocalFile)]
+    [Cmdlet(VerbsData.Import, Constants.ApiManagementApi, DefaultParameterSetName = FromLocalFile)]
     [OutputType(typeof(PsApiManagementApi))]
     public class ImportAzureApiManagementApi : AzureApiManagementCmdletBase
     {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             }
             else
             {
-                throw new InvalidOperationException(string.Format("ParameterSetName '{0}' not supported"));
+                throw new InvalidOperationException(string.Format("ParameterSetName '{0}' not supported", ParameterSetName));
             }
 
             var api = Client.ApiById(Context, ApiId);
