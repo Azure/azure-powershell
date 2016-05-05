@@ -123,5 +123,26 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerInboundNatPoolConfigCRUD-PublicLB");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerMultiVipPublic()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerMultiVip-Public");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerMultiVipInternal()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerMultiVip-Internal");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetLoadBalancerObjectAssignment()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-SetLoadBalancerObjectAssignment");
+        }
     }
 }
