@@ -37,19 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the name of the type of usage.
         public UsageName Name { get; set; }
 
-        [JsonIgnore]
-        public string NameText
-        {
-            get { return JsonConvert.SerializeObject(Name, Formatting.Indented); }
-        }
-
         // Gets or sets an enum describing the unit of measurement.
         public string Unit { get; set; }
-
-        [JsonIgnore]
-        public string UnitText
-        {
-            get { return JsonConvert.SerializeObject(Unit, Formatting.Indented); }
-        }
     }
 }

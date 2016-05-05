@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Determines whether the value is a secret and should be encrypted or not." +
-                          " This parameter is optional. Default Value is not Secret.")]
+                          " This parameter is optional. Default Value is false.")]
         public SwitchParameter Secret { get; set; }
 
         [Parameter(
