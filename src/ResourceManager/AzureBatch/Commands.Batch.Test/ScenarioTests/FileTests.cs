@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string startTaskStdOutName = ScenarioTestHelpers.SharedPoolStartTaskStdOut;
         private const string startTaskStdOutContent = ScenarioTestHelpers.SharedPoolStartTaskStdOutContent;
 
+        public FileTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         public void TestGetNodeFileByTaskByName()
         {

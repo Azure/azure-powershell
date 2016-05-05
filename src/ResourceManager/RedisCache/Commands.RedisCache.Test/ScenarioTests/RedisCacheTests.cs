@@ -18,9 +18,16 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.Azure.Test;
     using Xunit;
-    
+    using Xunit.Abstractions;
+    using ServiceManagemenet.Common.Models;
+
     public class RedisCacheTests : RMTestBase
     {
+        public RedisCacheTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCache()

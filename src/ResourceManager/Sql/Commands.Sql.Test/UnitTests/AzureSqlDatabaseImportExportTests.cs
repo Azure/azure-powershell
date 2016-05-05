@@ -18,11 +18,18 @@ using Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet;
 using Microsoft.Azure.Commands.Sql.Test.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 {
-    public class AzureSqlDatabaseImportExportTests 
+    public class AzureSqlDatabaseImportExportTests
     {
+        public AzureSqlDatabaseImportExportTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureSqlDatabaseExportAttributes()

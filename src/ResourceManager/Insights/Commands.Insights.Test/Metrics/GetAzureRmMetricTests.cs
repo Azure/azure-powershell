@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
         private string resourceId;
         private string filter;
 
-        public GetAzureRmMetricTests()
+        public GetAzureRmMetricTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsMetricOperationsMock = new Mock<IMetricOperations>();
             insightsClientMock = new Mock<InsightsClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

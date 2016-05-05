@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
         private string filter;
         private string selected;
 
-        public GetAzureRmLogTests()
+        public GetAzureRmLogTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsEventOperationsMock = new Mock<IEventOperations>();
             insightsClientMock = new Mock<InsightsClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

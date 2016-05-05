@@ -28,8 +28,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
 
         private string _dataSliceRunId;
 
-        public SaveDataFactoryRunLogTests()
+        public SaveDataFactoryRunLogTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             this._dataSliceRunId = Guid.NewGuid().ToString();

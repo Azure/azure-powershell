@@ -33,8 +33,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        public ApiManagementTests()
+        public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             _helper = new EnvironmentSetupHelper();
         }
 
