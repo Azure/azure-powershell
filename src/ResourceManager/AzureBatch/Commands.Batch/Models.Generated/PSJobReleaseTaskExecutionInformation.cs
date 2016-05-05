@@ -61,6 +61,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public PSTaskSchedulingError SchedulingError
+        {
+            get
+            {
+                if (((this.schedulingError == null) 
+                            && (this.omObject.SchedulingError != null)))
+                {
+                    this.schedulingError = new PSTaskSchedulingError(this.omObject.SchedulingError);
+                }
+                return this.schedulingError;
+            }
+        }
+        
         public System.DateTime StartTime
         {
             get
@@ -90,19 +103,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.TaskRootDirectoryUrl;
-            }
-        }
-        
-        public PSTaskSchedulingError SchedulingError
-        {
-            get
-            {
-                if (((this.schedulingError == null) 
-                            && (this.omObject.SchedulingError != null)))
-                {
-                    this.schedulingError = new PSTaskSchedulingError(this.omObject.SchedulingError);
-                }
-                return this.schedulingError;
             }
         }
     }

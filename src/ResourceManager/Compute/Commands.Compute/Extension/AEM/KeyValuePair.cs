@@ -22,11 +22,11 @@ namespace Microsoft.Azure.Commands.Compute
         public string Key { get; set; }
 
         [JsonProperty("value")]
-        public string Value { get; set; }
+        public object Value { get; set; }
 
         public KeyValuePair() { }
 
-        public KeyValuePair(string key, string value)
+        public KeyValuePair(string key, object value)
         {
             this.Key = key;
             this.Value = value;

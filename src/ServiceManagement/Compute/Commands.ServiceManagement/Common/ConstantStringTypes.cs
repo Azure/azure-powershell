@@ -42,6 +42,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
 
         public const string VMBootDiagnosticsEnable = "Enable boot diagnostics of the virtual machine";
         public const string VMBootDiagnosticsDisable = "Disable boot diagnostics of the virtual machine";
+
+        public const string VMLicenseType = "Specifies that the image or disk that is being used was licensed on-premises.";
     }
 
     public static class ValidateSetValues

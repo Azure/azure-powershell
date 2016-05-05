@@ -53,6 +53,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public string OSFamily { get; set; }
 
         /// <summary>
+        /// Pool configuration settings for a pool on the virtual machines infrastructure
+        /// </summary>
+        public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
+
+        /// <summary>
+        /// Pool configuration settings for a pool based on the Azure cloud service platform
+        /// </summary>
+        public PSCloudServiceConfiguration CloudServiceConfiguration { get; set; }
+
+        /// <summary>
         /// The target OS version of the compute nodes in the pool.
         /// </summary>
         public string TargetOSVersion { get; set; }
