@@ -24,6 +24,8 @@ using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
@@ -37,8 +39,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         private string resourceGroup;
         private RuleCreateOrUpdateParameters createOrUpdatePrms;
 
-        public AddAzureRmWebtestAlertRuleTests()
+        public AddAzureRmWebtestAlertRuleTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             insightsAlertRuleOperationsMock = new Mock<IAlertOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

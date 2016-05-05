@@ -27,8 +27,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         private SetAzureHDInsightClusterSizeCommand cmdlet;
         private int targetcount = 4;
-        public ResizeClusterTests()
+
+        public ResizeClusterTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
 
             cmdlet = new SetAzureHDInsightClusterSizeCommand

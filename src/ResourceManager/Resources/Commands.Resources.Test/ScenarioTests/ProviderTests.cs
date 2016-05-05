@@ -15,10 +15,16 @@
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-
+    using Xunit.Abstractions;
     public class ProviderTests
     {
+        public ProviderTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProvider()

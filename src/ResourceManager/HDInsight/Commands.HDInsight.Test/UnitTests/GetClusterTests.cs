@@ -26,8 +26,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         private GetAzureHDInsightCommand cmdlet;
 
-        public GetClusterTests()
+        public GetClusterTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
 
             cmdlet = new GetAzureHDInsightCommand

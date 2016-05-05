@@ -36,8 +36,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         private string calledResourceId;
         ServiceDiagnosticSettingsPutParameters calledPutParameters;
 
-        public SetDiagnosticSettingCommandTests()
+        public SetDiagnosticSettingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsDiagnosticsOperationsMock = new Mock<IServiceDiagnosticSettingsOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
