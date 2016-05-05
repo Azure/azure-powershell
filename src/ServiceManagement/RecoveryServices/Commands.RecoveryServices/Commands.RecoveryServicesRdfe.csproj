@@ -225,7 +225,7 @@
     <Content Include="lib\Security.Cryptography.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Microsoft.Azure.Commands.RecoveryServices.dll-help.xml">
+    <Content Include="Microsoft.Azure.Commands.RecoveryServicesRdfe.dll-help.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
