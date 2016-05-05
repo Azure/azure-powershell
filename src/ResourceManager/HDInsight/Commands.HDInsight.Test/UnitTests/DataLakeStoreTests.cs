@@ -29,6 +29,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Newtonsoft.Json;
 using Xunit;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Commands.HDInsight.Test.UnitTests
 {
@@ -46,8 +47,9 @@ namespace Commands.HDInsight.Test.UnitTests
         private readonly PSCredential _httpCred;
         private Mock<AzureHDInsightConfig> AzureHDInsightconfigMock;
 
-        public DataLakeStoreTests()
+        public DataLakeStoreTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
             _httpCred = new PSCredential("hadoopuser", string.Format("Password1!").ConvertToSecureString());
             cmdlet = new NewAzureHDInsightClusterCommand

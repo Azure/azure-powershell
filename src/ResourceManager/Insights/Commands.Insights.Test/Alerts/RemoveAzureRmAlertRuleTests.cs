@@ -34,9 +34,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         private AzureOperationResponse response;
         private string resourceGroup;
         private string ruleNameOrTargetUri;
-
-        public RemoveAzureRmAlertRuleTests()
+        
+        public RemoveAzureRmAlertRuleTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsAlertRuleOperationsMock = new Mock<IAlertOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

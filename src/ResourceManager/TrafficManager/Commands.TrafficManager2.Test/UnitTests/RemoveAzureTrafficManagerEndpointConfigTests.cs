@@ -21,9 +21,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
-
+    using Xunit.Abstractions;
+    using ServiceManagemenet.Common.Models;
     public class RemoveAzureTrafficManagerEndpointConfigTests : RMTestBase
     {
+        public RemoveAzureTrafficManagerEndpointConfigTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureTrafficManagerEndpointConfig_ThrowsExceptionWhenNullEndpoints()

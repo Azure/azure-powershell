@@ -36,8 +36,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 
         private NewAzureDataFactoryPipelineCommand cmdlet;
         
-        public NewPipelineTests()
+        public NewPipelineTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             cmdlet = new NewAzureDataFactoryPipelineCommand()

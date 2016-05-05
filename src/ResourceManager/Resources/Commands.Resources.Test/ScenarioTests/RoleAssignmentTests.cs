@@ -25,11 +25,18 @@ using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class RoleAssignmentTests : RMTestBase
     {
+        public RoleAssignmentTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact(Skip = "http://vstfrd:8080/Azure/RD/_workitems/edit/4616537")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaAuthorizationChangeLog()

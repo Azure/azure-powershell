@@ -21,11 +21,18 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit.Extensions;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class CommonDataCmdletTests
     {
+        public CommonDataCmdletTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         public static AzureRMProfile CreateAzureRMProfile(string storageAccount)
         {
             var tenantId = Guid.NewGuid();

@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         private readonly PSCredential _rdpCred;
         
-        public RdpTests()
+        public RdpTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
             _rdpCred = new PSCredential("rdpuser", string.Format("Password1!").ConvertToSecureString());
 
