@@ -10,6 +10,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
     {
         Onetime,
         Day,
-        Hour
+        Hour,
+        Week,
+        Month,
     }
 }
