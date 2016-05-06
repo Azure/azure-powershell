@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -57,7 +58,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             cmdlet.FilePath = BatchTestHelpers.TestCertificateFileName1;
 
             // Don't go to the service on an Add Certificate call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateAddParameters, CertificateAddResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                CertificateAddParameter, 
+                CertificateAddOptions, 
+                AzureOperationHeaderResponse<CertificateAddHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

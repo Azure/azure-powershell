@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesBackupSimpleRetentionPolicy : AzureRmRecoveryServicesBackupRetentionPolicyBase
+    public class SimpleRetentionPolicy : RetentionPolicyBase
     {
         public RetentionDurationType RetentionDurationType { get; set; }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    public class AzureRmRecoveryServicesBackupLongTermRetentionPolicy : AzureRmRecoveryServicesBackupRetentionPolicyBase
+    public class LongTermRetentionPolicy : RetentionPolicyBase
     {
         public bool IsDailyScheduleEnabled { get; set; }
         public bool IsWeeklyScheduleEnabled { get; set; }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public MonthlyRetentionSchedule MonthlySchedule { get; set; }
         public YearlyRetentionSchedule YearlySchedule { get; set; }
 
-        public AzureRmRecoveryServicesBackupLongTermRetentionPolicy()
+        public LongTermRetentionPolicy()
         {
             IsDailyScheduleEnabled = false;
             IsWeeklyScheduleEnabled = false;
@@ -139,6 +139,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
        
+    /// <summary>
+    /// Base class for retention schedule.
+    /// </summary>
     public abstract class RetentionScheduleBase
     {
         public List<DateTime> RetentionTimes { get; set; }
@@ -157,6 +160,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
       
+    /// <summary>
+    /// Daily rentention schedule.
+    /// </summary>
     public class DailyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInDays { get; set; }
@@ -174,11 +180,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         
         public override string ToString()
         {
-            return string.Format("DurationCountInDays: {0}, {1}",
-                                  DurationCountInDays, base.ToString());
+            return string.Format("DurationCountInDays: {0}, {1}", DurationCountInDays, base.ToString());
         }
     }
    
+    /// <summary>
+    /// Weekly rentention schedule.
+    /// </summary>
     public class WeeklyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInWeeks { get; set; }
@@ -202,12 +210,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public override string ToString()
         {
-            return string.Format("DaysOfTheWeek: {0}, {1}",
-                                  TraceUtils.GetString(DaysOfTheWeek),
-                                  base.ToString());
+            return string.Format("DurationCountInWeeks: {0}, DaysOfTheWeek: {1}, {2}",
+                                  DurationCountInWeeks, TraceUtils.GetString(DaysOfTheWeek), base.ToString());
         }
     }
   
+    /// <summary>
+    /// Monthly rentention schedule.
+    /// </summary>
     public class MonthlyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInMonths { get; set; }
@@ -255,14 +265,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public override string ToString()
         {
-            return string.Format("RetentionScheduleType:{0}, {1}, RetentionScheduleDaily:{2}," +
-                                 "RetentionScheduleWeekly:{3}, {4}", RetentionScheduleFormatType, base.ToString(),
+            return string.Format("DurationCountInMonths:{0}, RetentionScheduleType:{1}, {2}, RetentionScheduleDaily:{3}," +
+                                 "RetentionScheduleWeekly:{4}, {5}",
+                                 DurationCountInMonths, RetentionScheduleFormatType, base.ToString(),
                                  RetentionScheduleDaily == null ? "NULL" : RetentionScheduleDaily.ToString(),
                                  RetentionScheduleWeekly == null ? "NULL" : RetentionScheduleWeekly.ToString(),
                                  base.ToString());
         }
     }
   
+    /// <summary>
+    /// Yearly rentention schedule.
+    /// </summary>
     public class YearlyRetentionSchedule : RetentionScheduleBase
     {
         public int DurationCountInYears { get; set; }
@@ -316,16 +330,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public override string ToString()
         {
-            return string.Format("RetentionScheduleType:{0}, {1}, RetentionScheduleDaily:{2}," +
-                                 "RetentionScheduleWeekly:{3}, MonthsOfYear: {4}, {5}",
-                                 RetentionScheduleFormatType.ToString(),
-                                 base.ToString(),
+            return string.Format("DurationCountInYears:{0}, RetentionScheduleType:{1}, {2}, RetentionScheduleDaily:{3}," +
+                                 "RetentionScheduleWeekly:{4}, MonthsOfYear: {5}, {6}",
+                                 DurationCountInYears, RetentionScheduleFormatType.ToString(), base.ToString(),
                                  RetentionScheduleDaily == null ? "NULL" : RetentionScheduleDaily.ToString(),
                                  RetentionScheduleWeekly == null ? "NULL" : RetentionScheduleWeekly.ToString(),
                                  TraceUtils.GetString<Month>(MonthsOfYear), base.ToString());
         }
     }
         
+    /// <summary>
+    /// Daily rentention format.
+    /// </summary>
     public class DailyRetentionFormat
     {
         public List<Day> DaysOfTheMonth { get; set; }
@@ -349,13 +365,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             foreach (Day day in DaysOfTheMonth)
             {
                 day.Validate();
-                if(day.IsLast)
+                if (day.IsLast)
                 {
                     countOfIsLast++;
                 }
             }
 
-            if(countOfIsLast > 1)
+            if (countOfIsLast > 1)
             {
                 throw new ArgumentException(Resources.InvalidDayInDaysOfMonthOfMonthlyYearlyRetentionPolicyException);
             }
@@ -367,6 +383,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
       
+    /// <summary>
+    /// Weekly rentention format.
+    /// </summary>
     public class WeeklyRetentionFormat
     {
         public List<DayOfWeek> DaysOfTheWeek { get; set; }
@@ -396,6 +415,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Day class to be used by retention policy.
+    /// </summary>
     public class Day
     {
         public int Date { get; set; }
@@ -419,7 +441,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             return string.Format("Date:{0}, IsLast:{1}", Date, IsLast);
         }
-    }
+    }   
 
     public class RetentionDuration
     {

@@ -179,11 +179,11 @@ function Test-WorkspaceEnableDisableListIntelligencePacks
 	{
 		if (($ip.Name -eq "ChangeTracking") -or ($ip.Name -eq "SiteRecovery") -or ($ip.Name -eq "LogManagement"))
 		{
-			Assert-True $ip.Enabled
+			Assert-AreEqual $ip.Enabled $true
 		}
 		else
 		{
-			Assert-False $ip.Enabled
+			Assert-AreEqual $ip.Enabled $false
 		}
 	}
 
@@ -197,11 +197,11 @@ function Test-WorkspaceEnableDisableListIntelligencePacks
 	{
 		if ($ip.Name -eq "LogManagement")
 		{
-			Assert-True $ip.Enabled
+			Assert-AreEqual $ip.Enabled $true
 		}
 		else
 		{
-			Assert-False $ip.Enabled
+			Assert-AreEqual $ip.Enabled $false
 		}
 	}
 

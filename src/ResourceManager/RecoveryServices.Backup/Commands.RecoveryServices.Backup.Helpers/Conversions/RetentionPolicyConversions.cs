@@ -18,48 +18,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using HydraModels = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Backup policy conversion helper
+    /// </summary>
     public partial class PolicyHelpers
     {
-        #region HydraToPSObject conversions
+        #region ServiceClientToPSObject conversions
 
         #region public
-        public static AzureRmRecoveryServicesBackupLongTermRetentionPolicy GetPSLongTermRetentionPolicy(
-            HydraModels.LongTermRetentionPolicy hydraRetPolicy)
+
+        // <summary>
+        /// Helper function to convert ps long term retention policy from service response.
+        /// </summary>
+        public static LongTermRetentionPolicy GetPSLongTermRetentionPolicy(
+            ServiceClientModel.LongTermRetentionPolicy serviceClientRetPolicy)
         {
-            if(hydraRetPolicy == null)
+            if(serviceClientRetPolicy == null)
             {
                 return null;
             }
 
-            AzureRmRecoveryServicesBackupLongTermRetentionPolicy ltrPolicy = new AzureRmRecoveryServicesBackupLongTermRetentionPolicy();
+            LongTermRetentionPolicy ltrPolicy = new LongTermRetentionPolicy();
 
-            if(hydraRetPolicy.DailySchedule != null)
+            if(serviceClientRetPolicy.DailySchedule != null)
             {
                 ltrPolicy.IsDailyScheduleEnabled = true;
-                ltrPolicy.DailySchedule = GetPSLTRDailySchedule(hydraRetPolicy.DailySchedule);
+                ltrPolicy.DailySchedule = GetPSLTRDailySchedule(serviceClientRetPolicy.DailySchedule);
             }
 
-            if (hydraRetPolicy.WeeklySchedule != null)
+            if (serviceClientRetPolicy.WeeklySchedule != null)
             {
                 ltrPolicy.IsWeeklyScheduleEnabled = true;
-                ltrPolicy.WeeklySchedule = GetPSLTRWeeklySchedule(hydraRetPolicy.WeeklySchedule);
+                ltrPolicy.WeeklySchedule = GetPSLTRWeeklySchedule(serviceClientRetPolicy.WeeklySchedule);
             }
 
-            if (hydraRetPolicy.MonthlySchedule != null)
+            if (serviceClientRetPolicy.MonthlySchedule != null)
             {
                 ltrPolicy.IsMonthlyScheduleEnabled = true;
-                ltrPolicy.MonthlySchedule = GetPSLTRMonthlySchedule(hydraRetPolicy.MonthlySchedule);
+                ltrPolicy.MonthlySchedule = GetPSLTRMonthlySchedule(serviceClientRetPolicy.MonthlySchedule);
             }
 
-            if (hydraRetPolicy.YearlySchedule != null)
+            if (serviceClientRetPolicy.YearlySchedule != null)
             {
                 ltrPolicy.IsYearlyScheduleEnabled = true;
-                ltrPolicy.YearlySchedule = GetPSLTRYearlySchedule(hydraRetPolicy.YearlySchedule);
+                ltrPolicy.YearlySchedule = GetPSLTRYearlySchedule(serviceClientRetPolicy.YearlySchedule);
             }
 
             // safe side validate
@@ -68,15 +75,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return ltrPolicy;            
         }
 
-        public static AzureRmRecoveryServicesBackupSimpleRetentionPolicy GetPSSimpleRetentionPolicy(
-           HydraModels.SimpleRetentionPolicy hydraRetPolicy)
+        public static SimpleRetentionPolicy GetPSSimpleRetentionPolicy(
+           ServiceClientModel.SimpleRetentionPolicy hydraRetPolicy)
         {
             if(hydraRetPolicy == null)
             {
                 return null;
-            }
+        }
 
-            AzureRmRecoveryServicesBackupSimpleRetentionPolicy simplePolicy = new AzureRmRecoveryServicesBackupSimpleRetentionPolicy();
+            SimpleRetentionPolicy simplePolicy = new SimpleRetentionPolicy();
 
             if (hydraRetPolicy.RetentionDuration != null)
             {
@@ -92,25 +99,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region private
 
-        private static int GetRetentionDurationInDays(HydraModels.RetentionDuration retentionDuration)
+        private static int GetRetentionDurationInDays(ServiceClientModel.RetentionDuration retentionDuration)
         {
             int daysCount = 0;
 
             switch (retentionDuration.DurationType)
             {
-                case HydraModels.RetentionDurationType.Days:
+                case ServiceClientModel.RetentionDurationType.Days:
                     daysCount = retentionDuration.Count;
                     break;
 
-                case HydraModels.RetentionDurationType.Weeks:
+                case ServiceClientModel.RetentionDurationType.Weeks:
                     daysCount = retentionDuration.Count * PolicyConstants.NumOfDaysInWeek;
                     break;
 
-                case HydraModels.RetentionDurationType.Months:
+                case ServiceClientModel.RetentionDurationType.Months:
                     daysCount = retentionDuration.Count * PolicyConstants.NumOfDaysInMonth;
                     break;
 
-                case HydraModels.RetentionDurationType.Years:
+                case ServiceClientModel.RetentionDurationType.Years:
                     daysCount = retentionDuration.Count * PolicyConstants.NumOfDaysInYear;
                     break;
 
@@ -122,25 +129,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return daysCount;
         }
 
-        private static int GetRetentionDurationInWeeks(HydraModels.RetentionDuration retentionDuration)
+        private static int GetRetentionDurationInWeeks(ServiceClientModel.RetentionDuration retentionDuration)
         {
             int weeksCount = 0;
 
             switch (retentionDuration.DurationType)
             {
-                case HydraModels.RetentionDurationType.Days:
+                case ServiceClientModel.RetentionDurationType.Days:
                     weeksCount = retentionDuration.Count / PolicyConstants.NumOfDaysInWeek;
                     break;
 
-                case HydraModels.RetentionDurationType.Weeks:
+                case ServiceClientModel.RetentionDurationType.Weeks:
                     weeksCount = retentionDuration.Count;
                     break;
 
-                case HydraModels.RetentionDurationType.Months:
+                case ServiceClientModel.RetentionDurationType.Months:
                     weeksCount = retentionDuration.Count * PolicyConstants.NumOfWeeksInMonth;
                     break;
 
-                case HydraModels.RetentionDurationType.Years:
+                case ServiceClientModel.RetentionDurationType.Years:
                     weeksCount = retentionDuration.Count * PolicyConstants.NumOfWeeksInYear;
                     break;
 
@@ -152,25 +159,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return weeksCount;
         }
 
-        private static int GetRetentionDurationInMonths(HydraModels.RetentionDuration retentionDuration)
+        private static int GetRetentionDurationInMonths(ServiceClientModel.RetentionDuration retentionDuration)
         {
             int monthsCount = 0;
 
             switch (retentionDuration.DurationType)
             {
-                case HydraModels.RetentionDurationType.Days:
+                case ServiceClientModel.RetentionDurationType.Days:
                     monthsCount = retentionDuration.Count / PolicyConstants.NumOfDaysInMonth;
                     break;
 
-                case HydraModels.RetentionDurationType.Weeks:
+                case ServiceClientModel.RetentionDurationType.Weeks:
                     monthsCount = retentionDuration.Count / PolicyConstants.NumOfWeeksInMonth;
                     break;
 
-                case HydraModels.RetentionDurationType.Months:
+                case ServiceClientModel.RetentionDurationType.Months:
                     monthsCount = retentionDuration.Count;
                     break;
 
-                case HydraModels.RetentionDurationType.Years:
+                case ServiceClientModel.RetentionDurationType.Years:
                     monthsCount = retentionDuration.Count * PolicyConstants.NumOfMonthsInYear;
                     break;
 
@@ -182,25 +189,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return monthsCount;
         }
 
-        private static int GetRetentionDurationInYears(HydraModels.RetentionDuration retentionDuration)
+        private static int GetRetentionDurationInYears(ServiceClientModel.RetentionDuration retentionDuration)
         {
             int yearsCount = 0;
 
             switch (retentionDuration.DurationType)
             {
-                case HydraModels.RetentionDurationType.Days:
+                case ServiceClientModel.RetentionDurationType.Days:
                     yearsCount = retentionDuration.Count / PolicyConstants.NumOfDaysInYear;
                     break;
 
-                case HydraModels.RetentionDurationType.Weeks:
+                case ServiceClientModel.RetentionDurationType.Weeks:
                     yearsCount = retentionDuration.Count / PolicyConstants.NumOfWeeksInYear;
                     break;
 
-                case HydraModels.RetentionDurationType.Months:
+                case ServiceClientModel.RetentionDurationType.Months:
                     yearsCount = retentionDuration.Count / PolicyConstants.NumOfMonthsInYear;
                     break;
 
-                case HydraModels.RetentionDurationType.Years:
+                case ServiceClientModel.RetentionDurationType.Years:
                     yearsCount = retentionDuration.Count;
                     break;
 
@@ -212,96 +219,96 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return yearsCount;
         }       
 
-        private static DailyRetentionSchedule GetPSLTRDailySchedule(HydraModels.DailyRetentionSchedule hydraDaily)
+        private static DailyRetentionSchedule GetPSLTRDailySchedule(ServiceClientModel.DailyRetentionSchedule serviceClientDaily)
         {
-            if(hydraDaily == null)
+            if(serviceClientDaily == null)
             {
                 return null;
             }
 
             DailyRetentionSchedule psDaily = new DailyRetentionSchedule();
 
-            psDaily.DurationCountInDays = GetRetentionDurationInDays(hydraDaily.RetentionDuration);
-            psDaily.RetentionTimes = ParseDateTimesToUTC(hydraDaily.RetentionTimes);
+            psDaily.DurationCountInDays = GetRetentionDurationInDays(serviceClientDaily.RetentionDuration);
+            psDaily.RetentionTimes = ParseDateTimesToUTC(serviceClientDaily.RetentionTimes);
 
             return psDaily;
         }
 
-        private static WeeklyRetentionSchedule GetPSLTRWeeklySchedule(HydraModels.WeeklyRetentionSchedule hydraWeekly)
+        private static WeeklyRetentionSchedule GetPSLTRWeeklySchedule(ServiceClientModel.WeeklyRetentionSchedule serviceClientWeekly)
         {
-            if (hydraWeekly == null)
+            if (serviceClientWeekly == null)
             {
                 return null;
             }
 
             WeeklyRetentionSchedule psWeekly = new WeeklyRetentionSchedule();
 
-            psWeekly.DurationCountInWeeks = GetRetentionDurationInWeeks(hydraWeekly.RetentionDuration);
-            psWeekly.RetentionTimes = ParseDateTimesToUTC(hydraWeekly.RetentionTimes);
-            psWeekly.DaysOfTheWeek = HelperUtils.GetEnumListFromStringList<DayOfWeek>(hydraWeekly.DaysOfTheWeek);
+            psWeekly.DurationCountInWeeks = GetRetentionDurationInWeeks(serviceClientWeekly.RetentionDuration);
+            psWeekly.RetentionTimes = ParseDateTimesToUTC(serviceClientWeekly.RetentionTimes);
+            psWeekly.DaysOfTheWeek = HelperUtils.GetEnumListFromStringList<DayOfWeek>(serviceClientWeekly.DaysOfTheWeek);
 
             return psWeekly;
         }
 
-        private static MonthlyRetentionSchedule GetPSLTRMonthlySchedule(HydraModels.MonthlyRetentionSchedule hydraMonthly)
+        private static MonthlyRetentionSchedule GetPSLTRMonthlySchedule(ServiceClientModel.MonthlyRetentionSchedule serviceClientMonthly)
         {
-            if (hydraMonthly == null)
+            if (serviceClientMonthly == null)
             {
                 return null;
             }
 
             MonthlyRetentionSchedule psMonthly = new MonthlyRetentionSchedule();
 
-            psMonthly.DurationCountInMonths = GetRetentionDurationInMonths(hydraMonthly.RetentionDuration);
-            psMonthly.RetentionTimes = ParseDateTimesToUTC(hydraMonthly.RetentionTimes);
+            psMonthly.DurationCountInMonths = GetRetentionDurationInMonths(serviceClientMonthly.RetentionDuration);
+            psMonthly.RetentionTimes = ParseDateTimesToUTC(serviceClientMonthly.RetentionTimes);
             psMonthly.RetentionScheduleFormatType = (RetentionScheduleFormat)Enum.Parse(typeof(RetentionScheduleFormat),
-                                                                                   hydraMonthly.RetentionScheduleFormatType);
-            psMonthly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(hydraMonthly.RetentionScheduleDaily);
-            psMonthly.RetentionScheduleWeekly = GetPSLTRWeeklyRetentionFormat(hydraMonthly.RetentionScheduleWeekly);
+                                                                                   serviceClientMonthly.RetentionScheduleFormatType);
+            psMonthly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(serviceClientMonthly.RetentionScheduleDaily);
+            psMonthly.RetentionScheduleWeekly = GetPSLTRWeeklyRetentionFormat(serviceClientMonthly.RetentionScheduleWeekly);
 
             return psMonthly;
         }
 
-        private static YearlyRetentionSchedule GetPSLTRYearlySchedule(HydraModels.YearlyRetentionSchedule hydraYearly)
+        private static YearlyRetentionSchedule GetPSLTRYearlySchedule(ServiceClientModel.YearlyRetentionSchedule serviceClientYearly)
         {
-            if (hydraYearly == null)
+            if (serviceClientYearly == null)
             {
                 return null;
             }
 
             YearlyRetentionSchedule psYearly = new YearlyRetentionSchedule();
 
-            psYearly.DurationCountInYears = GetRetentionDurationInYears(hydraYearly.RetentionDuration);
-            psYearly.RetentionTimes = ParseDateTimesToUTC(hydraYearly.RetentionTimes);
+            psYearly.DurationCountInYears = GetRetentionDurationInYears(serviceClientYearly.RetentionDuration);
+            psYearly.RetentionTimes = ParseDateTimesToUTC(serviceClientYearly.RetentionTimes);
             psYearly.RetentionScheduleFormatType = (RetentionScheduleFormat)Enum.Parse(typeof(RetentionScheduleFormat),
-                                                                                   hydraYearly.RetentionScheduleFormatType);
-            psYearly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(hydraYearly.RetentionScheduleDaily);
-            psYearly.RetentionScheduleWeekly = GetPSLTRWeeklyRetentionFormat(hydraYearly.RetentionScheduleWeekly);
-            psYearly.MonthsOfYear = HelperUtils.GetEnumListFromStringList<Month>(hydraYearly.MonthsOfYear);
+                                                                                   serviceClientYearly.RetentionScheduleFormatType);
+            psYearly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(serviceClientYearly.RetentionScheduleDaily);
+            psYearly.RetentionScheduleWeekly = GetPSLTRWeeklyRetentionFormat(serviceClientYearly.RetentionScheduleWeekly);
+            psYearly.MonthsOfYear = HelperUtils.GetEnumListFromStringList<Month>(serviceClientYearly.MonthsOfYear);
 
             return psYearly;
         }
 
         private static DailyRetentionFormat GetPSLTRDailyRetentionFormat(
-                                            HydraModels.DailyRetentionFormat hydraFormat)
+                                            ServiceClientModel.DailyRetentionFormat serviceClientFormat)
         {
-            if (hydraFormat == null)
+            if (serviceClientFormat == null)
             {
                 return null;
             }
 
             DailyRetentionFormat psFormat = new DailyRetentionFormat();
 
-            if (hydraFormat.DaysOfTheMonth != null)
+            if (serviceClientFormat.DaysOfTheMonth != null)
             {
                 psFormat.DaysOfTheMonth = new List<Day>();
 
-                foreach (HydraModels.Day hydraDay in hydraFormat.DaysOfTheMonth)
+                foreach (ServiceClientModel.Day serviceClientDay in serviceClientFormat.DaysOfTheMonth)
                 {
                     Day psDay = new Day()
                     {
-                        Date = hydraDay.Date,
-                        IsLast = hydraDay.IsLast
+                        Date = serviceClientDay.Date,
+                        IsLast = serviceClientDay.IsLast
                     };
 
                     psFormat.DaysOfTheMonth.Add(psDay);
@@ -312,21 +319,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         private static WeeklyRetentionFormat GetPSLTRWeeklyRetentionFormat(
-                                             HydraModels.WeeklyRetentionFormat hydraFormat)
+                                             ServiceClientModel.WeeklyRetentionFormat serviceClientFormat)
         {
-            if (hydraFormat == null)
+            if (serviceClientFormat == null)
             {
                 return null;
             }
 
             WeeklyRetentionFormat psFormat = new WeeklyRetentionFormat();
-            if (hydraFormat.DaysOfTheWeek != null)
+            if (serviceClientFormat.DaysOfTheWeek != null)
             {
-                psFormat.DaysOfTheWeek = HelperUtils.GetEnumListFromStringList<DayOfWeek>(hydraFormat.DaysOfTheWeek);
+                psFormat.DaysOfTheWeek = HelperUtils.GetEnumListFromStringList<DayOfWeek>(serviceClientFormat.DaysOfTheWeek);
             }
-            if (hydraFormat.WeeksOfTheMonth != null)
+            if (serviceClientFormat.WeeksOfTheMonth != null)
             {
-                psFormat.WeeksOfTheMonth = HelperUtils.GetEnumListFromStringList<WeekOfMonth>(hydraFormat.WeeksOfTheMonth);
+                psFormat.WeeksOfTheMonth = HelperUtils.GetEnumListFromStringList<WeekOfMonth>(serviceClientFormat.WeeksOfTheMonth);
             }
 
             return psFormat;
@@ -338,8 +345,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region PStoHydraObject conversions
 
-        public static HydraModels.SimpleRetentionPolicy GetHydraSimpleRetentionPolicy(
-            AzureRmRecoveryServicesBackupSimpleRetentionPolicy psRetPolicy)
+        public static ServiceClientModel.SimpleRetentionPolicy GetHydraSimpleRetentionPolicy(
+            SimpleRetentionPolicy psRetPolicy)
         {
             if (psRetPolicy == null)
             {
@@ -348,156 +355,162 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             else
             {
 
-                HydraModels.SimpleRetentionPolicy simpleRetPolicy = new HydraModels.SimpleRetentionPolicy();
+                ServiceClientModel.SimpleRetentionPolicy simpleRetPolicy = new ServiceClientModel.SimpleRetentionPolicy();
 
-                simpleRetPolicy.RetentionDuration = new HydraModels.RetentionDuration();
+                simpleRetPolicy.RetentionDuration = new ServiceClientModel.RetentionDuration();
                 simpleRetPolicy.RetentionDuration.DurationType = psRetPolicy.RetentionDurationType.ToString();
                 simpleRetPolicy.RetentionDuration.Count = psRetPolicy.RetentionCount;
 
                 return simpleRetPolicy;
             }            
-        }
-
-        public static HydraModels.LongTermRetentionPolicy GetHydraLongTermRetentionPolicy(
-            AzureRmRecoveryServicesBackupLongTermRetentionPolicy psRetPolicy)
+        }     
+       
+        // <summary>
+        /// Helper function to convert service long term retention policy from ps retention policy.
+        /// </summary>
+        public static ServiceClientModel.LongTermRetentionPolicy GetServiceClientLongTermRetentionPolicy(
+            LongTermRetentionPolicy psRetPolicy)
         {
             if(psRetPolicy == null)
             {
                 return null;
             }
 
-            HydraModels.LongTermRetentionPolicy hydraRetPolicy = new HydraModels.LongTermRetentionPolicy();
+            ServiceClientModel.LongTermRetentionPolicy serviceClientRetPolicy = new ServiceClientModel.LongTermRetentionPolicy();
 
             if(psRetPolicy.IsDailyScheduleEnabled)
             {
-                hydraRetPolicy.DailySchedule = GetHydraLTRDailySchedule(psRetPolicy.DailySchedule);
+                serviceClientRetPolicy.DailySchedule = GetServiceClientLTRDailySchedule(psRetPolicy.DailySchedule);
             }
 
             if (psRetPolicy.IsWeeklyScheduleEnabled)
             {
-                hydraRetPolicy.WeeklySchedule = GetHydraLTRWeeklySchedule(psRetPolicy.WeeklySchedule);
+                serviceClientRetPolicy.WeeklySchedule = GetServiceClientLTRWeeklySchedule(psRetPolicy.WeeklySchedule);
             }
 
             if (psRetPolicy.IsMonthlyScheduleEnabled)
             {
-                hydraRetPolicy.MonthlySchedule = GetHydraLTRMonthlySchedule(psRetPolicy.MonthlySchedule);
+                serviceClientRetPolicy.MonthlySchedule = GetServiceClientLTRMonthlySchedule(psRetPolicy.MonthlySchedule);
             }
 
             if (psRetPolicy.IsYearlyScheduleEnabled)
             {
-                hydraRetPolicy.YearlySchedule = GetHydraLTRYearlySchedule(psRetPolicy.YearlySchedule);
+                serviceClientRetPolicy.YearlySchedule = GetServiceClientLTRYearlySchedule(psRetPolicy.YearlySchedule);
             }            
                         
-            return hydraRetPolicy;
+            return serviceClientRetPolicy;
         }
 
-        public static HydraModels.SimpleRetentionPolicy GetHydraSimpleRetentionPolicy(
-            AzureRmRecoveryServicesBackupSimpleSchedulePolicy psRetPolicy)
+        // <summary>
+        /// Helper function to convert service simple retention policy from ps simple policy.
+        /// </summary>
+        public static ServiceClientModel.SimpleRetentionPolicy GetServiceClientSimpleRetentionPolicy(
+            SimpleSchedulePolicy psRetPolicy)
         {
             throw new NotSupportedException();
         }
 
         #region private
-        private static HydraModels.DailyRetentionSchedule GetHydraLTRDailySchedule(DailyRetentionSchedule psDaily)
+        private static ServiceClientModel.DailyRetentionSchedule GetServiceClientLTRDailySchedule(DailyRetentionSchedule psDaily)
         {
             if (psDaily == null)
             {
                 return null;
             }
 
-            HydraModels.DailyRetentionSchedule hydraDaily = new HydraModels.DailyRetentionSchedule();
+            ServiceClientModel.DailyRetentionSchedule serviceClientDaily = new ServiceClientModel.DailyRetentionSchedule();
 
-            hydraDaily.RetentionDuration = new HydraModels.RetentionDuration()
+            serviceClientDaily.RetentionDuration = new ServiceClientModel.RetentionDuration()
             {
                 Count = psDaily.DurationCountInDays,
-                DurationType = HydraModels.RetentionDurationType.Days
+                DurationType = ServiceClientModel.RetentionDurationType.Days
             };
 
-            hydraDaily.RetentionTimes = psDaily.RetentionTimes;
+            serviceClientDaily.RetentionTimes = psDaily.RetentionTimes;
 
-            return hydraDaily;
+            return serviceClientDaily;
         }
 
-        private static HydraModels.WeeklyRetentionSchedule GetHydraLTRWeeklySchedule(WeeklyRetentionSchedule psWeekly)
+        private static ServiceClientModel.WeeklyRetentionSchedule GetServiceClientLTRWeeklySchedule(WeeklyRetentionSchedule psWeekly)
         {
             if (psWeekly == null)
             {
                 return null;
             }
 
-            HydraModels.WeeklyRetentionSchedule hydraWeekly = new HydraModels.WeeklyRetentionSchedule();
+            ServiceClientModel.WeeklyRetentionSchedule serviceClientWeekly = new ServiceClientModel.WeeklyRetentionSchedule();
 
-            hydraWeekly.RetentionDuration = new HydraModels.RetentionDuration()
+            serviceClientWeekly.RetentionDuration = new ServiceClientModel.RetentionDuration()
             {
                 Count = psWeekly.DurationCountInWeeks,
-                DurationType = HydraModels.RetentionDurationType.Weeks
+                DurationType = ServiceClientModel.RetentionDurationType.Weeks
             };
-            hydraWeekly.RetentionTimes = psWeekly.RetentionTimes;
-            hydraWeekly.DaysOfTheWeek = HelperUtils.GetStringListFromEnumList<DayOfWeek>(psWeekly.DaysOfTheWeek);
+            serviceClientWeekly.RetentionTimes = psWeekly.RetentionTimes;
+            serviceClientWeekly.DaysOfTheWeek = HelperUtils.GetStringListFromEnumList<DayOfWeek>(psWeekly.DaysOfTheWeek);
 
-            return hydraWeekly;
+            return serviceClientWeekly;
         }
 
-        private static HydraModels.MonthlyRetentionSchedule GetHydraLTRMonthlySchedule(MonthlyRetentionSchedule psMonthly)
+        private static ServiceClientModel.MonthlyRetentionSchedule GetServiceClientLTRMonthlySchedule(MonthlyRetentionSchedule psMonthly)
         {
             if (psMonthly == null)
             {
                 return null;
             }
 
-            HydraModels.MonthlyRetentionSchedule hydraMonthly = new HydraModels.MonthlyRetentionSchedule();
+            ServiceClientModel.MonthlyRetentionSchedule serviceClientMonthly = new ServiceClientModel.MonthlyRetentionSchedule();
 
-            hydraMonthly.RetentionDuration = new HydraModels.RetentionDuration()
+            serviceClientMonthly.RetentionDuration = new ServiceClientModel.RetentionDuration()
             {
                 Count = psMonthly.DurationCountInMonths,
-                DurationType = HydraModels.RetentionDurationType.Months
+                DurationType = ServiceClientModel.RetentionDurationType.Months
             };
-            hydraMonthly.RetentionTimes = psMonthly.RetentionTimes;
+            serviceClientMonthly.RetentionTimes = psMonthly.RetentionTimes;
 
-            hydraMonthly.RetentionScheduleFormatType = psMonthly.RetentionScheduleFormatType.ToString();
+            serviceClientMonthly.RetentionScheduleFormatType = psMonthly.RetentionScheduleFormatType.ToString();
             if (psMonthly.RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
-                hydraMonthly.RetentionScheduleDaily = GetHydraLTRDailyRetentionFormat(psMonthly.RetentionScheduleDaily);
+                serviceClientMonthly.RetentionScheduleDaily = GetServiceClientLTRDailyRetentionFormat(psMonthly.RetentionScheduleDaily);
             }
             else if (psMonthly.RetentionScheduleFormatType == RetentionScheduleFormat.Weekly)
             {
-                hydraMonthly.RetentionScheduleWeekly = GetHydraLTRWeeklyRetentionFormat(psMonthly.RetentionScheduleWeekly);
+                serviceClientMonthly.RetentionScheduleWeekly = GetServiceClientLTRWeeklyRetentionFormat(psMonthly.RetentionScheduleWeekly);
             }
 
-            return hydraMonthly;
+            return serviceClientMonthly;
         }
 
-        private static HydraModels.YearlyRetentionSchedule GetHydraLTRYearlySchedule(YearlyRetentionSchedule psYearly)
+        private static ServiceClientModel.YearlyRetentionSchedule GetServiceClientLTRYearlySchedule(YearlyRetentionSchedule psYearly)
         {
             if (psYearly == null)
             {
                 return null;
             }
 
-            HydraModels.YearlyRetentionSchedule hydraYearly = new HydraModels.YearlyRetentionSchedule();
+            ServiceClientModel.YearlyRetentionSchedule serviceClientYearly = new ServiceClientModel.YearlyRetentionSchedule();
 
-            hydraYearly.RetentionDuration = new HydraModels.RetentionDuration()
+            serviceClientYearly.RetentionDuration = new ServiceClientModel.RetentionDuration()
             {
                 Count = psYearly.DurationCountInYears,
-                DurationType = HydraModels.RetentionDurationType.Years
+                DurationType = ServiceClientModel.RetentionDurationType.Years
             };
-            hydraYearly.RetentionTimes = psYearly.RetentionTimes;
+            serviceClientYearly.RetentionTimes = psYearly.RetentionTimes;
 
-            hydraYearly.RetentionScheduleFormatType = psYearly.RetentionScheduleFormatType.ToString();
+            serviceClientYearly.RetentionScheduleFormatType = psYearly.RetentionScheduleFormatType.ToString();
             if (psYearly.RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
-                hydraYearly.RetentionScheduleDaily = GetHydraLTRDailyRetentionFormat(psYearly.RetentionScheduleDaily);
+                serviceClientYearly.RetentionScheduleDaily = GetServiceClientLTRDailyRetentionFormat(psYearly.RetentionScheduleDaily);
             }
             else if (psYearly.RetentionScheduleFormatType == RetentionScheduleFormat.Weekly)
             {
-                hydraYearly.RetentionScheduleWeekly = GetHydraLTRWeeklyRetentionFormat(psYearly.RetentionScheduleWeekly);
+                serviceClientYearly.RetentionScheduleWeekly = GetServiceClientLTRWeeklyRetentionFormat(psYearly.RetentionScheduleWeekly);
             }
-            hydraYearly.MonthsOfYear = HelperUtils.GetStringListFromEnumList<Month>(psYearly.MonthsOfYear);
+            serviceClientYearly.MonthsOfYear = HelperUtils.GetStringListFromEnumList<Month>(psYearly.MonthsOfYear);
 
-            return hydraYearly;
+            return serviceClientYearly;
         }
 
-        private static HydraModels.DailyRetentionFormat GetHydraLTRDailyRetentionFormat(
+        private static ServiceClientModel.DailyRetentionFormat GetServiceClientLTRDailyRetentionFormat(
                                              DailyRetentionFormat psFormat)
         {
             if (psFormat == null)
@@ -505,28 +518,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 return null;
             }
 
-            HydraModels.DailyRetentionFormat hydraFormat = new HydraModels.DailyRetentionFormat();
+            ServiceClientModel.DailyRetentionFormat serviceClientFormat = new ServiceClientModel.DailyRetentionFormat();
 
             if (psFormat.DaysOfTheMonth != null)
             {
-                hydraFormat.DaysOfTheMonth = new List<HydraModels.Day>();
+                serviceClientFormat.DaysOfTheMonth = new List<ServiceClientModel.Day>();
 
                 foreach (Day psDay in psFormat.DaysOfTheMonth)
                 {
-                    HydraModels.Day hydraDay = new HydraModels.Day()
+                    ServiceClientModel.Day serviceClientDay = new ServiceClientModel.Day()
                     {
                         Date =  psDay.Date,
                         IsLast = psDay.IsLast
                     };
 
-                    hydraFormat.DaysOfTheMonth.Add(hydraDay);
+                    serviceClientFormat.DaysOfTheMonth.Add(serviceClientDay);
                 }
             }
 
-            return hydraFormat;
+            return serviceClientFormat;
         }
 
-        private static HydraModels.WeeklyRetentionFormat GetHydraLTRWeeklyRetentionFormat(
+        private static ServiceClientModel.WeeklyRetentionFormat GetServiceClientLTRWeeklyRetentionFormat(
                                               WeeklyRetentionFormat psFormat)
         {
             if (psFormat == null)
@@ -534,17 +547,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 return null;
             }
 
-            HydraModels.WeeklyRetentionFormat hydraFormat = new HydraModels.WeeklyRetentionFormat();
+            ServiceClientModel.WeeklyRetentionFormat serviceClientFormat = new ServiceClientModel.WeeklyRetentionFormat();
             if (psFormat.DaysOfTheWeek != null)
             {
-                hydraFormat.DaysOfTheWeek = HelperUtils.GetStringListFromEnumList<DayOfWeek>(psFormat.DaysOfTheWeek);
+                serviceClientFormat.DaysOfTheWeek = HelperUtils.GetStringListFromEnumList<DayOfWeek>(psFormat.DaysOfTheWeek);
             }
             if (psFormat.WeeksOfTheMonth != null)
             {
-                hydraFormat.WeeksOfTheMonth = HelperUtils.GetStringListFromEnumList<WeekOfMonth>(psFormat.WeeksOfTheMonth);
+                serviceClientFormat.WeeksOfTheMonth = HelperUtils.GetStringListFromEnumList<WeekOfMonth>(psFormat.WeeksOfTheMonth);
             }
 
-            return hydraFormat;
+            return serviceClientFormat;
         }        
 
         #endregion

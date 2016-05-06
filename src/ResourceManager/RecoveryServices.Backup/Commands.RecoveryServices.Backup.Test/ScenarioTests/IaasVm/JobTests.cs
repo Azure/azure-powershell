@@ -23,7 +23,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public class JobTests : RecoveryServicesBackupTestsBase
+    public class JobTests : TestsBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -81,7 +81,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-WaitJobPipeScenario");
         }
 
-        [Fact]
         public void TestCancelJobScenario()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-CancelJobScenario");

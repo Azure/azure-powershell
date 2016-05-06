@@ -29,7 +29,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public abstract class RecoveryServicesBackupTestsBase : RMTestBase
+    public abstract class TestsBase : RMTestBase
     {
         CSMTestEnvironmentFactory csmTestFactory;
         EnvironmentSetupHelper helper;
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
         protected string ResourceNamespace { get; private set; }
 
-        protected RecoveryServicesBackupTestsBase()
+        protected TestsBase()
         {
             this.helper = new EnvironmentSetupHelper();
             this.csmTestFactory = new CSMTestEnvironmentFactory();
@@ -101,7 +101,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             if (testEnvironment.UsesCustomUri())
             {
                 client = new RecoveryServicesBackupManagementClient(
-                    ResourceNamespace,
                     testEnvironment.Credentials as SubscriptionCloudCredentials,
                     testEnvironment.BaseUri);
             }
@@ -109,9 +108,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             else
             {
                 client = new RecoveryServicesBackupManagementClient(
-                    ResourceNamespace,
                     testEnvironment.Credentials as SubscriptionCloudCredentials);
             }
+
+            client.ResourceNamespace = this.ResourceNamespace;
 
             return GetServiceClient<RecoveryServicesBackupManagementClient>(factory, client);
         }

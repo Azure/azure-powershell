@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
 using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -28,8 +29,8 @@ namespace Microsoft.Azure.Commands.Compute
     public class SetAzureSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         /// <summary>
-        /// The specific version of the SqlServer extension that Set-AzureRmVMSqlServerExtension will 
-        /// apply the settings to. 
+        /// The specific version of the SqlServer extension that Set-AzureRmVMSqlServerExtension will
+        /// apply the settings to.
         /// </summary>
         [Alias("HandlerVersion")]
         [Parameter(
@@ -91,9 +92,18 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(this.Location))
+
+            VirtualMachine vm = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
+            if (vm != null)
             {
-                this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                VirtualMachineExtension extension = vm.Resources.Where(x => x.Publisher.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace)).FirstOrDefault();
+                if (extension != null)
+                {
+                    this.Name = extension.Name;
+                    this.Version = extension.TypeHandlerVersion;
+                }
+
+                this.Location = vm.Location;
             }
 
             var parameters = new VirtualMachineExtension
@@ -119,6 +129,7 @@ namespace Microsoft.Azure.Commands.Compute
                         VMName,
                         Name ?? VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace + "." + VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
                         parameters).GetAwaiter().GetResult();
+                    break;
                 }
                 catch (Rest.Azure.CloudException ex)
                 {
@@ -130,7 +141,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        break;
+                        base.ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
                     }
                 }
             }
@@ -148,7 +159,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 AutoPatchingSettings = this.AutoPatchingSettings,
                 AutoBackupSettings = this.AutoBackupSettings,
-                AutoTelemetrySettings = new AutoTelemetrySettings() {Region = this.Location}
+                AutoTelemetrySettings = new AutoTelemetrySettings() { Region = this.Location }
             };
         }
 

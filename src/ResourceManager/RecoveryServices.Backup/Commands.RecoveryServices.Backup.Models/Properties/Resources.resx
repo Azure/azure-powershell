@@ -180,8 +180,8 @@
   <data name="BothRetentionAndSchedulePoliciesEmpty" xml:space="preserve">
     <value>Both RetentionPolicy and SchedulePolicy are empty, nothing to update</value>
   </data>
-  <data name="EmptyHydraResponseException" xml:space="preserve">
-    <value>Empty response received from Service/Hydra</value>
+  <data name="EmptyServiceClientResponseException" xml:space="preserve">
+    <value>Empty response received from Service Client</value>
   </data>
   <data name="InvalidProtectionPolicyException" xml:space="preserve">
     <value>Invalid ProtectionPolicy - either NULL or NOT of type: {0}</value>
@@ -441,12 +441,14 @@ Please contact Microsoft for further assistant.</value>
     <value>BackupManagementType value should be empty for WorkloadType AzureSql</value>
   </data>
   <data name="RetentionPolicyEmptyInAzureSql" xml:space="preserve">
-    <value>RetentionPolicy is empty, nothing to update</value>
+    <value>RetentionPolicy is empty, nothing to update</value>  </data>
+  <data name="AllowedSqlRetentionRange" xml:space="preserve">
+    <value>Retention count in Weeks should be in between 1-520, in Months should be in between 1-120 and Years should be in between 1-10</value>
   </data>
   <data name="BackupManagementTypeIncorrectForContainerType" xml:space="preserve">
     <value>BackupManagementType provider for ContainerType {0} is incorrect.</value>
   </data>
-  <data name="AllowedSqlRetentionRange" xml:space="preserve">
-    <value>Retention count in Weeks should be in between 1-520, in Months should be in between 1-120 and Years should be in between 1-10</value>
+  <data name="UnsupportedJobWarning" xml:space="preserve">
+    <value>Got some unsupported jobs</value>
   </data>
 </root>

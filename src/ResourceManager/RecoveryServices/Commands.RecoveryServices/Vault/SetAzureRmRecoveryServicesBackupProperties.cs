@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.RecoveryServices.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// Retrieves Azure Recovery Services Vault.
+    /// Sets Azure Recovery Services Vault Backup Properties.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProperties")]
     public class SetAzureRmRecoveryServicesBackupProperties : RecoveryServicesCmdletBase
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets BackupStorageRedundancy type.
         /// </summary>
         [Parameter(Mandatory = false)]
-        public string BackupStorageRedundancy { get; set; }
+        public AzureRmRecoveryServicesBackupStorageRedundancyType? BackupStorageRedundancy { get; set; }
 
         #endregion Parameters
 
@@ -48,12 +48,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                if (!string.IsNullOrEmpty(this.BackupStorageRedundancy))
+                if (this.BackupStorageRedundancy.HasValue)
                 {
                     UpdateVaultStorageTypeRequest vaultStorageRequest = new UpdateVaultStorageTypeRequest();
                     vaultStorageRequest.Properties = new StorageTypeProperties();
-                    vaultStorageRequest.Properties.StorageModelType = BackupStorageRedundancy;
-                    AzureOperationResponse storageResponse = RecoveryServicesClient.UpdateVaultStorageType(this.Vault.ResouceGroupName, this.Vault.Name, vaultStorageRequest);
+                    vaultStorageRequest.Properties.StorageModelType = BackupStorageRedundancy.ToString();
+                    AzureOperationResponse storageResponse = 
+                        RecoveryServicesClient.UpdateVaultStorageType(
+                        this.Vault.ResouceGroupName, this.Vault.Name, vaultStorageRequest);
+                }
+                else
+                {
+                    throw new Exception(Properties.Resources.NoBackupPropertiesProvided);
                 }
             }
             catch (Exception exception)

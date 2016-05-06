@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
 	  <View>
-		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupEngineBase</Name>
+		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase</Name>
 		  <ViewSelectedBy>
-			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupEngineBase</TypeName>
+			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase</TypeName>
 		  </ViewSelectedBy>
 		  <TableControl>
 			  <TableHeaders>
@@ -32,9 +32,9 @@
 		  </TableControl>
 	  </View>
 	  <View>
-		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesMabContainer</Name>
+		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.MabContainer</Name>
 		  <ViewSelectedBy>
-			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesMabContainer</TypeName>
+			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.MabContainer</TypeName>
 		  </ViewSelectedBy>
 		  <TableControl>
 			  <TableHeaders>
@@ -69,9 +69,9 @@
 		  </TableControl>
 	  </View>
     <View>
-      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesIaasVmPolicy</Name>
+      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureVmPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesIaasVmPolicy</TypeName>
+        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureVmPolicy</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -120,9 +120,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesJobBase</Name>
+      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesJobBase</TypeName>
+        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -147,7 +147,7 @@
             <Width>25</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>InstanceID</Label>
+            <Label>JobID</Label>
             <Width>37</Width>
           </TableColumnHeader>
         </TableHeaders>
@@ -170,7 +170,7 @@
                 <PropertyName>EndTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>InstanceID</PropertyName>
+                <PropertyName>JobId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -178,9 +178,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupIaasVmContainer</Name>
+      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureVmContainer</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupIaasVmContainer</TypeName>
+        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureVmContainer</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -222,9 +222,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupIaasVmItem</Name>
+      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureVmItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureRmRecoveryServicesBackupIaasVmItem</TypeName>
+        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureVmItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -272,5 +272,56 @@
         </TableRowEntries>
       </TableControl>
     </View>
+	  <View>
+		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureVmRecoveryPoint</Name>
+		  <ViewSelectedBy>
+			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureVmRecoveryPoint</TypeName>
+		  </ViewSelectedBy>
+		  <TableControl>
+			  <TableHeaders>
+				  <TableColumnHeader>
+					  <Label>RecoveryPointId</Label>
+					  <Width>18</Width>
+				  </TableColumnHeader>
+				  <TableColumnHeader>
+					  <Label>RecoveryPointType</Label>
+					  <Width>18</Width>
+				  </TableColumnHeader>
+				  <TableColumnHeader>
+					  <Label>RecoveryPointTime</Label>
+					  <Width>22</Width>
+				  </TableColumnHeader>
+				  <TableColumnHeader>
+					  <Label>ContainerName</Label>
+					  <Width>36</Width>
+				  </TableColumnHeader>
+				  <TableColumnHeader>
+					  <Label>ContainerType</Label>
+					  <Width>15</Width>
+				  </TableColumnHeader>
+			  </TableHeaders>
+			  <TableRowEntries>
+				  <TableRowEntry>
+					  <TableColumnItems>
+						  <TableColumnItem>
+							  <PropertyName>RecoveryPointId</PropertyName>
+						  </TableColumnItem>
+						  <TableColumnItem>
+							  <PropertyName>RecoveryPointType</PropertyName>
+						  </TableColumnItem>
+						  <TableColumnItem>
+							  <PropertyName>RecoveryPointTime</PropertyName>
+						  </TableColumnItem>
+						  <TableColumnItem>
+							  <PropertyName>ContainerName</PropertyName>
+						  </TableColumnItem>
+						  <TableColumnItem>
+							  <PropertyName>ContainerType</PropertyName>
+						  </TableColumnItem>
+					  </TableColumnItems>
+				  </TableRowEntry>
+			  </TableRowEntries>
+		  </TableControl>
+	  </View>
   </ViewDefinitions>
 </Configuration>

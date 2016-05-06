@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Common", "..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj", "{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "..\..\Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Backup.HydraAdapter", "Commands.RecoveryServices.Backup.HydraAdapter\Commands.RecoveryServices.Backup.HydraAdapter.csproj", "{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Backup.Models", "Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.csproj", "{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}"
 EndProject
@@ -31,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Backup.ServiceClientAdapter", "Commands.RecoveryServices.Backup.ServiceClientAdapter\Commands.RecoveryServices.Backup.ServiceClientAdapter.csproj", "{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,10 +45,6 @@ Global
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -89,6 +85,10 @@ Global
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

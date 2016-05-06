@@ -15015,7 +15015,14 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ApplicationGatewayBackendAddressPoolId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the ID of an ApplicationGatewayBackendAddressPool object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>IpConfigurationName</maml:name>
 				<maml:description>
 					<maml:para>Specifies the name of an IP configuration.</maml:para>
@@ -15123,7 +15130,14 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[PSInboundNatRule]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ApplicationGatewayBackendAddressPool</maml:name>
+        <maml:description>
+          <maml:para>Specifies a ApplicationGatewayBackendAddressPool object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">List`1[PSApplicationGatewayBackendAddressPool]</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>IpConfigurationName</maml:name>
 				<maml:description>
 					<maml:para>Specifies the name of an IP configuration.</maml:para>
@@ -15276,7 +15290,19 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+    <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <maml:name>ApplicationGatewayBackendAddressPoolId</maml:name>
+      <maml:description>
+        <maml:para>Specifies the ID of a ApplicationGatewayBackendAddressPool object.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
+      <dev:type>
+        <maml:name>List`1[String]</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue>none</dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>IpConfigurationName</maml:name>
 			<maml:description>
 				<maml:para>Specifies the name of an IP configuration.</maml:para>
@@ -15408,7 +15434,19 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <maml:name>ApplicationGatewayBackendAddressPool</maml:name>
+      <maml:description>
+        <maml:para>Specifies an ApplicationGatewayBackendAddressPool object.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="true">List`1[PSApplicationGatewayBackendAddressPool]</command:parameterValue>
+      <dev:type>
+        <maml:name>List`1[PSApplicationGatewayBackendAddressPool]</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue>none</dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
 				<maml:para>Specifies an Azure profile.</maml:para>

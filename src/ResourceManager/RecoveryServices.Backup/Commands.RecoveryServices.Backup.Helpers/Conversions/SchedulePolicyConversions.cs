@@ -18,28 +18,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel  =Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Backup policy conversion helper
+    /// </summary>
     public partial class PolicyHelpers
     {
-        #region HydraToPSObject conversions
+        #region ServiceClientToPSObject conversions
 
-        public static AzureRmRecoveryServicesBackupSimpleSchedulePolicy GetPSSimpleSchedulePolicy(
-            SimpleSchedulePolicy hydraPolicy)
+        // <summary>
+        /// Helper function to convert ps simple schedule policy from service response.
+        /// </summary>
+        public static SimpleSchedulePolicy GetPSSimpleSchedulePolicy(
+            ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy)
         {
-            if (hydraPolicy == null)
+            if (serviceClientPolicy == null)
             {
                 return null;
             }
 
-            AzureRmRecoveryServicesBackupSimpleSchedulePolicy psPolicy = new AzureRmRecoveryServicesBackupSimpleSchedulePolicy();
+            SimpleSchedulePolicy psPolicy = new SimpleSchedulePolicy();
 
-            psPolicy.ScheduleRunDays = HelperUtils.GetEnumListFromStringList<DayOfWeek>(hydraPolicy.ScheduleRunDays);
+            psPolicy.ScheduleRunDays = HelperUtils.GetEnumListFromStringList<DayOfWeek>(serviceClientPolicy.ScheduleRunDays);
             psPolicy.ScheduleRunFrequency = (ScheduleRunType)Enum.Parse(typeof(ScheduleRunType),
-                                                                        hydraPolicy.ScheduleRunFrequency);
-            psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(hydraPolicy.ScheduleRunTimes);
+                                                                        serviceClientPolicy.ScheduleRunFrequency);
+            psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.ScheduleRunTimes);
 
             // safe side validation
             psPolicy.Validate();
@@ -49,8 +55,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #endregion
 
-        #region PStoHydraObject conversions
+        #region PStoServiceClientObject conversions
 
+        // <summary>
+        /// Helper function to parse utc time from local time.
+        /// </summary>
         public static List<DateTime> ParseDateTimesToUTC(IList<DateTime> localTimes)
         {
             if (localTimes == null || localTimes.Count == 0)
@@ -66,31 +75,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 temp = localTime;
                 if (localTime.Kind != DateTimeKind.Utc)
                 {
-                    temp = localTime.ToUniversalTime();                    
+                    temp = localTime.ToUniversalTime();
                 }                
                 utcTimes.Add(temp);
             }
 
             return utcTimes;
-        }       
+        }
 
-        public static SimpleSchedulePolicy GetHydraSimpleSchedulePolicy(
-            AzureRmRecoveryServicesBackupSimpleSchedulePolicy psPolicy)
+        // <summary>
+        /// Helper function to convert service simple schedule policy from ps scheduel policy.
+        /// </summary>
+        public static ServiceClientModel.SimpleSchedulePolicy GetServiceClientSimpleSchedulePolicy(
+            SimpleSchedulePolicy psPolicy)
         {
             if (psPolicy == null)
             {
                 return null;
             }
 
-            SimpleSchedulePolicy hydraPolicy = new SimpleSchedulePolicy();            
-            hydraPolicy.ScheduleRunFrequency = psPolicy.ScheduleRunFrequency.ToString();
+            ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy = new ServiceClientModel.SimpleSchedulePolicy();            
+            serviceClientPolicy.ScheduleRunFrequency = psPolicy.ScheduleRunFrequency.ToString();
             if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
             {
-                hydraPolicy.ScheduleRunDays = HelperUtils.GetStringListFromEnumList<DayOfWeek>(psPolicy.ScheduleRunDays);
+                serviceClientPolicy.ScheduleRunDays = HelperUtils.GetStringListFromEnumList<DayOfWeek>(psPolicy.ScheduleRunDays);
             }
-            hydraPolicy.ScheduleRunTimes = psPolicy.ScheduleRunTimes;
+            serviceClientPolicy.ScheduleRunTimes = psPolicy.ScheduleRunTimes;
 
-            return hydraPolicy;
+            return serviceClientPolicy;
         }
 
         #endregion

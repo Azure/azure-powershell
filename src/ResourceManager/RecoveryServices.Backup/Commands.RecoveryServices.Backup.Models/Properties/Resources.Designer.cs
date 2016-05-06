@@ -309,11 +309,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Empty response received from Service/Hydra.
+        ///   Looks up a localized string similar to Empty response received from Service Client.
         /// </summary>
-        public static string EmptyHydraResponseException {
+        public static string EmptyServiceClientResponseException {
             get {
-                return ResourceManager.GetString("EmptyHydraResponseException", resourceCulture);
+                return ResourceManager.GetString("EmptyServiceClientResponseException", resourceCulture);
             }
         }
         
@@ -926,6 +926,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string UnsupportedContainerType {
             get {
                 return ResourceManager.GetString("UnsupportedContainerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Got some unsupported jobs.
+        /// </summary>
+        public static string UnsupportedJobWarning {
+            get {
+                return ResourceManager.GetString("UnsupportedJobWarning", resourceCulture);
             }
         }
         

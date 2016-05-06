@@ -155,75 +155,75 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 case "Standard_DS1":
                 case "Standard_DS1_v2":
                     result.HasSLA = true;
-                    result.IOPS = "3200";
-                    result.TP = "32";
+                    result.IOPS = 3200;
+                    result.TP = 32;
                     break;
                 case "Standard_DS2":
                 case "Standard_DS2_v2":
                     result.HasSLA = true;
-                    result.IOPS = "6400";
-                    result.TP = "64";
+                    result.IOPS = 6400;
+                    result.TP = 64;
                     break;
                 case "Standard_DS3":
                 case "Standard_DS3_v2":
                     result.HasSLA = true;
-                    result.IOPS = "12800";
-                    result.TP = "128";
+                    result.IOPS = 12800;
+                    result.TP = 128;
                     break;
                 case "Standard_DS4":
                 case "Standard_DS4_v2":
                     result.HasSLA = true;
-                    result.IOPS = "25600";
-                    result.TP = "256";
+                    result.IOPS = 25600;
+                    result.TP = 256;
                     break;
                 case "Standard_DS11":
                 case "Standard_DS11_v2":
                     result.HasSLA = true;
-                    result.IOPS = "6400";
-                    result.TP = "64";
+                    result.IOPS = 6400;
+                    result.TP = 64;
                     break;
                 case "Standard_DS12":
                 case "Standard_DS12_v2":
                     result.HasSLA = true;
-                    result.IOPS = "12800";
-                    result.TP = "128";
+                    result.IOPS = 12800;
+                    result.TP = 128;
                     break;
                 case "Standard_DS13":
                 case "Standard_DS13_v2":
                     result.HasSLA = true;
-                    result.IOPS = "25600";
-                    result.TP = "256";
+                    result.IOPS = 25600;
+                    result.TP = 256;
                     break;
                 case "Standard_DS14":
                 case "Standard_DS14_v2":
                     result.HasSLA = true;
-                    result.IOPS = "50000";
-                    result.TP = "512";
+                    result.IOPS = 50000;
+                    result.TP = 512;
                     break;
                 case "Standard_GS1":
                     result.HasSLA = true;
-                    result.IOPS = "5000";
-                    result.TP = "125";
+                    result.IOPS = 5000;
+                    result.TP = 125;
                     break;
                 case "Standard_GS2":
                     result.HasSLA = true;
-                    result.IOPS = "10000";
-                    result.TP = "250";
+                    result.IOPS = 10000;
+                    result.TP = 250;
                     break;
                 case "Standard_GS3":
                     result.HasSLA = true;
-                    result.IOPS = "20000";
-                    result.TP = "500";
+                    result.IOPS = 20000;
+                    result.TP = 500;
                     break;
                 case "Standard_GS4":
                     result.HasSLA = true;
-                    result.IOPS = "40000";
-                    result.TP = "1000";
+                    result.IOPS = 40000;
+                    result.TP = 1000;
                     break;
                 case "Standard_GS5":
                     result.HasSLA = true;
-                    result.IOPS = "80000";
-                    result.TP = "2000";
+                    result.IOPS = 80000;
+                    result.TP = 2000;
                     break;
                 default:
                     break;
@@ -305,20 +305,20 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             if (diskSize > 0 && diskSize < 129)
             {
                 // P10
-                sla.IOPS = "500";
-                sla.TP = "100";
+                sla.IOPS = 500;
+                sla.TP = 100;
             }
             else if (diskSize > 0 && diskSize < 513)
             {
                 // P20
-                sla.IOPS = "2300";
-                sla.TP = "150";
+                sla.IOPS = 2300;
+                sla.TP = 150;
             }
             else if (diskSize > 0 && diskSize < 1025)
             {
                 // P30
-                sla.IOPS = "5000";
-                sla.TP = "200";
+                sla.IOPS = 5000;
+                sla.TP = 200;
             }
             else
             {
@@ -415,6 +415,20 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             }
         }
 
+        internal string GetDiskName(string diskPath)
+        {
+            Uri diskPathUri;
+            if (Uri.TryCreate(diskPath, UriKind.Absolute, out diskPathUri))
+            {
+                string fileName = diskPathUri.Segments[diskPathUri.Segments.Length - 1];
+                fileName = Uri.UnescapeDataString(fileName);
+
+                return fileName;
+            }
+
+            return "UKNOWN";
+        }
+
         internal VirtualMachineExtension GetExtension(VirtualMachine vm, string type, string publisher)
         {
             if (vm.Resources != null)
@@ -454,7 +468,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     {
                         string strExtVersion = extensionStatus.TypeHandlerVersion;
                         Version extVersion;
-                        if (Version.TryParse(strExtVersion, out extVersion))
+                        if (Version.TryParse(strExtVersion, out extVersion) && extVersion > version)
                         {
                             version = extVersion;
                         }
@@ -479,18 +493,32 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             return vmStatus.Extensions.FirstOrDefault(extSt => extSt.Name.Equals(ext.Name));
         }
 
-        internal void CheckMonProp(string CheckMessage, string PropertyName, JObject Properties, string ExpectedValue, AEMTestResult parentResult, bool checkExistance = false)
+        internal void MonitoringPropertyExists(string CheckMessage, string PropertyName, JObject Properties, AEMTestResult parentResult, bool expectedResult = true)
         {
-            var value = GetMonPropertyValue(PropertyName, Properties);
-            WriteHost(CheckMessage + "...", false);
+            bool result = false;
 
-            if (!String.IsNullOrEmpty(value) && checkExistance)
+            WriteHost(CheckMessage + "...", false);
+            if (Properties != null && Properties["cfg"] != null)
             {
-                parentResult.PartialResults.Add(new AEMTestResult(CheckMessage, true));
-                WriteHost("OK ", ConsoleColor.Green);
+                var set = Properties["cfg"].FirstOrDefault((tok) =>
+                {
+                    JValue jval = (tok["key"] as JValue);
+                    if (jval != null && jval.Value != null)
+                    {
+                        return jval.Value.Equals(PropertyName);
+                    }
+
+                    return false;
+                });
+
+                if (set != null && set["value"] != null && (set["value"] as JValue) != null)
+                {
+                    result = true;
+
+                }
             }
 
-            if ((!String.IsNullOrEmpty(value) && String.IsNullOrEmpty(ExpectedValue)) || (value == ExpectedValue))
+            if (result == expectedResult)
             {
                 parentResult.PartialResults.Add(new AEMTestResult(CheckMessage, true));
                 WriteHost("OK ", ConsoleColor.Green);
@@ -502,42 +530,64 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             }
         }
 
-        internal string GetMonPropertyValue(string PropertyName, JObject Properties)
+        internal void CheckMonitoringProperty<T>(string CheckMessage, string PropertyName, JObject Properties, T expectedValue, AEMTestResult parentResult)
         {
-            if (Properties == null)
+            WriteHost(CheckMessage + "...", false);
+
+            T value;
+            if (GetMonPropertyValue<T>(PropertyName, Properties, out value))
             {
-                return null;
+                if (value != null && value.Equals(expectedValue))
+                {
+                    parentResult.PartialResults.Add(new AEMTestResult(CheckMessage, true));
+                    WriteHost("OK ", ConsoleColor.Green);
+                }
+                else
+                {
+                    parentResult.PartialResults.Add(new AEMTestResult(CheckMessage, false));
+                    WriteHost("NOT OK ", ConsoleColor.Red);
+                }
             }
-            if (Properties["cfg"] == null)
+            else
             {
-                return null;
+                parentResult.PartialResults.Add(new AEMTestResult(CheckMessage, false));
+                WriteHost("NOT OK ", ConsoleColor.Red);
+            }
+        }
+
+        internal bool GetMonPropertyValue<T>(string PropertyName, JObject Properties, out T result)
+        {
+            result = default(T);
+
+            if (Properties == null || Properties["cfg"] == null)
+            {
+                return false;
             }
 
             var set = Properties["cfg"].FirstOrDefault((tok) =>
             {
-                JValue jval = (tok["key"] as JValue);
-                if (jval != null && jval.Value != null)
+                JValue jvaltok = (tok["key"] as JValue);
+                if (jvaltok != null && jvaltok.Value != null)
                 {
-                    return jval.Value.Equals(PropertyName);
+                    return jvaltok.Value.Equals(PropertyName);
                 }
 
                 return false;
             });
-            if (set == null)
+
+            if (set == null || set["value"] == null)
             {
-                return null;
-            }
-            if (set["value"] == null)
-            {
-                return null;
+                return false;
             }
 
-            if ((set["value"] as JValue) != null)
+            JValue jval = (set["value"] as JValue);
+            if (jval != null && jval.Value != null)
             {
-                return (set["value"] as JValue).Value as string;
+                result = (set["value"] as JValue).Value<T>();
+                return true;
             }
-            return null;
 
+            return false;
         }
 
         internal bool CheckWADConfiguration(System.Xml.XmlDocument CurrentConfig)

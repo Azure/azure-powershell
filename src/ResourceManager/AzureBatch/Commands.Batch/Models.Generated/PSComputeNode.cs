@@ -34,15 +34,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.ComputeNode omObject;
         
-        private PSStartTaskInformation startTaskInformation;
+        private IReadOnlyList<PSCertificateReference> certificateReferences;
         
-        private IEnumerable<PSTaskInformation> recentTasks;
+        private IReadOnlyList<PSComputeNodeError> errors;
+        
+        private IReadOnlyList<PSTaskInformation> recentTasks;
         
         private PSStartTask startTask;
         
-        private IEnumerable<PSCertificateReference> certificateReferences;
-        
-        private IEnumerable<PSComputeNodeError> errors;
+        private PSStartTaskInformation startTaskInformation;
         
         internal PSComputeNode(Microsoft.Azure.Batch.ComputeNode omObject)
         {
@@ -53,6 +53,68 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
+        public string AffinityId
+        {
+            get
+            {
+                return this.omObject.AffinityId;
+            }
+        }
+        
+        public System.DateTime? AllocationTime
+        {
+            get
+            {
+                return this.omObject.AllocationTime;
+            }
+        }
+        
+        public IReadOnlyList<PSCertificateReference> CertificateReferences
+        {
+            get
+            {
+                if (((this.certificateReferences == null) 
+                            && (this.omObject.CertificateReferences != null)))
+                {
+                    List<PSCertificateReference> list;
+                    list = new List<PSCertificateReference>();
+                    IEnumerator<Microsoft.Azure.Batch.CertificateReference> enumerator;
+                    enumerator = this.omObject.CertificateReferences.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSCertificateReference(enumerator.Current));
+                    }
+                    this.certificateReferences = list.AsReadOnly();
+                }
+                return this.certificateReferences;
+            }
+        }
+        
+        public IReadOnlyList<PSComputeNodeError> Errors
+        {
+            get
+            {
+                if (((this.errors == null) 
+                            && (this.omObject.Errors != null)))
+                {
+                    List<PSComputeNodeError> list;
+                    list = new List<PSComputeNodeError>();
+                    IEnumerator<Microsoft.Azure.Batch.ComputeNodeError> enumerator;
+                    enumerator = this.omObject.Errors.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSComputeNodeError(enumerator.Current));
+                    }
+                    this.errors = list.AsReadOnly();
+                }
+                return this.errors;
+            }
+        }
+        
         public string Id
         {
             get
@@ -61,11 +123,42 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public string Url
+        public string IPAddress
         {
             get
             {
-                return this.omObject.Url;
+                return this.omObject.IPAddress;
+            }
+        }
+        
+        public System.DateTime? LastBootTime
+        {
+            get
+            {
+                return this.omObject.LastBootTime;
+            }
+        }
+        
+        public IReadOnlyList<PSTaskInformation> RecentTasks
+        {
+            get
+            {
+                if (((this.recentTasks == null) 
+                            && (this.omObject.RecentTasks != null)))
+                {
+                    List<PSTaskInformation> list;
+                    list = new List<PSTaskInformation>();
+                    IEnumerator<Microsoft.Azure.Batch.TaskInformation> enumerator;
+                    enumerator = this.omObject.RecentTasks.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSTaskInformation(enumerator.Current));
+                    }
+                    this.recentTasks = list.AsReadOnly();
+                }
+                return this.recentTasks;
             }
         }
         
@@ -74,6 +167,32 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.SchedulingState;
+            }
+        }
+        
+        public PSStartTask StartTask
+        {
+            get
+            {
+                if (((this.startTask == null) 
+                            && (this.omObject.StartTask != null)))
+                {
+                    this.startTask = new PSStartTask(this.omObject.StartTask);
+                }
+                return this.startTask;
+            }
+        }
+        
+        public PSStartTaskInformation StartTaskInformation
+        {
+            get
+            {
+                if (((this.startTaskInformation == null) 
+                            && (this.omObject.StartTaskInformation != null)))
+                {
+                    this.startTaskInformation = new PSStartTaskInformation(this.omObject.StartTaskInformation);
+                }
+                return this.startTaskInformation;
             }
         }
         
@@ -93,46 +212,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime? LastBootTime
-        {
-            get
-            {
-                return this.omObject.LastBootTime;
-            }
-        }
-        
-        public System.DateTime? AllocationTime
-        {
-            get
-            {
-                return this.omObject.AllocationTime;
-            }
-        }
-        
-        public string IPAddress
-        {
-            get
-            {
-                return this.omObject.IPAddress;
-            }
-        }
-        
-        public string AffinityId
-        {
-            get
-            {
-                return this.omObject.AffinityId;
-            }
-        }
-        
-        public string VirtualMachineSize
-        {
-            get
-            {
-                return this.omObject.VirtualMachineSize;
-            }
-        }
-        
         public System.Int32? TotalTasksRun
         {
             get
@@ -141,98 +220,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSStartTaskInformation StartTaskInformation
+        public string Url
         {
             get
             {
-                if (((this.startTaskInformation == null) 
-                            && (this.omObject.StartTaskInformation != null)))
-                {
-                    this.startTaskInformation = new PSStartTaskInformation(this.omObject.StartTaskInformation);
-                }
-                return this.startTaskInformation;
+                return this.omObject.Url;
             }
         }
         
-        public IEnumerable<PSTaskInformation> RecentTasks
+        public string VirtualMachineSize
         {
             get
             {
-                if (((this.recentTasks == null) 
-                            && (this.omObject.RecentTasks != null)))
-                {
-                    List<PSTaskInformation> list;
-                    list = new List<PSTaskInformation>();
-                    IEnumerator<Microsoft.Azure.Batch.TaskInformation> enumerator;
-                    enumerator = this.omObject.RecentTasks.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(new PSTaskInformation(enumerator.Current));
-                    }
-                    this.recentTasks = list;
-                }
-                return this.recentTasks;
-            }
-        }
-        
-        public PSStartTask StartTask
-        {
-            get
-            {
-                if (((this.startTask == null) 
-                            && (this.omObject.StartTask != null)))
-                {
-                    this.startTask = new PSStartTask(this.omObject.StartTask);
-                }
-                return this.startTask;
-            }
-        }
-        
-        public IEnumerable<PSCertificateReference> CertificateReferences
-        {
-            get
-            {
-                if (((this.certificateReferences == null) 
-                            && (this.omObject.CertificateReferences != null)))
-                {
-                    List<PSCertificateReference> list;
-                    list = new List<PSCertificateReference>();
-                    IEnumerator<Microsoft.Azure.Batch.CertificateReference> enumerator;
-                    enumerator = this.omObject.CertificateReferences.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(new PSCertificateReference(enumerator.Current));
-                    }
-                    this.certificateReferences = list;
-                }
-                return this.certificateReferences;
-            }
-        }
-        
-        public IEnumerable<PSComputeNodeError> Errors
-        {
-            get
-            {
-                if (((this.errors == null) 
-                            && (this.omObject.Errors != null)))
-                {
-                    List<PSComputeNodeError> list;
-                    list = new List<PSComputeNodeError>();
-                    IEnumerator<Microsoft.Azure.Batch.ComputeNodeError> enumerator;
-                    enumerator = this.omObject.Errors.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(new PSComputeNodeError(enumerator.Current));
-                    }
-                    this.errors = list;
-                }
-                return this.errors;
+                return this.omObject.VirtualMachineSize;
             }
         }
     }

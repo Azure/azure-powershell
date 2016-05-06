@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '1.2.2' 
+ModuleVersion = '1.2.3' 
   
 # ID used to uniquely identify this module  
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'  
@@ -117,7 +117,6 @@ NestedModules = @(
     '.\AzureRM.DataLakeStore',
     '.\AzureRM.Intune',
     '.\AzureRM.RecoveryServices',
-    '.\AzureRM.RecoveryServices.Backup',
     '.\AzureRM.AzureStackAdmin',
     '.\AzureRM.AzureStackStorage'
 )  

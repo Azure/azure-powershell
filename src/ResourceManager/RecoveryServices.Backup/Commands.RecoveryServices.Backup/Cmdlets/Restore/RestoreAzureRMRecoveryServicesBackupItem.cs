@@ -30,18 +30,21 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsData.Restore, "AzureRMRecoveryServicesBackupItem"), OutputType(typeof(AzureRmRecoveryServicesJobBase))]
-    public class RestoreAzureRMRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(JobBase))]
+    public class RestoreAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsg.RestoreDisk.RecoveryPoint)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, 
+            HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesBackupRecoveryPointBase RecoveryPoint { get; set; }
+        public RecoveryPointBase RecoveryPoint { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsg.RestoreDisk.StorageAccountName)]
+        [Parameter(Mandatory = true, Position = 1,
+            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 2, HelpMessage = ParamHelpMsg.RestoreDisk.StorageAccountResourceGroupName)]
+        [Parameter(Mandatory = true, Position = 2, 
+            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceGroupName { get; set; }
 
@@ -51,9 +54,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
                 StorageAccountName = StorageAccountName.ToLower();
-                WriteDebug("InsideRestore. going to create ResourceManager Client");
-                ResourcesNS.ResourceManagementClient rmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-                WriteDebug("Client Created successfully");
                 ResourceIdentity identity = new ResourceIdentity();
                 identity.ResourceName = StorageAccountName;
                 identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
@@ -63,14 +63,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 ResourcesNS.Models.ResourceGetResult resource = null;
                 try
                 {
-                    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", StorageAccountName));
-                    resource = rmClient.Resources.GetAsync(StorageAccountResourceGroupName, identity, CancellationToken.None).Result;
+                    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", 
+                        StorageAccountName));
+                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName, 
+                        identity, CancellationToken.None).Result;
                 }
                 catch (Exception)
                 {
                     identity.ResourceProviderNamespace = "Microsoft.Storage/storageAccounts";
                     identity.ResourceProviderApiVersion = "2016-01-01";
-                    resource = rmClient.Resources.GetAsync(StorageAccountResourceGroupName, identity, CancellationToken.None).Result;
+                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName, 
+                        identity, CancellationToken.None).Result;
                 }
                 
                 string storageAccountId = resource.Resource.Id;
@@ -79,62 +82,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 WriteDebug(String.Format("StorageId = {0}", storageAccountId));
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(
+                    new Dictionary<System.Enum, object>()
                 {
                     {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
                     {RestoreBackupItemParams.StorageAccountId, storageAccountId},
                     {RestoreBackupItemParams.StorageAccountLocation, storageAccountlocation},
                     {RestoreBackupItemParams.StorageAccountType, storageAccountType}
-                }, HydraAdapter);
+                }, ServiceClientAdapter);
 
-                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
+                IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
+                    RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerRestore();
 
                 WriteDebug(String.Format("Restore submitted"));
                 HandleCreatedJob(jobResponse, Resources.RestoreOperation);
             });
-        }
-
-        /// <summary>
-        /// This code is not getting used. Will delete it once things will be closed.
-        /// </summary>
-        /// <param name="storageAccountName"></param>
-        /// <param name="id"></param>
-        /// <param name="location"></param>
-        /// <param name="resourceType"></param>
-        internal void GetStorageResource(string storageAccountName, out string id, out string location, out string resourceType)
-        {
-            using (System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create())
-            {
-                //Get-AzureRmResource | Where-Object { ($_.Name -eq "<StorageAccName>") -and ($_.ResourceType -eq "Microsoft.Storage/storageAccounts" -or $_.ResourceType -eq "Microsoft.ClassicStorage/storageAccounts")}
-                ps.AddCommand("Get-AzureRmResource");
-                ps.AddCommand("where-object");
-                string filterString = String.Format(@"($_.Name -eq ""{0}"") -and ($_.ResourceType -eq ""Microsoft.Storage/storageAccounts"" -or $_.ResourceType -eq ""Microsoft.ClassicStorage/storageAccounts"")");
-                ScriptBlock filter = ScriptBlock.Create(filterString);
-
-                ps.AddParameter("FilterScript", filter);                
-                var result = ps.Invoke();
-
-                if (ps.HadErrors)
-                {
-                    WriteVerbose(string.Format("Error in Get-AzureRmResource"));
-                    throw new Exception(ps.HadErrors.ToString());
-                }
-
-                if(result.Count == 0)
-                {
-                    WriteVerbose(string.Format("Storage Account not fount"));
-                    throw new ArgumentException(Resources.RestoreAzureStorageNotFound);
-                }
-                else if (result.Count > 1)
-                {
-                    WriteVerbose(string.Format("Found more than one StorageAccount with same name. Some thing went wrong"));
-                    throw new Exception(Resources.RestoreDiskMoreThanOneAccFound);
-                }
-                id = result[0].Members["ResourceId"].Value.ToString();
-                location = result[0].Members["Location"].Value.ToString();
-                resourceType = result[0].Members["ResourceType"].Value.ToString();
-            }
         }
     }
 }

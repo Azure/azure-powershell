@@ -1,6 +1,6 @@
 ﻿// ----------------------------------------------------------------------------------
 //
-// Copyright Microsoft Corporation
+// Copyright Microsoft CorporationMicrosoft.Azure.Managemen
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -14,52 +14,62 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Job conversions helper.
+    /// </summary>
     public class JobConversions
     {
-        #region Hydra to PS convertors
+        #region ServiceClient to PS convertors
 
         /// <summary>
         /// This function returns either job object or job details object based on 
-        /// what hydra object contains.
-        /// To elaborate, if hydra job's ExtendedInfo is filled then this function will
+        /// what ServiceClient object contains.
+        /// To elaborate, if ServiceClient job's ExtendedInfo is filled then this function will
         /// return a job details object. Otherwise it will return a job object.
         /// </summary>
-        /// <param name="hydraJob"></param>
+        /// <param name="ServiceClientJob"></param>
         /// <returns></returns>
-        public static AzureRmRecoveryServicesJobBase GetPSJob(JobResponse hydraJob)
+        public static CmdletModel.JobBase GetPSJob(JobResponse serviceClientJob)
         {
-            return GetPSJob(hydraJob.Item);
+            return GetPSJob(serviceClientJob.Item);
         }
 
-        public static AzureRmRecoveryServicesJobBase GetPSJob(JobResource hydraJob)
+        /// <summary>
+        /// Helper function to convert ps backup job model from service response.
+        /// </summary>
+        public static CmdletModel.JobBase GetPSJob(JobResource serviceClientJob)
         {
-            AzureRmRecoveryServicesJobBase response = null;
+            CmdletModel.JobBase response = null;
 
-            // hydra doesn't initialize Properties if the type of job is not known to current version of hydra.
-            if (hydraJob.Properties == null)
+            // ServiceClient doesn't initialize Properties if the type of job is not known to current version of ServiceClient.
+            if (serviceClientJob.Properties == null)
             {
-                // unsupported job type.
+                Logger.Instance.WriteWarning(Resources.UnsupportedJobWarning);
             }
-            else if (hydraJob.Properties.GetType() == typeof(AzureIaaSVMJob))
+            else if (serviceClientJob.Properties.GetType() == typeof(AzureIaaSVMJob))
             {
-                response = GetPSAzureVmJob(hydraJob);
+                response = GetPSAzureVmJob(serviceClientJob);
             }
 
             return response;
         }
 
-        public static void AddHydraJobsToPSList(JobListResponse hydraJobs, List<AzureRmRecoveryServicesJobBase> psJobs, ref int jobsCount)
+        /// <summary>
+        /// Helper function to convert ps backup job list model from service response.
+        /// </summary>
+        public static void AddServiceClientJobsToPSList(JobListResponse serviceClientJobs, List<CmdletModel.JobBase> psJobs, ref int jobsCount)
         {
-            if (hydraJobs.ItemList != null && hydraJobs.ItemList.Value != null)
+            if (serviceClientJobs.ItemList != null && serviceClientJobs.ItemList.Value != null)
             {
-                foreach (var job in hydraJobs.ItemList.Value)
+                foreach (var job in serviceClientJobs.ItemList.Value)
                 {
-                    AzureRmRecoveryServicesJobBase convertedJob = GetPSJob(job);
+                    CmdletModel.JobBase convertedJob = GetPSJob(job);
                     if (convertedJob != null)
                     {
                         jobsCount++;
@@ -71,22 +81,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region AzureVm job private helpers
 
-        private static AzureRmRecoveryServicesAzureVmJob GetPSAzureVmJob(JobResource hydraJob)
+        /// <summary>
+        /// Helper function to convert ps auzre vm backup policy job from service response.
+        /// </summary>
+        private static CmdletModel.AzureVmJob GetPSAzureVmJob(JobResource serviceClientJob)
         {
-            AzureRmRecoveryServicesAzureVmJob response;
+            CmdletModel.AzureVmJob response;
 
-            AzureIaaSVMJob vmJob = hydraJob.Properties as AzureIaaSVMJob;
+            AzureIaaSVMJob vmJob = serviceClientJob.Properties as AzureIaaSVMJob;
 
             if (vmJob.ExtendedInfo != null)
             {
-                response = new AzureRmRecoveryServicesAzureVmJobDetails();
+                response = new CmdletModel.AzureVmJobDetails();
             }
             else
             {
-                response = new AzureRmRecoveryServicesAzureVmJob();
+                response = new CmdletModel.AzureVmJob();
             }
 
-            response.InstanceId = GetLastIdFromFullId(hydraJob.Id);
+            response.JobId = GetLastIdFromFullId(serviceClientJob.Id);
             response.StartTime = vmJob.StartTime;
             response.EndTime = vmJob.EndTime;
             response.Duration = vmJob.Duration;
@@ -94,12 +107,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             response.VmVersion = vmJob.VirtualMachineVersion;
             response.WorkloadName = vmJob.EntityFriendlyName;
             response.ActivityId = vmJob.ActivityId;
-            response.BackupManagementType = EnumUtils.GetEnum<Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType>(GetPSBackupManagementType(vmJob.BackupManagementType));
+            response.BackupManagementType = CmdletModel.EnumUtils.GetEnum<CmdletModel.BackupManagementType>(
+                GetPSBackupManagementType(vmJob.BackupManagementType));
             response.Operation = vmJob.Operation;
 
             if (vmJob.ErrorDetails != null)
             {
-                response.ErrorDetails = new List<AzureRmRecoveryServicesAzureVmJobErrorInfo>();
+                response.ErrorDetails = new List<CmdletModel.AzureVmJobErrorInfo>();
                 foreach (var vmError in vmJob.ErrorDetails)
                 {
                     response.ErrorDetails.Add(GetPSAzureVmErrorInfo(vmError));
@@ -109,8 +123,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             // fill extended info if present
             if (vmJob.ExtendedInfo != null)
             {
-                AzureRmRecoveryServicesAzureVmJobDetails detailedResponse =
-                    response as AzureRmRecoveryServicesAzureVmJobDetails;
+                CmdletModel.AzureVmJobDetails detailedResponse =
+                    response as CmdletModel.AzureVmJobDetails;
 
                 detailedResponse.DynamicErrorMessage = vmJob.ExtendedInfo.DynamicErrorMessage;
                 if (vmJob.ExtendedInfo.PropertyBag != null)
@@ -124,10 +138,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 if (vmJob.ExtendedInfo.TasksList != null)
                 {
-                    detailedResponse.SubTasks = new List<AzureRmRecoveryServicesAzureVmJobSubTask>();
+                    detailedResponse.SubTasks = new List<CmdletModel.AzureVmJobSubTask>();
                     foreach (var vmJobTask in vmJob.ExtendedInfo.TasksList)
                     {
-                        detailedResponse.SubTasks.Add(new AzureRmRecoveryServicesAzureVmJobSubTask()
+                        detailedResponse.SubTasks.Add(new CmdletModel.AzureVmJobSubTask()
                         {
                             Name = vmJobTask.TaskId,
                             Status = vmJobTask.Status
@@ -139,20 +153,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return response;
         }
 
-        private static AzureRmRecoveryServicesAzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo hydraError)
+        /// <summary>
+        /// Helper function to convert ps auzre vm backup job error info from service response.
+        /// </summary>
+        private static CmdletModel.AzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo serviceClientError)
         {
-            AzureRmRecoveryServicesAzureVmJobErrorInfo psErrorInfo = new AzureRmRecoveryServicesAzureVmJobErrorInfo();
-            psErrorInfo.ErrorCode = hydraError.ErrorCode;
-            psErrorInfo.ErrorMessage = hydraError.ErrorString;
-            if (hydraError.Recommendations != null)
+            CmdletModel.AzureVmJobErrorInfo psErrorInfo = new CmdletModel.AzureVmJobErrorInfo();
+            psErrorInfo.ErrorCode = serviceClientError.ErrorCode;
+            psErrorInfo.ErrorMessage = serviceClientError.ErrorString;
+            if (serviceClientError.Recommendations != null)
             {
                 psErrorInfo.Recommendations = new List<string>();
-                psErrorInfo.Recommendations.AddRange(hydraError.Recommendations);
+                psErrorInfo.Recommendations.AddRange(serviceClientError.Recommendations);
             }
 
             return psErrorInfo;
         }
 
+        /// <summary>
+        /// Helper function to get last index value from full id.
+        /// </summary>
         public static string GetLastIdFromFullId(string fullId)
         {
             string[] splitArr = fullId.Split("/".ToCharArray());
@@ -165,22 +185,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region Enum translators
 
-        public static string GetJobTypeForService(Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType mgmtType)
+
+        /// <summary>
+        /// Helper function to get job type from ps backupmanagement type.
+        /// </summary>
+        public static string GetJobTypeForService(CmdletModel.BackupManagementType mgmtType)
         {
             switch (mgmtType)
             {
-                case Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureVM:
-                    return Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString();
+                case CmdletModel.BackupManagementType.AzureVM:
+                    return BackupManagementType.AzureIaasVM.ToString();
                 default:
                     throw new Exception("Invalid BackupManagementType provided: " + mgmtType);
             }
         }
 
+        /// <summary>
+        /// Helper function to get ps backup management type from job type.
+        /// </summary>
         public static string GetPSBackupManagementType(string jobType)
         {
-            if (jobType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM.ToString())
+            if (jobType == BackupManagementType.AzureIaasVM.ToString())
             {
-                return Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureVM.ToString();
+                return CmdletModel.BackupManagementType.AzureVM.ToString();
             }
             else
             {

@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
@@ -23,9 +24,13 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
+    /// <summary>
+    /// This interface contains methods 
+    /// which needs to be implemented by different providers.
+    /// </summary>
     public interface IPsBackupProvider
     {
-        void Initialize(ProviderData providerData, HydraAdapter hydraAdapter);
+        void Initialize(Dictionary<System.Enum, object> providerData, ServiceClientAdapter serviceClientAdapter);
 
         BaseRecoveryServicesJobResponse EnableProtection();
 
@@ -36,23 +41,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         BaseRecoveryServicesJobResponse TriggerRestore();
 
         ProtectedItemResponse GetProtectedItem();
-        
-        AzureRmRecoveryServicesBackupRecoveryPointBase GetRecoveryPointDetails();
 
-        List<AzureRmRecoveryServicesBackupRecoveryPointBase> ListRecoveryPoints();
+        CmdletModel.RecoveryPointBase GetRecoveryPointDetails();
+
+        List<CmdletModel.RecoveryPointBase> ListRecoveryPoints();
 
         ProtectionPolicyResponse CreatePolicy();
 
-        ProtectionPolicyResponse ModifyPolicy();        
+        ProtectionPolicyResponse ModifyPolicy();
 
-        AzureRmRecoveryServicesBackupSchedulePolicyBase GetDefaultSchedulePolicyObject();
+        SchedulePolicyBase GetDefaultSchedulePolicyObject();
 
-        AzureRmRecoveryServicesBackupRetentionPolicyBase GetDefaultRetentionPolicyObject();        
+        RetentionPolicyBase GetDefaultRetentionPolicyObject();
 
-        List<AzureRmRecoveryServicesBackupContainerBase> ListProtectionContainers();
+        List<ContainerBase> ListProtectionContainers();
 
-        List<AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers();
+        List<CmdletModel.BackupEngineBase> ListBackupManagementServers();
 
-        List<AzureRmRecoveryServicesBackupItemBase> ListProtectedItems();
+        List<ItemBase> ListProtectedItems();
     }
 }
