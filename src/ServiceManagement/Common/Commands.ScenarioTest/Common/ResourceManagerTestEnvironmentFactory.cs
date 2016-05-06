@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             string galleryUri = Environment.GetEnvironmentVariable(TestCSMGalleryUri);
             if (null == environment)
             {
-                // we shouild be able to run gallery tests, even if credentials are not set up
+                // we should be able to run gallery tests, even if credentials are not set up
                 environment = new TestEnvironment();
             }
 

@@ -9,6 +9,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class RunnerTests
     {
+        public RunnerTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         public void ExecuteRunnerTests()
         {

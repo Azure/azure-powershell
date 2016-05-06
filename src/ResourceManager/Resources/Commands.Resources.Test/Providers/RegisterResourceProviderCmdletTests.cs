@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Moq;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
-
-    /// <summary>
-    /// Tests the AzureProvider cmdlets
-    /// </summary>
+    using Xunit.Abstractions;
+    using ServiceManagemenet.Common.Models;    /// <summary>
+                                               /// Tests the AzureProvider cmdlets
+                                               /// </summary>
     public class RegisterAzureProviderCmdletTests : RMTestBase
     {
         /// <summary>
@@ -47,12 +47,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// A mock of the command runtime
         /// </summary>
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="RegisterAzureProviderCmdletTests"/> class.
         /// </summary>
-        public RegisterAzureProviderCmdletTests()
+        public RegisterAzureProviderCmdletTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             this.providerOperationsMock = new Mock<IProviderOperations>();
             var resourceManagementClient = new Mock<IResourceManagementClient>();
 

@@ -28,7 +28,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     public class ComputeNodeUserTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private const string poolId = ScenarioTestHelpers.SharedPool;
-        
+
+        public ComputeNodeUserTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         public void TestCreateComputeNodeUser()
         {

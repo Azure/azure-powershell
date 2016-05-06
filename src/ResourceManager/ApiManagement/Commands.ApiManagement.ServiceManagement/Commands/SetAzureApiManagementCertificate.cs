@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Security.Cryptography.X509Certificates;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementCertificate", DefaultParameterSetName = FromFile)]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementCertificate, DefaultParameterSetName = FromFile)]
     [OutputType(typeof(PsApiManagementCertificate))]
     public class SetAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
@@ -45,14 +45,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ParameterSetName = FromFile,
             ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
-            HelpMessage = "Path to the certificate file in .pfx format to be created/uploaded. This parameter is required if -PfxBytes not specified.")]
+            HelpMessage = "Path to the certificate file in .pfx format to be created/uploaded. " +
+                          "This parameter is required if -PfxBytes not specified.")]
         public String PfxFilePath { get; set; }
 
         [Parameter(
             ParameterSetName = Raw,
             ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
-            HelpMessage = "Bytes of the certificate file in .pfx format to be created/uploaded. This parameter is required if -PfxFilePath not specified.")]
+            HelpMessage = "Bytes of the certificate file in .pfx format to be created/uploaded. " +
+                          "This parameter is required if -PfxFilePath not specified.")]
         public Byte[] PfxBytes { get; set; }
 
         [Parameter(
@@ -65,7 +67,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate type  representing the modified group.")]
+            HelpMessage = "If specified then instance of " +
+                          "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate type " +
+                          " representing the modified certificate.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

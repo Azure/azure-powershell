@@ -17,13 +17,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-
+    using Xunit.Abstractions;
     /// <summary>
     /// Scenario tests for the Workflow access key commands
     /// </summary>
     public class WorkflowAccessKeyTests : RMTestBase
     {
+        public WorkflowAccessKeyTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         /// <summary>
         /// Test Get-AzureLogicAppAccessKey command to verify the get operation for access keys of a workflow.
         /// </summary>
