@@ -163,6 +163,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return ContainerType.Windows;
             }
+            else if (containerType == ContainerType.AzureSqlContainer.ToString())
+            {
+                return ContainerType.AzureSqlContainer;
+            }
             else
             {
                 throw new Exception("Unsupported ContainerType: " + containerType);

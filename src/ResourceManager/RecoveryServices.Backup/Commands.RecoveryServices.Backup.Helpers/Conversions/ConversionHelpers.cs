@@ -37,9 +37,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     containerModel = new AzureRmRecoveryServicesBackupIaasVmContainer(protectionContainer);
                 }
-                if (protectionContainer.Properties.GetType() == typeof(MabProtectionContainer))
+                else if (protectionContainer.Properties.GetType() == typeof(MabProtectionContainer))
                 {
                     containerModel = new AzureRmRecoveryServicesMabContainer(protectionContainer);
+                }
+                else if (protectionContainer.Properties.GetType() == typeof(AzureSqlProtectionContainer))
+                {
+                    containerModel = new AzureRmRecoveryServicesAzureSqlContainer(protectionContainer);
                 }
             }
 
