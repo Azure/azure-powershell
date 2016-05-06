@@ -124,6 +124,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.Constraints = parameters.Constraints.omObject;
             }
 
+            if (parameters.DependsOn != null)
+            {
+                task.DependsOn = parameters.DependsOn;
+            }
+
             if (parameters.MultiInstanceSettings != null)
             {
                 Utils.Utils.MultiInstanceSettingsSyncCollections(parameters.MultiInstanceSettings);

@@ -27,22 +27,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using System.Collections;
     using System.Collections.Generic;
     using Microsoft.Azure.Batch;
-    
-    
+
+
     public class PSTaskDependencies
     {
-        
+
         internal Microsoft.Azure.Batch.TaskDependencies omObject;
-        
+
         private IReadOnlyList<PSTaskIdRange> taskIdRanges;
-        
+
         private IReadOnlyList<System.String> taskIds;
-        
+
         public PSTaskDependencies(System.Collections.Generic.IEnumerable<string> taskIds, System.Collections.Generic.IEnumerable<Microsoft.Azure.Batch.TaskIdRange> taskIdRanges)
         {
             this.omObject = new Microsoft.Azure.Batch.TaskDependencies(taskIds, taskIdRanges);
         }
-        
+
         internal PSTaskDependencies(Microsoft.Azure.Batch.TaskDependencies omObject)
         {
             if ((omObject == null))
@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             this.omObject = omObject;
         }
-        
+
         public IReadOnlyList<PSTaskIdRange> TaskIdRanges
         {
             get
             {
-                if (((this.taskIdRanges == null) 
+                if (((this.taskIdRanges == null)
                             && (this.omObject.TaskIdRanges != null)))
                 {
                     List<PSTaskIdRange> list;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     IEnumerator<Microsoft.Azure.Batch.TaskIdRange> enumerator;
                     enumerator = this.omObject.TaskIdRanges.GetEnumerator();
                     for (
-                    ; enumerator.MoveNext(); 
+                    ; enumerator.MoveNext();
                     )
                     {
                         list.Add(new PSTaskIdRange(enumerator.Current));
@@ -74,12 +74,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 return this.taskIdRanges;
             }
         }
-        
+
         public IReadOnlyList<System.String> TaskIds
         {
             get
             {
-                if (((this.taskIds == null) 
+                if (((this.taskIds == null)
                             && (this.omObject.TaskIds != null)))
                 {
                     List<System.String> list;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     IEnumerator<System.String> enumerator;
                     enumerator = this.omObject.TaskIds.GetEnumerator();
                     for (
-                    ; enumerator.MoveNext(); 
+                    ; enumerator.MoveNext();
                     )
                     {
                         list.Add(enumerator.Current);

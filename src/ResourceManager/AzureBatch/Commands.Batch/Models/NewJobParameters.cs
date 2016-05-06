@@ -81,5 +81,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The job priority.
         /// </summary>
         public int Priority { get; set; }
+
+        /// <summary>
+        /// Whether tasks in the job can define dependencies on each other.
+        /// </summary>
+        public bool? UsesTaskDependencies { get; set; }
     }
 }

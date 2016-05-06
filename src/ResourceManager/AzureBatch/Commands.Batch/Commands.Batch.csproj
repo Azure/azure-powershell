@@ -58,8 +58,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Batch">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.1.5.0\lib\net40\Microsoft.Azure.Management.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Batch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\Batch\BatchManagement\bin\Net45-Debug\Microsoft.Azure.Management.Batch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -114,8 +115,8 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\WindowsAzure.Storage.6.2.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -156,6 +157,17 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
+    <Compile Include="ActivateApplicationPackageException.cs" />
+    <Compile Include="AddApplicationPackageException.cs" />
+    <Compile Include="Applications\NewBatchApplicationPackageCommand.cs" />
+    <Compile Include="Models\PSApplicationPackage.cs" />
+    <Compile Include="Models\PSApplication.cs" />
+    <Compile Include="Applications\RemoveBatchApplicationCommand.cs" />
+    <Compile Include="Applications\RemoveBatchApplicationPackageCommand.cs" />
+    <Compile Include="Applications\GetBatchApplicationPackageCommand.cs" />
+    <Compile Include="Applications\GetBatchApplicationCommand.cs" />
+    <Compile Include="Applications\SetBatchApplicationCommand.cs" />
+    <Compile Include="Applications\NewBatchApplicationCommand.cs" />
     <Compile Include="Certificates\GetBatchCertificateCommand.cs" />
     <Compile Include="Certificates\RemoveBatchCertificateCommand.cs" />
     <Compile Include="Certificates\NewBatchCertificateCommand.cs" />
@@ -220,6 +232,7 @@
     <Compile Include="Models.Generated\PSWindowsConfiguration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\BatchClient.Applications.cs" />
     <Compile Include="Models\DisableComputeNodeSchedulingParameters.cs" />
     <Compile Include="Models\EnableAutoScaleParameters.cs" />
     <Compile Include="Models\EvaluateAutoScaleParameters.cs" />
@@ -331,6 +344,7 @@
     <Compile Include="ComputeNodeUsers\RemoveBatchComputeNodeUserCommand.cs" />
     <Compile Include="Tasks\SetBatchTaskCommand.cs" />
     <Compile Include="Tasks\StopBatchTaskCommand.cs" />
+    <Compile Include="UploadApplicationPackageException.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="ComputeNodes\GetBatchComputeNodeCommand.cs" />

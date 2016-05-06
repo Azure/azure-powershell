@@ -189,7 +189,7 @@
             <maml:para>For example:</maml:para>
             <maml:para>-DisableSchedulingOption "TaskCompletion"</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -227,7 +227,7 @@
             <maml:para>For example:</maml:para>
             <maml:para>-DisableSchedulingOption "TaskCompletion"</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -285,9 +285,9 @@
           <maml:para>For example:</maml:para>
           <maml:para>-DisableSchedulingOption "TaskCompletion"</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">DisableComputeNodeSchedulingOption</command:parameterValue>
         <dev:type>
-          <maml:name>DisableComputeNodeSchedulingOption]</maml:name>
+          <maml:name>DisableComputeNodeSchedulingOption</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -2007,21 +2007,22 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context
-          Id                    : tvm-2316545714_1-20150725t213220z
-          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
-          State                 : Idle
-          StateTransitionTime   : 7/25/2015 9:36:53 PM
-          LastBootTime          : 7/25/2015 9:36:53 PM
-          AllocationTime        : 7/25/2015 9:32:20 PM
-          IPAddress             : 10.14.121.1
-          AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-          VirtualMachineSize    : small
-          TotalTasksRun         : 1
-          StartTaskInformation  :
-          RecentTasks           : {}
-          StartTask             :
-          CertificateReferences :
-          Errors                :
+          Id                           : tvm-2316545714_1-20150725t213220z
+          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
+          State                        : Idle
+          StateTransitionTime          : 7/25/2015 9:36:53 PM
+          LastBootTime                 : 7/25/2015 9:36:53 PM
+          AllocationTime               : 7/25/2015 9:32:20 PM
+          IPAddress                    : 10.14.121.1
+          AffinityId                   : TVM:tvm-2316545714_1-20150725t213220z
+          VirtualMachineSize           : small
+          TotalTasksRun                : 1
+          StartTaskInformation         :
+          RecentTasks                  : {}
+          StartTask                    :
+          ApplicationPackageReferences :
+          CertificateReferences        :
+          Errors                       :
 
         </dev:code>
         <dev:remarks>
@@ -2043,37 +2044,39 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Filter "state eq 'idle'" -BatchContext $Context
-          Id                    : tvm-2316545714_1-20150725t213220z
-          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
-          State                 : Idle
-          StateTransitionTime   : 7/25/2015 9:36:53 PM
-          LastBootTime          : 7/25/2015 9:36:53 PM
-          AllocationTime        : 7/25/2015 9:32:20 PM
-          IPAddress             : 10.14.121.1
-          AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-          VirtualMachineSize    : small
-          TotalTasksRun         : 1
-          StartTaskInformation  :
-          RecentTasks           : {}
-          StartTask             :
-          CertificateReferences :
-          Errors                :
+          Id                           : tvm-2316545714_1-20150725t213220z
+          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
+          State                        : Idle
+          StateTransitionTime          : 7/25/2015 9:36:53 PM
+          LastBootTime                 : 7/25/2015 9:36:53 PM
+          AllocationTime               : 7/25/2015 9:32:20 PM
+          IPAddress                    : 10.14.121.1
+          AffinityId                   : TVM:tvm-2316545714_1-20150725t213220z
+          VirtualMachineSize           : small
+          TotalTasksRun                : 1
+          StartTaskInformation         :
+          RecentTasks                  : {}
+          StartTask                    :
+          ApplicationPackageReferences :
+          CertificateReferences        :
+          Errors                       :
 
-          Id                    : tvm-2316545714_2-20150726t172920z
-          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
-          State                 : Idle
-          StateTransitionTime   : 7/26/2015 5:33:58 PM
-          LastBootTime          : 7/26/2015 5:33:58 PM
-          AllocationTime        : 7/26/2015 5:29:20 PM
-          IPAddress             : 10.14.121.38
-          AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
-          VirtualMachineSize    : small
-          TotalTasksRun         : 0
-          StartTaskInformation  :
-          RecentTasks           :
-          StartTask             :
-          CertificateReferences :
-          Errors                :
+          Id                           : tvm-2316545714_2-20150726t172920z
+          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
+          State                        : Idle
+          StateTransitionTime          : 7/26/2015 5:33:58 PM
+          LastBootTime                 : 7/26/2015 5:33:58 PM
+          AllocationTime               : 7/26/2015 5:29:20 PM
+          IPAddress                    : 10.14.121.38
+          AffinityId                   : TVM:tvm-2316545714_2-20150726t172920z
+          VirtualMachineSize           : small
+          TotalTasksRun                : 0
+          StartTaskInformation         :
+          RecentTasks                  :
+          StartTask                    :
+          ApplicationPackageReferences :
+          CertificateReferences        :
+          Errors                       :
 
         </dev:code>
         <dev:remarks>
@@ -2095,39 +2098,41 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchPool -Id "Pool07" -BatchContext $Context | Get-AzureBatchComputeNode -BatchContext $Context
-          Id                    : tvm-2316545714_1-20150725t213220z
-          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
-          State                 : Idle
-          StateTransitionTime   : 7/25/2015 9:36:53 PM
-          LastBootTime          : 7/25/2015 9:36:53 PM
-          AllocationTime        : 7/25/2015 9:32:20 PM
-          IPAddress             : 10.14.121.1
-          AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-          VirtualMachineSize    : small
-          TotalTasksRun         : 1
-          StartTaskInformation  :
-          RecentTasks           : {}
-          StartTask             :
-          CertificateReferences :
-          Errors                :
+          Id                           : tvm-2316545714_1-20150725t213220z
+          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
+          State                        : Idle
+          StateTransitionTime          : 7/25/2015 9:36:53 PM
+          LastBootTime                 : 7/25/2015 9:36:53 PM
+          AllocationTime               : 7/25/2015 9:32:20 PM
+          IPAddress                    : 10.14.121.1
+          AffinityId                   : TVM:tvm-2316545714_1-20150725t213220z
+          VirtualMachineSize           : small
+          TotalTasksRun                : 1
+          StartTaskInformation         :
+          RecentTasks                  : {}
+          StartTask                    :
+          ApplicationPackageReferences :
+          CertificateReferences        :
+          Errors                       :
 
 
-          Id                    : tvm-2316545714_2-20150726t172920z
-          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
-          State                 : Idle
-          StateTransitionTime   : 7/26/2015 5:33:58 PM
-          LastBootTime          : 7/26/2015 5:33:58 PM
-          AllocationTime        : 7/26/2015 5:29:20 PM
+          Id                           : tvm-2316545714_2-20150726t172920z
+          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
+          State                        : Idle
+          StateTransitionTime          : 7/26/2015 5:33:58 PM
+          LastBootTime                 : 7/26/2015 5:33:58 PM
+          AllocationTime               : 7/26/2015 5:29:20 PM
 
-          IPAddress             : 10.14.121.38
-          AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
-          VirtualMachineSize    : small
-          TotalTasksRun         : 0
-          StartTaskInformation  :
-          RecentTasks           :
-          StartTask             :
-          CertificateReferences :
-          Errors                :
+          IPAddress                    : 10.14.121.38
+          AffinityId                   : TVM:tvm-2316545714_2-20150726t172920z
+          VirtualMachineSize           : small
+          TotalTasksRun                : 0
+          StartTaskInformation         :
+          RecentTasks                  :
+          StartTask                    :
+          ApplicationPackageReferences :
+          CertificateReferences        :
+          Errors                       :
 
         </dev:code>
         <dev:remarks>
@@ -4222,6 +4227,7 @@
           PS C:\&gt;Get-AzureBatchPool -Id "MyPool" -BatchContext $Context
           AllocationState                      : Resizing
           AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
+          ApplicationPackageReferences         :
           AutoScaleEnabled                     : False
           AutoScaleFormula                     :
           AutoScaleRun                         :
@@ -4270,6 +4276,7 @@
           PS C:\&gt;Get-AzureBatchPool -Filter "startswith(id,'My')" -BatchContext $Context
           AllocationState                      : Resizing
           AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
+          ApplicationPackageReferences         :
           AutoScaleEnabled                     : False
           AutoScaleFormula                     :
           AutoScaleRun                         :
@@ -6884,6 +6891,13 @@
             <maml:para>Specifies the formula for automatically scaling the pool. </maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>        
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ApplicationPackageReferences</maml:name>
+          <maml:description>
+            <maml:para>Specifies application packages associated with the pool. The Batch service installs the referenced application packages on each compute node of the pool.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>CertificateReferences</maml:name>
@@ -6977,6 +6991,13 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ApplicationPackageReferences</maml:name>
+          <maml:description>
+            <maml:para>Specifies application packages associated with the pool. The Batch service installs the referenced application packages on each compute node of the pool.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>CertificateReferences</maml:name>
           <maml:description>
             <maml:para>Specifies certificates associated with the pool. The Batch service installs the referenced certificates on each compute node of the pool.</maml:para>
@@ -7029,7 +7050,7 @@
           <maml:description>
             <maml:para>Specifies the target number of compute nodes to allocate to the pool.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Int32]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>TaskSchedulingPolicy</maml:name>
@@ -7106,6 +7127,18 @@
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
           <maml:name>BatchAccountContext</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ApplicationPackageReferences</maml:name>
+        <maml:description>
+          <maml:para>Specifies application packages associated with the pool. The Batch service installs the referenced application packages on each compute node of the pool.</maml:para>
+          </maml:description>
+        <command:parameterValue required="false" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
+        <dev:type>
+          <maml:name>PSApplicationPackageReference[]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -7843,6 +7876,13 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="4" aliases="none">
+          <maml:name>StorageId</maml:name>
+          <maml:description>
+            <maml:para>Specifies the resource id of the storage account to be used for auto storage.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
           <maml:name>Tag</maml:name>
           <maml:description>
@@ -7886,6 +7926,18 @@
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the resource group in which this cmdlet creates the account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="3" aliases="none">
+        <maml:name>StorageId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the resource id of the storage account to be used for auto storage.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -7968,7 +8020,11 @@
 
         </dev:code>
         <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
           <maml:para>This command creates a Batch account named pfuller using the ResourceGroup03 resource group in the West US location.</maml:para>
+          <maml:para />
+          <maml:para />
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -8410,7 +8466,7 @@
           <maml:description>
             <maml:para>Specifies a deallocation option for the removal operation that this cmdlet starts. The default value is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
@@ -8423,7 +8479,7 @@
           <maml:description>
             <maml:para>Specifies the time-out interval for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -8447,7 +8503,7 @@
           <maml:description>
             <maml:para>Specifies a deallocation option for the removal operation that this cmdlet starts. The default value is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
@@ -8460,7 +8516,7 @@
           <maml:description>
             <maml:para>Specifies the time-out interval for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -8501,9 +8557,9 @@
         <maml:description>
           <maml:para>Specifies a deallocation option for the removal operation that this cmdlet starts. The default value is Requeue.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         <dev:type>
-          <maml:name>ComputeNodeDeallocationOption]</maml:name>
+          <maml:name>ComputeNodeDeallocationOption</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -8549,9 +8605,9 @@
         <maml:description>
           <maml:para>Specifies the time-out interval for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         <dev:type>
-          <maml:name>TimeSpan]</maml:name>
+          <maml:name>TimeSpan</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -8670,6 +8726,1447 @@
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>Get-AzureRmBatchApplication</command:name>
+    <maml:description>
+      <maml:para>Gets information about the specified application.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Get</command:verb>
+    <command:noun>AzureRmBatchApplication</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para>The Get-AzureRmBatchApplication cmdlet gets information about an application in an Azure Batch account.</maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Get-AzureRmBatchApplication</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the id of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the Batch account.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para>Specifies the id of the application.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+    <command:example>
+      <maml:title>Example 1: List the applications in a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmBatchApplication -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup"
+        ApplicationId AllowUpdates DisplayName
+
+        ------------- ------------ ----------------------------
+
+        litware       False        Litware Advanced Reticulator
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command lists all applications in the 'contosobatch' Batch account.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>Get-AzureRmBatchApplicationPackage</command:name>
+    <maml:description>
+      <maml:para>Gets information about an application package in an Azure Batch account.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Get</command:verb>
+    <command:noun>AzureRmBatchApplicationPackage</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para>The Get-AzureRmBatchApplicationPackage cmdlet gets information about an application package in an Azure Batch account.</maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Get-AzureRmBatchApplicationPackage</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the id of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationVersion</maml:name>
+        <maml:description>
+          <maml:para>Specifies the version of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the Batch account.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para>Specifies the id of the application.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationVersion</maml:name>
+      <maml:description>
+        <maml:para>Specifies the version of the application.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+    <command:example>
+      <maml:title>Example 1: Get details of an application package in the Batch account.</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmBatchApplicationPackage -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -ApplicationVersion "1.0"
+        Version State   Format
+
+        ------- ------- ------
+
+        1.0     active  zip
+        1.1     pending    
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command gets the details of version 1.0 of the 'litware' package.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>New-AzureRmBatchApplicationPackage
+    </command:name>
+    <maml:description>
+      <maml:para>Creates a new application package in an Azure Batch account.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>New</command:verb>
+    <command:noun>AzureRmBatchApplicationPackage</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para>The New-AzureRmBatchApplicationPackage cmdlet creates a new application package in an Azure Batch account.</maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>New-AzureRmBatchApplicationPackage</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ActivateOnly</maml:name>
+        <maml:description>
+          <maml:para>Activates an application package that has already been uploaded.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the id of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationVersion</maml:name>
+        <maml:description>
+          <maml:para>Specifies the version of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>FilePath</maml:name>
+        <maml:description>
+          <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Format</maml:name>
+        <maml:description>
+          <maml:para>Specifies the format of the application package binary file.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the Batch account.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ActivateOnly</maml:name>
+        <maml:description>
+          <maml:para>Activates an application package that has already been uploaded.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para>Specifies the id of the application.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationVersion</maml:name>
+      <maml:description>
+        <maml:para>Specifies the version of the application.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>FilePath</maml:name>
+      <maml:description>
+        <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Format</maml:name>
+      <maml:description>
+        <maml:para>Specifies the format of the application package binary file.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->          
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+    <command:example>
+      <maml:title>Example 1: Install an application package into a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;New-AzureRmBatchApplicationPackage -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -ApplicationVersion "1.0" -FilePath "litware.1.0.zip" -Format "zip"
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command creates and activates version 1.0 of the "litware" application, and uploads the contents of "litware.1.0.zip" as the application package content.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>New-AzureRmBatchApplication</command:name>
+    <maml:description>
+      <maml:para>Adds an application to the specified Batch account.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>New</command:verb>
+    <command:noun>AzureRmBatchApplication</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para>The New-AzureRmBatchApplication cmdlet adds an application to the specified Batch account.</maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>New-AzureRmBatchApplication</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AllowUpdates</maml:name>
+        <maml:description>
+          <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the id of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DisplayName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the display name for the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the Batch account.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AllowUpdates</maml:name>
+      <maml:description>
+        <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
+      <dev:type>
+        <maml:name>bool?</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para>Specifies the id of the application.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>DisplayName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the display name for the application.</maml:para>
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->          
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+    <command:example>
+      <maml:title>Example 1: Add a new, empty application to a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;New-AzureRmBatchApplication -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -AllowUpdates True -DisplayName "Litware Advanced Reticulator"
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command creates the "litware" application in the "contosobatch" account. The application initially contains no packages.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>Remove-AzureRmBatchApplicationPackage</command:name>
+    <maml:description>
+      <maml:para>Deletes an application package record and the binary file.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Remove</command:verb>
+    <command:noun>AzureRmBatchApplicationPackage</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para>The Remove-AzureRmBatchApplicationPackage cmdlet deletes an application package record and the binary file.</maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Remove-AzureRmBatchApplicationPackage</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the id of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationVersion</maml:name>
+        <maml:description>
+          <maml:para>Specifies the version of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the Batch account.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para>Specifies the id of the application.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationVersion</maml:name>
+      <maml:description>
+        <maml:para>Specifies the version of the application.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+    <command:example>
+      <maml:title>Example 1: Delete an application package from a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Remove-AzureRmBatchApplicationPackage -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -ApplicationVersion "1.0"
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command deletes version 1.0 of the "litware" application from the "contosobatch" account. Both the package record and the blob containing the package binary file are deleted.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>Remove-AzureRmBatchApplication</command:name>
+    <maml:description>
+      <maml:para>Deletes an application from an Azure Batch account.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Remove</command:verb>
+    <command:noun>AzureRmBatchApplication</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para>The Remove-AzureRmBatchApplication cmdlet deletes an application from an Azure Batch account.</maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Remove-AzureRmBatchApplication</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the id of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the Batch account.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para>Specifies the id of the application.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+    <command:example>
+      <maml:title>Example 1: Delete an application from a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Remove-AzureRmBatchApplication -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware"
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command deletes the "litware" application from the "contosobatch" account. The command fails if the application contains any packages.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Set-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>Set-AzureRmBatchApplication</command:name>
+    <maml:description>
+      <maml:para>Updates settings for the specified application.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Set</command:verb>
+    <command:noun>AzureRmBatchApplication</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para>The Set-AzureRmBatchApplication cmdlet updates settings for the specified application.</maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Set-AzureRmBatchApplication</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AllowUpdates</maml:name>
+        <maml:description>
+          <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the id of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DefaultVersion</maml:name>
+        <maml:description>
+          <maml:para>Specifies which package to use if a client requests the application but does not specify a version.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DisplayName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the display name for the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AccountName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the Batch account.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AllowUpdates</maml:name>
+      <maml:description>
+        <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
+      <dev:type>
+        <maml:name>bool?</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationId</maml:name>
+      <maml:description>
+        <maml:para>Specifies the id of the application.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>DefaultVersion</maml:name>
+      <maml:description>
+        <maml:para>Specifies which package to use if a client requests the application but does not specify a version.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>DisplayName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the display name for the application.</maml:para>                
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceGroupName</maml:name>
+      <maml:description>
+        <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
+    <command:example>
+      <maml:title>Example 1: Update an application in a Batch account</maml:title>
+      <maml:introduction>
+        <maml:para>
+        </maml:para>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Set-AzureRmBatchApplication -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -AllowUpdates False
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command changes the AllowUpdates setting on the "litware" application in the "contosobatch" account, without modifying the default version or display name.</maml:para>
+        <maml:para />
+        <maml:para />
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText />
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Get-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>New-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplication</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Remove-AzureRmBatchApplicationPackage</maml:linkText>
+      <maml:uri />
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureBatchComputeNodeUser</command:name>
@@ -10166,7 +11663,7 @@
           <maml:description>
             <maml:para>Specifies when to reimage the node and what to do with currently running tasks. The default is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -10190,7 +11687,7 @@
           <maml:description>
             <maml:para>Specifies when to reimage the node and what to do with currently running tasks. The default is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -10255,9 +11752,9 @@
         <maml:description>
           <maml:para>Specifies when to reimage the node and what to do with currently running tasks. The default is Requeue.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">ComputeNodeReimageOption</command:parameterValue>
         <dev:type>
-          <maml:name>ComputeNodeReimageOption]</maml:name>
+          <maml:name>ComputeNodeReimageOption</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -10394,7 +11891,7 @@
           <maml:description>
             <maml:para>Specifies when to reboot the node and what to do with currently running tasks. The default is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -10418,7 +11915,7 @@
           <maml:description>
             <maml:para>Specifies when to reboot the node and what to do with currently running tasks. The default is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeRebootOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -11898,10 +13395,17 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the resource group of the account that this cmdlet updates.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>StorageId</maml:name>
+          <maml:description>
+            <maml:para>Specifies the resource id of the storage account to be used for auto storage.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -11922,6 +13426,18 @@
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the resource group of the account that this cmdlet updates.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>StrorageId</maml:name>
         <maml:description>
           <maml:para>Specifies the resource group of the account that this cmdlet updates.</maml:para>
         </maml:description>
@@ -12075,14 +13591,14 @@
           <maml:description>
             <maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ResizeTimeout</maml:name>
           <maml:description>
             <maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
@@ -12118,9 +13634,9 @@
         <maml:description>
           <maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         <dev:type>
-          <maml:name>ComputeNodeDeallocationOption]</maml:name>
+          <maml:name>ComputeNodeDeallocationOption</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -12142,9 +13658,9 @@
         <maml:description>
           <maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">TimeSpan]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
         <dev:type>
-          <maml:name>TimeSpan]</maml:name>
+          <maml:name>TimeSpan</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
