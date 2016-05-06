@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.ServerManagement.Test.ScenarioTests
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Azure.Test.HttpRecorder;
     using Xunit;
+    using Xunit.Abstractions;
+    using ServiceManagemenet.Common.Models;
 
     public class ServerManagementTests : RMTestBase
     {
@@ -30,6 +32,10 @@ namespace Microsoft.Azure.Commands.ServerManagement.Test.ScenarioTests
         private static Dictionary<int,string> _gatewayNames = new Dictionary<int, string>();
         private static string _sessionId;
 
+        public ServerManagementTests(ITestOutputHelper output) { 
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+        
         /// <summary>
         /// checks for admin access
         /// </summary>
