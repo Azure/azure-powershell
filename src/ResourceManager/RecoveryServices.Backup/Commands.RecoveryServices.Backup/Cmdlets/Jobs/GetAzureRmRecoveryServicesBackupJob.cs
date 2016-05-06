@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of jobs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"),
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"), 
     OutputType(typeof(JobBase), typeof(IList<JobBase>))]
     public class GetAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 List<JobBase> result = new List<JobBase>();
 
-                WriteDebug(string.Format("Filters provided are: StartTime - {0} " +
+                WriteDebug(string.Format("Filters provided are: StartTime - {0} " + 
                     "EndTime - {1} Status - {2} Operation - {3} Type - {4}",
                     From,
                     To,
@@ -120,58 +120,49 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     Operation,
                     BackupManagementType));
 
-                if (JobId == null)
+                int resultCount = 0;
+                var adapterResponse = ServiceClientAdapter.GetJobs(JobId,
+                    Status.HasValue ? Status.ToString() : null,
+                    Operation.HasValue ? Operation.ToString() : null,
+                    rangeStart,
+                    rangeEnd,
+                    BackupManagementType.HasValue ? 
+                    Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null);
+                JobConversions.AddServiceClientJobsToPSList(adapterResponse, result, ref resultCount);
+
+                while (!string.IsNullOrEmpty(adapterResponse.ItemList.NextLink))
                 {
-                    int resultCount = 0;
-                    var adapterResponse = ServiceClientAdapter.GetJobs(JobId,
-                        Status.HasValue ? Status.ToString() : null,
-                        Operation.HasValue ? Operation.ToString() : null,
-                        rangeStart,
-                        rangeEnd,
-                        BackupManagementType.HasValue ?
-                        Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null);
-
-                    JobConversions.AddServiceClientJobsToPSList(adapterResponse, result, ref resultCount);
-
-                    while (!string.IsNullOrEmpty(adapterResponse.ItemList.NextLink))
+                    if (resultCount >= JobConstants.MaximumJobsToFetch)
                     {
-                        if (resultCount >= JobConstants.MaximumJobsToFetch)
-                        {
-                            // trace a warning that there are more jobs and user has to refine filters.
-                            WriteWarning(Resources.JobRefineFilters);
-                            break;
-                        }
-
-                        string skipToken;
-                        ServiceClientHelpers.GetSkipTokenFromNextLink(
-                            adapterResponse.ItemList.NextLink, out skipToken);
-                        if (skipToken != null)
-                        {
-                            adapterResponse = ServiceClientAdapter.GetJobs(JobId,
-                                Status.HasValue ? Status.ToString() : null,
-                                Operation.HasValue ? Operation.ToString() : null,
-                                rangeStart,
-                                rangeEnd,
-                                BackupManagementType.HasValue ?
-                                Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null,
-                                null,
-                                skipToken);
-                            JobConversions.AddServiceClientJobsToPSList(adapterResponse, result, ref resultCount);
-                        }
-                        else
-                        {
-                            break;
-                        }
+                        // trace a warning that there are more jobs and user has to refine filters.
+                        WriteWarning(Resources.JobRefineFilters);
+                        break;
                     }
 
-                    WriteDebug("Number of jobs fetched: " + result.Count);
-                    WriteObject(result, enumerateCollection: true);
+                    string skipToken;
+                    ServiceClientHelpers.GetSkipTokenFromNextLink(
+                        adapterResponse.ItemList.NextLink, out skipToken);
+                    if (skipToken != null)
+                    {
+                        adapterResponse = ServiceClientAdapter.GetJobs(JobId,
+                            Status.HasValue ? Status.ToString() : null,
+                            Operation.HasValue ? Operation.ToString() : null,
+                            rangeStart,
+                            rangeEnd,
+                            BackupManagementType.HasValue ? 
+                            Helpers.JobConversions.GetJobTypeForService(BackupManagementType.Value) : null,
+                            null,
+                            skipToken);
+                        JobConversions.AddServiceClientJobsToPSList(adapterResponse, result, ref resultCount);
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-                else
-                {
-                    // When JobId is non null call GetJob instead of ListJobs
-                    WriteObject(GetJobObject(JobId));
-                }
+
+                WriteDebug("Number of jobs fetched: " + result.Count);
+                WriteObject(result, enumerateCollection: true);
             });
         }
     }
