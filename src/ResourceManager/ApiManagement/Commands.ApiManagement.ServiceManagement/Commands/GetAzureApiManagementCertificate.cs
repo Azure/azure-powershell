@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using System.Runtime.InteropServices;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementCertificate", DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementCertificate>))]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementCertificate, DefaultParameterSetName = GetAll)]
+    [OutputType(typeof(IList<PsApiManagementCertificate>), ParameterSetName = new [] { GetAll })]
+    [OutputType(typeof(PsApiManagementCertificate), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all certificates";

@@ -27,6 +27,8 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using Xunit;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -34,8 +36,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
     {
         private MemoryDataStore dataStore;
 
-        public EnvironmentCmdletTests()
+        public EnvironmentCmdletTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
         }
@@ -242,7 +245,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.Equal(3, environments.Count);
+            Assert.Equal(4, environments.Count);
         }
 
         [Fact]

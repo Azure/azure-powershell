@@ -25,8 +25,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 
         private RemoveAzureDataFactoryPipelineCommand cmdlet;
 
-        public RemovePipelineTests()
+        public RemovePipelineTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             cmdlet = new RemoveAzureDataFactoryPipelineCommand()

@@ -16,6 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
+using System.Text.RegularExpressions;
 
 namespace StaticAnalysis.HelpAnalyzer
 {
@@ -25,6 +27,7 @@ namespace StaticAnalysis.HelpAnalyzer
     public class HelpAnalyzer : IStaticAnalyzer
     {
         const int MissingHelp = 6050;
+        const int MissingHelpFile = 6000;
         public HelpAnalyzer()
         {
             Name = "Help Analyzer";
@@ -34,6 +37,35 @@ namespace StaticAnalysis.HelpAnalyzer
 
         private AppDomain _appDomain;
 
+        private static bool IsAssemblyFile(string path)
+        {
+            var assemblyRegexes = new[]
+            {
+                new Regex("Microsoft.Azure.Commands.[^.]+.dll$"),
+                new Regex("Microsoft.WindowsAzure.Commands.[^.]+.dll$"),
+                new Regex(".Cmdlets.dll$")
+            };
+
+            var exceptionRegexes = new[]
+            {
+                new Regex("WindowsAzure.Commands.Sync.dll$"),
+                new Regex("WindowsAzure.Commands.Utilities.dll$"),
+                new Regex("Commands.Common")
+            };
+            var fileName = Path.GetFileName(path);
+            var result = false;
+            foreach (var regex in assemblyRegexes)
+            {
+                result = result || regex.IsMatch(fileName);
+            }
+
+            foreach (var regex in exceptionRegexes)
+            {
+                result = result && !regex.IsMatch(fileName);
+            }
+
+            return result;
+        }
         /// <summary>
         /// Given a set of directory paths containing PowerShell module folders, analyze the help 
         /// in the module folders and report any issues
@@ -48,6 +80,23 @@ namespace StaticAnalysis.HelpAnalyzer
             {
                 foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
                 {
+                    var commandAssemblies = Directory.EnumerateFiles(directory, "*.Commands.*.dll")
+                        .Where (f => IsAssemblyFile(f) && !File.Exists(f + "-Help.xml"));
+                    foreach (var orphanedAssembly in commandAssemblies)
+                    {
+                        helpLogger.LogRecord(new HelpIssue()
+                        {
+                            Assembly = orphanedAssembly,
+                            Description = string.Format("{0} has no matching help file", orphanedAssembly),
+                            Severity = 0,
+                            Remediation = string.Format("Make sure a dll Help file for {0} exists and it is " +
+                                                        "being copied to the output directory.", orphanedAssembly),
+                            Target = orphanedAssembly,
+                            HelpFile = orphanedAssembly + "-Help.xml",
+                            ProblemId = MissingHelpFile
+                        });
+                    }
+
                     var helpFiles = Directory.EnumerateFiles(directory, "*.dll-Help.xml")
                         .Where(f => !processedHelpFiles.Contains(Path.GetFileName(f), 
                             StringComparer.OrdinalIgnoreCase)).ToList();

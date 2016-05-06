@@ -33,8 +33,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchRemoteDesktopProtocolFileCommandTests()
+        public GetBatchRemoteDesktopProtocolFileCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchRemoteDesktopProtocolFileCommand()

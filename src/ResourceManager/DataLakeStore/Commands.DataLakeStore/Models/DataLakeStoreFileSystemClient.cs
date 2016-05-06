@@ -67,69 +67,69 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             try
             {
-                var status = _client.FileSystem.GetFileStatus(path, accountName);
-                itemType = status.FileStatus.Type ?? FileType.File;
+                var status = _client.FileSystem.GetFileStatus(accountName, path);
+                itemType = status.FileStatus.Type ?? FileType.FILE;
                 return true;
             }
             catch (CloudException)
             {
                 // TODO test for a specific code (such as 404 and only return false on those)
-                itemType = FileType.File;
+                itemType = FileType.FILE;
                 return false;
             }
         }
 
         public void SetPermission(string path, string accountName, string permissionsToSet)
         {
-            _client.FileSystem.SetPermission(path, accountName, permissionsToSet);
+            _client.FileSystem.SetPermission(accountName, path, permissionsToSet);
         }
 
         public void SetOwner(string path, string accountName, string owner, string group)
         {
-            _client.FileSystem.SetOwner(path, accountName, owner, group);
+            _client.FileSystem.SetOwner(accountName, path, owner, group);
         }
 
         public void SetAcl(string path, string accountName, string aclToSet)
         {
-            _client.FileSystem.SetAcl(path, aclToSet, accountName);
+            _client.FileSystem.SetAcl(accountName, path, aclToSet);
         }
 
         public void ModifyAcl(string path, string accountName, string aclToModify)
         {
-            _client.FileSystem.ModifyAclEntries(path, aclToModify, accountName);
+            _client.FileSystem.ModifyAclEntries(accountName, path, aclToModify);
         }
 
         public void RemoveDefaultAcl(string path, string accountName)
         {
-            // _client.FileSystem.RemoveDefaultAcl(path, accountName);
+            // _client.FileSystem.RemoveDefaultAcl(accountName, path);
             throw new NotImplementedException();
         }
 
         public void RemoveAclEntries(string path, string accountName, string aclsToRemove)
         {
-            _client.FileSystem.RemoveAclEntries(path, aclsToRemove, accountName);
+            _client.FileSystem.RemoveAclEntries(accountName, path, aclsToRemove);
         }
 
         public void RemoveAcl(string path, string accountName)
         {
-            _client.FileSystem.RemoveAcl(path, accountName);
+            _client.FileSystem.RemoveAcl(accountName, path);
         }
 
         public void UpdateAclEntries(string path, string accountName, string newAclSpec)
         {
-            _client.FileSystem.ModifyAclEntries(path, newAclSpec, accountName);
+            _client.FileSystem.ModifyAclEntries(accountName, path, newAclSpec);
         }
 
         public AclStatus GetAclStatus(string filePath, string accountName)
         {
-            return _client.FileSystem.GetAclStatus(filePath, accountName).AclStatus;
+            return _client.FileSystem.GetAclStatus(accountName, filePath).AclStatus;
         }
 
         public bool CheckAccess(string path, string accountName, string permissionsToCheck)
         {
             try
             {
-                _client.FileSystem.CheckAccess(path, accountName, permissionsToCheck);
+                _client.FileSystem.CheckAccess(accountName, path, permissionsToCheck);
                 return true;
             }
             catch (CloudException)
@@ -145,20 +145,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void SetTimes(string path, string accountName, DateTimeOffset modificationTime, DateTimeOffset accessTime)
         {
-            //_client.FileSystem.SetTimes(path, accountName, modificationTime.ToFileTime(), accessTime.ToFileTime());
+            //_client.FileSystem.SetTimes(accountName, path, modificationTime.ToFileTime(), accessTime.ToFileTime());
             throw new NotImplementedException();
         }
 
         public bool SetReplication(string filePath, string accountName, short replicationValue)
         {
-            // var boolean = _client.FileSystem.SetReplication(filePath, accountName, replicationValue).Boolean;
+            // var boolean = _client.FileSystem.SetReplication(accountName, filePath, replicationValue).Boolean;
             // return boolean != null && boolean.Value;
             throw new NotImplementedException();
         }
 
         public bool RenameFileOrDirectory(string sourcePath, string accountName, string destinationPath)
         {
-            var boolean = _client.FileSystem.Rename(sourcePath, destinationPath, accountName).OperationResult;
+            var boolean = _client.FileSystem.Rename(accountName, sourcePath, destinationPath).OperationResult;
             return boolean != null && boolean.Value;
         }
 
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public Stream ReadFromFile(string filePath, string accountName, long offset, long bytesToRead)
         {
-            return _client.FileSystem.Open(filePath, accountName, bytesToRead, offset);   
+            return _client.FileSystem.Open(accountName, filePath, bytesToRead, offset);   
         }
 
         public string GetHomeDirectory(string accountName)
@@ -291,55 +291,54 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public FileStatuses GetFileStatuses(string folderPath, string accountName)
         {
-            return _client.FileSystem.ListFileStatus(folderPath, accountName).FileStatuses;
+            return _client.FileSystem.ListFileStatus(accountName, folderPath).FileStatuses;
         }
 
         public FileStatusProperties GetFileStatus(string filePath, string accountName)
         {
-            return _client.FileSystem.GetFileStatus(filePath, accountName).FileStatus;
+            return _client.FileSystem.GetFileStatus(accountName, filePath).FileStatus;
         }
 
         public ContentSummary GetContentSummary(string path, string accountName)
         {
-            return _client.FileSystem.GetContentSummary(path, accountName).ContentSummary;
+            return _client.FileSystem.GetContentSummary(accountName, path).ContentSummary;
         }
 
         public bool DeleteFileOrFolder(string path, string accountName, bool isRecursive)
         {
-            var boolean = _client.FileSystem.Delete(path, accountName, isRecursive).OperationResult;
+            var boolean = _client.FileSystem.Delete(accountName, path, isRecursive).OperationResult;
             return boolean != null && boolean.Value;
         }
 
         public void CreateSymLink(string sourcePath, string accountName, string destinationPath,
             bool createParent = false)
         {
-            // _client.FileSystem.CreateSymLink(sourcePath, accountName, destinationPath, createParent);
+            // _client.FileSystem.CreateSymLink(accountName, sourcePath, destinationPath, createParent);
             throw new NotImplementedException();
         }
 
         public void ConcatenateFiles(string destinationPath, string accountName, string[] filesToConcatenate,
             bool deleteDirectory = false)
         {
-            _client.FileSystem.MsConcat(destinationPath,
-                new MemoryStream(Encoding.UTF8.GetBytes("sources=" + string.Join(",", filesToConcatenate))), 
-                accountName,
+            _client.FileSystem.MsConcat(accountName, destinationPath,
+                new MemoryStream(Encoding.UTF8.GetBytes("sources=" + string.Join(",", filesToConcatenate))),
                 deleteDirectory);
         }
 
         public void CreateFile(string filePath, string accountName, Stream contents = null, bool overwrite = false)
         {
-            _client.FileSystem.Create(filePath, accountName, contents, overwrite: overwrite);
+            _client.FileSystem.Create(accountName, filePath, contents, overwrite: overwrite);
         }
 
         public bool CreateDirectory(string dirPath, string accountName)
         {
-            var boolean = _client.FileSystem.Mkdirs(dirPath, accountName).OperationResult;
+            var boolean = _client.FileSystem.Mkdirs(accountName, dirPath).OperationResult;
             return boolean != null && boolean.Value;
         }
 
         public void AppendToFile(string filePath, string accountName, Stream contents)
         {
-            _client.FileSystem.Append(filePath, contents, accountName);
+            _client.FileSystem.Append(accountName, filePath, contents);
         }
 
         public void CopyFile(string destinationPath, string accountName, string sourcePath,

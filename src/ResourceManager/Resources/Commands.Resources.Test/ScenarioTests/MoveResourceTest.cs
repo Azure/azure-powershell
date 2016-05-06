@@ -14,10 +14,16 @@
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-
+    using Xunit.Abstractions;
     public class MoveResourceTest
     {
+        public MoveResourceTest(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact(Skip = "Need to re-record test")] 
         // TODO: test takes too long, reduce time and then add to Category.CheckIn
         //[Trait(Category.AcceptanceType, Category.CheckIn)]

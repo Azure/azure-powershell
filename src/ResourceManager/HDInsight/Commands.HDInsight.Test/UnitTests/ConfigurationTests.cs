@@ -29,8 +29,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 {
     public class ConfigurationTests : HDInsightTestBase
     {
-        public ConfigurationTests()
+        public ConfigurationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
         }
 

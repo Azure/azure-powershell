@@ -4,11 +4,18 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Extensions;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class TypeConversionTests
     {
+        public TypeConversionTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertNullEnvironments()

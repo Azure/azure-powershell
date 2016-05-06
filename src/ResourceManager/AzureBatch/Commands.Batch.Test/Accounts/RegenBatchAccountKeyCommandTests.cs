@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public RegenBatchAccountKeyCommandTests()
+        public RegenBatchAccountKeyCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RegenBatchAccountKeyCommand()

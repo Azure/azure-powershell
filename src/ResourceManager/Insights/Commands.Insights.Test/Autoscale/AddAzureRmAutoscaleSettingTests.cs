@@ -40,8 +40,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
         private string settingName;
         private AutoscaleSettingCreateOrUpdateParameters createOrUpdatePrms;
 
-        public AddAzureRmAutoscaleSettingTests()
+        public AddAzureRmAutoscaleSettingTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsAutoscaleOperationsMock = new Mock<IAutoscaleOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
