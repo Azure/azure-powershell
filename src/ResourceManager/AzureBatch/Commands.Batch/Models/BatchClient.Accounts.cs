@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="resourceGroupName">The name of the resource group the account is under. If unspecified, it will be looked up.</param>
         /// <param name="accountName">The account name</param>
         /// <param name="tags">New tags to associate with the account</param>
-        /// <param name="storageId"></param>
+        /// <param name="storageId">The resource id of the storage account to be used for auto storage.</param>
         /// <returns>A BatchAccountContext object representing the updated account</returns>
         public virtual BatchAccountContext UpdateAccount(string resourceGroupName, string accountName, Hashtable[] tags, string storageId)
         {
