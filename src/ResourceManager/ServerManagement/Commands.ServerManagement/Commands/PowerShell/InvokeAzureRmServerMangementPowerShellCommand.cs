@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.PowerShell
 
                 if (ps == null)
                 {
-                    WriteVerbose("Can\'t find existing PowerShell Session, creating new one.");
+                    WriteVerbose("Can't find existing PowerShell Session, creating new one.");
                     ps = Client.PowerShell.CreateSession(ResourceGroupName, NodeName, SessionName, "00000000-0000-0000-0000-000000000000");
                     PowerShellSessionName = ps.SessionId;
                 }
