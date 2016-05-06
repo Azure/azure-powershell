@@ -383,6 +383,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
             const string intType = "int";
             const string boolType = "bool";
             const string secureStringType = "SecureString";
+            const string objectType = "object";
+            const string secureObjectType = "secureObject";
             Type typeObject = typeof(object);
 
             if (resourceParameterType.Equals(stringType, StringComparison.OrdinalIgnoreCase))
@@ -400,6 +402,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
             else if (resourceParameterType.Equals(boolType, StringComparison.OrdinalIgnoreCase))
             {
                 typeObject = typeof(bool);
+            }
+            else if (resourceParameterType.Equals(objectType, StringComparison.OrdinalIgnoreCase)
+                || resourceParameterType.Equals(secureObjectType, StringComparison.OrdinalIgnoreCase))
+            {
+                typeObject = typeof(Hashtable);
             }
 
             return typeObject;
@@ -426,14 +433,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 // Rely on the HelpMessage property to detect the original name for the dynamic parameter.
                 HelpMessage = name
             });
-
-            if (parameter.Value.AllowedValues != null && parameter.Value.AllowedValues.Count > 0)
-            {
-                runtimeParameter.Attributes.Add(new ValidateSetAttribute(parameter.Value.AllowedValues.ToArray())
-                {
-                    IgnoreCase = true,
-                });
-            }
 
             if (!string.IsNullOrEmpty(parameter.Value.MinLength) &&
                 !string.IsNullOrEmpty(parameter.Value.MaxLength))

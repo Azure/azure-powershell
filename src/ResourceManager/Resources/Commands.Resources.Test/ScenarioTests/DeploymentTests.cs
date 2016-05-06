@@ -53,5 +53,29 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithKeyVaultReference");
         }
+
+        [Fact]
+        public void TestNewDeploymentWithComplexPramaters()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithComplexPramaters");
+        }
+
+        [Fact]
+        public void TestNewDeploymentWithParameterObject()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithParameterObject");
+        }
+
+        [Fact]
+        public void TestNewDeploymentWithDynamicParameters()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithDynamicParameters");
+        }
+
+        [Fact]
+        public void TestNewDeploymentWithInvalidParameters()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithInvalidParameters");
+        }
     }
 }
