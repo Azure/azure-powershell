@@ -41,12 +41,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
                 
-                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType != BackupManagementType.MARS)
+                if (!((Container.ContainerType == ContainerType.Windows && Container.BackupManagementType == BackupManagementType.MARS) ||
+                    (Container.ContainerType == ContainerType.AzureSqlContainer && Container.BackupManagementType == BackupManagementType.AzureSql)))
                 {
                     throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, Container.ContainerType, Container.BackupManagementType));
                 }
-                AzureRmRecoveryServicesMabContainer mabContainer = Container as AzureRmRecoveryServicesMabContainer;
-                string containerName = mabContainer.Name;
+                string containerName = Container.Name;
+                if (Container.ContainerType == ContainerType.AzureSqlContainer)
+                    containerName = ContainerConstansts.SqlContainerNamePrefix + containerName;
                 HydraAdapter.UnregisterContainers(containerName);
             });
         }

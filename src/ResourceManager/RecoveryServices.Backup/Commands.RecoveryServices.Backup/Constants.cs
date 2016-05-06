@@ -24,4 +24,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public const int MinPolicyNameLength = 3;
         public const int MaxPolicyNameLength = 150;                
     }
+
+    public class ContainerConstansts
+    {
+        public const string SqlContainerNamePrefix = "AzureSqlContainer;";
+    }
 }

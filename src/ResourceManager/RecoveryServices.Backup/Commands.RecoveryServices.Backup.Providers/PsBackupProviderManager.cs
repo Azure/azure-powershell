@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         throw new ArgumentException(String.Format(Resources.BackupManagementTypeIncorrectForContainerType, containerType));
                     break;
                 case ContainerType.AzureSqlContainer:
-                    if (backupManagementType == BackupManagementType.AzureSql)
+                    if (backupManagementType == BackupManagementType.AzureSql || backupManagementType == null)
                         providerType = PsBackupProviderTypes.AzureSql;
                     else
                         throw new ArgumentException(String.Format(Resources.BackupManagementTypeRequiredForContainerType, containerType));

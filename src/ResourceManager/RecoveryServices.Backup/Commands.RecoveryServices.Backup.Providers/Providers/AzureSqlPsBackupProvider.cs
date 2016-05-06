@@ -188,7 +188,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<Models.AzureRmRecoveryServicesBackupContainerBase> ListProtectionContainers()
         {
-            throw new NotImplementedException();
+            string name = (string)this.ProviderData.ProviderParameters[ContainerParams.Name];
+
+            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
+
+            queryParams.BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureSql.ToString();
+
+            var listResponse = HydraAdapter.ListContainers(queryParams);       
+    
+            List<AzureRmRecoveryServicesBackupContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                if (containerModels != null)
+                {
+                    containerModels = containerModels.Where(x => x.Name == name).ToList();
+                }
+            }
+
+            return containerModels;
         }
 
         public List<AzureRmRecoveryServicesBackupEngineBase> ListBackupManagementServers()
