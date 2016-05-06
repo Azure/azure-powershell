@@ -42,13 +42,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 base.ExecuteCmdlet();
                 
                 if (!((Container.ContainerType == ContainerType.Windows && Container.BackupManagementType == BackupManagementType.MARS) ||
-                    (Container.ContainerType == ContainerType.AzureSqlContainer && Container.BackupManagementType == BackupManagementType.AzureSql)))
+                    (Container.ContainerType == ContainerType.AzureSQL && Container.BackupManagementType == BackupManagementType.AzureSQL)))
                 {
                     throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, Container.ContainerType, Container.BackupManagementType));
                 }
                 string containerName = Container.Name;
-                if (Container.ContainerType == ContainerType.AzureSqlContainer)
+                
+                if (Container.ContainerType == ContainerType.AzureSQL)
+                {
                     containerName = ContainerConstansts.SqlContainerNamePrefix + containerName;
+                }
+
                 HydraAdapter.UnregisterContainers(containerName);
             });
         }

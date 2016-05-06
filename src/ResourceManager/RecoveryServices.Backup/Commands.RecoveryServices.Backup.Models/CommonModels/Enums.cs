@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum ContainerType
     {
         AzureVM = 1,
-        AzureSqlContainer,
+        AzureSQL,
         Windows
     }
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         MARS,
         SCDPM,
         AzureBackupServer,
-        AzureSql,
+        AzureSQL,
     }
 
     public enum BackupEngineType
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum WorkloadType
     {
         AzureVM = 1,
-        AzureSqlDb,
+        AzureSQLDatabase,
     }
 
     public enum PsBackupProviderTypes
