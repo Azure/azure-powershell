@@ -17,7 +17,6 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 {
     using Common;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Management.RemoteApp;
     using Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets;
     using Microsoft.WindowsAzure.Management.RemoteApp.Models;
@@ -30,14 +29,14 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
     using System.Management.Automation;
     using System.Threading;
     using System.Threading.Tasks;
+    using Xunit;
 
     // Get-AzureRemoteAppCollectionUsageDetails, Get-AzureRemoteAppCollectionUsageSummary, 
-    [TestClass]
     public class RemoteAppVmTest : RemoteAppClientTest
     {
 
-        [TestMethod]
-        [TestCategory("CheckIn")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RestartVm()
         {
             int countOfExpectedCollections = 0;
@@ -57,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.IsTrue(false,
+                Assert.True(false,
                     String.Format("Restart-AzureRemoteAppVm returned the following error {0}.",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -66,15 +65,15 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 
             LanguagePrimitives.GetEnumerable(mockCmdlet.runTime().OutputPipeline).Cast<TrackingResult>();
             trackingIds = LanguagePrimitives.GetEnumerable(mockCmdlet.runTime().OutputPipeline).Cast<TrackingResult>();
-            Assert.IsNotNull(trackingIds);
+            Assert.NotNull(trackingIds);
 
-            Assert.AreEqual(1, trackingIds.Count());
+            Assert.Equal(1, trackingIds.Count());
 
-            Assert.IsTrue(trackingIds.Any(t => t.TrackingId == trackingId), "The actual result does not match the expected.");
+            Assert.True(trackingIds.Any(t => t.TrackingId == trackingId), "The actual result does not match the expected.");
         }
 
-        [TestMethod]
-        [TestCategory("CheckIn")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetVm()
         {
             int countOfExpectedVms = 0;
@@ -94,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.IsTrue(false,
+                Assert.True(false,
                     String.Format("Get-AzureRemoteAppVm returned the following error {0}.",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -103,18 +102,18 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 
             result = LanguagePrimitives.GetEnumerable(mockCmdlet.runTime().OutputPipeline).Cast<IList<RemoteAppVm>>();
 
-            Assert.IsNotNull(result);
-            Assert.AreEqual(1, result.Count());
+            Assert.NotNull(result);
+            Assert.Equal(1, result.Count());
 
             resultVms = result.First<IList<RemoteAppVm>>();
 
-            Assert.AreEqual(countOfExpectedVms, resultVms.Count);
-            Assert.AreEqual<string>(vmName, resultVms[0].VirtualMachineName);
-            Assert.AreEqual<string>(loggedInUserUpn, resultVms[0].LoggedOnUserUpns[0]);
+            Assert.Equal(countOfExpectedVms, resultVms.Count);
+            Assert.Equal<string>(vmName, resultVms[0].VirtualMachineName);
+            Assert.Equal<string>(loggedInUserUpn, resultVms[0].LoggedOnUserUpns[0]);
         }
 
-        [TestMethod]
-        [TestCategory("CheckIn")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetStaleAdVmObjects()
         {
             int countOfExpectedVms = 0;
@@ -148,7 +147,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.IsTrue(false,
+                Assert.True(false,
                     String.Format("Get-AzureRemoteAppVmStaleAdObjects returned the following error {0}.",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -157,12 +156,12 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 
             result = LanguagePrimitives.GetEnumerable(mockCmdlet.runTime().OutputPipeline).Cast<string>();
 
-            Assert.IsNotNull(result);
-            Assert.AreEqual(expectedResult.Length, result.Count());
+            Assert.NotNull(result);
+            Assert.Equal(expectedResult.Length, result.Count());
 
             foreach (string staleObj in result)
             {
-                Assert.IsTrue(expectedResult.Contains(staleObj));
+                Assert.True(expectedResult.Contains(staleObj));
             }
         }
     }

@@ -15,20 +15,19 @@
 namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 {
     using Common;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets;
     using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Xunit;
 
-    [TestClass]
     public class RemoteAppOperationResult : RemoteAppClientTest
     {
 
-        [TestMethod]
-        [TestCategory("CheckIn")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResult()
         {
             List<OperationResult> operationResult = null;
@@ -48,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.IsTrue(false,
+                Assert.True(false,
                     String.Format("Get-AzureRemoteAppCollection returned the following error {0}.",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -56,16 +55,16 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             operationResult = MockObject.ConvertList<OperationResult>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(operationResult);
+            Assert.NotNull(operationResult);
 
-            Assert.IsTrue(operationResult.Count == countOfExpectedResults,
+            Assert.True(operationResult.Count == countOfExpectedResults,
                 String.Format("The expected number of templates returned {0} does not match the actual {1}",
                     countOfExpectedResults,
                     operationResult.Count
                 )
             );
 
-            Assert.IsTrue(MockObject.HasExpectedResults<OperationResult>(operationResult, MockObject.ContainsExpectedOperationResult),
+            Assert.True(MockObject.HasExpectedResults<OperationResult>(operationResult, MockObject.ContainsExpectedOperationResult),
                "The actual result does not match the expected."
            );
 

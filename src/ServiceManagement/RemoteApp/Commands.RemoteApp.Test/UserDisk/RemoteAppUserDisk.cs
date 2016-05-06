@@ -15,19 +15,18 @@
 namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 {
     using Common;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets;
     using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Xunit;
 
-    [TestClass]
     public class RemoteAppUserDiskTest : RemoteAppClientTest
     {
-        [TestMethod]
-        [TestCategory("CheckIn")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveUserDisk()
         {
             RemoveAzureRemoteAppUserDisk mockCmdlet = SetUpTestCommon<RemoveAzureRemoteAppUserDisk>();
@@ -44,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.IsTrue(false,
+                Assert.True(false,
                     String.Format("Remove-AzureRemoteAppUserDisk returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -54,8 +53,8 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             Log("The test for Remove-AzureRemoteAppUserDisk completed successfully");
         }
 
-        [TestMethod]
-        [TestCategory("CheckIn")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CopyUserDisk()
         {
             CopyAzureRemoteAppUserDisk mockCmdlet = SetUpTestCommon<CopyAzureRemoteAppUserDisk>();
@@ -73,7 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.IsTrue(false,
+                Assert.True(false,
                     String.Format("Copy-AzureRemoteAppTemplate returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
