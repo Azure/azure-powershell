@@ -15,16 +15,16 @@
 namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 {
     using Common;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets;
     using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Xunit;
 
     // Get-AzureRemoteAppResetVpnSharedKey, Get-AzureRemoteAppVpnDeviceConfigScript, Reset-AzureRemoteAppVpnSharedKey
-
+    [TestClass]
     public class NewAzureRemoteAppTemplateImageTest : NewAzureRemoteAppTemplateImage
     {
         /// <summary>
@@ -41,12 +41,13 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
         }
     }
 
+    [TestClass]
     public class RemoteAppTemplateTest : RemoteAppClientTest
     {
         private string templateId = "1111";
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void GetAllTemplates()
         {
             int countOfExpectedTemplates = 0;
@@ -61,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Get-AzureRemoteAppTemplateImage returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -69,23 +70,23 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<TemplateImage> templates = MockObject.ConvertList<TemplateImage>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(templates);
+            Assert.IsNotNull(templates);
 
-            Assert.True(templates.Count == countOfExpectedTemplates,
+            Assert.IsTrue(templates.Count == countOfExpectedTemplates,
                 String.Format("The expected number of templates returned {0} does not match the actual {1}",
                     countOfExpectedTemplates,
                     templates.Count
                 )
             );
 
-            Assert.True(MockObject.ContainsExpectedTemplate(MockObject.mockTemplates, templates),
+            Assert.IsTrue(MockObject.ContainsExpectedTemplate(MockObject.mockTemplates, templates),
                 "The actual result does not match the expected"
             );
             Log("The test for Get-AzureRemoteAppTemplateImage with {0} templates completed successfully", countOfExpectedTemplates);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void GetTemplatesByName()
         {
             int countOfExpectedTemplates = 0;
@@ -103,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Get-AzureRemoteAppTemplateImage returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -111,24 +112,24 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<TemplateImage> templates = MockObject.ConvertList<TemplateImage>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(templates);
+            Assert.IsNotNull(templates);
 
-            Assert.True(templates.Count == countOfExpectedTemplates,
+            Assert.IsTrue(templates.Count == countOfExpectedTemplates,
                 String.Format("The expected number of templates returned {0} does not match the actual {1}",
                     countOfExpectedTemplates,
                     templates.Count
                 )
             );
 
-            Assert.True(MockObject.HasExpectedResults<TemplateImage>(templates, MockObject.ContainsExpectedTemplate),
+            Assert.IsTrue(MockObject.HasExpectedResults<TemplateImage>(templates, MockObject.ContainsExpectedTemplate),
                  "The actual result does not match the expected"
             );
 
             Log("The test for Get-AzureRemoteAppTemplateImage with {0} templates completed successfully", countOfExpectedTemplates);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void RenameTemplate()
         {
             RenameAzureRemoteAppTemplateImage mockCmdlet = SetUpTestCommon<RenameAzureRemoteAppTemplateImage>();
@@ -145,7 +146,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Rename-AzureRemoteAppTemplate returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -153,17 +154,17 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<TemplateImage> templates = MockObject.ConvertList<TemplateImage>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(templates);
+            Assert.IsNotNull(templates);
 
-            Assert.True(MockObject.HasExpectedResults<TemplateImage>(templates, MockObject.ContainsExpectedTemplate),
+            Assert.IsTrue(MockObject.HasExpectedResults<TemplateImage>(templates, MockObject.ContainsExpectedTemplate),
                  "The actual result does not match the expected"
             );
 
             Log("The test for Rename-AzureRemoteAppTemplate completed successfully");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void RemoveTemplate()
         {
             RemoveAzureRemoteAppTemplateImage mockCmdlet = SetUpTestCommon<RemoveAzureRemoteAppTemplateImage>();
@@ -179,7 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Remove-AzureRemoteAppTemplate returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
