@@ -15,19 +15,20 @@
 namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 {
     using Common;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets;
     using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Xunit;
 
     // Publish-AzureRemoteAppProgram, Unpublish-AzureRemoteAppProgram
+    [TestClass]
     public class RemoteAppProgramTest : RemoteAppClientTest
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        
+        [TestCategory("CheckIn")]
         public void GetAllRemoteApps()
         {
             List<PublishedApplicationDetails> remoteApps = null;
@@ -48,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Get-AzureRemoteAppCollection returned the following error {0}.",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -56,24 +57,24 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             remoteApps = MockObject.ConvertList<PublishedApplicationDetails>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(remoteApps);
+            Assert.IsNotNull(remoteApps);
 
-            Assert.True(remoteApps.Count == countOfExpectedApps,
+            Assert.IsTrue(remoteApps.Count == countOfExpectedApps,
                String.Format("The expected number of collections returned {0} does not match the actual {1}.",
                    countOfExpectedApps,
                    remoteApps.Count
                )
            );
 
-            Assert.True(MockObject.HasExpectedResults<PublishedApplicationDetails>(remoteApps, MockObject.ContainsExpectedApplication),
+            Assert.IsTrue(MockObject.HasExpectedResults<PublishedApplicationDetails>(remoteApps, MockObject.ContainsExpectedApplication),
                "The actual result does not match the expected."
            );
 
             Log("The test for Get-AzureRemoteAppCollection with {0} collections completed successfully", countOfExpectedApps);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void GetRemoteAppByName()
         {
             List<PublishedApplicationDetails> remoteApps = null;
@@ -95,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Get-AzureRemoteAppCollection returned the following error {0}.",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -103,24 +104,24 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             remoteApps = MockObject.ConvertList<PublishedApplicationDetails>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(remoteApps);
+            Assert.IsNotNull(remoteApps);
 
-            Assert.True(remoteApps.Count == countOfExpectedApps,
+            Assert.IsTrue(remoteApps.Count == countOfExpectedApps,
                String.Format("The expected number of collections returned {0} does not match the actual {1}.",
                    countOfExpectedApps,
                    remoteApps.Count
                )
            );
 
-            Assert.True(MockObject.HasExpectedResults<PublishedApplicationDetails>(remoteApps, MockObject.ContainsExpectedApplication),
+            Assert.IsTrue(MockObject.HasExpectedResults<PublishedApplicationDetails>(remoteApps, MockObject.ContainsExpectedApplication),
                "The actual result does not match the expected."
            );
 
             Log("The test for Get-AzureRemoteAppCollection with {0} collections completed successfully", countOfExpectedApps);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void GetAllStartMenuApplication()
         {
             List<StartMenuApplication> remoteApps = null;
@@ -141,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Get-AzureRemoteAppCollection returned the following error {0}.",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -149,16 +150,16 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             remoteApps = MockObject.ConvertList<StartMenuApplication>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(remoteApps);
+            Assert.IsNotNull(remoteApps);
 
-            Assert.True(remoteApps.Count == countOfExpectedApps,
+            Assert.IsTrue(remoteApps.Count == countOfExpectedApps,
                String.Format("The expected number of collections returned {0} does not match the actual {1}.",
                    countOfExpectedApps,
                    remoteApps.Count
                )
            );
 
-            Assert.True(MockObject.HasExpectedResults<StartMenuApplication>(remoteApps, MockObject.ContainsExpectedStartMenu),
+            Assert.IsTrue(MockObject.HasExpectedResults<StartMenuApplication>(remoteApps, MockObject.ContainsExpectedStartMenu),
                "The actual result does not match the expected."
            );
 

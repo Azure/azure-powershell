@@ -15,20 +15,20 @@
 namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 {
     using Common;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets;
     using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Xunit;
 
-
+    [TestClass]
     public class RemoteAppVNetTest : RemoteAppClientTest
     {
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void GetAllVNets()
         {
             List<VNet> vNets = null;
@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Get-AzureRemoteAppVNet returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -52,24 +52,24 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             vNets = MockObject.ConvertList<VNet>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(vNets);
+            Assert.IsNotNull(vNets);
 
-            Assert.True(vNets.Count == countOfExpectedVNets,
+            Assert.IsTrue(vNets.Count == countOfExpectedVNets,
                 String.Format("The expected number of VNets returned {0} does not match the actual {1}",
                     countOfExpectedVNets,
                     vNets.Count
                 )
             );
 
-            Assert.True(MockObject.HasExpectedResults<VNet>(vNets, MockObject.ContainsExpectedVNet),
+            Assert.IsTrue(MockObject.HasExpectedResults<VNet>(vNets, MockObject.ContainsExpectedVNet),
                  "The actual result does not match the expected"
             );
 
             Log("The test for Get-AzureRemoteAppVNet with {0} VNets completed successfully", countOfExpectedVNets);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void GetVNetsByName()
         {
             List<VNet> vNets = null;
@@ -89,7 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Get-AzureRemoteAppVNet returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -97,24 +97,24 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             vNets = MockObject.ConvertList<VNet>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(vNets);
+            Assert.IsNotNull(vNets);
 
-            Assert.True(vNets.Count == countOfExpectedVNets,
+            Assert.IsTrue(vNets.Count == countOfExpectedVNets,
                 String.Format("The expected number of VNets returned {0} does not match the actual {1}",
                     countOfExpectedVNets,
                     vNets.Count
                 )
             );
 
-            Assert.True(MockObject.HasExpectedResults<VNet>(vNets, MockObject.ContainsExpectedVNet),
+            Assert.IsTrue(MockObject.HasExpectedResults<VNet>(vNets, MockObject.ContainsExpectedVNet),
                  "The actual result does not match the expected"
             );
 
             Log("The test for Get-AzureRemoteAppVNet with {0} VNets completed successfully", countOfExpectedVNets);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void AddVNetsThatDontExist()
         {
             List<TrackingResult> trackingIds = null;
@@ -149,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Add-AzureRemoteAppVNet returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -157,17 +157,17 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             trackingIds = MockObject.ConvertList<TrackingResult>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(trackingIds);
+            Assert.IsNotNull(trackingIds);
 
-            Assert.True(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
+            Assert.IsTrue(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
                "The actual result does not match the expected."
             );
 
             Log("The test for Add-AzureRemoteAppVNet completed successfully");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void SetVNetsThatDoExist()
         {
             List<TrackingResult> trackingIds = null;
@@ -198,7 +198,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Set-AzureRemoteAppVNet returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -206,17 +206,17 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             trackingIds = MockObject.ConvertList<TrackingResult>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(trackingIds);
+            Assert.IsNotNull(trackingIds);
 
-            Assert.True(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
+            Assert.IsTrue(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
                "The actual result does not match the expected."
             );
 
             Log("The test for Set-AzureRemoteAppVNet completed successfully");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void RemoveVNetsThatDoExist()
         {
             List<TrackingResult> trackingIds = null;
@@ -234,7 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Remove-AzureRemoteAppVNet returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -242,17 +242,17 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             trackingIds = MockObject.ConvertList<TrackingResult>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(trackingIds);
+            Assert.IsNotNull(trackingIds);
 
-            Assert.True(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
+            Assert.IsTrue(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
                "The actual result does not match the expected."
             );
 
             Log("The test for Remove-AzureRemoteAppVNet completed successfully");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void GetVpnDevices()
         {
             List<Vendor> vpnDevices = null; 
@@ -271,7 +271,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Get-AzureRemoteAppVNet returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -279,9 +279,9 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             vpnDevices = MockObject.ConvertList<Vendor>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(vpnDevices);
+            Assert.IsNotNull(vpnDevices);
 
-            Assert.True(vpnDevices.Count == countOfExpectedVNetVpnDevices,
+            Assert.IsTrue(vpnDevices.Count == countOfExpectedVNetVpnDevices,
                 String.Format("The expected number of VNets returned {0} does not match the actual {1}",
                     countOfExpectedVNetVpnDevices,
                     vpnDevices.Count

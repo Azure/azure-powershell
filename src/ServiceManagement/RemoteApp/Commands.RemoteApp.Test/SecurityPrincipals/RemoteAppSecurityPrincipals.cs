@@ -16,19 +16,20 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 {
     using LocalModels;
     using Common;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets;
     using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using System;
     using System.Collections.Generic;
-    using Xunit;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
+    [TestClass]
     public class AzureRemoteAppServiceUser : RemoteAppClientTest
     {
         private string userName = "user1";
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void GetAllUsers()
         {
             int countOfExpectedUsers = 0;
@@ -47,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             MockCmdlet.ExecuteCmdlet();
             if (MockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Get-AzureRemoteAppUser returned the following error {0}.",
                         MockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -55,24 +56,24 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<ConsentStatusModel> users = MockObject.ConvertList<ConsentStatusModel>(MockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(users);
+            Assert.IsNotNull(users);
 
-            Assert.True(users.Count == countOfExpectedUsers,
+            Assert.IsTrue(users.Count == countOfExpectedUsers,
                 String.Format("The expected number of users returned {0} does not match the actual {1}.",
                     countOfExpectedUsers,
                     users.Count
                 )
             );
 
-            Assert.True(MockObject.ContainsExpectedServicePrincipalList(MockObject.mockUsersConsents, users),
+            Assert.IsTrue(MockObject.ContainsExpectedServicePrincipalList(MockObject.mockUsersConsents, users),
                 "The actual result does not match the expected"
             );
 
             Log("The test for Get-AzureRemoteAppUser with {0} users completed successfully.", countOfExpectedUsers);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void GetAllUsersForApp()
         {
             int countOfExpectedUsers = 0;
@@ -92,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             MockCmdlet.ExecuteCmdlet();
             if (MockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Get-AzureRemoteAppUser returned the following error {0}.",
                         MockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -100,24 +101,24 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<ConsentStatusModel> users = MockObject.ConvertList<ConsentStatusModel>(MockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(users);
+            Assert.IsNotNull(users);
 
-            Assert.True(users.Count == countOfExpectedUsers,
+            Assert.IsTrue(users.Count == countOfExpectedUsers,
                 String.Format("The expected number of users returned {0} does not match the actual {1}.",
                     countOfExpectedUsers,
                     users.Count
                 )
             );
 
-            Assert.True(MockObject.ContainsExpectedServicePrincipalList(MockObject.mockUsersConsents, users),
+            Assert.IsTrue(MockObject.ContainsExpectedServicePrincipalList(MockObject.mockUsersConsents, users),
                 "The actual result does not match the expected"
             );
 
             Log("The test for Get-AzureRemoteAppUser with {0} users completed successfully.", countOfExpectedUsers);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void GetUsersByName()
         {
             int countOfExpectedUsers = 1;
@@ -138,7 +139,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 
             if (MockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Get-AzureRemoteAppUser returned the following error {0}.",
                         MockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -146,24 +147,24 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<ConsentStatusModel> users = MockObject.ConvertList<ConsentStatusModel>(MockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(users);
+            Assert.IsNotNull(users);
 
-            Assert.True(users.Count == countOfExpectedUsers,
+            Assert.IsTrue(users.Count == countOfExpectedUsers,
                 String.Format("The expected number of users returned {0} does not match the actual {1}.",
                     countOfExpectedUsers,
                     users.Count
                 )
             );
 
-            Assert.True(MockObject.ContainsExpectedServicePrincipalList(MockObject.mockUsersConsents, users),
+            Assert.IsTrue(MockObject.ContainsExpectedServicePrincipalList(MockObject.mockUsersConsents, users),
                 "The actual result does not match the expected"
             );
 
             Log("The test for Get-AzureRemoteAppUser with {0} users completed successfully.", countOfExpectedUsers);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void AddMSAUserThatDoesntExist()
         {
             int countOfExistingUsers = 0;
@@ -189,7 +190,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             MockCmdlet.ExecuteCmdlet();
             if (MockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Add-AzureRemoteAppMSAUser returned the following error {0}.",
                         MockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -197,17 +198,17 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<SecurityPrincipalOperationsResult> status = MockObject.ConvertList<SecurityPrincipalOperationsResult>(MockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(status);
+            Assert.IsNotNull(status);
 
-            Assert.True(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
+            Assert.IsTrue(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
                    "The actual result does not match the expected."
             );
 
             Log("The test for Add-AzureRemoteAppMSAUser successfully added {0} users the new count is {1}.", countOfNewUsers, countOfExistingUsers + countOfNewUsers);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void AddOrgIDUserThatDoesntExist()
         {
             int countOfExistingUsers = 0;
@@ -234,7 +235,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             MockCmdlet.ExecuteCmdlet();
             if (MockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Add-AzureRemoteAppOrgIDUser returned the following error {0}.",
                         MockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -242,17 +243,17 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<SecurityPrincipalOperationsResult> status = MockObject.ConvertList<SecurityPrincipalOperationsResult>(MockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(status);
+            Assert.IsNotNull(status);
 
-            Assert.True(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
+            Assert.IsTrue(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
                    "The actual result does not match the expected."
             );
 
             Log("The test for Add-AzureRemoteAppOrgIDUser successfully added {0} users the new count is {1}.", countOfNewUsers, countOfExistingUsers + countOfNewUsers);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void AddUsersToApp()
         {
             int countOfExistingUsers = 0;
@@ -280,7 +281,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             MockCmdlet.ExecuteCmdlet();
             if (MockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Add-AzureRemoteAppOrgIDUser returned the following error {0}.",
                         MockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -288,17 +289,17 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<SecurityPrincipalOperationsResult> status = MockObject.ConvertList<SecurityPrincipalOperationsResult>(MockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(status);
+            Assert.IsNotNull(status);
 
-            Assert.True(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
+            Assert.IsTrue(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
                    "The actual result does not match the expected."
             );
 
             Log("The test for Add-AzureRemoteAppOrgIDUser successfully added {0} users the new count is {1}.", countOfNewUsers, countOfExistingUsers + countOfNewUsers);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void RemoveUserThatExistsFromApp()
         {
             int countOfExistingUsers = 0;
@@ -325,7 +326,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             MockCmdlet.ExecuteCmdlet();
             if (MockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Remove-AzureRemoteAppMSAUser returned the following error {0}.",
                         MockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -333,17 +334,17 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<SecurityPrincipalOperationsResult> status = MockObject.ConvertList<SecurityPrincipalOperationsResult>(MockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(status);
+            Assert.IsNotNull(status);
 
-            Assert.True(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
+            Assert.IsTrue(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
                    "The actual result does not match the expected."
             );
 
             Log("The test for Remove-AzureRemoteAppOrgIdUser successfully removed {0} users the new count is {1}.", countOfDeletedUsers, countOfExistingUsers - countOfDeletedUsers);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void RemoveMSAUserThatExists()
         {
             int countOfExistingUsers = 0;
@@ -369,7 +370,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             MockCmdlet.ExecuteCmdlet();
             if (MockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Remove-AzureRemoteAppMSAUser returned the following error {0}.",
                         MockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -377,17 +378,17 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<SecurityPrincipalOperationsResult> status = MockObject.ConvertList<SecurityPrincipalOperationsResult>(MockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(status);
+            Assert.IsNotNull(status);
 
-            Assert.True(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
+            Assert.IsTrue(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
                    "The actual result does not match the expected."
             );
 
             Log("The test for Remove-AzureRemoteAppMSAUser successfully removed {0} users the new count is {1}.", countOfDeletedUsers, countOfExistingUsers - countOfDeletedUsers);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void RemoveOrgIDUserThatExists()
         {
             int countOfExistingUsers = 0;
@@ -413,7 +414,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             MockCmdlet.ExecuteCmdlet();
             if (MockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.True(false,
+                Assert.IsTrue(false,
                     String.Format("Remove-AzureRemoteAppMSAUser returned the following error {0}.",
                         MockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -421,9 +422,9 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             }
 
             List<SecurityPrincipalOperationsResult> status = MockObject.ConvertList<SecurityPrincipalOperationsResult>(MockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(status);
+            Assert.IsNotNull(status);
 
-            Assert.True(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
+            Assert.IsTrue(MockObject.HasExpectedResults<SecurityPrincipalOperationsResult>(status, MockObject.ContainsExpectedStatus),
                    "The actual result does not match the expected."
             );
 
