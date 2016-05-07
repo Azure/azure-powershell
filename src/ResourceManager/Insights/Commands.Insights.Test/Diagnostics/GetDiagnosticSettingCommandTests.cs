@@ -37,8 +37,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         private const string resourceId = "/subscriptions/123/resourcegroups/rg/providers/rp/resource/myresource";
         private string calledResourceId;
 
-        public GetDiagnosticSettingCommandTests()
+        public GetDiagnosticSettingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsDiagnosticsOperationsMock = new Mock<IServiceDiagnosticSettingsOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

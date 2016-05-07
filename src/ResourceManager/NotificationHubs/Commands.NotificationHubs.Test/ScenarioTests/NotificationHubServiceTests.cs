@@ -19,9 +19,15 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
     using Microsoft.Azure.Test;
     using Xunit;
     using System;
-
+    using Xunit.Abstractions;
+    using ServiceManagemenet.Common.Models;
     public class NotificationHubServiceTests : TestBaseClass
     {
+        public NotificationHubServiceTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCRUDNamespace()

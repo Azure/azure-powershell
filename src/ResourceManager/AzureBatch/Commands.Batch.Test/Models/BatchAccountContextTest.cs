@@ -22,6 +22,11 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
 {
     public class BatchAccountContextTest : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public BatchAccountContextTest(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void BatchAccountContextConstructorTest()

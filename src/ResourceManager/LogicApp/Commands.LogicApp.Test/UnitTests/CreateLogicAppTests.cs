@@ -18,15 +18,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
     using Xunit;
     using Microsoft.Azure.Commands.LogicApp.Cmdlets;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-
-    /// <summary>
-    /// Unit test for the Create Logic app command.
-    /// </summary>
+    using Xunit.Abstractions;
+    using ServiceManagemenet.Common.Models;    /// <summary>
+                                               /// Unit test for the Create Logic app command.
+                                               /// </summary>
     public class CreateLogicAppTests : LogicAppUnitTestBase
     {
-
-        public CreateLogicAppTests()
+        public CreateLogicAppTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         /// <summary>

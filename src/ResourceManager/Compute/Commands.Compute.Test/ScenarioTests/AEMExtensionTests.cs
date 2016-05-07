@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class AEMExtensionTests
     {
+        public AEMExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         public void TestAEMExtensionBasicWindows()
         {

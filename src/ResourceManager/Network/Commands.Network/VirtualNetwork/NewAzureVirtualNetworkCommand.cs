@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
         [ValidateNotNullOrEmpty]

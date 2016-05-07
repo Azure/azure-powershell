@@ -19,6 +19,8 @@ using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -27,8 +29,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
 
-        public TenantCmdletTests()
+        public TenantCmdletTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
