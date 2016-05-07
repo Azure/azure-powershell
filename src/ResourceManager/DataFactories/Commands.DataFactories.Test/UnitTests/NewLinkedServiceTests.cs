@@ -43,8 +43,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 
         private NewAzureDataFactoryLinkedServiceCommand cmdlet;
         
-        public NewLinkedServiceTests()
+        public NewLinkedServiceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
         cmdlet = new NewAzureDataFactoryLinkedServiceCommand()

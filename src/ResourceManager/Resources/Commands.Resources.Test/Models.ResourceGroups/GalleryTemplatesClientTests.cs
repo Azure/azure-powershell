@@ -29,6 +29,8 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 using System;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
@@ -46,8 +48,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private string templateParameterFileSchema2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateParameterFileSchema2.json");
 
-        public GalleryTemplatesClientTests()
+        public GalleryTemplatesClientTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             galleryClientMock = new Mock<IGalleryClient>();
             galleryTemplatesClient = new GalleryTemplatesClient(galleryClientMock.Object);
         }

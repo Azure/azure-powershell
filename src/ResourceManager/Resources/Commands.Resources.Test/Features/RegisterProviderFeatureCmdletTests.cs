@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Moq;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
-
-    /// <summary>
-    /// Tests the Azure Provider Feature cmdlets
-    /// </summary>
+    using Xunit.Abstractions;
+    using ServiceManagemenet.Common.Models;    /// <summary>
+                                               /// Tests the Azure Provider Feature cmdlets
+                                               /// </summary>
     public class RegisterAzureProviderFeatureCmdletTests : RMTestBase
     {
         /// <summary>
@@ -51,8 +51,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderFeatureCmdletTests"/> class.
         /// </summary>
-        public RegisterAzureProviderFeatureCmdletTests()
+        public RegisterAzureProviderFeatureCmdletTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             this.featureOperationsMock = new Mock<IFeatures>();
             var featureClient = new Mock<IFeatureClient>();
 

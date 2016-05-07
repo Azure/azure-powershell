@@ -32,8 +32,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public RemoveBatchTaskCommandTests()
+        public RemoveBatchTaskCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveBatchTaskCommand()

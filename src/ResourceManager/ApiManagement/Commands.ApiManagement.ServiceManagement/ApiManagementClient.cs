@@ -1689,7 +1689,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 context.ServiceName,
                 saveConfigurationParams);
 
-            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Save-AzureRmApiManagement", longrunningResponse);
+            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Save-AzureRmApiManagementTenantGitConfiguration", longrunningResponse);
         }
 
         public TenantConfigurationLongRunningOperation BeginPublishTenantGitConfiguration(
@@ -1707,7 +1707,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 context.ServiceName,
                 deployConfigurationParams);
 
-            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Publish-AzureRmApiManagement", longrunningResponse);
+            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Publish-AzureRmApiManagementTenantGitConfiguration", longrunningResponse);
         }
 
         public TenantConfigurationLongRunningOperation BeginValidateTenantGitConfiguration(
@@ -1725,7 +1725,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 context.ServiceName,
                 deployConfigurationParams);
 
-            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Publish-AzureRmApiManagement -ValidateOnly", longrunningResponse);
+            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Publish-AzureRmApiManagementTenantGitConfiguration -ValidateOnly", longrunningResponse);
         }
 
         public PsApiManagementTenantConfigurationSyncState GetTenantConfigurationSyncState(
@@ -1738,6 +1738,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return Mapper.Map<PsApiManagementTenantConfigurationSyncState>(response.Value);
         }
 
+        #endregion
+
+        #region TenantAccessInformation
+        public PsApiManagementAccessInformation GetTenantAccessInformation(PsApiManagementContext context)
+        {
+            var response = Client.TenantAccess.Get(
+                context.ResourceGroupName,
+                context.ServiceName);
+
+            return Mapper.Map<PsApiManagementAccessInformation>(response.Value);
+        }
+
+        public void TenantAccessSet(
+            PsApiManagementContext context,
+            bool enabledTenantAccess)
+        {
+            var accessInformationParams = new AccessInformationUpdateParameters
+            {
+                Enabled = enabledTenantAccess
+            };
+            Client.TenantAccess.Update(context.ResourceGroupName, context.ServiceName, accessInformationParams, "*");
+        }
         #endregion
     }
 }

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.WebKey;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.IO;
@@ -21,11 +22,17 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.Models
 {
     public class UtilitiesTests
     {
+        public UtilitiesTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.KeyVault, Category.CheckIn)]
         public void ConvertStringAndSecureString()
