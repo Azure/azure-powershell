@@ -24,9 +24,11 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -73,6 +75,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return objects;
         }
 
+        public IContainerServiceOperations ContainerServiceClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.ContainerService;
+            }
+        }
+
         public IVirtualMachineScaleSetsOperations VirtualMachineScaleSetsClient
         {
             get
@@ -87,6 +97,109 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMs;
             }
+        }
+
+        public static string FormatObject(Object obj)
+        {
+            var objType = obj.GetType();
+
+            System.Reflection.PropertyInfo[] pros = objType.GetProperties();
+            string result = "\n";
+            var resultTuples = new List<Tuple<string, string, int>>();
+            var totalTab = GetTabLength(obj, 0, 0, resultTuples) + 1;
+            foreach (var t in resultTuples)
+            {
+                string preTab = new string(' ', t.Item3 * 2);
+                string postTab = new string(' ', totalTab - t.Item3 * 2 - t.Item1.Length);
+
+                result += preTab + t.Item1 + postTab + ": " + t.Item2 + "\n";
+            }
+            return result;
+        }
+
+        private static int GetTabLength(Object obj, int max, int depth, List<Tuple<string, string, int>> tupleList)
+        {
+            var objType = obj.GetType();
+            var propertySet = new List<PropertyInfo>();
+            if (objType.BaseType != null)
+            {
+                foreach (var property in objType.BaseType.GetProperties())
+                {
+                    propertySet.Add(property);
+                }
+            }
+            foreach (var property in objType.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public))
+            {
+                propertySet.Add(property);
+            }
+
+            foreach (var property in propertySet)
+            {
+                Object childObject = property.GetValue(obj, null);
+
+                var isJObject = childObject as Newtonsoft.Json.Linq.JObject;
+                if (isJObject != null)
+                {
+                    tupleList.Add(MakeTuple(property.Name, Newtonsoft.Json.JsonConvert.SerializeObject(childObject), depth));
+                    max = Math.Max(max, depth * 2 + property.Name.Length);
+                }
+                else
+                {
+                    var elem = childObject as IList;
+                    if (elem != null)
+                    {
+                        if (elem.Count != 0)
+                        {
+                            max = Math.Max(max, depth * 2 + property.Name.Length + 4);
+                            for (int i = 0; i < elem.Count; i++)
+                            {
+                                Type propType = elem[i].GetType();
+
+                                if (propType.IsSerializable)
+                                {
+                                    tupleList.Add(MakeTuple(property.Name + "[" + i + "]", elem[i].ToString(), depth));
+                                }
+                                else
+                                {
+                                    tupleList.Add(MakeTuple(property.Name + "[" + i + "]", "", depth));
+                                    max = Math.Max(max, GetTabLength((Object)elem[i], max, depth + 1, tupleList));
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (property.PropertyType.IsSerializable)
+                        {
+                            if (childObject != null)
+                            {
+                                tupleList.Add(MakeTuple(property.Name, childObject.ToString(), depth));
+                                max = Math.Max(max, depth * 2 + property.Name.Length);
+                            }
+                        }
+                        else
+                        {
+                            var isDictionary = childObject as IDictionary;
+                            if (isDictionary != null)
+                            {
+                                tupleList.Add(MakeTuple(property.Name, Newtonsoft.Json.JsonConvert.SerializeObject(childObject), depth));
+                                max = Math.Max(max, depth * 2 + property.Name.Length);
+                            }
+                            else if (childObject != null)
+                            {
+                                tupleList.Add(MakeTuple(property.Name, "", depth));
+                                max = Math.Max(max, GetTabLength(childObject, max, depth + 1, tupleList));
+                            }
+                        }
+                    }
+                }
+            }
+            return max;
+        }
+
+        private static Tuple<string, string, int> MakeTuple(string key, string value, int depth)
+        {
+            return new Tuple<string, string, int>(key, value, depth);
         }
     }
 }

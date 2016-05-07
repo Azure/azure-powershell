@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Commands.Automation.Test
 {
     public class AutomationTests : AutomationScenarioTestsBase
     {
+        public AutomationTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact(Skip = "Need x64 test framework.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]

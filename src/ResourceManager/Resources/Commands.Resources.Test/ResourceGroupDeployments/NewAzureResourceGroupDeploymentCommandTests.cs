@@ -22,6 +22,8 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 using System.IO;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -40,9 +42,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
         private string storageAccountName = "myStorageAccount";
-
-        public NewAzureResourceGroupDeploymentCommandTests()
+        
+        public NewAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewAzureResourceGroupDeploymentCommand()

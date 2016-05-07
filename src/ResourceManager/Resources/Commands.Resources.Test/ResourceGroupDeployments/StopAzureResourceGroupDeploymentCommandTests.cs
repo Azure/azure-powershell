@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.Resources.ResourceGroups;
 using Moq;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -30,9 +32,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         private string resourceGroupName = "myResourceGroup";
-
-        public StopAzureResourceGroupDeploymentCommandTests()
+        
+        public StopAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new StopAzureResourceGroupDeploymentCommand()

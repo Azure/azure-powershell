@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             foreach (var property in jobject.Properties())
             {
                 psObject.Properties.Add(new PSNoteProperty(
-                    name: JTokenExtensions.ConvertToPascalCase(propertyName: property.Name), 
+                    name: property.Name,
                     value: JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: property.Value)));
             }
 
@@ -125,17 +125,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             }
 
             return propertyValue.ToString();
-        }
-
-        /// <summary>
-        /// Converts the property names from camel case to Pascal case.
-        /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
-        private static string ConvertToPascalCase(string propertyName)
-        {
-            return char.IsLower(propertyName.First())
-                ? new string(char.ToUpper(propertyName.First()).AsArray().Concat(propertyName.Skip(1)).ToArray())
-                : propertyName;
         }
     }
 }

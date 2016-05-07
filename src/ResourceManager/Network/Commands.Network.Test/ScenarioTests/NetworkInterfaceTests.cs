@@ -12,13 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
     public class NetworkInterfaceTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public NetworkInterfaceTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkInterfaceCRUD()
@@ -73,6 +80,20 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestNetworkInterfaceExpandResource()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceExpandResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceIpv6()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceIpv6");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceWithIpConfiguration()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceWithIpConfiguration");
         }
     }
 }

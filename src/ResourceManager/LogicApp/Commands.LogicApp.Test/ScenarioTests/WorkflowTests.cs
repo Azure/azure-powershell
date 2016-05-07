@@ -17,13 +17,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-
+    using Xunit.Abstractions;
     /// <summary>
     /// Scenario tests for the Create logic app command
     /// </summary>
     public class WorkflowTests : RMTestBase
     {
+        public WorkflowTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         /// <summary>
         ///Test New-AzureLogicApp with physical file paths

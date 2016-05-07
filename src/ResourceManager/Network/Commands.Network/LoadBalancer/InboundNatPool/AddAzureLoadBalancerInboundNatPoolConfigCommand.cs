@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName,
                     this.LoadBalancer.Name,
-                    Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInboundNatPoolsName,
+                    Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInboundNatPoolName,
                     this.Name);
 
             this.LoadBalancer.InboundNatPools.Add(inboundNatPool);

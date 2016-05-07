@@ -17,11 +17,18 @@ using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Gallery;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
     public class ExtensionsTests
     {
+        public ExtensionsTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ToPSGalleryItemCreatesANewItem()
