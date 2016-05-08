@@ -155,6 +155,10 @@
                 <PropertyName>IpAddress</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PublicIpAddressVersion</Label>
+                <PropertyName>PublicIpAddressVersion</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>IdleTimeoutInMinutes</Label>
                 <PropertyName>IdleTimeoutInMinutes</PropertyName>
               </ListItem>
@@ -271,6 +275,10 @@
                 <PropertyName>PrivateIpAddress</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PrivateIpAddressVersion</Label>
+                <PropertyName>PrivateIpAddressVersion</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>PrivateIpAllocationMethod</Label>
                 <PropertyName>PrivateIpAllocationMethod</PropertyName>
               </ListItem>
@@ -281,10 +289,14 @@
               <ListItem>
                 <Label>PublicIpAddress</Label>
                 <PropertyName>PublicIpAddressText</PropertyName>
-              </ListItem>
+              </ListItem>              
               <ListItem>
                 <Label>LoadBalancerBackendAddressPools</Label>
                 <PropertyName>LoadBalancerBackendAddressPoolsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ApplicationGatewayBackendAddressPools</Label>
+                <PropertyName>ApplicationGatewayBackendAddressPoolsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>LoadBalancerInboundNatRules</Label>
@@ -511,7 +523,7 @@
                 <PropertyName>TagsTable</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>FrontendIPConfigurations</Label>
+                <Label>FrontendIpConfigurations</Label>
                 <PropertyName>FrontendIpConfigurationsText</PropertyName>
               </ListItem>
               <ListItem>

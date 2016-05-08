@@ -12,12 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class DeploymentTests
     {
+        public DeploymentTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact (Skip = "Need to implement storage client mock.")]
         public void TestValidateDeployment()
         {
@@ -40,6 +47,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestSaveDeploymentTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-SaveDeploymentTemplateFile");
+        }
+
+        [Fact]
+        public void TestNestedErrorsDisplayed()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NestedErrorsDisplayed");
         }
 
         [Fact(Skip = "Fix acquisition of TenantId in KeyVault Test.")]

@@ -45,6 +45,83 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
+        public Microsoft.Azure.Batch.Common.CertificateFormat? CertificateFormat
+        {
+            get
+            {
+                return this.omObject.CertificateFormat;
+            }
+        }
+        
+        public string Data
+        {
+            get
+            {
+                return this.omObject.Data;
+            }
+        }
+        
+        public PSDeleteCertificateError DeleteCertificateError
+        {
+            get
+            {
+                if (((this.deleteCertificateError == null) 
+                            && (this.omObject.DeleteCertificateError != null)))
+                {
+                    this.deleteCertificateError = new PSDeleteCertificateError(this.omObject.DeleteCertificateError);
+                }
+                return this.deleteCertificateError;
+            }
+        }
+        
+        public string Password
+        {
+            get
+            {
+                return this.omObject.Password;
+            }
+        }
+        
+        public Microsoft.Azure.Batch.Common.CertificateState? PreviousState
+        {
+            get
+            {
+                return this.omObject.PreviousState;
+            }
+        }
+        
+        public System.DateTime? PreviousStateTransitionTime
+        {
+            get
+            {
+                return this.omObject.PreviousStateTransitionTime;
+            }
+        }
+        
+        public string PublicData
+        {
+            get
+            {
+                return this.omObject.PublicData;
+            }
+        }
+        
+        public Microsoft.Azure.Batch.Common.CertificateState? State
+        {
+            get
+            {
+                return this.omObject.State;
+            }
+        }
+        
+        public System.DateTime? StateTransitionTime
+        {
+            get
+            {
+                return this.omObject.StateTransitionTime;
+            }
+        }
+        
         public string Thumbprint
         {
             get
@@ -66,83 +143,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.Url;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.CertificateState? State
-        {
-            get
-            {
-                return this.omObject.State;
-            }
-        }
-        
-        public System.DateTime? StateTransitionTime
-        {
-            get
-            {
-                return this.omObject.StateTransitionTime;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.CertificateState? PreviousState
-        {
-            get
-            {
-                return this.omObject.PreviousState;
-            }
-        }
-        
-        public System.DateTime? PreviousStateTransitionTime
-        {
-            get
-            {
-                return this.omObject.PreviousStateTransitionTime;
-            }
-        }
-        
-        public string Data
-        {
-            get
-            {
-                return this.omObject.Data;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.CertificateFormat? CertificateFormat
-        {
-            get
-            {
-                return this.omObject.CertificateFormat;
-            }
-        }
-        
-        public string Password
-        {
-            get
-            {
-                return this.omObject.Password;
-            }
-        }
-        
-        public string PublicData
-        {
-            get
-            {
-                return this.omObject.PublicData;
-            }
-        }
-        
-        public PSDeleteCertificateError DeleteCertificateError
-        {
-            get
-            {
-                if (((this.deleteCertificateError == null) 
-                            && (this.omObject.DeleteCertificateError != null)))
-                {
-                    this.deleteCertificateError = new PSDeleteCertificateError(this.omObject.DeleteCertificateError);
-                }
-                return this.deleteCertificateError;
             }
         }
     }

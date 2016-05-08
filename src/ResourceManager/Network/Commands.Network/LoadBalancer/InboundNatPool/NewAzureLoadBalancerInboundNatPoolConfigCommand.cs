@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
             inboundNatPool.Id =
                 ChildResourceHelper.GetResourceNotSetId(
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
-                    Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInboundNatPoolsName,
+                    Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInboundNatPoolName,
                     this.Name);
 
             WriteObject(inboundNatPool);

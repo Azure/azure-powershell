@@ -112,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
             }
             else
             {
-                ServiceBusClient = ServiceBusClient ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
+                ServiceBusClient = ServiceBusClient ?? new ServiceBusClientExtensions(Profile);
                 IsServiceBusNamespaceAvailable(Profile.Context.Subscription.Id.ToString(), Name);
             }
         }

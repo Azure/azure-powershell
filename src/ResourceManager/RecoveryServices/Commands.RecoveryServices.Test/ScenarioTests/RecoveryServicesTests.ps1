@@ -21,7 +21,7 @@ Recovery Services Vault CRUD Tests
 function Test-RecoveryServicesVaultCRUDTests
 {
 	# Create vault
-	$vaultCreationResponse = New-AzureRmRecoveryServicesVault -Name rsv1 -ResourceGroupName rg1 -Location westus
+	$vaultCreationResponse = New-AzureRmRecoveryServicesVault -Name rsv1 -ResourceGroupName RsvTestRG -Location westus
 	Assert-NotNull($vaultCreationResponse.Name)
 	Assert-NotNull($vaultCreationResponse.ID)
 	Assert-NotNull($vaultCreationResponse.Type)
@@ -37,14 +37,19 @@ function Test-RecoveryServicesVaultCRUDTests
 		Assert-NotNull($vault.Type)
 	}
 
+	$vaultBackupProperties = Get-AzureRmRecoveryServicesBackupProperties -Vault $vaultCreationResponse
+	Assert-NotNull($vaultBackupProperties.BackupStorageRedundancy)
+
+	Set-AzureRmRecoveryServicesBackupProperties -Vault $vaultCreationResponse -BackupStorageRedundancy "LocallyRedundant"
+
 	# Get the created vault
-	$vaultToBeRemoved = Get-AzureRmRecoveryServicesVault -ResourceGroupName rg1 -Name rsv1
+	$vaultToBeRemoved = Get-AzureRmRecoveryServicesVault -ResourceGroupName RsvTestRG -Name rsv1
 	Assert-NotNull($vaultToBeRemoved.Name)
 	Assert-NotNull($vaultToBeRemoved.ID)
 	Assert-NotNull($vaultToBeRemoved.Type)
 
 	# Remove Vault
 	Remove-AzureRmRecoveryServicesVault -Vault $vaultToBeRemoved
-	$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName rg1 -Name rsv1
+	$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName RsvTestRG -Name rsv1
 	Assert-True { $vaults.Count -eq 0 }
 }

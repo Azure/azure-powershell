@@ -26,26 +26,22 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Location = cache.Location;
             Name = cache.Name;
             Type = cache.Type;
-            HostName = cache.Properties.HostName;
-            Port = cache.Properties.Port;
-            ProvisioningState = cache.Properties.ProvisioningState;
-            SslPort = cache.Properties.SslPort;
-            RedisConfiguration = cache.Properties.RedisConfiguration;
-            EnableNonSslPort = cache.Properties.EnableNonSslPort.Value;
-            RedisVersion = cache.Properties.RedisVersion;
-            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
-            Sku = cache.Properties.Sku.Name;
+            HostName = cache.HostName;
+            Port = cache.Port.HasValue? cache.Port.Value : 0;
+            ProvisioningState = cache.ProvisioningState;
+            SslPort = cache.SslPort.HasValue ? cache.SslPort.Value : 0;
+            RedisConfiguration = cache.RedisConfiguration;
+            EnableNonSslPort = cache.EnableNonSslPort.Value;
+            RedisVersion = cache.RedisVersion;
+            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
+            Sku = cache.Sku.Name;
             ResourceGroupName = resourceGroupName; 
-            VirtualNetwork = cache.Properties.VirtualNetwork;
-            Subnet = cache.Properties.Subnet;
-            StaticIP = cache.Properties.StaticIP;
-            TenantSettings = cache.Properties.TenantSettings;
-            ShardCount = cache.Properties.ShardCount;
+            VirtualNetwork = cache.VirtualNetwork;
+            Subnet = cache.Subnet;
+            StaticIP = cache.StaticIP;
+            TenantSettings = cache.TenantSettings;
+            ShardCount = cache.ShardCount;
         }
-
-        public RedisCacheAttributes(RedisGetResponse cache, string resourceGroupName)
-            : this(cache.Resource, resourceGroupName)
-        {}
 
         public RedisCacheAttributes() { }
 

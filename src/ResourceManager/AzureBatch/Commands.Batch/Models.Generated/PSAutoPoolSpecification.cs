@@ -74,6 +74,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public Microsoft.Azure.Batch.Common.PoolLifetimeOption PoolLifetimeOption
+        {
+            get
+            {
+                return this.omObject.PoolLifetimeOption;
+            }
+            set
+            {
+                this.omObject.PoolLifetimeOption = value;
+            }
+        }
+        
         public PSPoolSpecification PoolSpecification
         {
             get
@@ -96,18 +108,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.PoolSpecification = value.omObject;
                 }
                 this.poolSpecification = value;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.PoolLifetimeOption PoolLifetimeOption
-        {
-            get
-            {
-                return this.omObject.PoolLifetimeOption;
-            }
-            set
-            {
-                this.omObject.PoolLifetimeOption = value;
             }
         }
     }

@@ -60,6 +60,9 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         public SwitchParameter Force { get; set; }
 
+        [Parameter]
+        public SwitchParameter Recursive { get; set; }
+
         public override void ExecuteCmdlet()
         {
             string fileName = this.InputObject == null ? this.Name : this.InputObject.Name;
@@ -71,7 +74,7 @@ namespace Microsoft.Azure.Commands.Batch
                 string.Format(Resources.RemoveNodeFileConfirm, fileName),
                 Resources.RemoveNodeFile,
                 fileName,
-                () => BatchClient.DeleteNodeFile(parameters));
+                () => BatchClient.DeleteNodeFile(Recursive.IsPresent, parameters));
         }
     }
 }

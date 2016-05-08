@@ -69,6 +69,36 @@ function Test-NewDeploymentFromTemplateFile
 
 <#
 .SYNOPSIS
+Tests nested errors displayed when temployment put fails.
+#>
+function Test-NestedErrorsDisplayed
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "EastUS"
+
+	try
+	{
+		# Test
+		$ErrorActionPreference = "SilentlyContinue"
+		$Error.Clear()
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+		New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateThrowsNestedErrors.json
+	}
+	catch
+	{
+		Assert-True { $Error[1].Contains("Storage account name must be between 3 and 24 characters in length") }
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests nested deployment.
 #>
 function Test-NestedDeploymentFromTemplateFile

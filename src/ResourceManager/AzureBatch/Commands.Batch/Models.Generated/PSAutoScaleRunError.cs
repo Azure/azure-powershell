@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.AutoScaleRunError omObject;
         
-        private IEnumerable<PSNameValuePair> values;
+        private IReadOnlyList<PSNameValuePair> values;
         
         internal PSAutoScaleRunError(Microsoft.Azure.Batch.AutoScaleRunError omObject)
         {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public IEnumerable<PSNameValuePair> Values
+        public IReadOnlyList<PSNameValuePair> Values
         {
             get
             {
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSNameValuePair(enumerator.Current));
                     }
-                    this.values = list;
+                    this.values = list.AsReadOnly();
                 }
                 return this.values;
             }
