@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         private GetAzureDataFactoryDatasetCommand cmdlet;
 
-        public GetDatasetTests()
+        public GetDatasetTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             cmdlet = new GetAzureDataFactoryDatasetCommand()

@@ -19,29 +19,30 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class AEMExtensionTests
     {
+        public AEMExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicWindows()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicWindows");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicLinux()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicLinux");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedWindows()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindows");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinux()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinux");

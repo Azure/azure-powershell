@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementOperation")]
+    [Cmdlet(VerbsCommon.New, Constants.ApiManagementOperation)]
     [OutputType(typeof(PsApiManagementOperation))]
     public class NewAzureApiManagementOperation : AzureApiManagementCmdletBase
     {
@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = false, 
-            HelpMessage = "Identifier of new operation. This parameter is optional. If not specified will be generated.")]
+            HelpMessage = "Identifier of new operation. This parameter is optional." +
+                          " If not specified will be generated.")]
         public String OperationId { get; set; }
 
         [Parameter(
@@ -59,7 +60,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
-            HelpMessage = "URL template. Example: customers/{cid}/orders/{oid}/?date={date}. This parameter is required.")]
+            HelpMessage = "URL template. Example: customers/{cid}/orders/{oid}/?date={date}. " +
+                          "This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String UrlTemplate { get; set; }
 
@@ -72,7 +74,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false, 
-            HelpMessage = "Array or parameters defined in UrlTemplate. This parameter is optional. If not specified default value will be generated based on the UrlTemplate. Use the parameter to give more details on parameters like description, type, possible values.")]
+            HelpMessage = "Array or parameters defined in UrlTemplate. This parameter is optional." +
+                          " If not specified default value will be generated based on the UrlTemplate." +
+                          " Use the parameter to give more details on parameters like description, type, possible values.")]
         public PsApiManagementParameter[] TemplateParameters { get; set; }
 
         [Parameter(

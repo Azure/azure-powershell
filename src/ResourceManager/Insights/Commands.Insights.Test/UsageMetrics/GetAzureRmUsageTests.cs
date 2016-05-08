@@ -35,9 +35,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
         private string resourceId;
         private string filter;
         private string apiVersion;
-
-        public GetAzureRmUsageTests()
+        
+        public GetAzureRmUsageTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsUsageMetricOperationsMock = new Mock<IUsageMetricsOperations>();
             insightsClientMock = new Mock<InsightsClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

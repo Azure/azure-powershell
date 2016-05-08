@@ -29,8 +29,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         private readonly PSCredential _httpCred;
         
-        public HttpTests()
+        public HttpTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
             _httpCred = new PSCredential("hadoopuser", string.Format("Password1!").ConvertToSecureString());
 

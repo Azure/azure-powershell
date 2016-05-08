@@ -17,11 +17,18 @@ using Microsoft.Azure.Commands.Sql.Database.Cmdlet;
 using Microsoft.Azure.Commands.Sql.Test.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 {
     public class AzureSqlDatabaseAttributeTests
     {
+        public AzureSqlDatabaseAttributeTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureSqlDatabaseAttributes()

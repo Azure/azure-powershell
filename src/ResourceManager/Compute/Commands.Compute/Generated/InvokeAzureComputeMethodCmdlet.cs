@@ -24,13 +24,15 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsLifecycle.Invoke, "AzureComputeMethod", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    //[Cmdlet(VerbsLifecycle.Invoke, "AzureComputeMethod", DefaultParameterSetName = "InvokeByDynamicParameters")]
     [OutputType(typeof(object))]
     public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet, IDynamicParameters
     {
@@ -52,6 +54,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(Mandatory = true, ParameterSetName = "InvokeByDynamicParameters", Position = 0)]
         [Parameter(Mandatory = true, ParameterSetName = "InvokeByStaticParameters", Position = 0)]
         [ValidateSet(
+            "ContainerServiceCreateOrUpdate",
+            "ContainerServiceDelete",
+            "ContainerServiceGet",
+            "ContainerServiceList",
             "VirtualMachineScaleSetCreateOrUpdate",
             "VirtualMachineScaleSetDeallocate",
             "VirtualMachineScaleSetDelete",
@@ -110,6 +116,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 switch (MethodName)
                 {
+                    case "ContainerServiceCreateOrUpdate" :
+                        ExecuteContainerServiceCreateOrUpdateMethod(argumentList);
+                        break;
+                    case "ContainerServiceDelete" :
+                        ExecuteContainerServiceDeleteMethod(argumentList);
+                        break;
+                    case "ContainerServiceGet" :
+                        ExecuteContainerServiceGetMethod(argumentList);
+                        break;
+                    case "ContainerServiceList" :
+                        ExecuteContainerServiceListMethod(argumentList);
+                        break;
                     case "VirtualMachineScaleSetCreateOrUpdate" :
                         ExecuteVirtualMachineScaleSetCreateOrUpdateMethod(argumentList);
                         break;
@@ -201,6 +219,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             switch (MethodName)
             {
+                    case "ContainerServiceCreateOrUpdate" : return CreateContainerServiceCreateOrUpdateDynamicParameters();
+                    case "ContainerServiceDelete" : return CreateContainerServiceDeleteDynamicParameters();
+                    case "ContainerServiceGet" : return CreateContainerServiceGetDynamicParameters();
+                    case "ContainerServiceList" : return CreateContainerServiceListDynamicParameters();
                     case "VirtualMachineScaleSetCreateOrUpdate" : return CreateVirtualMachineScaleSetCreateOrUpdateDynamicParameters();
                     case "VirtualMachineScaleSetDeallocate" : return CreateVirtualMachineScaleSetDeallocateDynamicParameters();
                     case "VirtualMachineScaleSetDelete" : return CreateVirtualMachineScaleSetDeleteDynamicParameters();

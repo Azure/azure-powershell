@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '1.0.6' 
+ModuleVersion = '1.1.0' 
   
 # ID used to uniquely identify this module  
 GUID = 'ab3ca893-26fe-44b0-bd3c-8933df144d7b'  
@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.6'})
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.8'})
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
@@ -54,11 +54,14 @@ RequiredAssemblies = @()
 ScriptsToProcess = @()  
   
 # Type files (.ps1xml) to be loaded when importing this module  
-TypesToProcess = @()
+TypesToProcess = @(
+	'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'
+)
   
 # Format files (.ps1xml) to be loaded when importing this module  
 FormatsToProcess = @(
-	'.\Microsoft.Azure.Commands.Resources.format.ps1xml'
+	'.\Microsoft.Azure.Commands.Resources.format.ps1xml',
+	'.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml'
 )
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  

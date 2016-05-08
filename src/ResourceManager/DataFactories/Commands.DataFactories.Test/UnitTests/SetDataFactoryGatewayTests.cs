@@ -27,8 +27,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
     {
         private SetAzureDataFactoryGatewayCommand _cmdlet;
 
-        public SetAzureDataFactoryGatewayTests()
+        public SetAzureDataFactoryGatewayTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             _cmdlet = new SetAzureDataFactoryGatewayCommand

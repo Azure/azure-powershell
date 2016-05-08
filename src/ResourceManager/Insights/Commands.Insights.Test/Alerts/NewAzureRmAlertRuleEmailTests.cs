@@ -26,9 +26,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         public NewAzureRmAlertRuleEmailCommand Cmdlet { get; set; }
-
-        public NewAzureRmAlertRuleEmailTests()
+        
+        public NewAzureRmAlertRuleEmailTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             Cmdlet = new NewAzureRmAlertRuleEmailCommand()
             {

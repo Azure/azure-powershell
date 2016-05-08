@@ -29,8 +29,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
         
         private IDictionary<string, string> tags;
 
-        public NewDataFactoryTests()
+        public NewDataFactoryTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             tags = new Dictionary<string, string>() {{"foo", "bar"}};

@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
         private string filter;
         private string selected;
 
-        public GetAzureRmAutoscaleHistoryTests()
+        public GetAzureRmAutoscaleHistoryTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsEventOperationsMock = new Mock<IEventOperations>();
             insightsClientMock = new Mock<InsightsClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
