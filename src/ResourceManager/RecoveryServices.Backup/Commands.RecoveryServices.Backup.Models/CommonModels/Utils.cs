@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return ContainerType.Windows;
             }
-            else if (containerType == ContainerType.AzureSQL.ToString())
+            else if (containerType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.ContainerType.AzureSqlContainer.ToString())
             {
                 return ContainerType.AzureSQL;
             }
