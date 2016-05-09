@@ -44,31 +44,25 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 
         public Action<string> WarningLogger { get; set; }
 
-        public string GetAvailableOperations()
-        {
-            var result = apiClient.GetOperationsAsync().Result;
-            return result.ToString();
-        }
-
         public WebService CreateAzureMlWebService(string subscriptionId, string resourceGroupName, string location, string webServiceName, WebService serviceDefinition)
         {
             this.apiClient.SubscriptionId = subscriptionId;
             serviceDefinition.Name = webServiceName;
             serviceDefinition.Location = location;
 
-            return this.apiClient.WebServices.CreateOrUpdateWebService(serviceDefinition, resourceGroupName, webServiceName);
+            return this.apiClient.WebServices.CreateOrUpdate(serviceDefinition, resourceGroupName, webServiceName);
         }
 
         public WebService UpdateAzureMlWebService(string subscriptionId, string resourceGroupName, string webServiceName, WebService serviceDefinition)
         {
             this.apiClient.SubscriptionId = subscriptionId;
-            return this.apiClient.WebServices.PatchWebService(serviceDefinition, resourceGroupName, webServiceName);
+            return this.apiClient.WebServices.Patch(serviceDefinition, resourceGroupName, webServiceName);
         }
 
         public void DeleteAzureMlWebService(string subscriptionId, string resourceGroupName, string webServiceName)
         {
             this.apiClient.SubscriptionId = subscriptionId;
-            this.apiClient.WebServices.RemoveWebService(resourceGroupName, webServiceName);
+            this.apiClient.WebServices.Remove(resourceGroupName, webServiceName);
         }
 
         public WebService GetAzureMlWebService(string subscriptionId, string resourceGroupName, string webServiceName)

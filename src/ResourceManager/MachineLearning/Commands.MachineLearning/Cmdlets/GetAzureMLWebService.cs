@@ -24,9 +24,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
     public class GetAzureMLWebService : WebServicesCmdletBase
     {
         private const string GetMlWebServiceByNameGroupParameterSet = "Get an Azure ML web service resource details by name and group.";
-
         private const string GetMlWebServicesByGroupParameterSet = "Get the paginated list of Azure ML web service resources within a resource group.";
-
         private const string GetMlWebServicesInSubscriptionParameterSet = "Get the paginated list of Azure ML web service resources within the current subscription.";
 
         [Parameter(ParameterSetName = GetAzureMLWebService.GetMlWebServiceByNameGroupParameterSet, Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web service.")]

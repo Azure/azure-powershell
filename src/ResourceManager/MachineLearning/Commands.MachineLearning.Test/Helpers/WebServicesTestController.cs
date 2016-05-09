@@ -13,25 +13,43 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.MachineLearning.WebServices;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using LegacyTest = Microsoft.Azure.Test;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Test.Helpers
 {
     internal class WebServicesTestController
     {
+        private EnvironmentSetupHelper helper;
+
+        protected WebServicesTestController()
+        {
+            this.helper = new EnvironmentSetupHelper();
+        }
+        
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public AzureMLWebServicesManagementClient WebServicesManagementClient { get; private set; }
+
+        public static WebServicesTestController NewInstance
+        {
+            get
+            {
+                return new WebServicesTestController();
+            }
+        }
 
         public void RunPsTest(params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
-            RunPsTestWorkflow(
+            this.RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
                 null,
@@ -48,7 +66,17 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.Helpers
             string callingClassType,
             string mockName)
         {
-
+            var d = new Dictionary<string, string>
+            {
+                { "Microsoft.Resources", null },
+                { "Microsoft.Features", null },
+                { "Microsoft.Authorization", null }
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                { "Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01" }
+            };
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
         }
     }
 }

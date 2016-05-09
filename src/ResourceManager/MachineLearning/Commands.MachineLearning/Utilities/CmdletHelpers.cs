@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.IO;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
+using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 {
@@ -36,6 +39,16 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             resourceGroupName = null;
             webServiceName = null;
             return false;
+        }
+
+        internal static string GetWebServiceDefinitionFromFile(string definitionFilePath)
+        {
+            if (!File.Exists(definitionFilePath))
+            {
+                throw new FileNotFoundException(Resources.MissingDefinitionFile, definitionFilePath);
+            }
+
+            return File.ReadAllText(definitionFilePath);
         }
     }
 }

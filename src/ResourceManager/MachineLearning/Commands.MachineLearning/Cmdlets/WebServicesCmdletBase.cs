@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Management.Automation;
 using System.Runtime.ExceptionServices;
 using System.Threading;
@@ -98,9 +97,6 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 }
 
                 this.SubscriptionId = this.DefaultProfile.Context.Subscription.Id.ToString();
-
-                // TODO: Remove this after development is completed
-
                 base.BeginProcessing();
             }
             catch (Exception ex)
@@ -109,7 +105,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 {
                     throw;
                 }
-
+                
                 var capturedException = ExceptionDispatchInfo.Capture(ex);
                 this.HandleException(capturedException: capturedException);
             }
@@ -215,39 +211,42 @@ namespace Microsoft.Azure.Commands.MachineLearning
         {
             try
             {
+                ErrorRecord errorRecord;
                 var cloudException = capturedException.SourceException as CloudException;
                 if (cloudException != null)
                 {
-                    this.ThrowTerminatingError(cloudException.ToErrorRecord());
+                    errorRecord = cloudException.ToErrorRecord();
                 }
-
-                var errorResponseException = capturedException.SourceException as ErrorResponseMessageException;
-                if (errorResponseException != null)
+                else
                 {
-                    this.ThrowTerminatingError(errorResponseException.ToErrorRecord());
-                }
-
-                var aggregateException = capturedException.SourceException as AggregateException;
-                if (aggregateException != null)
-                {
-                    if (aggregateException.InnerExceptions.CoalesceEnumerable().Any() &&
-                        aggregateException.InnerExceptions.Count == 1)
+                    var errorResponseException = capturedException.SourceException as ErrorResponseMessageException;
+                    if (errorResponseException != null)
                     {
-                        errorResponseException = aggregateException.InnerExceptions.Single() as ErrorResponseMessageException;
-                        if (errorResponseException != null)
-                        {
-                            this.ThrowTerminatingError(errorResponseException.ToErrorRecord());
-                        }
-
-                        this.ThrowTerminatingError(aggregateException.InnerExceptions.Single().ToErrorRecord());
+                        errorRecord = errorResponseException.ToErrorRecord();
                     }
                     else
                     {
-                        this.ThrowTerminatingError(aggregateException.ToErrorRecord());
+                        var aggregateException = capturedException.SourceException as AggregateException;
+                        if (aggregateException != null)
+                        {
+                            errorResponseException = aggregateException.InnerException as ErrorResponseMessageException;
+                            if (errorResponseException != null)
+                            {
+                                errorRecord = errorResponseException.ToErrorRecord();
+                            }
+                            else
+                            {
+                                errorRecord = aggregateException.InnerException.ToErrorRecord();
+                            }
+                        }
+                        else
+                        {
+                            errorRecord = capturedException.SourceException.ToErrorRecord();
+                        }
                     }
                 }
-
-                capturedException.Throw();
+                
+                this.ThrowTerminatingError(errorRecord);
             }
             finally
             {

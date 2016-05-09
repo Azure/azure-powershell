@@ -12,32 +12,48 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.MachineLearning.Utilities;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
+using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, WebServicesCmdletBase.CommandletSuffix)]
     public class NewAzureMLWebService : WebServicesCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web service.")]
+        protected const string CreateFromFileParameterSet = "Create a new Azure ML webservice from a JSON definiton file.";
+        protected const string CreateFromObjectParameterSet = "Create a new Azure ML webservice from a WebService instance definition.";
+       
+        [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web service.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The location of the AzureML.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
         
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web service.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the web service")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the AzureML.")]
+        [Parameter(ParameterSetName = NewAzureMLWebService.CreateFromFileParameterSet, Mandatory = true, HelpMessage = "The definition of the new web service.")]
         [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+        public string DefinitionFile { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The definition of the new web service")]
+        [Parameter(ParameterSetName = NewAzureMLWebService.CreateFromObjectParameterSet, Mandatory = true, HelpMessage = "The definition of the new web service.", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public WebService NewWebServiceDefinition { get; set; }
 
         protected override void RunCmdlet()
         {
+            if (string.Equals(this.ParameterSetName, NewAzureMLWebService.CreateFromFileParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                string jsonDefinition = CmdletHelpers.GetWebServiceDefinitionFromFile(this.DefinitionFile);
+                this.NewWebServiceDefinition = ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);
+            }
+
             WebService newWebService = this.WebServicesClient.CreateAzureMlWebService(this.SubscriptionId, this.ResourceGroupName, this.Location, this.Name, this.NewWebServiceDefinition);
             this.WriteObject(newWebService);
         }

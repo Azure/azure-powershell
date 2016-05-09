@@ -12,29 +12,125 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
     [Cmdlet(VerbsData.Update, WebServicesCmdletBase.CommandletSuffix)]
     public class UpdateAzureMLWebService : WebServicesCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web service.")]
+        protected const string UpdateFromArgumentsParameterSet = "Update specific properties of the .";
+        protected const string UpdateFromObjectParameterSet = "Create a new Azure ML webservice from a WebService instance definition.";
+
+        [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web service.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web service.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the web service.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The definition of the updated web service")]
-        [ValidateNotNullOrEmpty]
-        public WebService UpdatedWebServiceDefinition { get; set; }
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "New title for the web service.")]
+        public string Title { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "New description for the web service.")]
+        public string Description { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "Mark the service as readonly.")]
+        public SwitchParameter IsReadOnly { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "New access keys for the web service.")]
+        public WebServiceKeys Keys { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "New access key for the storage account associated with the web service. This allows for key rotation if needed.")]
+        public string StorageAccountKey { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "New diagnostics settings for the web service.")]
+        public DiagnosticsConfiguration Diagnostics { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "New realtime endpoint runtime settings for the web service.")]
+        public RealtimeConfiguration RealtimeConfiguration { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "Updated assets for the web service.")]
+        public IDictionary<string, AssetItem> Assets { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "Updated input schema for the web service.")]
+        public ServiceInputOutputSpecification Input { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "Updated output schema for the web service.")]
+        public ServiceInputOutputSpecification Output { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "Updated global parameter values definition for the web service.")]
+        public IDictionary<string, string> Parameters { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "Updated graph package for the web service.")]
+        public WebServicePropertiesForGraphPackage Package { get; set; }
+
+        [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromObjectParameterSet, Mandatory = true, HelpMessage = "An updated definition object to update the referenced web service with.", ValueFromPipeline = true)]
+        public WebService ServiceUpdates { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         protected override void RunCmdlet()
         {
-            WebService updatedService = this.WebServicesClient.UpdateAzureMlWebService(this.SubscriptionId, this.ResourceGroupName, this.Name, this.UpdatedWebServiceDefinition);
+            bool isUpdateToReadonly = this.IsReadOnly.IsPresent;
+            if (string.Equals(this.ParameterSetName, UpdateAzureMLWebService.UpdateFromObjectParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                isUpdateToReadonly = this.ServiceUpdates.Properties != null &&
+                                     this.ServiceUpdates.Properties.ReadOnlyProperty.HasValue &&
+                                     this.ServiceUpdates.Properties.ReadOnlyProperty.Value;
+            }
+
+            if (isUpdateToReadonly)
+            {
+                this.ConfirmAction(
+                   force: this.Force.IsPresent,
+                   actionMessage: Resources.UpdateServiceToReadonly.FormatInvariant(this.Name),
+                   processMessage: @"Updating machine learning web service..",
+                   target: this.Name,
+                   action: this.UpdateWebServiceResource);
+            }
+            else
+            {
+                this.UpdateWebServiceResource();
+            }
+        }
+
+        private void UpdateWebServiceResource()
+        {
+            WebService serviceDefinitionUpdate = this.ServiceUpdates;
+            if (string.Equals(this.ParameterSetName, UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                serviceDefinitionUpdate = new WebService
+                {
+                    Properties = new WebServicePropertiesForGraph
+                    {
+                        Title = this.Title,
+                        Description = this.Description,
+                        Diagnostics = this.Diagnostics,
+                        Keys = this.Keys,
+                        Assets = this.Assets,
+                        Input = this.Input,
+                        Output = this.Output,
+                        ReadOnlyProperty = this.IsReadOnly.IsPresent,
+                        RealtimeConfiguration = this.RealtimeConfiguration,
+                        Parameters = this.Parameters,
+                        Package = this.Package
+                    }
+                };
+
+                if (!string.IsNullOrWhiteSpace(this.StorageAccountKey))
+                {
+                    serviceDefinitionUpdate.Properties.StorageAccount = new StorageAccount(null, this.StorageAccountKey);
+                }
+            }
+
+            WebService updatedService = this.WebServicesClient.UpdateAzureMlWebService(this.SubscriptionId, this.ResourceGroupName, this.Name, serviceDefinitionUpdate);
             this.WriteObject(updatedService);
         }
     }
