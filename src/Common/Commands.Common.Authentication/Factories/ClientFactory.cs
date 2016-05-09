@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 types.Add(obj.GetType());
             }
-            
+
             var constructor = typeof(TClient).GetConstructor(types.ToArray());
 
             if (constructor == null)
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
             TClient client = CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
-            foreach(DelegatingHandler handler in GetCustomHandlers())
+            foreach (DelegatingHandler handler in GetCustomHandlers())
             {
                 client.AddHandlerToPipeline(handler);
             }
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
-        public void AddHandler<T>(T handler) where T: DelegatingHandler, ICloneable
+        public void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable
         {
             if (handler != null)
             {

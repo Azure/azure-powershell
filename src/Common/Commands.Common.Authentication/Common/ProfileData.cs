@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 };
 
                 userAccount.SetProperty(AzureAccount.Property.Subscriptions, new Guid(this.SubscriptionId).ToString());
-                
+
                 if (!string.IsNullOrEmpty(ActiveDirectoryTenantId))
                 {
                     userAccount.SetProperty(AzureAccount.Property.Tenants, ActiveDirectoryTenantId);
