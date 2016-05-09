@@ -14,11 +14,10 @@
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using Microsoft.Azure.Commands.RedisCache.Properties;
-    using Microsoft.Azure.Management.Redis.Models;
-    using System.Management.Automation;
-    using System;
     using Microsoft.Azure.Commands.RedisCache.Models;
+    using Microsoft.Azure.Commands.RedisCache.Properties;
+    using System;
+    using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Set, "AzureRmRedisCacheDiagnostics"), OutputType(typeof(void))]
     public class SetAzureRedisCacheDiagnostics : RedisCacheCmdletBase
@@ -37,9 +36,9 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
-            string storageAccountName = GetStorageAccountName(StorageAccountId); 
+            string storageAccountName = GetStorageAccountName(StorageAccountId);
             RedisCacheAttributes cache = new RedisCacheAttributes(CacheClient.GetCache(ResourceGroupName, Name), ResourceGroupName);
-            CacheClient.SetDiagnostics(cache.Id,storageAccountName);
+            CacheClient.SetDiagnostics(cache.Id, storageAccountName);
         }
 
         private string GetStorageAccountName(string storageAccountId)
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 string[] resourceParts = storageAccountId.Split('/');
                 // Valid ARM uri when split on '/' should have 9 parts. Ex: /subscriptions/<sub-id>/resourceGroups/<resource group name>/providers/Microsoft.ClassicStorage/storageAccounts/<account name>
-                if(resourceParts.Length != 9)
+                if (resourceParts.Length != 9)
                 {
                     throw new ArgumentException(Resources.StorageAccountIdException);
                 }

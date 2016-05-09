@@ -12,20 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Threading;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Auth;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch.Models;
+using Microsoft.Rest;
 using System;
 using System.Collections;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Security.Policy;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Rest;
-using TaskDependencies = Microsoft.Azure.Batch.Protocol.Models.TaskDependencies;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -118,8 +113,8 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
         /// </summary>
-        public AccountKeyType KeyInUse 
-        { 
+        public AccountKeyType KeyInUse
+        {
             get { return this.keyInUse; }
             set
             {
@@ -129,7 +124,7 @@ namespace Microsoft.Azure.Commands.Batch
                     this.batchOMClient = null;
                 }
                 this.keyInUse = value;
-            } 
+            }
         }
 
         internal BatchClient BatchOMClient
@@ -217,7 +212,7 @@ namespace Microsoft.Azure.Commands.Batch
             ServiceClientCredentials credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
 
             BatchServiceClient restClient = handler == null ? new BatchServiceClient(new Uri(url), credentials) : new BatchServiceClient(new Uri(url), credentials, handler);
-            
+
             restClient.HttpClient.DefaultRequestHeaders.UserAgent.Add(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue);
 
             restClient.SetRetryPolicy(null); //Force there to be no retries

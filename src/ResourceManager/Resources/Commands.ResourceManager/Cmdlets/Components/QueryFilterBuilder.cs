@@ -14,10 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System;
     using System.Linq;
     using System.Text;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// A class that builds query filters.
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             }
 
             return filterStringBuilder.Length > 0
-                ? filterStringBuilder.ToString() 
+                ? filterStringBuilder.ToString()
                 : remainderFilter;
         }
 
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="tagName">The tag name.</param>
         /// <param name="tagValue">The tag value.</param>
         /// <param name="filter">The filter.</param>
-        public static string CreateFilter(string resourceType, string resourceName, string tagName, string tagValue, string filter, string nameContains=null, string resourceGroupNameContains=null)
+        public static string CreateFilter(string resourceType, string resourceName, string tagName, string tagValue, string filter, string nameContains = null, string resourceGroupNameContains = null)
         {
             var filterStringBuilder = new StringBuilder();
             var substringStringBuilder = new StringBuilder();
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                     else
                     {
                         throw new ArgumentException(
-                            "If $filter is specified, it cannot be empty and must be of the format '$filter = <filter_value>'. The filter: " + filter, 
+                            "If $filter is specified, it cannot be empty and must be of the format '$filter = <filter_value>'. The filter: " + filter,
                             "filter");
                     }
                 }

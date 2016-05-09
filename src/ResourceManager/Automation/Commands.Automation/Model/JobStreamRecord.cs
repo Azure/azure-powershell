@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Automation.Common;
-
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -44,7 +42,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public JobStreamRecord(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId ) : base (jobStream, resourceGroupName, automationAccountName, jobId)
+        public JobStreamRecord(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId) : base(jobStream, resourceGroupName, automationAccountName, jobId)
         {
             this.Value = new Hashtable();
             foreach (var kvp in jobStream.Properties.Value)

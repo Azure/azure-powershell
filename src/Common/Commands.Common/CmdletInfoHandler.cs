@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// The name of the parameter set specified by user.
         /// </summary>
         public string ParameterSet { get; private set; }
-        
+
         /// <summary>
         /// The unique client request id.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             this.ParameterSet = parameterSet;
             this.ClientRequestId = clientRequestId;
         }
-        
+
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (Cmdlet != null)

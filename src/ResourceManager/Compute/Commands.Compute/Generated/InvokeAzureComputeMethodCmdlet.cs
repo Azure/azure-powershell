@@ -19,16 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure;
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -116,100 +108,100 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 switch (MethodName)
                 {
-                    case "ContainerServiceCreateOrUpdate" :
+                    case "ContainerServiceCreateOrUpdate":
                         ExecuteContainerServiceCreateOrUpdateMethod(argumentList);
                         break;
-                    case "ContainerServiceDelete" :
+                    case "ContainerServiceDelete":
                         ExecuteContainerServiceDeleteMethod(argumentList);
                         break;
-                    case "ContainerServiceGet" :
+                    case "ContainerServiceGet":
                         ExecuteContainerServiceGetMethod(argumentList);
                         break;
-                    case "ContainerServiceList" :
+                    case "ContainerServiceList":
                         ExecuteContainerServiceListMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetCreateOrUpdate" :
+                    case "VirtualMachineScaleSetCreateOrUpdate":
                         ExecuteVirtualMachineScaleSetCreateOrUpdateMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetDeallocate" :
+                    case "VirtualMachineScaleSetDeallocate":
                         ExecuteVirtualMachineScaleSetDeallocateMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetDelete" :
+                    case "VirtualMachineScaleSetDelete":
                         ExecuteVirtualMachineScaleSetDeleteMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetDeleteInstances" :
+                    case "VirtualMachineScaleSetDeleteInstances":
                         ExecuteVirtualMachineScaleSetDeleteInstancesMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetGet" :
+                    case "VirtualMachineScaleSetGet":
                         ExecuteVirtualMachineScaleSetGetMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetGetInstanceView" :
+                    case "VirtualMachineScaleSetGetInstanceView":
                         ExecuteVirtualMachineScaleSetGetInstanceViewMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetList" :
+                    case "VirtualMachineScaleSetList":
                         ExecuteVirtualMachineScaleSetListMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetListAll" :
+                    case "VirtualMachineScaleSetListAll":
                         ExecuteVirtualMachineScaleSetListAllMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetListAllNext" :
+                    case "VirtualMachineScaleSetListAllNext":
                         ExecuteVirtualMachineScaleSetListAllNextMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetListNext" :
+                    case "VirtualMachineScaleSetListNext":
                         ExecuteVirtualMachineScaleSetListNextMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetListSkus" :
+                    case "VirtualMachineScaleSetListSkus":
                         ExecuteVirtualMachineScaleSetListSkusMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetListSkusNext" :
+                    case "VirtualMachineScaleSetListSkusNext":
                         ExecuteVirtualMachineScaleSetListSkusNextMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetPowerOff" :
+                    case "VirtualMachineScaleSetPowerOff":
                         ExecuteVirtualMachineScaleSetPowerOffMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetReimage" :
+                    case "VirtualMachineScaleSetReimage":
                         ExecuteVirtualMachineScaleSetReimageMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetRestart" :
+                    case "VirtualMachineScaleSetRestart":
                         ExecuteVirtualMachineScaleSetRestartMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetStart" :
+                    case "VirtualMachineScaleSetStart":
                         ExecuteVirtualMachineScaleSetStartMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetUpdateInstances" :
+                    case "VirtualMachineScaleSetUpdateInstances":
                         ExecuteVirtualMachineScaleSetUpdateInstancesMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetVMDeallocate" :
+                    case "VirtualMachineScaleSetVMDeallocate":
                         ExecuteVirtualMachineScaleSetVMDeallocateMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetVMDelete" :
+                    case "VirtualMachineScaleSetVMDelete":
                         ExecuteVirtualMachineScaleSetVMDeleteMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetVMGet" :
+                    case "VirtualMachineScaleSetVMGet":
                         ExecuteVirtualMachineScaleSetVMGetMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetVMGetInstanceView" :
+                    case "VirtualMachineScaleSetVMGetInstanceView":
                         ExecuteVirtualMachineScaleSetVMGetInstanceViewMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetVMList" :
+                    case "VirtualMachineScaleSetVMList":
                         ExecuteVirtualMachineScaleSetVMListMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetVMListNext" :
+                    case "VirtualMachineScaleSetVMListNext":
                         ExecuteVirtualMachineScaleSetVMListNextMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetVMPowerOff" :
+                    case "VirtualMachineScaleSetVMPowerOff":
                         ExecuteVirtualMachineScaleSetVMPowerOffMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetVMReimage" :
+                    case "VirtualMachineScaleSetVMReimage":
                         ExecuteVirtualMachineScaleSetVMReimageMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetVMRestart" :
+                    case "VirtualMachineScaleSetVMRestart":
                         ExecuteVirtualMachineScaleSetVMRestartMethod(argumentList);
                         break;
-                    case "VirtualMachineScaleSetVMStart" :
+                    case "VirtualMachineScaleSetVMStart":
                         ExecuteVirtualMachineScaleSetVMStartMethod(argumentList);
                         break;
-                    default : WriteWarning("Cannot find the method by name = '" + MethodName + "'."); break;
+                    default: WriteWarning("Cannot find the method by name = '" + MethodName + "'."); break;
                 }
             });
         }
@@ -219,38 +211,38 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             switch (MethodName)
             {
-                    case "ContainerServiceCreateOrUpdate" : return CreateContainerServiceCreateOrUpdateDynamicParameters();
-                    case "ContainerServiceDelete" : return CreateContainerServiceDeleteDynamicParameters();
-                    case "ContainerServiceGet" : return CreateContainerServiceGetDynamicParameters();
-                    case "ContainerServiceList" : return CreateContainerServiceListDynamicParameters();
-                    case "VirtualMachineScaleSetCreateOrUpdate" : return CreateVirtualMachineScaleSetCreateOrUpdateDynamicParameters();
-                    case "VirtualMachineScaleSetDeallocate" : return CreateVirtualMachineScaleSetDeallocateDynamicParameters();
-                    case "VirtualMachineScaleSetDelete" : return CreateVirtualMachineScaleSetDeleteDynamicParameters();
-                    case "VirtualMachineScaleSetDeleteInstances" : return CreateVirtualMachineScaleSetDeleteInstancesDynamicParameters();
-                    case "VirtualMachineScaleSetGet" : return CreateVirtualMachineScaleSetGetDynamicParameters();
-                    case "VirtualMachineScaleSetGetInstanceView" : return CreateVirtualMachineScaleSetGetInstanceViewDynamicParameters();
-                    case "VirtualMachineScaleSetList" : return CreateVirtualMachineScaleSetListDynamicParameters();
-                    case "VirtualMachineScaleSetListAll" : return CreateVirtualMachineScaleSetListAllDynamicParameters();
-                    case "VirtualMachineScaleSetListAllNext" : return CreateVirtualMachineScaleSetListAllNextDynamicParameters();
-                    case "VirtualMachineScaleSetListNext" : return CreateVirtualMachineScaleSetListNextDynamicParameters();
-                    case "VirtualMachineScaleSetListSkus" : return CreateVirtualMachineScaleSetListSkusDynamicParameters();
-                    case "VirtualMachineScaleSetListSkusNext" : return CreateVirtualMachineScaleSetListSkusNextDynamicParameters();
-                    case "VirtualMachineScaleSetPowerOff" : return CreateVirtualMachineScaleSetPowerOffDynamicParameters();
-                    case "VirtualMachineScaleSetReimage" : return CreateVirtualMachineScaleSetReimageDynamicParameters();
-                    case "VirtualMachineScaleSetRestart" : return CreateVirtualMachineScaleSetRestartDynamicParameters();
-                    case "VirtualMachineScaleSetStart" : return CreateVirtualMachineScaleSetStartDynamicParameters();
-                    case "VirtualMachineScaleSetUpdateInstances" : return CreateVirtualMachineScaleSetUpdateInstancesDynamicParameters();
-                    case "VirtualMachineScaleSetVMDeallocate" : return CreateVirtualMachineScaleSetVMDeallocateDynamicParameters();
-                    case "VirtualMachineScaleSetVMDelete" : return CreateVirtualMachineScaleSetVMDeleteDynamicParameters();
-                    case "VirtualMachineScaleSetVMGet" : return CreateVirtualMachineScaleSetVMGetDynamicParameters();
-                    case "VirtualMachineScaleSetVMGetInstanceView" : return CreateVirtualMachineScaleSetVMGetInstanceViewDynamicParameters();
-                    case "VirtualMachineScaleSetVMList" : return CreateVirtualMachineScaleSetVMListDynamicParameters();
-                    case "VirtualMachineScaleSetVMListNext" : return CreateVirtualMachineScaleSetVMListNextDynamicParameters();
-                    case "VirtualMachineScaleSetVMPowerOff" : return CreateVirtualMachineScaleSetVMPowerOffDynamicParameters();
-                    case "VirtualMachineScaleSetVMReimage" : return CreateVirtualMachineScaleSetVMReimageDynamicParameters();
-                    case "VirtualMachineScaleSetVMRestart" : return CreateVirtualMachineScaleSetVMRestartDynamicParameters();
-                    case "VirtualMachineScaleSetVMStart" : return CreateVirtualMachineScaleSetVMStartDynamicParameters();
-                    default : break;
+                case "ContainerServiceCreateOrUpdate": return CreateContainerServiceCreateOrUpdateDynamicParameters();
+                case "ContainerServiceDelete": return CreateContainerServiceDeleteDynamicParameters();
+                case "ContainerServiceGet": return CreateContainerServiceGetDynamicParameters();
+                case "ContainerServiceList": return CreateContainerServiceListDynamicParameters();
+                case "VirtualMachineScaleSetCreateOrUpdate": return CreateVirtualMachineScaleSetCreateOrUpdateDynamicParameters();
+                case "VirtualMachineScaleSetDeallocate": return CreateVirtualMachineScaleSetDeallocateDynamicParameters();
+                case "VirtualMachineScaleSetDelete": return CreateVirtualMachineScaleSetDeleteDynamicParameters();
+                case "VirtualMachineScaleSetDeleteInstances": return CreateVirtualMachineScaleSetDeleteInstancesDynamicParameters();
+                case "VirtualMachineScaleSetGet": return CreateVirtualMachineScaleSetGetDynamicParameters();
+                case "VirtualMachineScaleSetGetInstanceView": return CreateVirtualMachineScaleSetGetInstanceViewDynamicParameters();
+                case "VirtualMachineScaleSetList": return CreateVirtualMachineScaleSetListDynamicParameters();
+                case "VirtualMachineScaleSetListAll": return CreateVirtualMachineScaleSetListAllDynamicParameters();
+                case "VirtualMachineScaleSetListAllNext": return CreateVirtualMachineScaleSetListAllNextDynamicParameters();
+                case "VirtualMachineScaleSetListNext": return CreateVirtualMachineScaleSetListNextDynamicParameters();
+                case "VirtualMachineScaleSetListSkus": return CreateVirtualMachineScaleSetListSkusDynamicParameters();
+                case "VirtualMachineScaleSetListSkusNext": return CreateVirtualMachineScaleSetListSkusNextDynamicParameters();
+                case "VirtualMachineScaleSetPowerOff": return CreateVirtualMachineScaleSetPowerOffDynamicParameters();
+                case "VirtualMachineScaleSetReimage": return CreateVirtualMachineScaleSetReimageDynamicParameters();
+                case "VirtualMachineScaleSetRestart": return CreateVirtualMachineScaleSetRestartDynamicParameters();
+                case "VirtualMachineScaleSetStart": return CreateVirtualMachineScaleSetStartDynamicParameters();
+                case "VirtualMachineScaleSetUpdateInstances": return CreateVirtualMachineScaleSetUpdateInstancesDynamicParameters();
+                case "VirtualMachineScaleSetVMDeallocate": return CreateVirtualMachineScaleSetVMDeallocateDynamicParameters();
+                case "VirtualMachineScaleSetVMDelete": return CreateVirtualMachineScaleSetVMDeleteDynamicParameters();
+                case "VirtualMachineScaleSetVMGet": return CreateVirtualMachineScaleSetVMGetDynamicParameters();
+                case "VirtualMachineScaleSetVMGetInstanceView": return CreateVirtualMachineScaleSetVMGetInstanceViewDynamicParameters();
+                case "VirtualMachineScaleSetVMList": return CreateVirtualMachineScaleSetVMListDynamicParameters();
+                case "VirtualMachineScaleSetVMListNext": return CreateVirtualMachineScaleSetVMListNextDynamicParameters();
+                case "VirtualMachineScaleSetVMPowerOff": return CreateVirtualMachineScaleSetVMPowerOffDynamicParameters();
+                case "VirtualMachineScaleSetVMReimage": return CreateVirtualMachineScaleSetVMReimageDynamicParameters();
+                case "VirtualMachineScaleSetVMRestart": return CreateVirtualMachineScaleSetVMRestartDynamicParameters();
+                case "VirtualMachineScaleSetVMStart": return CreateVirtualMachineScaleSetVMStartDynamicParameters();
+                default: break;
             }
 
             return null;

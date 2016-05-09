@@ -12,8 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using System;
 using Microsoft.Azure.Management.ApiManagement.SmapiModels;
+using System;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
@@ -57,13 +57,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
             TenantConfigurationState tenantState;
             switch (state)
             {
-                case AsyncOperationState.Started: tenantState = TenantConfigurationState.Started;
+                case AsyncOperationState.Started:
+                    tenantState = TenantConfigurationState.Started;
                     break;
-                case AsyncOperationState.InProgress: tenantState = TenantConfigurationState.InProgress;
+                case AsyncOperationState.InProgress:
+                    tenantState = TenantConfigurationState.InProgress;
                     break;
-                case AsyncOperationState.Succeeded: tenantState = TenantConfigurationState.Succeeded;
+                case AsyncOperationState.Succeeded:
+                    tenantState = TenantConfigurationState.Succeeded;
                     break;
-                case AsyncOperationState.Failed: tenantState = TenantConfigurationState.Failed;
+                case AsyncOperationState.Failed:
+                    tenantState = TenantConfigurationState.Failed;
                     break;
                 default: throw new NotSupportedException("Invalid State :" + state);
             }

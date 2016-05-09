@@ -14,13 +14,10 @@
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
 {
-    using Microsoft.Azure.Commands.NotificationHubs;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.Test;
-    using Xunit;
-    using System;
-    using Xunit.Abstractions;
     using ServiceManagemenet.Common.Models;
+    using Xunit;
+    using Xunit.Abstractions;
     public class NotificationHubServiceTests : TestBaseClass
     {
         public NotificationHubServiceTests(ITestOutputHelper output)

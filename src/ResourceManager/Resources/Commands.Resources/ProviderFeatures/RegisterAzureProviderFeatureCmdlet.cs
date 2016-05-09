@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
 {
+    using Microsoft.Azure.Commands.Resources.Models.ProviderFeatures;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.Resources.Models.ProviderFeatures;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
     /// <summary>

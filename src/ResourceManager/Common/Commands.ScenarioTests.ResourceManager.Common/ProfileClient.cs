@@ -12,6 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Subscriptions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,15 +27,6 @@ using System.IO;
 using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Hyak.Common;
-using Microsoft.Azure;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Subscriptions;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -142,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             Profile = profile;
             WarningLog = (s) => Debug.WriteLine(s);
-            
+
             try
             {
                 UpgradeProfile();
@@ -164,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <param name="certificate">Certificate to use with profile.</param>
         /// <param name="storageAccount">Storage account name (optional).</param>
         /// <returns></returns>
-        public void InitializeProfile(AzureEnvironment environment, Guid subscriptionId, X509Certificate2 certificate, 
+        public void InitializeProfile(AzureEnvironment environment, Guid subscriptionId, X509Certificate2 certificate,
             string storageAccount)
         {
             if (environment == null)
@@ -270,7 +269,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <param name="password">AD password (optional).</param>
         /// <param name="storageAccount">Storage account name (optional).</param>
         /// <returns></returns>
-        public void InitializeProfile(AzureEnvironment environment, Guid subscriptionId, AzureAccount account, 
+        public void InitializeProfile(AzureEnvironment environment, Guid subscriptionId, AzureAccount account,
             SecureString password, string storageAccount)
         {
             if (environment == null)
@@ -630,7 +629,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 throw new ArgumentException(string.Format(Resources.SubscriptionNameNotFoundMessage, name), "name");
             }
         }
-        
+
         public AzureSubscription SetSubscriptionAsDefault(string name, string accountName)
         {
             if (name == null)
@@ -751,7 +750,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             try
             {
                 tenants = tenants ?? account.GetPropertyAsArray(AzureAccount.Property.Tenants);
-                List<AzureSubscription> rdfeSubscriptions = ListServiceManagementSubscriptions(account, environment, 
+                List<AzureSubscription> rdfeSubscriptions = ListServiceManagementSubscriptions(account, environment,
                     password, ShowDialog.Never, tenants).ToList();
 
                 // Set user ID
@@ -807,8 +806,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 Name = subscription1.Name,
                 Environment = subscription1.Environment,
                 State = (subscription1.State != null &&
-                         subscription1.State.Equals(subscription2.State, StringComparison.OrdinalIgnoreCase)) ? 
-                        subscription1.State: null,
+                         subscription1.State.Equals(subscription2.State, StringComparison.OrdinalIgnoreCase)) ?
+                        subscription1.State : null,
                 Account = subscription1.Account ?? subscription2.Account
             };
 
@@ -1039,7 +1038,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 // Set to invalid value
                 resourceEndpoint = Guid.NewGuid().ToString();
             }
-            
+
             if (name != null)
             {
                 if (Profile.Environments.ContainsKey(name))
