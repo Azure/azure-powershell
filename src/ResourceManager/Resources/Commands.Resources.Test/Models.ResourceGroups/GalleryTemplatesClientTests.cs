@@ -276,6 +276,38 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ConstructsArrayTypeDynamicParameter()
+        {
+            string[] parameters = { "Name", "Location", "Mode" };
+            string[] parameterSetNames = { "__AllParameterSets" };
+            string key = "ranks";
+            TemplateFileParameterV1 value = new TemplateFileParameterV1()
+            {
+                AllowedValues = new List<object>()
+                {
+                    JArray.Parse("[\"1\", \"3\", \"5\"]"),
+                    JArray.Parse("[\"A\", \"D\", \"F\"]"),
+                },
+                DefaultValue = JArray.Parse("[\"A\", \"D\", \"F\"]"),
+                Type = "array"
+            };
+            KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
+
+            RuntimeDefinedParameter dynamicParameter = galleryTemplatesClient.ConstructDynamicParameter(parameters, parameter);
+
+            Assert.Equal("ranks", dynamicParameter.Name);
+            Assert.Equal(value.DefaultValue, dynamicParameter.Value);
+            Assert.Equal(typeof(object[]), dynamicParameter.ParameterType);
+            Assert.Equal(1, dynamicParameter.Attributes.Count);
+
+            ParameterAttribute parameterAttribute = (ParameterAttribute)dynamicParameter.Attributes[0];
+            Assert.False(parameterAttribute.Mandatory);
+            Assert.True(parameterAttribute.ValueFromPipelineByPropertyName);
+            Assert.Equal(parameterSetNames[0], parameterAttribute.ParameterSetName);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsDynamicParametersForTemplateFile()
         {
             RuntimeDefinedParameterDictionary result = galleryTemplatesClient.GetTemplateParametersFromFile(
@@ -284,7 +316,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 null,
                 new[] { "TestPS" });
 
-            Assert.Equal(6, result.Count);
+            Assert.Equal(7, result.Count);
 
             Assert.Equal("string", result["string"].Name);
             Assert.Equal(typeof(string), result["String"].ParameterType);
@@ -303,6 +335,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             Assert.Equal("secureObject", result["secureObject"].Name);
             Assert.Equal(typeof(Hashtable), result["secureObject"].ParameterType);
+
+            Assert.Equal("array", result["array"].Name);
+            Assert.Equal(typeof(object[]), result["array"].ParameterType);
         }
 
         [Fact]
@@ -318,6 +353,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 { "code", "F1" },
                 { "name", "Free" }
             };
+            templateParameterObject["array"] = new object[] {
+                "A", "D", "F"
+            };
+
 
             RuntimeDefinedParameterDictionary result = galleryTemplatesClient.GetTemplateParametersFromFile(
                 templateFile,
@@ -325,7 +364,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 null,
                 new[] { "TestPS" });
 
-            Assert.Equal(6, result.Count);
+            Assert.Equal(7, result.Count);
 
             Assert.Equal("string", result["string"].Name);
             Assert.Equal(typeof(string), result["string"].ParameterType);
@@ -345,6 +384,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(2, objectValue.Count);
             Assert.Equal("F1", objectValue["code"]);
             Assert.Equal("Free", objectValue["name"]);
+
+            Assert.Equal("array", result["array"].Name);
+            Assert.Equal(typeof(object[]), result["array"].ParameterType);
+            var arrayValue = result["array"].Value as object[];
+            Assert.Equal(3, arrayValue.Length);
+            Assert.Equal("A", arrayValue[0]);
+            Assert.Equal("F", arrayValue[2]);
         }
 
         [Fact]
@@ -360,7 +406,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 templateParameterFileSchema1,
                 new[] { "TestPS" });
 
-            Assert.Equal(6, result.Count);
+            Assert.Equal(7, result.Count);
 
             Assert.Equal("string", result["string"].Name);
             Assert.Equal(typeof(string), result["string"].ParameterType);
@@ -380,6 +426,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(2, objectValue.Count);
             Assert.Equal("F1", objectValue["code"].ToObject<string>());
             Assert.Equal("Free", objectValue["name"].ToObject<string>());
+
+            Assert.Equal("array", result["array"].Name);
+            Assert.Equal(typeof(object[]), result["array"].ParameterType);
+            var arrayValue = result["array"].Value as JArray;
+            Assert.Equal(3, arrayValue.Count);
+            Assert.Equal("A", arrayValue[0].ToObject<string>());
+            Assert.Equal("F", arrayValue[2].ToObject<string>());
         }
 
         [Fact]
@@ -395,7 +448,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 templateParameterFileSchema2,
                 new[] { "TestPS" });
 
-            Assert.Equal(6, result.Count);
+            Assert.Equal(7, result.Count);
 
             Assert.Equal("string", result["string"].Name);
             Assert.Equal(typeof(string), result["string"].ParameterType);
@@ -415,6 +468,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(2, objectValue.Count);
             Assert.Equal("F1", objectValue["code"].ToObject<string>());
             Assert.Equal("Free", objectValue["name"].ToObject<string>());
+
+            Assert.Equal("array", result["array"].Name);
+            Assert.Equal(typeof(object[]), result["array"].ParameterType);
+            var arrayValue = result["array"].Value as JArray;
+            Assert.Equal(3, arrayValue.Count);
+            Assert.Equal("A", arrayValue[0].ToObject<string>());
+            Assert.Equal("F", arrayValue[2].ToObject<string>());
         }
 
         [Fact]

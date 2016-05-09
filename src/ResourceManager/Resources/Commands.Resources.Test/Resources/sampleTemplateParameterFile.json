@@ -17,10 +17,13 @@
             "name": "Free"
       }
     },
-    "secureObject": {
-        "value": {
-            "code": "F2",
-            "name": "Standard"
-      }
-    }
+	"secureObject": {
+		"value": {
+			"code": "F2",
+			"name": "Standard"
+		}
+	},
+	"array": {
+		"value": [ "A", "D", "F" ]
+	}
 }

@@ -10,6 +10,9 @@
 		},
 		"servicePlan": {
 			"value": "myplan"
+		},
+		"ranks": {
+			"value": [ "c", "d" ]
 		}
 	}
 }

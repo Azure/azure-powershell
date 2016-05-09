@@ -16,9 +16,12 @@
         "object": {
           "type": "object"
         },
-        "secureObject": {
-          "type": "secureObject"
-        }
+		"secureObject": {
+			"type": "secureObject"
+		},
+		"array": {
+			"type":  "array"
+		}
     },
     "variables": {
         "string": "string",
