@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataLakeStore.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItem"), OutputType(typeof (IEnumerable<DataLakeStoreItem>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItem"), OutputType(typeof(IEnumerable<DataLakeStoreItem>))]
     public class GetAzureDataLakeStoreChildItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

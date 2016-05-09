@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -57,8 +57,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             cmdlet.JobSchedule = new PSCloudJobSchedule(BatchTestHelpers.CreateFakeBoundJobSchedule(context));
 
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                JobScheduleUpdateParameter, 
-                JobScheduleUpdateOptions, 
+                JobScheduleUpdateParameter,
+                JobScheduleUpdateOptions,
                 AzureOperationHeaderResponse<JobScheduleUpdateHeaders>>();
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };
 

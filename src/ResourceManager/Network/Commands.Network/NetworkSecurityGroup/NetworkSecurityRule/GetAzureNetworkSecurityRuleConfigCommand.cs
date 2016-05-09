@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = false)]
         public SwitchParameter DefaultRules { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             var rules = this.DefaultRules
                             ? this.NetworkSecurityGroup.DefaultSecurityRules
                             : this.NetworkSecurityGroup.SecurityRules;
-            
+
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var rule =

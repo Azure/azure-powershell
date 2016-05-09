@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Net;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests

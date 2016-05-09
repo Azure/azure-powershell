@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -70,13 +69,13 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName =true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The IP address of the local network gateway's BGP speaker")]
         public string BgpPeeringAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName =true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Weight added to BGP routes learned from this local network gateway")]
         public int PeerWeight { get; set; }
 
@@ -124,12 +123,12 @@ namespace Microsoft.Azure.Commands.Network
             localnetGateway.LocalNetworkAddressSpace.AddressPrefixes = this.AddressPrefix;
             localnetGateway.GatewayIpAddress = this.GatewayIpAddress;
 
-            if(this.PeerWeight < 0)
+            if (this.PeerWeight < 0)
             {
                 throw new PSArgumentException("PeerWeight cannot be negative");
             }
 
-            if(this.Asn > 0 && !string.IsNullOrEmpty(this.BgpPeeringAddress))
+            if (this.Asn > 0 && !string.IsNullOrEmpty(this.BgpPeeringAddress))
             {
                 localnetGateway.BgpSettings = new PSBgpSettings()
                 {
@@ -137,8 +136,9 @@ namespace Microsoft.Azure.Commands.Network
                     BgpPeeringAddress = this.BgpPeeringAddress,
                     PeerWeight = this.PeerWeight
                 };
-            }else if((!string.IsNullOrEmpty(this.BgpPeeringAddress) && this.Asn == 0) ||
-                (string.IsNullOrEmpty(this.BgpPeeringAddress) && this.Asn > 0))
+            }
+            else if ((!string.IsNullOrEmpty(this.BgpPeeringAddress) && this.Asn == 0) ||
+               (string.IsNullOrEmpty(this.BgpPeeringAddress) && this.Asn > 0))
             {
                 throw new PSArgumentException("For a BGP session to be established over IPsec, the local network gateway's ASN and BgpPeeringAddress must both be specified.");
             }

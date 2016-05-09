@@ -14,15 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
-    using System;
-    using System.Management.Automation;
-    using System.Security.Permissions;
-    using System.Threading.Tasks;
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// list azure blobs in specified azure container
@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private const string PrefixParameterSet = "BlobPrefix";
 
         [Parameter(Position = 0, HelpMessage = "Blob name", ParameterSetName = NameParameterSet)]
-        public string Blob 
+        public string Blob
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string blobName = String.Empty;
 
         [Parameter(HelpMessage = "Blob Prefix", ParameterSetName = PrefixParameterSet)]
-        public string Prefix 
+        public string Prefix
         {
             get
             {
@@ -92,10 +92,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string containerName = String.Empty;
 
         [Parameter(Mandatory = false, HelpMessage = "The max count of the blobs that can return.")]
-        public int? MaxCount 
+        public int? MaxCount
         {
             get { return InternalMaxCount; }
-            set 
+            set
             {
                 if (value.Value <= 0)
                 {
@@ -145,8 +145,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobRequestOptions requestOptions = RequestOptions;
             CloudBlobContainer container = localChannel.GetContainerReference(containerName);
 
-            if (!skipCheckExists && container.ServiceClient.Credentials.IsSharedKey 
-                && ! await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken))
+            if (!skipCheckExists && container.ServiceClient.Credentials.IsSharedKey
+                && !await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken))
             {
                 throw new ArgumentException(String.Format(Resources.ContainerNotFound, containerName));
             }
@@ -193,7 +193,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
 
                 CloudBlob blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition, requestOptions, OperationContext, CmdletCancellationToken);
-                
+
                 if (null == blob)
                 {
                     throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));

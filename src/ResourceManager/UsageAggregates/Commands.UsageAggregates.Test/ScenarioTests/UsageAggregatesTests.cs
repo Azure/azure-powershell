@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
         }
 
         [Fact]
-         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUsageAggregatesWithDefaultParameters()
         {
             UsageAggregatesTestController.NewInstance.RunPsTest("Test-GetUsageAggregatesWithDefaultParameters");

@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 {
                     Name = CustomDomainName,
                     UseSubDomain = UseSubDomain
-                };                
+                };
             }
-            else if(UseSubDomain != null)
+            else if (UseSubDomain != null)
             {
                 throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
             }

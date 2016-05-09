@@ -14,6 +14,7 @@
 
 using Newtonsoft.Json;
 using System;
+
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     /// <summary>

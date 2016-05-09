@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common;
-using System.Reflection;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Xunit.Abstractions;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
+using System.Reflection;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(
                 cmdlt.CertificateThumbprint,
                 AzureRmProfileProvider.Instance.Profile.Context.Account.GetProperty(AzureAccount.Property.CertificateThumbprint));
-            
+
         }
 
         [Fact]
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             {
                 cmdlt.InvokeBeginProcessing();
             }
-            catch(TargetInvocationException ex)
+            catch (TargetInvocationException ex)
             {
                 Assert.NotNull(ex);
                 Assert.NotNull(ex.InnerException);

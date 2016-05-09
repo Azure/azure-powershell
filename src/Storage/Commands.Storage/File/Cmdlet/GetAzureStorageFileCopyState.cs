@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.File;
 using System;
 using System.Collections.Concurrent;
 using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -28,25 +28,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     public class GetAzureStorageFileCopyStateCommand : AzureStorageFileCmdletBase
     {
         [Parameter(
-            Position = 0, 
-            HelpMessage = "Target share name", 
-            Mandatory = true, 
+            Position = 0,
+            HelpMessage = "Target share name",
+            Mandatory = true,
             ParameterSetName = Constants.ShareNameParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
         [Parameter(
-            Position = 1, 
-            HelpMessage = "Target file path", 
-            Mandatory = true, 
+            Position = 1,
+            HelpMessage = "Target file path",
+            Mandatory = true,
             ParameterSetName = Constants.ShareNameParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string FilePath { get; set; }
 
         [Parameter(
-            Position = 0, 
+            Position = 0,
             HelpMessage = "Target file instance", Mandatory = true,
-            ValueFromPipeline = true, 
+            ValueFromPipeline = true,
             ParameterSetName = Constants.FileParameterSetName)]
         [ValidateNotNull]
         public CloudFile File { get; set; }
