@@ -270,7 +270,7 @@ function Test-NewDeploymentWithParameterObject
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile complexParametersTemplate.json -TemplateParameterObject @{appSku=@{code="f1"; name="Free"}; servicePlan="plan1"}
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile complexParametersTemplate.json -TemplateParameterObject @{appSku=@{code="f1"; name="Free"}; servicePlan="plan1"; ranks=@("c", "d")}
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -304,7 +304,7 @@ function Test-NewDeploymentWithDynamicParameters
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile complexParametersTemplate.json -appSku @{code="f3"; name=@{major="Official"; minor="1.0"}} -servicePlan "plan1"
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile complexParametersTemplate.json -appSku @{code="f3"; name=@{major="Official"; minor="1.0"}} -servicePlan "plan1" -ranks @("c", "d")
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState

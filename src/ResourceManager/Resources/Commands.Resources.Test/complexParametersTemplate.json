@@ -28,12 +28,21 @@
 	},
 	"servicePlan": {
 		"type": "string"
+	},
+	"ranks": {
+		"type": "array",
+		"allowedValues": [
+			[ "a", "b" ],
+			[ "c", "d" ],
+			[ "d", "e", "f" ]
+		],
+		"defaultValue": [ "a", "b" ]
 	}
   },
   "variables": { },
   "resources": [{
         "type": "Microsoft.Storage/storageAccounts",
-        "name": "[concat('tianotest010', parameters('appSku').code)]",
+        "name": "[concat('tianotest010', parameters('appSku').code, parameters('ranks')[0])]",
         "apiVersion": "2015-06-15",
         "location": "[resourceGroup().location]",
         "properties": {
