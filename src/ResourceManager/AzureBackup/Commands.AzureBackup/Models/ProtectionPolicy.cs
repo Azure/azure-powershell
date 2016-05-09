@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.AzureBackup.Helpers;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             ScheduleType = sourcePolicy.BackupSchedule.ScheduleRun;
             BackupTime = ProtectionPolicyHelpers.ConvertToPowershellScheduleRunTimes(sourcePolicy.BackupSchedule.ScheduleRunTimes);
             DaysOfWeek = ProtectionPolicyHelpers.ConvertToPowershellScheduleRunDays(sourcePolicy.BackupSchedule.ScheduleRunDays);
-            RetentionPolicy = ProtectionPolicyHelpers.ConvertCSMRetentionPolicyListToPowershell(sourcePolicy.LtrRetentionPolicy);            
+            RetentionPolicy = ProtectionPolicyHelpers.ConvertCSMRetentionPolicyListToPowershell(sourcePolicy.LtrRetentionPolicy);
         }
-    }    
+    }
 
     public class AzureRMBackupRetentionPolicy
     {

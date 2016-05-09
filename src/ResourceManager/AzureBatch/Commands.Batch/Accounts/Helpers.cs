@@ -23,7 +23,7 @@ using System.Linq;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Batch
-{  
+{
     internal class Helpers
     {
         // copied from Resources\Commands.Resources
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <param name="name">The account name.</param>
         /// <param name="tag">The tag to filter on.</param>
         /// <returns>The filtered accounts</returns>
-        public static List<AccountResource> FilterAccounts(IList<AccountResource>accounts, Hashtable tag)
+        public static List<AccountResource> FilterAccounts(IList<AccountResource> accounts, Hashtable tag)
         {
             List<AccountResource> result = new List<AccountResource>();
 

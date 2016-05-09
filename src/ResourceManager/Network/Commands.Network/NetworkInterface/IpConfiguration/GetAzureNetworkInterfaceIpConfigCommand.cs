@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
+
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var ipconfig =
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
                 var ipconfigs = this.NetworkInterface.IpConfigurations;
                 WriteObject(ipconfigs, true);
             }
-            
+
         }
     }
 }

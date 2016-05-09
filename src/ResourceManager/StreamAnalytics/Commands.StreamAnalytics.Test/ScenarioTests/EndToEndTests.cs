@@ -31,6 +31,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
         public void TestStreamingAnalyticsE2E()
         {
             RunPowerShellTest("Test-TestStreamingAnalyticsE2E");
-        }        
+        }
     }
 }

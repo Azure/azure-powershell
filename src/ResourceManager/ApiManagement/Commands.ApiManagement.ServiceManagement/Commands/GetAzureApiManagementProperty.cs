@@ -14,14 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementProperty, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementProperty>), ParameterSetName = new []{ GetAll, FindByName, FindByTag })]
-    [OutputType(typeof(PsApiManagementProperty), ParameterSetName = new [] { GetById })]
+    [OutputType(typeof(IList<PsApiManagementProperty>), ParameterSetName = new[] { GetAll, FindByName, FindByTag })]
+    [OutputType(typeof(PsApiManagementProperty), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementProperty : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all properties";
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = false,
             HelpMessage = "Finds Properties associated with a Tag. If specified will return all properties associated with a tag. This parameter is optional.")]
         public String Tag { get; set; }
-        
+
         public override void ExecuteApiManagementCmdlet()
         {
             if (ParameterSetName.Equals(GetAll))

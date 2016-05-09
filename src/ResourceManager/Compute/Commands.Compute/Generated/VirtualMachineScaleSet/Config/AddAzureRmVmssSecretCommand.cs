@@ -20,10 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Management.Compute.Models;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -49,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public VaultCertificate [] VaultCertificate { get; set; }
+        public VaultCertificate[] VaultCertificate { get; set; }
 
         protected override void ProcessRecord()
         {

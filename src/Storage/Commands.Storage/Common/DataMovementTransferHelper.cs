@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage;
+﻿using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.DataMovement;
+using System;
+using System.Globalization;
+using System.Management.Automation;
+using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {

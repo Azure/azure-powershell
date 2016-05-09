@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
 using Xunit;
-using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
 {
@@ -61,10 +61,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
 
             // Don't go to the service on an Add ComputeNodeUser call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.ComputeNodeUser, 
-                ProxyModels.ComputeNodeAddUserOptions, 
+                ProxyModels.ComputeNodeUser,
+                ProxyModels.ComputeNodeAddUserOptions,
                 AzureOperationHeaderResponse<ProxyModels.ComputeNodeAddUserHeaders>>();
-            
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

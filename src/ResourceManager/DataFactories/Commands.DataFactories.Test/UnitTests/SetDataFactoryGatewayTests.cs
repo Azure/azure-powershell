@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Test;
 using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities;
 using Moq;
 using Xunit;
 
@@ -54,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
             };
 
             dataFactoriesClientMock.Setup(
-                f => f.PatchGateway(ResourceGroupName, DataFactoryName, 
+                f => f.PatchGateway(ResourceGroupName, DataFactoryName,
                     It.Is<PSDataFactoryGateway>
                     (parameters => parameters.Name == GatewayName && parameters.Description == description)))
                     .Returns(expectedOutput).Verifiable();

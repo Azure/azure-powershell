@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact (Skip = "Need to implement storage client mock.")]
+        [Fact(Skip = "Need to implement storage client mock.")]
         public void TestValidateDeployment()
         {
             ResourcesController.NewInstance.RunPsTest("Test-ValidateDeployment");

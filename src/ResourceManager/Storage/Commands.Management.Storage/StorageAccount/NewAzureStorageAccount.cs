@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using System.Collections;
+using System.Management.Automation;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ExecuteCmdlet();
 
-            CheckNameAvailabilityResult checkNameAvailabilityResult =this.StorageClient.StorageAccounts.CheckNameAvailability(this.Name);
+            CheckNameAvailabilityResult checkNameAvailabilityResult = this.StorageClient.StorageAccounts.CheckNameAvailability(this.Name);
             if (!checkNameAvailabilityResult.NameAvailable.Value)
             {
                 throw new System.ArgumentException(checkNameAvailabilityResult.Message, "Name");
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createParameters.Encryption = ParseEncryption(EnableEncryptionService);
             }
 
-            if(this.AccessTier != null)
+            if (this.AccessTier != null)
             {
                 createParameters.AccessTier = ParseAccessTier(AccessTier);
             }

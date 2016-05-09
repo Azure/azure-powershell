@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 {
@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             return new BlockAllocationTable(header.MaxTableEntries, header.BlockSize, bat);
         }
 
-        public IAsyncResult BeginCreate( AsyncCallback callback, object state)
+        public IAsyncResult BeginCreate(AsyncCallback callback, object state)
         {
             return AsyncMachine<BlockAllocationTable>.BeginAsyncMachine(CreateAsync, callback, state);
         }

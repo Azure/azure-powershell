@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Batch
                 InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,
                 StartTask = this.StartTask,
                 CertificateReferences = this.CertificateReferences,
-                VirtualMachineConfiguration =  this.VirtualMachineConfiguration,
+                VirtualMachineConfiguration = this.VirtualMachineConfiguration,
                 CloudServiceConfiguration = this.CloudServiceConfiguration
             };
 

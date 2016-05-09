@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
                 inboundNatRule.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
             inboundNatRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
-            
+
             if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
                 inboundNatRule.FrontendIPConfiguration = new PSResourceId() { Id = this.FrontendIpConfigurationId };

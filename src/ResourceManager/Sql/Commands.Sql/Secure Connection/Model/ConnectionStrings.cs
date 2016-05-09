@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Properties;
 using System;
 using System.Text;
 
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Model
     /// A class representing the secure connection strings
     /// </summary>
     public class ConnectionStrings
-    {      
+    {
         public ConnectionStrings(string proxyDnsName, string port, string serverName, string dbName)
         {
             AdoNetConnectionString = ConstructAdoNetConnectionString(proxyDnsName, port, serverName, dbName);
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Model
             PhpConnectionString = ConstructPhpConnectionString(proxyDnsName, port, serverName, dbName);
             JdbcConnectionString = ConstructJdbcConnectionString(proxyDnsName, port, serverName, dbName);
         }
-        
+
         /// <summary>
         /// Gets the Ado.Net connection string
         /// </summary>

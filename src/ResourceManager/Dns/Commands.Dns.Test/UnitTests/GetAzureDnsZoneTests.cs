@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Dns.Test.UnitTests
 {
-    using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using System.Management.Automation;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 

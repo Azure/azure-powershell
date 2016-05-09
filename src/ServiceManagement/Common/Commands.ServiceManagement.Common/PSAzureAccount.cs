@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.ServiceManagemenet.Common.Models
 {

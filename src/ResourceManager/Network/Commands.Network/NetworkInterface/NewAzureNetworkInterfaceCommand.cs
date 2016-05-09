@@ -14,13 +14,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true, 
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true, 
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "List of IpConfigurations")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkInterfaceIPConfiguration> IpConfiguration { get; set; }
-        
+
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.Name = this.Name;
             networkInterface.Location = this.Location;
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
-            
+
             // Get the subnetId and publicIpAddressId from the object if specified
             if (ParameterSetName.Contains(Microsoft.Azure.Commands.Network.Properties.Resources.SetByIpConfiguration))
             {
@@ -397,4 +397,3 @@ namespace Microsoft.Azure.Commands.Network
     }
 }
 
- 
