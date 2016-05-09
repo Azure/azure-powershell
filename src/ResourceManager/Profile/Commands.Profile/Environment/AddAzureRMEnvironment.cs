@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -98,12 +98,12 @@ namespace Microsoft.Azure.Commands.Profile
            HelpMessage = "The default tenant for this environment.")]
         public string AdTenant { get; set; }
 
-         [Parameter(Position = 18, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The audience for tokens authenticating with the AD Graph Endpoint.")]
+        [Parameter(Position = 18, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The audience for tokens authenticating with the AD Graph Endpoint.")]
         [Alias("GraphEndpointResourceId", "GraphResourceId")]
         public string GraphAudience { get; set; }
 
-       protected override void BeginProcessing()
+        protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
         }
@@ -134,8 +134,8 @@ namespace Microsoft.Azure.Commands.Profile
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] = AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix] = AzureDataLakeStoreFileSystemEndpointSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = AdTenant;
-             newEnvironment.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId] = GraphAudience;
-           WriteObject((PSAzureEnvironment)profileClient.AddOrSetEnvironment(newEnvironment));
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId] = GraphAudience;
+            WriteObject((PSAzureEnvironment)profileClient.AddOrSetEnvironment(newEnvironment));
         }
     }
 }

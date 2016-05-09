@@ -312,6 +312,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     sb.Append(chars[i]);
             }
             return sb.ToString().ToLowerInvariant();
-        } 
+        }
     }
 }
