@@ -70,11 +70,29 @@ namespace Microsoft.Azure.Commands.MachineLearning {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified web service definition file path does not exist..
+        /// </summary>
+        internal static string MissingDefinitionFile {
+            get {
+                return ResourceManager.GetString("MissingDefinitionFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the machine learning web service &quot;{0}&quot; ?.
         /// </summary>
         internal static string RemoveMlServiceWarning {
             get {
                 return ResourceManager.GetString("RemoveMlServiceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your update will make this web service readonly. This means that the service will no longer be update-able and can only be deleted. Are you sure you want to process this update for web service &quot;{0}&quot; ?.
+        /// </summary>
+        internal static string UpdateServiceToReadonly {
+            get {
+                return ResourceManager.GetString("UpdateServiceToReadonly", resourceCulture);
             }
         }
     }

@@ -61,7 +61,7 @@ FormatsToProcess = @()
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
-    '.\Microsoft.Azure.Commands.MachineLearning.dll'
+    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Azure.Commands.MachineLearning.dll'
 )
   
 # Functions to export from this module  

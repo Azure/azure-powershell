@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Commands.MachineLearning
         protected const string RemoveByNameGroupParameterSet = "Remove an Azure ML web service resouce by name and resource group.";
         protected const string RemoveByObjectParameterSet = "Remove an Azure ML web service specified as an object.";
 
-        [Parameter(ParameterSetName = RemoveAzureMLWebService.RemoveByNameGroupParameterSet, Position = 0, Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web service.")]
+        [Parameter(ParameterSetName = RemoveAzureMLWebService.RemoveByNameGroupParameterSet, Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web service.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = RemoveAzureMLWebService.RemoveByNameGroupParameterSet, Position = 1, Mandatory = true, HelpMessage = "The name of the web service.")]
+        [Parameter(ParameterSetName = RemoveAzureMLWebService.RemoveByNameGroupParameterSet, Mandatory = true, HelpMessage = "The name of the web service.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = RemoveByObjectParameterSet, Position = 0, Mandatory = true, HelpMessage = "The machine learning web service object.", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = RemoveAzureMLWebService.RemoveByObjectParameterSet, Mandatory = true, HelpMessage = "The machine learning web service object.", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public WebService MlWebService { get; set; }
 

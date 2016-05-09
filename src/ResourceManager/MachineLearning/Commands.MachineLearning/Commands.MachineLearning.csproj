@@ -115,7 +115,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\ExportWebServiceDefinition.cs" />
     <Compile Include="Cmdlets\GetAzureMLWebServiceKeys.cs" />
+    <Compile Include="Cmdlets\ImportWebServiceDefinition.cs" />
     <Compile Include="Cmdlets\RemoveAzureMLWebService.cs" />
     <Compile Include="Cmdlets\GetAzureMLWebService.cs" />
     <Compile Include="Cmdlets\NewAzureMLWebService.cs" />
@@ -129,7 +131,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utilities\CmdletHelpers.cs" />
-    <Compile Include="Utilities\ConversionHelper.cs" />
     <Compile Include="Utilities\WebServicesClient.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +148,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Microsoft.Azure.Commands.MachineLearning.dll-help.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

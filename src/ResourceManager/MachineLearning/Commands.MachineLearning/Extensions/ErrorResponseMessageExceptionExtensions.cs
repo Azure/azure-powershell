@@ -34,28 +34,30 @@ namespace Microsoft.Azure.Commands.MachineLearning.Extensions
         /// <param name="exception">The exception</param>
         internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
         {
-            // TODO: Improve this.
-            return new ErrorRecord(exception, exception.ErrorResponseMessage == null ? exception.HttpStatus.ToString() : exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
-        }
+            var errorReport = new StringBuilder();
+            errorReport.AppendLine();
+            if (exception.ErrorResponseMessage != null && exception.ErrorResponseMessage.Error != null)
+            {
+                errorReport.AppendLine("Error Code: {0}".FormatInvariant(exception.ErrorResponseMessage.Error.Code));
+                errorReport.AppendLine("Error Message: {0}".FormatInvariant(exception.ErrorResponseMessage.Error.Code));
+                errorReport.AppendLine("Error Target: {0}".FormatInvariant(exception.ErrorResponseMessage.Error.Target));
+                
+                if (exception.ErrorResponseMessage.Error.Details.Any())
+                {
+                    errorReport.AppendLine("Error Details:");
+                    foreach (var errorDetail in exception.ErrorResponseMessage.Error.Details)
+                    {
+                        errorReport.AppendLine("\t[Code={0}, Message={1}]".FormatInvariant(errorDetail.Code, errorDetail.Message));
+                    }
+                }
+            }
+            else
+            {
+                errorReport.AppendLine("Error message: {0}".FormatInvariant(exception.Message));
+            }
 
-        /// <summary>
-        /// Converts <see cref="Exception"/> objects into <see cref="ErrorRecord"/>
-        /// </summary>
-        /// <param name="exception">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this Exception exception)
-        {
-            // TODO: Improve this.
-            return new ErrorRecord(exception, exception.Message, ErrorCategory.CloseError, null);
-        }
-
-        /// <summary>
-        /// Converts <see cref="AggregateException"/> objects into <see cref="ErrorRecord"/>
-        /// </summary>
-        /// <param name="aggregateException">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this AggregateException aggregateException)
-        {
-            // TODO: Improve this.
-            return new ErrorRecord(aggregateException, aggregateException.ToString(), ErrorCategory.CloseError, null);
+            var returnedError = new Exception(errorReport.ToString(), exception);
+            return new ErrorRecord(returnedError, "Resource Provider Error", ErrorCategory.CloseError, null);
         }
 
         /// <summary>
@@ -82,6 +84,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Extensions
             errorReport.AppendLine("Request Id: {0}".FormatInvariant(requestId));
             errorReport.AppendLine("Error Code: {0}".FormatInvariant(cloudException.Body.Code));
             errorReport.AppendLine("Error Message: {0}".FormatInvariant(cloudException.Body.Message));
+            errorReport.AppendLine("Error Target: {0}".FormatInvariant(cloudException.Body.Target));
             if (cloudException.Body.Details.Any())
             {
                 errorReport.AppendLine("Error Details:");
@@ -91,8 +94,19 @@ namespace Microsoft.Azure.Commands.MachineLearning.Extensions
                 }
             }
 
-            var returnedError = new Exception(errorReport.ToString());
+            var returnedError = new Exception(errorReport.ToString(), cloudException);
             return new ErrorRecord(returnedError, "Resource Provider Error", ErrorCategory.CloseError, null);
+        }
+
+        /// <summary>
+        /// Converts <see cref="Exception"/> objects into <see cref="ErrorRecord"/>
+        /// </summary>
+        /// <param name="exception">The exception</param>
+        internal static ErrorRecord ToErrorRecord(this Exception exception)
+        {
+            // TODO: Improve this.
+            return new ErrorRecord(exception, exception.Message, ErrorCategory.CloseError, null);
         }
     }
 }
+
