@@ -14,14 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
 
     /// <summary>
     /// <c>JSON</c> extensions
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             NullValueHandling = NullValueHandling.Ignore,
             MissingMemberHandling = MissingMemberHandling.Ignore,
             ContractResolver = new CamelCasePropertyNamesWithOverridesContractResolver(),
-            Converters = new List<JsonConverter> 
+            Converters = new List<JsonConverter>
             {
                 new TimeSpanConverter(),
                 new StringEnumConverter { CamelCaseText = false },
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             DateTimeZoneHandling = DateTimeZoneHandling.Utc,
             NullValueHandling = NullValueHandling.Ignore,
             ContractResolver = new CamelCasePropertyNamesWithOverridesContractResolver(),
-            Converters = new List<JsonConverter> 
+            Converters = new List<JsonConverter>
             {
                 new TimeSpanConverter(),
                 new StringEnumConverter { CamelCaseText = false },

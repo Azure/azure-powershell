@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeAnalyticsCatalogItem"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeAnalyticsCatalogItem"), OutputType(typeof(bool))]
     public class TestAzureDataLakeAnalyticsCatalogItem : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

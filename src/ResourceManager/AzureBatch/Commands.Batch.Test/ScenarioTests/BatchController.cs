@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Batch;
@@ -22,7 +23,6 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {

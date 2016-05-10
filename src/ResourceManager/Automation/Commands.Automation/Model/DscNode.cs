@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
+using System;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model

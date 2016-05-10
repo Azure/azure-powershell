@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
@@ -25,10 +24,8 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
-using System.Management.Automation;
 using System.Linq;
-using AutoMapper;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {

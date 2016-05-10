@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.AzureStack.Management.StorageAdmin;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
-{ 
+{
     /// <summary>
     ///     dismiss faults
     ///    
@@ -34,7 +32,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         const string ShouldProcessTargetFormat = "fault {0} ";
         const string ShouldContinueQuery = "Continue with resolve fault?";
         const string ShouldContinueCaption = "Confirm";
-        
+
         /// <summary>
         ///     Farm Identifier
         /// </summary>
@@ -60,14 +58,14 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         [Parameter]
         public SwitchParameter Force
         {
-            get; 
-            set; 
+            get;
+            set;
         }
 
         protected override void Execute()
         {
-            if (ShouldProcess(string.Format(CultureInfo.InvariantCulture, ShouldProcessTargetFormat, FaultId)) && 
-                (Force || ShouldContinue(ShouldContinueQuery,ShouldContinueCaption)))
+            if (ShouldProcess(string.Format(CultureInfo.InvariantCulture, ShouldProcessTargetFormat, FaultId)) &&
+                (Force || ShouldContinue(ShouldContinueQuery, ShouldContinueCaption)))
             {
                 Client.Faults.Dismiss(ResourceGroupName, FarmName, FaultId);
             }

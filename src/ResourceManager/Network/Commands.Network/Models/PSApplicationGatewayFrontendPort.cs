@@ -16,8 +16,8 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayFrontendPort : PSChildResource
-     {
+    {
         public int Port { get; set; }
         public string ProvisioningState { get; set; }
-     }
+    }
 }

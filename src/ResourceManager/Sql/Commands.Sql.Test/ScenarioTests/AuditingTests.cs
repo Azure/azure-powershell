@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.Test;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
@@ -35,8 +33,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var authorizationClient = GetAuthorizationManagementClient();
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
         }
-        
-        [Fact]        
+
+        public AuditingTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithStorage()
         {
@@ -50,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorageV2");
         }
 
-        [Fact]        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerUpdatePolicyWithStorage()
         {

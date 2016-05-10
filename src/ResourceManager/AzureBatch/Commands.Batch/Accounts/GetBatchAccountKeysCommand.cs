@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchAccountKeys), OutputType(typeof(BatchAccountContext))]
     public class GetBatchAccountKeysCommand : BatchCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Batch service account to query keys for.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]

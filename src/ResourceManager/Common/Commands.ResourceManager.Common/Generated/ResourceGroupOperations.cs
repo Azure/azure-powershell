@@ -19,6 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -30,9 +33,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             this._client = client;
         }
-        
+
         private ResourceManagementClient _client;
-        
+
         /// <summary>
         /// Gets a reference to the
         /// Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient.
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._client; }
         }
-        
+
         /// <summary>
         /// Begin deleting resource group.To determine whether the operation
         /// has finished processing the request, call
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentOutOfRangeException("resourceGroupName");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 TracingAdapter.Enter(invocationId, this, "BeginDeletingAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -140,13 +140,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Delete;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     LongRunningOperationResponse result = null;
                     // Deserialize Response
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                     {
                         result.Status = OperationStatus.Succeeded;
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Checks whether resource group exists.
         /// </summary>
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentOutOfRangeException("resourceGroupName");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 TracingAdapter.Enter(invocationId, this, "CheckExistenceAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "subscriptions/";
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -297,13 +297,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Head;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ResourceGroupExistsResult result = null;
                     // Deserialize Response
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                     {
                         result.Exists = true;
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Create a resource group.
         /// </summary>
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("parameters.Location");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("parameters", parameters);
                 TracingAdapter.Enter(invocationId, this, "CreateOrUpdateAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -454,27 +454,27 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Put;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Serialize Request
                 string requestContent = null;
                 JToken requestDoc = null;
-                
+
                 JObject resourceGroupValue = new JObject();
                 requestDoc = resourceGroupValue;
-                
+
                 resourceGroupValue["location"] = parameters.Location;
-                
+
                 if (parameters.Properties != null)
                 {
                     resourceGroupValue["properties"] = JObject.Parse(parameters.Properties);
                 }
-                
+
                 if (parameters.Tags != null)
                 {
                     if (parameters.Tags is ILazyCollection == false || ((ILazyCollection)parameters.Tags).IsInitialized)
@@ -489,16 +489,16 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         resourceGroupValue["tags"] = tagsDictionary;
                     }
                 }
-                
+
                 if (parameters.ProvisioningState != null)
                 {
                     resourceGroupValue["provisioningState"] = parameters.ProvisioningState;
                 }
-                
+
                 requestContent = requestDoc.ToString(Newtonsoft.Json.Formatting.Indented);
                 httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
                 httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ResourceGroupCreateOrUpdateResult result = null;
                     // Deserialize Response
@@ -538,26 +538,26 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             ResourceGroupExtended resourceGroupInstance = new ResourceGroupExtended();
                             result.ResourceGroup = resourceGroupInstance;
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 resourceGroupInstance.Id = idInstance;
                             }
-                            
+
                             JToken nameValue = responseDoc["name"];
                             if (nameValue != null && nameValue.Type != JTokenType.Null)
                             {
                                 string nameInstance = ((string)nameValue);
                                 resourceGroupInstance.Name = nameInstance;
                             }
-                            
+
                             JToken propertiesValue = responseDoc["properties"];
                             if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                             {
@@ -568,21 +568,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     resourceGroupInstance.ProvisioningState = provisioningStateInstance;
                                 }
                             }
-                            
+
                             JToken locationValue = responseDoc["location"];
                             if (locationValue != null && locationValue.Type != JTokenType.Null)
                             {
                                 string locationInstance = ((string)locationValue);
                                 resourceGroupInstance.Location = locationInstance;
                             }
-                            
+
                             JToken propertiesValue2 = responseDoc["properties"];
                             if (propertiesValue2 != null && propertiesValue2.Type != JTokenType.Null)
                             {
                                 string propertiesInstance = propertiesValue2.ToString(Newtonsoft.Json.Formatting.Indented);
                                 resourceGroupInstance.Properties = propertiesInstance;
                             }
-                            
+
                             JToken tagsSequenceElement = ((JToken)responseDoc["tags"]);
                             if (tagsSequenceElement != null && tagsSequenceElement.Type != JTokenType.Null)
                             {
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     resourceGroupInstance.Tags.Add(tagsKey2, tagsValue2);
                                 }
                             }
-                            
+
                             JToken provisioningStateValue2 = responseDoc["provisioningState"];
                             if (provisioningStateValue2 != null && provisioningStateValue2.Type != JTokenType.Null)
                             {
@@ -601,14 +601,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 resourceGroupInstance.ProvisioningState = provisioningStateInstance2;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Delete resource group and all of its resources.
         /// </summary>
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 TracingAdapter.Enter(invocationId, this, "DeleteAsync", tracingParameters);
             }
-            
+
             cancellationToken.ThrowIfCancellationRequested();
             LongRunningOperationResponse response = await client.ResourceGroups.BeginDeletingAsync(resourceGroupName, cancellationToken).ConfigureAwait(false);
             cancellationToken.ThrowIfCancellationRequested();
@@ -688,15 +688,15 @@ namespace Microsoft.Azure.Management.Internal.Resources
                     delayInSeconds = client.LongRunningOperationRetryTimeout;
                 }
             }
-            
+
             if (shouldTrace)
             {
                 TracingAdapter.Exit(invocationId, result);
             }
-            
+
             return result;
         }
-        
+
         /// <summary>
         /// Get a resource group.
         /// </summary>
@@ -725,7 +725,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentOutOfRangeException("resourceGroupName");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 TracingAdapter.Enter(invocationId, this, "GetAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -764,7 +764,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -772,13 +772,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -804,7 +804,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ResourceGroupGetResult result = null;
                     // Deserialize Response
@@ -818,26 +818,26 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             ResourceGroupExtended resourceGroupInstance = new ResourceGroupExtended();
                             result.ResourceGroup = resourceGroupInstance;
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 resourceGroupInstance.Id = idInstance;
                             }
-                            
+
                             JToken nameValue = responseDoc["name"];
                             if (nameValue != null && nameValue.Type != JTokenType.Null)
                             {
                                 string nameInstance = ((string)nameValue);
                                 resourceGroupInstance.Name = nameInstance;
                             }
-                            
+
                             JToken propertiesValue = responseDoc["properties"];
                             if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                             {
@@ -848,21 +848,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     resourceGroupInstance.ProvisioningState = provisioningStateInstance;
                                 }
                             }
-                            
+
                             JToken locationValue = responseDoc["location"];
                             if (locationValue != null && locationValue.Type != JTokenType.Null)
                             {
                                 string locationInstance = ((string)locationValue);
                                 resourceGroupInstance.Location = locationInstance;
                             }
-                            
+
                             JToken propertiesValue2 = responseDoc["properties"];
                             if (propertiesValue2 != null && propertiesValue2.Type != JTokenType.Null)
                             {
                                 string propertiesInstance = propertiesValue2.ToString(Newtonsoft.Json.Formatting.Indented);
                                 resourceGroupInstance.Properties = propertiesInstance;
                             }
-                            
+
                             JToken tagsSequenceElement = ((JToken)responseDoc["tags"]);
                             if (tagsSequenceElement != null && tagsSequenceElement.Type != JTokenType.Null)
                             {
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     resourceGroupInstance.Tags.Add(tagsKey, tagsValue);
                                 }
                             }
-                            
+
                             JToken provisioningStateValue2 = responseDoc["provisioningState"];
                             if (provisioningStateValue2 != null && provisioningStateValue2.Type != JTokenType.Null)
                             {
@@ -881,14 +881,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 resourceGroupInstance.ProvisioningState = provisioningStateInstance2;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets a collection of resource groups.
         /// </summary>
@@ -928,7 +928,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         public async Task<ResourceGroupListResult> ListAsync(ResourceGroupListParameters parameters, CancellationToken cancellationToken)
         {
             // Validate
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -939,7 +939,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("parameters", parameters);
                 TracingAdapter.Enter(invocationId, this, "ListAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -983,7 +983,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -991,13 +991,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -1023,7 +1023,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ResourceGroupListResult result = null;
                     // Deserialize Response
@@ -1037,7 +1037,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -1047,21 +1047,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     ResourceGroupExtended resourceGroupJsonFormatInstance = new ResourceGroupExtended();
                                     result.ResourceGroups.Add(resourceGroupJsonFormatInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         resourceGroupJsonFormatInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken nameValue = valueValue["name"];
                                     if (nameValue != null && nameValue.Type != JTokenType.Null)
                                     {
                                         string nameInstance = ((string)nameValue);
                                         resourceGroupJsonFormatInstance.Name = nameInstance;
                                     }
-                                    
+
                                     JToken propertiesValue = valueValue["properties"];
                                     if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                                     {
@@ -1072,21 +1072,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             resourceGroupJsonFormatInstance.ProvisioningState = provisioningStateInstance;
                                         }
                                     }
-                                    
+
                                     JToken locationValue = valueValue["location"];
                                     if (locationValue != null && locationValue.Type != JTokenType.Null)
                                     {
                                         string locationInstance = ((string)locationValue);
                                         resourceGroupJsonFormatInstance.Location = locationInstance;
                                     }
-                                    
+
                                     JToken propertiesValue2 = valueValue["properties"];
                                     if (propertiesValue2 != null && propertiesValue2.Type != JTokenType.Null)
                                     {
                                         string propertiesInstance = propertiesValue2.ToString(Newtonsoft.Json.Formatting.Indented);
                                         resourceGroupJsonFormatInstance.Properties = propertiesInstance;
                                     }
-                                    
+
                                     JToken tagsSequenceElement = ((JToken)valueValue["tags"]);
                                     if (tagsSequenceElement != null && tagsSequenceElement.Type != JTokenType.Null)
                                     {
@@ -1097,7 +1097,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             resourceGroupJsonFormatInstance.Tags.Add(tagsKey, tagsValue);
                                         }
                                     }
-                                    
+
                                     JToken provisioningStateValue2 = valueValue["provisioningState"];
                                     if (provisioningStateValue2 != null && provisioningStateValue2.Type != JTokenType.Null)
                                     {
@@ -1106,7 +1106,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -1114,14 +1114,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -1144,7 +1144,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -1165,7 +1165,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("nextLink");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -1176,12 +1176,12 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("nextLink", nextLink);
                 TracingAdapter.Enter(invocationId, this, "ListNextAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + nextLink;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -1189,13 +1189,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -1221,7 +1221,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ResourceGroupListResult result = null;
                     // Deserialize Response
@@ -1235,7 +1235,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -1245,21 +1245,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     ResourceGroupExtended resourceGroupJsonFormatInstance = new ResourceGroupExtended();
                                     result.ResourceGroups.Add(resourceGroupJsonFormatInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         resourceGroupJsonFormatInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken nameValue = valueValue["name"];
                                     if (nameValue != null && nameValue.Type != JTokenType.Null)
                                     {
                                         string nameInstance = ((string)nameValue);
                                         resourceGroupJsonFormatInstance.Name = nameInstance;
                                     }
-                                    
+
                                     JToken propertiesValue = valueValue["properties"];
                                     if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                                     {
@@ -1270,21 +1270,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             resourceGroupJsonFormatInstance.ProvisioningState = provisioningStateInstance;
                                         }
                                     }
-                                    
+
                                     JToken locationValue = valueValue["location"];
                                     if (locationValue != null && locationValue.Type != JTokenType.Null)
                                     {
                                         string locationInstance = ((string)locationValue);
                                         resourceGroupJsonFormatInstance.Location = locationInstance;
                                     }
-                                    
+
                                     JToken propertiesValue2 = valueValue["properties"];
                                     if (propertiesValue2 != null && propertiesValue2.Type != JTokenType.Null)
                                     {
                                         string propertiesInstance = propertiesValue2.ToString(Newtonsoft.Json.Formatting.Indented);
                                         resourceGroupJsonFormatInstance.Properties = propertiesInstance;
                                     }
-                                    
+
                                     JToken tagsSequenceElement = ((JToken)valueValue["tags"]);
                                     if (tagsSequenceElement != null && tagsSequenceElement.Type != JTokenType.Null)
                                     {
@@ -1295,7 +1295,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             resourceGroupJsonFormatInstance.Tags.Add(tagsKey, tagsValue);
                                         }
                                     }
-                                    
+
                                     JToken provisioningStateValue2 = valueValue["provisioningState"];
                                     if (provisioningStateValue2 != null && provisioningStateValue2.Type != JTokenType.Null)
                                     {
@@ -1304,7 +1304,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -1312,14 +1312,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -1342,7 +1342,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Resource groups can be updated through a simple PATCH operation to
         /// a group address. The format of the request is the same as that for
@@ -1386,7 +1386,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("parameters.Location");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -1398,7 +1398,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("parameters", parameters);
                 TracingAdapter.Enter(invocationId, this, "PatchAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -1426,7 +1426,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -1434,27 +1434,27 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = new HttpMethod("PATCH");
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Serialize Request
                 string requestContent = null;
                 JToken requestDoc = null;
-                
+
                 JObject resourceGroupValue = new JObject();
                 requestDoc = resourceGroupValue;
-                
+
                 resourceGroupValue["location"] = parameters.Location;
-                
+
                 if (parameters.Properties != null)
                 {
                     resourceGroupValue["properties"] = JObject.Parse(parameters.Properties);
                 }
-                
+
                 if (parameters.Tags != null)
                 {
                     if (parameters.Tags is ILazyCollection == false || ((ILazyCollection)parameters.Tags).IsInitialized)
@@ -1469,16 +1469,16 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         resourceGroupValue["tags"] = tagsDictionary;
                     }
                 }
-                
+
                 if (parameters.ProvisioningState != null)
                 {
                     resourceGroupValue["provisioningState"] = parameters.ProvisioningState;
                 }
-                
+
                 requestContent = requestDoc.ToString(Newtonsoft.Json.Formatting.Indented);
                 httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
                 httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -1504,7 +1504,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ResourceGroupPatchResult result = null;
                     // Deserialize Response
@@ -1518,26 +1518,26 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             ResourceGroupExtended resourceGroupInstance = new ResourceGroupExtended();
                             result.ResourceGroup = resourceGroupInstance;
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 resourceGroupInstance.Id = idInstance;
                             }
-                            
+
                             JToken nameValue = responseDoc["name"];
                             if (nameValue != null && nameValue.Type != JTokenType.Null)
                             {
                                 string nameInstance = ((string)nameValue);
                                 resourceGroupInstance.Name = nameInstance;
                             }
-                            
+
                             JToken propertiesValue = responseDoc["properties"];
                             if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                             {
@@ -1548,21 +1548,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     resourceGroupInstance.ProvisioningState = provisioningStateInstance;
                                 }
                             }
-                            
+
                             JToken locationValue = responseDoc["location"];
                             if (locationValue != null && locationValue.Type != JTokenType.Null)
                             {
                                 string locationInstance = ((string)locationValue);
                                 resourceGroupInstance.Location = locationInstance;
                             }
-                            
+
                             JToken propertiesValue2 = responseDoc["properties"];
                             if (propertiesValue2 != null && propertiesValue2.Type != JTokenType.Null)
                             {
                                 string propertiesInstance = propertiesValue2.ToString(Newtonsoft.Json.Formatting.Indented);
                                 resourceGroupInstance.Properties = propertiesInstance;
                             }
-                            
+
                             JToken tagsSequenceElement = ((JToken)responseDoc["tags"]);
                             if (tagsSequenceElement != null && tagsSequenceElement.Type != JTokenType.Null)
                             {
@@ -1573,7 +1573,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     resourceGroupInstance.Tags.Add(tagsKey2, tagsValue2);
                                 }
                             }
-                            
+
                             JToken provisioningStateValue2 = responseDoc["provisioningState"];
                             if (provisioningStateValue2 != null && provisioningStateValue2.Type != JTokenType.Null)
                             {
@@ -1581,14 +1581,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 resourceGroupInstance.ProvisioningState = provisioningStateInstance2;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);

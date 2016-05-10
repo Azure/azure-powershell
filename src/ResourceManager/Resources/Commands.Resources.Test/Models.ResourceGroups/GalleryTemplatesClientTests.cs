@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -24,12 +25,13 @@ using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Common.OData;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Gallery.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Newtonsoft.Json.Linq;
 using Xunit;
-using System;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
@@ -47,8 +49,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private string templateParameterFileSchema2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateParameterFileSchema2.json");
 
-        public GalleryTemplatesClientTests()
+        public GalleryTemplatesClientTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             galleryClientMock = new Mock<IGalleryClient>();
             galleryTemplatesClient = new GalleryTemplatesClient(galleryClientMock.Object);
         }

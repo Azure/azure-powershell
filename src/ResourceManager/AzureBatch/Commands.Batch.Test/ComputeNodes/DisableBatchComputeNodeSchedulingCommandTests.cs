@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -22,10 +23,9 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Microsoft.Azure.Batch.Protocol.BatchRequests;
 using Xunit;
-using BatchCommon = Microsoft.Azure.Batch.Common;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using BatchCommon = Microsoft.Azure.Batch.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
 {
@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public DisableBatchComputeNodeSchedulingCommandTests()
+        public DisableBatchComputeNodeSchedulingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new DisableBatchComputeNodeSchedulingCommand()
@@ -62,8 +63,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
 
             // Don't go to the service on an Disable Compute Node Scheduling call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                DisableComputeNodeSchedulingOption?, 
-                ComputeNodeDisableSchedulingOptions, 
+                DisableComputeNodeSchedulingOption?,
+                ComputeNodeDisableSchedulingOptions,
                 AzureOperationHeaderResponse<ComputeNodeDisableSchedulingHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -88,10 +89,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             // Don't go to the service on an Disable Compute Node Scheduling call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                ComputeNodeDisableSchedulingBatchRequest request = (ComputeNodeDisableSchedulingBatchRequest) baseRequest;
+                ComputeNodeDisableSchedulingBatchRequest request = (ComputeNodeDisableSchedulingBatchRequest)baseRequest;
 
                 requestDisableOption = BatchTestHelpers.MapEnum<BatchCommon.DisableComputeNodeSchedulingOption>(request.Parameters);
-                
+
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     var response = new AzureOperationHeaderResponse<ComputeNodeDisableSchedulingHeaders>();

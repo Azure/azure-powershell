@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
+using System;
+using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Verify if PublicIpAddress is empty
-            foreach(var ipconfig in NetworkInterface.IpConfigurations)
+            foreach (var ipconfig in NetworkInterface.IpConfigurations)
             {
                 if (ipconfig.PublicIpAddress != null &&
                     string.IsNullOrEmpty(ipconfig.PublicIpAddress.Id))
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
                     ipconfig.PublicIpAddress = null;
                 }
             }
-            
+
             // Map to the sdk object
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkInterface.Tag, validate: true);

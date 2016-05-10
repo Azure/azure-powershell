@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
         private readonly Type type;
         public AttributeHelper()
         {
-            type = typeof (T);
+            type = typeof(T);
         }
 
         public VhdEntityAttribute GetEntityAttribute()

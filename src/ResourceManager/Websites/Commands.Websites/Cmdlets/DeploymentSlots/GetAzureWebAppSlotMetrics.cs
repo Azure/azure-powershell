@@ -15,8 +15,6 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApps.Models;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {

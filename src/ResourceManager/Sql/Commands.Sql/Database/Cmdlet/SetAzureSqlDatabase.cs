@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Sql.Database.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -82,8 +81,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> GetEntity()
         {
-            return new List<AzureSqlDatabaseModel>() { 
-                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName) 
+            return new List<AzureSqlDatabaseModel>() {
+                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName)
             };
         }
 

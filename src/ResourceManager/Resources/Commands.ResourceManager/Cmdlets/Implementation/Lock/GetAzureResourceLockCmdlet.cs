@@ -14,11 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.Management.Automation;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Gets the resource lock.

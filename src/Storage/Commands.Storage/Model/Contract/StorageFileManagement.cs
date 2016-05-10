@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,12 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.File;
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// File management
@@ -158,7 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             return share.GetPermissions(accessCondition, options, operationContext);
         }
 
-        public void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions, 
+        public void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions,
             AccessCondition accessCondition = null,
             FileRequestOptions options = null, OperationContext operationContext = null)
         {

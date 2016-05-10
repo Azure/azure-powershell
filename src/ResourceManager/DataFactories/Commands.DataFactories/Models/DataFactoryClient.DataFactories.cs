@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.DataFactories.Properties;
+using Microsoft.Azure.Management.DataFactories;
+using Microsoft.Azure.Management.DataFactories.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using Microsoft.Azure.Commands.DataFactories.Models;
-using Microsoft.Azure.Commands.DataFactories.Properties;
-using Microsoft.Azure.Management.DataFactories.Models;
-using Microsoft.Azure.Management.DataFactories;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             {
                 throw new ArgumentNullException("filterOptions");
             }
-            
+
             // ToDo: make ResourceGroupName optional
             if (string.IsNullOrWhiteSpace(filterOptions.ResourceGroupName))
             {
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                             Tags = tags
                         }
                 });
-            
+
             return response.DataFactory;
         }
 
@@ -119,7 +118,8 @@ namespace Microsoft.Azure.Commands.DataFactories
                 dataFactory =
                     new PSDataFactory(
                         CreateOrUpdateDataFactory(parameters.ResourceGroupName, parameters.DataFactoryName,
-                            parameters.Location, tags)) {ResourceGroupName = parameters.ResourceGroupName};
+                            parameters.Location, tags))
+                    { ResourceGroupName = parameters.ResourceGroupName };
             };
 
             if (parameters.Force)
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 throw;
             }
         }
-        
+
         public virtual HttpStatusCode DeleteDataFactory(string resourceGroupName, string dataFactoryName)
         {
             AzureOperationResponse response = DataPipelineManagementClient.DataFactories.Delete(resourceGroupName,
