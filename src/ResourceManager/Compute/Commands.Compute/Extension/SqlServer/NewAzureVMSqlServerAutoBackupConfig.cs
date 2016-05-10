@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
 using System;
 using System.Management.Automation;
-using System.Security;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.Azure.Management.Storage;
 using System.Runtime.InteropServices;
+using System.Security;
 using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -26,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Helper cmdlet to construct instance of AutoBackup settings class
     /// </summary>
-   [Cmdlet(
+    [Cmdlet(
         VerbsCommon.New,
         AzureVMSqlServerAutoBackupConfigNoun,
         DefaultParameterSetName = StorageUriParamSetName),
@@ -36,8 +35,8 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string AzureVMSqlServerAutoBackupConfigNoun = "AzureVMSqlServerAutoBackupConfig";
 
-        protected const string StorageContextParamSetName            = "StorageContextSqlServerAutoBackup";
-        protected const string StorageUriParamSetName                = "StorageUriSqlServerAutoBackup";
+        protected const string StorageContextParamSetName = "StorageContextSqlServerAutoBackup";
+        protected const string StorageUriParamSetName = "StorageUriSqlServerAutoBackup";
 
         [Parameter(
         Mandatory = true,
@@ -128,22 +127,22 @@ namespace Microsoft.Azure.Commands.Compute
         protected override void ProcessRecord()
         {
             AutoBackupSettings autoBackupSettings = new AutoBackupSettings();
-            
+
             autoBackupSettings.Enable = (Enable.IsPresent) ? Enable.ToBool() : false;
             autoBackupSettings.EnableEncryption = (EnableEncryption.IsPresent) ? EnableEncryption.ToBool() : false;
             autoBackupSettings.RetentionPeriod = RetentionPeriodInDays;
 
-            switch(ParameterSetName)
+            switch (ParameterSetName)
             {
                 case StorageContextParamSetName:
                     autoBackupSettings.StorageUrl = StorageContext.BlobEndPoint;
                     autoBackupSettings.StorageAccessKey = this.GetStorageKey();
-                break;
+                    break;
 
                 case StorageUriParamSetName:
-                    autoBackupSettings.StorageUrl = (StorageUri == null)? null: StorageUri.ToString();
-                    autoBackupSettings.StorageAccessKey = (StorageKey == null)? null: ConvertToUnsecureString(StorageKey);
-                break;
+                    autoBackupSettings.StorageUrl = (StorageUri == null) ? null : StorageUri.ToString();
+                    autoBackupSettings.StorageAccessKey = (StorageKey == null) ? null : ConvertToUnsecureString(StorageKey);
+                    break;
             }
 
             // Check if certificate password was set
@@ -169,8 +168,8 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (keys != null && keys.StorageAccountKeys != null)
                     {
-                        storageKey = !string.IsNullOrEmpty(keys.StorageAccountKeys.Key1) ? 
-                            keys.StorageAccountKeys.Key1 : 
+                        storageKey = !string.IsNullOrEmpty(keys.StorageAccountKeys.Key1) ?
+                            keys.StorageAccountKeys.Key1 :
                             keys.StorageAccountKeys.Key2;
                     }
                 }
@@ -179,12 +178,12 @@ namespace Microsoft.Azure.Commands.Compute
             return storageKey;
         }
 
-       /// <summary>
-       /// convert secure string to regular string
+        /// <summary>
+        /// convert secure string to regular string
         /// $Issue -  for ARM cmdlets, check if there is a similair helper class library like Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
-       /// </summary>
-       /// <param name="securePassword"></param>
-       /// <returns></returns>
+        /// </summary>
+        /// <param name="securePassword"></param>
+        /// <returns></returns>
         [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         private static string ConvertToUnsecureString(SecureString securePassword)
         {

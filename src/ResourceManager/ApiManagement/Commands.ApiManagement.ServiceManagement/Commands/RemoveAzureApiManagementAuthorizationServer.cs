@@ -14,11 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Globalization;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
     [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementAuthorizationServer)]
     [OutputType(typeof(bool))]
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             get { return string.Format(CultureInfo.CurrentCulture, Resources.GroupRemoveDescription, ServerId); }
         }
-      
+
         protected override void ExecuteRemoveLogic()
         {
             Client.AuthorizationServerRemove(Context, ServerId);

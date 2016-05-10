@@ -14,11 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using System;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using System.Collections.Generic;
     using Microsoft.Azure.Management.ApiManagement.SmapiModels;
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Set, Constants.ApiManagementLogger)]
     [OutputType(typeof(PsApiManagementLogger))]

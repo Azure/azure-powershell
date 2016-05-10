@@ -12,6 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Common.OData;
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Gallery.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,15 +30,7 @@ using System.Management.Automation;
 using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Gallery.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Common.OData;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {

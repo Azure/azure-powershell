@@ -14,19 +14,19 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementLogger, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementLogger>), ParameterSetName = new [] { GetAll })]
-    [OutputType(typeof(PsApiManagementLogger), ParameterSetName = new [] { GetById })]
+    [OutputType(typeof(IList<PsApiManagementLogger>), ParameterSetName = new[] { GetAll })]
+    [OutputType(typeof(PsApiManagementLogger), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementLogger : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all loggers";
         private const string GetById = "Get by logger ID";
-        
+
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,

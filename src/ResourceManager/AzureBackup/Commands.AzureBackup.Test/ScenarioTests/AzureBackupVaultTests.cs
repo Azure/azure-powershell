@@ -29,6 +29,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         public void AzureBackupVaultScenarioTests()
         {
             this.RunPowerShellTest("Test-AzureBackupVaultScenario");
-        }        
+        }
     }
 }

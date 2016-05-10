@@ -25,7 +25,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkCRUD()

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
-using System;
 using System.Collections;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureBatchTask)]
     public class NewBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the job to create the task under.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job, 
+            NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job,
                 this.Id, this.AdditionalBehaviors)
             {
                 DisplayName = this.DisplayName,

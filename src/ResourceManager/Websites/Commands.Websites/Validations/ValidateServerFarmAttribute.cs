@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Validations
 {

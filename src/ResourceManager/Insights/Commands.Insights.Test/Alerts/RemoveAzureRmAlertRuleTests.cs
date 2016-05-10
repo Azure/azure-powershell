@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Insights.Alerts;
+using Microsoft.Azure.Management.Insights;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
 using System;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Insights.Alerts;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         private AzureOperationResponse response;
         private string resourceGroup;
         private string ruleNameOrTargetUri;
-        
+
         public RemoveAzureRmAlertRuleTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
-using Microsoft.WindowsAzure.Storage.Auth;
 using System;
 using System.Globalization;
 using System.IO;

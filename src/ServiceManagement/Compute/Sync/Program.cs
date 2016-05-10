@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 
 namespace Microsoft.WindowsAzure.Commands.Sync
 {
@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync
             get
             {
                 return RawEvents;
-            } 
+            }
             set
             {
                 if (value == null)
@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync
                 RawEvents = value;
             }
         }
-//        static public IProgramConfiguration Configuration { get; private set; }
+        //        static public IProgramConfiguration Configuration { get; private set; }
         //private static ISyncOutputEvents RawEvents = new SyncOutputEvents();
         private static ISyncOutputEvents RawEvents = null;
     }

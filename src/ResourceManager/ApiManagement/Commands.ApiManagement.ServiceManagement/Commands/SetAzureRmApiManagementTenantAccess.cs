@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Set, Constants.ApiManagementTenantAccess)]
     [OutputType(typeof(PsApiManagementAccessInformation))]

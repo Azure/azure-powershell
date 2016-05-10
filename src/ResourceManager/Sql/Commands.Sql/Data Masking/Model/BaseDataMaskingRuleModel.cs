@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Model
     /// </summary>
     public class BaseDataMaskingRuleModel
     {
-       /// <summary>
-       /// Gets or sets the resource group
-       /// </summary>
+        /// <summary>
+        /// Gets or sets the resource group
+        /// </summary>
         public string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Model
         /// Gets or sets the name of the chema that contains the table on which the rule operates on
         /// </summary>
         public string SchemaName { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the name of the table that contains the column on which the rule operates on
         /// </summary>
         public string TableName { get; set; }
-       
+
         /// <summary>
         /// Gets or sets the name of the column that this rule operates on
         /// </summary>

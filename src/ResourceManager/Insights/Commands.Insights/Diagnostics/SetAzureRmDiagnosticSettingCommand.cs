@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Management.Insights.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -19,8 +21,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Xml;
-using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
