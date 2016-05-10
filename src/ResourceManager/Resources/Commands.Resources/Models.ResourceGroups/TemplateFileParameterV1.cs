@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public object DefaultValue { get; set; }
 
         [JsonProperty("allowedValues")]
-        public List<string> AllowedValues { get; set; }
+        public List<object> AllowedValues { get; set; }
 
         [JsonProperty("minLength")]
         public string MinLength { get; set; }
