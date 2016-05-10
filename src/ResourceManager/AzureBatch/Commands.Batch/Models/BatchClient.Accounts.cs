@@ -20,7 +20,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Net.Http;
 using Microsoft.Azure.Batch;
 using Microsoft.Rest.Azure;
 using CloudException = Hyak.Common.CloudException;
@@ -226,14 +226,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="resourceGroupName">The name of the resource group the account is under. If unspecified, it will be looked up.</param>
         /// <param name="accountName">The account name</param>
         /// <returns>The status of delete account operation</returns>
-        public virtual Task<Rest.Azure.AzureOperationResponse> DeleteAccount(string resourceGroupName, string accountName)
+        public virtual void DeleteAccount(string resourceGroupName, string accountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 // use resource mgr to see if account exists and then use resource group name to do the actual lookup
                 resourceGroupName = GetGroupForAccount(accountName);
             }
-            return BatchManagementClient.Account.DeleteWithHttpMessagesAsync(resourceGroupName, accountName);
+
+            try
+            {
+                BatchManagementClient.Account.Delete(resourceGroupName, accountName);
+            }
+            catch (Rest.Azure.CloudException ex)
+            {
+                // It looks like the RP puts the operation status token under the account that's
+                // being deleted, so we get a 404 from our Get Operation Status call when the
+                // deletion completes. We want 404 to throw an error on the initial delete
+                // request, but for now we want to consider a 404 error on the operation status
+                // polling as a success.
+                if (!(ex.Request.Method == HttpMethod.Get &&
+                    ex.Message.Contains("Long running operation failed with status 'NotFound'")))
+                {
+                    throw;
+                }
+            }
         }
 
         /// <summary>
