@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a517f971-028b-4b3c-ae73-2d97b9564f57"
+          "275281aa-9c60-4934-8cf4-9ea537d4be60"
         ],
         "accept-language": [
           "en-US"
@@ -16,7 +16,7 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"code\": \"ApplicationPackageNotFound\",\r\n  \"message\": \"The specified application package does not exist.\\nRequestId:69f37774-cc7d-4067-9ed3-b3cb2268d8da\\nTime:2016-05-06T20:43:39.6816041Z\",\r\n  \"target\": \"BatchAccount\"\r\n}",
+      "ResponseBody": "{\r\n  \"code\": \"ApplicationPackageNotFound\",\r\n  \"message\": \"The specified application package does not exist.\\nRequestId:1af30b0c-ba13-45af-a50c-65fef3c11be9\\nTime:2016-05-10T21:35:41.5903445Z\",\r\n  \"target\": \"BatchAccount\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "206"
@@ -31,28 +31,28 @@
           "no-cache"
         ],
         "request-id": [
-          "69f37774-cc7d-4067-9ed3-b3cb2268d8da"
+          "1af30b0c-ba13-45af-a50c-65fef3c11be9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "14983"
         ],
         "x-ms-request-id": [
-          "685a62e1-e49f-43dd-a401-4c5fa754d556"
+          "8a540662-c39a-4f2b-993e-615ef364a929"
         ],
         "x-ms-correlation-request-id": [
-          "685a62e1-e49f-43dd-a401-4c5fa754d556"
+          "8a540662-c39a-4f2b-993e-615ef364a929"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160506T204339Z:685a62e1-e49f-43dd-a401-4c5fa754d556"
+          "WESTUS:20160510T213541Z:8a540662-c39a-4f2b-993e-615ef364a929"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 May 2016 20:43:38 GMT"
+          "Tue, 10 May 2016 21:35:41 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -67,7 +67,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "76ba6e62-746e-46ee-bcfa-f2e7edb85e5d"
+          "8a1ddda9-da71-44c5-8a14-5d4b7738c4d7"
         ],
         "accept-language": [
           "en-US"
@@ -76,10 +76,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"test\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://pstestaccount.blob.core.windows.net/app-test-a94a8fe5ccb19ba61c4c0873d391e987982fbbd3/test-foo-5b8b4d4e-917a-47ae-a34a-71b833fa2df5?sv=2014-02-14&sr=b&sig=ApB6U6dzWuYkVIicY9VCWHGAJW%2B2AlraLeXI7iJr1yk%3D&st=2016-05-06T20%3A38%3A41Z&se=2016-05-07T00%3A43%3A41Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2016-05-07T00:43:41.0829644Z\",\r\n  \"state\": \"active\",\r\n  \"format\": \"zip\",\r\n  \"lastActivationTime\": \"2016-05-06T20:43:40.351659Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"test\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://pstestaccount.blob.core.windows.net/app-test-a94a8fe5ccb19ba61c4c0873d391e987982fbbd3/test-foo-ff322ba0-d502-4c97-a383-806089a7d1e2?sv=2014-02-14&sr=b&sig=Zy7W%2FIT0NHpUq45Vs2JvRzAYW7i65fpG1oERe4iDAfE%3D&st=2016-05-10T21%3A31%3A04Z&se=2016-05-11T01%3A36%3A04Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2016-05-11T01:36:04.4505325Z\",\r\n  \"state\": \"active\",\r\n  \"format\": \"zip\",\r\n  \"lastActivationTime\": \"2016-05-10T21:36:04.4019275Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "451"
+          "452"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -88,37 +88,37 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 06 May 2016 20:43:40 GMT"
+          "Tue, 10 May 2016 21:36:04 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "d8168c66-72ab-4cfe-803b-dc965967bc74"
+          "adb0b729-22ff-4255-8e4a-341b888b3206"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14999"
         ],
         "x-ms-request-id": [
-          "bcd2dcd4-b3e9-405d-8593-a1e273355216"
+          "ad4e74da-e986-4d54-8049-15622e7052c5"
         ],
         "x-ms-correlation-request-id": [
-          "bcd2dcd4-b3e9-405d-8593-a1e273355216"
+          "ad4e74da-e986-4d54-8049-15622e7052c5"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160506T204340Z:bcd2dcd4-b3e9-405d-8593-a1e273355216"
+          "WESTUS:20160510T213604Z:ad4e74da-e986-4d54-8049-15622e7052c5"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 May 2016 20:43:40 GMT"
+          "Tue, 10 May 2016 21:36:03 GMT"
         ],
         "ETag": [
-          "0x8D375EF1B323262"
+          "0x8D3791B16B854A1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -133,7 +133,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3baf84b5-316c-42d4-9dba-38224175e307"
+          "4d4dd522-b05a-4269-8bd5-cd6b426e3a66"
         ],
         "accept-language": [
           "en-US"
@@ -142,10 +142,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"test\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://pstestaccount.blob.core.windows.net/app-test-a94a8fe5ccb19ba61c4c0873d391e987982fbbd3/test-foo-5b8b4d4e-917a-47ae-a34a-71b833fa2df5?sv=2014-02-14&sr=b&sig=ApB6U6dzWuYkVIicY9VCWHGAJW%2B2AlraLeXI7iJr1yk%3D&st=2016-05-06T20%3A38%3A41Z&se=2016-05-07T00%3A43%3A41Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2016-05-07T00:43:41.2604569Z\",\r\n  \"state\": \"active\",\r\n  \"format\": \"zip\",\r\n  \"lastActivationTime\": \"2016-05-06T20:43:40.351659Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"test\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://pstestaccount.blob.core.windows.net/app-test-a94a8fe5ccb19ba61c4c0873d391e987982fbbd3/test-foo-ff322ba0-d502-4c97-a383-806089a7d1e2?sv=2014-02-14&sr=b&sig=Zy7W%2FIT0NHpUq45Vs2JvRzAYW7i65fpG1oERe4iDAfE%3D&st=2016-05-10T21%3A31%3A04Z&se=2016-05-11T01%3A36%3A04Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2016-05-11T01:36:04.6193814Z\",\r\n  \"state\": \"active\",\r\n  \"format\": \"zip\",\r\n  \"lastActivationTime\": \"2016-05-10T21:36:04.4019275Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "451"
+          "452"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -154,37 +154,37 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 06 May 2016 20:43:40 GMT"
+          "Tue, 10 May 2016 21:36:04 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "627f11ca-b905-43ae-8f1e-82ac374c0714"
+          "5f7cbe70-38e8-418c-a48c-f2332a0b0a15"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "14998"
         ],
         "x-ms-request-id": [
-          "6be0b502-2220-4317-a28c-b94cc9eb78bb"
+          "20489acb-5da6-40fd-8828-a8d95fc04f05"
         ],
         "x-ms-correlation-request-id": [
-          "6be0b502-2220-4317-a28c-b94cc9eb78bb"
+          "20489acb-5da6-40fd-8828-a8d95fc04f05"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160506T204340Z:6be0b502-2220-4317-a28c-b94cc9eb78bb"
+          "WESTUS:20160510T213604Z:20489acb-5da6-40fd-8828-a8d95fc04f05"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 May 2016 20:43:40 GMT"
+          "Tue, 10 May 2016 21:36:03 GMT"
         ],
         "ETag": [
-          "0x8D375EF1B323262"
+          "0x8D3791B16B854A1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -199,7 +199,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4737bb04-111e-4e84-a2dd-d69be12b7eb2"
+          "c46046a0-93e5-4eb9-8a73-bf653de1748f"
         ],
         "accept-language": [
           "en-US"
@@ -208,10 +208,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"test\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://pstestaccount.blob.core.windows.net/app-test-a94a8fe5ccb19ba61c4c0873d391e987982fbbd3/test-foo-5b8b4d4e-917a-47ae-a34a-71b833fa2df5?sv=2014-02-14&sr=b&sig=5Zbgp6H9VSLKxclTOrtheDm55QPytG99sBpUbhKuJGc%3D&st=2016-05-06T20%3A38%3A40Z&se=2016-05-07T00%3A43%3A40Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2016-05-07T00:43:40.000396Z\",\r\n  \"state\": \"pending\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"test\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://pstestaccount.blob.core.windows.net/app-test-a94a8fe5ccb19ba61c4c0873d391e987982fbbd3/test-foo-ff322ba0-d502-4c97-a383-806089a7d1e2?sv=2014-02-14&sr=b&sig=7prNhZlecUJaFe2xXfn6N9ZoZO0pHulJzfHHhXWOstc%3D&st=2016-05-10T21%3A31%3A03Z&se=2016-05-11T01%3A36%3A03Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2016-05-11T01:36:03.6542661Z\",\r\n  \"state\": \"pending\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "383"
+          "384"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -223,7 +223,7 @@
           "no-cache"
         ],
         "request-id": [
-          "ccba3aa8-8d6c-4522-ae9a-54024868617c"
+          "a59f5717-3c96-4aae-9b54-cd5b680e9de3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -232,19 +232,19 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "daafb9cf-076b-4e7d-af87-076be2c367c2"
+          "3a6311a9-ab86-48a1-ad27-2463664590c4"
         ],
         "x-ms-correlation-request-id": [
-          "daafb9cf-076b-4e7d-af87-076be2c367c2"
+          "3a6311a9-ab86-48a1-ad27-2463664590c4"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160506T204339Z:daafb9cf-076b-4e7d-af87-076be2c367c2"
+          "WESTUS:20160510T213603Z:3a6311a9-ab86-48a1-ad27-2463664590c4"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 May 2016 20:43:39 GMT"
+          "Tue, 10 May 2016 21:36:02 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -265,7 +265,7 @@
           "23"
         ],
         "x-ms-client-request-id": [
-          "d8e65bb9-eddc-4a9e-8a33-1f0aa7e80fa1"
+          "fe7f31cf-fd86-424f-a1bc-9af929e77c20"
         ],
         "accept-language": [
           "en-US"
@@ -283,13 +283,13 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 06 May 2016 20:43:39 GMT"
+          "Tue, 10 May 2016 21:36:03 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "11f31405-5913-4668-87f9-83c3dd06c106"
+          "50809b12-0d38-400c-8778-58cbb8ed58ba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -298,22 +298,22 @@
           "1198"
         ],
         "x-ms-request-id": [
-          "ae0f1703-a721-4995-b014-5fb8ce594e44"
+          "47b29e07-89af-4cc8-bb4b-6f06be1251f5"
         ],
         "x-ms-correlation-request-id": [
-          "ae0f1703-a721-4995-b014-5fb8ce594e44"
+          "47b29e07-89af-4cc8-bb4b-6f06be1251f5"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160506T204340Z:ae0f1703-a721-4995-b014-5fb8ce594e44"
+          "WESTUS:20160510T213604Z:47b29e07-89af-4cc8-bb4b-6f06be1251f5"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 May 2016 20:43:40 GMT"
+          "Tue, 10 May 2016 21:36:03 GMT"
         ],
         "ETag": [
-          "0x8D375EF1AA3A951"
+          "0x8D3791B16596893"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -328,7 +328,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "355989a1-847f-4c41-9f5e-661608badf94"
+          "03a5fb49-2e65-47e1-9cd5-903b0dfd4b69"
         ],
         "accept-language": [
           "en-US"
@@ -349,7 +349,7 @@
           "no-cache"
         ],
         "request-id": [
-          "3b1a805f-0d42-4ad1-8995-34a172478820"
+          "b2949564-9bed-416b-8fa2-f1610c93d3c2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -358,19 +358,19 @@
           "1197"
         ],
         "x-ms-request-id": [
-          "86458641-2b18-47b2-97bf-35f394c5a77f"
+          "9c2de937-7253-48f9-8ef2-6d7145641a5c"
         ],
         "x-ms-correlation-request-id": [
-          "86458641-2b18-47b2-97bf-35f394c5a77f"
+          "9c2de937-7253-48f9-8ef2-6d7145641a5c"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160506T204342Z:86458641-2b18-47b2-97bf-35f394c5a77f"
+          "WESTUS:20160510T213604Z:9c2de937-7253-48f9-8ef2-6d7145641a5c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 May 2016 20:43:42 GMT"
+          "Tue, 10 May 2016 21:36:03 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
