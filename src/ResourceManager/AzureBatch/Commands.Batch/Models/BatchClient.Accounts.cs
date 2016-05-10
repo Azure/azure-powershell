@@ -225,7 +225,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group the account is under. If unspecified, it will be looked up.</param>
         /// <param name="accountName">The account name</param>
-        /// <returns>The status of delete account operation</returns>
         public virtual void DeleteAccount(string resourceGroupName, string accountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -240,7 +239,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             catch (Rest.Azure.CloudException ex)
             {
-                // It looks like the RP puts the operation status token under the account that's
+                // TODO: Cleanup after TFS: 5914832
+                // RP puts the operation status token under the account that's
                 // being deleted, so we get a 404 from our Get Operation Status call when the
                 // deletion completes. We want 404 to throw an error on the initial delete
                 // request, but for now we want to consider a 404 error on the operation status
