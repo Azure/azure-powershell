@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -49,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Request Timeout. Default value 30 seconds.")]        
+            HelpMessage = "Request Timeout. Default value 30 seconds.")]
         [ValidateNotNullOrEmpty]
         public uint RequestTimeout { get; set; }
 
@@ -72,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
             if (Probe != null)
             {
                 this.ProbeId = this.Probe.Id;
-            }                
+            }
         }
         public PSApplicationGatewayBackendHttpSettings NewObject()
         {

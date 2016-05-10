@@ -16,10 +16,9 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using Microsoft.Azure.Test;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    using ServiceManagemenet.Common.Models;
 
     public class RedisCacheTests : RMTestBase
     {

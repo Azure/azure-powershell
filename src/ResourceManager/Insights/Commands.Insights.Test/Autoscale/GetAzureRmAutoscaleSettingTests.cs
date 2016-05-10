@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Insights.Autoscale;
+using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Insights.Autoscale;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Autoscale

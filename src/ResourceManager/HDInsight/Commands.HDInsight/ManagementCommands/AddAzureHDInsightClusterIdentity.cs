@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.HDInsight.Commands;
 
 namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
 {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
             ValueFromPipeline = true,
             HelpMessage = "The Service Principal Object Id for accessing Azure Data Lake.")]
         public Guid ObjectId { get; set; }
-        
+
         [Parameter(Position = 2,
             Mandatory = true,
             HelpMessage = "The Service Principal certificate file path for accessing Azure Data Lake.",
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
         [Parameter(Position = 4,
             Mandatory = false,
             HelpMessage = "The Service Principal AAD Tenant Id for accessing Azure Data Lake.")]
-        public Guid AadTenantId { get; set; }        
+        public Guid AadTenantId { get; set; }
 
         #endregion
 

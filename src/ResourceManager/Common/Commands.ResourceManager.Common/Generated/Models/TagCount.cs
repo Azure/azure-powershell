@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class TagCount
     {
         private string _type;
-        
+
         /// <summary>
         /// Optional. Type of count.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._type; }
             set { this._type = value; }
         }
-        
+
         private string _value;
-        
+
         /// <summary>
         /// Optional. Value of count.
         /// </summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._value; }
             set { this._value = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the TagCount class.
         /// </summary>

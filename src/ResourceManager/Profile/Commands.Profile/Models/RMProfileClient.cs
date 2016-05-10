@@ -26,7 +26,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security;
 
-
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class RMProfileClient
@@ -550,7 +549,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         Environment = environment.Name,
                         Name = subscriptionFromServer.DisplayName,
                         State = subscriptionFromServer.State,
-                        Properties = new Dictionary<AzureSubscription.Property, string> { { AzureSubscription.Property.Tenants, accessToken.TenantId } }
+                        Properties = new Dictionary<AzureSubscription.Property, string>
+                        {
+                            { AzureSubscription.Property.Tenants, accessToken.TenantId }
+                        }
                     };
 
                     tenant = new AzureTenant();

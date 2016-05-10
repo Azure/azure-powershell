@@ -12,23 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -76,7 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl], cmdlet.ManagementPortalUrl);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.Gallery], "http://galleryendpoint.com");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsEnvironmentWithMinimumInformation()
@@ -199,7 +198,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 TrafficManagerDnsSuffix = "TrafficManagerDnsSuffix",
                 GraphAudience = "GaraphAudience"
             };
-            
+
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -219,8 +218,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(cmdlet.ServiceEndpoint, actual.ServiceManagementUrl);
             Assert.Equal(cmdlet.StorageEndpoint, actual.StorageEndpointSuffix);
             Assert.Equal(cmdlet.SqlDatabaseDnsSuffix, actual.SqlDatabaseDnsSuffix);
-            Assert.Equal( cmdlet.TrafficManagerDnsSuffix , actual.TrafficManagerDnsSuffix);
-            Assert.Equal( cmdlet.GraphAudience , actual.GraphEndpointResourceId);
+            Assert.Equal(cmdlet.TrafficManagerDnsSuffix, actual.TrafficManagerDnsSuffix);
+            Assert.Equal(cmdlet.GraphAudience, actual.GraphEndpointResourceId);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
@@ -269,7 +268,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             Assert.Equal(1, environments.Count);
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThrowsWhenSettingPublicEnvironment()

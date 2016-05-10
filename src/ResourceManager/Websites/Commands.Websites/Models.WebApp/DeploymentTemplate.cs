@@ -1,13 +1,8 @@
-﻿using System;
+﻿using Microsoft.Azure.Management.WebSites.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.WebSites.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Schema;
-using Newtonsoft.Json.Serialization;
 
 namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
 {

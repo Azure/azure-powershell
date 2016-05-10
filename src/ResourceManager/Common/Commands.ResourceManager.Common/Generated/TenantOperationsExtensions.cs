@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Internal.Subscriptions.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Internal.Subscriptions.Models;
 
 namespace Microsoft.Azure.Internal.Subscriptions
 {
@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Internal.Subscriptions
         /// </returns>
         public static TenantListResult List(this ITenantOperations operations)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((ITenantOperations)s).ListAsync();
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a list of the tenantIds.
         /// </summary>

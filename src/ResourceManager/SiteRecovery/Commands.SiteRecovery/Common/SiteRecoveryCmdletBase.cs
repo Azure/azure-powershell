@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Threading;
-using System.Xml;
 using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.SiteRecoveryVault;
-using Microsoft.Azure.Management.SiteRecoveryVault.Models;
-using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 using Newtonsoft.Json;
+using System;
+using System.Runtime.Serialization;
 using System.Text;
+using System.Threading;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {

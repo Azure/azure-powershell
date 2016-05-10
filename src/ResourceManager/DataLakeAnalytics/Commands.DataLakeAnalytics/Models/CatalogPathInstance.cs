@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Rest.Azure;
+using System;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {

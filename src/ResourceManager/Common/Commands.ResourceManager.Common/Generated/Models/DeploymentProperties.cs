@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class DeploymentProperties
     {
         private DeploymentMode _mode;
-        
+
         /// <summary>
         /// Optional. Gets or sets the deployment mode.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._mode; }
             set { this._mode = value; }
         }
-        
+
         private string _parameters;
-        
+
         /// <summary>
         /// Optional. Deployment parameters. Use only one of Parameters or
         /// ParametersLink.
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._parameters; }
             set { this._parameters = value; }
         }
-        
+
         private ParametersLink _parametersLink;
-        
+
         /// <summary>
         /// Optional. Gets or sets the URI referencing the parameters. Use only
         /// one of Parameters or ParametersLink.
@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._parametersLink; }
             set { this._parametersLink = value; }
         }
-        
+
         private string _template;
-        
+
         /// <summary>
         /// Optional. Gets or sets the template content. Use only one of
         /// Template or TemplateLink.
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._template; }
             set { this._template = value; }
         }
-        
+
         private TemplateLink _templateLink;
-        
+
         /// <summary>
         /// Optional. Gets or sets the URI referencing the template. Use only
         /// one of Template or TemplateLink.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._templateLink; }
             set { this._templateLink = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the DeploymentProperties class.
         /// </summary>

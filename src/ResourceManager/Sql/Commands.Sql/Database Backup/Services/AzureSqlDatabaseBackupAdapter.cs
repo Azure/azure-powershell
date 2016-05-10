@@ -12,22 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
-using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
 {
@@ -198,19 +192,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model)
         {
             DatabaseCreateOrUpdateParameters parameters = new DatabaseCreateOrUpdateParameters()
+            {
+                Location = model.Location,
+                Properties = new DatabaseCreateOrUpdateProperties()
                 {
-                    Location = model.Location,
-                    Properties = new DatabaseCreateOrUpdateProperties()
-                    {
-                        Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
-                        RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
-                        ElasticPoolName = model.ElasticPoolName,
-                        RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                        SourceDatabaseId = resourceId,
-                        RestorePointInTime = restorePointInTime,
-                        CreateMode = model.CreateMode
-                    }
-                };
+                    Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
+                    RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
+                    ElasticPoolName = model.ElasticPoolName,
+                    RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
+                    SourceDatabaseId = resourceId,
+                    RestorePointInTime = restorePointInTime,
+                    CreateMode = model.CreateMode
+                }
+            };
             var resp = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, Util.GenerateTracingId(), parameters);
             return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroup, model.ServerName, resp);
         }

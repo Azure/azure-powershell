@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Microsoft.Azure.Commands.Management.Storage;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Storage.Auth;
+using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Management.Storage;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {

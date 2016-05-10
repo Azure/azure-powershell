@@ -12,12 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -52,7 +49,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             user.Password = options.Password;
             user.ExpiryTime = options.ExpiryTime;
             user.IsAdmin = options.IsAdmin;
-            
+
             WriteVerbose(string.Format(Resources.CreatingComputeNodeUser, user.Name, computeNodeId));
 
             user.Commit(ComputeNodeUserCommitSemantics.AddUser, options.AdditionalBehaviors);
@@ -70,7 +67,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             WriteVerbose(string.Format(Resources.UpdatingComputeNodeUser, parameters.ComputeNodeUserName));
-            
+
             ComputeNodeUser computeNodeUser = parameters.Context.BatchOMClient.PoolOperations.CreateComputeNodeUser(parameters.PoolId, parameters.ComputeNodeId);
             computeNodeUser.Name = parameters.ComputeNodeUserName;
             computeNodeUser.Password = parameters.Password;

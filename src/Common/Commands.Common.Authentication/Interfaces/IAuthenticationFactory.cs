@@ -64,7 +64,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         ServiceClientCredentials GetServiceClientCredentials(AzureContext context);
 
-        ServiceClientCredentials GetServiceClientCredentials(AzureContext context,
-            AzureEnvironment.Endpoint targetEndpoint);
+        ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint);
     }
 }

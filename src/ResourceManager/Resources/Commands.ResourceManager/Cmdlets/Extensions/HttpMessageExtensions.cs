@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 var streamPosition = stream.Position;
                 try
                 {
-                    
+
                     return streamReader.ReadToEnd();
                 }
                 finally

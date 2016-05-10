@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Set, Constants.ApiManagementOpenIdConnectProvider)]
     [OutputType(typeof(PsApiManagementOpenIdConnectProvider))]
