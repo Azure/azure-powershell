@@ -13,16 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.NotificationHubs.Models;
-using Microsoft.Azure.Management.NotificationHubs.Models;
 using System.Collections.Generic;
-using System.Management.Automation;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
     [Cmdlet(VerbsCommon.Get, "AzureRmNotificationHub"), OutputType(typeof(List<NotificationHubAttributes>))]
-    public class GetAzureNotificationHub: AzureNotificationHubsCmdletBase
+    public class GetAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,

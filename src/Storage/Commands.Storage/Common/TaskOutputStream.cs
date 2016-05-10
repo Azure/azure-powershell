@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Current output id
         /// </summary>
         private long CurrentOutputId;
-        
+
         /// <summary>
         /// Main thread output writer. WriteObject is a good candidate for it.
         /// </summary>
@@ -192,7 +192,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
         public int GetProgressId(long taskId)
         {
-            return (int) taskId % DefaultProgressCount + 1;
+            return (int)taskId % DefaultProgressCount + 1;
         }
 
         /// <summary>
@@ -389,7 +389,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     {
                         try
                         {
-                            foreach(OutputUnit unit in outputQueue)
+                            foreach (OutputUnit unit in outputQueue)
                             {
                                 switch (unit.Type)
                                 {

@@ -1,7 +1,7 @@
-﻿using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApps.Models;
+﻿using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps
 {

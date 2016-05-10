@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Commands.Profile
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(
-                    "Removing an environment will remove all associated subscriptions and accounts. Are you sure you want to remove an environment '{0}'?", 
+                    "Removing an environment will remove all associated subscriptions and accounts. Are you sure you want to remove an environment '{0}'?",
                     Name),
                 "Removing environment",
                 Name,
-                () => WriteObject((PSAzureEnvironment) profileClient.RemoveEnvironment(Name)));
+                () => WriteObject((PSAzureEnvironment)profileClient.RemoveEnvironment(Name)));
         }
     }
 }

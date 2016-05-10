@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         private AzureHDInsightStreamingMapReduceJobDefinition job;
 
         #region Input Parameter Definitions
-        
+
         [Parameter(HelpMessage = "The arguments for the jobDetails.")]
         public string[] Arguments { get; set; }
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string File
         {
             get { return job.File; }
-            set { job.File = value; } 
+            set { job.File = value; }
         }
 
         [Parameter(HelpMessage = "List of files to be copied to the cluster.")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "The command line environment for the mappers or the reducers.")]
         public Hashtable CommandEnvironment { get; set; }
-        
+
         [Parameter(HelpMessage = "The parameters for the jobDetails.")]
         public Hashtable Defines { get; set; }
 
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public NewAzureHDInsightStreamingMapReduceJobDefinitionCommand()
         {
-            Arguments = new string[] {};
+            Arguments = new string[] { };
             Files = new string[] { };
             CommandEnvironment = new Hashtable();
             Defines = new Hashtable();

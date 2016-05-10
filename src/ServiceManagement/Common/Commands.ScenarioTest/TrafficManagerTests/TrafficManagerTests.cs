@@ -22,12 +22,19 @@ using Microsoft.Azure.Test;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System;
+using Xunit.Abstractions;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public class TrafficManagerTests
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
+
+        public TrafficManagerTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         #region Remove-Profile Scenario Tests
 
