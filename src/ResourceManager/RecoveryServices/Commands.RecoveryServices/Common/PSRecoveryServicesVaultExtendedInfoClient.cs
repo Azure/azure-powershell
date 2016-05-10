@@ -293,7 +293,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                             site.ID,
                                             site.Name,
                                             resourceProviderNamespace,
-                                            resourceType);
+                                            resourceType,
+                                            vault.Location);
 
             return vaultCreds;
         }
