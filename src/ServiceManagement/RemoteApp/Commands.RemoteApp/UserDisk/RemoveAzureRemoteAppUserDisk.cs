@@ -38,11 +38,9 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            AzureOperationResponse response = null;
-
             if (ShouldProcess(UserUpn, "Remove user disk"))
             {
-                response = CallClient(() => Client.UserDisks.Delete(CollectionName, UserUpn), Client.UserDisks);
+                CallClient(() => Client.UserDisks.Delete(CollectionName, UserUpn), Client.UserDisks);
             }
         }
     }

@@ -48,8 +48,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            AzureOperationResponse response = null;
-            response = CallClient(() => Client.UserDisks.Copy(SourceCollectionName, DestinationCollectionName, UserUpn, OverwriteExistingUserDisk.IsPresent), Client.UserDisks);
+            CallClient(() => Client.UserDisks.Copy(SourceCollectionName, DestinationCollectionName, UserUpn, OverwriteExistingUserDisk.IsPresent), Client.UserDisks);
         }
     }
 }
