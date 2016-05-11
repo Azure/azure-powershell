@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureSqlContainer : ContainerBase
     {
         public ContainerRegistrationStatus Status { get; set; }
+
         public AzureSqlContainer(ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {

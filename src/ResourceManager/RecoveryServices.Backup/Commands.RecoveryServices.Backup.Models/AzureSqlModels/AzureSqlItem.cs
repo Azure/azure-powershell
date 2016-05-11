@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public string ProtectionState { get; set; }
 
-
         /// <summary>
         /// Protection Policy Name for the Item
         /// </summary>
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Represents IaaSVM Item ExtendedInfo Class
+    /// Represents AzureSql Item ExtendedInfo Class
     /// </summary>
     public class AzureSqlItemExtendedInfo : ItemExtendedInfoBase
     {

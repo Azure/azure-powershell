@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureSqlPolicy : PolicyBase
     {
         public RetentionPolicyBase RetentionPolicy { get; set; }
+
         public override void Validate()
         {
             base.Validate();
             RetentionPolicy.Validate();
         }
-
     }
 }
