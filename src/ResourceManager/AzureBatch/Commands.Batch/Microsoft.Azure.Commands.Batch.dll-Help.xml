@@ -2108,7 +2108,6 @@
           StartTaskInformation         :
           RecentTasks                  : {}
           StartTask                    :
-          ApplicationPackageReferences :
           CertificateReferences        :
           Errors                       :
 
@@ -2127,7 +2126,6 @@
           StartTaskInformation         :
           RecentTasks                  :
           StartTask                    :
-          ApplicationPackageReferences :
           CertificateReferences        :
           Errors                       :
 

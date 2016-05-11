@@ -10,21 +10,12 @@ namespace Microsoft.Azure.Commands.Batch
     [Serializable]
     internal sealed class UploadApplicationPackageException : Exception
     {
-        public UploadApplicationPackageException()
-        {
-        }
-
-        public UploadApplicationPackageException(string message)
-            : base(message)
-        {
-        }
-
         public UploadApplicationPackageException(string message, Exception exception)
             : base(message, exception)
         {
         }
 
-        public UploadApplicationPackageException(SerializationInfo info, StreamingContext context)
+        private UploadApplicationPackageException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }

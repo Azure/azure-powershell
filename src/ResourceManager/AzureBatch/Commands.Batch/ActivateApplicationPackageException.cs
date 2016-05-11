@@ -10,21 +10,12 @@ namespace Microsoft.Azure.Commands.Batch
     [Serializable]
     internal sealed class ActivateApplicationPackageException : Exception
     {
-        public ActivateApplicationPackageException()
-        {
-        }
-
-        public ActivateApplicationPackageException(string message)
-            : base(message)
-        {
-        }
-
         public ActivateApplicationPackageException(string message, Exception exception)
             : base(message, exception)
         {
         }
 
-        public ActivateApplicationPackageException(SerializationInfo info, StreamingContext context)
+        private ActivateApplicationPackageException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }

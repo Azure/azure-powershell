@@ -176,17 +176,13 @@ namespace Microsoft.Azure.Commands.Batch
                 {
                     return
                         accounts.Where(
-                            acct =>
-                                acct.Tags != null &&
-                                ContainsTag(acct.Tags.Keys, tagValuePair.Name));
+                            acct => ContainsTagWithName(acct.Tags, tagValuePair.Name));
                 }
                 else
                 {
                     return
                         accounts.Where(
-                            acct =>
-                                acct.Tags != null &&
-                                ContainsTag(acct.Tags.Keys, tagValuePair.Name) &&
+                            acct => ContainsTagWithName(acct.Tags, tagValuePair.Name) &&
                                 acct.Tags[tagValuePair.Name] == tagValuePair.Value);
                 }
             }
@@ -194,9 +190,14 @@ namespace Microsoft.Azure.Commands.Batch
             return accounts;
         }
 
-        public static bool ContainsTag(ICollection<string> tag, string value)
+        public static bool ContainsTagWithName(IDictionary<string, string> tags, string value)
         {
-            return tag.Contains(value, StringComparer.OrdinalIgnoreCase);
+            if (tags == null)
+            {
+                return false;
+            }
+
+            return tags.Keys.Contains(value, StringComparer.OrdinalIgnoreCase);
         }
     }
 }
