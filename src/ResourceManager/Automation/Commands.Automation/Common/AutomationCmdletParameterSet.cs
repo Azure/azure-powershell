@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// <summary>
         /// The monthly schedule parameter set.
         /// </summary>
-        internal const string ByMonthlyWithMonthDays = "ByMonthlyWithMonthDays";
+        internal const string ByMonthlyDaysOfMonth = "ByMonthlyDaysOfMonth";
 
         /// <summary>
         /// The monthly schedule parameter set.
         /// </summary>
-        internal const string ByMonthlyWithMonthlyOccurrence = "ByMonthlyWithMonthlyOccurrence";
+        internal const string ByMonthlyDayOfWeek = "ByMonthlyDayOfWeek";
 
         /// <summary>
         /// The Job Id parameter set.

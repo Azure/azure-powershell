@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Description = schedule.Description,
                     Interval = schedule.Interval,
                     Frequency = schedule.Frequency.ToString(),
-                    AdvancedSchedule = this.CreateAdvancedSchedule(schedule)
+                    AdvancedSchedule = schedule.GetAdvancedSchedule()
                 }
             };
 
@@ -1569,40 +1569,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
             Requires.Argument("schedule", schedule).NotNull();
 
             return new Schedule(resourceGroupName, automationAccountName, schedule);
-        }
-
-        private AdvancedSchedule CreateAdvancedSchedule(Schedule schedule)
-        {
-            if (this.AdvancedScheduleIsNull(schedule))
-            {
-                return null;
-            }
-
-            var advancedSchedule = new AdvancedSchedule()
-            {
-                WeekDays = schedule.WeekDays,
-                MonthDays = schedule.MonthDays,
-                MonthlyOccurrences = string.IsNullOrWhiteSpace(schedule.DayOfWeek) && schedule.Occurrence == null
-                    ? null
-                    : new AdvancedScheduleMonthlyOccurrence[]
-                    {
-                        new AdvancedScheduleMonthlyOccurrence()
-                        {
-                            Day = schedule.DayOfWeek,
-                            Occurrence = schedule.Occurrence
-                        }
-                    }
-            };
-
-            return advancedSchedule;
-        }
-
-        private bool AdvancedScheduleIsNull(Schedule schedule)
-        {
-            return (schedule.WeekDays == null
-                && schedule.MonthDays == null
-                && string.IsNullOrWhiteSpace(schedule.DayOfWeek)
-                &&schedule.Occurrence == null);
         }
 
         private JobSchedule CreateJobScheduleFromJobScheduleModel(string resourceGroupName, string automationAccountName,

@@ -15,9 +15,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation.Language;
+using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
 using System;
+using Microsoft.Azure.Management.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
@@ -55,18 +58,18 @@ namespace Microsoft.Azure.Commands.Automation.Model
                                : this.NextRun;
             this.Interval = schedule.Properties.Interval.HasValue ? schedule.Properties.Interval.Value : this.Interval;
             this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Properties.Frequency, true);
-            this.WeekDays = schedule.Properties.AdvancedSchedule == null
+            this.DaysOfWeek = schedule.Properties.AdvancedSchedule == null
                 ? null
                 : schedule.Properties.AdvancedSchedule.WeekDays;
-            this.MonthDays = schedule.Properties.AdvancedSchedule == null
+            this.DaysOfMonth = schedule.Properties.AdvancedSchedule == null
                 ? null
-                : schedule.Properties.AdvancedSchedule.MonthDays;
-            this.DayOfWeek = this.isMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
+                : this.GetDaysOfMonth(schedule.Properties.AdvancedSchedule.MonthDays);
+            this.DayOfWeek = this.IsMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
                 ? null
                 : schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Day;
-            this.Occurrence = this.isMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
+            this.DayOfWeekOccurrence = this.IsMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
                 ? null
-                : schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Occurrence;
+                : this.GetDayOfWeekOccurrence(schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Occurrence);
         }
 
         /// <summary>
@@ -109,12 +112,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the schedule days of the week.
         /// </summary>
-        public IList<string> WeekDays { get; set; }
+        public IList<string> DaysOfWeek { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule days of the month.
         /// </summary>
-        public IList<int> MonthDays { get; set; }
+        public IList<DaysOfMonth> DaysOfMonth { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule day of the week.
@@ -122,10 +125,42 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string DayOfWeek { get; set; }
 
         /// <summary>
-        /// Gets or sets the schedule day of the week.
+        /// Gets or sets the schedule day of the week occurrence.
         /// </summary>
-        public int? Occurrence { get; set; }
-        
+        public string DayOfWeekOccurrence { get; set; }
+
+        /// <summary>
+        /// The create advanced schedule.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="AdvancedSchedule"/>.
+        /// </returns>
+        public AdvancedSchedule GetAdvancedSchedule()
+        {
+            if (this.AdvancedScheduleIsNull(this))
+            {
+                return null;
+            }
+
+            var advancedSchedule = new AdvancedSchedule()
+            {
+                WeekDays = this.DaysOfWeek,
+                MonthDays = this.DaysOfMonth == null ? null : this.DaysOfMonth.Select(v => Convert.ToInt32(v)).ToList(),
+                MonthlyOccurrences = string.IsNullOrWhiteSpace(this.DayOfWeek) && this.DayOfWeekOccurrence == null
+                    ? null
+                    : new AdvancedScheduleMonthlyOccurrence[]
+                    {
+                        new AdvancedScheduleMonthlyOccurrence()
+                        {
+                            Day = this.DayOfWeek,
+                            Occurrence = this.GetDayOfWeekOccurrence(this.DayOfWeekOccurrence)
+                        }
+                    }
+            };
+
+            return advancedSchedule;
+        }
+
         /// <summary>
         /// The is null or empty list.
         /// </summary>
@@ -142,9 +177,84 @@ namespace Microsoft.Azure.Commands.Automation.Model
             return list == null || list.Count == 0;
         }
 
-        private bool isMonthlyOccurrenceNull(Azure.Management.Automation.Models.AdvancedSchedule advancedSchedule)
+        /// <summary>
+        /// The is monthly occurrence null.
+        /// </summary>
+        /// <param name="advancedSchedule">
+        /// The advanced schedule.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        private bool IsMonthlyOccurrenceNull(Azure.Management.Automation.Models.AdvancedSchedule advancedSchedule)
         {
             return advancedSchedule == null || this.IsNullOrEmptyList(advancedSchedule.MonthlyOccurrences);
+        }
+
+        /// <summary>
+        /// The advanced schedule is null.
+        /// </summary>
+        /// <param name="schedule">
+        /// The schedule.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        private bool AdvancedScheduleIsNull(Schedule schedule)
+        {
+            return (schedule.DaysOfWeek == null
+                && schedule.DaysOfMonth == null
+                && string.IsNullOrWhiteSpace(schedule.DayOfWeek)
+                && schedule.DayOfWeekOccurrence == null);
+        }
+
+        /// <summary>
+        /// The get day of week occurrence.
+        /// </summary>
+        /// <param name="dayOfWeekOccurrence">
+        /// The day of week occurrence.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int?"/>.
+        /// </returns>
+        private int? GetDayOfWeekOccurrence(string dayOfWeekOccurrence)
+        {
+            if (string.IsNullOrWhiteSpace(dayOfWeekOccurrence))
+            {
+                return null;
+            }
+
+            return Convert.ToInt32(Enum.Parse(typeof(DayOfWeekOccurrence), dayOfWeekOccurrence));
+        }
+
+        /// <summary>
+        /// The get day of week occurrence.
+        /// </summary>
+        /// <param name="dayOfWeekOccurrence">
+        /// The day of week occurrence.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        private string GetDayOfWeekOccurrence(int? dayOfWeekOccurrence)
+        {
+            return dayOfWeekOccurrence.HasValue
+                ? Enum.GetName(typeof(DayOfWeekOccurrence), dayOfWeekOccurrence)
+                : null;
+        }
+
+        /// <summary>
+        /// The get days of month.
+        /// </summary>
+        /// <param name="daysOfMonth">
+        /// The days of month.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IList"/>.
+        /// </returns>
+        private IList<DaysOfMonth> GetDaysOfMonth(IList<int> daysOfMonth)
+        {
+            return daysOfMonth.Select(value => (DaysOfMonth)value).ToList();
         }
     }
 }
