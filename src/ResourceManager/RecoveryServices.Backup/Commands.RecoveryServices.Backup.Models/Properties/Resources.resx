@@ -441,7 +441,8 @@ Please contact Microsoft for further assistant.</value>
     <value>BackupManagementType value should be empty for WorkloadType AzureSql</value>
   </data>
   <data name="RetentionPolicyEmptyInAzureSql" xml:space="preserve">
-    <value>RetentionPolicy is empty, nothing to update</value>  </data>
+    <value>RetentionPolicy is empty, nothing to update</value>
+  </data>
   <data name="AllowedSqlRetentionRange" xml:space="preserve">
     <value>Retention count in Weeks should be in between 1-520, in Months should be in between 1-120 and Years should be in between 1-10</value>
   </data>
@@ -450,5 +451,11 @@ Please contact Microsoft for further assistant.</value>
   </data>
   <data name="UnsupportedJobWarning" xml:space="preserve">
     <value>Got some unsupported jobs</value>
+  </data>
+  <data name="ProtectionStateInvalidForAzureSqlItem" xml:space="preserve">
+    <value>Given Protection state is not valid for AzureSqlItem. Provided state : {0}</value>
+  </data>
+  <data name="ProtectionStatusNotAllowedForAzureSqlItem" xml:space="preserve">
+    <value>Protection Status is not allowed for AzureSqlItem. protectionStatus : {0}</value>
   </data>
 </root>
