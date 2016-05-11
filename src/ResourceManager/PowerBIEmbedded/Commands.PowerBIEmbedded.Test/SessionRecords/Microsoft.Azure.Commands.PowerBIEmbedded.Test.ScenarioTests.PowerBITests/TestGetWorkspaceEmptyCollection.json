@@ -1,0 +1,613 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourcegroups/pstest1675234855RG?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2QxY2Q3YTgtYjAzNS00NTYzLTkyODgtZGJlNzA2Y2Q2NzJlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdDE2NzUyMzQ4NTVSRz9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"WestUS\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "28"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/pstest1675234855RG\",\r\n  \"name\": \"pstest1675234855RG\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "189"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "91a650a8-b49c-49fe-ac10-4bad12315253"
+        ],
+        "x-ms-correlation-request-id": [
+          "91a650a8-b49c-49fe-ac10-4bad12315253"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160606T145650Z:91a650a8-b49c-49fe-ac10-4bad12315253"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Jun 2016 14:56:50 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/pstest1675234855RG/providers/Microsoft.PowerBI/workspaceCollections/pstest1509654886WC?api-version=2016-01-29",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2QxY2Q3YTgtYjAzNS00NTYzLTkyODgtZGJlNzA2Y2Q2NzJlL3Jlc291cmNlR3JvdXBzL3BzdGVzdDE2NzUyMzQ4NTVSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvd2VyQkkvd29ya3NwYWNlQ29sbGVjdGlvbnMvcHN0ZXN0MTUwOTY1NDg4NldDP2FwaS12ZXJzaW9uPTIwMTYtMDEtMjk=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"WestUS\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "89"
+        ],
+        "x-ms-client-request-id": [
+          "da345345-979f-4385-9deb-5b227b39bb09"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.PowerBIEmbedded.PowerBIEmbeddedManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/pstest1675234855RG/providers/Microsoft.PowerBI/workspaceCollections/pstest1509654886WC\",\r\n  \"name\": \"pstest1509654886WC\",\r\n  \"type\": \"Microsoft.PowerBI/workspaceCollections\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"createdDate\": \"2016-06-06T14:56:53.9651963Z\",\r\n    \"status\": \"Active\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "417"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "RequestId": [
+          "ccf8442b-53b7-4916-8e22-a73e02d2d034"
+        ],
+        "x-ms-request-id": [
+          "ccf8442b-53b7-4916-8e22-a73e02d2d034"
+        ],
+        "Cache-Control": [
+          "no-store, must-revalidate, no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "2c9554ee-493c-445b-8850-3fb76dec4348"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160606T145654Z:2c9554ee-493c-445b-8850-3fb76dec4348"
+        ],
+        "Date": [
+          "Mon, 06 Jun 2016 14:56:53 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/pstest1675234855RG/providers/Microsoft.PowerBI/workspaceCollections/pstest1509654886WC/workspaces?api-version=2016-01-29",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2QxY2Q3YTgtYjAzNS00NTYzLTkyODgtZGJlNzA2Y2Q2NzJlL3Jlc291cmNlR3JvdXBzL3BzdGVzdDE2NzUyMzQ4NTVSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvd2VyQkkvd29ya3NwYWNlQ29sbGVjdGlvbnMvcHN0ZXN0MTUwOTY1NDg4NldDL3dvcmtzcGFjZXM/YXBpLXZlcnNpb249MjAxNi0wMS0yOQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f5f90330-84a2-40fe-ad38-6af843b9cda2"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.PowerBIEmbedded.PowerBIEmbeddedManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "RequestId": [
+          "5e67a3b9-42de-49be-838a-e161971e6897"
+        ],
+        "x-ms-request-id": [
+          "5e67a3b9-42de-49be-838a-e161971e6897"
+        ],
+        "Cache-Control": [
+          "no-store, must-revalidate, no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14937"
+        ],
+        "x-ms-correlation-request-id": [
+          "7049a8c7-e878-475a-a062-337fc7d5c97e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160606T145654Z:7049a8c7-e878-475a-a062-337fc7d5c97e"
+        ],
+        "Date": [
+          "Mon, 06 Jun 2016 14:56:53 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourcegroups/pstest1675234855RG?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2QxY2Q3YTgtYjAzNS00NTYzLTkyODgtZGJlNzA2Y2Q2NzJlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdDE2NzUyMzQ4NTVSRz9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "c8d1c49f-e4cd-40ee-af03-329c3d39bfaf"
+        ],
+        "x-ms-correlation-request-id": [
+          "c8d1c49f-e4cd-40ee-af03-329c3d39bfaf"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160606T145655Z:c8d1c49f-e4cd-40ee-af03-329c3d39bfaf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Jun 2016 14:56:55 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2QxY2Q3YTgtYjAzNS00NTYzLTkyODgtZGJlNzA2Y2Q2NzJlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUXhOamMxTWpNME9EVTFVa2N0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14962"
+        ],
+        "x-ms-request-id": [
+          "3a37c13d-aa54-4d64-af6f-18cdcdf829f7"
+        ],
+        "x-ms-correlation-request-id": [
+          "3a37c13d-aa54-4d64-af6f-18cdcdf829f7"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160606T145655Z:3a37c13d-aa54-4d64-af6f-18cdcdf829f7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Jun 2016 14:56:55 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2QxY2Q3YTgtYjAzNS00NTYzLTkyODgtZGJlNzA2Y2Q2NzJlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUXhOamMxTWpNME9EVTFVa2N0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14960"
+        ],
+        "x-ms-request-id": [
+          "ab1d8800-1927-41bd-93c3-e215c623c4fe"
+        ],
+        "x-ms-correlation-request-id": [
+          "ab1d8800-1927-41bd-93c3-e215c623c4fe"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160606T145711Z:ab1d8800-1927-41bd-93c3-e215c623c4fe"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Jun 2016 14:57:10 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2QxY2Q3YTgtYjAzNS00NTYzLTkyODgtZGJlNzA2Y2Q2NzJlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUXhOamMxTWpNME9EVTFVa2N0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14959"
+        ],
+        "x-ms-request-id": [
+          "bba0176f-abad-4d29-a495-4b086a9aa1e7"
+        ],
+        "x-ms-correlation-request-id": [
+          "bba0176f-abad-4d29-a495-4b086a9aa1e7"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160606T145726Z:bba0176f-abad-4d29-a495-4b086a9aa1e7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Jun 2016 14:57:25 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2QxY2Q3YTgtYjAzNS00NTYzLTkyODgtZGJlNzA2Y2Q2NzJlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUXhOamMxTWpNME9EVTFVa2N0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14958"
+        ],
+        "x-ms-request-id": [
+          "007290d8-87f0-4e07-86f7-f0866331e397"
+        ],
+        "x-ms-correlation-request-id": [
+          "007290d8-87f0-4e07-86f7-f0866331e397"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160606T145741Z:007290d8-87f0-4e07-86f7-f0866331e397"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Jun 2016 14:57:40 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2QxY2Q3YTgtYjAzNS00NTYzLTkyODgtZGJlNzA2Y2Q2NzJlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUXhOamMxTWpNME9EVTFVa2N0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14957"
+        ],
+        "x-ms-request-id": [
+          "169ca5c3-74c8-41ac-b798-36f97392209e"
+        ],
+        "x-ms-correlation-request-id": [
+          "169ca5c3-74c8-41ac-b798-36f97392209e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160606T145756Z:169ca5c3-74c8-41ac-b798-36f97392209e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Jun 2016 14:57:56 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2QxY2Q3YTgtYjAzNS00NTYzLTkyODgtZGJlNzA2Y2Q2NzJlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUXhOamMxTWpNME9EVTFVa2N0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14955"
+        ],
+        "x-ms-request-id": [
+          "d3e5c09f-6f03-455c-ac73-5531564a03ce"
+        ],
+        "x-ms-correlation-request-id": [
+          "d3e5c09f-6f03-455c-ac73-5531564a03ce"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160606T145811Z:d3e5c09f-6f03-455c-ac73-5531564a03ce"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Jun 2016 14:58:11 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1QxNjc1MjM0ODU1UkctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2QxY2Q3YTgtYjAzNS00NTYzLTkyODgtZGJlNzA2Y2Q2NzJlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUXhOamMxTWpNME9EVTFVa2N0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14954"
+        ],
+        "x-ms-request-id": [
+          "72c3770f-5b3c-4c85-a004-c6b4ee0abcbf"
+        ],
+        "x-ms-correlation-request-id": [
+          "72c3770f-5b3c-4c85-a004-c6b4ee0abcbf"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160606T145826Z:72c3770f-5b3c-4c85-a004-c6b4ee0abcbf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 06 Jun 2016 14:58:26 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "3d1cd7a8-b035-4563-9288-dbe706cd672e"
+  }
+}
