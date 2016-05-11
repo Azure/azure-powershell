@@ -12,6 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
@@ -21,18 +27,13 @@ using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using LegacyTest = Microsoft.Azure.Test;
 using LegacyRMClient = Microsoft.Azure.Management.Resources;
+using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
@@ -106,6 +107,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-02-01");
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
