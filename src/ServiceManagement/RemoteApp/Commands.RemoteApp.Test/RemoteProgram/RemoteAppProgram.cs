@@ -24,8 +24,10 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
     using Xunit;
 
     // Publish-AzureRemoteAppProgram, Unpublish-AzureRemoteAppProgram
+
     public class RemoteAppProgramTest : RemoteAppClientTest
     {
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAllRemoteApps()

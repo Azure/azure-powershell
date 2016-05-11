@@ -14,14 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementOpenIdConnectProvider, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementOpenIdConnectProvider>), ParameterSetName = new [] { GetAll })]
-    [OutputType(typeof(PsApiManagementOpenIdConnectProvider), ParameterSetName = new [] { GetById })]
+    [OutputType(typeof(IList<PsApiManagementOpenIdConnectProvider>), ParameterSetName = new[] { GetAll })]
+    [OutputType(typeof(PsApiManagementOpenIdConnectProvider), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementOpenIdConnectProvider : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all OpenID Connect Providers";

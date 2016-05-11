@@ -25,6 +25,8 @@ using Moq;
 using Newtonsoft.Json;
 using Xunit;
 using Microsoft.Azure.Commands.Intune;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Commands.Intune.Test.UnitTests
 {
@@ -38,8 +40,9 @@ namespace Commands.Intune.Test.UnitTests
         /// <summary>
         ///  C'tor for GetIntuneMAMUserDeviceCmdletTests class.
         /// </summary>
-        public GetIntuneMAMUserDeviceCmdletTests()
+        public GetIntuneMAMUserDeviceCmdletTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             intuneClientMock = new Mock<IIntuneResourceManagementClient>();
 

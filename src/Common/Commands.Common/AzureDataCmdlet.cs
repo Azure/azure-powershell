@@ -12,20 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Management.Automation;
-using System.Management.Automation.Host;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
+using System;
+using System.IO;
+using System.Management.Automation;
+using System.Management.Automation.Host;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -61,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         protected override void SaveDataCollectionProfile()
         {
-             if (_dataCollectionProfile == null)
+            if (_dataCollectionProfile == null)
             {
                 InitializeDataCollectionProfile();
             }
@@ -74,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
             AzureSession.DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
-       }
+        }
 
         protected override void PromptForDataCollectionProfileIfNotExists()
         {
@@ -95,11 +90,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
                 while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
                 {
-                    TestMockSupport.Delay(10*1000);
+                    TestMockSupport.Delay(10 * 1000);
                     endTime = DateTime.Now;
 
                     elapsedSeconds = (endTime - startTime).TotalSeconds;
-                    record.PercentComplete = ((int) elapsedSeconds*100/(int) timeToWaitInSeconds);
+                    record.PercentComplete = ((int)elapsedSeconds * 100 / (int)timeToWaitInSeconds);
                     WriteProgress(record);
                 }
 

@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -34,13 +34,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             ValueFromPipeline = true,
             HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
         public AzureHDInsightConfig Config { get; set; }
-        
+
         [Parameter(Position = 1,
             Mandatory = true,
             HelpMessage = "The type of metastore.")]
         public AzureHDInsightMetastoreType MetastoreType { get; set; }
 
-        [Parameter(Position = 2, 
+        [Parameter(Position = 2,
             Mandatory = true,
             HelpMessage = "The Azure SQL Server instance to use for this metastore.")]
         public string SqlAzureServerName
@@ -48,18 +48,18 @@ namespace Microsoft.Azure.Commands.HDInsight
             get { return _metastore.SqlAzureServerName; }
             set { _metastore.SqlAzureServerName = value; }
         }
-        
+
         [Parameter(Position = 3,
-            Mandatory = true, 
+            Mandatory = true,
             HelpMessage = "The database on the Azure SQL Server instance to use for this metastore.")]
         public string DatabaseName
         {
             get { return _metastore.DatabaseName; }
             set { _metastore.DatabaseName = value; }
         }
-        
+
         [Parameter(Position = 4,
-            Mandatory = true, 
+            Mandatory = true,
             HelpMessage = "The user credentials to use for the Azure SQL Server database.")]
         public PSCredential Credential
         {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             _metastore = new AzureHDInsightMetastore();
         }
-        
+
         public override void ExecuteCmdlet()
         {
             switch (MetastoreType)

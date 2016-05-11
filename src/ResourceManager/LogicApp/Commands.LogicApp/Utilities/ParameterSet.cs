@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
     internal static class ParameterSet
-    {        
+    {
         /// <summary>
         /// Parameter set top create Logic app with definition object
         /// </summary>

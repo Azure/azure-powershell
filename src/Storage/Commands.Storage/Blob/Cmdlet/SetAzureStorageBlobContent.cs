@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,10 +24,6 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Storage;
 using StorageBlob = Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
@@ -201,7 +201,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         null,
                         this.GetTransferContext(data),
                         this.CmdletCancellationToken);
-                }, 
+                },
                 data.Record,
                 this.OutputStream);
 

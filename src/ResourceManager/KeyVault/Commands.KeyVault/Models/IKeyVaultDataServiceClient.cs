@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         IEnumerable<KeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
 
         IEnumerable<KeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
-        
+
         KeyBundle DeleteKey(string vaultName, string keyName);
 
         Secret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes);

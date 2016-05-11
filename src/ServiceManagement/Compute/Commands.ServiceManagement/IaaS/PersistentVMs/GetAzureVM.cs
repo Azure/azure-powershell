@@ -192,7 +192,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     DataVirtualHardDisks              = vmRole == null ? null : Mapper.Map<Collection<PVM.DataVirtualHardDisk>>(vmRole.DataVirtualHardDisks),
                     OSVirtualHardDisk                 = vmRole == null ? null : Mapper.Map<PVM.OSVirtualHardDisk>(vmRole.OSVirtualHardDisk),
                     ConfigurationSets                 = vmRole == null ? null : PersistentVMHelper.MapConfigurationSets(vmRole.ConfigurationSets),
-                    DebugSettings                     = (vmRole == null || vmRole.DebugSettings == null) ? null : Mapper.Map<PVM.DebugSettings>(vmRole.DebugSettings)
+                    DebugSettings                     = (vmRole == null || vmRole.DebugSettings == null) ? null : Mapper.Map<PVM.DebugSettings>(vmRole.DebugSettings),
+                    MigrationState                    = vmRole == null ? string.Empty : vmRole.MigrationState,
+                    LicenseType                       = vmRole == null ? string.Empty : vmRole.LicenseType
                 }
             };
 

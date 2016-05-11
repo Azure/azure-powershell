@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Sql.Database.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -130,19 +129,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
             newEntity.Add(new AzureSqlDatabaseModel()
-                {
-                    Location = location,
-                    ResourceGroupName = ResourceGroupName,
-                    ServerName = ServerName,
-                    CatalogCollation = CatalogCollation,
-                    CollationName = CollationName,
-                    DatabaseName = DatabaseName,
-                    Edition = Edition,
-                    MaxSizeBytes = MaxSizeBytes,
-                    RequestedServiceObjectiveName = RequestedServiceObjectiveName,
-                    Tags = Tags,
-                    ElasticPoolName = ElasticPoolName,
-                });
+            {
+                Location = location,
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                CatalogCollation = CatalogCollation,
+                CollationName = CollationName,
+                DatabaseName = DatabaseName,
+                Edition = Edition,
+                MaxSizeBytes = MaxSizeBytes,
+                RequestedServiceObjectiveName = RequestedServiceObjectiveName,
+                Tags = Tags,
+                ElasticPoolName = ElasticPoolName,
+            });
             return newEntity;
         }
 

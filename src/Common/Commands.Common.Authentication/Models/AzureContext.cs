@@ -14,6 +14,7 @@
 
 using Newtonsoft.Json;
 using System;
+
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     /// <summary>
@@ -28,10 +29,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <param name="subscription">The azure subscription object</param>
         /// <param name="account">The azure account object</param>
         /// <param name="environment">The azure environment object</param>
-        public AzureContext(AzureSubscription subscription, AzureAccount account, AzureEnvironment environment) 
+        public AzureContext(AzureSubscription subscription, AzureAccount account, AzureEnvironment environment)
             : this(subscription, account, environment, null)
         {
-            
+
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Gets the azure environment.
         /// </summary>
         public AzureEnvironment Environment { get; private set; }
-        
+
         /// <summary>
         /// Gets the azure tenant.
         /// </summary>

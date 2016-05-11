@@ -14,7 +14,9 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -22,11 +24,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Microsoft.Azure.Batch.Protocol.BatchRequests;
-using Microsoft.Rest.Azure;
 using Xunit;
-using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
 {
@@ -36,8 +36,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchSubtaskCommandTests()
+        public GetBatchSubtaskCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchSubtaskCommand()
@@ -60,8 +61,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
             AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> response = BatchTestHelpers.CreateCloudTaskListSubtasksResponse();
             // Build a SubtaskInformation instead of querying the service on a List Subtasks call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.TaskListSubtasksOptions, 
-                AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, 
+                ProxyModels.TaskListSubtasksOptions,
+                AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult,
                 ProxyModels.TaskListSubtasksHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
         // the cmdlet can directly call the List Subtasks method by itself, update these test cases to
         // use the generic interceptor creation helper.
         private RequestInterceptor CreateFakeListSubtasksInterceptor(
-            string taskId, 
+            string taskId,
             AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult,
             ProxyModels.TaskListSubtasksHeaders> listSubtasksResponse)
         {
@@ -174,7 +175,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
                 }
                 else
                 {
-                    TaskGetBatchRequest getTaskRequest = (TaskGetBatchRequest) baseRequest;
+                    TaskGetBatchRequest getTaskRequest = (TaskGetBatchRequest)baseRequest;
 
                     getTaskRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
