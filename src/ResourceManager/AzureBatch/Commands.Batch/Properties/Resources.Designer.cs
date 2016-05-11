@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Failed to add application package {0} version {1}. {2}.&quot;.
+        ///   Looks up a localized string similar to Failed to add application package {0} version {1}. {2}..
         /// </summary>
         internal static string FailedToAddApplicationPackage {
             get {
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to upload {0} to Azure storage ({1})..
+        ///   Looks up a localized string similar to Failed to upload {0} to Azure storage. {1}..
         /// </summary>
         internal static string FailedToUpload {
             get {

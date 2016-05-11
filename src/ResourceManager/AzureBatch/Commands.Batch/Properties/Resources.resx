@@ -443,7 +443,7 @@
     <value>File not found {0}.</value>
   </data>
   <data name="FailedToUpload" xml:space="preserve">
-    <value>Failed to upload {0} to Azure storage ({1}).</value>
+    <value>Failed to upload {0} to Azure storage. {1}.</value>
   </data>
   <data name="FailedToUploadAndDelete" xml:space="preserve">
     <value>Uploading {0} to Azure storage failed and the attempt to delete the application package afterwards failed. {1}.</value>
@@ -458,6 +458,6 @@
     <value>Failed to get application {0} package {1}. You may need to delete the application package and try uploading again. {2}.</value>
   </data>
   <data name="FailedToAddApplicationPackage" xml:space="preserve">
-    <value>"Failed to add application package {0} version {1}. {2}."</value>
+    <value>Failed to add application package {0} version {1}. {2}.</value>
   </data>
 </root>

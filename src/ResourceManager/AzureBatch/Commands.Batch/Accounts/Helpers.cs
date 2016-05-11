@@ -92,20 +92,19 @@ namespace Microsoft.Azure.Commands.Batch
 
         public static Hashtable[] CreateTagHashtable(IDictionary<string, string> dictionary)
         {
-            if (dictionary == null)
+            List<Hashtable> tagHashtable = new List<Hashtable>();
+            if (dictionary != null)
             {
-                return null;
+                foreach (string key in dictionary.Keys)
+                {
+                    tagHashtable.Add(new Hashtable
+                    {
+                        {"Name", key},
+                        {"Value", dictionary[key]}
+                    });
+                }
             }
 
-            List<Hashtable> tagHashtable = new List<Hashtable>();
-            foreach (string key in dictionary.Keys)
-            {
-                tagHashtable.Add(new Hashtable
-                {
-                    {"Name", key},
-                    {"Value", dictionary[key]}
-                });
-            }
             return tagHashtable.ToArray();
         }
 
@@ -163,10 +162,8 @@ namespace Microsoft.Azure.Commands.Batch
         /// <param name="accounts">The list of accounts.</param>
         /// <param name="tag">The tag to filter on.</param>
         /// <returns>The filtered accounts</returns>
-        public static List<AccountResource> FilterAccounts(IPage<AccountResource>accounts, Hashtable tag)
+        public static IEnumerable<AccountResource> FilterAccounts(IPage<AccountResource> accounts, Hashtable tag)
         {
-            List<AccountResource> result = new List<AccountResource>();
-
             if (tag != null && tag.Count >= 1)
             {
                 PSTagValuePair tagValuePair = Helpers.Create(tag);
@@ -174,29 +171,32 @@ namespace Microsoft.Azure.Commands.Batch
                 {
                     throw new ArgumentException(Resources.InvalidTagFormat);
                 }
+
                 if (string.IsNullOrEmpty(tagValuePair.Value))
                 {
-                    result.AddRange(
+                    return
                         accounts.Where(
                             acct =>
                                 acct.Tags != null &&
-                                acct.Tags.Keys.Contains(tagValuePair.Name, StringComparer.OrdinalIgnoreCase))
-                            .Select(acct => acct).ToList());
+                                ContainsTag(acct.Tags.Keys, tagValuePair.Name));
                 }
                 else
                 {
-                    result.AddRange(
+                    return
                         accounts.Where(
                             acct =>
                                 acct.Tags != null &&
-                                acct.Tags.Keys.Contains(tagValuePair.Name, StringComparer.OrdinalIgnoreCase))
-                            .Where(rg => rg.Tags.Values.Contains(tagValuePair.Value, StringComparer.OrdinalIgnoreCase))
-                            .Select(acct => acct).ToList());
+                                ContainsTag(acct.Tags.Keys, tagValuePair.Name) &&
+                                acct.Tags[tagValuePair.Name] == tagValuePair.Value);
                 }
             }
 
-            return result;
+            return accounts;
         }
 
+        public static bool ContainsTag(ICollection<string> tag, string value)
+        {
+            return tag.Contains(value, StringComparer.OrdinalIgnoreCase);
+        }
     }
 }

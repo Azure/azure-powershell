@@ -172,7 +172,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             bool activateOnly)
         {
             // Checks File path and resourceGroupName is valid
-            resourceGroupName = PreConditionsCheck(resourceGroupName, accountName, filePath);
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException(string.Format(Resources.FileNotFound, filePath), filePath);
+            }
+
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetGroupForAccount(accountName);
+            }
 
             // If the package has already been uploaded but wasn't activated.
             if (activateOnly)
@@ -232,25 +240,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 var uploadMessage = string.Format(Resources.FailedToUpload, filePath, exception.Message);
                 throw new UploadApplicationPackageException(uploadMessage, exception);
             }
-        }
-
-        /// <summary>
-        /// Checks the file path is valid and the resourceGroupName is valid
-        /// </summary>
-        private string PreConditionsCheck(string resourceGroupName, string accountName, string filePath)
-        {
-            if (!File.Exists(filePath))
-            {
-                throw new FileNotFoundException(string.Format(Resources.FileNotFound, filePath), filePath);
-            }
-
-            // use resource mgr to see if account exists and then use resource group name to do the actual lookup
-            if (string.IsNullOrEmpty(resourceGroupName))
-            {
-                resourceGroupName = GetGroupForAccount(accountName);
-            }
-
-            return resourceGroupName;
         }
 
         private void ActivateApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version, string format, string errorMessageFormat)
