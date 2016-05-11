@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             SharedAccessAuthorizationRuleAttributes sasRule = null;
             if (!string.IsNullOrEmpty(InputFile))

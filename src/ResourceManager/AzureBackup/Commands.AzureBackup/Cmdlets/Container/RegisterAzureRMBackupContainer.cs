@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string ResourceGroupName { get; set; }
 
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 string vmName = String.Empty;
                 string rgName = String.Empty;

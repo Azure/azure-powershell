@@ -402,6 +402,28 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a CloudTaskListSubtasksResponse object
+        /// </summary>
+        public static ProxyModels.CloudTaskListSubtasksResponse CreateCloudTaskListSubtasksResponse(IEnumerable<int> subtaskIds)
+        {
+            ProxyModels.CloudTaskListSubtasksResponse response = new ProxyModels.CloudTaskListSubtasksResponse();
+            response.StatusCode = HttpStatusCode.OK;
+
+            List<ProxyModels.SubtaskInformation> subtasks = new List<ProxyModels.SubtaskInformation>();
+
+            foreach (int id in subtaskIds)
+            {
+                ProxyModels.SubtaskInformation subtask = new ProxyModels.SubtaskInformation();
+                subtask.Id = id;
+                subtasks.Add(subtask);
+            }
+
+            response.SubtasksInformation = subtasks;
+
+            return response;
+        }
+
+        /// <summary>
         /// Builds a NodeFileGetPropertiesResponse object
         /// </summary>
         public static ProxyModels.NodeFileGetPropertiesResponse CreateNodeFileGetPropertiesResponse(string fileName)

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                           "Passing $null will remove virtual network configuration for the region.")]
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(
                 () =>

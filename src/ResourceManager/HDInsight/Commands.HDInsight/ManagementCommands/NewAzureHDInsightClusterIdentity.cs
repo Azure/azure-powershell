@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             Config.ObjectId = ObjectId;
             Config.AADTenantId = AadTenantId;

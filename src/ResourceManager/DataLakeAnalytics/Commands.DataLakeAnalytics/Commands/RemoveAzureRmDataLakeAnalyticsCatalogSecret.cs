@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(Position = 5, Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent)
             {

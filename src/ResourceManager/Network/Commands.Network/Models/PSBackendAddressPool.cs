@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSBackendAddressPool : PSChildResource
     {
         [JsonProperty(Order = 1)]
-        public List<PSResourceId> BackendIpConfigurations { get; set; }
+        public List<PSNetworkInterfaceIPConfiguration> BackendIpConfigurations { get; set; }
 
         [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
@@ -33,13 +33,23 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string BackendIpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(BackendIpConfigurations, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(BackendIpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LoadBalancingRulesText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializeBackendIpConfigurations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeLoadBalancingRules()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }

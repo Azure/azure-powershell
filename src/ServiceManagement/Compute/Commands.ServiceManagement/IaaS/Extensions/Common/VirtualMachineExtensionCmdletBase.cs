@@ -29,7 +29,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     {
         protected const string VirtualMachineExtensionNoun = "AzureVMExtension";
 
-        protected const string ExtensionReferenceNameFormat = "{0}-{1}-{2}";
         protected const string PublicConfigurationKeyStr = "PublicConfiguration";
         protected const string PrivateConfigurationKeyStr = "PrivateConfiguration";
         protected const string PublicTypeStr = "Public";

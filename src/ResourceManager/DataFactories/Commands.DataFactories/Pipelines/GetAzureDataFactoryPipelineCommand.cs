@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.DataFactories
         public string DataFactoryName { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // ValidationNotNullOrEmpty doesn't handle whitespaces well
             if (Name != null && string.IsNullOrWhiteSpace(Name))

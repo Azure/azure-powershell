@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string AddressSpaceText
         {
-            get { return JsonConvert.SerializeObject(LocalNetworkAddressSpace, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LocalNetworkAddressSpace, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

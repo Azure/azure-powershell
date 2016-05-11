@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public DateTime ExpiryTime { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             UpdateComputeNodeUserParameters parameters = new UpdateComputeNodeUserParameters(this.BatchContext,
                 this.PoolId, this.ComputeNodeId, this.Name, this.AdditionalBehaviors)

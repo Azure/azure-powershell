@@ -18,6 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
     public class ExtensionConfigurationInput
     {
+        public string Id { get; set; }
         public string ProviderNameSpace { get; set; }
         public string Type { get; set; }
         public string Version { get; set; }

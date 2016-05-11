@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.WebApps
         [ValidateNotNullOrEmpty]
         public Site WebApp { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (string.Equals(ParameterSetName, ParameterSet2Name, StringComparison.OrdinalIgnoreCase))
             {

@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.PowerShell.Commands;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
@@ -43,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             )]
         public long Offset { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "The number of bytes to read from the file.")]
         public long Length { get; set; }
 
@@ -55,10 +57,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             set { _encoding = value; }
         }
 
-        protected override void ProcessRecord()
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+            HelpMessage = "If the length parameter is not specified or is less than or equal to zero, force returns all content of the file, otherwise it does nothing.")]
+        public SwitchParameter Force { get; set; }
+
+        public override void ExecuteCmdlet()
         {
             byte[] byteArray;
-            using (var memStream = ((MemoryStream) DataLakeStoreFileSystemClient.PreviewFile(Path.Path, Account, Length,
+            if (Length <= 0)
+            {
+                Length = DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Length - Offset;
+                if (Length > 1*1024*1024 && !Force)
+                    // If content is greater than 1MB throw an error to the user to let them know they must pass in a length to preview this much content
+                {
+                    throw new InvalidOperationException(string.Format(Resources.FilePreviewTooLarge, 1*1024*1024, Length));
+                }
+            }
+
+            using (var memStream = ((MemoryStream) DataLakeStoreFileSystemClient.PreviewFile(Path.TransformedPath, Account, Length,
                 CmdletCancellationToken, this)))
             {
                 byteArray = memStream.ToArray();

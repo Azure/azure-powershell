@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public TrafficManagerEndpoint TrafficManagerEndpoint { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             TrafficManagerEndpoint endpointToEnable = null;
 

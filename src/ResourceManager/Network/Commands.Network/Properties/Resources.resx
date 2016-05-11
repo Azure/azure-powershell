@@ -146,23 +146,11 @@
   <data name="LoadBalancerRuleName" xml:space="preserve">
     <value>loadBalancingRules</value>
   </data>
-  <data name="LoadBalancerType" xml:space="preserve">
-    <value>microsoft.network/loadbalancers</value>
-  </data>
-  <data name="NetworkInterfaceType" xml:space="preserve">
-    <value>microsoft.network/networkInterfaces</value>
-  </data>
-  <data name="NetworkSecurityGroupType" xml:space="preserve">
-    <value>microsoft.network/networkSecurityGroups</value>
-  </data>
   <data name="OverwritingResource" xml:space="preserve">
     <value>Are you sure you want to overwriteresource '{0}'</value>
   </data>
   <data name="OverwritingResourceMessage" xml:space="preserve">
     <value>Overwriting resource ...</value>
-  </data>
-  <data name="PublicIpAddressType" xml:space="preserve">
-    <value>microsoft.network/publicIPAddresses</value>
   </data>
   <data name="RemoveResourceMessage" xml:space="preserve">
     <value>Removing resource ...</value>
@@ -188,23 +176,8 @@
   <data name="StaticIpAddressErrorMessage" xml:space="preserve">
     <value>PrivateIpAddress needs to be specified in Static allocation</value>
   </data>
-  <data name="VirtualNetworkType" xml:space="preserve">
-    <value>microsoft.network/virtualNetworks</value>
-  </data>
-  <data name="VirtualNetworkGatewayType" xml:space="preserve">
-    <value>microsoft.network/virtualnetworkgateways</value>
-  </data>
-  <data name="LocalNetworkGatewayType" xml:space="preserve">
-    <value>microsoft.network/localNetworkGateways</value>
-  </data>
-  <data name="VirtualNetworkGatewayConnectionType" xml:space="preserve">
-    <value>microsoft.network/connections</value>
-  </data>
   <data name="VirtualNetworkGatewayNameNotSet" xml:space="preserve">
     <value>VirtualNetworkGatewayNameNotSet</value>
-  </data>
-  <data name="RouteTableType" xml:space="preserve">
-    <value>microsoft.network/routeTables</value>
   </data>
   <data name="ApplicationGatewayBackendAddressPoolName" xml:space="preserve">
     <value>backendAddressPools</value>
@@ -237,9 +210,6 @@
   <data name="ApplicationGatewaySslCertificateName" xml:space="preserve">
     <value>sslCertificates</value>
   </data>
-  <data name="ApplicationGatewayType" xml:space="preserve">
-    <value>microsoft.network/applicationGateways</value>
-  </data>
   <data name="SetByFqdn" xml:space="preserve">
     <value>SetByFqdn</value>
   </data>
@@ -249,7 +219,10 @@
   <data name="LoadBalancerInboundNatPoolsName" xml:space="preserve">
     <value>inboundNatPools</value>
   </data>
-  <data name="ExpressRouteCircuitType" xml:space="preserve">
-    <value>microsoft.network/ExpressRouteCircuits</value>
+  <data name="ApplicationGatewayProbeName" xml:space="preserve">
+    <value>probes</value>
+  </data>
+  <data name="ApplicationGatewayUrlPathMapName" xml:space="preserve">
+    <value>urlPathMaps</value>
   </data>
 </root>

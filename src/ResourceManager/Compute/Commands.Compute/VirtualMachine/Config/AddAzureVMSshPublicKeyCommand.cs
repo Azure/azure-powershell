@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
 
             if (this.VM.OSProfile == null)
@@ -73,17 +73,17 @@ namespace Microsoft.Azure.Commands.Compute
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
 
-            if (this.VM.OSProfile.LinuxConfiguration.SshConfiguration == null)
+            if (this.VM.OSProfile.LinuxConfiguration.Ssh == null)
             {
-                this.VM.OSProfile.LinuxConfiguration.SshConfiguration = new SshConfiguration();
+                this.VM.OSProfile.LinuxConfiguration.Ssh = new SshConfiguration();
             }
 
-            if (this.VM.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys == null)
+            if (this.VM.OSProfile.LinuxConfiguration.Ssh.PublicKeys == null)
             {
-                this.VM.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys = new List<SshPublicKey>();
+                this.VM.OSProfile.LinuxConfiguration.Ssh.PublicKeys = new List<SshPublicKey>();
             }
 
-            this.VM.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys.Add(
+            this.VM.OSProfile.LinuxConfiguration.Ssh.PublicKeys.Add(
                 new SshPublicKey
                 {
                     KeyData = this.KeyData,

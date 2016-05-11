@@ -97,9 +97,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (this.IsLoadBalancerPresent(this.ResourceGroupName, this.Name))
             {
@@ -168,7 +168,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancer>(loadBalancer);
-            lbModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerType;
             lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

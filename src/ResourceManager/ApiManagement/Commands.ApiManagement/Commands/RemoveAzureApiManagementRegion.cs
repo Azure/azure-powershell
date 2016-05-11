@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             "Australia Southeast", IgnoreCase = false)]
         public string Location { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(
                 () =>

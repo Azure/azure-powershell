@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateGuidNotEmpty]
         public Guid RoleDefinitionId { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
             {
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Resources
                 }
             };
 
-            WriteObject(PoliciesClient.CreateRoleAssignment(parameters, DefaultProfile.Context.Subscription.Id.ToString()));
+            WriteObject(PoliciesClient.CreateRoleAssignment(parameters));
         }
     }
 }

@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var jobInfo = DataLakeAnalyticsClient.GetJob(ResourceGroupName, Account, JobId);
             var timeWaitedInSeconds = 0;

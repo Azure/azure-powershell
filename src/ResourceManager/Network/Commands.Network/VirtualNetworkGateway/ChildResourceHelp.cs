@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         //vnetGatewayIpConfig.Id =
         //        ChildResourceHelper.GetResourceNotSetId(
-        //            this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+        //            this.NetworkClient.NetworkManagementClient.SubscriptionId,
         //            Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkGatewayIpConfigName,
         //            this.Name);
 

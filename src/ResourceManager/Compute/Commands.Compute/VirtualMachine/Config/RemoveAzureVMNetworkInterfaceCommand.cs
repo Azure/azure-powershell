@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string[] NetworkInterfaceIDs { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var networkProfile = this.VM.NetworkProfile;
 
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Compute
                 if (networkProfile != null &&
                     networkProfile.NetworkInterfaces != null &&
                     networkProfile.NetworkInterfaces.Any(nic =>
-                        string.Equals(nic.ReferenceUri, id, StringComparison.OrdinalIgnoreCase)))
+                        string.Equals(nic.Id, id, StringComparison.OrdinalIgnoreCase)))
                 {
-                    var nicReference = networkProfile.NetworkInterfaces.First(nic => string.Equals(nic.ReferenceUri, id, StringComparison.OrdinalIgnoreCase));
+                    var nicReference = networkProfile.NetworkInterfaces.First(nic => string.Equals(nic.Id, id, StringComparison.OrdinalIgnoreCase));
                     networkProfile.NetworkInterfaces.Remove(nicReference);
                 }
             }

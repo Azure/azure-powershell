@@ -85,6 +85,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public byte HourInterval { get; set; }
 
         /// <summary>
+        /// Gets or sets the schedule time zone.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule time zone.")]
+        public string TimeZone { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -95,25 +101,26 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 Name = this.Name,
                 StartTime = this.StartTime,
                 Description = this.Description,
-                ExpiryTime = this.ExpiryTime
+                ExpiryTime = this.ExpiryTime,
+                TimeZone = this.TimeZone,
             };
 
-            if (this.ParameterSetName == AutomationCmdletParameterSets.ByOneTime)
+            switch (this.ParameterSetName)
             {
-                schedule.Frequency = ScheduleFrequency.Onetime;
-            }
-            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByDaily)
-            {
-                schedule.Frequency = ScheduleFrequency.Day;
-                schedule.Interval = this.DayInterval;
-            }
-            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByHourly)
-            {
-                schedule.Frequency = ScheduleFrequency.Hour;
-                schedule.Interval = this.HourInterval;
+                case AutomationCmdletParameterSets.ByOneTime:
+                    schedule.Frequency = ScheduleFrequency.Onetime;
+                    break;
+                case AutomationCmdletParameterSets.ByDaily:
+                    schedule.Frequency = ScheduleFrequency.Day;
+                    schedule.Interval = this.DayInterval;
+                    break;
+                case AutomationCmdletParameterSets.ByHourly:
+                    schedule.Frequency = ScheduleFrequency.Hour;
+                    schedule.Interval = this.HourInterval;
+                    break;
             }
 
-            Schedule createdSchedule = this.AutomationClient.CreateSchedule(this.ResourceGroupName, this.AutomationAccountName, schedule);
+            var createdSchedule = this.AutomationClient.CreateSchedule(this.ResourceGroupName, this.AutomationAccountName, schedule);
             this.WriteObject(createdSchedule);
         }
     }

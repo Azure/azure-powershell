@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public int Priority { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             NewJobParameters parameters = new NewJobParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {

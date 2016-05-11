@@ -381,7 +381,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             var publicSettings = new DscExtensionPublicSettings();
             var privateSettings = new DscExtensionPrivateSettings();
 
-            publicSettings.WmfVersion = string.IsNullOrEmpty(WmfVersion) ? "latest" : WmfVersion;
+            
 
             if (!string.IsNullOrEmpty(ConfigurationArchive))
             {
@@ -400,6 +400,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 privateSettings.Items = settings.Item2;
 
                 privateSettings.DataBlobUri = configurationUris.DataBlobUri;
+
+                if (!string.IsNullOrEmpty(WmfVersion))
+                {
+                    publicSettings.WmfVersion = WmfVersion;        
+                }
             }
 
             //

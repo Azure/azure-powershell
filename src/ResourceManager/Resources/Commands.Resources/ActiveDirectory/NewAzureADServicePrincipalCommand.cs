@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, HelpMessage = "Create the service principal with account disabled.")]
         public SwitchParameter DisableAccount { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             CreatePSServicePrincipalParameters createParameters = new CreatePSServicePrincipalParameters
             {

@@ -45,23 +45,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            try
-            {
-                DataLakeAnalyticsClient.GetCatalogItem(ResourceGroupName, Account, Path, ItemType);
-                WriteObject(true);
-            }
-            catch (Exception e)
-            {
-                if (e.Message.Equals(string.Format(Resources.InvalidCatalogPath, Path.FullCatalogItemPath),
-                    StringComparison.CurrentCultureIgnoreCase))
-                {
-                    throw;
-                }
-
-                WriteObject(false);
-            }
+            WriteObject(DataLakeAnalyticsClient.TestCatalogItem(ResourceGroupName, Account, Path, ItemType));
         }
     }
 }

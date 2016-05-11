@@ -48,23 +48,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             FileType fileType;
             if (Force &&
-                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.FullyQualifiedPath, Account,
+                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
                     out fileType))
             {
-                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.FullyQualifiedPath, Account, true);
+                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, true);
             }
 
-            if (!DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.Path, Account, Destination.Path))
+            if (!DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.TransformedPath, Account, Destination.TransformedPath))
             {
                 throw new CloudException(
-                    string.Format(Resources.MoveFailed, Path.FullyQualifiedPath, Destination.FullyQualifiedPath));
+                    string.Format(Resources.MoveFailed, Path.OriginalPath, Destination.OriginalPath));
             }
 
-            WriteObject(Destination.FullyQualifiedPath);
+            WriteObject(Destination.OriginalPath);
         }
     }
 }

@@ -127,6 +127,23 @@ Timestamp (Utc):{4}</value>
   <data name="ResourceGroupNameCannotBeEmpty" xml:space="preserve">
     <value>Resource group name cannot be null.</value>
   </data>
+  <data name="SavedSearchCreating" xml:space="preserve">
+    <value>Creating saved search '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SavedSearchDeleteConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove saved search '{0}' in workspace '{1}'?</value>
+  </data>
+  <data name="SavedSearchExists" xml:space="preserve">
+    <value>A saved search with the id '{0}' in workspace '{1}' exists. 
+Continuing execution may overwrite the exisiting one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="SavedSearchNotFound" xml:space="preserve">
+    <value>Saved search '{0}' does not exist in workspace '{1}'.</value>
+  </data>
+  <data name="SavedSearchRemoving" xml:space="preserve">
+    <value>Removing saved search '{0}' in workspace '{1}'.</value>
+  </data>
   <data name="StorageInsightCreating" xml:space="preserve">
     <value>Creating storage insight '{0}' in workspace '{1}'.</value>
   </data>

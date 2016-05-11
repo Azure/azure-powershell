@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         [Alias("o")]
         public SwitchParameter OverWrite  { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var result = DownloadFromBlobUri(
                 this,

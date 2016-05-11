@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public Stream DestinationStream { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             DownloadRemoteDesktopProtocolFileOptions options = new DownloadRemoteDesktopProtocolFileOptions(this.BatchContext, this.PoolId, this.ComputeNodeId,
                 this.ComputeNode, this.DestinationPath, this.DestinationStream, this.AdditionalBehaviors);

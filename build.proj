@@ -45,13 +45,14 @@
     <Scope Condition=" $(Scope) == '' " >all</Scope>
   </PropertyGroup>
   <ItemGroup>
-    <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln" Condition=" '$(Scope)' == 'all' "/>
+    <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln"
+                            Exclude=".\src\ResourceManager\Intune\*.sln"
+                            Condition=" '$(Scope)' == 'all' "/>
     <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln" 
                             Condition=" '$(Scope)' != 'all' and '$(Scope)' != 'ServiceManagement' and '$(Scope)' != 'AzureStorage' "/>
     <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
                             Condition=" '$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'AzureStorage' "/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
-    <SetupPowershellGetSln Include=".\setup-powershellget\powershellget.sln" />
   </ItemGroup>
   
   <!--
@@ -80,13 +81,6 @@
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
     
-    <MSBuild
-      Projects="@(SetupPowershellGetSln)"
-      Targets="Clean"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" 
-      Condition=" '$(Scope)' == 'all' "/>
-      
     <!-- Delete the publish files -->
     <Message Importance="high" Text="Cleaning publish files..." ContinueOnError="false" />
     <ItemGroup>
@@ -161,14 +155,6 @@
       
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
     
-    <Message Importance="high" Text="Building Setup..." />
-    <MSBuild
-      Projects="@(SetupPowershellGetSln)"
-      Targets="Build"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" 
-      Condition=" '$(Scope)' == 'all' "/>
-    
     <MSBuild
       Projects="@(SetupSln)"
       Targets="Build"
@@ -203,8 +189,6 @@
     </GetFrameworkSdkPath>
 
     <!-- Copying shortcut to be signed -->
-    <Copy SourceFiles="$(LibraryRoot)setup-powershellget\Setup\ShortcutStartup.ps1" 
-      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psd1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1" 
@@ -235,7 +219,7 @@
       UnsignedFiles="@(DelaySignedAssembliesToSign)"
       DestinationPath="$(LibrarySourceFolder)\Package\$(Configuration)"
       BasePath="$(LibrarySourceFolder)\Package\$(Configuration)"
-      Certificates="72, 10006"
+      Certificates="72, 401"
       SigningLogPath="$(LibraryRoot)\signing.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
@@ -246,7 +230,7 @@
       UnsignedFiles="@(ScriptsToSign)"
       DestinationPath="$(LibrarySourceFolder)\Package\$(Configuration)"
       BasePath="$(LibrarySourceFolder)\Package\$(Configuration)"
-      Certificates="10006"
+      Certificates="402"
       SigningLogPath="$(LibraryRoot)\signing-scripts.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/> 
@@ -260,8 +244,6 @@
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
         
     <!-- Copying signed shortcut back -->
-    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\ShortcutStartup.ps1" 
-      DestinationFolder="$(LibraryRoot)setup-powershellget\Setup" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1" 
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1" 
@@ -290,7 +272,7 @@
       UnsignedFiles="@(InstallersToSign)"
       DestinationPath="$(LibraryRoot)\signed"
       SigningLogPath="$(LibraryRoot)\msi-signing.log"
-      Certificates="10006"
+      Certificates="402"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(InstallersToSign)' != ''"/>  
          

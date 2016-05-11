@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The virtualNetwork")]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (!this.IsVirtualNetworkPresent(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name))
             {
@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Network
             
             // Map to the sdk object
             var vnetModel = Mapper.Map<MNM.VirtualNetwork>(this.VirtualNetwork);
-            vnetModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkType;
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetwork.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

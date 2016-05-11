@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Profile
             // Do not access the DefaultContext when loading a profile
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(Path))
             {

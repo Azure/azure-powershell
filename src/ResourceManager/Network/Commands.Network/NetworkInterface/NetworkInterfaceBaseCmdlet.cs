@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class NetworkInterfaceBaseCmdlet : NetworkBaseCmdlet
     {
-        public INetworkInterfaceOperations NetworkInterfaceClient
+        public INetworkInterfacesOperations NetworkInterfaceClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.NetworkInterfaces;
+                return NetworkClient.NetworkManagementClient.NetworkInterfaces;
             }
         }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetNetworkInterface(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -55,28 +55,28 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSNetworkInterface GetNetworkInterface(string resourceGroupName, string name)
+        public PSNetworkInterface GetNetworkInterface(string resourceGroupName, string name, string expandResource = null)
         {
-            var getNetworkInterfaceResponse = this.NetworkInterfaceClient.Get(resourceGroupName, name);
+            var nic = this.NetworkInterfaceClient.Get(resourceGroupName, name, expandResource);
 
-            var networkInterface = Mapper.Map<PSNetworkInterface>(getNetworkInterfaceResponse.NetworkInterface);
-            networkInterface.ResourceGroupName = resourceGroupName;
-            networkInterface.Tag =
-                TagsConversionHelper.CreateTagHashtable(getNetworkInterfaceResponse.NetworkInterface.Tags);
+            var psNetworkInterface = Mapper.Map<PSNetworkInterface>(nic);
+            psNetworkInterface.ResourceGroupName = resourceGroupName;
+            psNetworkInterface.Tag =
+                TagsConversionHelper.CreateTagHashtable(nic.Tags);
 
-            return networkInterface;
+            return psNetworkInterface;
         }
 
-        public PSNetworkInterface GetScaleSetNetworkInterface(string resourceGroupName, string scaleSetName, string vmIndex, string name)
+        public PSNetworkInterface GetScaleSetNetworkInterface(string resourceGroupName, string scaleSetName, string vmIndex, string name, string expandResource = null)
         {
-            var getNetworkInterfaceResponse = this.NetworkInterfaceClient.GetVirtualMachineScaleSetNetworkInterface(resourceGroupName, scaleSetName, vmIndex, name);
+            var nic = this.NetworkInterfaceClient.GetVirtualMachineScaleSetNetworkInterface(resourceGroupName, scaleSetName, vmIndex, name, expandResource);
 
-            var networkInterface = Mapper.Map<PSNetworkInterface>(getNetworkInterfaceResponse.NetworkInterface);
-            networkInterface.ResourceGroupName = resourceGroupName;
-            networkInterface.Tag =
-                TagsConversionHelper.CreateTagHashtable(getNetworkInterfaceResponse.NetworkInterface.Tags);
+            var psNetworkInterface = Mapper.Map<PSNetworkInterface>(nic);
+            psNetworkInterface.ResourceGroupName = resourceGroupName;
+            psNetworkInterface.Tag =
+                TagsConversionHelper.CreateTagHashtable(nic.Tags);
 
-            return networkInterface;
+            return psNetworkInterface;
         }
 
         public PSNetworkInterface ToPsNetworkInterface(NetworkInterface nic)
@@ -87,8 +87,8 @@ namespace Microsoft.Azure.Commands.Network
 
             foreach (var ipconfig in psNic.IpConfigurations)
             {
-                ipconfig.LoadBalancerBackendAddressPools = ipconfig.LoadBalancerBackendAddressPools ?? new List<PSResourceId>();
-                ipconfig.LoadBalancerInboundNatRules = ipconfig.LoadBalancerInboundNatRules ?? new List<PSResourceId>();
+                ipconfig.LoadBalancerBackendAddressPools = ipconfig.LoadBalancerBackendAddressPools ?? new List<PSBackendAddressPool>();
+                ipconfig.LoadBalancerInboundNatRules = ipconfig.LoadBalancerInboundNatRules ?? new List<PSInboundNatRule>();
             }
             
             return psNic;

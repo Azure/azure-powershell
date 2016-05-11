@@ -95,6 +95,222 @@ function Test-DataLakeStoreAccount
 	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 }
 
+function Test-DataLakeStoreFileSystem
+{
+	param
+	(
+		$resourceGroupName,
+		$accountName,
+		$fileToCopy,
+		$location = "West US"
+	)
+
+    # Creating Account
+    $accountCreated = New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+    
+    Assert-AreEqual $accountName $accountCreated.Name
+    Assert-AreEqual $location $accountCreated.Location
+    Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
+    Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+    # In loop to check if account exists
+    for ($i = 0; $i -le 60; $i++)
+    {
+		[array]$accountGet = Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
+        if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+        {
+            Assert-AreEqual $accountName $accountGet[0].Name
+            Assert-AreEqual $location $accountGet[0].Location
+            Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
+            Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+            break
+        }
+
+		Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+		[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+        Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
+    }
+
+	# define all the files and folders to create
+	$folderToCreate = "/adlspstestfolder"
+	$emptyFilePath = "$folderToCreate\emptyfile.txt" # have one where the slash is in the wrong direction to make sure they get fixed.
+	$contentFilePath = "$folderToCreate/contentfile.txt"
+	$concatFile = "$folderToCreate/concatfile.txt"
+	$moveFile = "$folderToCreate/movefile.txt"
+	$movefolder = "/adlspstestmovefolder"
+	$importFile = "$folderToCreate/importfile.txt"
+	$content = "Test file content! @ Azure PsTest01?"
+	
+
+    # Create and get Empty folder
+	$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate -Folder
+	Assert-NotNull $result "No value was returned on folder creation"
+	$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate
+	Assert-NotNull $result "No value was returned on folder get"
+	Assert-AreEqual "Directory" $result.Type
+	# Create and get Empty File
+	$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $emptyFilePath
+	Assert-NotNull $result "No value was returned on empty file creation"
+	$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $emptyFilePath
+	Assert-NotNull $result "No value was returned on empty file get"
+	Assert-AreEqual "File" $result.Type
+	Assert-AreEqual 0 $result.Length
+	# Create and get file with content
+	$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $contentFilePath -Value $content
+	Assert-NotNull $result "No value was returned on content file creation"
+	$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $contentFilePath
+	Assert-NotNull $result "No value was returned on content file get"
+	Assert-AreEqual "File" $result.Type
+	Assert-AreEqual $content.length $result.Length
+	# list files
+	$result = Get-AzureRMDataLakeStoreChildItem -Account $accountName -path $folderToCreate
+	Assert-NotNull $result "No value was returned on folder list"
+	Assert-AreEqual 2 $result.length
+	# add content to empty file
+	Add-AzureRmDataLakeStoreItemContent -Account $accountName -Path $emptyFilePath -Value $content
+	$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $emptyFilePath
+	Assert-NotNull $result "No value was returned on empty file get with content added"
+	Assert-AreEqual "File" $result.Type
+	Assert-AreEqual $content.length $result.Length
+	# concat files
+	$result = Join-AzureRmDataLakeStoreItem -Account $accountName -Paths $emptyFilePath,$contentFilePath -Destination $concatFile
+	Assert-NotNull $result "No value was returned on concat file"
+	$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $concatFile
+	Assert-NotNull $result "No value was returned on concat file get"
+	Assert-AreEqual "File" $result.Type
+	Assert-AreEqual $($content.length*2) $result.Length
+	
+	# Import and get file
+	$localFileInfo = Get-ChildItem $fileToCopy
+	$result = Import-AzureRmDataLakeStoreItem -Account $accountName -Path $fileToCopy -Destination $importFile
+	Assert-NotNull $result "No value was returned on import file"
+	$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $importFile
+	Assert-NotNull $result "No value was returned on import file get"
+	Assert-AreEqual "File" $result.Type
+	Assert-AreEqual $localFileInfo.length $result.Length
+	# download file
+	$currentDir = Split-Path $fileToCopy
+	$targetFile = Join-Path $currentDir "adlspstestdownload.txt"
+	if(Test-Path $targetFile)
+	{
+		Remove-Item -path $targetFile -force -confirm:$false
+	}
+
+	Export-AzureRMDataLakeStoreItem -Account $accountName -Path $concatFile -Destination $targetFile
+	$downloadedFileInfo = Get-ChildItem $targetFile
+	Assert-AreEqual $($content.length*2) $downloadedFileInfo.length
+	Remove-Item -path $targetFile -force -confirm:$false
+
+	# move a file
+	$result = Move-AzureRmDataLakeStoreItem -Account $accountName -Path $concatFile -Destination $moveFile
+	Assert-NotNull $result "No value was returned on move file"
+	$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFile
+	Assert-NotNull $result "No value was returned on move file get"
+	Assert-AreEqual "File" $result.Type
+	Assert-AreEqual $($content.length*2) $result.Length
+	Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $concatFile}
+	# move a folder
+	$result = Move-AzureRmDataLakeStoreItem -Account $accountName -Path $folderToCreate -Destination $moveFolder
+	Assert-NotNull $result "No value was returned on move folder"
+	$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFolder
+	Assert-NotNull $result "No value was returned on move folder get"
+	Assert-AreEqual "Directory" $result.Type
+	Assert-AreEqual 0 $result.Length
+	Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate}
+	# delete a file
+	Assert-True {Remove-AzureRmDataLakeStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -force -passthru } "Remove File Failed"
+	Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFile}
+	# delete a folder
+	Assert-True {Remove-AzureRmDataLakeStoreItem -Account $accountName -paths $moveFolder -force -recurse -passthru} "Remove folder failed"
+	Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFolder}
+    
+	# Delete Data Lake account
+    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+
+	# Verify that it is gone by trying to get it again
+	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+}
+
+function Test-DataLakeStoreFileSystemPermissions
+{
+	param
+	(
+		$resourceGroupName,
+		$accountName,
+		$location = "West US"
+	)
+
+    # Creating Account
+    $accountCreated = New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+    
+    Assert-AreEqual $accountName $accountCreated.Name
+    Assert-AreEqual $location $accountCreated.Location
+    Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
+    Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+    # In loop to check if account exists
+    for ($i = 0; $i -le 60; $i++)
+    {
+		[array]$accountGet = Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
+        if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+        {
+            Assert-AreEqual $accountName $accountGet[0].Name
+            Assert-AreEqual $location $accountGet[0].Location
+            Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
+            Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+            break
+        }
+
+		Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+		[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+        Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
+    }
+
+	# define the permissions to add/remove
+	$aceUserId = "027c28d5-c91d-49f0-98c5-d10134b169b3"
+
+	# Set and get all the permissions
+	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
+	Assert-NotNull $result "Did not get any result from ACL get" 
+	Assert-True {$result.UserAces.count -ge 0} "UserAces is negative or null"
+	$currentCount = $result.UserAces.Count
+	$result.UserAces.Add($aceUserId, "rwx") 
+	Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result -Force
+	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
+	Assert-AreEqual $($currentCount+1) $result.UserACes.Count
+	$result.UserAces.Remove($aceUserId)
+	# remove the account
+	Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result -Force
+	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
+	Assert-AreEqual $currentCount $result.UserAces.Count
+
+	# Set and get a specific permission with friendly sets
+	Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All -Force
+	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
+	Assert-AreEqual $($currentCount+1) $result.UserAces.Count
+	# remove a specific permission with friendly remove
+	Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Force
+	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
+	Assert-AreEqual $currentCount $result.UserAces.Count
+	# set and get a specific permission with the ACE string
+	Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId)) -Force
+	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
+	Assert-AreEqual $($currentCount+1) $result.UserAces.Count
+	# remove a specific permission with the ACE string
+	Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId)) -force
+	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
+	Assert-AreEqual $currentCount $result.UserAces.Count
+	# verify that removal of full acl and default acl fail
+	Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force }
+	Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force -Default }
+
+	# Delete Data Lake account
+    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+
+	# Verify that it is gone by trying to get it again
+	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+}
+
 <#
 .SYNOPSIS
 Tests DataLakeStore Account Lifecycle Failure scenarios (Create, Update, Get, Delete).
@@ -148,6 +364,9 @@ function Test-NegativeDataLakeStoreAccount
 
     # Delete Data Lake account
     Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+
+	# Delete Data Lake account again should throw.
+    Assert-Throws {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru}
 
 	# Verify that it is gone by trying to get it again
 	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates
         [Parameter(Mandatory = false, HelpMessage = "Retrieved from previous calls, this is the bookmark used for progress when the responses are paged.")]
         public string ContinuationToken { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (_theClient == null)
             {

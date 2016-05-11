@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var toReturn = new DataLakeStoreItemAcl();
-            toReturn.InitializeAces(DataLakeStoreFileSystemClient.GetAclStatus(Path.Path, Account));
+            toReturn.InitializeAces(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account));
             WriteObject(toReturn);
         }
     }

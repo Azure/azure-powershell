@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified account &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string AccountDoesNotExist {
+            get {
+                return ResourceManager.GetString("AccountDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DataLakeStore account with name &apos;{0}&apos; already exists..
         /// </summary>
         internal static string DataLakeStoreAccountExists {
@@ -93,6 +102,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string FileOrFolderDoesNotExist {
             get {
                 return ResourceManager.GetString("FileOrFolderDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The remaining data to preview is greater than {0} bytes. Please specify a length or use the Force parameter to preview the entire file. The length of the file that would have been previewed: {1}.
+        /// </summary>
+        internal static string FilePreviewTooLarge {
+            get {
+                return ResourceManager.GetString("FilePreviewTooLarge", resourceCulture);
             }
         }
         

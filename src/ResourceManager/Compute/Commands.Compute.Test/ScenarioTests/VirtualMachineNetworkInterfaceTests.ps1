@@ -31,7 +31,7 @@ function Test-SingleNetworkInterface
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -47,7 +47,7 @@ function Test-SingleNetworkInterface
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
         Assert-Null $p.NetworkProfile.NetworkInterfaces[0].Primary;
 
         # Storage Account (SA)
@@ -72,16 +72,16 @@ function Test-SingleNetworkInterface
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
         # OS & Image
         $user = "Foo12";
@@ -116,11 +116,11 @@ function Test-SingleNetworkInterface
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Get NetworkInterface
         $getnic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $getnic.Id;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $getnic.Id;
         Assert-AreEqual $getnic.Primary true;
         Assert-NotNull $getnic.MacAddress;
 
@@ -153,7 +153,7 @@ function Test-SingleNetworkInterfaceDnsSettings
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -169,7 +169,7 @@ function Test-SingleNetworkInterfaceDnsSettings
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
         Assert-Null $p.NetworkProfile.NetworkInterfaces[0].Primary;
 
         # Storage Account (SA)
@@ -221,11 +221,11 @@ function Test-SingleNetworkInterfaceDnsSettings
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Get NetworkInterface
         $getnic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $getnic.Id;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $getnic.Id;
         Assert-AreEqual $getnic.Primary true;
         Assert-NotNull $getnic.MacAddress;
         Assert-NotNull $getnic.DnsSettings.AppliedDnsServers;
@@ -259,7 +259,7 @@ function Test-MultipleNetworkInterface
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -271,12 +271,12 @@ function Test-MultipleNetworkInterface
         
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nic1.Id;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nic1.Id;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nic1.Id;
         Assert-Null $p.NetworkProfile.NetworkInterfaces[0].Primary;
         
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nic2.Id -Primary;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 2;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[1].ReferenceUri $nic2.Id;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[1].Id $nic2.Id;
 
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[1].Primary true;
         Assert-AreNotEqual $p.NetworkProfile.NetworkInterfaces[0].Primary true;
@@ -330,17 +330,17 @@ function Test-MultipleNetworkInterface
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 2;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nic1.Id;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[1].ReferenceUri $nic2.Id;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nic1.Id;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[1].Id $nic2.Id;
         
         # Get NetworkInterface
         $getnic1 = Get-AzureRmNetworkInterface -Name ('nic1' + $rgname) -ResourceGroupName $rgname;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $getnic1.Id;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $getnic1.Id;
         Assert-AreNotEqual  $getnic1.Primary true;
         Assert-NotNull $getnic1.MacAddress;
 
         $getnic2 = Get-AzureRmNetworkInterface -Name ('nic2' + $rgname) -ResourceGroupName $rgname;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[1].ReferenceUri $getnic2.Id;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[1].Id $getnic2.Id;
         Assert-AreEqual $getnic2.Primary true;
         Assert-NotNull $getnic2.MacAddress;
 
@@ -373,7 +373,7 @@ function Test-AddNetworkInterface
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -390,7 +390,7 @@ function Test-AddNetworkInterface
         $nicList[0].Primary = $true;
         $p = Add-AzureRmVMNetworkInterface -VM $p -NetworkInterface $nicList;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicList[0].Id;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicList[0].Id;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
 
         # Storage Account (SA)
@@ -413,16 +413,16 @@ function Test-AddNetworkInterface
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
 		# OS & Image
         $user = "Foo12";
@@ -452,7 +452,7 @@ function Test-AddNetworkInterface
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
     }
     finally
     {

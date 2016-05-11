@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject(OperationalInsightsClient.GetIntelligencePackList(ResourceGroupName, WorkspaceName), true);
         }

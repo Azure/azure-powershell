@@ -18,6 +18,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -99,13 +100,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
-        /// Imports Azure Site Recovery Vault settings.
+        /// Updates current Vault context.
         /// </summary>
         /// <param name="asrVaultCreds">ASR Vault credentials</param>
-        public static void UpdateVaultSettings(ASRVaultCreds asrVaultCreds)
+        public static void UpdateCurrentVaultContext(ASRVaultCreds asrVaultCreds)
         {
-            object updateVaultSettingsOneAtATime = new object();
-            lock (updateVaultSettingsOneAtATime)
+            object updateVaultContextOneAtATime = new object();
+            lock (updateVaultContextOneAtATime)
             {
                 PSRecoveryServicesClient.asrVaultCreds.ResourceName =
                     asrVaultCreds.ResourceName;
@@ -113,24 +114,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     asrVaultCreds.ResourceGroupName;
                 PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey =
                     asrVaultCreds.ChannelIntegrityKey;
-                if (asrVaultCreds.ResourceNamespace != null)
-                {
-                    PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace =
-                        asrVaultCreds.ResourceNamespace;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Imports Azure Site Recovery Vault settings.
-        /// </summary>
-        /// <param name="resourceNamespace">Provider Namespace</param>
-        public static void UpdateVaultSettingsProviderNamespace(string resourceNamespace)
-        {
-            object updateVaultSettingsOneAtATime = new object();
-            lock (updateVaultSettingsOneAtATime)
-            {
-                PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace = resourceNamespace;
+                PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace =
+                    asrVaultCreds.ResourceNamespace;
+                PSRecoveryServicesClient.asrVaultCreds.ARMResourceType =
+                    asrVaultCreds.ARMResourceType;
             }
         }
 
@@ -155,6 +142,50 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider();
             crypto.GetBytes(key);
             return Convert.ToBase64String(key);
+        }
+
+        /// <summary>
+        /// Get Value from ARM ID
+        /// </summary>
+        /// <param name="size">size of the key to be generated</param>
+        /// <returns>the key</returns>
+        public static string GetValueFromArmId(string armId, string key)
+        {
+            string[] armFields = armId.Split('/');
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+
+            if (armFields.Length % 2 == 0)
+            {
+                throw new Exception("Invalid ARM ID");
+            }
+
+            for (int i = 1; i < armFields.Length; i = i + 2)
+            {
+                dictionary.Add(armFields[i], armFields[i + 1]);
+            }
+
+            return dictionary[key];
+        }
+
+        public static void GetResourceProviderNamespaceAndType(
+            string resourceId,
+            out string resourceProviderNamespace,
+            out string resourceType)
+        {
+            string[] armFields = resourceId.Split('/');
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+
+            if (armFields.Length % 2 == 0)
+            {
+                throw new Exception("Invalid ARM ID");
+            }
+
+            for (int i = 1; i < armFields.Length; i = i + 2)
+            {
+                dictionary.Add(armFields[i], armFields[i + 1]);
+            }
+            resourceProviderNamespace = dictionary[ARMResourceTypeConstants.Providers];
+            resourceType = dictionary.ContainsKey("SiteRecoveryVault") ? "SiteRecoveryVault" : "RecoveryServicesVault";
         }
     }
 }

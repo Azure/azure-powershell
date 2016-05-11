@@ -26,15 +26,7 @@ function Get-KeyVault([bool] $haspermission=$true)
     if ($global:testVault -ne "" -and $haspermission)
     {
         return $global:testVault
-    }
-    elseif ($global:testEnv -eq 'BVT' -and $haspermission)
-    {        
-        return 'powershellbvt'
-    }
-    elseif ($global:testEnv -eq 'BVT')
-    {
-        return 'azkmstestbvteu2'
-    }
+    }   
     elseif ($haspermission)
     {
         return 'azkmspsprodeus'    

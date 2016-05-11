@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var disabled = false;
             TrafficManagerProfile profileToDisable = null;

@@ -507,3 +507,49 @@ function Test-GetRDPFilePipeline
         $stream.Dispose()
     }
 }
+
+<#
+.SYNOPSIS
+Tests deleting a node file associated with a task
+#>
+function Test-DeleteNodeFileByTask 
+{
+    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$filePath, [string]$usePipeline)
+    
+    $context = Get-ScenarioTestContext $accountName
+    if ($usePipeline -eq '1')
+    {
+        Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Name $filePath -BatchContext $context | Remove-AzureBatchNodeFile -Force -BatchContext $context
+    }
+    else
+    {
+        Remove-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Name $filePath -Force -BatchContext $context
+    }
+
+    $file = Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Filter "startswith(name,'$filePath')" -BatchContext $context
+
+    Assert-AreEqual $null $file
+}
+
+<#
+.SYNOPSIS
+Tests deleting a node file from a compute node
+#>
+function Test-DeleteNodeFileByComputeNode 
+{
+    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$filePath, [string]$usePipeline)
+    
+    $context = Get-ScenarioTestContext $accountName
+    if ($usePipeline -eq '1')
+    {
+        Get-AzureBatchNodeFile $poolId $computeNodeId $filePath -BatchContext $context | Remove-AzureBatchNodeFile -Force -BatchContext $context
+    }
+    else
+    {
+        Remove-AzureBatchNodeFile $poolId $computeNodeId $filePath -Force -BatchContext $context
+    }
+
+    $file = Get-AzureBatchNodeFile $poolId $computeNodeId -Filter "startswith(name,'$filePath')" -BatchContext $context
+
+    Assert-AreEqual $null $file
+}

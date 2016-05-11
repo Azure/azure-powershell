@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             var existingFrontendIpConfig = this.LoadBalancer.FrontendIpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
@@ -62,29 +62,29 @@ namespace Microsoft.Azure.Commands.Network
            
             if (!string.IsNullOrEmpty(this.SubnetId))
             {
-                frontendIpConfig.Subnet = new PSResourceId();
+                frontendIpConfig.Subnet = new PSSubnet();
                 frontendIpConfig.Subnet.Id = this.SubnetId;
 
                 if (!string.IsNullOrEmpty(this.PrivateIpAddress))
                 {
                     frontendIpConfig.PrivateIpAddress = this.PrivateIpAddress;
-                    frontendIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Static;
+                    frontendIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IPAllocationMethod.Static;
                 }
                 else
                 {
-                    frontendIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Dynamic;
+                    frontendIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IPAllocationMethod.Dynamic;
                 }
             }
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
             {
-                frontendIpConfig.PublicIpAddress = new PSResourceId();
+                frontendIpConfig.PublicIpAddress = new PSPublicIpAddress();
                 frontendIpConfig.PublicIpAddress.Id = this.PublicIpAddressId;
             }
 
             frontendIpConfig.Id =
                 ChildResourceHelper.GetResourceId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName, 
                     this.LoadBalancer.Name,
                     Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerFrontendIpConfigName, 

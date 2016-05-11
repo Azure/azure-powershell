@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Whether should get the tag values information as well.")]
         public SwitchParameter Detailed { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             List<PSTag> tags = string.IsNullOrEmpty(Name) ? TagsClient.ListTags() : new List<PSTag>() { TagsClient.GetTag(Name) };
             if (tags != null && tags.Count > 0)

@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public Hashtable[] Tags { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             PoolOperationParameters parameters = new PoolOperationParameters(this.BatchContext, this.Id, null, this.AdditionalBehaviors);
             BatchClient.DisableAutoScale(parameters);

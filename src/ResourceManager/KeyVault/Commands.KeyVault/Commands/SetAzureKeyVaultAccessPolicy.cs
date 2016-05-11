@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ForVault && !EnabledForDeployment.IsPresent &&
                 !EnabledForTemplateDeployment.IsPresent && !EnabledForDiskEncryption.IsPresent)
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             // Update vault policies
             PSKeyVaultModels.PSVaultAccessPolicy[] updatedListOfAccessPolicies = vault.AccessPolicies;
-            if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != null && ObjectId != Guid.Empty))
+            if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != Guid.Empty))
             {
                 Guid objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
 

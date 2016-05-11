@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             HelpMessage = "Namespace AuthorizationRule Name.")]
         public string AuthorizationRule { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(AuthorizationRule))
             {

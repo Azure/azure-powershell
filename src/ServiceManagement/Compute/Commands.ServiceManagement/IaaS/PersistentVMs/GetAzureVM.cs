@@ -178,6 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 OperationDescription        = CommandRuntime.ToString(),
                 NetworkInterfaces           = roleInstance == null ? null : Mapper.Map<PVM.NetworkInterfaceList>(roleInstance.NetworkInterfaces),
                 VirtualNetworkName          = deployment == null ? null : deployment.VirtualNetworkName,
+                RemoteAccessCertificateThumbprint =  roleInstance == null ? string.Empty : roleInstance.RemoteAccessCertificateThumbprint,
                 VM = new PVM.PersistentVM
                 {
                     AvailabilitySetName               = vmRole == null ? string.Empty : vmRole.AvailabilitySetName,

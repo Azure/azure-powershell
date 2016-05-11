@@ -10,10 +10,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\r\n      \"name\": \"pstestaccount\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-westus/providers/Microsoft.Batch/batchAccounts/jsmatlab\",\r\n      \"name\": \"jsmatlab\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-brazilsouth/providers/Microsoft.Batch/batchAccounts/batchtest\",\r\n      \"name\": \"batchtest\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"brazilsouth\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\r\n      \"name\": \"pstestaccount\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-westus/providers/Microsoft.Batch/batchAccounts/jsmatlab\",\r\n      \"name\": \"jsmatlab\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "455"
+          "684"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -25,16 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "14995"
         ],
         "x-ms-request-id": [
-          "f16240d4-e0c7-4fc3-af81-e9ecdd7e9436"
+          "f903909b-ce29-4fb7-98f9-24b6e3a7397d"
         ],
         "x-ms-correlation-request-id": [
-          "f16240d4-e0c7-4fc3-af81-e9ecdd7e9436"
+          "f903909b-ce29-4fb7-98f9-24b6e3a7397d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151110T235747Z:f16240d4-e0c7-4fc3-af81-e9ecdd7e9436"
+          "CENTRALUS:20151221T211858Z:f903909b-ce29-4fb7-98f9-24b6e3a7397d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,7 +43,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:46 GMT"
+          "Mon, 21 Dec 2015 21:18:58 GMT"
         ]
       },
       "StatusCode": 200
@@ -73,37 +73,37 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 10 Nov 2015 23:57:48 GMT"
+          "Mon, 21 Dec 2015 21:18:58 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "d5f6256b-f956-4afd-a0a8-6674af4e079e"
+          "be8045d2-1715-439d-9116-6fbea11f1917"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14999"
         ],
         "x-ms-request-id": [
-          "fb9c8671-dfb8-4bf9-a68c-21496123bdfd"
+          "3746eb91-5a90-4c25-839e-b06217cdeadf"
         ],
         "x-ms-correlation-request-id": [
-          "fb9c8671-dfb8-4bf9-a68c-21496123bdfd"
+          "3746eb91-5a90-4c25-839e-b06217cdeadf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151110T235748Z:fb9c8671-dfb8-4bf9-a68c-21496123bdfd"
+          "CENTRALUS:20151221T211859Z:3746eb91-5a90-4c25-839e-b06217cdeadf"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:47 GMT"
+          "Mon, 21 Dec 2015 21:18:59 GMT"
         ],
         "ETag": [
-          "0x8D2EA2ABCA530B0"
+          "0x8D30A4C57000640"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -124,7 +124,7 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"accountName\": \"pstestaccount\",\r\n  \"primary\": \"BXXODafLGpfb8boG1WOVc0+LgbpsXWhE0OnPiD3Yl/iUZ6SixyG4rxQmFSu08RrC7LUIuE9E7k4jkI/XV+McZw==\",\r\n  \"secondary\": \"u9bk9P98NJdr0vTsgRMINRZrsxDipDbFzgRxhCm17FA1eCJlV+TGMP6udRhbOtl33wwtJ4HSnjelLW04/6vdMQ==\"\r\n}",
+      "ResponseBody": "{\r\n  \"accountName\": \"pstestaccount\",\r\n  \"primary\": \"PhmGgzyW7hNP+2h5GMRVr8HlagPEwDC7An0ARHJC3q9ICJgr38+oi3fzZ2c31XPFOuNFtYIsHuEKczjC0MAIww==\",\r\n  \"secondary\": \"y9BWE8mmIQ4Fv4fnPS+0c7kxtFwRNg+NcxGJwnwFepj0U+N3Co/aNfQvKpnFOiLk3Goj3d99XvF9aRiTENEkzg==\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "235"
@@ -139,7 +139,7 @@
           "no-cache"
         ],
         "request-id": [
-          "0f1bbf81-9dd2-4683-b1b4-c4ff5b44d6a3"
+          "c74f6525-4641-4652-af4c-c54bc1127f29"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -148,19 +148,19 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "3bf29cb1-9c59-42ed-88c8-558893ed5cab"
+          "33463f3e-4a63-4c16-b634-483d6908aa7c"
         ],
         "x-ms-correlation-request-id": [
-          "3bf29cb1-9c59-42ed-88c8-558893ed5cab"
+          "33463f3e-4a63-4c16-b634-483d6908aa7c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151110T235748Z:3bf29cb1-9c59-42ed-88c8-558893ed5cab"
+          "CENTRALUS:20151221T211859Z:33463f3e-4a63-4c16-b634-483d6908aa7c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:48 GMT"
+          "Mon, 21 Dec 2015 21:18:59 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -169,8 +169,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"thumbprint\": \"025b351b087a084c5067f5e71eff8591970323f9\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"data\": \"MIIB9DCCAWGgAwIBAgIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAyMB4XDTE1MTAwMjE2MjkxNFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJxagvVrlnKfv6hfzSiFJUkdGkPjC3tFiKebK6IaeHzesFdFfupXUEwT0xOWh9xwa3OVkPECEc/u1sw3iVX/J4AODiwzmOWutoVRpWjxGFpgw9+dPvXMjs/Ue7JL7ag3siHs5EcarW91qKbgtko6i/r4emaRyk60U93TrbWQAWJ9AgMBAAGjSzBJMEcGA1UdAQRAMD6AEAdqsOpyeXF/uDe7ZGKeez+hGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMoIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAA4GBAC0MaAem6ByyURFvGnFZyjEepjXC5wcaGq+gguDFe8rG88ceig1ZqewdcmC1y4p05uBhbmETbYVWzJarNsHYq2LTihi4t2J4jt2YVYz/IRdUB82iaFFbJRSPrN+6xD3KM2lve5N4OjtlZAdiXiSUYFf3I6ypberUsAdba3QQajCN\",\r\n  \"certificateFormat\": \"cer\"\r\n}",
       "RequestHeaders": {
@@ -181,16 +181,16 @@
           "816"
         ],
         "client-request-id": [
-          "c261762c-abb4-45c2-a0ea-020e9da8d88c"
+          "41e7bcab-6461-4f01-bc1f-06d1c188487c"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:48 GMT"
+          "Mon, 21 Dec 2015 21:18:59 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
@@ -200,13 +200,13 @@
           "chunked"
         ],
         "request-id": [
-          "59ae4189-a2a2-482f-9823-6b85e73558e5"
+          "45619d96-fb13-46d6-bf83-bc6a7c428e89"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "c261762c-abb4-45c2-a0ea-020e9da8d88c"
+          "41e7bcab-6461-4f01-bc1f-06d1c188487c"
         ],
         "DataServiceVersion": [
           "3.0"
@@ -215,7 +215,7 @@
           "https://pstestaccount.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=025b351b087a084c5067f5e71eff8591970323f9)"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:00 GMT"
         ],
         "Location": [
           "https://pstestaccount.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=025b351b087a084c5067f5e71eff8591970323f9)"
@@ -227,8 +227,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/certificates?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"thumbprint\": \"cb30857f9e277bfe1cc97819bfb957594e17e827\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"data\": \"MIIB9DCCAWGgAwIBAgIQgvCUXLzXwZpNqxJdFlpP1jAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAzMB4XDTE1MTAwMjE2MjkzMVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDMwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKtIQd3B7mzqvml2whJ76q4MjhJOjDQGEtkzUhQcQP4l7iGwRdfGsyZsG0iPeofykxymQNTwnLUesMCncfYZHnQkwiKk8N43nLcs7bhO+yB7XLXY/ZCMPmvltlH+liUkFFbQVT9Xkgs0MvuKhjW/DKS9ICyiNUsJc5ZBj/gibO0LAgMBAAGjSzBJMEcGA1UdAQRAMD6AEKRpcZPLctriJqU1tKpaVw+hGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwM4IQgvCUXLzXwZpNqxJdFlpP1jAJBgUrDgMCHQUAA4GBACKqJflUhBbj92AwxibqMlNJRagXy62wGQZYyHX51ne790Z5oHdEFVkTpLSCwWXj2bgV0tR0oVs/L0wKxkoVbmEfOIuEIsRcMeKELWe6UsCdsO6Vl1F5j0X1wAPvHESKLZ8OZ/I//1Hs2cXkxO8RXl5i1oec3+4htMq/t7k/rgPt\",\r\n  \"certificateFormat\": \"cer\"\r\n}",
       "RequestHeaders": {
@@ -239,16 +239,16 @@
           "816"
         ],
         "client-request-id": [
-          "5e3e161b-7da2-45e7-8ef1-f94c275c063a"
+          "5042b5ef-8d27-4362-baa2-ac0ddaeeac8f"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:49 GMT"
+          "Mon, 21 Dec 2015 21:19:00 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
@@ -258,13 +258,13 @@
           "chunked"
         ],
         "request-id": [
-          "0938b8e3-2e0d-4a21-9ef0-f8f58664f9d5"
+          "ad660b62-068d-4f2d-b44e-8ca681d89706"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "5e3e161b-7da2-45e7-8ef1-f94c275c063a"
+          "5042b5ef-8d27-4362-baa2-ac0ddaeeac8f"
         ],
         "DataServiceVersion": [
           "3.0"
@@ -273,7 +273,7 @@
           "https://pstestaccount.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cb30857f9e277bfe1cc97819bfb957594e17e827)"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:00 GMT"
         ],
         "Location": [
           "https://pstestaccount.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cb30857f9e277bfe1cc97819bfb957594e17e827)"
@@ -285,8 +285,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/certificates?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"thumbprint\": \"6cae524fd22ab708817355e8236332bfd2d45bf1\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"data\": \"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\",\r\n  \"certificateFormat\": \"pfx\",\r\n  \"password\": \"Passw0rd\"\r\n}",
       "RequestHeaders": {
@@ -297,16 +297,16 @@
           "2491"
         ],
         "client-request-id": [
-          "07c3de36-fb9f-48ff-94f6-69b7b1f5c6e9"
+          "49955087-0b06-4c2c-b501-8ff28563aac0"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
@@ -316,13 +316,13 @@
           "chunked"
         ],
         "request-id": [
-          "ea9c7bbf-3901-4ca1-a02b-1118f16ff4b0"
+          "2f4b4554-c75e-4bb4-b2a4-fea54452b279"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "07c3de36-fb9f-48ff-94f6-69b7b1f5c6e9"
+          "49955087-0b06-4c2c-b501-8ff28563aac0"
         ],
         "DataServiceVersion": [
           "3.0"
@@ -331,7 +331,7 @@
           "https://pstestaccount.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=6cae524fd22ab708817355e8236332bfd2d45bf1)"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "Location": [
           "https://pstestaccount.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=6cae524fd22ab708817355e8236332bfd2d45bf1)"
@@ -343,8 +343,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/certificates?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"thumbprint\": \"377401c6673c18d2167e1f01ae0bbf796a0efd08\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"data\": \"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\",\r\n  \"certificateFormat\": \"pfx\",\r\n  \"password\": \"Passw0rd\"\r\n}",
       "RequestHeaders": {
@@ -355,16 +355,16 @@
           "2507"
         ],
         "client-request-id": [
-          "dc095b93-ded5-4fa2-bbe1-58fbb0f527e0"
+          "1640dcbc-ff99-487a-a54e-dac9794b32a9"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
@@ -374,13 +374,13 @@
           "chunked"
         ],
         "request-id": [
-          "241d6833-6054-4498-a724-22661908a8a2"
+          "616d9d4a-1d73-44af-acb4-7bb89c64c618"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "dc095b93-ded5-4fa2-bbe1-58fbb0f527e0"
+          "1640dcbc-ff99-487a-a54e-dac9794b32a9"
         ],
         "DataServiceVersion": [
           "3.0"
@@ -389,7 +389,7 @@
           "https://pstestaccount.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=377401c6673c18d2167e1f01ae0bbf796a0efd08)"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:51 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "Location": [
           "https://pstestaccount.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=377401c6673c18d2167e1f01ae0bbf796a0efd08)"
@@ -401,26 +401,26 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=025B351B087A084C5067F5E71EFF8591970323F9)?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD0wMjVCMzUxQjA4N0EwODRDNTA2N0Y1RTcxRUZGODU5MTk3MDMyM0Y5KT9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=025B351B087A084C5067F5E71EFF8591970323F9)?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD0wMjVCMzUxQjA4N0EwODRDNTA2N0Y1RTcxRUZGODU5MTk3MDMyM0Y5KT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "13cb462e-1f85-4e36-8d30-da23111de5cd"
+          "7a77f69a-118e-4a6a-8c13-74acb08170d5"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:49 GMT"
+          "Mon, 21 Dec 2015 21:19:00 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"025b351b087a084c5067f5e71eff8591970323f9\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=025B351B087A084C5067F5E71EFF8591970323F9)\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-11-10T23:57:49.4510706Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAyMB4XDTE1MTAwMjE2MjkxNFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJxagvVrlnKfv6hfzSiFJUkdGkPjC3tFiKebK6IaeHzesFdFfupXUEwT0xOWh9xwa3OVkPECEc/u1sw3iVX/J4AODiwzmOWutoVRpWjxGFpgw9+dPvXMjs/Ue7JL7ag3siHs5EcarW91qKbgtko6i/r4emaRyk60U93TrbWQAWJ9AgMBAAGjSzBJMEcGA1UdAQRAMD6AEAdqsOpyeXF/uDe7ZGKeez+hGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMoIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAA4GBAC0MaAem6ByyURFvGnFZyjEepjXC5wcaGq+gguDFe8rG88ceig1ZqewdcmC1y4p05uBhbmETbYVWzJarNsHYq2LTihi4t2J4jt2YVYz/IRdUB82iaFFbJRSPrN+6xD3KM2lve5N4OjtlZAdiXiSUYFf3I6ypberUsAdba3QQajCN\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"025b351b087a084c5067f5e71eff8591970323f9\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=025B351B087A084C5067F5E71EFF8591970323F9)\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-12-21T21:18:59.2742063Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAyMB4XDTE1MTAwMjE2MjkxNFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJxagvVrlnKfv6hfzSiFJUkdGkPjC3tFiKebK6IaeHzesFdFfupXUEwT0xOWh9xwa3OVkPECEc/u1sw3iVX/J4AODiwzmOWutoVRpWjxGFpgw9+dPvXMjs/Ue7JL7ag3siHs5EcarW91qKbgtko6i/r4emaRyk60U93TrbWQAWJ9AgMBAAGjSzBJMEcGA1UdAQRAMD6AEAdqsOpyeXF/uDe7ZGKeez+hGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMoIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAA4GBAC0MaAem6ByyURFvGnFZyjEepjXC5wcaGq+gguDFe8rG88ceig1ZqewdcmC1y4p05uBhbmETbYVWzJarNsHYq2LTihi4t2J4jt2YVYz/IRdUB82iaFFbJRSPrN+6xD3KM2lve5N4OjtlZAdiXiSUYFf3I6ypberUsAdba3QQajCN\"\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -429,19 +429,19 @@
           "chunked"
         ],
         "request-id": [
-          "9a79e0ed-1703-4c8d-b18c-527866e46714"
+          "adc97f3c-3d18-4a70-9024-3fe7646bcc78"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "13cb462e-1f85-4e36-8d30-da23111de5cd"
+          "7a77f69a-118e-4a6a-8c13-74acb08170d5"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:00 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -450,26 +450,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=CB30857F9E277BFE1CC97819BFB957594E17E827)?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1DQjMwODU3RjlFMjc3QkZFMUNDOTc4MTlCRkI5NTc1OTRFMTdFODI3KT9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=CB30857F9E277BFE1CC97819BFB957594E17E827)?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1DQjMwODU3RjlFMjc3QkZFMUNDOTc4MTlCRkI5NTc1OTRFMTdFODI3KT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "e16bf696-e229-4123-b4cd-aa2ad7d7832d"
+          "58b71f3e-5992-42d8-96d2-1e3a75220fc7"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:49 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"cb30857f9e277bfe1cc97819bfb957594e17e827\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=CB30857F9E277BFE1CC97819BFB957594E17E827)\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-11-10T23:57:50.2791276Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQgvCUXLzXwZpNqxJdFlpP1jAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAzMB4XDTE1MTAwMjE2MjkzMVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDMwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKtIQd3B7mzqvml2whJ76q4MjhJOjDQGEtkzUhQcQP4l7iGwRdfGsyZsG0iPeofykxymQNTwnLUesMCncfYZHnQkwiKk8N43nLcs7bhO+yB7XLXY/ZCMPmvltlH+liUkFFbQVT9Xkgs0MvuKhjW/DKS9ICyiNUsJc5ZBj/gibO0LAgMBAAGjSzBJMEcGA1UdAQRAMD6AEKRpcZPLctriJqU1tKpaVw+hGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwM4IQgvCUXLzXwZpNqxJdFlpP1jAJBgUrDgMCHQUAA4GBACKqJflUhBbj92AwxibqMlNJRagXy62wGQZYyHX51ne790Z5oHdEFVkTpLSCwWXj2bgV0tR0oVs/L0wKxkoVbmEfOIuEIsRcMeKELWe6UsCdsO6Vl1F5j0X1wAPvHESKLZ8OZ/I//1Hs2cXkxO8RXl5i1oec3+4htMq/t7k/rgPt\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"cb30857f9e277bfe1cc97819bfb957594e17e827\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=CB30857F9E277BFE1CC97819BFB957594E17E827)\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-12-21T21:18:59.7920583Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQgvCUXLzXwZpNqxJdFlpP1jAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAzMB4XDTE1MTAwMjE2MjkzMVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDMwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKtIQd3B7mzqvml2whJ76q4MjhJOjDQGEtkzUhQcQP4l7iGwRdfGsyZsG0iPeofykxymQNTwnLUesMCncfYZHnQkwiKk8N43nLcs7bhO+yB7XLXY/ZCMPmvltlH+liUkFFbQVT9Xkgs0MvuKhjW/DKS9ICyiNUsJc5ZBj/gibO0LAgMBAAGjSzBJMEcGA1UdAQRAMD6AEKRpcZPLctriJqU1tKpaVw+hGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwM4IQgvCUXLzXwZpNqxJdFlpP1jAJBgUrDgMCHQUAA4GBACKqJflUhBbj92AwxibqMlNJRagXy62wGQZYyHX51ne790Z5oHdEFVkTpLSCwWXj2bgV0tR0oVs/L0wKxkoVbmEfOIuEIsRcMeKELWe6UsCdsO6Vl1F5j0X1wAPvHESKLZ8OZ/I//1Hs2cXkxO8RXl5i1oec3+4htMq/t7k/rgPt\"\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -478,19 +478,19 @@
           "chunked"
         ],
         "request-id": [
-          "a88bbddc-e68c-42c2-8dd3-0d17d6ae955d"
+          "48ef07ee-4506-40db-b944-a468df9c5c29"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "e16bf696-e229-4123-b4cd-aa2ad7d7832d"
+          "58b71f3e-5992-42d8-96d2-1e3a75220fc7"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:00 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -499,26 +499,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=6CAE524FD22AB708817355E8236332BFD2D45BF1)?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD02Q0FFNTI0RkQyMkFCNzA4ODE3MzU1RTgyMzYzMzJCRkQyRDQ1QkYxKT9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=6CAE524FD22AB708817355E8236332BFD2D45BF1)?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD02Q0FFNTI0RkQyMkFCNzA4ODE3MzU1RTgyMzYzMzJCRkQyRDQ1QkYxKT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "360fbd50-6db7-4209-a145-84f381fc437c"
+          "54a20bf2-00ec-484e-83c9-1c0e2bd8ead3"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"6cae524fd22ab708817355e8236332bfd2d45bf1\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=6CAE524FD22AB708817355E8236332BFD2D45BF1)\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-11-10T23:57:50.6164649Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDA0MB4XDTE1MTAwMjE2Mjk1MFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJGiCOZjxCu6wIrV9rvjt/6z6YqsMS4RKIEXR+4YYJzTAK6Xj1/J94iRxwhk/diq6tnCQ/ju8WEeFrkE8DiAQ6KMONFU6jZu0D+iVNjNkTVoDLkhm75K7zf4f2UQ/TY77o0OS8EV9Tlg75JlDOdpjpXuxPWJj1dRvxtGVemfYEpTAgMBAAGjSzBJMEcGA1UdAQRAMD6AEI7I79vmD6xpDGm9z1clLdWhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwNIIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAA4GBAGkjmlqM/MayUaXAdyIdyfTV5wIQ8MVPX3wGNfBE65TkyuVF3Dly7ch/jMFLSrvysJ09lLv71aV2dKrgcBclkq8wkJT6GkjCcPKWyqFWDygMBW6PPntkm3VK8V0eicDdmso3mr01PlNlMQ6sFDIO7JweTqZOh6HxDBguj2jcp+V9\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"6cae524fd22ab708817355e8236332bfd2d45bf1\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=6CAE524FD22AB708817355E8236332BFD2D45BF1)\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-12-21T21:19:00.1712683Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDA0MB4XDTE1MTAwMjE2Mjk1MFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJGiCOZjxCu6wIrV9rvjt/6z6YqsMS4RKIEXR+4YYJzTAK6Xj1/J94iRxwhk/diq6tnCQ/ju8WEeFrkE8DiAQ6KMONFU6jZu0D+iVNjNkTVoDLkhm75K7zf4f2UQ/TY77o0OS8EV9Tlg75JlDOdpjpXuxPWJj1dRvxtGVemfYEpTAgMBAAGjSzBJMEcGA1UdAQRAMD6AEI7I79vmD6xpDGm9z1clLdWhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwNIIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAA4GBAGkjmlqM/MayUaXAdyIdyfTV5wIQ8MVPX3wGNfBE65TkyuVF3Dly7ch/jMFLSrvysJ09lLv71aV2dKrgcBclkq8wkJT6GkjCcPKWyqFWDygMBW6PPntkm3VK8V0eicDdmso3mr01PlNlMQ6sFDIO7JweTqZOh6HxDBguj2jcp+V9\"\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -527,19 +527,19 @@
           "chunked"
         ],
         "request-id": [
-          "4586bb86-0050-4d78-a595-9afad8a82ae1"
+          "5555b8f1-263a-43e2-b07f-a37cf2e13bf1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "360fbd50-6db7-4209-a145-84f381fc437c"
+          "54a20bf2-00ec-484e-83c9-1c0e2bd8ead3"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -548,26 +548,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=6CAE524FD22AB708817355E8236332BFD2D45BF1)?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD02Q0FFNTI0RkQyMkFCNzA4ODE3MzU1RTgyMzYzMzJCRkQyRDQ1QkYxKT9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=6CAE524FD22AB708817355E8236332BFD2D45BF1)?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD02Q0FFNTI0RkQyMkFCNzA4ODE3MzU1RTgyMzYzMzJCRkQyRDQ1QkYxKT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "15f2eada-98ed-4675-896a-e93cf0ecf6fb"
+          "ee76da74-eaf6-4d67-90db-1be58ff8a937"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"6cae524fd22ab708817355e8236332bfd2d45bf1\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=6CAE524FD22AB708817355E8236332BFD2D45BF1)\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-11-10T23:57:50.6164649Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDA0MB4XDTE1MTAwMjE2Mjk1MFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJGiCOZjxCu6wIrV9rvjt/6z6YqsMS4RKIEXR+4YYJzTAK6Xj1/J94iRxwhk/diq6tnCQ/ju8WEeFrkE8DiAQ6KMONFU6jZu0D+iVNjNkTVoDLkhm75K7zf4f2UQ/TY77o0OS8EV9Tlg75JlDOdpjpXuxPWJj1dRvxtGVemfYEpTAgMBAAGjSzBJMEcGA1UdAQRAMD6AEI7I79vmD6xpDGm9z1clLdWhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwNIIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAA4GBAGkjmlqM/MayUaXAdyIdyfTV5wIQ8MVPX3wGNfBE65TkyuVF3Dly7ch/jMFLSrvysJ09lLv71aV2dKrgcBclkq8wkJT6GkjCcPKWyqFWDygMBW6PPntkm3VK8V0eicDdmso3mr01PlNlMQ6sFDIO7JweTqZOh6HxDBguj2jcp+V9\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"6cae524fd22ab708817355e8236332bfd2d45bf1\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=6CAE524FD22AB708817355E8236332BFD2D45BF1)\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-12-21T21:19:00.1712683Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDA0MB4XDTE1MTAwMjE2Mjk1MFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJGiCOZjxCu6wIrV9rvjt/6z6YqsMS4RKIEXR+4YYJzTAK6Xj1/J94iRxwhk/diq6tnCQ/ju8WEeFrkE8DiAQ6KMONFU6jZu0D+iVNjNkTVoDLkhm75K7zf4f2UQ/TY77o0OS8EV9Tlg75JlDOdpjpXuxPWJj1dRvxtGVemfYEpTAgMBAAGjSzBJMEcGA1UdAQRAMD6AEI7I79vmD6xpDGm9z1clLdWhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwNIIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAA4GBAGkjmlqM/MayUaXAdyIdyfTV5wIQ8MVPX3wGNfBE65TkyuVF3Dly7ch/jMFLSrvysJ09lLv71aV2dKrgcBclkq8wkJT6GkjCcPKWyqFWDygMBW6PPntkm3VK8V0eicDdmso3mr01PlNlMQ6sFDIO7JweTqZOh6HxDBguj2jcp+V9\"\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -576,19 +576,19 @@
           "chunked"
         ],
         "request-id": [
-          "19e99023-0128-49c3-87bb-ceb9d46d3bf0"
+          "daeea186-a079-499f-98f9-b9d736d6c133"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "15f2eada-98ed-4675-896a-e93cf0ecf6fb"
+          "ee76da74-eaf6-4d67-90db-1be58ff8a937"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:51 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -597,26 +597,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "6565a271-cb1c-4190-8979-86677903150e"
+          "480b7ff8-6321-40ba-b28d-1e1715483bb3"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#certificates\",\r\n  \"value\": [\r\n    {\r\n      \"thumbprint\": \"025b351b087a084c5067f5e71eff8591970323f9\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=025b351b087a084c5067f5e71eff8591970323f9)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-11-10T23:57:49.4510706Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAyMB4XDTE1MTAwMjE2MjkxNFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJxagvVrlnKfv6hfzSiFJUkdGkPjC3tFiKebK6IaeHzesFdFfupXUEwT0xOWh9xwa3OVkPECEc/u1sw3iVX/J4AODiwzmOWutoVRpWjxGFpgw9+dPvXMjs/Ue7JL7ag3siHs5EcarW91qKbgtko6i/r4emaRyk60U93TrbWQAWJ9AgMBAAGjSzBJMEcGA1UdAQRAMD6AEAdqsOpyeXF/uDe7ZGKeez+hGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMoIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAA4GBAC0MaAem6ByyURFvGnFZyjEepjXC5wcaGq+gguDFe8rG88ceig1ZqewdcmC1y4p05uBhbmETbYVWzJarNsHYq2LTihi4t2J4jt2YVYz/IRdUB82iaFFbJRSPrN+6xD3KM2lve5N4OjtlZAdiXiSUYFf3I6ypberUsAdba3QQajCN\"\r\n    },\r\n    {\r\n      \"thumbprint\": \"377401c6673c18d2167e1f01ae0bbf796a0efd08\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=377401c6673c18d2167e1f01ae0bbf796a0efd08)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-11-10T23:57:50.9824122Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQ9XEm9w3uwrVK6ZrhbLUZhzAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDA1MB4XDTE1MTAwMjIwMzAwMFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDUwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKWJKcDigsE/CmngSEKJhGHnNxAkz6+r34YKAZE1p+mX/lzY4wZMkqeBVNnO8O5hrfzWQJutCDPtiYQYdX4gkt/8s768h51dBtKdOQAPJqzNne0wOWxusvpBGQA6HNmkpleEXvMp1W8jzD+TdpTZJ7Z+IaSlgp6m0sslizW1DVLzAgMBAAGjSzBJMEcGA1UdAQRAMD6AENuHTxPsPqwfpXvzEBY/f1ChGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwNYIQ9XEm9w3uwrVK6ZrhbLUZhzAJBgUrDgMCHQUAA4GBAExDMhynm6kUbkp4MCY9Fl47bkmrfnm5m1cUqkrevnRQ5d1Bc8xfZSB7EgrgeEcG4VNQ3pAMulQPeyZKDiKp7Q2qUjFMsqifJCfqkF9mjFPwRDYdqGqoEyXYMy0NorRBHFUCTZN/mBNEgpJ7e6udVKA75BgeCrJ+dOhqEZms5exA\"\r\n    },\r\n    {\r\n      \"thumbprint\": \"6cae524fd22ab708817355e8236332bfd2d45bf1\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=6cae524fd22ab708817355e8236332bfd2d45bf1)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-11-10T23:57:50.6164649Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDA0MB4XDTE1MTAwMjE2Mjk1MFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJGiCOZjxCu6wIrV9rvjt/6z6YqsMS4RKIEXR+4YYJzTAK6Xj1/J94iRxwhk/diq6tnCQ/ju8WEeFrkE8DiAQ6KMONFU6jZu0D+iVNjNkTVoDLkhm75K7zf4f2UQ/TY77o0OS8EV9Tlg75JlDOdpjpXuxPWJj1dRvxtGVemfYEpTAgMBAAGjSzBJMEcGA1UdAQRAMD6AEI7I79vmD6xpDGm9z1clLdWhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwNIIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAA4GBAGkjmlqM/MayUaXAdyIdyfTV5wIQ8MVPX3wGNfBE65TkyuVF3Dly7ch/jMFLSrvysJ09lLv71aV2dKrgcBclkq8wkJT6GkjCcPKWyqFWDygMBW6PPntkm3VK8V0eicDdmso3mr01PlNlMQ6sFDIO7JweTqZOh6HxDBguj2jcp+V9\"\r\n    },\r\n    {\r\n      \"thumbprint\": \"cb30857f9e277bfe1cc97819bfb957594e17e827\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=cb30857f9e277bfe1cc97819bfb957594e17e827)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-11-10T23:57:50.2791276Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQgvCUXLzXwZpNqxJdFlpP1jAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAzMB4XDTE1MTAwMjE2MjkzMVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDMwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKtIQd3B7mzqvml2whJ76q4MjhJOjDQGEtkzUhQcQP4l7iGwRdfGsyZsG0iPeofykxymQNTwnLUesMCncfYZHnQkwiKk8N43nLcs7bhO+yB7XLXY/ZCMPmvltlH+liUkFFbQVT9Xkgs0MvuKhjW/DKS9ICyiNUsJc5ZBj/gibO0LAgMBAAGjSzBJMEcGA1UdAQRAMD6AEKRpcZPLctriJqU1tKpaVw+hGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwM4IQgvCUXLzXwZpNqxJdFlpP1jAJBgUrDgMCHQUAA4GBACKqJflUhBbj92AwxibqMlNJRagXy62wGQZYyHX51ne790Z5oHdEFVkTpLSCwWXj2bgV0tR0oVs/L0wKxkoVbmEfOIuEIsRcMeKELWe6UsCdsO6Vl1F5j0X1wAPvHESKLZ8OZ/I//1Hs2cXkxO8RXl5i1oec3+4htMq/t7k/rgPt\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#certificates\",\r\n  \"value\": [\r\n    {\r\n      \"thumbprint\": \"025b351b087a084c5067f5e71eff8591970323f9\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=025b351b087a084c5067f5e71eff8591970323f9)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-12-21T21:18:59.2742063Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAyMB4XDTE1MTAwMjE2MjkxNFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJxagvVrlnKfv6hfzSiFJUkdGkPjC3tFiKebK6IaeHzesFdFfupXUEwT0xOWh9xwa3OVkPECEc/u1sw3iVX/J4AODiwzmOWutoVRpWjxGFpgw9+dPvXMjs/Ue7JL7ag3siHs5EcarW91qKbgtko6i/r4emaRyk60U93TrbWQAWJ9AgMBAAGjSzBJMEcGA1UdAQRAMD6AEAdqsOpyeXF/uDe7ZGKeez+hGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMoIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAA4GBAC0MaAem6ByyURFvGnFZyjEepjXC5wcaGq+gguDFe8rG88ceig1ZqewdcmC1y4p05uBhbmETbYVWzJarNsHYq2LTihi4t2J4jt2YVYz/IRdUB82iaFFbJRSPrN+6xD3KM2lve5N4OjtlZAdiXiSUYFf3I6ypberUsAdba3QQajCN\"\r\n    },\r\n    {\r\n      \"thumbprint\": \"377401c6673c18d2167e1f01ae0bbf796a0efd08\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=377401c6673c18d2167e1f01ae0bbf796a0efd08)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-12-21T21:19:00.5192719Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQ9XEm9w3uwrVK6ZrhbLUZhzAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDA1MB4XDTE1MTAwMjIwMzAwMFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDUwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKWJKcDigsE/CmngSEKJhGHnNxAkz6+r34YKAZE1p+mX/lzY4wZMkqeBVNnO8O5hrfzWQJutCDPtiYQYdX4gkt/8s768h51dBtKdOQAPJqzNne0wOWxusvpBGQA6HNmkpleEXvMp1W8jzD+TdpTZJ7Z+IaSlgp6m0sslizW1DVLzAgMBAAGjSzBJMEcGA1UdAQRAMD6AENuHTxPsPqwfpXvzEBY/f1ChGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwNYIQ9XEm9w3uwrVK6ZrhbLUZhzAJBgUrDgMCHQUAA4GBAExDMhynm6kUbkp4MCY9Fl47bkmrfnm5m1cUqkrevnRQ5d1Bc8xfZSB7EgrgeEcG4VNQ3pAMulQPeyZKDiKp7Q2qUjFMsqifJCfqkF9mjFPwRDYdqGqoEyXYMy0NorRBHFUCTZN/mBNEgpJ7e6udVKA75BgeCrJ+dOhqEZms5exA\"\r\n    },\r\n    {\r\n      \"thumbprint\": \"6cae524fd22ab708817355e8236332bfd2d45bf1\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=6cae524fd22ab708817355e8236332bfd2d45bf1)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-12-21T21:19:00.1712683Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDA0MB4XDTE1MTAwMjE2Mjk1MFoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJGiCOZjxCu6wIrV9rvjt/6z6YqsMS4RKIEXR+4YYJzTAK6Xj1/J94iRxwhk/diq6tnCQ/ju8WEeFrkE8DiAQ6KMONFU6jZu0D+iVNjNkTVoDLkhm75K7zf4f2UQ/TY77o0OS8EV9Tlg75JlDOdpjpXuxPWJj1dRvxtGVemfYEpTAgMBAAGjSzBJMEcGA1UdAQRAMD6AEI7I79vmD6xpDGm9z1clLdWhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwNIIQHPKwzIE3W5FOI4i7/ggeJDAJBgUrDgMCHQUAA4GBAGkjmlqM/MayUaXAdyIdyfTV5wIQ8MVPX3wGNfBE65TkyuVF3Dly7ch/jMFLSrvysJ09lLv71aV2dKrgcBclkq8wkJT6GkjCcPKWyqFWDygMBW6PPntkm3VK8V0eicDdmso3mr01PlNlMQ6sFDIO7JweTqZOh6HxDBguj2jcp+V9\"\r\n    },\r\n    {\r\n      \"thumbprint\": \"cb30857f9e277bfe1cc97819bfb957594e17e827\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=cb30857f9e277bfe1cc97819bfb957594e17e827)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-12-21T21:18:59.7920583Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQgvCUXLzXwZpNqxJdFlpP1jAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAzMB4XDTE1MTAwMjE2MjkzMVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDMwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKtIQd3B7mzqvml2whJ76q4MjhJOjDQGEtkzUhQcQP4l7iGwRdfGsyZsG0iPeofykxymQNTwnLUesMCncfYZHnQkwiKk8N43nLcs7bhO+yB7XLXY/ZCMPmvltlH+liUkFFbQVT9Xkgs0MvuKhjW/DKS9ICyiNUsJc5ZBj/gibO0LAgMBAAGjSzBJMEcGA1UdAQRAMD6AEKRpcZPLctriJqU1tKpaVw+hGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwM4IQgvCUXLzXwZpNqxJdFlpP1jAJBgUrDgMCHQUAA4GBACKqJflUhBbj92AwxibqMlNJRagXy62wGQZYyHX51ne790Z5oHdEFVkTpLSCwWXj2bgV0tR0oVs/L0wKxkoVbmEfOIuEIsRcMeKELWe6UsCdsO6Vl1F5j0X1wAPvHESKLZ8OZ/I//1Hs2cXkxO8RXl5i1oec3+4htMq/t7k/rgPt\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -625,19 +625,19 @@
           "chunked"
         ],
         "request-id": [
-          "090abe28-05c5-4aba-9d82-88945b35af30"
+          "59c86412-c788-4984-b751-7a87def61a64"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "6565a271-cb1c-4190-8979-86677903150e"
+          "480b7ff8-6321-40ba-b28d-1e1715483bb3"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:51 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -646,22 +646,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=025b351b087a084c5067f5e71eff8591970323f9)?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD0wMjViMzUxYjA4N2EwODRjNTA2N2Y1ZTcxZWZmODU5MTk3MDMyM2Y5KT9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=025b351b087a084c5067f5e71eff8591970323f9)?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD0wMjViMzUxYjA4N2EwODRjNTA2N2Y1ZTcxZWZmODU5MTk3MDMyM2Y5KT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "c49bfbe4-f526-466b-8d43-5ff61712cf98"
+          "42db0c39-3d01-499b-82b8-003c130a9ac6"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:50 GMT"
+          "Mon, 21 Dec 2015 21:19:02 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
@@ -671,19 +671,19 @@
           "chunked"
         ],
         "request-id": [
-          "89df8e8a-805c-43fe-a608-7aa7a70482d5"
+          "98e1632b-0300-4bae-911b-2e808b2c3c51"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "c49bfbe4-f526-466b-8d43-5ff61712cf98"
+          "42db0c39-3d01-499b-82b8-003c130a9ac6"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:51 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -692,22 +692,22 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=377401c6673c18d2167e1f01ae0bbf796a0efd08)?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD0zNzc0MDFjNjY3M2MxOGQyMTY3ZTFmMDFhZTBiYmY3OTZhMGVmZDA4KT9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=377401c6673c18d2167e1f01ae0bbf796a0efd08)?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD0zNzc0MDFjNjY3M2MxOGQyMTY3ZTFmMDFhZTBiYmY3OTZhMGVmZDA4KT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "f93a523b-fc27-4be3-961a-d9594b80c9e7"
+          "8c5f38df-6902-4fb0-b0de-d24bed753b66"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:51 GMT"
+          "Mon, 21 Dec 2015 21:19:02 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
@@ -717,19 +717,19 @@
           "chunked"
         ],
         "request-id": [
-          "2d1f07a6-3401-4007-bfdc-5c97419f198d"
+          "4f577460-42fb-45b7-b011-624517267402"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "f93a523b-fc27-4be3-961a-d9594b80c9e7"
+          "8c5f38df-6902-4fb0-b0de-d24bed753b66"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:51 GMT"
+          "Mon, 21 Dec 2015 21:19:01 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -738,22 +738,22 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=6cae524fd22ab708817355e8236332bfd2d45bf1)?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD02Y2FlNTI0ZmQyMmFiNzA4ODE3MzU1ZTgyMzYzMzJiZmQyZDQ1YmYxKT9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=6cae524fd22ab708817355e8236332bfd2d45bf1)?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD02Y2FlNTI0ZmQyMmFiNzA4ODE3MzU1ZTgyMzYzMzJiZmQyZDQ1YmYxKT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "7f779b6a-08e6-41e9-b977-ab00817f6ec7"
+          "1a310c20-68b5-4ed9-a492-513f15b28322"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:51 GMT"
+          "Mon, 21 Dec 2015 21:19:02 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
@@ -763,19 +763,19 @@
           "chunked"
         ],
         "request-id": [
-          "fd3472ce-78dd-488b-8288-c6874f0b5fc8"
+          "f21cab05-9072-4057-bfd5-d43c9baec062"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "7f779b6a-08e6-41e9-b977-ab00817f6ec7"
+          "1a310c20-68b5-4ed9-a492-513f15b28322"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:51 GMT"
+          "Mon, 21 Dec 2015 21:19:02 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -784,22 +784,22 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=cb30857f9e277bfe1cc97819bfb957594e17e827)?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jYjMwODU3ZjllMjc3YmZlMWNjOTc4MTliZmI5NTc1OTRlMTdlODI3KT9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=cb30857f9e277bfe1cc97819bfb957594e17e827)?api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jYjMwODU3ZjllMjc3YmZlMWNjOTc4MTliZmI5NTc1OTRlMTdlODI3KT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "72720866-3f57-4843-a6a3-28891d4850b5"
+          "0fe07c93-d294-4d2f-9f8e-7498024568b5"
         ],
         "ocp-date": [
-          "Tue, 10 Nov 2015 23:57:51 GMT"
+          "Mon, 21 Dec 2015 21:19:02 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
+          "Microsoft.Azure.Batch.Protocol.BatchRestClient/3.0.0.0",
           "AzurePowershell/v1.0.0"
         ]
       },
@@ -809,19 +809,19 @@
           "chunked"
         ],
         "request-id": [
-          "f971a1c8-8f9b-4525-afca-d5b3c7be918d"
+          "f77db6db-3dac-467a-8da5-7508fa239ef6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "72720866-3f57-4843-a6a3-28891d4850b5"
+          "0fe07c93-d294-4d2f-9f8e-7498024568b5"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 10 Nov 2015 23:57:51 GMT"
+          "Mon, 21 Dec 2015 21:19:02 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

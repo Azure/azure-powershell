@@ -189,4 +189,13 @@
   <data name="RemovingDataLakeAnalyticsDataLakeStore" xml:space="preserve">
     <value>Are you sure you want to remove Data Lake Analytics Data Lake Store account '{0}'?</value>
   </data>
+  <data name="AccountDoesNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified account '{0}' does not exist.</value>
+  </data>
+  <data name="InvalidUSqlTypeRequest" xml:space="preserve">
+    <value>U-SQL Types can only be returned in a list of all types within a database and schema combination.</value>
+  </data>
+  <data name="InvalidUSqlSecretRequest" xml:space="preserve">
+    <value>U-SQL Secrets can only be returned by specific database secret name combination. There is no list support.</value>
+  </data>
 </root>

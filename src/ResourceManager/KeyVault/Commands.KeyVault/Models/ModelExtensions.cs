@@ -16,12 +16,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;
 using PSModels = Microsoft.Azure.Commands.KeyVault.Models;
 using ResourceManagement = Microsoft.Azure.Management.Resources.Models;
 using ResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.ActiveDirectory.GraphClient;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -81,37 +81,43 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 return string.Concat(str.Substring(0, maxLen - 3), "...");
             }
-            else
-                return str;
+            
+            return str;
         }
 
         public static string GetDisplayNameForADObject(Guid id, ActiveDirectoryClient adClient)
         {
-            string displayName = "";            
+            string displayName = "";
+            string upnOrSpn = "";
 
             if (adClient == null || id == Guid.Empty)
                 return displayName;
-            else
+
+            try
             {
-                string upnOrSpn = "";
-
-                var obj = adClient.GetADObject(new ADObjectFilterOptions()
-                {
-                    Id = id.ToString(),                    
-                    Paging = true,
-                });
-
+                var obj = adClient.GetObjectsByObjectIdsAsync(new[] { id.ToString() }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
                 if (obj != null)
                 {
-                    displayName = obj.DisplayName;
-                    if (obj is PSADUser)
-                        upnOrSpn = ((PSADUser)obj).UserPrincipalName;
-                    else if (obj is PSADServicePrincipal)
-                        upnOrSpn = ((PSADServicePrincipal)obj).ServicePrincipalName;
+                    if (obj.ObjectType.Equals("user", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var user = adClient.Users.GetByObjectId(id.ToString()).ExecuteAsync().GetAwaiter().GetResult();
+                        displayName = user.DisplayName;
+                        upnOrSpn = user.UserPrincipalName;
+                    }
+                    else if (obj.ObjectType.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(id.ToString()).ExecuteAsync().GetAwaiter().GetResult();
+                        displayName = servicePrincipal.AppDisplayName;
+                        upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
+                    }
                 }
-
-                return displayName + (!string.IsNullOrWhiteSpace(upnOrSpn) ? (" (" + upnOrSpn + ")") : "");
             }
+            catch
+            {
+                // Error occured. Don't get the friendly name
+            }
+
+            return displayName + (!string.IsNullOrWhiteSpace(upnOrSpn) ? (" (" + upnOrSpn + ")") : "");
         }
 
         public static string GetDisplayNameForTenant(Guid id, ActiveDirectoryClient adClient)

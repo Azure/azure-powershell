@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Batch
             // Intentionally left blank
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {

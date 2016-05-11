@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [ValidateNotNullOrEmpty]
         public string Hostname { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject(
                 new PsApiManagementHostnameConfiguration

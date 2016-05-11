@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public NotificationHubAttributes NotificationHubObj { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             NotificationHubAttributes hub = null;
             if (!string.IsNullOrEmpty(InputFile))

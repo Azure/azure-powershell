@@ -69,7 +69,7 @@ function Test-StorageInsightCreateUpdateDelete
 
     # Delete one of the storage insights
     Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $rgname -WorkspaceName $wsname -Name $sinametwo -Force
-    Assert-ThrowsContains { Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $sinametwo } "Not Found"
+    Assert-ThrowsContains { Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $sinametwo } "NotFound"
     $storageinsights = Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace
     Assert-AreEqual 1 $storageinsights.Count
     Assert-AreEqual 1 ($storageinsights | Where {$_.Name -eq $siname}).Count
@@ -90,7 +90,7 @@ function Test-StorageInsightCreateUpdateDelete
 
     # Delete the remaining storage insight via piping
     Remove-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $siname -Force
-    Assert-ThrowsContains { Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $siname } "Not Found"
+    Assert-ThrowsContains { Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $siname } "NotFound"
     $storageinsights = Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace
     Assert-AreEqual 0 $storageinsights.Count
 }

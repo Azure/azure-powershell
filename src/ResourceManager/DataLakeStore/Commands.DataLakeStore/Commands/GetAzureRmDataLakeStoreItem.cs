@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItem"), OutputType(typeof (FileStatusProperties))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItem"), OutputType(typeof (DataLakeStoreItem))]
     public class GetAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -35,9 +36,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            WriteObject(DataLakeStoreFileSystemClient.GetFileStatus(Path.Path, Account));
+            var toReturn = DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account);
+            var itemName = string.Empty;
+            if (!string.IsNullOrEmpty(Path.TransformedPath))
+            {
+                // In the event that there is no "/" the full string will be returned.
+                itemName =
+                    Path.TransformedPath.Substring(
+                        Path.TransformedPath.LastIndexOf("/", StringComparison.InvariantCultureIgnoreCase) + 1);
+            }
+
+            toReturn.PathSuffix = itemName;
+            WriteObject(new DataLakeStoreItem(toReturn));
         }
     }
 }

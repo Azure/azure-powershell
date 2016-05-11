@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCloudTask Task { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             TaskOperationParameters parameters = new TaskOperationParameters(this.BatchContext, this.JobId,
                 this.Id, this.Task, this.AdditionalBehaviors);

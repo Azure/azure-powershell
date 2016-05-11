@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseAuditingPolicyCreateOrUpdateParameters parameters)
         {
             IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
-            operations.CreateOrUpdateDatebasePolicy(resourceGroupName, serverName, databaseName, parameters);
+            operations.CreateOrUpdateDatabasePolicy(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>

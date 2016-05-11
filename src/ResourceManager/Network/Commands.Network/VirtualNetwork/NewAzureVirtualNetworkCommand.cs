@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (this.IsVirtualNetworkPresent(this.ResourceGroupName, this.Name))
             {
@@ -122,7 +122,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var vnetModel = Mapper.Map<MNM.VirtualNetwork>(vnet);
-            vnetModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkType;
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

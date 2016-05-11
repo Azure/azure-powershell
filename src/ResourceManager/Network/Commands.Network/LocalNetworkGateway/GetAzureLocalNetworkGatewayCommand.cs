@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var localnetGateway = this.GetLocalNetworkGateway(this.ResourceGroupName, this.Name);
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var localnetGatewayGetResponse = this.LocalNetworkGatewayClient.List(this.ResourceGroupName);
+                var localnetGatewayList = this.LocalNetworkGatewayClient.List(this.ResourceGroupName);
 
                 var psLocalnetGateways = new List<PSLocalNetworkGateway>();
-                foreach (var localNetworkGateway in localnetGatewayGetResponse.LocalNetworkGateways)
+                foreach (var localNetworkGateway in localnetGatewayList)
                 {
                     var psLocalnetGateway = this.ToPsLocalNetworkGateway(localNetworkGateway);
                     psLocalnetGateway.ResourceGroupName = this.ResourceGroupName;
