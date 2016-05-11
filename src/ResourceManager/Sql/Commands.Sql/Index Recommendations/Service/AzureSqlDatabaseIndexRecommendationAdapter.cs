@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Model;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Service
 {

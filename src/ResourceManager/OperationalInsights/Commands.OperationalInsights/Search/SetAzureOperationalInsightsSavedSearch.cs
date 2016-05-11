@@ -13,9 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights

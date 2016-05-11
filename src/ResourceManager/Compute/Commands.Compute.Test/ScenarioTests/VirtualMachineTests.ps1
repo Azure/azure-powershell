@@ -124,6 +124,13 @@ function Test-VirtualMachine
 
         # Get VM
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        $a = $vm1 | Out-String;
+        Write-Verbose("Get-AzureRmVM output:");
+        Write-Verbose($a);
+        $a = $vm1 | Format-Table | Out-String;
+        Write-Verbose("Get-AzureRmVM | Format-Table output:");
+        Write-Verbose($a);
+
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
@@ -642,14 +649,18 @@ function Test-VirtualMachineSizeAndUsage
 
         # Test Usage
         $u1 = Get-AzureRmVMUsage -Location ($loc -replace ' ');
-        Validate-VirtualMachineUsage $u1;
 
-        #$passed = $true;
+        $usageOutput = $u1 | Out-String;
+        Write-Verbose("Get-AzureRmVMUsage: ");
+        Write-Verbose($usageOutput);
+        $usageOutput =  $u1 | Out-String;
+        Write-Verbose("Get-AzureRmVMUsage | Format-Custom : ");
+        $usageOutput =  $u1 | Format-Custom | Out-String;
+        Write-Verbose($usageOutput);
+        Validate-VirtualMachineUsage $u1;
     }
     finally
     {
-        #Assert-True { $passed };
-
         # Cleanup
         Clean-ResourceGroup $rgname
     }
@@ -1418,6 +1429,11 @@ function Test-VirtualMachineTags
         #Assert-NotNull $st.RequestId;
         Assert-NotNull $st.StatusCode;
         $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
+
+        $a = $vm | Out-String;
+        Write-Verbose("Get-AzureRmVM output:");
+        Write-Verbose($a);
+
         #Assert-NotNull $vm.RequestId;
         Assert-NotNull $vm.StatusCode;
 

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <summary>
         /// User is logging in with orgid credentials
         /// </summary>
-         OrgId,
+        OrgId,
 
         /// <summary>
         /// User is logging in with liveid credentials

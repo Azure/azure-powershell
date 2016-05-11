@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -37,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByResource",
             HelpMessage = "Subnet where application gateway gets its address from")]
         public PSSubnet Subnet { get; set; }
-       
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -68,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
                                 this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                 Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayIPConfigurationName,
                                 this.Name);
-            
+
             return gatewayIPConfiguration;
         }
     }

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
-using SmStorage = Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
@@ -41,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="account">A storage account.</param>
         public static void SetCurrentStorageAccount(this AzureContext context, IStorageContextProvider account)
         {
-            if (context.Subscription != null && account != null && account.Context != null 
+            if (context.Subscription != null && account != null && account.Context != null
                 && account.Context.StorageAccount != null)
             {
                 context.SetCurrentStorageAccount(account.Context.StorageAccount.ToString(true));

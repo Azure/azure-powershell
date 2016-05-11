@@ -86,8 +86,8 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// <returns>The response object from the service</returns>
         protected override IEnumerable<Model.AzureSqlServerFirewallRuleModel> PersistChanges(IEnumerable<Model.AzureSqlServerFirewallRuleModel> entity)
         {
-            return new List<Model.AzureSqlServerFirewallRuleModel>() { 
-                ModelAdapter.UpsertFirewallRule(entity.First()) 
+            return new List<Model.AzureSqlServerFirewallRuleModel>() {
+                ModelAdapter.UpsertFirewallRule(entity.First())
             };
         }
     }

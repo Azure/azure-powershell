@@ -12,26 +12,26 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Management.ApiManagement.SmapiModels;
 using System;
 using System.Linq;
-using Microsoft.Azure.Management.ApiManagement.SmapiModels;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
     public class ErrorBody
     {
         public string Code { get; set; }
-        
-        public string Message { get; set; } 
+
+        public string Message { get; set; }
 
         public ErrorField[] Details { get; set; }
 
         public ErrorBody()
         {
-            
+
         }
 
-        public ErrorBody(ErrorBodyContract errorBody) 
+        public ErrorBody(ErrorBodyContract errorBody)
             : this()
         {
             if (errorBody == null)

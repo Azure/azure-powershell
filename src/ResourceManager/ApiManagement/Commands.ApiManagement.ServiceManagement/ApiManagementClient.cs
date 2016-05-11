@@ -17,6 +17,12 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 {
+    using AutoMapper;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Management.ApiManagement;
+    using Microsoft.Azure.Management.ApiManagement.SmapiModels;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -25,12 +31,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
     using System.Net;
     using System.Text;
     using System.Text.RegularExpressions;
-    using AutoMapper;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Management.ApiManagement;
-    using Microsoft.Azure.Management.ApiManagement.SmapiModels;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
 
     public class ApiManagementClient
     {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 .ForMember(dest => dest.TokenBodyParameters, opt => opt.Ignore())
                 .AfterMap((src, dest) =>
                     dest.TokenBodyParameters = src.TokenBodyParameters == null
-                        ? (Hashtable) null
+                        ? (Hashtable)null
                         : new Hashtable(src.TokenBodyParameters.ToDictionary(key => key.Name, value => value.Value)));
 
             Mapper
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         private static IList<T> ListPaged<T>(
-            Func<IPagedListResponse<T>> listFirstPage, 
+            Func<IPagedListResponse<T>> listFirstPage,
             Func<string, IPagedListResponse<T>> listNextPage)
         {
             var resultsList = new List<T>();
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         private static IList<TOut> ListPagedAndMap<TOut, TIn>(
-            Func<IPagedListResponse<TIn>> listFirstPage, 
+            Func<IPagedListResponse<TIn>> listFirstPage,
             Func<string, IPagedListResponse<TIn>> listNextPage)
         {
             IList<TIn> unmappedList = ListPaged(listFirstPage, listNextPage);
@@ -282,16 +282,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public PsApiManagementApi ApiCreate(
-            PsApiManagementContext context, 
-            string id, 
-            string name, 
-            string description, 
-            string serviceUrl, 
-            string urlSuffix, 
-            PsApiManagementSchema[] urlSchema, 
-            string authorizationServerId, 
-            string authorizationScope, 
-            string subscriptionKeyHeaderName, 
+            PsApiManagementContext context,
+            string id,
+            string name,
+            string description,
+            string serviceUrl,
+            string urlSuffix,
+            PsApiManagementSchema[] urlSchema,
+            string authorizationServerId,
+            string authorizationScope,
+            string subscriptionKeyHeaderName,
             string subscriptionKeyQueryParamName)
         {
             var api = new ApiContract
@@ -338,15 +338,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         public void ApiSet(
             PsApiManagementContext context,
-            string id, 
-            string name, 
-            string description, 
-            string serviceUrl, 
-            string urlSuffix, 
-            PsApiManagementSchema[] urlSchema, 
-            string authorizationServerId, 
-            string authorizationScope, 
-            string subscriptionKeyHeaderName, 
+            string id,
+            string name,
+            string description,
+            string serviceUrl,
+            string urlSuffix,
+            PsApiManagementSchema[] urlSchema,
+            string authorizationServerId,
+            string authorizationScope,
+            string subscriptionKeyHeaderName,
             string subscriptionKeyQueryParamName)
         {
             var api = new ApiContract
@@ -441,9 +441,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public byte[] ApiExportToFile(
-            PsApiManagementContext context, 
-            string apiId, 
-            PsApiManagementApiFormat specificationFormat, 
+            PsApiManagementContext context,
+            string apiId,
+            PsApiManagementApiFormat specificationFormat,
             string saveAs)
         {
             string contentType;
@@ -492,15 +492,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public PsApiManagementOperation OperationCreate(
-            PsApiManagementContext context, 
-            string apiId, 
-            string operationId, 
-            string name, 
-            string method, 
-            string urlTemplate, 
-            string description, 
-            PsApiManagementParameter[] templateParameters, 
-            PsApiManagementRequest request, 
+            PsApiManagementContext context,
+            string apiId,
+            string operationId,
+            string name,
+            string method,
+            string urlTemplate,
+            string description,
+            PsApiManagementParameter[] templateParameters,
+            PsApiManagementRequest request,
             PsApiManagementResponse[] responses)
         {
             var operationContract = new OperationContract
@@ -539,15 +539,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public void OperationSet(
-            PsApiManagementContext context, 
-            string apiId, 
-            string operationId, 
-            string name, 
-            string method, 
-            string urlTemplate, 
-            string description, 
-            PsApiManagementParameter[] templateParameters, 
-            PsApiManagementRequest request, 
+            PsApiManagementContext context,
+            string apiId,
+            string operationId,
+            string name,
+            string method,
+            string urlTemplate,
+            string description,
+            PsApiManagementParameter[] templateParameters,
+            PsApiManagementRequest request,
             PsApiManagementResponse[] responses)
         {
             var operationContract = new OperationContract
@@ -660,13 +660,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         public void ProductSet(
             PsApiManagementContext context,
-            string productId, 
-            string title, 
-            string description, 
-            string legalTerms, 
-            bool? subscriptionRequired, 
-            bool? approvalRequired, 
-            int? subscriptionsLimit, 
+            string productId,
+            string title,
+            string description,
+            string legalTerms,
+            bool? subscriptionRequired,
+            bool? approvalRequired,
+            int? subscriptionsLimit,
             PsApiManagementProductState? state)
         {
             var productUpdateParameters = new ProductUpdateParameters
@@ -745,18 +745,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public PsApiManagementSubscription SubscriptionCreate(
-            PsApiManagementContext context, 
-            string subscriptionId, 
-            string productId, 
-            string userId, 
-            string name, 
-            string primaryKey, 
-            string secondaryKey, 
+            PsApiManagementContext context,
+            string subscriptionId,
+            string productId,
+            string userId,
+            string name,
+            string primaryKey,
+            string secondaryKey,
             PsApiManagementSubscriptionState? state)
         {
             var createParameters = new SubscriptionCreateParameters(
-                string.Format(UserIdPathTemplate, userId), 
-                string.Format(ProductIdPathTemplate, productId), 
+                string.Format(UserIdPathTemplate, userId),
+                string.Format(ProductIdPathTemplate, productId),
                 name)
             {
                 Name = name,
@@ -777,13 +777,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public void SubscriptionSet(
-            PsApiManagementContext context, 
-            string subscriptionId, 
-            string name, 
-            string primaryKey, 
-            string secondaryKey, 
-            PsApiManagementSubscriptionState? state, 
-            DateTime? expiresOn, 
+            PsApiManagementContext context,
+            string subscriptionId,
+            string name,
+            string primaryKey,
+            string secondaryKey,
+            PsApiManagementSubscriptionState? state,
+            DateTime? expiresOn,
             string stateComment)
         {
             var updateParameters = new SubscriptionUpdateParameters
@@ -811,13 +811,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         #region Users
         public PsApiManagementUser UserCreate(
-            PsApiManagementContext context, 
-            string userId, 
-            string firstName, 
-            string lastName, 
-            string password, 
-            string email, 
-            PsApiManagementUserState? state, 
+            PsApiManagementContext context,
+            string userId,
+            string firstName,
+            string lastName,
+            string password,
+            string email,
+            PsApiManagementUserState? state,
             string note)
         {
             var userCreateParameters = new UserCreateParameters
@@ -1139,9 +1139,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public PsApiManagementCertificate CertificateCreate(
-            PsApiManagementContext context, 
-            string certificateId, 
-            byte[] certificateBytes, 
+            PsApiManagementContext context,
+            string certificateId,
+            byte[] certificateBytes,
             string pfxPassword)
         {
             var createParameters = new CertificateCreateOrUpdateParameters
@@ -1204,23 +1204,23 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public PsApiManagementOAuth2AuthrozationServer AuthorizationServerCreate(
-            PsApiManagementContext context, 
-            string serverId, 
-            string name, 
-            string description, 
-            string clientRegistrationPageUrl, 
-            string authorizationEndpointUrl, 
-            string tokenEndpointUrl, 
-            string clientId, 
-            string clientSecret, 
-            PsApiManagementAuthorizationRequestMethod[] authorizationRequestMethods, 
-            PsApiManagementGrantType[] grantTypes, 
-            PsApiManagementClientAuthenticationMethod[] clientAuthenticationMethods, 
-            Hashtable tokenBodyParameters, 
-            bool? supportState, 
-            string defaultScope, 
-            PsApiManagementAccessTokenSendingMethod[] accessTokenSendingMethods, 
-            string resourceOwnerUsername, 
+            PsApiManagementContext context,
+            string serverId,
+            string name,
+            string description,
+            string clientRegistrationPageUrl,
+            string authorizationEndpointUrl,
+            string tokenEndpointUrl,
+            string clientId,
+            string clientSecret,
+            PsApiManagementAuthorizationRequestMethod[] authorizationRequestMethods,
+            PsApiManagementGrantType[] grantTypes,
+            PsApiManagementClientAuthenticationMethod[] clientAuthenticationMethods,
+            Hashtable tokenBodyParameters,
+            bool? supportState,
+            string defaultScope,
+            PsApiManagementAccessTokenSendingMethod[] accessTokenSendingMethods,
+            string resourceOwnerUsername,
             string resourceOwnerPassword)
         {
             var serverContract = new OAuth2AuthorizationServerContract
@@ -1269,23 +1269,23 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public void AuthorizationServerSet(
-            PsApiManagementContext context, 
-            string serverId, 
-            string name, 
-            string description, 
-            string clientRegistrationPageUrl, 
-            string authorizationEndpointUrl, 
-            string tokenEndpointUrl, 
-            string clientId, 
+            PsApiManagementContext context,
+            string serverId,
+            string name,
+            string description,
+            string clientRegistrationPageUrl,
+            string authorizationEndpointUrl,
+            string tokenEndpointUrl,
+            string clientId,
             string clientSecret,
-            PsApiManagementAuthorizationRequestMethod[] authorizationRequestMethods, 
-            PsApiManagementGrantType[] grantTypes, 
-            PsApiManagementClientAuthenticationMethod[] clientAuthenticationMethods, 
-            Hashtable tokenBodyParameters, 
-            bool? supportState, 
-            string defaultScope, 
-            PsApiManagementAccessTokenSendingMethod[] accessTokenSendingMethods, 
-            string resourceOwnerUsername, 
+            PsApiManagementAuthorizationRequestMethod[] authorizationRequestMethods,
+            PsApiManagementGrantType[] grantTypes,
+            PsApiManagementClientAuthenticationMethod[] clientAuthenticationMethods,
+            Hashtable tokenBodyParameters,
+            bool? supportState,
+            string defaultScope,
+            PsApiManagementAccessTokenSendingMethod[] accessTokenSendingMethods,
+            string resourceOwnerUsername,
             string resourceOwnerPassword)
         {
             var serverContract = new OAuth2AuthorizationServerContract
@@ -1339,7 +1339,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         public PsApiManagementLogger LoggerCreate(
             PsApiManagementContext context,
             LoggerTypeContract type,
-            string loggerId, 
+            string loggerId,
             string description,
             IDictionary<string, string> credentials,
             bool isBuffered)
@@ -1381,10 +1381,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public void LoggerSet(
-            PsApiManagementContext context, 
+            PsApiManagementContext context,
             LoggerTypeContract type,
             string loggerId,
-            string description, 
+            string description,
             IDictionary<string, string> credentials,
             bool? isBuffered)
         {
@@ -1518,7 +1518,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             {
                 propertyUpdateParameters.Tags = tags;
             }
-            
+
             Client.Property.Update(
                 context.ResourceGroupName,
                 context.ServiceName,
@@ -1553,7 +1553,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             Client.OpenIdConnectProviders.Create(
                 context.ResourceGroupName,
                 context.ServiceName,
-                openIdProviderId, 
+                openIdProviderId,
                 openIdProviderCreateParameters);
 
             var response = Client.OpenIdConnectProviders.Get(context.ResourceGroupName, context.ServiceName, openIdProviderId);
@@ -1575,7 +1575,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         {
             var results = ListPagedAndMap<PsApiManagementOpenIdConnectProvider, OpenidConnectProviderContract>(
                 () => Client.OpenIdConnectProviders.List(
-                    context.ResourceGroupName, 
+                    context.ResourceGroupName,
                     context.ServiceName,
                      new QueryParameters
                      {
@@ -1585,11 +1585,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             return results;
         }
-        
+
         public PsApiManagementOpenIdConnectProvider OpenIdConnectProviderById(PsApiManagementContext context, string openIdConnectProviderId)
         {
             var response = Client.OpenIdConnectProviders.Get(
-                context.ResourceGroupName, 
+                context.ResourceGroupName,
                 context.ServiceName,
                 openIdConnectProviderId);
 
@@ -1683,13 +1683,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             {
                 Force = force
             };
-            
+
             var longrunningResponse = Client.TenantConfiguration.BeginSave(
                 context.ResourceGroupName,
                 context.ServiceName,
                 saveConfigurationParams);
 
-            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Save-AzureRmApiManagement", longrunningResponse);
+            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Save-AzureRmApiManagementTenantGitConfiguration", longrunningResponse);
         }
 
         public TenantConfigurationLongRunningOperation BeginPublishTenantGitConfiguration(
@@ -1707,7 +1707,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 context.ServiceName,
                 deployConfigurationParams);
 
-            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Publish-AzureRmApiManagement", longrunningResponse);
+            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Publish-AzureRmApiManagementTenantGitConfiguration", longrunningResponse);
         }
 
         public TenantConfigurationLongRunningOperation BeginValidateTenantGitConfiguration(
@@ -1725,7 +1725,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 context.ServiceName,
                 deployConfigurationParams);
 
-            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Publish-AzureRmApiManagement -ValidateOnly", longrunningResponse);
+            return TenantConfigurationLongRunningOperation.CreateLongRunningOperation("Publish-AzureRmApiManagementTenantGitConfiguration -ValidateOnly", longrunningResponse);
         }
 
         public PsApiManagementTenantConfigurationSyncState GetTenantConfigurationSyncState(
@@ -1738,6 +1738,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return Mapper.Map<PsApiManagementTenantConfigurationSyncState>(response.Value);
         }
 
+        #endregion
+
+        #region TenantAccessInformation
+        public PsApiManagementAccessInformation GetTenantAccessInformation(PsApiManagementContext context)
+        {
+            var response = Client.TenantAccess.Get(
+                context.ResourceGroupName,
+                context.ServiceName);
+
+            return Mapper.Map<PsApiManagementAccessInformation>(response.Value);
+        }
+
+        public void TenantAccessSet(
+            PsApiManagementContext context,
+            bool enabledTenantAccess)
+        {
+            var accessInformationParams = new AccessInformationUpdateParameters
+            {
+                Enabled = enabledTenantAccess
+            };
+            Client.TenantAccess.Update(context.ResourceGroupName, context.ServiceName, accessInformationParams, "*");
+        }
         #endregion
     }
 }

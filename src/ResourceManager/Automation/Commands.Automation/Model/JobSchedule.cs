@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
 using System;
 using System.Collections;
 using System.Globalization;
-using Microsoft.Azure.Commands.Automation.Common;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the automation account name.
         /// </summary>
         public string AutomationAccountName { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the job schedule id.
         /// </summary>
