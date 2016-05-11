@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Moq;
-using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
@@ -47,14 +47,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         public void RemoveDeployment()
         {
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            
+            resourcesClientMock.Setup(f => f.DeleteDeployment(resourceGroupName, deploymentName));
+
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = deploymentName;
             cmdlet.Force = true;
 
             cmdlet.ExecuteCmdlet();
 
-            commandRuntimeMock.Verify(f => f.WriteObject(true), Times.Once());
+            resourcesClientMock.Verify(f => f.DeleteDeployment(resourceGroupName, deploymentName), Times.Once());
         }
     }
 }
