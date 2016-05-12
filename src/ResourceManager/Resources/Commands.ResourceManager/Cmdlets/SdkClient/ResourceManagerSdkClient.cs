@@ -574,44 +574,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
-        /// Get the list of resource provider operations for every provider specified by the identities list
-        /// </summary>
-        public IList<PSResourceProviderOperation> ListPSProviderOperations(IList<ResourceIdentity> identities)
-        {
-            var allProviderOperations = new List<PSResourceProviderOperation>();
-            Task<IPage<ResourceProviderOperationDefinition>> task;
-
-            if (identities != null)
-            {
-                foreach (var identity in identities)
-                {
-                    try
-                    {
-                        task = this.ResourceManagementClient.ResourceProviderOperationDetails.ListAsync(identity.ResourceProviderNamespace, identity.ResourceProviderApiVersion);
-                        task.Wait(10000);
-
-                        // Add operations for this provider.
-                        if (task.IsCompleted)
-                        {
-                            allProviderOperations.AddRange(task.Result.Select(op => op.ToPSResourceProviderOperation()));
-                        }
-                    }
-                    catch (AggregateException ae)
-                    {
-                        AggregateException flattened = ae.Flatten();
-                        foreach (Exception inner in flattened.InnerExceptions)
-                        {
-                            // Do nothing for now - this is just a mitigation against one provider which hasn't implemented the operations API correctly
-                            //WriteWarning(inner.ToString());
-                        }
-                    }
-                }
-            }
-
-            return allProviderOperations;
-        }
-
-        /// <summary>
         /// Creates a new resource group
         /// </summary>
         /// <param name="parameters">The create parameters</param>
