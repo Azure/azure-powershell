@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,12 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Auth;
+    using Microsoft.WindowsAzure.Storage.Blob;
     using System;
-using System.Globalization;
-using System.Net;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+    using System.Globalization;
+    using System.Net;
 
     internal static class Util
     {
@@ -56,8 +56,8 @@ using Microsoft.WindowsAzure.Storage.Blob;
         }
 
         public static CloudBlob GetBlobReferenceFromServer(
-            CloudBlobContainer container, 
-            string blobName, 
+            CloudBlobContainer container,
+            string blobName,
             AccessCondition accessCondition = null,
             BlobRequestOptions options = null,
             OperationContext operationContext = null)
@@ -99,7 +99,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
         public static CloudBlob GetCorrespondingTypeBlobReference(CloudBlob blob)
         {
             CloudBlob targetBlob;
-            switch(blob.Properties.BlobType)
+            switch (blob.Properties.BlobType)
             {
                 case BlobType.BlockBlob:
                     targetBlob = new CloudBlockBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
@@ -124,7 +124,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
         public static CloudBlob GetBlobReference(CloudBlobContainer container, string blobName, BlobType blobType)
         {
-            switch(blobType)
+            switch (blobType)
             {
                 case BlobType.BlockBlob:
                     return container.GetBlockBlobReference(blobName);
@@ -147,7 +147,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
             {
                 case BlobType.BlockBlob:
                     return new CloudBlockBlob(blobUri, storageCredentials);
-                case BlobType.PageBlob: 
+                case BlobType.PageBlob:
                     return new CloudPageBlob(blobUri, storageCredentials);
                 case BlobType.AppendBlob:
                     return new CloudAppendBlob(blobUri, storageCredentials);

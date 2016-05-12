@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class FeatureProperties
     {
         private string _state;
-        
+
         /// <summary>
         /// Optional. Gets or sets the state of the previewed feature.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._state; }
             set { this._state = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the FeatureProperties class.
         /// </summary>

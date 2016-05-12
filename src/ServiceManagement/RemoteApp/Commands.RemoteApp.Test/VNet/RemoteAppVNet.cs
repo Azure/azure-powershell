@@ -23,7 +23,6 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
     using System.Linq;
     using Xunit;
 
-
     public class RemoteAppVNetTest : RemoteAppClientTest
     {
 

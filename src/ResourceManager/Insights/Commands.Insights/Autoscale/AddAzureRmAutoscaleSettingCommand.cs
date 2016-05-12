@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
@@ -137,18 +137,18 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             }
 
             return new AutoscaleSettingCreateOrUpdateParameters()
+            {
+                Location = this.Location,
+                Properties = new AutoscaleSetting()
                 {
-                    Location = this.Location,
-                    Properties = new AutoscaleSetting()
-                    {
-                        Name = this.Name,
-                        Enabled = enableSetting,
-                        Profiles = this.AutoscaleProfiles,
-                        TargetResourceUri = this.TargetResourceId,
-                        Notifications = this.Notifications
-                    },
-                    Tags = this.SettingSpec != null ? new LazyDictionary<string, string>(this.SettingSpec.Tags.Content) : new LazyDictionary<string, string>()
-                };
+                    Name = this.Name,
+                    Enabled = enableSetting,
+                    Profiles = this.AutoscaleProfiles,
+                    TargetResourceUri = this.TargetResourceId,
+                    Notifications = this.Notifications
+                },
+                Tags = this.SettingSpec != null ? new LazyDictionary<string, string>(this.SettingSpec.Tags.Content) : new LazyDictionary<string, string>()
+            };
         }
     }
 }

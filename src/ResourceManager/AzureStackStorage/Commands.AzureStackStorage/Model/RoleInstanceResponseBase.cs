@@ -12,16 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
-    internal class RoleInstanceResponseBase:ResponseBase
+    internal class RoleInstanceResponseBase : ResponseBase
     {
         public RoleInstanceResponseBase(ResourceBase resource) : base(resource)
         {

@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Sync.Download;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
+using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using Microsoft.WindowsAzure.Commands.Sync.Download;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 {
@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         {
             var baseBlob = this.blobObjectFactory.Create(baseVhdBlobUri);
 
-            if(!baseBlob.Exists())
+            if (!baseBlob.Exists())
             {
                 throw new InvalidOperationException(String.Format("Base image to patch doesn't exist in blob storage: {0}", baseVhdBlobUri.Uri));
             }
@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 }
             }
 
-            using(var bmds = new BlobMetaDataScope(destinationBlob))
+            using (var bmds = new BlobMetaDataScope(destinationBlob))
             {
                 bmds.Current.RemoveBlobMd5Hash();
                 bmds.Current.SetUploadMetaData(OperationMetaData);
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
             source.FetchAttributes();
 
             var copyStatus = new ProgressStatus(0, source.Properties.Length);
-            using (new ProgressTracker(copyStatus, Program.SyncOutput.ProgressCopyStatus, Program.SyncOutput.ProgressCopyComplete,TimeSpan.FromSeconds(1)))
+            using (new ProgressTracker(copyStatus, Program.SyncOutput.ProgressCopyStatus, Program.SyncOutput.ProgressCopyComplete, TimeSpan.FromSeconds(1)))
             {
                 destinationBlob.StartCopy(source);
                 destinationBlob.FetchAttributes();
@@ -137,7 +137,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         private FileMetaData GetFileMetaData(CloudPageBlob baseBlob, VhdFilePath localBaseVhdPath)
         {
             FileMetaData fileMetaData;
-            if(File.Exists(localBaseVhdPath.AbsolutePath))
+            if (File.Exists(localBaseVhdPath.AbsolutePath))
             {
                 fileMetaData = FileMetaData.Create(localBaseVhdPath.AbsolutePath);
             }
@@ -184,11 +184,11 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
         protected void Dispose(bool disposing)
         {
-            if(disposing)
+            if (disposing)
             {
-                if(!this.disposed)
+                if (!this.disposed)
                 {
-                    if(completed)
+                    if (completed)
                     {
                         this.blob.SetMetadata();
                         this.blob.SetProperties();

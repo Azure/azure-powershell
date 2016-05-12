@@ -14,25 +14,25 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Set, Constants.ApiManagementApi)]
     [OutputType(typeof(PsApiManagementApi))]
     public class SetAzureApiManagementApi : AzureApiManagementCmdletBase
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of existing API. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ApiId { get; set; }
@@ -102,8 +102,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String SubscriptionKeyQueryParamName { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "If specified then instance of" +
                           " Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi type " +
                           "representing the set API.")]

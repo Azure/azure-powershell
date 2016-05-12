@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.DataFactories.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.DataFactories.Models
 {
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
                 linkedService.Name = value;
             }
         }
-        
+
         public string ResourceGroupName { get; set; }
 
         public string DataFactoryName { get; set; }

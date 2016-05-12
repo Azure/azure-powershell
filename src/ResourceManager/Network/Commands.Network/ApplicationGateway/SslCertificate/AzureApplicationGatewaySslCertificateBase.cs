@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using System.Security.Cryptography.X509Certificates;
 using System;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Management.Automation;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.Network
 {

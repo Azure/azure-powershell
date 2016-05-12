@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
+
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var inboundNatPool =
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
                 var inboundNatPools = this.LoadBalancer.InboundNatPools;
                 WriteObject(inboundNatPools, true);
             }
-            
+
         }
     }
 }

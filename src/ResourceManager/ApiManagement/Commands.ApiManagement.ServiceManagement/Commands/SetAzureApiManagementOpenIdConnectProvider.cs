@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Set, Constants.ApiManagementOpenIdConnectProvider)]
     [OutputType(typeof(PsApiManagementOpenIdConnectProvider))]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = false,
             HelpMessage = "If specified then instance of " +
                           "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider type" +
-                          " representing the modified OpenId Connect Provider.")]
+                          " representing the modified OpenId Connect Provider will be written to output.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

@@ -12,10 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Management.Automation.Models;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -83,6 +80,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the pull server end point
         /// </summary>
-        public string Endpoint{ get; set; }
+        public string Endpoint { get; set; }
     }
 }

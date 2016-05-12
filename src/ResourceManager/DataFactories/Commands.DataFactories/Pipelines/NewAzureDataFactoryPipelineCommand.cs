@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
