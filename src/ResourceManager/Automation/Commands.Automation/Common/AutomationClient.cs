@@ -336,6 +336,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Description = schedule.Description,
                     Interval = schedule.Interval,
                     Frequency = schedule.Frequency.ToString(),
+                    AdvancedSchedule = schedule.GetAdvancedSchedule(),
                     TimeZone = schedule.TimeZone,
                 }
             };

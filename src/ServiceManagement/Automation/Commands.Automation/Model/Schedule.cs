@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
                                : this.NextRun;
             this.Interval = schedule.Properties.Interval.HasValue ? schedule.Properties.Interval.Value : this.Interval;
             this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Properties.Frequency, true);
-            this.TimeZone = schedule.Properties.TimeZone;
         }
 
         /// <summary>
@@ -109,10 +108,5 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the schedule frequency.
         /// </summary>
         public ScheduleFrequency Frequency { get; set; }
-
-        /// <summary>
-        /// Gets or sets the schedule time zone.
-        /// </summary>
-        public string TimeZone { get; set; }
     }
 }

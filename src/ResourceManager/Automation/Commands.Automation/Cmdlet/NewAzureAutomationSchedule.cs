@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
@@ -58,6 +60,30 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Description { get; set; }
 
         /// <summary>
+        /// Gets or sets the schedule days of the week.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByWeekly, Mandatory = false, HelpMessage = "The list of days of week for the weekly schedule.")]
+        public DayOfWeek[] DaysOfWeek { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule days of the month.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDaysOfMonth, Mandatory = false, HelpMessage = "The list of days of month for the monthly schedule.")]
+        public DaysOfMonth[] DaysOfMonth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule day of the week.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDayOfWeek, Mandatory = false, HelpMessage = "The day of week for the monthly occurrence.")]
+        public DayOfWeek? DayOfWeek { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule day of the week.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDayOfWeek, Mandatory = false, HelpMessage = "The Occurrence of the week within the month.")]
+        public DayOfWeekOccurrence DayOfWeekOccurrence { get; set; }
+
+        /// <summary>
         /// Gets or sets the switch parameter to create a one time schedule.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByOneTime, Mandatory = true, HelpMessage = "To create a one time schedule.")]
@@ -68,6 +94,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByDaily, Mandatory = false, HelpMessage = "The schedule expiry time.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByHourly, Mandatory = false, HelpMessage = "The schedule expiry time.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByWeekly, Mandatory = false, HelpMessage = "The schedule expiry time.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDaysOfMonth, Mandatory = false, HelpMessage = "The schedule expiry time.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDayOfWeek, Mandatory = false, HelpMessage = "The schedule expiry time.")]
         public DateTimeOffset ExpiryTime { get; set; }
 
         /// <summary>
@@ -83,6 +112,21 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByHourly, Mandatory = true, HelpMessage = "The hourly schedule hour interval.")]
         [ValidateRange(1, byte.MaxValue)]
         public byte HourInterval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the weekly schedule week interval.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByWeekly, Mandatory = true, HelpMessage = "The weekly schedule week interval.")]
+        [ValidateRange(1, byte.MaxValue)]
+        public byte WeekInterval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the weekly schedule week interval.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDaysOfMonth, Mandatory = true, HelpMessage = "The monthly schedule month interval.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDayOfWeek, Mandatory = true, HelpMessage = "The monthly schedule month interval.")]
+        [ValidateRange(1, byte.MaxValue)]
+        public byte MonthInterval { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule time zone.
@@ -118,10 +162,127 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     schedule.Frequency = ScheduleFrequency.Hour;
                     schedule.Interval = this.HourInterval;
                     break;
+                case AutomationCmdletParameterSets.ByWeekly:
+                    schedule = this.CreateWeeklyScheduleModel();
+                    break;
+                case AutomationCmdletParameterSets.ByMonthlyDayOfWeek:
+                    schedule = this.CreateMonthlyScheduleModel();
+                    break;
+                case AutomationCmdletParameterSets.ByMonthlyDaysOfMonth:
+                    schedule = this.CreateMonthlyScheduleModel();
+                    break;
             }
 
-            var createdSchedule = this.AutomationClient.CreateSchedule(this.ResourceGroupName, this.AutomationAccountName, schedule);
+            Schedule createdSchedule = this.AutomationClient.CreateSchedule(this.ResourceGroupName, this.AutomationAccountName, schedule);
             this.WriteObject(createdSchedule);
         }
+
+        /// <summary>
+        /// The validate.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Schedule"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// throws exception
+        /// </exception>
+        private Schedule CreateMonthlyScheduleModel()
+        {
+            var dayOfWeek = this.DayOfWeek.HasValue ? this.DayOfWeek.ToString() : null;
+            if ((!string.IsNullOrWhiteSpace(dayOfWeek) && this.DayOfWeekOccurrence == 0) || (string.IsNullOrWhiteSpace(dayOfWeek) && this.DayOfWeekOccurrence != 0))
+            {
+                throw new Exception("for monthly occurrence, both day of week and occurrence need to be specified");
+            }
+
+            var newSchedule = new Schedule
+            {
+                Name = this.Name,
+                StartTime = this.StartTime,
+                Description = this.Description,
+                ExpiryTime = this.ExpiryTime,
+                Frequency = ScheduleFrequency.Month,
+                Interval = this.MonthInterval,
+                DaysOfMonth = this.DaysOfMonth,
+                DayOfWeekMonthlySchedule = dayOfWeek,
+                DayOfWeekOccurrence = this.DayOfWeekOccurrence == 0 ? null : this.DayOfWeekOccurrence.ToString()
+            };
+
+            return newSchedule;
+        }
+
+        /// <summary>
+        /// The create weekly schedule model.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Schedule"/>.
+        /// </returns>
+        private Schedule CreateWeeklyScheduleModel()
+        {
+            var newSchedule = new Schedule
+            {
+                Name = this.Name,
+                StartTime = this.StartTime,
+                Description = this.Description,
+                ExpiryTime = this.ExpiryTime,
+                Frequency = ScheduleFrequency.Week,
+                Interval = this.WeekInterval,
+                DaysOfWeekWeeklySchedule = this.DaysOfWeek == null
+                    ? null
+                    : this.DaysOfWeek.Select(day => day.ToString()).ToList()
+            };
+
+            return newSchedule;
+        }
+    }
+
+    /// <summary>
+    /// The day of week occurrence.
+    /// </summary>
+    public enum DayOfWeekOccurrence
+    {
+        First = 1,
+        Second = 2,
+        Third = 3,
+        Fourth = 4,
+        Last = -1
+    }
+
+    /// <summary>
+    /// The day of week occurrence.
+    /// </summary>
+    public enum DaysOfMonth
+    {
+      One = 1,
+        Two = 2,
+        Three = 3,
+        Four = 4,
+        Five = 5,
+        Six = 6,
+        Seventh = 7,
+        Eighth = 8,
+        Ninth = 9,
+        Tenth = 10,
+        Eleventh =11,
+        Twelfth =12,
+        Thirteenth = 13,
+        Fourteenth = 14,
+        Fifteenth = 15,
+        Sixteenth = 16,
+        Seventeenth = 17,
+        Eighteenth = 18,
+        Nineteenth = 19,
+        Twentieth = 20,
+        TwentyFirst = 21,
+        TwentySecond = 22,
+        TwentyThird = 23,
+        TwentyFourth = 24,
+        TwentyFifth = 25,
+        TwentySixth = 26,
+        TwentySeventh = 27,
+        TwentyEighth = 28,
+        TwentyNinth = 29,
+        Thirtieth = 30,
+        ThirtyFirst = 31,
+        LastDay = -1
     }
 }
