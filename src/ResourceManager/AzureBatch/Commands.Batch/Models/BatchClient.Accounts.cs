@@ -151,33 +151,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <returns>A collection of BatchAccountContext objects</returns>
         public virtual IEnumerable<BatchAccountContext> ListAccounts(Hashtable tag, string resourceGroupName = default(string))
         {
-            List<BatchAccountContext> accounts = new List<BatchAccountContext>();
-
             // no account name so we're doing some sort of list. If no resource group, then list all accounts under the
             // subscription otherwise all accounts in the resource group.
             var response = string.IsNullOrEmpty(resourceGroupName)
                 ? BatchManagementClient.Account.List()
                 : BatchManagementClient.Account.ListByResourceGroup(resourceGroupName);
 
-            var accountResources = new List<AccountResource>();
-            accountResources.AddRange(response);
+            var batchAccountContexts = ListAllAccounts(response).Where(acct => Helpers.FilterAccounts(acct, tag)).
+                Select(resource => BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource));
 
-            var nextLink = response.NextPageLink;
-            while (nextLink != null)
-            {
-                response = ListNextAccounts(nextLink);
-                accountResources.AddRange(response);
-                nextLink = response.NextPageLink;
-            }
-
-            accountResources = Helpers.FilterAccounts(accountResources, tag).ToList();
-
-            foreach (AccountResource resource in accountResources)
-            {
-                accounts.Add(BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource));
-            }
-
-            return accounts;
+            return batchAccountContexts;
         }
 
         /// <summary>
@@ -263,6 +246,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             return PSPagedEnumerable<PSNodeAgentSku, NodeAgentSku>.CreateWithMaxCount(nodeAgentSkus, mappingFunction,
                 maxCount, () => WriteVerbose(string.Format(Resources.MaxCount, maxCount)));
+        }
+
+        /// <summary>
+        /// Appends all accounts into a list.
+        /// </summary>
+        /// <param name="response">The list of accounts.</param>
+        /// <returns>All accounts for the response</returns>
+        internal IEnumerable<AccountResource> ListAllAccounts(IPage<AccountResource> response)
+        {
+            var accountResources = new List<AccountResource>();
+            accountResources.AddRange(response);
+
+            var nextLink = response.NextPageLink;
+            while (nextLink != null)
+            {
+                response = ListNextAccounts(nextLink);
+                accountResources.AddRange(response);
+                nextLink = response.NextPageLink;
+            }
+
+            return accountResources;
         }
 
         /// <summary>

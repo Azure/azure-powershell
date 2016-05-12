@@ -157,12 +157,12 @@ namespace Microsoft.Azure.Commands.Batch
         }
 
         /// <summary>
-        /// Filters the subscription's accounts.
+        /// Filters the subscription's account with the given tag.
         /// </summary>
-        /// <param name="accounts">The list of accounts.</param>
+        /// <param name="account">The account to filter on.</param>
         /// <param name="tag">The tag to filter on.</param>
-        /// <returns>The filtered accounts</returns>
-        public static IEnumerable<AccountResource> FilterAccounts(IEnumerable<AccountResource> accounts, Hashtable tag)
+        /// <returns>Whether or not the account's tags match with the given tag</returns>
+        public static bool FilterAccounts(AccountResource account, Hashtable tag)
         {
             if (tag != null && tag.Count >= 1)
             {
@@ -174,20 +174,16 @@ namespace Microsoft.Azure.Commands.Batch
 
                 if (string.IsNullOrEmpty(tagValuePair.Value))
                 {
-                    return
-                        accounts.Where(
-                            acct => ContainsTagWithName(acct.Tags, tagValuePair.Name));
+                    return ContainsTagWithName(account.Tags, tagValuePair.Name);
                 }
                 else
                 {
-                    return
-                        accounts.Where(
-                            acct => ContainsTagWithName(acct.Tags, tagValuePair.Name) &&
-                                acct.Tags[tagValuePair.Name] == tagValuePair.Value);
+                    return ContainsTagWithName(account.Tags, tagValuePair.Name) &&
+                           account.Tags[tagValuePair.Name] == tagValuePair.Value;
                 }
             }
 
-            return accounts;
+            return true;
         }
 
         public static bool ContainsTagWithName(IDictionary<string, string> tags, string value)
