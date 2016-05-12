@@ -162,6 +162,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             public string AccessToken { get { return AuthResult.AccessToken; } }
 
+            public string UniqueId { get { return AuthResult.UserInfo.UniqueId; } }
+
             public LoginType LoginType { get { return LoginType.OrgId; } }
 
             public string TenantId { get { return this.Configuration.AdDomain; } }

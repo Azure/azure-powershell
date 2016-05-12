@@ -25,7 +25,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         }
 
         public string AccessToken { get; set; }
+
         public string UserId { get; set; }
+
+        public string UniqueId { get { return this.UserId; } }
+
         public LoginType LoginType { get; set; }
 
         public string TenantId
