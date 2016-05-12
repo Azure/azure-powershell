@@ -14,15 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.Tags.Model;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections;
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.Tags.Model;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Finds the resource group.
@@ -48,6 +47,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
+            this.WriteWarning("The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
             PaginatedResponseHelper.ForEach(
                getFirstPage: () => this.GetResourceGroups(),
                getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),

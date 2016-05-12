@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     public abstract class ResourceWithParameterCmdletBase : ResourceManagerCmdletBase
     {
-        protected const string BaseParameterSetName = "Default";
         protected const string TemplateFileParameterObjectParameterSetName = "Deployment via template file and template parameters object";
         protected const string TemplateFileParameterFileParameterSetName = "Deployment via template file and template parameters file";
         protected const string TemplateFileParameterUriParameterSetName = "Deployment via template file template parameters uri";
@@ -183,7 +182,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected string GetDeploymentDebugLogLevel(string deploymentDebugLogLevel)
         {
             string debugSetting = string.Empty;
-            if(!string.IsNullOrEmpty(deploymentDebugLogLevel))
+            if (!string.IsNullOrEmpty(deploymentDebugLogLevel))
             {
                 switch (deploymentDebugLogLevel.ToLower())
                 {
@@ -201,7 +200,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         break;
                 }
             }
-            
+
             return debugSetting;
         }
     }

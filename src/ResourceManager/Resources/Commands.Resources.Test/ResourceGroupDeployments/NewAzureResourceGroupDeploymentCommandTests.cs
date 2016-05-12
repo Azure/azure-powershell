@@ -24,7 +24,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -44,9 +49,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string storageAccountName = "myStorageAccount";
 
-        public NewAzureResourceGroupDeploymentCommandTests()
+        public NewAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
             resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewAzureResourceGroupDeploymentCmdlet()
             {

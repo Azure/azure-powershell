@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using System.Threading.Tasks;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
-
+    using Xunit.Abstractions;
     /// <summary>
     /// Tests the AzureProvider cmdlets
     /// </summary>
@@ -56,9 +56,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderCmdletTests"/> class.
         /// </summary>
-        public UnregisterAzureProviderCmdletTests()
+        public UnregisterAzureProviderCmdletTests(ITestOutputHelper output)
         {
             this.providerOperationsMock = new Mock<IProvidersOperations>();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             var resourceManagementClient = new Mock<IResourceManagementClient>();
 
             resourceManagementClient
