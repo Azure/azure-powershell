@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 var rdcprop = new RunbookCreateOrUpdateDraftProperties()
                 {
                     Description = description,
-                    RunbookType = String.IsNullOrWhiteSpace(type) ? RunbookTypeEnum.Script : (0 == string.Compare(type, Constants.RunbookType.PowerShellWorkflow, StringComparison.OrdinalIgnoreCase)) ? RunbookTypeEnum.Script : type,
+                    RunbookType = String.IsNullOrWhiteSpace(type) ? RunbookTypeEnum.Script : type,
                     LogProgress =  logProgress.HasValue && logProgress.Value,
                     LogVerbose = logVerbose.HasValue && logVerbose.Value,
                     Draft = new RunbookDraft(),
@@ -476,7 +476,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public Runbook ImportRunbook(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool published, bool overwrite, string name)
         {
-
             var fileExtension = Path.GetExtension(runbookPath);
 
             if (0 !=
@@ -492,13 +491,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             // if graph runbook make sure type is not null and has right value
             if (0 == string.Compare(fileExtension, Constants.SupportedFileExtensions.Graph, StringComparison.OrdinalIgnoreCase) 
-                && string.IsNullOrWhiteSpace(type) 
-                && (0 != string.Compare(type, Constants.RunbookType.Graph,StringComparison.OrdinalIgnoreCase)))
+                && (string.IsNullOrWhiteSpace(type) || !IsGraphRunbook(type)))
             {
                 throw new ResourceCommonException(typeof(Runbook),
                         string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookTypeForExtension, fileExtension));
             }
-
 
             var runbookName = Path.GetFileNameWithoutExtension(runbookPath);
 
@@ -1786,7 +1783,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 outputFolderFullPath = this.ValidateAndGetFullPath(outputFolder);
             }
 
-            var fileExtension = (0 == string.Compare(runbookType, Constants.RunbookType.Graph, StringComparison.OrdinalIgnoreCase)) ? Constants.SupportedFileExtensions.Graph : Constants.SupportedFileExtensions.PowerShellScript;
+            var fileExtension = IsGraphRunbook(runbookType) ? Constants.SupportedFileExtensions.Graph : Constants.SupportedFileExtensions.PowerShellScript;
             
             var outputFilePath = outputFolderFullPath + "\\" + runbookName + fileExtension;
 
@@ -1801,6 +1798,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
             this.WriteFile(outputFilePath, content);
 
             return new DirectoryInfo(runbookName + fileExtension);
+        }
+
+        private static bool IsGraphRunbook(string runbookType)
+        {
+            return (string.Equals(runbookType, Constants.RunbookType.Graph, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(runbookType, Constants.RunbookType.GraphPowerShell, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(runbookType, Constants.RunbookType.GraphPowerShellWorkflow, StringComparison.OrdinalIgnoreCase));
         }
 
         #endregion
