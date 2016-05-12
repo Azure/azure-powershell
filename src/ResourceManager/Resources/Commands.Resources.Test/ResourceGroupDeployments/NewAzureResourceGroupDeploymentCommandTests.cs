@@ -30,6 +30,7 @@ using System.IO;
 using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {

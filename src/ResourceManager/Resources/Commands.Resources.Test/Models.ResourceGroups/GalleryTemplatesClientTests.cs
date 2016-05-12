@@ -28,6 +28,8 @@ using System.Management.Automation;
 using System.Security;
 using Newtonsoft.Json.Linq;
 using Xunit;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
@@ -260,7 +262,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
             KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = galleryTemplatesClient.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
 
             Assert.Equal("appSku", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -292,7 +294,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
             KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = galleryTemplatesClient.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
 
             Assert.Equal("ranks", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -357,7 +359,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
 
 
-            RuntimeDefinedParameterDictionary result = galleryTemplatesClient.GetTemplateParametersFromFile(
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
                 templateFile,
                 templateParameterObject,
                 null,

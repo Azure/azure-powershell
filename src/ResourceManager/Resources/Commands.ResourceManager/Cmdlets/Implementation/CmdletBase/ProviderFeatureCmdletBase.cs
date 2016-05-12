@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using Microsoft.Azure.Commands.Resources.Models.ProviderFeatures;
     using ResourceManager.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
