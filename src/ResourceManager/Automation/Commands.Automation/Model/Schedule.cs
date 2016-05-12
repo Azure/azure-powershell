@@ -58,13 +58,13 @@ namespace Microsoft.Azure.Commands.Automation.Model
                                : this.NextRun;
             this.Interval = schedule.Properties.Interval.HasValue ? schedule.Properties.Interval.Value : this.Interval;
             this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Properties.Frequency, true);
-            this.DaysOfWeek = schedule.Properties.AdvancedSchedule == null
+            this.DaysOfWeekWeeklySchedule = schedule.Properties.AdvancedSchedule == null
                 ? null
                 : schedule.Properties.AdvancedSchedule.WeekDays;
             this.DaysOfMonth = schedule.Properties.AdvancedSchedule == null
                 ? null
                 : this.GetDaysOfMonth(schedule.Properties.AdvancedSchedule.MonthDays);
-            this.DayOfWeek = this.IsMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
+            this.DayOfWeekMonthlySchedule = this.IsMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
                 ? null
                 : schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Day;
             this.DayOfWeekOccurrence = this.IsMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the schedule days of the week.
         /// </summary>
-        public IList<string> DaysOfWeek { get; set; }
+        public IList<string> DaysOfWeekWeeklySchedule { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule days of the month.
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the schedule day of the week.
         /// </summary>
-        public string DayOfWeek { get; set; }
+        public string DayOfWeekMonthlySchedule { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule day of the week occurrence.
@@ -144,15 +144,15 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             var advancedSchedule = new AdvancedSchedule()
             {
-                WeekDays = this.DaysOfWeek,
+                WeekDays = this.DaysOfWeekWeeklySchedule,
                 MonthDays = this.DaysOfMonth == null ? null : this.DaysOfMonth.Select(v => Convert.ToInt32(v)).ToList(),
-                MonthlyOccurrences = string.IsNullOrWhiteSpace(this.DayOfWeek) && this.DayOfWeekOccurrence == null
+                MonthlyOccurrences = string.IsNullOrWhiteSpace(this.DayOfWeekMonthlySchedule) && this.DayOfWeekOccurrence == null
                     ? null
                     : new AdvancedScheduleMonthlyOccurrence[]
                     {
                         new AdvancedScheduleMonthlyOccurrence()
                         {
-                            Day = this.DayOfWeek,
+                            Day = this.DayOfWeekMonthlySchedule,
                             Occurrence = this.GetDayOfWeekOccurrence(this.DayOfWeekOccurrence)
                         }
                     }
@@ -202,9 +202,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </returns>
         private bool AdvancedScheduleIsNull(Schedule schedule)
         {
-            return (schedule.DaysOfWeek == null
+            return (schedule.DaysOfWeekWeeklySchedule == null
                 && schedule.DaysOfMonth == null
-                && string.IsNullOrWhiteSpace(schedule.DayOfWeek)
+                && string.IsNullOrWhiteSpace(schedule.DayOfWeekMonthlySchedule)
                 && schedule.DayOfWeekOccurrence == null);
         }
 

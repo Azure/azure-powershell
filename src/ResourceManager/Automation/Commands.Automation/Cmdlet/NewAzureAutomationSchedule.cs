@@ -62,19 +62,19 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the schedule days of the week.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByWeekly, Mandatory = false, HelpMessage = "The list of days of the week for weekly schedule.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByWeekly, Mandatory = false, HelpMessage = "The list of days of week for the weekly schedule.")]
         public DayOfWeek[] DaysOfWeek { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule days of the month.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDaysOfMonth, Mandatory = false, HelpMessage = "The list of days of the month for monthly schedule.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDaysOfMonth, Mandatory = false, HelpMessage = "The list of days of month for the monthly schedule.")]
         public DaysOfMonth[] DaysOfMonth { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule day of the week.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDayOfWeek, Mandatory = false, HelpMessage = "The day of week for monthly occurrence.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDayOfWeek, Mandatory = false, HelpMessage = "The day of week for the monthly occurrence.")]
         public DayOfWeek? DayOfWeek { get; set; }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 Frequency = ScheduleFrequency.Month,
                 Interval = this.MonthInterval,
                 DaysOfMonth = this.DaysOfMonth,
-                DayOfWeek = dayOfWeek,
+                DayOfWeekMonthlySchedule = dayOfWeek,
                 DayOfWeekOccurrence = this.DayOfWeekOccurrence == 0 ? null : this.DayOfWeekOccurrence.ToString()
             };
 
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 ExpiryTime = this.ExpiryTime,
                 Frequency = ScheduleFrequency.Week,
                 Interval = this.WeekInterval,
-                DaysOfWeek = this.DaysOfWeek == null
+                DaysOfWeekWeeklySchedule = this.DaysOfWeek == null
                     ? null
                     : this.DaysOfWeek.Select(day => day.ToString()).ToList()
             };
