@@ -15,11 +15,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using AuthorizationResourceIdentity = Microsoft.Azure.ResourceIdentity;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
-using ResourcesResourceIdentity = Microsoft.Azure.ResourceIdentity;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     public class ResourceIdentifier
     {
