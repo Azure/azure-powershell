@@ -90,5 +90,12 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest("Test-SetWebAppSlot");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSlotSlotConfigName()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-ManageSlotSlotConfigName");
+        }
     }
 }
