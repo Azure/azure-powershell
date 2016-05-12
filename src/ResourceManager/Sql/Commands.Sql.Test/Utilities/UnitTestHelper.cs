@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.Utilities
                     "Force property is expected for Cmdlets that modifies data.");
             }
         }
-        
+
         /// <summary>
         /// Asserts that a parameter has the Mandatory and ValueFromPipelineByName flags set correctly
         /// Also checks to ensure that there is a help message.

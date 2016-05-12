@@ -148,6 +148,7 @@
     <Compile Include="Cmdlets\Certificates\NewAzureWebAppSSLBinding.cs" />
     <Compile Include="Cmdlets\Certificates\RemoveAzureWebAppSSLBinding.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotConfigName.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotMetrics.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotPublishingProfile.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\NewAzureWebAppSlot.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Cmdlets\DeploymentSlots\ResetAzureWebAppSlotPublishingProfile.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\RestartAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\SetAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\SetAzureWebAppSlotConfigName.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\StartAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\StopAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\BackupRestore\EditAzureWebAppBackupConfiguration.cs" />

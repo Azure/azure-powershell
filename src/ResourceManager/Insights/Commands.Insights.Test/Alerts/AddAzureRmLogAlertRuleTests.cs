@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Insights.Alerts;
+using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Insights.Alerts;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Moq;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
         private void AssertResult(
             string location,
-            string tagsKey, 
-            bool isEnabled, 
-            bool actionsNull, 
+            string tagsKey,
+            bool isEnabled,
+            bool actionsNull,
             int actionsCount
             )
         {
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             }
 
             Assert.Equal(Utilities.Name, this.createOrUpdatePrms.Properties.Name);
-            Assert.Equal(isEnabled, this.createOrUpdatePrms.Properties.IsEnabled);            
+            Assert.Equal(isEnabled, this.createOrUpdatePrms.Properties.IsEnabled);
         }
     }
 }

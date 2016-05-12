@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Don't go to the service on a Reimage ComputeNode call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ComputeNodeReimageOption?, 
-                ComputeNodeReimageOptions, 
+                ComputeNodeReimageOption?,
+                ComputeNodeReimageOptions,
                 AzureOperationHeaderResponse<ComputeNodeReimageHeaders>>();
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             // Don't go to the service on a Reimage ComputeNode call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                ComputeNodeReimageBatchRequest request = (ComputeNodeReimageBatchRequest) baseRequest;
+                ComputeNodeReimageBatchRequest request = (ComputeNodeReimageBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {

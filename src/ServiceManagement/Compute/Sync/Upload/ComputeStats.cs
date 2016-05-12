@@ -20,11 +20,11 @@ namespace Microsoft.WindowsAzure.Commands.Tools.CsUpload
     {
         IList<double> history;
         int historySize;
-        
+
         public ComputeStats() : this(60)
         {
         }
-        
+
         public ComputeStats(int historySize)
         {
             history = new List<double>(historySize);

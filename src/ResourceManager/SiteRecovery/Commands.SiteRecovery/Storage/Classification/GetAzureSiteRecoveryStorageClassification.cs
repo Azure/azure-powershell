@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -73,14 +72,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 case ASRParameterSets.ByFriendlyName:
                     storageClassifications = storageClassifications.Where(item =>
                         item.Properties.FriendlyName.Equals(
-                            this.FriendlyName, 
+                            this.FriendlyName,
                             StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
                     break;
                 case ASRParameterSets.ByName:
                     storageClassifications = storageClassifications.Where(item =>
                         item.Name.Equals(
-                            this.Name, 
+                            this.Name,
                             StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
                     break;

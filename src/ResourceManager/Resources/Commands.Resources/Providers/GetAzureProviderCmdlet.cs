@@ -14,10 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Providers
 {
-    using System;
+    using Microsoft.Azure.Commands.Resources.Models;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.Resources.Models;
 
     /// <summary>
     /// Get an existing resource.
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.Providers
         /// <summary>
         /// The list parameter set name
         /// </summary>
-        public  const string ListAvailableParameterSet = "ListAvailable";
+        public const string ListAvailableParameterSet = "ListAvailable";
 
         /// <summary>
         /// Gets or sets the provider namespace

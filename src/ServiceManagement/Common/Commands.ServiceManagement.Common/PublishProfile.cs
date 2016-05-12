@@ -71,7 +71,7 @@ namespace Microsoft.Azure.ServiceManagement.Common.XmlSchema
         private string managementCertificateField;
 
         private string SchemaVersionField;
-        
+
         /// <remarks/>
         [XmlElement("Subscription", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public PublishDataPublishProfileSubscription[] Subscription

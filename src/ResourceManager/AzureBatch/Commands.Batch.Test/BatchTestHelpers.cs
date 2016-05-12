@@ -200,8 +200,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <typeparam name="THeader">The type of header for the response</typeparam>
         /// <returns></returns>
         public static AzureOperationResponse<TBody, THeader> CreateGenericAzureOperationResponse<TBody, THeader>()
-            where TBody : class, new ()
-            where THeader : class, new ()
+            where TBody : class, new()
+            where THeader : class, new()
         {
             var response = new AzureOperationResponse<TBody, THeader>()
             {
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 }
                 else
                 {
-                    FileGetNodeFilePropertiesFromTaskBatchRequest propRequest = (FileGetNodeFilePropertiesFromTaskBatchRequest) baseRequest;
+                    FileGetNodeFilePropertiesFromTaskBatchRequest propRequest = (FileGetNodeFilePropertiesFromTaskBatchRequest)baseRequest;
 
                     propRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                JobGetBatchRequest request = (JobGetBatchRequest) baseRequest;
+                JobGetBatchRequest request = (JobGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
@@ -726,7 +726,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                JobScheduleGetBatchRequest request = (JobScheduleGetBatchRequest) baseRequest;
+                JobScheduleGetBatchRequest request = (JobScheduleGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                PoolGetBatchRequest request = (PoolGetBatchRequest) baseRequest;
+                PoolGetBatchRequest request = (PoolGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                TaskGetBatchRequest request = (TaskGetBatchRequest) baseRequest;
+                TaskGetBatchRequest request = (TaskGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {

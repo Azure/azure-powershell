@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ManagementLockProperties
     {
         private string _level;
-        
+
         /// <summary>
         /// Optional. Gets or sets the lock level of the management lock.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._level; }
             set { this._level = value; }
         }
-        
+
         private string _notes;
-        
+
         /// <summary>
         /// Optional. Gets or sets the notes of the management lock.
         /// </summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._notes; }
             set { this._notes = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ManagementLockProperties class.
         /// </summary>

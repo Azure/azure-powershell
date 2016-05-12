@@ -12,16 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
 using System;
-using System.Collections.Generic;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using System.Linq;
-
     public class Webhook
     {
         /// <summary>

@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Compute.Models;
+using Newtonsoft.Json;
 using System;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using Hyak.Common;
-using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Common
 {

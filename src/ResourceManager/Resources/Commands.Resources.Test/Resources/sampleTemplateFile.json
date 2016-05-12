@@ -11,8 +11,17 @@
             "type": "int"
         },
         "bool": {
-            "type": "bool"
-        }
+          "type": "bool"
+        },
+        "object": {
+          "type": "object"
+        },
+		"secureObject": {
+			"type": "secureObject"
+		},
+		"array": {
+			"type":  "array"
+		}
     },
     "variables": {
         "string": "string",

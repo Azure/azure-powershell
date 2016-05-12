@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Logic;
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Stop the workflow run
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmLogicAppRun"), OutputType(typeof(object))]    
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmLogicAppRun"), OutputType(typeof(object))]
     public class CancelAzureLogicAppRunCommand : LogicAppBaseCmdlet
     {
 
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.", 
+        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

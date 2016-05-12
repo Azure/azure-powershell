@@ -2736,7 +2736,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Get-AzureStorageFile -FileShareName sample | ? IsDirectory</dev:code>
+			<dev:code>PS C:\&gt; Get-AzureStorageFile -FileShareName sample | ? {$_.GetType().Name -eq "CloudFileDirectory"}</dev:code>
 			<dev:remarks>
 				<maml:para>This example lists the directories under sample file share.</maml:para>
 				<maml:para />

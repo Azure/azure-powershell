@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Sql.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
+using Microsoft.Azure.Management.Sql.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
 {
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// The Threat Detection endpoints communicator used by this adapter
         /// </summary>
         private ThreatDetectionEndpointsCommunicator ThreatDetectionCommunicator { get; set; }
-       
+
         /// <summary>
         /// The Azure endpoints communicator used by this adapter
         /// </summary>
@@ -76,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             return server.Properties.Version == "12.0";
         }
 
-       /// <summary>
+        /// <summary>
         /// Provides a database threat detection policy model for the given database
         /// </summary>
         public DatabaseThreatDetectionPolicyModel GetDatabaseThreatDetectionPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
