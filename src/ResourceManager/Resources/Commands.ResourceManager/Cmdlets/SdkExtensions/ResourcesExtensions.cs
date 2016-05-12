@@ -94,17 +94,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             };
         }
 
-        public static PSResourceProviderOperation ToPSResourceProviderOperation(this ResourceProviderOperationDefinition resourceProviderOperationDefinition)
-        {
-            return new PSResourceProviderOperation
-            {
-                OperationName = resourceProviderOperationDefinition.Name,
-                Description = resourceProviderOperationDefinition.Display.Description,
-                ProviderNamespace = resourceProviderOperationDefinition.Display.Provider,
-                ResourceName = resourceProviderOperationDefinition.Display.Resource
-            };
-        }
-
         public static string ConstructTagsTable(Hashtable[] tags)
         {
             if (tags == null)

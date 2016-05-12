@@ -15,11 +15,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using AuthorizationResourceIdentity = Microsoft.Azure.ResourceIdentity;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
-using ResourcesResourceIdentity = Microsoft.Azure.ResourceIdentity;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     public class ResourceIdentifier
     {
@@ -143,47 +141,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             AppendIfNotNull(ref resourceId, "/{0}", ResourceName);
 
             return resourceId.ToString();
-        }
-
-        public AuthorizationResourceIdentity ToResourceIdentity()
-        {
-            AuthorizationResourceIdentity identity = null;
-
-            if (!string.IsNullOrEmpty(ResourceType) && ResourceType.IndexOf('/') > 0)
-            {
-                identity = new AuthorizationResourceIdentity
-                {
-                    ResourceName = ResourceName,
-                    ParentResourcePath = ParentResource,
-                    ResourceProviderNamespace = ResourceIdentifier.GetProviderFromResourceType(ResourceType),
-                    ResourceType = ResourceIdentifier.GetTypeFromResourceType(ResourceType)
-                };
-            }
-
-            return identity;
-        }
-
-        public ResourcesResourceIdentity ToResourceIdentity(string apiVersion)
-        {
-            if (string.IsNullOrEmpty(ResourceType))
-            {
-                throw new ArgumentNullException("ResourceType");
-            }
-            if (ResourceType.IndexOf('/') < 0)
-            {
-                throw new ArgumentException(ProjectResources.ResourceTypeFormat, "ResourceType");
-            }
-
-            ResourcesResourceIdentity identity = new ResourcesResourceIdentity
-            {
-                ResourceName = ResourceName,
-                ParentResourcePath = ParentResource,
-                ResourceProviderNamespace = ResourceIdentifier.GetProviderFromResourceType(ResourceType),
-                ResourceType = ResourceIdentifier.GetTypeFromResourceType(ResourceType),
-                ResourceProviderApiVersion = apiVersion
-            };
-
-            return identity;
         }
 
         private void AppendIfNotNull(ref StringBuilder resourceId, string format, string value)
