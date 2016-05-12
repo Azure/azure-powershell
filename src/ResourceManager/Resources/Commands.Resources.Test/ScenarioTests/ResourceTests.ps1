@@ -261,6 +261,14 @@ function Test-SetAResource
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 	$resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	
+	# Verify original value
+	$oldSku = $resource.Sku.psobject
+	$oldSkuNameProperty = $oldSku.Properties
+	Assert-AreEqual $oldSkuNameProperty.Name "name" 
+	Assert-AreEqual $resource.SKu.Name "A0" 
+	
+	# Set resource
 	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
 	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force 
 
@@ -346,6 +354,9 @@ function Test-GetResourceExpandProperties
 	$resourceGet = Get-AzureRmResource -ResourceName $rname -ResourceGroupName $rgname -ExpandProperties
 
 	# Assert
+	$properties = $resourceGet.Properties.psobject
+	$keyProperty = $properties.Properties
+	Assert-AreEqual $keyProperty.Name "key"
 	Assert-AreEqual $resourceGet.Properties.key "value"
 }
 

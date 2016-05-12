@@ -28,9 +28,15 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using System.Management.Automation;
     using System.Threading;
     using System.Threading.Tasks;
+    using ServiceManagemenet.Common.Models;
+    using System;
+    using System.Management.Automation;
+    using System.Net;
+    using System.Threading;
+    using System.Threading.Tasks;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
-
+    using Xunit.Abstractions;
     /// <summary>
     /// Tests the Azure Provider Feature cmdlets
     /// </summary>
@@ -55,7 +61,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderFeatureCmdletTests"/> class.
         /// </summary>
-        public RegisterAzureProviderFeatureCmdletTests()
+        public RegisterAzureProviderFeatureCmdletTests(ITestOutputHelper output)
         {
             this.featureOperationsMock = new Mock<IFeaturesOperations>();
             var featureClient = new Mock<IFeatureClient>();

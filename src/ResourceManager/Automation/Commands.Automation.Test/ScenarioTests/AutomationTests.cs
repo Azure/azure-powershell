@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Commands.Automation.Test
 {
     public class AutomationTests : AutomationScenarioTestsBase
     {
+        public AutomationTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact(Skip = "Need x64 test framework.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
@@ -73,6 +78,6 @@ namespace Microsoft.Azure.Commands.Automation.Test
         public void TestAutomationRunbookWithParameter()
         {
             RunPowerShellTest("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.ps1  @{'nums'='[1,2,3,4,5,6,7]'}  28");
-        }       
+        }
     }
 }

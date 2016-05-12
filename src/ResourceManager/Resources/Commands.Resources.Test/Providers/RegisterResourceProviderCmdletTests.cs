@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Commands.Resources.Models;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.ServiceManagemenet.Common.Models;
     using Microsoft.Rest.Azure;
     using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using System.Threading.Tasks;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
-
+    using Xunit.Abstractions;
     /// <summary>
     /// Tests the AzureProvider cmdlets
     /// </summary>
@@ -56,9 +57,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// Initializes a new instance of the <see cref="RegisterAzureProviderCmdletTests"/> class.
         /// </summary>
-        public RegisterAzureProviderCmdletTests()
+        public RegisterAzureProviderCmdletTests(ITestOutputHelper output)
         {
             this.providerOperationsMock = new Mock<IProvidersOperations>();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             var resourceManagementClient = new Mock<IResourceManagementClient>();
 
             resourceManagementClient
@@ -164,8 +166,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private void VerifyCallPatternAndReset(bool succeeded)
         {
             this.providerOperationsMock.Verify(f => f.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
-            this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded? Times.Once() : Times.Never());
-   
+            this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Once() : Times.Never());
+
             this.providerOperationsMock.ResetCalls();
             this.commandRuntimeMock.ResetCalls();
         }

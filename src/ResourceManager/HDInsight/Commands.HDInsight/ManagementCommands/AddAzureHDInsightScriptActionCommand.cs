@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             _action = new AzureHDInsightScriptAction();
         }
-        
+
         public override void ExecuteCmdlet()
         {
             List<AzureHDInsightScriptAction> actions;

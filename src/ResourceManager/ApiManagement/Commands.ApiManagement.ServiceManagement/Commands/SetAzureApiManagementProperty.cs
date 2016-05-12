@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Set, Constants.ApiManagementProperty)]
     [OutputType(typeof(PsApiManagementProperty))]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = false,
             HelpMessage = "If specified then instance of " +
                           "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty type " +
-                          "representing the modified property.")]
+                          "representing the modified property will be written to output.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

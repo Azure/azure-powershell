@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Network;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
-using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -235,21 +234,21 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.VpnClientConfiguration = null;
             }
 
-            if(this.Asn > 0 || this.PeerWeight > 0)
+            if (this.Asn > 0 || this.PeerWeight > 0)
             {
                 vnetGateway.BgpSettings = new PSBgpSettings();
                 vnetGateway.BgpSettings.BgpPeeringAddress = null; // We block modifying the gateway's BgpPeeringAddress (CA)
 
-                if(this.Asn > 0)
+                if (this.Asn > 0)
                 {
                     vnetGateway.BgpSettings.Asn = this.Asn;
                 }
 
-                if(this.PeerWeight > 0)
+                if (this.PeerWeight > 0)
                 {
                     vnetGateway.BgpSettings.PeerWeight = this.PeerWeight;
                 }
-                else if(this.PeerWeight < 0)
+                else if (this.PeerWeight < 0)
                 {
                     throw new ArgumentException("PeerWeight must be a positive integer");
                 }

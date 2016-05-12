@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Management.Automation;
-using System.Security.Permissions;
-using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.DataMovement;
+using System;
+using System.IO;
+using System.Management.Automation;
+using System.Security.Permissions;
+using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
@@ -141,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         },
                         this.GetTransferContext(data),
                         this.CmdletCancellationToken);
-                }, 
+                },
                 data.Record,
                 this.OutputStream);
 

@@ -2167,9 +2167,16 @@
           <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PlanObject</maml:name>
+          <maml:name>Plan</maml:name>
           <maml:description>
             <maml:para>A hash table which represents resource plan properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Sku</maml:name>
+          <maml:description>
+            <maml:para>A hash table which represents sku properties.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
@@ -2282,9 +2289,16 @@
           <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PlanObject</maml:name>
+          <maml:name>Plan</maml:name>
           <maml:description>
             <maml:para>A hash table which represents resource plan properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Sku</maml:name>
+          <maml:description>
+            <maml:para>A hash table which represents sku properties.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
@@ -2425,9 +2439,16 @@
           <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PlanObject</maml:name>
+          <maml:name>Plan</maml:name>
           <maml:description>
             <maml:para>A hash table which represents resource plan properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Sku</maml:name>
+          <maml:description>
+            <maml:para>A hash table which represents sku properties.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
@@ -2586,9 +2607,22 @@
         </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>PlanObject</maml:name>
+        <maml:name>Plan</maml:name>
         <maml:description>
           <maml:para>A hash table which represents resource plan properties.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>Sku</maml:name>
+        <maml:description>
+          <maml:para>A hash table which represents sku properties.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -4988,6 +5022,13 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Sku</maml:name>
+          <maml:description>
+            <maml:para>A hash table which represents sku properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>Tag</maml:name>
           <maml:description>
@@ -5093,6 +5134,13 @@
           <maml:name>Plan</maml:name>
           <maml:description>
             <maml:para>A hash table which represents resource plan properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Sku</maml:name>
+          <maml:description>
+            <maml:para>A hash table which represents sku properties.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
@@ -5229,6 +5277,13 @@
           <maml:name>Plan</maml:name>
           <maml:description>
             <maml:para>A hash table which represents resource plan properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Sku</maml:name>
+          <maml:description>
+            <maml:para>A hash table which represents sku properties.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
@@ -5377,6 +5432,19 @@
         <maml:name>Plan</maml:name>
         <maml:description>
           <maml:para>A hash table which represents resource plan properties.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>Sku</maml:name>
+        <maml:description>
+          <maml:para>A hash table which represents sku properties.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>

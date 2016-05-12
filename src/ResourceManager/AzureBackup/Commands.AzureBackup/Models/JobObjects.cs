@@ -12,15 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using System.Linq;
-using System.Web;
-using Microsoft.Azure.Management.BackupServices;
-using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Cmdlets;
+using System;
+using System.Collections.Generic;
+using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
@@ -99,7 +94,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             this.ErrorCode = serviceErrorInfo.ErrorCode;
             this.ErrorMessage = serviceErrorInfo.ErrorString;
             this.Recommendations = new List<string>();
-            foreach(string recommendation in serviceErrorInfo.Recommendations)
+            foreach (string recommendation in serviceErrorInfo.Recommendations)
             {
                 this.Recommendations.Add(recommendation);
             }
@@ -121,7 +116,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
                 this.Properties = new Dictionary<string, string>();
 
             this.SubTasks = new List<AzureBackupJobSubTask>();
-            if(serviceJobProperties.TasksList != null)
+            if (serviceJobProperties.TasksList != null)
             {
                 foreach (Mgmt.CSMJobTaskDetails serviceSubTask in serviceJobProperties.TasksList)
                 {

@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     public static class AzureSubscriptionExtensions
     {
-        
+
         public static string GetStorageAccountName(this AzureSubscription subscription)
         {
             if (subscription == null || !subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
@@ -32,10 +32,10 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 try
                 {
-                    var pairs = result.Split(new char[]{';'}, StringSplitOptions.RemoveEmptyEntries);
+                    var pairs = result.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (var pair in pairs)
                     {
-                        var sides = pair.Split(new char[] {'='}, 2, StringSplitOptions.RemoveEmptyEntries);
+                        var sides = pair.Split(new char[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries);
                         if (string.Equals("AccountName", sides[0].Trim(), StringComparison.OrdinalIgnoreCase))
                         {
                             result = sides[1].Trim();

@@ -17,21 +17,21 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System;
-    using System.Linq;
-    using System.Management.Automation;
-    using System.Runtime.ExceptionServices;
-    using System.Threading;
-    using System.Threading.Tasks;
+    using Common;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
-    using Common;
     using Newtonsoft.Json.Linq;
+    using System;
     using System.Collections.Generic;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+    using System.Threading;
+    using System.Linq;
+    using System.Management.Automation;
+    using System.Runtime.ExceptionServices;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// The base class for resource manager cmdlets.

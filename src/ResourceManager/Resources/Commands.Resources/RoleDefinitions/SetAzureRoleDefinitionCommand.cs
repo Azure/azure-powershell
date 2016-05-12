@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+using System.IO;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Resources
             }
 
             role = role ?? Role;
-            WriteObject(PoliciesClient. UpdateRoleDefinition(role));
+            WriteObject(PoliciesClient.UpdateRoleDefinition(role));
         }
     }
 }

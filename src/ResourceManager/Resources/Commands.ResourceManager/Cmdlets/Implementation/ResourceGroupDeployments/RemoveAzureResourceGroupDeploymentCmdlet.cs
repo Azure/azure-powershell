@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            if(string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
             {
                 ResourceGroupName = ResourceIdUtility.GetResourceGroupName(Id);
                 Name = ResourceIdUtility.GetResourceName(Id);

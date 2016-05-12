@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,8 @@ using System.Text;
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     class BlobToAzureFileNameResolver : BlobToFileNameResolver
-    {        
-        private static char[] invalidPathChars = new char[] {'"', '\\', ':', '|', '<', '>', '*', '?'};
+    {
+        private static char[] invalidPathChars = new char[] { '"', '\\', ':', '|', '<', '>', '*', '?' };
 
         public BlobToAzureFileNameResolver(Func<int> getMaxFileNameLength)
             : base(getMaxFileNameLength)
@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 return BlobToAzureFileNameResolver.invalidPathChars;
             }
-        }        
+        }
 
         protected override string EscapeInvalidCharacters(string fileName)
         {

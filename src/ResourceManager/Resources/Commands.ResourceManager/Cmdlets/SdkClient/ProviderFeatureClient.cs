@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     throw new KeyNotFoundException(string.Format(ProjectResources.FeatureNotFound, featureName, resourceProviderNamespace));
                 }
 
-                return new [] { featureResponse.ToPSProviderFeature() };
+                return new[] { featureResponse.ToPSProviderFeature() };
             }
             else
             {

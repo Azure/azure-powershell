@@ -33,7 +33,19 @@ using System.Runtime.Serialization.Formatters;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Runtime.Serialization.Formatters;
+using System.Security;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {

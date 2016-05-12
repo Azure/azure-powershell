@@ -12,11 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Net;
-using Microsoft.Azure.Commands.SiteRecovery.Properties;
 using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {

@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Management.Network;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
