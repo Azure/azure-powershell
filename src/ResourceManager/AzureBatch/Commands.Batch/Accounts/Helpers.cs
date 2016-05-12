@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <param name="accounts">The list of accounts.</param>
         /// <param name="tag">The tag to filter on.</param>
         /// <returns>The filtered accounts</returns>
-        public static IEnumerable<AccountResource> FilterAccounts(IPage<AccountResource> accounts, Hashtable tag)
+        public static IEnumerable<AccountResource> FilterAccounts(IEnumerable<AccountResource> accounts, Hashtable tag)
         {
             if (tag != null && tag.Count >= 1)
             {

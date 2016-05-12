@@ -13432,7 +13432,7 @@
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
-        <maml:name>StrorageId</maml:name>
+        <maml:name>AutoStorageAccountId</maml:name>
         <maml:description>
           <maml:para>Specifies the resource group of the account that this cmdlet updates.</maml:para>
         </maml:description>

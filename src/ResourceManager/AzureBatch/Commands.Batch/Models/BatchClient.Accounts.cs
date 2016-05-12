@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="accountName">The account name</param>
         /// <param name="location">The location to use when creating the account</param>
         /// <param name="tags">The tags to associate with the account</param>
-        /// <param name="autostorageAccountId">The resource id of the storage account to be used for auto storage.</param>
+        /// <param name="autoStorageAccountId">The resource id of the storage account to be used for auto storage.</param>
         /// <returns>A BatchAccountContext object representing the new account</returns>
-        public virtual BatchAccountContext CreateAccount(string resourceGroupName, string accountName, string location, Hashtable[] tags, string autostorageAccountId)
+        public virtual BatchAccountContext CreateAccount(string resourceGroupName, string accountName, string location, Hashtable[] tags, string autoStorageAccountId)
         {
             // use the group lookup to validate whether account already exists. We don't care about the returned
             // group name nor the exception
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             Dictionary<string, string> tagDictionary = Helpers.CreateTagDictionary(tags, validate: true);
 
-            AutoStorageBaseProperties autoStorage = (string.IsNullOrEmpty(autostorageAccountId)) ? null : new AutoStorageBaseProperties
+            AutoStorageBaseProperties autoStorage = (string.IsNullOrEmpty(autoStorageAccountId)) ? null : new AutoStorageBaseProperties
             {
-                StorageAccountId = autostorageAccountId
+                StorageAccountId = autoStorageAccountId
             };
 
             var response = BatchManagementClient.Account.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="resourceGroupName">The name of the resource group the account is under. If unspecified, it will be looked up.</param>
         /// <param name="accountName">The account name</param>
         /// <param name="tags">New tags to associate with the account</param>
-        /// <param name="autostorageAccountId">The resource id of the storage account to be used for auto storage.</param>
+        /// <param name="autoStorageAccountId">The resource id of the storage account to be used for auto storage.</param>
         /// <returns>A BatchAccountContext object representing the updated account</returns>
-        public virtual BatchAccountContext UpdateAccount(string resourceGroupName, string accountName, Hashtable[] tags, string autostorageAccountId)
+        public virtual BatchAccountContext UpdateAccount(string resourceGroupName, string accountName, Hashtable[] tags, string autoStorageAccountId)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // need to the location in order to call
             var getResponse = BatchManagementClient.Account.Get(resourceGroupName, accountName);
 
-            AutoStorageBaseProperties autoStorage = (autostorageAccountId == null) ? null : new AutoStorageBaseProperties
+            AutoStorageBaseProperties autoStorage = (autoStorageAccountId == null) ? null : new AutoStorageBaseProperties
             {
-                StorageAccountId = autostorageAccountId
+                StorageAccountId = autoStorageAccountId
             };
 
             var response = BatchManagementClient.Account.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
@@ -159,17 +159,23 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 ? BatchManagementClient.Account.List()
                 : BatchManagementClient.Account.ListByResourceGroup(resourceGroupName);
 
-            do
+            var accountResources = new List<AccountResource>();
+            accountResources.AddRange(response);
+
+            var nextLink = response.NextPageLink;
+            while (nextLink != null)
             {
-                // filter out the accounts if a tag was specified
-                IList<AccountResource> accountResources = Helpers.FilterAccounts(response, tag).ToList();
+                response = ListNextAccounts(nextLink);
+                accountResources.AddRange(response);
+                nextLink = response.NextPageLink;
+            }
 
-                foreach (AccountResource resource in accountResources)
-                {
-                    accounts.Add(BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource));
-                }
+            accountResources = Helpers.FilterAccounts(accountResources, tag).ToList();
 
-            } while (response.NextPageLink != null);
+            foreach (AccountResource resource in accountResources)
+            {
+                accounts.Add(BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource));
+            }
 
             return accounts;
         }
@@ -194,8 +200,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 KeyName = keyType
             });
 
+            var context = GetAccount(resourceGroupName, accountName);
+            context.PrimaryAccountKey = regenResponse.Primary;
+            context.SecondaryAccountKey = regenResponse.Secondary;
+
             // build a new context to put the keys into
-            return GetAccount(resourceGroupName, accountName);
+            return context;
         }
 
         /// <summary>
