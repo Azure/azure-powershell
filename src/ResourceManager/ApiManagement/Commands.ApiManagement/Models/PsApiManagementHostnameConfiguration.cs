@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    using System;
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using System;
 
     public class PsApiManagementHostnameConfiguration
     {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         }
 
         internal PsApiManagementHostnameConfiguration(HostnameConfiguration hostnameConfigurationResource)
-            :this()
+            : this()
         {
             if (hostnameConfigurationResource == null)
             {

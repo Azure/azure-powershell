@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Linq;
-using System.Globalization;
-using System.Collections.Generic;
-using System.Net;
 using Hyak.Common;
-using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             return workspaces;
         }
-        
+
         public virtual HttpStatusCode DeleteWorkspace(string resourceGroupName, string workspaceName)
         {
             AzureOperationResponse response = OperationalInsightsManagementClient.Workspaces.Delete(resourceGroupName, workspaceName);
@@ -118,11 +118,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         }
 
         public virtual Workspace CreateOrUpdateWorkspace(
-            string resourceGroupName, 
+            string resourceGroupName,
             string workspaceName,
-            string location, 
-            string sku, 
-            Guid? customerId, 
+            string location,
+            string sku,
+            Guid? customerId,
             IDictionary<string, string> tags)
         {
             WorkspaceProperties properties = new WorkspaceProperties();
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             parameters.Location,
                             parameters.Sku,
                             parameters.CustomerId,
-                            tags), 
+                            tags),
                         parameters.ResourceGroupName);
             };
 
@@ -224,9 +224,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 throw new ProvisioningFailedException(
                     string.Format(
-                        CultureInfo.InvariantCulture, 
-                        Resources.WorkspaceProvisioningFailed, 
-                        parameters.WorkspaceName, 
+                        CultureInfo.InvariantCulture,
+                        Resources.WorkspaceProvisioningFailed,
+                        parameters.WorkspaceName,
                         parameters.ResourceGroupName));
             }
 

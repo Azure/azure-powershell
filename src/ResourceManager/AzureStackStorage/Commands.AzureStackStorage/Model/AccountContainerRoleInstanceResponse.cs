@@ -16,7 +16,7 @@ using Microsoft.AzureStack.Management.StorageAdmin.Models;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
-    internal class AccountContainerRoleInstanceResponse: RoleInstanceResponseBase
+    internal class AccountContainerRoleInstanceResponse : RoleInstanceResponseBase
     {
         public AccountContainerRoleInstanceResponse(AccountContainerRoleInstanceModel resource) : base(resource)
         {

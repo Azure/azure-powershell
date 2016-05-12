@@ -22,8 +22,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
-    /// This class provides the representation of
-    /// data loaded and saved into data files
+    /// This class provides the representation of data loaded and saved into data files
     /// for AzureSMProfile.
     /// </summary>
     [DataContract]
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     }
 
     /// <summary>
-    /// This class provides the representation of
-    /// data loaded and saved into data files for
+    /// This class provides the representation of data loaded and saved into data files for
     /// an individual Azure environment
     /// </summary>
     [DataContract]

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.Resources
     public class NewAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         [Alias("ResourceGroupName")]
-        [Parameter(Position=0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position=1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group location.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

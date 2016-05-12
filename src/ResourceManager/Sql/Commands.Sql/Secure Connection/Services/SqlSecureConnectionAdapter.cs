@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.SecureConnection.Model;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Sql.Models;
-using System;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
 {
@@ -30,12 +28,12 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
         /// Gets or sets the Azure subscription
         /// </summary>
         private AzureSubscription Subscription { get; set; }
-        
+
         /// <summary>
         /// The end points communicator used by this adapter
         /// </summary>
         private SecureConnectionEndpointsCommunicator Communicator { get; set; }
-       
+
         /// <summary>
         /// The Azure profile used by this adapter
         /// </summary>

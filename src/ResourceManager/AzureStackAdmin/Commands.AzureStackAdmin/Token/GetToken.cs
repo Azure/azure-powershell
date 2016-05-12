@@ -14,12 +14,11 @@
 
 namespace Microsoft.AzureStack.Commands.Security
 {
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using System;
     using System.Collections.Specialized;
     using System.Management.Automation;
     using System.Net;
-    using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     /// <summary>
     /// Get Token Cmdlet

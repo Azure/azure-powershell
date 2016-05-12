@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     return new[] { scriptMethod };
                 },
                 // initialize
-                null, 
+                null,
                 // cleanup
                 () =>
                 {
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 () =>
                 {
                     newGroup = CreateNewAdGroup(controllerAdmin);
-                return new[] { string.Format(scriptMethod, newGroup.ObjectId) };
+                    return new[] { string.Format(scriptMethod, newGroup.ObjectId) };
                 },
                 // initialize
                 null,
@@ -192,8 +192,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                     string memberUrl = string.Format(
                         "{0}{1}/directoryObjects/{2}",
-                        controllerAdmin.GraphClient.BaseUri.AbsoluteUri, 
-                        controllerAdmin.GraphClient.TenantID, 
+                        controllerAdmin.GraphClient.BaseUri.AbsoluteUri,
+                        controllerAdmin.GraphClient.TenantID,
                         newUser.ObjectId);
 
                     controllerAdmin.GraphClient.Group.AddMember(newGroup.ObjectId, new GroupAddMemberParameters(memberUrl));

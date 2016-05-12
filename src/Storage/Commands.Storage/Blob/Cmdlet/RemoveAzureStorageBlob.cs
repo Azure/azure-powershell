@@ -14,14 +14,14 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
-    using System;
-    using System.Management.Automation;
-    using System.Security.Permissions;
-    using System.Threading.Tasks;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using System.Threading.Tasks;
 
     [Cmdlet(VerbsCommon.Remove, StorageNouns.Blob, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High),
         OutputType(typeof(Boolean))]
@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         [Parameter(ParameterSetName = ContainerPipelineParameterSet, Mandatory = true, Position = 0, HelpMessage = "Blob name")]
         [Parameter(ParameterSetName = NameParameterSet, Mandatory = true, Position = 0, HelpMessage = "Blob name")]
-        public string Blob 
+        public string Blob
         {
             get { return BlobName; }
             set { BlobName = value; }

@@ -17,14 +17,14 @@ using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Net.Security;
 using System.Reflection;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
                     helper.GetRMModulePath("AzureRM.Backup.psd1")

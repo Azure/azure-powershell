@@ -78,6 +78,6 @@ namespace Microsoft.Azure.Commands.Automation.Test
         public void TestAutomationRunbookWithParameter()
         {
             RunPowerShellTest("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.ps1  @{'nums'='[1,2,3,4,5,6,7]'}  28");
-        }       
+        }
     }
 }

@@ -15,14 +15,13 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             AzureOperationResponse<ComputeNodeGetRemoteLoginSettingsResult, ComputeNodeGetRemoteLoginSettingsHeaders> response =
                 BatchTestHelpers.CreateRemoteLoginSettingsGetResponse(ipAddress);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ComputeNodeGetRemoteLoginSettingsOptions, 
+                ComputeNodeGetRemoteLoginSettingsOptions,
                 AzureOperationResponse<ComputeNodeGetRemoteLoginSettingsResult, ComputeNodeGetRemoteLoginSettingsHeaders>>(responseToUse: response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
