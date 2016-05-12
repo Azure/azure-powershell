@@ -14,13 +14,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
+using System.Collections;
+using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -60,6 +59,17 @@ namespace Microsoft.Azure.Commands.Network
             MNM.IPAllocationMethod.Static,
             IgnoreCase = true)]
         public string AllocationMethod { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The public IP address version.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.IPVersion.IPv4,
+            MNM.IPVersion.IPv6,
+            IgnoreCase = true)]
+        public string IpAddressVersion { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -119,6 +129,7 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.Name = this.Name;
             publicIp.Location = this.Location;
             publicIp.PublicIpAllocationMethod = this.AllocationMethod;
+            publicIp.PublicIpAddressVersion = this.IpAddressVersion;
 
             if (this.IdleTimeoutInMinutes > 0)
             {
@@ -145,4 +156,3 @@ namespace Microsoft.Azure.Commands.Network
     }
 }
 
- 

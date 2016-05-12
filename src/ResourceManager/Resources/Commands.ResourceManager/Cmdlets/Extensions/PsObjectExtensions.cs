@@ -14,14 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// A helper class that handles common tasks that deal with the <see cref="ResourcePropertyObject"/> class.
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             if (valueAsIList != null)
             {
                 var tmpList = new List<JToken>();
-                foreach(var v in valueAsIList)
+                foreach (var v in valueAsIList)
                 {
                     tmpList.Add(PsObjectExtensions.ToJToken(v));
                 }

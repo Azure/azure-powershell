@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Subscriptions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         }
 
         public static List<AzureTenant> MergeTenants(
-            this AzureAccount account, 
+            this AzureAccount account,
             IEnumerable<TenantIdDescription> tenants,
             IAccessToken token)
         {

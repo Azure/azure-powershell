@@ -15,10 +15,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.Models;
 
     [Cmdlet(VerbsData.Update, "AzureRmApiManagementDeployment", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
     public class UpdateAzureApiManagementDeployment : AzureApiManagementCmdletBase
@@ -42,16 +42,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefaultParameterSetName, 
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ParameterSetName = DefaultParameterSetName,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Name of API Management.")]
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = DefaultParameterSetName, 
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ParameterSetName = DefaultParameterSetName,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Location of master API Management deployment region.")]
         [ValidateSet(
             "North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",

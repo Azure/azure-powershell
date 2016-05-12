@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model
 {
@@ -55,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model
         /// <summary>
         /// Gets or sets the creation date of the Server Disaster Recovery Configuration
         /// </summary>
-        public string FailoverPolicy{ get; set; }
+        public string FailoverPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the server.
@@ -84,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model
         {
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
-            
+
             // Short-term workaround for missing sdrc. Will remove once upstream issues are resolved.
             if (serverDisasterRecoveryConfiguration != null)
             {
@@ -96,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model
                 FailoverPolicy = serverDisasterRecoveryConfiguration.Properties.FailoverPolicy;
                 Role = serverDisasterRecoveryConfiguration.Properties.Role;
             }
-            
+
         }
     }
 }

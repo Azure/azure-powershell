@@ -4610,6 +4610,363 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Remove-AzureRemoteAppUserDisk
+      </command:name>
+      <maml:description>
+        <maml:para>This cmdlet removes the user disk of a user from a Microsoft Azure RemoteApp collection.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para>
+        </maml:para>
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureRemoteAppUserDisk</command:noun>
+      <dev:version>
+      </dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet removes the user disk of a user from a Microsoft Azure RemoteApp collection.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureRemoteAppUserDisk</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>CollectionName</maml:name>
+          <maml:description>
+            <maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+          <maml:name>UserUpn</maml:name>
+          <maml:description>
+            <maml:para>User Principal Name (UPN) of a user, for example user@contoso.com.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>CollectionName</maml:name>
+        <maml:description>
+          <maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>UserUpn</maml:name>
+        <maml:description>
+          <maml:para>User Principal Name (UPN) of a user, for example user@contoso.com.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title>
+      </maml:title>
+      <maml:alert>
+        <maml:para>
+        </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para>
+        </maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Remove-AzureRemoteAppUserDisk -CollectionName Contoso -UserUpn user@contoso.com
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Removes the user disk of a Azure ActiveDirectory user user@contoso.com from the Contoso collection.</maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>
+        </maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Copy-AzureRemoteAppUserDisk
+      </command:name>
+      <maml:description>
+        <maml:para>This cmdlet copies the user disk of a user from one Microsoft Azure RemoteApp collection to the other.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para>
+        </maml:para>
+      </maml:copyright>
+      <command:verb>Copy</command:verb>
+      <command:noun>AzureRemoteAppUserDisk</command:noun>
+      <dev:version>
+      </dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet copies the user disk of a user from one Microsoft Azure RemoteApp collection to the other.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Copy-AzureRemoteAppUserDisk</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>SourceCollectionName</maml:name>
+          <maml:description>
+            <maml:para>Name of the source Microsoft Azure RemoteApp collection.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+          <maml:name>DestinationCollectionName</maml:name>
+          <maml:description>
+            <maml:para>Name of the destination Microsoft Azure RemoteApp collection.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="3">
+          <maml:name>UserUpn</maml:name>
+          <maml:description>
+            <maml:para>User Principal Name (UPN) of a user, for example user@contoso.com.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>OverwriteExistingUserDisk</maml:name>
+          <maml:description>
+            <maml:para>Overwrite the existing user disk.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>SourceCollectionName</maml:name>
+        <maml:description>
+          <maml:para>Name of the source Microsoft Azure RemoteApp collection.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>DestinationCollectionName</maml:name>
+        <maml:description>
+          <maml:para>Name of the destination Microsoft Azure RemoteApp collection.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="3">
+        <maml:name>UserUpn</maml:name>
+        <maml:description>
+          <maml:para>User Principal Name (UPN) of a user, for example user@contoso.com.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>OverwriteExistingUserDisk</maml:name>
+        <maml:description>
+          <maml:para>Overwrite the existing user disk</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title>
+      </maml:title>
+      <maml:alert>
+        <maml:para>
+        </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para>
+        </maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Copy-AzureRemoteAppUserDisk -DestinationCollectionName Contoso1 -SourceCollectionName Contoso2 -UserUpn user@contoso.com -OverwriteExistingUserDisk
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Copy the user disk of a Azure ActiveDirectory user user@contoso.com from the Contoso1 collection to Contoso2 collection.</maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>
+        </maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
   <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>

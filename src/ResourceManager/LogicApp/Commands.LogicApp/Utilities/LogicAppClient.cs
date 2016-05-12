@@ -15,13 +15,13 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
-    using System;
-    using System.Management.Automation;
-    using System.Globalization;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
 
     /// <summary>
     /// LogicApp client class
@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="context">The Azure context instance</param>
         public LogicAppClient(AzureContext context)
         {
-            this.LogicManagementClient = AzureSession.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);            
-            this.LogicManagementClient.SubscriptionId = context.Subscription.Id.ToString();            
+            this.LogicManagementClient = AzureSession.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.LogicManagementClient.SubscriptionId = context.Subscription.Id.ToString();
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="workflowName">Workflow name</param>
         /// <returns>Workflow object</returns>
         public Workflow GetWorkflow(string resourceGroupName, string workflowName)
-        {            
+        {
             return this.LogicManagementClient.Workflows.Get(resourceGroupName, workflowName);
         }
 

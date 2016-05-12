@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory.Models
 {
