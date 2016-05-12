@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Resources.Models;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.ResourceManager.Models;
 

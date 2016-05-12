@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return "MockCommand";
         }
 
-        [SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations", 
+        [SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations",
             Justification = "Tests should not access this property")]
         public PSTransactionContext CurrentPSTransaction
         {

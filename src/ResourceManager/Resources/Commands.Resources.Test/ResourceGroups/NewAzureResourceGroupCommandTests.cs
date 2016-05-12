@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
@@ -23,6 +24,7 @@ using System.Collections;
 using System.IO;
 using System.Management.Automation;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -44,9 +46,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private Hashtable[] tags;
 
-        public NewAzureResourceGroupCommandTests()
+        public NewAzureResourceGroupCommandTests(ITestOutputHelper output)
         {
             resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewAzureResourceGroupCmdlet()
             {

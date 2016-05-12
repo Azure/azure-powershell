@@ -21,7 +21,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -37,9 +42,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
-        public TestAzureResourceGroupDeploymentCommandTests()
+        public TestAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
             resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new TestAzureResourceGroupDeploymentCmdlet()
             {

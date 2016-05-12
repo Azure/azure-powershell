@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -39,9 +40,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private List<Hashtable> tags;
 
-        public SetAzureResourceGroupCommandTests()
+        public SetAzureResourceGroupCommandTests(ITestOutputHelper output)
         {
             resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new SetAzureResourceGroupCmdlet()
             {
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 ResourceManagerSdkClient = resourcesClientMock.Object
             };
 
-            tags = new [] {new Hashtable
+            tags = new[] {new Hashtable
                 {
                     {"Name", "value1"},
                     {"Value", ""}
