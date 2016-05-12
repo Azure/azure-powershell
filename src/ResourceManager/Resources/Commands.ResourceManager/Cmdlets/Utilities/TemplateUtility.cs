@@ -174,6 +174,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             const string intType = "int";
             const string boolType = "bool";
             const string secureStringType = "SecureString";
+            const string objectType = "object";
+            const string secureObjectType = "secureObject";
+            const string arrayType = "array";
             Type typeObject = typeof(object);
 
             if (resourceParameterType.Equals(stringType, StringComparison.OrdinalIgnoreCase))
@@ -192,8 +195,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             {
                 typeObject = typeof(bool);
             }
+            else if (resourceParameterType.Equals(objectType, StringComparison.OrdinalIgnoreCase)
+                || resourceParameterType.Equals(secureObjectType, StringComparison.OrdinalIgnoreCase))
+            {
+                typeObject = typeof(Hashtable);
+            }
+            else if (resourceParameterType.Equals(arrayType, StringComparison.OrdinalIgnoreCase))
+            {
+                typeObject = typeof(object[]);
+            }
 
             return typeObject;
+
         }
 
         internal static RuntimeDefinedParameter ConstructDynamicParameter(string[] staticParameters, KeyValuePair<string, TemplateFileParameterV1> parameter)
