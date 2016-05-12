@@ -112,7 +112,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public ScheduleFrequency Frequency { get; set; }
 
         /// <summary>
-<<<<<<< HEAD
         /// Gets or sets the schedule days of the week.
         /// </summary>
         public IList<string> DaysOfWeekWeeklySchedule { get; set; }
@@ -259,7 +258,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         {
             return daysOfMonth.Select(value => (DaysOfMonth)value).ToList();
         }
-=======
+        /// <summary>
         /// Gets or sets the schedule time zone.
         /// </summary>
         public string TimeZone { get; set; }
