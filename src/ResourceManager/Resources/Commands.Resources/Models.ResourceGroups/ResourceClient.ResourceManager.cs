@@ -12,17 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -32,7 +37,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public static List<string> KnownLocations = new List<string>
         {
-            "East Asia", "South East Asia", "East US", "West US", "North Central US", 
+            "East Asia", "South East Asia", "East US", "West US", "North Central US",
             "South Central US", "Central US", "North Europe", "West Europe"
         };
 

@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 case GetAzureProviderFeatureCmdlet.GetFeatureParameterSet:
                     this.WriteObject(this.ProviderFeatureClient.ListPSProviderFeatures(this.ProviderNamespace, this.FeatureName), enumerateCollection: true);
                     break;
-                    
+
                 default:
                     throw new ApplicationException(string.Format("Unknown parameter set encountered: '{0}'", this.ParameterSetName));
             }

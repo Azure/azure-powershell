@@ -15,7 +15,6 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
-using System;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            DisableComputeNodeSchedulingParameters parameters = new DisableComputeNodeSchedulingParameters(this.BatchContext, 
+            DisableComputeNodeSchedulingParameters parameters = new DisableComputeNodeSchedulingParameters(this.BatchContext,
                 this.PoolId, this.Id, this.ComputeNode, this.AdditionalBehaviors)
             {
                 DisableSchedulingOption = this.DisableSchedulingOption

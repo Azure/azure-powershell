@@ -19,12 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -93,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             System.Collections.Generic.IList<string> instanceIds = null;
             if (invokeMethodInputParameters[2] != null)
             {
-                var inputArray2 = Array.ConvertAll((object[]) ParseParameter(invokeMethodInputParameters[2]), e => e.ToString());
+                var inputArray2 = Array.ConvertAll((object[])ParseParameter(invokeMethodInputParameters[2]), e => e.ToString());
                 instanceIds = inputArray2.ToList();
             }
 
@@ -118,10 +115,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Start", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class StartAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
-        public StartAzureRmVmss()
-        {
-        }
-
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()

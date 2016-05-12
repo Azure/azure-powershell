@@ -14,10 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagementRegion"), OutputType(typeof (PsApiManagement))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagementRegion"), OutputType(typeof(PsApiManagement))]
     public class RemoveAzureApiManagementRegion : AzureApiManagementCmdletBase
     {
         [Parameter(

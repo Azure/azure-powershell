@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using Microsoft.Azure.Commands.Tags.Model;
-using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.Tags.Model;
+using System;
+using System.Linq;
+using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;
 
 
 namespace Microsoft.Azure.Commands.KeyVault.Models

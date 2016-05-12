@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
@@ -20,7 +21,6 @@ using Microsoft.Azure.Management.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Azure.Batch;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {

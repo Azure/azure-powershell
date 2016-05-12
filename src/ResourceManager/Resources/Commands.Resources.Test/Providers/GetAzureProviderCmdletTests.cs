@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.ServiceManagemenet.Common.Models;
     using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using System.Threading;
     using System.Threading.Tasks;
     using Xunit;
-
+    using Xunit.Abstractions;
     /// <summary>
     /// Tests the AzureProvider cmdlets
     /// </summary>
@@ -51,12 +52,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// A mock of the client
         /// </summary>
         private readonly Mock<IProvidersOperations> providerOperationsMock;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderCmdletTests"/> class.
         /// </summary>
-        public GetAzureProviderCmdletTests()
+        public GetAzureProviderCmdletTests(ITestOutputHelper output)
         {
             this.providerOperationsMock = new Mock<IProvidersOperations>();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             var resourceManagementClient = new Mock<Microsoft.Azure.Management.ResourceManager.IResourceManagementClient>();
 
             resourceManagementClient

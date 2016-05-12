@@ -25,8 +25,7 @@ function Test-DiagnosticsExtensionBasic
     {
         # Setup
         $vm = Create-VirtualMachine -rgname $rgname -loc $loc
-        #$vmname = $vm.Name TODO: WHY IS THIS BEING RETURNED AS OBJECT[] instead of String?
-        $vmname = "vmcrptestps169"
+        $vmname = $vm.Name
 
         # This is the storage name defined in config file
         $storagename = 'definedinconfigstorage'
@@ -78,8 +77,7 @@ function Test-DiagnosticsExtensionSepcifyStorageAccountName
     {
         # Setup
         $vm = Create-VirtualMachine -rgname $rgname -loc $loc
-        #$vmname = $vm.Name TODO: WHY IS THIS BEING RETURNED AS OBJECT[] instead of String?
-        $vmname = "vmcrptestps1483"
+        $vmname = $vm.Name
 
         # This storage name will be used in command line directly when set diagnostics extension
         $storagename = 'definedincommandline'
@@ -124,8 +122,7 @@ function Test-DiagnosticsExtensionCantListSepcifyStorageAccountKey
     {
         # Setup
         $vm = Create-VirtualMachine -rgname $rgname -loc $loc
-        #$vmname = $vm.Name TODO: WHY IS THIS BEING RETURNED AS OBJECT[] instead of String?
-        $vmname = "vmcrptestps6645"
+        $vmname = $vm.Name
 
         # If diagnostics extension already exist, remove it
         $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
@@ -161,8 +158,7 @@ function Test-DiagnosticsExtensionSupportJsonConfig
     {
         # Setup
         $vm = Create-VirtualMachine -rgname $rgname -loc $loc
-        #$vmname = $vm.Name TODO: WHY IS THIS BEING RETURNED AS OBJECT[] instead of String?
-        $vmname = "vmcrptestps1747"
+        $vmname = $vm.Name
         $storagename = $vmname + "storage"
         $storagetype = 'Standard_GRS'
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype

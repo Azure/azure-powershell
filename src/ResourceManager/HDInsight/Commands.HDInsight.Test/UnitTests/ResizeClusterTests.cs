@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Net;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
@@ -27,8 +25,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         private SetAzureHDInsightClusterSizeCommand cmdlet;
         private int targetcount = 4;
-        public ResizeClusterTests()
+
+        public ResizeClusterTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
 
             cmdlet = new SetAzureHDInsightClusterSizeCommand

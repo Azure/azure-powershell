@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
 {
@@ -96,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// <summary>
         /// Gets or sets the requested DTU min
         /// </summary>
-        public int? RequestedDatabaseDtuMin{ get; set; }
+        public int? RequestedDatabaseDtuMin { get; set; }
 
         /// <summary>
         /// Gets or sets the requested storage limit in GB

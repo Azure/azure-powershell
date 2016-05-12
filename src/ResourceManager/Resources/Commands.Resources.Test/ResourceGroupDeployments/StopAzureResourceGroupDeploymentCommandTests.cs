@@ -15,8 +15,11 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Moq;
 using Xunit;
+using Xunit.Abstractions;
+
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -32,9 +35,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         private string deploymentName = "myDeployment";
 
-        public StopAzureResourceGroupDeploymentCommandTests()
+        public StopAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
             resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new StopAzureResourceGroupDeploymentCmdlet()
             {

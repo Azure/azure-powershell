@@ -19,16 +19,16 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
 using System;
 using System.Net.Http;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
     public partial class FeatureClient : ServiceClient<FeatureClient>, IFeatureClient
     {
         private string _apiVersion;
-        
+
         /// <summary>
         /// Gets the API version.
         /// </summary>
@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._apiVersion; }
         }
-        
+
         private Uri _baseUri;
-        
+
         /// <summary>
         /// Gets the URI used as the base for all cloud service requests.
         /// </summary>
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._baseUri; }
         }
-        
+
         private SubscriptionCloudCredentials _credentials;
-        
+
         /// <summary>
         /// Gets subscription credentials which uniquely identify Microsoft
         /// Azure subscription. The subscription ID forms part of the URI for
@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._credentials; }
         }
-        
+
         private int _longRunningOperationInitialTimeout;
-        
+
         /// <summary>
         /// Gets or sets the initial timeout for Long Running Operations.
         /// </summary>
@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
             get { return this._longRunningOperationInitialTimeout; }
             set { this._longRunningOperationInitialTimeout = value; }
         }
-        
+
         private int _longRunningOperationRetryTimeout;
-        
+
         /// <summary>
         /// Gets or sets the retry timeout for Long Running Operations.
         /// </summary>
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
             get { return this._longRunningOperationRetryTimeout; }
             set { this._longRunningOperationRetryTimeout = value; }
         }
-        
+
         private IFeatures _features;
-        
+
         /// <summary>
         /// Operations for managing preview features.
         /// </summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._features; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the FeatureClient class.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             this._longRunningOperationRetryTimeout = -1;
             this.HttpClient.Timeout = TimeSpan.FromSeconds(300);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the FeatureClient class.
         /// </summary>
@@ -129,10 +129,10 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             this._credentials = credentials;
             this._baseUri = baseUri;
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the FeatureClient class.
         /// </summary>
@@ -150,10 +150,10 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             this._credentials = credentials;
             this._baseUri = new Uri("https://management.azure.com/");
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the FeatureClient class.
         /// </summary>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             this._longRunningOperationRetryTimeout = -1;
             this.HttpClient.Timeout = TimeSpan.FromSeconds(300);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the FeatureClient class.
         /// </summary>
@@ -198,10 +198,10 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             this._credentials = credentials;
             this._baseUri = baseUri;
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the FeatureClient class.
         /// </summary>
@@ -222,10 +222,10 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             this._credentials = credentials;
             this._baseUri = new Uri("https://management.azure.com/");
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Clones properties from current instance to another FeatureClient
         /// instance
@@ -236,17 +236,17 @@ namespace Microsoft.Azure.Management.Internal.Resources
         protected override void Clone(ServiceClient<FeatureClient> client)
         {
             base.Clone(client);
-            
+
             if (client is FeatureClient)
             {
                 FeatureClient clonedClient = ((FeatureClient)client);
-                
+
                 clonedClient._credentials = this._credentials;
                 clonedClient._baseUri = this._baseUri;
                 clonedClient._apiVersion = this._apiVersion;
                 clonedClient._longRunningOperationInitialTimeout = this._longRunningOperationInitialTimeout;
                 clonedClient._longRunningOperationRetryTimeout = this._longRunningOperationRetryTimeout;
-                
+
                 clonedClient.Credentials.InitializeServiceClient(clonedClient);
             }
         }

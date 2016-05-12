@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -34,8 +33,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary> 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ById, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc node id.")]
         [Alias("NodeId")]
-        public Guid Id { get; set; } 
-        
+        public Guid Id { get; set; }
+
         /// <summary> 
         /// Gets or sets the status of a dsc node. 
         /// </summary> 
@@ -43,8 +42,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByNodeConfiguration, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
         [ValidateSet("Compliant", "NotCompliant", "Failed", "Pending", "Received", "Unresponsive", IgnoreCase = true)]
-        public DscNodeStatus Status { get; set; } 
-        
+        public DscNodeStatus Status { get; set; }
+
         /// <summary>
         /// Gets or sets the node name.
         /// </summary>
@@ -82,8 +81,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
             if (this.ParameterSetName == AutomationCmdletParameterSets.ById)
             {
-                ret = new List<DscNode> 
-                { 
+                ret = new List<DscNode>
+                {
                    this.AutomationClient.GetDscNodeById(this.ResourceGroupName, this.AutomationAccountName, this.Id)
                 };
             }

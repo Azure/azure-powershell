@@ -13,14 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
-using System;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
     public class CredentialInfo : BaseProperties
     {
-         /// <summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="CredentialInfo"/> class.
         /// </summary>
         /// <param name="resourceGroupName">
@@ -47,7 +45,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.UserName = credential.Properties.UserName;
         }
 
-         /// <summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="CredentialInfo"/> class.
         /// </summary>
         public CredentialInfo()

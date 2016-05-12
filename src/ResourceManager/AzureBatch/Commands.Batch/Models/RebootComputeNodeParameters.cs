@@ -14,14 +14,13 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class RebootComputeNodeParameters : ComputeNodeOperationParameters
     {
-        public RebootComputeNodeParameters(BatchAccountContext context, string poolId, string computeNodeId, PSComputeNode computeNode, 
+        public RebootComputeNodeParameters(BatchAccountContext context, string poolId, string computeNodeId, PSComputeNode computeNode,
             IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, poolId, computeNodeId, computeNode, additionalBehaviors)
         { }

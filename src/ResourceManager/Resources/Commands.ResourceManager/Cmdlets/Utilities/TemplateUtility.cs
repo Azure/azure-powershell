@@ -218,14 +218,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 HelpMessage = name
             });
 
-            if (parameter.Value.AllowedValues != null && parameter.Value.AllowedValues.Count > 0)
-            {
-                runtimeParameter.Attributes.Add(new ValidateSetAttribute(parameter.Value.AllowedValues.ToArray())
-                {
-                    IgnoreCase = true,
-                });
-            }
-
             if (!string.IsNullOrEmpty(parameter.Value.MinLength) &&
                 !string.IsNullOrEmpty(parameter.Value.MaxLength))
             {

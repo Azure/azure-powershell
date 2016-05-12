@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         internal SecretIdentityItem(Azure.KeyVault.SecretItem secretItem, VaultUriHelper vaultUriHelper)
         {
             if (secretItem == null)
-                throw new ArgumentNullException("secretItem");            
+                throw new ArgumentNullException("secretItem");
             if (secretItem.Attributes == null)
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidSecretAttributes);
             if (secretItem.Identifier == null)
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidSecretIdentifier);
-            
+
             SetObjectIdentifier(vaultUriHelper, secretItem.Identifier);
             Enabled = secretItem.Attributes.Enabled;
             Expires = secretItem.Attributes.Expires;
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 return (Tags == null) ? null : Tags.ConvertToTagsTable();
             }
-        }      
-       
+        }
+
     }
 }

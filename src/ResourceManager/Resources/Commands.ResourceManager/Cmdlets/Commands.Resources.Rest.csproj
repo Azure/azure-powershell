@@ -227,10 +227,8 @@
     <Compile Include="SdkModels\ResourceGroups\PSResourceGroup.cs" />
     <Compile Include="SdkModels\ResourceGroups\UpdatePSResourceGroupParameters.cs" />
     <Compile Include="SdkModels\ResourceProvider\PSResourceProvider.cs" />
-    <Compile Include="SdkModels\ResourceProvider\PSResourceProviderOperation.cs" />
     <Compile Include="SdkModels\ResourceProvider\PSResourceProviderResourceType.cs" />
-    <Compile Include="SdkModels\Resources\PSResource.cs" />
-    <Compile Include="SdkModels\Resources\ResourceIdentifier.cs" />
+    <Compile Include="Components\ResourceIdentifier.cs" />
     <Compile Include="Utilities\FileUtility.cs" />
     <Compile Include="Utilities\HttpUtility.cs" />
     <Compile Include="Utilities\TemplateUtility.cs" />

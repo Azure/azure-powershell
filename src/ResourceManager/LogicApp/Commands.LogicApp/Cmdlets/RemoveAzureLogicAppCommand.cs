@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System.Globalization;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using System.Globalization;
     using System.Management.Automation;
 
     /// <summary>
@@ -51,8 +51,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveLogicAppWarning, this.Name),
                 Properties.Resource.RemoveLogicAppMessage,
                 Name,
-                () => {
-                          LogicAppClient.RemoveWorkflow(ResourceGroupName, Name);
+                () =>
+                {
+                    LogicAppClient.RemoveWorkflow(ResourceGroupName, Name);
                 });
         }
     }
