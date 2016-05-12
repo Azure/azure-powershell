@@ -53,7 +53,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the runbook version type
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Runbook definition type.")]
-        [ValidateSet(Constants.RunbookType.Graph, Constants.RunbookType.PowerShell, Constants.RunbookType.PowerShellWorkflow, IgnoreCase = true)]
+        [ValidateSet(Constants.RunbookType.Graph,
+            Constants.RunbookType.GraphPowerShell,
+            Constants.RunbookType.GraphPowerShellWorkflow,
+            Constants.RunbookType.PowerShell,
+            Constants.RunbookType.PowerShellWorkflow,
+            IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
