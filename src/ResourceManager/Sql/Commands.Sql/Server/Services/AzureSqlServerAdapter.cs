@@ -12,20 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Server.Model;
+using Microsoft.Azure.Commands.Sql.Server.Services;
+using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Server.Model;
-using Microsoft.Azure.Commands.Sql.Server.Services;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 {

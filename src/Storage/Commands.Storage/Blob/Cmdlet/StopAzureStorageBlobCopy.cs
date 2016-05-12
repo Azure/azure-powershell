@@ -14,16 +14,16 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
-    using System;
-    using System.Management.Automation;
-    using System.Security.Permissions;
-    using System.Threading.Tasks;
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.RetryPolicies;
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using System.Threading.Tasks;
 
     [Cmdlet(VerbsLifecycle.Stop, StorageNouns.CopyBlob, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = NameParameterSet),
        OutputType(typeof(AzureStorageBlob))]
@@ -99,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             IStorageBlobManagement localChannel = Channel;
 
             switch (ParameterSetName)
-            { 
+            {
                 case NameParameterSet:
                     string localContainerName = ContainerName;
                     string localBlobName = BlobName;
@@ -126,7 +126,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="blobName">Blob name</param>
         /// <param name="copyId">copy id</param>
         private async Task StopCopyBlob(long taskId, IStorageBlobManagement localChannel, string containerName, string blobName, string copyId)
-        {            
+        {
             CloudBlobContainer container = localChannel.GetContainerReference(containerName);
             await StopCopyBlob(taskId, localChannel, container, blobName, copyId);
         }
@@ -170,7 +170,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
 
             string specifiedCopyId = copyId;
-            
+
             if (string.IsNullOrEmpty(specifiedCopyId) && fetchCopyIdFromBlob)
             {
                 if (blob.CopyState != null)

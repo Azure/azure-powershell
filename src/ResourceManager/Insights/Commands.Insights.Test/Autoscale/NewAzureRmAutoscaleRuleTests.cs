@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Autoscale

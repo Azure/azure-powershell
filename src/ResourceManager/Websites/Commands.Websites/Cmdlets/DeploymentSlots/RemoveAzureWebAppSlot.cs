@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     [Cmdlet(VerbsCommon.Remove, "AzureRmWebAppSlot"), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
-       //always delete the slots, 
+        //always delete the slots, 
         private bool deleteSlotsByDefault = true;
 
         // leave behind the empty webhosting plan 
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-            
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

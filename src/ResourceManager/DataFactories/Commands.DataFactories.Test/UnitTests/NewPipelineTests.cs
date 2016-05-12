@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 }";
 
         private NewAzureDataFactoryPipelineCommand cmdlet;
-        
+
         public NewPipelineTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                     c.CreateOrUpdatePipeline(ResourceGroupName, DataFactoryName, pipelineName, rawJsonContent))
                 .Returns(expected)
                 .Verifiable();
-            
+
             // Action
             cmdlet.File = filePath;
             cmdlet.Force = true;

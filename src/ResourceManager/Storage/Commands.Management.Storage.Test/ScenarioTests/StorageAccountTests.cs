@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest("Test-PipingGetAccountToGetKey");
         }
- 
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingSetStorageAccount()

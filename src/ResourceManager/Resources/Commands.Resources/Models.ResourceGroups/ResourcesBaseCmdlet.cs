@@ -12,16 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Subscriptions;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
-    using ResourceManager.Common;
     using Microsoft.Azure.Commands.Resources.Models.Authorization;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common;
 
     /// <summary> 
     /// Base class for all resources cmdlets

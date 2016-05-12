@@ -15,6 +15,7 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -22,10 +23,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Microsoft.Rest.Azure;
 using Xunit;
-using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Certificates
 {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             // Build a Certificate instead of querying the service on a Get Certificate call
             AzureOperationResponse<ProxyModels.Certificate, ProxyModels.CertificateGetHeaders> response = BatchTestHelpers.CreateCertificateGetResponse(cmdlet.Thumbprint);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.CertificateGetOptions, 
+                ProxyModels.CertificateGetOptions,
                 AzureOperationResponse<ProxyModels.Certificate, ProxyModels.CertificateGetHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
             AzureOperationResponse<ProxyModels.Certificate, ProxyModels.CertificateGetHeaders> getResponse = BatchTestHelpers.CreateCertificateGetResponse(cmdlet.Thumbprint);
             RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.CertificateGetOptions, 
+                ProxyModels.CertificateGetOptions,
                 AzureOperationResponse<ProxyModels.Certificate, ProxyModels.CertificateGetHeaders>>(getResponse);
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             // Build some Certificates instead of querying the service on a List Certificates call
             AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders> response = BatchTestHelpers.CreateCertificateListResponse(thumbprintsOfConstructedCerts);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.CertificateListOptions, 
+                ProxyModels.CertificateListOptions,
                 AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             // Build some Certificates instead of querying the service on a List Certificates call
             AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders> response = BatchTestHelpers.CreateCertificateListResponse(thumbprintsOfConstructedCerts);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.CertificateListOptions, 
+                ProxyModels.CertificateListOptions,
                 AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };

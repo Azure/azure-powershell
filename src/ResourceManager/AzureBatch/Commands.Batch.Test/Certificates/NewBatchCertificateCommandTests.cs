@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Test.ScenarioTests;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
+using System.Security.Cryptography.X509Certificates;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -60,8 +59,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
 
             // Don't go to the service on an Add Certificate call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                CertificateAddParameter, 
-                CertificateAddOptions, 
+                CertificateAddParameter,
+                CertificateAddOptions,
                 AzureOperationHeaderResponse<CertificateAddHeaders>>();
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };

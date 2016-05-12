@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -105,7 +103,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 .NewAzureSiteRecoveryNetworkMapping(
                 Utilities.GetValueFromArmId(this.PrimaryNetwork.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 Utilities.GetValueFromArmId(this.PrimaryNetwork.ID, ARMResourceTypeConstants.ReplicationNetworks),
-                this.PrimaryNetwork.FriendlyName.Replace(" ","") + "-" + Utilities.GetValueFromArmId(this.AzureVMNetworkId, ARMResourceTypeConstants.VirtualNetworks).Replace(" ","") + "-" + Guid.NewGuid().ToString(),
+                this.PrimaryNetwork.FriendlyName.Replace(" ", "") + "-" + Utilities.GetValueFromArmId(this.AzureVMNetworkId, ARMResourceTypeConstants.VirtualNetworks).Replace(" ", "") + "-" + Guid.NewGuid().ToString(),
                 "Microsoft Azure",
                 this.AzureVMNetworkId);
 

@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             string userName = null, password = null;
 
-            if(Value != null)
+            if (Value != null)
             {
                 userName = Value.UserName;
                 password = Value.GetNetworkCredential().Password;

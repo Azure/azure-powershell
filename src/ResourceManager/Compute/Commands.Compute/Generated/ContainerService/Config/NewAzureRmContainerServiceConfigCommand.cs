@@ -20,7 +20,6 @@
 // code is regenerated.
 
 using Microsoft.Azure.Management.Compute.Models;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public ContainerServiceAgentPoolProfile [] AgentPoolProfile { get; set; }
+        public ContainerServiceAgentPoolProfile[] AgentPoolProfile { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true)]
-        public string [] SshPublicKey { get; set; }
+        public string[] SshPublicKey { get; set; }
 
         [Parameter(
             Mandatory = false,

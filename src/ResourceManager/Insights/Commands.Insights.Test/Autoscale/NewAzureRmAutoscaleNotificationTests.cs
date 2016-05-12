@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.CustomEmails = new string[0];
             Assert.Throws<ArgumentException>(() => Cmdlet.ExecuteCmdlet());
 
-            Cmdlet.CustomEmails = new string[] {"gu@ms.com"};
+            Cmdlet.CustomEmails = new string[] { "gu@ms.com" };
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.CustomEmails = new string[] {"gu@ms.com", "ga@sm.net"};
+            Cmdlet.CustomEmails = new string[] { "gu@ms.com", "ga@sm.net" };
             Cmdlet.ExecuteCmdlet();
 
             Cmdlet.CustomEmails = null;

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class TagCreateValueResult : AzureOperationResponse
     {
         private TagValue _value;
-        
+
         /// <summary>
         /// Optional. Gets or sets the tag value.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._value; }
             set { this._value = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the TagCreateValueResult class.
         /// </summary>

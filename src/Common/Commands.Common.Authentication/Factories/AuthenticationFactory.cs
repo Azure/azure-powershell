@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using System;
-using System.Linq;
-using System.Security;
-using Hyak.Common;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
+using System;
+using System.Linq;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {

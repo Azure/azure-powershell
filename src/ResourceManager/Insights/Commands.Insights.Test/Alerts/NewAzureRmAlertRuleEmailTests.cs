@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         public NewAzureRmAlertRuleEmailCommand Cmdlet { get; set; }
-        
+
         public NewAzureRmAlertRuleEmailTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
@@ -47,16 +47,16 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             Cmdlet.CustomEmails = new string[0];
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.CustomEmails = new string[] {"gu@macrosoft.com"};
+            Cmdlet.CustomEmails = new string[] { "gu@macrosoft.com" };
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.CustomEmails = new string[] {"gu@macrosoft.com" , "hu@megasoft.com"};
+            Cmdlet.CustomEmails = new string[] { "gu@macrosoft.com", "hu@megasoft.com" };
             Cmdlet.ExecuteCmdlet();
 
             Cmdlet.SendToServiceOwners = false;
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.CustomEmails = new string[] {"gu@macrosoft.com"};
+            Cmdlet.CustomEmails = new string[] { "gu@macrosoft.com" };
             Cmdlet.ExecuteCmdlet();
 
             Cmdlet.CustomEmails = new string[0];

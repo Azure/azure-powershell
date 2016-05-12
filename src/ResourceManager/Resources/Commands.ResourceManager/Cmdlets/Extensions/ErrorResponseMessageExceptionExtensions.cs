@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using System;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
 
     /// <summary>
     /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>

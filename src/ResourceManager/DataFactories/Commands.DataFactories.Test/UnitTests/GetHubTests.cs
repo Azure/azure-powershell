@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             base.SetupTest();
 
             cmdlet = new GetAzureDataFactoryHubCommand()
-                         {
-                             CommandRuntime = commandRuntimeMock.Object,
-                             DataFactoryClient = dataFactoriesClientMock.Object,
-                             ResourceGroupName = ResourceGroupName,
-                             DataFactoryName = DataFactoryName
-                         };
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                DataFactoryClient = dataFactoriesClientMock.Object,
+                ResourceGroupName = ResourceGroupName,
+                DataFactoryName = DataFactoryName
+            };
         }
 
         [Fact]

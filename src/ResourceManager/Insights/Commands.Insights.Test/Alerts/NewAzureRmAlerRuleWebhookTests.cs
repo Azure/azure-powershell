@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.Alerts;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Collections;
+using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         public NewAzureRmAlertRuleWebhookCommand Cmdlet { get; set; }
-        
+
         public NewAzureRmAlerRuleWebhookTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));

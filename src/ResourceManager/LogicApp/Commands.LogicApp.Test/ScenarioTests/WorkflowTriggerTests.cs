@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestGetAzureLogicAppTrigger()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppTrigger");
-        }        
+        }
 
         /// <summary>
         /// Test Get-AzureLogicAppTriggerHistory command to verify the trigger history for the workflow.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestGetAzureLogicAppTriggerHistory()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppTriggerHistory");
-        }        
+        }
 
         /// <summary>
         /// Test Start-AzureLogicAppTrigger command to run the trigger of the workflow.

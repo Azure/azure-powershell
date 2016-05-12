@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Batch.Models;
-using System;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            ComputeNodeOperationParameters parameters = new ComputeNodeOperationParameters(this.BatchContext, this.PoolId, 
+            ComputeNodeOperationParameters parameters = new ComputeNodeOperationParameters(this.BatchContext, this.PoolId,
                 this.Id, this.ComputeNode, this.AdditionalBehaviors);
 
             BatchClient.EnableComputeNodeScheduling(parameters);
