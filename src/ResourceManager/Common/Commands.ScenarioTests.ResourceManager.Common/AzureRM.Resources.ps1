@@ -39,7 +39,7 @@ function Get-AzureRmResourceProvider
   PROCESS {
 	$getTask = $client.Providers.GetAsync($ProviderNamespace, [System.Threading.CancellationToken]::None)
 	$pr = $getTask.Result
-	$provider = Get-Provider $ProviderNamespace
+	$provider = Get-Provider $pr.Provider.Namespace
 	Write-Output $provider
   }
   END {}
