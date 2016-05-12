@@ -129,6 +129,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public byte MonthInterval { get; set; }
 
         /// <summary>
+        /// Gets or sets the schedule time zone.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule time zone.")]
+        public string TimeZone { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -139,7 +145,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 Name = this.Name,
                 StartTime = this.StartTime,
                 Description = this.Description,
-                ExpiryTime = this.ExpiryTime
+                ExpiryTime = this.ExpiryTime,
+                TimeZone = this.TimeZone,
             };
 
             switch (this.ParameterSetName)

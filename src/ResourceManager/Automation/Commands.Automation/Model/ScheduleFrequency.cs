@@ -12,6 +12,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         Day,
         Hour,
         Week,
-        Month
+        Month,
     }
 }
