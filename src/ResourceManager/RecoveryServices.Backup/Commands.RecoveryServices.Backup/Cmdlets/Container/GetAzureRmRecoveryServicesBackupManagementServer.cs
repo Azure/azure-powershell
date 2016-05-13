@@ -25,13 +25,16 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Get list of containers
+    /// Fetches backup management servers registered to the recovery services vault.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"),
     OutputType(typeof(BackupEngineBase), typeof(IList<BackupEngineBase>))]
     public class GetAzureRmRecoveryServicesBackupManagementServer 
         : RecoveryServicesBackupCmdletBase
     {
+        /// <summary>
+        /// Name of the backup management server(s) to be fetched.
+        /// </summary>
         [Parameter(Mandatory = false, Position = 1, 
             HelpMessage = ParamHelpMsgs.Container.Name)]
         [ValidateNotNullOrEmpty]
