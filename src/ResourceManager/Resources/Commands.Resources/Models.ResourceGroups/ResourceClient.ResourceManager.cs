@@ -68,31 +68,31 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     throw new ArgumentException(ProjectResources.ResourceDoesntExists);
                 }
 
-                //resources.Add(getResult.Resource.ToPSResource(this, false));
+                resources.Add(getResult.Resource.ToPSResource(this, false));
             }
             else
             {
-                //PSTagValuePair tagValuePair = new PSTagValuePair();
-                //if (parameters.Tag != null && parameters.Tag.Length == 1 && parameters.Tag[0] != null)
-                //{
-                //    tagValuePair = TagsConversionHelper.Create(parameters.Tag[0]);
-                //    if (tagValuePair == null)
-                //    {
-                //        throw new ArgumentException(ProjectResources.InvalidTagFormat);
-                //    }
-                //}
-                //ResourceListResult listResult = ResourceManagementClient.Resources.List(new ResourceListParameters
-                //{
-                //    ResourceGroupName = parameters.ResourceGroupName,
-                //    ResourceType = parameters.ResourceType,
-                //    TagName = tagValuePair.Name,
-                //    TagValue = tagValuePair.Value
-                //});
+                PSTagValuePair tagValuePair = new PSTagValuePair();
+                if (parameters.Tag != null && parameters.Tag.Length == 1 && parameters.Tag[0] != null)
+                {
+                    tagValuePair = TagsConversionHelper.Create(parameters.Tag[0]);
+                    if (tagValuePair == null)
+                    {
+                        throw new ArgumentException(ProjectResources.InvalidTagFormat);
+                    }
+                }
+                ResourceListResult listResult = ResourceManagementClient.Resources.List(new ResourceListParameters
+                {
+                    ResourceGroupName = parameters.ResourceGroupName,
+                    ResourceType = parameters.ResourceType,
+                    TagName = tagValuePair.Name,
+                    TagValue = tagValuePair.Value
+                });
 
-                //if (listResult.Resources != null)
-                //{
-                //    resources.AddRange(listResult.Resources.Select(r => r.ToPSResource(this, false)));
-                //}
+                if (listResult.Resources != null)
+                {
+                    resources.AddRange(listResult.Resources.Select(r => r.ToPSResource(this, false)));
+                }
             }
             return resources;
         }
