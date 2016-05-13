@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Linq;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 

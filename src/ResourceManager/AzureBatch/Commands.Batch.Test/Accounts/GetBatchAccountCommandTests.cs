@@ -14,12 +14,12 @@
 
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
@@ -29,8 +29,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchAccountCommandTests()
+        public GetBatchAccountCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchAccountCommand()

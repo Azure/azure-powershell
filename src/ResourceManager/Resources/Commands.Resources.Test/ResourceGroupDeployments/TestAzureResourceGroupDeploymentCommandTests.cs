@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.ResourceGroupDeployments;
 using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Moq;
-using Xunit;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.IO;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -37,8 +38,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
-        public TestAzureResourceGroupDeploymentCommandTests()
+        public TestAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new TestAzureResourceGroupDeploymentCommand()

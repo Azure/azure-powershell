@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.WindowsAzure.Commands.Sync.IO;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -20,8 +22,6 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Sync.IO;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 {
@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
         public DateTime CreatedDateUtc
         {
-            get { return DateTime.Parse(this.InternalCreatedDateUtc, DateTimeFormatInfo.InvariantInfo); } 
+            get { return DateTime.Parse(this.InternalCreatedDateUtc, DateTimeFormatInfo.InvariantInfo); }
             set { this.InternalCreatedDateUtc = value.ToString(DateTimeFormatInfo.InvariantInfo); }
         }
 
@@ -61,12 +61,12 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         public static FileMetaData Create(string filePath)
         {
             var fileInfo = new FileInfo(filePath);
-            if(!fileInfo.Exists)
+            if (!fileInfo.Exists)
             {
                 throw new FileNotFoundException(filePath);
             }
 
-            using(var stream = new VirtualDiskStream(filePath))
+            using (var stream = new VirtualDiskStream(filePath))
             {
                 return new FileMetaData
                 {
@@ -82,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
         private static byte[] CalculateMd5Hash(Stream stream, string filePath)
         {
-            using(var md5 = MD5.Create())
+            using (var md5 = MD5.Create())
             {
                 using (var swrp = new StreamWithReadProgress(stream, TimeSpan.FromSeconds(1)))
                 {
@@ -109,10 +109,10 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         public static SystemInformation Create()
         {
             return new SystemInformation
-                       {
-                           MachineName = Environment.MachineName,
-                           CsUploadProcessId = Process.GetCurrentProcess().Id
-                       };
+            {
+                MachineName = Environment.MachineName,
+                CsUploadProcessId = Process.GetCurrentProcess().Id
+            };
         }
     }
 

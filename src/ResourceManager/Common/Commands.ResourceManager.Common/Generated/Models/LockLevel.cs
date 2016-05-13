@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
         /// The lock level is not specified.
         /// </summary>
         public const string NotSpecified = "NotSpecified";
-        
+
         /// <summary>
         /// The lock blocks delete.
         /// </summary>
         public const string CanNotDelete = "CanNotDelete";
-        
+
         /// <summary>
         /// The lock blocks all updates and delete.
         /// </summary>

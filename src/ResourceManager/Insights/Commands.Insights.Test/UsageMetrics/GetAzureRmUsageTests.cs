@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.UsageMetrics;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Management.Automation;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Metrics
@@ -36,8 +36,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
         private string filter;
         private string apiVersion;
 
-        public GetAzureRmUsageTests()
+        public GetAzureRmUsageTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsUsageMetricOperationsMock = new Mock<IUsageMetricsOperations>();
             insightsClientMock = new Mock<InsightsClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
         {
             resourceId = null;
             filter = null;
-            apiVersion = null;            
+            apiVersion = null;
         }
 
         [Fact]
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
 
             // Testing with optional parameters
             this.CleanParamVariables();
-            cmdlet.MetricNames = new[] {"n1", "n2"};
+            cmdlet.MetricNames = new[] { "n1", "n2" };
             expected = "(name.value eq 'n1' or name.value eq 'n2') and " + expected;
 
             cmdlet.ExecuteCmdlet();

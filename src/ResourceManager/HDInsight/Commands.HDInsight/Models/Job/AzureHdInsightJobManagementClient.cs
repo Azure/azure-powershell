@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.HDInsight.Job;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {

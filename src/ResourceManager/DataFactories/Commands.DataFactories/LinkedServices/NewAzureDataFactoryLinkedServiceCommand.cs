@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
+using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.DataFactories.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.DataFactories.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Collections;
-using System.Globalization;
-using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -45,7 +43,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-        
+
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
