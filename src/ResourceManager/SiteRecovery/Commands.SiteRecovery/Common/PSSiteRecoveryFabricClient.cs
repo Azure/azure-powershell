@@ -12,13 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -52,7 +47,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="createAndAssociatePolicyInput">Policy Input</param>
         /// <returns>Long operation response</returns>
-        public LongRunningOperationResponse CreateAzureSiteRecoveryFabric(string fabricName, string fabricType = null) 
+        public LongRunningOperationResponse CreateAzureSiteRecoveryFabric(string fabricName, string fabricType = null)
         {
             if (string.IsNullOrEmpty(fabricType))
             {
@@ -108,7 +103,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>ARM Id of fabric.</returns>
         public static string GetFabricId(this ASRServer provider)
         {
-            return provider.ID.GetVaultArmId() + "/" + 
+            return provider.ID.GetVaultArmId() + "/" +
                 string.Format(ARMResourceIdPaths.FabricResourceIdPath,
                 provider.ID.UnFormatArmId(
                     ARMResourceIdPaths.RecoveryServicesProviderResourceIdPath));

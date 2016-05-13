@@ -14,12 +14,12 @@
 
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             AccountResource accountResource02 = BatchTestHelpers.CreateAccountResource(accountName02, resourceGroup);
             BatchAccountContext expected01 = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource01);
             BatchAccountContext expected02 = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource02);
-            
+
             batchClientMock.Setup(b => b.ListAccounts(resourceGroup, null)).Returns(new List<BatchAccountContext>() { expected01, expected02 });
 
             cmdlet.AccountName = null;

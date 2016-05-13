@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Internal.Subscriptions.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Internal.Subscriptions.Models;
 
 namespace Microsoft.Azure.Internal.Subscriptions
 {
@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Internal.Subscriptions
         /// </returns>
         public static GetSubscriptionResult Get(this ISubscriptionOperations operations, string subscriptionId)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((ISubscriptionOperations)s).GetAsync(subscriptionId);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets details about particular subscription.
         /// </summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
         {
             return operations.GetAsync(subscriptionId, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets a list of the subscriptionIds.
         /// </summary>
@@ -79,13 +79,13 @@ namespace Microsoft.Azure.Internal.Subscriptions
         /// </returns>
         public static SubscriptionListResult List(this ISubscriptionOperations operations)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((ISubscriptionOperations)s).ListAsync();
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a list of the subscriptionIds.
         /// </summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
         {
             return operations.ListAsync(CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets a list of the subscription locations.
         /// </summary>
@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Internal.Subscriptions
         /// </returns>
         public static LocationListResult ListLocations(this ISubscriptionOperations operations, string subscriptionId)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((ISubscriptionOperations)s).ListLocationsAsync(subscriptionId);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a list of the subscription locations.
         /// </summary>

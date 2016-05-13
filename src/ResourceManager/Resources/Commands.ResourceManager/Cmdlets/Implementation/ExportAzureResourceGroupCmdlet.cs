@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceGroups;
@@ -22,6 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using System.Management.Automation;
 
     /// <summary>
     /// Captures the specifies resource group as a template and saves it to a file on disk.
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the file path.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The output path of the template file.")]		
-        [ValidateNotNullOrEmpty]		
-         public string Path { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The output path of the template file.")]
+        [ValidateNotNullOrEmpty]
+        public string Path { get; set; }
 
         /// <summary>
         /// Export template parameter with default value.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var parameters = new ExportTemplateParameters
             {
-                Resources = new string [] {"*"},
+                Resources = new string[] { "*" },
                 Options = this.GetExportOptions() ?? null
             };
 
@@ -100,13 +100,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
 
-            if(JObject.Parse(resultString)["error"] != null)
+            if (JObject.Parse(resultString)["error"] != null)
             {
                 ExtendedErrorInfo error;
-                if(JObject.Parse(resultString)["error"].TryConvertTo(out error))
+                if (JObject.Parse(resultString)["error"].TryConvertTo(out error))
                 {
                     WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
-                    foreach(var detail in error.Details)
+                    foreach (var detail in error.Details)
                     {
                         WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
                     }
@@ -129,11 +129,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string GetExportOptions()
         {
             string options = string.Empty;
-            if(this.IncludeComments.IsPresent)
+            if (this.IncludeComments.IsPresent)
             {
                 options += "IncludeComments";
             }
-            if(this.IncludeParameterDefaultValue.IsPresent)
+            if (this.IncludeParameterDefaultValue.IsPresent)
             {
                 options = string.IsNullOrEmpty(options) ? "IncludeParameterDefaultValue" : options + ",IncludeParameterDefaultValue";
             }

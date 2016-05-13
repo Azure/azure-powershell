@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Gallery;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
@@ -34,18 +34,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         public void ToPSGalleryItemCreatesANewItem()
         {
             var item = new GalleryItem()
+            {
+                Name = "Name",
+                Publisher = "Microsoft",
+                DefinitionTemplates = new DefinitionTemplates()
                 {
-                    Name = "Name",
-                    Publisher = "Microsoft",
-                    DefinitionTemplates = new DefinitionTemplates()
-                        {
-                            DefaultDeploymentTemplateId = "DefaultUri",
-                            DeploymentTemplateFileUrls = new Dictionary<string, string>()
+                    DefaultDeploymentTemplateId = "DefaultUri",
+                    DeploymentTemplateFileUrls = new Dictionary<string, string>()
                                 {
                                     {"DefaultUri", "fakeurl"}
                                 }
-                        }
-                };
+                }
+            };
 
             var psitem = item.ToPSGalleryItem();
 

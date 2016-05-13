@@ -14,9 +14,7 @@
 
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Test.HttpRecorder;
-using System;
 using System.Net.Http;
-using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {

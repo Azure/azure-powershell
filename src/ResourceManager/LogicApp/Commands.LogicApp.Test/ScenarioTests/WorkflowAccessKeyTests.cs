@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestGetAzureLogicAppAccessKey()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppAccessKey");
-        }       
+        }
 
         /// <summary>
         /// Test Set-AzureLogicAppAccessKey command to verify the secret regeneration operation for the access keys of a workflow.
@@ -48,6 +48,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestSetAzureLogicAppAccessKey()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-SetAzureLogicAppAccessKey");
-        }       
+        }
     }
 }

@@ -31,19 +31,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             if (secret == null)
                 throw new ArgumentNullException("secret");
-            
+
             SetObjectIdentifier(vaultUriHelper, secret.SecretIdentifier);
             if (secret.Value != null)
                 SecretValue = secret.Value.ConvertToSecureString();
 
             Attributes = new SecretAttributes(
-                secret.Attributes.Enabled, 
-                secret.Attributes.Expires, 
+                secret.Attributes.Enabled,
+                secret.Attributes.Expires,
                 secret.Attributes.NotBefore,
                 secret.Attributes.Created,
                 secret.Attributes.Updated,
-                secret.ContentType, 
-                secret.Tags);            
+                secret.ContentType,
+                secret.Tags);
         }
 
         public SecureString SecretValue { get; set; }
@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 string text = null;
                 if (SecretValue != null)
                     text = SecretValue.ConvertToString();
-                return text;               
+                return text;
             }
         }
         public SecretAttributes Attributes { get; set; }
-      
+
     }
 }

@@ -12,12 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Management.SiteRecovery.Models;
-using System.Collections.Generic;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -89,7 +86,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 case ASRParameterSets.ByRPObject:
                     this.SetRPReprotect();
                     break;
-            }          
+            }
         }
 
         /// <summary>
@@ -163,7 +160,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Starts RP Reprotect.
         /// </summary>
         private void SetRPReprotect()
-        {           
+        {
             LongRunningOperationResponse response = RecoveryServicesClient.UpdateAzureSiteRecoveryProtection(
                 this.RecoveryPlan.Name);
 

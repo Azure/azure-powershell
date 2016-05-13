@@ -22,12 +22,12 @@ using System.Management.Automation;
 using System.Management.Automation.Language;
 using System.Management.Automation.Runspaces;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish 
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 {
 
     public static class ConfigurationParsingHelper
     {
-        private static readonly ConcurrentDictionary<string, string> _resourceName2ModuleNameCache = 
+        private static readonly ConcurrentDictionary<string, string> _resourceName2ModuleNameCache =
             new ConcurrentDictionary<string, string>();
 
         private static bool IsParameterName(CommandElementAst ast, string name)
@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
         {
             return ast.Extent.StartOffset == startOffset && !(ast is StatementBlockAst) && !(ast is NamedBlockAst);
         }
-        private static Dictionary<string, string> GetSingleAstRequiredModules(Ast ast, IEnumerable<Token> tokens, Dictionary<string,string> modules)
+        private static Dictionary<string, string> GetSingleAstRequiredModules(Ast ast, IEnumerable<Token> tokens, Dictionary<string, string> modules)
         {
             var resources = new List<string>();
             var imports = tokens.Where(token =>
@@ -129,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                     foreach ($n in $Name) { $global:resources.Add($n) }
                 }
             ");
-             
+
             initialSessionState.Commands.Add(importDscResourcefunctionEntry);
             initialSessionState.LanguageMode = PSLanguageMode.RestrictedLanguage;
             var moduleVarEntry = new SessionStateVariableEntry("modules", modules, "");
@@ -172,10 +172,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             {
                 if (!modules.ContainsKey(moduleName))
                 {
-                    modules.Add(moduleName, "");    
+                    modules.Add(moduleName, "");
                 }
             }
-            
+
             return modules;
         }
 
@@ -194,8 +194,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                             AddCommand("Foreach-Object").AddParameter("MemberName", "Name");
                         moduleName = powershell.Invoke<string>().First();
                     }
-                } 
-                catch (InvalidOperationException e) 
+                }
+                catch (InvalidOperationException e)
                 {
                     throw new GetDscResourceException(resourceName, e);
                 }
@@ -206,7 +206,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 
         private static Dictionary<String, String> GetRequiredModulesFromAst(Ast ast, IEnumerable<Token> tokens)
         {
-            var modules = new Dictionary<String,String>(StringComparer.OrdinalIgnoreCase);
+            var modules = new Dictionary<String, String>(StringComparer.OrdinalIgnoreCase);
 
             // We use System.Management.Automation.Language.Parser to extract required modules from ast, 
             // but format of ast is a bit tricky and have changed in time.
@@ -252,7 +252,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                         modules.Add(param, "");
                     }
                 }
-                
+
                 // Example: Import-DscResource -Name MSFT_xComputer
                 var resourceParams = GetLegacyTopLevelParametersFromAst(legacyConfigurationAst, "ResourceDefinition").Select(GetModuleNameForDscResource);
                 foreach (var param in resourceParams)
@@ -261,12 +261,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                     {
                         modules.Add(param, "");
                     }
-                }    
+                }
             }
-            
+
             // Both cases in new version and 2nd case in old version:
             modules = GetSingleAstRequiredModules(ast, tokens, modules);
-            
+
             return modules;
         }
 

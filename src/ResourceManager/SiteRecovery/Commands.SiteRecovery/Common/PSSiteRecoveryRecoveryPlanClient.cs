@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Recovery services convenience client.
     /// </summary>
     public partial class PSRecoveryServicesClient
-    {       
+    {
         /// <summary>
         /// Gets Azure Site Recovery Plans.
         /// </summary>

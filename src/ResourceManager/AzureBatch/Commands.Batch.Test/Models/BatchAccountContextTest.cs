@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
         {
             string account = "account";
             string tenantUrlEnding = "batch-test.windows-int.net";
-            string endpoint = string.Format("{0}.{1}", account, tenantUrlEnding); 
+            string endpoint = string.Format("{0}.{1}", account, tenantUrlEnding);
             string subscription = "00000000-0000-0000-0000-000000000000";
             string resourceGroup = "resourceGroup";
 
-            AccountResource resource = new AccountResource() 
-            { 
-                Id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup), 
-                Location = "location", 
+            AccountResource resource = new AccountResource()
+            {
+                Id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup),
+                Location = "location",
                 Properties = new AccountProperties() { AccountEndpoint = endpoint, ProvisioningState = AccountProvisioningState.Succeeded },
                 Type = "type"
             };

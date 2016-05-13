@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     /// The possible states in which an auditing policy may be in
     /// </summary>
     public enum AuditStateType { Enabled, Disabled, New };
-    
+
     /// <summary>
     /// The base class that defines the core properties of an auditing policy
     /// </summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the server name
         /// </summary>
         public string ServerName { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the storage account name
         /// </summary>

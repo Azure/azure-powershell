@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Management.Dns.Models;
-
+using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
@@ -79,7 +77,7 @@ namespace Microsoft.Azure.Commands.Dns
                 {
                     Name = this.Name,
                     Etag = null,
-                    RecordType = this.RecordType,                   
+                    RecordType = this.RecordType,
                     ResourceGroupName = this.ResourceGroupName,
                     ZoneName = this.ZoneName,
                 };

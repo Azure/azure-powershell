@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Linq;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
@@ -66,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
                 return PSPagedEnumerable<PSCloudPool, CloudPool>.CreateWithMaxCount(
-                    pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));          
+                    pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
             }
         }
 
@@ -98,7 +96,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             pool.ResizeTimeout = parameters.ResizeTimeout;
             pool.MaxTasksPerComputeNode = parameters.MaxTasksPerComputeNode;
             pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
-            
+
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
             {
                 pool.AutoScaleEnabled = true;
@@ -240,7 +238,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.EnableAutoScale, poolId, parameters.AutoScaleFormula));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            poolOperations.EnableAutoScale(poolId, parameters.AutoScaleFormula, parameters.AutoScaleEvaluationInterval, 
+            poolOperations.EnableAutoScale(poolId, parameters.AutoScaleFormula, parameters.AutoScaleEvaluationInterval,
                 parameters.AdditionalBehaviors);
         }
 

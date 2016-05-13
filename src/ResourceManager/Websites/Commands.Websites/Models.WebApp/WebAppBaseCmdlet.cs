@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using System;
+using System.Management.Automation;
 
 
 namespace Microsoft.Azure.Commands.WebApps
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.WebApps
             if (string.Equals(ParameterSetName, ParameterSet2Name, StringComparison.OrdinalIgnoreCase))
             {
                 string rg, name, slot;
-                
+
                 if (!CmdletHelpers.TryParseWebAppMetadataFromResourceId(WebApp.Id, out rg, out name, out slot, true))
                 {
                     throw new ValidationMetadataException("Input object is a deployment slot, not a production web app");
