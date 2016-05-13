@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     class Nouns
     {
@@ -59,11 +59,15 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
 
         // service
         public const string AdminTableService = Prefix + "TableService";
+        public const string AdminQueueService = Prefix + "QueueService";
         public const string AdminBlobService = Prefix + "BlobService";
         public const string AdminManagementService = Prefix + "ManagementService";
 
         public const string AdminTableServiceMetric = AdminTableService + Metric;
         public const string AdminTableServiceMetricDefinition = AdminTableService + MetricDefinition;
+
+        public const string AdminQueueServiceMetric = AdminQueueService + Metric;
+        public const string AdminQueueServiceMetricDefinition = AdminQueueService + MetricDefinition;
 
         public const string AdminBlobServiceMetric = AdminBlobService + Metric;
         public const string AdminBlobServiceMetricDefinition = AdminBlobService + MetricDefinition;
@@ -81,13 +85,22 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         // fault 
         public const string AdminFault = Prefix + "Fault";
 
+        // fault history
+        public const string AdminFaultHistory = Prefix + "FaultHistory";
+
         // role instance
         public const string AdminInstance = Prefix + "Instance";
 
         // storage account
         public const string AdminStorageAccount = Prefix + "StorageAccount";
 
+        // acquisition
+        public const string AdminAcquisition = Prefix + "Acquisition";
+
         // storage account deletion operation
         public const string AdminStorageAccountDeletion = Prefix + "StorageAccountDeletion";
+
+        // quota
+        public const string AdminQuota = Prefix + "Quota";
     }
 }
