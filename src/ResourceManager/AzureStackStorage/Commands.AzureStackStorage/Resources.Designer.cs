@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin {
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.AzureStack.Commands.StorageAdmin.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.AzureStack.AzureConsistentStorage.Commands.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -75,6 +75,42 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin {
         internal static string BlobService {
             get {
                 return ResourceManager.GetString("BlobService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the acquisition &apos;{0}&apos;..
+        /// </summary>
+        internal static string DeleteAcquisitionVerboseDescription {
+            get {
+                return ResourceManager.GetString("DeleteAcquisitionVerboseDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the acquisition &apos;{0}&apos;?.
+        /// </summary>
+        internal static string DeleteAcquisitionVerboseWarning {
+            get {
+                return ResourceManager.GetString("DeleteAcquisitionVerboseWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the ACS quota &apos;{0}&apos;..
+        /// </summary>
+        internal static string DeleteQuotaDescription {
+            get {
+                return ResourceManager.GetString("DeleteQuotaDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the ACS quota &apos;{0}&apos;?.
+        /// </summary>
+        internal static string DeleteQuotaWarning {
+            get {
+                return ResourceManager.GetString("DeleteQuotaWarning", resourceCulture);
             }
         }
         
@@ -178,6 +214,15 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ACS Queue Service.
+        /// </summary>
+        internal static string QueueService {
+            get {
+                return ResourceManager.GetString("QueueService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restarting role instance &apos;{0}&apos; with type &apos;{1}&apos;..
         /// </summary>
         internal static string RestartRoleInstanceVerboseDescription {
@@ -223,6 +268,24 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Performing the operation set ACS quota &apos;{0}&apos;..
+        /// </summary>
+        internal static string SetQuotaDescription {
+            get {
+                return ResourceManager.GetString("SetQuotaDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to perform the operation &quot;set ACS quota &apos;{0}&apos;&quot;?.
+        /// </summary>
+        internal static string SetQuotaWarning {
+            get {
+                return ResourceManager.GetString("SetQuotaWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Performing the operation set {0} {1}..
         /// </summary>
         internal static string SetServiceDescription {
@@ -252,6 +315,15 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin {
         /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
+        internal static string ShouldContinueCaption {
+            get {
+                return ResourceManager.GetString("ShouldContinueCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
         internal static string ShouldProcessCaption {
             get {
                 return ResourceManager.GetString("ShouldProcessCaption", resourceCulture);
@@ -268,6 +340,24 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to fault {0}.
+        /// </summary>
+        internal static string ShouldResolveFaultProcessTargetFormat {
+            get {
+                return ResourceManager.GetString("ShouldResolveFaultProcessTargetFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continue with resolve fault?.
+        /// </summary>
+        internal static string ShouldResoveFaultContinueQuery {
+            get {
+                return ResourceManager.GetString("ShouldResoveFaultContinueQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Starting Blob server instance &apos;{0}&apos;..
         /// </summary>
         internal static string StartBlobServerRoleInstanceVerboseDescription {
@@ -277,7 +367,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to start Blob server role instance ‘{0}’..
+        ///   Looks up a localized string similar to Are you sure you want to start Blob server role instance ‘{0}’?.
         /// </summary>
         internal static string StartBlobServerRoleInstanceVerboseWarning {
             get {
@@ -295,7 +385,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to stop Blob server role instance ‘{0}’..
+        ///   Looks up a localized string similar to Are you sure you want to stop Blob server role instance ‘{0}’?.
         /// </summary>
         internal static string StopBlobServerRoleInstanceVerboseWarning {
             get {
