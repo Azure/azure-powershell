@@ -14,9 +14,9 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     internal class NodeResponse : ResponseBase
     {
@@ -31,7 +31,6 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         public Uri FaultDomain { get; set; }
  
         public HealthStatus HealthState { get; set; }
-
  
         public string IpAddressOrFqdn { get; set; }
 

@@ -61,7 +61,7 @@ FormatsToProcess = @()
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
-    '.\Microsoft.AzureStack.Commands.StorageAdmin.dll'
+    '.\Microsoft.AzureStack.AzureConsistentStorage.Commands.dll'
 )
   
 # Functions to export from this module  

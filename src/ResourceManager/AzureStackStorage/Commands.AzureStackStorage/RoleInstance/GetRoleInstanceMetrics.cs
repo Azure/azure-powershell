@@ -17,10 +17,10 @@
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     ///
@@ -78,6 +78,9 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
                     break;
                 case RoleType.TableFrontend:
                     resultObject = Client.TableFrontendInstances.GetMetrics(ResourceGroupName, FarmName, InstanceId, filter);
+                    break;
+                case RoleType.QueueFrontend:
+                    resultObject = Client.QueueFrontendInstances.GetMetrics(ResourceGroupName, FarmName, InstanceId, filter);
                     break;
                 case RoleType.BlobServer:
                     resultObject = Client.BlobServerInstances.GetMetrics(ResourceGroupName, FarmName, InstanceId, filter);

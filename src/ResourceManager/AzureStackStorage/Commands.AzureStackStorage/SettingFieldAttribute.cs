@@ -15,7 +15,7 @@
 
 using System;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     /// Setting Field Attribute
