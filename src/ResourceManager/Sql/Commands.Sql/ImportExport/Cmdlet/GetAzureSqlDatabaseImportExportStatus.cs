@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Sql.ImportExport.Model;
 using Microsoft.Azure.Commands.Sql.ImportExport.Service;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
 {
@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         public ImportExportDatabaseAdapter ModelAdapter
         {
             get; internal set;
-        }       
-        
+        }
+
         /// <summary>
         /// Get the import/export operation status
         /// </summary>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         public override void ExecuteCmdlet()
         {
             ModelAdapter = InitModelAdapter(DefaultProfile.Context.Subscription);
-            AzureSqlDatabaseImportExportStatusModel model = GetEntity();           
+            AzureSqlDatabaseImportExportStatusModel model = GetEntity();
 
             if (model != null)
             {

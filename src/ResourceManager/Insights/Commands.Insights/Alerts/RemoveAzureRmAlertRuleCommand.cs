@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Insights;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Insights;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
 {

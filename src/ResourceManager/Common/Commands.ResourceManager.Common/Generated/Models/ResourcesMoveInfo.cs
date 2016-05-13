@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Collections.Generic;
 using Hyak.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ResourcesMoveInfo
     {
         private IList<string> _resources;
-        
+
         /// <summary>
         /// Optional. Gets or sets the ids of the resources.
         /// </summary>
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._resources; }
             set { this._resources = value; }
         }
-        
+
         private string _targetResourceGroup;
-        
+
         /// <summary>
         /// Optional. The target resource group.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._targetResourceGroup; }
             set { this._targetResourceGroup = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourcesMoveInfo class.
         /// </summary>

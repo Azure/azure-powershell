@@ -12,15 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Xml;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {

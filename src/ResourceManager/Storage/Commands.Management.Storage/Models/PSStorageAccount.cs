@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Storage;
+using System;
+using System.Collections.Generic;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
@@ -59,19 +59,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public Kind? Kind { get; set; }
         public Encryption Encryption { get; set; }
         public AccessTier? AccessTier { get; set; }
-        
+
         public DateTime? CreationTime { get; set; }
-        
+
         public CustomDomain CustomDomain { get; set; }
-        
+
         public DateTime? LastGeoFailoverTime { get; set; }
-        
+
         public Endpoints PrimaryEndpoints { get; set; }
 
         public string PrimaryLocation { get; set; }
 
         public ProvisioningState? ProvisioningState { get; set; }
-        
+
         public Endpoints SecondaryEndpoints { get; set; }
 
         public string SecondaryLocation { get; set; }

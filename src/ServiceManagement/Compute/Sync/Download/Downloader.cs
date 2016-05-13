@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Sync.Threading;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.ServiceModel.Channels;
-using Microsoft.WindowsAzure.Commands.Sync.Threading;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Download
 {
@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
         private const int DefaultConnectionLimit = 24;
         private DownloaderParameters parameters;
 
-        public Downloader(BlobUri blobUri, string storageAccountKey, string locaFilePath)            
+        public Downloader(BlobUri blobUri, string storageAccountKey, string locaFilePath)
         {
             this.parameters = new DownloaderParameters
             {
@@ -48,9 +48,9 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
 
         public void Download()
         {
-            if(parameters.OverWrite)
+            if (parameters.OverWrite)
             {
-                DeleteTempVhdIfExist(parameters.LocalFilePath);                
+                DeleteTempVhdIfExist(parameters.LocalFilePath);
             }
             else
             {
@@ -127,7 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
             try
             {
                 DriveInfo info = new DriveInfo(destination);
-                if(info.AvailableFreeSpace < blobLength)
+                if (info.AvailableFreeSpace < blobLength)
                 {
                     string message = String.Format("Insufficient disk space: Blob's size is {0}, however available space is {1}.", blobLength, info.AvailableFreeSpace);
                     throw new ArgumentOutOfRangeException(message);

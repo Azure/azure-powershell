@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    using System;
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using System;
 
     public class ApiManagementLongRunningOperation
     {

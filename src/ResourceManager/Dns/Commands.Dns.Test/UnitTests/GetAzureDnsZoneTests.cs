@@ -14,13 +14,18 @@
 
 namespace Microsoft.Azure.Commands.Dns.Test.UnitTests
 {
-    using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using System.Management.Automation;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
     public class GetAzureDnsZoneTests : RMTestBase
     {
+        public GetAzureDnsZoneTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureDnsZoneThrowsExceptionWhenUsingNameAndEndsWith()
