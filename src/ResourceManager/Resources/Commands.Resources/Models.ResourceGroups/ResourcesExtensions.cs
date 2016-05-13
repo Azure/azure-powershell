@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -38,6 +40,33 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
 
             return psGalleryItem;
+        }
+
+        public static PSResource ToPSResource(this GenericResourceExtended resource, ResourcesClient client, bool minimal)
+        {
+            ResourceIdentifier identifier = new ResourceIdentifier(resource.Id);
+            return new PSResource
+            {
+                Name = identifier.ResourceName,
+                Location = resource.Location,
+                ResourceType = identifier.ResourceType,
+                ResourceGroupName = identifier.ResourceGroupName,
+                ParentResource = identifier.ParentResource,
+                Properties = JsonUtilities.DeserializeJson(resource.Properties),
+                PropertiesText = resource.Properties,
+                Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags),
+                Permissions = minimal ? null : client.GetResourcePermissions(identifier),
+                ResourceId = identifier.ToString()
+            };
+        }
+
+        public static PSPermission ToPSPermission(this Permission permission)
+        {
+            return new PSPermission()
+            {
+                Actions = new List<string>(permission.Actions),
+                NotActions = new List<string>(permission.NotActions)
+            };
         }
 
         private static string ConstructTemplateLinkView(TemplateLink templateLink)
