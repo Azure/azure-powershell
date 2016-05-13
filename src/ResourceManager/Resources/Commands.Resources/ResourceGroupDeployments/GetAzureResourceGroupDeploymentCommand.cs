@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.Resources.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(ParameterSetName = GetAzureResourceGroupDeploymentCommand.DeploymentIdParameterSet, Mandatory = true, HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");

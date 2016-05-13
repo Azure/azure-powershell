@@ -12,6 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,17 +27,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
-using System.ServiceModel.Channels;
 using System.Text;
 using System.Xml.Linq;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Newtonsoft.Json;
-using Formatting = System.Xml.Formatting;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -70,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 throw new ArgumentException(string.Format(
                     "Certificate {0} was not found in the certificate store.  Please ensure the referenced " +
-                    "certificate exists in the the LocalMachine\\My or CurrentUser\\My store", 
+                    "certificate exists in the the LocalMachine\\My or CurrentUser\\My store",
                     thumbprint));
             }
         }
@@ -289,7 +285,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string GetLog(HttpResponseMessage response)
         {
-            string body = response.Content == null ? string.Empty 
+            string body = response.Content == null ? string.Empty
                 : FormatString(response.Content.ReadAsStringAsync().Result);
 
             return GetHttpResponseLog(
@@ -300,7 +296,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string GetLog(HttpRequestMessage request)
         {
-            string body = request.Content == null ? string.Empty 
+            string body = request.Content == null ? string.Empty
                 : FormatString(request.Content.ReadAsStringAsync().Result);
 
             return GetHttpRequestLog(
@@ -331,7 +327,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             try
             {
                 object parsedJson = JsonConvert.DeserializeObject(str);
-                return JsonConvert.SerializeObject(parsedJson, 
+                return JsonConvert.SerializeObject(parsedJson,
                     Newtonsoft.Json.Formatting.Indented);
             }
             catch
@@ -453,7 +449,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public static void ClearCurrentStorageAccount(bool clearSMContext = false)
         {
             var RMProfile = AzureRmProfileProvider.Instance.Profile;
-            if (RMProfile != null && RMProfile.Context != null && 
+            if (RMProfile != null && RMProfile.Context != null &&
                 RMProfile.Context.Subscription != null && RMProfile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
             {
                 RMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);

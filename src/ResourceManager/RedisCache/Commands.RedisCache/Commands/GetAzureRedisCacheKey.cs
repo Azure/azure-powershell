@@ -31,10 +31,11 @@ namespace Microsoft.Azure.Commands.RedisCache
         public override void ExecuteCmdlet()
         {
             RedisListKeysResult keysResponse = CacheClient.GetAccessKeys(ResourceGroupName, Name);
-            WriteObject(new RedisAccessKeys() {
-                            PrimaryKey = keysResponse.PrimaryKey,
-                            SecondaryKey = keysResponse.SecondaryKey
-                       });
+            WriteObject(new RedisAccessKeys()
+            {
+                PrimaryKey = keysResponse.PrimaryKey,
+                SecondaryKey = keysResponse.SecondaryKey
+            });
         }
     }
 }

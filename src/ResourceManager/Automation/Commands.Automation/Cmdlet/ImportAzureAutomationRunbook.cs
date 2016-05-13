@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections;
+using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [OutputType(typeof(Runbook))]
     public class ImportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
-        
+
         /// <summary>
         /// Gets or sets the path of the runbook script
         /// </summary>
@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Import the runbook in published state.")]
         public SwitchParameter Published { get; set; }
-        
+
         /// <summary>
         /// Gets or sets switch parameter to confirm overwriting of existing runbook definition.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Forces the command to overwrite an existing runbook definition.")]
         public SwitchParameter Force { get; set; }
-       
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             var runbook = this.AutomationClient.ImportRunbook(
-                    this.ResourceGroupName, 
-                    this.AutomationAccountName, 
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
                     this.ResolvePath(this.Path),
                     this.Description,
-                    this.Tags, 
-                    this.Type, 
-                    this.LogProgress, 
+                    this.Tags,
+                    this.Type,
+                    this.LogProgress,
                     this.LogVerbose,
                     this.Published.IsPresent,
                     this.Force.IsPresent,

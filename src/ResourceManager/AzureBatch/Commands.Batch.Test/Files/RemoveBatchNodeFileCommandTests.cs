@@ -32,8 +32,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public RemoveBatchNodeFileCommandTests()
+        public RemoveBatchNodeFileCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveBatchNodeFileCommand()
@@ -61,8 +62,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Don't go to the service on a Delete NodeFile call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                bool?, 
-                FileDeleteFromComputeNodeOptions, 
+                bool?,
+                FileDeleteFromComputeNodeOptions,
                 AzureOperationHeaderResponse<FileDeleteFromComputeNodeHeaders>>();
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -98,8 +99,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Don't go to the service on a Delete NodeFile call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                bool?, 
-                FileDeleteFromTaskOptions, 
+                bool?,
+                FileDeleteFromTaskOptions,
                 AzureOperationHeaderResponse<FileDeleteFromTaskHeaders>>();
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };

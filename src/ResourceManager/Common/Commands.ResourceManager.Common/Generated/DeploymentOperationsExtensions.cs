@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static LongRunningOperationResponse BeginDeleting(this IDeploymentOperations operations, string resourceGroupName, string deploymentName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperations)s).BeginDeletingAsync(resourceGroupName, deploymentName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Begin deleting deployment.To determine whether the operation has
         /// finished processing the request, call
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.BeginDeletingAsync(resourceGroupName, deploymentName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Cancel a currently running template deployment.
         /// </summary>
@@ -99,13 +99,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static AzureOperationResponse Cancel(this IDeploymentOperations operations, string resourceGroupName, string deploymentName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperations)s).CancelAsync(resourceGroupName, deploymentName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Cancel a currently running template deployment.
         /// </summary>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CancelAsync(resourceGroupName, deploymentName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Checks whether deployment exists.
         /// </summary>
@@ -148,13 +148,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static DeploymentExistsResult CheckExistence(this IDeploymentOperations operations, string resourceGroupName, string deploymentName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperations)s).CheckExistenceAsync(resourceGroupName, deploymentName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Checks whether deployment exists.
         /// </summary>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CheckExistenceAsync(resourceGroupName, deploymentName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Create a named template deployment using a template.
         /// </summary>
@@ -199,13 +199,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static DeploymentOperationsCreateResult CreateOrUpdate(this IDeploymentOperations operations, string resourceGroupName, string deploymentName, Deployment parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperations)s).CreateOrUpdateAsync(resourceGroupName, deploymentName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Create a named template deployment using a template.
         /// </summary>
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CreateOrUpdateAsync(resourceGroupName, deploymentName, parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Delete deployment and all of its resources.
         /// </summary>
@@ -251,13 +251,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static AzureOperationResponse Delete(this IDeploymentOperations operations, string resourceGroupName, string deploymentName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperations)s).DeleteAsync(resourceGroupName, deploymentName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Delete deployment and all of its resources.
         /// </summary>
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.DeleteAsync(resourceGroupName, deploymentName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Get a deployment.
         /// </summary>
@@ -300,13 +300,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static DeploymentGetResult Get(this IDeploymentOperations operations, string resourceGroupName, string deploymentName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperations)s).GetAsync(resourceGroupName, deploymentName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get a deployment.
         /// </summary>
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.GetAsync(resourceGroupName, deploymentName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -349,13 +349,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static DeploymentListResult List(this IDeploymentOperations operations, string resourceGroupName, DeploymentListParameters parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperations)s).ListAsync(resourceGroupName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAsync(resourceGroupName, parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -395,13 +395,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static DeploymentListResult ListNext(this IDeploymentOperations operations, string nextLink)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperations)s).ListNextAsync(nextLink);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListNextAsync(nextLink, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Validate a deployment template.
         /// </summary>
@@ -443,13 +443,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static DeploymentValidateResponse Validate(this IDeploymentOperations operations, string resourceGroupName, string deploymentName, Deployment parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperations)s).ValidateAsync(resourceGroupName, deploymentName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Validate a deployment template.
         /// </summary>

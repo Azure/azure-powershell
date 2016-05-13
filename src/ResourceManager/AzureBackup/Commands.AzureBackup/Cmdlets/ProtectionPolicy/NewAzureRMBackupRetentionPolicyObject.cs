@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using System.Linq;
-using Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Management.BackupServices.Models;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -62,7 +60,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         [Parameter(ParameterSetName = MonthlyRetentionInDailyFormatParamSet, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.DaysOfMonth)]
         [Parameter(ParameterSetName = YearlyRetentionInDailyFormatParamSet, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.DaysOfMonth)]
-        [ValidateSet("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ,"13" ,"14", "15", "16", "17", "18",
+        [ValidateSet("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18",
             "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "Last", IgnoreCase = true)]
         public List<string> DaysOfMonth { get; set; }
 
@@ -73,7 +71,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         [Parameter(ParameterSetName = YearlyRetentionInDailyFormatParamSet, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.MonthsOfYear)]
         [Parameter(ParameterSetName = YearlyRetentionInWeeklyFormatParamSet, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.MonthsOfYear)]
-        [ValidateSet("January", "February", "March", "April", "May", "June", "July" ,"August", "September", "October", "November", "December",  IgnoreCase = true)]
+        [ValidateSet("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", IgnoreCase = true)]
         public string[] MonthsOfYear { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Retention)]

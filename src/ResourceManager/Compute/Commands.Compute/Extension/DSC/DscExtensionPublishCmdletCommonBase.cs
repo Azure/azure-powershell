@@ -1,8 +1,8 @@
 ﻿using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,7 +10,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Management.Automation;
-using Newtonsoft.Json;
 
 
 namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish

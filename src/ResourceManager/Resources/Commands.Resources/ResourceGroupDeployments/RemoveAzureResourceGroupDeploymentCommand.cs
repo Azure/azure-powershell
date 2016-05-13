@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
 
         public override void ExecuteCmdlet()
         {
-            if(string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
             {
                 ResourceGroupName = ResourceIdUtility.GetResourceGroupName(Id);
                 Name = ResourceIdUtility.GetResourceName(Id);

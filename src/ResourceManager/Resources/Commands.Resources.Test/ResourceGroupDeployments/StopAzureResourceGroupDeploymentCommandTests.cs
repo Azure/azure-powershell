@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.ResourceGroups;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Moq;
+using System.Management.Automation;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -31,8 +32,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         private string resourceGroupName = "myResourceGroup";
 
-        public StopAzureResourceGroupDeploymentCommandTests()
+        public StopAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new StopAzureResourceGroupDeploymentCommand()
@@ -46,7 +48,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         public void StopsActiveDeployment()
         {
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            
+
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Force = true;
 

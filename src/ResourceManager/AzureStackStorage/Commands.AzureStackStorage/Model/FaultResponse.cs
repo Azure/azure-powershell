@@ -12,16 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using System;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
-    internal class FaultResponse:ResponseBase
+    internal class FaultResponse : ResponseBase
     {
         public FaultResponse(FaultModel resource) : base(resource)
         {

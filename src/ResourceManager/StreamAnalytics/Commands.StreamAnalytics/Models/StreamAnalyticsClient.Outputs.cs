@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.Azure.Management.StreamAnalytics;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using Microsoft.Azure.Commands.StreamAnalytics.Properties;
-using Microsoft.Azure.Management.StreamAnalytics;
-using Microsoft.Azure.Management.StreamAnalytics.Models;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {

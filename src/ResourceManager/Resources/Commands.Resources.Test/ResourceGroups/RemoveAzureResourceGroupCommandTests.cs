@@ -12,12 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+using System.Management.Automation;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -32,8 +34,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private string resourceGroupName = "myResourceGroup";
         private string resourceGroupId = "/subscriptions/subId/resourceGroups/myResourceGroup";
 
-        public RemoveAzureResourceGroupCommandTests()
+        public RemoveAzureResourceGroupCommandTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveAzureResourceGroupCommand()

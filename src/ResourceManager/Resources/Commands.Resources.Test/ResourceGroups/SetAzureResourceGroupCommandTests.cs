@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Moq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Moq;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -37,8 +39,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private List<Hashtable> tags;
 
-        public SetAzureResourceGroupCommandTests()
+        public SetAzureResourceGroupCommandTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new SetAzureResourceGroupCommand()
@@ -47,7 +50,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 ResourcesClient = resourcesClientMock.Object
             };
 
-            tags = new [] {new Hashtable
+            tags = new[] {new Hashtable
                 {
                     {"Name", "value1"},
                     {"Value", ""}

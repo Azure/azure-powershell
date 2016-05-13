@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ResourceProviderOperationDisplayProperties
     {
         private string _description;
-        
+
         /// <summary>
         /// Optional. Gets or sets operation description.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._description; }
             set { this._description = value; }
         }
-        
+
         private string _operation;
-        
+
         /// <summary>
         /// Optional. Gets or sets operation.
         /// </summary>
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._operation; }
             set { this._operation = value; }
         }
-        
+
         private string _provider;
-        
+
         /// <summary>
         /// Optional. Gets or sets operation provider.
         /// </summary>
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._provider; }
             set { this._provider = value; }
         }
-        
+
         private string _publisher;
-        
+
         /// <summary>
         /// Optional. Gets or sets operation description.
         /// </summary>
@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._publisher; }
             set { this._publisher = value; }
         }
-        
+
         private string _resource;
-        
+
         /// <summary>
         /// Optional. Gets or sets operation resource.
         /// </summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._resource; }
             set { this._resource = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the
         /// ResourceProviderOperationDisplayProperties class.

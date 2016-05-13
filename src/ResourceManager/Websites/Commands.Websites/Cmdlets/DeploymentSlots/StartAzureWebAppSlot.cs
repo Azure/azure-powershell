@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmWebAppSlot")]
     public class StartAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
-    {    
+    {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
