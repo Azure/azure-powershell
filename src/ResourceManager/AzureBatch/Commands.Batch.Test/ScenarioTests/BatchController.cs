@@ -22,6 +22,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -89,6 +90,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
                 this.csmTestFactory = SetupCSMTestEnvironmentFactory();
