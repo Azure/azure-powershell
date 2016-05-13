@@ -15,16 +15,28 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
 {
     public class WebServiceTests : RMTestBase
     {
+        private readonly ITestOutputHelper output;
+
+        public WebServiceTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor
+
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateGetRemoveWebService()
         {
-            
+            this.output.WriteLine("Starting the PS test");
+            WebServicesTestController.NewInstance.RunPsTest("Test-CreateGetRemoveMLService");
+            this.output.WriteLine("test ended");
         }
     }
 }
