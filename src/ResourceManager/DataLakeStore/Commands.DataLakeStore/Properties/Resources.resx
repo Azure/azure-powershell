@@ -219,4 +219,7 @@
   <data name="TaskCancelledMessage" xml:space="preserve">
     <value>The operation is being cancelled, please wait...</value>
   </data>
+  <data name="UploadFailedMessage" xml:space="preserve">
+    <value>"Upload operation failed due to the following underlying error: {0}. You can try to resume the upload by specifying the "Resume" option. If the error persists, please contact Microsoft support."</value>
+  </data>
 </root>
