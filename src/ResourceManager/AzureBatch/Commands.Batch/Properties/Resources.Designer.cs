@@ -430,6 +430,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting lifetime statistics for all of the jobs.
+        /// </summary>
+        internal static string GetJobLifeStatistics {
+            get {
+                return ResourceManager.GetString("GetJobLifeStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting all jobs associated with the Batch account..
         /// </summary>
         internal static string GetJobNoFilter {
@@ -538,11 +547,38 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting lifetime statistics for all of the pools.
+        /// </summary>
+        internal static string GetPoolLifetimeStatistics {
+            get {
+                return ResourceManager.GetString("GetPoolLifetimeStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting all pools associated with the Batch account. .
         /// </summary>
         internal static string GetPoolNoFilter {
             get {
                 return ResourceManager.GetString("GetPoolNoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting usage metrics, aggregated for pools.
+        /// </summary>
+        internal static string GetPoolUsageMetricsByNoFilter {
+            get {
+                return ResourceManager.GetString("GetPoolUsageMetricsByNoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting usage metrics, aggregated for pools with the filter {0}.
+        /// </summary>
+        internal static string GetPoolUsageMetricsByOData {
+            get {
+                return ResourceManager.GetString("GetPoolUsageMetricsByOData", resourceCulture);
             }
         }
         

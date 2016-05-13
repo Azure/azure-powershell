@@ -72,6 +72,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSPoolStatistics ListAllPoolsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionBehaviors = null)
         {
             PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
+
+            WriteVerbose(string.Format(Resources.GetPoolLifetimeStatistics));
+
             PoolStatistics poolStatistics = poolOperations.GetAllPoolsLifetimeStatistics(additionBehaviors);
             PSPoolStatistics psPoolStatistics = new PSPoolStatistics(poolStatistics);
             return psPoolStatistics;
@@ -301,6 +304,33 @@ namespace Microsoft.Azure.Commands.Batch.Models
             WriteVerbose(string.Format(Resources.ChangeOSVersion, poolId, parameters.TargetOSVersion));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
             poolOperations.ChangeOSVersion(poolId, parameters.TargetOSVersion, parameters.AdditionalBehaviors);
+        }
+
+        /// <summary>
+        /// Lists the usage metrics, aggregated by pool across individual time intervals, for the specified account.
+        /// </summary>
+        /// <param name="options">The options to use when aggregating usage for pools..</param>
+        public IEnumerable<PSPoolUsageMetrics> GetPoolUsageMetrics(ListPoolUsageOptions options)
+        {
+            string verboseLogString = null;
+            ODATADetailLevel getDetailLevel = null;
+
+            if (!string.IsNullOrEmpty(options.Filter))
+            {
+                verboseLogString = Resources.GetPoolUsageMetricsByOData;
+                getDetailLevel = new ODATADetailLevel(filterClause: options.Filter);
+            }
+            else
+            {
+                verboseLogString = Resources.GetPoolUsageMetricsByNoFilter;
+            }
+
+            PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
+            IPagedEnumerable<PoolUsageMetrics> poolUsageMetrics = poolOperations.ListPoolUsageMetrics(options.StartTime, options.EndTime, getDetailLevel, options.AdditionalBehaviors);
+            Func<PoolUsageMetrics, PSPoolUsageMetrics> mappingFunction = p => { return new PSPoolUsageMetrics(p); };
+
+            return PSPagedEnumerable<PSPoolUsageMetrics, PoolUsageMetrics>.CreateWithMaxCount(
+                poolUsageMetrics, mappingFunction, Int32.MaxValue, () => WriteVerbose(string.Format(Resources.MaxCount, Int32.MaxValue)));
         }
     }
 }

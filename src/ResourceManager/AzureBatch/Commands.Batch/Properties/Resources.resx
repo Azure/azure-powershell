@@ -460,4 +460,16 @@
   <data name="FailedToAddApplicationPackage" xml:space="preserve">
     <value>Failed to add application package {0} version {1}. {2}.</value>
   </data>
+  <data name="GetJobLifeStatistics" xml:space="preserve">
+    <value>Getting lifetime statistics for all of the jobs</value>
+  </data>
+  <data name="GetPoolLifetimeStatistics" xml:space="preserve">
+    <value>Getting lifetime statistics for all of the pools</value>
+  </data>
+  <data name="GetPoolUsageMetricsByNoFilter" xml:space="preserve">
+    <value>Getting usage metrics, aggregated for pools</value>
+  </data>
+  <data name="GetPoolUsageMetricsByOData" xml:space="preserve">
+    <value>Getting usage metrics, aggregated for pools with the filter {0}</value>
+  </data>
 </root>
