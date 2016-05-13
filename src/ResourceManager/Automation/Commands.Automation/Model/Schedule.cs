@@ -57,18 +57,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.NextRun = AdjustOffset(schedule.Properties.NextRun, schedule.Properties.NextRunOffsetMinutes);
             this.Interval = schedule.Properties.Interval ?? this.Interval;
             this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Properties.Frequency, true);
-            this.DaysOfWeekWeeklySchedule = schedule.Properties.AdvancedSchedule == null
-                ? null
-                : schedule.Properties.AdvancedSchedule.WeekDays;
-            this.DaysOfMonth = schedule.Properties.AdvancedSchedule == null
-                ? null
-                : this.GetDaysOfMonth(schedule.Properties.AdvancedSchedule.MonthDays);
-            this.DayOfWeekMonthlySchedule = this.IsMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
-                ? null
-                : schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Day;
-            this.DayOfWeekOccurrence = this.IsMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
-                ? null
-                : this.GetDayOfWeekOccurrence(schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Occurrence);
+            this.WeeklyScheduleOptions = this.CreateWeeklyScheduleOptions(schedule);
+            this.MonthlyScheduleOptions = this.CreateMonthlyScheduleOptions(schedule);
             this.TimeZone = schedule.Properties.TimeZone;
         }
 
@@ -112,24 +102,14 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public ScheduleFrequency Frequency { get; set; }
 
         /// <summary>
-        /// Gets or sets the schedule days of the week.
+        /// Gets or sets the monthly schedule options.
         /// </summary>
-        public IList<string> DaysOfWeekWeeklySchedule { get; set; }
+        public MonthlyScheduleOptions MonthlyScheduleOptions { get; set; }
 
         /// <summary>
-        /// Gets or sets the schedule days of the month.
+        /// Gets or sets the weekly schedule options.
         /// </summary>
-        public IList<DaysOfMonth> DaysOfMonth { get; set; }
-
-        /// <summary>
-        /// Gets or sets the schedule day of the week.
-        /// </summary>
-        public string DayOfWeekMonthlySchedule { get; set; }
-
-        /// <summary>
-        /// Gets or sets the schedule day of the week occurrence.
-        /// </summary>
-        public string DayOfWeekOccurrence { get; set; }
+        public WeeklyScheduleOptions WeeklyScheduleOptions { get; set; }
 
         /// <summary>
         /// The create advanced schedule.
@@ -146,22 +126,31 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             var advancedSchedule = new AdvancedSchedule()
             {
-                WeekDays = this.DaysOfWeekWeeklySchedule,
-                MonthDays = this.DaysOfMonth == null ? null : this.DaysOfMonth.Select(v => Convert.ToInt32(v)).ToList(),
-                MonthlyOccurrences = string.IsNullOrWhiteSpace(this.DayOfWeekMonthlySchedule) && this.DayOfWeekOccurrence == null
+                WeekDays = this.WeeklyScheduleOptions == null ? null : this.WeeklyScheduleOptions.DaysOfWeek,
+                MonthDays = (this.MonthlyScheduleOptions == null || this.MonthlyScheduleOptions.DaysOfMonth == null) ? null : this.MonthlyScheduleOptions.DaysOfMonth.Select(v => Convert.ToInt32(v)).ToList(),
+                MonthlyOccurrences = (this.MonthlyScheduleOptions == null || this.MonthlyScheduleOptions.DayOfWeek == null)
                     ? null
                     : new AdvancedScheduleMonthlyOccurrence[]
                     {
                         new AdvancedScheduleMonthlyOccurrence()
                         {
-                            Day = this.DayOfWeekMonthlySchedule,
-                            Occurrence = this.GetDayOfWeekOccurrence(this.DayOfWeekOccurrence)
+                            Day = this.MonthlyScheduleOptions.DayOfWeek.Day,
+                            Occurrence = this.GetDayOfWeekOccurrence(this.MonthlyScheduleOptions.DayOfWeek.Occurrence)
                         }
                     }
             };
 
             return advancedSchedule;
         }
+
+        /// <summary>
+        /// Gets or sets the schedule time zone.
+        /// </summary>
+        public string TimeZone { get; set; }
+
+        #endregion Public Properties
+
+        #region Private Methods
 
         /// <summary>
         /// The is null or empty list.
@@ -204,10 +193,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </returns>
         private bool AdvancedScheduleIsNull(Schedule schedule)
         {
-            return (schedule.DaysOfWeekWeeklySchedule == null
-                && schedule.DaysOfMonth == null
-                && string.IsNullOrWhiteSpace(schedule.DayOfWeekMonthlySchedule)
-                && schedule.DayOfWeekOccurrence == null);
+            return schedule.WeeklyScheduleOptions == null
+                && schedule.MonthlyScheduleOptions == null;
         }
 
         /// <summary>
@@ -227,6 +214,53 @@ namespace Microsoft.Azure.Commands.Automation.Model
             }
 
             return Convert.ToInt32(Enum.Parse(typeof(DayOfWeekOccurrence), dayOfWeekOccurrence));
+        }
+
+        /// <summary>
+        /// The create weekly schedule options.
+        /// </summary>
+        /// <param name="schedule">
+        /// The schedule.
+        /// </param>
+        /// <returns>
+        /// The <see cref="WeeklyScheduleOptions"/>.
+        /// </returns>
+        private WeeklyScheduleOptions CreateWeeklyScheduleOptions(Microsoft.Azure.Management.Automation.Models.Schedule schedule)
+        {
+            return schedule.Properties.AdvancedSchedule == null
+                ? null
+                : new WeeklyScheduleOptions()
+                {
+                    DaysOfWeek = schedule.Properties.AdvancedSchedule.WeekDays
+                };
+        }
+
+        /// <summary>
+        /// The create monthly schedule options.
+        /// </summary>
+        /// <param name="schedule">
+        /// The schedule.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MonthlyScheduleOptions"/>.
+        /// </returns>
+        private MonthlyScheduleOptions CreateMonthlyScheduleOptions(
+            Microsoft.Azure.Management.Automation.Models.Schedule schedule)
+        {
+            return schedule.Properties.AdvancedSchedule == null
+                || (schedule.Properties.AdvancedSchedule.MonthDays == null && schedule.Properties.AdvancedSchedule.MonthlyOccurrences == null)
+                ? null
+                : new MonthlyScheduleOptions()
+                {
+                    DaysOfMonth = this.GetDaysOfMonth(schedule.Properties.AdvancedSchedule.MonthDays),
+                    DayOfWeek = this.IsMonthlyOccurrenceNull(schedule.Properties.AdvancedSchedule)
+                        ? null
+                        : new DayOfWeek()
+                        {
+                            Day = schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Day,
+                            Occurrence = this.GetDayOfWeekOccurrence(schedule.Properties.AdvancedSchedule.MonthlyOccurrences.First().Occurrence)
+                        }
+                };
         }
 
         /// <summary>
@@ -258,14 +292,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         {
             return daysOfMonth.Select(value => (DaysOfMonth)value).ToList();
         }
-        /// <summary>
-        /// Gets or sets the schedule time zone.
-        /// </summary>
-        public string TimeZone { get; set; }
-
-        #endregion Public Properties
-
-        #region Private Methods
 
         private static DateTimeOffset? AdjustOffset(DateTimeOffset? dateTimeOffset, double offsetMinutes)
         {

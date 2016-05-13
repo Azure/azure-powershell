@@ -19,6 +19,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using DayOfWeek = Microsoft.Azure.Commands.Automation.Model.DayOfWeek;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the schedule days of the week.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByWeekly, Mandatory = false, HelpMessage = "The list of days of week for the weekly schedule.")]
-        public DayOfWeek[] DaysOfWeek { get; set; }
+        public System.DayOfWeek[] DaysOfWeek { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule days of the month.
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the schedule day of the week.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByMonthlyDayOfWeek, Mandatory = false, HelpMessage = "The day of week for the monthly occurrence.")]
-        public DayOfWeek? DayOfWeek { get; set; }
+        public System.DayOfWeek? DayOfWeek { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule day of the week.
@@ -202,12 +203,33 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 ExpiryTime = this.ExpiryTime,
                 Frequency = ScheduleFrequency.Month,
                 Interval = this.MonthInterval,
-                DaysOfMonth = this.DaysOfMonth,
-                DayOfWeekMonthlySchedule = dayOfWeek,
-                DayOfWeekOccurrence = this.DayOfWeekOccurrence == 0 ? null : this.DayOfWeekOccurrence.ToString()
+                MonthlyScheduleOptions = this.IsMonthlyScheduleNull() 
+                    ? null
+                    : new MonthlyScheduleOptions()
+                    {
+                        DaysOfMonth = this.DaysOfMonth,
+                        DayOfWeek = this.DayOfWeek == null && this.DayOfWeekOccurrence == 0
+                            ? null
+                            : new DayOfWeek()
+                            {
+                                Day = dayOfWeek,
+                                Occurrence = this.DayOfWeekOccurrence == 0 ? null : this.DayOfWeekOccurrence.ToString()
+                            }
+                    }
             };
 
             return newSchedule;
+        }
+
+        /// <summary>
+        /// The is monthly schedule null.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        private bool IsMonthlyScheduleNull()
+        {
+            return this.DaysOfMonth == null && this.DayOfWeek == null && this.DayOfWeekOccurrence == 0;
         }
 
         /// <summary>
@@ -226,9 +248,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 ExpiryTime = this.ExpiryTime,
                 Frequency = ScheduleFrequency.Week,
                 Interval = this.WeekInterval,
-                DaysOfWeekWeeklySchedule = this.DaysOfWeek == null
+                WeeklyScheduleOptions = this.DaysOfWeek == null
                     ? null
-                    : this.DaysOfWeek.Select(day => day.ToString()).ToList()
+                    : new WeeklyScheduleOptions()
+                    {
+                       DaysOfWeek = this.DaysOfWeek.Select(day => day.ToString()).ToList()
+                    }
             };
 
             return newSchedule;
