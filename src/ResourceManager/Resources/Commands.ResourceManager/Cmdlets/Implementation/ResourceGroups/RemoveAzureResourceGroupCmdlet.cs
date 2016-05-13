@@ -59,6 +59,8 @@ namespace Microsoft.Azure.Commands.Resources
                 ProjectResources.RemoveResourceGroupMessage,
                 Name,
                 () => ResourceManagerSdkClient.DeleteResourceGroup(Name));
+
+            WriteObject(true);
         }
     }
 }

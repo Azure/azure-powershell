@@ -17,7 +17,9 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -131,6 +133,20 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 ProvisioningState.Canceled,
                 ProvisioningState.Succeeded,
                 ProvisioningState.Failed);
+        }
+
+        internal List<PSPermission> GetResourcePermissions(ResourceIdentifier identity)
+        {
+            PermissionGetResult permissionsResult = AuthorizationManagementClient.Permissions.ListForResource(
+                    identity.ResourceGroupName,
+                    identity.ToResourceIdentity());
+
+            if (permissionsResult != null)
+            {
+                return permissionsResult.Permissions.Select(p => p.ToPSPermission()).ToList();
+            }
+
+            return null;
         }
 
         private void WriteDeploymentProgress(string resourceGroup, string deploymentName, Deployment deployment)
