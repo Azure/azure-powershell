@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public string UserId { get; set; }
 
-        public string UniqueId { get { return this.UserId; } }
+        public string UniqueId { get; set; }
 
         public LoginType LoginType { get; set; }
 

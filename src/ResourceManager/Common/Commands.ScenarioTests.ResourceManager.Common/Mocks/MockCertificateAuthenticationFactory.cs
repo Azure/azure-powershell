@@ -52,7 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             {
                 UserId = account.Id,
                 LoginType = LoginType.OrgId,
-                AccessToken = "123"
+                AccessToken = "123", 
+                UniqueId = "UniqueId"
             };
 
             return token;
