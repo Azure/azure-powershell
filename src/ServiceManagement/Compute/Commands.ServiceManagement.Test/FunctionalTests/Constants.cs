@@ -17,13 +17,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test
     public class Category
     {
         public const string Scenario = "AzureRTScenario";
-        public const string BVT = "BVT";
         public const string Functional = "Functional";
         public const string Preview = "Preview";
         public const string Sequential = "Sequential";
         public const string Network = "Network";
         public const string Upload = "AzureRTUpload";
         public const string CleanUp = "AzureRTCleanUp";
+
+        // Acceptance type
+        public const string AcceptanceType = "AcceptanceType";
+        public const string BVT = "BVT";
+        public const string CheckIn = "CheckIn";
     }
 
     public class LoadBalancerDistribution

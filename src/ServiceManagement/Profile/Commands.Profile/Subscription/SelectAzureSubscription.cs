@@ -16,10 +16,10 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
@@ -140,6 +140,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
 
             AzureSubscription subscription = ProfileClient.Profile.Subscriptions.Values
+                .Where(s => !string.IsNullOrWhiteSpace(s.Name))
                 .FirstOrDefault(s => s.Name.Equals(SubscriptionName, StringComparison.InvariantCultureIgnoreCase) ||
                                      s.Id.ToString().Equals(SubscriptionId, StringComparison.InvariantCultureIgnoreCase));
 

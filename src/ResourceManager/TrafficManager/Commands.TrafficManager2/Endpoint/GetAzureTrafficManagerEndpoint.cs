@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.TrafficManager.Models;
 using Microsoft.Azure.Commands.TrafficManager.Utilities;
-
+using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.TrafficManager
@@ -51,9 +50,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
             if (this.ParameterSetName == "Fields")
             {
                 trafficManagerEndpoint = this.TrafficManagerClient.GetTrafficManagerEndpoint(
-                    this.ResourceGroupName, 
-                    this.ProfileName, 
-                    this.Type, 
+                    this.ResourceGroupName,
+                    this.ProfileName,
+                    this.Type,
                     this.Name);
             }
             else if (this.ParameterSetName == "Object")

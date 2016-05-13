@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Resources;
 using System;
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public partial class BatchClient
     {
-        public IBatchManagementClient BatchManagementClient{ get; private set; }
+        public IBatchManagementClient BatchManagementClient { get; private set; }
 
         public IResourceManagementClient ResourceManagementClient { get; private set; }
 

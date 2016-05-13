@@ -12,20 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.Insights.Diagnostics;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using Xunit;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 {
@@ -36,14 +31,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         private readonly Mock<IServiceDiagnosticSettingsOperations> insightsDiagnosticsOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private ServiceDiagnosticSettingsGetResponse response;
-        private RuleCreateOrUpdateParameters createOrUpdatePrms;
         private const string resourceId = "/subscriptions/123/resourcegroups/rg/providers/rp/resource/myresource";
         private const string storageAccountId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.storage/accounts/myaccount";
         private string calledResourceId;
         ServiceDiagnosticSettingsPutParameters calledPutParameters;
 
-        public SetDiagnosticSettingCommandTests()
+        public SetDiagnosticSettingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsDiagnosticsOperationsMock = new Mock<IServiceDiagnosticSettingsOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

@@ -12,20 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using System.Threading;
-using Hyak.Common;
-using Microsoft.Azure.Commands.AzureBackup.Properties;
-using System.Net;
-using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.Azure.Management.BackupServices;
-using Microsoft.Azure.Management.BackupServices.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
 {

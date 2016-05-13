@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// Gets azure automation schedules for a given account.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
-    [OutputType(typeof (Runbook))]
+    [OutputType(typeof(Runbook))]
     public class NewAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             // ByRunbookName
             runbook = this.AutomationClient.CreateRunbookByName(
                     this.ResourceGroupName, this.AutomationAccountName, this.Name, this.Description, this.Tags, this.Type, this.LogProgress, this.LogVerbose, false);
-            
+
             this.WriteObject(runbook);
         }
     }

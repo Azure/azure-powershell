@@ -11,17 +11,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSubscription", DefaultParameterSetName = ListByIdInTenantParameterSet), 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSubscription", DefaultParameterSetName = ListByIdInTenantParameterSet),
         OutputType(typeof(PSAzureSubscription))]
     public class GetAzureRMSubscriptionCommand : AzureRMCmdlet
     {
@@ -30,7 +33,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         private RMProfileClient _client;
 
-        [Parameter(ParameterSetName= ListByIdInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory=false)]
+        [Parameter(ParameterSetName = ListByIdInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
         public string SubscriptionId { get; set; }
 
         [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
@@ -92,7 +95,41 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 try
                 {
-                    WriteObject(_client.GetSubscriptions(tenant).Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
+                    var tenantsList = new List<string>();
+
+                    if (string.IsNullOrWhiteSpace(tenant))
+                    {
+                        tenantsList.AddRange(_client.ListTenants()
+                            .Select(t => (t.Id == Guid.Empty) ? t.Domain : t.Id.ToString()));
+                    }
+                    else
+                    {
+                        tenantsList.Add(tenant);
+                    }
+
+                    foreach (var tenantId in tenantsList)
+                    {
+                        try
+                        {
+                            string listNextLink = null;
+                            do
+                            {
+                                var subscriptions = _client.ListSubscriptions(tenantId, ref listNextLink);
+                                WriteObject(subscriptions.Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
+                            } while (listNextLink != null);
+                        }
+                        catch (AadAuthenticationException)
+                        {
+                            if (!string.IsNullOrWhiteSpace(tenant))
+                            {
+                                throw;
+                            }
+                            WriteWarning(string.Format(
+                                Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToLogin,
+                                AzureRmProfileProvider.Instance.Profile.Context.Account,
+                                tenant));
+                        }
+                    }
                 }
                 catch (AadAuthenticationException exception)
                 {

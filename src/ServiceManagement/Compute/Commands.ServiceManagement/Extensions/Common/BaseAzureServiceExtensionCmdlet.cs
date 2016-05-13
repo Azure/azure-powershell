@@ -39,6 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
         protected const string NewExtensionParameterSetName = "NewExtension";
         protected const string NewExtensionUsingThumbprintParameterSetName = "NewExtensionUsingThumbprint";
+        protected const string UpdateExtensionStatusParameterSetName = "UpdateExtensionStatusParameterSetName";
         protected const string SetExtensionParameterSetName = "SetExtension";
         protected const string SetExtensionUsingThumbprintParameterSetName = "SetExtensionUsingThumbprint";
         protected const string SetExtensionUsingDiagnosticsConfigurationParameterSetName = "SetExtensionUsingDiagnosticsConfiguration";
@@ -66,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         public virtual string ExtensionName { get; set; }
         public virtual string Version { get; set; }
         public virtual string ExtensionId { get; set; }
+        public virtual string ExtensionState { get; set; }
 
         public BaseAzureServiceExtensionCmdlet()
             : base()

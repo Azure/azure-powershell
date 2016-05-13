@@ -151,6 +151,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selected subscription is in &apos;{0}&apos; state. .
+        /// </summary>
+        internal static string SelectedSubscriptionNotActive {
+            get {
+                return ResourceManager.GetString("SelectedSubscriptionNotActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide either a subscription ID, subscription name, tenant Id or domain..
         /// </summary>
         internal static string SetAzureRmContextNoParameterSet {

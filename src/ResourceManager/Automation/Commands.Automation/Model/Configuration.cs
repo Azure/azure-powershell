@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
 using System;
 using System.Collections;
-using Microsoft.Azure.Commands.Automation.Common;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             foreach (var kvp in configuration.Properties.Parameters)
             {
                 this.Parameters.Add(kvp.Key, (object)kvp.Value);
-            }    
+            }
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the content source.
         /// </summary>
         public ContentSource Source { get; set; }
-         */ 
+         */
     }
 
     /// <summary>

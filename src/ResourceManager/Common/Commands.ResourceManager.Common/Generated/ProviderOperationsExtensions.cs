@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ProviderGetResult Get(this IProviderOperations operations, string resourceProviderNamespace)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IProviderOperations)s).GetAsync(resourceProviderNamespace);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a resource provider.
         /// </summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.GetAsync(resourceProviderNamespace, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets a list of resource providers.
         /// </summary>
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ProviderListResult List(this IProviderOperations operations, ProviderListParameters parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IProviderOperations)s).ListAsync(parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a list of resource providers.
         /// </summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAsync(parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -125,13 +125,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ProviderListResult ListNext(this IProviderOperations operations, string nextLink)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IProviderOperations)s).ListNextAsync(nextLink);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListNextAsync(nextLink, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Registers provider to be used with a subscription.
         /// </summary>
@@ -166,13 +166,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ProviderRegistionResult Register(this IProviderOperations operations, string resourceProviderNamespace)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IProviderOperations)s).RegisterAsync(resourceProviderNamespace);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Registers provider to be used with a subscription.
         /// </summary>
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.RegisterAsync(resourceProviderNamespace, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Unregisters provider from a subscription.
         /// </summary>
@@ -206,13 +206,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ProviderUnregistionResult Unregister(this IProviderOperations operations, string resourceProviderNamespace)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IProviderOperations)s).UnregisterAsync(resourceProviderNamespace);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Unregisters provider from a subscription.
         /// </summary>

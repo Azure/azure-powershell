@@ -19,12 +19,10 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.XmlSchema;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Hyak.Common;
 using Microsoft.Azure;
+using Microsoft.Azure.ServiceManagement.Common.XmlSchema;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
 {
@@ -67,13 +65,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         /// <summary>
         /// Get certificate test credentials and target management URI from environment variables
         /// </summary>
-        /// <returns>A test environment containg credentials and target URI, or null if no environment is found</returns>
+        /// <returns>A test environment containing credentials and target URI, or null if no environment is found</returns>
         protected virtual TestEnvironment GetCertificateTestEnvironment()
         {
             TestEnvironment environment = null;
             string testConnectionString = Environment.GetEnvironmentVariable(TestCertificateConnectionStringKey);
             string testPublishSettingsString = Environment.GetEnvironmentVariable(TestPublishSettingsFileKey);
-            string defaultPublishSettingsFile = Path.Combine(Environment.CurrentDirectory, DefaultPublishsettingsFilename);
+            string defaultPublishSettingsFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DefaultPublishsettingsFilename);
             if (File.Exists(defaultPublishSettingsFile))
             {
                 TracingAdapter.Information("Getting credentials from local publishsettings file: {0}", defaultPublishSettingsFile);
@@ -96,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         /// <summary>
         /// Get the test environment from a connection string specifying a certificate
         /// </summary>
-        /// <param name="testConnectionString">The connetcion string to parse</param>
+        /// <param name="testConnectionString">The connection string to parse</param>
         /// <returns>The test environment from parsing the connection string.</returns>
         protected virtual TestEnvironment GetCertificateTestEnvironmentFromConnectionString(string testConnectionString)
         {

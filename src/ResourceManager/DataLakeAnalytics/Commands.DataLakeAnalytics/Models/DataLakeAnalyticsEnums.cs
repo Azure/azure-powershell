@@ -38,6 +38,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             Secret
         }
 
+        public enum DataSourceType
+        {
+            DataLakeStore,
+            Blob
+        }
+
         public enum ExtendedJobData
         {
             None,

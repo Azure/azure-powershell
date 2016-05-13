@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Net;
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
+using System;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
 {
@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// The Sql client to be used by this end points communicator
         /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
-        
+
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription {get ; set; }
+        private static AzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -52,8 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Databases
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context"></param>
         public AzureSqlServerUpgradeCommunicator(AzureContext context)
         {
             Context = context;
@@ -123,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
                         ScheduleUpgradeAfterTime = null
                     };
                 }
-                
+
                 throw;
             }
         }

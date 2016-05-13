@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Management.HDInsight.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -83,6 +83,36 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public virtual OperationResource ResizeCluster(string resourceGroupName, string clusterName, ClusterResizeParameters resizeParams)
         {
             return HdInsightManagementClient.Clusters.Resize(resourceGroupName, clusterName, resizeParams);
+        }
+
+        public virtual OperationResource ExecuteScriptActions(string resourceGroupName, string clusterName, ExecuteScriptActionParameters executeScriptActionParameters)
+        {
+            return HdInsightManagementClient.Clusters.ExecuteScriptActions(resourceGroupName, clusterName, executeScriptActionParameters);
+        }
+
+        public virtual ClusterRuntimeScriptActionDetailResponse GetScriptExecutionDetail(string resourceGroupName, string clusterName, long scriptExecutionId)
+        {
+            return HdInsightManagementClient.Clusters.GetScriptExecutionDetail(resourceGroupName, clusterName, scriptExecutionId);
+        }
+
+        public virtual ClusterListPersistedScriptActionsResponse ListPersistedScripts(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.Clusters.ListPersistedScripts(resourceGroupName, clusterName);
+        }
+
+        public virtual ClusterListRuntimeScriptActionDetailResponse ListScriptExecutionHistory(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.Clusters.ListScriptExecutionHistory(resourceGroupName, clusterName);
+        }
+
+        public virtual AzureOperationResponse DeletePersistedScript(string resourceGroupName, string clusterName, string scriptName)
+        {
+            return HdInsightManagementClient.Clusters.DeletePersistedScript(resourceGroupName, clusterName, scriptName);
+        }
+
+        public virtual AzureOperationResponse PromoteScript(string resourceGroupName, string clusterName, long scriptExecutionId)
+        {
+            return HdInsightManagementClient.Clusters.PromoteScript(resourceGroupName, clusterName, scriptExecutionId);
         }
 
         public virtual OperationResource DeleteCluster(string resourceGroupName, string clusterName)

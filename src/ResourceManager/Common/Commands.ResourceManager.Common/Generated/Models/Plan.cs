@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class Plan
     {
         private string _name;
-        
+
         /// <summary>
         /// Optional. Gets or sets the plan ID.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._name; }
             set { this._name = value; }
         }
-        
+
         private string _product;
-        
+
         /// <summary>
         /// Optional. Gets or sets the offer ID.
         /// </summary>
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._product; }
             set { this._product = value; }
         }
-        
+
         private string _promotionCode;
-        
+
         /// <summary>
         /// Optional. Gets or sets the promotion code.
         /// </summary>
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._promotionCode; }
             set { this._promotionCode = value; }
         }
-        
+
         private string _publisher;
-        
+
         /// <summary>
         /// Optional. Gets or sets the publisher ID.
         /// </summary>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._publisher; }
             set { this._publisher = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the Plan class.
         /// </summary>

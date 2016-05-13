@@ -88,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         /// <returns>Path to the resource.</returns>
         public static string GetAssemblyTestResourcePath<TResourceLocator>(string relativePath)
         {
-            string path = Path.Combine(Environment.CurrentDirectory, relativePath);
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
             try
             {
                 EmbeddedFileWriter.WriteResourceToDisk<TResourceLocator>(relativePath, path);

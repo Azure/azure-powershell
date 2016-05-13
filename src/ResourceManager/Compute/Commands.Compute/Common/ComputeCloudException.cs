@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Compute.Models;
+using Newtonsoft.Json;
 using System;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using Hyak.Common;
-using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Common
 {
@@ -54,7 +52,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
             if (cloudException.Response.StatusCode.Equals(HttpStatusCode.OK)
                 && cloudException.Response.Content != null)
             {
-                var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(cloudException.Response.Content.ReadAsStringAsync().Result);
+                var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
+                    cloudException.Response.Content);
 
                 sb.AppendLine().AppendFormat("StartTime: {0}", errorReturned.StartTime);
                 sb.AppendLine().AppendFormat("EndTime: {0}", errorReturned.EndTime);
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 sb.AppendLine().AppendFormat("StatusCode: {0}", cloudException.Response.StatusCode.GetHashCode());
                 sb.AppendLine().AppendFormat("ReasonPhrase: {0}", cloudException.Response.ReasonPhrase);
                 if (cloudException.Response.Headers == null
-                    || !cloudException.Response.Headers.Contains(RequestIdHeaderInResponse))
+                    || !cloudException.Response.Headers.ContainsKey(RequestIdHeaderInResponse))
                 {
                     return sb.ToString();
                 }
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
     public class ComputeLongRunningOperationError
     {
         public string OperationId;
-        public ComputeOperationStatus Status;
+        public string Status;
         public DateTime? StartTime;
         public DateTime? EndTime;
         public ApiError Error;

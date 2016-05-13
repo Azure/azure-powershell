@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -56,26 +55,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByObject:
-                        this.GetAll();
-                        break;
-                    case ASRParameterSets.ByObjectWithName:
-                        this.GetByName();
-                        break;
-                    case ASRParameterSets.ByObjectWithFriendlyName:
-                        this.GetByFriendlyName();
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
+                case ASRParameterSets.ByObject:
+                    this.GetAll();
+                    break;
+                case ASRParameterSets.ByObjectWithName:
+                    this.GetByName();
+                    break;
+                case ASRParameterSets.ByObjectWithFriendlyName:
+                    this.GetByFriendlyName();
+                    break;
             }
         }
 
@@ -89,11 +83,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             ProtectableItemListResponse protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                 Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 this.ProtectionContainer.Name);
-            ProtectableItem protectableItem = protectableItemListResponse.ProtectableItems.SingleOrDefault(t => t.Properties.FriendlyName.CompareTo(this.FriendlyName) == 0);
+            ProtectableItem protectableItem = protectableItemListResponse.ProtectableItems.SingleOrDefault(t => string.Compare(t.Properties.FriendlyName, this.FriendlyName, StringComparison.OrdinalIgnoreCase) == 0);
 
             if (protectableItem != null)
-            {              
-                WriteProtectionEntity(protectableItem);
+            {
+                ProtectableItemResponse protectableItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+                    Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                    this.ProtectionContainer.Name,
+                    protectableItem.Name);
+                WriteProtectionEntity(protectableItemResponse.ProtectableItem);
+
                 found = true;
             }
 
@@ -114,17 +113,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             bool found = false;
 
-            ProtectableItemResponse protectableItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+            ProtectableItemListResponse protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                 Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                this.ProtectionContainer.Name, 
-                this.Name);
-           
-            if (protectableItemResponse.ProtectableItem != null)
+                this.ProtectionContainer.Name);
+            ProtectableItem protectableItem = protectableItemListResponse.ProtectableItems.SingleOrDefault(t => string.Compare(t.Name, this.Name, StringComparison.OrdinalIgnoreCase) == 0);
+
+            if (protectableItem != null)
             {
+                ProtectableItemResponse protectableItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+                    Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                    this.ProtectionContainer.Name,
+                    protectableItem.Name);
                 WriteProtectionEntity(protectableItemResponse.ProtectableItem);
+
                 found = true;
-            }     
-       
+            }
+
             if (!found)
             {
                 throw new InvalidOperationException(
@@ -143,7 +147,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             ProtectableItemListResponse protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                 Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 this.ProtectionContainer.Name);
-                    
+
             WriteProtectionEntities(protectableItemListResponse.ProtectableItems);
         }
 
@@ -153,28 +157,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="protectableItems">List of protectable items</param>
         private void WriteProtectionEntities(IList<ProtectableItem> protectableItems)
         {
-            List<ASRProtectionEntity> asrProtectionEntityList = new List<ASRProtectionEntity>();
-            foreach (ProtectableItem protectableItem in protectableItems)
-            {
-                ReplicationProtectedItemResponse replicationProtectedItemResponse = null;
-                if (!String.IsNullOrEmpty(protectableItem.Properties.ReplicationProtectedItemId))
-                {
-                    replicationProtectedItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
-                        Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                        this.ProtectionContainer.Name,
-                        Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId,  ARMResourceTypeConstants.ReplicationProtectedItems));
-                }
-
-                if (replicationProtectedItemResponse != null && replicationProtectedItemResponse.ReplicationProtectedItem != null)
-                {
-                    PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID, ARMResourceTypeConstants.ReplicationPolicies));
-                    asrProtectionEntityList.Add(new ASRProtectionEntity(protectableItem, replicationProtectedItemResponse.ReplicationProtectedItem, policyResponse.Policy));
-                }
-                else
-                {
-                    asrProtectionEntityList.Add(new ASRProtectionEntity(protectableItem));
-                }
-            }
+            List<ASRProtectionEntity> asrProtectionEntityList = RecoveryServicesClient.FetchProtectionEntitiesData<ASRProtectionEntity>(
+                protectableItems, this.ProtectionContainer.ID, this.ProtectionContainer.Name);
 
             this.WriteObject(asrProtectionEntityList, true);
         }
@@ -185,24 +169,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="protectableItem"></param>
         private void WriteProtectionEntity(ProtectableItem protectableItem)
         {
-            ReplicationProtectedItemResponse replicationProtectedItemResponse = null;
-            if (!String.IsNullOrEmpty(protectableItem.Properties.ReplicationProtectedItemId))
-            {
-                replicationProtectedItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
-                    Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    this.ProtectionContainer.Name,
-                    Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId,  ARMResourceTypeConstants.ReplicationProtectedItems));
-            }
-
-            if (replicationProtectedItemResponse != null && replicationProtectedItemResponse.ReplicationProtectedItem != null)
-            {
-                PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID, ARMResourceTypeConstants.ReplicationPolicies));
-                this.WriteObject(new ASRProtectionEntity(protectableItem, replicationProtectedItemResponse.ReplicationProtectedItem, policyResponse.Policy));
-            }
-            else
-            {
-                this.WriteObject(new ASRProtectionEntity(protectableItem));
-            }
+            ASRProtectionEntity entity = RecoveryServicesClient.FetchProtectionEntityData<ASRProtectionEntity>(
+                protectableItem, this.ProtectionContainer.ID, this.ProtectionContainer.Name);
+            this.WriteObject(entity);
         }
     }
 }

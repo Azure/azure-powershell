@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.ApplicationInsights.DataContracts;
-using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -122,7 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         }
         private void LogExceptionEvent(AzurePSQoSEvent qos)
         {
-            if(qos == null || qos.Exception == null)
+            if (qos == null || qos.Exception == null)
             {
                 return;
             }
@@ -148,7 +147,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             clientContext.User.Id = qos.Uid;
             clientContext.User.AccountId = qos.Uid;
             clientContext.Session.Id = qos.SessionId;
-            clientContext.Device.OperatingSystem = "Windows";
+            clientContext.Device.OperatingSystem = Environment.OSVersion.ToString();
         }
 
         private void PopulatePropertiesFromQos(AzurePSQoSEvent qos, IDictionary<string, string> eventProperties)
@@ -157,7 +156,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("ModuleName", qos.ModuleName);
             eventProperties.Add("ModuleVersion", qos.ModuleVersion);
             eventProperties.Add("HostVersion", qos.HostVersion);
-            eventProperties.Add("OS", "Windows");
+            eventProperties.Add("OS", Environment.OSVersion.ToString());
             eventProperties.Add("CommandParameters", qos.Parameters);
             eventProperties.Add("UserId", qos.Uid);
             eventProperties.Add("x-ms-client-request-id", qos.ClientRequestId);

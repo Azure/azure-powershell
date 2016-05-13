@@ -27,7 +27,7 @@ using Microsoft.Build.Framework;
 using Microsoft.Build.Logging;
 using Microsoft.Web.Deployment;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -47,8 +47,8 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 {
     using Utilities = Services.WebEntities;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
 
     public class WebsitesClient : IWebsitesClient
@@ -644,7 +644,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// </summary>
         /// <param name="name">The website name</param>
         /// <param name="slot">The website slot name</param>
-        /// <returns>The website cobfiguration object</returns>
+        /// <returns>The website configuration object</returns>
         public Utilities.SiteConfig GetWebsiteConfiguration(string name, string slot)
         {
             Utilities.Site website = GetWebsite(name);
@@ -995,7 +995,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="timeGrain">Time grains for the metrics.</param>
         /// <param name="instanceDetails">Include details for the server instances in which the site is running.</param>
         /// <param name="slotView">Represent the metrics for the hostnames that receive the traffic at the current slot.
-        /// If swap occured in the middle of the period mereics will be merged</param>
+        /// If swap occurred in the middle of the period metrics will be merged</param>
         /// <returns>The list of site metrics for the specified period.</returns>
         public IList<Utilities.MetricResponse> GetHistoricalUsageMetrics(string siteName, string slot, IList<string> metricNames,
             DateTime? starTime, DateTime? endTime, string timeGrain, bool instanceDetails, bool slotView)
@@ -1164,7 +1164,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
             project.SetProperty("Configuration", configuration);
 
             // Set this property use "managedRuntimeVersion=v4.0".
-            // Otherwise, WebDeploy will fail becasue Azure Web Site is expecting v4.0.
+            // Otherwise, WebDeploy will fail because Azure Web Site is expecting v4.0.
             project.SetProperty("VisualStudioVersion", "11.0");
 
             // Build the project.
@@ -1327,7 +1327,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// Parse the Web.config files to get the connection string names.
         /// </summary>
         /// <param name="defaultWebConfigFile">The default Web.config file.</param>
-        /// <param name="overwriteWebConfigFile">The additional Web.config file for the specificed configuration, like Web.Release.Config file.</param>
+        /// <param name="overwriteWebConfigFile">The additional Web.config file for the specified configuration, like Web.Release.Config file.</param>
         /// <returns>An array of connection string names from the Web.config files.</returns>
         public string[] ParseConnectionStringNamesFromWebConfig(string defaultWebConfigFile, string overwriteWebConfigFile)
         {
@@ -1713,7 +1713,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         }
 
         /// <summary>
-        /// Get a list of historic metrics for the web hostin plan.
+        /// Get a list of historic metrics for the web hosting plan.
         /// </summary>
         /// <param name="webSpaceName">web space name where plan belongs</param>
         /// <param name="planName">The web hosting plan name</param>

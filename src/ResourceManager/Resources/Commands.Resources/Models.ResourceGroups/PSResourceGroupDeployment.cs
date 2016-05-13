@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Resources.Models;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public TemplateLink TemplateLink { get; set; }
 
         public string TemplateLinkString { get; set; }
+
+        public string DeploymentDebugLogLevel { get; set; }
 
         public Dictionary<string, DeploymentVariable> Parameters { get; set; }
 

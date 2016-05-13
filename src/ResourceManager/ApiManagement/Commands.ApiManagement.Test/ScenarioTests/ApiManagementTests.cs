@@ -12,11 +12,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
@@ -32,8 +32,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        public ApiManagementTests()
+        public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             _helper = new EnvironmentSetupHelper();
         }
 
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             var armStorageManagementClient = GetArmStorageManagementClient();
 
             _helper.SetupManagementClients(
-                apiManagementManagementClient, 
+                apiManagementManagementClient,
                 resourceManagementClient,
                 galaryClient,
                 authorizationManagementClient,
@@ -155,8 +156,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             //    "SubscriptionId=;Environment=");
 #endif
             Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Authorization", "2014-07-01-preview");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (var context = UndoContext.Current)
             {
@@ -165,14 +170,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                 SetupManagementClients();
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                _helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + GetType().Name + ".ps1", 
+                _helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + GetType().Name + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule, 
-                    _helper.RMStorageDataPlaneModule, 
-                    _helper.RMStorageModule, 
-                    _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"));
+                    _helper.RMResourceModule,
+                    _helper.RMStorageDataPlaneModule,
+                    _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"),
+                    "AzureRM.Storage.ps1");
 
                 _helper.RunPowerShellTest(scripts);
             }

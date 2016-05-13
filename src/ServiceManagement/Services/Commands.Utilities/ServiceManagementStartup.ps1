@@ -49,14 +49,9 @@ $script:aliases = @{
     "Get-WAPackSBNamespace" = "Get-AzureSBNamespace";
     "New-WAPackSBNamespace" = "New-AzureSBNamespace";
     "Remove-WAPackSBNamespace" = "Remove-AzureSBNamespace";
-
-    # Storage aliases
-    "Get-AzureStorageContainerAcl" = "Get-AzureStorageContainer";
-    "Start-CopyAzureStorageBlob" = "Start-AzureStorageBlobCopy";
-    "Stop-CopyAzureStorageBlob" = "Stop-AzureStorageBlobCopy";
-
+    
     # Compute aliases
-    "New-AzureDns" = "New-AzureDnsConfig";
+    "New-AzureDnsConfig" = "New-AzureDns";
     
     # HDInsight aliases
     "Invoke-Hive" = "Invoke-AzureHDInsightHiveJob";

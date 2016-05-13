@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
-using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.IO;
 using System.Security;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName, string plan, IDictionary tags);
 
         void DeleteAutomationAccount(string resourceGroupName, string automationAccountName);
-        
+
         #endregion
 
         #region Compilationjobs
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #endregion
 
         #region DscNode Operations
-        
+
         DscNode GetDscNodeById(string resourceGroupName, string automationAccountName, Guid nodeId);
 
         IEnumerable<DscNode> ListDscNodes(string resourceGroupName, string automationAccountName, string status);

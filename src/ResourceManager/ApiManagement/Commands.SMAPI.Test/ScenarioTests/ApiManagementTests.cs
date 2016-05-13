@@ -12,30 +12,31 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Commands.Common.Authentication;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Storage;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
-    public class ApiManagementTests : RMTestBase, IUseFixture<ApiManagementTestsFixture>
+    public class ApiManagementTests : RMTestBase, IClassFixture<ApiManagementTestsFixture>
     {
         private readonly EnvironmentSetupHelper _helper;
         private ApiManagementTestsFixture _fixture;
 
-        public ApiManagementTests()
+        public ApiManagementTests(ApiManagementTestsFixture fixture)
         {
+            _fixture = fixture;
             _helper = new EnvironmentSetupHelper();
         }
-
 
         protected void SetupManagementClients()
         {
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             var armStorageManagementClient = GetArmStorageManagementClient();
 
             _helper.SetupManagementClients(
-                apiManagementManagementClient, 
+                apiManagementManagementClient,
                 resourceManagementClient,
                 galaryClient,
                 authorizationManagementClient,
@@ -161,6 +162,41 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             RunPowerShellTest("AuthorizationServer-CrudTest");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void LoggerCrudTest()
+        {
+            RunPowerShellTest("Logger-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PropertiesCrudTest()
+        {
+            RunPowerShellTest("Properties-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void OpenIdConnectProviderCrudTest()
+        {
+            RunPowerShellTest("OpenIdConnectProvider-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TenantGitConfigurationCrudTest()
+        {
+            RunPowerShellTest("TenantGitConfiguration-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TenantAccessConfigurationCrudTest()
+        {
+            RunPowerShellTest("TenantAccessConfiguration-CrudTest");
+        }
+
         private void RunPowerShellTest(params string[] scripts)
         {
             for (int i = 0; i < scripts.Length; i++)
@@ -175,19 +211,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
                 SetupManagementClients();
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                _helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + GetType().Name + ".ps1", 
-                    _helper.RMProfileModule, 
+                _helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + GetType().Name + ".ps1",
+                    _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.ApiManagement.psd1"));
 
                 _helper.RunPowerShellTest(scripts);
             }
-        }
-
-        public void SetFixture(ApiManagementTestsFixture data)
-        {
-            this._fixture = data;
         }
     }
 }

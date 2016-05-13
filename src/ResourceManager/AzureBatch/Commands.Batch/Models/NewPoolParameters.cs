@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Batch;
 using System;
 using System.Collections;
-using Microsoft.Azure.Batch;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
@@ -51,6 +51,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The OS family of the compute nodes in the pool.
         /// </summary>
         public string OSFamily { get; set; }
+
+        /// <summary>
+        /// Pool configuration settings for a pool on the virtual machines infrastructure
+        /// </summary>
+        public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
+
+        /// <summary>
+        /// Pool configuration settings for a pool based on the Azure cloud service platform
+        /// </summary>
+        public PSCloudServiceConfiguration CloudServiceConfiguration { get; set; }
 
         /// <summary>
         /// The target OS version of the compute nodes in the pool.

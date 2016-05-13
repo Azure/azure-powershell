@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {TransactionManagement_Success, AuditEventType.TransactionManagement_Success},
             {TransactionManagement_Failure, AuditEventType.TransactionManagement_Failure}
         };
-        
+
         public const string Primary = "Primary";
         public const string Secondary = "Secondary";
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {Access_Anomaly, DetectionType.Access_Anomaly},
             {Usage_Anomaly, DetectionType.Usage_Anomaly}
         };
-        
+
         // Masking functions
         public const string NoMasking = "NoMasking";
         public const string Default = "Default";

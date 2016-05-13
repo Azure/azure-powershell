@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
         {
-            if(!string.IsNullOrEmpty(roleId))
+            if (!string.IsNullOrEmpty(roleId))
             {
                 return assignments.Where(a => a.Properties.RoleDefinitionId.GuidFromFullyQualifiedId() == roleId);
             }
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Properties.Scope,
-                        SignInName = ((PSADUser)adObject).SignInName,
+                        SignInName = ((PSADUser)adObject).UserPrincipalName,
                         ObjectId = adObject.Id,
                         ObjectType = adObject.Type
                     });

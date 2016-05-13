@@ -26,7 +26,7 @@ using System.Threading;
 using System.Xml;
 using Hyak.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
@@ -280,21 +280,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
                 Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
 
-                vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, string.Empty);
-                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
-                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, string.Empty));
-
-                vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, testAVSetName);
-                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
-                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
-
                 vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, null);
                 vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
                 Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
 
                 vm = vmPowershellCmdlets.RemoveAzureAvailabilitySet(vmName, serviceName);
                 vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
-                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
+                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, null));
 
                 pass = true;
             }

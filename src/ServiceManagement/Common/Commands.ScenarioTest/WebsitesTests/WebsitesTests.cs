@@ -13,13 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 {
     public class WebsitesTests : WebsitesTestsBase
     {
         #region Remove-AzureWebsite Scenario Tests
+
+        public WebsitesTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]

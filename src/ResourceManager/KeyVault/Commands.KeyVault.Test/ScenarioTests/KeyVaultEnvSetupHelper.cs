@@ -12,23 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Test;
-using System;
-using System.Linq;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Common.Authentication.Models;
-using System.Collections.Generic;
-using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -45,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 //Overwrite the default subscription and default account
                 //with ones using user ID and tenant ID from auth context
                 var user = GetUser(csmEnvironment);
-                var tenantId = GetTenantId(csmEnvironment);                
+                var tenantId = GetTenantId(csmEnvironment);
 
                 var testSubscription = new AzureSubscription()
                 {

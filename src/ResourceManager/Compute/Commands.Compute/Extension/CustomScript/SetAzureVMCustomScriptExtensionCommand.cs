@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
@@ -25,9 +24,8 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
-using System.Management.Automation;
 using System.Linq;
-using AutoMapper;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -178,6 +176,10 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set command to execute in private config.")]
+        public SwitchParameter SecureExecution { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -208,9 +210,23 @@ namespace Microsoft.Azure.Commands.Compute
                 var policyStr = string.Format(policyFormatStr, defaultPolicyStr);
                 var commandToExecute = string.Format(poshCmdFormatStr, policyStr, this.Run, this.Argument);
 
-                Hashtable publicSettings = new Hashtable();
-                publicSettings.Add(commandToExecuteKey, commandToExecute ?? "");
+                var privateSettings = GetPrivateConfiguration();
+
+                var publicSettings = new Hashtable();
                 publicSettings.Add(fileUrisKey, FileUri ?? new string[] { });
+
+                if (this.SecureExecution.IsPresent)
+                {
+                    if (privateSettings == null)
+                    {
+                        privateSettings = new Hashtable();
+                    }
+                    privateSettings.Add(commandToExecuteKey, commandToExecute ?? "");
+                }
+                else
+                {
+                    publicSettings.Add(commandToExecuteKey, commandToExecute ?? "");
+                }
 
                 var parameters = new VirtualMachineExtension
                 {
@@ -219,7 +235,7 @@ namespace Microsoft.Azure.Commands.Compute
                     VirtualMachineExtensionType = VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineCustomScriptExtensionContext.ExtensionDefaultVersion,
                     Settings = publicSettings,
-                    ProtectedSettings = GetPrivateConfiguration(),
+                    ProtectedSettings = privateSettings,
                     AutoUpgradeMinorVersion = true
                 };
 
@@ -237,7 +253,7 @@ namespace Microsoft.Azure.Commands.Compute
                 catch (Rest.Azure.CloudException ex)
                 {
                     var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
-                        ex.Response.Content.ReadAsStringAsync().Result);
+                        ex.Response.Content);
                     WriteObject(errorReturned);
                 }
             });
