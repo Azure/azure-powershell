@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
         public IDictionary<string, string> Parameters { get; set; }
 
         [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, Mandatory = false, HelpMessage = "Updated graph package for the web service.")]
-        public WebServicePropertiesForGraphPackage Package { get; set; }
+        public GraphPackage Package { get; set; }
 
         [Parameter(ParameterSetName = UpdateAzureMLWebService.UpdateFromObjectParameterSet, Mandatory = true, HelpMessage = "An updated definition object to update the referenced web service with.", ValueFromPipeline = true)]
         public WebService ServiceUpdates { get; set; }

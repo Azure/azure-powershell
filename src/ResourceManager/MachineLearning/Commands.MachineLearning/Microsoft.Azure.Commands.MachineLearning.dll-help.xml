@@ -404,6 +404,16 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureRmMlWebServiceKeys</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>MlWebService</maml:name>
+				<maml:description>
+					<maml:para>Web service instance for which to retrieve the access keys. Note that this parameter can come from a pipeline as well.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">WebService</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
@@ -426,6 +436,18 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>MlWebService</maml:name>
+			<maml:description>
+				<maml:para>Web service instance for which to retrieve the access keys. Note that this parameter can come from a pipeline as well.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">WebService</command:parameterValue>
+			<dev:type>
+				<maml:name>WebService</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -467,13 +489,33 @@
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 - Get keys for service specified by resource group and name  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>Get-AzureRmMlWebServiceKeys -ResourceGroupName &quot;myresourcegroup&quot; -Name &quot;mywebservicename&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2 - Get keys for web service instance  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Get-AzureRmMlWebServiceKeys -MlWebService $mlService</dev:code>
+			<dev:remarks>
+				<maml:para>$mlService is an object of type Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService. Note that this parameter can come from a pipeline as well.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -709,7 +751,7 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>NewWebServiceDefinition</maml:name>
 				<maml:description>
-					<maml:para>The definition of new web service resource, containing all the properties that make up the service. This parameter is required and represents an instance of the Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService class. You can find the latest specification for the web service definition in the swagger spec under https://github.com/Azure/azure-rest-api-specs/blob/master/arm-machinelearning/2016-05-01-preview/swagger/webservices.json</maml:para>
+					<maml:para>The definition of new web service resource, containing all the properties that make up the service. This parameter is required and represents an instance of the Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService class. You can find the latest specification for the web service definition in the swagger spec under https://github.com/Azure/azure-rest-api-specs/blob/master/arm-machinelearning/2016-05-01-preview/swagger/webservices.json. Note that this parameter can come from a pipeline as well.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">WebService</command:parameterValue>
 			</command:parameter>
@@ -767,7 +809,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>NewWebServiceDefinition</maml:name>
 			<maml:description>
-				<maml:para>The definition of new web service resource, containing all the properties that make up the service. This parameter is required and represents an instance of the Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService class. You can find the latest specification for the web service definition in the swagger spec under https://github.com/Azure/azure-rest-api-specs/blob/master/arm-machinelearning/2016-05-01-preview/swagger/webservices.json</maml:para>
+				<maml:para>The definition of new web service resource, containing all the properties that make up the service. This parameter is required and represents an instance of the Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService class. You can find the latest specification for the web service definition in the swagger spec under https://github.com/Azure/azure-rest-api-specs/blob/master/arm-machinelearning/2016-05-01-preview/swagger/webservices.json. Note that this parameter can come from a pipeline as well.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">WebService</command:parameterValue>
 			<dev:type>
@@ -798,7 +840,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>Summary description of the created Azure Machine Learning web service resource, similar to the result obtained when calling the Get-AzureRmMlWebService cmdlet for an existing web service. This description does not contain sensitive properties (e.g support storage account&#39;s credentials, service&#39;s access keys)</maml:para>
+				<maml:para>
+Summary description of the created Azure Machine Learning web service resource, similar to the result obtained when calling the Get-AzureRmMlWebService cmdlet for an existing web service. This description does not contain sensitive properties (e.g support storage account&#39;s credentials, service&#39;s access keys)</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -902,7 +945,7 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>MlWebService</maml:name>
 				<maml:description>
-					<maml:para>Instance of the web service to be removed.</maml:para>
+					<maml:para>Instance of the web service to be removed. Note that this parameter can come from a pipeline as well.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">WebService</command:parameterValue>
 			</command:parameter>
@@ -955,7 +998,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>MlWebService</maml:name>
 			<maml:description>
-				<maml:para>Instance of the web service to be removed.</maml:para>
+				<maml:para>Instance of the web service to be removed. Note that this parameter can come from a pipeline as well.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">WebService</command:parameterValue>
 			<dev:type>
@@ -1140,7 +1183,7 @@
 				<maml:description>
 					<maml:para>The definition of the graph package making up this web service.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">WebServicePropertiesForGraphPackage</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">GraphPackage</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -1169,7 +1212,7 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>ServiceUpdates</maml:name>
 				<maml:description>
-					<maml:para>Set of updates to apply to the web service provided as a web service definition instance. Note that only the updateable fields will be modified from this definition reference.</maml:para>
+					<maml:para>Set of updates to apply to the web service provided as a web service definition instance. Note that only the updateable fields will be modified from this definition reference. Note that this parameter can come from a pipeline as well.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">WebService</command:parameterValue>
 			</command:parameter>
@@ -1344,9 +1387,9 @@
 			<maml:description>
 				<maml:para>The definition of the graph package making up this web service.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">WebServicePropertiesForGraphPackage</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">GraphPackage</command:parameterValue>
 			<dev:type>
-				<maml:name>WebServicePropertiesForGraphPackage</maml:name>
+				<maml:name>GraphPackage</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1366,7 +1409,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>ServiceUpdates</maml:name>
 			<maml:description>
-				<maml:para>Set of updates to apply to the web service provided as a web service definition instance. Note that only the updateable fields will be modified from this definition reference.</maml:para>
+				<maml:para>Set of updates to apply to the web service provided as a web service definition instance. Note that only the updateable fields will be modified from this definition reference. Note that this parameter can come from a pipeline as well.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">WebService</command:parameterValue>
 			<dev:type>
@@ -1397,7 +1440,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>Summary description of the created Azure Machine Learning web service resource, similar to the result obtained when calling the Get-AzureRmMlWebService cmdlet for an existing web service. This description does not contain sensitive properties (e.g support storage account&#39;s credentials, service&#39;s access keys)</maml:para>
+				<maml:para>
+Summary description of the created Azure Machine Learning web service resource, similar to the result obtained when calling the Get-AzureRmMlWebService cmdlet for an existing web service. This description does not contain sensitive properties (e.g support storage account&#39;s credentials, service&#39;s access keys)</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>

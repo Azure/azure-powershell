@@ -46,8 +46,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="..\..\..\packages\Microsoft.Azure.Management.MachineLearning.WebServices.1.1.0-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.WebServices.dll">
-      <Name>Microsoft.Azure.Management.MachineLearning.WebServices</Name>
+    <Reference Include="..\..\..\packages\Microsoft.Azure.Management.MachineLearning.0.9.0-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.dll">
+      <Name>Microsoft.Azure.Management.MachineLearning</Name>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />

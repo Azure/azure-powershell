@@ -59,8 +59,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="..\..\..\packages\Microsoft.Azure.Management.MachineLearning.WebServices.1.1.0-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.WebServices.dll">
-      <Name>Microsoft.Azure.Management.MachineLearning.WebServices</Name>
+    <Reference Include="..\..\..\packages\Microsoft.Azure.Management.MachineLearning.0.9.0-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.dll">
+      <Name>Microsoft.Azure.Management.MachineLearning</Name>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -138,7 +138,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\WebServicesTestController.cs" />
+    <Compile Include="ScenarioTests\WebServicesTestController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\WebServiceTests.cs" />
   </ItemGroup>
@@ -147,7 +147,18 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ScenarioTests\WebServiceTests.ps1" />
+    <None Include="ScenarioTests\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\WebServiceTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestData\GraphWebServiceDefinition_Dogfood.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestData\GraphWebServiceDefinition_Prod.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
