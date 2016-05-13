@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services;
 using Microsoft.Azure.Management.Sql.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolRecommendation", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolRecommendation",
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlElasticPoolRecommendation : AzureSqlCmdletBase<IEnumerable<UpgradeRecommendedElasticPoolProperties>, AzureSqlElasticPoolRecommendationAdapter>
     {
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlElasticPoolRecommendationAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
+        protected override AzureSqlElasticPoolRecommendationAdapter InitModelAdapter(AzureSubscription subscription)
         {
             return new AzureSqlElasticPoolRecommendationAdapter(DefaultProfile.Context);
         }

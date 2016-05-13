@@ -12,18 +12,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.NotificationHubs.Models;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.NotificationHubs;
 using Microsoft.Azure.Management.NotificationHubs.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation;
-using System.Net;
 using System.Security.Cryptography;
 
 namespace Microsoft.Azure.Commands.NotificationHubs
@@ -82,11 +78,11 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             var resourceList = response.Value.Select(resource => new NamespaceAttributes(null, resource));
             return resourceList;
         }
-        
+
         public NamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, Dictionary<string, string> tags)
         {
             var parameter = new NamespaceCreateOrUpdateParameters()
-            {                
+            {
                 Location = location,
                 Properties = new NamespaceProperties()
                 {
@@ -98,23 +94,23 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             {
                 parameter.Tags = new Dictionary<string, string>(tags);
             }
-            
+
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
-            return new NamespaceAttributes(resourceGroupName,response.Value);
+            return new NamespaceAttributes(resourceGroupName, response.Value);
         }
         public NamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, NamespaceState state, bool critical, Dictionary<string, string> tags)
         {
             var parameter = new NamespaceCreateOrUpdateParameters()
+            {
+                Location = location,
+                Properties = new NamespaceProperties()
                 {
-                    Location = location,
-                    Properties = new NamespaceProperties()
-                    {
-                        NamespaceType = NamespaceType.NotificationHub,
-                        Status = ((state == NamespaceState.Disabled) ? state : NamespaceState.Active).ToString(),
-                        Enabled = (state == NamespaceState.Disabled ) ? false:true
-                    }
-                };
-            
+                    NamespaceType = NamespaceType.NotificationHub,
+                    Status = ((state == NamespaceState.Disabled) ? state : NamespaceState.Active).ToString(),
+                    Enabled = (state == NamespaceState.Disabled) ? false : true
+                }
+            };
+
             if (critical)
             {
                 parameter.Properties.Critical = critical;
@@ -170,7 +166,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             return resourceList;
         }
 
-        public SharedAccessAuthorizationRuleAttributes CreateOrUpdateNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName, 
+        public SharedAccessAuthorizationRuleAttributes CreateOrUpdateNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName,
                                 List<AccessRights> rights, string primarykey, string secondaryKey = null)
         {
             var parameter = new SharedAccessAuthorizationRuleCreateOrUpdateParameters()
@@ -186,7 +182,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 }
             };
 
-            parameter.Properties.SecondaryKey = string.IsNullOrEmpty(secondaryKey) ? GenerateRandomKey(): secondaryKey; 
+            parameter.Properties.SecondaryKey = string.IsNullOrEmpty(secondaryKey) ? GenerateRandomKey() : secondaryKey;
 
             var response = Client.Namespaces.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, authRuleName, parameter);
             return new SharedAccessAuthorizationRuleAttributes(response.Value);
@@ -194,7 +190,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs
 
         public bool DeleteNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName)
         {
-            if(string.Equals(SharedAccessAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
+            if (string.Equals(SharedAccessAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
             {
                 return false;
             }
@@ -249,7 +245,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 }
             };
 
-            if(nhAttributes.Tags != null)
+            if (nhAttributes.Tags != null)
             {
                 parameter.Tags = new Dictionary<string, string>(nhAttributes.Tags);
             }
@@ -288,13 +284,13 @@ namespace Microsoft.Azure.Commands.NotificationHubs
 
         public SharedAccessAuthorizationRuleAttributes GetNotificationHubAuthorizationRules(string resourceGroupName, string namespaceName, string notificationHubName, string authRuleName)
         {
-            SharedAccessAuthorizationRuleGetResponse response = Client.NotificationHubs.GetAuthorizationRule(resourceGroupName, namespaceName, 
+            SharedAccessAuthorizationRuleGetResponse response = Client.NotificationHubs.GetAuthorizationRule(resourceGroupName, namespaceName,
                                         notificationHubName, authRuleName);
 
             return new SharedAccessAuthorizationRuleAttributes(response.Value);
         }
 
-        public IEnumerable<SharedAccessAuthorizationRuleAttributes> ListNotificationHubAuthorizationRules(string resourceGroupName, string namespaceName, 
+        public IEnumerable<SharedAccessAuthorizationRuleAttributes> ListNotificationHubAuthorizationRules(string resourceGroupName, string namespaceName,
                                                     string notificationHubName)
         {
             SharedAccessAuthorizationRuleListResponse response = Client.NotificationHubs.ListAuthorizationRules(resourceGroupName, namespaceName, notificationHubName);
@@ -303,7 +299,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             return resourceList;
         }
 
-        public SharedAccessAuthorizationRuleAttributes CreateOrUpdateNotificationHubAuthorizationRules(string resourceGroupName, string namespaceName, 
+        public SharedAccessAuthorizationRuleAttributes CreateOrUpdateNotificationHubAuthorizationRules(string resourceGroupName, string namespaceName,
                                 string notificationHubName, string authRuleName,
                                 List<AccessRights> rights, string primarykey, string secondaryKey)
         {
@@ -320,7 +316,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 }
             };
 
-            parameter.Properties.SecondaryKey = string.IsNullOrEmpty(secondaryKey) ? GenerateRandomKey() : secondaryKey; 
+            parameter.Properties.SecondaryKey = string.IsNullOrEmpty(secondaryKey) ? GenerateRandomKey() : secondaryKey;
 
             var response = Client.NotificationHubs.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, notificationHubName, authRuleName, parameter);
             return new SharedAccessAuthorizationRuleAttributes(response.Value);
@@ -356,6 +352,6 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             }
 
             return Convert.ToBase64String(key256);
-        }        
+        }
     }
 }

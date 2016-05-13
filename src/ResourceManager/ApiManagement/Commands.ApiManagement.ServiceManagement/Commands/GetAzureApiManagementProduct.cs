@@ -14,29 +14,30 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementProduct", DefaultParameterSetName = GetAllProducts)]
-    [OutputType(typeof(IList<PsApiManagementProduct>))]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementProduct, DefaultParameterSetName = GetAllProducts)]
+    [OutputType(typeof(IList<PsApiManagementProduct>), ParameterSetName = new[] { GetAllProducts, GetByTitle })]
+    [OutputType(typeof(PsApiManagementProduct), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementProduct : AzureApiManagementCmdletBase
     {
         private const string GetAllProducts = "Get all producst";
         private const string GetById = "Get by Id";
         private const string GetByTitle = "Get by Title";
 
-        [Parameter(            
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
             ParameterSetName = GetById,
-            ValueFromPipelineByPropertyName = true, 
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of Product to search for. This parameter is optional.")]
         [ValidateNotNullOrEmpty]
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = GetByTitle,
-            ValueFromPipelineByPropertyName = true, 
+            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Title of the Product to look for. If specified will try to get the Product by title. This parameter is optional.")]
         public String Title { get; set; }

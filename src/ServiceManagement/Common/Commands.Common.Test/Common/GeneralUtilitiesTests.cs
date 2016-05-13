@@ -16,11 +16,18 @@ using System;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit.Abstractions;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test
 {
     public class PowerShellUtilitiesTests
     {
+        public PowerShellUtilitiesTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsModulePathToUserPSModulePath()

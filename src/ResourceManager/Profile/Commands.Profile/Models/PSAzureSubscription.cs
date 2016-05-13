@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using System;
-using System.Configuration;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Utilities;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -36,11 +35,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            var subscription= new PSAzureSubscription
+            var subscription = new PSAzureSubscription
             {
                 SubscriptionId = other.Id.ToString(),
-                SubscriptionName = other.Name ,
-                TenantId = other.IsPropertySet(AzureSubscription.Property.Tenants)? 
+                SubscriptionName = other.Name,
+                State = other.State,
+                TenantId = other.IsPropertySet(AzureSubscription.Property.Tenants) ?
                 other.GetProperty(AzureSubscription.Property.Tenants) : null
             };
 
@@ -89,6 +89,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 result.Properties.SetProperty(AzureSubscription.Property.StorageAccount, other.CurrentStorageAccount);
             }
 
+            if (other.State != null)
+            {
+                result.State = other.State;
+            }
+
             return result;
         }
 
@@ -101,6 +106,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// The name of the subscription.
         /// </summary>
         public string SubscriptionName { get; set; }
+
+        /// <summary>
+        /// Gets or sets subscription State
+        /// </summary>
+        public string State { get; set; }
 
         /// <summary>
         /// The tenant home for the subscription.
@@ -123,10 +133,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
             {
                 try
                 {
-                    var pairs = result.Split(new char[]{';'}, StringSplitOptions.RemoveEmptyEntries);
+                    var pairs = result.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (var pair in pairs)
                     {
-                        var sides = pair.Split(new char[] {'='}, 2, StringSplitOptions.RemoveEmptyEntries);
+                        var sides = pair.Split(new char[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries);
                         if (string.Equals("AccountName", sides[0].Trim(), StringComparison.OrdinalIgnoreCase))
                         {
                             result = sides[1].Trim();

@@ -1,0 +1,223 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/onesdk1222?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTdiNzAzNGQtNzJkNC00MzNkLWFjZTItYTc0NjBhZWQ2YTk5L3Jlc291cmNlZ3JvdXBzL29uZXNkazEyMjI/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "102"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14977"
+        ],
+        "x-ms-request-id": [
+          "339c1fd7-2288-4d2c-83ec-3f9ab52b1768"
+        ],
+        "x-ms-correlation-request-id": [
+          "339c1fd7-2288-4d2c-83ec-3f9ab52b1768"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160129T221835Z:339c1fd7-2288-4d2c-83ec-3f9ab52b1768"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 29 Jan 2016 22:18:35 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/onesdk1222?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTdiNzAzNGQtNzJkNC00MzNkLWFjZTItYTc0NjBhZWQ2YTk5L3Jlc291cmNlZ3JvdXBzL29uZXNkazEyMjI/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/onesdk1222\",\r\n  \"name\": \"onesdk1222\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "173"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "039a9dbd-e523-44ba-a242-ea98c49fca1d"
+        ],
+        "x-ms-correlation-request-id": [
+          "039a9dbd-e523-44ba-a242-ea98c49fca1d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160129T221836Z:039a9dbd-e523-44ba-a242-ea98c49fca1d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 29 Jan 2016 22:18:36 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/onesdk1222/resources?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTdiNzAzNGQtNzJkNC00MzNkLWFjZTItYTc0NjBhZWQ2YTk5L3Jlc291cmNlR3JvdXBzL29uZXNkazEyMjIvcmVzb3VyY2VzP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14976"
+        ],
+        "x-ms-request-id": [
+          "3b953eab-ff92-4bd3-8e6b-4eb56670a2bc"
+        ],
+        "x-ms-correlation-request-id": [
+          "3b953eab-ff92-4bd3-8e6b-4eb56670a2bc"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160129T221836Z:3b953eab-ff92-4bd3-8e6b-4eb56670a2bc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 29 Jan 2016 22:18:36 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/onesdk1222/providers/Microsoft.Web/serverfarms/B9F87338CAE4470F9116F3D685365748?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTdiNzAzNGQtNzJkNC00MzNkLWFjZTItYTc0NjBhZWQ2YTk5L3Jlc291cmNlR3JvdXBzL29uZXNkazEyMjIvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2VydmVyZmFybXMvQjlGODczMzhDQUU0NDcwRjkxMTZGM0Q2ODUzNjU3NDg/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f4a6b7f0-9b13-48de-8a84-d716bd1f9445"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/0.9.0.0"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Web/serverFarms/B9F87338CAE4470F9116F3D685365748' under resource group 'onesdk1222' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "172"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "ef835c00-600b-4b7f-a22f-581f085eef9d"
+        ],
+        "x-ms-correlation-request-id": [
+          "ef835c00-600b-4b7f-a22f-581f085eef9d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160129T221837Z:ef835c00-600b-4b7f-a22f-581f085eef9d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 29 Jan 2016 22:18:36 GMT"
+        ]
+      },
+      "StatusCode": 404
+    }
+  ],
+  "Names": {
+    "Test-CreateLogicAppWithNonExistingAppServicePlan": [
+      "onesdk1222",
+      "onesdk7916"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "57b7034d-72d4-433d-ace2-a7460aed6a99"
+  }
+}

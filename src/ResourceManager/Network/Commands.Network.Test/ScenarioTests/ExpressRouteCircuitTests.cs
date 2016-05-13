@@ -21,6 +21,13 @@ namespace Commands.Network.Test.ScenarioTests
     {
         [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExpressRouteCircuitStageCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitStageCRUD");
+        }
+
+        [Fact(Skip = "Rerecord tests")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteCircuitCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitCRUD");
@@ -28,12 +35,19 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitPeeringCRUD()
+        public void TestExpressRouteCircuitPrivatePublicPeeringCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitPeeringCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitPrivatePublicPeeringCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExpressRouteCircuitMicrosoftPeeringCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitMicrosoftPeeringCRUD");
+        }
+
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteCircuitAuthorizationCRUD()
         {

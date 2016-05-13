@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Network;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
-using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -119,6 +118,18 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of VpnClientCertificates to be revoked.")]
         public List<PSVpnClientRevokedCertificate> VpnClientRevokedCertificates { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The virtual network gateway's ASN for BGP over VPN")]
+        public uint Asn { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The weight added to routes learned over BGP from this virtual network gateway")]
+        public int PeerWeight { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -221,6 +232,26 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 vnetGateway.VpnClientConfiguration = null;
+            }
+
+            if (this.Asn > 0 || this.PeerWeight > 0)
+            {
+                vnetGateway.BgpSettings = new PSBgpSettings();
+                vnetGateway.BgpSettings.BgpPeeringAddress = null; // We block modifying the gateway's BgpPeeringAddress (CA)
+
+                if (this.Asn > 0)
+                {
+                    vnetGateway.BgpSettings.Asn = this.Asn;
+                }
+
+                if (this.PeerWeight > 0)
+                {
+                    vnetGateway.BgpSettings.PeerWeight = this.PeerWeight;
+                }
+                else if (this.PeerWeight < 0)
+                {
+                    throw new ArgumentException("PeerWeight must be a positive integer");
+                }
             }
 
             // Map to the sdk object

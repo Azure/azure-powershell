@@ -18,7 +18,6 @@ using System.Linq;
 using System.Management.Automation.Language;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
 using System;
 using Microsoft.Azure.Management.Automation.Models;
 

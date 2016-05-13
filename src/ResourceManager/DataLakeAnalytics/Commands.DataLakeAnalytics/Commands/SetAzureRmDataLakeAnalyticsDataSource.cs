@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         {
             if (ParameterSetName.Equals(BlobParameterSetName, StringComparison.InvariantCultureIgnoreCase))
             {
-                var toAdd = new StorageAccount
+                var toAdd = new StorageAccountInfo
                 {
                     Name = Blob,
                     Properties = new StorageAccountProperties
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
             else if (Default)
             {
-                var toAdd = new DataLakeStoreAccount
+                var toAdd = new DataLakeStoreAccountInfo
                 {
                     Name = DataLakeStore
                 };

@@ -12,20 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Rest;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using System.Threading;
-using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
-using System.Globalization;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     /// </summary>
     public abstract class AzureRMCmdlet : AzurePSCmdlet
     {
+        protected ServiceClientTracingInterceptor _serviceClientTracingInterceptor;
         /// <summary>
         /// Static constructor for AzureRMCmdlet.
         /// </summary>
@@ -42,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (!TestMockSupport.RunningMocked)
             {
                 AzureSession.DataStore = new DiskDataStore();
-            }          
+            }
         }
 
         /// <summary>
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 () => new ResourceManagementClient(
                     AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
                     DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)),
-                s => _debugMessages.Enqueue(s)));
+                s => DebugMessages.Enqueue(s)));
         }
 
         /// <summary>
@@ -144,13 +146,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         protected override void InitializeQosEvent()
         {
-            var commandAlias = this.GetType().Name; 
-            if(this.MyInvocation != null && this.MyInvocation.MyCommand != null)
+            var commandAlias = this.GetType().Name;
+            if (this.MyInvocation != null && this.MyInvocation.MyCommand != null)
             {
                 commandAlias = this.MyInvocation.MyCommand.Name;
             }
 
-            QosEvent = new AzurePSQoSEvent()
+            _qosEvent = new AzurePSQoSEvent()
             {
                 CommandName = commandAlias,
                 ModuleName = this.GetType().Assembly.GetName().Name,
@@ -162,22 +164,67 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
             {
-                QosEvent.Parameters = string.Join(" ", 
+                _qosEvent.Parameters = string.Join(" ",
                     this.MyInvocation.BoundParameters.Keys.Select(
                         s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
             }
 
-            if (this.DefaultProfile != null && 
+            if (this.DefaultProfile != null &&
                 this.DefaultProfile.Context != null &&
                 this.DefaultProfile.Context.Account != null &&
                 this.DefaultProfile.Context.Account.Id != null)
             {
-                QosEvent.Uid = MetricHelper.GenerateSha256HashString(
+                _qosEvent.Uid = MetricHelper.GenerateSha256HashString(
                     this.DefaultProfile.Context.Account.Id.ToString());
             }
             else
             {
-                QosEvent.Uid = "defaultid";
+                _qosEvent.Uid = "defaultid";
+            }
+        }
+
+        protected override void LogCmdletStartInvocationInfo()
+        {
+            base.LogCmdletStartInvocationInfo();
+            if (DefaultContext != null && DefaultContext.Account != null
+                && DefaultContext.Account.Id != null)
+            {
+                WriteDebugWithTimestamp(string.Format("using account id '{0}'...",
+                    DefaultContext.Account.Id));
+            }
+        }
+
+        protected override void LogCmdletEndInvocationInfo()
+        {
+            base.LogCmdletEndInvocationInfo();
+            string message = string.Format("{0} end processing.", this.GetType().Name);
+            WriteDebugWithTimestamp(message);
+        }
+
+        protected override void SetupDebuggingTraces()
+        {
+            ServiceClientTracing.IsEnabled = true;
+            base.SetupDebuggingTraces();
+            _serviceClientTracingInterceptor = _serviceClientTracingInterceptor
+                ?? new ServiceClientTracingInterceptor(DebugMessages);
+            ServiceClientTracing.AddTracingInterceptor(_serviceClientTracingInterceptor);
+        }
+
+        protected override void TearDownDebuggingTraces()
+        {
+            ServiceClientTracingInterceptor.RemoveTracingInterceptor(_serviceClientTracingInterceptor);
+            _serviceClientTracingInterceptor = null;
+            base.TearDownDebuggingTraces();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            if (disposing && _serviceClientTracingInterceptor != null)
+            {
+                ServiceClientTracingInterceptor.RemoveTracingInterceptor(_serviceClientTracingInterceptor);
+                _serviceClientTracingInterceptor = null;
+                AzureSession.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
             }
         }
     }

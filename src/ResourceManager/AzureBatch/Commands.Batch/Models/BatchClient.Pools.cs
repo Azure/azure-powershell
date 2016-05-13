@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Linq;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
@@ -66,8 +64,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
                 return PSPagedEnumerable<PSCloudPool, CloudPool>.CreateWithMaxCount(
-                    pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));            
+                    pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
             }
+        }
+
+        public PSPoolStatistics ListAllPoolsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
+            PoolStatistics poolStatistics = poolOperations.GetAllPoolsLifetimeStatistics(additionBehaviors);
+            PSPoolStatistics psPoolStatistics = new PSPoolStatistics(poolStatistics);
+            return psPoolStatistics;
         }
 
         /// <summary>
@@ -82,12 +88,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            CloudPool pool = poolOperations.CreatePool(poolId: parameters.PoolId, osFamily: parameters.OSFamily, virtualMachineSize: parameters.VirtualMachineSize);
+
+            CloudPool pool = poolOperations.CreatePool();
+            pool.Id = parameters.PoolId;
+            pool.VirtualMachineSize = parameters.VirtualMachineSize;
             pool.DisplayName = parameters.DisplayName;
             pool.ResizeTimeout = parameters.ResizeTimeout;
             pool.MaxTasksPerComputeNode = parameters.MaxTasksPerComputeNode;
             pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
-            pool.TargetOSVersion = parameters.TargetOSVersion;
 
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
             {
@@ -127,6 +135,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 {
                     pool.CertificateReferences.Add(c.omObject);
                 }
+            }
+
+            if (parameters.CloudServiceConfiguration != null)
+            {
+                pool.CloudServiceConfiguration = parameters.CloudServiceConfiguration.omObject;
+            }
+
+            if (parameters.VirtualMachineConfiguration != null)
+            {
+                pool.VirtualMachineConfiguration = parameters.VirtualMachineConfiguration.omObject;
             }
 
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
@@ -220,7 +238,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.EnableAutoScale, poolId, parameters.AutoScaleFormula));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            poolOperations.EnableAutoScale(poolId, parameters.AutoScaleFormula, parameters.AutoScaleEvaluationInterval, 
+            poolOperations.EnableAutoScale(poolId, parameters.AutoScaleFormula, parameters.AutoScaleEvaluationInterval,
                 parameters.AdditionalBehaviors);
         }
 
@@ -246,7 +264,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Gets the result of evaluating an automatic scaling formula on the specified pool.
         /// </summary>
         /// <param name="parameters">The parameters specifying the pool and autoscale formula.</param>
-        public PSAutoScaleEvaluation EvaluateAutoScale(EvaluateAutoScaleParameters parameters)
+        public PSAutoScaleRun EvaluateAutoScale(EvaluateAutoScaleParameters parameters)
         {
             if (parameters == null)
             {
@@ -257,8 +275,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.EvaluateAutoScale, poolId, parameters.AutoScaleFormula));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            AutoScaleEvaluation evaluation = poolOperations.EvaluateAutoScale(poolId, parameters.AutoScaleFormula, parameters.AdditionalBehaviors);
-            return new PSAutoScaleEvaluation(evaluation);
+            AutoScaleRun evaluation = poolOperations.EvaluateAutoScale(poolId, parameters.AutoScaleFormula, parameters.AdditionalBehaviors);
+            return new PSAutoScaleRun(evaluation);
         }
 
         /// <summary>

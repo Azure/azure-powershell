@@ -14,9 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Resources
 {
-    using System.Collections.Generic;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.Resources.Models;
+    using System.Management.Automation;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
     /// <summary>
@@ -43,6 +42,7 @@ namespace Microsoft.Azure.Commands.Resources
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             this.ConfirmAction(
                 force: this.Force,
                 actionMessage: string.Format(ProjectResources.RegisteringProvider, this.ProviderNamespace),

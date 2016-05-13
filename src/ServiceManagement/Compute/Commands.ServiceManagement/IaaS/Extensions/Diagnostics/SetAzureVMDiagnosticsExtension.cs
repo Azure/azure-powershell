@@ -19,6 +19,8 @@ using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Management.Compute;
+using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -32,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     {
         private string publicConfiguration;
         private string privateConfiguration;
+        private string resourceId;
         protected const string SetExtParamSetName = "SetDiagnosticsExtension";
         protected const string SetExtRefParamSetName = "SetDiagnosticsWithReferenceExtension";
 
@@ -147,8 +150,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             {
                 if (string.IsNullOrEmpty(this.publicConfiguration))
                 {
-                    this.publicConfiguration = DiagnosticsHelper.GetJsonSerializedPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath,
-                            this.StorageAccountName);
+                    this.publicConfiguration = JsonConvert.SerializeObject(
+                        DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath, this.StorageAccountName, resourceId, cmdlet: this));
                 }
 
                 return this.publicConfiguration;
@@ -161,8 +164,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             {
                 if (string.IsNullOrEmpty(this.privateConfiguration))
                 {
-                    this.privateConfiguration = DiagnosticsHelper.GetJsonSerializedPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageAccountKey,
-                            this.StorageAccountEndpoint);
+                    this.privateConfiguration = JsonConvert.SerializeObject(
+                        DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.DiagnosticsConfigurationPath, this.StorageAccountName, this.StorageAccountKey, this.StorageAccountEndpoint));
                 }
 
                 return this.privateConfiguration;
@@ -198,6 +201,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             ValidateStorageAccountName();
             ValidateStorageAccountKey();
             ValidateStorageAccountEndpoint();
+            GetResourceId();
         }
 
         private void ValidateStorageAccountName()
@@ -231,6 +235,34 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             if (string.IsNullOrEmpty(this.StorageAccountEndpoint))
             {
                 throw new ArgumentNullException(Resources.DiagnosticsExtensionNullStorageAccountEndpoint);
+            }
+        }
+
+        private void GetResourceId()
+        {
+            var vmRoleContext = VM as PersistentVMRoleContext;
+            if (vmRoleContext != null)
+            {
+                string resourceGroup = null;
+                string serviceName = vmRoleContext.ServiceName;
+
+                foreach (var service in this.ComputeClient.HostedServices.List())
+                {
+                    if (service.ServiceName == serviceName
+                        && service.Properties != null
+                        && service.Properties.ExtendedProperties != null
+                        && service.Properties.ExtendedProperties.ContainsKey("ResourceGroup"))
+                    {
+                        resourceGroup = service.Properties.ExtendedProperties["ResourceGroup"];
+                        break;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(resourceGroup))
+                {
+                    this.resourceId = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ClassicCompute/virtualMachines/{2}",
+                        Profile.DefaultSubscription.Id, resourceGroup, vmRoleContext.Name);
+                }
             }
         }
 

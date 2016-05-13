@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
+using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
-using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
 {
@@ -74,12 +72,12 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         public AzureSqlDatabaseTransparentDataEncryptionModel UpsertTransparentDataEncryption(AzureSqlDatabaseTransparentDataEncryptionModel model)
         {
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.DatabaseName, Util.GenerateTracingId(), new TransparentDataEncryptionCreateOrUpdateParameters()
+            {
+                Properties = new TransparentDataEncryptionCreateOrUpdateProperties()
                 {
-                    Properties = new TransparentDataEncryptionCreateOrUpdateProperties()
-                    {
-                        State = model.State.ToString(),
-                    }
-                });
+                    State = model.State.ToString(),
+                }
+            });
 
             return CreateTransparentDataEncryptionModelFromResponse(model.ResourceGroupName, model.ServerName, model.DatabaseName, resp);
         }

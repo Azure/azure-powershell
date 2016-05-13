@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Linq;
-using System.Globalization;
-using System.Collections.Generic;
-using System.Net;
 using Hyak.Common;
-using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.OperationalInsights.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Globalization;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -89,22 +85,18 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return searchResponse;
         }
 
-        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, string displayName, string category, string query, int version, bool force, Action<bool, string, string, string, Action> ConfirmAction, string ETag = null)
+        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, SavedSearchProperties properties, bool force, Action<bool, string, string, string, Action> ConfirmAction, string ETag = null)
         {
             HttpStatusCode status = HttpStatusCode.Ambiguous;
             Action createSavedSearch = () =>
                 {
-                    SearchCreateOrUpdateSavedSearchParameters parameters = new SearchCreateOrUpdateSavedSearchParameters();
+                    SearchCreateOrUpdateSavedSearchParameters searchParameters = new SearchCreateOrUpdateSavedSearchParameters();
                     if (ETag != null && ETag != "")
                     {
-                        parameters.ETag = ETag;
+                        searchParameters.ETag = ETag;
                     }
-                    parameters.Properties = new SavedSearchProperties();
-                    parameters.Properties.Category = category;
-                    parameters.Properties.DisplayName = displayName;
-                    parameters.Properties.Query = query;
-                    parameters.Properties.Version = version;
-                    AzureOperationResponse response = OperationalInsightsManagementClient.Search.CreateOrUpdateSavedSearch(resourceGroupName, workspaceName, savedSearchId, parameters);
+                    searchParameters.Properties = properties;
+                    AzureOperationResponse response = OperationalInsightsManagementClient.Search.CreateOrUpdateSavedSearch(resourceGroupName, workspaceName, savedSearchId, searchParameters);
                     status = response.StatusCode;
                 };
             if (force)

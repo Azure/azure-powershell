@@ -12,20 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
-using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -78,11 +81,55 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public static PSResourceManagerError ToPSResourceManagerError(this ResourceManagementError error)
         {
-            return new PSResourceManagerError
+            PSResourceManagerError rmError = new PSResourceManagerError
+            {
+                Code = error.Code,
+                Message = error.Message,
+                Target = string.IsNullOrEmpty(error.Target) ? null : error.Target
+            };
+
+            if (!string.IsNullOrEmpty(error.Details))
+            {
+                var token = JToken.Parse(error.Details);
+                if (token is JArray)
                 {
-                    Code = error.Code,
-                    Message = error.Message
-                };
+                    var errors = error.Details.FromJson<ExtendedErrorInfo[]>();
+                    List<PSResourceManagerError> innerRMErrors = new List<PSResourceManagerError>();
+                    foreach (var innerError in errors)
+                    {
+                        innerRMErrors.Add(innerError.ToPSResourceManagerError());
+                    }
+                    rmError.Details = innerRMErrors;
+                }
+                else if (token is JObject)
+                {
+                    var innerError = error.Details.FromJson<ResourceManagementError>();
+                    rmError.Details = new List<PSResourceManagerError> { innerError.ToPSResourceManagerError() };
+                }
+            }
+            return rmError;
+        }
+
+        public static PSResourceManagerError ToPSResourceManagerError(this ExtendedErrorInfo error)
+        {
+            PSResourceManagerError rmError = new PSResourceManagerError
+            {
+                Code = error.Code,
+                Message = error.Message,
+                Target = string.IsNullOrEmpty(error.Target) ? null : error.Target
+            };
+
+            if (error.Details != null)
+            {
+                List<PSResourceManagerError> innerRMErrors = new List<PSResourceManagerError>();
+                foreach (var innerError in error.Details)
+                {
+                    innerRMErrors.Add(innerError.ToPSResourceManagerError());
+                }
+                rmError.Details = innerRMErrors;
+            }
+
+            return rmError;
         }
 
         public static PSResource ToPSResource(this GenericResourceExtended resource, ResourcesClient client, bool minimal)
@@ -130,28 +177,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 ProviderNamespace = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Provider,
                 ResourceName = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Resource
             };
-        }
-
-        public static PSResourceProviderLocationInfo ToPSResourceProviderLocationInfo(this ProviderResourceType resourceType, string providerNamespace)
-        {
-            PSResourceProviderLocationInfo result = new PSResourceProviderLocationInfo();
-            if (resourceType != null)
-            {
-                resourceType.Locations = resourceType.Locations ?? new List<string>();
-                for (int i = 0; i < ResourcesClient.KnownLocationsNormalized.Count; i++)
-                {
-                    if (resourceType.Locations.Remove(ResourcesClient.KnownLocationsNormalized[i]))
-                    {
-                        resourceType.Locations.Add(ResourcesClient.KnownLocations[i]);
-                    }
-                }
-
-                result.Name = string.IsNullOrEmpty(providerNamespace) ? resourceType.Name : string.Join("/", providerNamespace, resourceType.Name);
-                result.Locations = resourceType.Locations.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct(StringComparer.CurrentCultureIgnoreCase).ToList();
-                result.LocationsString = string.Join(", ", result.Locations);
-            }
-
-            return result;
         }
 
         public static PSGalleryItem ToPSGalleryItem(this GalleryItem gallery)
@@ -246,7 +271,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxTypeLength + "}  {2, -" + maxLocationLength + "}\r\n";
                 resourcesTable.AppendLine();
                 resourcesTable.AppendFormat(rowFormat, "Name", "Type", "Location");
-                resourcesTable.AppendFormat(rowFormat, 
+                resourcesTable.AppendFormat(rowFormat,
                     GeneralUtilities.GenerateSeparator(maxNameLength, "="),
                     GeneralUtilities.GenerateSeparator(maxTypeLength, "="),
                     GeneralUtilities.GenerateSeparator(maxLocationLength, "="));
@@ -367,6 +392,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 deploymentObject.TemplateLink = properties.TemplateLink;
                 deploymentObject.Timestamp = properties.Timestamp;
                 deploymentObject.CorrelationId = properties.CorrelationId;
+
+                if (properties.DebugSettingResponse != null && !string.IsNullOrEmpty(properties.DebugSettingResponse.DeploymentDebugDetailLevel))
+                {
+                    deploymentObject.DeploymentDebugLogLevel = properties.DebugSettingResponse.DeploymentDebugDetailLevel;
+                }
 
                 if (!string.IsNullOrEmpty(properties.Outputs))
                 {

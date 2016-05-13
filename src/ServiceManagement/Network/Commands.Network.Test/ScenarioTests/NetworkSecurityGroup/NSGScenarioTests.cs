@@ -23,8 +23,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Xunit;
     using Microsoft.WindowsAzure.Management;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Test;
+    using System;
 
     public class NSGScenarioTests
     {
@@ -132,9 +133,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
-                List<string> modules = Directory.GetFiles("ScenarioTests\\NetworkSecurityGroup", "*.ps1").ToList();
-                modules.AddRange(Directory.GetFiles("ScenarioTests", "*.ps1"));
-                modules.Add("Common.ps1"); 
+                List<string> modules = Directory.GetFiles("ScenarioTests\\NetworkSecurityGroup".AsAbsoluteLocation(), "*.ps1").ToList();
+                modules.AddRange(Directory.GetFiles("ScenarioTests".AsAbsoluteLocation(), "*.ps1"));
                 
                 SetupManagementClients();
 

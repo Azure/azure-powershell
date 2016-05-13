@@ -54,10 +54,6 @@
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.5.2-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
@@ -66,7 +62,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Graph.RBAC">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.8.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.9.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
@@ -74,7 +70,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.11-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
@@ -84,12 +80,12 @@
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.8.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.11.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.0.1-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -145,6 +141,7 @@
     <Compile Include="Models.Authorization\AuthorizationHelper.cs" />
     <Compile Include="Models.Authorization\FilterRoleDefinitionOptions.cs" />
     <Compile Include="Models.ResourceGroups\PSResourceProviderOperation.cs" />
+    <Compile Include="Models.ResourceGroups\SubscriptionsClient.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -190,7 +187,7 @@
     <Compile Include="Models.ResourceGroups\PSDeploymentEventData.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClient.Events.cs" />
     <Compile Include="Models.ResourceGroups\FilterResourceGroupDeploymentOptions.cs" />
-    <Compile Include="Models.ResourceGroups\PSResourceProviderLocationInfo.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceProviderLocation.cs" />
     <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />
     <Compile Include="Models.ResourceGroups\UpdatePSResourceGroupParameters.cs" />
     <Compile Include="Models.ResourceGroups\UpdatePSResourceParameters.cs" />
@@ -198,6 +195,7 @@
     <Compile Include="Models.ResourceGroups\ValidatePSResourceGroupDeploymentParameters.cs" />
     <Compile Include="Models.Authorization\AuthorizationClient.cs" />
     <Compile Include="ProviderFeatures\RegisterAzureProviderFeatureCmdlet.cs" />
+    <Compile Include="Providers\GetAzureLocationCmdlet.cs" />
     <Compile Include="Providers\GetAzureProviderCmdlet.cs" />
     <Compile Include="Providers\GetAzureProviderOperationCmdlet.cs" />
     <Compile Include="Providers\RegisterAzureProviderCmdlet.cs" />
@@ -237,6 +235,10 @@
     <Compile Include="Models.ResourceGroups\ResourceClient.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>

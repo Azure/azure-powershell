@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Test;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Automation;
+using Microsoft.Azure.Test;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Test
@@ -34,7 +32,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
         protected void SetupManagementClients()
         {
             var automationManagementClient = GetAutomationManagementClient();
-           
+
             helper.SetupManagementClients(automationManagementClient);
         }
 
@@ -48,9 +46,9 @@ namespace Microsoft.Azure.Commands.Automation.Test
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
-                    helper.RMProfileModule, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    helper.RMProfileModule,
                     helper.GetRMModulePath(@"AzureRM.Automation.psd1"));
 
                 helper.RunPowerShellTest(scripts);

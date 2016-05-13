@@ -15,7 +15,6 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
 using System.Collections;
@@ -67,6 +66,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Publisher { get; set; }
 
+        [Alias("Type")]
         [Parameter(
             Mandatory = true,
             Position = 4,
@@ -123,6 +123,19 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Disable auto-upgrade of minor version")]
+        public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Force re-run even if extension configuration has not changed")]
+        [ValidateNotNullOrEmpty]
+        public string ForceRerun { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -147,6 +160,8 @@ namespace Microsoft.Azure.Commands.Compute
                     TypeHandlerVersion = this.TypeHandlerVersion,
                     Settings = this.Settings,
                     ProtectedSettings = this.ProtectedSettings,
+                    AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+                    ForceUpdateTag = this.ForceRerun
                 };
 
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(

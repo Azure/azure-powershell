@@ -15,7 +15,6 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections;
 using System.Management.Automation;
@@ -50,6 +49,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Plan = this.VM.Plan,
                     AvailabilitySet = this.VM.AvailabilitySetReference,
                     Location = this.VM.Location,
+                    LicenseType = this.VM.LicenseType,
                     Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
                 };
 

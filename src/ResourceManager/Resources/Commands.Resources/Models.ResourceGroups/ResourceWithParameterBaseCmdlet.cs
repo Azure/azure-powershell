@@ -12,24 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Management.Automation;
-
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Common.Authentication;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources
 {
     public abstract class ResourceWithParameterBaseCmdlet : ResourcesBaseCmdlet
     {
-        protected const string BaseParameterSetName = "Default";
         protected const string TemplateFileParameterObjectParameterSetName = "Deployment via template file and template parameters object";
         protected const string TemplateFileParameterFileParameterSetName = "Deployment via template file and template parameters file";
         protected const string TemplateFileParameterUriParameterSetName = "Deployment via template file template parameters uri";
@@ -182,6 +177,31 @@ namespace Microsoft.Azure.Commands.Resources
             }
 
             return prameterObject;
+        }
+
+        protected string GetDeploymentDebugLogLevel(string deploymentDebugLogLevel)
+        {
+            string debugSetting = string.Empty;
+            if (!string.IsNullOrEmpty(deploymentDebugLogLevel))
+            {
+                switch (deploymentDebugLogLevel.ToLower())
+                {
+                    case "all":
+                        debugSetting = "RequestContent,ResponseContent";
+                        break;
+                    case "requestcontent":
+                        debugSetting = "RequestContent";
+                        break;
+                    case "responsecontent":
+                        debugSetting = "ResponseContent";
+                        break;
+                    case "none":
+                        debugSetting = null;
+                        break;
+                }
+            }
+
+            return debugSetting;
         }
     }
 }

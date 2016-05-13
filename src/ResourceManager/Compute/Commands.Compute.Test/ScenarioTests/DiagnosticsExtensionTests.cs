@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class DiagnosticsExtensionTests
     {
+        public DiagnosticsExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticsExtensionBasic()
@@ -38,6 +43,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestDiagnosticsExtensionCantListSepcifyStorageAccountKey()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-DiagnosticsExtensionCantListSepcifyStorageAccountKey");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiagnosticsExtensionSupportJsonConfig()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-DiagnosticsExtensionSupportJsonConfig");
         }
     }
 }

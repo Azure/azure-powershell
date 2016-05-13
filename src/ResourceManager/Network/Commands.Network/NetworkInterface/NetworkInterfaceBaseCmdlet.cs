@@ -13,15 +13,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
-using Hyak.Common;
+using System.Collections.Generic;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -89,8 +87,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 ipconfig.LoadBalancerBackendAddressPools = ipconfig.LoadBalancerBackendAddressPools ?? new List<PSBackendAddressPool>();
                 ipconfig.LoadBalancerInboundNatRules = ipconfig.LoadBalancerInboundNatRules ?? new List<PSInboundNatRule>();
+                ipconfig.ApplicationGatewayBackendAddressPools = ipconfig.ApplicationGatewayBackendAddressPools ?? new List<PSApplicationGatewayBackendAddressPool>();
             }
-            
+
             return psNic;
         }
     }

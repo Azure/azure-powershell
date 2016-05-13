@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-       
+
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To show the status.")]

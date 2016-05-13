@@ -13,13 +13,13 @@
 //  limitations under the License.
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementAuthorizationServer")]
-    [OutputType(typeof (PsApiManagementOAuth2AuthrozationServer))]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementAuthorizationServer)]
+    [OutputType(typeof(PsApiManagementOAuth2AuthrozationServer))]
     public class SetAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -52,21 +52,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Client registration endpoint is used for registering clients with the authorization server and obtaining client credentials. This parameter is required.")]
+            HelpMessage = "Client registration endpoint is used for registering clients with the authorization server and obtaining client credentials." +
+                          " This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ClientRegistrationPageUrl { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Authorization endpoint is used to authenticate resource owners and obtain authorization grants. This parameter is required.")]
+            HelpMessage = "Authorization endpoint is used to authenticate resource owners and obtain authorization grants. " +
+                          "This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String AuthorizationEndpointUrl { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Token endpoint is used by clients to obtain access tokens in exchange for presenting authorization grants or refresh tokens. This parameter is required.")]
+            HelpMessage = "Token endpoint is used by clients to obtain access tokens in exchange for presenting authorization grants or refresh tokens." +
+                          " This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String TokenEndpointUrl { get; set; }
 
@@ -92,7 +95,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Supported grant types (AuthorizationCode, Implicit, ResourceOwnerPassword, ClientCredentials). This parameter is required.")]
+            HelpMessage = "Supported grant types (AuthorizationCode, Implicit, ResourceOwnerPassword, ClientCredentials). " +
+                          "This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementGrantType[] GrantTypes { get; set; }
 
@@ -143,7 +147,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If specified will write Instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer type . This parameter is optional.")]
+            HelpMessage = "If specified will write Instance of" +
+                          " Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOAuth2AuthrozationServer type . " +
+                          "This parameter is optional.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
@@ -159,7 +165,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 ClientId,
                 ClientSecret,
                 AuthorizationRequestMethods == null || AuthorizationRequestMethods.Length == 0
-                    ? new[] {PsApiManagementAuthorizationRequestMethod.Get}
+                    ? new[] { PsApiManagementAuthorizationRequestMethod.Get }
                     : AuthorizationRequestMethods,
                 GrantTypes,
                 ClientAuthenticationMethods,

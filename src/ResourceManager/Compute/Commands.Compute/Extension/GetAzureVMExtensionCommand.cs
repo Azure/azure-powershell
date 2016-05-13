@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute

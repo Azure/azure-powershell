@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Management.Sql;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
 {
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// The Sql client to be used by this end points communicator
         /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
-        
+
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription {get ; set; }
+        private static AzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         {
             return GetCurrentSqlClient(clientRequestId).Databases.ListExpanded(resourceGroupName, serverName, expand).Databases;
         }
-        
+
         /// <summary>
         /// Get recommended elastic pools
         /// </summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         {
             return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.ListExpanded(resourceGroupName, serverName, expand).RecommendedElasticPools;
         }
-        
+
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.

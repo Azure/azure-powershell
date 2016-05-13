@@ -12,21 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
+    using Management.TrafficManager;
+    using Management.TrafficManager.Models;
+    using Models;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
-    using Microsoft.Azure.Commands.Tags.Model;
-    using Microsoft.Azure.Commands.TrafficManager.Models;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Management.TrafficManager;
-    using Microsoft.Azure.Management.TrafficManager.Models;
+    using Tags.Model;
 
-    public class TrafficManagerClient 
+    public class TrafficManagerClient
     {
         public const string ProfileResourceLocation = "global";
 
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string profileStatus, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath, Hashtable[] tag)
         {
             ProfileCreateOrUpdateResponse response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
-                resourceGroupName, 
+                resourceGroupName,
                 profileName,
                 new ProfileCreateOrUpdateParameters
                 {
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                         Tags = TagsConversionHelper.CreateTagDictionary(tag, validate: true),
                     }
                 });
-            
+
             return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response.Profile);
         }
 
@@ -122,22 +123,22 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
             return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(
                 response.Endpoint.Id,
-                resourceGroupName, 
-                profileName, 
-                endpointType, 
-                endpointName, 
+                resourceGroupName,
+                profileName,
+                endpointType,
+                endpointName,
                 response.Endpoint.Properties);
         }
 
         public TrafficManagerProfile[] ListTrafficManagerProfiles(string resourceGroupName = null)
         {
             ProfileListResponse response =
-                resourceGroupName == null ? 
+                resourceGroupName == null ?
                 this.TrafficManagerManagementClient.Profiles.ListAll() :
                 this.TrafficManagerManagementClient.Profiles.ListAllInResourceGroup(resourceGroupName);
 
             return response.Profiles.Select(profile => TrafficManagerClient.GetPowershellTrafficManagerProfile(
-                resourceGroupName ?? TrafficManagerClient.ExtractResourceGroupFromId(profile.Id), 
+                resourceGroupName ?? TrafficManagerClient.ExtractResourceGroupFromId(profile.Id),
                 profile.Name,
                 profile)).ToArray();
         }
@@ -151,7 +152,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
             ProfileCreateOrUpdateResponse response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 profile.ResourceGroupName,
-                profile.Name, 
+                profile.Name,
                 parameters
                 );
 
@@ -174,10 +175,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
             return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(
                 endpoint.Id,
-                endpoint.ResourceGroupName, 
+                endpoint.ResourceGroupName,
                 endpoint.ProfileName,
-                endpoint.Type, 
-                endpoint.Name, 
+                endpoint.Type,
+                endpoint.Name,
                 response.Endpoint.Properties);
         }
 
@@ -191,9 +192,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         public bool DeleteTrafficManagerEndpoint(TrafficManagerEndpoint trafficManagerEndpoint)
         {
             AzureOperationResponse response = this.TrafficManagerManagementClient.Endpoints.Delete(
-                trafficManagerEndpoint.ResourceGroupName, 
-                trafficManagerEndpoint.ProfileName, 
-                trafficManagerEndpoint.Type, 
+                trafficManagerEndpoint.ResourceGroupName,
+                trafficManagerEndpoint.ProfileName,
+                trafficManagerEndpoint.Type,
                 trafficManagerEndpoint.Name);
 
             return response.StatusCode.Equals(HttpStatusCode.OK);

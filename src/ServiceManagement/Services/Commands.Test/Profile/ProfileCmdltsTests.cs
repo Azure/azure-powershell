@@ -16,8 +16,8 @@ using System.Collections;
 using System.Security;
 using System.Text;
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.ServiceBus.Management;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -32,7 +32,8 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -84,7 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.Equal(0, client.Profile.Subscriptions.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
-            Assert.Equal(3, client.Profile.Environments.Count); //only default environments
+            Assert.Equal(4, client.Profile.Environments.Count); //only default environments
         }
 
         [Fact]
@@ -114,7 +115,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             client = new ProfileClient(new AzureSMProfile(subscriptionDataFile));
             Assert.Equal(0, client.Profile.Subscriptions.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
-            Assert.Equal(3, client.Profile.Environments.Count); //only default environments
+            Assert.Equal(4, client.Profile.Environments.Count); //only default environments
         }
 
         [Fact]

@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2014-12-01-preview/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "runworkflowmanually": {
+            "type": "bool",
+            "defaultValue": true
+        },
+        "destinationUri": {
+            "type": "string",
+            "defaultValue": "http://tempuri.org"
+        }
+    },
+    "triggers": {},
+    "actions": {
+        "http": {
+            "type": "Http",
+            "inputs": {
+                "method": "POST",
+                "uri": "@parameters('destinationUri')",
+                "body": "Test"
+            },
+            "conditions": []
+        }
+    },
+    "outputs": {}
+}

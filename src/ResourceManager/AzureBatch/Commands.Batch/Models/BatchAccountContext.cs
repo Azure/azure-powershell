@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Threading;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Auth;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch.Models;
+using Microsoft.Rest;
 using System;
 using System.Collections;
-using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
         /// </summary>
-        public AccountKeyType KeyInUse 
-        { 
+        public AccountKeyType KeyInUse
+        {
             get { return this.keyInUse; }
             set
             {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Batch
                     this.batchOMClient = null;
                 }
                 this.keyInUse = value;
-            } 
+            }
         }
 
         internal BatchClient BatchOMClient
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Batch
                         throw new InvalidOperationException(string.Format(Resources.KeyNotPresent, KeyInUse));
                     }
                     string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
-                    BatchRestClient restClient = CreateBatchRestClient(TaskTenantUrl, AccountName, key);
+                    BatchServiceClient restClient = CreateBatchRestClient(TaskTenantUrl, AccountName, key);
                     this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Open(restClient);
                 }
                 return this.batchOMClient;
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         internal BatchAccountContext()
         {
-            this.keyInUse = AccountKeyType.Primary;
+            this.KeyInUse = AccountKeyType.Primary;
         }
 
         internal BatchAccountContext(string accountEndpoint) : this()
@@ -207,13 +207,15 @@ namespace Microsoft.Azure.Commands.Batch
             return baContext;
         }
 
-        protected virtual BatchRestClient CreateBatchRestClient(string url, string accountName, string key)
+        protected virtual BatchServiceClient CreateBatchRestClient(string url, string accountName, string key, DelegatingHandler handler = default(DelegatingHandler))
         {
-            Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
-            BatchRestClient restClient = new BatchRestClient(credentials, new Uri(url));
+            ServiceClientCredentials credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
+
+            BatchServiceClient restClient = handler == null ? new BatchServiceClient(new Uri(url), credentials) : new BatchServiceClient(new Uri(url), credentials, handler);
+
             restClient.HttpClient.DefaultRequestHeaders.UserAgent.Add(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue);
 
-            restClient.SetRetryPolicy(Hyak.Common.TransientFaultHandling.RetryPolicy.NoRetry); //Force there to be no retries
+            restClient.SetRetryPolicy(null); //Force there to be no retries
             restClient.HttpClient.Timeout = Timeout.InfiniteTimeSpan; //Client side timeout will be set per-request
 
             return restClient;

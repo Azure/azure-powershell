@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
@@ -33,6 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         public RMTestBase()
         {
+            System.Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             BaseSetup();
         }
 
@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                     }
                 },
-            AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], 
+            AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
             new AzureTenant { Id = Guid.NewGuid(), Domain = "testdomain.onmicrosoft.com" });
 
             AzureRmProfileProvider.Instance.Profile = currentProfile;

@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         public BlobRequestOptions CreateRequestOptions()
         {
             return new BlobRequestOptions
-                       {
-                           ServerTimeout = this.operationTimeout,
-                           RetryPolicy = new LinearRetry(delayBetweenRetries, 5)
-                       };
+            {
+                ServerTimeout = this.operationTimeout,
+                RetryPolicy = new LinearRetry(delayBetweenRetries, 5)
+            };
         }
     }
 }

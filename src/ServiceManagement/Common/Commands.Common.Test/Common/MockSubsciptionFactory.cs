@@ -17,31 +17,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
     public class MockSubsciptionFactory : IClientFactory
     {
-        public void AddAction(Azure.Common.Authentication.Models.IClientAction action)
+        public void AddAction(IClientAction action)
         {
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(Azure.Common.Authentication.Models.AzureSMProfile profile, Azure.Common.Authentication.Models.AzureSubscription subscription, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(Azure.Common.Authentication.Models.AzureSMProfile profile, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(Azure.Common.Authentication.Models.AzureContext context, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }
@@ -76,6 +77,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
+        public DelegatingHandler[] GetCustomHandlers()
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddUserAgent(string productName, string productVersion)
         {
             throw new NotImplementedException();
@@ -89,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
 
 
-        public TClient CreateArmClient<TClient>(Azure.Common.Authentication.Models.AzureContext context, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        public TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }

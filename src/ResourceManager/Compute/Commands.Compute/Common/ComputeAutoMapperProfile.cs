@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Rest.Azure;
 using FROM = Microsoft.Azure.Management.Compute.Models;
 using TO = Microsoft.Azure.Commands.Compute.Models;
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mapper.CreateMap<AzureOperationResponse<FROM.AvailabilitySet>, TO.PSAvailabilitySet>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
-            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.AvailabilitySet>>, TO.PSAvailabilitySet>()
+            Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.AvailabilitySet>>, TO.PSAvailabilitySet>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
             // VirtualMachine => PSVirtualMachine
@@ -112,17 +112,21 @@ namespace Microsoft.Azure.Commands.Compute
             Mapper.CreateMap<AzureOperationResponse<IPage<FROM.VirtualMachine>>, TO.PSVirtualMachine>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
+            Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.VirtualMachine>>, TO.PSVirtualMachine>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
             // VirtualMachineSize => PSVirtualMachineSize
             Mapper.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
 
             Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachineSize>, TO.PSVirtualMachineSize>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
-            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.VirtualMachineSize>>, TO.PSVirtualMachineSize>()
+            Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.VirtualMachineSize>>, TO.PSVirtualMachineSize>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
             // Usage => PSUsage
-            Mapper.CreateMap<FROM.Usage, TO.PSUsage>();
+            Mapper.CreateMap<FROM.Usage, TO.PSUsage>()
+                .ForMember(c => c.Unit, o => o.MapFrom(r => Microsoft.Azure.Management.Compute.Models.Usage.Unit));
 
             Mapper.CreateMap<AzureOperationResponse<FROM.Usage>, TO.PSUsage>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));

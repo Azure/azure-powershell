@@ -12,21 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Collections.Concurrent;
-using System.Diagnostics;
-using System.IO;
-using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Newtonsoft.Json;
-using System.Threading;
-using System.Management.Automation.Host;
+using System;
 using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+using System.Management.Automation.Host;
+using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -39,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// Sets the current profile - the profile used when no Profile is explicitly passed in.  Should be used only by
         /// Profile cmdlets and tests that need to set up a particular profile
         /// </summary>
-        public static AzureSMProfile CurrentProfile 
+        public static AzureSMProfile CurrentProfile
         {
             private get
             {
@@ -52,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
+
         protected override AzureContext DefaultContext { get { return CurrentProfile.Context; } }
 
         static AzureSMCmdlet()
@@ -60,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 AzureSession.ClientFactory.AddAction(new RPRegistrationAction());
                 AzureSession.DataStore = new DiskDataStore();
-           }
+            }
         }
 
         protected override void SaveDataCollectionProfile()
@@ -126,7 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 commandAlias = this.MyInvocation.MyCommand.Name;
             }
 
-            QosEvent = new AzurePSQoSEvent()
+            _qosEvent = new AzurePSQoSEvent()
             {
                 CommandName = commandAlias,
                 ModuleName = this.GetType().Assembly.GetName().Name,
@@ -138,7 +137,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
             {
-                QosEvent.Parameters = string.Join(" ",
+                _qosEvent.Parameters = string.Join(" ",
                     this.MyInvocation.BoundParameters.Keys.Select(
                         s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
             }
@@ -147,12 +146,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 this.DefaultContext.Account != null &&
                 this.DefaultContext.Account.Id != null)
             {
-                QosEvent.Uid = MetricHelper.GenerateSha256HashString(
+                _qosEvent.Uid = MetricHelper.GenerateSha256HashString(
                     this.DefaultContext.Account.Id.ToString());
             }
             else
             {
-                QosEvent.Uid = "defaultid";
+                _qosEvent.Uid = "defaultid";
             }
         }
 
@@ -168,7 +167,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Ensure that there is a profile for the command
         /// </summary>
-        protected  virtual void InitializeProfile()
+        protected virtual void InitializeProfile()
         {
             if (Profile == null)
             {
@@ -178,6 +177,24 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 AzureSMProfileProvider.Instance.SetTokenCacheForProfile(Profile);
             }
+        }
+
+        protected override void LogCmdletStartInvocationInfo()
+        {
+            base.LogCmdletStartInvocationInfo();
+            if (DefaultContext != null && DefaultContext.Account != null
+                && DefaultContext.Account.Id != null)
+            {
+                WriteDebugWithTimestamp(string.Format("using account id '{0}'...",
+                    DefaultContext.Account.Id));
+            }
+        }
+
+        protected override void LogCmdletEndInvocationInfo()
+        {
+            base.LogCmdletEndInvocationInfo();
+            string message = string.Format("{0} end processing.", this.GetType().Name);
+            WriteDebugWithTimestamp(message);
         }
     }
 }

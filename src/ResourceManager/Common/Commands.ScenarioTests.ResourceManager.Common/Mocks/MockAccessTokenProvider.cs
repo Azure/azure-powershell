@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.Azure.Common.Authentication;
+using System.Security;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -42,9 +42,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             return this.accessToken;
         }
 
+        IAccessToken ITokenProvider.GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint,
+            AzureAccount.AccountType credentialType)
+        {
+            return GetAccessTokenWithCertificate(config, principalId, certificateThumbprint, credentialType);
+        }
+
         public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint, AzureAccount.AccountType credentialType)
         {
             return this.accessToken;
         }
+
     }
 }

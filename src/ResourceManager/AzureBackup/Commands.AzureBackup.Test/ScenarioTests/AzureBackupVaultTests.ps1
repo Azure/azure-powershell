@@ -42,5 +42,5 @@ function Test-AzureBackupVaultScenario
 	Assert-AreEqual $vault.Region $Location;
 	Assert-AreEqual $vault.Storage "GeoRedundant";
 
-	Remove-AzureRmBackupVault -Vault $vault;	
+	Remove-AzureRmBackupVault -Vault $vault -Force;	
 }
