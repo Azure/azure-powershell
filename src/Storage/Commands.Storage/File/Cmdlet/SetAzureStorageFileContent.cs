@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +14,14 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.File;
     using System.Globalization;
     using System.IO;
     using System.Management.Automation;
     using System.Net;
     using System.Threading.Tasks;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.DataMovement;
-    using Microsoft.WindowsAzure.Storage.File;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
 
     [Cmdlet(VerbsCommon.Set, LocalConstants.FileContentCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]

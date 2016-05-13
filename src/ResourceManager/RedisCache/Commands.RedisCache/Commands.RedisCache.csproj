@@ -59,8 +59,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.11.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Redis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Redis.2.0.0-preview\lib\net45\Microsoft.Azure.Management.Redis.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Redis, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Redis.2.0.1-preview\lib\net45\Microsoft.Azure.Management.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

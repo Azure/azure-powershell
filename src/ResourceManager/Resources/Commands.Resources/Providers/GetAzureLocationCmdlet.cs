@@ -14,15 +14,15 @@
 
 namespace Microsoft.Azure.Commands.Providers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.Resources.Models;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.Azure.Subscriptions.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Management.Automation;
 
     /// <summary>
     /// Get all locations with the supported providers.
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Providers
             var providers = this.ResourcesClient.ListResourceProviders(providerName: null, listAvailable: true);
             var providerLocations = ConstructResourceProviderLocations(allLocations, providers);
 
-            this.WriteObject(providerLocations, enumerateCollection: true);   
+            this.WriteObject(providerLocations, enumerateCollection: true);
         }
 
         private List<PSResourceProviderLocation> ConstructResourceProviderLocations(List<Location> locations, List<Provider> providers)
@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.Providers
                 location => location.DisplayName,
                 mapEntry => mapEntry.Key,
                 (location, mapEntry) => new PSResourceProviderLocation
-                    {
-                        Location = location.Name,
-                        DisplayName = location.DisplayName,
-                        Providers = mapEntry.Value
-                    },
+                {
+                    Location = location.Name,
+                    DisplayName = location.DisplayName,
+                    Providers = mapEntry.Value
+                },
                 StringComparer.InvariantCultureIgnoreCase);
 
             return joinResult.ToList();

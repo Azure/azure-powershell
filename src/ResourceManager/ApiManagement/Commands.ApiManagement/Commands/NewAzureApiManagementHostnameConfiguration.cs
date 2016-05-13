@@ -14,12 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using ResourceManager.Common;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementHostnameConfiguration"), OutputType(typeof (PsApiManagementHostnameConfiguration))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementHostnameConfiguration"), OutputType(typeof(PsApiManagementHostnameConfiguration))]
     public class NewAzureApiManagementHostnameConfiguration : AzureRMCmdlet
     {
         [Parameter(
@@ -28,7 +27,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Certificagte thumbprint. The certificate must be first imported with Import-ApiManagementCertificate command.")]
         [ValidateNotNullOrEmpty]
         public string CertificateThumbprint { get; set; }
-        
+
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = true,

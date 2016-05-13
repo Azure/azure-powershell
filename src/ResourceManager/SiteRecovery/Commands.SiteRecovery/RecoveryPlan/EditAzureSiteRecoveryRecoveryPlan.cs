@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel;
-using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -160,8 +157,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                             var ReplicationProtectedItem =
                                 this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].
                                 ReplicationProtectedItems.
-                                FirstOrDefault(pi => String.Compare(pi.Id, 
-                                protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, 
+                                FirstOrDefault(pi => String.Compare(pi.Id,
+                                protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId,
                                 StringComparison.OrdinalIgnoreCase) == 0);
 
                             if (ReplicationProtectedItem != null)

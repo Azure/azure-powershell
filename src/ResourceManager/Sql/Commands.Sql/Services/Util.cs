@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Common;
 using System;
 using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Services
 {
@@ -86,8 +85,8 @@ namespace Microsoft.Azure.Commands.Sql.Services
                 }
             }
             return eventTypes;
-        } 
- 
+        }
+
         /// <summary>
         /// In cases where the user decided to use the shortcut NONE, this method sets the value of the ExcludedDetectionType property to reflect the correct values.
         /// </summary>
@@ -113,6 +112,6 @@ namespace Microsoft.Azure.Commands.Sql.Services
                 }
             }
             return excludedDetectionTypes;
-        } 
+        }
     }
 }

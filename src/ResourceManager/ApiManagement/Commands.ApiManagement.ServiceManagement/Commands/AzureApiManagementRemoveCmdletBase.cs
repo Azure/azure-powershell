@@ -13,8 +13,8 @@
 //  limitations under the License.
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using System.Management.Automation;
 
     abstract public class AzureApiManagementRemoveCmdletBase : AzureApiManagementCmdletBase
     {

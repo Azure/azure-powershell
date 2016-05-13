@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
+using System.Collections;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureBatchJobSchedule)]
     public class NewBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The id of the job schedule to create.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }

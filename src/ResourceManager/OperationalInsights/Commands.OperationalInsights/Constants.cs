@@ -39,5 +39,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public const string Schema = "AzureRmOperationalInsightsSchema";
 
         public const string SearchResults = "AzureRmOperationalInsightsSearchResults";
+
+        public const string ComputerGroup = "AzureRmOperationalInsightsComputerGroup";
     }
 }

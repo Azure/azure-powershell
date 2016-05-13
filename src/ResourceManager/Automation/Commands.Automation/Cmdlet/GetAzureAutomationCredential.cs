@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -44,8 +43,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             IEnumerable<CredentialInfo> ret = null;
             if (!string.IsNullOrEmpty(this.Name))
             {
-                ret = new List<CredentialInfo> 
-                { 
+                ret = new List<CredentialInfo>
+                {
                    this.AutomationClient.GetCredential(this.ResourceGroupName, this.AutomationAccountName, this.Name)
                 };
 

@@ -19,8 +19,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public class ProcessHelper
     {
-        public string StandardOutput { get; set;}
-        public string StandardError { get; set;}
+        public string StandardOutput { get; set; }
+        public string StandardError { get; set; }
         public int ExitCode { get; set; }
 
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
