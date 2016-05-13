@@ -12,11 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
-using Microsoft.Azure.Commands.Dns.Properties;
-
+using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
@@ -55,7 +52,7 @@ namespace Microsoft.Azure.Commands.Dns
 
             if (this.ParameterSetName == "Fields")
             {
-                zoneToDelete = new DnsZone 
+                zoneToDelete = new DnsZone
                 {
                     Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,

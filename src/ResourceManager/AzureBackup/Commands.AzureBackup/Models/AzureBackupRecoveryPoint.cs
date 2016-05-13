@@ -14,10 +14,6 @@
 
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
@@ -30,7 +26,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public AzureBackupRecoveryPointContextObject()
             : base()
-        {            
+        {
         }
 
         public AzureBackupRecoveryPointContextObject(CSMRecoveryPointResponse recoveryPointInfo, AzureRMBackupItem azureBackupItem)
@@ -49,7 +45,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         /// Last Recovery Point for the Azure Backup Item
         /// </summary>
         public DateTime RecoveryPointTime { get; set; }
-		
+
         /// <summary>
         /// DataSourceId of Azure Backup Item
         /// </summary>
@@ -57,7 +53,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public AzureRMBackupRecoveryPoint()
             : base()
-        {            
+        {
         }
 
         public AzureRMBackupRecoveryPoint(CSMRecoveryPointResponse recoveryPointInfo, AzureRMBackupItem azureBackupItem)

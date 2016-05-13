@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             int startIndex = id.IndexOf(resourceName, StringComparison.OrdinalIgnoreCase) + resourceName.Length + 1;
             int endIndex = id.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
-            
+
             // Replace the following string '/{value}/'
             startIndex--;
             string orignalString = id.Substring(startIndex, endIndex - startIndex + 1);
@@ -74,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (var gatewayIpConfig in applicationGateway.GatewayIPConfigurations)
                 {
-                    gatewayIpConfig.Id = string.Empty;                    
+                    gatewayIpConfig.Id = string.Empty;
                 }
             }
 
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (var frontendIpConfiguration in applicationGateway.FrontendIPConfigurations)
                 {
-                    frontendIpConfiguration.Id = string.Empty;                    
+                    frontendIpConfiguration.Id = string.Empty;
                 }
             }
 
@@ -161,7 +160,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
 
                     if (null != httpListener.SslCertificate)
-                    { 
+                    {
                         httpListener.SslCertificate.Id = NormalizeApplicationGatewayNameChildResourceIds(
                                                                         httpListener.SslCertificate.Id,
                                                                         applicationGateway.ResourceGroupName,

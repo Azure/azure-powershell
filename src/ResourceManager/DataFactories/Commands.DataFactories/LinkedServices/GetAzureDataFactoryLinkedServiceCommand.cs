@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.DataFactories.Properties;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.DataFactories.Properties;
+using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
-        {   
+        {
             // ValidationNotNullOrEmpty doesn't handle whitespaces well
-            if (Name != null && string.IsNullOrWhiteSpace(Name))            
+            if (Name != null && string.IsNullOrWhiteSpace(Name))
             {
                 throw new PSArgumentNullException("Name");
             }

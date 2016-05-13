@@ -12,9 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Moq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Formatters;
@@ -22,22 +35,8 @@ using System.Security;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Moq;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Xunit;
-using System.IO;
 using Xunit.Abstractions;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
@@ -156,10 +155,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
                 //eventsClientMock.Object,
                 authorizationManagementClientMock.Object)
-                {
-                    VerboseLogger = progressLoggerMock.Object,
-                    ErrorLogger = errorLoggerMock.Object
-                };
+            {
+                VerboseLogger = progressLoggerMock.Object,
+                ErrorLogger = errorLoggerMock.Object
+            };
 
             resourceIdentity = new ResourceIdentity
             {
@@ -390,14 +389,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             resourceOperationsMock.Setup(f => f.GetAsync(resourceGroupName, It.IsAny<ResourceIdentity>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.Factory.StartNew(() => new ResourceGetResult
+                {
+                    Resource = new GenericResourceExtended
                     {
-                        Resource = new GenericResourceExtended
-                            {
-                                Location = "West US",
-                                Properties = serializedProperties,
-                                ProvisioningState = ProvisioningState.Running
-                            }
-                    }));
+                        Location = "West US",
+                        Properties = serializedProperties,
+                        ProvisioningState = ProvisioningState.Running
+                    }
+                }));
 
             resourcesClient.CreatePSResource(parameters);
             Assert.Equal(1, RejectActionCounter);
@@ -438,16 +437,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             resourceOperationsMock.Setup(f => f.GetAsync(resourceGroupName, It.IsAny<ResourceIdentity>(), It.IsAny<CancellationToken>()))
                 .Returns(() => Task.Factory.StartNew(() => new ResourceGetResult
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Resource = new GenericResourceExtended
                     {
-                        StatusCode = HttpStatusCode.OK,
-                        Resource = new GenericResourceExtended
-                            {
-                                Name = parameters.Name,
-                                Location = parameters.Location,
-                                Properties = serializedProperties,
-                                ProvisioningState = ProvisioningState.Running,
-                            }
-                    }));
+                        Name = parameters.Name,
+                        Location = parameters.Location,
+                        Properties = serializedProperties,
+                        ProvisioningState = ProvisioningState.Running,
+                    }
+                }));
 
             resourceGroupMock.Setup(f => f.CheckExistenceAsync(resourceGroupName, It.IsAny<CancellationToken>()))
                 .Returns(Task.Factory.StartNew(() => new ResourceGroupExistsResult
@@ -529,16 +528,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             resourceOperationsMock.Setup(f => f.GetAsync(resourceGroupName, It.IsAny<ResourceIdentity>(), It.IsAny<CancellationToken>()))
                 .Returns(() => Task.Factory.StartNew(() => new ResourceGetResult
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Resource = new GenericResourceExtended
                     {
-                        StatusCode = HttpStatusCode.OK,
-                        Resource = new GenericResourceExtended
-                            {
-                                Name = parameters.Name,
-                                Location = "West US",
-                                Properties = serializedProperties,
-                                ProvisioningState = ProvisioningState.Running,
-                            }
-                    }));
+                        Name = parameters.Name,
+                        Location = "West US",
+                        Properties = serializedProperties,
+                        ProvisioningState = ProvisioningState.Running,
+                    }
+                }));
 
             resourceOperationsMock.Setup(f => f.CreateOrUpdateAsync(resourceGroupName, It.IsAny<ResourceIdentity>(), It.IsAny<GenericResource>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.Factory.StartNew(() => new ResourceCreateOrUpdateResult
@@ -656,9 +655,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             resourceOperationsMock.Setup(f => f.CheckExistenceAsync(resourceGroupName, It.IsAny<ResourceIdentity>(), It.IsAny<CancellationToken>()))
                 .Returns(() => Task.Factory.StartNew(() => new ResourceExistsResult
-                            {
-                                Exists = false
-                            }
+                {
+                    Exists = false
+                }
                     ));
 
             Assert.Throws<ArgumentException>(() => resourcesClient.DeleteResource(parameters));
@@ -728,16 +727,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             resourceOperationsMock.Setup(f => f.GetAsync(resourceGroupName, It.IsAny<ResourceIdentity>(), It.IsAny<CancellationToken>()))
                 .Returns(() => Task.Factory.StartNew(() => new ResourceGetResult
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Resource = new GenericResourceExtended
                     {
-                        StatusCode = HttpStatusCode.OK,
-                        Resource = new GenericResourceExtended
-                            {
-                                Name = parameters.Name,
-                                Properties = serializedProperties,
-                                ProvisioningState = ProvisioningState.Running,
-                                Location = "West US",
-                            }
-                    }));
+                        Name = parameters.Name,
+                        Properties = serializedProperties,
+                        ProvisioningState = ProvisioningState.Running,
+                        Location = "West US",
+                    }
+                }));
 
 
             List<PSResource> result = resourcesClient.FilterPSResources(parameters);
@@ -1084,18 +1083,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Callback((string name, string dName, Deployment bDeploy, CancellationToken token) => { deploymentFromGet = bDeploy; });
             deploymentsMock.Setup(f => f.GetAsync(resourceGroupName, deploymentName, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
+                {
+                    Deployment = new DeploymentExtended()
                     {
-                        Deployment = new DeploymentExtended()
-                            {
-                                Name = deploymentName,
-                                Properties = new DeploymentPropertiesExtended()
-                                {
-                                    Mode = DeploymentMode.Incremental,
-                                    CorrelationId = "123",
-                                    ProvisioningState = ProvisioningState.Succeeded
-                                },
-                            }
+                        Name = deploymentName,
+                        Properties = new DeploymentPropertiesExtended()
+                        {
+                            Mode = DeploymentMode.Incremental,
+                            CorrelationId = "123",
+                            ProvisioningState = ProvisioningState.Succeeded
+                        },
                     }
+                }
                 ));
 
             deploymentsMock.Setup(f => f.ValidateAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), new CancellationToken()))
@@ -1145,7 +1144,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 Times.Once());
         }
 
-       
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ShowsFailureErrorWhenResourceGroupWithDeploymentFails()
@@ -1190,14 +1189,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
                 {
                     Deployment = new DeploymentExtended()
+                    {
+                        Name = deploymentName,
+                        Properties = new DeploymentPropertiesExtended()
                         {
-                            Name = deploymentName,
-                            Properties = new DeploymentPropertiesExtended()
-                            {
-                                Mode = DeploymentMode.Incremental,
-                                ProvisioningState = ProvisioningState.Succeeded
-                            },
-                        }
+                            Mode = DeploymentMode.Incremental,
+                            ProvisioningState = ProvisioningState.Succeeded
+                        },
+                    }
                 }));
             deploymentsMock.Setup(f => f.ValidateAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
@@ -1527,7 +1526,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
             SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
 
-            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null, 
+            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null,
                 new Hashtable(new Dictionary<string, string> { { "Name", "tag1" } }), false);
 
             Assert.Equal(2, groups1.Count);
@@ -1793,18 +1792,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
                 {
                     Deployment = new DeploymentExtended()
+                    {
+                        Name = deploymentName,
+                        Properties = new DeploymentPropertiesExtended()
                         {
-                            Name = deploymentName,
-                            Properties = new DeploymentPropertiesExtended()
+                            Mode = DeploymentMode.Incremental,
+                            CorrelationId = "123",
+                            TemplateLink = new TemplateLink()
                             {
-                                Mode = DeploymentMode.Incremental,
-                                CorrelationId = "123",
-                                TemplateLink = new TemplateLink()
-                                {
-                                    Uri = new Uri("http://microsoft.com")
-                                }
+                                Uri = new Uri("http://microsoft.com")
                             }
                         }
+                    }
                 }));
 
             List<PSResourceGroupDeployment> result = resourcesClient.FilterResourceGroupDeployments(options);

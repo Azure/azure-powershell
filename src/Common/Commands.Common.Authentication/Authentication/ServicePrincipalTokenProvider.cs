@@ -26,7 +26,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         private static readonly TimeSpan expirationThreshold = TimeSpan.FromMinutes(5);
 
-        public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password,
+        public IAccessToken GetAccessToken(
+            AdalConfiguration config,
+            ShowDialog promptBehavior,
+            string userId,
+            SecureString password,
             AzureAccount.AccountType credentialType)
         {
             if (credentialType == AzureAccount.AccountType.User)
@@ -36,13 +40,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return new ServicePrincipalAccessToken(config, AcquireTokenWithSecret(config, userId, password), this.RenewWithSecret, userId);
         }
 
-        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string clientId, string certificateThumbprint, AzureAccount.AccountType credentialType)
+        public IAccessToken GetAccessTokenWithCertificate(
+            AdalConfiguration config,
+            string clientId,
+            string certificateThumbprint,
+            AzureAccount.AccountType credentialType)
         {
             if (credentialType == AzureAccount.AccountType.User)
             {
                 throw new ArgumentException(string.Format(Resources.InvalidCredentialType, "User"), "credentialType");
             }
-            return new ServicePrincipalAccessToken(config, AcquireTokenWithCertificate(config, clientId, certificateThumbprint), 
+            return new ServicePrincipalAccessToken(
+                config,
+                AcquireTokenWithCertificate(config, clientId, certificateThumbprint),
                 (adalConfig, appId) => this.RenewWithCertificate(adalConfig, appId, certificateThumbprint), clientId);
         }
 
@@ -51,7 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string authority = config.AdEndpoint + config.AdDomain;
             return new AuthenticationContext(authority, config.ValidateAuthority, config.TokenCache);
         }
-		
+
         private AuthenticationResult AcquireTokenWithSecret(AdalConfiguration config, string appId, SecureString appKey)
         {
             if (appKey == null)
@@ -65,7 +75,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return context.AcquireToken(config.ResourceClientUri, credential);
         }
 
-        private AuthenticationResult AcquireTokenWithCertificate(AdalConfiguration config, string appId,
+        private AuthenticationResult AcquireTokenWithCertificate(
+            AdalConfiguration config,
+            string appId,
             string thumbprint)
         {
             var certificate = AzureSession.DataStore.GetCertificate(thumbprint);
@@ -80,9 +92,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private AuthenticationResult RenewWithSecret(AdalConfiguration config, string appId)
         {
-            TracingAdapter.Information(Resources.SPNRenewTokenTrace, appId, config.AdDomain, config.AdEndpoint, 
+            TracingAdapter.Information(Resources.SPNRenewTokenTrace, appId, config.AdDomain, config.AdEndpoint,
                 config.ClientId, config.ClientRedirectUri);
-           using (SecureString appKey = LoadAppKey(appId, config.AdDomain))
+            using (SecureString appKey = LoadAppKey(appId, config.AdDomain))
             {
                 if (appKey == null)
                 {
@@ -92,11 +104,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        private AuthenticationResult RenewWithCertificate(AdalConfiguration config, string appId,
+        private AuthenticationResult RenewWithCertificate(
+            AdalConfiguration config,
+            string appId,
             string thumbprint)
         {
-            TracingAdapter.Information(Resources.SPNRenewTokenTrace, appId, config.AdDomain, config.AdEndpoint, 
-                config.ClientId, config.ClientRedirectUri);
+            TracingAdapter.Information(
+                Resources.SPNRenewTokenTrace,
+                appId,
+                config.AdDomain,
+                config.AdEndpoint,
+                config.ClientId,
+                config.ClientRedirectUri);
             return AcquireTokenWithCertificate(config, appId, thumbprint);
         }
 
@@ -110,7 +129,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             ServicePrincipalKeyStore.SaveKey(appId, tenantId, appKey);
         }
 
-
         private class ServicePrincipalAccessToken : IAccessToken
         {
             internal readonly AdalConfiguration Configuration;
@@ -118,7 +136,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             private readonly Func<AdalConfiguration, string, AuthenticationResult> tokenRenewer;
             private readonly string appId;
 
-            public ServicePrincipalAccessToken(AdalConfiguration configuration, AuthenticationResult authResult, Func<AdalConfiguration, string, AuthenticationResult> tokenRenewer, string appId)
+            public ServicePrincipalAccessToken(
+                AdalConfiguration configuration,
+                AuthenticationResult authResult,
+                Func<AdalConfiguration, string, AuthenticationResult> tokenRenewer,
+                string appId)
             {
                 Configuration = configuration;
                 AuthResult = authResult;
@@ -137,8 +159,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             public string UserId { get { return appId; } }
+
             public string AccessToken { get { return AuthResult.AccessToken; } }
+
             public LoginType LoginType { get { return LoginType.OrgId; } }
+
             public string TenantId { get { return this.Configuration.AdDomain; } }
 
             private bool IsExpired
@@ -155,8 +180,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     var expiration = AuthResult.ExpiresOn;
                     var currentTime = DateTimeOffset.UtcNow;
                     var timeUntilExpiration = expiration - currentTime;
-                    TracingAdapter.Information(Resources.SPNTokenExpirationCheckTrace, expiration, currentTime, 
-                        expirationThreshold, timeUntilExpiration);
+                    TracingAdapter.Information(
+                        Resources.SPNTokenExpirationCheckTrace,
+                        expiration,
+                        currentTime,
+                        expirationThreshold,
+                        timeUntilExpiration);
                     return timeUntilExpiration < expirationThreshold;
                 }
             }

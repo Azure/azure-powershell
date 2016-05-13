@@ -140,6 +140,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent
                 };
             }
+            if (OperatingSystemTypes.Linux.Equals(currentOSType))
+            {
+                this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
+
+                vmExtensionParameters = new VirtualMachineExtension
+                {
+                    Location = vmParameters.Location,
+                    Publisher = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
+                    VirtualMachineExtensionType = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
+                    TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
+                    Settings = SettingString,
+                    ProtectedSettings = ProtectedSettingString,
+                    AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent
+                };
+            }
 
             return vmExtensionParameters;
         }
@@ -214,18 +229,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 }
 
                 currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
-                if (OperatingSystemTypes.Linux.Equals(currentOSType))
-                {
-                    ThrowTerminatingError(
-                        new ErrorRecord(
-                            new ArgumentException(
-                                string.Format(
-                                    CultureInfo.CurrentUICulture,
-                                    "Disable-AzureDiskEncryption cmdlet is supported only for Windows virtual machines")),
-                            "InvalidType",
-                            ErrorCategory.NotImplemented,
-                            null));
-                }
 
                 if (this.Force.IsPresent ||
                     this.ShouldContinue(Properties.Resources.DisableAzureDiskEncryptionConfirmation, Properties.Resources.DisableAzureDiskEncryptionCaption))
@@ -238,7 +241,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                             this.Name,
                                                             parameters).GetAwaiter().GetResult();
 
-                    if(string.IsNullOrWhiteSpace(VolumeType) ||
+                    if (string.IsNullOrWhiteSpace(VolumeType) ||
                         VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeAll, StringComparison.InvariantCultureIgnoreCase) ||
                         VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeOS, StringComparison.InvariantCultureIgnoreCase))
                     {

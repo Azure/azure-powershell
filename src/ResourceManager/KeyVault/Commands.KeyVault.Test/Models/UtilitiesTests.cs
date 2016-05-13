@@ -19,8 +19,6 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -41,7 +39,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
             var secureString = origStr.ConvertToSecureString();
             var convStr = secureString.ConvertToString();
 
-            Assert.Equal( origStr, convStr );
+            Assert.Equal(origStr, convStr);
         }
 
         [Fact]
@@ -49,7 +47,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
         public void GetWebKeyFromByok()
         {
             Random rnd = new Random();
-            byte[] byokBlob = new byte[100];       
+            byte[] byokBlob = new byte[100];
             rnd.NextBytes(byokBlob);
             string tempPath = Path.GetTempFileName() + ".byok";
             File.WriteAllBytes(tempPath, byokBlob);

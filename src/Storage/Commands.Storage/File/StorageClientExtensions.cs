@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,10 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
+    using Microsoft.WindowsAzure.Storage.File;
     using System;
     using System.Diagnostics;
     using System.Linq;
-    using Microsoft.WindowsAzure.Storage.File;
 
     /// <summary>
     /// Provides extension methods for storage client lib.

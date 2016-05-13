@@ -12,13 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
-using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -34,17 +31,17 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #region Input Parameter Definitions
 
-       [Parameter(
-            Position = 0,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the cluster.")]
+        [Parameter(
+             Position = 0,
+             Mandatory = true,
+             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 1,
             HelpMessage = "The credentials with which to connect to the cluster.")]
-       [Alias("ClusterCredential")]
-       public PSCredential HttpCredential
+        [Alias("ClusterCredential")]
+        public PSCredential HttpCredential
         {
             get
             {
