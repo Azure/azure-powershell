@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 using System.Globalization;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     ///     SYNTAX
@@ -28,6 +28,13 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
     [Cmdlet(VerbsData.Sync, Nouns.AdminStorageAccount, SupportsShouldProcess = true)]
     public sealed class SyncStorageAccount : AdminCmdlet
     {
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Storage Account Name
         /// </summary>
@@ -61,7 +68,6 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         /// </summary>
         [Parameter(Mandatory = false, Position = 8)]
         public string StorageAccountApiVersion { get; set; }
-        
 
         internal static string DefaultStorageAccountApiVersion = "2015-06-15";
         internal static string SyncTargetOperation = "Create";
@@ -74,16 +80,13 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         protected override void Execute()
         {
             StorageAccountSyncRequest req = new StorageAccountSyncRequest();
-
             if (StorageAccountApiVersion == null)
                 StorageAccountApiVersion = DefaultStorageAccountApiVersion;
             req.ApiVersion = StorageAccountApiVersion;
             req.TargetOperaton = SyncTargetOperation;
             req.ResourceLocation = Location;
             req.Id = BuildSyncTargetId(TenantSubscriptionId, TenantResourceGroup, TenantAccountName);
-
             WriteObject(req, true);
-
             if (ShouldProcess(
                     string.Format(CultureInfo.InvariantCulture, Resources.StorageAccount, req.Id),
                     string.Format(CultureInfo.InvariantCulture, Resources.SyncOperation)))

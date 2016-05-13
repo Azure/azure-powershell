@@ -13,12 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
-    /// <summary>   
+    /// <summary>
+    ///     SYNTAX
+    ///          Get-ManagementServiceMetric [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
+    ///             [-SkipCertificateValidation] [-FarmName] {string}
+    ///             [[-StartTime] {DateTime}] [[-EndTime] {DateTime}] [[-TimeGrain] {TimeGrain}] [[-MetricNames] {string[]}] [ {CommonParameters}]
+    /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminManagementServiceMetric)]
     public sealed class GetManagementServiceMetrics : AdminMetricCmdlet
