@@ -17,9 +17,9 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
+using Microsoft.AzureStack.AzureConsistentStorage;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     ///     SYNTAX
@@ -30,6 +30,13 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
     [Cmdlet(VerbsCommon.Get, Nouns.AdminRoleInstance)]
     public sealed class GetAdminNodeRoleInstance : AdminCmdlet
     {
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// farm identifier
         /// </summary>
@@ -78,6 +85,9 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
                     case RoleType.TableFrontend:
                         resultObject = Client.TableFrontendInstances.List(ResourceGroupName, FarmName).RoleInstances.Select(_ => new TableFrontEndRoleInstanceResponse(_));
                         break;
+                    case RoleType.QueueFrontend:
+                        resultObject = Client.QueueFrontendInstances.List(ResourceGroupName, FarmName).RoleInstances.Select(_ => new QueueFrontEndRoleInstanceResponse(_));
+                        break;
                     case RoleType.BlobServer:
                         resultObject = Client.BlobServerInstances.List(ResourceGroupName, FarmName).RoleInstances.Select(_ => new BlobServerRoleInstanceResponse(_));
                         break;
@@ -109,6 +119,9 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
                         break;
                     case RoleType.TableFrontend:
                         resultObject = new TableFrontEndRoleInstanceResponse(Client.TableFrontendInstances.Get(ResourceGroupName, FarmName, InstanceId).RoleInstance);
+                        break;
+                    case RoleType.QueueFrontend:
+                        resultObject = new QueueFrontEndRoleInstanceResponse(Client.QueueFrontendInstances.Get(ResourceGroupName, FarmName, InstanceId).RoleInstance);
                         break;
                     case RoleType.BlobServer:
                         resultObject = new BlobServerRoleInstanceResponse(Client.BlobServerInstances.Get(ResourceGroupName, FarmName, InstanceId).RoleInstance);

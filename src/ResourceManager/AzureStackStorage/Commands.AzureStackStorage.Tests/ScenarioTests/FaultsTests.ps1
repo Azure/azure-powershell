@@ -21,12 +21,11 @@ function Test-GetFault
     # Setup
     $rgname = 'Default-Web-EastUS'
     $subscriptionId = 'a93fb07c-6c93-40be-bf3b-4f0deba10f4b'
-    $farmName = '03768357-B4F2-4C3C-AA75-574209B03D49'
-    $faultId = 'D64F6195-93FE-40AF-B0A7-D8EA10506028'
+    $farmName = '03768357-B4F2-4C3C-AA75-574209B03D49'    
 
     try 
     {
-        $actual = Get-ACSFault -ResourceGroupName $rgname -SubscriptionId $subscriptionId -FarmName $farmName -FaultId $faultId
+        $actual = Get-ACSFault -ResourceGroupName $rgname -SubscriptionId $subscriptionId -FarmName $farmName
 
         Assert-AreEqual $actual.Count 1
         Assert-AreEqual $actual.ActivatedTime.ToString("yyyy-MM-dd HH:mm:ss") "2015-05-18 18:02:00"
@@ -91,7 +90,7 @@ function Test-GetHistoricFaults
         $startTime = [DateTime]'1/1/2015'
         $endTime = [DateTime]'1/2/2015' 
 
-        $actual = Get-ACSFault `
+        $actual = Get-ACSFaultHistory `
         -FarmName $farmName -SubscriptionId $subscriptionId -ResourceGroupName $rgname -SkipCertificateValidation `
         -StartTime $startTime -EndTime $endTime
 
