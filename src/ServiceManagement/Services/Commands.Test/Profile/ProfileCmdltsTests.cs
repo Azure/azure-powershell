@@ -1007,6 +1007,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             cmdlet.InvokeBeginProcessing();
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
         }
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateProfieWithSPAuth()
