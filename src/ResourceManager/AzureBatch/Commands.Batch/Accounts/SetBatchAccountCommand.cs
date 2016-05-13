@@ -35,9 +35,13 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string AutoStorageAccountId { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            BatchAccountContext context = BatchClient.UpdateAccount(this.ResourceGroupName, this.AccountName, this.Tag);
+            BatchAccountContext context = BatchClient.UpdateAccount(this.ResourceGroupName, this.AccountName, this.Tag, this.AutoStorageAccountId);
             WriteObject(context);
         }
     }
