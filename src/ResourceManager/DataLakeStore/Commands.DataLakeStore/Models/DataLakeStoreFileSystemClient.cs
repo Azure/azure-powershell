@@ -406,6 +406,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
                 TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
             }
+            catch (Exception e)
+            {
+                throw new CloudException(string.Format(Properties.Resources.UploadFailedMessage, e));
+            }
             finally
             {
                 ServicePointManager.Expect100Continue = previousExpect100;
