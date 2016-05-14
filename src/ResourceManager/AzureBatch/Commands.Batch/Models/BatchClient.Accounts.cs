@@ -21,7 +21,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 using Microsoft.Azure.Batch;
 using Microsoft.Rest.Azure;
 using CloudException = Hyak.Common.CloudException;
