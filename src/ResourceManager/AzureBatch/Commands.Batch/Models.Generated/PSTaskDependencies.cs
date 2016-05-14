@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using System.Collections.Generic;
     using Microsoft.Azure.Batch;
 
-
     public class PSTaskDependencies
     {
 

@@ -227,6 +227,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 Body = new MockPagedEnumerable<TBody>(),
                 Headers = new THeader()
             };
+
             return response;
         }
 
