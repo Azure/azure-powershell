@@ -12,9 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
@@ -24,6 +21,9 @@ using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
@@ -31,22 +31,22 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
     {
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
-        
+
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
-        
+
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public StorageManagementClient StorageClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
 
-        
+
         public string UserDomain { get; private set; }
 
-        public static TestController NewInstance 
-        { 
+        public static TestController NewInstance
+        {
             get
             {
                 return new TestController();
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
             RunPsTestWorkflow(
-                () => scripts, 
+                () => scripts,
                 // no custom initializer
-                null, 
+                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -74,8 +74,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         }
 
         public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder, 
-            Action<CSMTestEnvironmentFactory> initialize, 
+            Func<string[]> scriptBuilder,
+            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
-                if(initialize != null)
+                if (initialize != null)
                 {
                     initialize(this.csmTestFactory);
                 }
@@ -103,16 +103,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                
+
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    helper.RMProfileModule, 
-                    helper.RMResourceModule, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
                     helper.RMStorageDataPlaneModule,
                     helper.RMStorageModule,
-                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
 
                 try
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                 }
                 finally
                 {
-                    if(cleanup !=null)
+                    if (cleanup != null)
                     {
                         cleanup();
                     }
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                 GalleryClient,
                 AuthorizationManagementClient);
         }
-        
+
         private ResourceManagementClient GetResourceManagementClient()
         {
             return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);

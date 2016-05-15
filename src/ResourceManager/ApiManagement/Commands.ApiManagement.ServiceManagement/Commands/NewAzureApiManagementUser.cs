@@ -14,64 +14,64 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementUser")]
+    [Cmdlet(VerbsCommon.New, Constants.ApiManagementUser)]
     [OutputType(typeof(PsApiManagementUser))]
     public class NewAzureApiManagementUser : AzureApiManagementCmdletBase
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Identifier of new user. This parameter is optional. If not specified will be genetated.")]
         public String UserId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "User first name. This parameter is required. Must be 1 to 100 characters long.")]
         [ValidateNotNullOrEmpty]
         public String FirstName { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "User last name. This parameter is required. Must be 1 to 100 characters long.")]
         [ValidateNotNullOrEmpty]
         public String LastName { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "User email. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String Email { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "User password. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String Password { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "User state. This parameter is optional. Default value is $null.")]
         public PsApiManagementUserState? State { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Note on the user. This parameter is optional. Default value is $null.")]
         public String Note { get; set; }
 

@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Microsoft.Rest.Azure;
 using Xunit;
-using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 {
@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchJobScheduleCommandTests()
+        public GetBatchJobScheduleCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchJobScheduleCommand()
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             // Build a CloudJobSchedule instead of querying the service on a Get CloudJobSchedule call
             AzureOperationResponse<ProxyModels.CloudJobSchedule, ProxyModels.JobScheduleGetHeaders> response = BatchTestHelpers.CreateCloudJobScheduleGetResponse(cmdlet.Id);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.JobScheduleGetOptions, 
+                ProxyModels.JobScheduleGetOptions,
                 AzureOperationResponse<ProxyModels.CloudJobSchedule, ProxyModels.JobScheduleGetHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.JobScheduleGetOptions, AzureOperationResponse<ProxyModels.CloudJobSchedule, ProxyModels.JobScheduleGetHeaders>>(getResponse);
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                ProxyModels.JobScheduleGetOptions options = (ProxyModels.JobScheduleGetOptions) request.Options;
+                ProxyModels.JobScheduleGetOptions options = (ProxyModels.JobScheduleGetOptions)request.Options;
 
                 requestSelect = options.Select;
                 requestExpand = options.Expand;

@@ -12,14 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Automation.Model;
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -54,7 +50,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc configuration tags.")]
         [Alias("Tag")]
         public IDictionary Tags { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the description.
         /// </summary>

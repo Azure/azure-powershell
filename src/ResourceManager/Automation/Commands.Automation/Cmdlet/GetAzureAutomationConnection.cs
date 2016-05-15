@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -51,8 +50,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             IEnumerable<Connection> ret = null;
             if (this.ParameterSetName == AutomationCmdletParameterSets.ByConnectionName)
             {
-                ret = new List<Connection> 
-                { 
+                ret = new List<Connection>
+                {
                    this.AutomationClient.GetConnection(this.ResourceGroupName, this.AutomationAccountName, this.Name)
                 };
                 this.GenerateCmdletOutput(ret);

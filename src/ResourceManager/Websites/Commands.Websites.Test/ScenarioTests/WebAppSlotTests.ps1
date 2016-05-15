@@ -704,3 +704,48 @@ function Test-WebAppSlotPublishingProfile
 		Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
+
+<#
+.SYNOPSIS
+Tests managing slot config names for a web app
+#>
+function Test-ManageSlotSlotConfigName
+{
+	$rgname = "Default-Web-EastAsia"
+	$appname = "webappslottest"
+
+	# Retrive Web App
+	$webApp = Get-AzureRmWebApp -ResourceGroupName $rgname -Name  $appname
+			
+	$slotConfigNames = $webApp | Get-AzureRmWebAppSlotConfigName
+
+	# Make sure that None of the settings are currently marked as slot setting
+	Assert-AreEqual 0 $slotConfigNames.AppSettingNames.Count
+	Assert-AreEqual 0 $slotConfigNames.ConnectionStringNames.Count
+
+	# Test - Mark all app settings as slot setting
+	$appSettingNames = $webApp.SiteConfig.AppSettings | Select-Object -ExpandProperty Name
+	$webApp | Set-AzureRmWebAppSlotConfigName -AppSettingNames $appSettingNames 
+	$slotConfigNames = $webApp | Get-AzureRmWebAppSlotConfigName
+	Assert-AreEqual $webApp.SiteConfig.AppSettings.Count $slotConfigNames.AppSettingNames.Count
+	Assert-AreEqual 0 $slotConfigNames.ConnectionStringNames.Count
+
+	# Test- Mark all connection strings as slot setting
+	$connectionStringNames = $webApp.SiteConfig.ConnectionStrings | Select-Object -ExpandProperty Name
+	Set-AzureRmWebAppSlotConfigName -ResourceGroupName $rgname -Name $appname -ConnectionStringNames $connectionStringNames
+	$slotConfigNames = Get-AzureRmWebAppSlotConfigName -ResourceGroupName $rgname -Name $appname
+	Assert-AreEqual $webApp.SiteConfig.AppSettings.Count $slotConfigNames.AppSettingNames.Count
+	Assert-AreEqual $webApp.SiteConfig.ConnectionStrings.Count $slotConfigNames.ConnectionStringNames.Count
+
+	# Test- Clear slot app setting names
+	$webApp | Set-AzureRmWebAppSlotConfigName -RemoveAllAppSettingNames
+	$slotConfigNames = $webApp | Get-AzureRmWebAppSlotConfigName
+	Assert-AreEqual 0 $slotConfigNames.AppSettingNames.Count
+	Assert-AreEqual $webApp.SiteConfig.ConnectionStrings.Count $slotConfigNames.ConnectionStringNames.Count
+
+	# Test - Clear slot connection string names
+	Set-AzureRmWebAppSlotConfigName -ResourceGroupName $rgname -Name $appname -RemoveAllConnectionStringNames
+	$slotConfigNames = Get-AzureRmWebAppSlotConfigName -ResourceGroupName $rgname -Name $appname
+	Assert-AreEqual 0 $slotConfigNames.AppSettingNames.Count
+	Assert-AreEqual 0 $slotConfigNames.ConnectionStringNames.Count
+}

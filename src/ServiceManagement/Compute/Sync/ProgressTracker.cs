@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync
         private Stopwatch stopWatch;
         private bool isDisposed;
 
-        public ProgressTracker(ProgressStatus progressStatus) : 
+        public ProgressTracker(ProgressStatus progressStatus) :
             this(progressStatus, Program.SyncOutput.ProgressUploadStatus, Program.SyncOutput.ProgressUploadComplete, TimeSpan.FromSeconds(1))
         {
         }
@@ -76,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync
             }
             finally
             {
-                if(throwing && progressTimer != null)
+                if (throwing && progressTimer != null)
                 {
                     progressTimer.Elapsed -= progressTimerOnElapsed;
                     progressTimer.Enabled = false;
@@ -99,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync
             {
                 return;
             }
-            if(disposing)
+            if (disposing)
             {
                 progressTimer.Elapsed -= progressTimerOnElapsed;
                 progressTimer.Enabled = false;

@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Storage;
+using System;
+using System.Collections.Generic;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
@@ -59,19 +59,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public Kind? Kind { get; set; }
         public Encryption Encryption { get; set; }
         public AccessTier? AccessTier { get; set; }
-        
+
         public DateTime? CreationTime { get; set; }
-        
+
         public CustomDomain CustomDomain { get; set; }
-        
+
         public DateTime? LastGeoFailoverTime { get; set; }
-        
+
         public Endpoints PrimaryEndpoints { get; set; }
 
         public string PrimaryLocation { get; set; }
 
         public ProvisioningState? ProvisioningState { get; set; }
-        
+
         public Endpoints SecondaryEndpoints { get; set; }
 
         public string SecondaryLocation { get; set; }
@@ -85,17 +85,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
             var result = new PSStorageAccount(storageAccount);
-            var credentials = StorageAccountBaseCmdlet.GenerateStorageCredentials(client, result.ResourceGroupName, result.StorageAccountName);
+            var credentials = StorageUtilities.GenerateStorageCredentials(new ARMStorageProvider(client), result.ResourceGroupName, result.StorageAccountName);
             CloudStorageAccount account = new CloudStorageAccount(credentials,
-                StorageAccountBaseCmdlet.GetUri(storageAccount.PrimaryEndpoints.Blob),
-                StorageAccountBaseCmdlet.GetUri(storageAccount.PrimaryEndpoints.Queue),
-                StorageAccountBaseCmdlet.GetUri(storageAccount.PrimaryEndpoints.Table),
-                StorageAccountBaseCmdlet.GetUri(storageAccount.PrimaryEndpoints.File));
+                ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Blob),
+                ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Queue),
+                ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Table),
+                ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.File));
             result.Context = new AzureStorageContext(account);
             return result;
         }
-
-
 
         private static string ParseResourceGroupFromId(string idFromServer)
         {

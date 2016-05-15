@@ -14,24 +14,24 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementUserSsoUrl")]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementUserSsoUrl)]
     [OutputType(typeof(string))]
     public class GetAzureApiManagementUserSsoUrl : AzureApiManagementCmdletBase
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of existing user. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String UserId { get; set; }
