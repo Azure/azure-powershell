@@ -14,15 +14,14 @@
 
 namespace Microsoft.AzureStack.Commands
 {
+    using Microsoft.Azure;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.AzureStack.Management;
     using System;
     using System.Management.Automation;
     using System.Net;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Commands.Common.Authentication.Models;
-    using Microsoft.Azure;
-    using Microsoft.AzureStack.Management;
 
     /// <summary>
     /// Base Admin API cmdlet class
@@ -116,7 +115,7 @@ namespace Microsoft.AzureStack.Commands
                 {
                     ServicePointManager.ServerCertificateValidationCallback = originalValidateCallback;
                 }
-                
+
                 ////CloudContext.Configuration.Tracing.RemoveTracingInterceptor(this);
             }
 
@@ -168,7 +167,7 @@ namespace Microsoft.AzureStack.Commands
             {
                 return new AzureStackClient(
                     baseUri: this.AdminUri,
-                    credentials: new TokenCloudCredentials(token: this.Token), 
+                    credentials: new TokenCloudCredentials(token: this.Token),
                     apiVersion: this.ApiVersion);
             }
             else

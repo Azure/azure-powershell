@@ -14,17 +14,17 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
+    using AutoMapper;
+    using Microsoft.Azure.Commands.ApiManagement.Properties;
+    using Microsoft.Azure.Management.ApiManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
-    using AutoMapper;
-    using Microsoft.Azure.Commands.ApiManagement.Properties;
-    using Microsoft.Azure.Management.ApiManagement.Models;
 
     public class PsApiManagement
     {
-        private static readonly Regex ResourceGroupRegex = 
+        private static readonly Regex ResourceGroupRegex =
             new Regex(@"/resourceGroups/(?<resourceGroupName>.+)/providers/", RegexOptions.Compiled);
 
         public PsApiManagement()

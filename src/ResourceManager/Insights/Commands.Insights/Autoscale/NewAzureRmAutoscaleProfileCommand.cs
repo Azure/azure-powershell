@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.Insights.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
@@ -147,29 +147,29 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         public AutoscaleProfile CreateSettingProfile()
         {
             return new AutoscaleProfile
+            {
+                Name = this.Name ?? string.Empty,
+                Capacity = new ScaleCapacity()
                 {
-                    Name = this.Name ?? string.Empty,
-                    Capacity = new ScaleCapacity()
-                    {
-                        Default = this.DefaultCapacity,
-                        Minimum = this.MinimumCapacity,
-                        Maximum = this.MaximumCapacity,
-                    },
+                    Default = this.DefaultCapacity,
+                    Minimum = this.MinimumCapacity,
+                    Maximum = this.MaximumCapacity,
+                },
 
-                    // NOTE: "always" is specify by a null value in the FixedDate value with null ScheduledDays(Minutes, Seconds)
-                    // Premise: Fixed date schedule and recurrence are mutually exclusive, but they can both be missing so that the rule is always enabled.
-                    // Assuming dates are validated by the server
-                    FixedDate = this.ScheduleDays == null && (this.StartTimeWindow != default(DateTime) || this.EndTimeWindow != default(DateTime))
+                // NOTE: "always" is specify by a null value in the FixedDate value with null ScheduledDays(Minutes, Seconds)
+                // Premise: Fixed date schedule and recurrence are mutually exclusive, but they can both be missing so that the rule is always enabled.
+                // Assuming dates are validated by the server
+                FixedDate = this.ScheduleDays == null && (this.StartTimeWindow != default(DateTime) || this.EndTimeWindow != default(DateTime))
                         ? new TimeWindow()
-                            {
-                                Start = this.StartTimeWindow,
-                                End = this.EndTimeWindow,
-                                TimeZone = this.TimeWindowTimeZone,
-                            }
+                        {
+                            Start = this.StartTimeWindow,
+                            End = this.EndTimeWindow,
+                            TimeZone = this.TimeWindowTimeZone,
+                        }
                         : null,
-                    Recurrence = this.ScheduleDays != null ? this.CreateAutoscaleRecurrence() : null,
-                    Rules = this.Rules,
-                };
+                Recurrence = this.ScheduleDays != null ? this.CreateAutoscaleRecurrence() : null,
+                Rules = this.Rules,
+            };
         }
 
         /// <summary>

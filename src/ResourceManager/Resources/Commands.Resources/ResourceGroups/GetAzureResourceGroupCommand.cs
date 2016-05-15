@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Resources.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Commands.Resources
         internal const string ResourceGroupIdParameterSet = "Lists the resource group based in the Id.";
 
         [Alias("ResourceGroupName")]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, Mandatory = false, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group location.")]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ParameterSetName = ResourceGroupIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group Id.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");

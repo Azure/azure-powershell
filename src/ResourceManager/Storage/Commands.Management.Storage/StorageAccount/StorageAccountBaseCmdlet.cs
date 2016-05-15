@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections.Generic;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -56,7 +54,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string Storage = "Storage";
             internal const string BlobStorage = "BlobStorage";
         }
-        protected struct AccountAccessTier 
+        protected struct AccountAccessTier
         {
             internal const string Hot = "Hot";
             internal const string Cool = "Cool";
@@ -65,7 +63,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             Blob = 1
         }
-        
+
         public IStorageManagementClient StorageClient
         {
             get
@@ -96,9 +94,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected static SkuName ParseSkuName(string skuName)
         {
             SkuName returnSkuName;
-            if(!Enum.TryParse<SkuName>(skuName.Replace("_", ""), true, out returnSkuName))
+            if (!Enum.TryParse<SkuName>(skuName.Replace("_", ""), true, out returnSkuName))
             {
-                throw new ArgumentOutOfRangeException("SkuName");            
+                throw new ArgumentOutOfRangeException("SkuName");
             }
             return returnSkuName;
         }
@@ -148,34 +146,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 accountEncryption.Services.Blob.Enabled = false;
             }
             return accountEncryption;
-        }
-
-        public static StorageCredentials GenerateStorageCredentials(IStorageManagementClient storageClient, string resourceGroupName, string accountName)
-        {
-            var storageKeysResponse = storageClient.StorageAccounts.ListKeys(resourceGroupName, accountName);
-            return new StorageCredentials(accountName, storageKeysResponse.Keys[0].Value);
-        }
-
-        protected static CloudStorageAccount GenerateCloudStorageAccount(IStorageManagementClient storageClient, string resourceGroupName, string accountName)
-        {
-
-            var storageServiceResponse = storageClient.StorageAccounts.GetPropertiesWithHttpMessagesAsync(resourceGroupName, accountName).Result;
-            Uri blobEndpoint = GetUri(storageServiceResponse.Body.PrimaryEndpoints.Blob);
-            Uri queueEndpoint = GetUri(storageServiceResponse.Body.PrimaryEndpoints.Queue);
-            Uri tableEndpoint = GetUri(storageServiceResponse.Body.PrimaryEndpoints.Table);
-            Uri fileEndpoint = GetUri(storageServiceResponse.Body.PrimaryEndpoints.File);
-
-            return new CloudStorageAccount(
-                GenerateStorageCredentials(storageClient, resourceGroupName, accountName),
-                blobEndpoint,
-                queueEndpoint,
-                tableEndpoint,
-                fileEndpoint);
-        }
-
-        public static Uri GetUri(string uriString)
-        {
-            return uriString == null ? null : new Uri(uriString);
         }
 
         protected void WriteStorageAccount(StorageModels.StorageAccount storageAccount)

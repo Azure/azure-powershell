@@ -14,11 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    using System.Management.Automation;
 
     /// <summary>
     /// Saves the deployment template to a file on disk.
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the file path.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The output path of the template file.")]		
-        [ValidateNotNullOrEmpty]		
-         public string Path { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The output path of the template file.")]
+        [ValidateNotNullOrEmpty]
+        public string Path { get; set; }
 
         /// <summary>
         /// Gets or sets the force parameter.

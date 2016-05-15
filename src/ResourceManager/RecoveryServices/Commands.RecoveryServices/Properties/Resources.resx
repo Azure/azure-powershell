@@ -277,4 +277,28 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="SiteNotFound" xml:space="preserve">
     <value>Site {0} is not associated with the Vault {1}</value>
   </data>
+  <data name="BackupVaultSerialized" xml:space="preserve">
+    <value>RecoveryService - Backup Vault - Successfully serialized the file content</value>
+  </data>
+  <data name="ExecutingGetVaultCredCmdlet" xml:space="preserve">
+    <value>Executing cmdlet with SubscriptionId = {0}, ResourceGroupName = {1}, ResourceName = {2}, TargetLocation = {3}</value>
+  </data>
+  <data name="SavingVaultCred" xml:space="preserve">
+    <value>Saving Vault Credentials to file : {0}</value>
+  </data>
+  <data name="UploadedCertToIdmgmt" xml:space="preserve">
+    <value>RecoveryService - Successfully uploaded the certificate</value>
+  </data>
+  <data name="UploadingCertToIdmgmt" xml:space="preserve">
+    <value>RecoveryService - Going to upload the certificate</value>
+  </data>
+  <data name="VaultCredPathException" xml:space="preserve">
+    <value>The target location provided is not a directory. Please provide a directory.</value>
+  </data>
+  <data name="ResourceGroupNameNullOrEmpty" xml:space="preserve">
+    <value>Resource Group name mentioned is either null or empty</value>
+  </data>
+  <data name="NoBackupPropertiesProvided" xml:space="preserve">
+    <value>BackupStorageRedundancy is either null or empty.</value>
+  </data>
 </root>

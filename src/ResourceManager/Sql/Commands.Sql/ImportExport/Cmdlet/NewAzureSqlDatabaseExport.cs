@@ -12,16 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ImportExport.Model;
-using Microsoft.Azure.Commands.Sql.ImportExport.Service;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
 {
@@ -49,15 +41,15 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         {
             AzureSqlDatabaseImportExportBaseModel exportRequest = new AzureSqlDatabaseImportExportBaseModel()
             {
-               ResourceGroupName = ResourceGroupName,
-               AdministratorLogin = AdministratorLogin,
-               AdministratorLoginPassword = AdministratorLoginPassword,
-               AuthenticationType = AuthenticationType,
-               DatabaseName = DatabaseName,
-               ServerName = ServerName,
-               StorageKey = StorageKey,
-               StorageKeyType = StorageKeyType,
-               StorageUri = StorageUri
+                ResourceGroupName = ResourceGroupName,
+                AdministratorLogin = AdministratorLogin,
+                AdministratorLoginPassword = AdministratorLoginPassword,
+                AuthenticationType = AuthenticationType,
+                DatabaseName = DatabaseName,
+                ServerName = ServerName,
+                StorageKey = StorageKey,
+                StorageKeyType = StorageKeyType,
+                StorageUri = StorageUri
             };
             return exportRequest;
         }
@@ -71,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         {
             return ModelAdapter.Export(entity);
         }
-        
+
         /// <summary>
         /// Get the Firewall Rule to update
         /// </summary>

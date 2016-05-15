@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         /// <returns>The response object from the service</returns>
         protected override IEnumerable<Model.AzureSqlDatabaseTransparentDataEncryptionModel> PersistChanges(IEnumerable<Model.AzureSqlDatabaseTransparentDataEncryptionModel> entity)
         {
-            return new List<Model.AzureSqlDatabaseTransparentDataEncryptionModel>() { 
-                ModelAdapter.UpsertTransparentDataEncryption(entity.First()) 
+            return new List<Model.AzureSqlDatabaseTransparentDataEncryptionModel>() {
+                ModelAdapter.UpsertTransparentDataEncryption(entity.First())
             };
         }
     }

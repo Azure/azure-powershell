@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Test.HttpRecorder;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -47,11 +48,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(string tenant, params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, string tenant, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
+            logger.Information(string.Format("Test method entered: {0}.{1}", callingClassType, mockName));
+            helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
@@ -60,9 +63,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 null,
                 callingClassType,
                 mockName, tenant);
+            logger.Information(string.Format("Test method finished: {0}.{1}", callingClassType, mockName));
         }
 
-        public void RunPsTestWorkflow(
+        private void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
             Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
@@ -95,10 +99,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(oldFactory.Token.UserId, oldFactory.Token.AccessToken, tenant);
 
                 var callingClassName = callingClassType
-                    .Split(new[] {"."}, StringSplitOptions.RemoveEmptyEntries)
+                    .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                     .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    callingClassName + ".ps1", 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    callingClassName + ".ps1",
                     helper.RMProfileModule);
 
                 try
