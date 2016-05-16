@@ -162,6 +162,13 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyVaultId)]
         public string KeyEncryptionKeyVaultId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskSizeInGB)]
+        [AllowNull]
+        public int? DiskSizeInGB { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -186,6 +193,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Uri = this.VhdUri
                 },
+                DiskSizeGB = this.DiskSizeInGB,
                 Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
                 {
                     Uri = this.SourceImageUri
