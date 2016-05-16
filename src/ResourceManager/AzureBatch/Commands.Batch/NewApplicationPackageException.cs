@@ -7,10 +7,15 @@ namespace Microsoft.Azure.Commands.Batch
     /// The exception that is thrown when failing to upload a file to Azure Storage
     /// </summary>
     [Serializable]
-    internal class UploadApplicationPackageException : Exception
+    sealed class NewApplicationPackageException : Exception
     {
-        public UploadApplicationPackageException(string message, Exception exception)
+        public NewApplicationPackageException(string message, Exception exception)
             : base(message, exception)
+        {
+        }
+
+        public NewApplicationPackageException(string message)
+            : base(message)
         {
         }
     }

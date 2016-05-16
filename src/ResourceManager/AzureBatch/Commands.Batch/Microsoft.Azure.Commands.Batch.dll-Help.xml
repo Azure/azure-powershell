@@ -2007,22 +2007,21 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context
-          Id                           : tvm-2316545714_1-20150725t213220z
-          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
-          State                        : Idle
-          StateTransitionTime          : 7/25/2015 9:36:53 PM
-          LastBootTime                 : 7/25/2015 9:36:53 PM
-          AllocationTime               : 7/25/2015 9:32:20 PM
-          IPAddress                    : 10.14.121.1
-          AffinityId                   : TVM:tvm-2316545714_1-20150725t213220z
-          VirtualMachineSize           : small
-          TotalTasksRun                : 1
-          StartTaskInformation         :
-          RecentTasks                  : {}
-          StartTask                    :
-          ApplicationPackageReferences :
-          CertificateReferences        :
-          Errors                       :
+          Id                    : tvm-2316545714_1-20150725t213220z
+          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
+          State                 : Idle
+          StateTransitionTime   : 7/25/2015 9:36:53 PM
+          LastBootTime          : 7/25/2015 9:36:53 PM
+          AllocationTime        : 7/25/2015 9:32:20 PM
+          IPAddress             : 10.14.121.1
+          AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
+          VirtualMachineSize    : small
+          TotalTasksRun         : 1
+          StartTaskInformation  :
+          RecentTasks           : {}
+          StartTask             :
+          CertificateReferences :
+          Errors                :
 
         </dev:code>
         <dev:remarks>
@@ -9059,12 +9058,15 @@
       </maml:introduction>
       <dev:code>
         PS C:\&gt;Get-AzureRmBatchApplicationPackage -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -ApplicationVersion "1.0"
-        Version State   Format
 
-        ------- ------- ------
+        Format             : zip
+        State              : Active
+        Version            : 1.0
+        LastActivationTime : 13/05/2016 4:03:24 AM
+        StorageUrl         : https://contosobatch.blob.core.windows.net/app-test-a94a8fe5ccb19Ba61c4c0873d391e987A82fbbd3/test-foo-10d06532-5607-3cb0-a70b-e71d6615da64?sv=2014-02-14&sr=b&sig=z1%2FG%2xcfFe6qEJFgpLBz0PlL1aY2Nczow6UGDfZEly58%3D&st=2016-05-13T03%3A59%3A44Z&se=2016-05-13T08%3A04%3A44Z&sp=rw
+        StorageUrlExpiry   : 13/05/2016 8:04:44 AM
+        Id                 : litware
 
-        1.0     active  zip
-        1.1     pending    
       </dev:code>
       <dev:remarks>
         <maml:para>This command gets the details of version 1.0 of the 'litware' package.</maml:para>
