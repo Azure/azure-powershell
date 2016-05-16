@@ -24,12 +24,13 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.MachineLearning.WebServices;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
 using LegacyTest = Microsoft.Azure.Test;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
 {
-    internal class WebServicesTestController
+    public class WebServicesTestController
     {
         private readonly EnvironmentSetupHelper helper;
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
@@ -51,10 +52,11 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
             }
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+            this.helper.TracingInterceptor = logger;
 
             this.RunPsTestWorkflow(
                 () => scripts,
@@ -86,7 +88,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
                 this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
                 if (initialize != null)

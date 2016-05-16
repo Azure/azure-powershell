@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -21,22 +22,40 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
 {
     public class WebServiceTests : RMTestBase
     {
-        private readonly ITestOutputHelper output;
+        private readonly XunitTracingInterceptor interceptor;
 
         public WebServiceTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor
-
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            this.interceptor = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(this.interceptor);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateGetRemoveWebService()
         {
-            this.output.WriteLine("Starting the PS test");
-            WebServicesTestController.NewInstance.RunPsTest("Test-CreateGetRemoveMLService");
-            this.output.WriteLine("test ended");
+            WebServicesTestController.NewInstance.RunPsTest(this.interceptor, "Test-CreateGetRemoveMLService");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateWebServiceFromFile()
+        {
+            WebServicesTestController.NewInstance.RunPsTest(this.interceptor, "Test-CreateWebServiceFromFile");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateWebService()
+        {
+            WebServicesTestController.NewInstance.RunPsTest(this.interceptor, "Test-UpdateWebService");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListWebServices()
+        {
+            WebServicesTestController.NewInstance.RunPsTest(this.interceptor, "Test-ListWebServices");
         }
     }
 }
