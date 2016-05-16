@@ -79,8 +79,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Gets the default azure context object.
         /// </summary>
         [JsonIgnore]
-        public AzureContext Context 
-        { 
+        public AzureContext Context
+        {
             get
             {
                 var context = new AzureContext(null, null, null, null);
@@ -106,14 +106,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     }
                     else
                     {
-                         TracingAdapter.Information(Resources.NoEnvironmentInContext, DefaultSubscription.Environment, DefaultSubscription.Id);                       
+                        TracingAdapter.Information(Resources.NoEnvironmentInContext, DefaultSubscription.Environment, DefaultSubscription.Id);
                     }
 
                     context = new AzureContext(DefaultSubscription, account, environment);
                 }
 
                 return context;
-            } 
+            }
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 return;
             }
-            
+
             // Removing predefined environments
             foreach (string env in AzureEnvironment.PublicEnvironments.Keys)
             {

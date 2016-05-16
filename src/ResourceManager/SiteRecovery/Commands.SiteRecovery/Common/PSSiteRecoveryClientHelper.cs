@@ -13,13 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {

@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
 {
-   /// <summary>
+    /// <summary>
     /// The possible states in which an auditing policy may be in
     /// </summary>
     public enum ThreatDetectionStateType { Enabled, Disabled, New };

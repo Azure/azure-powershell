@@ -12,17 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using System.Linq;
-using Microsoft.Azure.Management.BackupServices.Models;
-using MBS = Microsoft.Azure.Management.BackupServices;
-using System.Runtime.Serialization;
-using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.Azure.Management.BackupServices.Models;
+using System;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -77,9 +72,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug(Resources.EnableAzureBackupProtection);
 
                 var operationStatus = TrackOperation(Item.ResourceGroupName, Item.ResourceName, operationId);
-                this.WriteObject(GetCreatedJobs(Item.ResourceGroupName, 
-                    Item.ResourceName, 
-                    new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), 
+                this.WriteObject(GetCreatedJobs(Item.ResourceGroupName,
+                    Item.ResourceName,
+                    new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location),
                     operationStatus.JobList).FirstOrDefault());
             });
         }

@@ -14,15 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.Tags.Model;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections;
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.Tags.Model;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Finds the resource group.

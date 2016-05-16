@@ -12,15 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Collections.Generic;
-using System.Management.Automation;
+using System;
 using Xunit;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -280,6 +275,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestTerminateJobPipeline()
         {
             TestTerminateJob(true);
+        }
+
+        [Fact]
+        public void TestJobWithTaskDependencies()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-JobWithTaskDependencies"));
         }
 
         private void TestTerminateJob(bool usePipeline)

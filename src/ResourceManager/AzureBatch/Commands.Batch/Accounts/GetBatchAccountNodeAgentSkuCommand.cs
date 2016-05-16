@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
-using Microsoft.Azure.Batch;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch

@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.New, Constants.ApiManagementOpenIdConnectProvider)]
     [OutputType(typeof(PsApiManagementOpenIdConnectProvider))]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                           " This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String MetadataEndpointUri { get; set; }
-        
+
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public override void ExecuteApiManagementCmdlet()
         {
             string openIdProviderId = OpenIdConnectProviderId ?? Guid.NewGuid().ToString("N");
-            
+
             var openIdConnectProvider = Client.OpenIdProviderCreate(
                 Context,
                 openIdProviderId,

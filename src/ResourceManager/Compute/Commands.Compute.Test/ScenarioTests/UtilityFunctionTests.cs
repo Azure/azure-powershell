@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using Xunit;
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 "East Asia 2"
             };
 
-            Func<string, string> normalize = delegate(string s)
+            Func<string, string> normalize = delegate (string s)
             {
                 return string.IsNullOrEmpty(s) ? s : s.Replace(" ", string.Empty).ToLower();
             };

@@ -14,14 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
 
     /// <summary>
     /// A helper class for converting <see cref="JObject"/> and <see cref="JToken"/> objects to <see cref="PSObject"/> classes.
@@ -35,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         {
             { JTokenType.String, typeof(string) },
             { JTokenType.Integer, typeof(long) },
-            { JTokenType.Float, typeof(double) }, 
+            { JTokenType.Float, typeof(double) },
             { JTokenType.Boolean, typeof(bool) },
             { JTokenType.Null, typeof(object) },
             { JTokenType.Date, typeof(DateTime) },

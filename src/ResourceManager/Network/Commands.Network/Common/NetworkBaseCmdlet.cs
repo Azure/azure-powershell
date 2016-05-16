@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.Network
 {

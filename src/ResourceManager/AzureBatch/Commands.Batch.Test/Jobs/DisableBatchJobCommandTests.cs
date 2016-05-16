@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             // Don't go to the service on a Disable CloudJob call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.DisableJobOption, 
-                ProxyModels.JobDisableOptions, 
+                ProxyModels.DisableJobOption,
+                ProxyModels.JobDisableOptions,
                 AzureOperationHeaderResponse<ProxyModels.JobDisableHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 

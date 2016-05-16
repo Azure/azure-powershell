@@ -66,6 +66,6 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestPublicIpAddressIpVersion()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressIpVersion");
-        }        
+        }
     }
 }

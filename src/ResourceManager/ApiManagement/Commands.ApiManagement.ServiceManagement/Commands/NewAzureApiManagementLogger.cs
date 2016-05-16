@@ -14,32 +14,32 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Management.ApiManagement.SmapiModels;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Management.ApiManagement.SmapiModels;
 
     [Cmdlet(VerbsCommon.New, Constants.ApiManagementLogger)]
     [OutputType(typeof(PsApiManagementLogger))]
     public class NewAzureApiManagementLogger : AzureApiManagementCmdletBase
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Identifier of new logger. This parameter is optional. If not specified will be generated.")]
         public String LoggerId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "EventHub Entity name. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String Name { get; set; }
@@ -52,11 +52,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String ConnectionString { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Logger description. This parameter is optional.")]
         public String Description { get; set; }
-        
+
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,

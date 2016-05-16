@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Storage;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
@@ -68,10 +68,10 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
-                    helper.RMProfileModule, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    helper.RMProfileModule,
                     helper.RMResourceModule,
                     helper.GetRMModulePath("AzureRM.DataFactories.psd1"));
 

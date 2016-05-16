@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using System;
 using System.Linq;
 using System.Text;
-using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {

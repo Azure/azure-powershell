@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
-        public void TestExportDatabase() 
+        public void TestExportDatabase()
         {
             RunPowerShellTest("Test-ExportDatabase");
         }
@@ -40,6 +39,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestImportDatabase()
         {
             RunPowerShellTest("Test-ImportDatabase");
-        }       
+        }
     }
 }

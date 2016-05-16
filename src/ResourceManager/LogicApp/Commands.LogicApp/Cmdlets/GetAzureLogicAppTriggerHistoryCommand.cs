@@ -17,7 +17,6 @@ using Microsoft.Azure.Management.Logic.Models;
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using Microsoft.Azure.Commands.LogicApp.Utilities;
-    using Microsoft.Azure.Management.Logic;
     using System.Management.Automation;
 
     /// <summary>

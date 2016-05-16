@@ -19,8 +19,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -91,7 +89,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             var scriptActions = new List<RuntimeScriptAction> { scriptAction };
 
-            var executeScriptActionParameters = new ExecuteScriptActionParameters 
+            var executeScriptActionParameters = new ExecuteScriptActionParameters
             {
                 ScriptActions = scriptActions,
                 PersistOnSuccess = PersistOnSuccess.IsPresent

@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             { P3String, GB26 },
             { P4String, GB53 }
         };
-        
+
         public static string GetSizeInRedisSpecificFormat(string actualSizeFromUser, bool isPremiumCache)
-        { 
-            switch(actualSizeFromUser)
+        {
+            switch (actualSizeFromUser)
             {
                 // accepting actual sizes
                 case MB250:
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                 case GB2_5:
                     return C2String;
                 case GB6:
-                    if(isPremiumCache)
+                    if (isPremiumCache)
                     {
                         return P1String;
                     }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                         return C3String;
                     }
                 case GB13:
-                    if(isPremiumCache)
+                    if (isPremiumCache)
                     {
                         return P2String;
                     }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         {
             string sizeConstant = skuFamily + skuCapacity.ToString();
             if (skuStringToActualSize.ContainsKey(sizeConstant))
-            { 
+            {
                 return skuStringToActualSize[sizeConstant];
             }
             return null;

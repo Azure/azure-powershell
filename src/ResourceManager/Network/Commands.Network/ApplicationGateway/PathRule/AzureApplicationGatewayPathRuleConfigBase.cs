@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -28,8 +27,8 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-               Mandatory = true, 
-               HelpMessage = "List of URL paths")]        
+               Mandatory = true,
+               HelpMessage = "List of URL paths")]
         [ValidateNotNullOrEmpty]
         public List<string> Paths { get; set; }
 
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
                 if (BackendHttpSettings != null)
                 {
                     this.BackendHttpSettingsId = this.BackendHttpSettings.Id;
-                }                
+                }
             }
         }
 
@@ -94,6 +93,6 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return pathRule;
-        }        
+        }
     }
 }
