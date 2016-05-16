@@ -15,14 +15,13 @@
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using Microsoft.Rest.Azure;
-
-using Resources = Microsoft.Azure.Commands.Batch.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
