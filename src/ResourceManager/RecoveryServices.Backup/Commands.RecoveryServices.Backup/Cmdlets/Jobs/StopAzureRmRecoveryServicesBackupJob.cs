@@ -24,6 +24,9 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
+    /// <summary>
+    /// Cancels a job. Returns the corresponding job object after this operation finishes.
+    /// </summary>
     [Cmdlet("Stop", "AzureRmRecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet), 
     OutputType(typeof(JobBase))]
     public class StopAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
@@ -31,11 +34,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
 
+        /// <summary>
+        /// Job which needs to be canceled.
+        /// </summary>
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.StopJobJobFilter, 
             ParameterSetName = JobFilterSet, Position = 1)]
         [ValidateNotNull]
         public JobBase Job { get; set; }
 
+        /// <summary>
+        /// ID of the job which needs to be canceled.
+        /// </summary>
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.StopJobJobIdFilter, 
             ParameterSetName = IdFilterSet, Position = 2)]
         [ValidateNotNull]
