@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string RecoveryPointIdParameterSet = "RecoveryPointId";
 
         /// <summary>
-        /// Start time of Time range for which recovery point need to be fetched
+        /// Start time of Time range for which recovery point needs to be fetched
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, 
             ValueFromPipeline = false, Position = 0, HelpMessage = ParamHelpMsgs.RecoveryPoint.StartDate)]        
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public DateTime StartDate { get; set; }
 
         /// <summary>
-        /// End time of Time range for which recovery point need to be fetched
+        /// End time of Time range for which recovery points need to be fetched
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = false, 
             Position = 1, HelpMessage = ParamHelpMsgs.RecoveryPoint.EndDate)]        
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public DateTime EndDate { get; set; }
 
         /// <summary>
-        /// Protected Item object for which recovery point need to be fetched
+        /// Protected Item object for which recovery points need to be fetched
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, 
             ValueFromPipeline = true, Position = 2, HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
