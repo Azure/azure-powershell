@@ -283,9 +283,13 @@ namespace Microsoft.Azure.Commands.Compute
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
         {
             var storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
-            if (storageAccountList == null)
+            if (storageAccountList == null || storageAccountList.Count() == 0)
             {
-                return null;
+                storageAccountList = client.StorageAccounts.List();
+                if (storageAccountList == null || storageAccountList.Count() == 0)
+                {
+                    return null;
+                }
             }
 
             try
