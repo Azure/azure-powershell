@@ -23,12 +23,15 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Get, Constants.AzureBatchPoolUsageMetrics), OutputType(typeof(PSPoolUsageMetrics))]
     public class GetBatchPoolUsageMetrics : BatchObjectModelCmdletBase
     {
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public DateTime StartTime { get; set; }
 
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public DateTime EndTime { get; set; }
 
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
