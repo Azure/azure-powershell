@@ -114,6 +114,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 job.Constraints = parameters.Constraints.omObject;
             }
 
+            if (parameters.UsesTaskDependencies != null)
+            {
+                job.UsesTaskDependencies = parameters.UsesTaskDependencies;
+            }
+
             if (parameters.JobManagerTask != null)
             {
                 Utils.Utils.JobManagerTaskSyncCollections(parameters.JobManagerTask);
