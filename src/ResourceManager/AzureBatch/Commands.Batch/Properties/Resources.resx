@@ -458,12 +458,12 @@
     <value>Failed to get application {0} package {1}. You may need to delete the application package and try uploading again. {2}.</value>
   </data>
   <data name="FailedToAddApplicationPackage" xml:space="preserve">
-    <value>"Failed to add application package {0} version {1}. {2}."</value>
+    <value>Failed to add application package {0} version {1}. {2}."</value>
   </data>
   <data name="ApplicationDoesNotAllowUpdates" xml:space="preserve">
     <value>Failed to create application package {0} version {1}.  The package already exists, and the application does not allow existing packages to be updated. You must upload your package using a new version number.</value>
   </data>
   <data name="FailedToCheckApplication" xml:space="preserve">
-    <value>Failed to create application package {0} version {1}.  The package already exists, and an error occurred when checking if the application allows existing packages to be updated. {2}. </value>
+    <value>Failed to create application package {0} version {1}.  The package already exists, and an error occurred when checking if the application allows existing packages to be updated. {2}.</value>
   </data>
 </root>
