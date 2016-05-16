@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsCatalogItem"),
      OutputType(typeof(List<CatalogItem>), typeof(CatalogItem))]
+    [Alias("Get-AdlCatalogItem")]
     public class GetAzureDataLakeAnalyticsCatalogItem : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

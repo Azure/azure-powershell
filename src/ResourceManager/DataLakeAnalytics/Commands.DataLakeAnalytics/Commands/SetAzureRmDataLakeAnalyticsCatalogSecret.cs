@@ -21,6 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof(USqlSecret))]
+    [Alias("Set-AdlCatalogSecret")]
     public class SetAzureDataLakeAnalyticsCatalogSecret : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "Specify full URI";

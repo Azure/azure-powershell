@@ -20,6 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Join, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Alias("Join-AdlStoreItem")]
     public class JoinAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
