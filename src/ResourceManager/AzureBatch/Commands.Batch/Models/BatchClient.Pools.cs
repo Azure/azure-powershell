@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// Lists the usage metrics, aggregated by pool across individual time intervals, for the specified account.
         /// </summary>
-        /// <param name="options">The options to use when aggregating usage for pools..</param>
+        /// <param name="options">The options to use when aggregating usage for pools.</param>
         public IEnumerable<PSPoolUsageMetrics> GetPoolUsageMetrics(ListPoolUsageOptions options)
         {
             string verboseLogString = null;
@@ -326,11 +326,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-            IPagedEnumerable<PoolUsageMetrics> poolUsageMetrics = poolOperations.ListPoolUsageMetrics(options.StartTime, options.EndTime, getDetailLevel, options.AdditionalBehaviors);
+            IPagedEnumerable<PoolUsageMetrics> poolUsageMetrics =
+                poolOperations.ListPoolUsageMetrics(options.StartTime, options.EndTime, getDetailLevel, options.AdditionalBehaviors);
+
             Func<PoolUsageMetrics, PSPoolUsageMetrics> mappingFunction = p => { return new PSPoolUsageMetrics(p); };
 
             return PSPagedEnumerable<PSPoolUsageMetrics, PoolUsageMetrics>.CreateWithMaxCount(
-                poolUsageMetrics, mappingFunction, Int32.MaxValue, () => WriteVerbose(string.Format(Resources.MaxCount, Int32.MaxValue)));
+                poolUsageMetrics, mappingFunction, Int32.MaxValue, () => WriteVerbose(verboseLogString));
         }
     }
 }

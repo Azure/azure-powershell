@@ -392,6 +392,70 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a CloudPoolUsageMetricsResponse object
+        /// </summary>
+        public static AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders> CreatePoolListUsageMetricsResponse(
+            IEnumerable<string> poolIds,
+            IEnumerable<DateTime> startTimes,
+            IEnumerable<DateTime> endTimes)
+        {
+            var poolUsageList = poolIds.Zip(startTimes.Zip(endTimes, Tuple.Create),
+                (poolId, tuple) => new ProxyModels.PoolUsageMetrics()
+                {
+                    PoolId = poolId,
+                    StartTime = tuple.Item1,
+                    EndTime = tuple.Item2
+                });
+
+            var response = new AzureOperationResponse
+                <IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders>()
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = new MockPagedEnumerable<ProxyModels.PoolUsageMetrics>(poolUsageList)
+            };
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudPoolStatisticsResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders> CreatePoolStatisticsResponse()
+        {
+            var stats = new ProxyModels.PoolStatistics()
+            {
+                ResourceStats = new ProxyModels.ResourceStatistics(),
+                UsageStats = new ProxyModels.UsageStatistics()
+            };
+
+            var response = new AzureOperationResponse
+                <ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders>()
+            {
+                Body = stats,
+                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
+            };
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudJobStatisticsResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders> CreateJobStatisticsResponse()
+        {
+            var stats = new ProxyModels.JobStatistics();
+
+            var response = new AzureOperationResponse
+                <ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders>()
+            {
+                Body = stats,
+                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
+            };
+
+            return response;
+        }
+
+        /// <summary>
         /// Builds a GetRemoteLoginSettingsResponse object
         /// </summary>
         public static AzureOperationResponse<ProxyModels.ComputeNodeGetRemoteLoginSettingsResult, ProxyModels.ComputeNodeGetRemoteLoginSettingsHeaders> CreateRemoteLoginSettingsGetResponse(string ipAddress)
