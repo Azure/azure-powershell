@@ -87,6 +87,13 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Force re-run even if extension configuration has not changed")]
+        [ValidateNotNullOrEmpty]
+        public string ForceRerun { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -112,7 +119,8 @@ namespace Microsoft.Azure.Commands.Compute
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineAccessExtensionContext.ExtensionDefaultVersion,
                     Settings = publicSettings,
                     ProtectedSettings = privateSettings,
-                    AutoUpgradeMinorVersion = true
+                    AutoUpgradeMinorVersion = true,
+                    ForceUpdateTag = this.ForceRerun
                 };
 
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(

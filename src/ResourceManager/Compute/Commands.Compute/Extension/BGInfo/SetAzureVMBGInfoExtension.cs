@@ -77,6 +77,13 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Disable auto-upgrade of minor version")]
         public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Force re-run even if extension configuration has not changed")]
+        [ValidateNotNullOrEmpty]
+        public string ForceRerun { get; set; }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -94,7 +101,8 @@ namespace Microsoft.Azure.Commands.Compute
                     Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
                     VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
                     TypeHandlerVersion = this.TypeHandlerVersion ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion,
-                    AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent
+                    AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,
+                    ForceUpdateTag = this.ForceRerun
                 };
 
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
