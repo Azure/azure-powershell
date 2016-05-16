@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
@@ -28,7 +27,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -66,6 +65,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         internal const string BatchAccountName = "AZURE_BATCH_ACCOUNT";
         internal const string BatchAccountKey = "AZURE_BATCH_ACCESS_KEY";
         internal const string BatchAccountEndpoint = "AZURE_BATCH_ENDPOINT";
+        internal const string BatchAccountResourceGroup = "AZURE_BATCH_RESOURCE_GROUP";
 
         /// <summary>
         /// Creates an account and resource group for use with the Scenario tests
@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public static BatchAccountContext CreateTestAccountAndResourceGroup(BatchController controller, string resourceGroupName, string accountName, string location)
         {
             controller.ResourceManagementClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup() { Location = location });
-            BatchAccountCreateResponse createResponse = controller.BatchManagementClient.Accounts.Create(resourceGroupName, accountName, new BatchAccountCreateParameters() { Location = location });
-            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(createResponse.Resource);
-            BatchAccountListKeyResponse response = controller.BatchManagementClient.Accounts.ListKeys(resourceGroupName, accountName);
-            context.PrimaryAccountKey = response.PrimaryKey;
-            context.SecondaryAccountKey = response.SecondaryKey;
+            AccountResource createResponse = controller.BatchManagementClient.Account.Create(resourceGroupName, accountName, new BatchAccountCreateParameters() { Location = location });
+            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(createResponse);
+            BatchAccountListKeyResult response = controller.BatchManagementClient.Account.ListKeys(resourceGroupName, accountName);
+            context.PrimaryAccountKey = response.Primary;
+            context.SecondaryAccountKey = response.Secondary;
             return context;
         }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void CleanupTestAccount(BatchController controller, string resourceGroupName, string accountName)
         {
-            controller.BatchManagementClient.Accounts.Delete(resourceGroupName, accountName);
+            controller.BatchManagementClient.Account.Delete(resourceGroupName, accountName);
             controller.ResourceManagementClient.ResourceGroups.Delete(resourceGroupName);
         }
 
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             X509Certificate2 cert = new X509Certificate2(filePath);
-            ListCertificateOptions getParameters = new ListCertificateOptions(context) 
-            { 
-                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm, 
+            ListCertificateOptions getParameters = new ListCertificateOptions(context)
+            {
+                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm,
                 Thumbprint = cert.Thumbprint,
                 Select = "thumbprint,state"
             };
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test pool for use in Scenario tests.
         /// </summary>
-        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated, 
+        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated,
             CertificateReference certReference = null, StartTask startTask = null)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             }
 
             PSCloudServiceConfiguration paasConfiguration = new PSCloudServiceConfiguration("4", "*");
-            
+
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
                 VirtualMachineSize = "small",
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 MultiInstanceSettings = multiInstanceSettings,
                 RunElevated = numInstances <= 1
             };
-            
+
             client.CreateTask(parameters);
         }
 

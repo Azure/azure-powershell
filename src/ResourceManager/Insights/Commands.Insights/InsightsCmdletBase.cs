@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.Insights
 {

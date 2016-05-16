@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var backendAddressPool = new PSBackendAddressPool();
             backendAddressPool.Name = this.Name;
-            
+
             backendAddressPool.Id =
                 ChildResourceHelper.GetResourceNotSetId(
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,

@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
 {
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
 
             // Return a pre-built object when the command is issued.
             string location = "westus";
-            PSBatchSubscriptionQuotas quotas = new PSBatchSubscriptionQuotas(location, new SubscriptionQuotasGetResponse() { AccountQuota = 5 } );
+            PSBatchSubscriptionQuotas quotas = new PSBatchSubscriptionQuotas(location, new SubscriptionQuotasGetResult(accountQuota: 5));
             batchClientMock.Setup(b => b.GetSubscriptionQuotas(location)).Returns(quotas);
 
             cmdlet.Location = location;

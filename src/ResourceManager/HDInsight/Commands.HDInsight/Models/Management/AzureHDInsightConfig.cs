@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets the file path of the client certificate file contents associated with the service principal.
         /// </summary>
-        public byte[] CertificateFileContents{ get; set; }
+        public byte[] CertificateFileContents { get; set; }
 
         /// <summary>
         /// Gets the file path of the client certificate file associated with the service principal.

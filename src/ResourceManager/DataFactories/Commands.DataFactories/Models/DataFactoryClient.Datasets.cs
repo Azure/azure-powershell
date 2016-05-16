@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Net;
+using Hyak.Common;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.DataFactories.Models;
-using Microsoft.WindowsAzure;
-using Hyak.Common;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {

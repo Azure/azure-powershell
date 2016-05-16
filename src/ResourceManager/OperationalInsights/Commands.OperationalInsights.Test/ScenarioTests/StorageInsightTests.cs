@@ -38,6 +38,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         public void TestStorageInsightCreateFailsWithoutWorkspace()
         {
             RunPowerShellTest("Test-StorageInsightCreateFailsWithoutWorkspace");
-        } 
+        }
     }
 }

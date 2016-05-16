@@ -12,19 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Management.Automation;
-
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -187,7 +182,7 @@ namespace Microsoft.Azure.Commands.Resources
         protected string GetDeploymentDebugLogLevel(string deploymentDebugLogLevel)
         {
             string debugSetting = string.Empty;
-            if(!string.IsNullOrEmpty(deploymentDebugLogLevel))
+            if (!string.IsNullOrEmpty(deploymentDebugLogLevel))
             {
                 switch (deploymentDebugLogLevel.ToLower())
                 {
@@ -205,7 +200,7 @@ namespace Microsoft.Azure.Commands.Resources
                         break;
                 }
             }
-            
+
             return debugSetting;
         }
     }

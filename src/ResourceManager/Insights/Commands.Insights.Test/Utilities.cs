@@ -12,20 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
 using Microsoft.Azure.Management.Insights.Models;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test
 {
@@ -152,7 +151,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             {
                 MetricDefinitionCollection = new MetricDefinitionCollection
                 {
-                    Value = new MetricDefinition[] {}
+                    Value = new MetricDefinition[] { }
                 },
                 RequestId = Guid.NewGuid().ToString(),
                 StatusCode = HttpStatusCode.OK
@@ -182,7 +181,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
         public static void VerifyContinuationToken(EventDataListResponse response, Mock<IEventOperations> insinsightsEventOperationsMockightsClientMock, EventCmdletBase cmdlet)
         {
-                        // Make sure calls to Next work also
+            // Make sure calls to Next work also
             response.EventDataCollection.NextLink = Utilities.ContinuationToken;
             var responseNext = new EventDataListResponse()
             {

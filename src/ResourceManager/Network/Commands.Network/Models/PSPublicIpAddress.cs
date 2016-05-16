@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int? IdleTimeoutInMinutes { get; set; }
 
         public string ProvisioningState { get; set; }
-        
+
         [JsonIgnore]
         public string IpConfigurationText
         {
             get { return JsonConvert.SerializeObject(IpConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
-        
+
         [JsonIgnore]
         public string DnsSettingsText
         {

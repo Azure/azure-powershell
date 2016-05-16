@@ -14,12 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// Helper class for tags.

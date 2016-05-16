@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class Deployment
     {
         private DeploymentProperties _properties;
-        
+
         /// <summary>
         /// Optional. Gets or sets the deployment properties.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._properties; }
             set { this._properties = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the Deployment class.
         /// </summary>

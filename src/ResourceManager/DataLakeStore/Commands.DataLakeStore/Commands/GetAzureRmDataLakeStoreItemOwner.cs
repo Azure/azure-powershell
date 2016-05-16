@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemOwner"), OutputType(typeof (string))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemOwner"), OutputType(typeof(string))]
     public class GetAzureDataLakeStoreItemOwner : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
