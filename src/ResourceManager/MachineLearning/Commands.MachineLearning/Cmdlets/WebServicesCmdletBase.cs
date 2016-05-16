@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                     }
                 }
                 
-                this.ThrowTerminatingError(errorRecord);
+                this.WriteError(errorRecord);
             }
             finally
             {

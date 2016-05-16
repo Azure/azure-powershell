@@ -54,7 +54,7 @@ function Get-ProviderLocation($providerNamespace, $resourceType)
 			return "southcentralus"  
 		} else 
 		{  
-			return $resourceType.Locations[0]  
+			return $resourceType.Locations[0].Replace(" ", "").ToLowerInvariant()
 		} 
 	}
 
@@ -67,9 +67,28 @@ Gets the latest API Version for the resource type
 #>
 function Get-ProviderAPIVersion($providerNamespace, $resourceType)
 { 
-    $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
-	$resourceType = $provider.ResourceTypes | where {$_.ResourceTypeName -eq $resourceType}
-	return $resourceType.ApiVersions[$resourceType.ApiVersions.Count -1]
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
+		$resourceType = $provider.ResourceTypes | where {$_.ResourceTypeName -eq $resourceType}
+		return $resourceType.ApiVersions[$resourceType.ApiVersions.Count -1]
+	} else
+	{
+		if ($providerNamespace -eq "Microsoft.MachineLearning")
+		{
+			if ([System.String]::Equals($resourceType, "CommitmentPlans", [System.StringComparison]::OrdinalIgnoreCase))
+			{
+				return "2016-05-01-preview"
+			}
+
+			if ([System.String]::Equals($resourceType, "webServices", [System.StringComparison]::OrdinalIgnoreCase))
+			{
+				return "2016-05-01-preview"
+			}
+		}
+
+		return $null
+	}
 }
 
 <#
@@ -80,7 +99,14 @@ function Clean-WebService($resourceGroup, $webServiceName)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
 	{
-		$result = Remove-AzureRmMlWebService -ResourceGroupName $resourceGroup.ToString() -WebsiteName $websiteName.ToString() -Force
+		try {
+		    LogOutput "Removing web service $webServiceName from resource group $rgName"    
+			Remove-AzureRmMlWebService -ResourceGroupName $resourceGroup -Name $webServiceName -Force
+			LogOutput "Web service $webServiceName was removed."
+		}
+		catch {
+			Write-Warning "Caught unexpected exception when cleaning up web service $webServiceName in group $resourceGroup : $($($_.Exception).Message)"
+		}
     }
 }
 
@@ -88,9 +114,27 @@ function Clean-WebService($resourceGroup, $webServiceName)
 .SYNOPSIS
 Cleans the created resource groups
 #>
-function Clean-ResourceGroup($rgname)
+function Clean-ResourceGroup($resourceGroup)
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureRmResourceGroup -Name $rgname -Force
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+        try {
+		    LogOutput "Removing resource group $resourceGroup" 
+            Remove-AzureRmResourceGroup -Name $resourceGroup -Force
+			LogOutput "Resource group $resourceGroup was removed." 
+	    }
+		catch {
+			Write-Warning "Caught unexpected exception when cleaning up resource group $resourceGroup : $($($_.Exception).Message)"
+		}
     }
+}
+
+<#
+.SYNOPSIS
+Writes a timestamped message to stdout
+#>
+function LogOutput($message)
+{
+	$timestamp = Get-Date -UFormat "%Y-%m-%d %H:%M:%S %Z"
+	Write-Output "[$timestamp]: $message"
 }
