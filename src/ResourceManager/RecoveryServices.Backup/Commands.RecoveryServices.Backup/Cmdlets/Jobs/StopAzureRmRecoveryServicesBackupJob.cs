@@ -25,7 +25,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Cancels a job. Returns the corresponding job object after this operation finishes.
+    /// Cancels a job. Returns the corresponding job object after the trigger of the cancellation finishes. 
+    /// The job may not cancel successfully. The cmdlet will ensure that the service is notified that a cancellation has been triggered.
     /// </summary>
     [Cmdlet("Stop", "AzureRmRecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet), 
     OutputType(typeof(JobBase))]
