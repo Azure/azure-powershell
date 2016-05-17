@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public class BackupAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
-        /// The protected item on which backup has to be enabled.
+        /// The protected item on which backup has to be triggered.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem,
             ValueFromPipeline = true)]

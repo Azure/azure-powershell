@@ -25,7 +25,7 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Fetches containers registered to the item according to the filters passed via the cmdlet parameters.
+    /// Fetches containers registered to the vault according to the filters passed via the cmdlet parameters.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"), 
     OutputType(typeof(ContainerBase), typeof(IList<ContainerBase>))]
