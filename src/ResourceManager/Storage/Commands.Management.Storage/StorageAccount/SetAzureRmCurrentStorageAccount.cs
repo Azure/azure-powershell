@@ -12,33 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.Azure.Commands.Management.Storage.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmCurrentStorageAccount", DefaultParameterSetName=ResourceNameParameterSet), 
+    [Cmdlet(VerbsCommon.Set, "AzureRmCurrentStorageAccount", DefaultParameterSetName = ResourceNameParameterSet),
     OutputType(typeof(string))]
     public class SetAzureRmCurrentStorageAccount : StorageAccountBaseCmdlet
     {
         private const string StorageContextParameterSet = "UsingStorageContext";
         private const string ResourceNameParameterSet = "UsingResourceGroupAndNameParameterSet";
 
-        [Parameter(Mandatory=true, ParameterSetName=StorageContextParameterSet, ValueFromPipeline=true, 
+        [Parameter(Mandatory = true, ParameterSetName = StorageContextParameterSet, ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public AzureStorageContext Context { get; set; }
 
-        [Parameter(Mandatory=true, ParameterSetName=ResourceNameParameterSet, 
+        [Parameter(Mandatory = true, ParameterSetName = ResourceNameParameterSet,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory=true, ParameterSetName=ResourceNameParameterSet,
+        [Parameter(Mandatory = true, ParameterSetName = ResourceNameParameterSet,
         ValueFromPipelineByPropertyName = true)]
         [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]

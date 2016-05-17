@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             secretAttributes = new SecretAttributes(true, null, null, null, null);
             secureSecretValue = SecretValue.ConvertToSecureString();
             secret = new Secret() { VaultName = VaultName, Name = SecretName, Version = SecretVersion, SecretValue = secureSecretValue, Attributes = secretAttributes };
-            
+
             cmdlet = new SetAzureKeyVaultSecret()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -49,14 +48,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 Expires = secretAttributes.Expires,
                 NotBefore = secretAttributes.NotBefore,
                 ContentType = secretAttributes.ContentType,
-                Tags = secretAttributes.Tags                
+                Tags = secretAttributes.Tags
             };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanSetSecretTest()
-        {          
+        {
             Secret expected = secret;
             keyVaultClientMock.Setup(kv => kv.SetSecret(VaultName, SecretName, secureSecretValue,
                 It.Is<SecretAttributes>(st => st.Enabled == secretAttributes.Enabled
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             {
                 cmdlet.ExecuteCmdlet();
             }
-            catch{}
+            catch { }
 
             keyVaultClientMock.VerifyAll();
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<Secret>()), Times.Never());

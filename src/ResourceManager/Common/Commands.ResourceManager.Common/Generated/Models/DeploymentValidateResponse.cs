@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class DeploymentValidateResponse : AzureOperationResponse
     {
         private ResourceManagementErrorWithDetails _error;
-        
+
         /// <summary>
         /// Optional. Gets or sets validation error.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._error; }
             set { this._error = value; }
         }
-        
+
         private bool _isValid;
-        
+
         /// <summary>
         /// Optional. Gets or sets the value indicating whether the template is
         /// valid or not.
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._isValid; }
             set { this._isValid = value; }
         }
-        
+
         private DeploymentPropertiesExtended _properties;
-        
+
         /// <summary>
         /// Optional. Gets or sets the template deployment properties.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._properties; }
             set { this._properties = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the DeploymentValidateResponse class.
         /// </summary>

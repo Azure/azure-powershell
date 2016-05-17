@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
 using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -56,7 +54,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Forces an overwrite of an existing local file with the same name.")]
         public SwitchParameter Force { get; set; }
-        
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>

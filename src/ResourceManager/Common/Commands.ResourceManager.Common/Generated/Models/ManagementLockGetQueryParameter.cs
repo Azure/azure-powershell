@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ManagementLockGetQueryParameter
     {
         private string _atScope;
-        
+
         /// <summary>
         /// Optional. Get or sets the atScope parameter. If empty is passed
         /// returns all locks at, above or below the scope. Otherwise, returns
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._atScope; }
             set { this._atScope = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ManagementLockGetQueryParameter
         /// class.

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class ListJobOptions : BatchClientParametersBase
     {
-        public ListJobOptions(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null) 
+        public ListJobOptions(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, additionalBehaviors)
         { }
 

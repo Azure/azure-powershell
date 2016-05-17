@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Batch.Models;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -51,11 +49,35 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
             BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
 
-            batchClientMock.Setup(b => b.CreateAccount(resourceGroup, accountName, location, null)).Returns(expected);
+            batchClientMock.Setup(b => b.CreateAccount(resourceGroup, accountName, location, null, null)).Returns(expected);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.Location = location;
+
+            cmdlet.ExecuteCmdlet();
+
+            commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchWithAutoStorageAccountTest()
+        {
+            string accountName = "account01";
+            string resourceGroup = "resourceGroup";
+            string location = "location";
+            string storageId = "storageId";
+
+            AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
+            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+
+            batchClientMock.Setup(b => b.CreateAccount(resourceGroup, accountName, location, null, storageId)).Returns(expected);
+
+            cmdlet.AccountName = accountName;
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.Location = location;
+            cmdlet.AutoStorageAccountId = storageId;
 
             cmdlet.ExecuteCmdlet();
 

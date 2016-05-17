@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Don't go to the service on a Reboot ComputeNode call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ComputeNodeRebootOption?, 
-                ComputeNodeRebootOptions, 
+                ComputeNodeRebootOption?,
+                ComputeNodeRebootOptions,
                 AzureOperationHeaderResponse<ComputeNodeRebootHeaders>>();
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             // Don't go to the service on a Reboot ComputeNode call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                ComputeNodeRebootBatchRequest request = (ComputeNodeRebootBatchRequest) baseRequest;
+                ComputeNodeRebootBatchRequest request = (ComputeNodeRebootBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {

@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.File;
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage.Table;
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Management.Automation;
 
     internal class AccessPolicyHelper
     {
@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <param name="startTime">start time of the policy</param>
         /// <param name="expiryTime">end time of the policy</param>
         /// <param name="permission">the permission of the policy</param>
-        internal static void SetupAccessPolicy<T>(T policy, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime = false, bool noExpiryTime = false) 
+        internal static void SetupAccessPolicy<T>(T policy, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime = false, bool noExpiryTime = false)
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
                 typeof(T) == typeof(SharedAccessFilePolicy) ||
@@ -59,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             SetupAccessPolicyLifeTime(startTime, expiryTime,
                 out accessStartTime, out accessExpiryTime);
 
-            if (startTime != null || noStartTime) 
+            if (startTime != null || noStartTime)
             {
                 policy.GetType().GetProperty("SharedAccessStartTime").SetValue(policy, accessStartTime);
             }
@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 policy.GetType().GetProperty("SharedAccessExpiryTime").SetValue(policy, accessExpiryTime);
             }
-            
+
             SetupAccessPolicyPermission<T>(policy, permission);
         }
 
@@ -158,12 +158,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     throw new ArgumentException(Resources.InvalidAccessPolicyType);
                 }
             }
-            catch(System.ArgumentOutOfRangeException)
+            catch (System.ArgumentOutOfRangeException)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPermission, permission));
             }
         }
-        
+
         internal static PSObject ConstructPolicyOutputPSObject<T>(IDictionary<string, T> sharedAccessPolicies, string policyName)
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
@@ -176,13 +176,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             return PowerShellUtilities.ConstructPSObject(
                 typeof(PSObject).FullName,
-                "Policy", 
+                "Policy",
                 policyName,
-                "Permissions", 
-                (sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]), 
-                "StartTime", 
+                "Permissions",
+                (sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]),
+                "StartTime",
                 (sharedAccessPolicies[policyName]).GetType().GetProperty("SharedAccessStartTime").GetValue(sharedAccessPolicies[policyName]),
-                "ExpiryTime", 
+                "ExpiryTime",
                 (sharedAccessPolicies[policyName]).GetType().GetProperty("SharedAccessExpiryTime").GetValue(sharedAccessPolicies[policyName]));
         }
 

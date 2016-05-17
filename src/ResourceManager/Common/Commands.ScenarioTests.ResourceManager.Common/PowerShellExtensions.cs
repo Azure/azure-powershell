@@ -97,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// </summary>
         /// <param name="runtimeException">The exception to parse</param>
         public static void LogPowerShellException(
-            this System.Management.Automation.PowerShell powershell, 
+            this System.Management.Automation.PowerShell powershell,
             Exception runtimeException,
             XunitTracingInterceptor xunitLogger)
         {
@@ -115,11 +115,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 if (xunitLogger != null)
                 {
                     xunitLogger.Information(string.Format(
-                        "PowerShell Error Record: {0}\nException:{1}\nDetails:{2}\nScript Stack Trace: {3}\n: Target: {4}\n", 
-                        record, 
-                        record.Exception, 
-                        record.ErrorDetails, 
-                        record.ScriptStackTrace, 
+                        "PowerShell Error Record: {0}\nException:{1}\nDetails:{2}\nScript Stack Trace: {3}\n: Target: {4}\n",
+                        record,
+                        record.Exception,
+                        record.ErrorDetails,
+                        record.ScriptStackTrace,
                         record.TargetObject));
                 }
             }
@@ -146,8 +146,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// </summary>
         /// <param name="powershell">The PowerShell instance to log</param>
         public static void LogPowerShellResults(
-            this System.Management.Automation.PowerShell powershell, 
-            Collection<PSObject> output, 
+            this System.Management.Automation.PowerShell powershell,
+            Collection<PSObject> output,
             XunitTracingInterceptor xunitLogger)
         {
             if (output != null)
@@ -155,8 +155,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 LogPowerShellStream<PSObject>(xunitLogger, output, "OUTPUT");
             }
             if (xunitLogger != null &&
-                powershell.Commands != null && 
-                powershell.Commands.Commands != null && 
+                powershell.Commands != null &&
+                powershell.Commands.Commands != null &&
                 powershell.Commands.Commands.Count > 0)
             {
                 xunitLogger.Information("================== COMMANDS =======================\n");
@@ -222,8 +222,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <param name="stream">The stream to log</param>
         /// <param name="name">The name of the stream to print in the log</param>
         private static void LogPowerShellStream<T>(
-            XunitTracingInterceptor xunitLogger, 
-            ICollection<T> stream, 
+            XunitTracingInterceptor xunitLogger,
+            ICollection<T> stream,
             string name)
         {
             if (xunitLogger != null && stream != null && stream.Count > 0)
@@ -233,7 +233,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 xunitLogger.Information("---------------------------------------------------------------\n");
                 foreach (T item in stream)
                 {
-                    if(item != null)
+                    if (item != null)
                     {
                         xunitLogger.Information(string.Format("{0}\n", item.ToString()));
                     }

@@ -16,9 +16,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
     public enum TenantConfigurationState
     {
-         Started=1,
-         InProgress=2,
-         Succeeded=3,
-         Failed=4
+        Started = 1,
+        InProgress = 2,
+        Succeeded = 3,
+        Failed = 4
     }
 }

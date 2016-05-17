@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Utils
 {
@@ -32,6 +31,11 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (pool != null)
             {
+                pool.omObject.ApplicationPackageReferences = CreateSyncedList(pool.ApplicationPackageReferences,
+                (apr) =>
+                {
+                    return ConvertApplicationPackageReference(apr);
+                });
                 pool.omObject.CertificateReferences = CreateSyncedList(pool.CertificateReferences,
                 (c) =>
                 {
@@ -110,7 +114,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
                 if (specification.JobManagerTask != null)
                 {
-                    JobManagerTaskSyncCollections(specification.JobManagerTask);   
+                    JobManagerTaskSyncCollections(specification.JobManagerTask);
                 }
 
                 if (specification.JobPreparationTask != null)
@@ -129,7 +133,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     MetadataItem metadata = new MetadataItem(m.Name, m.Value);
                     return metadata;
                 });
-                
+
                 if (specification.PoolInformation != null)
                 {
                     PoolInformationSyncCollections(specification.PoolInformation);
@@ -144,7 +148,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (jobManager != null)
             {
-                jobManager.omObject.EnvironmentSettings = CreateSyncedList(jobManager.EnvironmentSettings, 
+                jobManager.omObject.EnvironmentSettings = CreateSyncedList(jobManager.EnvironmentSettings,
                     (e) =>
                     {
                         EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
@@ -247,11 +251,21 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         return ConvertCertificateReference(c);
                     });
 
-                spec.omObject.Metadata = CreateSyncedList(spec.Metadata, 
+                spec.omObject.Metadata = CreateSyncedList(spec.Metadata,
                     (m) =>
                     {
                         MetadataItem metadata = new MetadataItem(m.Name, m.Value);
                         return metadata;
+                    });
+
+                spec.omObject.ApplicationPackageReferences = CreateSyncedList(spec.ApplicationPackageReferences,
+                    (apr) =>
+                    {
+                        return new ApplicationPackageReference()
+                        {
+                            ApplicationId = apr.ApplicationId,
+                            Version = apr.Version
+                        };
                     });
 
                 if (spec.StartTask != null)
@@ -336,6 +350,19 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             certReference.ThumbprintAlgorithm = psCert.ThumbprintAlgorithm;
             certReference.Visibility = psCert.Visibility;
             return certReference;
+        }
+
+        /// <summary>
+        /// Converts a PSApplicationPackageReference to a ApplicationPackageReference
+        /// </summary>
+        private static ApplicationPackageReference ConvertApplicationPackageReference(PSApplicationPackageReference psApr)
+        {
+            ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference()
+            {
+                ApplicationId = psApr.ApplicationId,
+                Version = psApr.Version
+            };
+            return applicationPackageReference;
         }
     }
 }

@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
+using System;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security;
-using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using System;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User")]
     [Alias("Login-AzureRmAccount")]
     [OutputType(typeof(PSAzureProfile))]
-    public class AddAzureRMAccountCommand : AzureRMCmdlet , IModuleAssemblyInitializer
+    public class AddAzureRMAccountCommand : AzureRMCmdlet, IModuleAssemblyInitializer
     {
         private const string UserParameterSet = "User";
         private const string ServicePrincipalParameterSet = "ServicePrincipal";
@@ -134,14 +134,14 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
                 !string.IsNullOrWhiteSpace(SubscriptionName))
             {
                 throw new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided);
             }
 
             Guid subscrptionIdGuid;
-            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
                 !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
             {
                 throw new PSInvalidOperationException(
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (!string.IsNullOrEmpty(AccessToken))
             {
-                if (string.IsNullOrWhiteSpace(AccountId) )
+                if (string.IsNullOrWhiteSpace(AccountId))
                 {
                     throw new PSInvalidOperationException(Resources.AccountIdRequired);
                 }
@@ -192,14 +192,14 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
 
-            if( AzureRmProfileProvider.Instance.Profile == null)
+            if (AzureRmProfileProvider.Instance.Profile == null)
             {
                 AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
             }
 
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-            
-            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId, 
+
+            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
                 SubscriptionName, password));
         }
 

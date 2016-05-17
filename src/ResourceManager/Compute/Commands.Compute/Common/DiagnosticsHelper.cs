@@ -12,15 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
-using System.Xml;
-using System.Xml.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
@@ -30,6 +21,15 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+using System.Text;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Common
 {
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
             if (TryGetStorageAccount(storageClient, storageAccountName, out storageAccount))
             {
                 // Help user retrieve the storage account key
-                var credentials = StorageUtilities.GenerateStorageCredentials(new ARMStorageProvider(storageClient), 
+                var credentials = StorageUtilities.GenerateStorageCredentials(new ARMStorageProvider(storageClient),
                     ARMStorageService.ParseResourceGroupFromId(storageAccount.Id), storageAccount.Name);
                 storageAccountKey = credentials.ExportBase64EncodedKey();
             }

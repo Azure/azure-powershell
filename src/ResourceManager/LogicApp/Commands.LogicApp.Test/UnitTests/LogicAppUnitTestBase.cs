@@ -14,13 +14,13 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
 {
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;        
+    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
     /// <summary>
     /// Base class for the Logic app command tests
     /// </summary>
     public class LogicAppUnitTestBase : RMTestBase
-    {                        
+    {
         /// <summary>
         /// Name of the workflow used for testing.
         /// </summary>
@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
         /// Parameter file name present in Resource folder
         /// </summary>
         protected const string ParameterFilePath = @"LogicAppParameter.json";
-        
+
         /// <summary>
         /// Name of the resource group used for testing
         /// </summary>
         protected const string ResourceGroupName = "TestResourceGroup";
-        
+
     }
 }

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -21,7 +22,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.AccountListNodeAgentSkusOptions, AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders>>(responseToUse: getResponse);
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                ProxyModels.AccountListNodeAgentSkusOptions listNodeAgentSkusOptions = (ProxyModels.AccountListNodeAgentSkusOptions) request.Options;
+                ProxyModels.AccountListNodeAgentSkusOptions listNodeAgentSkusOptions = (ProxyModels.AccountListNodeAgentSkusOptions)request.Options;
                 requestFilter = listNodeAgentSkusOptions.Filter;
 
                 return Task.FromResult(response);

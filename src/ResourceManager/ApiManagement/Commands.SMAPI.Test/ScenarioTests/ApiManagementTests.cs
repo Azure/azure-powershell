@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Storage;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
     public class ApiManagementTests : RMTestBase, IClassFixture<ApiManagementTestsFixture>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             var armStorageManagementClient = GetArmStorageManagementClient();
 
             _helper.SetupManagementClients(
-                apiManagementManagementClient, 
+                apiManagementManagementClient,
                 resourceManagementClient,
                 galaryClient,
                 authorizationManagementClient,
@@ -211,10 +211,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
                 SetupManagementClients();
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                _helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + GetType().Name + ".ps1", 
-                    _helper.RMProfileModule, 
+                _helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + GetType().Name + ".ps1",
+                    _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.ApiManagement.psd1"));
 
                 _helper.RunPowerShellTest(scripts);

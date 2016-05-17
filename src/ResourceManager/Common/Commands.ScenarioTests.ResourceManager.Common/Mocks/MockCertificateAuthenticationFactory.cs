@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
-using System.Security;
-using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Security;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
