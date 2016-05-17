@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Batch
     {
         public override void ExecuteCmdlet()
         {
-            PSJobStatistics jobStatistics = BatchClient.GetAggregateJobStatistics(this.BatchContext, this.AdditionalBehaviors);
+            PSJobStatistics jobStatistics = BatchClient.GetAllJobsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
             WriteObject(jobStatistics);
         }
     }

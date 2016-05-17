@@ -54,10 +54,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
 
+            DateTime startTime = DateTime.UtcNow;
+
             AzureOperationResponse<
                 ProxyModels.JobStatistics,
                 ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders> response =
-                BatchTestHelpers.CreateJobStatisticsResponse();
+                BatchTestHelpers.CreateJobStatisticsResponse(startTime);
 
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
                 ProxyModels.JobGetAllJobsLifetimeStatisticsOptions,
@@ -65,13 +67,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
-            // Setup the cmdlet to write pipeline output to a list that can be examined later
+            // Setup the cmdlet to write pipeline output to a variable that can be examined later
             PSJobStatistics statistics = null;
             commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSJobStatistics>())).Callback<object>(c => statistics = (PSJobStatistics)c);
 
             cmdlet.ExecuteCmdlet();
 
-            Assert.NotNull(statistics);
+            Assert.Equal(startTime, statistics.StartTime);
         }
     }
 }

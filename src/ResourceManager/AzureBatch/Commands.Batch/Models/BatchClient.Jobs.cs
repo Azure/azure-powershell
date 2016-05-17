@@ -254,9 +254,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// </summary>
         /// <param name="context">The account to use.</param>
         /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
-        public PSJobStatistics GetAggregateJobStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public PSJobStatistics GetAllJobsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
         {
-            WriteVerbose(Resources.GetJobLifeStatistics);
+            WriteVerbose(Resources.GetAllJobsLifetimeStatistics);
 
             JobOperations jobOperations = context.BatchOMClient.JobOperations;
             JobStatistics jobStatistics = jobOperations.GetAllJobsLifetimeStatistics(additionalBehaviors);

@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Commands.Batch
     {
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public DateTime StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Batch
                 Filter = this.Filter,
             };
 
-            foreach (PSPoolUsageMetrics poolUsageMetrics in BatchClient.GetPoolUsageMetrics(options))
+            foreach (PSPoolUsageMetrics poolUsageMetrics in BatchClient.ListPoolUsageMetrics(options))
             {
                 WriteObject(poolUsageMetrics);
             }

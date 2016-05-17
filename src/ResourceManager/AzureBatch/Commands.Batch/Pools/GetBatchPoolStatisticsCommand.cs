@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Batch
     {
         public override void ExecuteCmdlet()
         {
-            PSPoolStatistics poolStatistics = BatchClient.ListAllPoolsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
+            PSPoolStatistics poolStatistics = BatchClient.GetAllPoolsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
             WriteObject(poolStatistics);
         }
     }
