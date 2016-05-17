@@ -392,20 +392,28 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Builds a CloudPoolUsageMetricsResponse object
+        /// Builds a CloudPoolUsageMetricsResponse object.
         /// </summary>
         public static AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders> CreatePoolListUsageMetricsResponse(
             IEnumerable<string> poolIds,
             IEnumerable<DateTime> startTimes,
             IEnumerable<DateTime> endTimes)
         {
-            var poolUsageList = poolIds.Zip(startTimes.Zip(endTimes, Tuple.Create),
-                (poolId, tuple) => new ProxyModels.PoolUsageMetrics()
+            var s = startTimes.GetEnumerator();
+            var e = endTimes.GetEnumerator();
+            var p = poolIds.GetEnumerator();
+            var poolUsageList = new List<ProxyModels.PoolUsageMetrics>();
+
+            // Create x PoolUsageMetrics where x is the smallest length of the three lists
+            while (s.MoveNext() && e.MoveNext() && p.MoveNext())
+            {
+                poolUsageList.Add(new ProxyModels.PoolUsageMetrics()
                 {
-                    PoolId = poolId,
-                    StartTime = tuple.Item1,
-                    EndTime = tuple.Item2
+                    PoolId = p.Current,
+                    StartTime = s.Current,
+                    EndTime = e.Current
                 });
+            }
 
             var response = new AzureOperationResponse
                 <IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders>()
@@ -418,14 +426,16 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Builds a CloudPoolStatisticsResponse object
+        /// Builds a CloudPoolStatisticsResponse object. Note: Using avgCPUPercentage and startTime for validating if the pipeline return the correct values
         /// </summary>
-        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders> CreatePoolStatisticsResponse()
+        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders> CreatePoolStatisticsResponse(
+            double avgCPUPercentage,
+            DateTime startTime)
         {
             var stats = new ProxyModels.PoolStatistics()
             {
-                ResourceStats = new ProxyModels.ResourceStatistics(),
-                UsageStats = new ProxyModels.UsageStatistics()
+                ResourceStats = new ProxyModels.ResourceStatistics() { AvgCPUPercentage = avgCPUPercentage },
+                UsageStats = new ProxyModels.UsageStatistics() { StartTime =  startTime }
             };
 
             var response = new AzureOperationResponse
@@ -439,11 +449,14 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Builds a CloudJobStatisticsResponse object
+        /// Builds a CloudJobStatisticsResponse object.Note: Using startTime for validating if the pipeline return the correct values
         /// </summary>
-        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders> CreateJobStatisticsResponse()
+        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders> CreateJobStatisticsResponse(DateTime startTime)
         {
-            var stats = new ProxyModels.JobStatistics();
+            var stats = new ProxyModels.JobStatistics()
+            {
+                StartTime = startTime
+            };
 
             var response = new AzureOperationResponse
                 <ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders>()

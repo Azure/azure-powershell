@@ -54,10 +54,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
 
+            double avgCPUPercentage = 10;
+            DateTime startTime = DateTime.UtcNow;
+
             AzureOperationResponse<
                 ProxyModels.PoolStatistics,
                 ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders> response =
-                BatchTestHelpers.CreatePoolStatisticsResponse();
+                BatchTestHelpers.CreatePoolStatisticsResponse(avgCPUPercentage, startTime);
 
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
                 ProxyModels.PoolGetAllPoolsLifetimeStatisticsOptions,
@@ -65,13 +68,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
-            // Setup the cmdlet to write pipeline output to a list that can be examined later
+            // Setup the cmdlet to write pipeline output to a variable that can be examined later
             PSPoolStatistics statistics = null;
             commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSPoolStatistics>())).Callback<object>(c => statistics = (PSPoolStatistics)c);
 
             cmdlet.ExecuteCmdlet();
 
             Assert.NotNull(statistics);
+            Assert.Equal(startTime, statistics.UsageStatistics.StartTime);
+            Assert.Equal(avgCPUPercentage, statistics.ResourceStatistics.AverageCpuPercentage);
         }
     }
 }

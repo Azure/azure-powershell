@@ -4362,21 +4362,21 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>EndTime</maml:name>
           <maml:description>
-            <maml:para>The end time of the aggregation interval for this entry</maml:para>
+            <maml:para>The end time should be at least two hours earlier. If not specified, it defaults to the end time of the last aggregation interval currently available.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Filter</maml:name>
           <maml:description>
-            <maml:para>The OData filter clause to use when querying for pools. If no filter is specified, then all pools under the Batch account specified with the BatchContext parameter will be returned.</maml:para>
+            <maml:para>The OData filter clause to use to filter the list of metrics returned. The only valid property is poolId with a string value. Possible operations are: eq, ge, gt, le, lt, startswith.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>StartTime</maml:name>
           <maml:description>
-            <maml:para>The start time of the aggregation interval covered by this entry.</maml:para>
+            <maml:para>The start time should be at least two and half hours earlier. If not specified, it defaults to the start time of the last aggregation interval currently available.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
@@ -4399,7 +4399,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>EndTime</maml:name>
         <maml:description>
-          <maml:para>The end time of the aggregation interval for this entry</maml:para>
+          <maml:para>The end time should be at least two hours earlier. If not specified, it defaults to the end time of the last aggregation interval currently available.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
@@ -4411,7 +4411,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Filter</maml:name>
         <maml:description>
-          <maml:para>The OData filter clause to use when querying for pools. If no filter is specified, then all pools under the Batch account specified with the BatchContext parameter will be returned.</maml:para>
+          <maml:para>The OData filter clause to use to filter the list of metrics returned. The only valid property is poolId with a string value. Possible operations are: eq, ge, gt, le, lt, startswith.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
@@ -4423,7 +4423,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>StartTime</maml:name>
         <maml:description>
-          <maml:para>The start time of the aggregation interval covered by this entry.</maml:para>
+          <maml:para>The start time should be at least two and half hours earlier. If not specified, it defaults to the start time of the last aggregation interval currently available.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
@@ -4511,7 +4511,32 @@
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para>These commands queries for usage metrics, aggregated by each pool between Monday, May 16, 2016 12:00:00 AM and Monday, May 16, 2016 1:00:00 AM</maml:para>
+          <maml:para>These commands return all of the pool usage metrics, aggregated by each pool between Monday, May 16, 2016 12:00:00 AM and Monday, May 16, 2016 1:00:00 AM</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          $filter = &quot;poolId eq 'MyPool'&quot;
+          Get-AzureBatchPoolUsageMetrics -Filter $filter -BatchContext $context
+
+          DataEgressGiB      : 9.0496614575386E-06
+          DataIngressGiB     : 2.60043889284134E-05
+          EndTime            : 5/16/2016 5:30:00 PM
+          PoolId             : MyPool
+          StartTime          : 5/16/2016 5:00:00 PM
+          TotalCoreHours     : 12
+          VirtualMachineSize : standard_d4
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>The command gets the usage metrics for pool MyPool with a filter string.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

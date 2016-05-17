@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// If specified, sets the start time of the last aggregation interval
         /// </summary>
-        public DateTime StartTime{ get; set; }
+        public DateTime? StartTime{ get; set; }
 
         /// <summary>
         /// If specified, sets the end time of the last aggregation interval
         /// </summary>
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
     }
 }

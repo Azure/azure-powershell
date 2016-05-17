@@ -340,6 +340,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting lifetime statistics for all of the jobs..
+        /// </summary>
+        internal static string GetAllJobsLifetimeStatistics {
+            get {
+                return ResourceManager.GetString("GetAllJobsLifetimeStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting lifetime statistics for all of the pools..
+        /// </summary>
+        internal static string GetAllPoolsLifetimeStatistics {
+            get {
+                return ResourceManager.GetString("GetAllPoolsLifetimeStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting the certificate with thumbprint {0}..
         /// </summary>
         internal static string GetCertificateByThumbprint {
@@ -426,15 +444,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GetJobByODataAndJobSChedule {
             get {
                 return ResourceManager.GetString("GetJobByODataAndJobSChedule", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting lifetime statistics for all of the jobs.
-        /// </summary>
-        internal static string GetJobLifeStatistics {
-            get {
-                return ResourceManager.GetString("GetJobLifeStatistics", resourceCulture);
             }
         }
         
@@ -547,15 +556,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting lifetime statistics for all of the pools.
-        /// </summary>
-        internal static string GetPoolLifetimeStatistics {
-            get {
-                return ResourceManager.GetString("GetPoolLifetimeStatistics", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Getting all pools associated with the Batch account. .
         /// </summary>
         internal static string GetPoolNoFilter {
@@ -565,20 +565,20 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting usage metrics, aggregated for pools.
+        ///   Looks up a localized string similar to Getting usage metrics, aggregated for pools with the filter {0}..
         /// </summary>
-        internal static string GetPoolUsageMetricsByNoFilter {
+        internal static string GetPoolUsageMetricsByFilter {
             get {
-                return ResourceManager.GetString("GetPoolUsageMetricsByNoFilter", resourceCulture);
+                return ResourceManager.GetString("GetPoolUsageMetricsByFilter", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting usage metrics, aggregated for pools with the filter {0}.
+        ///   Looks up a localized string similar to Getting usage metrics, aggregated for pools..
         /// </summary>
-        internal static string GetPoolUsageMetricsByOData {
+        internal static string GetPoolUsageMetricsByNoFilter {
             get {
-                return ResourceManager.GetString("GetPoolUsageMetricsByOData", resourceCulture);
+                return ResourceManager.GetString("GetPoolUsageMetricsByNoFilter", resourceCulture);
             }
         }
         

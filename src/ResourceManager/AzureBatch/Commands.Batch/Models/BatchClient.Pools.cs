@@ -69,11 +69,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
 
-        public PSPoolStatistics ListAllPoolsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        /// <summary>
+        /// Gets all pools lifetime summary statistics
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public PSPoolStatistics GetAllPoolsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionBehaviors = null)
         {
             PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
 
-            WriteVerbose(string.Format(Resources.GetPoolLifetimeStatistics));
+            WriteVerbose(string.Format(Resources.GetAllPoolsLifetimeStatistics));
 
             PoolStatistics poolStatistics = poolOperations.GetAllPoolsLifetimeStatistics(additionBehaviors);
             PSPoolStatistics psPoolStatistics = new PSPoolStatistics(poolStatistics);
@@ -310,15 +315,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Lists the usage metrics, aggregated by pool across individual time intervals, for the specified account.
         /// </summary>
         /// <param name="options">The options to use when aggregating usage for pools.</param>
-        public IEnumerable<PSPoolUsageMetrics> GetPoolUsageMetrics(ListPoolUsageOptions options)
+        public IEnumerable<PSPoolUsageMetrics> ListPoolUsageMetrics(ListPoolUsageOptions options)
         {
             string verboseLogString = null;
-            ODATADetailLevel getDetailLevel = null;
+            ODATADetailLevel detailLevel = null;
 
             if (!string.IsNullOrEmpty(options.Filter))
             {
-                verboseLogString = Resources.GetPoolUsageMetricsByOData;
-                getDetailLevel = new ODATADetailLevel(filterClause: options.Filter);
+                verboseLogString = Resources.GetPoolUsageMetricsByFilter;
+                detailLevel = new ODATADetailLevel(filterClause: options.Filter);
             }
             else
             {
@@ -327,12 +332,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
             IPagedEnumerable<PoolUsageMetrics> poolUsageMetrics =
-                poolOperations.ListPoolUsageMetrics(options.StartTime, options.EndTime, getDetailLevel, options.AdditionalBehaviors);
-
-            Func<PoolUsageMetrics, PSPoolUsageMetrics> mappingFunction = p => { return new PSPoolUsageMetrics(p); };
+                poolOperations.ListPoolUsageMetrics(options.StartTime, options.EndTime, detailLevel, options.AdditionalBehaviors);
 
             return PSPagedEnumerable<PSPoolUsageMetrics, PoolUsageMetrics>.CreateWithMaxCount(
-                poolUsageMetrics, mappingFunction, Int32.MaxValue, () => WriteVerbose(verboseLogString));
+                poolUsageMetrics, p => new PSPoolUsageMetrics(p), Int32.MaxValue, () => WriteVerbose(verboseLogString));
         }
     }
 }
