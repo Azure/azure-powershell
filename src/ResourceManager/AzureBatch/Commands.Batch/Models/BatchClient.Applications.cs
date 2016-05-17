@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
@@ -178,9 +177,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new FileNotFoundException(string.Format(Resources.FileNotFound, filePath), filePath);
             }
 
-            // use resource mgr to see if account exists and then use resource group name to do the actual lookup
             if (string.IsNullOrEmpty(resourceGroupName))
             {
+                // use resource mgr to see if account exists and then use resource group name to do the actual lookup
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
