@@ -113,7 +113,18 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
                 return ResourceManager.GetString("CertificateAlreadyExists", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///     Looks up a localized string similar to The hybrid Runbook Worker Group was not found. hybrid Runbook Worker Group name {0}..
+        /// </summary>
+        internal static string HybridRunbookWorkerGroupNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("HybridRunbookWorkerNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The certificate was not found. Certificate name {0}..
         /// </summary>

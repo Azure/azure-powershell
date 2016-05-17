@@ -42,6 +42,15 @@ using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
 using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
 using Variable = Microsoft.Azure.Commands.Automation.Model.Variable;
+<<<<<<< 5a3f20949198c648832d7ae2bed4ba88898a4a3d
+=======
+using JobStream = Microsoft.Azure.Commands.Automation.Model.JobStream;
+using Credential = Microsoft.Azure.Commands.Automation.Model.CredentialInfo;
+using JobSchedule = Microsoft.Azure.Commands.Automation.Model.JobSchedule;
+using Certificate = Microsoft.Azure.Commands.Automation.Model.CertificateInfo;
+using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
+using HybridRunbookWorkerGroup = Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup;
+>>>>>>> New cmdlet Get-AzureRMAutomationHybridRunbookWorkerGroup
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -54,6 +63,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public AutomationClient(AzureContext context)
             : this(context.Subscription,
                 AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(context,
@@ -1360,6 +1373,41 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region HybridRunbookworkers
+        
+        public IEnumerable<HybridRunbookWorkerGroup> ListHybridRunbookWorkerGroups(string resourceGroupName, string automationAccountName, ref string nextLink)
+        {
+            HybridRunbookWorkerGroupsListResponse response;
+
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.HybridRunbookWorkerGroups.List(resourceGroupName, automationAccountName);
+            }
+            else
+            {
+                response = this.automationManagementClient.HybridRunbookWorkerGroups.ListNext(nextLink);
+            }
+
+            nextLink = response.NextLink;
+
+            return response.HybridRunbookWorkerGroups.Select(c => new HybridRunbookWorkerGroup(resourceGroupName, automationAccountName, c));
+        }
+
+        public HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string name)
+        {
+            var hybridRunbookWorkerGroupModel = this.TryGetHybridRunbookWorkerModel(resourceGroupName, automationAccountName, name);
+            if (hybridRunbookWorkerGroupModel == null)
+            {
+                throw new ResourceCommonException(typeof(HybridRunbookWorkerGroup),
+                    string.Format(CultureInfo.CurrentCulture, Resources.HybridRunbookWorkerGroupNotFound, name));
+            }
+
+            return new HybridRunbookWorkerGroup(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupModel);
+            
+        }
+
+        #endregion
+
         #region JobSchedules
 
         public JobSchedule GetJobSchedule(string resourceGroupName, string automationAccountName, Guid jobScheduleId)
@@ -1598,8 +1646,32 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             return runbook;
         }
+<<<<<<< 5a3f20949198c648832d7ae2bed4ba88898a4a3d
 
         private Azure.Management.Automation.Models.Certificate TryGetCertificateModel(string resourceGroupName, string automationAccountName,
+=======
+        private Azure.Management.Automation.Models.HybridRunbookWorkerGroup TryGetHybridRunbookWorkerModel(string resourceGroupName, string automationAccountName, string HybridRunbookWorkerGroupName)
+        {
+            Azure.Management.Automation.Models.HybridRunbookWorkerGroup hybridRunbookWorkerGroup = null;
+            try
+            {
+                hybridRunbookWorkerGroup = this.automationManagementClient.HybridRunbookWorkerGroups.Get(resourceGroupName, automationAccountName, HybridRunbookWorkerGroupName).HybridRunbookWorkerGroup;
+            }
+            catch(CloudException e)
+            {
+                if(e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    hybridRunbookWorkerGroup = null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return hybridRunbookWorkerGroup;
+        }
+        private Azure.Management.Automation.Models.Certificate TryGetCertificateModel(string resourceGroupName, string automationAccountName, 
+>>>>>>> New cmdlet Get-AzureRMAutomationHybridRunbookWorkerGroup
             string certificateName)
         {
             Azure.Management.Automation.Models.Certificate certificate = null;
