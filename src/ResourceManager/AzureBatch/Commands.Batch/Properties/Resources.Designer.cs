@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to create application package {0} version {1}.  The package already exists, and the application does not allow existing packages to be updated. You must upload your package using a new version number..
+        ///   Looks up a localized string similar to Failed to create application package {0} version {1}. The package already exists, and the application does not allow existing packages to be updated. You must upload your package using a new version number..
         /// </summary>
         internal static string ApplicationDoesNotAllowUpdates {
             get {
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Failed to Active Application package {0} version {1} That has already been uploaded. Something could be wrong with the Application. Would be worth checking to see if you are uploading the right application. If your application looks right, retry the New-AzureRmBatchApplicationPackage cmdlet.{2}..
+        ///   Looks up a localized string similar to Failed to active application package {0} version {1}. {2}..
         /// </summary>
         internal static string FailedToActivate {
             get {
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to add application package {0} version {1}. {2}.&quot;.
+        ///   Looks up a localized string similar to Failed to add application package {0} version {1}. Unable to determine whether the application package already exists. {2}..
         /// </summary>
         internal static string FailedToAddApplicationPackage {
             get {
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to create application package {0} version {1}.  The package already exists, and an error occurred when checking if the application allows existing packages to be updated. {2}..
+        ///   Looks up a localized string similar to Failed to create application package {0} version {1}. The package already exists, and an error occurred when checking if the application allows existing packages to be updated. {2}..
         /// </summary>
         internal static string FailedToCheckApplication {
             get {
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to upload {0} to Azure Storage ({1})..
+        ///   Looks up a localized string similar to Failed to upload {0} to Azure Storage. {1}..
         /// </summary>
         internal static string FailedToUpload {
             get {
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uploading {0} to Azure Storage failed and the attempt to delete the application package record afterwards failed. Remove the application package record with the Remove-AzureRmBatchApplicationPackage cmdlet and retry. {1}..
+        ///   Looks up a localized string similar to Failed to upload {0} to Azure Storage and the attempt to delete the application package record afterwards failed. Remove the application package record with the Remove-AzureRmBatchApplicationPackage cmdlet and retry. {1}..
         /// </summary>
         internal static string FailedToUploadAndDelete {
             get {
@@ -1096,7 +1096,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Application package {0} version {1} successfully uploaded but failed to activate. Activate the application package using the New-AzureRmBatchApplicationPackage cmdlet with the -ActivateOnly. {2}..
+        ///   Looks up a localized string similar to Application package {0} version {1} successfully uploaded but failed to activate. Activate the application package using the New-AzureRmBatchApplicationPackage cmdlet with the -ActivateOnly parameter. {2}..
         /// </summary>
         internal static string UploadedApplicationButFailedToActivate {
             get {

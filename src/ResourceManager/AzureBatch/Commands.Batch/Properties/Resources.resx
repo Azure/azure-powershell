@@ -443,27 +443,27 @@
     <value>File not found {0}.</value>
   </data>
   <data name="FailedToUpload" xml:space="preserve">
-    <value>Failed to upload {0} to Azure Storage ({1}).</value>
+    <value>Failed to upload {0} to Azure Storage. {1}.</value>
   </data>
   <data name="FailedToUploadAndDelete" xml:space="preserve">
-    <value>Uploading {0} to Azure Storage failed and the attempt to delete the application package record afterwards failed. Remove the application package record with the Remove-AzureRmBatchApplicationPackage cmdlet and retry. {1}.</value>
+    <value>Failed to upload {0} to Azure Storage and the attempt to delete the application package record afterwards failed. Remove the application package record with the Remove-AzureRmBatchApplicationPackage cmdlet and retry. {1}.</value>
   </data>
   <data name="UploadedApplicationButFailedToActivate" xml:space="preserve">
-    <value>Application package {0} version {1} successfully uploaded but failed to activate. Activate the application package using the New-AzureRmBatchApplicationPackage cmdlet with the -ActivateOnly. {2}.</value>
+    <value>Application package {0} version {1} successfully uploaded but failed to activate. Activate the application package using the New-AzureRmBatchApplicationPackage cmdlet with the -ActivateOnly parameter. {2}.</value>
   </data>
   <data name="FailedToActivate" xml:space="preserve">
-    <value> Failed to Active Application package {0} version {1} That has already been uploaded. Something could be wrong with the Application. Would be worth checking to see if you are uploading the right application. If your application looks right, retry the New-AzureRmBatchApplicationPackage cmdlet.{2}.</value>
+    <value>Failed to active application package {0} version {1}. {2}.</value>
   </data>
   <data name="FailedToGetApplicationPackage" xml:space="preserve">
     <value>Failed to get application {0} package {1}. You may need to delete the application package and try uploading again. {2}.</value>
   </data>
   <data name="FailedToAddApplicationPackage" xml:space="preserve">
-    <value>Failed to add application package {0} version {1}. {2}."</value>
+    <value>Failed to add application package {0} version {1}. Unable to determine whether the application package already exists. {2}.</value>
   </data>
   <data name="ApplicationDoesNotAllowUpdates" xml:space="preserve">
-    <value>Failed to create application package {0} version {1}.  The package already exists, and the application does not allow existing packages to be updated. You must upload your package using a new version number.</value>
+    <value>Failed to create application package {0} version {1}. The package already exists, and the application does not allow existing packages to be updated. You must upload your package using a new version number.</value>
   </data>
   <data name="FailedToCheckApplication" xml:space="preserve">
-    <value>Failed to create application package {0} version {1}.  The package already exists, and an error occurred when checking if the application allows existing packages to be updated. {2}.</value>
+    <value>Failed to create application package {0} version {1}. The package already exists, and an error occurred when checking if the application allows existing packages to be updated. {2}.</value>
   </data>
 </root>
