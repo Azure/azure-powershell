@@ -23,7 +23,7 @@ function Test-RecordSetCrud
     $resourceGroup = TestSetup-CreateResourceGroup
 	$zone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
 
-	$createdRecord = New-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100 -RecordType A -Tags @{Name="tag1";Value="val1"}
+	$createdRecord = New-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100 -RecordType A -Metadata @{Name="tag1";Value="val1"}
 
 	Assert-NotNull $createdRecord
 	Assert-NotNull $createdRecord.Etag
@@ -31,7 +31,7 @@ function Test-RecordSetCrud
 	Assert-AreEqual $zoneName $createdRecord.ZoneName 
 	Assert-AreEqual $recordName $createdRecord.Name 
 	Assert-AreEqual $resourceGroup.ResourceGroupName $createdRecord.ResourceGroupName 
-	Assert-AreEqual 1 $createdRecord.Tags.Count
+	Assert-AreEqual 1 $createdRecord.Metadata.Count
 	Assert-AreEqual 0 $createdRecord.Records.Count
 
 	$retrievedRecord = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A
@@ -41,13 +41,13 @@ function Test-RecordSetCrud
 	Assert-AreEqual $zoneName $retrievedRecord.ZoneName 
 	Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedRecord.ResourceGroupName
 	Assert-AreEqual $retrievedRecord.Etag $createdRecord.Etag
-	Assert-AreEqual 1 $retrievedRecord.Tags.Count
+	Assert-AreEqual 1 $retrievedRecord.Metadata.Count
 	Assert-AreEqual 0 $retrievedRecord.Records.Count
 	# broken by service bug
 	# Assert-AreEqual 100 $createdRecord.Ttl
 
 	# TODO: change and pipe in retrievedRecord, not createdRecord but this is currently broken by a service bug
-	$createdRecord.Tags = @{Name="tag1";Value="val1"},@{Name="tag2";Value="val2"}
+	$createdRecord.Metadata = @{Name="tag1";Value="val1"},@{Name="tag2";Value="val2"}
 	$createdRecord.Ttl = 1300
 	$updatedRecord = $createdRecord | Add-AzureRmDnsRecordConfig -Ipv4Address 13.13.0.13 | Set-AzureRmDnsRecordSet
 
@@ -58,7 +58,7 @@ function Test-RecordSetCrud
 	Assert-AreEqual $resourceGroup.ResourceGroupName $updatedRecord.ResourceGroupName
 	Assert-AreEqual 1300 $updatedRecord.Ttl
 	Assert-AreNotEqual $updatedRecord.Etag $createdRecord.Etag
-	Assert-AreEqual 2 $updatedRecord.Tags.Count
+	Assert-AreEqual 2 $updatedRecord.Metadata.Count
 	Assert-AreEqual 1 $updatedRecord.Records.Count
 	Assert-AreEqual "13.13.0.13" $updatedRecord.Records[0].Ipv4Address
 
@@ -69,7 +69,7 @@ function Test-RecordSetCrud
 	Assert-AreEqual $zoneName $retrievedRecord.ZoneName 
 	Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedRecord.ResourceGroupName
 	Assert-AreEqual $retrievedRecord.Etag $updatedRecord.Etag
-	Assert-AreEqual 2 $retrievedRecord.Tags.Count
+	Assert-AreEqual 2 $retrievedRecord.Metadata.Count
 	Assert-AreEqual 1 $retrievedRecord.Records.Count
 	Assert-AreEqual "13.13.0.13" $retrievedRecord.Records[0].Ipv4Address
 	# broken by service bug
@@ -79,7 +79,7 @@ function Test-RecordSetCrud
 
 	Assert-True { $removed }
 
-	Assert-ThrowsLike { Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A } "*ResourceNotFound*"
+	Assert-ThrowsLike { Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A } "*NotFound*"
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
 }
@@ -97,7 +97,7 @@ function Test-RecordSetCrudTrimsDotFromZoneName
     $resourceGroup = TestSetup-CreateResourceGroup
 	$zone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
 
-	$createdRecord = New-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100 -RecordType A -Tags @{Name="tag1";Value="val1"}
+	$createdRecord = New-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100 -RecordType A -Metadata @{Name="tag1";Value="val1"}
 
 	Assert-NotNull $createdRecord
 	Assert-AreEqual $zoneName $createdRecord.ZoneName 
@@ -135,7 +135,7 @@ function Test-RecordSetCrudWithPiping
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $updatedRecord = TestSetup-CreateResourceGroup | New-AzureRmDnsZone -Name $zoneName | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -Tags @{Name="tag1";Value="val1"} | Add-AzureRmDnsRecordConfig -Ipv4Address 13.13.0.13 | Set-AzureRmDnsRecordSet
+    $updatedRecord = TestSetup-CreateResourceGroup | New-AzureRmDnsZone -Name $zoneName | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -Metadata @{Name="tag1";Value="val1"} | Add-AzureRmDnsRecordConfig -Ipv4Address 13.13.0.13 | Set-AzureRmDnsRecordSet
 
 	Assert-NotNull $updatedRecord
 	Assert-NotNull $updatedRecord.Etag
@@ -171,7 +171,7 @@ function Test-RecordSetCrudWithPipingTrimsDotFromZoneName
 	$zoneObjectWithDot.Name = $zoneNameWithDot
 	$zoneObjectWithDot.ResourceGroupName = $zone.ResourceGroupName
 	
-	$createdRecord = $zoneObjectWithDot | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -Tags @{Name="tag1";Value="val1"}
+	$createdRecord = $zoneObjectWithDot | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -Metadata @{Name="tag1";Value="val1"}
 
 	Assert-NotNull $createdRecord
 	Assert-AreEqual $recordName $createdRecord.Name 
@@ -263,8 +263,8 @@ function Test-RecordSetANonEmpty
 	$aRecords=@()
 	$aRecords += New-AzureRmDnsRecord -IPv4Address "192.168.0.1"
 	$aRecords += New-AzureRmDnsRecord -IPv4Address "192.168.0.2"
-	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -DnsRecords $aRecord
-
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -DnsRecords $aRecords
+	
 	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A 
 	
 	Assert-AreEqual 2 $getResult.Records.Count
@@ -934,4 +934,12 @@ function Test-RecordSetGetWithEndsWith
 	$zone | Remove-AzureRmDnsRecordSet -Name $recordName3 -RecordType MX -Force
 
 	$zone | Remove-AzureRmDnsZone -Force -Overwrite
+}
+
+function Test-RecordSetList
+{
+	$zoneName = "karthik.com"
+	$resourceGroupName ="dnszones"
+	$recordSets = Get-AzureRmDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroupName -RecordType A
+	Assert-True { $recordSets.Count -ge 1000 } 
 }

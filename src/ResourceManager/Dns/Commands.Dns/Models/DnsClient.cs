@@ -125,16 +125,43 @@ namespace Microsoft.Azure.Commands.Dns.Models
 
         public List<DnsZone> ListDnsZonesInResourceGroup(string resourceGroupName)
         {
-            ZoneListResponse getResponse = this.DnsManagementClient.Zones.ListZonesInResourceGroup(resourceGroupName, new ZoneListParameters());
-            return getResponse.Zones.Select(ToDnsZone).ToList();
+            List<DnsZone> results = new List<DnsZone>();
+            ZoneListResponse getResponse = null;
+            do
+            {
+                if (getResponse != null && getResponse.NextLink != null)
+                {
+                    getResponse = this.DnsManagementClient.Zones.ListNext(getResponse.NextLink);
+                }
+                else
+                {
+                    getResponse = this.DnsManagementClient.Zones.ListZonesInResourceGroup(resourceGroupName, new ZoneListParameters());    
+                }
+                
+                results.AddRange(getResponse.Zones.Select(ToDnsZone));
+            } while (getResponse != null && getResponse.NextLink != null);
+
+            return results;
         }
 
         public List<DnsZone> ListDnsZonesInSubscription()
         {
-            ZoneListResponse getResponse = this.DnsManagementClient.Zones.ListZonesInSubscription(new ZoneListParameters());
-            return getResponse.Zones.Select(ToDnsZone).ToList();
-        }
+            List<DnsZone> results = new List<DnsZone>();
+            ZoneListResponse getResponse = null;
+            do
+            {
+                if (getResponse != null && getResponse.NextLink != null)
+                {
+                    getResponse = this.DnsManagementClient.Zones.ListNext(getResponse.NextLink);
+                }
+                else
+                {
+                    getResponse = this.DnsManagementClient.Zones.ListZonesInSubscription(new ZoneListParameters());
+                }
+            } while (getResponse != null && getResponse.NextLink != null);
 
+            return results;
+        }
 
         public DnsRecordSet CreateDnsRecordSet(
             string zoneName,
@@ -262,7 +289,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                         Properties = new RecordSetProperties
                         {
                             Ttl = recordSet.Ttl,
-                            Metadata = TagsConversionHelper.CreateTagDictionary(recordSet.Tags, validate: true),
+                            Metadata = TagsConversionHelper.CreateTagDictionary(recordSet.Metadata, validate: true),
                             AaaaRecords =
                                 recordSet.RecordType == RecordType.AAAA
                                     ? GetMamlRecords<AaaaRecord, Management.Dns.Models.AaaaRecord>(recordSet.Records)
@@ -326,27 +353,55 @@ namespace Microsoft.Azure.Commands.Dns.Models
         public List<DnsRecordSet> ListRecordSets(string zoneName, string resourceGroupName, RecordType recordType)
         {
             RecordSetListParameters recordListParameters = new RecordSetListParameters();
+            List<DnsRecordSet> results = new List<DnsRecordSet>();
 
-            RecordSetListResponse listResponse = this.DnsManagementClient.RecordSets.List(
-                resourceGroupName,
-                zoneName,
-                recordType,
-                recordListParameters);
-            return listResponse
-                .RecordSets
-                .Select(recordSetInResponse => GetPowerShellRecordSet(zoneName, resourceGroupName, recordSetInResponse))
-                .ToList();
+            RecordSetListResponse listResponse = null;
+            do
+            {
+                if (listResponse != null && listResponse.NextLink != null)
+                {
+                    listResponse = this.DnsManagementClient.RecordSets.ListNext(listResponse.NextLink);
+                }
+                else
+                {
+                    listResponse = this.DnsManagementClient.RecordSets.List(
+                                    resourceGroupName,
+                                    zoneName,
+                                    recordType,
+                                    recordListParameters);
+                }
+
+                results.AddRange(listResponse.RecordSets.Select(recordSet => GetPowerShellRecordSet(zoneName, resourceGroupName, recordSet)));
+                
+            } while (listResponse != null && listResponse.NextLink != null);
+
+            return results;
         }
 
         public List<DnsRecordSet> ListRecordSets(string zoneName, string resourceGroupName)
         {
             RecordSetListParameters recordListParameters = new RecordSetListParameters();
+            List<DnsRecordSet> results = new List<DnsRecordSet>();
 
-            RecordSetListResponse listResponse = this.DnsManagementClient.RecordSets.ListAll(resourceGroupName, zoneName, recordListParameters);
-            return listResponse
-                .RecordSets
-                .Select(recordSetInResponse => GetPowerShellRecordSet(zoneName, resourceGroupName, recordSetInResponse))
-                .ToList();
+            RecordSetListResponse listResponse = null;
+            do
+            {
+                if (listResponse != null && listResponse.NextLink != null)
+                {
+                    listResponse = this.DnsManagementClient.RecordSets.ListNext(listResponse.NextLink);
+                }
+                else
+                {
+                    listResponse = this.DnsManagementClient.RecordSets.ListAll(
+                                    resourceGroupName,
+                                    zoneName,
+                                    recordListParameters);
+                }
+
+                results.AddRange(listResponse.RecordSets.Select(recordSet => GetPowerShellRecordSet(zoneName, resourceGroupName, recordSet)));
+            } while (listResponse != null && listResponse.NextLink != null);
+
+            return results;
         }
 
         private static DnsRecordSet GetPowerShellRecordSet(string zoneName, string resourceGroupName, Management.Dns.Models.RecordSet mamlRecordSet)
@@ -362,7 +417,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 Name = mamlRecordSet.Name,
                 RecordType = recordType,
                 Records = GetPowerShellRecords(mamlRecordSet),
-                Tags = TagsConversionHelper.CreateTagHashtable(mamlRecordSet.Properties.Metadata),
+                Metadata = TagsConversionHelper.CreateTagHashtable(mamlRecordSet.Properties.Metadata),
                 ResourceGroupName = resourceGroupName,
                 Ttl = mamlRecordSet.Properties.Ttl,
                 ZoneName = zoneName,
@@ -417,11 +472,32 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return new DnsZone()
             {
                 Name = zone.Name,
-                ResourceGroupName = zone.Properties.ParentResourceGroupName,
+                ResourceGroupName = ExtractResourceGroupNameFromId(zone.Id),
                 Etag = zone.ETag,
                 Tags = TagsConversionHelper.CreateTagHashtable(zone.Tags),
                 NameServers = zone.Properties.NameServers != null ? zone.Properties.NameServers.ToList() : new List<string>(),
             };
+        }
+
+        private static string ExtractResourceGroupNameFromId(string id)
+        {
+            var parts = id.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            int rgIndex = -1;
+            for (int i = 0; i < parts.Length; i++)
+            {
+                if (parts[i].Equals("resourceGroups", StringComparison.OrdinalIgnoreCase))
+                {
+                    rgIndex = i;
+                    break;
+                }
+            }
+
+            if (rgIndex != -1 && rgIndex + 1 < parts.Length)
+            {
+                return parts[rgIndex + 1];
+            }
+
+            throw new FormatException(string.Format("Unable to extract resource group name from {0} ", id));
         }
     }
 }

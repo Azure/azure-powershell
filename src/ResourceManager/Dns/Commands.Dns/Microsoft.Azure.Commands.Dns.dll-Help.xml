@@ -1466,10 +1466,10 @@
             <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it exists. You will be prompted to confirm the operation unless you specify the Force parameter.</maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-          <maml:name>Tag</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+          <maml:name>Metadata</maml:name>
           <maml:description>
-            <maml:para>Specifies an array of tags to associate with the RecordSet. Tags are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
+            <maml:para>Specifies an array of tags to associate with the RecordSet. Metadata are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
@@ -1544,10 +1544,10 @@
             <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it exists. You will be prompted to confirm the operation unless you specify the Force parameter.</maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-          <maml:name>Tag</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+          <maml:name>Metadata</maml:name>
           <maml:description>
-            <maml:para>Specifies an array of tags to associate with the RecordSet. Tags are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
+            <maml:para>Specifies an array of tags to associate with the RecordSet. Metadata are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
@@ -1674,10 +1674,10 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-        <maml:name>Tag</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+        <maml:name>Metadata</maml:name>
         <maml:description>
-          <maml:para>Specifies an array of tags to associate with the RecordSet. Tags are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
+          <maml:para>Specifies an array of tags to associate with the RecordSet. Metadata are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         <dev:type>
@@ -1815,10 +1815,10 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>New-AzureRmDnsZone</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-          <maml:name>Tag</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+          <maml:name>Metadata</maml:name>
           <maml:description>
-            <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
+            <maml:para>Specifies an array of tags to associate with the DNS zone. Metadata are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
@@ -1863,10 +1863,10 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-        <maml:name>Tag</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+        <maml:name>Metadata</maml:name>
         <maml:description>
-          <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
+          <maml:para>Specifies an array of tags to associate with the DNS zone. Metadata are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         <dev:type>
@@ -3122,10 +3122,10 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Set-AzureRmDnsZone</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-          <maml:name>Tag</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+          <maml:name>Metadata</maml:name>
           <maml:description>
-            <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
+            <maml:para>Specifies an array of tags to associate with the DNS zone. Metadata are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
@@ -3198,10 +3198,10 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-        <maml:name>Tag</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+        <maml:name>Metadata</maml:name>
         <maml:description>
-          <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
+          <maml:para>Specifies an array of tags to associate with the DNS zone. Metadata are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         <dev:type>
@@ -3263,7 +3263,7 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;$Zone = Get-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
-PS C:\&gt; $Zone.Tags = @(@{"Name"="Dept"; "Value"="Electrical"})
+PS C:\&gt; $Zone.Metadata = @(@{"Name"="Dept"; "Value"="Electrical"})
 PS C:\&gt; $Zone | Set-AzureRmDnsZone
 </dev:code>
         <dev:remarks>
@@ -3283,7 +3283,7 @@ PS C:\&gt; $Zone | Set-AzureRmDnsZone
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com" -Tag @(@{"Name"="Dept"; "Value"="Electrical"})
+        <dev:code>PS C:\&gt;Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com" -Metadata @(@{"Name"="Dept"; "Value"="Electrical"})
 </dev:code>
         <dev:remarks>
           <maml:para>This command updates the tags for the zone named myzone.com without first explicitly getting the zone.</maml:para>

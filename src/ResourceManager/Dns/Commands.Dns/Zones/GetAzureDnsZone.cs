@@ -23,11 +23,10 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Gets one or more existing zones.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmDnsZone"), OutputType(typeof(DnsZone))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDnsZone", DefaultParameterSetName = "Default"), OutputType(typeof(DnsZone))]
     public class GetAzureDnsZone : DnsBaseCmdlet
     {
         private const string ParameterSetResourceGroup = "ResourceGroup";
-        private const string ParameterSetAll = "All";
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSetResourceGroup, HelpMessage = "The full name of the zone (without a terminating dot).")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -35,10 +34,6 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSetResourceGroup, HelpMessage = "The resource group in which the zone exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = ParameterSetAll, HelpMessage = "Lists all zones for the current subscription.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter All { get; set; }
 
         public override void ExecuteCmdlet()
         {

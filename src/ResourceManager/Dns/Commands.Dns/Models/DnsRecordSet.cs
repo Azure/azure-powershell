@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Dns
         /// <summary>
         /// Gets or sets the tags of this record set.
         /// </summary>
-        public Hashtable[] Tags { get; set; }
+        public Hashtable[] Metadata { get; set; }
 
         /// <summary>
         /// Returns a deep copy of this record set
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.Dns
                 clone.Records = this.Records.Select(record => record.Clone()).Cast<DnsRecordBase>().ToList();
             }
 
-            if (this.Tags != null)
+            if (this.Metadata != null)
             {
-                clone.Tags = this.Tags.Select(tag => tag.Clone()).Cast<Hashtable>().ToArray();
+                clone.Metadata = this.Metadata.Select(tag => tag.Clone()).Cast<Hashtable>().ToArray();
             }
 
             return clone;

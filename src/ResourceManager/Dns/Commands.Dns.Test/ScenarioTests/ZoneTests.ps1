@@ -247,7 +247,7 @@ function Test-ZoneList
 	$zoneName1 = Get-RandomZoneName
 	$zoneName2 = $zoneName1 + "A"
 	$resourceGroup = TestSetup-CreateResourceGroup
-    $createdZone1 = $resourceGroup | New-AzureRmDnsZone -Name $zoneName1 -Tags @{Name="tag1";Value="value1"}
+    $createdZone1 = $resourceGroup | New-AzureRmDnsZone -Name $zoneName1 -Metadata @{Name="tag1";Value="value1"}
 	$createdZone2 = $resourceGroup | New-AzureRmDnsZone -Name $zoneName2
 
 	$result = Get-AzureRmDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName
@@ -275,7 +275,7 @@ function Test-ZoneListSubscription
     $createdZone1 = $resourceGroup | New-AzureRmDnsZone -Name $zoneName1 -Tags @{Name="tag1";Value="value1"}
 	$createdZone2 = $resourceGroup | New-AzureRmDnsZone -Name $zoneName2
 
-	$result = Get-AzureRmDnsZone -All
+	$result = Get-AzureRmDnsZone
 
 	Assert-True   { $result.Count -gt 2 }
 
