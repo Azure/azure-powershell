@@ -452,13 +452,13 @@
     <value>Application package {0} version {1} successfully uploaded but failed to activate. Activate the application package using the New-AzureRmBatchApplicationPackage cmdlet with the -ActivateOnly parameter. {2}.</value>
   </data>
   <data name="FailedToActivate" xml:space="preserve">
-    <value>Failed to active application package {0} version {1}. {2}.</value>
+    <value>Failed to activate application package {0} version {1}. {2}.</value>
   </data>
   <data name="FailedToGetApplicationPackage" xml:space="preserve">
     <value>Failed to create application package {0} version {1}.  Unable to determine whether the application package already exists. {2}.</value>
   </data>
   <data name="FailedToAddApplicationPackage" xml:space="preserve">
-    <value>Failed to add application package {0} version {1}. Unable to determine whether the application package already exists. {2}.</value>
+    <value>Failed to add application package {0} version {1}. {2}.</value>
   </data>
   <data name="ApplicationDoesNotAllowUpdates" xml:space="preserve">
     <value>Failed to create application package {0} version {1}. The package already exists, and the application does not allow existing packages to be updated. You must upload your package using a new version number.</value>

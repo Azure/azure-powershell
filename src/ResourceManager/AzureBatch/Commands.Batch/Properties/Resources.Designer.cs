@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to active application package {0} version {1}. {2}..
+        ///   Looks up a localized string similar to Failed to activate application package {0} version {1}. {2}..
         /// </summary>
         internal static string FailedToActivate {
             get {
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to add application package {0} version {1}. Unable to determine whether the application package already exists. {2}..
+        ///   Looks up a localized string similar to Failed to add application package {0} version {1}. {2}..
         /// </summary>
         internal static string FailedToAddApplicationPackage {
             get {
