@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
+using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;

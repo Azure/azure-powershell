@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -45,20 +45,9 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("FrontendIpConfiguration with the specified name does not exist");
             }
 
-
-            // Get the subnetId and publicIpAddressId from the object if specified
-            if (string.Equals(ParameterSetName, "id"))
-            {
-                this.SubnetId = this.Subnet.Id;
-
-                if (PublicIpAddress != null)
-                {
-                    this.PublicIpAddressId = this.PublicIpAddress.Id;
-                }
-            }
-
             frontendIpConfig.Name = this.Name;
 
+            frontendIpConfig.Subnet = null;
             if (!string.IsNullOrEmpty(this.SubnetId))
             {
                 frontendIpConfig.Subnet = new PSSubnet();
@@ -78,13 +67,6 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.PrivateIpAddress))
             {
                 frontendIpConfig.PrivateIpAddress = this.PrivateIpAddress;
-            }
-
-            frontendIpConfig.Subnet = null;
-            if (!string.IsNullOrEmpty(this.SubnetId))
-            {
-                frontendIpConfig.Subnet = new PSSubnet();
-                frontendIpConfig.Subnet.Id = this.SubnetId;
             }
 
             frontendIpConfig.PublicIpAddress = null;

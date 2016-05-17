@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.AzureStack.Management.StorageAdmin;
+using Microsoft.AzureStack.Management.StorageAdmin.Models;
 using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Runtime.InteropServices;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {

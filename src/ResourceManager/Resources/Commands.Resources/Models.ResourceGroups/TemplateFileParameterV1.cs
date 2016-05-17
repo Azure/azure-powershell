@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public object DefaultValue { get; set; }
 
         [JsonProperty("allowedValues")]
-        public List<string> AllowedValues { get; set; }
+        public List<object> AllowedValues { get; set; }
 
         [JsonProperty("minLength")]
         public string MinLength { get; set; }

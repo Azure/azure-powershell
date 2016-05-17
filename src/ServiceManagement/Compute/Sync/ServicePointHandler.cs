@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync
         {
             Type webRequestType = typeof(WebRequest);
             PropertyInfo propertyInfo = webRequestType.GetProperty("InternalDefaultWebProxy", BindingFlags.Static | BindingFlags.NonPublic);
-            return (IWebProxy) propertyInfo.GetValue(null, null);
+            return (IWebProxy)propertyInfo.GetValue(null, null);
         }
 
         public void Dispose()
@@ -46,9 +46,9 @@ namespace Microsoft.WindowsAzure.Commands.Sync
 
         protected virtual void Dispose(bool disposing)
         {
-            if(!disposed)
+            if (!disposed)
             {
-                if(disposing)
+                if (disposing)
                 {
                     this.servicePoint.ConnectionLimit = originalConnectionLimit;
                 }

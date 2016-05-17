@@ -12,10 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
+using System.Management.Automation;
+using Microsoft.Azure.Commands.WebApps.Utilities;
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
-
-    class CredentialTests
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSlotConfigName")]
+    public class GetAzureWebAppSlotConfigName : WebAppBaseCmdlet
     {
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+            WriteObject(WebsitesClient.GetSlotConfigNames(ResourceGroupName, Name));
+        }
     }
 }

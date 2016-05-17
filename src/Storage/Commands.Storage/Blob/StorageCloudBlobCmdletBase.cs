@@ -14,14 +14,14 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage
 {
-    using System;
-    using System.Globalization;
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using System;
+    using System.Globalization;
 
     /// <summary>
     /// Base cmdlet for storage blob/container cmdlet
@@ -48,11 +48,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Blob request options
         /// </summary>
-        public BlobRequestOptions RequestOptions 
+        public BlobRequestOptions RequestOptions
         {
-            get 
+            get
             {
-                return (BlobRequestOptions) GetRequestOptions(StorageServiceType.Blob);
+                return (BlobRequestOptions)GetRequestOptions(StorageServiceType.Blob);
             }
         }
 
@@ -201,7 +201,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             azureContainer.Context = channel.StorageContext;
             azureContainer.ContinuationToken = continuationToken;
             OutputStream.WriteObject(taskId, azureContainer);
-        }        
+        }
 
         protected void ValidateBlobType(CloudBlob blob)
         {
@@ -210,9 +210,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 && (BlobType.AppendBlob != blob.BlobType))
             {
                 throw new InvalidOperationException(string.Format(
-                    CultureInfo.CurrentCulture, 
-                    Resources.InvalidBlobType, 
-                    blob.BlobType, 
+                    CultureInfo.CurrentCulture,
+                    Resources.InvalidBlobType,
+                    blob.BlobType,
                     blob.Name));
             }
         }

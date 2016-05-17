@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class TagValue
     {
         private TagCount _count;
-        
+
         /// <summary>
         /// Optional. Gets or sets the tag value count.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._count; }
             set { this._count = value; }
         }
-        
+
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets the tag ID.
         /// </summary>
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _value;
-        
+
         /// <summary>
         /// Optional. Gets or sets the tag value.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._value; }
             set { this._value = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the TagValue class.
         /// </summary>

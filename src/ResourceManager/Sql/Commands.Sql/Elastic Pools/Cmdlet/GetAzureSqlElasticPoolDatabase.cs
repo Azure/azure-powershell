@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolDatabase", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolDatabase",
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlElasticPoolDatabase : AzureSqlElasticPoolCmdletBase
     {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         {
             ICollection<AzureSqlDatabaseModel> results;
 
-            if(MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
             {
                 results = new List<AzureSqlDatabaseModel>();
                 results.Add(ModelAdapter.GetElasticPoolDatabase(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.DatabaseName));

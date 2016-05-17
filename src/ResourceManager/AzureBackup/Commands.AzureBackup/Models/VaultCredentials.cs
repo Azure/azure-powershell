@@ -113,7 +113,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         /// <param name="managementCert">management cert</param>
         /// <param name="acsNamespace">acs namespace</param>
         public BackupVaultCreds(string subscriptionId, string resourceType, string resourceName, string managementCert, AcsNamespace acsNamespace)
-            : base(subscriptionId, resourceType, resourceName, managementCert, acsNamespace) { }
+            : base(subscriptionId, resourceType, resourceName, managementCert, acsNamespace)
+        { }
 
         /// <summary>
         /// Initializes a new instance of the BackupVaultCreds class

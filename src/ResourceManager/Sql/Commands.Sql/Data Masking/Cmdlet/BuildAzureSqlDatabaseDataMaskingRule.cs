@@ -12,15 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Properties;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataMasking.Model;
-using Microsoft.Azure.Commands.Sql.DataMasking.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
 {
@@ -76,8 +74,8 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <param name="model">A model object</param>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> ApplyUserInputToModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            string errorMessage = ValidateOperation(rules);            
-            if(!string.IsNullOrEmpty(errorMessage))
+            string errorMessage = ValidateOperation(rules);
+            if (!string.IsNullOrEmpty(errorMessage))
             {
                 throw new Exception(errorMessage);
             }
@@ -108,12 +106,12 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
                 rule.ColumnName = ColumnName;
             }
 
-            if(!string.IsNullOrEmpty(MaskingFunction)) // only update if the user provided this value
+            if (!string.IsNullOrEmpty(MaskingFunction)) // only update if the user provided this value
             {
                 rule.MaskingFunction = ModelizeMaskingFunction();
             }
 
-            if(rule.MaskingFunction == Model.MaskingFunction.Text)
+            if (rule.MaskingFunction == Model.MaskingFunction.Text)
             {
                 if (PrefixSize != null) // only update if the user provided this value
                 {
@@ -130,7 +128,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
                     rule.SuffixSize = SuffixSize;
                 }
 
-                if(rule.PrefixSize == null)
+                if (rule.PrefixSize == null)
                 {
                     rule.PrefixSize = SecurityConstants.PrefixSizeDefaultValue;
                 }
@@ -168,7 +166,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
                     rule.NumberTo = SecurityConstants.NumberToDefaultValue;
                 }
 
-                if(rule.NumberFrom > rule.NumberTo)
+                if (rule.NumberFrom > rule.NumberTo)
                 {
                     throw new Exception(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingNumberRuleIntervalDefinitionError));
                 }
@@ -220,7 +218,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            ModelAdapter.SetDatabaseDataMaskingRule(rules.First(IsModelOfRule), clientRequestId); 
+            ModelAdapter.SetDatabaseDataMaskingRule(rules.First(IsModelOfRule), clientRequestId);
             return null;
         }
 

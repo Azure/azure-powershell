@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Utils
 {
@@ -262,12 +261,11 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 spec.omObject.ApplicationPackageReferences = CreateSyncedList(spec.ApplicationPackageReferences,
                     (apr) =>
                     {
-                        ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference()
+                        return new ApplicationPackageReference()
                         {
                             ApplicationId = apr.ApplicationId,
                             Version = apr.Version
                         };
-                        return applicationPackageReference;
                     });
 
                 if (spec.StartTask != null)

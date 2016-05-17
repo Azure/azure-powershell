@@ -19,6 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +32,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             this._client = client;
         }
-        
+
         private AuthorizationClient _client;
-        
+
         /// <summary>
         /// Gets a reference to the
         /// Microsoft.Azure.Management.Internal.Resources.AuthorizationClient.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._client; }
         }
-        
+
         /// <summary>
         /// Create or update a management lock at the resource group level.
         /// </summary>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("parameters");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("parameters", parameters);
                 TracingAdapter.Enter(invocationId, this, "CreateOrUpdateAtResourceGroupLevelAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -146,34 +146,34 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Put;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Serialize Request
                 string requestContent = null;
                 JToken requestDoc = null;
-                
+
                 JObject propertiesValue = new JObject();
                 requestDoc = propertiesValue;
-                
+
                 if (parameters.Level != null)
                 {
                     propertiesValue["level"] = parameters.Level;
                 }
-                
+
                 if (parameters.Notes != null)
                 {
                     propertiesValue["notes"] = parameters.Notes;
                 }
-                
+
                 requestContent = requestDoc.ToString(Newtonsoft.Json.Formatting.Indented);
                 httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
                 httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ManagementLockReturnResult result = null;
                     // Deserialize Response
@@ -213,25 +213,25 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             ManagementLockObject managementLockInstance = new ManagementLockObject();
                             result.ManagementLock = managementLockInstance;
-                            
+
                             JToken propertiesValue2 = responseDoc["properties"];
                             if (propertiesValue2 != null && propertiesValue2.Type != JTokenType.Null)
                             {
                                 ManagementLockProperties propertiesInstance = new ManagementLockProperties();
                                 managementLockInstance.Properties = propertiesInstance;
-                                
+
                                 JToken levelValue = propertiesValue2["level"];
                                 if (levelValue != null && levelValue.Type != JTokenType.Null)
                                 {
                                     string levelInstance = ((string)levelValue);
                                     propertiesInstance.Level = levelInstance;
                                 }
-                                
+
                                 JToken notesValue = propertiesValue2["notes"];
                                 if (notesValue != null && notesValue.Type != JTokenType.Null)
                                 {
@@ -239,21 +239,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     propertiesInstance.Notes = notesInstance;
                                 }
                             }
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 managementLockInstance.Id = idInstance;
                             }
-                            
+
                             JToken typeValue = responseDoc["type"];
                             if (typeValue != null && typeValue.Type != JTokenType.Null)
                             {
                                 string typeInstance = ((string)typeValue);
                                 managementLockInstance.Type = typeInstance;
                             }
-                            
+
                             JToken nameValue = responseDoc["name"];
                             if (nameValue != null && nameValue.Type != JTokenType.Null)
                             {
@@ -261,14 +261,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 managementLockInstance.Name = nameInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Create or update a management lock at the resource level or any
         /// level below resource.
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("parameters");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("parameters", parameters);
                 TracingAdapter.Enter(invocationId, this, "CreateOrUpdateAtResourceLevelAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -420,34 +420,34 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Put;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Serialize Request
                 string requestContent = null;
                 JToken requestDoc = null;
-                
+
                 JObject propertiesValue = new JObject();
                 requestDoc = propertiesValue;
-                
+
                 if (parameters.Level != null)
                 {
                     propertiesValue["level"] = parameters.Level;
                 }
-                
+
                 if (parameters.Notes != null)
                 {
                     propertiesValue["notes"] = parameters.Notes;
                 }
-                
+
                 requestContent = requestDoc.ToString(Newtonsoft.Json.Formatting.Indented);
                 httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
                 httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ManagementLockReturnResult result = null;
                     // Deserialize Response
@@ -487,25 +487,25 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             ManagementLockObject managementLockInstance = new ManagementLockObject();
                             result.ManagementLock = managementLockInstance;
-                            
+
                             JToken propertiesValue2 = responseDoc["properties"];
                             if (propertiesValue2 != null && propertiesValue2.Type != JTokenType.Null)
                             {
                                 ManagementLockProperties propertiesInstance = new ManagementLockProperties();
                                 managementLockInstance.Properties = propertiesInstance;
-                                
+
                                 JToken levelValue = propertiesValue2["level"];
                                 if (levelValue != null && levelValue.Type != JTokenType.Null)
                                 {
                                     string levelInstance = ((string)levelValue);
                                     propertiesInstance.Level = levelInstance;
                                 }
-                                
+
                                 JToken notesValue = propertiesValue2["notes"];
                                 if (notesValue != null && notesValue.Type != JTokenType.Null)
                                 {
@@ -513,21 +513,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     propertiesInstance.Notes = notesInstance;
                                 }
                             }
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 managementLockInstance.Id = idInstance;
                             }
-                            
+
                             JToken typeValue = responseDoc["type"];
                             if (typeValue != null && typeValue.Type != JTokenType.Null)
                             {
                                 string typeInstance = ((string)typeValue);
                                 managementLockInstance.Type = typeInstance;
                             }
-                            
+
                             JToken nameValue = responseDoc["name"];
                             if (nameValue != null && nameValue.Type != JTokenType.Null)
                             {
@@ -535,14 +535,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 managementLockInstance.Name = nameInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Create or update a management lock at the subscription level.
         /// </summary>
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("parameters");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("parameters", parameters);
                 TracingAdapter.Enter(invocationId, this, "CreateOrUpdateAtSubscriptionLevelAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -640,34 +640,34 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Put;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Serialize Request
                 string requestContent = null;
                 JToken requestDoc = null;
-                
+
                 JObject propertiesValue = new JObject();
                 requestDoc = propertiesValue;
-                
+
                 if (parameters.Level != null)
                 {
                     propertiesValue["level"] = parameters.Level;
                 }
-                
+
                 if (parameters.Notes != null)
                 {
                     propertiesValue["notes"] = parameters.Notes;
                 }
-                
+
                 requestContent = requestDoc.ToString(Newtonsoft.Json.Formatting.Indented);
                 httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
                 httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ManagementLockReturnResult result = null;
                     // Deserialize Response
@@ -707,25 +707,25 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             ManagementLockObject managementLockInstance = new ManagementLockObject();
                             result.ManagementLock = managementLockInstance;
-                            
+
                             JToken propertiesValue2 = responseDoc["properties"];
                             if (propertiesValue2 != null && propertiesValue2.Type != JTokenType.Null)
                             {
                                 ManagementLockProperties propertiesInstance = new ManagementLockProperties();
                                 managementLockInstance.Properties = propertiesInstance;
-                                
+
                                 JToken levelValue = propertiesValue2["level"];
                                 if (levelValue != null && levelValue.Type != JTokenType.Null)
                                 {
                                     string levelInstance = ((string)levelValue);
                                     propertiesInstance.Level = levelInstance;
                                 }
-                                
+
                                 JToken notesValue = propertiesValue2["notes"];
                                 if (notesValue != null && notesValue.Type != JTokenType.Null)
                                 {
@@ -733,21 +733,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     propertiesInstance.Notes = notesInstance;
                                 }
                             }
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 managementLockInstance.Id = idInstance;
                             }
-                            
+
                             JToken typeValue = responseDoc["type"];
                             if (typeValue != null && typeValue.Type != JTokenType.Null)
                             {
                                 string typeInstance = ((string)typeValue);
                                 managementLockInstance.Type = typeInstance;
                             }
-                            
+
                             JToken nameValue = responseDoc["name"];
                             if (nameValue != null && nameValue.Type != JTokenType.Null)
                             {
@@ -755,14 +755,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 managementLockInstance.Name = nameInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -785,7 +785,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Deletes the management lock of a resource group.
         /// </summary>
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("lockName");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -825,7 +825,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("lockName", lockName);
                 TracingAdapter.Enter(invocationId, this, "DeleteAtResourceGroupLevelAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -855,7 +855,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -863,13 +863,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Delete;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -895,7 +895,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     AzureOperationResponse result = null;
                     // Deserialize Response
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -928,7 +928,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Deletes the management lock of a resource or any level below
         /// resource.
@@ -980,7 +980,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("lockName");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -993,7 +993,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("lockName", lockName);
                 TracingAdapter.Enter(invocationId, this, "DeleteAtResourceLevelAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -1034,7 +1034,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -1042,13 +1042,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Delete;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -1074,7 +1074,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     AzureOperationResponse result = null;
                     // Deserialize Response
@@ -1084,7 +1084,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -1107,7 +1107,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Deletes the management lock of a subscription.
         /// </summary>
@@ -1128,7 +1128,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("lockName");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -1139,7 +1139,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("lockName", lockName);
                 TracingAdapter.Enter(invocationId, this, "DeleteAtSubscriptionLevelAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -1167,7 +1167,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -1175,13 +1175,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Delete;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -1207,7 +1207,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     AzureOperationResponse result = null;
                     // Deserialize Response
@@ -1217,7 +1217,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -1240,7 +1240,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets the management lock of a scope.
         /// </summary>
@@ -1260,7 +1260,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("lockName");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -1271,7 +1271,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("lockName", lockName);
                 TracingAdapter.Enter(invocationId, this, "GetAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -1299,7 +1299,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -1307,13 +1307,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -1339,7 +1339,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ManagementLockReturnResult result = null;
                     // Deserialize Response
@@ -1353,25 +1353,25 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             ManagementLockObject managementLockInstance = new ManagementLockObject();
                             result.ManagementLock = managementLockInstance;
-                            
+
                             JToken propertiesValue = responseDoc["properties"];
                             if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                             {
                                 ManagementLockProperties propertiesInstance = new ManagementLockProperties();
                                 managementLockInstance.Properties = propertiesInstance;
-                                
+
                                 JToken levelValue = propertiesValue["level"];
                                 if (levelValue != null && levelValue.Type != JTokenType.Null)
                                 {
                                     string levelInstance = ((string)levelValue);
                                     propertiesInstance.Level = levelInstance;
                                 }
-                                
+
                                 JToken notesValue = propertiesValue["notes"];
                                 if (notesValue != null && notesValue.Type != JTokenType.Null)
                                 {
@@ -1379,21 +1379,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     propertiesInstance.Notes = notesInstance;
                                 }
                             }
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 managementLockInstance.Id = idInstance;
                             }
-                            
+
                             JToken typeValue = responseDoc["type"];
                             if (typeValue != null && typeValue.Type != JTokenType.Null)
                             {
                                 string typeInstance = ((string)typeValue);
                                 managementLockInstance.Type = typeInstance;
                             }
-                            
+
                             JToken nameValue = responseDoc["name"];
                             if (nameValue != null && nameValue.Type != JTokenType.Null)
                             {
@@ -1401,14 +1401,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 managementLockInstance.Name = nameInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -1431,7 +1431,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets all the management locks of a resource group.
         /// </summary>
@@ -1455,7 +1455,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("resourceGroupName");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -1467,7 +1467,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("parameters", parameters);
                 TracingAdapter.Enter(invocationId, this, "ListAtResourceGroupLevelAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -1505,7 +1505,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -1513,13 +1513,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -1545,7 +1545,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ManagementLockListResult result = null;
                     // Deserialize Response
@@ -1559,7 +1559,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -1569,20 +1569,20 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     ManagementLockObject managementLockObjectInstance = new ManagementLockObject();
                                     result.Lock.Add(managementLockObjectInstance);
-                                    
+
                                     JToken propertiesValue = valueValue["properties"];
                                     if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                                     {
                                         ManagementLockProperties propertiesInstance = new ManagementLockProperties();
                                         managementLockObjectInstance.Properties = propertiesInstance;
-                                        
+
                                         JToken levelValue = propertiesValue["level"];
                                         if (levelValue != null && levelValue.Type != JTokenType.Null)
                                         {
                                             string levelInstance = ((string)levelValue);
                                             propertiesInstance.Level = levelInstance;
                                         }
-                                        
+
                                         JToken notesValue = propertiesValue["notes"];
                                         if (notesValue != null && notesValue.Type != JTokenType.Null)
                                         {
@@ -1590,21 +1590,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             propertiesInstance.Notes = notesInstance;
                                         }
                                     }
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         managementLockObjectInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken typeValue = valueValue["type"];
                                     if (typeValue != null && typeValue.Type != JTokenType.Null)
                                     {
                                         string typeInstance = ((string)typeValue);
                                         managementLockObjectInstance.Type = typeInstance;
                                     }
-                                    
+
                                     JToken nameValue = valueValue["name"];
                                     if (nameValue != null && nameValue.Type != JTokenType.Null)
                                     {
@@ -1613,7 +1613,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -1621,14 +1621,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -1651,7 +1651,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets all the management locks of a resource or any level below
         /// resource.
@@ -1709,7 +1709,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("identity.ResourceType");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -1722,7 +1722,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("parameters", parameters);
                 TracingAdapter.Enter(invocationId, this, "ListAtResourceLevelAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -1771,7 +1771,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -1779,13 +1779,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -1811,7 +1811,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ManagementLockListResult result = null;
                     // Deserialize Response
@@ -1825,7 +1825,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -1835,20 +1835,20 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     ManagementLockObject managementLockObjectInstance = new ManagementLockObject();
                                     result.Lock.Add(managementLockObjectInstance);
-                                    
+
                                     JToken propertiesValue = valueValue["properties"];
                                     if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                                     {
                                         ManagementLockProperties propertiesInstance = new ManagementLockProperties();
                                         managementLockObjectInstance.Properties = propertiesInstance;
-                                        
+
                                         JToken levelValue = propertiesValue["level"];
                                         if (levelValue != null && levelValue.Type != JTokenType.Null)
                                         {
                                             string levelInstance = ((string)levelValue);
                                             propertiesInstance.Level = levelInstance;
                                         }
-                                        
+
                                         JToken notesValue = propertiesValue["notes"];
                                         if (notesValue != null && notesValue.Type != JTokenType.Null)
                                         {
@@ -1856,21 +1856,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             propertiesInstance.Notes = notesInstance;
                                         }
                                     }
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         managementLockObjectInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken typeValue = valueValue["type"];
                                     if (typeValue != null && typeValue.Type != JTokenType.Null)
                                     {
                                         string typeInstance = ((string)typeValue);
                                         managementLockObjectInstance.Type = typeInstance;
                                     }
-                                    
+
                                     JToken nameValue = valueValue["name"];
                                     if (nameValue != null && nameValue.Type != JTokenType.Null)
                                     {
@@ -1879,7 +1879,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -1887,14 +1887,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -1917,7 +1917,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets all the management locks of a subscription.
         /// </summary>
@@ -1934,7 +1934,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         public async Task<ManagementLockListResult> ListAtSubscriptionLevelAsync(ManagementLockGetQueryParameter parameters, CancellationToken cancellationToken)
         {
             // Validate
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -1945,7 +1945,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("parameters", parameters);
                 TracingAdapter.Enter(invocationId, this, "ListAtSubscriptionLevelAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -1981,7 +1981,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -1989,13 +1989,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -2021,7 +2021,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ManagementLockListResult result = null;
                     // Deserialize Response
@@ -2035,7 +2035,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -2045,20 +2045,20 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     ManagementLockObject managementLockObjectInstance = new ManagementLockObject();
                                     result.Lock.Add(managementLockObjectInstance);
-                                    
+
                                     JToken propertiesValue = valueValue["properties"];
                                     if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                                     {
                                         ManagementLockProperties propertiesInstance = new ManagementLockProperties();
                                         managementLockObjectInstance.Properties = propertiesInstance;
-                                        
+
                                         JToken levelValue = propertiesValue["level"];
                                         if (levelValue != null && levelValue.Type != JTokenType.Null)
                                         {
                                             string levelInstance = ((string)levelValue);
                                             propertiesInstance.Level = levelInstance;
                                         }
-                                        
+
                                         JToken notesValue = propertiesValue["notes"];
                                         if (notesValue != null && notesValue.Type != JTokenType.Null)
                                         {
@@ -2066,21 +2066,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             propertiesInstance.Notes = notesInstance;
                                         }
                                     }
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         managementLockObjectInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken typeValue = valueValue["type"];
                                     if (typeValue != null && typeValue.Type != JTokenType.Null)
                                     {
                                         string typeInstance = ((string)typeValue);
                                         managementLockObjectInstance.Type = typeInstance;
                                     }
-                                    
+
                                     JToken nameValue = valueValue["name"];
                                     if (nameValue != null && nameValue.Type != JTokenType.Null)
                                     {
@@ -2089,7 +2089,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -2097,14 +2097,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -2127,7 +2127,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Get a list of management locks at resource level or below.
         /// </summary>
@@ -2148,7 +2148,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("nextLink");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -2159,12 +2159,12 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("nextLink", nextLink);
                 TracingAdapter.Enter(invocationId, this, "ListNextAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + nextLink;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -2172,13 +2172,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -2204,7 +2204,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ManagementLockListResult result = null;
                     // Deserialize Response
@@ -2218,7 +2218,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -2228,20 +2228,20 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     ManagementLockObject managementLockObjectInstance = new ManagementLockObject();
                                     result.Lock.Add(managementLockObjectInstance);
-                                    
+
                                     JToken propertiesValue = valueValue["properties"];
                                     if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                                     {
                                         ManagementLockProperties propertiesInstance = new ManagementLockProperties();
                                         managementLockObjectInstance.Properties = propertiesInstance;
-                                        
+
                                         JToken levelValue = propertiesValue["level"];
                                         if (levelValue != null && levelValue.Type != JTokenType.Null)
                                         {
                                             string levelInstance = ((string)levelValue);
                                             propertiesInstance.Level = levelInstance;
                                         }
-                                        
+
                                         JToken notesValue = propertiesValue["notes"];
                                         if (notesValue != null && notesValue.Type != JTokenType.Null)
                                         {
@@ -2249,21 +2249,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             propertiesInstance.Notes = notesInstance;
                                         }
                                     }
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         managementLockObjectInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken typeValue = valueValue["type"];
                                     if (typeValue != null && typeValue.Type != JTokenType.Null)
                                     {
                                         string typeInstance = ((string)typeValue);
                                         managementLockObjectInstance.Type = typeInstance;
                                     }
-                                    
+
                                     JToken nameValue = valueValue["name"];
                                     if (nameValue != null && nameValue.Type != JTokenType.Null)
                                     {
@@ -2272,7 +2272,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -2280,14 +2280,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);

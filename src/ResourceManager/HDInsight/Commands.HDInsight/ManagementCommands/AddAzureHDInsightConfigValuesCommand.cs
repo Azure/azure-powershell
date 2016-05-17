@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.HDInsight
     public class AddAzureHDInsightConfigValuesCommand : HDInsightCmdletBase
     {
         private Dictionary<string, Hashtable> _configurations;
-            
+
         #region Input Parameter Definitions
 
         [Parameter(Position = 0,
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
 
             Hashtable config;
-            
+
             //if configs provided and key does not already exist, add the key with provided dictionary
             if (!_configurations.TryGetValue(configKey, out config))
             {

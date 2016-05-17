@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 targetName = CreateKey(appId, tenantId),
                 targetAlias = null,
                 comment = null,
-                lastWritten = new FILETIME {dwHighDateTime = 0, dwLowDateTime = 0},
+                lastWritten = new FILETIME { dwHighDateTime = 0, dwLowDateTime = 0 },
                 persist = 2, // persist on local machine
                 attibuteCount = 0,
                 attributes = IntPtr.Zero,
@@ -79,16 +79,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     out pCredential))
                 {
                     var credential = (CredStore.NativeMethods.Credential)
-                        Marshal.PtrToStructure(pCredential, typeof (CredStore.NativeMethods.Credential));
+                        Marshal.PtrToStructure(pCredential, typeof(CredStore.NativeMethods.Credential));
                     unsafe
                     {
-                        return new SecureString((char*) (credential.credentialBlob),
-                            (int)(credential.credentialBlobSize/Marshal.SystemDefaultCharSize));
+                        return new SecureString((char*)(credential.credentialBlob),
+                            (int)(credential.credentialBlobSize / Marshal.SystemDefaultCharSize));
                     }
                 }
                 return null;
             }
-            catch 
+            catch
             {
                 // we could be running in an environment that does not have credentials store
             }
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 if (pCredential != IntPtr.Zero)
                 {
                     CredStore.NativeMethods.CredFree(pCredential);
-                }   
+                }
             }
 
             return null;

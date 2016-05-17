@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Common
     {
         public static string GetRequestId(this CloudException exception)
         {
-            if(exception == null || 
-               exception.Response == null || 
+            if (exception == null ||
+               exception.Response == null ||
                exception.Response.Headers == null ||
                !exception.Response.Headers.Keys.Contains("x-ms-request-id"))
             {

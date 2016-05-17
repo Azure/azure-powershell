@@ -160,6 +160,7 @@
     <Compile Include="Commands\GetAzureApiManagementTenantSyncState.cs" />
     <Compile Include="Commands\GetAzureApiManagementUser.cs" />
     <Compile Include="Commands\GetAzureApiManagementUserSsoUrl.cs" />
+    <Compile Include="Commands\GetAzureRmApiManagementTenantAccess.cs" />
     <Compile Include="Commands\GetAzureRmApiManagementTenantGitAccess.cs" />
     <Compile Include="Commands\ImportAzureApiManagementApi.cs" />
     <Compile Include="Commands\NewAzureApiManagementApi.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="Commands\SetAzureApiManagementProperty.cs" />
     <Compile Include="Commands\SetAzureApiManagementSubscription.cs" />
     <Compile Include="Commands\SetAzureApiManagementUser.cs" />
+    <Compile Include="Commands\SetAzureRmApiManagementTenantAccess.cs" />
     <Compile Include="Commands\SetAzureRmApiManagementTenantGitAccess.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Models\ErrorBody.cs" />

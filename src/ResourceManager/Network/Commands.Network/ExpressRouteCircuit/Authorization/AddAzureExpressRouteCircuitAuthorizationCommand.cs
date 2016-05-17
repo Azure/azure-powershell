@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 
 namespace Microsoft.Azure.Commands.Network
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            var authorization = this.ExpressRouteCircuit.Authorizations.SingleOrDefault(resource => string.Equals(resource.Name,this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var authorization = this.ExpressRouteCircuit.Authorizations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (authorization != null)
             {

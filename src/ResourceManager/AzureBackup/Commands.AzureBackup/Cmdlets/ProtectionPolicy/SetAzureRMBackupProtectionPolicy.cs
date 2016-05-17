@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using System.Linq;
-using Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
-using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.Azure.Management.BackupServices.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -112,7 +111,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     WriteDebug(Resources.PolicyUpdated);
                 }
-                
+
             });
         }
 
@@ -129,9 +128,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             WriteDebug(String.Format(Resources.PolicyParameterSet, this.ParameterSetName.ToString()));
 
-            if (this.ParameterSetName != NoScheduleParamSet )
+            if (this.ParameterSetName != NoScheduleParamSet)
             {
-                if (DaysOfWeek != null && DaysOfWeek.Length > 0 && 
+                if (DaysOfWeek != null && DaysOfWeek.Length > 0 &&
                     this.ParameterSetName == WeeklyScheduleParamSet)
                 {
                     policy.ScheduleType = ScheduleType.Weekly.ToString();
@@ -148,7 +147,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     policy.ScheduleType = ProtectionPolicyHelpers.GetScheduleType(DaysOfWeek, this.ParameterSetName,
                     DailyScheduleParamSet, WeeklyScheduleParamSet);
 
-                }                
+                }
             }
             else if (DaysOfWeek != null && DaysOfWeek.Length > 0)
             {

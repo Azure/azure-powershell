@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public RestartBatchComputeNodeCommandTests()
+        public RestartBatchComputeNodeCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RestartBatchComputeNodeCommand()
@@ -64,8 +65,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Don't go to the service on a Reboot ComputeNode call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ComputeNodeRebootOption?, 
-                ComputeNodeRebootOptions, 
+                ComputeNodeRebootOption?,
+                ComputeNodeRebootOptions,
                 AzureOperationHeaderResponse<ComputeNodeRebootHeaders>>();
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             // Don't go to the service on a Reboot ComputeNode call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                ComputeNodeRebootBatchRequest request = (ComputeNodeRebootBatchRequest) baseRequest;
+                ComputeNodeRebootBatchRequest request = (ComputeNodeRebootBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {

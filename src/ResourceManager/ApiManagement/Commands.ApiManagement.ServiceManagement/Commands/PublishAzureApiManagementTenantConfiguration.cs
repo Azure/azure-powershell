@@ -15,11 +15,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using System;
-    using System.Globalization;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using System;
+    using System.Management.Automation;
 
     [Cmdlet(VerbsData.Publish, Constants.ApiManagementTenantGitConfiguration)]
     [OutputType(typeof(PsApiManagementOperationResult))]
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperationResult" +
-                          " type representing the operation result.")]
+                          " type representing the operation result will be written to output.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

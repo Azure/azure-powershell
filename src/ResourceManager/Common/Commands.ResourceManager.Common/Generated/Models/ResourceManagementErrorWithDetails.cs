@@ -19,16 +19,16 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
 using System;
 using System.Collections.Generic;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
     public partial class ResourceManagementErrorWithDetails : ResourceManagementError
     {
         private IList<ResourceManagementError> _details;
-        
+
         /// <summary>
         /// Optional. Gets or sets validation error.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._details; }
             set { this._details = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the
         /// ResourceManagementErrorWithDetails class.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
         {
             this.Details = new LazyList<ResourceManagementError>();
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the
         /// ResourceManagementErrorWithDetails class with required arguments.

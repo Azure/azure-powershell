@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class DeploymentOperationsCreateResult : AzureOperationResponse
     {
         private DeploymentExtended _deployment;
-        
+
         /// <summary>
         /// Optional. Gets or sets the deployment.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._deployment; }
             set { this._deployment = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the DeploymentOperationsCreateResult
         /// class.

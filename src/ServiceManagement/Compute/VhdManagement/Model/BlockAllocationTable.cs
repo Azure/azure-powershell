@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
 {
