@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         this.ResourceGroupName, VMName).Body;
 
                     currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
-                    
+
                     if (OperatingSystemTypes.Linux.Equals(currentOSType) &&
                         !AzureDiskEncryptionExtensionContext.VolumeTypeData.Equals(VolumeType, StringComparison.InvariantCultureIgnoreCase))
                     {

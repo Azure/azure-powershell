@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ManagementLockReturnResult CreateOrUpdateAtResourceGroupLevel(this IManagementLockOperations operations, string resourceGroupName, string lockName, ManagementLockProperties parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IManagementLockOperations)s).CreateOrUpdateAtResourceGroupLevelAsync(resourceGroupName, lockName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Create or update a management lock at the resource group level.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CreateOrUpdateAtResourceGroupLevelAsync(resourceGroupName, lockName, parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Create or update a management lock at the resource level or any
         /// level below resource.
@@ -104,13 +104,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ManagementLockReturnResult CreateOrUpdateAtResourceLevel(this IManagementLockOperations operations, string resourceGroupName, ResourceIdentity identity, string lockName, ManagementLockProperties parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IManagementLockOperations)s).CreateOrUpdateAtResourceLevelAsync(resourceGroupName, identity, lockName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Create or update a management lock at the resource level or any
         /// level below resource.
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CreateOrUpdateAtResourceLevelAsync(resourceGroupName, identity, lockName, parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Create or update a management lock at the subscription level.
         /// </summary>
@@ -157,13 +157,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ManagementLockReturnResult CreateOrUpdateAtSubscriptionLevel(this IManagementLockOperations operations, string lockName, ManagementLockProperties parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IManagementLockOperations)s).CreateOrUpdateAtSubscriptionLevelAsync(lockName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Create or update a management lock at the subscription level.
         /// </summary>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CreateOrUpdateAtSubscriptionLevelAsync(lockName, parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Deletes the management lock of a resource group.
         /// </summary>
@@ -204,13 +204,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static AzureOperationResponse DeleteAtResourceGroupLevel(this IManagementLockOperations operations, string resourceGroup, string lockName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IManagementLockOperations)s).DeleteAtResourceGroupLevelAsync(resourceGroup, lockName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Deletes the management lock of a resource group.
         /// </summary>
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.DeleteAtResourceGroupLevelAsync(resourceGroup, lockName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Deletes the management lock of a resource or any level below
         /// resource.
@@ -256,13 +256,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static AzureOperationResponse DeleteAtResourceLevel(this IManagementLockOperations operations, string resourceGroupName, ResourceIdentity identity, string lockName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IManagementLockOperations)s).DeleteAtResourceLevelAsync(resourceGroupName, identity, lockName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Deletes the management lock of a resource or any level below
         /// resource.
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.DeleteAtResourceLevelAsync(resourceGroupName, identity, lockName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Deletes the management lock of a subscription.
         /// </summary>
@@ -305,13 +305,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static AzureOperationResponse DeleteAtSubscriptionLevel(this IManagementLockOperations operations, string lockName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IManagementLockOperations)s).DeleteAtSubscriptionLevelAsync(lockName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Deletes the management lock of a subscription.
         /// </summary>
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.DeleteAtSubscriptionLevelAsync(lockName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets the management lock of a scope.
         /// </summary>
@@ -346,13 +346,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ManagementLockReturnResult Get(this IManagementLockOperations operations, string lockName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IManagementLockOperations)s).GetAsync(lockName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets the management lock of a scope.
         /// </summary>
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.GetAsync(lockName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets all the management locks of a resource group.
         /// </summary>
@@ -390,13 +390,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ManagementLockListResult ListAtResourceGroupLevel(this IManagementLockOperations operations, string resourceGroupName, ManagementLockGetQueryParameter parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IManagementLockOperations)s).ListAtResourceGroupLevelAsync(resourceGroupName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets all the management locks of a resource group.
         /// </summary>
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAtResourceGroupLevelAsync(resourceGroupName, parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets all the management locks of a resource or any level below
         /// resource.
@@ -444,13 +444,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ManagementLockListResult ListAtResourceLevel(this IManagementLockOperations operations, string resourceGroupName, ResourceIdentity identity, ManagementLockGetQueryParameter parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IManagementLockOperations)s).ListAtResourceLevelAsync(resourceGroupName, identity, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets all the management locks of a resource or any level below
         /// resource.
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAtResourceLevelAsync(resourceGroupName, identity, parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets all the management locks of a subscription.
         /// </summary>
@@ -495,13 +495,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ManagementLockListResult ListAtSubscriptionLevel(this IManagementLockOperations operations, ManagementLockGetQueryParameter parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IManagementLockOperations)s).ListAtSubscriptionLevelAsync(parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets all the management locks of a subscription.
         /// </summary>
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAtSubscriptionLevelAsync(parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Get a list of management locks at resource level or below.
         /// </summary>
@@ -537,13 +537,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ManagementLockListResult ListNext(this IManagementLockOperations operations, string nextLink)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IManagementLockOperations)s).ListNextAsync(nextLink);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get a list of management locks at resource level or below.
         /// </summary>

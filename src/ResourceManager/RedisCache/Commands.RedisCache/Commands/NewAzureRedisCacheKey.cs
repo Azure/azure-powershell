@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 keyTypeToRegenerated = RedisKeyType.Secondary;
             }
-            
+
             if (!Force.IsPresent)
             {
                 ConfirmAction(

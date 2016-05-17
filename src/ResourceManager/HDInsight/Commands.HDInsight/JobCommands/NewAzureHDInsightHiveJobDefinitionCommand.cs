@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             get { return job.Query; }
             set { job.Query = value; }
         }
-        
+
         [Parameter(HelpMessage = "Run the query as a file.")]
         public SwitchParameter RunAsFileJob
         {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public NewAzureHDInsightHiveJobDefinitionCommand()
         {
-            Arguments = new string[] {};
+            Arguments = new string[] { };
             Files = new string[] { };
             Defines = new Hashtable();
             job = new AzureHDInsightHiveJobDefinition();

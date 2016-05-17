@@ -12,14 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
 using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using System.Linq;
-using Microsoft.Azure.Management.BackupServices.Models;
-using Microsoft.Azure.Commands.AzureBackup.Models;
-using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -30,7 +25,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     public class RemoveAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }    
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -59,8 +54,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                        }
                    });
 
-               });            
-        }        
+               });
+        }
     }
 }
 

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.StreamAnalytics;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {

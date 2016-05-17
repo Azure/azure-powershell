@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Net;
-using System.Linq;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using System.Net;
 using Xunit;
-using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateHiveJob()
         {
-            var args = new[] {"arg1", "arg2"};
+            var args = new[] { "arg1", "arg2" };
             var defines = new Dictionary<string, string>
                 {
                     {"hive.1", "val1"},
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             const string name = "hivejob";
             const string file = "file";
             const string status = "folder";
-            var files = new[] {"file1", "file2"};
+            var files = new[] { "file1", "file2" };
             var cmdlet = new NewAzureHDInsightHiveJobDefinitionCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             const string file = "file";
             const string status = "folder";
             const string query = "pigquery";
-            var files = new[] {"file1", "file2"};
+            var files = new[] { "file1", "file2" };
             var cmdlet = new NewAzureHDInsightPigJobDefinitionCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             const string status = "folder";
             const string classname = "class";
             const string jar = "jar";
-            var jars = new[] {"jar1"};
+            var jars = new[] { "jar1" };
             var files = new[] { "file1", "file2" };
             var cmdlet = new NewAzureHDInsightMapReduceJobDefinitionCommand
             {
@@ -289,7 +288,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 ClusterName = ClusterName
             };
 
-            var args = new[] {"arg1", "arg2"};
+            var args = new[] { "arg1", "arg2" };
             const string query = "show tables;";
             const string name = "hivejob";
             var hivedef = new AzureHDInsightHiveJobDefinition

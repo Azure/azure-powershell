@@ -12,15 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Batch.Common;
-using Microsoft.Azure.Batch.Protocol.Models;
 using Hyak.Common;
+using Microsoft.Azure.Batch.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Text;
-using Microsoft.Azure.Commands.Common.Authentication;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Batch
 {

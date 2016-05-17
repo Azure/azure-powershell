@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Sync.Threading;
+using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using Microsoft.WindowsAzure.Commands.Sync.Threading;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 {
@@ -47,8 +47,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         {
             var uploadStatus = new ProgressStatus(alreadyUploadedData, alreadyUploadedData + dataToUpload, new ComputeStats());
 
-            using(new ServicePointHandler(blob.Uri, this.maxParallelism))
-            using(new ProgressTracker(uploadStatus))
+            using (new ServicePointHandler(blob.Uri, this.maxParallelism))
+            using (new ProgressTracker(uploadStatus))
             {
                 var loopResult = Parallel.ForEach(dataWithRanges,
                                                   () => new CloudPageBlob(blob.Uri, blob.ServiceClient.Credentials),
@@ -63,9 +63,9 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                                                                   b.WritePages(stream, dwr.Range.StartIndex);
                                                               }
                                                           }
-                                                          uploadStatus.AddToProcessedBytes((int) dwr.Range.Length);
+                                                          uploadStatus.AddToProcessedBytes((int)dwr.Range.Length);
                                                       }, this.maxParallelism);
-                if(loopResult.IsExceptional)
+                if (loopResult.IsExceptional)
                 {
                     if (loopResult.Exceptions.Any())
                     {
@@ -76,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 }
                 else
                 {
-                    using(var bdms = new BlobMetaDataScope(new CloudPageBlob(blob.Uri, blob.ServiceClient.Credentials)))
+                    using (var bdms = new BlobMetaDataScope(new CloudPageBlob(blob.Uri, blob.ServiceClient.Credentials)))
                     {
                         bdms.Current.SetBlobMd5Hash(md5Hash);
                         bdms.Current.CleanUpUploadMetaData();

@@ -12,13 +12,7 @@
 //// limitations under the License.
 //// ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
-using System.Text;
-using Microsoft.Azure.Commands.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -353,7 +347,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public const string InstanceType = "InstanceType";
     }
 
-     /// <summary>
+    /// <summary>
     /// ARM Resource Type Constants
     /// </summary>
     public static class ARMResourceTypeConstants
@@ -402,7 +396,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Replication Protected Items
         /// </summary>
         public const string ReplicationProtectedItems = "replicationProtectedItems";
-        
+
         /// <summary>
         /// Replication Networks
         /// </summary>

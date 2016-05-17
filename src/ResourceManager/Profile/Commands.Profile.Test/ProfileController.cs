@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public string UserDomain { get; private set; }
-        
+
         public static ProfileController NewInstance
         {
             get { return new ProfileController(); }
@@ -99,10 +99,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(oldFactory.Token.UserId, oldFactory.Token.AccessToken, tenant);
 
                 var callingClassName = callingClassType
-                    .Split(new[] {"."}, StringSplitOptions.RemoveEmptyEntries)
+                    .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                     .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    callingClassName + ".ps1", 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    callingClassName + ".ps1",
                     helper.RMProfileModule);
 
                 try

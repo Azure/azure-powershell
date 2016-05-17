@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Resources
     public class NewAzureResourceGroupDeploymentCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Alias("DeploymentName")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the deployment it's going to create. Only valid when a template is used. When a template is used, if the user doesn't specify a deployment name, use the current time, like \"20131223140835\".")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Commands.Resources
                 DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
             };
 
-            if(!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
+            if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
             {
                 WriteWarning("The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation");
             }
 
-            if(this.Mode == DeploymentMode.Complete)
+            if (this.Mode == DeploymentMode.Complete)
             {
                 this.ConfirmAction(
                     this.Force,

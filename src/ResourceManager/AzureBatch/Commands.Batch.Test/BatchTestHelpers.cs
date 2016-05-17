@@ -40,24 +40,33 @@ namespace Microsoft.Azure.Commands.Batch.Test
         internal static readonly string TestCertificateFileName2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\BatchTestCert02.cer");
         internal const string TestCertificateAlgorithm = "sha1";
         internal const string TestCertificatePassword = "Passw0rd";
+        internal static readonly int DefaultQuotaCount = 20;
 
         /// <summary>
         /// Builds an AccountResource object using the specified parameters
         /// </summary>
-        public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null)
+        public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null, string storageId = null)
         {
             string tenantUrlEnding = "batch-test.windows-int.net";
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
             string subscription = Guid.Empty.ToString();
             string resourceGroup = resourceGroupName;
 
-            AccountResource resource = new AccountResource()
+            string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
+
+            AccountResource resource = new AccountResource(
+                coreQuota: DefaultQuotaCount,
+                poolQuota: DefaultQuotaCount,
+                activeJobAndJobScheduleQuota: DefaultQuotaCount,
+                id: id,
+                type: "type")
             {
-                Id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup),
                 Location = "location",
-                Properties = new AccountProperties() { AccountEndpoint = endpoint, ProvisioningState = AccountProvisioningState.Succeeded },
-                Type = "type"
+                AccountEndpoint = endpoint,
+                ProvisioningState = AccountProvisioningState.Succeeded,
+                AutoStorage = new AutoStorageProperties() { StorageAccountId = storageId }
             };
+
             if (tags != null)
             {
                 resource.Tags = Microsoft.Azure.Commands.Batch.Helpers.CreateTagDictionary(tags, true);
@@ -107,6 +116,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             Assert.Equal<string>(context1.Subscription, context2.Subscription);
             Assert.Equal<string>(context1.TagsTable, context2.TagsTable);
             Assert.Equal<string>(context1.TaskTenantUrl, context2.TaskTenantUrl);
+            Assert.Equal<string>(context1.AutoStorageProperties.StorageAccountId, context2.AutoStorageProperties.StorageAccountId);
         }
 
         /// <summary>
@@ -190,8 +200,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <typeparam name="THeader">The type of header for the response</typeparam>
         /// <returns></returns>
         public static AzureOperationResponse<TBody, THeader> CreateGenericAzureOperationResponse<TBody, THeader>()
-            where TBody : class, new ()
-            where THeader : class, new ()
+            where TBody : class, new()
+            where THeader : class, new()
         {
             var response = new AzureOperationResponse<TBody, THeader>()
             {
@@ -247,7 +257,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 }
                 else
                 {
-                    FileGetNodeFilePropertiesFromTaskBatchRequest propRequest = (FileGetNodeFilePropertiesFromTaskBatchRequest) baseRequest;
+                    FileGetNodeFilePropertiesFromTaskBatchRequest propRequest = (FileGetNodeFilePropertiesFromTaskBatchRequest)baseRequest;
 
                     propRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
@@ -692,7 +702,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                JobGetBatchRequest request = (JobGetBatchRequest) baseRequest;
+                JobGetBatchRequest request = (JobGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
@@ -716,7 +726,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                JobScheduleGetBatchRequest request = (JobScheduleGetBatchRequest) baseRequest;
+                JobScheduleGetBatchRequest request = (JobScheduleGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
@@ -741,7 +751,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                PoolGetBatchRequest request = (PoolGetBatchRequest) baseRequest;
+                PoolGetBatchRequest request = (PoolGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
@@ -765,7 +775,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                TaskGetBatchRequest request = (TaskGetBatchRequest) baseRequest;
+                TaskGetBatchRequest request = (TaskGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {

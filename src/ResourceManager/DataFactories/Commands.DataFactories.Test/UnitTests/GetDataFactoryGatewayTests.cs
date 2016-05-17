@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 using Microsoft.Azure.Commands.DataFactories;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Test;
 using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Gateway

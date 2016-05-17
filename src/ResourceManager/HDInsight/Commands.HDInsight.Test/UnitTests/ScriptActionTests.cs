@@ -20,8 +20,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
@@ -35,15 +33,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
 
-            scriptActionDetail = new RuntimeScriptActionDetail 
+            scriptActionDetail = new RuntimeScriptActionDetail
             {
                 ApplicationName = "AppName",
                 DebugInformation = "DebugInfo",
                 EndTime = new DateTime(2016, 1, 1),
                 ExecutionSummary =
-                    new List<Microsoft.Azure.Management.HDInsight.Models.ScriptActionExecutionSummary> 
+                    new List<Microsoft.Azure.Management.HDInsight.Models.ScriptActionExecutionSummary>
                     {
-                        new Microsoft.Azure.Management.HDInsight.Models.ScriptActionExecutionSummary 
+                        new Microsoft.Azure.Management.HDInsight.Models.ScriptActionExecutionSummary
                         {
                             Status = "Succeeded",
                             InstanceCount = 4
@@ -174,7 +172,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             hdinsightManagementMock.Setup(c => c.ListPersistedScripts(ResourceGroupName, ClusterName))
-                .Returns(new ClusterListPersistedScriptActionsResponse 
+                .Returns(new ClusterListPersistedScriptActionsResponse
                 {
                     PersistedScriptActions = persistedScripts,
                     StatusCode = HttpStatusCode.OK,
@@ -319,7 +317,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 && scriptA.DebugInformation == scriptB.DebugInformation
                 && scriptA.EndTime == scriptB.EndTime
                 && scriptA.ExecutionSummary.Count == scriptB.ExecutionSummary.Count
-                && scriptA.ExecutionSummary.Zip(scriptB.ExecutionSummary, (summaryA, summaryB) => summaryA  == summaryB).All(x => x)
+                && scriptA.ExecutionSummary.Zip(scriptB.ExecutionSummary, (summaryA, summaryB) => summaryA == summaryB).All(x => x)
                 && scriptA.Operation == scriptB.Operation
                 && scriptA.ScriptExecutionId == scriptB.ScriptExecutionId
                 && scriptA.StartTime == scriptB.StartTime

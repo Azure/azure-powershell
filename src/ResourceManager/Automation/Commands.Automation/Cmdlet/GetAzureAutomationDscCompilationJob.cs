@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -64,7 +62,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary> 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = false, HelpMessage = "Filter compilation jobs so that the compilation job end time <= EndTime.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter compilation jobs so that the compilation job end time <= EndTime.")]
-        public DateTimeOffset? EndTime { get; set; } 
+        public DateTimeOffset? EndTime { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -90,7 +88,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 jobs = this.AutomationClient.ListCompilationJobs(this.ResourceGroupName, this.AutomationAccountName, this.StartTime, this.EndTime, this.Status);
             }
 
-            this.WriteObject(jobs, true); 
+            this.WriteObject(jobs, true);
         }
     }
 }

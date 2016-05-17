@@ -14,12 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// A helper class for iterating through paginated responses.

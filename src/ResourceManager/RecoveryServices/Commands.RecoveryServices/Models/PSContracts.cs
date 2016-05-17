@@ -395,7 +395,8 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
             string siteId,
             string siteName,
             string resourceNamespace,
-            string resourceType)
+            string resourceType,
+            string location)
             : base(subscriptionId, resourceName, managementCert, acsNamespace)
         {
             this.ChannelIntegrityKey = channelIntegrityKey;
@@ -407,6 +408,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
 
             this.ResourceNamespace = resourceNamespace;
             this.ARMResourceType = resourceType;
+            this.Location = location;
         }
 
         #endregion
@@ -453,6 +455,12 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 6)]
         public string ARMResourceType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the vault location
+        /// </summary>
+        [DataMember(Order = 7)]
+        public string Location { get; set; }
 
         #endregion
     }
