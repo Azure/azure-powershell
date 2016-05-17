@@ -392,27 +392,34 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Builds a CloudPoolUsageMetricsResponse object.
+        /// Builds a CloudPoolUsageMetricsResponse object. Note: The lengths of all three lists must be the same.
         /// </summary>
         public static AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders> CreatePoolListUsageMetricsResponse(
             IEnumerable<string> poolIds,
             IEnumerable<DateTime> startTimes,
             IEnumerable<DateTime> endTimes)
         {
-            var s = startTimes.GetEnumerator();
-            var e = endTimes.GetEnumerator();
-            var p = poolIds.GetEnumerator();
             var poolUsageList = new List<ProxyModels.PoolUsageMetrics>();
 
-            // Create x PoolUsageMetrics where x is the smallest length of the three lists
-            while (s.MoveNext() && e.MoveNext() && p.MoveNext())
+            // Validate the lengths of the lists are equal
+            if (!(poolIds.Count() == startTimes.Count() && startTimes.Count() == endTimes.Count()))
             {
-                poolUsageList.Add(new ProxyModels.PoolUsageMetrics()
+                throw new ArgumentException("The lists length are not equal.");
+            }
+
+            using (var startTimeEnumerator = startTimes.GetEnumerator())
+            using (var endTimeEnumerator = endTimes.GetEnumerator())
+            using (var poolIdEnumerator = poolIds.GetEnumerator())
+            {
+                while (startTimeEnumerator.MoveNext() && endTimeEnumerator.MoveNext() && poolIdEnumerator.MoveNext())
                 {
-                    PoolId = p.Current,
-                    StartTime = s.Current,
-                    EndTime = e.Current
-                });
+                    poolUsageList.Add(new ProxyModels.PoolUsageMetrics()
+                    {
+                        PoolId = poolIdEnumerator.Current,
+                        StartTime = startTimeEnumerator.Current,
+                        EndTime = endTimeEnumerator.Current
+                    });
+                }
             }
 
             var response = new AzureOperationResponse

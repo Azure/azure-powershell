@@ -4511,7 +4511,7 @@
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para>These commands return all of the pool usage metrics, aggregated by each pool between Monday, May 16, 2016 12:00:00 AM and Monday, May 16, 2016 1:00:00 AM</maml:para>
+          <maml:para>This command returns all of the pool usage metrics, aggregated by pool across time intervals between Monday, May 16, 2016 12:00:00 AM and Monday, May 16, 2016 1:00:00 AM</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
@@ -4536,7 +4536,7 @@
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para>The command gets the usage metrics for pool MyPool with a filter string.</maml:para>
+          <maml:para>This command returns the usage metrics for pool MyPool with a filter string.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
