@@ -193,6 +193,10 @@
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
     </ProjectReference>
+	<ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
+      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
+      <Name>Commands.Resources.Rest</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.MachineLearning\Commands.MachineLearning.csproj">
       <Project>{A9558AF1-827B-482A-98AF-9AC5F0A866DE}</Project>
       <Name>Commands.MachineLearning</Name>
