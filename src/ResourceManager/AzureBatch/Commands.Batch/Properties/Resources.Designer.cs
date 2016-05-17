@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to get application {0} package {1}. You may need to delete the application package and try uploading again. {2}..
+        ///   Looks up a localized string similar to Failed to create application package {0} version {1}.  Unable to determine whether the application package already exists. {2}..
         /// </summary>
         internal static string FailedToGetApplicationPackage {
             get {
