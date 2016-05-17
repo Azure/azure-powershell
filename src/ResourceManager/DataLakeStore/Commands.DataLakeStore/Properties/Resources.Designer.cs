@@ -250,6 +250,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified offset: {0} is greater than the length of the file to preview. Please select an offset less than: {1} and greater than or equal to zero..
+        /// </summary>
+        internal static string OffsetOutOfRange {
+            get {
+                return ResourceManager.GetString("OffsetOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing DataLakeStore account &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeStoreAccount {

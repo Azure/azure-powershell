@@ -220,13 +220,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
         }
 
-        public Stream PreviewFile(string filePath, string accountName, long bytesToPreview,
+        public Stream PreviewFile(string filePath, string accountName, long bytesToPreview, long offset,
             CancellationToken cmdletCancellationToken, Cmdlet cmdletRunningRequest = null)
         {
             var lengthToUse = GetFileStatus(filePath, accountName).Length.Value;
-            if (bytesToPreview <= lengthToUse && bytesToPreview > 0)
+            if(offset > lengthToUse || offset < 0)
+            {
+                throw new ArgumentOutOfRangeException(string.Format(Properties.Resources.OffsetOutOfRange, offset, lengthToUse));
+            }
+
+            if (bytesToPreview <= lengthToUse + offset && bytesToPreview > 0)
             {
                 lengthToUse = bytesToPreview;
+            }
+            else
+            {
+                // make sure that we are only previewing bytes after the specified offset
+                lengthToUse -= offset;
             }
 
             var numRequests = Math.Ceiling(lengthToUse / MaximumBytesPerDownloadRequest);
@@ -235,9 +245,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             var progress = new ProgressRecord(
                 0,
                 "Previewing a file from DataLakeStore Store",
-                string.Format("Previewing file in DataLakeStore Store Location: {0}. Bytes to preview: {1}", filePath,
-                    bytesToPreview));
-            long currentOffset = 0;
+                string.Format("Previewing file in DataLakeStore Store Location: {0}. Bytes to preview: {1}, from Offset: {2}", filePath,
+                    bytesToPreview, offset));
+            long currentOffset = offset;
             var bytesToRequest = (long)MaximumBytesPerDownloadRequest;
 
             //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in

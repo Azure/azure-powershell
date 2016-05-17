@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 }
             }
 
-            using (var memStream = ((MemoryStream)DataLakeStoreFileSystemClient.PreviewFile(Path.TransformedPath, Account, Length,
+            using (var memStream = ((MemoryStream)DataLakeStoreFileSystemClient.PreviewFile(Path.TransformedPath, Account, Length, Offset,
                 CmdletCancellationToken, this)))
             {
                 byteArray = memStream.ToArray();
