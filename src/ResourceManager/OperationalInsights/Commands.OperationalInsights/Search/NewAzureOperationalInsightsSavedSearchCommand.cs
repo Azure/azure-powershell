@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string Query { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        HelpMessage = "The saved search tags.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tags { get; set; }
+
+        [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The saved search version.")]
         [ValidateNotNullOrEmpty]
         public int Version { get; set; }
@@ -62,7 +67,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         protected override void ProcessRecord()
         {
-            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, DisplayName, Category, Query, Version, Force, ConfirmAction), true);
+            SavedSearchProperties properties = new SavedSearchProperties()
+            {
+                Category = this.Category,
+                DisplayName = this.DisplayName,
+                Query = this.Query,
+                Version = this.Version
+            };
+
+            properties.Tags = SearchCommandHelper.PopulateAndValidateTagsForProperties(this.Tags, properties.Query);
+
+            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, Force, ConfirmAction), true);
         }
 
     }

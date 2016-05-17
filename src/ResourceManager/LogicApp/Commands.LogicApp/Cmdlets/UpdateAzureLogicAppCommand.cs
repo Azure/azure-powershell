@@ -14,12 +14,12 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using System;
+    using System.Management.Automation;
 
     /// <summary>
     /// Updates a LogicApp workflow 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();            
+            base.ExecuteCmdlet();
 
             var workflow = LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name);
 
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.State))
             {
-                workflow.State = (WorkflowState) Enum.Parse(typeof (WorkflowState), this.State);
+                workflow.State = (WorkflowState)Enum.Parse(typeof(WorkflowState), this.State);
             }
 
             if (!string.IsNullOrEmpty(this.AppServicePlan))
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                         Id = servicePlan.Id
                     }
                 };
-            }                        
+            }
 
             if (workflow.DefinitionLink == null && workflow.Definition == null)
             {

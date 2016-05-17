@@ -14,11 +14,11 @@
 
 namespace Microsoft.AzureStack.Commands
 {
+    using Microsoft.AzureStack.Management;
+    using Microsoft.AzureStack.Management.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.AzureStack.Management;
-    using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
     /// New Subscription Cmdlet

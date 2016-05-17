@@ -61,7 +61,7 @@ function Test-UploadApplicationPackage
     finally
     {
         Remove-AzureRmBatchApplicationPackage -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName -ApplicationVersion $applicationVersion
-    }
+	}
 }
 
 <#
@@ -93,7 +93,7 @@ function Test-UpdateApplicationPackage
     finally
     {
         Remove-AzureRmBatchApplicationPackage -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName -ApplicationVersion $applicationVersion
-    }
+	}
 }
 
 <#
@@ -133,7 +133,7 @@ function Test-CreatePoolWithApplicationPackage
     finally
     {
         Remove-AzureRmBatchApplicationPackage -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName -ApplicationVersion $applicationVersion
-        Remove-AzureBatchPool -Id $poolId -Force -BatchContext $context
+		Remove-AzureBatchPool -Id $poolId -Force -BatchContext $context
     }
 }
 

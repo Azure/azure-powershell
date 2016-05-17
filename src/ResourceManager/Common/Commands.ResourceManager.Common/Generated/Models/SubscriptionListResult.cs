@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Collections.Generic;
 using Hyak.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Internal.Subscriptions.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
     public partial class SubscriptionListResult : AzureOperationResponse
     {
         private IList<Subscription> _subscriptions;
-        
+
         /// <summary>
         /// Optional. Gets or sets subscriptions.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._subscriptions; }
             set { this._subscriptions = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the SubscriptionListResult class.
         /// </summary>

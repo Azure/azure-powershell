@@ -12,24 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
-using Microsoft.Azure.Management.HDInsight.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -364,18 +362,19 @@ namespace Microsoft.Azure.Commands.HDInsight
                 var metastore = HiveMetastore;
                 parameters.HiveMetastore = new Metastore(metastore.SqlAzureServerName, metastore.DatabaseName, metastore.Credential.UserName, metastore.Credential.Password.ConvertToString());
             }
-            if(!string.IsNullOrEmpty(CertificatePassword))
+            if (!string.IsNullOrEmpty(CertificatePassword))
             {
-                if (!string.IsNullOrEmpty(CertificateFilePath)){
+                if (!string.IsNullOrEmpty(CertificateFilePath))
+                {
                     CertificateFileContents = File.ReadAllBytes(CertificateFilePath);
                 }
                 var servicePrincipal = new Management.HDInsight.Models.ServicePrincipal(
-                    GetApplicationId(), GetTenantId(AadTenantId), CertificateFileContents,  
+                    GetApplicationId(), GetTenantId(AadTenantId), CertificateFileContents,
                     CertificatePassword);
 
                 parameters.Principal = servicePrincipal;
             }
-            
+
             var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, parameters);
 
             if (cluster != null)

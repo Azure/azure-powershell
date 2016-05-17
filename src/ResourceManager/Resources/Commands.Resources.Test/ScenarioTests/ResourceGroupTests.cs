@@ -12,14 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class ResourceGroupTests : RMTestBase
     {
+        public ResourceGroupTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewSimpleResourceGroup()
@@ -83,7 +90,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-ResourceGroupWithPositionalParams");
         }
 
-        [Fact (Skip = "TODO: Fix the broken test.")]
+        [Fact(Skip = "TODO: Fix the broken test.")]
         public void TestAzureTagsEndToEnd()
         {
             ResourcesController.NewInstance.RunPsTest("Test-AzureTagsEndToEnd");

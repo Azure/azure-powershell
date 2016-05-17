@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using Hyak.Common;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public static List<string> KnownLocations = new List<string>
         {
-            "East Asia", "South East Asia", "East US", "West US", "North Central US", 
+            "East Asia", "South East Asia", "East US", "West US", "North Central US",
             "South Central US", "Central US", "North Europe", "West Europe"
         };
 
@@ -82,22 +82,22 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     WriteVerbose(string.Format("Creating resource \"{0}\" started.", parameters.Name));
 
                     Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(parameters.Tag, validate: true);
-                    
-                    ResourceCreateOrUpdateResult createOrUpdateResult = ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName, 
+
+                    ResourceCreateOrUpdateResult createOrUpdateResult = ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName,
                         resourceIdentity,
                         new GenericResource
-                            {
-                                Location = parameters.Location,
-                                Properties = SerializeHashtable(parameters.PropertyObject, addValueLayer: false),
-                                Tags = tagDictionary
-                            });
+                        {
+                            Location = parameters.Location,
+                            Properties = SerializeHashtable(parameters.PropertyObject, addValueLayer: false),
+                            Tags = tagDictionary
+                        });
 
                     if (createOrUpdateResult.Resource != null)
                     {
                         WriteVerbose(string.Format("Creating resource \"{0}\" complete.", parameters.Name));
                     }
                 };
-            
+
             if (resourceExists && !parameters.Force)
             {
                 parameters.ConfirmAction(parameters.Force,
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 createOrUpdateResource();
             }
-            
+
             ResourceGetResult getResult = ResourceManagementClient.Resources.Get(parameters.ResourceGroupName, resourceIdentity);
 
             return getResult.Resource.ToPSResource(this, false);
@@ -144,11 +144,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName, resourceIdentity,
                         new GenericResource
-                            {
-                                Location = getResource.Resource.Location,
-                                Properties = newProperty,
-                                Tags = tagDictionary
-                            });
+                        {
+                            Location = getResource.Resource.Location,
+                            Properties = newProperty,
+                            Tags = tagDictionary
+                        });
 
             ResourceGetResult getResult = ResourceManagementClient.Resources.Get(parameters.ResourceGroupName, resourceIdentity);
 
@@ -193,12 +193,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     }
                 }
                 ResourceListResult listResult = ResourceManagementClient.Resources.List(new ResourceListParameters
-                    {
-                        ResourceGroupName = parameters.ResourceGroupName,
-                        ResourceType = parameters.ResourceType,
-                        TagName = tagValuePair.Name,
-                        TagValue = tagValuePair.Value
-                    });
+                {
+                    ResourceGroupName = parameters.ResourceGroupName,
+                    ResourceType = parameters.ResourceType,
+                    TagName = tagValuePair.Name,
+                    TagValue = tagValuePair.Value
+                });
 
                 if (listResult.Resources != null)
                 {
@@ -306,10 +306,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             if (validationInfo.Errors.Count != 0)
             {
-                foreach(var error in validationInfo.Errors)
+                foreach (var error in validationInfo.Errors)
                 {
                     WriteError(string.Format(ErrorFormat, error.Code, error.Message));
-                    if(!string.IsNullOrEmpty(error.Details))
+                    if (!string.IsNullOrEmpty(error.Details))
                     {
                         DisplayDetailedErrorMessage(error.Details);
                     }
@@ -334,10 +334,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
             if (errorMessage != null)
             {
                 var token = JToken.Parse(errorMessage.ToString());
-                if(token is JArray)
+                if (token is JArray)
                 {
                     var errors = details.FromJson<ExtendedErrorInfo[]>();
-                    foreach(var error in errors)
+                    foreach (var error in errors)
                     {
                         DisplayInnerDetailErrorMessage(error);
                     }
@@ -353,9 +353,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         private void DisplayInnerDetailErrorMessage(ExtendedErrorInfo error)
         {
             WriteError(string.Format(ErrorFormat, error.Code, error.Message));
-            if(error.Details != null)
+            if (error.Details != null)
             {
-                foreach(var innerError in error.Details)
+                foreach (var innerError in error.Details)
                 {
                     DisplayInnerDetailErrorMessage(innerError);
                 }
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
-            
+
             if (string.IsNullOrEmpty(name))
             {
                 var response = ResourceManagementClient.ResourceGroups.List(null);
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
             }
 
-            if(excludedProvisioningStates.Count > 0)
+            if (excludedProvisioningStates.Count > 0)
             {
                 return deployments.Where(d => excludedProvisioningStates
                     .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();

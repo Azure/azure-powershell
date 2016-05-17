@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.AzureStack.Management.StorageAdmin;
 using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using System.Management.Automation;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
@@ -32,7 +30,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
         [ValidateNotNull]
         public string FarmName { get; set; }
-        
+
 
         /// <summary>
         /// CpuBasedKeepAliveThrottlingEnabled
@@ -44,7 +42,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             get;
             set;
         }
-        
+
 
         /// <summary>
         /// MemoryThrottlingEnabled
@@ -56,7 +54,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             get;
             set;
         }
-        
+
         /// <summary>
         /// ContainerGcInterval
         /// </summary>

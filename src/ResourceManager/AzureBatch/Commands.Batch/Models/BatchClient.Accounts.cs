@@ -20,7 +20,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Net.Http;
 using Microsoft.Azure.Batch;
 using Microsoft.Rest.Azure;
 using CloudException = Hyak.Common.CloudException;
@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="accountName">The account name</param>
         /// <param name="location">The location to use when creating the account</param>
         /// <param name="tags">The tags to associate with the account</param>
-        /// <param name="storageId">The resource id of the storage account to be used for auto storage.</param>
+        /// <param name="autoStorageAccountId">The resource id of the storage account to be used for auto storage.</param>
         /// <returns>A BatchAccountContext object representing the new account</returns>
-        public virtual BatchAccountContext CreateAccount(string resourceGroupName, string accountName, string location, Hashtable[] tags, string storageId)
+        public virtual BatchAccountContext CreateAccount(string resourceGroupName, string accountName, string location, Hashtable[] tags, string autoStorageAccountId)
         {
             // use the group lookup to validate whether account already exists. We don't care about the returned
             // group name nor the exception
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             Dictionary<string, string> tagDictionary = Helpers.CreateTagDictionary(tags, validate: true);
 
-            AutoStorageBaseProperties autoStorage = (string.IsNullOrEmpty(storageId)) ? null : new AutoStorageBaseProperties
+            AutoStorageBaseProperties autoStorage = (string.IsNullOrEmpty(autoStorageAccountId)) ? null : new AutoStorageBaseProperties
             {
-                StorageAccountId = storageId
+                StorageAccountId = autoStorageAccountId
             };
 
             var response = BatchManagementClient.Account.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="resourceGroupName">The name of the resource group the account is under. If unspecified, it will be looked up.</param>
         /// <param name="accountName">The account name</param>
         /// <param name="tags">New tags to associate with the account</param>
-        /// <param name="storageId"></param>
+        /// <param name="autoStorageAccountId">The resource id of the storage account to be used for auto storage.</param>
         /// <returns>A BatchAccountContext object representing the updated account</returns>
-        public virtual BatchAccountContext UpdateAccount(string resourceGroupName, string accountName, Hashtable[] tags, string storageId)
+        public virtual BatchAccountContext UpdateAccount(string resourceGroupName, string accountName, Hashtable[] tags, string autoStorageAccountId)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // need to the location in order to call
             var getResponse = BatchManagementClient.Account.Get(resourceGroupName, accountName);
 
-            AutoStorageBaseProperties autoStorage = (storageId == null) ? null : new AutoStorageBaseProperties
+            AutoStorageBaseProperties autoStorage = (autoStorageAccountId == null) ? null : new AutoStorageBaseProperties
             {
-                StorageAccountId = storageId
+                StorageAccountId = autoStorageAccountId
             };
 
             var response = BatchManagementClient.Account.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
@@ -151,45 +151,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <returns>A collection of BatchAccountContext objects</returns>
         public virtual IEnumerable<BatchAccountContext> ListAccounts(Hashtable tag, string resourceGroupName = default(string))
         {
-            List<BatchAccountContext> accounts = new List<BatchAccountContext>();
-
             // no account name so we're doing some sort of list. If no resource group, then list all accounts under the
             // subscription otherwise all accounts in the resource group.
             var response = string.IsNullOrEmpty(resourceGroupName)
                 ? BatchManagementClient.Account.List()
                 : BatchManagementClient.Account.ListByResourceGroup(resourceGroupName);
 
-            // filter out the accounts if a tag was specified
-            IList<AccountResource> accountResources = new List<AccountResource>();
-            if (tag != null && tag.Count > 0)
-            {
-                accountResources = Helpers.FilterAccounts(response, tag);
-            }
-            else
-            {
-                accountResources = response.ToList();
-            }
+            var batchAccountContexts = ListAllAccounts(response).Where(acct => Helpers.FilterAccounts(acct, tag)).
+                Select(resource => BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource));
 
-            foreach (AccountResource resource in accountResources)
-            {
-                accounts.Add(BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource));
-            }
-
-            var nextLink = response.NextPageLink;
-
-            while (nextLink != null)
-            {
-                response = ListNextAccounts(nextLink);
-
-                foreach (AccountResource resource in response)
-                {
-                    accounts.Add(BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource));
-                }
-
-                nextLink = response.NextPageLink;
-            }
-
-            return accounts;
+            return batchAccountContexts;
         }
 
         /// <summary>
@@ -207,16 +178,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            // build a new context to put the keys into
-            var context = GetAccount(resourceGroupName, accountName);
-
             var regenResponse = BatchManagementClient.Account.RegenerateKey(resourceGroupName, accountName, new BatchAccountRegenerateKeyParameters
             {
                 KeyName = keyType
             });
 
+            var context = GetAccount(resourceGroupName, accountName);
             context.PrimaryAccountKey = regenResponse.Primary;
             context.SecondaryAccountKey = regenResponse.Secondary;
+
+            // build a new context to put the keys into
             return context;
         }
 
@@ -225,15 +196,32 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group the account is under. If unspecified, it will be looked up.</param>
         /// <param name="accountName">The account name</param>
-        /// <returns>The status of delete account operation</returns>
-        public virtual Task<Rest.Azure.AzureOperationResponse> DeleteAccount(string resourceGroupName, string accountName)
+        public virtual void DeleteAccount(string resourceGroupName, string accountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 // use resource mgr to see if account exists and then use resource group name to do the actual lookup
                 resourceGroupName = GetGroupForAccount(accountName);
             }
-            return BatchManagementClient.Account.DeleteWithHttpMessagesAsync(resourceGroupName, accountName);
+
+            try
+            {
+                BatchManagementClient.Account.Delete(resourceGroupName, accountName);
+            }
+            catch (Rest.Azure.CloudException ex)
+            {
+                // TODO: Cleanup after TFS: 5914832
+                // RP puts the operation status token under the account that's
+                // being deleted, so we get a 404 from our Get Operation Status call when the
+                // deletion completes. We want 404 to throw an error on the initial delete
+                // request, but for now we want to consider a 404 error on the operation status
+                // polling as a success.
+                if (!(ex.Request.Method == HttpMethod.Get &&
+                    ex.Message.Contains("Long running operation failed with status 'NotFound'")))
+                {
+                    throw;
+                }
+            }
         }
 
         /// <summary>
@@ -258,6 +246,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             return PSPagedEnumerable<PSNodeAgentSku, NodeAgentSku>.CreateWithMaxCount(nodeAgentSkus, mappingFunction,
                 maxCount, () => WriteVerbose(string.Format(Resources.MaxCount, maxCount)));
+        }
+
+        /// <summary>
+        /// Appends all accounts into a list.
+        /// </summary>
+        /// <param name="response">The list of accounts.</param>
+        /// <returns>All accounts for the response</returns>
+        internal IEnumerable<AccountResource> ListAllAccounts(IPage<AccountResource> response)
+        {
+            var accountResources = new List<AccountResource>();
+            accountResources.AddRange(response);
+
+            var nextLink = response.NextPageLink;
+            while (nextLink != null)
+            {
+                response = ListNextAccounts(nextLink);
+                accountResources.AddRange(response);
+                nextLink = response.NextPageLink;
+            }
+
+            return accountResources;
         }
 
         /// <summary>

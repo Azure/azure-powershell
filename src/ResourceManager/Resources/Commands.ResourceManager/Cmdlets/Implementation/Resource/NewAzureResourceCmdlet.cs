@@ -14,16 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
+    using System.Collections;
+    using System.Linq;
+    using System.Management.Automation;
 
     /// <summary>
     /// A cmdlet that creates a new azure resource.
@@ -49,24 +47,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the property object.
         /// </summary>
         [Alias("PropertyObject")]
-        [Parameter(Mandatory = true, HelpMessage = "A hash table which represents resource properties.")]
+        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource properties.")]
         [ValidateNotNullOrEmpty]
         public PSObject Properties { get; set; }
 
         /// <summary>
         /// Gets or sets the plan object.
         /// </summary>
+        [Alias("PlanObject")]
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource plan properties.")]
         [ValidateNotNullOrEmpty]
-        public Hashtable PlanObject { get; set; }
+        public Hashtable Plan { get; set; }
 
         /// <summary>  
-        /// Gets or sets the plan object.  
+        /// Gets or sets the Sku object.  
         /// </summary>  
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]  
-        [ValidateNotNullOrEmpty]  
-        public Hashtable SkuObject { get; set; }  
-
+        [Alias("SkuObject")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Sku { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.
@@ -87,11 +86,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+            this.WriteWarning("The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
 
             var resourceId = this.GetResourceId();
             this.ConfirmAction(
                 this.Force,
-                "Are you sure you want to create the following resource: "+ resourceId,
+                "Are you sure you want to create the following resource: " + resourceId,
                 "Creating the resource...",
                 resourceId,
                 () =>
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 Location = this.Location,
                 Kind = this.Kind,
-                Plan = this.PlanObject.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
-                Sku = this.SkuObject.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>(),
+                Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
+                Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>(),
                 Tags = TagsHelper.GetTagsDictionary(this.Tag),
                 Properties = this.Properties.ToResourcePropertiesBody(),
             };
