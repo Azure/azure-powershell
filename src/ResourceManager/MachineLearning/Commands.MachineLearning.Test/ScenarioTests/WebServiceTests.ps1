@@ -288,8 +288,9 @@ function RunWebServicesTest([ScriptBlock] $testScript)
         $group = New-AzureRmResourceGroup -Name $rgName -Location $location        
         LogOutput("Created resource group: $($group.ResourceId)")
 
-        LogOutput "Creating commitment plan resource: $commitmentPlanName"  
-        $cpPlan = New-AzureRmResource -Location $location -ResourceType "Microsoft.MachineLearning/CommitmentPlans" -ResourceName $commitmentPlanName -ResourceGroupName $rgName -SkuObject @{"name"="PLAN_SKU_NAME"; "tier"="PLAN_SKU_TIER"; "capacity"="1" } -Properties @{} -ApiVersion $cpApiVersion -Force     
+        LogOutput "Creating commitment plan resource: $commitmentPlanName"
+		$cpSku = @{Name = 'PLAN_SKU_NAME'; Tier='PLAN_SKU_TIER'; Capacity=1}
+        $cpPlan = New-AzureRmResource -Location $location -ResourceType "Microsoft.MachineLearning/CommitmentPlans" -ResourceName $commitmentPlanName -ResourceGroupName $rgName -SkuObject $cpSku -Properties @{} -ApiVersion $cpApiVersion -Force     
         LogOutput "Created commitment plan resource: $($cpPlan.ResourceId)" 
 
         &$testScript $rgName $location $webServiceName $cpPlan.ResourceId
