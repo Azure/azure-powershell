@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum ContainerType
     {
         AzureVM = 1,
-        AzureSQL,
-        Windows
+        Windows,
+        AzureSQL
     }
 
     public enum BackupManagementType

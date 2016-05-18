@@ -687,6 +687,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Given Protection state is not valid for AzureSqlItem. Provided state : {0}.
+        /// </summary>
+        public static string ProtectionStateInvalidForAzureSqlItem {
+            get {
+                return ResourceManager.GetString("ProtectionStateInvalidForAzureSqlItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection Status is not allowed for AzureSqlItem. protectionStatus : {0}.
+        /// </summary>
+        public static string ProtectionStatusNotAllowedForAzureSqlItem {
+            get {
+                return ResourceManager.GetString("ProtectionStatusNotAllowedForAzureSqlItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End date should be greater than start date.
         /// </summary>
         public static string RecoveryPointEndDateShouldBeGreater {

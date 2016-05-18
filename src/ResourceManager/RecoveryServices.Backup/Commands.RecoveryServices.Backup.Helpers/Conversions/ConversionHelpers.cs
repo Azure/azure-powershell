@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     string policyName = null;
                     string policyId = ((ServiceClientModel.AzureSqlProtectedItem)protectedItem.Properties).PolicyId;
-                    if (policyId != null)
+                    if (!String.IsNullOrEmpty(policyId))
                     {
                         Dictionary<UriEnums, string> keyVauleDict =
                         HelperUtils.ParseUri(policyId);

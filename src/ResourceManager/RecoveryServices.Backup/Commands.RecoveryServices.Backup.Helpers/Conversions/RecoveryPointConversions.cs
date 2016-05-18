@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// </summary>
         public static List<RecoveryPointBase> GetPSAzureRecoveryPoints(ServiceClientModel.RecoveryPointListResponse rpList, ItemBase item)
         {
-            if (rpList == null || rpList.RecoveryPointList == null || 
-                rpList.RecoveryPointList.RecoveryPoints == null) 
-            { 
-                throw new ArgumentNullException("RPList"); 
+            if (rpList == null || rpList.RecoveryPointList == null ||
+                rpList.RecoveryPointList.RecoveryPoints == null)
+            {
+                throw new ArgumentNullException("RPList");
             }
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
@@ -48,23 +48,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     ServiceClientModel.RecoveryPoint recPoint = rp.Properties as ServiceClientModel.RecoveryPoint;
 
-                DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                AzureVmRecoveryPoint rpBase = new AzureVmRecoveryPoint()
-                {
-                    RecoveryPointId = rp.Name,
-                    BackupManagementType = item.BackupManagementType,
-                    ItemName = protectedItemName,
-                    ContainerName = containerUri,
-                    ContainerType = item.ContainerType,
-                    RecoveryPointTime = recPointTime,
-                    RecoveryPointType = recPoint.RecoveryPointType,
-                    Id = rp.Id,
-                    WorkloadType = item.WorkloadType,
-                    RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
-                    SourceVMStorageType = recPoint.SourceVMStorageType,
-                };
-                result.Add(rpBase);
-            }
+                    DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                    AzureVmRecoveryPoint rpBase = new AzureVmRecoveryPoint()
+                    {
+                        RecoveryPointId = rp.Name,
+                        BackupManagementType = item.BackupManagementType,
+                        ItemName = protectedItemName,
+                        ContainerName = containerUri,
+                        ContainerType = item.ContainerType,
+                        RecoveryPointTime = recPointTime,
+                        RecoveryPointType = recPoint.RecoveryPointType,
+                        Id = rp.Id,
+                        WorkloadType = item.WorkloadType,
+                        RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
+                        SourceVMStorageType = recPoint.SourceVMStorageType,
+                    };
+                    result.Add(rpBase);
+                }
 
                 if (rp.Properties.GetType() == typeof(ServiceClientModel.GenericRecoveryPoint))
                 {
@@ -111,6 +111,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             if (rpResponse.RecPoint.Properties.GetType() == typeof(ServiceClientModel.RecoveryPoint))
             {
                 ServiceClientModel.RecoveryPoint recPoint = rpResponse.RecPoint.Properties as ServiceClientModel.RecoveryPoint;
+                DateTime recPointTime = DateTime.ParseExact(
+                recPoint.RecoveryPointTime,
+                    @"MM/dd/yyyy HH:mm:ss",
+                    CultureInfo.InvariantCulture);
+
                 result = new AzureVmRecoveryPoint()
                 {
                     RecoveryPointId = rpResponse.RecPoint.Name,
@@ -118,7 +123,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     ItemName = protectedItemName,
                     ContainerName = containerUri,
                     ContainerType = item.ContainerType,
-                    RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
+                    RecoveryPointTime = recPointTime,
                     RecoveryPointType = recPoint.RecoveryPointType,
                     Id = rpResponse.RecPoint.Id,
                     WorkloadType = item.WorkloadType,
@@ -129,6 +134,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             if (rpResponse.RecPoint.Properties.GetType() == typeof(ServiceClientModel.GenericRecoveryPoint))
             {
                 ServiceClientModel.GenericRecoveryPoint recPoint = rpResponse.RecPoint.Properties as ServiceClientModel.GenericRecoveryPoint;
+                DateTime recPointTime = DateTime.ParseExact(
+                recPoint.RecoveryPointTime,
+                    @"MM/dd/yyyy HH:mm:ss",
+                    CultureInfo.InvariantCulture);
                 result = new AzureSqlRecoveryPoint()
             {
                 RecoveryPointId = rpResponse.RecPoint.Name,
@@ -136,12 +145,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 ItemName = protectedItemName,
                 ContainerName = containerUri,
                 ContainerType = item.ContainerType,
-                RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
+                RecoveryPointTime = recPointTime,
                 RecoveryPointType = recPoint.RecoveryPointType,
                 Id = rpResponse.RecPoint.Id,
                 WorkloadType = item.WorkloadType,
                 RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
-                    FriendlyName = recPoint.FriendlyName,
+                FriendlyName = recPoint.FriendlyName,
             };
             }
             return result;
