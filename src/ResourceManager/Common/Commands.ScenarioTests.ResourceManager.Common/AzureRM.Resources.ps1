@@ -4,27 +4,26 @@
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Location,
-	[string] [Parameter(ValueFromPipelineByPropertyName=$true)] $Id,
-	[switch] $Force)
-  BEGIN { 
+    [string] [Parameter(ValueFromPipelineByPropertyName=$true)] $Id,
+    [switch] $Force)
+  BEGIN {
     $context = Get-Context
-	$client = Get-ResourcesClient $context
+    $client = Get-ResourcesClient $context
   }
   PROCESS {
     if($Name -eq $null) {
-	  $getTask = $client.ResourceGroups.ListAsync($null, [System.Threading.CancellationToken]::None)
-	  $rg = $getTask.Result
-	  $resourceGroup = List-ResourceGroup
-	  Write-Output $resourceGroup
-	} else {
-	  $getTask = $client.ResourceGroups.GetAsync($Name, [System.Threading.CancellationToken]::None)
-	  $rg = $getTask.Result
-	  $resourceGroup = Get-ResourceGroup $Name $Location $rg.ResourceGroup.Id
-	  Write-Output $resourceGroup
-	}
+      $getTask = $client.ResourceGroups.ListAsync($null, [System.Threading.CancellationToken]::None)
+      $rg = $getTask.Result
+      $resourceGroup = List-ResourceGroup
+      Write-Output $resourceGroup
+    } else {
+      $getTask = $client.ResourceGroups.GetAsync($Name, [System.Threading.CancellationToken]::None)
+      $rg = $getTask.Result
+      $resourceGroup = Get-ResourceGroup $Name $Location $rg.ResourceGroup.Id
+      Write-Output $resourceGroup
+    }
   }
   END {}
-
 }
 
 function Get-AzureRmResourceProvider
@@ -32,18 +31,17 @@ function Get-AzureRmResourceProvider
   [CmdletBinding()]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ProviderNamespace)
-  BEGIN { 
+  BEGIN {
     $context = Get-Context
-	$client = Get-ResourcesClient $context
+    $client = Get-ResourcesClient $context
   }
   PROCESS {
-	$getTask = $client.Providers.GetAsync($ProviderNamespace, [System.Threading.CancellationToken]::None)
-	$pr = $getTask.Result
-	$provider = Get-Provider $pr.Provider.Namespace
-	Write-Output $provider
+    $getTask = $client.Providers.GetAsync($ProviderNamespace, [System.Threading.CancellationToken]::None)
+    $pr = $getTask.Result
+    $provider = Get-Provider $pr.Provider.Namespace
+    Write-Output $provider
   }
   END {}
-
 }
 
 function New-AzureRmResourceGroup
@@ -52,23 +50,21 @@ function New-AzureRmResourceGroup
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Location,
-	[string] [Parameter(ValueFromPipelineByPropertyName=$true)] $Tags,
-	[switch] $Force)
-  BEGIN { 
+    [string] [Parameter(ValueFromPipelineByPropertyName=$true)] $Tags,
+    [switch] $Force)
+  BEGIN {
     $context = Get-Context
-	$client = Get-ResourcesClient $context
+    $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $createParms = New-Object -Type Microsoft.Azure.Management.Resources.Models.ResourceGroup
-	$createParms.Location = $Location
-	#$createParms.Tags = $Tags
-    $createTask = $client.ResourceGroups.CreateOrUpdateAsync($Name, $createParms, [System.Threading.CancellationToken]::None)
-	$rg = $createTask.Result
-	$resourceGroup = Get-ResourceGroup $Name $Location
-	Write-Output $resourceGroup
+    $createParams = New-Object -Type Microsoft.Azure.Management.Resources.Models.ResourceGroup
+    $createParams.Location = $Location
+    $createTask = $client.ResourceGroups.CreateOrUpdateAsync($Name, $createParams, [System.Threading.CancellationToken]::None)
+    $rg = $createTask.Result
+    $resourceGroup = Get-ResourceGroup $Name $Location
+    Write-Output $resourceGroup
   }
   END {}
-
 }
 
 function New-AzureRmResourceGroupDeployment
@@ -77,24 +73,23 @@ function New-AzureRmResourceGroupDeployment
   param(
     [string] [alias("ResourceGroupName")] $Name,
     [string] $TemplateFile,
-	[string] $serverName,
-	[string] $databaseName,
-	[string] $storageName,
-	[string] $version,
-	[string] $EnvLocation,
-	[string] $administratorLogin,
-	[switch] $Force)
-  BEGIN { 
+    [string] $serverName,
+    [string] $databaseName,
+    [string] $storageName,
+    [string] $version,
+    [string] $EnvLocation,
+    [string] $administratorLogin,
+    [switch] $Force)
+  BEGIN {
     $context = Get-Context
-	$client = Get-ResourcesClient $context
+    $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $createParms = New-Object -Type Microsoft.Azure.Management.Resources.Models.Deployment
-    $createTask = $client.Deployments.CreateOrUpdateAsync($Name, $Name, $createParms, [System.Threading.CancellationToken]::None)
-	$rg = $createTask.Result
+    $createParams = New-Object -Type Microsoft.Azure.Management.Resources.Models.Deployment
+    $createTask = $client.Deployments.CreateOrUpdateAsync($Name, $Name, $createParams, [System.Threading.CancellationToken]::None)
+    $rg = $createTask.Result
   }
   END {}
-
 }
 
 function Remove-AzureRmResourceGroup 
@@ -102,29 +97,27 @@ function Remove-AzureRmResourceGroup
   [CmdletBinding()]
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
-	[switch] $Force)
+    [switch] $Force)
   BEGIN {
     $context = Get-Context
-	$client = Get-ResourcesClient $context
+    $client = Get-ResourcesClient $context
   }
   PROCESS {
     $deleteTask = $client.ResourceGroups.DeleteAsync($Name, [System.Threading.CancellationToken]::None)
-	$rg = $deleteTask.Result
+    $rg = $deleteTask.Result
   }
   END {}
-
 }
 
 function Get-Context
 {
     [Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext]$context = $null
     $profile = [Microsoft.WindowsAzure.Commands.Common.AzureRmProfileProvider]::Instance.Profile
-	if ($profile -ne $null)
-	{
-	  $context = $profile.Context
-	}
-
-	return $context
+    if ($profile -ne $null)
+    {
+      $context = $profile.Context
+    }
+    return $context
 }
 
 function Get-ResourcesClient
