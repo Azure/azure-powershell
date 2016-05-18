@@ -31,6 +31,11 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (pool != null)
             {
+                pool.omObject.ApplicationPackageReferences = CreateSyncedList(pool.ApplicationPackageReferences,
+                (apr) =>
+                {
+                    return ConvertApplicationPackageReference(apr);
+                });
                 pool.omObject.CertificateReferences = CreateSyncedList(pool.CertificateReferences,
                 (c) =>
                 {
@@ -253,6 +258,16 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         return metadata;
                     });
 
+                spec.omObject.ApplicationPackageReferences = CreateSyncedList(spec.ApplicationPackageReferences,
+                    (apr) =>
+                    {
+                        return new ApplicationPackageReference()
+                        {
+                            ApplicationId = apr.ApplicationId,
+                            Version = apr.Version
+                        };
+                    });
+
                 if (spec.StartTask != null)
                 {
                     StartTaskSyncCollections(spec.StartTask);
@@ -335,6 +350,19 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             certReference.ThumbprintAlgorithm = psCert.ThumbprintAlgorithm;
             certReference.Visibility = psCert.Visibility;
             return certReference;
+        }
+
+        /// <summary>
+        /// Converts a PSApplicationPackageReference to a ApplicationPackageReference
+        /// </summary>
+        private static ApplicationPackageReference ConvertApplicationPackageReference(PSApplicationPackageReference psApr)
+        {
+            ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference()
+            {
+                ApplicationId = psApr.ApplicationId,
+                Version = psApr.Version
+            };
+            return applicationPackageReference;
         }
     }
 }
