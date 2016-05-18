@@ -331,4 +331,7 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="VMNotFoundInGroup" xml:space="preserve">
     <value>Virtual Machine "{0}" not found in Group "{1}" for recovery plan "{2}"</value>
   </data>
+  <data name="ImproperServerObjectPassedForHyperVFailback" xml:space="preserve">
+    <value>Please pass a valid Hyper-V server object if you have set CreateVmIfNotFound to 'Yes' while doing failback in hyper-V to Azure scenario. </value>
+  </data>
 </root>

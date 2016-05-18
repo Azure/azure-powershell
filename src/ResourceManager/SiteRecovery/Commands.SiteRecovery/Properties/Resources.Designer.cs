@@ -170,6 +170,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please pass a valid Hyper-V server object if you have set CreateVmIfNotFound to &apos;Yes&apos; while doing failback in hyper-V to Azure scenario. .
+        /// </summary>
+        internal static string ImproperServerObjectPassedForHyperVFailback {
+            get {
+                return ResourceManager.GetString("ImproperServerObjectPassedForHyperVFailback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Provider {0} entered invalid for the current set of parameters..
         /// </summary>
         internal static string IncorrectReplicationProvider {
