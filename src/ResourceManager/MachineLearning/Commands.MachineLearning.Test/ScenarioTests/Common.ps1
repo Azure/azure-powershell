@@ -23,6 +23,15 @@ function Get-ResourceGroupName
 
 <#
 .SYNOPSIS
+Gets a storage account name for testing.
+#>
+function Get-TestStorageAccountName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets a commitment plan name for testing.
 #>
 function Get-CommitmentPlanName
@@ -93,7 +102,18 @@ function Get-ProviderAPIVersion($providerNamespace, $resourceType)
 
 <#
 .SYNOPSIS
-Cleans the website
+Create a storage account to be used during testing, and return its details
+#>
+function Create-TestStorageAccount($resourceGroup, $location, $storageName)
+{
+    New-AzureRmStorageAccount -ResourceGroupName $resourceGroup -Name $storageName -Location $location -Type 'Standard_LRS' | Out-Null
+    $accessKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup -Name $storageName).Key1;
+    return @{ Name = $storageName; Key = $accessKey }
+}
+
+<#
+.SYNOPSIS
+Cleans the website resource created during testing
 #>
 function Clean-WebService($resourceGroup, $webServiceName)
 {
@@ -112,7 +132,26 @@ function Clean-WebService($resourceGroup, $webServiceName)
 
 <#
 .SYNOPSIS
-Cleans the created resource groups
+Cleans the storage account created during testing
+#>
+function Clean-TestStorageAccount($resourceGroup, $accountName)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
+	{
+		try {
+		    LogOutput "Removing storage account $accountName from resource group $rgName" 			
+            Remove-AzureRmStorageAccount -ResourceGroupName $resourceGroup -Name $webServiceName
+			LogOutput "Storage account $accountName was removed."
+		}
+		catch {
+			Write-Warning "Caught unexpected exception when cleaning up storage account $accountName in group $resourceGroup : $($($_.Exception).Message)"
+		}
+    }
+}
+
+<#
+.SYNOPSIS
+Cleans the created resource group
 #>
 function Clean-ResourceGroup($resourceGroup)
 {

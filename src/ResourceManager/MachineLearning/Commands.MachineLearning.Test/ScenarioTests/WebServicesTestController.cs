@@ -28,6 +28,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.MachineLearning.WebServices;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
 using LegacyTest = Microsoft.Azure.Test;
@@ -47,6 +48,8 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public AzureMLWebServicesManagementClient WebServicesManagementClient { get; private set; }
+
+        public StorageManagementClient StorageManagementClient { get; private set; }
 
         public static WebServicesTestController NewInstance
         {
@@ -112,7 +115,8 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
                    "ScenarioTests\\" + callingClassName + ".ps1",
                    helper.RMProfileModule,
                    helper.RMResourceModule,
-                   helper.GetRMModulePath(@"AzureRM.MachineLearning.psd1"));
+                   helper.GetRMModulePath(@"AzureRM.MachineLearning.psd1"),
+                   "AzureRM.Storage.ps1");
 
                 try
                 {
@@ -140,12 +144,18 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
         {
             this.ResourceManagementClient = LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
             this.WebServicesManagementClient = context.GetServiceClient<AzureMLWebServicesManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-            
+            this.StorageManagementClient = LegacyTest.TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
+
             var subscriptionClient = LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
             var authManagementClient = LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
             var gallleryClient = LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
-            helper.SetupManagementClients(this.ResourceManagementClient, subscriptionClient, this.WebServicesManagementClient, authManagementClient, gallleryClient);
+            helper.SetupManagementClients(this.ResourceManagementClient, 
+                subscriptionClient, 
+                this.WebServicesManagementClient, 
+                authManagementClient, 
+                gallleryClient,
+                this.StorageManagementClient);
         }
 
         /// <summary>

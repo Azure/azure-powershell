@@ -29,12 +29,11 @@ function Test-CreateGetRemoveMLService
     $serviceDeleted = $false
 
     $actualTest = {
-        param([string] $rgName, [string] $location, [string] $webServiceName, [string] $cpPlanId)
+        param([string] $rgName, [string] $location, [string] $webServiceName, [string] $commitmentPlanId, [object] $storageAccount)
         try 
         {
             # Create a web service resource using the pipeline and validate its creation
-            $svcDefinition = Import-AzureRmMlWebService -FromFile $TEST_WEBSERVICE_DEFINITION_FILE
-            $svcDefinition.Properties.CommitmentPlan.Id = $cpPlanId
+            $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE $commitmentPlanId $storageAccount
             LogOutput "Creating web service: $webServiceName"
             $svc = $svcDefinition | New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location -Name $webServiceName
             Assert-NotNull $svc
@@ -81,14 +80,13 @@ Tests creating an Azure ML service directly from a file definition
 function Test-CreateWebServiceFromFile
 {
     $actualTest = {
-        param([string] $rgName, [string] $location, [string] $webServiceName, [string] $cpPlanId)
+        param([string] $rgName, [string] $location, [string] $webServiceName, [string] $commitmentPlanId, [object] $storageAccount)
 
         $definitionFile = "";
         try 
         {
             # Create a valid service definition file
-            $svcDefinition = Import-AzureRmMlWebService -FromFile $TEST_WEBSERVICE_DEFINITION_FILE
-            $svcDefinition.Properties.CommitmentPlan.Id = $cpPlanId
+            $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE $commitmentPlanId $storageAccount
             $definitionFile = "$webServiceName.json"
             LogOutput "Exporting web service definition to file: $definitionFile"
             Export-AzureRmMlWebService -WebService $svcDefinition -ToFile $definitionFile
@@ -122,12 +120,11 @@ Tests creating and updating an Azure ML web service resource
 function Test-UpdateWebService
 {
     $actualTest = {
-        param([string] $rgName, [string] $location, [string] $webServiceName, [string] $cpPlanId)        
+        param([string] $rgName, [string] $location, [string] $webServiceName, [string] $commitmentPlanId, [object] $storageAccount)        
         try 
         {
 		    # Create a web service resource and validate its creation
-            $svcDefinition = Import-AzureRmMlWebService -FromFile $TEST_WEBSERVICE_DEFINITION_FILE
-            $svcDefinition.Properties.CommitmentPlan.Id = $cpPlanId
+            $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE $commitmentPlanId $storageAccount
             LogOutput "Creating web service: $webServiceName"
             $svc = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location -Name $webServiceName -NewWebServiceDefinition $svcDefinition
             Assert-NotNull $svc
@@ -192,7 +189,7 @@ Tests the cmdlets for retrieving lists of web services
 function Test-ListWebServices
 {
     $actualTest = {
-        param([string] $rgName, [string] $location, [string] $webServiceName, [string] $cpPlanId)        
+        param([string] $rgName, [string] $location, [string] $webServiceName, [string] $commitmentPlanId)        
         try 
         {
 			$sameGroupWebServiceName = Get-WebServiceName
@@ -200,8 +197,7 @@ function Test-ListWebServices
 			$otherGroupWebServiceName = Get-WebServiceName
 
 		    # Create a few web services in the same resource group
-            $svcDefinition = Import-AzureRmMlWebService -FromFile $TEST_WEBSERVICE_DEFINITION_FILE
-            $svcDefinition.Properties.CommitmentPlan.Id = $cpPlanId
+            $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE $commitmentPlanId $storageAccount
             LogOutput "Creating web service: $webServiceName"
             $svc1 = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location -Name $webServiceName -NewWebServiceDefinition $svcDefinition
             Assert-NotNull $svc1
@@ -275,9 +271,10 @@ function RunWebServicesTest([ScriptBlock] $testScript)
 {
     # Setup
     $rgName = Get-ResourceGroupName 
-    $location = "southcentralus"
-    $commitmentPlanName = Get-CommitmentPlanName
-    $webServiceName = Get-WebServiceName    
+    $location = Get-ProviderLocation "Microsoft.MachineLearning" "webServices"
+    $webServiceName = Get-WebServiceName
+	$storageAccountName = Get-TestStorageAccountName
+	$commitmentPlanName = Get-CommitmentPlanName
     $cpApiVersion = Get-ProviderAPIVersion "Microsoft.MachineLearning" "commitmentPlans"
     LogOutput "Using version $cpApiVersion of the CP RP APIs"
 
@@ -288,17 +285,32 @@ function RunWebServicesTest([ScriptBlock] $testScript)
         $group = New-AzureRmResourceGroup -Name $rgName -Location $location        
         LogOutput("Created resource group: $($group.ResourceId)")
 
+		LogOutput "Creating storage account: $storageAccountName"    
+        $storageAccount = Create-TestStorageAccount $rgName $location $storageAccountName        
+        LogOutput("Created storage account: $storageAccountName")
+
         LogOutput "Creating commitment plan resource: $commitmentPlanName"
 		$cpSku = @{Name = 'PLAN_SKU_NAME'; Tier='PLAN_SKU_TIER'; Capacity=1}
         $cpPlan = New-AzureRmResource -Location $location -ResourceType "Microsoft.MachineLearning/CommitmentPlans" -ResourceName $commitmentPlanName -ResourceGroupName $rgName -SkuObject $cpSku -Properties @{} -ApiVersion $cpApiVersion -Force     
         LogOutput "Created commitment plan resource: $($cpPlan.ResourceId)" 
 
-        &$testScript $rgName $location $webServiceName $cpPlan.ResourceId
+        &$testScript $rgName $location $webServiceName $cpPlan.ResourceId $storageAccount
     }
     finally
     {  
+		Clean-TestStorageAccount $rgName $storageAccountName
         Clean-ResourceGroup $rgName        
     }
+}
+
+function LoadWebServiceDefinitionForTest([string] $filePath, [string] $commitmentPlanId, [object] $storageAccount)
+{
+    $svcDefinition = Import-AzureRmMlWebService -FromFile $filePath
+    $svcDefinition.Properties.CommitmentPlan.Id = $commitmentPlanId
+	$svcDefinition.Properties.StorageAccount.Name = $storageAccount.Name
+	$svcDefinition.Properties.StorageAccount.Key = $storageAccount.Key
+
+	return $svcDefinition
 }
 
 function ValidateWebServiceResult([string] $rgName, [string] $webServiceName, [string] $location, [Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService] $svc)
