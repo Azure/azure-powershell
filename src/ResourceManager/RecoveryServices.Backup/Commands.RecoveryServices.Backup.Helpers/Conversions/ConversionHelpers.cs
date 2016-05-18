@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             else if (serviceClientResponse.Properties.GetType() == typeof(ServiceClientModel.AzureSqlProtectionPolicy))
             {
                 if (((ServiceClientModel.AzureSqlProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType() !=
-                                                                           typeof(SimpleRetentionPolicy))
+                                                                           typeof(ServiceClientModel.SimpleRetentionPolicy))
                 {
                     Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
                                ((ServiceClientModel.AzureSqlProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType());
