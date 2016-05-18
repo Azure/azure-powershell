@@ -261,12 +261,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             } while (skipToken != null);
 
             // 1. Filter by container
-            protectedItems = protectedItems.Where(protectedItem =>
+            if (container != null)
             {
-                Dictionary<UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
-                string containerUri = HelperUtils.GetContainerUri(dictionary, protectedItem.Id);
-                return containerUri.Contains(container.Name);
-            }).ToList();
+                protectedItems = protectedItems.Where(protectedItem =>
+                {
+                    Dictionary<UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
+                    string containerUri = HelperUtils.GetContainerUri(dictionary, protectedItem.Id);
+                    return containerUri.Contains(container.Name);
+                }).ToList();
+            }
 
             List<ProtectedItemResponse> protectedItemGetResponses = new List<ProtectedItemResponse>();
 
