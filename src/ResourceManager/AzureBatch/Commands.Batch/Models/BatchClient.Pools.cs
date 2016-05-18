@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -135,6 +136,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 {
                     pool.CertificateReferences.Add(c.omObject);
                 }
+            }
+
+            if (parameters.ApplicationPackageReferences != null)
+            {
+                pool.ApplicationPackageReferences = parameters.ApplicationPackageReferences.ToList().ConvertAll(apr => apr.omObject);
             }
 
             if (parameters.CloudServiceConfiguration != null)
