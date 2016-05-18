@@ -14,15 +14,13 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
-using Microsoft.Azure.Commands.Batch.Properties;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class DisableComputeNodeSchedulingParameters : ComputeNodeOperationParameters
     {
-        public DisableComputeNodeSchedulingParameters(BatchAccountContext context, string poolId, string computeNodeId, 
+        public DisableComputeNodeSchedulingParameters(BatchAccountContext context, string poolId, string computeNodeId,
             PSComputeNode computeNode, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, poolId, computeNodeId, computeNode, additionalBehaviors)
         { }

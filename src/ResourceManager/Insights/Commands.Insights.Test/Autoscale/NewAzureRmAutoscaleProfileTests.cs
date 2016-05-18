@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
@@ -36,6 +36,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             {
                 CommandRuntime = commandRuntimeMock.Object
             };
+        }
+
+        public NewAzureRmAutoscaleProfileTests(Xunit.Abstractions.ITestOutputHelper output)
+            : this()
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+
         }
 
         [Fact]

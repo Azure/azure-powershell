@@ -14,13 +14,12 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
-using System;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchJob, DefaultParameterSetName = Constants.ODataFilterParameterSet), 
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchJob, DefaultParameterSetName = Constants.ODataFilterParameterSet),
         OutputType(typeof(PSCloudJob))]
     public class GetBatchJobCommand : BatchObjectModelCmdletBase
     {
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSCloudJobSchedule JobSchedule { get; set; }
-            
+
         [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]

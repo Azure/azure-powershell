@@ -26,12 +26,15 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Get list of containers
+    /// Unregisters container from the recovery services vault.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupContainer")]
     public class UnregisterAzureRmRecoveryServicesBackupContainer 
         : RecoveryServicesBackupCmdletBase
     {
+        /// <summary>
+        /// Container model object to be unregistered from the vault.
+        /// </summary>
         [Parameter(Mandatory = true, Position = 1, 
             HelpMessage = ParamHelpMsgs.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]

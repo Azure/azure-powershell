@@ -53,6 +53,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary
         public AzureVmItemExtendedInfo ExtendedInfo { get; set; }
 
+        /// <summary>
+        /// Constructor. Takes the service client object representing the protected item 
+        /// and converts it in to the PS protected item model
+        /// </summary>
+        /// <param name="protectedItemResource">Service client object representing the protected item resource</param>
+        /// <param name="containerName">Name of the container associated with this protected item</param>
+        /// <param name="containerType">Type of the container associated with this protected item</param>
+        /// <param name="policyName">Name of the protection policy associated with this protected item</param>
         public AzureVmItem(ProtectedItemResource protectedItemResource,
             string containerName, ContainerType containerType, string policyName)
             : base(protectedItemResource, containerName, containerType)

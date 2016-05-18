@@ -14,14 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Newtonsoft.Json.Linq;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using ServiceManagemenet.Common;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// A helper class that handles common tasks that deal with the <see cref="Resource{JToken}"/> class.

@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using System;
@@ -20,8 +22,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory

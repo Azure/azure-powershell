@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Batch.Test
 {

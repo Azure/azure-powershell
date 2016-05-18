@@ -12,17 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Xunit;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -31,6 +23,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string poolId = ScenarioTestHelpers.SharedPool;
         private const string startTaskStdOutName = ScenarioTestHelpers.SharedPoolStartTaskStdOut;
         private const string startTaskStdOutContent = ScenarioTestHelpers.SharedPoolStartTaskStdOutContent;
+
+        public FileTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
 
         [Fact]
         public void TestGetNodeFileByTaskByName()

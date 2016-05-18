@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,8 +14,8 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using System;
     using Microsoft.WindowsAzure.Storage;
+    using System;
 
     /// <summary>
     /// Storage exception utility

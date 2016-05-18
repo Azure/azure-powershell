@@ -94,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         /// <summary>
         /// Get the test environment from a connection string specifying a certificate
         /// </summary>
-        /// <param name="testConnectionString">The connetcion string to parse</param>
+        /// <param name="testConnectionString">The connection string to parse</param>
         /// <returns>The test environment from parsing the connection string.</returns>
         protected virtual TestEnvironment GetCertificateTestEnvironmentFromConnectionString(string testConnectionString)
         {

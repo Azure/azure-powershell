@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Graph.RBAC.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 DisplayName = user.DisplayName,
                 Id = new Guid(user.ObjectId),
                 UserPrincipalName = user.UserPrincipalName,
-                Mail = user.Mail 
+                Mail = user.Mail
             };
         }
 
@@ -139,7 +138,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     Type = application.ObjectType,
                     ApplicationId = Guid.Parse(application.AppId),
                     IdentifierUris = application.IdentifierUris,
-                    DisplayName= application.DisplayName,
+                    DisplayName = application.DisplayName,
                     ReplyUrls = application.ReplyUrls,
                     AppPermissions = application.AppPermissions,
                     AvailableToOtherTenants = application.AvailableToOtherTenants
@@ -168,10 +167,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         {
             return new PasswordCredential
             {
-                 StartDate = PSPasswordCredential.StartDate,
-                 EndDate = PSPasswordCredential.EndDate,
-                 KeyId = PSPasswordCredential.KeyId,
-                 Value = PSPasswordCredential.Value
+                StartDate = PSPasswordCredential.StartDate,
+                EndDate = PSPasswordCredential.EndDate,
+                KeyId = PSPasswordCredential.KeyId,
+                Value = PSPasswordCredential.Value
             };
         }
     }

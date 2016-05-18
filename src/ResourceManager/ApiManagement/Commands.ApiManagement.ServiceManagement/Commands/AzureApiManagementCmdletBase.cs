@@ -16,13 +16,13 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using System;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement;
-    using ResourceManager.Common;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common;
+    using System;
+    using System.Management.Automation;
 
     abstract public class AzureApiManagementCmdletBase : AzureRMCmdlet
     {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             WriteExceptionError(ex);
         }
-        
+
         protected void WriteProgress(TenantConfigurationLongRunningOperation operation)
         {
             WriteProgress(new ProgressRecord(0, operation.OperationName, operation.Status.ToString()));
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     LongRunningOperationDefaultTimeout : longRunningOperation.RetryAfter.Value;
 
                 WriteProgress(longRunningOperation);
-               
+
                 TestMockSupport.Delay(retryAfter);
 
                 // the operation link is present in the first call to Operation. 
@@ -107,8 +107,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         protected void ExecuteTenantConfigurationLongRunningCmdletWrap(
             Func<TenantConfigurationLongRunningOperation> func,
-            bool passThru = false,
-            object passThruValue = null)
+            bool passThru = false)
         {
             try
             {
@@ -121,12 +120,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                         longRunningOperation.OperationResult.Error.Message
                         : longRunningOperation.OperationName;
 
+                    WriteObject(longRunningOperation.OperationResult);
+                    if (longRunningOperation.OperationResult.Error != null)
+                    {
+                        WriteObject(longRunningOperation.OperationResult.Error);
+                        if (longRunningOperation.OperationResult.Error.Details != null)
+                        {
+                            WriteObject(longRunningOperation.OperationResult.Error.Details, true);
+                        }
+                    }
+
                     WriteErrorWithTimestamp(errorMessage);
-                    WriteObject(passThruValue ?? longRunningOperation.OperationResult);
                 }
                 else if (passThru)
                 {
-                    WriteObject(passThruValue ?? longRunningOperation.OperationResult);
+                    WriteObject(longRunningOperation.OperationResult);
                 }
             }
             catch (ArgumentException ex)

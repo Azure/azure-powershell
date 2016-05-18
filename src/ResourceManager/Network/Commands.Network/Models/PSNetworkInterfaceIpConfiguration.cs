@@ -14,12 +14,14 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSNetworkInterfaceIPConfiguration : PSIPConfiguration
     {
+        [JsonProperty(Order = 2)]
+        public string PrivateIpAddressVersion { get; set; }
+
         [JsonProperty(Order = 2)]
         public List<PSBackendAddressPool> LoadBalancerBackendAddressPools { get; set; }
 

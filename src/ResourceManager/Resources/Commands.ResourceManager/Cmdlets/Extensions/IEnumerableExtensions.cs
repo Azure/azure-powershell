@@ -14,10 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
 
     /// <summary>
     /// IEnumerable extension methods
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         public static IEnumerable<IEnumerable<TSource>> Batch<TSource>(this IEnumerable<TSource> source, int batchSize = 10)
         {
             var batch = new List<TSource>(batchSize);
-            foreach(var item in source)
+            foreach (var item in source)
             {
                 batch.Add(item);
                 if (batch.Count >= batchSize)

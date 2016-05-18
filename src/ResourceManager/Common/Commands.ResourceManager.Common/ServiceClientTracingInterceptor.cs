@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Rest;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {

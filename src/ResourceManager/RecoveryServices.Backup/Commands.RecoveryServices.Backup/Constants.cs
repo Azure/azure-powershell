@@ -14,11 +14,17 @@
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
+    /// <summary>
+    /// Constants used by Job Cmdlets
+    /// </summary>
     public class JobConstants
     {
         public const int MaximumJobsToFetch = 1000;
     }
 
+    /// <summary>
+    /// Constants used by Policy Cmdlets
+    /// </summary>
     public class PolicyConstants
     {
         public const int MinPolicyNameLength = 3;

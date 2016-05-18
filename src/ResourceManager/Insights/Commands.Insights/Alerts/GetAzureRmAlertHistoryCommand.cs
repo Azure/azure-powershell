@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Insights.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
 {

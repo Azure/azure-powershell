@@ -12,26 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
-using Microsoft.Azure.Commands.Sql.Auditing.Services;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
 using Newtonsoft.Json.Linq;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -44,18 +38,18 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// The Sql management client used by this communicator
         /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
-       
+
         /// <summary>
         ///  The storage management client used by this communicator
         /// </summary>
         private static Microsoft.WindowsAzure.Management.Storage.StorageManagementClient StorageClient { get; set; }
 
         private static Microsoft.Azure.Management.Storage.StorageManagementClient StorageV2Client { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription {get ; set; }
+        private static AzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The resources management client used by this communicator
@@ -133,7 +127,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         private Dictionary<StorageKeyKind, string> GetV2Keys(string resourceGroupName, string storageAccountName)
         {
             Microsoft.Azure.Management.Storage.StorageManagementClient storageClient = GetCurrentStorageV2Client(Context);
-            var r =  storageClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
+            var r = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
             string k1 = r.StorageAccountKeys.Key1;
             string k2 = r.StorageAccountKeys.Key2;
             Dictionary<StorageKeyKind, String> result = new Dictionary<StorageKeyKind, String>();
@@ -141,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             result.Add(StorageKeyKind.Secondary, k2);
             return result;
         }
-        
+
         /// <summary>
         /// Gets the storage keys for the given storage account. 
         /// </summary>
@@ -171,12 +165,12 @@ namespace Microsoft.Azure.Commands.Sql.Common
             resourceType =>
             {
                 ResourceListResult res = resourcesClient.Resources.List(new ResourceListParameters
-                    {
-                        ResourceGroupName = null,
-                        ResourceType = resourceType,
-                        TagName = null,
-                        TagValue = null
-                    });
+                {
+                    ResourceGroupName = null,
+                    ResourceType = resourceType,
+                    TagName = null,
+                    TagValue = null
+                });
                 var allResources = new List<GenericResourceExtended>(res.Resources);
                 GenericResourceExtended account = allResources.Find(r => r.Name == storageAccountName);
                 if (account != null)
@@ -190,7 +184,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 {
                     throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
                 }
-            };            
+            };
             try
             {
                 return getResourceGroupName("Microsoft.ClassicStorage/storageAccounts");
@@ -206,7 +200,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         private Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetCurrentStorageClient(AzureContext context)
         {
-            if(StorageClient == null)
+            if (StorageClient == null)
                 StorageClient = AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ServiceManagement);
             return StorageClient;
         }

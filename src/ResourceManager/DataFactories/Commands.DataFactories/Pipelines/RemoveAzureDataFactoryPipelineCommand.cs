@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataFactories.Properties;
-using System;
-using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 ExecuteDelete);
 
             WriteObject(true);
-            
+
         }
 
         private void ExecuteDelete()

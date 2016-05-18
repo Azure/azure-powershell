@@ -12,11 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Tags.Model;
@@ -24,6 +19,11 @@ using Microsoft.Azure.Management.DataLake.Analytics;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             var toReturn = new List<DataLakeStoreAccountInfo>();
             toReturn.AddRange(response);
 
-            while(!string.IsNullOrEmpty(response.NextPageLink))
+            while (!string.IsNullOrEmpty(response.NextPageLink))
             {
                 response = _accountClient.Account.ListDataLakeStoreAccountsNext(response.NextPageLink);
                 toReturn.AddRange(response);
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IList<USqlDatabase> GetDatabases(string accountName)
         {
             List<USqlDatabase> toReturn = new List<USqlDatabase>();
-            var response =  _catalogClient.Catalog.ListDatabases(accountName);
+            var response = _catalogClient.Catalog.ListDatabases(accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
