@@ -6,7 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{13E031E4-8A43-4B87-9D72-D70180C31C11}</ProjectGuid>
+    <ProjectGuid>{D4B58288-BD8F-4514-9833-07309E7E4F23}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Websites.Test</RootNamespace>
@@ -44,6 +44,9 @@
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\net45\Hyak.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.DevTestLabs">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DevTestLabs.1.0.0-preview\lib\net45\Microsoft.Azure.Management.DevTestLabs.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
@@ -143,12 +146,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ScenarioTests\DevTestLabsController.cs" />
+    <Compile Include="ScenarioTests\PolicyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioTests\AppServicePlanTests.cs" />
-    <Compile Include="ScenarioTests\WebAppBackupRestoreTests.cs" />
-    <Compile Include="ScenarioTests\SSLBindingTests.cs" />
-    <Compile Include="ScenarioTests\WebsitesController.cs" />
-    <Compile Include="ScenarioTests\WebAppTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1">
@@ -161,130 +161,10 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\AppServicePlanTests.ps1">
+    <None Include="ScenarioTests\PolicyTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\WebAppBackupRestoreTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\SSLBindingTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\WebAppSlotTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\WebAppTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestCreateNewAppServicePlan.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestCreateNewAppServicePlanInAse.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestGetAppServicePlan.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestGetAppServicePlanMetrics.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestRemoveAppServicePlan.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestSetAppServicePlan.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\TestCreateNewWebAppSSLBinding.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\TestGetNewWebAppSSLBinding.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\TestGetWebAppCertificate.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\TestRemoveNewWebAppSSLBinding.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\TestWebAppSSLBindingPipeSupport.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestCreateNewWebAppBackup.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestCreateNewWebAppBackupPiping.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestEditAndGetWebAppBackupConfiguration.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestEditAndGetWebAppBackupConfigurationPiping.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestGetWebAppBackup.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestGetWebAppBackupList.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCloneWebAppSlot.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCloneWebAppToSlot.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCreateNewWebAppSlot.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCreateNewWebAppSlotOnAse.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestGetWebAppSlot.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestGetWebAppSlotMetrics.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestManageSlotSlotConfigName.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestSetWebAppSlot.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestStartStopRestartWebAppSlot.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestWebAppSlotPublishingProfile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCloneNewWebApp.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCloneNewWebAppAndDeploymentSlots.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCloneNewWebAppWithNewTrafficManager.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCreateNewAppOnAse.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCreateNewWebApp.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestGetWebApp.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestGetWebAppMetrics.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestSetWebApp.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestStartStopRestartWebApp.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestWebAppPublishingProfile.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.PolicyTests\TestPolicies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -308,10 +188,6 @@
     <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Commands.Websites\Commands.Websites.csproj">
-      <Project>{80a92297-7c92-456b-8ee7-9fb6ce30149d}</Project>
-      <Name>Commands.Websites</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
