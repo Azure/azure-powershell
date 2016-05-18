@@ -14,12 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// Factory class for creating <see cref="HttpClient"/> objects with custom headers.
@@ -39,14 +39,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The cmdlet info header values.
         /// </summary>
-        private readonly Dictionary<string,string> cmdletHeaderValues;
+        private readonly Dictionary<string, string> cmdletHeaderValues;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpClientHelper"/> class.
         /// </summary>
         /// <param name="credentials">The subscription cloud credentials.</param>
         /// <param name="headerValues">The header values.</param>
-        protected HttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string,string> cmdletHeaderValues)
+        protected HttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
         {
             this.credentials = credentials;
             this.headerValues = headerValues;

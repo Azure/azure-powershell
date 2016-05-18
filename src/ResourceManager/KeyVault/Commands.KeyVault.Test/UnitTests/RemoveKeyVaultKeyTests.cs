@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
-using System.Management.Automation;
 using Xunit;
 using WebKey = Microsoft.Azure.KeyVault.WebKey;
 
@@ -41,7 +39,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 VaultName = VaultName
             };
 
-            keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, "HSM", new string[]{"All"}, null);
+            keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, "HSM", new string[] { "All" }, null);
             webKey = new WebKey.JsonWebKey();
             keyBundle = new KeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName };
         }

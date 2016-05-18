@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Newtonsoft.Json;
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using System.Net;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {

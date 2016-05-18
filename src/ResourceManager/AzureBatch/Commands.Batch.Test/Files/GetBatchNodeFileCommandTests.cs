@@ -34,8 +34,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchNodeFileCommandTests()
+        public GetBatchNodeFileCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchNodeFileCommand()
@@ -59,10 +60,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.Filter = null;
 
             // Build a NodeFile instead of querying the service on a List NodeFile call
-            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders> response = BatchTestHelpers.CreateNodeFileListByTaskResponse(new string[] {});
+            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders> response = BatchTestHelpers.CreateNodeFileListByTaskResponse(new string[] { });
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                bool?, 
-                ProxyModels.FileListFromTaskOptions, 
+                bool?,
+                ProxyModels.FileListFromTaskOptions,
                 AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -98,7 +99,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             // Build a NodeFile instead of querying the service on a Get NodeFile Properties call
             AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders> response = BatchTestHelpers.CreateNodeFileGetPropertiesByTaskResponse();
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.FileGetNodeFilePropertiesFromTaskOptions, 
+                ProxyModels.FileGetNodeFilePropertiesFromTaskOptions,
                 AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -129,11 +130,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string[] namesOfConstructedNodeFiles = new[] { "stdout.txt", "stderr.txt" };
 
             // Build some NodeFiles instead of querying the service on a List NodeFiles call
-            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders> response = 
+            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders> response =
                 BatchTestHelpers.CreateNodeFileListByTaskResponse(namesOfConstructedNodeFiles);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                bool?, 
-                ProxyModels.FileListFromTaskOptions, 
+                bool?,
+                ProxyModels.FileListFromTaskOptions,
                 AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -172,12 +173,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string[] namesOfConstructedNodeFiles = new[] { "stdout.txt", "stderr.txt", "wd" };
 
             // Build some NodeFiles instead of querying the service on a List NodeFiles call
-            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders> response = 
+            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders> response =
                 BatchTestHelpers.CreateNodeFileListByTaskResponse(namesOfConstructedNodeFiles);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                bool?, 
-                ProxyModels.FileListFromTaskOptions, 
-                AzureOperationResponse<IPage<ProxyModels.NodeFile>, 
+                bool?,
+                ProxyModels.FileListFromTaskOptions,
+                AzureOperationResponse<IPage<ProxyModels.NodeFile>,
                 ProxyModels.FileListFromTaskHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -221,11 +222,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string[] namesOfConstructedNodeFiles = new[] { "stdout.txt", "stderr.txt", "wd" };
 
             // Build some NodeFiles instead of querying the service on a List NodeFiles call
-            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders> response = 
+            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders> response =
                 BatchTestHelpers.CreateNodeFileListByTaskResponse(namesOfConstructedNodeFiles);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                bool?, 
-                ProxyModels.FileListFromTaskOptions, 
+                bool?,
+                ProxyModels.FileListFromTaskOptions,
                 AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -263,11 +264,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.Filter = null;
 
             // Build a NodeFile instead of querying the service on a List NodeFile call
-            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders> response = 
-                BatchTestHelpers.CreateNodeFileListByComputeNodeResponse(new string[] {});
+            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders> response =
+                BatchTestHelpers.CreateNodeFileListByComputeNodeResponse(new string[] { });
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                bool?, 
-                ProxyModels.FileListFromComputeNodeOptions, 
+                bool?,
+                ProxyModels.FileListFromComputeNodeOptions,
                 AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -296,7 +297,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             // Build a NodeFile instead of querying the service on a Get NodeFile Properties call
             AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders> response = BatchTestHelpers.CreateNodeFileGetPropertiesByComputeNodeResponse();
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.FileGetNodeFilePropertiesFromComputeNodeOptions, 
+                ProxyModels.FileGetNodeFilePropertiesFromComputeNodeOptions,
                 AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -327,12 +328,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string[] namesOfConstructedNodeFiles = new[] { "startup\\stdout.txt", "startup\\stderr.txt" };
 
             // Build some NodeFiles instead of querying the service on a List NodeFiles call
-            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders> response = 
+            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders> response =
                 BatchTestHelpers.CreateNodeFileListByComputeNodeResponse(namesOfConstructedNodeFiles);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                bool?, 
-                ProxyModels.FileListFromComputeNodeOptions, 
-                AzureOperationResponse<IPage<ProxyModels.NodeFile>, 
+                bool?,
+                ProxyModels.FileListFromComputeNodeOptions,
+                AzureOperationResponse<IPage<ProxyModels.NodeFile>,
                 ProxyModels.FileListFromComputeNodeHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -371,12 +372,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string[] namesOfConstructedNodeFiles = new[] { "startup", "workitems", "shared" };
 
             // Build some NodeFiles instead of querying the service on a List NodeFiles call
-            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders> response = 
+            AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders> response =
                 BatchTestHelpers.CreateNodeFileListByComputeNodeResponse(namesOfConstructedNodeFiles);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                bool?, 
-                ProxyModels.FileListFromComputeNodeOptions, 
-                AzureOperationResponse<IPage<ProxyModels.NodeFile>, 
+                bool?,
+                ProxyModels.FileListFromComputeNodeOptions,
+                AzureOperationResponse<IPage<ProxyModels.NodeFile>,
                 ProxyModels.FileListFromComputeNodeHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -423,9 +424,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders> response =
                 BatchTestHelpers.CreateNodeFileListByComputeNodeResponse(namesOfConstructedNodeFiles);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                bool?, 
-                ProxyModels.FileListFromComputeNodeOptions, 
-                AzureOperationResponse<IPage<ProxyModels.NodeFile>, 
+                bool?,
+                ProxyModels.FileListFromComputeNodeOptions,
+                AzureOperationResponse<IPage<ProxyModels.NodeFile>,
                 ProxyModels.FileListFromComputeNodeHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };

@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
     {
         public string Path { get; set; }
         public ParseError[] Errors { get; set; }
-        public Dictionary<string,string> RequiredModules { get; set; }
+        public Dictionary<string, string> RequiredModules { get; set; }
 
     }
 }

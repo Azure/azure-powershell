@@ -12,25 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Management.SiteRecovery;
+using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.SiteRecoveryVault;
+using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net;
+using System.Net.Security;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Script.Serialization;
 using System.Xml;
-using Microsoft.Azure.Management.SiteRecoveryVault;
-using Microsoft.Azure.Management.SiteRecoveryVault.Models;
-using Microsoft.Azure.Management.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using System.Configuration;
-using System.Net.Security;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <returns>Site Recovery Management client</returns>
         private SiteRecoveryManagementClient GetSiteRecoveryClient()
-        {                    
+        {
             this.ValidateVaultSettings(
                 asrVaultCreds.ResourceName,
                 asrVaultCreds.ResourceGroupName);

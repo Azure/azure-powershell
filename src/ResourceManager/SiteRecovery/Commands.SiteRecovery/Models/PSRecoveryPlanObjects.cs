@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Management.SiteRecovery.Models;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
-using Microsoft.Azure.Management.SiteRecovery.Models;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -30,7 +28,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
         public ASRRecoveryPlanGroup(RecoveryPlanGroup recoveryPlanGroup, IList<ReplicationProtectedItem> replicationProtectedItems = null)
         {
-            if(recoveryPlanGroup != null)
+            if (recoveryPlanGroup != null)
             {
                 this.GroupType = recoveryPlanGroup.GroupType;
                 this.StartGroupActions = recoveryPlanGroup.StartGroupActions;
@@ -110,7 +108,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             foreach (RecoveryPlanGroup recoveryPlanGroup in recoveryPlan.Properties.Groups)
             {
-                switch(recoveryPlanGroup.GroupType)
+                switch (recoveryPlanGroup.GroupType)
                 {
                     case Constants.Boot:
                         groupCount++;

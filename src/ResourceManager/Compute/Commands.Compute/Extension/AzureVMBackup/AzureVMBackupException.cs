@@ -13,10 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {
@@ -29,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 
     public class AzureVMBackupException : Exception
     {
-        public AzureVMBackupException(int errorCode,string message):base(message)
+        public AzureVMBackupException(int errorCode, string message) : base(message)
         {
             this.AzureVMBackupErrorCode = errorCode;
         }

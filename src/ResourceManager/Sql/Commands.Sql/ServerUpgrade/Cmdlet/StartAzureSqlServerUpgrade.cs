@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
-using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         [ValidateNotNullOrEmpty]
         public DateTime? ScheduleUpgradeAfterUtcDateTime { get; set; }
 
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = false,
             HelpMessage = "Determines the collection of recommended database properties for server upgrade")]
         public RecommendedDatabaseProperties[] DatabaseCollection { get; set; }
 
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         {
             var upgrade = ModelAdapter.GetUpgrade(this.ResourceGroupName, this.ServerName);
 
-            if (upgrade.Status == ServerUpgradeStatus.Queued || 
+            if (upgrade.Status == ServerUpgradeStatus.Queued ||
                 upgrade.Status == ServerUpgradeStatus.InProgress ||
                 upgrade.Status == ServerUpgradeStatus.Cancelling)
             {
@@ -107,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
                     }
 
                 }
-            }            
+            }
 
             var newEntity = new List<AzureSqlServerUpgradeStartModel>();
             newEntity.Add(new AzureSqlServerUpgradeStartModel

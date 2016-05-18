@@ -27,7 +27,8 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Get list of protection policies
+    /// Gets the list of protection policies associated with this recovery services vault
+    /// according to the filters passed via the cmdlet parameters.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet), 
             OutputType(typeof(PolicyBase), typeof(IList<PolicyBase>))]
@@ -38,11 +39,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected const string NoParamSet = "NoParamSet";
         protected const string WorkloadBackupMangementTypeParamSet = "WorkloadBackupManagementTypeParamSet";
 
+        /// <summary>
+        /// Name of the policy to be fetched.
+        /// </summary>
         [Parameter(ParameterSetName = PolicyNameParamSet, Position = 1, 
             Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Workload type of the policy to be fetched
+        /// </summary>
         [Parameter(ParameterSetName = WorkloadParamSet, Position = 2, 
             Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
         [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 2, 
@@ -50,6 +57,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public WorkloadType? WorkloadType { get; set; }
 
+        /// <summary>
+        /// Backup management type of the policy to be fetched
+        /// </summary>
         [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 3, 
             Mandatory = true, HelpMessage = ParamHelpMsgs.Common.BackupManagementType)]
         [ValidateNotNullOrEmpty]
