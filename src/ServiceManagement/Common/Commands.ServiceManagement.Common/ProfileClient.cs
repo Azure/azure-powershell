@@ -325,9 +325,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             if (subscriptionsFromServer == null ||
                 subscriptionsFromServer.Count ==0 )
             {
-                throw new ArgumentException("No subscriptions are associated with the logged in account in " + 
-                        "Azure Service Management (RDFE). This means that the logged in user is not an administrator " + 
-                        "or co-administrator for any account." + Environment.NewLine + "Did you mean to execute Login-AzureRmAccount?");
+                throw new ArgumentException(Resources.NoSubscriptionFoundForTenant);
             }
             // If account id is null the login failed
             if (account.Id != null)
