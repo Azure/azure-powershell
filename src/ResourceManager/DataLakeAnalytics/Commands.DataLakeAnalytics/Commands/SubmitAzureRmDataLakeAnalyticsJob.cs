@@ -23,6 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsLifecycle.Submit, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
+    [Alias("Submit-AdlJob")]
     public class SubmitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
         // internal const string HiveJobWithScriptPath = "Submit job with script path for Hive";
