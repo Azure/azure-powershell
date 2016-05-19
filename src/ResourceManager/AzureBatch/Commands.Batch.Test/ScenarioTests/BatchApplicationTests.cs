@@ -14,13 +14,15 @@
 
 using System;
 using Microsoft.Azure.Test;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchApplicationTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private const string filePath = "Resources\\TestApplicationPackage.zip";
+        private readonly string filePath = "Resources\\TestApplicationPackage.zip".AsAbsoluteLocation();
+        private const string version = "foo";
 
         [Fact]
         public void TestUploadApplication()
@@ -32,7 +34,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestUploadApplicationPackage()
         {
             string id = "newApplicationPackage";
-            string version = "foo";
 
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
@@ -62,7 +63,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestUpdateApplicationPackage()
         {
             string id = "updateApplicationPackage";
-            string version = "foo";
 
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
@@ -92,7 +92,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestCreatePoolWithApplicationPackage()
         {
             string id = "createPoolWithApplicationPackage";
-            string version = "foo";
             string poolId = "testCreatePoolWithAppPackages";
 
             BatchController controller = BatchController.NewInstance;
@@ -122,7 +121,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestUpdatePoolWithApplicationPackage()
         {
             string id = "updatePoolWithApplicationPackage";
-            string version = "foo";
             string poolId = "testUpdatePoolWithAppPackages";
 
             BatchController controller = BatchController.NewInstance;
@@ -144,6 +142,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 },
                 () =>
                 {
+                    ScenarioTestHelpers.DeleteApplicationPackage(controller, context, id, version);
+                    ScenarioTestHelpers.DeleteApplication(controller, context, id);
                     ScenarioTestHelpers.DeletePool(controller, context, poolId);
                 },
                 TestUtilities.GetCallingClass(),
