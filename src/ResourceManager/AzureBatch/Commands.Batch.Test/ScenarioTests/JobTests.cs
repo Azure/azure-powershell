@@ -277,6 +277,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             TestTerminateJob(true);
         }
 
+        [Fact]
+        public void TestJobWithTaskDependencies()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-JobWithTaskDependencies"));
+        }
+
         private void TestTerminateJob(bool usePipeline)
         {
             BatchController controller = BatchController.NewInstance;
