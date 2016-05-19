@@ -30,7 +30,7 @@ using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 
-namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
 {
     public class DevTestLabsController
     {
@@ -58,6 +58,12 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             {
                 return new DevTestLabsController();
             }
+        }
+
+        public string[] InitScripts
+        {
+            get;
+            set;
         }
 
         public DevTestLabsController()

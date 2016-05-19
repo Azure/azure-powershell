@@ -14,24 +14,6 @@
 
 <#
 .SYNOPSIS
-Gets a lab name for testing.
-#>
-function Get-LabName
-{
-    return getAssetName
-}
-
-<#
-.SYNOPSIS
-Gets a resource group name for testing.
-#>
-function Get-ResourceGroupName
-{
-    return getAssetName
-}
-
-<#
-.SYNOPSIS
 Gets the location for the Lab. Default to West US if none found.
 #>
 function Get-Location
@@ -66,4 +48,45 @@ function Invoke-For-Both
 
     $functionToCall.Invoke($param1);
     $functionToCall.Invoke($param2);
+}
+
+<#
+.SYNOPSIS
+Create a resource group and lab.
+#>
+function Setup-Test-ResourceGroup
+{
+    Param($_resourceGroupName,
+        $_labName)
+    $global:rgname = $_resourceGroupName;
+    $global:labName = $_labName;
+
+    $location = Get-Location
+
+    #Setup
+    New-AzureRmResourceGroup -Name $rgname -Location $location
+    New-AzureRmResourceGroupDeployment -Name $labName -ResourceGroupName $rgname -TemplateParameterObject @{ newLabName = "$labName" } -TemplateFile https://raw.githubusercontent.com/Azure/azure-devtestlab/master/ARMTemplates/101-dtl-create-lab/azuredeploy.json
+}
+
+<#
+.SYNOPSIS
+Set global variables.
+#>
+function Setup-Test-Vars
+{
+    Param($_resourceGroupName,
+        $_labName)
+    $global:rgname = $_resourceGroupName;
+    $global:labName = $_labName;
+}
+
+<#
+.SYNOPSIS
+Destroy the lab resource group.
+#>
+function Destroy-Test-ResourceGroup
+{
+    Param($_resourceGroupName)
+
+    Remove-AzureRmResourceGroup -Name $_resourceGroupName -Force
 }

@@ -14,82 +14,92 @@
 
 <#
 .SYNOPSIS
-Tests policies
+Tests AzureRmDtlVMsPerLabPolicy
 #>
-function Test-Policies
+function Test-AzureRmDtlVMsPerLabPolicy
 {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $labName = Get-LabName
-    $location = Get-Location
-    $apiversion = "2016-05-15"
-    $resourceType = "Microsoft.DevTestLabs/sites"
+    # Max VMs per lab policy
+    $policy = Set-AzureRmDtlVMsPerLabPolicy -MaxVMs 5 -LabName $labName -ResourceGroupName $rgname
+    $readBack = Get-AzureRmDtlVMsPerLabPolicy -LabName $labName -ResourceGroupName $rgname
 
-    try
+    Invoke-For-Both $policy $readBack `
     {
-        #Setup
-        New-AzureRmResourceGroup -Name $rgname -Location $location
-        New-AzureRmResourceGroupDeployment -Name $labName -ResourceGroupName $rgname -TemplateParameterObject @{ newLabName = "$labName" } -TemplateFile https://raw.githubusercontent.com/Azure/azure-devtestlab/master/ARMTemplates/101-dtl-create-lab/azuredeploy.json
-
-        # Max VMs per lab policy
-        $policy = Set-AzureRmDtlVMsPerLabPolicy -MaxVMs 5 -LabName $labName -ResourceGroupName $rgname
-        $readBack = Get-AzureRmDtlVMsPerLabPolicy -LabName $labName -ResourceGroupName $rgname
-
-        Invoke-For-Both $policy $readBack `
-        {
-            Param($x)
-            Assert-AreEqual "Enabled" $x.Status
-            Assert-AreEqual "5" $x.Threshold
-        }
-
-        $policy = Set-AzureRmDtlVMsPerUserPolicy -MaxVMs 5 -LabName $labName -ResourceGroupName $rgname
-        $readBack = Get-AzureRmDtlVMsPerUserPolicy -LabName $labName -ResourceGroupName $rgname
-        Invoke-For-Both $policy $readBack `
-        {
-            Param($x)
-            Assert-AreEqual "Enabled" $x.Status
-            Assert-AreEqual "5" $x.Threshold
-        }
-
-        $policy = Set-AzureRmDtlAllowedVMSizesPolicy -Enable -LabName $labName -ResourceGroupName $rgname -VmSizes Standard_A3, Standard_A0
-        $readBack = Get-AzureRmDtlAllowedVMSizesPolicy -LabName $labName -ResourceGroupName $rgname
-        Invoke-For-Both $policy $readBack `
-        {
-            Param($x)
-            Assert-AreEqual "Enabled" $x.Status
-            Assert-AreEqual '["Standard_A3","Standard_A0"]' $x.Threshold
-        }
-        $policy = Set-AzureRmDtlAutoShutdownPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname
-        $readBack = Get-AzureRmDtlAutoShutdownPolicy -LabName $labName -ResourceGroupName $rgname
-        Invoke-For-Both $policy $readBack `
-        {
-            Param($x)
-            Assert-AreEqual "Enabled" $x.Status
-            Assert-AreEqual "1330" $x.DailyRecurrence.Time
-        }
-
-        $policy = Set-AzureRmDtlAutoStartPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname
-        $readBack = Get-AzureRmDtlAutoStartPolicy -LabName $labName -ResourceGroupName $rgname
-        Invoke-For-Both $policy $readBack `
-        {
-            Param($x)
-            Assert-AreEqual "Enabled" $x.Status
-            Assert-AreEqual "1330" $x.WeeklyRecurrence.Time
-        }
-
-        $policy = Set-AzureRmDtlAutoStartPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname -Days Monday, Tuesday
-        $readBack = Get-AzureRmDtlAutoStartPolicy -LabName $labName -ResourceGroupName $rgname
-        Invoke-For-Both $policy $readBack `
-        {
-            Param($x)
-            Assert-AreEqual "Enabled" $x.Status
-            Assert-AreEqual "1330" $x.WeeklyRecurrence.Time
-            Assert-AreEqualArray ([System.DayOfWeek]::Monday, [System.DayOfWeek]::Tuesday) $x.WeeklyRecurrence.Weekdays
-        }
+        Param($x)
+        Assert-AreEqual "Enabled" $x.Status
+        Assert-AreEqual "5" $x.Threshold
     }
-    finally
+}
+
+<#
+.SYNOPSIS
+Tests AzureRmDtlVMsPerUserPolicy
+#>
+function Test-AzureRmDtlVMsPerUserPolicy
+{
+    $policy = Set-AzureRmDtlVMsPerUserPolicy -MaxVMs 5 -LabName $labName -ResourceGroupName $rgname
+    $readBack = Get-AzureRmDtlVMsPerUserPolicy -LabName $labName -ResourceGroupName $rgname
+    Invoke-For-Both $policy $readBack `
     {
-        # Cleanup
-        Remove-AzureRmResourceGroup -Name $rgname -Force
+        Param($x)
+        Assert-AreEqual "Enabled" $x.Status
+        Assert-AreEqual "5" $x.Threshold
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureRmDtlAllowedVMSizesPolicy
+#>
+function Test-AzureRmDtlAllowedVMSizesPolicy
+{
+    $policy = Set-AzureRmDtlAllowedVMSizesPolicy -Enable -LabName $labName -ResourceGroupName $rgname -VmSizes Standard_A3, Standard_A0
+    $readBack = Get-AzureRmDtlAllowedVMSizesPolicy -LabName $labName -ResourceGroupName $rgname
+    Invoke-For-Both $policy $readBack `
+    {
+        Param($x)
+        Assert-AreEqual "Enabled" $x.Status
+        Assert-AreEqual '["Standard_A3","Standard_A0"]' $x.Threshold
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureRmDtlAllowedVMSizesPolicy
+#>
+function Test-AzureRmDtlAutoShutdownPolicy
+{
+    $policy = Set-AzureRmDtlAutoShutdownPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname
+    $readBack = Get-AzureRmDtlAutoShutdownPolicy -LabName $labName -ResourceGroupName $rgname
+    Invoke-For-Both $policy $readBack `
+    {
+        Param($x)
+        Assert-AreEqual "Enabled" $x.Status
+        Assert-AreEqual "1330" $x.DailyRecurrence.Time
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureRmDtlAutoStartPolicy
+#>
+function Test-AzureRmDtlAutoStartPolicy
+{
+    $policy = Set-AzureRmDtlAutoStartPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname
+    $readBack = Get-AzureRmDtlAutoStartPolicy -LabName $labName -ResourceGroupName $rgname
+    Invoke-For-Both $policy $readBack `
+    {
+        Param($x)
+        Assert-AreEqual "Enabled" $x.Status
+        Assert-AreEqual "1330" $x.WeeklyRecurrence.Time
+    }
+
+    $policy = Set-AzureRmDtlAutoStartPolicy -Time "13:30:00" -LabName $labName -ResourceGroupName $rgname -Days Monday, Tuesday
+    $readBack = Get-AzureRmDtlAutoStartPolicy -LabName $labName -ResourceGroupName $rgname
+    Invoke-For-Both $policy $readBack `
+    {
+        Param($x)
+        Assert-AreEqual "Enabled" $x.Status
+        Assert-AreEqual "1330" $x.WeeklyRecurrence.Time
+        Assert-AreEqualArray ([System.DayOfWeek]::Monday, [System.DayOfWeek]::Tuesday) $x.WeeklyRecurrence.Weekdays
     }
 }

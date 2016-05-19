@@ -9,8 +9,8 @@
     <ProjectGuid>{D4B58288-BD8F-4514-9833-07309E7E4F23}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.Websites.Test</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Websites.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.DevTestLabs.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.DevTestLabs.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ScenarioTests\DevTestLabsController.cs" />
+    <Compile Include="ScenarioTests\DevTestLabsTestFixture.cs" />
     <Compile Include="ScenarioTests\PolicyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -158,15 +159,22 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ScenarioTests\DevTestLabsTestFixture.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\PolicyTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.PolicyTests\TestPolicies.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.DevTestLabsTestFixture\Dispose.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.DevTestLabsTestFixture\Init.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlAllowedVMSizesPolicy.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlAutoShutdownPolicy.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlAutoStartPolicy.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlVMsPerLabPolicy.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlVMsPerUserPolicy.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">

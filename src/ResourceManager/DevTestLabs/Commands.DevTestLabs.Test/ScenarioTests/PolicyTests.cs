@@ -13,18 +13,52 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
 {
-    public class PolicyTests : RMTestBase
+    public class PolicyTests : IClassFixture<DevTestLabsTestFixture>
     {
+        private DevTestLabsTestFixture _fixture;
+
+        public PolicyTests(DevTestLabsTestFixture fixture)
+        {
+            _fixture = fixture;
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPolicies()
+        public void TestAzureRmDtlVMsPerLabPolicy()
         {
-            DevTestLabsController.NewInstance.RunPsTest("Test-Policies");
+            _fixture.RunTest("Test-AzureRmDtlVMsPerLabPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureRmDtlVMsPerUserPolicy()
+        {
+            _fixture.RunTest("Test-AzureRmDtlVMsPerUserPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureRmDtlAllowedVMSizesPolicy()
+        {
+            _fixture.RunTest("Test-AzureRmDtlAllowedVMSizesPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureRmDtlAutoShutdownPolicy()
+        {
+            _fixture.RunTest("Test-AzureRmDtlAutoShutdownPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureRmDtlAutoStartPolicy()
+        {
+            _fixture.RunTest("Test-AzureRmDtlAutoStartPolicy");
         }
     }
 }
