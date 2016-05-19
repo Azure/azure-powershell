@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         Dictionary<System.Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
 
+        /// <summary>
+        /// Initializes the provider with the data recieved from the cmdlet layer
+        /// </summary>
+        /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
+        /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
         public void Initialize(Dictionary<System.Enum, object> providerData, ServiceClientAdapter serviceClientAdapter)
         {
             this.ProviderData = providerData;
@@ -88,6 +93,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Lists backup management servers registered with the recovery services vault
+        /// </summary>
+        /// <returns></returns>
         public List<Models.BackupEngineBase> ListBackupManagementServers()
         {
             string name = (string)this.ProviderData[ContainerParams.Name];
