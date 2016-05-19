@@ -76,5 +76,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Information about how to run the multi-instance task.
         /// </summary>
         public PSMultiInstanceSettings MultiInstanceSettings { get; set; }
+
+        /// <summary>
+        /// Tasks that this task depends on. The task will not be scheduled until all depended-on tasks have completed successfully.
+        /// </summary>
+        public TaskDependencies DependsOn { get; set; }
     }
 }
