@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch
         {
             if (string.IsNullOrEmpty(this.AccountName))
             {
-                foreach (BatchAccountContext context in BatchClient.ListAccounts(this.ResourceGroupName, Tag))
+                foreach (BatchAccountContext context in BatchClient.ListAccounts(Tag, this.ResourceGroupName))
                 {
                     WriteObject(context);
                 }
