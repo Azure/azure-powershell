@@ -22,6 +22,9 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Backup policy validation helpers.
+    /// </summary>
     public partial class PolicyHelpers
     {
         // <summary>
