@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Test;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchApplicationTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private const string filePath = "Resources\\TestApplicationPackage.zip";
+        private readonly string filePath = "Resources\\TestApplicationPackage.zip".AsAbsoluteLocation();
 
         [Fact]
         public void TestUploadApplication()
