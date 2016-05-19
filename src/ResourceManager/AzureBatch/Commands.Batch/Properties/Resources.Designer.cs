@@ -340,6 +340,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting lifetime statistics for all of the jobs..
+        /// </summary>
+        internal static string GetAllJobsLifetimeStatistics {
+            get {
+                return ResourceManager.GetString("GetAllJobsLifetimeStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting lifetime statistics for all of the pools..
+        /// </summary>
+        internal static string GetAllPoolsLifetimeStatistics {
+            get {
+                return ResourceManager.GetString("GetAllPoolsLifetimeStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting the certificate with thumbprint {0}..
         /// </summary>
         internal static string GetCertificateByThumbprint {
@@ -543,6 +561,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GetPoolNoFilter {
             get {
                 return ResourceManager.GetString("GetPoolNoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting usage metrics, aggregated for pools with the filter {0}..
+        /// </summary>
+        internal static string GetPoolUsageMetricsByFilter {
+            get {
+                return ResourceManager.GetString("GetPoolUsageMetricsByFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting usage metrics, aggregated for pools..
+        /// </summary>
+        internal static string GetPoolUsageMetricsByNoFilter {
+            get {
+                return ResourceManager.GetString("GetPoolUsageMetricsByNoFilter", resourceCulture);
             }
         }
         
