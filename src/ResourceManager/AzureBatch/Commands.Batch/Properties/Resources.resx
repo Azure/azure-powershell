@@ -466,4 +466,16 @@
   <data name="FailedToCheckApplication" xml:space="preserve">
     <value>Failed to create application package {0} version {1}. The package already exists, and an error occurred when checking if the application allows existing packages to be updated. {2}.</value>
   </data>
+  <data name="GetAllJobsLifetimeStatistics" xml:space="preserve">
+    <value>Getting lifetime statistics for all of the jobs.</value>
+  </data>
+  <data name="GetAllPoolsLifetimeStatistics" xml:space="preserve">
+    <value>Getting lifetime statistics for all of the pools.</value>
+  </data>
+  <data name="GetPoolUsageMetricsByNoFilter" xml:space="preserve">
+    <value>Getting usage metrics, aggregated for pools.</value>
+  </data>
+  <data name="GetPoolUsageMetricsByFilter" xml:space="preserve">
+    <value>Getting usage metrics, aggregated for pools with the filter {0}.</value>
+  </data>
 </root>

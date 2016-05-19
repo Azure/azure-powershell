@@ -157,6 +157,7 @@
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
     <Compile Include="Applications\NewBatchApplicationPackageCommand.cs" />
+    <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
     <Compile Include="Models\PSApplicationPackage.cs" />
     <Compile Include="Models\PSApplication.cs" />
     <Compile Include="Applications\RemoveBatchApplicationCommand.cs" />
@@ -259,6 +260,7 @@
     <Compile Include="Models\ListJobOptions.cs" />
     <Compile Include="Models\ListNodeFileOptions.cs" />
     <Compile Include="Models\ListPoolOptions.cs" />
+    <Compile Include="Models\ListPoolUsageOptions.cs" />
     <Compile Include="Models\ListSubtaskOptions.cs" />
     <Compile Include="Models\ListTaskOptions.cs" />
     <Compile Include="Models\ListComputeNodeOptions.cs" />
@@ -317,6 +319,8 @@
     <Compile Include="Models\UpdateComputeNodeUserParameters.cs" />
     <Compile Include="Pools\DisableBatchAutoScaleCommand.cs" />
     <Compile Include="Pools\EnableBatchAutoScaleCommand.cs" />
+    <Compile Include="Pools\GetBatchPoolStatisticsCommand.cs" />
+    <Compile Include="Pools\GetBatchPoolUsageMetricsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
     <Compile Include="Accounts\GetBatchAccountNodeAgentSkuCommand.cs" />
     <Compile Include="Pools\NewBatchPoolCommand.cs" />

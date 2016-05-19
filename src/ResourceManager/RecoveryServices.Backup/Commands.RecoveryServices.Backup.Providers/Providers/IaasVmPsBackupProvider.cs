@@ -41,12 +41,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         Dictionary<System.Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
 
+        /// <summary>
+        /// Initializes the provider with the data recieved from the cmdlet layer
+        /// </summary>
+        /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
+        /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
         public void Initialize(Dictionary<System.Enum, object> providerData, ServiceClientAdapter serviceClientAdapter)
         {
             this.ProviderData = providerData;
             this.ServiceClientAdapter = serviceClientAdapter;
         }
 
+        /// <summary>
+        /// Triggers the enable protection operation for the given item
+        /// </summary>
+        /// <returns>The job response returned from the service</returns>
         public BaseRecoveryServicesJobResponse EnableProtection()
         {
             string azureVMName = (string)ProviderData[ItemParams.AzureVMName];
@@ -130,6 +139,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 serviceClientRequest);
         }
 
+        /// <summary>
+        /// Triggers the disable protection operation for the given item
+        /// </summary>
+        /// <returns>The job response returned from the service</returns>
         public BaseRecoveryServicesJobResponse DisableProtection()
         {
             bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
@@ -189,6 +202,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
+        /// <summary>
+        /// Triggers the backup operation for the given item
+        /// </summary>
+        /// <returns>The job response returned from the service</returns>
         public BaseRecoveryServicesJobResponse TriggerBackup()
         {
             ItemBase item = (ItemBase)ProviderData[ItemParams.Item];
@@ -197,6 +214,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectedItemName));
         }
 
+        /// <summary>
+        /// Triggers the recovery operation for the given recovery point
+        /// </summary>
+        /// <returns>The job response returned from the service</returns>
         public BaseRecoveryServicesJobResponse TriggerRestore()
         {
             AzureVmRecoveryPoint rp = ProviderData[RestoreBackupItemParams.RecoveryPoint]
@@ -216,6 +237,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Fetches the detail info for the given recovery point
+        /// </summary>
+        /// <returns>Recovery point detail as returned by the service</returns>
         public CmdletModel.RecoveryPointBase GetRecoveryPointDetails()
         {
             AzureVmItem item = ProviderData[GetRecoveryPointParams.Item]
@@ -231,6 +256,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
         }
 
+        /// <summary>
+        /// Lists recovery points generated for the given item
+        /// </summary>
+        /// <returns>List of recovery point PowerShell model objects</returns>
         public List<CmdletModel.RecoveryPointBase> ListRecoveryPoints()
         {
             DateTime startDate = (DateTime)(ProviderData[GetRecoveryPointParams.StartDate]);
@@ -258,6 +287,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
 
+        /// <summary>
+        /// Creates policy given the provider data
+        /// </summary>
+        /// <returns>Created policy object as returned by the service</returns>
         public ProtectionPolicyResponse CreatePolicy()
         {
             string policyName = (string)ProviderData[PolicyParams.PolicyName];
@@ -312,6 +345,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                  serviceClientRequest);
         }
 
+        /// <summary>
+        /// Modifies policy using the provider data
+        /// </summary>
+        /// <returns>Modified policy object as returned by the service</returns>
         public ProtectionPolicyResponse ModifyPolicy()
         {
             RetentionPolicyBase retentionPolicy =
@@ -383,6 +420,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                                                serviceClientRequest);
         }
 
+        /// <summary>
+        /// Lists protection containers according to the provider data
+        /// </summary>
+        /// <returns>List of protection containers</returns>
         public List<ContainerBase> ListProtectionContainers()
         {
             Models.ContainerType containerType = 
@@ -433,6 +474,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Lists protected items protected by the recovery services vault according to the provider data
+        /// </summary>
+        /// <returns>List of protected items</returns>
         public List<ItemBase> ListProtectedItems()
         {
             ContainerBase container =
@@ -550,6 +595,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return itemModels;
         }
 
+        /// <summary>
+        /// Constructs the schedule policy object with default inits
+        /// </summary>
+        /// <returns>Default schedule policy object</returns>
         public SchedulePolicyBase GetDefaultSchedulePolicyObject()
         {
             CmdletModel.SimpleSchedulePolicy defaultSchedule = new CmdletModel.SimpleSchedulePolicy();
@@ -566,6 +615,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return defaultSchedule;
         }
 
+        /// <summary>
+        /// Constructs the retention policy object with default inits
+        /// </summary>
+        /// <returns>Default retention policy object</returns>
         public RetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
             CmdletModel.LongTermRetentionPolicy defaultRetention = new CmdletModel.LongTermRetentionPolicy();

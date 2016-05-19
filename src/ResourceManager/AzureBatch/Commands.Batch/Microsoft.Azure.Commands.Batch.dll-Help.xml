@@ -4328,6 +4328,478 @@
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchPoolUsageMetrics
+      </command:name>
+      <maml:description>
+        <maml:para>Gets pool usage metrics for a Batch account.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchPoolUsageMetrics</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Lists the usage metrics, aggregated by pool across individual time intervals, for the specified account. You can filter the statistics to a specific pool and/or time range.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchPoolUsageMetrics</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>EndTime</maml:name>
+          <maml:description>
+            <maml:para>The end time should be at least two hours earlier. If not specified, it defaults to the end time of the last aggregation interval currently available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para>The OData filter clause to use to filter the list of metrics returned. The only valid property is poolId with a string value. Possible operations are: eq, ge, gt, le, lt, startswith.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>StartTime</maml:name>
+          <maml:description>
+            <maml:para>The start time should be at least two and half hours earlier. If not specified, it defaults to the start time of the last aggregation interval currently available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>EndTime</maml:name>
+        <maml:description>
+          <maml:para>The end time should be at least two hours earlier. If not specified, it defaults to the end time of the last aggregation interval currently available.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        <dev:type>
+          <maml:name>DateTime</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use to filter the list of metrics returned. The only valid property is poolId with a string value. Possible operations are: eq, ge, gt, le, lt, startswith.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>StartTime</maml:name>
+        <maml:description>
+          <maml:para>The start time should be at least two and half hours earlier. If not specified, it defaults to the start time of the last aggregation interval currently available.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        <dev:type>
+          <maml:name>DateTime</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSPoolUsageMetrics</maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          $startTime = Get-Date -Date &quot;2016-05-16 00:00:00Z&quot;
+          $endTime = Get-Date -Date &quot;2016-05-16 01:00:00Z&quot;
+          Get-AzureBatchPoolUsageMetrics -StartTime $startTime -EndTime $endTime -BatchContext $context
+
+
+          DataEgressGiB      : 6.68875873088837E-06
+          DataIngressGiB     : 1.9485130906105E-05
+          EndTime            : 5/16/2016 12:30:00 AM
+          PoolId             : testpool1
+          StartTime          : 5/16/2016 12:00:00 AM
+          TotalCoreHours     : 8
+          VirtualMachineSize : standard_d4
+
+          DataEgressGiB      : 5.61587512493134E-06
+          DataIngressGiB     : 1.76150351762772E-05
+          EndTime            : 5/16/2016 12:30:00 AM
+          PoolId             : testpool2
+          StartTime          : 5/16/2016 12:00:00 AM
+          TotalCoreHours     : 12
+          VirtualMachineSize : standard_d4
+
+          DataEgressGiB      : 7.36676156520844E-06
+          DataIngressGiB     : 2.10804864764214E-05
+          EndTime            : 5/16/2016 1:00:00 AM
+          PoolId             : testpool1
+          StartTime          : 5/16/2016 12:30:00 AM
+          TotalCoreHours     : 7.99999999955555
+          VirtualMachineSize : standard_d4
+
+          DataEgressGiB      : 5.80586493015289E-06
+          DataIngressGiB     : 1.80602073669434E-05
+          EndTime            : 5/16/2016 1:00:00 AM
+          PoolId             : testpool2
+          StartTime          : 5/16/2016 12:30:00 AM
+          TotalCoreHours     : 11.9999999993333
+          VirtualMachineSize : standard_d4
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command returns all of the pool usage metrics, aggregated by pool across time intervals between Monday, May 16, 2016 12:00:00 AM and Monday, May 16, 2016 1:00:00 AM</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          $filter = &quot;poolId eq 'MyPool'&quot;
+          Get-AzureBatchPoolUsageMetrics -Filter $filter -BatchContext $context
+
+          DataEgressGiB      : 9.0496614575386E-06
+          DataIngressGiB     : 2.60043889284134E-05
+          EndTime            : 5/16/2016 5:30:00 PM
+          PoolId             : MyPool
+          StartTime          : 5/16/2016 5:00:00 PM
+          TotalCoreHours     : 12
+          VirtualMachineSize : standard_d4
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command returns the usage metrics for pool MyPool with a filter string.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchPoolStatistics</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchJobStatistics</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchPoolStatistics
+      </command:name>
+      <maml:description>
+        <maml:para>Gets pool summary statistics for a Batch account.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchPoolStatistics</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Gets the lifetime statistics for all of the pools in the specified account. Statistics are aggregated across all pools that have ever existed in the account, from account creation to the last update time of the statistics.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchPoolStatistics</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSPoolStatistics</maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          $poolStatistics = Get-AzureBatchPoolStatistics -BatchContext $context
+          $poolStatistics.ResourceStatistics
+
+          AverageCpuPercentage : 0.351232518750755
+          AverageDiskGiB       : 55.2569014701165
+          AverageMemoryGiB     : 2.87273772318252
+          DiskReadGiB          : 45.1326256990433
+          DiskReadIOps         : 878278
+          DiskWriteGiB         : 1230.72120628133
+          DiskWriteIOps        : 176832212
+          LastUpdateTime       : 5/16/2016 4:30:00 PM
+          NetworkReadGiB       : 29.3502839952707
+          NetworkWriteGiB      : 25.5208827350289
+          PeakDiskGiB          : 21.9638671875
+          PeakMemoryGiB        : 1.11184692382813
+          StartTime            : 2/10/2016 7:07:24 PM
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command gets the resource statistics of all of the pools in the specified account. </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchPoolUsageMetrics</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchJobStatistics</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchJobStatistics
+      </command:name>
+      <maml:description>
+        <maml:para>Gets job summary statistics for a Batch account.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchJobStatistics</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Gets lifetime summary statistics for all of the jobs in the specified account. Statistics are aggregated across all jobs that have ever existed in the account, from account creation to the last update time of the statistics.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchJobStatistics</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSJobStatistics</maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Example section  -->
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchJobStatistics -BatchContext $context
+
+          FailedTaskCount    : 330
+          KernelCpuTime      : 00:24:31.8440000
+          LastUpdateTime     : 5/16/2016 6:00:00 PM
+          ReadIOGiB          : 38.1271341182292
+          ReadIOps           : 26546054
+          StartTime          : 11/3/2015 9:47:14 PM
+          SucceededTaskCount : 766
+          TaskRetryCount     : 0
+          Url                : https://accountname.westus.batch.azure.com/lifetimejobstats
+          UserCpuTime        : 20:55:50.3200000
+          WaitTime           : 03:54:49.8530000
+          WallClockTime      : 20:55:50.3200000
+          WriteIOGiB         : 0.159623090177774
+          WriteIOps          : 146946
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command gets the summary statistics for all of the jobs.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchPoolStatistics</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchPoolUsageMetrics</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureBatchRemoteDesktopProtocolFile</command:name>

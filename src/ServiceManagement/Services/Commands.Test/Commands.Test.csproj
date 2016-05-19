@@ -414,6 +414,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Test.Profile.NewAzureProfileTests\TestMakeRdfeCallWithCreatedProfile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Test.Profile.SelectAzureSubscriptionTests\GetSubscriptionPipeToSetSubscription.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Test.Profile.SelectAzureSubscriptionTests\StorageAccountIsNotCleaned.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

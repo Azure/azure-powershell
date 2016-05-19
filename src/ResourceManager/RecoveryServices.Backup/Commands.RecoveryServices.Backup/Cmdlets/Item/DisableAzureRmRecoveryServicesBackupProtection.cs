@@ -28,17 +28,25 @@ using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Enable Azure Backup protection
+    /// Disable protection of an item protected by the recovery services vault. 
+    /// Returns the corresponding job created in the service to track this operation.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupProtection"), 
     OutputType(typeof(JobBase))]
     public class DisableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
     {
+        /// <summary>
+        /// The protected item whose protection needs to be disabled.
+        /// </summary>
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem, 
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
 
+        /// <summary>
+        /// If this option is used, all the data backed up for this item will 
+        /// also be deleted and restoring the data will not be possible.
+        /// </summary>
         [Parameter(Position = 2, Mandatory = false, 
             HelpMessage = ParamHelpMsgs.Item.RemoveProtectionOption)]
         public SwitchParameter RemoveRecoveryPoints
@@ -47,6 +55,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             set { DeleteBackupData = value; }
         }
 
+        /// <summary>
+        /// Prevents the confirmation dialog when specified.
+        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.ForceOption)]
         public SwitchParameter Force { get; set; }
 

@@ -392,6 +392,90 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a CloudPoolUsageMetricsResponse object. Note: The lengths of all three lists must be the same.
+        /// </summary>
+        public static AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders> CreatePoolListUsageMetricsResponse(
+            IEnumerable<string> poolIds,
+            IEnumerable<DateTime> startTimes,
+            IEnumerable<DateTime> endTimes)
+        {
+            var poolUsageList = new List<ProxyModels.PoolUsageMetrics>();
+
+            // Validate the lengths of the lists are equal
+            if (!(poolIds.Count() == startTimes.Count() && startTimes.Count() == endTimes.Count()))
+            {
+                throw new ArgumentException("The lists length are not equal.");
+            }
+
+            using (var startTimeEnumerator = startTimes.GetEnumerator())
+            using (var endTimeEnumerator = endTimes.GetEnumerator())
+            using (var poolIdEnumerator = poolIds.GetEnumerator())
+            {
+                while (startTimeEnumerator.MoveNext() && endTimeEnumerator.MoveNext() && poolIdEnumerator.MoveNext())
+                {
+                    poolUsageList.Add(new ProxyModels.PoolUsageMetrics()
+                    {
+                        PoolId = poolIdEnumerator.Current,
+                        StartTime = startTimeEnumerator.Current,
+                        EndTime = endTimeEnumerator.Current
+                    });
+                }
+            }
+
+            var response = new AzureOperationResponse
+                <IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders>()
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = new MockPagedEnumerable<ProxyModels.PoolUsageMetrics>(poolUsageList)
+            };
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudPoolStatisticsResponse object. Note: Using avgCPUPercentage and startTime for validating if the pipeline return the correct values
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders> CreatePoolStatisticsResponse(
+            double avgCPUPercentage,
+            DateTime startTime)
+        {
+            var stats = new ProxyModels.PoolStatistics()
+            {
+                ResourceStats = new ProxyModels.ResourceStatistics() { AvgCPUPercentage = avgCPUPercentage },
+                UsageStats = new ProxyModels.UsageStatistics() { StartTime =  startTime }
+            };
+
+            var response = new AzureOperationResponse
+                <ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders>()
+            {
+                Body = stats,
+                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
+            };
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudJobStatisticsResponse object.Note: Using startTime for validating if the pipeline return the correct values
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders> CreateJobStatisticsResponse(DateTime startTime)
+        {
+            var stats = new ProxyModels.JobStatistics()
+            {
+                StartTime = startTime
+            };
+
+            var response = new AzureOperationResponse
+                <ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders>()
+            {
+                Body = stats,
+                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
+            };
+
+            return response;
+        }
+
+        /// <summary>
         /// Builds a GetRemoteLoginSettingsResponse object
         /// </summary>
         public static AzureOperationResponse<ProxyModels.ComputeNodeGetRemoteLoginSettingsResult, ProxyModels.ComputeNodeGetRemoteLoginSettingsHeaders> CreateRemoteLoginSettingsGetResponse(string ipAddress)
