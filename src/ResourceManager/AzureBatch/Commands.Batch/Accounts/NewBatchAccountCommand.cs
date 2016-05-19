@@ -37,13 +37,16 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        public string AutoStorageAccountId { get; set; }
+
         [Alias("Tags")]
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public Hashtable[] Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            BatchAccountContext context = BatchClient.CreateAccount(this.ResourceGroupName, this.AccountName, this.Location, this.Tag);
+            BatchAccountContext context = BatchClient.CreateAccount(this.ResourceGroupName, this.AccountName, this.Location, this.Tag, this.AutoStorageAccountId);
             WriteObject(context);
         }
     }

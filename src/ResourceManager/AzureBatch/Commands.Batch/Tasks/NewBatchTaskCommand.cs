@@ -67,6 +67,10 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSMultiInstanceSettings MultiInstanceSettings { get; set; }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public TaskDependencies DependsOn { get; set; }
+
         public override void ExecuteCmdlet()
         {
             NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job,
@@ -79,8 +83,9 @@ namespace Microsoft.Azure.Commands.Batch
                 RunElevated = this.RunElevated.IsPresent,
                 AffinityInformation = this.AffinityInformation,
                 Constraints = this.Constraints,
-                MultiInstanceSettings = this.MultiInstanceSettings
-            };
+                MultiInstanceSettings = this.MultiInstanceSettings,
+                DependsOn = this.DependsOn,
+           };
 
             BatchClient.CreateTask(parameters);
         }

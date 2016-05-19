@@ -30,19 +30,31 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
+    /// <summary>
+    /// Restores an item using the recovery point provided within the recovery services vault
+    /// </summary>
     [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(JobBase))]
     public class RestoreAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
+        /// <summary>
+        /// Recovery point of the item to be restored
+        /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, 
             HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
         public RecoveryPointBase RecoveryPoint { get; set; }
 
+        /// <summary>
+        /// Storage account name where the disks need to be recovered
+        /// </summary>
         [Parameter(Mandatory = true, Position = 1,
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
+        /// <summary>
+        /// Resource group name of Storage account name where the disks need to be recovered
+        /// </summary>
         [Parameter(Mandatory = true, Position = 2, 
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
         [ValidateNotNullOrEmpty]
