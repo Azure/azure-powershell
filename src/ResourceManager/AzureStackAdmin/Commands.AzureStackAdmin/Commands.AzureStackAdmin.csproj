@@ -118,6 +118,9 @@
     <Compile Include="Common\JsonPreserveCaseDictionaryAttribute.cs" />
     <Compile Include="Common\LineInfoJsonConverter.cs" />
     <Compile Include="Common\TimeSpanJsonConverter.cs" />
+    <Compile Include="Microsoft.Commerce\UsageConnections\AddUsageConnection.cs" />
+    <Compile Include="Microsoft.Commerce\UsageConnections\GetUsageConnection.cs" />
+    <Compile Include="Microsoft.Commerce\UsageConnections\RemoveUsageConnection.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="ValidateAbsoluteUriAttribute.cs" />
     <None Include="..\AzureRM.AzureStackAdmin.psd1">

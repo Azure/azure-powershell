@@ -24,7 +24,6 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         private const string Prefix = "AzureRM";
 
-
         /// <summary>
         /// The noun for operations on Gallery Items.
         /// </summary>
@@ -59,6 +58,11 @@ namespace Microsoft.AzureStack.Commands
         /// The noun for operations on Locations.
         /// </summary>
         public const string Location = Prefix + "ManagedLocation";
+
+        /// <summary>
+        /// The noun for operations on Usage Connection.
+        /// </summary>
+        public const string UsageConnection = Prefix + "UsageConnection";
 
         /// <summary>
         /// The noun for operations on tokens.

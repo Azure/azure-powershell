@@ -281,4 +281,16 @@
   <data name="QuotaIdOrSkuIdRequired" xml:space="preserve">
     <value>Either QuotaId or SkuId is required for creating the plan</value>
   </data>
+  <data name="AddingUsageConnection" xml:space="preserve">
+    <value>Adding usage connection with the name "{0}"</value>
+  </data>
+  <data name="GettingUsageConnection" xml:space="preserve">
+    <value>Getting usage connection with the name "{0}".</value>
+  </data>
+  <data name="ListingUsageConnections" xml:space="preserve">
+    <value>Listing usage connections</value>
+  </data>
+  <data name="RemovingUsageConnection" xml:space="preserve">
+    <value>Removing usage connection with the name "{0}".</value>
+  </data>
 </root>
