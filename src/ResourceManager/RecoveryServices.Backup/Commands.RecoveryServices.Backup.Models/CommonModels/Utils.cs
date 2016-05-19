@@ -27,7 +27,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class PolicyConstants
     {
+        /// <summary>
+        /// Maximum allowed duration length of retention.
+        /// </summary>
         public const int MaxAllowedRetentionDurationCount = 9999;
+
+        /// <summary>
+        /// Maximum number of days in a month.
+        /// </summary>
         public const int MaxAllowedDateInMonth = 28;
 
         // day constants
@@ -48,6 +55,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class TraceUtils
     {
+        /// <summary>
+        /// Returns a string which contains an enumeration of the given input list.
+        /// </summary>
+        /// <typeparam name="T">Type of the object in the list</typeparam>
+        /// <param name="objList">List of input objects</param>
+        /// <returns></returns>
         public static string GetString<T>(IEnumerable<T> objList)
         {
             return (objList == null) ? "null" : "{" + string.Join(", ", objList.Select(e => e.ToString())) + "}";
@@ -55,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Id utilities.
+    /// ARM ID utilities.
     /// </summary>
     public class IdUtils
     {
@@ -77,6 +90,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             public const string ProtectedItemName = "protectedItems";
         }
 
+        /// <summary>
+        /// Fetches the resource group name embedded in the ARM ID by parsing.
+        /// </summary>
+        /// <param name="id">ARM ID to parse</param>
+        /// <returns></returns>
         public static string GetResourceGroupName(string id)
         {
             var match = ResourceGroupRegex.Match(id);
@@ -104,6 +122,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             return null;
         }
 
+        /// <summary>
+        /// Fetches the value embedded in the ARM ID, identified the provided input id, in the ARM ID.
+        /// </summary>
+        /// <param name="id">The ARM input ID</param>
+        /// <param name="idName">Name of the value to be returned</param>
+        /// <returns></returns>
         public static string GetValueByName(string id, string idName)
         {
             var parts = id.Split(IdDelimiter.ToArray(), StringSplitOptions.RemoveEmptyEntries)
@@ -118,9 +142,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
 
         /// <summary>
+        /// Parses the name from the fully qualified ARM ID.
         /// URI format: Type;Name
         /// </summary>
-        /// <param name="uri"></param>
+        /// <param name="uri">Uri to be parsed</param>
         /// <returns></returns>
         public static string GetNameFromUri(string uri)
         {
@@ -133,6 +158,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class EnumUtils
     {
+        /// <summary>
+        /// Gets the enum of type T given the string equivalent.
+        /// </summary>
+        /// <typeparam name="T">Type of the enum represented by the string</typeparam>
+        /// <param name="enumValue">String to be parsed</param>
+        /// <returns></returns>
         public static T GetEnum<T>(string enumValue)
         {
             return (T)Enum.Parse(typeof(T), enumValue);
@@ -144,6 +175,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
    /// </summary>
     public class ConversionUtils
     {
+        /// <summary>
+        /// Returns the PS backup management type given the service client defined backup management type.
+        /// </summary>
+        /// <param name="backupManagementType">Service client backup management type</param>
+        /// <returns>PowerShell backup management type</returns>
         public static BackupManagementType GetPsBackupManagementType(string backupManagementType)
         {
             Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType providerType
@@ -164,6 +200,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             }
         }
 
+        /// <summary>
+        /// Returns the PS backup management type given the service client defined container type.
+        /// </summary>
+        /// <param name="containerType">Service client container type</param>
+        /// <returns>PowerShell container type</returns>
         public static ContainerType GetPsContainerType(string containerType)
         {
             if (containerType == "Microsoft.ClassicCompute/virtualMachines" ||
@@ -181,6 +222,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             }
         }
 
+        /// <summary>
+        /// Returns the PS backup management type given the service client defined workload type.
+        /// </summary>
+        /// <param name="workloadType">Service client workload type</param>
+        /// <returns>PowerShell workload type</returns>
         public static WorkloadType GetPsWorkloadType(string workloadType)
         {
             if (workloadType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.VM)

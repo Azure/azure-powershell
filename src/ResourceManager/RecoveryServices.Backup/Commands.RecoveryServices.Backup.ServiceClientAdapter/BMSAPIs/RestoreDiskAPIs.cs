@@ -25,7 +25,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public partial class ServiceClientAdapter
     {
-        
+        /// <summary>
+        /// Restores the disk based on the recovery point and other input parameters
+        /// </summary>
+        /// <param name="rp">Recovery point to restore the disk to</param>
+        /// <param name="storageAccountId">ID of the storage account where to restore the disk</param>
+        /// <param name="storageAccountLocation">Location of the storage account where to restore the disk</param>
+        /// <param name="storageAccountType">Type of the storage account where to restore the disk</param>
+        /// <returns>Job created by this operation</returns>
         public BaseRecoveryServicesJobResponse RestoreDisk(AzureVmRecoveryPoint rp, string storageAccountId, 
             string storageAccountLocation, string storageAccountType)
         {
