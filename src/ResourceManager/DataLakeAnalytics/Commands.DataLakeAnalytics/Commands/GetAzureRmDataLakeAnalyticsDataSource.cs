@@ -21,6 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsDataSource"), OutputType(typeof(StorageAccountInfo), typeof(DataLakeStoreAccountInfo), typeof(IEnumerable<StorageAccountInfo>), typeof(IEnumerable<DataLakeStoreAccountInfo>))]
+    [Alias("Get-AdlAnalyticsDataSource")]
     public class GetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         internal const string DataLakeParameterSetName = "Get a Data Lake storage account";

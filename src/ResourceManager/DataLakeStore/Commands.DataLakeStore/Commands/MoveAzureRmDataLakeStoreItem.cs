@@ -21,6 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Move, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Alias("Move-AdlStoreItem")]
     public class MoveAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
