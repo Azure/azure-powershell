@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Extensions
             if (exception.ErrorResponseMessage != null && exception.ErrorResponseMessage.Error != null)
             {
                 errorReport.AppendLine("Error Code: {0}".FormatInvariant(exception.ErrorResponseMessage.Error.Code));
-                errorReport.AppendLine("Error Message: {0}".FormatInvariant(exception.ErrorResponseMessage.Error.Code));
+                errorReport.AppendLine("Error Message: {0}".FormatInvariant(exception.ErrorResponseMessage.Error.Message));
                 errorReport.AppendLine("Error Target: {0}".FormatInvariant(exception.ErrorResponseMessage.Error.Target));
                 
                 if (exception.ErrorResponseMessage.Error.Details.Any())
