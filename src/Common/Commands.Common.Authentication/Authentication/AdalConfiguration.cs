@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             ValidateAuthority = true;
             AdEndpoint = string.Empty;
             ResourceClientUri = "https://management.core.windows.net/";
-            UserIdentifier = UserIdentifierType.RequiredDisplayableId;
+            UserIdentifier = UserIdentifierType.OptionalDisplayableId;
         }
     }
 }

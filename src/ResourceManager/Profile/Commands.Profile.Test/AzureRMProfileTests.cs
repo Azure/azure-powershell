@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                             {
                                 accessToken.TenantId = tenants[iterator];
                                 accessToken.UniqueId = "uniqueID_" + tenants[iterator++];
-                                Assert.Equal(UserIdentifierType.RequiredDisplayableId, config.UserIdentifier);
+                                Assert.Equal(UserIdentifierType.OptionalDisplayableId, config.UserIdentifier);
                             }
                             return accessToken;
                         });
