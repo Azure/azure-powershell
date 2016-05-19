@@ -38,7 +38,7 @@ function Test-CreateGetRemoveMLService
             $svc = $svcDefinition | New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location -Name $webServiceName
             Assert-NotNull $svc
             LogOutput "Created web service: $($svc.Id)"                     
-			ValidateWebServiceResult $rgName $webServiceName $location $svc
+            ValidateWebServiceResult $rgName $webServiceName $location $svc
 
             # Fetch the service's keys and validate they are as expected
             $keys = Get-AzureRmMlWebServiceKeys -ResourceGroupName $rgName -Name $webServiceName
@@ -96,8 +96,8 @@ function Test-CreateWebServiceFromFile
             # Create a new web service from the local file definition
             LogOutput "Creating web service: $webServiceName"
             $svc = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location -Name $webServiceName -DefinitionFile $definitionFile
-			LogOutput "Created web service: $webServiceName"
-			ValidateWebServiceResult $rgName $webServiceName $location $svc
+            LogOutput "Created web service: $webServiceName"
+            ValidateWebServiceResult $rgName $webServiceName $location $svc
         }
         finally
         {
@@ -123,55 +123,55 @@ function Test-UpdateWebService
         param([string] $rgName, [string] $location, [string] $webServiceName, [string] $commitmentPlanId, [object] $storageAccount)        
         try 
         {
-		    # Create a web service resource and validate its creation
+            # Create a web service resource and validate its creation
             $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE $commitmentPlanId $storageAccount
             LogOutput "Creating web service: $webServiceName"
             $svc = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location -Name $webServiceName -NewWebServiceDefinition $svcDefinition
             Assert-NotNull $svc
             LogOutput "Created web service: $($svc.Id)"
-			ValidateWebServiceResult $rgName $webServiceName $location $svc
-			$creationModifiedOn = [datetime]::Parse($svc.Properties.ModifiedOn)
-			LogOutput "Web service's last modified time stamp: $creationModifiedOn"
+            ValidateWebServiceResult $rgName $webServiceName $location $svc
+            $creationModifiedOn = [datetime]::Parse($svc.Properties.ModifiedOn)
+            LogOutput "Web service's last modified time stamp: $creationModifiedOn"
 
             # Update the resource by pushing an edited web service definition object 
-			$svcDefinition.Properties.Description = "This has now changed."
-			LogOutput "Updating description on service $($svc.Id)"
-			$updatedSvc = Update-AzureRmMlWebService -ResourceGroupName $rgName -Name $webServiceName -ServiceUpdates $svcDefinition
-			Assert-NotNull $updatedSvc
-			LogOutput "Update has completed."
-			$updateModifiedOn = [datetime]::Parse($updatedSvc.Properties.ModifiedOn)
-			LogOutput "Web service's last modified time stamp: $updateModifiedOn"
-			
-			# Validate the operation
-			ValidateWebServiceResult $rgName $webServiceName $location $updatedSvc
-			LogOutput "Checking that the description property has been updated."
-			Assert-AreEqual $svcDefinition.Properties.Description $updatedSvc.Properties.Description
-			LogOutput "Checking that the ModifiedOn field updated accordingly."
-			Assert-True { $creationModifiedOn -lt $updateModifiedOn }
-
-			# Update realtime endpoint settings and the service key by using in line parameters
-			$newPrimaryKey = 'highly secure key'
-			LogOutput "Updating in line properties on service $($svc.Id)"
-			$updatedSvc2 = Update-AzureRmMlWebService -ResourceGroupName $rgName -Name $webServiceName -RealtimeConfiguration @{ MaxConcurrentCalls = 30 } -Keys @{ Primary = $newPrimaryKey }
-			Assert-NotNull $updatedSvc2
-			LogOutput "Update has completed."
-			$update2ModifiedOn = [datetime]::Parse($updatedSvc2.Properties.ModifiedOn)
-			LogOutput "Web service's last modified time stamp: $update2ModifiedOn"
-			
-	        # Validate the operation	
-			ValidateWebServiceResult $rgName $webServiceName $location $updatedSvc2
-		    LogOutput "Checking that the RealtimeConfiguration property has been updated."
-			Assert-AreEqual 30 $updatedSvc2.Properties.RealtimeConfiguration.MaxConcurrentCalls
-			LogOutput "Checking that the ModifiedOn field updated accordingly."			
-			Assert-True { $updateModifiedOn -lt $update2ModifiedOn }
+            $svcDefinition.Properties.Description = "This has now changed."
+            LogOutput "Updating description on service $($svc.Id)"
+            $updatedSvc = Update-AzureRmMlWebService -ResourceGroupName $rgName -Name $webServiceName -ServiceUpdates $svcDefinition
+            Assert-NotNull $updatedSvc
+            LogOutput "Update has completed."
+            $updateModifiedOn = [datetime]::Parse($updatedSvc.Properties.ModifiedOn)
+            LogOutput "Web service's last modified time stamp: $updateModifiedOn"
             
-			$keys = Get-AzureRmMlWebServiceKeys -ResourceGroupName $rgName -Name $webServiceName
+            # Validate the operation
+            ValidateWebServiceResult $rgName $webServiceName $location $updatedSvc
+            LogOutput "Checking that the description property has been updated."
+            Assert-AreEqual $svcDefinition.Properties.Description $updatedSvc.Properties.Description
+            LogOutput "Checking that the ModifiedOn field updated accordingly."
+            Assert-True { $creationModifiedOn -lt $updateModifiedOn }
+
+            # Update realtime endpoint settings and the service key by using in line parameters
+            $newPrimaryKey = 'highly secure key'
+            LogOutput "Updating in line properties on service $($svc.Id)"
+            $updatedSvc2 = Update-AzureRmMlWebService -ResourceGroupName $rgName -Name $webServiceName -RealtimeConfiguration @{ MaxConcurrentCalls = 30 } -Keys @{ Primary = $newPrimaryKey }
+            Assert-NotNull $updatedSvc2
+            LogOutput "Update has completed."
+            $update2ModifiedOn = [datetime]::Parse($updatedSvc2.Properties.ModifiedOn)
+            LogOutput "Web service's last modified time stamp: $update2ModifiedOn"
+            
+            # Validate the operation    
+            ValidateWebServiceResult $rgName $webServiceName $location $updatedSvc2
+            LogOutput "Checking that the RealtimeConfiguration property has been updated."
+            Assert-AreEqual 30 $updatedSvc2.Properties.RealtimeConfiguration.MaxConcurrentCalls
+            LogOutput "Checking that the ModifiedOn field updated accordingly."            
+            Assert-True { $updateModifiedOn -lt $update2ModifiedOn }
+            
+            $keys = Get-AzureRmMlWebServiceKeys -ResourceGroupName $rgName -Name $webServiceName
             LogOutput "Checking that the service's keys are not null."
             Assert-NotNull $keys
-			LogOutput "Checking that the service's primary key has changed."
-			Assert-AreEqual $newPrimaryKey $keys.Primary
-			LogOutput "Checking that the service's secondary key has not changed."
-			Assert-AreEqual $svcDefinition.Properties.Keys.Secondary $keys.Secondary
+            LogOutput "Checking that the service's primary key has changed."
+            Assert-AreEqual $newPrimaryKey $keys.Primary
+            LogOutput "Checking that the service's secondary key has not changed."
+            Assert-AreEqual $svcDefinition.Properties.Keys.Secondary $keys.Secondary
         }
         finally
         {            
@@ -192,70 +192,70 @@ function Test-ListWebServices
         param([string] $rgName, [string] $location, [string] $webServiceName, [string] $commitmentPlanId)        
         try 
         {
-			$sameGroupWebServiceName = Get-WebServiceName
-			$otherResourceGroupName = Get-ResourceGroupName 
-			$otherGroupWebServiceName = Get-WebServiceName
+            $sameGroupWebServiceName = Get-WebServiceName
+            $otherResourceGroupName = Get-ResourceGroupName 
+            $otherGroupWebServiceName = Get-WebServiceName
 
-		    # Create a few web services in the same resource group
+            # Create a few web services in the same resource group
             $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE $commitmentPlanId $storageAccount
             LogOutput "Creating web service: $webServiceName"
             $svc1 = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location -Name $webServiceName -NewWebServiceDefinition $svcDefinition
             Assert-NotNull $svc1
             LogOutput "Created web service: $($svc1.Id)"                     
-			ValidateWebServiceResult $rgName $webServiceName $location $svc1
-			LogOutput "Creating web service: $sameGroupWebServiceName"
+            ValidateWebServiceResult $rgName $webServiceName $location $svc1
+            LogOutput "Creating web service: $sameGroupWebServiceName"
             $svc2 = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location -Name $sameGroupWebServiceName -NewWebServiceDefinition $svcDefinition
             Assert-NotNull $svc2
             LogOutput "Created web service: $($svc2.Id)"                     
-			ValidateWebServiceResult $rgName $sameGroupWebServiceName $location $svc2
+            ValidateWebServiceResult $rgName $sameGroupWebServiceName $location $svc2
 
-			# Create a web service in a different resource group
-			LogOutput "Creating resource group: $otherResourceGroupName"    
-			$otherGroup = New-AzureRmResourceGroup -Name $otherResourceGroupName -Location $location        
-			LogOutput("Created resource group: $($otherGroup.ResourceId)")
+            # Create a web service in a different resource group
+            LogOutput "Creating resource group: $otherResourceGroupName"    
+            $otherGroup = New-AzureRmResourceGroup -Name $otherResourceGroupName -Location $location        
+            LogOutput("Created resource group: $($otherGroup.ResourceId)")
             LogOutput "Creating web service: $otherGroupWebServiceName"
             $svc3 = New-AzureRmMlWebService -ResourceGroupName $otherResourceGroupName -Location $location -Name $otherGroupWebServiceName -NewWebServiceDefinition $svcDefinition
             Assert-NotNull $svc3
             LogOutput "Created web service: $($svc3.Id)"                     
-			ValidateWebServiceResult $otherResourceGroupName $otherGroupWebServiceName $location $svc3
+            ValidateWebServiceResult $otherResourceGroupName $otherGroupWebServiceName $location $svc3
 
-			# List all services in the first resource group
-			LogOutput "Listing all web services in resource group: $rgName"
-			$servicesInGroup = Get-AzureRmMlWebService -IsCollection -ResourceGroupName $rgName
-			Assert-NotNull $servicesInGroup
-			LogOutput "Group $rgName contains $($servicesInGroup.Count) web services."	
-			Assert-AreEqual 2 $servicesInGroup.Count
-			LogOutput "Checking that service $($svc1.Id) is part of returned list."
-			Assert-NotNull ($servicesInGroup | where { $_.Id -eq $svc1.Id })
-			LogOutput "Checking that service $($svc2.Id) is part of returned list."
-			Assert-NotNull ($servicesInGroup | where { $_.Id -eq $svc2.Id })
+            # List all services in the first resource group
+            LogOutput "Listing all web services in resource group: $rgName"
+            $servicesInGroup = Get-AzureRmMlWebService -IsCollection -ResourceGroupName $rgName
+            Assert-NotNull $servicesInGroup
+            LogOutput "Group $rgName contains $($servicesInGroup.Count) web services."    
+            Assert-AreEqual 2 $servicesInGroup.Count
+            LogOutput "Checking that service $($svc1.Id) is part of returned list."
+            Assert-NotNull ($servicesInGroup | where { $_.Id -eq $svc1.Id })
+            LogOutput "Checking that service $($svc2.Id) is part of returned list."
+            Assert-NotNull ($servicesInGroup | where { $_.Id -eq $svc2.Id })
 
-			# List all services in the second resource group
-			LogOutput "Listing all web services in resource group: $otherResourceGroupName"
-			$servicesInOtherGroup = Get-AzureRmMlWebService -IsCollection -ResourceGroupName $otherResourceGroupName
-			Assert-NotNull $servicesInOtherGroup			
-			LogOutput "Group $otherResourceGroupName contains $($servicesInOtherGroup.Count) web services."							
-			Assert-AreEqual 1 $servicesInOtherGroup.Count
-			LogOutput "Checking that service $($svc3.Id) is part of returned list."
-			Assert-True { $servicesInOtherGroup[0].Id -eq $svc3.Id }
-
-			# List all services in the subscription
-			$servicesInSubscription = Get-AzureRmMlWebService -IsCollection
-			Assert-NotNull $servicesInSubscription
-			LogOutput "Found $($servicesInSubscription.Count) web services in the current subscription."	
-			Assert-False { $servicesInSubscription.Count -lt 3 }
-			LogOutput "Checking that service $($svc1.Id) is part of returned list."
-			Assert-NotNull ($servicesInSubscription | where { $_.Id -eq $svc1.Id })
-			LogOutput "Checking that service $($svc2.Id) is part of returned list."
-			Assert-NotNull ($servicesInSubscription | where { $_.Id -eq $svc2.Id })
+            # List all services in the second resource group
+            LogOutput "Listing all web services in resource group: $otherResourceGroupName"
+            $servicesInOtherGroup = Get-AzureRmMlWebService -IsCollection -ResourceGroupName $otherResourceGroupName
+            Assert-NotNull $servicesInOtherGroup            
+            LogOutput "Group $otherResourceGroupName contains $($servicesInOtherGroup.Count) web services."                            
+            Assert-AreEqual 1 $servicesInOtherGroup.Count
             LogOutput "Checking that service $($svc3.Id) is part of returned list."
-			Assert-NotNull ($servicesInSubscription | where { $_.Id -eq $svc3.Id })
+            Assert-True { $servicesInOtherGroup[0].Id -eq $svc3.Id }
+
+            # List all services in the subscription
+            $servicesInSubscription = Get-AzureRmMlWebService -IsCollection
+            Assert-NotNull $servicesInSubscription
+            LogOutput "Found $($servicesInSubscription.Count) web services in the current subscription."    
+            Assert-False { $servicesInSubscription.Count -lt 3 }
+            LogOutput "Checking that service $($svc1.Id) is part of returned list."
+            Assert-NotNull ($servicesInSubscription | where { $_.Id -eq $svc1.Id })
+            LogOutput "Checking that service $($svc2.Id) is part of returned list."
+            Assert-NotNull ($servicesInSubscription | where { $_.Id -eq $svc2.Id })
+            LogOutput "Checking that service $($svc3.Id) is part of returned list."
+            Assert-NotNull ($servicesInSubscription | where { $_.Id -eq $svc3.Id })
         }
         finally
         {                
             Clean-WebService $rgName $webServiceName
             Clean-WebService $rgName $sameGroupWebServiceName
-			Clean-WebService $otherResourceGroupName $otherGroupWebServiceName
+            Clean-WebService $otherResourceGroupName $otherGroupWebServiceName
             Clean-ResourceGroup $otherResourceGroupName 
         }
     };
@@ -273,8 +273,8 @@ function RunWebServicesTest([ScriptBlock] $testScript)
     $rgName = Get-ResourceGroupName 
     $location = Get-ProviderLocation "Microsoft.MachineLearning" "webServices"
     $webServiceName = Get-WebServiceName
-	$storageAccountName = Get-TestStorageAccountName
-	$commitmentPlanName = Get-CommitmentPlanName
+    $storageAccountName = Get-TestStorageAccountName
+    $commitmentPlanName = Get-CommitmentPlanName
     $cpApiVersion = Get-ProviderAPIVersion "Microsoft.MachineLearning" "commitmentPlans"
     LogOutput "Using version $cpApiVersion of the CP RP APIs"
 
@@ -285,12 +285,12 @@ function RunWebServicesTest([ScriptBlock] $testScript)
         $group = New-AzureRmResourceGroup -Name $rgName -Location $location        
         LogOutput("Created resource group: $($group.ResourceId)")
 
-		LogOutput "Creating storage account: $storageAccountName"    
+        LogOutput "Creating storage account: $storageAccountName"    
         $storageAccount = Create-TestStorageAccount $rgName $location $storageAccountName        
         LogOutput("Created storage account: $storageAccountName")
 
         LogOutput "Creating commitment plan resource: $commitmentPlanName"
-		$cpSku = @{Name = 'PLAN_SKU_NAME'; Tier='PLAN_SKU_TIER'; Capacity=1}
+        $cpSku = @{Name = 'PLAN_SKU_NAME'; Tier='PLAN_SKU_TIER'; Capacity=1}
         $cpPlan = New-AzureRmResource -Location $location -ResourceType "Microsoft.MachineLearning/CommitmentPlans" -ResourceName $commitmentPlanName -ResourceGroupName $rgName -SkuObject $cpSku -Properties @{} -ApiVersion $cpApiVersion -Force     
         LogOutput "Created commitment plan resource: $($cpPlan.ResourceId)" 
 
@@ -298,7 +298,7 @@ function RunWebServicesTest([ScriptBlock] $testScript)
     }
     finally
     {  
-		Clean-TestStorageAccount $rgName $storageAccountName
+        Clean-TestStorageAccount $rgName $storageAccountName
         Clean-ResourceGroup $rgName        
     }
 }
@@ -307,10 +307,10 @@ function LoadWebServiceDefinitionForTest([string] $filePath, [string] $commitmen
 {
     $svcDefinition = Import-AzureRmMlWebService -FromFile $filePath
     $svcDefinition.Properties.CommitmentPlan.Id = $commitmentPlanId
-	$svcDefinition.Properties.StorageAccount.Name = $storageAccount.Name
-	$svcDefinition.Properties.StorageAccount.Key = $storageAccount.Key
+    $svcDefinition.Properties.StorageAccount.Name = $storageAccount.Name
+    $svcDefinition.Properties.StorageAccount.Key = $storageAccount.Key
 
-	return $svcDefinition
+    return $svcDefinition
 }
 
 function ValidateWebServiceResult([string] $rgName, [string] $webServiceName, [string] $location, [Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService] $svc)
