@@ -27,7 +27,7 @@
 				<command:parameterValue required="true" variableLength="false">WebService</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ToFile</maml:name>
+				<maml:name>OutputFile</maml:name>
 				<maml:description>
 					<maml:para>Specifies the file path to export the definition to.</maml:para>
 				</maml:description>
@@ -66,7 +66,7 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>ToFile</maml:name>
+			<maml:name>OutputFile</maml:name>
 			<maml:description>
 				<maml:para>Specifies the file path to export the definition to.</maml:para>
 			</maml:description>
@@ -150,7 +150,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Export-AzureRmMlWebService -WebService $svc -ToFile &quot;C:\mlservice.json&quot;</dev:code>
+			<dev:code>Export-AzureRmMlWebService -WebService $svc -OutputFile &quot;C:\mlservice.json&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -213,23 +213,9 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>IsCollection</maml:name>
-				<maml:description>
-					<maml:para>If specified, denotes that a collection of web services is requested.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmMlWebService</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>IsCollection</maml:name>
-				<maml:description>
-					<maml:para>If specified, denotes that a collection of web services is requested.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -253,18 +239,6 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>IsCollection</maml:name>
-			<maml:description>
-				<maml:para>If specified, denotes that a collection of web services is requested.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -330,7 +304,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureRmMlWebService -IsCollection</dev:code>
+			<dev:code>Get-AzureRmMlWebService</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -350,7 +324,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureRmMlWebService -IsCollection -ResourceGroupName &quot;myresourcegroup&quot;</dev:code>
+			<dev:code>Get-AzureRmMlWebService -ResourceGroupName &quot;myresourcegroup&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
