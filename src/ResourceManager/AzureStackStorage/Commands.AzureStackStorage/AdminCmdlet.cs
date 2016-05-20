@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.AzureStack.Management.StorageAdmin;
 using System;
 using System.Management.Automation;
 using System.Net;
 using System.Net.Security;
-using Microsoft.Azure;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
@@ -105,7 +104,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             }
         }
 
-        
+
         /// <summary>
         ///     Initial StorageAdminManagementClient
         /// </summary>
@@ -207,7 +206,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             {
                 return GetClientThruAzureSession();
             }
-            
+
             return new StorageAdminManagementClient(
                     baseUri: AdminUri,
                     credentials: new TokenCloudCredentials(subscriptionId: SubscriptionId, token: Token));
@@ -220,7 +219,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             var armUri = context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
 
             var credentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
-            
+
             if (string.IsNullOrEmpty(SubscriptionId))
             {
                 SubscriptionId = credentials.SubscriptionId;

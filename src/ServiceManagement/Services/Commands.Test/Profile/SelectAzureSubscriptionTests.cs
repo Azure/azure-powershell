@@ -51,5 +51,12 @@ namespace Microsoft.Azure.Commands.Test.Profile
         {
             ProfileTestController.NewRdfeInstance.RunPsTest("Test-StorageAccountIsNotCleaned");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetSubscriptionPipeToSetSubscription()
+        {
+            ProfileTestController.NewRdfeInstance.RunPsTest("Test-GetSubscriptionPipeToSetSubscription");
+        }
     }
 }

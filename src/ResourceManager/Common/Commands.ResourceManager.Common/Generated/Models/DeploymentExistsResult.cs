@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class DeploymentExistsResult : AzureOperationResponse
     {
         private bool _exists;
-        
+
         /// <summary>
         /// Optional. Gets or sets the value indicating whether the deployment
         /// exists.
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._exists; }
             set { this._exists = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the DeploymentExistsResult class.
         /// </summary>

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.AzureStack.Management.StorageAdmin;
 using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
@@ -41,14 +41,14 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 5)]
         public string NodeName { get; set; }
 
-        
+
         protected override void Execute()
         {
             if (string.IsNullOrEmpty(NodeName))
             {
                 NodeListResponse nodes = Client.Nodes.List(ResourceGroupName, FarmName);
-      
-                WriteObject(nodes.Nodes.Select(_=>new NodeResponse(_)), true);
+
+                WriteObject(nodes.Nodes.Select(_ => new NodeResponse(_)), true);
             }
             else
             {

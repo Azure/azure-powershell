@@ -7,13 +7,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.Rest.Azure;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
-
-using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.WebApps.Utilities;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {

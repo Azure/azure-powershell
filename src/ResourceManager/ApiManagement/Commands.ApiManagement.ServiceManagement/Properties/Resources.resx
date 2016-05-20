@@ -157,6 +157,22 @@
     <value>Are you sure you want to remove Group "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="LoggerRemoveDescription" xml:space="preserve">
+    <value>Removing Logger "{0}"</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="LoggerRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Logger "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="OpenIdConnectProviderRemoveDescription" xml:space="preserve">
+    <value>Removing OpenID Connect Provider "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="OpenIdConnectProviderRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove OpenID Connect Provider "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="OperationRemoveDescription" xml:space="preserve">
     <value>Removing Operation "{0}" of API "{1}".</value>
     <comment>Process workflow</comment>
@@ -181,12 +197,36 @@
     <value>Are you sure you want to remove Product "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="PropertyRemoveDescription" xml:space="preserve">
+    <value>Removing Property "{0}"</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="PropertyRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Property "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="PublishTenantConfigurationDescription" xml:space="preserve">
+    <value>Subscriptions to products which are deleted will be also be deleted.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="PublishTenantConfigurationWarning" xml:space="preserve">
+    <value>Are you sure you want to enforce deleting subscriptions to products that are deleted in this update?</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="SavePolicyDescription" xml:space="preserve">
     <value>Saving "{0}" policy to file "{1}".</value>
     <comment>Process workflow</comment>
   </data>
   <data name="SavePolicyWarning" xml:space="preserve">
     <value>File "{0}" already exists. Override?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SaveTenantConfigurationDescription" xml:space="preserve">
+    <value>Overwriting changes in Git repository "{0}" with Configuration Database.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SaveTenantConfigurationWarning" xml:space="preserve">
+    <value>Are you sure  you want to overwrite your changes in Git repository "{0}" with Configuration Database?</value>
     <comment>Process workflow</comment>
   </data>
   <data name="ShouldProcessCaption" xml:space="preserve">
@@ -207,6 +247,10 @@
   </data>
   <data name="UserRemoveWarning" xml:space="preserve">
     <value>Are you sure you want to remove User "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="VerboseGetOperationStateTimeoutMessage" xml:space="preserve">
+    <value>Get operation state in '{0}'</value>
     <comment>Process workflow</comment>
   </data>
 </root>

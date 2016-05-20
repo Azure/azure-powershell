@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Management.Resources.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             Errors = new List<ResourceManagementError>();
             RequiredProviders = new List<Provider>();
-            
+
             if (!validationResult.IsValid)
             {
                 if (validationResult.Error != null)
@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
             }
 
-            if(validationResult.Properties != null &&
-               validationResult.Properties.Providers !=null)
+            if (validationResult.Properties != null &&
+               validationResult.Properties.Providers != null)
             {
                 RequiredProviders.AddRange(validationResult.Properties.Providers);
             }

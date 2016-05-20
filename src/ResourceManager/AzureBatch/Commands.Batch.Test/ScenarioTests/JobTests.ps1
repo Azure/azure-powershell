@@ -40,9 +40,9 @@ function Test-NewJob
         $startTaskCmd = "cmd /c dir /s"
         $startTask.CommandLine = $startTaskCmd
 
-		$osFamily = 4
-		$targetOS = "*"
-		$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+        $osFamily = 4
+        $targetOS = "*"
+        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
         $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
         $poolSpec.TargetDedicated = $targetDedicated = 3
@@ -365,11 +365,11 @@ function Test-UpdateJob
 {
     param([string]$jobId)
 
-	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-	$osFamily = 4
-	$targetOS = "*"
-	$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+    $osFamily = 4
+    $targetOS = "*"
+    $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
     # Create the job with an auto pool
     $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
@@ -522,4 +522,54 @@ function Test-TerminateJob
     $job = Get-AzureBatchJob $jobId -BatchContext $context
     Assert-True { ($job.State.ToString().ToLower() -eq 'terminating') -or ($job.State.ToString().ToLower() -eq 'completed') }
     Assert-AreEqual $terminateReason $job.ExecutionInformation.TerminateReason
+}
+
+<#
+.SYNOPSIS
+Tests create job with TaskDependencies
+#>
+function Test-JobWithTaskDependencies
+{
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $jobId = "testJob4"
+
+    try
+    {
+        $osFamily = 4
+        $targetOS = "*"
+        $cmd = "cmd /c dir /s"
+        $taskId = "taskId1"
+
+        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+
+        $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
+        $poolSpec.TargetDedicated = $targetDedicated = 3
+        $poolSpec.VirtualMachineSize = $vmSize = "small"
+        $poolSpec.CloudServiceConfiguration = $paasConfiguration
+        $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
+        $autoPoolSpec.PoolSpecification = $poolSpec
+        $autoPoolSpec.AutoPoolIdPrefix = $autoPoolIdPrefix = "TestSpecPrefix"
+        $autoPoolSpec.KeepAlive =  $FALSE
+        $autoPoolSpec.PoolLifeTimeOption = $poolLifeTime = ([Microsoft.Azure.Batch.Common.PoolLifeTimeOption]::Job)
+        $poolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
+        $poolInformation.AutoPoolSpecification = $autoPoolSpec
+
+        $taskIds = @("2","3")
+        $taskIdRange = New-Object Microsoft.Azure.Batch.TaskIdRange(1,10)
+        $dependsOn = New-Object Microsoft.Azure.Batch.TaskDependencies -ArgumentList @([string[]]$taskIds, [Microsoft.Azure.Batch.TaskIdRange[]]$taskIdRange)
+        New-AzureBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -usesTaskDependencies
+        New-AzureBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -DependsOn $dependsOn -JobId $jobId
+        $job = Get-AzureBatchJob -Id $jobId -BatchContext $context
+
+        Assert-AreEqual $job.UsesTaskDependencies $TRUE
+        $task = Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $context
+        Assert-AreEqual $task.DependsOn.TaskIdRanges.End 10
+        Assert-AreEqual $task.DependsOn.TaskIdRanges.Start 1
+        Assert-AreEqual $task.DependsOn.TaskIds[0] 2
+        Assert-AreEqual $task.DependsOn.TaskIds[1] 3
+    }
+    finally
+    {
+        Remove-AzureBatchJob -Id $jobId -Force -BatchContext $context
+    }
 }

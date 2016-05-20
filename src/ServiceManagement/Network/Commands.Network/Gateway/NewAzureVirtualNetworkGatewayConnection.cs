@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.CreateVirtualNetworkGatewayConnection(ConnectedEntityId, GatewayConnectionName, GatewayConnectionType, RoutingWeight, SharedKey, Guid.Parse(VirtualNetworkGatewayId), bool.Parse(EnableBgp)));
+            WriteObject(Client.CreateVirtualNetworkGatewayConnection(ConnectedEntityId, GatewayConnectionName, GatewayConnectionType, RoutingWeight, SharedKey, Guid.Parse(VirtualNetworkGatewayId), string.IsNullOrEmpty(EnableBgp)?false:bool.Parse(EnableBgp)));
         }
     }
 }

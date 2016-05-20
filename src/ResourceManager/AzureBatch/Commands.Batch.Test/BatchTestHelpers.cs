@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
@@ -39,24 +40,33 @@ namespace Microsoft.Azure.Commands.Batch.Test
         internal static readonly string TestCertificateFileName2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\BatchTestCert02.cer");
         internal const string TestCertificateAlgorithm = "sha1";
         internal const string TestCertificatePassword = "Passw0rd";
+        internal static readonly int DefaultQuotaCount = 20;
 
         /// <summary>
         /// Builds an AccountResource object using the specified parameters
         /// </summary>
-        public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null)
+        public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null, string storageId = null)
         {
             string tenantUrlEnding = "batch-test.windows-int.net";
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
             string subscription = Guid.Empty.ToString();
             string resourceGroup = resourceGroupName;
 
-            AccountResource resource = new AccountResource()
+            string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
+
+            AccountResource resource = new AccountResource(
+                coreQuota: DefaultQuotaCount,
+                poolQuota: DefaultQuotaCount,
+                activeJobAndJobScheduleQuota: DefaultQuotaCount,
+                id: id,
+                type: "type")
             {
-                Id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup),
                 Location = "location",
-                Properties = new AccountProperties() { AccountEndpoint = endpoint, ProvisioningState = AccountProvisioningState.Succeeded },
-                Type = "type"
+                AccountEndpoint = endpoint,
+                ProvisioningState = AccountProvisioningState.Succeeded,
+                AutoStorage = new AutoStorageProperties() { StorageAccountId = storageId }
             };
+
             if (tags != null)
             {
                 resource.Tags = Microsoft.Azure.Commands.Batch.Helpers.CreateTagDictionary(tags, true);
@@ -106,6 +116,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             Assert.Equal<string>(context1.Subscription, context2.Subscription);
             Assert.Equal<string>(context1.TagsTable, context2.TagsTable);
             Assert.Equal<string>(context1.TaskTenantUrl, context2.TaskTenantUrl);
+            Assert.Equal<string>(context1.AutoStorageProperties.StorageAccountId, context2.AutoStorageProperties.StorageAccountId);
         }
 
         /// <summary>
@@ -157,7 +168,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static RequestInterceptor CreateFakeServiceResponseInterceptor<TBody, TOptions, TResponse>(TResponse responseToUse = default(TResponse),
             Action<BatchRequest<TBody, TOptions, TResponse>> requestAction = null)
             where TOptions : ProxyModels.IOptions, new()
-            where TResponse : IAzureOperationResponse, new()
+            where TResponse : class, IAzureOperationResponse, new()
         {
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
@@ -170,15 +181,12 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    if (responseToUse == null)
+                    TResponse response = responseToUse ?? new TResponse()
                     {
-                        responseToUse = new TResponse()
-                        {
-                            Response = new HttpResponseMessage()
-                        };
-                    }
+                        Response = new HttpResponseMessage()
+                    };
 
-                    Task<TResponse> task = Task.FromResult(responseToUse);
+                    Task<TResponse> task = Task.FromResult(response);
                     return task;
                 };
             });
@@ -192,8 +200,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <typeparam name="THeader">The type of header for the response</typeparam>
         /// <returns></returns>
         public static AzureOperationResponse<TBody, THeader> CreateGenericAzureOperationResponse<TBody, THeader>()
-            where TBody : class, new () 
-            where THeader : class, new ()
+            where TBody : class, new()
+            where THeader : class, new()
         {
             var response = new AzureOperationResponse<TBody, THeader>()
             {
@@ -221,7 +229,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             };
 
             return response;
-        } 
+        }
 
         /// <summary>
         /// Creates a RequestInterceptor that does not contact the Batch Service on a Get NodeFile or a Get NodeFile Properties call.
@@ -249,7 +257,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 }
                 else
                 {
-                    FileGetNodeFilePropertiesFromTaskBatchRequest propRequest = (FileGetNodeFilePropertiesFromTaskBatchRequest) baseRequest;
+                    FileGetNodeFilePropertiesFromTaskBatchRequest propRequest = (FileGetNodeFilePropertiesFromTaskBatchRequest)baseRequest;
 
                     propRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
@@ -319,7 +327,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             cert.Thumbprint = thumbprint;
 
             response.Body = cert;
-            
+
             return response;
         }
 
@@ -330,7 +338,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         {
             var response = new AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
-            
+
             List<ProxyModels.Certificate> certs = new List<ProxyModels.Certificate>();
 
             foreach (string t in certThumbprints)
@@ -379,6 +387,107 @@ namespace Microsoft.Azure.Commands.Batch.Test
             }
 
             response.Body = new MockPagedEnumerable<ProxyModels.CloudPool>(pools);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudPoolUsageMetricsResponse object. Note: The lengths of all three lists must be the same.
+        /// </summary>
+        public static AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders> CreatePoolListUsageMetricsResponse(
+            IEnumerable<string> poolIds,
+            IEnumerable<DateTime> startTimes,
+            IEnumerable<DateTime> endTimes)
+        {
+            var poolUsageList = new List<ProxyModels.PoolUsageMetrics>();
+
+            // Validate the lengths of the lists are equal
+            if (!(poolIds.Count() == startTimes.Count() && startTimes.Count() == endTimes.Count()))
+            {
+                throw new ArgumentException("The lists length are not equal.");
+            }
+
+            using (var startTimeEnumerator = startTimes.GetEnumerator())
+            using (var endTimeEnumerator = endTimes.GetEnumerator())
+            using (var poolIdEnumerator = poolIds.GetEnumerator())
+            {
+                while (startTimeEnumerator.MoveNext() && endTimeEnumerator.MoveNext() && poolIdEnumerator.MoveNext())
+                {
+                    poolUsageList.Add(new ProxyModels.PoolUsageMetrics()
+                    {
+                        PoolId = poolIdEnumerator.Current,
+                        StartTime = startTimeEnumerator.Current,
+                        EndTime = endTimeEnumerator.Current
+                    });
+                }
+            }
+
+            var response = new AzureOperationResponse
+                <IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders>()
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = new MockPagedEnumerable<ProxyModels.PoolUsageMetrics>(poolUsageList)
+            };
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudPoolStatisticsResponse object. Note: Using avgCPUPercentage and startTime for validating if the pipeline return the correct values
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders> CreatePoolStatisticsResponse(
+            double avgCPUPercentage,
+            DateTime startTime)
+        {
+            var stats = new ProxyModels.PoolStatistics()
+            {
+                ResourceStats = new ProxyModels.ResourceStatistics() { AvgCPUPercentage = avgCPUPercentage },
+                UsageStats = new ProxyModels.UsageStatistics() { StartTime =  startTime }
+            };
+
+            var response = new AzureOperationResponse
+                <ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders>()
+            {
+                Body = stats,
+                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
+            };
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudJobStatisticsResponse object.Note: Using startTime for validating if the pipeline return the correct values
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders> CreateJobStatisticsResponse(DateTime startTime)
+        {
+            var stats = new ProxyModels.JobStatistics()
+            {
+                StartTime = startTime
+            };
+
+            var response = new AzureOperationResponse
+                <ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders>()
+            {
+                Body = stats,
+                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
+            };
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a GetRemoteLoginSettingsResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.ComputeNodeGetRemoteLoginSettingsResult, ProxyModels.ComputeNodeGetRemoteLoginSettingsHeaders> CreateRemoteLoginSettingsGetResponse(string ipAddress)
+        {
+            var settings = new ProxyModels.ComputeNodeGetRemoteLoginSettingsResult();
+            settings.RemoteLoginIPAddress = ipAddress;
+
+            var response = new AzureOperationResponse<ProxyModels.ComputeNodeGetRemoteLoginSettingsResult, ProxyModels.ComputeNodeGetRemoteLoginSettingsHeaders>()
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = settings
+            };
 
             return response;
         }
@@ -492,7 +601,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 job.Id = id;
                 jobs.Add(job);
             }
-            
+
             response.Body = new MockPagedEnumerable<ProxyModels.CloudJob>(jobs);
 
             return response;
@@ -519,7 +628,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// </summary>
         public static AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> CreateCloudTaskListResponse(IEnumerable<string> taskIds)
         {
-            var response = new AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>(); 
+            var response = new AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.CloudTask> tasks = new List<ProxyModels.CloudTask>();
@@ -559,6 +668,23 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             subtasksResult.Value = subtasks;
             response.Body = subtasksResult;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a NodeAgentSKUResponse object
+        /// </summary>
+        public static AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders> CreateNodeAgentSkuResponse(IEnumerable<string> skuIds)
+        {
+            IEnumerable<ProxyModels.NodeAgentSku> nodeAgents =
+                skuIds.Select(id => new ProxyModels.NodeAgentSku() { Id = id });
+
+            var response = new AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders>()
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = new MockPagedEnumerable<ProxyModels.NodeAgentSku>(nodeAgents)
+            };
 
             return response;
         }
@@ -638,7 +764,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.NodeFile> files = new List<ProxyModels.NodeFile>();
-            
+
             foreach (string name in fileNames)
             {
                 ProxyModels.NodeFile file = new ProxyModels.NodeFile();
@@ -660,7 +786,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                JobGetBatchRequest request = (JobGetBatchRequest) baseRequest;
+                JobGetBatchRequest request = (JobGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
@@ -684,12 +810,12 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                JobScheduleGetBatchRequest request = (JobScheduleGetBatchRequest) baseRequest;
+                JobScheduleGetBatchRequest request = (JobScheduleGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     var response = new AzureOperationResponse<ProxyModels.CloudJobSchedule, ProxyModels.JobScheduleGetHeaders>();
-                    
+
                     response.Body = new ProxyModels.CloudJobSchedule(id: jobScheduleId, schedule: new ProxyModels.Schedule(), jobSpecification: new ProxyModels.JobSpecification());
 
                     Task<AzureOperationResponse<ProxyModels.CloudJobSchedule, ProxyModels.JobScheduleGetHeaders>> task = Task.FromResult(response);
@@ -709,7 +835,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                PoolGetBatchRequest request = (PoolGetBatchRequest) baseRequest;
+                PoolGetBatchRequest request = (PoolGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
@@ -733,7 +859,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                TaskGetBatchRequest request = (TaskGetBatchRequest) baseRequest;
+                TaskGetBatchRequest request = (TaskGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
@@ -759,7 +885,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Uses Reflection to set a property value on an object. 
+        /// Uses Reflection to set a property value on an object.
         /// </summary>
         internal static void SetField(object obj, string fieldName, object fieldValue)
         {

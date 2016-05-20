@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +14,9 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using Microsoft.WindowsAzure.Storage;
     using System;
     using System.Threading;
-    using Microsoft.WindowsAzure.Storage;
 
     internal class CmdletOperationContext
     {
@@ -68,9 +68,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public static void Init()
         {
-            if (!inited) 
+            if (!inited)
             {
-                lock (syncRoot) 
+                lock (syncRoot)
                 {
                     if (!inited)
                     {
@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 context.EndTime = DateTime.Now;
                 Interlocked.Increment(ref finishedRemoteCallCounter);
-                
+
                 double elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
                 string message = String.Format(Resources.FinishRemoteCall,
                     e.Request.RequestUri.ToString(), (int)e.Response.StatusCode, e.Response.StatusCode, e.RequestInformation.ServiceRequestID, elapsedTime);
@@ -150,7 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     //catch the exception. If so, the storage client won't sleep and retry
                 }
             };
-            
+
             return context;
         }
 

@@ -12,17 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Threading.Tasks;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Batch.Models;
-using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -34,8 +32,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public SetBatchComputeNodeUserCommandTests()
+        public SetBatchComputeNodeUserCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new SetBatchComputeNodeUserCommand()
@@ -64,8 +63,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
 
             // Don't go to the service on an Update ComputeNodeUser call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                NodeUpdateUserParameter, 
-                ComputeNodeUpdateUserOptions, 
+                NodeUpdateUserParameter,
+                ComputeNodeUpdateUserOptions,
                 AzureOperationHeaderResponse<ComputeNodeUpdateUserHeaders>>();
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };

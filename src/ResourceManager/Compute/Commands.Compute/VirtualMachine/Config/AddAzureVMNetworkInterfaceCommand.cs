@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -102,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (!this.Primary.IsPresent)
                 {
-                    if (! networkProfile.NetworkInterfaces.Any(e => e.Id.Equals(this.Id)))
+                    if (!networkProfile.NetworkInterfaces.Any(e => e.Id.Equals(this.Id)))
                     {
                         networkProfile.NetworkInterfaces.Add(new NetworkInterfaceReference
                         {
@@ -159,7 +158,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                       existingNic.Primary = nic.Primary;
+                        existingNic.Primary = nic.Primary;
                     }
                 }
             }

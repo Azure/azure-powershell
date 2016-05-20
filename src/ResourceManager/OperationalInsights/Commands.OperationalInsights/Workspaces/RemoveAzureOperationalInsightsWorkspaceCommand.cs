@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Commands.OperationalInsights.Properties;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {

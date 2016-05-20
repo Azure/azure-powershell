@@ -19,13 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -99,10 +94,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Set", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class SetAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
-        public SetAzureRmVmss()
-        {
-        }
-
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()

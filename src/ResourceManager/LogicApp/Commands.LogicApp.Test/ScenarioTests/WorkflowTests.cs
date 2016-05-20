@@ -17,13 +17,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-
+    using Xunit.Abstractions;
     /// <summary>
     /// Scenario tests for the Create logic app command
     /// </summary>
     public class WorkflowTests : RMTestBase
     {
+        public WorkflowTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         /// <summary>
         ///Test New-AzureLogicApp with physical file paths
@@ -45,7 +50,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestCreateLogicAppWithDuplicateName()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-CreateLogicAppWithDuplicateName");
-        }        
+        }
 
         /// <summary>
         /// Test New-AzurelogicApp command with workflow object for parameters and definition input.
@@ -65,7 +70,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestCreateLogicAppUsingInputParameterAsHashTable()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-CreateLogicAppUsingInputParameterAsHashTable");
-        }                 
+        }
 
         /// <summary>
         /// Test New-AzurelogicApp command with workflow definition with triggers
@@ -98,7 +103,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-RemoveNonExistingLogicApp");
         }
-       
+
         /// <summary>
         ///Test Set-AzureLogicApp command to update workflow defintion without parametrs.
         ///Test Set-AzureLogicApp command to update workflow defintion and state to Disabled.
@@ -121,6 +126,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestCreateLogicAppWithNonExistingAppServicePlan()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-CreateLogicAppWithNonExistingAppServicePlan");
-        }         
+        }
     }
 }

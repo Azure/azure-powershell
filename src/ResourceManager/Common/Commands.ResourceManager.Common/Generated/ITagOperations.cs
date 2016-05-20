@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Tag information.
         /// </returns>
         Task<TagCreateResult> CreateOrUpdateAsync(string tagName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Create a subscription resource tag value.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Tag information.
         /// </returns>
         Task<TagCreateValueResult> CreateOrUpdateValueAsync(string tagName, string tagValue, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Delete a subscription resource tag.
         /// </summary>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// request ID.
         /// </returns>
         Task<AzureOperationResponse> DeleteAsync(string tagName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Delete a subscription resource tag value.
         /// </summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// request ID.
         /// </returns>
         Task<AzureOperationResponse> DeleteValueAsync(string tagName, string tagValue, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Get a list of subscription resource tags.
         /// </summary>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of subscription tags.
         /// </returns>
         Task<TagsListResult> ListAsync(CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Get a list of tags under a subscription.
         /// </summary>

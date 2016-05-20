@@ -39,9 +39,9 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private int CalculateBlockCount()
         {
             var count = this.vhdFile.Footer.VirtualSize * 1.0m / this.GetBlockSize();
-            if(Math.Floor(count) < Math.Ceiling(count))
+            if (Math.Floor(count) < Math.Ceiling(count))
             {
-                extraBlockIndex = (long) Math.Floor(count);
+                extraBlockIndex = (long)Math.Floor(count);
             }
             return (int)Math.Ceiling(count);
         }
@@ -62,17 +62,17 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
                         logicalRange = IndexRange.FromLength(startIndex, size);
                     }
                     cachedBlock = new Block(this)
-                                      {
-                                          BlockIndex = block,
-                                          VhdUniqueId = this.vhdFile.Footer.UniqueId,
-                                          LogicalRange = logicalRange,
-                                          BitMap = null,
-                                          Empty = true
-                                      };
+                    {
+                        BlockIndex = block,
+                        VhdUniqueId = this.vhdFile.Footer.UniqueId,
+                        LogicalRange = logicalRange,
+                        BitMap = null,
+                        Empty = true
+                    };
                 }
                 return cachedBlock;
             }
-            if(cachedBlock == null || cachedBlock.BlockIndex != block)
+            if (cachedBlock == null || cachedBlock.BlockIndex != block)
             {
                 IndexRange logicalRange = IndexRange.FromLength(block * GetBlockSize(), this.GetBlockSize());
                 if (extraBlockIndex.HasValue && block == extraBlockIndex)
@@ -82,12 +82,12 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
                     logicalRange = IndexRange.FromLength(startIndex, size);
                 }
                 cachedBlock = new Block(this)
-                                  {
-                                      BlockIndex = block,
-                                      VhdUniqueId = this.vhdFile.Footer.UniqueId,
-                                      LogicalRange = logicalRange,
-                                      Empty = false
-                                  };
+                {
+                    BlockIndex = block,
+                    VhdUniqueId = this.vhdFile.Footer.UniqueId,
+                    LogicalRange = logicalRange,
+                    Empty = false
+                };
             }
             return cachedBlock;
         }
@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         public byte[] ReadBlockData(Block block)
         {
             long blockAddress = GetBlockAddress(block.BlockIndex);
-            return vhdFile.DataReader.ReadBytes(blockAddress, (int) block.LogicalRange.Length);
+            return vhdFile.DataReader.ReadBytes(blockAddress, (int)block.LogicalRange.Length);
         }
 
         public Sector GetSector(Block block, uint sector)
