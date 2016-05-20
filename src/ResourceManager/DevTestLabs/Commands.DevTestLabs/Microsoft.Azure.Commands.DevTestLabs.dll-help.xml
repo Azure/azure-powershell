@@ -4,7 +4,7 @@
 	<command:details>
 		<command:name>Get-AzureRmDtlAllowedVMSizesPolicy</command:name>
 		<maml:description>
-			<maml:para>@TODO</maml:para>
+			<maml:para>The Get-AzureRmDtlAllowedVMSizesPolicy cmdlet gets the policy which specifies the list of VM sizes allowed in the lab. </maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -14,7 +14,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>@TODO</maml:para>
+		<maml:para />
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -22,14 +22,14 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -53,7 +53,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>LabName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -65,7 +65,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab&#39;s resource group.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -114,12 +114,12 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name>@TODO</maml:name>
+				<maml:name>Microsoft.Azure.Management.DevTestLabs.Models.Policy</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The policy which specifies the list of VM sizes allowed in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -141,7 +141,7 @@
 	<command:details>
 		<command:name>Get-AzureRmDtlAutoShutdownPolicy</command:name>
 		<maml:description>
-			<maml:para>@TODO</maml:para>
+			<maml:para>The Get-AzureRmDtlAutoShutdownPolicy cmdlet gets the policy which specifies when the lab&#39;s VMs must shut down.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -151,7 +151,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>@TODO</maml:para>
+		<maml:para />
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -159,14 +159,14 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -190,7 +190,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>LabName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -202,7 +202,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab&#39;s resource group.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -251,12 +251,12 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name>@TODO</maml:name>
+				<maml:name>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -278,7 +278,7 @@
 	<command:details>
 		<command:name>Get-AzureRmDtlAutoStartPolicy</command:name>
 		<maml:description>
-			<maml:para>@TODO</maml:para>
+			<maml:para>The Get-AzureRmDtlAutoStartPolicy cmdlet gets the policy which specifies when the lab&#39;s VMs must be started.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -288,7 +288,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>@TODO</maml:para>
+		<maml:para />
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -296,14 +296,14 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -327,7 +327,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>LabName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -339,7 +339,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab&#39;s resource group.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -388,12 +388,12 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name>@TODO</maml:name>
+				<maml:name>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The schedule which specifies when the lab&#39;s VMs must be started.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -415,7 +415,7 @@
 	<command:details>
 		<command:name>Get-AzureRmDtlVMsPerLabPolicy</command:name>
 		<maml:description>
-			<maml:para>@TODO</maml:para>
+			<maml:para>The Get-AzureRmDtlVMsPerLabPolicy cmdlet gets the policy which specifies the maximum number of VMs that can be created in the lab.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -425,7 +425,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>@TODO</maml:para>
+		<maml:para />
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -433,14 +433,14 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -464,7 +464,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>LabName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -476,7 +476,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab&#39;s resource group.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -525,12 +525,12 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name>@TODO</maml:name>
+				<maml:name>Microsoft.Azure.Management.DevTestLabs.Models.Policy</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The policy which specifies the maximum number of VMs that can be created in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -552,7 +552,7 @@
 	<command:details>
 		<command:name>Get-AzureRmDtlVMsPerUserPolicy</command:name>
 		<maml:description>
-			<maml:para>@TODO</maml:para>
+			<maml:para>The Get-AzureRmDtlVMsPerUserPolicy cmdlet gets the policy which specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -562,7 +562,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>@TODO</maml:para>
+		<maml:para />
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -570,14 +570,14 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -601,7 +601,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>LabName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -613,7 +613,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab&#39;s resource group.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -662,12 +662,12 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name>@TODO</maml:name>
+				<maml:name>Microsoft.Azure.Management.DevTestLabs.Models.Policy</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The policy which specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -689,7 +689,7 @@
 	<command:details>
 		<command:name>Set-AzureRmDtlAllowedVMSizesPolicy</command:name>
 		<maml:description>
-			<maml:para>@TODO</maml:para>
+			<maml:para>The Set-AzureRmDtlAllowedVMSizesPolicy cmdlet sets the policy which specifies the list of VM sizes allowed in the lab.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -699,7 +699,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>@TODO</maml:para>
+		<maml:para />
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -707,28 +707,28 @@
 			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="4">
 				<maml:name>VmSizes</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The list of VM sizes allowed in the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>Enable</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>Specifies that the policy should be enabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -752,28 +752,28 @@
 			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="4">
 				<maml:name>VmSizes</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The list of VM sizes allowed in the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>Disable</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>Specifies that the policy should be disabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -797,7 +797,7 @@
 		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="4">
 			<maml:name>VmSizes</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The list of VM sizes allowed in the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
@@ -809,7 +809,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>Enable</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>Specifies that the policy should be enabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -821,7 +821,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>LabName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -833,7 +833,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab&#39;s resource group.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -869,7 +869,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 			<maml:name>Disable</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>Specifies that the policy should be disabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -894,12 +894,12 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name>@TODO</maml:name>
+				<maml:name>Microsoft.Azure.Management.DevTestLabs.Models.Policy</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The policy which specifies the list of VM sizes allowed in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -921,7 +921,7 @@
 	<command:details>
 		<command:name>Set-AzureRmDtlAutoShutdownPolicy</command:name>
 		<maml:description>
-			<maml:para>@TODO</maml:para>
+			<maml:para>The Set-AzureRmDtlAutoShutdownPolicy cmdlet sets the policy which specifies when the lab&#39;s VMs must shut down.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -931,7 +931,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>@TODO</maml:para>
+		<maml:para />
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -939,28 +939,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 				<maml:name>Time</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The time at which the lab&#39;s VMs must shut down.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>Enable</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>Specifies that the policy should be enabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -984,28 +984,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 				<maml:name>Time</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The time at which the lab&#39;s VMs must shut down.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>Disable</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>Specifies that the policy should be disabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1029,7 +1029,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 			<maml:name>Time</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The time at which the lab&#39;s VMs must shut down.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			<dev:type>
@@ -1041,7 +1041,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>Enable</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>Specifies that the policy should be enabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -1053,7 +1053,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>LabName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1065,7 +1065,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab&#39;s resource group.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1101,7 +1101,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 			<maml:name>Disable</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>Specifies that the policy should be disabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -1126,12 +1126,12 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name>@TODO</maml:name>
+				<maml:name>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1153,7 +1153,7 @@
 	<command:details>
 		<command:name>Set-AzureRmDtlAutoStartPolicy</command:name>
 		<maml:description>
-			<maml:para>@TODO</maml:para>
+			<maml:para>The Set-AzureRmDtlAutoStartPolicy cmdlet sets the policy which specifies when the lab&#39;s VMs must be started.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1163,7 +1163,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>@TODO</maml:para>
+		<maml:para />
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1171,35 +1171,35 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 				<maml:name>Time</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The time at which the lab&#39;s VMs must be started.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="5">
 				<maml:name>Days</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The days of the week on which the lab&#39;s VMs must be started.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">DayOfWeek[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>Enable</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>Specifies that the policy should be enabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1223,35 +1223,35 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 				<maml:name>Time</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The time at which the lab&#39;s VMs must be started.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="5">
 				<maml:name>Days</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The days of the week on which the lab&#39;s VMs must be started.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">DayOfWeek[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>Disable</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>Specifies that the policy should be disabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1275,7 +1275,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 			<maml:name>Time</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The time at which the lab&#39;s VMs must be started.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			<dev:type>
@@ -1287,7 +1287,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="5">
 			<maml:name>Days</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The days of the week on which the lab&#39;s VMs must be started.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">DayOfWeek[]</command:parameterValue>
 			<dev:type>
@@ -1299,7 +1299,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>Enable</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>Specifies that the policy should be enabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -1311,7 +1311,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>LabName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1323,7 +1323,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab&#39;s resource group.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1359,7 +1359,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 			<maml:name>Disable</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>Specifies that the policy should be disabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -1384,12 +1384,12 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name>@TODO</maml:name>
+				<maml:name>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The schedule which specifies when the lab&#39;s VMs must be started.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1411,7 +1411,7 @@
 	<command:details>
 		<command:name>Set-AzureRmDtlVMsPerLabPolicy</command:name>
 		<maml:description>
-			<maml:para>@TODO</maml:para>
+			<maml:para>The Set-AzureRmDtlVMsPerLabPolicy cmdlet sets the policy which specifies the maximum number of VMs that can be created in the lab.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1421,7 +1421,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>@TODO</maml:para>
+		<maml:para />
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1429,28 +1429,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 				<maml:name>MaxVMs</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The maximum number of VMs that can be created in the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>Enable</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>Specifies that the policy should be enabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1474,28 +1474,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 				<maml:name>MaxVMs</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The maximum number of VMs that can be created in the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>Disable</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>Specifies that the policy should be disabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1519,7 +1519,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 			<maml:name>MaxVMs</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The maximum number of VMs that can be created in the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			<dev:type>
@@ -1531,7 +1531,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>Enable</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>Specifies that the policy should be enabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -1543,7 +1543,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>LabName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1555,7 +1555,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab&#39;s resource group.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1591,7 +1591,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 			<maml:name>Disable</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>Specifies that the policy should be disabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -1616,12 +1616,12 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name>@TODO</maml:name>
+				<maml:name>Microsoft.Azure.Management.DevTestLabs.Models.Policy</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The policy which specifies the maximum number of VMs that can be created in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1643,7 +1643,7 @@
 	<command:details>
 		<command:name>Set-AzureRmDtlVMsPerUserPolicy</command:name>
 		<maml:description>
-			<maml:para>@TODO</maml:para>
+			<maml:para>The Set-AzureRmDtlVMsPerUserPolicy cmdlet sets the policy which specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1653,7 +1653,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>@TODO</maml:para>
+		<maml:para />
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1661,28 +1661,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 				<maml:name>MaxVMs</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The maximum number of VMs that can be created by a user in the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>Enable</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>Specifies that the policy should be enabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1706,28 +1706,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 				<maml:name>MaxVMs</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The maximum number of VMs that can be created by a user in the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>Disable</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>Specifies that the policy should be disabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>LabName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>@TODO</maml:para>
+					<maml:para>The name of the lab&#39;s resource group.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1751,7 +1751,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 			<maml:name>MaxVMs</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The maximum number of VMs that can be created by a user in the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			<dev:type>
@@ -1763,7 +1763,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>Enable</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>Specifies that the policy should be enabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -1775,7 +1775,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>LabName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1787,7 +1787,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The name of the lab&#39;s resource group.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1823,7 +1823,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 			<maml:name>Disable</maml:name>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>Specifies that the policy should be disabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -1848,12 +1848,12 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name>@TODO</maml:name>
+				<maml:name>Microsoft.Azure.Management.DevTestLabs.Models.Policy</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>@TODO</maml:para>
+				<maml:para>The policy which specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
