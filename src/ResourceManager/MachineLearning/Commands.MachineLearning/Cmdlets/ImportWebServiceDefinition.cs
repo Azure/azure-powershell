@@ -22,23 +22,33 @@ using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
     [Cmdlet(VerbsData.Import, WebServicesCmdletBase.CommandletSuffix)]
+    [OutputType(typeof(WebService))]
     public class ImportWebServiceDefinition : AzureRMCmdlet
     {
         private const string ImportFromFileParamSet = "Import from JSON file.";
         private const string ImportFromStringParamSet = "Import from JSON string.";
 
-        [Parameter(ParameterSetName = ImportWebServiceDefinition.ImportFromFileParamSet, Mandatory = true, HelpMessage = "Path to a file on disk containing the web service definition in JSON format.")]
+        [Parameter(
+            ParameterSetName = ImportWebServiceDefinition.ImportFromFileParamSet, 
+            Mandatory = true, 
+            HelpMessage = "Path to a file on disk containing the web service definition in JSON format.")]
         [ValidateNotNullOrEmpty]
         public string FromFile { get; set; }
 
-        [Parameter(ParameterSetName = ImportWebServiceDefinition.ImportFromStringParamSet, Mandatory = true, HelpMessage = "The actual web service definition as a JSON string.")]
+        [Parameter(
+            ParameterSetName = ImportWebServiceDefinition.ImportFromStringParamSet, 
+            Mandatory = true, 
+            HelpMessage = "The actual web service definition as a JSON string.")]
         [ValidateNotNullOrEmpty]
         public string FromJsonString { get; set; }
 
         public override void ExecuteCmdlet()
         {
             string jsonDefinition = this.FromJsonString;
-            if (string.Equals(this.ParameterSetName, ImportWebServiceDefinition.ImportFromFileParamSet, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(
+                        this.ParameterSetName, 
+                        ImportWebServiceDefinition.ImportFromFileParamSet, 
+                        StringComparison.OrdinalIgnoreCase))
             {
                 jsonDefinition = CmdletHelpers.GetWebServiceDefinitionFromFile(this.FromFile);
             }

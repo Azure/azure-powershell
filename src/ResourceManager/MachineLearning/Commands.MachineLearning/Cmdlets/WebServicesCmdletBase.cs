@@ -137,7 +137,8 @@ namespace Microsoft.Azure.Commands.MachineLearning
         {
             try
             {
-                if (this.cancellationSource != null && !this.cancellationSource.IsCancellationRequested)
+                if (this.cancellationSource != null && 
+                    !this.cancellationSource.IsCancellationRequested)
                 {
                     this.cancellationSource.Cancel();
                 }
@@ -219,17 +220,20 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 }
                 else
                 {
-                    var errorResponseException = capturedException.SourceException as ErrorResponseMessageException;
+                    var errorResponseException = 
+                            capturedException.SourceException as ErrorResponseMessageException;
                     if (errorResponseException != null)
                     {
                         errorRecord = errorResponseException.ToErrorRecord();
                     }
                     else
                     {
-                        var aggregateException = capturedException.SourceException as AggregateException;
+                        var aggregateException = 
+                                capturedException.SourceException as AggregateException;
                         if (aggregateException != null)
                         {
-                            errorResponseException = aggregateException.InnerException as ErrorResponseMessageException;
+                            errorResponseException = 
+                                aggregateException.InnerException as ErrorResponseMessageException;
                             if (errorResponseException != null)
                             {
                                 errorRecord = errorResponseException.ToErrorRecord();

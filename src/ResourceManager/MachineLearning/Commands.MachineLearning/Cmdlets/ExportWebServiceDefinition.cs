@@ -22,7 +22,11 @@ using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    [Cmdlet(VerbsData.Export, WebServicesCmdletBase.CommandletSuffix)]
+    [Cmdlet(
+        VerbsData.Export, 
+        WebServicesCmdletBase.CommandletSuffix, 
+        SupportsShouldProcess = true)]
+    [OutputType(typeof(string))]
     public class ExportWebServiceDefinition : AzureRMCmdlet
     {
         private const string ExportToFileParamSet = "Export to file.";
@@ -32,23 +36,50 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         [ValidateNotNullOrEmpty]
         public WebService WebService { get; set; }
 
-        [Parameter(ParameterSetName = ExportWebServiceDefinition.ExportToFileParamSet, Mandatory = true, HelpMessage = "Path to a file on disk where to export the web service definition in JSON format.")]
+        [Parameter(
+            ParameterSetName = ExportWebServiceDefinition.ExportToFileParamSet,
+            Mandatory = true, 
+            HelpMessage = "Path to a file on disk where to export the web service definition in JSON format.")]
         [ValidateNotNullOrEmpty]
-        public string ToFile { get; set; }
+        public string OutputFile { get; set; }
 
-        [Parameter(ParameterSetName = ExportWebServiceDefinition.ExportToStringParamSet, Mandatory = true, HelpMessage = "The actual web service definition as a JSON string.")]
+        [Parameter(
+            ParameterSetName = ExportWebServiceDefinition.ExportToStringParamSet, 
+            Mandatory = true, 
+            HelpMessage = "The actual web service definition as a JSON string.")]
         public SwitchParameter ToJsonString { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value that indicates if the user should be prompted for confirmation.
+        /// </summary>
+        [Parameter(
+            Mandatory = false, 
+            HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string serializedDefinition = ModelsSerializationUtil.GetAzureMLWebServiceDefinitionJsonFromObject(this.WebService);
-            if (!string.IsNullOrWhiteSpace(this.ToFile))
+            string serializedDefinition = 
+                ModelsSerializationUtil.GetAzureMLWebServiceDefinitionJsonFromObject(this.WebService);
+            if (!string.IsNullOrWhiteSpace(this.OutputFile))
             {
-               File.WriteAllText(this.ToFile, serializedDefinition);
+                bool fileExisting = File.Exists(this.OutputFile);
+                if (this.Force || !fileExisting)
+                {
+                    File.WriteAllText(this.OutputFile, serializedDefinition);
+                }
+                else{
+                    this.ConfirmAction(
+                        !fileExisting,
+                        "Want to overwriting the output file?",
+                        "Overwriting the output file",
+                        this.OutputFile,
+                        () => File.WriteAllText(this.OutputFile, serializedDefinition));
+                }
             }
             else
             {
-                Console.WriteLine(serializedDefinition);
+                this.WriteObject(serializedDefinition);
             }
         }
     }
