@@ -67,6 +67,7 @@
     <None Include="Microsoft.Azure.Commands.DevTestLabs.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Microsoft.Azure.Commands.DevTestLabs.Help.pshproj" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
