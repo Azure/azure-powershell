@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -143,6 +144,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
                 jobOperations.AddTask(parameters.JobId, task, parameters.AdditionalBehaviors);
             }
+        }
+
+        /// <summary>
+        /// Creates multiple tasks
+        /// </summary>
+        /// <param name="parameters">The account to use.</param>
+        /// <param name="psTaskCollection">The parameters to use when creating the task.</param>
+        public void AddTaskCollection(NewTaskParameters parameters, PSCloudTask[] psTaskCollection)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            if (psTaskCollection == null)
+            {
+                throw new ArgumentNullException("psTaskCollection");
+            }
+
+            Func<PSCloudTask, CloudTask> mappingFunc = psCloudTask => psCloudTask.omObject;
+            IEnumerable<CloudTask> taskCollection = psTaskCollection.Select(mappingFunc);
+
+            JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
+            jobOperations.AddTask(parameters.JobId, taskCollection, additionalBehaviors: parameters.AdditionalBehaviors);
         }
 
         /// <summary>
