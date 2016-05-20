@@ -44,7 +44,12 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 
         public Action<string> WarningLogger { get; set; }
 
-        public WebService CreateAzureMlWebService(string subscriptionId, string resourceGroupName, string location, string webServiceName, WebService serviceDefinition)
+        public WebService CreateAzureMlWebService(
+                            string subscriptionId, 
+                            string resourceGroupName, 
+                            string location, 
+                            string webServiceName, 
+                            WebService serviceDefinition)
         {
             this.apiClient.SubscriptionId = subscriptionId;
             serviceDefinition.Name = webServiceName;
@@ -53,7 +58,11 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             return this.apiClient.WebServices.CreateOrUpdateWithRequestId(serviceDefinition, resourceGroupName, webServiceName);
         }
 
-        public WebService UpdateAzureMlWebService(string subscriptionId, string resourceGroupName, string webServiceName, WebService serviceDefinition)
+        public WebService UpdateAzureMlWebService(
+                            string subscriptionId, 
+                            string resourceGroupName, 
+                            string webServiceName, 
+                            WebService serviceDefinition)
         {
             this.apiClient.SubscriptionId = subscriptionId;
             return this.apiClient.WebServices.PatchWithRequestId(serviceDefinition, resourceGroupName, webServiceName);
@@ -77,12 +86,19 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             return this.apiClient.WebServices.ListKeys(resourceGroupName, webServiceName);
         }
 
-        public async Task<ResponseWithContinuation<WebService[]>> GetAzureMlWebServicesBySubscriptionAndGroupAsync(string subscriptionId, string resourceGroupName, string nextLink, CancellationToken? cancellationToken)
+        public async Task<ResponseWithContinuation<WebService[]>> GetAzureMlWebServicesBySubscriptionAndGroupAsync(
+                                                                    string subscriptionId, 
+                                                                    string resourceGroupName, 
+                                                                    string nextLink, 
+                                                                    CancellationToken? cancellationToken)
         {
             this.apiClient.SubscriptionId = subscriptionId;
             string skipToken = WebServicesClient.GetSkipTokenFromLink(nextLink);
             var cancellationTokenParam = cancellationToken ?? CancellationToken.None;
-            var paginatedResponse = await this.apiClient.WebServices.ListInResourceGroupAsync(resourceGroupName, skipToken, cancellationTokenParam).ConfigureAwait(false);
+            var paginatedResponse = await this.apiClient.WebServices.ListInResourceGroupAsync(
+                                                                        resourceGroupName, 
+                                                                        skipToken, 
+                                                                        cancellationTokenParam).ConfigureAwait(false);
             return new ResponseWithContinuation<WebService[]>
             {
                 Value = paginatedResponse.Value.ToArray(),
@@ -90,13 +106,18 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             };
         }
 
-        public async Task<ResponseWithContinuation<WebService[]>> GetAzureMlWebServicesBySubscriptionAsync(string subscriptionId, string nextLink, CancellationToken? cancellationToken)
+        public async Task<ResponseWithContinuation<WebService[]>> GetAzureMlWebServicesBySubscriptionAsync(
+                                                                    string subscriptionId, 
+                                                                    string nextLink, 
+                                                                    CancellationToken? cancellationToken)
         {
             this.apiClient.SubscriptionId = subscriptionId;
             string skipToken = WebServicesClient.GetSkipTokenFromLink(nextLink);
             var cancellationTokenParam = cancellationToken ?? CancellationToken.None;
 
-            var paginatedResponse = await this.apiClient.WebServices.ListAsync(skipToken, cancellationTokenParam).ConfigureAwait(false);
+            var paginatedResponse = await this.apiClient.WebServices.ListAsync(
+                                                                        skipToken, 
+                                                                        cancellationTokenParam).ConfigureAwait(false);
 
             return new ResponseWithContinuation<WebService[]>
             {

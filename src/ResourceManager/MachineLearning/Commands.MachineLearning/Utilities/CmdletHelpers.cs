@@ -22,9 +22,15 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
     internal static class CmdletHelpers
     {
         private static readonly Regex MlWebServiceResourceIdRegex = 
-            new Regex(@"^\/subscriptions\/(?<subscriptionId>[^\/]+)\/resourceGroups\/(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.MachineLearning\/webservices\/(?<webServiceName>[^\/]+)$", RegexOptions.IgnoreCase);
+            new Regex(
+                    @"^\/subscriptions\/(?<subscriptionId>[^\/]+)\/resourceGroups\/(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.MachineLearning\/webservices\/(?<webServiceName>[^\/]+)$", 
+                    RegexOptions.IgnoreCase);
 
-        internal static bool TryParseMlWebServiceMetadataFromResourceId(string resourceId, out string subscriptionId, out string resourceGroupName, out string webServiceName)
+        internal static bool TryParseMlWebServiceMetadataFromResourceId(
+                                string resourceId, 
+                                out string subscriptionId, 
+                                out string resourceGroupName, 
+                                out string webServiceName)
         {
             var match = CmdletHelpers.MlWebServiceResourceIdRegex.Match(resourceId);
             if (match.Success)

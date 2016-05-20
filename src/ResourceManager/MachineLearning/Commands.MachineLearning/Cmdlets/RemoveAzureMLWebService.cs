@@ -21,20 +21,33 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.Azure.Commands.MachineLearning
 {
     [Cmdlet(VerbsCommon.Remove, WebServicesCmdletBase.CommandletSuffix)]
+    [OutputType(typeof(void))]
     public class RemoveAzureMLWebService : WebServicesCmdletBase
     {
-        protected const string RemoveByNameGroupParameterSet = "Remove an Azure ML web service resouce by name and resource group.";
-        protected const string RemoveByObjectParameterSet = "Remove an Azure ML web service specified as an object.";
+        protected const string RemoveByNameGroupParameterSet = 
+            "Remove an Azure ML web service resouce by name and resource group.";
+        protected const string RemoveByObjectParameterSet = 
+            "Remove an Azure ML web service specified as an object.";
 
-        [Parameter(ParameterSetName = RemoveAzureMLWebService.RemoveByNameGroupParameterSet, Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web service.")]
+        [Parameter(
+            ParameterSetName = RemoveAzureMLWebService.RemoveByNameGroupParameterSet, 
+            Mandatory = true, 
+            HelpMessage = "The name of the resource group for the Azure ML web service.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = RemoveAzureMLWebService.RemoveByNameGroupParameterSet, Mandatory = true, HelpMessage = "The name of the web service.")]
+        [Parameter(
+            ParameterSetName = RemoveAzureMLWebService.RemoveByNameGroupParameterSet, 
+            Mandatory = true, 
+            HelpMessage = "The name of the web service.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = RemoveAzureMLWebService.RemoveByObjectParameterSet, Mandatory = true, HelpMessage = "The machine learning web service object.", ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = RemoveAzureMLWebService.RemoveByObjectParameterSet, 
+            Mandatory = true, 
+            HelpMessage = "The machine learning web service object.", 
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public WebService MlWebService { get; set; }
 
@@ -43,10 +56,17 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
         protected override void RunCmdlet()
         {
-            if (string.Equals(this.ParameterSetName, RemoveAzureMLWebService.RemoveByObjectParameterSet, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(
+                        this.ParameterSetName, 
+                        RemoveAzureMLWebService.RemoveByObjectParameterSet, 
+                        StringComparison.OrdinalIgnoreCase))
             {
                 string subscriptionId, resourceGroup, webServiceName;
-                if (!CmdletHelpers.TryParseMlWebServiceMetadataFromResourceId(this.MlWebService.Id, out subscriptionId, out resourceGroup, out webServiceName))
+                if (!CmdletHelpers.TryParseMlWebServiceMetadataFromResourceId(
+                                    this.MlWebService.Id, 
+                                    out subscriptionId, 
+                                    out resourceGroup, 
+                                    out webServiceName))
                 {
                     throw new ValidationMetadataException(Resources.InvalidWebServiceIdOnObject);
                 }
@@ -62,7 +82,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 target: this.Name,
                 action: () =>
                 {
-                    this.WebServicesClient.DeleteAzureMlWebService(this.SubscriptionId, this.ResourceGroupName, this.Name);
+                    this.WebServicesClient.DeleteAzureMlWebService(
+                                            this.SubscriptionId, 
+                                            this.ResourceGroupName, 
+                                            this.Name);
                 });
         }
     }

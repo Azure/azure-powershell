@@ -142,14 +142,18 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            this.ResourceManagementClient = LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
-            this.WebServicesManagementClient = context.GetServiceClient<AzureMLWebServicesManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            this.ResourceManagementClient = 
+                    LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            this.WebServicesManagementClient = 
+                    context.GetServiceClient<AzureMLWebServicesManagementClient>(
+                                                            TestEnvironmentFactory.GetTestEnvironment());
             this.StorageManagementClient = LegacyTest.TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
 
             var subscriptionClient = LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
             var authManagementClient = LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
             var gallleryClient = LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
+            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(
+                    this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
             helper.SetupManagementClients(this.ResourceManagementClient, 
                 subscriptionClient, 
                 this.WebServicesManagementClient, 
@@ -182,9 +186,15 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
             /// </summary>
             /// <param name="credentials">The credentials.</param>
             /// <param name="headerValues">The headers.</param>
-            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+            public override HttpClientHelper CreateHttpClientHelper(
+                                                SubscriptionCloudCredentials credentials, 
+                                                IEnumerable<ProductInfoHeaderValue> headerValues, 
+                                                Dictionary<string, string> cmdletHeaderValues)
             {
-                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
+                return new HttpClientHelperImpl(
+                                credentials: this.credential, 
+                                headerValues: headerValues, 
+                                cmdletHeaderValues: cmdletHeaderValues);
             }
 
             /// <summary>
@@ -197,8 +207,14 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
                 /// </summary>
                 /// <param name="credentials">The credentials.</param>
                 /// <param name="headerValues">The headers.</param>
-                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
-                    : base(credentials: credentials, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues)
+                public HttpClientHelperImpl(
+                            SubscriptionCloudCredentials credentials, 
+                            IEnumerable<ProductInfoHeaderValue> headerValues, 
+                            Dictionary<string, string> cmdletHeaderValues)
+                    : base(
+                        credentials: credentials, 
+                        headerValues: headerValues, 
+                        cmdletHeaderValues: cmdletHeaderValues)
                 {
                 }
 
@@ -208,7 +224,10 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
                 /// <param name="primaryHandlers">The handlers that will be added to the top of the chain.</param>
                 public override HttpClient CreateHttpClient(params DelegatingHandler[] primaryHandlers)
                 {
-                    return base.CreateHttpClient(HttpMockServer.CreateInstance().AsArray().Concat(primaryHandlers).ToArray());
+                    return base.CreateHttpClient(HttpMockServer.CreateInstance()
+                                .AsArray()
+                                .Concat(primaryHandlers)
+                                .ToArray());
                 }
             }
         }
