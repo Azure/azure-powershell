@@ -20,6 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeAnalyticsDataSource")]
+    [Alias("Add-AdlAnalyticsDataSource")]
     public class AddAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         internal const string DataLakeParameterSetName = "Add a Data Lake storage account";

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,26 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Runtime.Serialization;
+using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Models;
+using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    /// <summary>
-    /// The exception that is thrown when failing to add an application package
-    /// </summary>
-    [Serializable]
-    internal sealed class AddApplicationPackageException : Exception
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchJobStatistics), OutputType(typeof(PSJobStatistics))]
+    public class GetBatchJobStatisticsCommand : BatchObjectModelCmdletBase
     {
-        public AddApplicationPackageException(string message, Exception exception)
-            : base(message, exception)
+        public override void ExecuteCmdlet()
         {
-        }
-
-        private AddApplicationPackageException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
+            PSJobStatistics jobStatistics = BatchClient.GetAllJobsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
+            WriteObject(jobStatistics);
         }
     }
 }
