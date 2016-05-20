@@ -22,6 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent"), OutputType(typeof(byte[]), typeof(string))]
+    [Alias("Get-AdlStoreItemContent")]
     public class GetAzureDataLakeStoreContent : DataLakeStoreFileSystemCmdletBase
     {
         private FileSystemCmdletProviderEncoding _encoding = FileSystemCmdletProviderEncoding.UTF8;
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 }
             }
 
-            using (var memStream = ((MemoryStream)DataLakeStoreFileSystemClient.PreviewFile(Path.TransformedPath, Account, Length,
+            using (var memStream = ((MemoryStream)DataLakeStoreFileSystemClient.PreviewFile(Path.TransformedPath, Account, Length, Offset,
                 CmdletCancellationToken, this)))
             {
                 byteArray = memStream.ToArray();
