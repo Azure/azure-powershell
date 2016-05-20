@@ -157,7 +157,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 ? BatchManagementClient.Account.List()
                 : BatchManagementClient.Account.ListByResourceGroup(resourceGroupName);
 
-            var batchAccountContexts = ListAllAccounts(response).Where(acct => Helpers.FilterAccounts(acct, tag)).
+            var batchAccountContexts =
+                ListAllAccounts(response).
+                Where(acct => Helpers.MatchesTag(acct, tag)).
                 Select(resource => BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource));
 
             return batchAccountContexts;
