@@ -177,6 +177,9 @@ function Test-VirtualMachine
 
         
         $vms = Get-AzureRmVM -ResourceGroupName $rgname;
+        $a = $vms | Out-String;
+        Write-Verbose("Get-AzureRmVM (List) output:");
+        Write-Verbose($a);
         Assert-AreNotEqual $vms $null;
 
         # Remove All VMs
