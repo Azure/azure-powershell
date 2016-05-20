@@ -10,15 +10,15 @@
     <CmdletObject verb="Get" noun="AzureRmDtlAllowedVMSizesPolicy">
       <Name>Get-AzureRmDtlAllowedVMSizesPolicy</Name>
       <GeneralHelp>
-        <Synopsis>@TODO</Synopsis>
-        <Description>@TODO</Description>
+        <Synopsis>The Get-AzureRmDtlAllowedVMSizesPolicy cmdlet gets the policy which specifies the list of VM sizes allowed in the lab. </Synopsis>
+        <Description />
         <Notes />
         <InputType />
         <InputUrl />
         <InputTypeDescription />
-        <ReturnType>@TODO</ReturnType>
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>@TODO</ReturnTypeDescription>
+        <ReturnTypeDescription>The policy which specifies the list of VM sizes allowed in the lab.</ReturnTypeDescription>
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="__AllParameterSets" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
@@ -34,7 +34,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
@@ -44,7 +44,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab's resource group.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -81,15 +81,15 @@
     <CmdletObject verb="Get" noun="AzureRmDtlAutoShutdownPolicy">
       <Name>Get-AzureRmDtlAutoShutdownPolicy</Name>
       <GeneralHelp>
-        <Synopsis>@TODO</Synopsis>
-        <Description>@TODO</Description>
+        <Synopsis>The Get-AzureRmDtlAutoShutdownPolicy cmdlet gets the policy which specifies when the lab's VMs must shut down.</Synopsis>
+        <Description />
         <Notes />
         <InputType />
         <InputUrl />
         <InputTypeDescription />
-        <ReturnType>@TODO</ReturnType>
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>@TODO</ReturnTypeDescription>
+        <ReturnTypeDescription>The schedule which specifies when the lab's VMs must shut down.</ReturnTypeDescription>
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="__AllParameterSets" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
@@ -105,7 +105,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
@@ -115,7 +115,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab's resource group.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -152,15 +152,15 @@
     <CmdletObject verb="Get" noun="AzureRmDtlAutoStartPolicy">
       <Name>Get-AzureRmDtlAutoStartPolicy</Name>
       <GeneralHelp>
-        <Synopsis>@TODO</Synopsis>
-        <Description>@TODO</Description>
+        <Synopsis>The Get-AzureRmDtlAutoStartPolicy cmdlet gets the policy which specifies when the lab's VMs must be started.</Synopsis>
+        <Description />
         <Notes />
         <InputType />
         <InputUrl />
         <InputTypeDescription />
-        <ReturnType>@TODO</ReturnType>
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>@TODO</ReturnTypeDescription>
+        <ReturnTypeDescription>The schedule which specifies when the lab's VMs must be started.</ReturnTypeDescription>
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="__AllParameterSets" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
@@ -176,7 +176,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
@@ -186,7 +186,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab's resource group.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -223,15 +223,15 @@
     <CmdletObject verb="Get" noun="AzureRmDtlVMsPerLabPolicy">
       <Name>Get-AzureRmDtlVMsPerLabPolicy</Name>
       <GeneralHelp>
-        <Synopsis>@TODO</Synopsis>
-        <Description>@TODO</Description>
+        <Synopsis>The Get-AzureRmDtlVMsPerLabPolicy cmdlet gets the policy which specifies the maximum number of VMs that can be created in the lab.</Synopsis>
+        <Description />
         <Notes />
         <InputType />
         <InputUrl />
         <InputTypeDescription />
-        <ReturnType>@TODO</ReturnType>
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>@TODO</ReturnTypeDescription>
+        <ReturnTypeDescription>The policy which specifies the maximum number of VMs that can be created in the lab.</ReturnTypeDescription>
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="__AllParameterSets" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
@@ -247,7 +247,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
@@ -257,7 +257,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab's resource group.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -294,15 +294,15 @@
     <CmdletObject verb="Get" noun="AzureRmDtlVMsPerUserPolicy">
       <Name>Get-AzureRmDtlVMsPerUserPolicy</Name>
       <GeneralHelp>
-        <Synopsis>@TODO</Synopsis>
-        <Description>@TODO</Description>
+        <Synopsis>The Get-AzureRmDtlVMsPerUserPolicy cmdlet gets the policy which specifies the maximum number of VMs that can be created by a user in the lab.</Synopsis>
+        <Description />
         <Notes />
         <InputType />
         <InputUrl />
         <InputTypeDescription />
-        <ReturnType>@TODO</ReturnType>
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>@TODO</ReturnTypeDescription>
+        <ReturnTypeDescription>The policy which specifies the maximum number of VMs that can be created by a user in the lab.</ReturnTypeDescription>
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="__AllParameterSets" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
@@ -318,7 +318,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
@@ -328,7 +328,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab's resource group.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -365,15 +365,15 @@
     <CmdletObject verb="Set" noun="AzureRmDtlAllowedVMSizesPolicy">
       <Name>Set-AzureRmDtlAllowedVMSizesPolicy</Name>
       <GeneralHelp>
-        <Synopsis>@TODO</Synopsis>
-        <Description>@TODO</Description>
+        <Synopsis>The Set-AzureRmDtlAllowedVMSizesPolicy cmdlet sets the policy which specifies the list of VM sizes allowed in the lab.</Synopsis>
+        <Description />
         <Notes />
         <InputType />
         <InputUrl />
         <InputTypeDescription />
-        <ReturnType>@TODO</ReturnType>
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>@TODO</ReturnTypeDescription>
+        <ReturnTypeDescription>The policy which specifies the list of VM sizes allowed in the lab.</ReturnTypeDescription>
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Enable" Params="VmSizes Enable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
@@ -391,7 +391,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The list of VM sizes allowed in the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
@@ -401,7 +401,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>Specifies that the policy should be enabled.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
@@ -411,7 +411,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
@@ -421,7 +421,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab's resource group.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -456,7 +456,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>Specifies that the policy should be disabled.</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -468,15 +468,15 @@
     <CmdletObject verb="Set" noun="AzureRmDtlAutoShutdownPolicy">
       <Name>Set-AzureRmDtlAutoShutdownPolicy</Name>
       <GeneralHelp>
-        <Synopsis>@TODO</Synopsis>
-        <Description>@TODO</Description>
+        <Synopsis>The Set-AzureRmDtlAutoShutdownPolicy cmdlet sets the policy which specifies when the lab's VMs must shut down.</Synopsis>
+        <Description />
         <Notes />
         <InputType />
         <InputUrl />
         <InputTypeDescription />
-        <ReturnType>@TODO</ReturnType>
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>@TODO</ReturnTypeDescription>
+        <ReturnTypeDescription>The schedule which specifies when the lab's VMs must shut down.</ReturnTypeDescription>
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Enable" Params="Time Enable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
@@ -494,7 +494,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The time at which the lab's VMs must shut down.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
@@ -504,7 +504,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>Specifies that the policy should be enabled.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
@@ -514,7 +514,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
@@ -524,7 +524,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab's resource group.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -559,7 +559,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>Specifies that the policy should be disabled.</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -571,15 +571,15 @@
     <CmdletObject verb="Set" noun="AzureRmDtlAutoStartPolicy">
       <Name>Set-AzureRmDtlAutoStartPolicy</Name>
       <GeneralHelp>
-        <Synopsis>@TODO</Synopsis>
-        <Description>@TODO</Description>
+        <Synopsis>The Set-AzureRmDtlAutoStartPolicy cmdlet sets the policy which specifies when the lab's VMs must be started.</Synopsis>
+        <Description />
         <Notes />
         <InputType />
         <InputUrl />
         <InputTypeDescription />
-        <ReturnType>@TODO</ReturnType>
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>@TODO</ReturnTypeDescription>
+        <ReturnTypeDescription>The schedule which specifies when the lab's VMs must be started.</ReturnTypeDescription>
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Enable" Params="Time Days Enable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
@@ -597,7 +597,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The time at which the lab's VMs must be started.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="DayOfWeek[]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="5" globbing="false">
@@ -606,7 +606,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The days of the week on which the lab's VMs must be started.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
@@ -616,7 +616,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>Specifies that the policy should be enabled.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
@@ -626,7 +626,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
@@ -636,7 +636,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab's resource group.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -671,7 +671,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>Specifies that the policy should be disabled.</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -683,15 +683,15 @@
     <CmdletObject verb="Set" noun="AzureRmDtlVMsPerLabPolicy">
       <Name>Set-AzureRmDtlVMsPerLabPolicy</Name>
       <GeneralHelp>
-        <Synopsis>@TODO</Synopsis>
-        <Description>@TODO</Description>
+        <Synopsis>The Set-AzureRmDtlVMsPerLabPolicy cmdlet sets the policy which specifies the maximum number of VMs that can be created in the lab.</Synopsis>
+        <Description />
         <Notes />
         <InputType />
         <InputUrl />
         <InputTypeDescription />
-        <ReturnType>@TODO</ReturnType>
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>@TODO</ReturnTypeDescription>
+        <ReturnTypeDescription>The policy which specifies the maximum number of VMs that can be created in the lab.</ReturnTypeDescription>
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Enable" Params="MaxVMs Enable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
@@ -709,7 +709,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The maximum number of VMs that can be created in the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
@@ -719,7 +719,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>Specifies that the policy should be enabled.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
@@ -729,7 +729,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
@@ -739,7 +739,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab's resource group.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -774,7 +774,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>Specifies that the policy should be disabled.</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -786,15 +786,15 @@
     <CmdletObject verb="Set" noun="AzureRmDtlVMsPerUserPolicy">
       <Name>Set-AzureRmDtlVMsPerUserPolicy</Name>
       <GeneralHelp>
-        <Synopsis>@TODO</Synopsis>
-        <Description>@TODO</Description>
+        <Synopsis>The Set-AzureRmDtlVMsPerUserPolicy cmdlet sets the policy which specifies the maximum number of VMs that can be created by a user in the lab.</Synopsis>
+        <Description />
         <Notes />
         <InputType />
         <InputUrl />
         <InputTypeDescription />
-        <ReturnType>@TODO</ReturnType>
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>@TODO</ReturnTypeDescription>
+        <ReturnTypeDescription>The policy which specifies the maximum number of VMs that can be created by a user in the lab.</ReturnTypeDescription>
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Enable" Params="MaxVMs Enable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
@@ -812,7 +812,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The maximum number of VMs that can be created by a user in the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
@@ -822,7 +822,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>Specifies that the policy should be enabled.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
@@ -832,7 +832,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
@@ -842,7 +842,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>The name of the lab's resource group.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -877,7 +877,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>@TODO</Description>
+          <Description>Specifies that the policy should be disabled.</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
