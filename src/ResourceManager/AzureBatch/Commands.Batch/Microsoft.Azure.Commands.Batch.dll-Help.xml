@@ -2007,22 +2007,21 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context
-          Id                           : tvm-2316545714_1-20150725t213220z
-          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
-          State                        : Idle
-          StateTransitionTime          : 7/25/2015 9:36:53 PM
-          LastBootTime                 : 7/25/2015 9:36:53 PM
-          AllocationTime               : 7/25/2015 9:32:20 PM
-          IPAddress                    : 10.14.121.1
-          AffinityId                   : TVM:tvm-2316545714_1-20150725t213220z
-          VirtualMachineSize           : small
-          TotalTasksRun                : 1
-          StartTaskInformation         :
-          RecentTasks                  : {}
-          StartTask                    :
-          CertificateReferences        :
-          Errors                       :
-
+          Id                    : tvm-2316545714_1-20150725t213220z
+          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
+          State                 : Idle
+          StateTransitionTime   : 7/25/2015 9:36:53 PM
+          LastBootTime          : 7/25/2015 9:36:53 PM
+          AllocationTime        : 7/25/2015 9:32:20 PM
+          IPAddress             : 10.14.121.1
+          AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
+          VirtualMachineSize    : small
+          TotalTasksRun         : 1
+          StartTaskInformation  :
+          RecentTasks           : {}
+          StartTask             :
+          CertificateReferences :
+          Errors                :
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets the compute node that has the ID tvm-2316545714_1-20150725t213220z from the pool that has the ID Pool06. Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
@@ -2043,38 +2042,37 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Filter "state eq 'idle'" -BatchContext $Context
-          Id                           : tvm-2316545714_1-20150725t213220z
-          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
-          State                        : Idle
-          StateTransitionTime          : 7/25/2015 9:36:53 PM
-          LastBootTime                 : 7/25/2015 9:36:53 PM
-          AllocationTime               : 7/25/2015 9:32:20 PM
-          IPAddress                    : 10.14.121.1
-          AffinityId                   : TVM:tvm-2316545714_1-20150725t213220z
-          VirtualMachineSize           : small
-          TotalTasksRun                : 1
-          StartTaskInformation         :
-          RecentTasks                  : {}
-          StartTask                    :
-          CertificateReferences        :
-          Errors                       :
+          Id                    : tvm-2316545714_1-20150725t213220z
+          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
+          State                 : Idle
+          StateTransitionTime   : 7/25/2015 9:36:53 PM
+          LastBootTime          : 7/25/2015 9:36:53 PM
+          AllocationTime        : 7/25/2015 9:32:20 PM
+          IPAddress             : 10.14.121.1
+          AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
+          VirtualMachineSize    : small
+          TotalTasksRun         : 1
+          StartTaskInformation  :
+          RecentTasks           : {}
+          StartTask             :
+          CertificateReferences :
+          Errors                :
 
-          Id                           : tvm-2316545714_2-20150726t172920z
-          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
-          State                        : Idle
-          StateTransitionTime          : 7/26/2015 5:33:58 PM
-          LastBootTime                 : 7/26/2015 5:33:58 PM
-          AllocationTime               : 7/26/2015 5:29:20 PM
-          IPAddress                    : 10.14.121.38
-          AffinityId                   : TVM:tvm-2316545714_2-20150726t172920z
-          VirtualMachineSize           : small
-          TotalTasksRun                : 0
-          StartTaskInformation         :
-          RecentTasks                  :
-          StartTask                    :
-          CertificateReferences        :
-          Errors                       :
-
+          Id                    : tvm-2316545714_2-20150726t172920z
+          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
+          State                 : Idle
+          StateTransitionTime   : 7/26/2015 5:33:58 PM
+          LastBootTime          : 7/26/2015 5:33:58 PM
+          AllocationTime        : 7/26/2015 5:29:20 PM
+          IPAddress             : 10.14.121.38
+          AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
+          VirtualMachineSize    : small
+          TotalTasksRun         : 0
+          StartTaskInformation  :
+          RecentTasks           :
+          StartTask             :
+          CertificateReferences :
+          Errors                :
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets all idle compute nodes that are contained in the pool that has the ID Pool06. The command specifies the idle state by using the Filter parameter.</maml:para>
@@ -7358,7 +7356,7 @@
             <maml:para>Specifies the formula for automatically scaling the pool. </maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        </command:parameter>        
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>ApplicationPackageReferences</maml:name>
           <maml:description>
@@ -9253,7 +9251,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9296,12 +9294,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -9317,7 +9315,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: List the applications in a Batch account</maml:title>
@@ -9428,7 +9426,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>Specifies the name of the Batch account.</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9440,7 +9438,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9452,7 +9450,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
-        <maml:para>Specifies the version of the application.</maml:para>                
+        <maml:para>Specifies the version of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9495,12 +9493,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -9516,7 +9514,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Get details of an application package in the Batch account.</maml:title>
@@ -9526,12 +9524,15 @@
       </maml:introduction>
       <dev:code>
         PS C:\&gt;Get-AzureRmBatchApplicationPackage -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -ApplicationVersion "1.0"
-        Version State   Format
 
-        ------- ------- ------
+        Format             : zip
+        State              : Active
+        Version            : 1.0
+        LastActivationTime : 13/05/2016 4:03:24 AM
+        StorageUrl         : https://contosobatch.blob.core.windows.net/app-test
+        StorageUrlExpiry   : 13/05/2016 8:04:44 AM
+        Id                 : litware
 
-        1.0     active  zip
-        1.1     pending    
       </dev:code>
       <dev:remarks>
         <maml:para>This command gets the details of version 1.0 of the 'litware' package.</maml:para>
@@ -9650,7 +9651,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>Specifies the name of the Batch account.</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9669,7 +9670,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9681,7 +9682,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
-        <maml:para>Specifies the version of the application.</maml:para>                
+        <maml:para>Specifies the version of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9693,7 +9694,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>FilePath</maml:name>
       <maml:description>
-        <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>                
+        <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9705,7 +9706,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>Format</maml:name>
       <maml:description>
-        <maml:para>Specifies the format of the application package binary file.</maml:para>                
+        <maml:para>Specifies the format of the application package binary file.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9748,12 +9749,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
-          <!-- description  -->          
+          <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -9769,7 +9770,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Install an application package into a Batch account</maml:title>
@@ -9950,7 +9951,7 @@
       </dev:type>
       <maml:description>
         <maml:para>
-          <!-- description  -->          
+          <!-- description  -->
         </maml:para>
       </maml:description>
     </command:inputType>
@@ -9961,12 +9962,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -9982,7 +9983,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Add a new, empty application to a Batch account</maml:title>
@@ -10088,7 +10089,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>Specifies the name of the Batch account.</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10100,7 +10101,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10112,7 +10113,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
-        <maml:para>Specifies the version of the application.</maml:para>                
+        <maml:para>Specifies the version of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10155,12 +10156,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -10176,7 +10177,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Delete an application package from a Batch account</maml:title>
@@ -10275,7 +10276,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>Specifies the name of the Batch account.</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10287,7 +10288,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10330,12 +10331,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -10351,7 +10352,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Delete an application from a Batch account</maml:title>
@@ -10471,7 +10472,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>Specifies the name of the Batch account.</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10483,7 +10484,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AllowUpdates</maml:name>
       <maml:description>
-        <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>                
+        <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>
       </maml:description>
       <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
       <dev:type>
@@ -10495,7 +10496,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10507,7 +10508,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>DefaultVersion</maml:name>
       <maml:description>
-        <maml:para>Specifies which package to use if a client requests the application but does not specify a version.</maml:para>                
+        <maml:para>Specifies which package to use if a client requests the application but does not specify a version.</maml:para>
       </maml:description>
       <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10519,7 +10520,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>DisplayName</maml:name>
       <maml:description>
-        <maml:para>Specifies the display name for the application.</maml:para>                
+        <maml:para>Specifies the display name for the application.</maml:para>
       </maml:description>
       <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10562,12 +10563,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -10583,7 +10584,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Update an application in a Batch account</maml:title>
@@ -12670,7 +12671,7 @@
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
-        <dev:code> 
+        <dev:code>
           Get-AzureBatchComputeNode -PoolId &quot;myPool&quot; -BatchContext $context | Get-AzureBatchRemoteLoginSettings -BatchContext $context
 
           IPAddress       Port

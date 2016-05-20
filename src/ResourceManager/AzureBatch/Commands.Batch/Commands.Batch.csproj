@@ -156,8 +156,6 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
-    <Compile Include="ActivateApplicationPackageException.cs" />
-    <Compile Include="AddApplicationPackageException.cs" />
     <Compile Include="Applications\NewBatchApplicationPackageCommand.cs" />
     <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
     <Compile Include="Models\PSApplicationPackage.cs" />
@@ -347,7 +345,7 @@
     <Compile Include="ComputeNodeUsers\RemoveBatchComputeNodeUserCommand.cs" />
     <Compile Include="Tasks\SetBatchTaskCommand.cs" />
     <Compile Include="Tasks\StopBatchTaskCommand.cs" />
-    <Compile Include="UploadApplicationPackageException.cs" />
+    <Compile Include="NewApplicationPackageException.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="ComputeNodes\GetBatchComputeNodeCommand.cs" />
@@ -372,8 +370,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

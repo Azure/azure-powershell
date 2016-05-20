@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to create application package {0} version {1}. The package already exists, and the application does not allow existing packages to be updated. You must upload your package using a new version number..
+        /// </summary>
+        internal static string ApplicationDoesNotAllowUpdates {
+            get {
+                return ResourceManager.GetString("ApplicationDoesNotAllowUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Begin {0} call to RP.
         /// </summary>
         internal static string BeginMAMLCall {
@@ -277,7 +286,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Application package {0} version {1} failed to activate. {2}..
+        ///   Looks up a localized string similar to Failed to activate application package {0} version {1}. {2}..
         /// </summary>
         internal static string FailedToActivate {
             get {
@@ -295,7 +304,16 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to get application {0} package {1}. You may need to delete the application package and try uploading again. {2}..
+        ///   Looks up a localized string similar to Failed to create application package {0} version {1}. The package already exists, and an error occurred when checking if the application allows existing packages to be updated. {2}..
+        /// </summary>
+        internal static string FailedToCheckApplication {
+            get {
+                return ResourceManager.GetString("FailedToCheckApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to create application package {0} version {1}.  Unable to determine whether the application package already exists. {2}..
         /// </summary>
         internal static string FailedToGetApplicationPackage {
             get {
@@ -304,7 +322,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to upload {0} to Azure storage. {1}..
+        ///   Looks up a localized string similar to Failed to upload {0} to Azure Storage. {1}..
         /// </summary>
         internal static string FailedToUpload {
             get {
@@ -313,7 +331,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uploading {0} to Azure storage failed and the attempt to delete the application package afterwards failed. {1}..
+        ///   Looks up a localized string similar to Failed to upload {0} to Azure Storage and the attempt to delete the application package record afterwards failed. Remove the application package record with the Remove-AzureRmBatchApplicationPackage cmdlet and retry. {1}..
         /// </summary>
         internal static string FailedToUploadAndDelete {
             get {
@@ -1114,7 +1132,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Application package {0} version {1} successfully uploaded but failed to activate. {2}..
+        ///   Looks up a localized string similar to Application package {0} version {1} successfully uploaded but failed to activate. Activate the application package using the New-AzureRmBatchApplicationPackage cmdlet with the -ActivateOnly parameter. {2}..
         /// </summary>
         internal static string UploadedApplicationButFailedToActivate {
             get {
