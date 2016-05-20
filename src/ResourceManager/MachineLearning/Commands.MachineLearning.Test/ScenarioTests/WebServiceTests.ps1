@@ -89,7 +89,7 @@ function Test-CreateWebServiceFromFile
             $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE $commitmentPlanId $storageAccount
             $definitionFile = "$webServiceName.json"
             LogOutput "Exporting web service definition to file: $definitionFile"
-            Export-AzureRmMlWebService -WebService $svcDefinition -ToFile $definitionFile
+            Export-AzureRmMlWebService -WebService $svcDefinition -OutputFile $definitionFile
             LogOutput "Checking that exported service definition exists at $definitionFile"
             Assert-True { Test-Path $definitionFile }
 
@@ -221,7 +221,7 @@ function Test-ListWebServices
 
             # List all services in the first resource group
             LogOutput "Listing all web services in resource group: $rgName"
-            $servicesInGroup = Get-AzureRmMlWebService -IsCollection -ResourceGroupName $rgName
+            $servicesInGroup = Get-AzureRmMlWebService -ResourceGroupName $rgName
             Assert-NotNull $servicesInGroup
             LogOutput "Group $rgName contains $($servicesInGroup.Count) web services."    
             Assert-AreEqual 2 $servicesInGroup.Count
@@ -232,7 +232,7 @@ function Test-ListWebServices
 
             # List all services in the second resource group
             LogOutput "Listing all web services in resource group: $otherResourceGroupName"
-            $servicesInOtherGroup = Get-AzureRmMlWebService -IsCollection -ResourceGroupName $otherResourceGroupName
+            $servicesInOtherGroup = Get-AzureRmMlWebService -ResourceGroupName $otherResourceGroupName
             Assert-NotNull $servicesInOtherGroup            
             LogOutput "Group $otherResourceGroupName contains $($servicesInOtherGroup.Count) web services."                            
             Assert-AreEqual 1 $servicesInOtherGroup.Count
@@ -240,7 +240,7 @@ function Test-ListWebServices
             Assert-True { $servicesInOtherGroup[0].Id -eq $svc3.Id }
 
             # List all services in the subscription
-            $servicesInSubscription = Get-AzureRmMlWebService -IsCollection
+            $servicesInSubscription = Get-AzureRmMlWebService
             Assert-NotNull $servicesInSubscription
             LogOutput "Found $($servicesInSubscription.Count) web services in the current subscription."    
             Assert-False { $servicesInSubscription.Count -lt 3 }
