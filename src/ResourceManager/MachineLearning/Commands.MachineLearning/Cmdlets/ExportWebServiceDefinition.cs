@@ -64,18 +64,12 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
             if (!string.IsNullOrWhiteSpace(this.OutputFile))
             {
                 bool fileExisting = File.Exists(this.OutputFile);
-                if (this.Force || !fileExisting)
-                {
-                    File.WriteAllText(this.OutputFile, serializedDefinition);
-                }
-                else{
-                    this.ConfirmAction(
-                        !fileExisting,
-                        "Want to overwriting the output file?",
-                        "Overwriting the output file",
-                        this.OutputFile,
-                        () => File.WriteAllText(this.OutputFile, serializedDefinition));
-                }
+                this.ConfirmAction(
+                    this.Force || !fileExisting,
+                    "Want to overwriting the output file?",
+                    "Overwriting the output file",
+                    this.OutputFile,
+                    () => File.WriteAllText(this.OutputFile, serializedDefinition));
             }
             else
             {
