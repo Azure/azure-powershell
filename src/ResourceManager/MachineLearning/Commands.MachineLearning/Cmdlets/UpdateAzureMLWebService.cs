@@ -20,7 +20,10 @@ using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
-    [Cmdlet(VerbsData.Update, WebServicesCmdletBase.CommandletSuffix)]
+    [Cmdlet(
+        VerbsData.Update, 
+        WebServicesCmdletBase.CommandletSuffix, 
+        SupportsShouldProcess = true)]
     [OutputType(typeof(WebService))]
     public class UpdateAzureMLWebService : WebServicesCmdletBase
     {
