@@ -121,15 +121,18 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                 DeploymentChangeSummary changeSummary = WebsitesClient.PublishWebProject(Name, Slot, fullPackage, fullSetParametersFile, connectionStrings, SkipAppData.IsPresent, DoNotDelete.IsPresent);
                 WriteVerbose(string.Format(Resources.CompletePublishingProjectTemplate, fullPackage));
 
-                WriteObject("Change Summary:");
-                WriteObject(string.Format("Bytes Copied: {0}", changeSummary.BytesCopied.ToString()));
-                WriteObject(string.Format("Files Added: {0}", changeSummary.ObjectsAdded.ToString()));
-                WriteObject(string.Format("Files Updated: {0}", changeSummary.ObjectsUpdated.ToString()));
-                WriteObject(string.Format("Files Deleted: {0}", changeSummary.ObjectsDeleted.ToString()));
-                WriteObject(string.Format("Errors: {0}", changeSummary.Errors.ToString()));
-                WriteObject(string.Format("Warnings: {0}", changeSummary.Warnings.ToString()));
-                WriteObject(string.Format("Parameters Changed: {0}", changeSummary.ParameterChanges.ToString()));
-                WriteObject(string.Format("Total No of Changes: {0}", changeSummary.TotalChanges.ToString()));
+                if (changeSummary != null)
+                {
+                    WriteObject("Change Summary:");
+                    WriteObject(string.Format("Bytes Copied: {0}", changeSummary.BytesCopied.ToString()));
+                    WriteObject(string.Format("Files Added: {0}", changeSummary.ObjectsAdded.ToString()));
+                    WriteObject(string.Format("Files Updated: {0}", changeSummary.ObjectsUpdated.ToString()));
+                    WriteObject(string.Format("Files Deleted: {0}", changeSummary.ObjectsDeleted.ToString()));
+                    WriteObject(string.Format("Errors: {0}", changeSummary.Errors.ToString()));
+                    WriteObject(string.Format("Warnings: {0}", changeSummary.Warnings.ToString()));
+                    WriteObject(string.Format("Parameters Changed: {0}", changeSummary.ParameterChanges.ToString()));
+                    WriteObject(string.Format("Total No of Changes: {0}", changeSummary.TotalChanges.ToString()));
+                }
             }
             catch (Exception)
             {
