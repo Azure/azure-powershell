@@ -1,0 +1,149 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk2556/providers/Microsoft.DevTestLab/labs/onesdk8381/policysets/default/policies/AllowedVmSizesInLab?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazI1NTYvcHJvdmlkZXJzL01pY3Jvc29mdC5EZXZUZXN0TGFiL2xhYnMvb25lc2RrODM4MS9wb2xpY3lzZXRzL2RlZmF1bHQvcG9saWNpZXMvQWxsb3dlZFZtU2l6ZXNJbkxhYj9hcGktdmVyc2lvbj0yMDE1LTA1LTIxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"factName\": \"UserOwnedLabVmCount\",\r\n    \"threshold\": \"[\\\"Standard_A3\\\",\\\"Standard_A0\\\"]\",\r\n    \"evaluatorType\": \"AllowedValuesPolicy\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "193"
+        ],
+        "x-ms-client-request-id": [
+          "2cdd1719-0837-45d1-a13e-1553a48bdf9a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"\",\r\n    \"status\": \"Enabled\",\r\n    \"factName\": \"UserOwnedLabVmCount\",\r\n    \"threshold\": \"[\\\"Standard_A3\\\",\\\"Standard_A0\\\"]\",\r\n    \"evaluatorType\": \"AllowedValuesPolicy\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk2556/providers/microsoft.devtestlab/labs/onesdk8381/policysets/default/policies/allowedvmsizesinlab\",\r\n  \"name\": \"AllowedVmSizesInLab\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/policySets/policies\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk2556/providers/Microsoft.DevTestLab/labs/onesdk8381/policysets/default/policies/AllowedVmSizesInLab?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1188"
+        ],
+        "x-ms-request-id": [
+          "000d2a2a-a7de-468e-b6dd-fb356a30fa56"
+        ],
+        "x-ms-correlation-request-id": [
+          "000d2a2a-a7de-468e-b6dd-fb356a30fa56"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160519T224415Z:000d2a2a-a7de-468e-b6dd-fb356a30fa56"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 19 May 2016 22:44:15 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk2556/providers/Microsoft.DevTestLab/labs/onesdk8381/policysets/default/policies/AllowedVmSizesInLab?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazI1NTYvcHJvdmlkZXJzL01pY3Jvc29mdC5EZXZUZXN0TGFiL2xhYnMvb25lc2RrODM4MS9wb2xpY3lzZXRzL2RlZmF1bHQvcG9saWNpZXMvQWxsb3dlZFZtU2l6ZXNJbkxhYj9hcGktdmVyc2lvbj0yMDE1LTA1LTIxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e62583cd-7b38-4b43-8063-bb89cd22d313"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"\",\r\n    \"status\": \"Enabled\",\r\n    \"factName\": \"UserOwnedLabVmCount\",\r\n    \"threshold\": \"[\\\"Standard_A3\\\",\\\"Standard_A0\\\"]\",\r\n    \"evaluatorType\": \"AllowedValuesPolicy\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk2556/providers/microsoft.devtestlab/labs/onesdk8381/policysets/default/policies/allowedvmsizesinlab\",\r\n  \"name\": \"AllowedVmSizesInLab\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/policySets/policies\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk2556/providers/Microsoft.DevTestLab/labs/onesdk8381/policysets/default/policies/AllowedVmSizesInLab?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14730"
+        ],
+        "x-ms-request-id": [
+          "46c8c1e2-31b5-4f66-9a59-7d8b067b37cf"
+        ],
+        "x-ms-correlation-request-id": [
+          "46c8c1e2-31b5-4f66-9a59-7d8b067b37cf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160519T224415Z:46c8c1e2-31b5-4f66-9a59-7d8b067b37cf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 19 May 2016 22:44:15 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "e605a3bc-ee4e-4c7a-9709-1868a28b1d4d"
+  }
+}
