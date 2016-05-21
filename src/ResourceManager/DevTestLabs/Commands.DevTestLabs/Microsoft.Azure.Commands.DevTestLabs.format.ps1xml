@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.Azure.Management.DevTestLabs.Models.Policy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.DevTestLabs.Models.Policy</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Fact Name</Label>
+                <PropertyName>FactName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Threshold</Label>
+                <PropertyName>Threshold</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Evaluator Type</Label>
+                <PropertyName>EvaluatorType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Description</Label>
+                <PropertyName>Description</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Status</Label>
+                <PropertyName>Status</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Provisioning State</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Management.DevTestLabs.Models.Schedule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.DevTestLabs.Models.Schedule</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Weekly Recurrence</Label>
+                <PropertyName>WeeklyRecurrence</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Hourly Recurrence</Label>
+                <PropertyName>HourlyRecurrence</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Daily Recurrence</Label>
+                <PropertyName>DailyRecurrence</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Task Type</Label>
+                <PropertyName>TaskType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TimeZone Id</Label>
+                <PropertyName>TimeZoneId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Status</Label>
+                <PropertyName>Status</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Provisioning State</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
