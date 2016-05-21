@@ -47,7 +47,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.SpecificParameterSetName,
             HelpMessage = "Azure Storage Context Object")]
-        [ValidateNotNull]
         public override AzureStorageContext Context { get; set; }
 
         public override void ExecuteCmdlet()
