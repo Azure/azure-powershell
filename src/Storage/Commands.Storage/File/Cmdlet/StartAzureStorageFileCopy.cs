@@ -120,7 +120,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ShareNameParameterSet)]
-        [ValidateNotNull]
         public override AzureStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = ContainerNameParameterSet)]
