@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,26 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Runtime.Serialization;
+using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Models;
+using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    /// <summary>
-    /// The exception that is thrown when failing to upload a file to Azure Storage
-    /// </summary>
-    [Serializable]
-    internal sealed class UploadApplicationPackageException : Exception
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchPoolStatistics), OutputType(typeof(PSPoolStatistics))]
+    public class GetBatchPoolStatisticsCommand : BatchObjectModelCmdletBase
     {
-        public UploadApplicationPackageException(string message, Exception exception)
-            : base(message, exception)
+        public override void ExecuteCmdlet()
         {
-        }
-
-        private UploadApplicationPackageException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
+            PSPoolStatistics poolStatistics = BatchClient.GetAllPoolsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
+            WriteObject(poolStatistics);
         }
     }
 }
