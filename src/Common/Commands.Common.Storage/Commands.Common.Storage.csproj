@@ -160,6 +160,7 @@
     <Compile Include="IStorageContextProvider.cs" />
     <Compile Include="IStorageService.cs" />
     <Compile Include="IStorageServiceProvider.cs" />
+    <Compile Include="LazyAzureStorageContext.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

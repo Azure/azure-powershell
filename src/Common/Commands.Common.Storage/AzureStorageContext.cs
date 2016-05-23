@@ -28,37 +28,37 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         /// <summary>
         /// Storage account name used in this context
         /// </summary>
-        public string StorageAccountName { get; private set; }
+        public string StorageAccountName { get; protected set; }
 
         /// <summary>
         /// Blob end point of the storage context
         /// </summary>
-        public string BlobEndPoint { get; private set; }
+        public virtual string BlobEndPoint { get; protected set; }
 
         /// <summary>
         /// Table end point of the storage context
         /// </summary>
-        public string TableEndPoint { get; private set; }
+        public virtual string TableEndPoint { get; protected set; }
 
         /// <summary>
         /// Queue end point of the storage context
         /// </summary>
-        public string QueueEndPoint { get; private set; }
+        public virtual string QueueEndPoint { get; protected set; }
 
         /// <summary>
         /// Self reference, it could enable New-AzureStorageContext can be used in pipeline 
         /// </summary>
-        public AzureStorageContext Context { get; private set; }
+        public AzureStorageContext Context { get; protected set; }
 
         /// <summary>
         /// Name place holder, and force pipeline to ignore this property
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; protected set; }
 
         /// <summary>
         /// Storage account in context
         /// </summary>
-        public CloudStorageAccount StorageAccount { get; private set; }
+        public virtual CloudStorageAccount StorageAccount { get; protected set; }
 
         /// <summary>
         /// Endpoint suffix (everything after "table.", "blob." or "queue.")
@@ -152,7 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         /// Proivides a private constructor for building empty instance which
         /// contains no account information.
         /// </summary>
-        private AzureStorageContext()
+        protected AzureStorageContext()
         {
         }
 
