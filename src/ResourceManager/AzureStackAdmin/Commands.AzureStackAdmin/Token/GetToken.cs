@@ -122,17 +122,10 @@ namespace Microsoft.AzureStack.Commands.Security
             var uriString = this.BuildAuthorityUriString();
             var userCredential = new UserCredential(this.Credential.UserName, this.Credential.Password);
             var result = default(AuthenticationResult);
-
-            if (this.IsRequestForAadToken())
-            {
-                var context = new AuthenticationContext(authority: uriString, validateAuthority: ValidateAuthority);
-                result = context.AcquireToken(resource: this.Resource, clientId: this.ClientId, userCredential: userCredential);
-            }
-            else
-            {
-                // NOTE: This is a case of using non-public APIs of ADAL.NET via reflection to acquire token (not officially supported by ADAL.NET team).
-                result = AuthenticationContextExtensions.AcquireTokenForAdfs(authority: uriString, resource: this.Resource, clientId: this.ClientId, userCredential: userCredential);
-            }
+            
+            var context = new AuthenticationContext(authority: uriString, validateAuthority: ValidateAuthority);
+            result = context.AcquireToken(resource: this.Resource, clientId: this.ClientId, userCredential: userCredential);
+     
             return result;
         }
 
