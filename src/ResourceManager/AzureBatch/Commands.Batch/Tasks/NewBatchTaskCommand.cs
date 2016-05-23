@@ -26,16 +26,10 @@ namespace Microsoft.Azure.Commands.Batch
     {
         [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the job to create the task under.")]
-        [Parameter(ParameterSetName = Constants.AddTaskParameterSet, Mandatory = true,
-            HelpMessage = "The id of the job to create the task under.")]
-        [Parameter(ParameterSetName = Constants.BulkTaskParameterSet, Mandatory = true,
-            HelpMessage = "The id of the job to create the tasks under.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = Constants.AddTaskParameterSet, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = Constants.BulkTaskParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSCloudJob Job { get; set; }
 
@@ -87,8 +81,7 @@ namespace Microsoft.Azure.Commands.Batch
         {
             if (TaskCollection.Any())
             {
-                NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job,
-                    this.Id, this.AdditionalBehaviors);
+                NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job, this.AdditionalBehaviors);
 
                 BatchClient.AddTaskCollection(parameters, TaskCollection);
             }

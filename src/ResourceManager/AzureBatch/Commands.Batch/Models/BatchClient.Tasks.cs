@@ -147,10 +147,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Creates multiple tasks
+        /// Creates a collection of tasks
         /// </summary>
-        /// <param name="parameters">The account to use.</param>
-        /// <param name="psTaskCollection">The parameters to use when creating the task.</param>
+        /// <param name="parameters">The parameters to use when creating the tasks.</param>
+        /// <param name="psTaskCollection">The collection of tasks to create.</param>
         public void AddTaskCollection(NewTaskParameters parameters, PSCloudTask[] psTaskCollection)
         {
             if (parameters == null)

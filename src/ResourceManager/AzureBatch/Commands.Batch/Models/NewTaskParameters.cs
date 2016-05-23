@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.TaskId = taskId;
         }
 
+        public NewTaskParameters(BatchAccountContext context, string jobId, PSCloudJob job, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, jobId, job, additionalBehaviors)
+        {
+        }
+
         /// <summary>
         /// The id of the task to create.
         /// </summary>
