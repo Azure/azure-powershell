@@ -26,6 +26,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
@@ -636,6 +637,48 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             }
 
             return blobUrl;
+        }
+
+        /// <summary>
+        /// Uploads an application package to Storage
+        /// </summary>
+        public static AddApplicationPackageResult CreateApplicationPackage(BatchController controller, BatchAccountContext context, string applicationId, string version, string filePath)
+        {
+            AddApplicationPackageResult applicationPackage = null;
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                applicationPackage = controller.BatchManagementClient.Application.AddApplicationPackage(
+                    context.ResourceGroupName,
+                    context.AccountName,
+                    applicationId,
+                    version);
+
+                CloudBlockBlob blob = new CloudBlockBlob(new Uri(applicationPackage.StorageUrl));
+                blob.UploadFromFile(filePath, FileMode.Open);
+            }
+
+            return applicationPackage;
+        }
+
+        /// <summary>
+        /// Deletes an application used in a Scenario test.
+        /// </summary>
+        public static void DeleteApplication(BatchController controller, BatchAccountContext context, string applicationId)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            client.DeleteApplication(context.ResourceGroupName, context.AccountName, applicationId);
+        }
+
+        /// <summary>
+        /// Deletes an application package used in a Scenario test.
+        /// </summary>
+        public static void DeleteApplicationPackage(BatchController controller, BatchAccountContext context, string applicationId, string version)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            client.DeleteApplicationPackage(context.ResourceGroupName, context.AccountName, applicationId, version);
         }
 
         /// <summary>
