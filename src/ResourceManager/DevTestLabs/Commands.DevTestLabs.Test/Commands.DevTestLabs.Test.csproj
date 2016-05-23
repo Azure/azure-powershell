@@ -166,13 +166,27 @@
     <None Include="ScenarioTests\PolicyTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.DevTestLabsTestFixture\Dispose.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.DevTestLabsTestFixture\Init.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlAllowedVMSizesPolicy.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlAutoShutdownPolicy.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlAutoStartPolicy.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlVMsPerLabPolicy.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlVMsPerUserPolicy.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.DevTestLabsTestFixture\Dispose.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.DevTestLabsTestFixture\Init.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlAllowedVMSizesPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlAutoShutdownPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlAutoStartPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlVMsPerLabPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests.PolicyTests\TestAzureRmDtlVMsPerUserPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">

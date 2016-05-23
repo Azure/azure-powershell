@@ -17,17 +17,15 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following 
+// General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft Azure Powershell - Key Vault")]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - DevTest LAbs")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
-
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-
 [assembly: Guid("2994548F-69B9-4DC2-8D19-52CC0C0C85BC")]
 [assembly: AssemblyVersion("1.1.7")]
 [assembly: AssemblyFileVersion("1.1.7")]

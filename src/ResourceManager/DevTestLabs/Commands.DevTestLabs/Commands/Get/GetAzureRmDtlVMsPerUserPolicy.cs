@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DevTestLabs.Models;
 using Microsoft.Azure.Management.DevTestLabs;
 using System;
 using System.Management.Automation;
@@ -19,6 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDtlVMsPerUserPolicy", HelpUri = Constants.DevTestLabsHelpUri)]
+    [OutputType(typeof(PSPolicy))]
     public class GetAzureRmDtlVMsPerUserPolicy : DevTestLabsCmdletBase
     {
         public override void ExecuteCmdlet()

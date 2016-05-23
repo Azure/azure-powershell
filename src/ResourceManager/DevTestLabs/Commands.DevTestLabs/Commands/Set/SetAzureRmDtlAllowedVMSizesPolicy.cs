@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DevTestLabs.Models;
 using Microsoft.Azure.Management.DevTestLabs;
 using Microsoft.Azure.Management.DevTestLabs.Models;
+using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
@@ -22,6 +24,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDtlAllowedVMSizesPolicy", HelpUri = Constants.DevTestLabsHelpUri, DefaultParameterSetName = ParameterSetEnable)]
+    [OutputType(typeof(PSPolicy))]
     public class SetAzureRmDtlAllowedVMSizesPolicy : DtlPolicyCmdletBase
     {
         #region Input Parameter Definitions
@@ -29,31 +32,78 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         /// <summary>
         /// Maximum number of virtual machines.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             Position = 4,
             HelpMessage = "Maximum number of virtual machines a user is allowed to own in the lab.")]
-        [ValidateNotNullOrEmpty]
         public string[] VmSizes { get; set; }
+
+        protected override string PolicyName
+        {
+            get
+            {
+                return WellKnownPolicyNames.AllowedVmSizesInLab;
+            }
+        }
 
         #endregion Input Parameter Definitions
 
         public override void ExecuteCmdlet()
         {
-            var policy = DataServiceClient.Policy.CreateOrUpdateResource(
-                ResourceGroupName,
-                LabName,
-                Constants.Default,
-                WellKnownPolicyNames.AllowedVmSizesInLab,
-                new Policy
+            Policy inputPolicy = null;
+
+            try
+            {
+                inputPolicy = DataServiceClient.Policy.GetResource(
+                                ResourceGroupName,
+                                LabName,
+                                Constants.Default,
+                                PolicyName);
+            }
+            catch (CloudException ex)
+            {
+                if (ex.Response.StatusCode != System.Net.HttpStatusCode.NotFound
+                    || VmSizes == null)
+                {
+                    throw;
+                }
+            }
+
+            if (inputPolicy == null)
+            {
+                inputPolicy = new Policy
                 {
                     FactName = PolicyFactName.UserOwnedLabVmCount,
                     Threshold = JsonConvert.SerializeObject(VmSizes),
                     EvaluatorType = PolicyEvaluatorType.AllowedValuesPolicy,
-                    Status = Enable ? PolicyStatus.Enabled : PolicyStatus.Disabled
+                    Status = Disable ? PolicyStatus.Disabled : PolicyStatus.Enabled
+                };
+            }
+            else
+            {
+                if (VmSizes != null)
+                {
+                    inputPolicy.Threshold = JsonConvert.SerializeObject(VmSizes);
                 }
-                );
 
-            WriteObject(policy);
+                if (Disable)
+                {
+                    inputPolicy.Status = PolicyStatus.Disabled;
+                }
+
+                if (Enable)
+                {
+                    inputPolicy.Status = PolicyStatus.Enabled;
+                }
+            }
+
+            var outputPolicy = DataServiceClient.Policy.CreateOrUpdateResource(
+                ResourceGroupName,
+                LabName,
+                Constants.Default,
+                PolicyName,
+                inputPolicy);
+
+            WriteObject(outputPolicy);
         }
     }
 }

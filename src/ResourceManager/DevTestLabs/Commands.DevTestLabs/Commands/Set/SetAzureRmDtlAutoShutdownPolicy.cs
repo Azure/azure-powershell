@@ -15,47 +15,97 @@
 using Microsoft.Azure.Commands.DevTestLabs.Models;
 using Microsoft.Azure.Management.DevTestLabs;
 using Microsoft.Azure.Management.DevTestLabs.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDtlAutoShutdownPolicy", HelpUri = Constants.DevTestLabsHelpUri, DefaultParameterSetName = ParameterSetEnable)]
-    [OutputType(typeof(Schedule))]
+    [OutputType(typeof(PSSchedule))]
     public class SetAzureRmDtlAutoShutdownPolicy : DtlPolicyCmdletBase
     {
+        protected override string PolicyName
+        {
+            get
+            {
+                return WellKnownPolicyNames.LabVmsShutdown;
+            }
+        }
+
         #region Input Parameter Definitions
 
         /// <summary>
         /// Time of day for shutting down the virtual machine.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             Position = 4,
             HelpMessage = "Time of day for shutting down the virtual machine.")]
-        [ValidateNotNullOrEmpty]
-        public DateTime Time { get; set; }
+        public DateTime? Time { get; set; }
 
         #endregion Input Parameter Definitions
 
         public override void ExecuteCmdlet()
         {
-            var schedule = DataServiceClient.Schedule.CreateOrUpdateResource(
-                ResourceGroupName,
-                LabName,
-                WellKnownPolicyNames.LabVmsShutdown,
-                new Schedule
+            Schedule inputSchedule = null;
+
+            try
+            {
+                inputSchedule = DataServiceClient.Schedule.GetResource(
+                                ResourceGroupName,
+                                LabName,
+                                PolicyName);
+            }
+            catch (CloudException ex)
+            {
+                if (ex.Response.StatusCode != System.Net.HttpStatusCode.NotFound
+                    || Time == null)
+                {
+                    throw;
+                }
+            }
+
+            if (inputSchedule == null)
+            {
+                inputSchedule = new Schedule
                 {
                     TimeZoneId = TimeZoneInfo.Local.Id,
                     TaskType = TaskType.LabVmsShutdownTask,
                     DailyRecurrence = new DayDetails
                     {
-                        Time = Time.ToString("HHmm")
+                        Time = Time.Value.ToString("HHmm")
                     },
-                    Status = Enable ? PolicyStatus.Enabled : PolicyStatus.Disabled,
+                    Status = Disable ? PolicyStatus.Disabled : PolicyStatus.Enabled
+                };
+            }
+            else
+            {
+                if (Time.HasValue)
+                {
+                    inputSchedule.DailyRecurrence = new DayDetails
+                    {
+                        Time = Time.Value.ToString("HHmm")
+                    };
                 }
-                );
 
-            WriteObject(schedule.DuckType<ScheduleDisplay>());
+                if (Disable)
+                {
+                    inputSchedule.Status = PolicyStatus.Disabled;
+                }
+
+                if (Enable)
+                {
+                    inputSchedule.Status = PolicyStatus.Enabled;
+                }
+            }
+
+            var outputSchedule = DataServiceClient.Schedule.CreateOrUpdateResource(
+                ResourceGroupName,
+                LabName,
+                PolicyName,
+                inputSchedule);
+
+            WriteObject(outputSchedule.DuckType<PSSchedule>());
         }
     }
 }
