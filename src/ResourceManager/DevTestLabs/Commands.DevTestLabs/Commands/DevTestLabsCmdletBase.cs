@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                 if (_dataServiceClient == null)
                 {
                     this._dataServiceClient = AzureSession.ClientFactory.CreateArmClient<DevTestLabsClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-                    this._dataServiceClient.SubscriptionId = DefaultContext.Subscription.Id.ToString();
                 }
 
                 return this._dataServiceClient;

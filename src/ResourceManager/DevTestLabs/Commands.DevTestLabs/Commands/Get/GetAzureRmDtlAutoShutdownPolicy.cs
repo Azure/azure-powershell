@@ -14,14 +14,13 @@
 
 using Microsoft.Azure.Commands.DevTestLabs.Models;
 using Microsoft.Azure.Management.DevTestLabs;
-using Microsoft.Azure.Management.DevTestLabs.Models;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDtlAutoShutdownPolicy", HelpUri = Constants.DevTestLabsHelpUri)]
-    [OutputType(typeof(Schedule))]
+    [OutputType(typeof(PSSchedule))]
     public class GetAzureRmDtlAutoShutdownPolicy : DevTestLabsCmdletBase
     {
         public override void ExecuteCmdlet()
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                 LabName,
                 WellKnownPolicyNames.LabVmsShutdown);
 
-            WriteObject(schedule.DuckType<ScheduleDisplay>());
+            WriteObject(schedule.DuckType<PSSchedule>());
         }
     }
 }

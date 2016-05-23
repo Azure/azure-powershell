@@ -17,8 +17,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    public class DtlPolicyCmdletBase : DevTestLabsCmdletBase
+    public abstract class DtlPolicyCmdletBase : DevTestLabsCmdletBase
     {
+        protected abstract string PolicyName { get; }
+
         #region Input Parameter Definitions
 
         protected const string ParameterSetEnable = "Enable";
@@ -32,23 +34,12 @@ namespace Microsoft.Azure.Commands.DevTestLabs
             ParameterSetName = ParameterSetEnable,
             HelpMessage = "Whether to enable the policy.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter Enable
-        {
-            get
-            {
-                return !Disable;
-            }
-
-            set
-            {
-                Disable = !value;
-            }
-        }
+        public SwitchParameter Enable { get; set; }
 
         /// <summary>
         /// Disable.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             Position = 3,
             ParameterSetName = ParameterSetDisable,
             HelpMessage = "Whether to disable the policy.")]

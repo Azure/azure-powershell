@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.DevTestLabs.Models;
 using Microsoft.Azure.Management.DevTestLabs;
 using Microsoft.Azure.Management.DevTestLabs.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -22,19 +23,26 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDtlAutoStartPolicy", HelpUri = Constants.DevTestLabsHelpUri, DefaultParameterSetName = ParameterSetEnable)]
-    [OutputType(typeof(Schedule))]
+    [OutputType(typeof(PSSchedule))]
     public class SetAzureRmDtlAutoStartPolicy : DtlPolicyCmdletBase
     {
+        protected override string PolicyName
+        {
+            get
+            {
+                return WellKnownPolicyNames.LabVmsAutoStart;
+            }
+        }
+
         #region Input Parameter Definitions
 
         /// <summary>
         /// Time of day when virtual machines can be auto-started.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             Position = 4,
             HelpMessage = "Time of day when virtual machines can be auto-started.")]
-        [ValidateNotNullOrEmpty]
-        public DateTime Time { get; set; }
+        public DateTime? Time { get; set; }
 
         /// <summary>
         /// Days of the week when virtual machines can be auto-started.
@@ -48,24 +56,69 @@ namespace Microsoft.Azure.Commands.DevTestLabs
 
         public override void ExecuteCmdlet()
         {
-            var schedule = DataServiceClient.Schedule.CreateOrUpdateResource(
-                ResourceGroupName,
-                LabName,
-                WellKnownPolicyNames.LabVmsAutoStart,
-                new Schedule
+            Schedule inputSchedule = null;
+
+            try
+            {
+                inputSchedule = DataServiceClient.Schedule.GetResource(
+                                ResourceGroupName,
+                                LabName,
+                                PolicyName);
+            }
+            catch (CloudException ex)
+            {
+                if (ex.Response.StatusCode != System.Net.HttpStatusCode.NotFound
+                    || Time == null)
+                {
+                    throw;
+                }
+            }
+
+            if (inputSchedule == null)
+            {
+                inputSchedule = new Schedule
                 {
                     TimeZoneId = TimeZoneInfo.Local.Id,
                     TaskType = TaskType.LabVmsStartupTask,
                     WeeklyRecurrence = new WeekDetails
                     {
-                        Time = Time.ToString("HHmm"),
+                        Time = Time.Value.ToString("HHmm"),
                         Weekdays = Days == null ? null : Days.Select(i => i.ToString()).ToList()
                     },
-                    Status = Enable ? PolicyStatus.Enabled : PolicyStatus.Disabled,
+                    Status = Disable ? PolicyStatus.Disabled : PolicyStatus.Enabled
+                };
+            }
+            else
+            {
+                if (Time.HasValue)
+                {
+                    inputSchedule.WeeklyRecurrence.Time = Time.Value.ToString("HHmm");
                 }
+
+                if (Days != null)
+                {
+                    inputSchedule.WeeklyRecurrence.Weekdays = Days.Select(i => i.ToString()).ToList();
+                }
+
+                if (Disable)
+                {
+                    inputSchedule.Status = PolicyStatus.Disabled;
+                }
+
+                if (Enable)
+                {
+                    inputSchedule.Status = PolicyStatus.Enabled;
+                }
+            }
+
+            var outputSchedule = DataServiceClient.Schedule.CreateOrUpdateResource(
+                ResourceGroupName,
+                LabName,
+                PolicyName,
+                inputSchedule
                 );
 
-            WriteObject(schedule.DuckType<ScheduleDisplay>());
+            WriteObject(outputSchedule.DuckType<PSSchedule>());
         }
     }
 }
