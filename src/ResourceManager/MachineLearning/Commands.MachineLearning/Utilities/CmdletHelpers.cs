@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 
         internal static string GetWebServiceDefinitionFromFile(string definitionFilePath)
         {
-            if (!File.Exists(definitionFilePath))
+            var definitionFileFullPath = Path.GetFullPath(definitionFilePath);
+            if (!File.Exists(definitionFileFullPath))
             {
                 throw new FileNotFoundException(Resources.MissingDefinitionFile, definitionFilePath);
             }
