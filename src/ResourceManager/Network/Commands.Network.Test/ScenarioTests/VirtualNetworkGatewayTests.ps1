@@ -146,6 +146,81 @@ function Test-VirtualNetworkGatewayCRUD
 .SYNOPSIS
 Virtual network gateway tests
 #>
+function Test-SetVirtualNetworkGatewayCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+	#lngName = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+      
+      # Create the Virtual Network
+      $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+
+      # Create & Get virtualnetworkgateway
+      $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
+      $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+
+	  # test Set-AzureRmVirtualNetworkGateway
+	  # resize
+	  $sku = "Standard"
+	  Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -GatewaySku $sku
+	  $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+	  Assert-AreEqual $gateway.GatewaySku $sku
+
+	  # default site - put a local network gateway and set it as the default site
+	  $lng = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $lngName -GatewayIpAddress "1.2.3.4" -AddressPrefix "172.16.1.0/24"
+	  Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -GatewayDefaultSite $lng
+	  $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+	  Assert-AreEqual $gateway.GatewayDefaultSite $lng
+
+	  # VPN client things
+	  $vpnClientAddressSpace = "192.168.1.0/24"
+	  Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -VpnClientAddressPool $vpnClientAddressSpace
+	  $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+	  Assert-AreEqual $gateway.vpnClientAddressSpace $vpnClientAddressSpace
+
+	  # BGP settings
+	  $asn = 1337
+	  $peerweight = 5
+	  Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -Asn $asn -PeerWeight $peerweight
+	  $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+	  Assert-AreEqual $gateway.BgpSettings.Asn $asn
+	  Assert-AreEqual $gateway.BgpSettings.PeerWeight $peerWeight
+
+      # Delete virtualNetworkGateway
+      $delete = Remove-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
+
+<#
+.SYNOPSIS
+Virtual network gateway tests
+#>
 function Test-VirtualNetworkGatewayP2SAndSKU
 {
     # Setup
