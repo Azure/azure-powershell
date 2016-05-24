@@ -55,6 +55,7 @@
 Assembly dependencies are split into two categories:
 - Shared dependencies, such as common runtime and framework assemblies shared across cmdlets
 - Single module dependencies, such as the management library
+
 ## Requirements
 1. [**Preliminary**] A Cmdlet assembly *may not* take an assembly dependency on another cmdlet assembly.
 2. A module *may* take a dependency on another module through the module manifest, provided the dependency is guaranteed to be backward compatible (for example, the dependency on the profile cmdlets).
