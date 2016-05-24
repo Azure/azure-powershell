@@ -20,6 +20,8 @@
   * Writing Messages
   * Confirmation
 * Cmdlet Help
+* Cmdlet Testability
+* Commits and Pull Requests
 
 
 
