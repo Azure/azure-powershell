@@ -7558,7 +7558,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies a description for the schedule.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ExpiryTime</maml:name>
@@ -7574,6 +7574,13 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>New-AzureRMAutomationSchedule</maml:name>
@@ -7610,7 +7617,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies a description for the schedule.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>OneTime</maml:name>
@@ -7618,6 +7625,13 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
             <maml:para>Specifies that the cmdlet creates a one-time schedule.</maml:para>
           </maml:description>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>New-AzureRMAutomationSchedule</maml:name>
@@ -7654,7 +7668,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies a description for the schedule.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ExpiryTime</maml:name>
@@ -7670,6 +7684,13 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>New-AzureRMAutomationSchedule</maml:name>
@@ -7706,7 +7727,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies a description for the schedule.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ExpiryTime</maml:name>
@@ -7729,6 +7750,13 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>New-AzureRMAutomationSchedule</maml:name>
@@ -7765,7 +7793,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies a description for the schedule.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ExpiryTime</maml:name>
@@ -7779,7 +7807,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>The list of days of month for the monthly schedule.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">[]System.Int</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">System.Int32[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>MonthInterval</maml:name>
@@ -7787,6 +7815,13 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
             <maml:para>Specifies an interval, in Month, for the schedule.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -7824,7 +7859,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies a description for the schedule.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ExpiryTime</maml:name>
@@ -7853,6 +7888,13 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
             <maml:para>Specifies an interval, in Month, for the schedule.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -7886,7 +7928,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         <maml:description>
           <maml:para>Specifies a description for the schedule.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
@@ -8024,6 +8066,18 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>TimeZone</maml:name>
+        <maml:description>
+          <maml:para>The time zone for the schedule. This string can be the IANA ID or the Windows Time Zone ID.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -8058,15 +8112,18 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
     <command:nonTerminatingErrors />
     <command:examples>
       <command:example>
-        <maml:title>Example 1: Create a one-time schedule</maml:title>
+        <maml:title>Example 1: Create a one-time schedule in your machine's local time.</maml:title>
         <maml:introduction>
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01"
-</dev:code>
+        <dev:code>
+PS C:\&gt; $TimeZone = ([System.TimeZoneInfo]::Local).Id
+PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -TimeZone $TimeZone -OneTime -ResourceGroupName "ResourceGroup01"
+        </dev:code>
         <dev:remarks>
-          <maml:para>The following command creates a schedule that runs one time on the current date at 11:00 PM.</maml:para>
+          <maml:para>The first command gets the time zone ID from the system.</maml:para>
+          <maml:para>The second command creates a schedule that runs one time on the current date at 11:00 PM in your local time zone.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -8082,7 +8139,8 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$StartTime = Get-Date "13:00:00"
+        <dev:code>
+PS C:\&gt; $StartTime = Get-Date "13:00:00"
 PS C:\&gt; $EndTime = $StartTime.AddYears(1)
 PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DailyInterval 1 -ResourceGroupName "ResourceGroup01"
 </dev:code>
@@ -8106,10 +8164,10 @@ PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Nam
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;$StartTime = Get-Date "13:00:00"
-          PS C:\&gt; $EndTime = $StartTime.AddYears(1)
-          PS C:\&gt; $days = @([System.DayOfWeek]::Monday, [System.DayOfWeek]::Saturday, [System.DayOfWeek]::Sunday)
-          PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule03" -StartTime $StartTime -ExpiryTime $EndTime -WeeklyInterval 1 -DaysOfWeek $days -ResourceGroupName "ResourceGroup01"
+PS C:\&gt; $StartTime = Get-Date "13:00:00"
+PS C:\&gt; $EndTime = $StartTime.AddYears(1)
+PS C:\&gt; $days = @([System.DayOfWeek]::Monday, [System.DayOfWeek]::Saturday, [System.DayOfWeek]::Sunday)
+PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule03" -StartTime $StartTime -ExpiryTime $EndTime -WeeklyInterval 1 -DaysOfWeek $days -ResourceGroupName "ResourceGroup01"
         </dev:code>
         <dev:remarks>
           <maml:para>The first command creates a date object by using the Get-Date cmdlet, and then stores the object in the $StartDate variable. Specify a time that is at least five minutes in the future. </maml:para>
@@ -8132,10 +8190,10 @@ PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Nam
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;$StartTime = Get-Date "13:00:00"
-          PS C:\&gt; $EndTime = $StartTime.AddYears(1)
-          PS C:\&gt; $days = @($days = @(17,19,25, "LastDay"))
-          PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule04" -StartTime $StartTime -ExpiryTime $EndTime -MonthlyInterval 1 -DaysOfMonth $days -ResourceGroupName "ResourceGroup01"
+PS C:\&gt; $StartTime = Get-Date "13:00:00"
+PS C:\&gt; $EndTime = $StartTime.AddYears(1)
+PS C:\&gt; $days = @($days = @(17,19,25, "LastDay"))
+PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule04" -StartTime $StartTime -ExpiryTime $EndTime -MonthlyInterval 1 -DaysOfMonth $days -ResourceGroupName "ResourceGroup01"
         </dev:code>
         <dev:remarks>
           <maml:para>The first command creates a date object by using the Get-Date cmdlet, and then stores the object in the $StartDate variable. Specify a time that is at least five minutes in the future. </maml:para>
