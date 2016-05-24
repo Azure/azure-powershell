@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ModuleObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" fVersion="1.1" type="Manifest" mclass="Module" useSupports="false">
+<ModuleObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" fVersion="1.1" type="Manifest" mclass="Module" useSupports="false">
   <Name>AzureRM.DevTestLabs</Name>
   <Version>1.0.0</Version>
   <Description>Microsoft Azure PowerShell - DevTestLabs service cmdlets for Azure Resource Manager</Description>
@@ -62,9 +62,9 @@
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationVariable</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
           </Attributes>
           <Aliases>
             <string>iv</string>
@@ -133,9 +133,9 @@
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationVariable</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
           </Attributes>
           <Aliases>
             <string>iv</string>
@@ -204,9 +204,9 @@
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationVariable</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
           </Attributes>
           <Aliases>
             <string>iv</string>
@@ -275,9 +275,9 @@
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationVariable</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
           </Attributes>
           <Aliases>
             <string>iv</string>
@@ -346,9 +346,9 @@
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationVariable</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
           </Attributes>
           <Aliases>
             <string>iv</string>
@@ -380,15 +380,14 @@
         <CommandParameterSetInfo2 Name="Disable" Params="VmSizes Disable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureRmDtlAllowedVMSizesPolicy [-VmSizes] &lt;String[]&gt; [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Set-AzureRmDtlAllowedVMSizesPolicy [-VmSizes] &lt;String[]&gt; [[-Disable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlAllowedVMSizesPolicy [[-VmSizes] &lt;String[]&gt;] [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlAllowedVMSizesPolicy [[-VmSizes] &lt;String[]&gt;] [-Disable] &lt;SwitchParameter&gt; [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
-        <ParameterDescription type="String[]" varLen="true" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+        <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
           <Name>VmSizes</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description>The list of VM sizes allowed in the lab.</Description>
@@ -439,9 +438,9 @@
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationVariable</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
           </Attributes>
           <Aliases>
             <string>iv</string>
@@ -449,7 +448,7 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
+        <ParameterDescription type="SwitchParameter" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
           <Name>Disable</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -483,8 +482,8 @@
         <CommandParameterSetInfo2 Name="Disable" Params="Time Disable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureRmDtlAutoShutdownPolicy [-Time] &lt;DateTime&gt; [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Set-AzureRmDtlAutoShutdownPolicy [-Time] &lt;DateTime&gt; [[-Disable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlAutoShutdownPolicy [[-Time] &lt;Nullable`1[DateTime]&gt;] [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlAutoShutdownPolicy [[-Time] &lt;Nullable`1[DateTime]&gt;] [-Disable] &lt;SwitchParameter&gt; [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="DateTime" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
@@ -542,9 +541,9 @@
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationVariable</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
           </Attributes>
           <Aliases>
             <string>iv</string>
@@ -552,7 +551,7 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
+        <ParameterDescription type="SwitchParameter" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
           <Name>Disable</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -560,6 +559,15 @@
           </Attributes>
           <Aliases />
           <Description>Specifies that the policy should be disabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Nullable`1[DateTime]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>Time</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -586,8 +594,8 @@
         <CommandParameterSetInfo2 Name="Disable" Params="Time Days Disable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureRmDtlAutoStartPolicy [-Time] &lt;DateTime&gt; [[-Days] &lt;DayOfWeek[]&gt;] [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Set-AzureRmDtlAutoStartPolicy [-Time] &lt;DateTime&gt; [[-Days] &lt;DayOfWeek[]&gt;] [[-Disable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlAutoStartPolicy [[-Time] &lt;Nullable`1[DateTime]&gt;] [[-Days] &lt;DayOfWeek[]&gt;] [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlAutoStartPolicy [[-Time] &lt;Nullable`1[DateTime]&gt;] [[-Days] &lt;DayOfWeek[]&gt;] [-Disable] &lt;SwitchParameter&gt; [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="DateTime" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
@@ -654,9 +662,9 @@
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationVariable</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
           </Attributes>
           <Aliases>
             <string>iv</string>
@@ -664,7 +672,7 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
+        <ParameterDescription type="SwitchParameter" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
           <Name>Disable</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -672,6 +680,15 @@
           </Attributes>
           <Aliases />
           <Description>Specifies that the policy should be disabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Nullable`1[DateTime]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>Time</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -698,8 +715,8 @@
         <CommandParameterSetInfo2 Name="Disable" Params="MaxVMs Disable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureRmDtlVMsPerLabPolicy [-MaxVMs] &lt;Int32&gt; [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Set-AzureRmDtlVMsPerLabPolicy [-MaxVMs] &lt;Int32&gt; [[-Disable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlVMsPerLabPolicy [[-MaxVMs] &lt;Nullable`1[Int32]&gt;] [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlVMsPerLabPolicy [[-MaxVMs] &lt;Nullable`1[Int32]&gt;] [-Disable] &lt;SwitchParameter&gt; [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="Int32" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
@@ -757,9 +774,9 @@
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationVariable</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
           </Attributes>
           <Aliases>
             <string>iv</string>
@@ -767,7 +784,7 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
+        <ParameterDescription type="SwitchParameter" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
           <Name>Disable</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -775,6 +792,15 @@
           </Attributes>
           <Aliases />
           <Description>Specifies that the policy should be disabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>MaxVMs</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The maximum number of VMs that can be created in the lab.</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -801,8 +827,8 @@
         <CommandParameterSetInfo2 Name="Disable" Params="MaxVMs Disable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureRmDtlVMsPerUserPolicy [-MaxVMs] &lt;Int32&gt; [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Set-AzureRmDtlVMsPerUserPolicy [-MaxVMs] &lt;Int32&gt; [[-Disable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlVMsPerUserPolicy [[-MaxVMs] &lt;Nullable`1[Int32]&gt;] [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlVMsPerUserPolicy [[-MaxVMs] &lt;Nullable`1[Int32]&gt;] [-Disable] &lt;SwitchParameter&gt; [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="Int32" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
@@ -860,9 +886,9 @@
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>InformationVariable</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
           </Attributes>
           <Aliases>
             <string>iv</string>
@@ -870,7 +896,7 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
+        <ParameterDescription type="SwitchParameter" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
           <Name>Disable</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -878,6 +904,15 @@
           </Attributes>
           <Aliases />
           <Description>Specifies that the policy should be disabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>MaxVMs</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
