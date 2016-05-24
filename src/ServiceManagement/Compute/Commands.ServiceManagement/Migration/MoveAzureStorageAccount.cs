@@ -14,16 +14,16 @@
 
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Network;
+using Microsoft.WindowsAzure.Management.Storage;
 using System.Management.Automation;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
 {
     /// <summary>
-    /// Migrate ASM virtual network to ARM
+    /// Migrate ASM storage account to ARM
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureVirtualNetwork"), OutputType(typeof(OperationStatusResponse))]
-    public class MoveVirtualNetworkCommand : ServiceManagementBaseCmdlet
+    [Cmdlet(VerbsCommon.Move, "AzureStorageAccount"), OutputType(typeof(OperationStatusResponse))]
+    public class MoveStorageAccountCommand : ServiceManagementBaseCmdlet
     {
         private const string AbortParameterSetName = "AbortMigrationParameterSet";
         private const string CommitParameterSetName = "CommitMigrationParameterSet";
@@ -65,9 +65,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Virtual network name")]
+            HelpMessage = "Storage account name")]
         [ValidateNotNullOrEmpty]
-        public string VirtualNetworkName
+        public string StorageAccountName
         {
             get;
             set;
@@ -82,21 +82,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.AbortMigration(this.VirtualNetworkName));
+                () => this.StorageClient.StorageAccounts.AbortMigration(this.StorageAccountName));
             }
             else if (this.Commit.IsPresent)
             {
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.CommitMigration(this.VirtualNetworkName));
+                () => this.StorageClient.StorageAccounts.CommitMigration(this.StorageAccountName));
             }
             else
             {
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.PrepareMigration(this.VirtualNetworkName));
+                () => this.StorageClient.StorageAccounts.PrepareMigration(this.StorageAccountName));
             }
         }
     }
