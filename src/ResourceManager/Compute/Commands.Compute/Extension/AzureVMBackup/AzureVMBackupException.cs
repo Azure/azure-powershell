@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         public const int TimeOut = 1;
         public const int OSNotSupported = 2;
         public const int WrongBlobUriFormat = 3;
+        public const int NoSnapshotFound = 4;
     }
 
     public class AzureVMBackupException : Exception
