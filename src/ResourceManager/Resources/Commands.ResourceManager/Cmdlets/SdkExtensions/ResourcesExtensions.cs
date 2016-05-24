@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             {
                 ResourceGroupName = resourceGroup.Name,
                 Location = resourceGroup.Location,
-                ProvisioningState = resourceGroup.Properties.ProvisioningState,
+                ProvisioningState = resourceGroup.Properties == null ? null : resourceGroup.Properties.ProvisioningState,
                 Tags = TagsConversionHelper.CreateTagHashtable(resourceGroup.Tags),
                 ResourceId = resourceGroup.Id
             };
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 deploymentObject.Mode = properties.Mode.Value;
                 deploymentObject.ProvisioningState = properties.ProvisioningState;
                 deploymentObject.TemplateLink = properties.TemplateLink;
-                deploymentObject.Timestamp = properties.Timestamp.Value;
+                deploymentObject.Timestamp = properties.Timestamp == null ? default(DateTime) : properties.Timestamp.Value;
                 deploymentObject.CorrelationId = properties.CorrelationId;
 
                 if(properties.DebugSetting != null && !string.IsNullOrEmpty(properties.DebugSetting.DetailLevel))

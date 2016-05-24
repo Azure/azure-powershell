@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         public const string ResourceGroupTypeName = "ResourceGroup";
 
+        public const string ErrorFormat = "Error: Code={0}; Message={1}\r\n";
+
         /// <summary>
         /// Used when provisioning the deployment status.
         /// </summary>
@@ -393,7 +395,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                deployment.Properties.Parameters = JObject.Parse(GetDeploymentParameters(parameters.TemplateParameterObject));
+                string templateParams = GetDeploymentParameters(parameters.TemplateParameterObject);
+                deployment.Properties.Parameters = string.IsNullOrEmpty(templateParams) ? null : JObject.Parse(templateParams);
             }
 
             return deployment;
@@ -759,11 +762,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (validationInfo.Errors.Count != 0)
             {
-                int counter = 1;
-                string errorFormat = "Error {0}: Code={1}; Message={2}\r\n";
-                StringBuilder errorsString = new StringBuilder();
-                validationInfo.Errors.ForEach(e => errorsString.AppendFormat(errorFormat, counter++, e.Code, e.Message));
-                throw new ArgumentException(errorsString.ToString());
+                foreach (var error in validationInfo.Errors)
+                {
+                    WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+                    if (error.Details != null && error.Details.Count > 0)
+                    {
+                        foreach(var innerError in error.Details)
+                        {
+                            DisplayInnerDetailErrorMessage(innerError);
+                        }
+                    }
+                }
+                throw new InvalidOperationException("The deployment validation failed.");
             }
             else
             {
@@ -775,6 +785,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
             return result.ToPSResourceGroupDeployment(parameters.ResourceGroupName);
+        }
+
+        private void DisplayInnerDetailErrorMessage(ResourceManagementErrorWithDetails error)
+        {
+            WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+            if (error.Details != null)
+            {
+                foreach (var innerError in error.Details)
+                {
+                    DisplayInnerDetailErrorMessage(innerError);
+                }
+            }
         }
 
         private string GenerateDeploymentName(CreatePSResourceGroupDeploymentParameters parameters)
