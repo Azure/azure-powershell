@@ -14,14 +14,16 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Tasks
@@ -61,7 +63,45 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Id = "testTask";
 
             // Don't go to the service on an Add CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskAddParameter, TaskAddOptions, AzureOperationHeaderResponse<TaskAddHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.TaskAddParameter,
+                ProxyModels.TaskAddOptions,
+                AzureOperationHeaderResponse<ProxyModels.TaskAddHeaders>>();
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Verify no exceptions when required parameters are set
+            cmdlet.ExecuteCmdlet();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskCollectionParametersTest()
+        {
+            string commandLine = "cmd /c dir /s";
+            // Setup cmdlet without the required parameters
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+            cmdlet.JobId = "job-collection";
+
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+            PSCloudTask expected1 = new PSCloudTask("simple1", commandLine);
+            PSCloudTask expected2 = new PSCloudTask("simple2", commandLine);
+
+            cmdlet.TaskCollection = new PSCloudTask[] { expected1, expected2 };
+
+            // Don't go to the service on an Add CloudTask call
+            AzureOperationResponse<ProxyModels.TaskAddCollectionResult, ProxyModels.TaskAddCollectionHeaders> response =
+                BatchTestHelpers.CreateTaskCollectionResponse(cmdlet.TaskCollection);
+
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                IList<ProxyModels.TaskAddParameter>,
+                ProxyModels.TaskAddCollectionOptions,
+                AzureOperationResponse<ProxyModels.TaskAddCollectionResult, ProxyModels.TaskAddCollectionHeaders>>(responseToUse: response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set
