@@ -6791,7 +6791,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Constraints</maml:name>
           <maml:description>
-            <maml:para>Specifies the run constraints for the job.</maml:para>
+            <maml:para>Specifies the runtime constraints for the job.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSJobConstraints</command:parameterValue>
         </command:parameter>
@@ -6881,7 +6881,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Constraints</maml:name>
         <maml:description>
-          <maml:para>Specifies the run constraints for the job.</maml:para>
+          <maml:para>Specifies the runtime constraints for the job.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">PSJobConstraints</command:parameterValue>
         <dev:type>
@@ -7888,7 +7888,7 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>JobId</maml:name>
           <maml:description>
-            <maml:para>Specifies the ID of the job under whicht this cmdlet creates the task.</maml:para>
+            <maml:para>Specifies the ID of the job under which this cmdlet creates the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -7909,7 +7909,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>CommandLine</maml:name>
           <maml:description>
-            <maml:para>Specifies the command-line command for the task.</maml:para>
+            <maml:para>Specifies the command line for the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -7930,21 +7930,21 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>RunElevated</maml:name>
           <maml:description>
-            <maml:para>Indicates that the task process runs elevated as Administrator. Otherwise, the process runs without elevation.</maml:para>
+            <maml:para>Indicates that the task process run with administrator privileges.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>AffinityInformation</maml:name>
           <maml:description>
-            <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to start the task.</maml:para>
+            <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to run the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Constraints</maml:name>
           <maml:description>
-            <maml:para>Specifies the run constraints for the task.</maml:para>
+            <maml:para>Specifies the runtime constraints for the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
         </command:parameter>
@@ -7968,20 +7968,6 @@
             <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -7989,14 +7975,14 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>JobId</maml:name>
           <maml:description>
-            <maml:para>Specifies the ID of the job under whicht this cmdlet creates the task.</maml:para>
+            <maml:para>Specifies the ID of the job under which this cmdlet creates the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
           <maml:name>TaskCollection</maml:name>
           <maml:description>
-            <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id. A request can include a maximum of 100 tasks.</maml:para>
+            <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="true">PSCloudTask[]</command:parameterValue>
         </command:parameter>
@@ -8006,20 +7992,6 @@
             <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -8034,7 +8006,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
           <maml:name>TaskCollection</maml:name>
           <maml:description>
-            <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id. A request can include a maximum of 100 tasks.</maml:para>
+            <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="true">PSCloudTask[]</command:parameterValue>
         </command:parameter>
@@ -8044,20 +8016,6 @@
             <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -8086,7 +8044,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>CommandLine</maml:name>
           <maml:description>
-            <maml:para>Specifies the command-line command for the task.</maml:para>
+            <maml:para>Specifies the command line for the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -8107,21 +8065,21 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>RunElevated</maml:name>
           <maml:description>
-            <maml:para>Indicates that the task process runs elevated as Administrator. Otherwise, the process runs without elevation.</maml:para>
+            <maml:para>Indicates that the task process run with administrator privileges.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>AffinityInformation</maml:name>
           <maml:description>
-            <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to start the task.</maml:para>
+            <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to run the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Constraints</maml:name>
           <maml:description>
-            <maml:para>Specifies the run constraints for the task.</maml:para>
+            <maml:para>Specifies the runtime constraints for the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
         </command:parameter>
@@ -8146,27 +8104,13 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>JobId</maml:name>
         <maml:description>
-          <maml:para>Specifies the ID of the job under whicht this cmdlet creates the task.</maml:para>
+          <maml:para>Specifies the ID of the job under which this cmdlet creates the task.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -8202,7 +8146,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>CommandLine</maml:name>
         <maml:description>
-          <maml:para>Specifies the command-line command for the task.</maml:para>
+          <maml:para>Specifies the command line for the task.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -8238,7 +8182,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>RunElevated</maml:name>
         <maml:description>
-          <maml:para>Indicates that the task process runs elevated as Administrator. Otherwise, the process runs without elevation.</maml:para>
+          <maml:para>Indicates that the task process runs with administrator privileges.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -8250,7 +8194,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AffinityInformation</maml:name>
         <maml:description>
-          <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to start the task.</maml:para>
+          <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to run the task.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
         <dev:type>
@@ -8262,7 +8206,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Constraints</maml:name>
         <maml:description>
-          <maml:para>Specifies the run constraints for the task.</maml:para>
+          <maml:para>Specifies the runtime constraints for the task.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
         <dev:type>
@@ -8310,7 +8254,7 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
         <maml:name>TaskCollection</maml:name>
         <maml:description>
-          <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id. A request can include a maximum of 100 tasks.</maml:para>
+          <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="true">PSCloudTask[]</command:parameterValue>
         <dev:type>
@@ -8394,7 +8338,7 @@
         </maml:introduction>
         <dev:code>PS C:\&gt;Get-AzureBatchJob -Id &quot;Job-000001&quot; -BatchContext $Context | New-AzureBatchTask -Id &quot;Task26&quot; -CommandLine &quot;cmd /c echo hello &gt; newFile.txt&quot; -RunElevated -BatchContext $Context</dev:code>
         <dev:remarks>
-          <maml:para>This command gets the Batch job that has the ID Job-000001 by using the Get-AzureBatchJob cmdlet. The command passes that job to the current cmdlet by using the pipeline operator. The command creates a task that has the ID Task26 under that job. The task runs the specified command by using elevated permissions.</maml:para>
+          <maml:para>This command gets the Batch job that has the ID Job-000001 by using the Get-AzureBatchJob cmdlet. The command passes that job to the current cmdlet by using the pipeline operator. The command creates a task that has the ID Task26 under that job. The task runs the specified command with elevated permissions.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para></maml:para>
@@ -8422,7 +8366,7 @@
           @($task1, $task2) -BatchContext $context
         </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the Batch job that has the ID Job-000001 by using the Get-AzureBatchJob cmdlet. Then the command passes that job to the current cmdlet by using the pipeline operator. The command adds a collection of tasks under that job. </maml:para>
+          <maml:para>This command gets the Batch job that has the ID Job-000001 by using the Get-AzureBatchJob cmdlet. Then the command passes that job to the current cmdlet by using the pipeline operator. The command adds a collection of tasks under that job.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para></maml:para>

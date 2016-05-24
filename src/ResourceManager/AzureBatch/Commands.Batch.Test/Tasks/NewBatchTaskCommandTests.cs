@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
@@ -78,6 +79,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
         public void NewBatchTaskCollectionParametersTest()
         {
             string commandLine = "cmd /c dir /s";
+
             // Setup cmdlet without the required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
@@ -88,24 +90,39 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            PSCloudTask expected1 = new PSCloudTask("simple1", commandLine);
-            PSCloudTask expected2 = new PSCloudTask("simple2", commandLine);
+            string[] taskIds = new[] {"simple1", "simple2"};
+            PSCloudTask expected1 = new PSCloudTask(taskIds[0], commandLine);
+            PSCloudTask expected2 = new PSCloudTask(taskIds[1], commandLine);
 
-            cmdlet.TaskCollection = new PSCloudTask[] { expected1, expected2 };
+            cmdlet.TaskCollection = new PSCloudTask[] {expected1, expected2};
 
-            // Don't go to the service on an Add CloudTask call
-            AzureOperationResponse<ProxyModels.TaskAddCollectionResult, ProxyModels.TaskAddCollectionHeaders> response =
+            IList<TaskAddParameter> requestCollection = null;
+
+            Action<BatchRequest<
+                IList<TaskAddParameter>,
+                TaskAddCollectionOptions,
+                AzureOperationResponse<TaskAddCollectionResult, TaskAddCollectionHeaders>>> extractCollection =
+                (request) =>
+                {
+                    requestCollection = request.Parameters;
+                };
+
+            // Don't go to the service on an Add Task Collection call
+            AzureOperationResponse<TaskAddCollectionResult, TaskAddCollectionHeaders> response =
                 BatchTestHelpers.CreateTaskCollectionResponse(cmdlet.TaskCollection);
 
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                IList<ProxyModels.TaskAddParameter>,
-                ProxyModels.TaskAddCollectionOptions,
-                AzureOperationResponse<ProxyModels.TaskAddCollectionResult, ProxyModels.TaskAddCollectionHeaders>>(responseToUse: response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(responseToUse: response, requestAction: extractCollection);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(2, requestCollection.Count);
+            foreach (var task in requestCollection)
+            {
+                Assert.True(taskIds.Contains(task.Id));
+            }
         }
     }
 }

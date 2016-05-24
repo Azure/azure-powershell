@@ -158,6 +158,7 @@
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
     <Compile Include="Applications\NewBatchApplicationPackageCommand.cs" />
     <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
+    <Compile Include="Models\NewBulkTaskParameters.cs" />
     <Compile Include="Models\PSApplicationPackage.cs" />
     <Compile Include="Models\PSApplication.cs" />
     <Compile Include="Applications\RemoveBatchApplicationCommand.cs" />

@@ -101,8 +101,8 @@ namespace Microsoft.Azure.Commands.Batch
         {
             if (TaskCollection != null)
             {
-                NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job, this.AdditionalBehaviors);
-                BatchClient.AddTaskCollection(parameters, TaskCollection);
+                NewBulkTaskParameters parameters = new NewBulkTaskParameters(this.BatchContext, this.JobId, this.Job, this.TaskCollection, this.AdditionalBehaviors);
+                BatchClient.AddTaskCollection(parameters);
             }
             else
             {

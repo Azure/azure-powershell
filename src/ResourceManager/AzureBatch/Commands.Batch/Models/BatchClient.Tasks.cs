@@ -147,11 +147,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Creates a collection of tasks
+        /// Adds a collection of tasks
         /// </summary>
         /// <param name="parameters">The parameters to use when creating the tasks.</param>
-        /// <param name="psTaskCollection">The collection of tasks to create.</param>
-        public void AddTaskCollection(NewTaskParameters parameters, PSCloudTask[] psTaskCollection)
+        public void AddTaskCollection(NewBulkTaskParameters parameters)
         {
             if (parameters == null)
             {
@@ -164,8 +163,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 return task.omObject;
             };
 
-            IEnumerable<CloudTask> taskCollection = psTaskCollection.Select(mappingFunc);
-            
+            IEnumerable<CloudTask> taskCollection = parameters.TaskCollection.Select(mappingFunc);
+
             JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
             string jobId = parameters.Job == null ? parameters.JobId : parameters.Job.Id;
 

@@ -56,7 +56,5 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string ParentObjectParameterSet = "ParentObject";
         public const string InputObjectAndPathParameterSet = "InputObject_Path";
         public const string InputObjectAndStreamParameterSet = "InputObject_Stream";
-        public const string BulkTaskParameterSet = "BulkTask";
-        public const string AddTaskParameterSet = "AddTask";
     }
 }
