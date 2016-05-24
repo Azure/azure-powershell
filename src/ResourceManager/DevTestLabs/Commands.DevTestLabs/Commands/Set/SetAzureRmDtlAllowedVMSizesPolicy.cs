@@ -13,17 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DevTestLabs.Models;
+using Microsoft.Azure.Commands.DevTestLabs.Properties;
 using Microsoft.Azure.Management.DevTestLabs;
 using Microsoft.Azure.Management.DevTestLabs.Models;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDtlAllowedVMSizesPolicy", HelpUri = Constants.DevTestLabsHelpUri, DefaultParameterSetName = ParameterSetEnable)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDtlAllowedVMSizesPolicy", HelpUri = Constants.DevTestLabsHelpUri, DefaultParameterSetName = ParameterSetEnable, SupportsShouldProcess = true)]
     [OutputType(typeof(PSPolicy))]
     public class SetAzureRmDtlAllowedVMSizesPolicy : DtlPolicyCmdletBase
     {
@@ -72,7 +74,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
             {
                 inputPolicy = new Policy
                 {
-                    FactName = PolicyFactName.UserOwnedLabVmCount,
+                    FactName = PolicyFactName.LabVmSize,
                     Threshold = JsonConvert.SerializeObject(VmSizes),
                     EvaluatorType = PolicyEvaluatorType.AllowedValuesPolicy,
                     Status = Disable ? PolicyStatus.Disabled : PolicyStatus.Enabled
@@ -80,6 +82,17 @@ namespace Microsoft.Azure.Commands.DevTestLabs
             }
             else
             {
+                // Do nothing if user cancelled the operation
+                var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.SavePolicyDescription, PolicyName, LabName);
+                var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.SavePolicyWarning, PolicyName);
+                if (!ShouldProcess(
+                        actionDescription,
+                        actionWarning,
+                        Resources.ShouldProcessCaption))
+                {
+                    return;
+                }
+
                 if (VmSizes != null)
                 {
                     inputPolicy.Threshold = JsonConvert.SerializeObject(VmSizes);

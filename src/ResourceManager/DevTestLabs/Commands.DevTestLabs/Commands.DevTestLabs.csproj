@@ -63,6 +63,11 @@
     <Compile Include="Models\PSPolicy.cs" />
     <Compile Include="Models\PSWeekDetails.cs" />
     <Compile Include="Models\PSSchedule.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="WellKnownPolicyNames.cs" />
     <None Include="..\AzureRM.DevTestLabs.psd1">
       <Link>AzureRM.DevTestLabs.psd1</Link>
@@ -173,6 +178,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
