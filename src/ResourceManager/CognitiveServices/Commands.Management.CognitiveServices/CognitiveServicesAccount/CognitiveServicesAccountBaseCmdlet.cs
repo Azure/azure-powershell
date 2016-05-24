@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         protected const string CognitiveServicesAccountTypeAlias = "CognitiveServicesAccountType";
         protected const string AccountTypeAlias = "AccountType";
         protected const string KindAlias = "Kind";
+
+        protected const string TagsAlias = "Tags";
         
         protected struct AccountSkuString 
         {
@@ -111,7 +113,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             return returnKind;
         }
 
-        protected void WriteCognitiveServicesAccount(CognitiveServicesModels.CognitiveServicesAccount cognitiveServicesAccount)
+        protected void WriteCognitiveServicesAccount(
+            CognitiveServicesModels.CognitiveServicesAccount cognitiveServicesAccount)
         {
             if (cognitiveServicesAccount != null)
             {
@@ -119,7 +122,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             }
         }
 
-        protected void WriteCognitiveServicesAccountList(IEnumerable<CognitiveServicesModels.CognitiveServicesAccount> cognitiveServicesAccounts)
+        protected void WriteCognitiveServicesAccountList(
+            IEnumerable<CognitiveServicesModels.CognitiveServicesAccount> cognitiveServicesAccounts)
         {
             List<PSCognitiveServicesAccount> output = new List<PSCognitiveServicesAccount>();
             if (cognitiveServicesAccounts != null)

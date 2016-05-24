@@ -124,6 +124,11 @@
     <Compile Include="CognitiveServicesAccount\SetAzureCognitiveServicesAccount.cs" />
     <Compile Include="CognitiveServicesAccount\CognitiveServicesAccountBaseCmdlet.cs" />
     <Compile Include="CognitiveServicesAccount\CognitiveServicesManagementClient.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\AzureRM.CognitiveServices.psd1">
@@ -132,9 +137,6 @@
     </None>
     <None Include="Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.psd1">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Include="Microsoft.Azure.Commands.Management.CognitiveServices.format.ps1xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -156,14 +158,16 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
-      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
-      <Name>Commands.Resources</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
       <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
       <Name>Commands.Tags</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

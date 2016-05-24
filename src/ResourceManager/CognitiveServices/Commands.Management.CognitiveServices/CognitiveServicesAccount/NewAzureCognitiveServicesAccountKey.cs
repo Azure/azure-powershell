@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
+using System.Globalization;
 using System.Management.Automation;
+using CognitiveServicesModels = Microsoft.Azure.Management.CognitiveServices.Models;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
 {
     /// <summary>
     /// Regnerate Cognitive Services Account Key (Key1 or Key2)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, CognitiveServicesAccountKeyNounStr), OutputType(typeof(string))]
+    [Cmdlet(VerbsCommon.New, CognitiveServicesAccountKeyNounStr, SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.CognitiveServicesAccountKeys))]
     public class NewAzureCognitiveServicesAccountKeyCommand : CognitiveServicesAccountBaseCmdlet
     {
         private const KeyNameEnum Key1 = KeyNameEnum.Key1;
@@ -52,16 +55,28 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             HelpMessage = "Cognitive Services Account Key.")]
         public KeyNameEnum KeyName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var keys = this.CognitiveServicesClient.CognitiveServicesAccounts.RegenerateKey(
-                this.ResourceGroupName,
+            this.ConfirmAction(
+                this.Force,
+                string.Format(CultureInfo.CurrentCulture, Resources.NewAccountKey_ActionMessage, this.KeyName, this.Name),
+                string.Format(CultureInfo.CurrentCulture, Resources.NewAccountKey_ProcessMessage, this.KeyName, this.Name),
                 this.Name,
-                this.KeyName);
+                () =>
+                {
+                    var keys = this.CognitiveServicesClient.CognitiveServicesAccounts.RegenerateKey(
+                        this.ResourceGroupName,
+                        this.Name,
+                        this.KeyName);
 
-            WriteObject(keys);
+                    WriteObject(keys);
+                }
+            );
         }
     }
 }

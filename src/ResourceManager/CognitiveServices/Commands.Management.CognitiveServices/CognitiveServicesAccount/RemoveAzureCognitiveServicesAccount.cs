@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
 using Microsoft.Azure.Management.CognitiveServices;
+using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
@@ -20,7 +22,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Delete a Cognitive Services.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, CognitiveServicesAccountNounStr)]
+    [Cmdlet(VerbsCommon.Remove, CognitiveServicesAccountNounStr, SupportsShouldProcess = true)]
     public class RemoveAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
@@ -40,13 +42,25 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            this.CognitiveServicesClient.CognitiveServicesAccounts.Delete(
-                this.ResourceGroupName,
-                this.Name);
+            this.ConfirmAction(
+                this.Force,
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ActionMessage, this.Name),
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ProcessMessage, this.Name),
+                this.Name,
+                () =>
+                {
+                    this.CognitiveServicesClient.CognitiveServicesAccounts.Delete(
+                        this.ResourceGroupName,
+                        this.Name);
+                }
+            );
         }
     }
 }

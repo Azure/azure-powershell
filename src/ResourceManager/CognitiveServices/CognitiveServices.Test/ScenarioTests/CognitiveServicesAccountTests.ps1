@@ -31,15 +31,15 @@ function Test-NewAzureRmCognitiveServicesAccount
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        $createdAccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        $createdAccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
         Assert-NotNull $createdAccount;
         # Call create again, expect to get the same account
-        $createdAccountAgain = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        $createdAccountAgain = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
         Assert-NotNull $createdAccountAgain
         Assert-AreEqual $createdAccount.Name $createdAccountAgain.Name;
         Assert-AreEqual $createdAccount.Endpoint $createdAccountAgain.Endpoint;
         
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname; }
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
     finally
     {
@@ -67,11 +67,11 @@ function Test-RemoveAzureRmCognitiveServicesAccount
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        $createdAccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
-        Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname;
+        $createdAccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+        Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force;
         $accountGotten = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname;
         Assert-Null $accountGotten;
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname; }
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
     finally
     {
@@ -99,7 +99,7 @@ function Test-GetAzureCognitiveServiceAccount
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
 
         $account = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname;
         
@@ -120,7 +120,7 @@ function Test-GetAzureCognitiveServiceAccount
 
         Assert-True { $numberOfAccountsInSubscription -ge $numberOfAccountsInRG }
         
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname; }
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
     finally
     {
@@ -147,12 +147,12 @@ function Test-SetAzureRmCognitiveServicesAccount
         $loc = 'West US';
         
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
 
         $originalAccount = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname;
 
         # Update SKU
-        $changedAccount = Set-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName S3 -Tags @{Name = "testtag"; Value = "testval"};
+        $changedAccount = Set-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName S3 -Tags @{Name = "testtag"; Value = "testval"} -Force;
         
         Assert-AreEqual $originalAccount.Location $changedAccount.Location;
         Assert-AreEqual $originalAccount.Endpoint $changedAccount.Endpoint;
@@ -166,7 +166,7 @@ function Test-SetAzureRmCognitiveServicesAccount
         Assert-AreEqual $originalAccount.Kind $gottenAccount.Kind;
         Assert-AreEqual 'S3' $gottenAccount.Sku.Name;
 		
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname; }
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
     finally
     {
@@ -193,13 +193,13 @@ function Test-GetAzureRmCognitiveServicesAccountKey
         $loc = 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
         
         $keys = Get-AzureRmCognitiveServicesAccountKey -ResourceGroupName $rgname -Name $accountname;
         
         Assert-AreNotEqual $keys.Key1 $keys.Key2;
 
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname; }
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
     finally
     {
@@ -226,22 +226,22 @@ function Test-NewAzureRmCognitiveServicesAccountKey
         $loc = 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
         
         $originalKeys = Get-AzureRmCognitiveServicesAccountKey -ResourceGroupName $rgname -Name $accountname;
         # Update key1
-        $updatedKeys = New-AzureRmCognitiveServicesAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Key1;
+        $updatedKeys = New-AzureRmCognitiveServicesAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Key1 -Force;
             
         Assert-AreNotEqual $originalKeys.Key1 $updatedKeys.Key1;
         Assert-AreEqual $originalKeys.Key2 $updatedKeys.Key2;
 
         # Update key2
-        $reupdatedKeys = New-AzureRmCognitiveServicesAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Key2;
+        $reupdatedKeys = New-AzureRmCognitiveServicesAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Key2 -Force;
 
         Assert-AreEqual $updatedKeys.Key1 $reupdatedKeys.Key1;
         Assert-AreNotEqual $originalKeys.Key2 $reupdatedKeys.Key2;
 
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname; }
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
     finally
     {
@@ -269,7 +269,7 @@ function Test-GetAzureRmCognitiveServicesAccountSkus
         $loc = 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
         
         $skus = (Get-AzureRmCognitiveServicesAccountSkus -ResourceGroupName $rgname -Name $accountname).Value | Select-Object -ExpandProperty Sku;
         $skuNames = $skus | Select-Object -ExpandProperty Name
@@ -277,7 +277,7 @@ function Test-GetAzureRmCognitiveServicesAccountSkus
         $expectedSkus = "F0", "S1", "S2", "S3", "S4"
         Assert-AreEqualArray $expectedSkus $skuNames
 
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname; }
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
     finally
     {
@@ -304,12 +304,12 @@ function Test-PipingGetAccountToGetKey
         $loc = 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
 
         $keys = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname | Get-AzureRmCognitiveServicesAccountKey;
         Assert-AreNotEqual $keys.Key1 $keys.Key2;
 
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname; }
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
     finally
     {
@@ -336,15 +336,15 @@ function Test-PipingToSetAzureAccount
         $loc = 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
 
         $account = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname;
-		$account | Set-AzureRmCognitiveServicesAccount -SkuName S3;
+		$account | Set-AzureRmCognitiveServicesAccount -SkuName S3 -Force;
 		
         $updatedAccount = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname;
         Assert-AreEqual 'S3' $updatedAccount.Sku.Name;
 
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname; }
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
     finally
     {
@@ -371,7 +371,7 @@ function Test-PipingToGetAccountSkus
         $loc = 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
 
         $account = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname;
 		$sku = ($account | Get-AzureRmCognitiveServicesAccountSkus).Value | Select-Object -ExpandProperty Sku;
@@ -380,7 +380,7 @@ function Test-PipingToGetAccountSkus
         $expectedSkus = "F0", "S1", "S2", "S3", "S4"
         Assert-AreEqualArray $expectedSkus $skuNames
         
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname; }
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
     finally
     {
