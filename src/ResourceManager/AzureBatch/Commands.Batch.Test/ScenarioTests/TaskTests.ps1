@@ -96,18 +96,18 @@ function Test-CreateTaskCollection
 
     $taskId1 = "simple1"
     $taskId2 = "simple2"
-	
+
     $taskId3 = "complex1"
     $taskId4 = "simple3"
 
-	$cmd = "cmd /c dir /s"
-    
-	$task1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId1, $cmd)
+    $cmd = "cmd /c dir /s"
+
+    $task1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId1, $cmd)
     $task2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId2, $cmd)
-	$task3 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId3, $cmd)
+    $task3 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId3, $cmd)
     $task4 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId4, $cmd)
 
-	$taskCollection = @($task1, $task2)
+    $taskCollection = @($task1, $task2)
 
     # Create a simple task and verify pipeline
     Get-AzureBatchJob -Id $jobId -BatchContext $context | New-AzureBatchTask -TaskCollection $taskCollection -BatchContext $context
@@ -118,7 +118,7 @@ function Test-CreateTaskCollection
     Assert-AreEqual $cmd $task1.CommandLine
 
     # Create a complicated task collection
-	$affinityId = "affinityId"
+    $affinityId = "affinityId"
     $affinityInfo = New-Object Microsoft.Azure.Commands.Batch.Models.PSAffinityInformation -ArgumentList @($affinityId)
 
     $taskConstraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @([TimeSpan]::FromDays(1),[TimeSpan]::FromDays(2),5)
@@ -127,14 +127,14 @@ function Test-CreateTaskCollection
     $maxRetryCount = $taskConstraints.MaxRetryCount
 
     $resourceFiles = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSResourceFile]
-	$file = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile("https://testacct.blob.core.windows.net/", "file1")
-	$resourceFiles.Add($file)
+    $file = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile("https://testacct.blob.core.windows.net/", "file1")
+    $resourceFiles.Add($file)
 
     $envSettings = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting]
-	$env1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting("env1", "value1")
-	$env2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting("env2", "value2")
-	$envSettings.Add($env1)
-	$envSettings.Add($env2)
+    $env1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting("env1", "value1")
+    $env2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting("env2", "value2")
+    $envSettings.Add($env1)
+    $envSettings.Add($env2)
 
     $numInstances = 3
     $multiInstanceSettings = New-Object Microsoft.Azure.Commands.Batch.Models.PSMultiInstanceSettings -ArgumentList @($numInstances)
@@ -144,27 +144,27 @@ function Test-CreateTaskCollection
     $commonResourceFile = "common.exe"
     $commonResource = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList @($commonResourceBlob,$commonResourceFile)
     $multiInstanceSettings.CommonResourceFiles.Add($commonResource)
-    
-	$task3.AffinityInformation = $affinityInfo
-	$task3.Constraints = $taskConstraints
-	$task3.MultiInstanceSettings = $multiInstanceSettings
-	$task3.EnvironmentSettings = $envSettings
-	$task3.ResourceFiles = $resourceFiles
 
-	$taskCollection = @($task3, $task4)
-    
-	# Create a task collection with the job id
-	New-AzureBatchTask -JobId $jobId -TaskCollection $taskCollection -BatchContext $context
-        
+    $task3.AffinityInformation = $affinityInfo
+    $task3.Constraints = $taskConstraints
+    $task3.MultiInstanceSettings = $multiInstanceSettings
+    $task3.EnvironmentSettings = $envSettings
+    $task3.ResourceFiles = $resourceFiles
+
+    $taskCollection = @($task3, $task4)
+
+    # Create a task collection with the job id
+    New-AzureBatchTask -JobId $jobId -TaskCollection $taskCollection -BatchContext $context
+
     $task3 = Get-AzureBatchTask -JobId $jobId -Id $taskId3 -BatchContext $context
-        
+
     # Verify created task matches expectations
     Assert-AreEqual $taskId3 $task3.Id
     Assert-AreEqual $cmd $task3.CommandLine
     Assert-AreEqual $affinityId $task3.AffinityInformation.AffinityId
     Assert-AreEqual $maxWallClockTime $task3.Constraints.MaxWallClockTime
     Assert-AreEqual $retentionTime $task3.Constraints.RetentionTime
-	Assert-AreEqual $maxRetryCount $task3.Constraints.MaxRetryCount
+    Assert-AreEqual $maxRetryCount $task3.Constraints.MaxRetryCount
     Assert-AreEqual $resourceFiles.Count $task3.ResourceFiles.Count
 
     Assert-AreEqual $envSettings.Count $task3.EnvironmentSettings.Count
