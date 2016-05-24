@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachineCustomScriptExtension,
         DefaultParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class SetAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    public class SetAzureVMCustomScriptExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         protected const string SetCustomScriptExtensionByContainerBlobsParamSetName = "SetCustomScriptExtensionByContainerAndFileNames";
         protected const string SetCustomScriptExtensionByUrisParamSetName = "SetCustomScriptExtensionByUriLinks";
@@ -50,44 +50,8 @@ namespace Microsoft.Azure.Commands.Compute
         private const string policyFormatStr = "-ExecutionPolicy {0}";
 
         [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual machine name.")]
-        [ValidateNotNullOrEmpty]
-        public string VMName { get; set; }
-
-        [Alias("ExtensionName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Alias("HandlerVersion", "Version")]
-        [Parameter(
-            Mandatory = false,
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type handler version.")]
-        [ValidateNotNullOrEmpty]
-        public string TypeHandlerVersion { get; set; }
-
-        [Parameter(
             ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = true,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Name of the Container.")]
         [ValidateNotNullOrEmpty]
@@ -96,7 +60,6 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = true,
-            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Blob Files in the Container.")]
         [ValidateNotNullOrEmpty]
@@ -105,7 +68,6 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
              ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
              Mandatory = false,
-             Position = 6,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The Storage Account Name.")]
         [ValidateNotNullOrEmpty]
@@ -114,7 +76,6 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = false,
-            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Storage Endpoint Suffix.")]
         [ValidateNotNullOrEmpty]
@@ -123,7 +84,6 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = false,
-            Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Storage Account Key.")]
         [ValidateNotNullOrEmpty]
@@ -132,22 +92,13 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByUrisParamSetName,
             Mandatory = false,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The File URIs.")]
         [ValidateNotNullOrEmpty]
         public string[] FileUri { get; set; }
 
         [Parameter(
-            ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = false,
-            Position = 9,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Run File to Execute in PowerShell on the VM.")]
-        [Parameter(
-            ParameterSetName = SetCustomScriptExtensionByUrisParamSetName,
-            Mandatory = true,
-            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Run File to Execute in PowerShell on the VM.")]
         [ValidateNotNullOrEmpty]
@@ -155,38 +106,16 @@ namespace Microsoft.Azure.Commands.Compute
         public string Run { get; set; }
 
         [Parameter(
-            ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = false,
-            Position = 10,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Argument String for the Run File.")]
-        [Parameter(
-            ParameterSetName = SetCustomScriptExtensionByUrisParamSetName,
-            Mandatory = false,
-            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Argument String for the Run File.")]
         [ValidateNotNullOrEmpty]
         public string Argument { get; set; }
 
         [Parameter(
-            Position = 11,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Set command to execute in private config.")]
         public SwitchParameter SecureExecution { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Force re-run even if extension configuration has not changed")]
-        [ValidateNotNullOrEmpty]
-        public string ForceRerun { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -243,7 +172,7 @@ namespace Microsoft.Azure.Commands.Compute
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineCustomScriptExtensionContext.ExtensionDefaultVersion,
                     Settings = publicSettings,
                     ProtectedSettings = privateSettings,
-                    AutoUpgradeMinorVersion = true,
+                    AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
                     ForceUpdateTag = this.ForceRerun
                 };
 
