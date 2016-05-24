@@ -98,8 +98,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            base.ExecuteCmdlet(); 
 
+            WriteWarning("The usability of Tags parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+            
             StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
             if (this.SkuName != null)
             {
