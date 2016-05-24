@@ -1,7 +1,7 @@
 # Azure PowerShell Design Guidelines for Azure Resource Manager (ARM) Cmdlets
 
 * [Modules and Versioning](#modules-and-versioning)
-* [Cmdlet Dependencies](#cmdlet-dependencies)
+* [Module Dependencies](#module-dependencies)
 * Cmdlet Signature
   * Cmdlet Naming
   * Cmdlet attributes
@@ -51,11 +51,11 @@
     - Changing return types of methods
 4. **Breaking Change Notification** Breaking changes **should** provide advance notification by at least one release. This is accomplished through printing messages when the deprecated pattern is used.  The ```Obsolete`` attribute is provided for marking cmdlets and parameters that will be removed or have changed.
 
-# Cmdlet Dependencies
+# Module Dependencies
 Assembly dependencies are split into two categories:
 - Shared dependencies, such as common runtime and framework assemblies shared across cmdlets
 - Single module dependencies, such as the management library
-
+## Requirements
 1. [**Preliminary**] A Cmdlet assembly *may not* take an assembly dependency on another cmdlet assembly.
 2. A module *may* take a dependency on another module through the module manifest, provided the dependency is guaranteed to be backward compatible (for example, the dependency on the profile cmdlets).
  - Dependencies on common types between cmdlets must be managed through the common libraries
