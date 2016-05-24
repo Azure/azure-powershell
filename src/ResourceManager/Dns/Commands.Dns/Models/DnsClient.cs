@@ -486,16 +486,16 @@ namespace Microsoft.Azure.Commands.Dns.Models
         }
     }
 
-    public static class Logger
-    {
-        private const string fileName = @"d:\scratch\pslog.txt";
+    //public static class Logger
+    //{
+    //    private const string fileName = @"d:\scratch\pslog.txt";
 
-        public static void LogMesg(string s)
-        {
-            using (var file = File.AppendText(fileName))
-            {
-                file.WriteLine(s);
-            }
-        }
-    }
+    //    public static void LogMesg(string s)
+    //    {
+    //        using (var file = File.AppendText(fileName))
+    //        {
+    //            file.WriteLine(s);
+    //        }
+    //    }
+    //}
 }

@@ -262,10 +262,8 @@ function Test-RecordSetANonEmpty
 
 	$aRecords=@()
 	$aRecords += New-AzureRmDnsRecordConfig -IPv4Address "192.168.0.1"
-	"1" | Out-File "d:\scratch\psslog.txt" -Append
 	$aRecords += New-AzureRmDnsRecordConfig -IPv4Address "192.168.0.2"
 	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -DnsRecords $aRecords
-	"2" | Out-File "d:\scratch\psslog.txt" -Append
 	
 	$getResult = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A 
 	
