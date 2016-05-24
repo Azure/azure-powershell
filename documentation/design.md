@@ -1,7 +1,7 @@
 # Azure PowerShell Design Guidelines for Azure Resource Manager (ARM) Cmdlets
 
-* [Modules and Versioning](#Modules-and-Versioning)
-* [Cmdlet Dependencies](#Cmdlet-Dependencies)
+* [Modules and Versioning](#modules-and-versioning)
+* [Cmdlet Dependencies](#cmdlet-dependencies)
 * Cmdlet Signature
   * Cmdlet Naming
   * Cmdlet attributes
