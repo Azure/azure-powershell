@@ -158,16 +158,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("parameters");
             }
 
-            if (psTaskCollection == null)
+            Func<PSCloudTask, CloudTask> mappingFunc = task =>
             {
-                throw new ArgumentNullException("psTaskCollection");
-            }
+                Utils.Utils.CloudTaskSyncCollections(task);
+                return task.omObject;
+            };
 
-            Func<PSCloudTask, CloudTask> mappingFunc = psCloudTask => psCloudTask.omObject;
             IEnumerable<CloudTask> taskCollection = psTaskCollection.Select(mappingFunc);
-
+            
             JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
-            jobOperations.AddTask(parameters.JobId, taskCollection, additionalBehaviors: parameters.AdditionalBehaviors);
+            string jobId = parameters.Job == null ? parameters.JobId : parameters.Job.Id;
+
+            jobOperations.AddTask(jobId, taskCollection, additionalBehaviors: parameters.AdditionalBehaviors);
         }
 
         /// <summary>
