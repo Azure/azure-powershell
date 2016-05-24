@@ -13,16 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DevTestLabs.Models;
+using Microsoft.Azure.Commands.DevTestLabs.Properties;
 using Microsoft.Azure.Management.DevTestLabs;
 using Microsoft.Azure.Management.DevTestLabs.Models;
 using Microsoft.Rest.Azure;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDtlAutoStartPolicy", HelpUri = Constants.DevTestLabsHelpUri, DefaultParameterSetName = ParameterSetEnable)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDtlAutoStartPolicy", HelpUri = Constants.DevTestLabsHelpUri, DefaultParameterSetName = ParameterSetEnable, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSchedule))]
     public class SetAzureRmDtlAutoStartPolicy : DtlPolicyCmdletBase
     {
@@ -90,6 +92,17 @@ namespace Microsoft.Azure.Commands.DevTestLabs
             }
             else
             {
+                // Do nothing if user cancelled the operation
+                var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.SavePolicyDescription, PolicyName, LabName);
+                var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.SavePolicyWarning, PolicyName);
+                if (!ShouldProcess(
+                        actionDescription,
+                        actionWarning,
+                        Resources.ShouldProcessCaption))
+                {
+                    return;
+                }
+
                 if (Time.HasValue)
                 {
                     inputSchedule.WeeklyRecurrence.Time = Time.Value.ToString("HHmm");
