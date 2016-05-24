@@ -1802,9 +1802,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         private static bool IsGraphRunbook(string runbookType)
         {
-            return (string.Equals(runbookType, Constants.RunbookType.Graph, StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(runbookType, Constants.RunbookType.GraphPowerShell, StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(runbookType, Constants.RunbookType.GraphPowerShellWorkflow, StringComparison.OrdinalIgnoreCase));
+            return (string.Equals(runbookType, RunbookTypeEnum.Graph, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(runbookType, RunbookTypeEnum.GraphPowerShell, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(runbookType, RunbookTypeEnum.GraphPowerShellWorkflow, StringComparison.OrdinalIgnoreCase));
         }
 
         #endregion

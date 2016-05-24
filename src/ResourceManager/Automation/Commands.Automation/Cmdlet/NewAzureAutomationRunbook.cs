@@ -52,11 +52,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the runbook version type
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Runbook definition type.")]
-        [ValidateSet(Constants.RunbookType.Graph,
-            Constants.RunbookType.GraphPowerShell,
-            Constants.RunbookType.GraphPowerShellWorkflow,
-            Constants.RunbookType.PowerShell,
+        [ValidateSet(Constants.RunbookType.PowerShell, 
+            Constants.RunbookType.GraphicalPowerShell,
             Constants.RunbookType.PowerShellWorkflow,
+            Constants.RunbookType.GraphicalPowerShellWorkflow,
+            Constants.RunbookType.Graph,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
@@ -83,7 +83,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
             // ByRunbookName
             runbook = this.AutomationClient.CreateRunbookByName(
-                    this.ResourceGroupName, this.AutomationAccountName, this.Name, this.Description, this.Tags, this.Type, this.LogProgress, this.LogVerbose, false);
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.Name,
+                    this.Description,
+                    this.Tags,
+                    RunbookTypeSdkValue.Resolve(this.Type),
+                    this.LogProgress,
+                    this.LogVerbose,
+                    false);
 
             this.WriteObject(runbook);
         }
