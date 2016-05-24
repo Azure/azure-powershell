@@ -26,1398 +26,1214 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Formatters;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Runtime.Serialization.Formatters;
-using System.Security;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
     public class ResourceClientTests : RMTestBase
     {
-        //private Mock<IResourceManagementClient> resourceManagementClientMock;
+        private Mock<IResourceManagementClient> resourceManagementClientMock;
 
-        //private Mock<IAuthorizationManagementClient> authorizationManagementClientMock;
+        private Mock<IAuthorizationManagementClient> authorizationManagementClientMock;
 
-        //private Mock<IDeploymentsOperations> deploymentsMock;
+        private Mock<IDeploymentsOperations> deploymentsMock;
 
-        //private Mock<IResourceGroupsOperations> resourceGroupMock;
+        private Mock<IResourceGroupsOperations> resourceGroupMock;
 
-        //private Mock<IResourcesOperations> resourceOperationsMock;
+        private Mock<IResourcesOperations> resourceOperationsMock;
 
-        //private Mock<GalleryTemplatesClient> galleryTemplatesClientMock;
+        private Mock<IDeploymentOperationsOperations> deploymentOperationsMock;
 
-        //private Mock<IDeploymentOperationsOperations> deploymentOperationsMock;
+        private Mock<IProvidersOperations> providersMock;
 
-        //private Mock<IProvidersOperations> providersMock;
+        private Mock<Action<string>> progressLoggerMock;
 
-        //private Mock<IPermissionOperations> permissionOperationsMock;
+        private Mock<Action<string>> errorLoggerMock;
 
-        //private Mock<Action<string>> progressLoggerMock;
+        private ResourceManagerSdkClient resourcesClient;
 
-        //private Mock<Action<string>> errorLoggerMock;
-
-        //private ResourcesClient resourcesClient;
-
-        //private ResourceManagerSdkClient resourceManagerSdkClient;
-
-        //private string resourceGroupName = "myResourceGroup";
-
-        //private string resourceGroupLocation = "West US";
-
-        //private string deploymentName = "fooDeployment";
-
-        //private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
-
-        //private string requestId = "1234567890";
-
-        //private string resourceName = "myResource";
-
-        //private ResourceIdentity resourceIdentity;
-
-        //private Dictionary<string, object> properties;
-
-        //private string serializedProperties;
-
-        //private int ConfirmActionCounter = 0;
-
-        //private void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
-        //{
-        //    ConfirmActionCounter++;
-        //    action();
-        //}
-
-        //private int RejectActionCounter = 0;
-
-        //private void RejectAction(bool force, string actionMessage, string processMessage, string target, Action action)
-        //{
-        //    RejectActionCounter++;
-        //}
-
-        //private void SetupListForResourceGroupAsync(string name, List<GenericResourceExtended> result)
-        //{
-        //    resourceOperationsMock.Setup(f => f.ListAsync(
-        //        It.IsAny<ResourceListParameters>(),
-        //        new CancellationToken()))
-        //            .Returns(Task.Factory.StartNew(() => new ResourceListResult
-        //            {
-        //                Resources = result
-        //            }));
-        //}
-
-        //private void EqualsIgnoreWhitespace(string left, string right)
-        //{
-        //    string normalized1 = Regex.Replace(left, @"\s", "");
-        //    string normalized2 = Regex.Replace(right, @"\s", "");
-
-        //    Assert.Equal(
-        //        normalized1.ToLowerInvariant(),
-        //        normalized2.ToLowerInvariant());
-        //}
-
-        //public ResourceClientTests()
-        //{
-        //    resourceManagementClientMock = new Mock<IResourceManagementClient>();
-        //    authorizationManagementClientMock = new Mock<IAuthorizationManagementClient>();
-        //    deploymentsMock = new Mock<IDeploymentsOperations>();
-        //    resourceGroupMock = new Mock<IResourceGroupsOperations>();
-        //    resourceOperationsMock = new Mock<IResourcesOperations>();
-        //    galleryTemplatesClientMock = new Mock<GalleryTemplatesClient>();
-        //    //eventsClientMock = new Mock<IEventsClient>();
-        //    deploymentOperationsMock = new Mock<IDeploymentOperationsOperations>();
-        //    //eventDataOperationsMock = new Mock<IEventDataOperations>();
-        //    providersMock = new Mock<IProvidersOperations>();
-        //    providersMock.Setup(f => f.ListAsync(null, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new IPage<Provider>()
-        //        ));
-        //    progressLoggerMock = new Mock<Action<string>>();
-        //    errorLoggerMock = new Mock<Action<string>>();
-        //    permissionOperationsMock = new Mock<IPermissionOperations>();
-        //    resourceManagementClientMock.Setup(f => f.Deployments).Returns(deploymentsMock.Object);
-        //    resourceManagementClientMock.Setup(f => f.ResourceGroups).Returns(resourceGroupMock.Object);
-        //    resourceManagementClientMock.Setup(f => f.Resources).Returns(resourceOperationsMock.Object);
-        //    resourceManagementClientMock.Setup(f => f.DeploymentOperations).Returns(deploymentOperationsMock.Object);
-        //    resourceManagementClientMock.Setup(f => f.Providers).Returns(providersMock.Object);
-        //    // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //    //eventsClientMock.Setup(f => f.EventData).Returns(eventDataOperationsMock.Object);
-        //    authorizationManagementClientMock.Setup(f => f.Permissions).Returns(permissionOperationsMock.Object);
-        //    resourcesClient = new ResourcesClient(
-        //        resourceManagementClientMock.Object,
-        //        galleryTemplatesClientMock.Object,
-        //        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //        //eventsClientMock.Object,
-        //        authorizationManagementClientMock.Object)
-        //        {
-        //            VerboseLogger = progressLoggerMock.Object,
-        //            ErrorLogger = errorLoggerMock.Object
-        //        };
-
-        //    resourceIdentity = new ResourceIdentity
-        //    {
-        //        ParentResourcePath = "sites/siteA",
-        //        ResourceName = "myResource",
-        //        ResourceProviderNamespace = "Microsoft.Web",
-        //        ResourceType = "sites"
-        //    };
-        //    properties = new Dictionary<string, object>
-        //        {
-        //            {"name", "site1"},
-        //            {"siteMode", "Standard"},
-        //            {"computeMode", "Dedicated"},
-        //            {"misc", new Dictionary<string, object>
-        //                {
-        //                    {"key1", "value1"},
-        //                    {"key2", "value2"}
-        //                }}
-        //        };
-        //    serializedProperties = JsonConvert.SerializeObject(properties, new JsonSerializerSettings
-        //    {
-        //        TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
-        //        TypeNameHandling = TypeNameHandling.None
-        //    });
-
-        //    // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //    //sampleEvents = new List<EventData>();
-        //    //sampleEvents.Add(new EventData
-        //    //    {
-        //    //        EventDataId = "ac7d2ab5-698a-4c33-9c19-0a93d3d7f527",
-        //    //        EventName = new LocalizableString { LocalizedValue = "Start request" },
-        //    //        EventSource = new LocalizableString { LocalizedValue = "Microsoft Resources" },
-        //    //        EventChannels = EventChannels.Operation,
-        //    //        Level = EventLevel.Informational,
-        //    //        EventTimestamp = DateTime.Now,
-        //    //        OperationId = "c0f2e85f-efb0-47d0-bf90-f983ec8be91d",
-        //    //        SubscriptionId = "c0f2e85f-efb0-47d0-bf90-f983ec8be91d",
-        //    //        CorrelationId = "c0f2e85f-efb0-47d0-bf90-f983ec8be91d",
-        //    //        OperationName =
-        //    //            new LocalizableString
-        //    //                {
-        //    //                    LocalizedValue = "Microsoft.Resources/subscriptions/resourcegroups/deployments/write"
-        //    //                },
-        //    //        Status = new LocalizableString { LocalizedValue = "Succeeded" },
-        //    //        SubStatus = new LocalizableString { LocalizedValue = "Created" },
-        //    //        ResourceGroupName = "foo",
-        //    //        ResourceProviderName = new LocalizableString { LocalizedValue = "Microsoft Resources" },
-        //    //        ResourceUri =
-        //    //            "/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy",
-        //    //        HttpRequest = new HttpRequestInfo
-        //    //            {
-        //    //                Uri =
-        //    //                    "http://path/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy",
-        //    //                Method = "PUT",
-        //    //                ClientRequestId = "1234",
-        //    //                ClientIpAddress = "123.123.123.123"
-        //    //            },
-        //    //        Authorization = new SenderAuthorization
-        //    //            {
-        //    //                Action = "PUT",
-        //    //                Condition = "",
-        //    //                Role = "Sender",
-        //    //                Scope = "None"
-        //    //            },
-        //    //        Claims = new Dictionary<string, string>
-        //    //            {
-        //    //                {"aud", "https://management.core.windows.net/"},
-        //    //                {"iss", "https://sts.windows.net/123456/"},
-        //    //                {"iat", "h123445"},
-        //    //                {"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name", "info@mail.com"}
-        //    //            },
-        //    //        Properties = new Dictionary<string, string>()
-        //    //    });
-        //    //sampleEvents.Add(new EventData
-        //    //{
-        //    //    EventDataId = "ac7d2ab5-698a-4c33-9c19-0sdfsdf34r54",
-        //    //    EventName = new LocalizableString { LocalizedValue = "End request" },
-        //    //    EventSource = new LocalizableString { LocalizedValue = "Microsoft Resources" },
-        //    //    EventChannels = EventChannels.Operation,
-        //    //    Level = EventLevel.Informational,
-        //    //    EventTimestamp = DateTime.Now,
-        //    //    OperationId = "c0f2e85f-efb0-47d0-bf90-f983ec8be91d",
-        //    //    OperationName =
-        //    //        new LocalizableString
-        //    //        {
-        //    //            LocalizedValue = "Microsoft.Resources/subscriptions/resourcegroups/deployments/write"
-        //    //        },
-        //    //    Status = new LocalizableString { LocalizedValue = "Succeeded" },
-        //    //    SubStatus = new LocalizableString { LocalizedValue = "Created" },
-        //    //    ResourceGroupName = "foo",
-        //    //    ResourceProviderName = new LocalizableString { LocalizedValue = "Microsoft Resources" },
-        //    //    ResourceUri =
-        //    //        "/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy",
-        //    //    HttpRequest = new HttpRequestInfo
-        //    //    {
-        //    //        Uri =
-        //    //            "http://path/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy",
-        //    //        Method = "PUT",
-        //    //        ClientRequestId = "1234",
-        //    //        ClientIpAddress = "123.123.123.123"
-        //    //    },
-        //    //    Authorization = new SenderAuthorization
-        //    //    {
-        //    //        Action = "PUT",
-        //    //        Condition = "",
-        //    //        Role = "Sender",
-        //    //        Scope = "None"
-        //    //    },
-        //    //    Claims = new Dictionary<string, string>
-        //    //            {
-        //    //                {"aud", "https://management.core.windows.net/"},
-        //    //                {"iss", "https://sts.windows.net/123456/"},
-        //    //                {"iat", "h123445"}
-        //    //            },
-        //    //    Properties = new Dictionary<string, string>()
-        //    //});
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void NewResourceGroupChecksForPermissionForExistingResource()
-        //{
-        //    RejectActionCounter = 0;
-        //    CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters() { ResourceGroupName = resourceGroupName, ConfirmAction = RejectAction };
-        //    resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupExistsResult
-        //        {
-        //            Exists = true
-        //        }));
-
-        //    resourceGroupMock.Setup(f => f.GetAsync(
-        //        parameters.ResourceGroupName,
-        //        new CancellationToken()))
-        //            .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
-        //            {
-        //                ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
-        //            }));
-
-        //    resourceOperationsMock.Setup(f => f.ListAsync(It.IsAny<ResourceListParameters>(), It.IsAny<CancellationToken>()))
-        //        .Returns(() => Task.Factory.StartNew(() => new ResourceListResult
-        //        {
-        //            StatusCode = HttpStatusCode.OK,
-        //            Resources = new List<GenericResourceExtended>(new[]
-        //                {
-        //                    new GenericResourceExtended
-        //                    {
-        //                        Name = "foo",
-        //                        Properties = null,
-        //                        ProvisioningState = ProvisioningState.Running,
-        //                        Location = "West US"
-        //                    },
-        //                    new GenericResourceExtended
-        //                    {
-        //                        Name = "bar",
-        //                        Properties = null,
-        //                        ProvisioningState = ProvisioningState.Running,
-        //                        Location = "West US"
-        //                    }
-        //                })
-
-        //        }));
-
-        //    resourceManagerSdkClient.CreatePSResourceGroup(parameters);
-        //    Assert.Equal(1, RejectActionCounter);
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void NewResourceGroupWithoutDeploymentSucceeds()
-        //{
-        //    CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
-        //    {
-        //        ResourceGroupName = resourceGroupName,
-        //        Location = resourceGroupLocation,
-        //        ConfirmAction = ConfirmAction
-        //    };
-        //    resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupExistsResult
-        //        {
-        //            Exists = false
-        //        }));
-
-        //    resourceGroupMock.Setup(f => f.CreateOrUpdateAsync(
-        //        parameters.ResourceGroupName,
-        //        It.IsAny<ResourceGroup>(),
-        //        new CancellationToken()))
-        //            .Returns(Task.Factory.StartNew(() => new ResourceGroupCreateOrUpdateResult
-        //            {
-        //                ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
-        //            }));
-        //    SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>());
-
-        //    PSResourceGroup result = resourceManagerSdkClient.CreatePSResourceGroup(parameters);
-
-        //    Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
-        //    Assert.Equal(parameters.Location, result.Location);
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void TestTemplateShowsErrorMessage()
-        //{
-        //    Uri templateUri = new Uri("http://templateuri.microsoft.com");
-        //    Deployment deploymentFromValidate = new Deployment();
-        //    ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
-        //    {
-        //        ResourceGroupName = resourceGroupName,
-        //        TemplateFile = templateFile,
-        //    };
-        //    resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupExistsResult
-        //        {
-        //            Exists = true
-        //        }));
-        //    deploymentsMock.Setup(f => f.ValidateAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
-        //        {
-        //            IsValid = false,
-        //            Error = new ResourceManagementErrorWithDetails()
-        //            {
-        //                Code = "404",
-        //                Message = "Awesome error message",
-        //                Details = new List<ResourceManagementError>(new[] { new ResourceManagementError
-        //                    {
-        //                        Code = "SubError",
-        //                        Message = "Sub error message"
-        //                    }})
-        //            }
-        //        }))
-        //        .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
-
-        //    IEnumerable<PSResourceManagerError> error = resourceManagerSdkClient.ValidatePSResourceGroupDeployment(parameters, DeploymentMode.Incremental);
-        //    Assert.Equal(2, error.Count());
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void TestTemplateShowsSuccessMessage()
-        //{
-        //    Uri templateUri = new Uri("http://templateuri.microsoft.com");
-        //    Deployment deploymentFromValidate = new Deployment();
-        //    ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
-        //    {
-        //        ResourceGroupName = resourceGroupName,
-        //        TemplateFile = templateFile,
-        //    };
-        //    resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupExistsResult
-        //        {
-        //            Exists = true
-        //        }));
-        //    deploymentsMock.Setup(f => f.ValidateAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
-        //        {
-        //            IsValid = true,
-        //            Error = new ResourceManagementErrorWithDetails()
-        //            {
-        //                Code = "404",
-        //                Message = "Awesome error message",
-        //                Details = new List<ResourceManagementError>(new[] { new ResourceManagementError
-        //                    {
-        //                        Code = "SubError",
-        //                        Message = "Sub error message"
-        //                    }})
-        //            }
-        //        }))
-        //        .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
-
-        //    IEnumerable<PSResourceManagerError> error = resourceManagerSdkClient.ValidatePSResourceGroupDeployment(parameters, DeploymentMode.Incremental);
-        //    Assert.Equal(0, error.Count());
-        //    progressLoggerMock.Verify(f => f("Template is valid."), Times.Once());
-        //}
-
-        //[Fact]
-        //public void NewResourceGroupUsesDeploymentNameForDeploymentName()
-        //{
-        //    string deploymentName = "abc123";
-        //    Deployment deploymentFromGet = new Deployment();
-        //    Deployment deploymentFromValidate = new Deployment();
-        //    CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
-        //    {
-        //        ResourceGroupName = resourceGroupName,
-        //        Location = resourceGroupLocation,
-        //        DeploymentName = deploymentName,
-        //        ConfirmAction = ConfirmAction,
-        //        TemplateFile = templateFile
-        //    };
-
-        //    deploymentsMock.Setup(f => f.ValidateAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Deployment>(), new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
-        //        {
-        //            IsValid = true,
-        //            Error = new ResourceManagementErrorWithDetails()
-        //        }))
-        //        .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
-
-        //    deploymentsMock.Setup(f => f.CreateOrUpdateAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Deployment>(), new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentOperationsCreateResult
-        //        {
-        //            RequestId = requestId
-        //        }))
-        //        .Callback((string name, string dName, Deployment bDeploy, CancellationToken token) => { deploymentFromGet = bDeploy; deploymentName = dName; });
-
-        //    SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });
-
-        //    var operationId = Guid.NewGuid().ToString();
-        //    var operationQueue = new Queue<DeploymentOperation>();
-        //    operationQueue.Enqueue(
-        //        new DeploymentOperation()
-        //        {
-        //            OperationId = operationId,
-        //            Properties = new DeploymentOperationProperties()
-        //            {
-        //                ProvisioningState = ProvisioningState.Accepted,
-        //                TargetResource = new TargetResource()
-        //                {
-        //                    ResourceType = "Microsoft.Website",
-        //                    ResourceName = resourceName
-        //                }
-        //            }
-        //        }
-        //    );
-        //    operationQueue.Enqueue(
-        //        new DeploymentOperation()
-        //        {
-        //            OperationId = operationId,
-        //            Properties = new DeploymentOperationProperties()
-        //            {
-        //                ProvisioningState = ProvisioningState.Running,
-        //                TargetResource = new TargetResource()
-        //                {
-        //                    ResourceType = "Microsoft.Website",
-        //                    ResourceName = resourceName
-        //                }
-        //            }
-        //        }
-        //    );
-        //    operationQueue.Enqueue(
-        //        new DeploymentOperation()
-        //        {
-        //            OperationId = operationId,
-        //            Properties = new DeploymentOperationProperties()
-        //            {
-        //                ProvisioningState = ProvisioningState.Succeeded,
-        //                TargetResource = new TargetResource()
-        //                {
-        //                    ResourceType = "Microsoft.Website",
-        //                    ResourceName = resourceName
-        //                }
-        //            }
-        //        }
-        //    );
-        //    deploymentOperationsMock.SetupSequence(f => f.ListAsync(It.IsAny<string>(), It.IsAny<string>(), null, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentOperationsListResult
-        //        {
-        //            Operations = new List<DeploymentOperation>()
-        //            {
-        //                operationQueue.Dequeue()
-        //            }
-        //        }))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentOperationsListResult
-        //        {
-        //            Operations = new List<DeploymentOperation>()
-        //            {
-        //                operationQueue.Dequeue()
-        //            }
-        //        }))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentOperationsListResult
-        //        {
-        //            Operations = new List<DeploymentOperation>()
-        //            {
-        //                operationQueue.Dequeue()
-        //            }
-        //        }));
-
-        //    var deploymentQueue = new Queue<DeploymentExtended>();
-        //    deploymentQueue.Enqueue(new DeploymentExtended()
-        //    {
-        //        Name = deploymentName,
-        //        Properties = new DeploymentPropertiesExtended()
-        //        {
-        //            Mode = DeploymentMode.Incremental,
-        //            CorrelationId = "123",
-        //            ProvisioningState = ProvisioningState.Accepted
-        //        }
-        //    });
-        //    deploymentQueue.Enqueue(new DeploymentExtended
-        //    {
-        //        Name = deploymentName,
-        //        Properties = new DeploymentPropertiesExtended()
-        //        {
-        //            Mode = DeploymentMode.Incremental,
-        //            CorrelationId = "123",
-        //            ProvisioningState = ProvisioningState.Running
-        //        }
-        //    });
-        //    deploymentQueue.Enqueue(new DeploymentExtended
-        //    {
-        //        Name = deploymentName,
-        //        Properties = new DeploymentPropertiesExtended()
-        //        {
-        //            Mode = DeploymentMode.Incremental,
-        //            CorrelationId = "123",
-        //            ProvisioningState = ProvisioningState.Succeeded
-        //        }
-        //    });
-        //    deploymentsMock.SetupSequence(f => f.GetAsync(It.IsAny<string>(), It.IsAny<string>(), new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
-        //        {
-        //            Deployment = deploymentQueue.Dequeue()
-        //        }))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
-        //        {
-        //            Deployment = deploymentQueue.Dequeue()
-        //        }))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
-        //        {
-        //            Deployment = deploymentQueue.Dequeue()
-        //        }));
-
-        //    PSResourceGroupDeployment result = resourceManagerSdkClient.ExecuteDeployment(parameters);
-        //    Assert.Equal(deploymentName, deploymentName);
-        //    Assert.Equal(ProvisioningState.Succeeded, result.ProvisioningState);
-        //    progressLoggerMock.Verify(
-        //        f => f(string.Format("Resource {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, ProvisioningState.Accepted.ToLower())),
-        //        Times.Once());
-        //    progressLoggerMock.Verify(
-        //        f => f(string.Format("Resource {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, ProvisioningState.Running.ToLower())),
-        //        Times.Once());
-        //    progressLoggerMock.Verify(
-        //        f => f(string.Format("Resource {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, ProvisioningState.Succeeded.ToLower())),
-        //        Times.Once());
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void NewResourceGroupWithDeploymentSucceeds()
-        //{
-        //    Uri templateUri = new Uri("http://templateuri.microsoft.com");
-        //    Deployment deploymentFromGet = new Deployment();
-        //    Deployment deploymentFromValidate = new Deployment();
-        //    CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
-        //    {
-        //        ResourceGroupName = resourceGroupName,
-        //        Location = resourceGroupLocation,
-        //        DeploymentName = deploymentName,
-        //        TemplateFile = templateFile,
-        //        ConfirmAction = ConfirmAction
-        //    };
-        //    resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupExistsResult
-        //        {
-        //            Exists = false
-        //        }));
-
-        //    resourceGroupMock.Setup(f => f.CreateOrUpdateAsync(
-        //        parameters.ResourceGroupName,
-        //        It.IsAny<ResourceGroup>(),
-        //        new CancellationToken()))
-        //            .Returns(Task.Factory.StartNew(() => new ResourceGroupCreateOrUpdateResult
-        //            {
-        //                ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
-        //            }));
-        //    resourceGroupMock.Setup(f => f.GetAsync(resourceGroupName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
-        //        {
-        //            ResourceGroup = new ResourceGroupExtended() { Location = resourceGroupLocation }
-        //        }));
-        //    deploymentsMock.Setup(f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, It.IsAny<Deployment>(), new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentOperationsCreateResult
-        //        {
-        //            RequestId = requestId
-        //        }))
-        //        .Callback((string name, string dName, Deployment bDeploy, CancellationToken token) => { deploymentFromGet = bDeploy; });
-        //    deploymentsMock.Setup(f => f.GetAsync(resourceGroupName, deploymentName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
-        //            {
-        //                Deployment = new DeploymentExtended()
-        //                    {
-        //                        Name = deploymentName,
-        //                        Properties = new DeploymentPropertiesExtended()
-        //                        {
-        //                            Mode = DeploymentMode.Incremental,
-        //                            CorrelationId = "123",
-        //                            ProvisioningState = ProvisioningState.Succeeded
-        //                        },
-        //                    }
-        //            }
-        //        ));
-
-        //    deploymentsMock.Setup(f => f.ValidateAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
-        //        {
-        //            IsValid = true,
-        //            Error = new ResourceManagementErrorWithDetails()
-        //        }))
-        //        .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
-        //    SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });
-        //    deploymentOperationsMock.Setup(f => f.ListAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentOperationsListResult
-        //        {
-        //            Operations = new List<DeploymentOperation>()
-        //            {
-        //                new DeploymentOperation()
-        //                {
-        //                    OperationId = Guid.NewGuid().ToString(),
-        //                    Properties = new DeploymentOperationProperties()
-        //                    {
-        //                        ProvisioningState = ProvisioningState.Succeeded,
-        //                        TargetResource = new TargetResource()
-        //                        {
-        //                            ResourceType = "Microsoft.Website",
-        //                            ResourceName = resourceName
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }));
-
-        //    PSResourceGroup result = resourceManagerSdkClient.CreatePSResourceGroup(parameters);
-        //    resourceManagerSdkClient.ExecuteDeployment(parameters);
-        //    deploymentsMock.Verify((f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, deploymentFromGet, new CancellationToken())), Times.Once());
-        //    Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
-        //    Assert.Equal(parameters.Location, result.Location);
-
-        //    Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
-        //    Assert.NotNull(deploymentFromGet.Properties.Template);
-
-        //    progressLoggerMock.Verify(
-        //        f => f(string.Format("Resource {0} '{1}' provisioning status is {2}",
-        //                "Microsoft.Website",
-        //                resourceName,
-        //                ProvisioningState.Succeeded.ToLower())),
-        //        Times.Once());
-        //}
-
-       
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void ShowsFailureErrorWhenResourceGroupWithDeploymentFails()
-        //{
-        //    Uri templateUri = new Uri("http://templateuri.microsoft.com");
-        //    Deployment deploymentFromGet = new Deployment();
-        //    Deployment deploymentFromValidate = new Deployment();
-        //    CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
-        //    {
-        //        ResourceGroupName = resourceGroupName,
-        //        Location = resourceGroupLocation,
-        //        DeploymentName = deploymentName,
-        //        TemplateFile = templateFile,
-        //        ConfirmAction = ConfirmAction
-        //    };
-        //    resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupExistsResult
-        //        {
-        //            Exists = false
-        //        }));
-
-        //    resourceGroupMock.Setup(f => f.CreateOrUpdateAsync(
-        //        parameters.ResourceGroupName,
-        //        It.IsAny<ResourceGroup>(),
-        //        new CancellationToken()))
-        //            .Returns(Task.Factory.StartNew(() => new ResourceGroupCreateOrUpdateResult
-        //            {
-        //                ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
-        //            }));
-        //    resourceGroupMock.Setup(f => f.GetAsync(resourceGroupName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
-        //        {
-        //            ResourceGroup = new ResourceGroupExtended() { Location = resourceGroupLocation }
-        //        }));
-        //    deploymentsMock.Setup(f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, It.IsAny<Deployment>(), new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentOperationsCreateResult
-        //        {
-        //            RequestId = requestId
-        //        }))
-        //        .Callback((string name, string dName, Deployment bDeploy, CancellationToken token) => { deploymentFromGet = bDeploy; });
-        //    deploymentsMock.Setup(f => f.GetAsync(resourceGroupName, deploymentName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
-        //        {
-        //            Deployment = new DeploymentExtended()
-        //                {
-        //                    Name = deploymentName,
-        //                    Properties = new DeploymentPropertiesExtended()
-        //                    {
-        //                        Mode = DeploymentMode.Incremental,
-        //                        ProvisioningState = ProvisioningState.Succeeded
-        //                    },
-        //                }
-        //        }));
-        //    deploymentsMock.Setup(f => f.ValidateAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
-        //        {
-        //            IsValid = true,
-        //            Error = new ResourceManagementErrorWithDetails()
-        //        }))
-        //        .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
-        //    SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });
-        //    deploymentOperationsMock.Setup(f => f.ListAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentOperationsListResult
-        //        {
-        //            Operations = new List<DeploymentOperation>()
-        //            {
-        //                new DeploymentOperation()
-        //                {
-        //                    OperationId = Guid.NewGuid().ToString(),
-        //                    Properties = new DeploymentOperationProperties()
-        //                    {
-        //                        ProvisioningState = ProvisioningState.Failed,
-        //                        StatusMessage = "{\"Code\":\"Conflict\"}",
-        //                        TargetResource = new TargetResource()
-        //                        {
-        //                            ResourceType = "Microsoft.Website",
-        //                            ResourceName = resourceName
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }));
-
-        //    PSResourceGroup result = resourceManagerSdkClient.CreatePSResourceGroup(parameters);
-        //    resourceManagerSdkClient.ExecuteDeployment(parameters);
-        //    deploymentsMock.Verify((f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, deploymentFromGet, new CancellationToken())), Times.Once());
-        //    Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
-        //    Assert.Equal(parameters.Location, result.Location);
-
-        //    Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
-        //    Assert.NotNull(deploymentFromGet.Properties.Template);
-
-        //    errorLoggerMock.Verify(
-        //        f => f(string.Format("Resource {0} '{1}' failed with message '{2}'",
-        //                "Microsoft.Website",
-        //                resourceName,
-        //                "{\"Code\":\"Conflict\"}")),
-        //        Times.Once());
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void ExtractsErrorMessageFromFailedDeploymentOperation()
-        //{
-        //    Uri templateUri = new Uri("http://templateuri.microsoft.com");
-        //    Deployment deploymentFromGet = new Deployment();
-        //    Deployment deploymentFromValidate = new Deployment();
-        //    CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
-        //    {
-        //        ResourceGroupName = resourceGroupName,
-        //        Location = resourceGroupLocation,
-        //        DeploymentName = deploymentName,
-        //        TemplateFile = templateFile,
-        //        ConfirmAction = ConfirmAction
-        //    };
-        //    resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupExistsResult
-        //        {
-        //            Exists = false
-        //        }));
-
-        //    resourceGroupMock.Setup(f => f.CreateOrUpdateAsync(
-        //        parameters.ResourceGroupName,
-        //        It.IsAny<ResourceGroup>(),
-        //        new CancellationToken()))
-        //            .Returns(Task.Factory.StartNew(() => new ResourceGroupCreateOrUpdateResult
-        //            {
-        //                ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
-        //            }));
-        //    resourceGroupMock.Setup(f => f.GetAsync(resourceGroupName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
-        //        {
-        //            ResourceGroup = new ResourceGroupExtended() { Location = resourceGroupLocation }
-        //        }));
-        //    deploymentsMock.Setup(f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, It.IsAny<Deployment>(), new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentOperationsCreateResult
-        //        {
-        //            RequestId = requestId
-        //        }))
-        //        .Callback((string name, string dName, Deployment bDeploy, CancellationToken token) => { deploymentFromGet = bDeploy; });
-        //    deploymentsMock.Setup(f => f.GetAsync(resourceGroupName, deploymentName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
-        //        {
-        //            Deployment = new DeploymentExtended()
-        //            {
-        //                Name = deploymentName,
-        //                Properties = new DeploymentPropertiesExtended()
-        //                {
-        //                    Mode = DeploymentMode.Incremental,
-        //                    ProvisioningState = ProvisioningState.Succeeded
-        //                }
-        //            }
-        //        }));
-        //    deploymentsMock.Setup(f => f.ValidateAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
-        //        {
-        //            IsValid = true,
-        //            Error = new ResourceManagementErrorWithDetails()
-        //        }))
-        //        .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
-        //    SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });
-        //    deploymentOperationsMock.Setup(f => f.ListAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentOperationsListResult
-        //        {
-        //            Operations = new List<DeploymentOperation>()
-        //            {
-        //                new DeploymentOperation()
-        //                {
-        //                    OperationId = Guid.NewGuid().ToString(),
-        //                    Properties = new DeploymentOperationProperties()
-        //                    {
-        //                        ProvisioningState = ProvisioningState.Failed,
-        //                        StatusMessage = JsonConvert.SerializeObject(new ResourceManagementError()
-        //                        {
-        //                            Message = "A really bad error occured"
-        //                        }),
-        //                        TargetResource = new TargetResource()
-        //                        {
-        //                            ResourceType = "Microsoft.Website",
-        //                            ResourceName = resourceName
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }));
-
-        //    PSResourceGroup result = resourceManagerSdkClient.CreatePSResourceGroup(parameters);
-        //    resourceManagerSdkClient.ExecuteDeployment(parameters);
-        //    deploymentsMock.Verify((f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, deploymentFromGet, new CancellationToken())), Times.Once());
-        //    Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
-        //    Assert.Equal(parameters.Location, result.Location);
-
-        //    Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
-        //    Assert.NotNull(deploymentFromGet.Properties.Template);
-
-        //    errorLoggerMock.Verify(
-        //        f => f(string.Format("Resource {0} '{1}' failed with message '{2}'",
-        //                "Microsoft.Website",
-        //                resourceName,
-        //                "A really bad error occured")),
-        //        Times.Once());
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void GetsSpecificResourceGroup()
-        //{
-        //    string name = resourceGroupName;
-        //    GenericResourceExtended resource1 = new GenericResourceExtended() { Id = "/subscriptions/abc123/resourceGroups/group1/providers/Microsoft.Test/servers/r12345sql/db/r45678db", Location = resourceGroupLocation, Name = resourceName };
-        //    GenericResourceExtended resource2 = new GenericResourceExtended() { Id = "/subscriptions/abc123/resourceGroups/group1/providers/Microsoft.Test/servers/r12345sql/db/r45678db", Location = resourceGroupLocation, Name = resourceName + "2" };
-        //    ResourceGroupExtended resourceGroup = new ResourceGroupExtended() { Name = name, Location = resourceGroupLocation, ProvisioningState = "Succeeded" };
-        //    resourceGroupMock.Setup(f => f.GetAsync(name, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
-        //        {
-        //            ResourceGroup = resourceGroup,
-        //        }));
-        //    SetupListForResourceGroupAsync(name, new List<GenericResourceExtended>() { resource1, resource2 });
-
-        //    List<PSResourceGroup> actual = resourceManagerSdkClient.FilterResourceGroups(name, null, true);
-
-        //    Assert.Equal(1, actual.Count);
-        //    Assert.Equal(name, actual[0].ResourceGroupName);
-        //    Assert.Equal(resourceGroupLocation, actual[0].Location);
-        //    Assert.Equal("Succeeded", actual[0].ProvisioningState);
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void GetsAllResourceGroups()
-        //{
-        //    ResourceGroupExtended resourceGroup1 = new ResourceGroupExtended() { Name = resourceGroupName + 1, Location = resourceGroupLocation };
-        //    ResourceGroupExtended resourceGroup2 = new ResourceGroupExtended() { Name = resourceGroupName + 2, Location = resourceGroupLocation };
-        //    ResourceGroupExtended resourceGroup3 = new ResourceGroupExtended() { Name = resourceGroupName + 3, Location = resourceGroupLocation };
-        //    ResourceGroupExtended resourceGroup4 = new ResourceGroupExtended() { Name = resourceGroupName + 4, Location = resourceGroupLocation };
-        //    resourceGroupMock.Setup(f => f.ListAsync(null, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupListResult
-        //        {
-        //            ResourceGroups = new List<ResourceGroupExtended>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 }
-        //        }));
-        //    SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-
-        //    List<PSResourceGroup> actual = resourceManagerSdkClient.FilterResourceGroups(null, null, false);
-
-        //    Assert.Equal(4, actual.Count);
-        //    Assert.Equal(resourceGroup1.Name, actual[0].ResourceGroupName);
-        //    Assert.Equal(resourceGroup2.Name, actual[1].ResourceGroupName);
-        //    Assert.Equal(resourceGroup3.Name, actual[2].ResourceGroupName);
-        //    Assert.Equal(resourceGroup4.Name, actual[3].ResourceGroupName);
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void GetsAllResourceGroupsWithDetails()
-        //{
-        //    ResourceGroupExtended resourceGroup1 = new ResourceGroupExtended() { Name = resourceGroupName + 1, Location = resourceGroupLocation };
-        //    ResourceGroupExtended resourceGroup2 = new ResourceGroupExtended() { Name = resourceGroupName + 2, Location = resourceGroupLocation };
-        //    ResourceGroupExtended resourceGroup3 = new ResourceGroupExtended() { Name = resourceGroupName + 3, Location = resourceGroupLocation };
-        //    ResourceGroupExtended resourceGroup4 = new ResourceGroupExtended() { Name = resourceGroupName + 4, Location = resourceGroupLocation };
-        //    resourceGroupMock.Setup(f => f.ListAsync(null, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupListResult
-        //        {
-        //            ResourceGroups = new List<ResourceGroupExtended>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 }
-        //        }));
-        //    SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-
-        //    List<PSResourceGroup> actual = resourceManagerSdkClient.FilterResourceGroups(null, null, true);
-
-        //    Assert.Equal(4, actual.Count);
-        //    Assert.Equal(resourceGroup1.Name, actual[0].ResourceGroupName);
-        //    Assert.Equal(resourceGroup2.Name, actual[1].ResourceGroupName);
-        //    Assert.Equal(resourceGroup3.Name, actual[2].ResourceGroupName);
-        //    Assert.Equal(resourceGroup4.Name, actual[3].ResourceGroupName);
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void GetsResourceGroupsFilteredByTags()
-        //{
-        //    Dictionary<string, string> tag1 = new Dictionary<string, string> { { "tag1", "val1" }, { "tag2", "val2" } };
-        //    Dictionary<string, string> tag2 = new Dictionary<string, string> { { "tag1", "valx" } };
-        //    Dictionary<string, string> tag3 = new Dictionary<string, string> { { "tag2", "" } };
-
-        //    ResourceGroupExtended resourceGroup1 = new ResourceGroupExtended() { Name = resourceGroupName + 1, Location = resourceGroupLocation, Tags = tag1 };
-        //    ResourceGroupExtended resourceGroup2 = new ResourceGroupExtended() { Name = resourceGroupName + 2, Location = resourceGroupLocation, Tags = tag2 };
-        //    ResourceGroupExtended resourceGroup3 = new ResourceGroupExtended() { Name = resourceGroupName + 3, Location = resourceGroupLocation, Tags = tag3 };
-        //    ResourceGroupExtended resourceGroup4 = new ResourceGroupExtended() { Name = resourceGroupName + 4, Location = resourceGroupLocation };
-        //    resourceGroupMock.Setup(f => f.ListAsync(null, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupListResult
-        //        {
-        //            ResourceGroups = new List<ResourceGroupExtended>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 }
-        //        }));
-        //    SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-
-        //    List<PSResourceGroup> groups1 = resourceManagerSdkClient.FilterResourceGroups(null, 
-        //        new Hashtable(new Dictionary<string, string> { { "Name", "tag1" } }), false);
-
-        //    Assert.Equal(2, groups1.Count);
-        //    Assert.Equal(resourceGroup1.Name, groups1[0].ResourceGroupName);
-        //    Assert.Equal(resourceGroup2.Name, groups1[1].ResourceGroupName);
-
-        //    List<PSResourceGroup> groups2 = resourceManagerSdkClient.FilterResourceGroups(null,
-        //        new Hashtable(new Dictionary<string, string> { { "Name", "tag2" } }), false);
-
-        //    Assert.Equal(2, groups2.Count);
-        //    Assert.Equal(resourceGroup1.Name, groups2[0].ResourceGroupName);
-        //    Assert.Equal(resourceGroup3.Name, groups2[1].ResourceGroupName);
-
-        //    List<PSResourceGroup> groups3 = resourceManagerSdkClient.FilterResourceGroups(null,
-        //        new Hashtable(new Dictionary<string, string> { { "Name", "tag3" } }), false);
-
-        //    Assert.Equal(0, groups3.Count);
-
-        //    List<PSResourceGroup> groups4 = resourceManagerSdkClient.FilterResourceGroups(null,
-        //        new Hashtable(new Dictionary<string, string> { { "Name", "TAG1" }, { "Value", "val1" } }), false);
-
-        //    Assert.Equal(1, groups4.Count);
-        //    Assert.Equal(resourceGroup1.Name, groups4[0].ResourceGroupName);
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void GetsResourceGroupsFilteredByTagsWithDetails()
-        //{
-        //    Dictionary<string, string> tag1 = new Dictionary<string, string> { { "tag1", "val1" }, { "tag2", "val2" } };
-        //    Dictionary<string, string> tag2 = new Dictionary<string, string> { { "tag1", "valx" } };
-        //    Dictionary<string, string> tag3 = new Dictionary<string, string> { { "tag2", "" } };
-
-        //    ResourceGroupExtended resourceGroup1 = new ResourceGroupExtended() { Name = resourceGroupName + 1, Location = resourceGroupLocation, Tags = tag1 };
-        //    ResourceGroupExtended resourceGroup2 = new ResourceGroupExtended() { Name = resourceGroupName + 2, Location = resourceGroupLocation, Tags = tag2 };
-        //    ResourceGroupExtended resourceGroup3 = new ResourceGroupExtended() { Name = resourceGroupName + 3, Location = resourceGroupLocation, Tags = tag3 };
-        //    ResourceGroupExtended resourceGroup4 = new ResourceGroupExtended() { Name = resourceGroupName + 4, Location = resourceGroupLocation };
-        //    resourceGroupMock.Setup(f => f.ListAsync(null, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupListResult
-        //        {
-        //            ResourceGroups = new List<ResourceGroupExtended>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 }
-        //        }));
-        //    SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-        //    SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "resource" } });
-
-        //    List<PSResourceGroup> groups1 = resourceManagerSdkClient.FilterResourceGroups(null,
-        //        new Hashtable(new Dictionary<string, string> { { "Name", "tag1" } }), true);
-
-        //    Assert.Equal(2, groups1.Count);
-        //    Assert.Equal(resourceGroup1.Name, groups1[0].ResourceGroupName);
-        //    Assert.Equal(resourceGroup2.Name, groups1[1].ResourceGroupName);
-
-        //    List<PSResourceGroup> groups2 = resourceManagerSdkClient.FilterResourceGroups(null,
-        //        new Hashtable(new Dictionary<string, string> { { "Name", "tag2" } }), true);
-
-        //    Assert.Equal(2, groups2.Count);
-        //    Assert.Equal(resourceGroup1.Name, groups2[0].ResourceGroupName);
-        //    Assert.Equal(resourceGroup3.Name, groups2[1].ResourceGroupName);
-
-        //    List<PSResourceGroup> groups3 = resourceManagerSdkClient.FilterResourceGroups(null,
-        //        new Hashtable(new Dictionary<string, string> { { "Name", "tag3" } }), true);
-
-        //    Assert.Equal(0, groups3.Count);
-
-        //    List<PSResourceGroup> groups4 = resourceManagerSdkClient.FilterResourceGroups(null,
-        //        new Hashtable(new Dictionary<string, string> { { "Name", "TAG1" }, { "Value", "val1" } }), true);
-
-        //    Assert.Equal(1, groups4.Count);
-        //    Assert.Equal(resourceGroup1.Name, groups4[0].ResourceGroupName);
-        //}
-
-        //// TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        ////[Fact]
-        ////[Trait(Category.AcceptanceType, Category.CheckIn)]
-        ////public void GetAzureResourceGroupLogWithAllCallsListEventsForResourceGroup()
-        ////{
-        ////    eventDataOperationsMock.Setup(f => f.ListEventsForResourceGroupAsync(It.IsAny<ListEventsForResourceGroupParameters>(), new CancellationToken()))
-        ////        .Returns(Task.Factory.StartNew(() => new EventDataListResponse
-        ////            {
-        ////                EventDataCollection = new EventDataCollection
-        ////                    {
-        ////                        Value = sampleEvents
-        ////                    }
-        ////            }));
-
-        ////    IEnumerable<PSDeploymentEventData> results = resourcesClient.GetResourceGroupLogs(new GetPSResourceGroupLogParameters
-        ////        {
-        ////            Name = "foo",
-        ////            All = true
-        ////        });
-
-        ////    Assert.Equal(2, results.Count());
-        ////    eventDataOperationsMock.Verify(f => f.ListEventsForResourceGroupAsync(It.IsAny<ListEventsForResourceGroupParameters>(), It.IsAny<CancellationToken>()), Times.Once());
-        ////}
-
-        //// TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        ////[Fact]
-        ////[Trait(Category.AcceptanceType, Category.CheckIn)]
-        ////public void GetAzureResourceGroupLogWithDeploymentCallsListEventsForCorrelationId()
-        ////{
-        ////    deploymentsMock.Setup(
-        ////        f => f.GetAsync(resourceGroupName, deploymentName, new CancellationToken()))
-        ////                   .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
-        ////                       {
-        ////                           Deployment = new Deployment()
-        ////                                {
-        ////                                    Name = deploymentName + 1,
-        ////                                    Properties = new DeploymentProperties()
-        ////                                        {
-        ////                                            Mode = DeploymentMode.Incremental,
-        ////                                            CorrelationId = "123",
-        ////                                            TemplateLink = new TemplateLink()
-        ////                                                {
-        ////                                                    Uri = new Uri("http://microsoft1.com")
-        ////                                                }
-        ////                                        }
-        ////                                }
-        ////                       }));
-
-        ////    eventDataOperationsMock.Setup(f => f.ListEventsForCorrelationIdAsync(It.IsAny<ListEventsForCorrelationIdParameters>(), new CancellationToken()))
-        ////        .Returns(Task.Factory.StartNew(() => new EventDataListResponse
-        ////        {
-        ////            EventDataCollection = new EventDataCollection
-        ////            {
-        ////                Value = sampleEvents
-        ////            }
-        ////        }));
-
-        ////    IEnumerable<PSDeploymentEventData> results = resourcesClient.GetResourceGroupLogs(new GetPSResourceGroupLogParameters
-        ////    {
-        ////        Name = resourceGroupName,
-        ////        DeploymentName = deploymentName
-        ////    });
-
-        ////    Assert.Equal(2, results.Count());
-        ////    deploymentsMock.Verify(f => f.GetAsync(resourceGroupName, deploymentName, It.IsAny<CancellationToken>()), Times.Once());
-        ////    eventDataOperationsMock.Verify(f => f.ListEventsForCorrelationIdAsync(It.IsAny<ListEventsForCorrelationIdParameters>(), It.IsAny<CancellationToken>()), Times.Once());
-        ////}
-
-        //// TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        ////[Fact]
-        ////[Trait(Category.AcceptanceType, Category.CheckIn)]
-        ////public void GetAzureResourceGroupLogWithLastDeploymentCallsListEventsForCorrelationId()
-        ////{
-        ////    deploymentsMock.Setup(
-        ////        f => f.ListAsync(resourceGroupName, It.IsAny<DeploymentListParameters>(), new CancellationToken()))
-        ////                   .Returns(Task.Factory.StartNew(() => new DeploymentListResult
-        ////                   {
-        ////                       Deployments = new List<Deployment>()
-        ////                               {
-        ////                                   new Deployment()
-        ////                                       {
-        ////                                           Name = deploymentName + 1,
-        ////                                           Properties = new DeploymentProperties()
-        ////                                               {
-        ////                                                   Mode = DeploymentMode.Incremental,
-        ////                                                   CorrelationId = "123",
-        ////                                                   TemplateLink = new TemplateLink()
-        ////                                                       {
-        ////                                                           Uri = new Uri("http://microsoft1.com")
-        ////                                                       }
-        ////                                               }
-        ////                                       }
-        ////                               }
-        ////                   }));
-
-        ////    eventDataOperationsMock.Setup(f => f.ListEventsForCorrelationIdAsync(It.IsAny<ListEventsForCorrelationIdParameters>(), new CancellationToken()))
-        ////        .Returns(Task.Factory.StartNew(() => new EventDataListResponse
-        ////        {
-        ////            EventDataCollection = new EventDataCollection
-        ////            {
-        ////                Value = sampleEvents
-        ////            }
-        ////        }));
-
-        ////    IEnumerable<PSDeploymentEventData> results = resourcesClient.GetResourceGroupLogs(new GetPSResourceGroupLogParameters
-        ////    {
-        ////        Name = resourceGroupName
-        ////    });
-
-        ////    Assert.Equal(2, results.Count());
-        ////    deploymentsMock.Verify(f => f.ListAsync(resourceGroupName, It.IsAny<DeploymentListParameters>(), It.IsAny<CancellationToken>()), Times.Once());
-        ////    eventDataOperationsMock.Verify(f => f.ListEventsForCorrelationIdAsync(It.IsAny<ListEventsForCorrelationIdParameters>(), It.IsAny<CancellationToken>()), Times.Once());
-        ////}
-
-        //// TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        ////[Fact]
-        ////[Trait(Category.AcceptanceType, Category.CheckIn)]
-        ////public void GetAzureResourceGroupLogReturnsAllRequiredFields()
-        ////{
-        ////    eventDataOperationsMock.Setup(f => f.ListEventsForResourceGroupAsync(It.IsAny<ListEventsForResourceGroupParameters>(), new CancellationToken()))
-        ////        .Returns(Task.Factory.StartNew(() => new EventDataListResponse
-        ////        {
-        ////            EventDataCollection = new EventDataCollection
-        ////            {
-        ////                Value = sampleEvents
-        ////            }
-        ////        }));
-
-        ////    IEnumerable<PSDeploymentEventData> results = resourcesClient.GetResourceGroupLogs(new GetPSResourceGroupLogParameters
-        ////    {
-        ////        Name = "foo",
-        ////        All = true
-        ////    });
-
-        ////    Assert.Equal(2, results.Count());
-        ////    var first = results.First();
-        ////    Assert.NotNull(first.Authorization);
-        ////    Assert.NotNull(first.ResourceUri);
-        ////    Assert.NotNull(first.SubscriptionId);
-        ////    Assert.NotNull(first.Timestamp);
-        ////    Assert.NotNull(first.OperationName);
-        ////    Assert.NotNull(first.OperationId);
-        ////    Assert.NotNull(first.Status);
-        ////    Assert.NotNull(first.SubStatus);
-        ////    Assert.NotNull(first.Caller);
-        ////    Assert.NotNull(first.CorrelationId);
-        ////    Assert.NotNull(first.HttpRequest);
-        ////    Assert.NotNull(first.Level);
-        ////    Assert.NotNull(first.ResourceGroupName);
-        ////    Assert.NotNull(first.ResourceProvider);
-        ////    Assert.NotNull(first.EventSource);
-        ////    Assert.NotNull(first.PropertiesText);
-        ////}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void DeletesResourcesGroup()
-        //{
-        //    resourceGroupMock.Setup(f => f.CheckExistenceAsync(resourceGroupName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new ResourceGroupExistsResult
-        //        {
-        //            Exists = true
-        //        }));
-
-        //    resourceManagerSdkClient.DeleteResourceGroup(resourceGroupName);
-
-        //    resourceGroupMock.Verify(f => f.DeleteAsync(resourceGroupName, It.IsAny<CancellationToken>()), Times.Once());
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void FiltersOneResourceGroupDeployment()
-        //{
-        //    FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions()
-        //    {
-        //        DeploymentName = deploymentName,
-        //        ResourceGroupName = resourceGroupName
-        //    };
-        //    deploymentsMock.Setup(f => f.GetAsync(resourceGroupName, deploymentName, new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
-        //        {
-        //            Deployment = new DeploymentExtended()
-        //                {
-        //                    Name = deploymentName,
-        //                    Properties = new DeploymentPropertiesExtended()
-        //                    {
-        //                        Mode = DeploymentMode.Incremental,
-        //                        CorrelationId = "123",
-        //                        TemplateLink = new TemplateLink()
-        //                        {
-        //                            Uri = new Uri("http://microsoft.com")
-        //                        }
-        //                    }
-        //                }
-        //        }));
-
-        //    List<PSResourceGroupDeployment> result = resourceManagerSdkClient.FilterResourceGroupDeployments(options);
-
-        //    Assert.Equal(deploymentName, result[0].DeploymentName);
-        //    Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
-        //    Assert.Equal(DeploymentMode.Incremental, result[0].Mode);
-        //    Assert.Equal("123", result[0].CorrelationId);
-        //    Assert.Equal(new Uri("http://microsoft.com").ToString(), result[0].TemplateLink.Uri.ToString());
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void FiltersResourceGroupDeployments()
-        //{
-        //    FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions()
-        //    {
-        //        ResourceGroupName = resourceGroupName
-        //    };
-        //    DeploymentListParameters actualParameters = new DeploymentListParameters();
-        //    deploymentsMock.Setup(f => f.ListAsync(
-        //        resourceGroupName,
-        //        It.IsAny<DeploymentListParameters>(),
-        //        new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentListResult
-        //        {
-        //            Deployments = new List<DeploymentExtended>()
-        //            {
-        //                new DeploymentExtended()
-        //                {
-        //                    Name = deploymentName + 1,
-        //                    Properties = new DeploymentPropertiesExtended()
-        //                    {
-        //                        Mode = DeploymentMode.Incremental,
-        //                        CorrelationId = "123",
-        //                        TemplateLink = new TemplateLink()
-        //                        {
-        //                            Uri = new Uri("http://microsoft1.com")
-        //                        }
-        //                    }
-        //                }
-        //            },
-        //            NextLink = "nextLink"
-        //        }))
-        //        .Callback((string rgn, DeploymentListParameters p, CancellationToken t) => { actualParameters = p; });
-
-        //    deploymentsMock.Setup(f => f.ListNextAsync(
-        //        "nextLink",
-        //        new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentListResult
-        //        {
-        //            Deployments = new List<DeploymentExtended>()
-        //            {
-        //                new DeploymentExtended()
-        //                {
-        //                    Name = deploymentName + 2,
-        //                    Properties = new DeploymentPropertiesExtended()
-        //                    {
-        //                        Mode = DeploymentMode.Incremental,
-        //                        CorrelationId = "456",
-        //                        TemplateLink = new TemplateLink()
-        //                        {
-        //                            Uri = new Uri("http://microsoft2.com")
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }));
-
-        //    List<PSResourceGroupDeployment> result = resourceManagerSdkClient.FilterResourceGroupDeployments(options);
-
-        //    Assert.Equal(2, result.Count);
-        //    Assert.Equal(deploymentName + 1, result[0].DeploymentName);
-        //    Assert.Equal("123", result[0].CorrelationId);
-        //    Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
-        //    Assert.Equal(DeploymentMode.Incremental, result[0].Mode);
-        //    Assert.Equal(new Uri("http://microsoft1.com").ToString(), result[0].TemplateLink.Uri.ToString());
-
-        //    Assert.Equal(deploymentName + 2, result[1].DeploymentName);
-        //    Assert.Equal(resourceGroupName, result[1].ResourceGroupName);
-        //    Assert.Equal("456", result[1].CorrelationId);
-        //    Assert.Equal(DeploymentMode.Incremental, result[1].Mode);
-        //    Assert.Equal(new Uri("http://microsoft2.com").ToString(), result[1].TemplateLink.Uri.ToString());
-        //}
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void CancelsActiveDeployment()
-        //{
-        //    DeploymentListParameters actualParameters = new DeploymentListParameters();
-        //    deploymentsMock.Setup(f => f.ListAsync(
-        //        resourceGroupName,
-        //        It.IsAny<DeploymentListParameters>(),
-        //        new CancellationToken()))
-        //        .Returns(Task.Factory.StartNew(() => new DeploymentListResult
-        //        {
-        //            Deployments = new List<DeploymentExtended>()
-        //            {
-        //                new DeploymentExtended()
-        //                {
-        //                    Name = deploymentName + 1,
-        //                    Properties = new DeploymentPropertiesExtended()
-        //                    {
-        //                        Mode = DeploymentMode.Incremental,
-        //                        TemplateLink = new TemplateLink()
-        //                        {
-        //                            Uri = new Uri("http://microsoft1.com")
-        //                        },
-        //                        ProvisioningState = ProvisioningState.Succeeded
-        //                    }
-        //                },
-        //                new DeploymentExtended()
-        //                {
-        //                    Name = deploymentName + 2,
-        //                    Properties = new DeploymentPropertiesExtended()
-        //                    {
-        //                        Mode = DeploymentMode.Incremental,
-        //                        TemplateLink = new TemplateLink()
-        //                        {
-        //                            Uri = new Uri("http://microsoft1.com")
-        //                        },
-        //                        ProvisioningState = ProvisioningState.Failed
-        //                    }
-        //                },
-        //                new DeploymentExtended()
-        //                {
-        //                    Name = deploymentName + 3,
-        //                    Properties = new DeploymentPropertiesExtended()
-        //                    {
-        //                        Mode = DeploymentMode.Incremental,
-        //                        TemplateLink = new TemplateLink()
-        //                        {
-        //                            Uri = new Uri("http://microsoft1.com")
-        //                        },
-        //                        ProvisioningState = ProvisioningState.Running
-        //                    }
-        //                }
-        //            }
-        //        }))
-        //        .Callback((string rgn, DeploymentListParameters p, CancellationToken t) => { actualParameters = p; });
-
-        //    resourceManagerSdkClient.CancelDeployment(resourceGroupName, null);
-
-        //    deploymentsMock.Verify(f => f.CancelAsync(resourceGroupName, deploymentName + 3, new CancellationToken()), Times.Once());
-        //}
+        private string resourceGroupName = "myResourceGroup";
+
+        private string resourceGroupLocation = "West US";
+
+        private string deploymentName = "fooDeployment";
+
+        private string templateFile = @"Resources\sampleTemplateFile.json";
+
+        private string storageAccountName = "myStorageAccount";
+
+        private string requestId = "1234567890";
+
+        private string resourceName = "myResource";
+
+        private ResourceIdentifier resourceIdentity;
+
+        private Dictionary<string, object> properties;
+
+        private string serializedProperties;
+
+        private int ConfirmActionCounter = 0;
+
+        private static GenericResource CreateGenericResource(string location = null, string id = null, string name = null, string type = null)
+        {
+            GenericResource resource = new GenericResource();
+            if (id != null)
+            {
+                typeof(Resource).GetProperty("Id").SetValue(resource, id);
+            }
+            if (name != null)
+            {
+                typeof(Resource).GetProperty("Name").SetValue(resource, name);
+            }
+            if (type != null)
+            {
+                typeof(Resource).GetProperty("Type").SetValue(resource, type);
+            }
+            if (location != null)
+            {
+                resource.Location = location;
+            }
+
+            return resource;
+        }
+
+        private static AzureOperationResponse<T> CreateAzureOperationResponse<T>(T type)
+        {
+            return new AzureOperationResponse<T>()
+            {
+                Body = type
+            };
+        }
+
+        private void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
+        {
+            ConfirmActionCounter++;
+            action();
+        }
+
+        private int RejectActionCounter = 0;
+
+        private void RejectAction(bool force, string actionMessage, string processMessage, string target, Action action)
+        {
+            RejectActionCounter++;
+        }
+
+        private IPage<T> GetPagableType<T>(List<T> collection)
+        {
+            var pagableResult = new Page<T>();
+            pagableResult.SetItemValue<T>(collection);
+            return pagableResult;
+        }
+
+        private void SetupListForResourceGroupAsync(string name, List<GenericResource> result)
+        {
+            resourceOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(
+                null,
+                null,
+                new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<IPage<GenericResource>>()
+            {
+                Body = GetPagableType(result)
+            }));
+        }
+
+        private void SetupListForResourceGroupAsync(string name, IPage<GenericResource> result)
+        {
+            resourceOperationsMock.Setup(f => f.ListAsync(
+                null,
+                new CancellationToken()))
+                    .Returns(Task.Factory.StartNew(() => result));
+        }
+
+        private void EqualsIgnoreWhitespace(string left, string right)
+        {
+            string normalized1 = Regex.Replace(left, @"\s", "");
+            string normalized2 = Regex.Replace(right, @"\s", "");
+
+            Assert.Equal(
+                normalized1.ToLowerInvariant(),
+                normalized2.ToLowerInvariant());
+        }
+
+        public ResourceClientTests()
+        {
+            resourceManagementClientMock = new Mock<IResourceManagementClient>();
+            authorizationManagementClientMock = new Mock<IAuthorizationManagementClient>();
+            deploymentsMock = new Mock<IDeploymentsOperations>();
+            resourceGroupMock = new Mock<IResourceGroupsOperations>();
+            resourceOperationsMock = new Mock<IResourcesOperations>();
+            deploymentOperationsMock = new Mock<IDeploymentOperationsOperations>();
+            providersMock = new Mock<IProvidersOperations>();
+            providersMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() =>
+                new AzureOperationResponse<IPage<Provider>>()
+                {
+                    Body = new Page<Provider>()
+                }));
+            progressLoggerMock = new Mock<Action<string>>();
+            errorLoggerMock = new Mock<Action<string>>();
+            resourceManagementClientMock.Setup(f => f.Deployments).Returns(deploymentsMock.Object);
+            resourceManagementClientMock.Setup(f => f.ResourceGroups).Returns(resourceGroupMock.Object);
+            resourceManagementClientMock.Setup(f => f.Resources).Returns(resourceOperationsMock.Object);
+            resourceManagementClientMock.Setup(f => f.DeploymentOperations).Returns(deploymentOperationsMock.Object);
+            resourceManagementClientMock.Setup(f => f.Providers).Returns(providersMock.Object);
+            resourceManagementClientMock.Setup(f => f.ApiVersion).Returns("11-01-2015");
+            resourcesClient = new ResourceManagerSdkClient(
+                resourceManagementClientMock.Object)
+            {
+                VerboseLogger = progressLoggerMock.Object,
+                ErrorLogger = errorLoggerMock.Object,
+            };
+
+            resourceIdentity = new ResourceIdentifier
+            {
+                ParentResource = "sites/siteA",
+                ResourceName = "myResource",
+                ResourceGroupName = "Microsoft.Web", // ResourceProviderNamespace
+                ResourceType = "sites"
+            };
+            properties = new Dictionary<string, object>
+                {
+                    {"name", "site1"},
+                    {"siteMode", "Standard"},
+                    {"computeMode", "Dedicated"},
+                    {"misc", new Dictionary<string, object>
+                        {
+                            {"key1", "value1"},
+                            {"key2", "value2"}
+                        }}
+                };
+            serializedProperties = JsonConvert.SerializeObject(properties, new JsonSerializerSettings
+            {
+                TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
+                TypeNameHandling = TypeNameHandling.None
+            });
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewResourceGroupChecksForPermissionForExistingResource()
+        {
+            RejectActionCounter = 0;
+            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters() { ResourceGroupName = resourceGroupName, ConfirmAction = RejectAction };
+            resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() =>
+                    new AzureOperationResponse<bool?>()
+                    {
+                        Body = (bool?)true
+                    }));
+
+            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(
+                parameters.ResourceGroupName,
+                null,
+                new CancellationToken()))
+                    .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<ResourceGroup>()
+                    {
+                        Body = new ResourceGroup() { Name = parameters.ResourceGroupName, Location = parameters.Location }
+                    }));
+
+            resourceOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, It.IsAny<CancellationToken>()))
+                .Returns(() => Task.Factory.StartNew(() =>
+                {
+                    var resources = new List<GenericResource>()
+                        {
+                            CreateGenericResource(location: "West US", id: null, name: "foo", type: null),
+                            CreateGenericResource(location: "West US", id: null, name: "bar", type: null)
+                        };
+                    var result = new Page<GenericResource>();
+                    result.SetItemValue(resources);
+
+                    return new AzureOperationResponse<IPage<GenericResource>>() { Body = result };
+                }));
+
+            resourcesClient.CreatePSResourceGroup(parameters);
+            Assert.Equal(1, RejectActionCounter);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewResourceGroupWithoutDeploymentSucceeds()
+        {
+            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            {
+                ResourceGroupName = resourceGroupName,
+                Location = resourceGroupLocation,
+                ConfirmAction = ConfirmAction
+            };
+            resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse((bool?)false)));
+
+            resourceGroupMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
+                parameters.ResourceGroupName,
+                It.IsAny<ResourceGroup>(),
+                null,
+                new CancellationToken()))
+                    .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new ResourceGroup() { Name = parameters.ResourceGroupName, Location = parameters.Location })));
+            SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResource>());
+
+            PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
+
+            Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
+            Assert.Equal(parameters.Location, result.Location);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTemplateShowsErrorMessage()
+        {
+            Uri templateUri = new Uri("http://templateuri.microsoft.com");
+            Deployment deploymentFromValidate = new Deployment();
+            ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
+            {
+                ResourceGroupName = resourceGroupName,
+                TemplateFile = templateFile,
+            };
+            resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse((bool?)true)));
+
+            deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() =>
+                {
+                    var result = CreateAzureOperationResponse(new DeploymentValidateResult
+                    {
+                        Error = new ResourceManagementErrorWithDetails()
+                        {
+                            Code = "404",
+                            Message = "Awesome error message",
+                            Details = new List<ResourceManagementErrorWithDetails>(new[] { new ResourceManagementErrorWithDetails
+                            {
+                                Code = "SubError",
+                                Message = "Sub error message"
+                            }})
+                        }
+                    });
+                    result.Response = new System.Net.Http.HttpResponseMessage();
+                    result.Response.StatusCode = HttpStatusCode.NotFound;
+
+                    return result;
+                }))
+                .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
+
+            IEnumerable<PSResourceManagerError> error = resourcesClient.ValidatePSResourceGroupDeployment(parameters, DeploymentMode.Incremental);
+            Assert.Equal(1, error.Count());
+            Assert.Equal(1, error.ElementAtOrDefault(0).Details.Count);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTemplateShowsSuccessMessage()
+        {
+            Uri templateUri = new Uri("http://templateuri.microsoft.com");
+            Deployment deploymentFromValidate = new Deployment();
+            ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
+            {
+                ResourceGroupName = resourceGroupName,
+                TemplateFile = templateFile,
+            };
+            resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse((bool?)true)));
+
+            deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() =>
+                {
+                    var result = CreateAzureOperationResponse(new DeploymentValidateResult
+                    {
+                        Error = null
+                    });
+
+                    result.Response = new System.Net.Http.HttpResponseMessage();
+                    result.Response.StatusCode = HttpStatusCode.OK;
+
+                    return result;
+                }))
+                .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
+
+            IEnumerable<PSResourceManagerError> error = resourcesClient.ValidatePSResourceGroupDeployment(parameters, DeploymentMode.Incremental);
+            Assert.Equal(0, error.Count());
+            progressLoggerMock.Verify(f => f("Template is valid."), Times.Once());
+        }
+
+        [Fact]
+        public void NewResourceGroupUsesDeploymentNameForDeploymentName()
+        {
+            string deploymentName = "abc123";
+            Deployment deploymentFromGet = new Deployment();
+            Deployment deploymentFromValidate = new Deployment();
+            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            {
+                ResourceGroupName = resourceGroupName,
+                Location = resourceGroupLocation,
+                DeploymentName = deploymentName,
+                ConfirmAction = ConfirmAction,
+                TemplateFile = "http://path/file.html"
+            };
+
+
+            deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<Deployment>(),
+                null,
+                new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() =>
+                new AzureOperationResponse<DeploymentValidateResult>()
+                {
+                    Body = new DeploymentValidateResult
+                    {
+                    }
+                }))
+                .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
+
+            deploymentsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<Deployment>(),
+                null,
+                new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
+                {
+                    Body = new DeploymentExtended
+                    {
+                        Id = requestId
+                    }
+                }))
+                .Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders, CancellationToken token) =>
+                { deploymentFromGet = bDeploy; deploymentName = dName; });
+
+            SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResource>
+            {
+                CreateGenericResource(null, null, "website")
+            });
+
+            var operationId = Guid.NewGuid().ToString();
+            var operationQueue = new Queue<DeploymentOperation>();
+            operationQueue.Enqueue(
+                new DeploymentOperation()
+                {
+                    OperationId = operationId,
+                    Properties = new DeploymentOperationProperties()
+                    {
+                        ProvisioningState = "Accepted",
+                        TargetResource = new TargetResource()
+                        {
+                            ResourceType = "Microsoft.Website",
+                            ResourceName = resourceName
+                        }
+                    }
+                }
+            );
+            operationQueue.Enqueue(
+                new DeploymentOperation()
+                {
+                    OperationId = operationId,
+                    Properties = new DeploymentOperationProperties()
+                    {
+                        ProvisioningState = "Running",
+                        TargetResource = new TargetResource()
+                        {
+                            ResourceType = "Microsoft.Website",
+                            ResourceName = resourceName
+                        }
+                    }
+                }
+            );
+            operationQueue.Enqueue(
+                new DeploymentOperation()
+                {
+                    OperationId = operationId,
+                    Properties = new DeploymentOperationProperties()
+                    {
+                        ProvisioningState = "Succeeded",
+                        TargetResource = new TargetResource()
+                        {
+                            ResourceType = "Microsoft.Website",
+                            ResourceName = resourceName
+                        }
+                    }
+                }
+            );
+            deploymentOperationsMock.SetupSequence(f => f.ListWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() =>
+                    new AzureOperationResponse<IPage<DeploymentOperation>>()
+                    {
+                        Body = GetPagableType(
+                            new List<DeploymentOperation>()
+                            {
+                                operationQueue.Dequeue()
+                            })
+                    }))
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<IPage<DeploymentOperation>>()
+                {
+                    Body = GetPagableType(
+                            new List<DeploymentOperation>()
+                            {
+                                operationQueue.Dequeue()
+                            })
+                }))
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<IPage<DeploymentOperation>>()
+                {
+                    Body = GetPagableType(
+                            new List<DeploymentOperation>()
+                            {
+                                operationQueue.Dequeue()
+                            })
+                }));
+
+            var deploymentQueue = new Queue<DeploymentExtended>();
+            deploymentQueue.Enqueue(new DeploymentExtended()
+            {
+                Name = deploymentName,
+                Properties = new DeploymentPropertiesExtended()
+                {
+                    Mode = DeploymentMode.Incremental,
+                    CorrelationId = "123",
+                    ProvisioningState = "Accepted"
+                }
+            });
+            deploymentQueue.Enqueue(new DeploymentExtended
+            {
+                Name = deploymentName,
+                Properties = new DeploymentPropertiesExtended()
+                {
+                    Mode = DeploymentMode.Incremental,
+                    CorrelationId = "123",
+                    ProvisioningState = "Running"
+                }
+            });
+            deploymentQueue.Enqueue(new DeploymentExtended
+            {
+                Name = deploymentName,
+                Properties = new DeploymentPropertiesExtended()
+                {
+                    Mode = DeploymentMode.Incremental,
+                    CorrelationId = "123",
+                    ProvisioningState = "Succeeded"
+                }
+            });
+            deploymentsMock.SetupSequence(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>() { Body = deploymentQueue.Dequeue() }))
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>() { Body = deploymentQueue.Dequeue() }))
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>() { Body = deploymentQueue.Dequeue() }));
+
+            Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment result = resourcesClient.ExecuteDeployment(parameters);
+            Assert.Equal(deploymentName, deploymentName);
+            Assert.Equal("Succeeded", result.ProvisioningState);
+            progressLoggerMock.Verify(
+                f => f(string.Format("Resource {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, "Accepted".ToLower())),
+                Times.Once());
+            progressLoggerMock.Verify(
+                f => f(string.Format("Resource {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, "Running".ToLower())),
+                Times.Once());
+            progressLoggerMock.Verify(
+                f => f(string.Format("Resource {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, "Succeeded".ToLower())),
+                Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewResourceGroupWithDeploymentSucceeds()
+        {
+            Uri templateUri = new Uri("http://templateuri.microsoft.com");
+            Deployment deploymentFromGet = new Deployment();
+            Deployment deploymentFromValidate = new Deployment();
+            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            {
+                ResourceGroupName = resourceGroupName,
+                Location = resourceGroupLocation,
+                DeploymentName = deploymentName,
+                TemplateFile = templateFile,
+                ConfirmAction = ConfirmAction
+            };
+            resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool?>() { Body = (bool?)false }));
+
+            resourceGroupMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
+                parameters.ResourceGroupName,
+                It.IsAny<ResourceGroup>(),
+                null,
+                new CancellationToken()))
+                    .Returns(Task.Factory.StartNew(() =>
+                    new AzureOperationResponse<ResourceGroup>()
+                    {
+                        Body = new ResourceGroup() { Name = parameters.ResourceGroupName, Location = parameters.Location }
+                    }));
+
+            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() =>
+                new AzureOperationResponse<ResourceGroup>()
+                {
+                    Body = new ResourceGroup() { Location = resourceGroupLocation }
+                }));
+
+            deploymentsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, It.IsAny<Deployment>(), null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
+                {
+                    Body = new DeploymentExtended
+                    {
+                        Id = requestId
+                    }
+                }))
+                .Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders, CancellationToken token) =>
+                { deploymentFromGet = bDeploy; });
+            deploymentsMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
+                {
+                    Body = new DeploymentExtended()
+                    {
+                        Name = deploymentName,
+                        Properties = new DeploymentPropertiesExtended()
+                        {
+                            Mode = DeploymentMode.Incremental,
+                            CorrelationId = "123",
+                            ProvisioningState = "Succeeded"
+                        },
+                    }
+                }
+                ));
+
+            deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentValidateResult
+                {
+                })))
+                .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
+
+            SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResource>() { CreateGenericResource(null, null, "website") });
+            deploymentOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(resourceGroupName, deploymentName, null, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(GetPagableType(new List<DeploymentOperation>()
+                    {
+                        new DeploymentOperation()
+                        {
+                            OperationId = Guid.NewGuid().ToString(),
+                            Properties = new DeploymentOperationProperties()
+                            {
+                                ProvisioningState = "Succeeded",
+                                TargetResource = new TargetResource()
+                                {
+                                    ResourceType = "Microsoft.Website",
+                                    ResourceName = resourceName
+                                }
+                            }
+                        }
+                    }))));
+
+            PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
+            Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment deploymentResult = resourcesClient.ExecuteDeployment(parameters);
+            deploymentsMock.Verify((f => f.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, deploymentFromGet, null, new CancellationToken())), Times.Once());
+            Assert.Equal(parameters.ResourceGroupName, deploymentResult.ResourceGroupName);
+
+            Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
+            Assert.NotNull(deploymentFromGet.Properties.Template);
+
+            progressLoggerMock.Verify(
+                f => f(string.Format("Resource {0} '{1}' provisioning status is {2}",
+                        "Microsoft.Website",
+                        resourceName,
+                        "Succeeded".ToLower())),
+                Times.Once());
+        }
+
+
+        [Fact(Skip = "TODO: Fix the test to fit the new client post migration")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ShowsFailureErrorWhenResourceGroupWithDeploymentFails()
+        {
+            Uri templateUri = new Uri("http://templateuri.microsoft.com");
+            Deployment deploymentFromGet = new Deployment();
+            Deployment deploymentFromValidate = new Deployment();
+            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            {
+                ResourceGroupName = resourceGroupName,
+                Location = resourceGroupLocation,
+                DeploymentName = deploymentName,
+                TemplateFile = templateFile,
+                ConfirmAction = ConfirmAction
+            };
+            resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse((bool?)false)));
+
+            resourceGroupMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
+                parameters.ResourceGroupName,
+                It.IsAny<ResourceGroup>(),
+                null,
+                new CancellationToken()))
+                    .Returns(Task.Factory.StartNew(() =>
+                        CreateAzureOperationResponse(new ResourceGroup() { Name = parameters.ResourceGroupName, Location = parameters.Location })
+                    ));
+            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new ResourceGroup() { Location = resourceGroupLocation })
+                ));
+            deploymentsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, It.IsAny<Deployment>(), null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentExtended
+                {
+                    Id = requestId
+                })))
+                .Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders, CancellationToken token) => { deploymentFromGet = bDeploy; });
+            deploymentsMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentExtended()
+                {
+                    Name = deploymentName,
+                    Properties = new DeploymentPropertiesExtended()
+                    {
+                        Mode = DeploymentMode.Incremental,
+                        ProvisioningState = "Succeeded"
+                    },
+                })
+                ));
+            deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentValidateResult
+                {
+                    Error = new ResourceManagementErrorWithDetails()
+                })))
+                .Callback((string resourceGroup, string deployment, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
+            SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResource>() {
+                CreateGenericResource(null, null, "website") });
+            var listOperations = new List<DeploymentOperation>() {
+                new DeploymentOperation()
+                {
+                    OperationId = Guid.NewGuid().ToString(),
+                    Properties = new DeploymentOperationProperties()
+                    {
+                        ProvisioningState = "Failed",
+                        StatusMessage = "{\"Code\":\"Conflict\"}",
+                        TargetResource = new TargetResource()
+                        {
+                            ResourceType = "Microsoft.Website",
+                            ResourceName = resourceName
+                        }
+                    }
+                }
+            };
+            var pageableOperations = new Page<DeploymentOperation>();
+            pageableOperations.SetItemValue(listOperations);
+
+            deploymentOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(resourceGroupName, deploymentName, null, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse((IPage<DeploymentOperation>)pageableOperations)));
+
+            PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
+
+            deploymentsMock.Verify((f => f.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, deploymentFromGet, null, new CancellationToken())), Times.Once());
+            Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
+            Assert.Equal(parameters.Location, result.Location);
+
+            Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
+            Assert.NotNull(deploymentFromGet.Properties.Template);
+
+            errorLoggerMock.Verify(
+                f => f(string.Format("Resource {0} '{1}' failed with message '{2}'",
+                        "Microsoft.Website",
+                        resourceName,
+                        "{\"Code\":\"Conflict\"}")),
+                Times.Once());
+        }
+
+        [Fact(Skip = "TODO: Fix the test to fit the new client post migration")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ExtractsErrorMessageFromFailedDeploymentOperation()
+        {
+            Uri templateUri = new Uri("http://templateuri.microsoft.com");
+            Deployment deploymentFromGet = new Deployment();
+            Deployment deploymentFromValidate = new Deployment();
+            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            {
+                ResourceGroupName = resourceGroupName,
+                Location = resourceGroupLocation,
+                DeploymentName = deploymentName,
+                TemplateFile = templateFile,
+                ConfirmAction = ConfirmAction
+            };
+            resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool?>()
+            {
+                Body = (bool?)false
+            }));
+
+            resourceGroupMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
+                parameters.ResourceGroupName,
+                It.IsAny<ResourceGroup>(),
+                null,
+                new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() =>
+                new AzureOperationResponse<ResourceGroup>()
+                {
+                    Body = new ResourceGroup() { Name = parameters.ResourceGroupName, Location = parameters.Location }
+                }
+            ));
+            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, null, new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() =>
+                new AzureOperationResponse<ResourceGroup>() { Body = new ResourceGroup() { Location = resourceGroupLocation } }
+            ));
+            deploymentsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
+                resourceGroupName,
+                deploymentName,
+                It.IsAny<Deployment>(),
+                null,
+                new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
+            {
+                Body = new DeploymentExtended
+                {
+                    Id = requestId
+                }
+            }))
+            .Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders,
+                    CancellationToken token) => { deploymentFromGet = bDeploy; });
+            deploymentsMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() =>
+                new AzureOperationResponse<DeploymentExtended>()
+                {
+                    Body = new DeploymentExtended()
+                    {
+                        Name = deploymentName,
+                        Properties = new DeploymentPropertiesExtended()
+                        {
+                            Mode = DeploymentMode.Incremental,
+                            ProvisioningState = "Succeeded"
+                        }
+                    }
+                }
+            ));
+            deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(
+                resourceGroupName,
+                It.IsAny<string>(),
+                It.IsAny<Deployment>(),
+                null,
+                new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() =>
+                new AzureOperationResponse<DeploymentValidateResult>()
+                {
+                    Body = new DeploymentValidateResult
+                    {
+                        Error = new ResourceManagementErrorWithDetails()
+                    }
+                }
+            ))
+            .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders,
+                    CancellationToken c) => { deploymentFromValidate = d; });
+
+            SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResource>() {
+                CreateGenericResource(location: null, id: null, name: "website", type: null)});
+
+            var listOperations = new List<DeploymentOperation>() {
+                new DeploymentOperation()
+                {
+                    OperationId = Guid.NewGuid().ToString(),
+                    Properties = new DeploymentOperationProperties()
+                    {
+                        ProvisioningState = "Failed",
+                        StatusMessage = JsonConvert.SerializeObject(new ResourceManagementErrorWithDetails()
+                        {
+                            Message = "A really bad error occured"
+                        }),
+                        TargetResource = new TargetResource()
+                        {
+                            ResourceType = "Microsoft.Website",
+                            ResourceName = resourceName
+                        }
+                    }
+                }
+            };
+
+            deploymentOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(
+                resourceGroupName,
+                deploymentName,
+                null,
+                null,
+                new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() =>
+                new AzureOperationResponse<IPage<DeploymentOperation>>()
+                {
+                    Body = GetPagableType<DeploymentOperation>(listOperations)
+                }
+            ));
+
+            PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
+            Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment deploymentResult = resourcesClient.ExecuteDeployment(parameters);
+
+            deploymentsMock.Verify((f => f.CreateOrUpdateWithHttpMessagesAsync(
+                    resourceGroupName,
+                    deploymentName,
+                    deploymentFromGet,
+                    null,
+                    new CancellationToken())),
+                Times.Never);
+            Assert.Equal(parameters.ResourceGroupName, deploymentResult.ResourceGroupName);
+
+            Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
+            Assert.NotNull(deploymentFromGet.Properties.Template);
+
+            errorLoggerMock.Verify(
+                f => f("A really bad error occured"),
+                Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsSpecificResourceGroup()
+        {
+            string name = resourceGroupName;
+            GenericResource resource1 = CreateGenericResource(
+                resourceGroupLocation,
+                "/subscriptions/abc123/resourceGroups/group1/providers/Microsoft.Test/servers/r12345sql/db/r45678db",
+                resourceName);
+            GenericResource resource2 = CreateGenericResource(
+                resourceGroupLocation,
+                "/subscriptions/abc123/resourceGroups/group1/providers/Microsoft.Test/servers/r12345sql/db/r45678db",
+                resourceName + "2");
+            ResourceGroup resourceGroup = new ResourceGroup()
+            {
+                Name = name,
+                Location = resourceGroupLocation,
+                Properties = new ResourceGroupProperties("Succeeded")
+            };
+            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(name, null, new CancellationToken()))
+                             .Returns(Task.Factory.StartNew(() =>
+                                new AzureOperationResponse<ResourceGroup>()
+                                {
+                                    Body = resourceGroup
+                                }));
+            SetupListForResourceGroupAsync(name, new List<GenericResource>() { resource1, resource2 });
+
+            List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(name, null, true);
+
+            Assert.Equal(1, actual.Count);
+            Assert.Equal(name, actual[0].ResourceGroupName);
+            Assert.Equal(resourceGroupLocation, actual[0].Location);
+            Assert.Equal("Succeeded", actual[0].ProvisioningState);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsAllResourceGroups()
+        {
+            ResourceGroup resourceGroup1 = new ResourceGroup() { Name = resourceGroupName + 1, Location = resourceGroupLocation };
+            ResourceGroup resourceGroup2 = new ResourceGroup() { Name = resourceGroupName + 2, Location = resourceGroupLocation };
+            ResourceGroup resourceGroup3 = new ResourceGroup() { Name = resourceGroupName + 3, Location = resourceGroupLocation };
+            ResourceGroup resourceGroup4 = new ResourceGroup() { Name = resourceGroupName + 4, Location = resourceGroupLocation };
+            var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
+            var pagableResult = new Page<ResourceGroup>();
+            pagableResult.SetItemValue(listResult);
+            resourceGroupMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<IPage<ResourceGroup>>()
+            {
+                Body = pagableResult
+            }));
+            SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+
+            List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(null, null, false);
+
+            Assert.Equal(4, actual.Count);
+            Assert.Equal(resourceGroup1.Name, actual[0].ResourceGroupName);
+            Assert.Equal(resourceGroup2.Name, actual[1].ResourceGroupName);
+            Assert.Equal(resourceGroup3.Name, actual[2].ResourceGroupName);
+            Assert.Equal(resourceGroup4.Name, actual[3].ResourceGroupName);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsAllResourceGroupsWithDetails()
+        {
+            ResourceGroup resourceGroup1 = new ResourceGroup() { Name = resourceGroupName + 1, Location = resourceGroupLocation };
+            ResourceGroup resourceGroup2 = new ResourceGroup() { Name = resourceGroupName + 2, Location = resourceGroupLocation };
+            ResourceGroup resourceGroup3 = new ResourceGroup() { Name = resourceGroupName + 3, Location = resourceGroupLocation };
+            ResourceGroup resourceGroup4 = new ResourceGroup() { Name = resourceGroupName + 4, Location = resourceGroupLocation };
+            var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
+            var pagableResult = new Page<ResourceGroup>();
+            pagableResult.SetItemValue(listResult);
+            resourceGroupMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<IPage<ResourceGroup>>()
+            {
+                Body = pagableResult
+            }));
+            SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+
+            List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(null, null, true);
+
+            Assert.Equal(4, actual.Count);
+            Assert.Equal(resourceGroup1.Name, actual[0].ResourceGroupName);
+            Assert.Equal(resourceGroup2.Name, actual[1].ResourceGroupName);
+            Assert.Equal(resourceGroup3.Name, actual[2].ResourceGroupName);
+            Assert.Equal(resourceGroup4.Name, actual[3].ResourceGroupName);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsResourceGroupsFilteredByTags()
+        {
+            Dictionary<string, string> tag1 = new Dictionary<string, string> { { "tag1", "val1" }, { "tag2", "val2" } };
+            Dictionary<string, string> tag2 = new Dictionary<string, string> { { "tag1", "valx" } };
+            Dictionary<string, string> tag3 = new Dictionary<string, string> { { "tag2", "" } };
+
+            ResourceGroup resourceGroup1 = new ResourceGroup() { Name = resourceGroupName + 1, Location = resourceGroupLocation, Tags = tag1 };
+            ResourceGroup resourceGroup2 = new ResourceGroup() { Name = resourceGroupName + 2, Location = resourceGroupLocation, Tags = tag2 };
+            ResourceGroup resourceGroup3 = new ResourceGroup() { Name = resourceGroupName + 3, Location = resourceGroupLocation, Tags = tag3 };
+            ResourceGroup resourceGroup4 = new ResourceGroup() { Name = resourceGroupName + 4, Location = resourceGroupLocation };
+            var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
+            var pagableResult = new Page<ResourceGroup>();
+            pagableResult.SetItemValue(listResult);
+            resourceGroupMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, new CancellationToken()))
+                             .Returns(Task.Factory.StartNew(() =>
+                                new AzureOperationResponse<IPage<ResourceGroup>>()
+                                {
+                                    Body = pagableResult
+                                }));
+            SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+
+            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null,
+                new Hashtable(new Dictionary<string, string> { { "Name", "tag1" } }), false);
+
+            Assert.Equal(2, groups1.Count);
+            Assert.Equal(resourceGroup1.Name, groups1[0].ResourceGroupName);
+            Assert.Equal(resourceGroup2.Name, groups1[1].ResourceGroupName);
+
+            List<PSResourceGroup> groups2 = resourcesClient.FilterResourceGroups(null,
+                new Hashtable(new Dictionary<string, string> { { "Name", "tag2" } }), false);
+
+            Assert.Equal(2, groups2.Count);
+            Assert.Equal(resourceGroup1.Name, groups2[0].ResourceGroupName);
+            Assert.Equal(resourceGroup3.Name, groups2[1].ResourceGroupName);
+
+            List<PSResourceGroup> groups3 = resourcesClient.FilterResourceGroups(null,
+                new Hashtable(new Dictionary<string, string> { { "Name", "tag3" } }), false);
+
+            Assert.Equal(0, groups3.Count);
+
+            List<PSResourceGroup> groups4 = resourcesClient.FilterResourceGroups(null,
+                new Hashtable(new Dictionary<string, string> { { "Name", "TAG1" }, { "Value", "val1" } }), false);
+
+            Assert.Equal(1, groups4.Count);
+            Assert.Equal(resourceGroup1.Name, groups4[0].ResourceGroupName);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsResourceGroupsFilteredByTagsWithDetails()
+        {
+            Dictionary<string, string> tag1 = new Dictionary<string, string> { { "tag1", "val1" }, { "tag2", "val2" } };
+            Dictionary<string, string> tag2 = new Dictionary<string, string> { { "tag1", "valx" } };
+            Dictionary<string, string> tag3 = new Dictionary<string, string> { { "tag2", "" } };
+
+            ResourceGroup resourceGroup1 = new ResourceGroup() { Name = resourceGroupName + 1, Location = resourceGroupLocation, Tags = tag1 };
+            ResourceGroup resourceGroup2 = new ResourceGroup() { Name = resourceGroupName + 2, Location = resourceGroupLocation, Tags = tag2 };
+            ResourceGroup resourceGroup3 = new ResourceGroup() { Name = resourceGroupName + 3, Location = resourceGroupLocation, Tags = tag3 };
+            ResourceGroup resourceGroup4 = new ResourceGroup() { Name = resourceGroupName + 4, Location = resourceGroupLocation };
+            var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
+            var pagableResult = new Page<ResourceGroup>();
+            pagableResult.SetItemValue(listResult);
+            resourceGroupMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, new CancellationToken()))
+                             .Returns(Task.Factory.StartNew(() =>
+                                new AzureOperationResponse<IPage<ResourceGroup>>()
+                                {
+                                    Body = pagableResult
+                                }));
+            SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
+
+            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null,
+                new Hashtable(new Dictionary<string, string> { { "Name", "tag1" } }), true);
+
+            Assert.Equal(2, groups1.Count);
+            Assert.Equal(resourceGroup1.Name, groups1[0].ResourceGroupName);
+            Assert.Equal(resourceGroup2.Name, groups1[1].ResourceGroupName);
+
+            List<PSResourceGroup> groups2 = resourcesClient.FilterResourceGroups(null,
+                new Hashtable(new Dictionary<string, string> { { "Name", "tag2" } }), true);
+
+            Assert.Equal(2, groups2.Count);
+            Assert.Equal(resourceGroup1.Name, groups2[0].ResourceGroupName);
+            Assert.Equal(resourceGroup3.Name, groups2[1].ResourceGroupName);
+
+            List<PSResourceGroup> groups3 = resourcesClient.FilterResourceGroups(null,
+                new Hashtable(new Dictionary<string, string> { { "Name", "tag3" } }), true);
+
+            Assert.Equal(0, groups3.Count);
+
+            List<PSResourceGroup> groups4 = resourcesClient.FilterResourceGroups(null,
+                new Hashtable(new Dictionary<string, string> { { "Name", "TAG1" }, { "Value", "val1" } }), true);
+
+            Assert.Equal(1, groups4.Count);
+            Assert.Equal(resourceGroup1.Name, groups4[0].ResourceGroupName);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DeletesResourcesGroup()
+        {
+            resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(resourceGroupName, null, new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() =>
+                    new AzureOperationResponse<bool?>()
+                    {
+                        Body = (bool?)true
+                    }));
+
+            resourcesClient.DeleteResourceGroup(resourceGroupName);
+
+            resourceGroupMock.Verify(f => f.DeleteWithHttpMessagesAsync(resourceGroupName, null, It.IsAny<CancellationToken>()), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FiltersOneResourceGroupDeployment()
+        {
+            FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions()
+            {
+                DeploymentName = deploymentName,
+                ResourceGroupName = resourceGroupName
+            };
+            deploymentsMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
+            {
+                Body = new DeploymentExtended()
+                {
+                    Name = deploymentName,
+                    Properties = new DeploymentPropertiesExtended()
+                    {
+                        Mode = DeploymentMode.Incremental,
+                        CorrelationId = "123",
+                        TemplateLink = new TemplateLink()
+                        {
+                            Uri = "http://microsoft.com/"
+                        }
+                    }
+                }
+            }));
+
+            List<Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment> result = resourcesClient.FilterResourceGroupDeployments(options);
+
+            Assert.Equal(deploymentName, result[0].DeploymentName);
+            Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
+            Assert.Equal(DeploymentMode.Incremental, result[0].Mode);
+            Assert.Equal("123", result[0].CorrelationId);
+            Assert.Equal(new Uri("http://microsoft.com").ToString(), result[0].TemplateLink.Uri.ToString());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CancelsActiveDeployment()
+        {
+            DeploymentExtended actualParameters = new DeploymentExtended();
+
+            var listResult = new List<DeploymentExtended>()
+            {
+                new DeploymentExtended()
+                {
+                    Name = deploymentName + 1,
+                    Properties = new DeploymentPropertiesExtended()
+                    {
+                        Mode = DeploymentMode.Incremental,
+                        TemplateLink = new TemplateLink()
+                        {
+                            Uri = "http://microsoft1.com"
+                        },
+                        ProvisioningState = "Succeeded"
+                    }
+                },
+                new DeploymentExtended()
+                {
+                    Name = deploymentName + 2,
+                    Properties = new DeploymentPropertiesExtended()
+                    {
+                        Mode = DeploymentMode.Incremental,
+                        TemplateLink = new TemplateLink()
+                        {
+                            Uri = "http://microsoft1.com"
+                        },
+                        ProvisioningState = "Failed"
+                    }
+                },
+                new DeploymentExtended()
+                {
+                    Name = deploymentName + 3,
+                    Properties = new DeploymentPropertiesExtended()
+                    {
+                        Mode = DeploymentMode.Incremental,
+                        TemplateLink = new TemplateLink()
+                        {
+                            Uri = "http://microsoft1.com"
+                        },
+                        ProvisioningState = "Running"
+                    }
+                }
+            };
+            var pagableResult = new Page<DeploymentExtended>();
+            pagableResult.SetItemValue<DeploymentExtended>(listResult);
+            var result = new AzureOperationResponse<IPage<DeploymentExtended>>()
+            {
+                Body = pagableResult
+            };
+            deploymentsMock.Setup(f => f.ListWithHttpMessagesAsync(
+                resourceGroupName,
+                null,
+                null,
+                It.IsAny<CancellationToken>()))
+                .Returns(Task.Factory.StartNew(() => result));
+
+            resourcesClient.CancelDeployment(resourceGroupName, null);
+
+            deploymentsMock.Verify(f => f.CancelWithHttpMessagesAsync(resourceGroupName, deploymentName + 3, null, new CancellationToken()), Times.Once());
+        }
+
+        [Fact(Skip = "Test produces different outputs since hashtable order is not guaranteed.")]
+        public void SerializeHashtableProperlyHandlesAllDataTypes()
+        {
+            Hashtable hashtable = new Hashtable();
+            var password = "pass";
+            hashtable.Add("key1", "string");
+            hashtable.Add("key2", 1);
+            hashtable.Add("key3", true);
+            hashtable.Add("key4", new DateTime(2014, 05, 08));
+            hashtable.Add("key5", null);
+            hashtable.Add("key6", password);
+
+            string resultWithoutAddedLayer = resourcesClient.SerializeHashtable(hashtable, false);
+            Assert.NotEmpty(resultWithoutAddedLayer);
+            EqualsIgnoreWhitespace(@"{
+                ""key5"": null,
+                ""key2"": 1,
+                ""key4"": ""2014-05-08T00:00:00"",
+                ""key6"": ""pass"",
+                ""key1"": ""string"",
+                ""key3"": true
+            }", resultWithoutAddedLayer);
+
+            string resultWithAddedLayer = resourcesClient.SerializeHashtable(hashtable, true);
+            Assert.NotEmpty(resultWithAddedLayer);
+            EqualsIgnoreWhitespace(@"{
+              ""key5"": {
+                ""value"": null
+              },
+              ""key2"": {
+                ""value"": 1
+              },
+              ""key4"": {
+                ""value"": ""2014-05-08T00:00:00""
+              },
+              ""key6"": {
+                ""value"": ""pass""
+              },
+              ""key1"": {
+                ""value"": ""string""
+              },
+              ""key3"": {
+                ""value"": true
+              }
+            }", resultWithAddedLayer);
+        }
     }
 }
