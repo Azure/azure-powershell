@@ -462,7 +462,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
             //Storage mapping
             Mapper.CreateMap<StorageAccountGetResponse, PVM.StorageServicePropertiesOperationContext>()
                   .ForMember(c => c.StorageAccountDescription, o => o.MapFrom(r => r.StorageAccount.Properties == null ? null : r.StorageAccount.Properties.Description))
-                  .ForMember(c => c.StorageAccountName, o => o.MapFrom(r => r.StorageAccount.Name));
+                  .ForMember(c => c.StorageAccountName, o => o.MapFrom(r => r.StorageAccount.Name))
+                  .ForMember(c => c.MigrationState, o => o.MapFrom(r => r.StorageAccount.MigrationState));
             Mapper.CreateMap<StorageAccountProperties, PVM.StorageServicePropertiesOperationContext>()
                   .ForMember(c => c.StorageAccountDescription, o => o.MapFrom(r => r.Description))
                   .ForMember(c => c.GeoPrimaryLocation, o => o.MapFrom(r => r.GeoPrimaryRegion))
