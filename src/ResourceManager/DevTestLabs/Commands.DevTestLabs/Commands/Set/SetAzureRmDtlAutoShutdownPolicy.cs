@@ -23,7 +23,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDtlAutoShutdownPolicy", HelpUri = Constants.DevTestLabsHelpUri, DefaultParameterSetName = ParameterSetEnable, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDtlAutoShutdownPolicy",
+        HelpUri = Constants.DevTestLabsHelpUri,
+        DefaultParameterSetName = ParameterSetEnable,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSSchedule))]
     public class SetAzureRmDtlAutoShutdownPolicy : DtlPolicyCmdletBase
     {
@@ -67,6 +70,10 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                 }
             }
 
+            // Do nothing if user cancelled the operation
+            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.SavePolicyDescription, PolicyName, LabName);
+            string actionWarning;
+
             if (inputSchedule == null)
             {
                 inputSchedule = new Schedule
@@ -79,19 +86,16 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                     },
                     Status = Disable ? PolicyStatus.Disabled : PolicyStatus.Enabled
                 };
+
+                actionWarning = string.Format(CultureInfo.CurrentCulture,
+                    Resources.CreatePolicyWarning,
+                    PolicyName);
             }
             else
             {
-                // Do nothing if user cancelled the operation
-                var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.SavePolicyDescription, PolicyName, LabName);
-                var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.SavePolicyWarning, PolicyName);
-                if (!ShouldProcess(
-                        actionDescription,
-                        actionWarning,
-                        Resources.ShouldProcessCaption))
-                {
-                    return;
-                }
+                actionWarning = string.Format(CultureInfo.CurrentCulture,
+                    Resources.AlterPolicyWarning,
+                    PolicyName);
 
                 if (Time.HasValue)
                 {
@@ -110,6 +114,14 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                 {
                     inputSchedule.Status = PolicyStatus.Enabled;
                 }
+            }
+
+            if (!ShouldProcess(
+                actionDescription,
+                actionWarning,
+                Resources.ShouldProcessCaption))
+            {
+                return;
             }
 
             var outputSchedule = DataServiceClient.Schedule.CreateOrUpdateResource(

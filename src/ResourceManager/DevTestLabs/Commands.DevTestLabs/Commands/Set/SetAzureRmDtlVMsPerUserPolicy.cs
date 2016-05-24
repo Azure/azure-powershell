@@ -23,7 +23,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDtlVMsPerUserPolicy", HelpUri = Constants.DevTestLabsHelpUri, DefaultParameterSetName = ParameterSetEnable, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDtlVMsPerUserPolicy",
+        HelpUri = Constants.DevTestLabsHelpUri,
+        DefaultParameterSetName = ParameterSetEnable,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSPolicy))]
     public class SetAzureRmDtlVMsPerUserPolicy : DtlPolicyCmdletBase
     {
@@ -68,6 +71,14 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                 }
             }
 
+            // Do nothing if user cancelled the operation
+            var actionDescription = string.Format(CultureInfo.CurrentCulture,
+                Resources.SavePolicyDescription,
+                PolicyName,
+                LabName);
+
+            string actionWarning;
+
             if (inputPolicy == null)
             {
                 inputPolicy = new Policy
@@ -77,19 +88,16 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                     EvaluatorType = PolicyEvaluatorType.MaxValuePolicy,
                     Status = Disable ? PolicyStatus.Disabled : PolicyStatus.Enabled
                 };
+
+                actionWarning = string.Format(CultureInfo.CurrentCulture,
+                    Resources.CreatePolicyWarning,
+                    PolicyName);
             }
             else
             {
-                // Do nothing if user cancelled the operation
-                var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.SavePolicyDescription, PolicyName, LabName);
-                var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.SavePolicyWarning, PolicyName);
-                if (!ShouldProcess(
-                        actionDescription,
-                        actionWarning,
-                        Resources.ShouldProcessCaption))
-                {
-                    return;
-                }
+                actionWarning = string.Format(CultureInfo.CurrentCulture,
+                    Resources.AlterPolicyWarning,
+                    PolicyName);
 
                 if (MaxVMs.HasValue)
                 {
@@ -105,6 +113,14 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                 {
                     inputPolicy.Status = PolicyStatus.Enabled;
                 }
+            }
+
+            if (!ShouldProcess(
+                    actionDescription,
+                    actionWarning,
+                    Resources.ShouldProcessCaption))
+            {
+                return;
             }
 
             var outputPolicy = DataServiceClient.Policy.CreateOrUpdateResource(
