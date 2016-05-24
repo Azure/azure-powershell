@@ -28,4 +28,4 @@
 # Learn More
 * Required Features For Resource Providers (RPs)
 * How to Write Cmdlets and Tests
-* [How to contribute](https://github.com/azure-powershell/contributing.md)
+* [How to contribute](https://github.com/azure/azure-powershell/CONTRIBUTING.md)
