@@ -1,19 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk2556/providers/Microsoft.DevTestLab/labs/onesdk8381/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazI1NTYvcHJvdmlkZXJzL01pY3Jvc29mdC5EZXZUZXN0TGFiL2xhYnMvb25lc2RrODM4MS9wb2xpY3lzZXRzL2RlZmF1bHQvcG9saWNpZXMvTWF4Vm1zQWxsb3dlZFBlckxhYj9hcGktdmVyc2lvbj0yMDE1LTA1LTIxLXByZXZpZXc=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"factName\": \"LabVmCount\",\r\n    \"threshold\": \"5\",\r\n    \"evaluatorType\": \"MaxValuePolicy\"\r\n  }\r\n}",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvcG9saWN5c2V0cy9kZWZhdWx0L3BvbGljaWVzL01heFZtc0FsbG93ZWRQZXJMYWI/YXBpLXZlcnNpb249MjAxNS0wNS0yMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "147"
-        ],
         "x-ms-client-request-id": [
-          "76f9ff38-ef31-4235-8818-839bd2e779a8"
+          "00b32b1b-d58b-447e-a5de-fcbc13f4d590"
         ],
         "accept-language": [
           "en-US"
@@ -22,10 +16,10 @@
           "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"\",\r\n    \"status\": \"Enabled\",\r\n    \"factName\": \"LabVmCount\",\r\n    \"threshold\": \"5\",\r\n    \"evaluatorType\": \"MaxValuePolicy\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk2556/providers/microsoft.devtestlab/labs/onesdk8381/policysets/default/policies/maxvmsallowedperlab\",\r\n  \"name\": \"MaxVmsAllowedPerLab\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/policySets/policies\"\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The resource 'MaxVmsAllowedPerLab' under resource group 'onesdk72' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "389"
+          "131"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -37,19 +31,19 @@
           "no-cache"
         ],
         "x-rp-requesturi": [
-          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk2556/providers/Microsoft.DevTestLab/labs/onesdk8381/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview"
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14915"
         ],
         "x-ms-request-id": [
-          "e27cd25f-7a4c-4711-9fc6-fe1d91e7edf7"
+          "f4bd7856-ddb3-403a-a2c3-709eaee6221e"
         ],
         "x-ms-correlation-request-id": [
-          "e27cd25f-7a4c-4711-9fc6-fe1d91e7edf7"
+          "f4bd7856-ddb3-403a-a2c3-709eaee6221e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160519T224546Z:e27cd25f-7a4c-4711-9fc6-fe1d91e7edf7"
+          "CENTRALUS:20160524T014718Z:f4bd7856-ddb3-403a-a2c3-709eaee6221e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -58,7 +52,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 19 May 2016 22:45:46 GMT"
+          "Tue, 24 May 2016 01:47:18 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -70,16 +64,16 @@
           "ASP.NET"
         ]
       },
-      "StatusCode": 201
+      "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk2556/providers/Microsoft.DevTestLab/labs/onesdk8381/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazI1NTYvcHJvdmlkZXJzL01pY3Jvc29mdC5EZXZUZXN0TGFiL2xhYnMvb25lc2RrODM4MS9wb2xpY3lzZXRzL2RlZmF1bHQvcG9saWNpZXMvTWF4Vm1zQWxsb3dlZFBlckxhYj9hcGktdmVyc2lvbj0yMDE1LTA1LTIxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvcG9saWN5c2V0cy9kZWZhdWx0L3BvbGljaWVzL01heFZtc0FsbG93ZWRQZXJMYWI/YXBpLXZlcnNpb249MjAxNS0wNS0yMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a989ee12-43c1-4cb4-bb9c-719341482f0c"
+          "1e5ca909-6834-4e13-9664-5487a4e251a2"
         ],
         "accept-language": [
           "en-US"
@@ -88,10 +82,10 @@
           "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"\",\r\n    \"status\": \"Enabled\",\r\n    \"factName\": \"LabVmCount\",\r\n    \"threshold\": \"5\",\r\n    \"evaluatorType\": \"MaxValuePolicy\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk2556/providers/microsoft.devtestlab/labs/onesdk8381/policysets/default/policies/maxvmsallowedperlab\",\r\n  \"name\": \"MaxVmsAllowedPerLab\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/policySets/policies\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"\",\r\n    \"status\": \"Enabled\",\r\n    \"factName\": \"LabVmCount\",\r\n    \"threshold\": \"5\",\r\n    \"evaluatorType\": \"MaxValuePolicy\",\r\n    \"uniqueIdentifier\": \"2b83e995-c488-4086-8095-e48ddc156f37\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/microsoft.devtestlab/labs/onesdk5931/policysets/default/policies/maxvmsallowedperlab\",\r\n  \"name\": \"MaxVmsAllowedPerLab\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/policySets/policies\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "389"
+          "445"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -106,19 +100,19 @@
           "Accept-Encoding"
         ],
         "x-rp-requesturi": [
-          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk2556/providers/Microsoft.DevTestLab/labs/onesdk8381/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview"
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14808"
+          "14914"
         ],
         "x-ms-request-id": [
-          "c3fcd3b5-6eba-4745-b7e7-27b665619a90"
+          "9d96c3ad-a669-4a82-9552-e2835d575f85"
         ],
         "x-ms-correlation-request-id": [
-          "c3fcd3b5-6eba-4745-b7e7-27b665619a90"
+          "9d96c3ad-a669-4a82-9552-e2835d575f85"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160519T224546Z:c3fcd3b5-6eba-4745-b7e7-27b665619a90"
+          "CENTRALUS:20160524T014719Z:9d96c3ad-a669-4a82-9552-e2835d575f85"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -127,7 +121,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 19 May 2016 22:45:46 GMT"
+          "Tue, 24 May 2016 01:47:18 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -140,6 +134,78 @@
         ]
       },
       "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvcG9saWN5c2V0cy9kZWZhdWx0L3BvbGljaWVzL01heFZtc0FsbG93ZWRQZXJMYWI/YXBpLXZlcnNpb249MjAxNS0wNS0yMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"factName\": \"LabVmCount\",\r\n    \"threshold\": \"5\",\r\n    \"evaluatorType\": \"MaxValuePolicy\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "147"
+        ],
+        "x-ms-client-request-id": [
+          "45bf95c2-052c-4d7b-b2c1-349ec42e6533"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"\",\r\n    \"status\": \"Enabled\",\r\n    \"factName\": \"LabVmCount\",\r\n    \"threshold\": \"5\",\r\n    \"evaluatorType\": \"MaxValuePolicy\",\r\n    \"uniqueIdentifier\": \"2b83e995-c488-4086-8095-e48ddc156f37\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/microsoft.devtestlab/labs/onesdk5931/policysets/default/policies/maxvmsallowedperlab\",\r\n  \"name\": \"MaxVmsAllowedPerLab\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/policySets/policies\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "445"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-request-id": [
+          "390d6e7e-8f5b-4366-bf99-bc461f4e53ac"
+        ],
+        "x-ms-correlation-request-id": [
+          "390d6e7e-8f5b-4366-bf99-bc461f4e53ac"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160524T014719Z:390d6e7e-8f5b-4366-bf99-bc461f4e53ac"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 01:47:18 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
     }
   ],
   "Names": {},
