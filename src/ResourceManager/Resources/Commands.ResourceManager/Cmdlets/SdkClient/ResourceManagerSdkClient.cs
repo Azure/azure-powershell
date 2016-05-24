@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 WriteVerbose(ProjectResources.TemplateValid);
             }
 
-            ResourceManagementClient.Deployments.CreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+            ResourceManagementClient.Deployments.CreateOrUpdateAsync(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
             WriteVerbose(string.Format("Create template deployment '{0}'.", parameters.DeploymentName));
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
