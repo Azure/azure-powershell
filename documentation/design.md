@@ -1,7 +1,7 @@
 # Azure PowerShell Design Guidelines for Azure Resource Manager (ARM) Cmdlets
 
 * [Modules and Versioning](#Modules-and-Versioning)
-* Cmdlet Dependencies
+* [Cmdlet Dependencies](#Cmdlet-Dependencies)
 * Cmdlet Signature
   * Cmdlet Naming
   * Cmdlet attributes
@@ -30,9 +30,9 @@
 3. The Azure PowerShell cmdlets use [semantic versioning](http://semver.org) to version each module. Module version changes reflect changes in the signature of cmdlets in the module. Breaking changes result in a major version update.  Non-breaking changes in the public interface result in a minor version update.  Other changes result in a revision update.  Breakinc changes are defined as follows:
   - Cmdlets: 
     - Removing a cmdlet
-    - Change in cmdlet name without an alias to the original name
+    - Changing a cmdlet name without an alias to the original name
     - Removing or changing a cmdlet alias
-    - Removal of Cmdlet attribuet option (SupportShouldProcess, SupportsPaging)
+    - Removing a Cmdlet attribuet option (SupportShouldProcess, SupportsPaging)
     - Breaking change in OutputType or removal of OutputType attribute
   - Parameters
     - Removing a parameter
@@ -40,15 +40,26 @@
     - Breaking change in parameter type
     - Adding a required parameter to an existing parameter set (adding new parameter sets, or adding additional optional prameters is not breaking)
     - Changing parameter order for parameter sets with ordered parameters
-    - Removing or changign a parameter alias
+    - Removing or changing a parameter alias
     - Removing or changing existing parameter attribute values
     - Making parameter validation more exclusive (for example: removing values from a ValidateSet)
   - Output and Parameter Types
     - Changing property names without an accompanying alias to the original name
     - Removing properties
     - Adding additional required properties
+    - Adding required parameters, changing parameter names, or parameter types for methods or constructors
+    - Changing return types of methods
+4. **Breaking Change Notification** Breaking changes **should** provide advance notification by at least one release. This is accomplished through printing messages when the deprecated pattern is used.  The ```Obsolete`` attribute is provided for marking cmdlets and parameters that will be removed or have changed.
 
 # Cmdlet Dependencies
+Assembly dependencies are split into two categories:
+- Shared dependencies, such as common runtime and framework assemblies shared across cmdlets
+- Single module dependencies, such as the management library
+1. [**Preliminary**] A Cmdlet assembly must not take an assembly dependency on another cmdlet assembly.  Dependencies between cmdlets through the module manifest are not allowed unless the dependency is guaranteed to be backward compatible (for example, the dependency on the profile cmdlets).
+ - Dependencies on common types between cmdlets must be managed through the common libraries
+ - Dependencies on management libraries shared with other modules (Resource Manager, Storage) must be taken through the common libraries.
+ - Dependencies on external framework assemblies must be guaranteed to be backward compatible. If shared by multiple modules, they must be taken through the common libraries.
+2. [**Preliminary**] All Parameter and output types shared between cmdlets must be managed through the common libraries (for example: AzureStorageContext, AzureProfile)
 
 # Cmdlet Signature
 
@@ -59,6 +70,8 @@
 ## Types used in parameters and output
 
 ## Parameters
+
+### Common Required Parameters and Parameter Sets
 
 ### Parameter Attributes
 
