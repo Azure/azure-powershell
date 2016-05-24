@@ -122,7 +122,9 @@ namespace Microsoft.Azure.Commands.Compute
                         this.Name).GetAwaiter().GetResult();
                 }
 
-                var returnedExtension = virtualMachineExtensionGetResponse.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName);
+                var returnedExtension = virtualMachineExtensionGetResponse.ToPSVirtualMachineExtension(
+                    this.ResourceGroupName, this.VMName);
+
                 WriteObject(returnedExtension);
             });
         }
