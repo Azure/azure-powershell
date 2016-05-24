@@ -7464,7 +7464,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         <dev:code>PS C:\&gt;New-AzureRmAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbook02" -ResourceGroupName "ResourceGroup01" -Type PowerShell
 </dev:code>
         <dev:remarks>
-          <maml:para>This command creates a runbook named Runbook02 in the Azure Automation account named Contoso17.</maml:para>
+          <maml:para>This command creates a PowerShell runbook named Runbook02 in the Azure Automation account named Contoso17.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
