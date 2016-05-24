@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("OSDiskVhdUri", "DiskVhdUri")]
         [Parameter(
+            Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskVhdUri)]
