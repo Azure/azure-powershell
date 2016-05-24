@@ -102,6 +102,13 @@ namespace Microsoft.Azure.Commands.Dns
     {
         public abstract object Clone();
 
+        public const int TxtRecordMaxLength = 1024;
+
+        public const int TxtRecordMinLength = 0;
+
+        public const int TxtRecordChunkSize = 255;
+
+
         internal abstract object ToMamlRecord();
 
         internal static DnsRecordBase FromMamlRecord(object record)
@@ -164,12 +171,12 @@ namespace Microsoft.Azure.Commands.Dns
                 return new SoaRecord
                 {
                     Email = mamlRecord.Email,
-                    ExpireTime = mamlRecord.ExpireTime,
+                    ExpireTime = (uint) mamlRecord.ExpireTime.GetValueOrDefault(),
                     Host = mamlRecord.Host,
-                    MinimumTtl = mamlRecord.MinimumTtl,
-                    RefreshTime = mamlRecord.RefreshTime,
-                    RetryTime = mamlRecord.RetryTime,
-                    SerialNumber = mamlRecord.SerialNumber,
+                    MinimumTtl = (uint) mamlRecord.MinimumTtl.GetValueOrDefault(),
+                    RefreshTime = (uint) mamlRecord.RefreshTime.GetValueOrDefault(),
+                    RetryTime = (uint) mamlRecord.RetryTime.GetValueOrDefault(),
+                    SerialNumber = (uint) mamlRecord.SerialNumber.GetValueOrDefault(),
                 };
             }
             else if (record is Management.Dns.Models.TxtRecord)
@@ -177,11 +184,35 @@ namespace Microsoft.Azure.Commands.Dns
                 var mamlRecord = (Management.Dns.Models.TxtRecord)record;
                 return new TxtRecord
                 {
-                    Value = mamlRecord.Value.Count > 0 ? mamlRecord.Value[0] : null,
+                    Value = ToPowerShellTxtValue(mamlRecord.Value),
+                };
+            }
+            else if (record is Management.Dns.Models.PtrRecord)
+            {
+                var mamlRecord = (Management.Dns.Models.PtrRecord)record;
+                return new PtrRecord
+                {
+                    Ptrdname = mamlRecord.Ptrdname,
                 };
             }
 
             return null;
+        }
+
+        private static string ToPowerShellTxtValue(ICollection<string> value)
+        {
+            if (value == null || value.Count == 0)
+            {
+                return null;
+            }
+            
+            var sb = new StringBuilder();
+            foreach (var s in value)
+            {
+                sb.Append(s);
+            }
+
+            return sb.ToString();
         }
     }
 
@@ -334,9 +365,29 @@ namespace Microsoft.Azure.Commands.Dns
 
         internal override object ToMamlRecord()
         {
+            char[] letters = this.Value.ToCharArray();
+            var splitValues = new List<string>();
+
+            int remaining = letters.Length;
+            int begin = 0;
+            while (remaining > 0)
+            {
+                if (remaining < TxtRecordChunkSize)
+                {
+                    splitValues.Add(new string(letters, begin, remaining));
+                    remaining = 0;
+                }
+                else
+                {
+                    splitValues.Add(new string(letters, begin, TxtRecordChunkSize));
+                    begin += TxtRecordChunkSize;
+                    remaining -= TxtRecordChunkSize;
+                }
+            }
+
             return new Management.Dns.Models.TxtRecord
             {
-                Value = new List<string>() { this.Value },
+                Value = splitValues,
             };
         }
 

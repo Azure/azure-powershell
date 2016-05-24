@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
@@ -68,13 +69,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         } 
 
 
-        protected void SetupManagementClients() 
+        protected void SetupManagementClients(RestTestFramework.MockContext context) 
         { 
             this.ResourceManagementClient = this.GetResourceManagementClient(); 
             this.SubscriptionClient = this.GetSubscriptionClient(); 
             this.GalleryClient = this.GetGalleryClient(); 
             this.AuthorizationManagementClient = this.GetAuthorizationManagementClient(); 
-            this.DnsClient = this.GetFeatureClient(); 
+            this.DnsClient = this.GetFeatureClient(context); 
 
 
             this.helper.SetupManagementClients( 
@@ -118,11 +119,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
-            using (UndoContext context = UndoContext.Current) 
+            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             { 
-                context.Start(callingClassType, mockName); 
-
-
                 this.csmTestFactory = new CSMTestEnvironmentFactory(); 
 
 
@@ -132,7 +130,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
                 } 
 
 
-                this.SetupManagementClients(); 
+                this.SetupManagementClients(context); 
 
 
                 this.helper.SetupEnvironment(AzureModule.AzureResourceManager); 
@@ -171,34 +169,29 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             } 
         } 
 
-
         protected ResourceManagementClient GetResourceManagementClient() 
         { 
             return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory); 
         } 
-
 
         private AuthorizationManagementClient GetAuthorizationManagementClient() 
         { 
             return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory); 
         } 
 
-
         private SubscriptionClient GetSubscriptionClient() 
         { 
             return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory); 
         } 
-
 
         private GalleryClient GetGalleryClient() 
         { 
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory); 
         }
 
-
-        private DnsManagementClient GetFeatureClient() 
+        private DnsManagementClient GetFeatureClient(RestTestFramework.MockContext context) 
         {
-            return TestBase.GetServiceClient<DnsManagementClient>(this.csmTestFactory); 
+            return context.GetServiceClient<DnsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment()); 
         } 
     } 
 } 

@@ -59,7 +59,7 @@ function Test-ZoneCrud
 
 	Assert-True { $removed }
 
-	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } "*NotFound*"
+	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } "*was not found*"
 }
 
 <#
@@ -90,7 +90,7 @@ function Test-ZoneCrudTrimsDot
 
 	Assert-True { $removed }
 
-	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } "*NotFound*"
+	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } "*was not found*"
 }
 
 <#
@@ -123,7 +123,7 @@ function Test-ZoneCrudWithPiping
 
 	Assert-True { $removed }
 
-	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "*NotFound*"
+	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "*was not found*"
 }
 
 <#
@@ -151,7 +151,7 @@ function Test-ZoneCrudWithPipingTrimsDot
 
 	Assert-True { $removed }
 
-	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "*NotFound*"
+	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "*was not found*"
 }
 
 <#
@@ -165,7 +165,7 @@ function Test-ZoneNewAlreadyExists
 	$resourceGroupName = $createdZone.ResourceGroupName
 	Assert-NotNull $createdZone
 
-	$message = [System.String]::Format("PreconditionFailed: The Zone {0} exists already and hence cannot be created again.", $zoneName);
+	$message = [System.String]::Format("The Zone {0} exists already and hence cannot be created again.", $zoneName);
 	Assert-Throws { New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } $message
 
 	$createdZone | Remove-AzureRmDnsZone -PassThru -Force
@@ -182,7 +182,7 @@ function Test-ZoneSetEtagMismatch
 	$originalEtag = $createdZone.Etag
 	$createdZone.Etag = "gibberish"
 
-	$message = [System.String]::Format("PreconditionFailed: The Zone {0} has been modified (etag mismatch).", $zoneName);
+	$message = [System.String]::Format("The Zone {0} has been modified (etag mismatch).", $zoneName);
 	Assert-Throws { $createdZone | Set-AzureRmDnsZone } $message
 
 	$updatedZone = $createdZone | Set-AzureRmDnsZone -Overwrite
@@ -202,7 +202,7 @@ function Test-ZoneSetNotFound
 	$zoneName = Get-RandomZoneName
     $resourceGroup = TestSetup-CreateResourceGroup
 
-	$message = [System.String]::Format("PreconditionFailed: The Zone {0} has been modified (etag mismatch).", $zoneName);
+	$message = [System.String]::Format("The Zone {0} has been modified (etag mismatch).", $zoneName);
 	Assert-Throws { Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } $message;
 }
 
@@ -217,7 +217,7 @@ function Test-ZoneRemoveEtagMismatch
 	$originalEtag = $createdZone.Etag
 	$createdZone.Etag = "gibberish"
 
-	$message = [System.String]::Format("PreconditionFailed: The Zone {0} has been modified (etag mismatch).", $zoneName);
+	$message = [System.String]::Format("The Zone {0} has been modified (etag mismatch).", $zoneName);
 	Assert-Throws { $createdZone | Remove-AzureRmDnsZone -Force } $message
 
 	$removed = $createdZone | Remove-AzureRmDnsZone -Overwrite -Force -PassThru
@@ -247,7 +247,7 @@ function Test-ZoneList
 	$zoneName1 = Get-RandomZoneName
 	$zoneName2 = $zoneName1 + "A"
 	$resourceGroup = TestSetup-CreateResourceGroup
-    $createdZone1 = $resourceGroup | New-AzureRmDnsZone -Name $zoneName1 -Metadata @{Name="tag1";Value="value1"}
+    $createdZone1 = $resourceGroup | New-AzureRmDnsZone -Name $zoneName1 -Tags @{Name="tag1";Value="value1"}
 	$createdZone2 = $resourceGroup | New-AzureRmDnsZone -Name $zoneName2
 
 	$result = Get-AzureRmDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName
@@ -277,7 +277,7 @@ function Test-ZoneListSubscription
 
 	$result = Get-AzureRmDnsZone
 
-	Assert-True   { $result.Count -gt 2 }
+	Assert-True   { $result.Count -ge 2 }
 
 	$createdZone1 | Remove-AzureRmDnsZone -PassThru -Force
 	$createdZone2 | Remove-AzureRmDnsZone -PassThru -Force

@@ -73,5 +73,16 @@ function TestSetup-CreateResourceGroup
 
 function Get-RandomZoneName
 {
-	return [System.Guid]::NewGuid().ToString() + ".pstest.test" ;
+	$prefix = getAssetName;
+	return $prefix + ".pstest.test" ;
+}
+
+function Get-TxtOfSpecifiedLength([int] $length)
+{
+	$returnValue = "";
+	for ($i = 0; $i -lt $length ; $i++)
+	{
+		$returnValue += "a";
+	}
+	return $returnValue;
 }

@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Dns
 
 {
     /// <summary>
-    /// Adds a record to a record set object.
+    /// Constructs an in-memory dns record object
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecord"), OutputType(typeof(DnsRecordBase))]
-    public class NewAzureRmDnsRecord : DnsBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordConfig"), OutputType(typeof(DnsRecordBase))]
+    public class NewAzureRmDnsRecordConfig : DnsBaseCmdlet
     {
         private const string ParameterSetA = "A";
         private const string ParameterSetAaaa = "Aaaa";
@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The text value for the TXT record to add.", ParameterSetName = ParameterSetTxt)]
         [ValidateNotNullOrEmpty]
+        [ValidateLength(DnsRecordBase.TxtRecordMinLength, DnsRecordBase.TxtRecordMaxLength)]
         public string Value { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The priority value SRV record to add.", ParameterSetName = ParameterSetSrv)]
@@ -128,6 +129,11 @@ namespace Microsoft.Azure.Commands.Dns
                 case ParameterSetCName:
                     {
                         result = new CnameRecord { Cname = this.Cname };
+                        break;
+                    }
+                case ParameterSetPtr:
+                    {
+                        result = new PtrRecord {Ptrdname = this.Ptrdname};
                         break;
                     }
                 default:

@@ -18,6 +18,8 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
+    using System.Diagnostics;
+
     public class RecordsTests : DnsTestsBase
     {
         [Fact]
@@ -134,6 +136,21 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetTXTLengthValidation()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetTXTLengthValidation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetTXTLegacyLengthValidation()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetTXTLegacyLengthValidation");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetSRV()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetSRV");
@@ -153,11 +170,18 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetSOA");
         }
 
-        [Fact(Skip = "Not supported in Private Preview")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetPTR()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetPTR");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetPTRNonEmpty()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetPTRNonEmpty");
         }
 
         [Fact]
@@ -201,13 +225,5 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetGet");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRecordSetList()
-        {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetList");
-        }
-
     }
 }

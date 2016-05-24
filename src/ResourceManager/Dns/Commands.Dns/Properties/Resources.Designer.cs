@@ -142,11 +142,11 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating empty record set ....
+        ///   Looks up a localized string similar to Creating record set ....
         /// </summary>
-        internal static string Progress_CreatingEmptyRecordSet {
+        internal static string Progress_CreatingRecordSet {
             get {
-                return ResourceManager.GetString("Progress_CreatingEmptyRecordSet", resourceCulture);
+                return ResourceManager.GetString("Progress_CreatingRecordSet", resourceCulture);
             }
         }
         
@@ -196,6 +196,15 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Zone &apos;{0}&apos; was not present in the resource group &apos;{1}&apos;. Hence, was not deleted.
+        /// </summary>
+        internal static string Success_NonExistentZone {
+            get {
+                return ResourceManager.GetString("Success_NonExistentZone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Record added. Use Set-AzureRmDnsRecordSet to save your change to this record set..
         /// </summary>
         internal static string Success_RecordAdded {
@@ -237,6 +246,15 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         internal static string Success_RemoveZone {
             get {
                 return ResourceManager.GetString("Success_RemoveZone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usage of this cmdlet without DnsRecords parameter will be deprecated soon. If there is a need to create empty record set, please specify DnsRecords parameter with an empty array as value.
+        /// </summary>
+        internal static string Warning_DnsRecordsParamNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("Warning_DnsRecordsParamNeedsToBeSpecified", resourceCulture);
             }
         }
     }
