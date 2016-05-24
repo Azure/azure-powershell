@@ -56,14 +56,15 @@ namespace Microsoft.Azure.Commands.DevTestLabs
             {
                 if (_dataServiceClient == null)
                 {
-                    this._dataServiceClient = AzureSession.ClientFactory.CreateArmClient<DevTestLabsClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                    _dataServiceClient = AzureSession.ClientFactory.CreateArmClient<DevTestLabsClient>(DefaultContext,
+                        AzureEnvironment.Endpoint.ResourceManager);
                 }
 
-                return this._dataServiceClient;
+                return _dataServiceClient;
             }
             set
             {
-                this._dataServiceClient = value;
+                _dataServiceClient = value;
             }
         }
     }

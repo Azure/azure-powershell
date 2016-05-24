@@ -18,11 +18,13 @@ Gets the location for the Lab. Default to West US if none found.
 #>
 function Get-Location
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
+        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
 	{
 		$namespace = "Microsoft.DevTestLab"
 		$type = "sites"
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace `
+        | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
 
 		if ($location -eq $null)
 		{
@@ -65,7 +67,9 @@ function Setup-Test-ResourceGroup
 
     #Setup
     New-AzureRmResourceGroup -Name $rgname -Location $location
-    New-AzureRmResourceGroupDeployment -Name $labName -ResourceGroupName $rgname -TemplateParameterObject @{ newLabName = "$labName" } -TemplateFile https://raw.githubusercontent.com/Azure/azure-devtestlab/master/ARMTemplates/101-dtl-create-lab/azuredeploy.json
+    New-AzureRmResourceGroupDeployment -Name $labName -ResourceGroupName $rgname `
+    -TemplateParameterObject @{ newLabName = "$labName" } `
+    -TemplateFile https://raw.githubusercontent.com/Azure/azure-devtestlab/master/ARMTemplates/101-dtl-create-lab/azuredeploy.json
 }
 
 <#

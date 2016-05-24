@@ -61,20 +61,29 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Policy &quot;{0}&quot; already exists. Overwrite?.
+        /// </summary>
+        internal static string AlterPolicyWarning {
+            get {
+                return ResourceManager.GetString("AlterPolicyWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create policy &quot;{0}&quot;?.
+        /// </summary>
+        internal static string CreatePolicyWarning {
+            get {
+                return ResourceManager.GetString("CreatePolicyWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saving &quot;{0}&quot; policy for lab &quot;{1}&quot;..
         /// </summary>
         internal static string SavePolicyDescription {
             get {
                 return ResourceManager.GetString("SavePolicyDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Policy &quot;{0}&quot; already exists. Overwrite?.
-        /// </summary>
-        internal static string SavePolicyWarning {
-            get {
-                return ResourceManager.GetString("SavePolicyWarning", resourceCulture);
             }
         }
         

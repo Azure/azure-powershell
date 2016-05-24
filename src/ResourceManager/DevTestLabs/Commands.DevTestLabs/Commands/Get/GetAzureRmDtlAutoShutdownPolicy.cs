@@ -19,7 +19,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDtlAutoShutdownPolicy", HelpUri = Constants.DevTestLabsHelpUri)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDtlAutoShutdownPolicy",
+        HelpUri = Constants.DevTestLabsHelpUri)]
     [OutputType(typeof(PSSchedule))]
     public class GetAzureRmDtlAutoShutdownPolicy : DevTestLabsCmdletBase
     {

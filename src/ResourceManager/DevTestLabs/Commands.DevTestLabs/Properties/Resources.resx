@@ -117,12 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SavePolicyDescription" xml:space="preserve">
-    <value>Saving "{0}" policy for lab "{1}".</value>
+  <data name="AlterPolicyWarning" xml:space="preserve">
+    <value>Policy "{0}" already exists. Overwrite?</value>
     <comment>Process workflow</comment>
   </data>
-  <data name="SavePolicyWarning" xml:space="preserve">
-    <value>Policy "{0}" already exists. Overwrite?</value>
+  <data name="CreatePolicyWarning" xml:space="preserve">
+    <value>Create policy "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SavePolicyDescription" xml:space="preserve">
+    <value>Saving "{0}" policy for lab "{1}".</value>
     <comment>Process workflow</comment>
   </data>
   <data name="ShouldProcessCaption" xml:space="preserve">

@@ -20,7 +20,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDtlAutoStartPolicy", HelpUri = Constants.DevTestLabsHelpUri)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDtlAutoStartPolicy",
+        HelpUri = Constants.DevTestLabsHelpUri)]
     [OutputType(typeof(PSSchedule))]
     public class GetAzureRmDtlAutoStartPolicy : DevTestLabsCmdletBase
     {
