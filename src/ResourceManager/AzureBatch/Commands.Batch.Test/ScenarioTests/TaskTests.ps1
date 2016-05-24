@@ -97,25 +97,23 @@ function Test-CreateTaskCollection
     $taskId1 = "simple1"
     $taskId2 = "simple2"
 
-    $taskId3 = "complex1"
-    $taskId4 = "simple3"
-
     $cmd = "cmd /c dir /s"
 
     $task1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId1, $cmd)
     $task2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId2, $cmd)
-    $task3 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId3, $cmd)
-    $task4 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId4, $cmd)
 
     $taskCollection = @($task1, $task2)
 
-    # Create a simple task and verify pipeline
+    # Create a simple task collection and verify pipeline
     Get-AzureBatchJob -Id $jobId -BatchContext $context | New-AzureBatchTask -TaskCollection $taskCollection -BatchContext $context
     $task1 = Get-AzureBatchTask -JobId $jobId -Id $taskId1 -BatchContext $context
+    $task2 = Get-AzureBatchTask -JobId $jobId -Id $taskId2 -BatchContext $context
 
     # Verify created task matches expectations
     Assert-AreEqual $taskId1 $task1.Id
     Assert-AreEqual $cmd $task1.CommandLine
+    Assert-AreEqual $taskId2 $task2.Id
+    Assert-AreEqual $cmd $task2.CommandLine
 
     # Create a complicated task collection
     $affinityId = "affinityId"
@@ -145,6 +143,12 @@ function Test-CreateTaskCollection
     $commonResource = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList @($commonResourceBlob,$commonResourceFile)
     $multiInstanceSettings.CommonResourceFiles.Add($commonResource)
 
+    $taskId3 = "complex1"
+    $taskId4 = "simple3"
+
+    $task3 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId3, $cmd)
+    $task4 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId4, $cmd)
+
     $task3.AffinityInformation = $affinityInfo
     $task3.Constraints = $taskConstraints
     $task3.MultiInstanceSettings = $multiInstanceSettings
@@ -157,6 +161,7 @@ function Test-CreateTaskCollection
     New-AzureBatchTask -JobId $jobId -TaskCollection $taskCollection -BatchContext $context
 
     $task3 = Get-AzureBatchTask -JobId $jobId -Id $taskId3 -BatchContext $context
+    $task4 = Get-AzureBatchTask -JobId $jobId -Id $taskId4 -BatchContext $context
 
     # Verify created task matches expectations
     Assert-AreEqual $taskId3 $task3.Id
@@ -173,6 +178,9 @@ function Test-CreateTaskCollection
     Assert-AreEqual 1 $task3.MultiInstanceSettings.CommonResourceFiles.Count
     Assert-AreEqual $commonResourceBlob $task3.MultiInstanceSettings.CommonResourceFiles[0].BlobSource
     Assert-AreEqual $commonResourceFile $task3.MultiInstanceSettings.CommonResourceFiles[0].FilePath
+
+    Assert-AreEqual $taskId4 $task4.Id
+    Assert-AreEqual $cmd $task4.CommandLine
 }
 
 <#
