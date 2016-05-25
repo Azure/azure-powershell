@@ -112,7 +112,7 @@ function Test-CreatePoolWithApplicationPackage
     {
         Remove-AzureRmBatchApplicationPackage -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName -ApplicationVersion $applicationVersion
         Remove-AzureRmBatchApplication  -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
-		Remove-AzureBatchPool -Id $poolId -Force -BatchContext $context
+        Remove-AzureBatchPool -Id $poolId -Force -BatchContext $context
     }
 }
 
