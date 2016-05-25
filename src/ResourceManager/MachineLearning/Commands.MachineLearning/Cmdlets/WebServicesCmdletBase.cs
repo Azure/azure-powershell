@@ -22,15 +22,12 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest.Azure;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
     public abstract class WebServicesCmdletBase : AzureRMCmdlet
     {
         public const string CommandletSuffix = "AzureRmMlWebService";
-
-        private PSResourceManagerModels.ResourcesClient resourcesClient;
 
         private WebServicesClient webServicesClient;
 
@@ -47,24 +44,6 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
         }
 
-        public PSResourceManagerModels.ResourcesClient ResourceClient
-        {
-            get
-            {
-                if (this.resourcesClient == null)
-                {
-                    this.resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultProfile.Context)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
-                }
-                return this.resourcesClient;
-            }
-            set { this.resourcesClient = value; }
-        }
-        
         public WebServicesClient WebServicesClient
         {
             get
