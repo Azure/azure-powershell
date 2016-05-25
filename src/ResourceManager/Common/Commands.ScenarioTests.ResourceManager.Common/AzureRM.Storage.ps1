@@ -27,14 +27,19 @@ function New-AzureRmStorageAccount
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
 	[string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Location,
-	[string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $Type)
+    [Microsoft.Azure.Management.Storage.Models.AccountType] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $Type)
   BEGIN { 
     $context = Get-Context
 	$client = Get-StorageClient $context
   }
   PROCESS {
     $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Models.StorageAccountCreateParameters
-	$createParms.AccountType = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
+    if ($Type -eq $null)
+    {
+      $Type = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
+    }
+
+	$createParms.AccountType = $Type
 	$createParms.Location = $Location
     $getTask = $client.StorageAccounts.CreateAsync($ResourceGroupName, $name, $createParms, [System.Threading.CancellationToken]::None)
 	$sa = $getTask.Result
