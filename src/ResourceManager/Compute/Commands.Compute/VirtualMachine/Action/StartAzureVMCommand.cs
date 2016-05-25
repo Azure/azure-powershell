@@ -15,12 +15,13 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsLifecycle.Start, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
-    [OutputType(typeof(PSAzureOperationResponse))]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class StartAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute
                 var op = this.VirtualMachineClient.StartWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.Name).GetAwaiter().GetResult();
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                 WriteObject(result);
             });
         }
