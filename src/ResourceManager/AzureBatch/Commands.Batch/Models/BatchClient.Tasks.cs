@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 return task.omObject;
             };
 
-            IEnumerable<CloudTask> taskCollection = parameters.TaskCollection.Select(mappingFunc);
+            IEnumerable<CloudTask> taskCollection = parameters.Tasks.Select(mappingFunc);
 
             JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
             string jobId = parameters.Job == null ? parameters.JobId : parameters.Job.Id;

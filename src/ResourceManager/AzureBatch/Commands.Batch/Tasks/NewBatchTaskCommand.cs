@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.Batch
         internal const string JobObjectAndSingleAddParameterSet = "JobObject_Single";
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet, Mandatory = true,
-            HelpMessage = "The id of the job to create the task under.")]
+            HelpMessage = "The id of the job to which to add the task.")]
         [Parameter(ParameterSetName = JobIdAndBulkAddParameterSet, Mandatory = true,
-            HelpMessage = "The id of the job to create the task under.")]
+            HelpMessage = "The id of the job to which to add the task.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCloudJob Job { get; set; }
 
-        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet, Mandatory = true, HelpMessage = "The id of the task to create.")]
-        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet, Mandatory = true, HelpMessage = "The id of the task to create.")]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet, Mandatory = true, HelpMessage = "The id of the task to add.")]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet, Mandatory = true, HelpMessage = "The id of the task to add.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
@@ -95,13 +95,13 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = JobIdAndBulkAddParameterSet,
             HelpMessage = "The collection of tasks to add to a job.")]
         [ValidateNotNullOrEmpty]
-        public PSCloudTask[] TaskCollection { get; set; }
+        public PSCloudTask[] Tasks { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (TaskCollection != null)
+            if (Tasks != null)
             {
-                NewBulkTaskParameters parameters = new NewBulkTaskParameters(this.BatchContext, this.JobId, this.Job, this.TaskCollection, this.AdditionalBehaviors);
+                NewBulkTaskParameters parameters = new NewBulkTaskParameters(this.BatchContext, this.JobId, this.Job, this.Tasks, this.AdditionalBehaviors);
                 BatchClient.AddTaskCollection(parameters);
             }
             else

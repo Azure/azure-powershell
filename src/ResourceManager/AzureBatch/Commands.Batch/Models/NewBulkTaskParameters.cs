@@ -21,20 +21,20 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class NewBulkTaskParameters : JobOperationParameters
     {
-        public NewBulkTaskParameters(BatchAccountContext context, string jobId, PSCloudJob job, PSCloudTask[] taskCollection, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public NewBulkTaskParameters(BatchAccountContext context, string jobId, PSCloudJob job, PSCloudTask[] tasks, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, jobId, job, additionalBehaviors)
         {
-            if (taskCollection == null)
+            if (tasks == null)
             {
                 throw new ArgumentNullException("taskCollection");
             }
 
-            this.TaskCollection = taskCollection;
+            this.Tasks = tasks;
         }
 
         /// <summary>
         /// The collection of tasks to add.
         /// </summary>
-        public PSCloudTask[] TaskCollection { get; private set; }
+        public PSCloudTask[] Tasks { get; private set; }
     }
 }
