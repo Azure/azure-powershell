@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             ParameterSetName = ListVaultsByRGParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the name of a resource group. This cmdlet gets key vault instances in the resource group that this parameter specifies.")]        
+            HelpMessage = "Specifies the name of a resource group. This cmdlet gets key vault instances in the resource group that this parameter specifies.")]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
@@ -75,6 +75,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The usage of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
             switch (ParameterSetName)
             {
                 case GetVaultParameterSet:

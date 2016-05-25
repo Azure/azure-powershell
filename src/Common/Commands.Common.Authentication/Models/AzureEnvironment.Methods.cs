@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 : AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
         }
 
-    
+
 
         public bool IsEndpointSet(AzureEnvironment.Endpoint endpoint)
         {
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             AzureKeyVaultDnsSuffix,
 
             AzureKeyVaultServiceEndpointResourceId,
-            
+
             AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix,
 
             AzureDataLakeStoreFileSystemEndpointSuffix,

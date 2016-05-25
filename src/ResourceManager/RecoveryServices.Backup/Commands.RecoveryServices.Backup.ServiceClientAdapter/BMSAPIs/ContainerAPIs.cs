@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>
         /// Fetches protection containers in the vault according to the query params
         /// </summary>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
+        /// <param name="parameters">Query parameters</param>
+        /// <returns>List of protection containers</returns>
         public IEnumerable<ProtectionContainerResource> ListContainers(
             ProtectionContainerListQueryParams queryParams)
         {
@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
-        /// Fetches backup engine in the vault according to the query params
+        /// Fetches backup engines in the vault according to the query params
         /// </summary>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
+        /// <param name="parameters">Query parameters</param>
+        /// <returns>List of backup engines</returns>
         public IEnumerable<BackupEngineResource> ListBackupEngines(BackupEngineListQueryParams queryParams)
         {
             PaginationRequest paginationParam = new PaginationRequest();
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>
         /// Triggers refresh of container catalog in service
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Response of the job created in the service</returns>
         public BaseRecoveryServicesJobResponse RefreshContainers()
         {
             string resourceName = BmsAdapter.GetResourceName();
@@ -78,9 +78,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
-        /// Unregister a container in service
+        /// Triggers unregister of a container in service
         /// </summary>
-        /// <returns></returns>
         public AzureOperationResponse UnregisterContainers(string containerName)
         {
             string resourceName = BmsAdapter.GetResourceName();

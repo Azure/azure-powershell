@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsCatalogItem"),
-     OutputType(typeof (List<CatalogItem>), typeof (CatalogItem))]
+     OutputType(typeof(List<CatalogItem>), typeof(CatalogItem))]
+    [Alias("Get-AdlCatalogItem")]
     public class GetAzureDataLakeAnalyticsCatalogItem : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

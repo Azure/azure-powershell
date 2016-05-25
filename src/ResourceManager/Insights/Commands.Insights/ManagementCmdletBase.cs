@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Insights;
@@ -37,7 +36,8 @@ namespace Microsoft.Azure.Commands.Insights
         {
             // The premise is that a command to establish a context (like Add-AzureRmAccount) has
             //   been called before this command in order to have a correct CurrentContext
-            get {
+            get
+            {
                 if (this.insightsManagementClient == null)
                 {
                     this.insightsManagementClient = AzureSession.ClientFactory.CreateClient<InsightsManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);

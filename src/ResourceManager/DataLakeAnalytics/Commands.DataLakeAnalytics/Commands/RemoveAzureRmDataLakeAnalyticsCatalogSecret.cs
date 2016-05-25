@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof(bool))]
+    [Alias("Remove-AdlCatalogSecret")]
     public class RemoveAzureDataLakeAnalyticsSecret : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

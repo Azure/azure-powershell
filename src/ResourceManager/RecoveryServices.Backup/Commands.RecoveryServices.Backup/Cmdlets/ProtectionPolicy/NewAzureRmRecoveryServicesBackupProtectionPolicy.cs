@@ -27,30 +27,45 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Create new protection policy
+    /// Creates a new protection policy based on the parameters provided in to the recovery services vault.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesBackupProtectionPolicy"), OutputType(typeof(PolicyBase))]
     public class NewAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
+        /// <summary>
+        /// Name of the policy to be created
+        /// </summary>
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Workload type that is managed by this policy
+        /// </summary>
         [Parameter(Position = 2, Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
+        /// <summary>
+        /// Backup management type of the policy to be created
+        /// </summary>
         [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsgs.Common.BackupManagementType,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 
+        /// <summary>
+        /// Retention policy object associated with the policy to be created
+        /// </summary>
         [Parameter(Position = 4, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.RetentionPolicy, 
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public RetentionPolicyBase RetentionPolicy { get; set; }
 
+        /// <summary>
+        /// Schedule policy object assoicated with the policy to be created
+        /// </summary>
         [Parameter(Position = 5, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SchedulePolicy, 
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]

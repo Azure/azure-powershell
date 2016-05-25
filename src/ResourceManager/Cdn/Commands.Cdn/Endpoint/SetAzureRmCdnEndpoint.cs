@@ -46,8 +46,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                     CdnEndpoint.IsHttpAllowed,
                     CdnEndpoint.IsHttpsAllowed,
                     CdnEndpoint.QueryStringCachingBehavior
-                        .CastEnum<PSQueryStringCachingBehavior, SdkQueryStringCachingBehavior>(),
-                    CdnEndpoint.Origins.Select(origin => origin.ToSdkDeepCreatedOrigin()).ToList()), profileName, resourceGroupgName);
+                        .CastEnum<PSQueryStringCachingBehavior, SdkQueryStringCachingBehavior>()), profileName, resourceGroupgName);
 
             WriteVerbose(Resources.Success);
             WriteObject(endpoint.ToPsEndpoint());

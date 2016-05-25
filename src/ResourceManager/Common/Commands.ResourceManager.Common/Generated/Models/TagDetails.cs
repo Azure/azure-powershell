@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Collections.Generic;
 using Hyak.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class TagDetails
     {
         private TagCount _count;
-        
+
         /// <summary>
         /// Optional. Gets or sets the tag count.
         /// </summary>
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._count; }
             set { this._count = value; }
         }
-        
+
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets the tag ID.
         /// </summary>
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _name;
-        
+
         /// <summary>
         /// Optional. Gets or sets the tag name.
         /// </summary>
@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._name; }
             set { this._name = value; }
         }
-        
+
         private IList<TagValue> _values;
-        
+
         /// <summary>
         /// Optional. Gets or sets the list of tag values.
         /// </summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._values; }
             set { this._values = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the TagDetails class.
         /// </summary>

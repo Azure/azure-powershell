@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Tags.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Tags.Tag
 {

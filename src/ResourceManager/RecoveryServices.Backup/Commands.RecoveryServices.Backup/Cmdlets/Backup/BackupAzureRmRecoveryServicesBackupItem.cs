@@ -26,12 +26,16 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Backup Item
+    /// Enables backup of an item protected by the recovery services vault.
+    /// Returns the corresponding job created in the service to track this backup operation.
     /// </summary>
     [Cmdlet(VerbsData.Backup, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(JobBase))]
     public class BackupAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem, 
+        /// <summary>
+        /// The protected item on which backup has to be triggered.
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
@@ -40,13 +44,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            PsBackupProviderManager providerManager = 
+            PsBackupProviderManager providerManager =
                 new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
                     {ItemParams.Item, Item},
                 }, ServiceClientAdapter);
 
-            IPsBackupProvider psBackupProvider = 
+            IPsBackupProvider psBackupProvider =
                 providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
             var jobResponse = psBackupProvider.TriggerBackup();
 

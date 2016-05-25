@@ -12,6 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Management.DataLake.Store;
+using Microsoft.Azure.Management.DataLake.Store.Models;
+using Microsoft.Azure.Management.DataLake.StoreUploader;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -22,19 +29,12 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Management.DataLake.Store;
-using Microsoft.Azure.Management.DataLake.Store.Models;
-using Microsoft.Azure.Management.DataLake.StoreUploader;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     public class DataLakeStoreFileSystemClient
     {
-        private const decimal MaximumBytesPerDownloadRequest = 32*1024*1024; //32MB
+        private const decimal MaximumBytesPerDownloadRequest = 32 * 1024 * 1024; //32MB
 
         /// <summary>
         /// The lock object
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             var lengthToUse = GetFileStatus(filePath, accountName).Length.Value;
-            var numRequests = Math.Ceiling(lengthToUse/MaximumBytesPerDownloadRequest);
+            var numRequests = Math.Ceiling(lengthToUse / MaximumBytesPerDownloadRequest);
 
             using (var fileStream = new FileStream(destinationFilePath, FileMode.CreateNew))
             {
@@ -191,13 +191,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     string.Format("Downloading File in DataLakeStore Store Location: {0} to destination path: {1}",
                         filePath, destinationFilePath));
                 long currentOffset = 0;
-                var bytesToRequest = (long) MaximumBytesPerDownloadRequest;
-                
+                var bytesToRequest = (long)MaximumBytesPerDownloadRequest;
+
                 //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
                 for (long i = 0; i < numRequests; i++)
                 {
                     cmdletCancellationToken.ThrowIfCancellationRequested();
-                    progress.PercentComplete = (int) Math.Ceiling((i/numRequests)*100);
+                    progress.PercentComplete = (int)Math.Ceiling((i / numRequests) * 100);
                     UpdateProgress(progress, cmdletRunningRequest);
                     var responseStream =
                         ReadFromFile(
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                             accountName,
                             currentOffset,
                             bytesToRequest);
-                        
+
                     responseStream.CopyTo(fileStream);
                     currentOffset += bytesToRequest;
                 }
@@ -220,31 +220,41 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
         }
 
-        public Stream PreviewFile(string filePath, string accountName, long bytesToPreview,
+        public Stream PreviewFile(string filePath, string accountName, long bytesToPreview, long offset,
             CancellationToken cmdletCancellationToken, Cmdlet cmdletRunningRequest = null)
         {
             var lengthToUse = GetFileStatus(filePath, accountName).Length.Value;
-            if (bytesToPreview <= lengthToUse && bytesToPreview > 0)
+            if(offset > lengthToUse || offset < 0)
+            {
+                throw new ArgumentOutOfRangeException(string.Format(Properties.Resources.OffsetOutOfRange, offset, lengthToUse));
+            }
+
+            if (bytesToPreview <= lengthToUse + offset && bytesToPreview > 0)
             {
                 lengthToUse = bytesToPreview;
             }
+            else
+            {
+                // make sure that we are only previewing bytes after the specified offset
+                lengthToUse -= offset;
+            }
 
-            var numRequests = Math.Ceiling(lengthToUse/MaximumBytesPerDownloadRequest);
+            var numRequests = Math.Ceiling(lengthToUse / MaximumBytesPerDownloadRequest);
 
             var byteStream = new MemoryStream();
             var progress = new ProgressRecord(
                 0,
                 "Previewing a file from DataLakeStore Store",
-                string.Format("Previewing file in DataLakeStore Store Location: {0}. Bytes to preview: {1}", filePath,
-                    bytesToPreview));
-            long currentOffset = 0;
-            var bytesToRequest = (long) MaximumBytesPerDownloadRequest;
+                string.Format("Previewing file in DataLakeStore Store Location: {0}. Bytes to preview: {1}, from Offset: {2}", filePath,
+                    bytesToPreview, offset));
+            long currentOffset = offset;
+            var bytesToRequest = (long)MaximumBytesPerDownloadRequest;
 
             //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
             for (long i = 0; i < numRequests; i++)
             {
                 cmdletCancellationToken.ThrowIfCancellationRequested();
-                progress.PercentComplete = (int) Math.Ceiling((i/numRequests)*100);
+                progress.PercentComplete = (int)Math.Ceiling((i / numRequests) * 100);
                 UpdateProgress(progress, cmdletRunningRequest);
 
                 if (lengthToUse < bytesToRequest)
@@ -280,7 +290,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public Stream ReadFromFile(string filePath, string accountName, long offset, long bytesToRead)
         {
-            return _client.FileSystem.Open(accountName, filePath, bytesToRead, offset);   
+            return _client.FileSystem.Open(accountName, filePath, bytesToRead, offset);
         }
 
         public string GetHomeDirectory(string accountName)
@@ -345,10 +355,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             CancellationToken cmdletCancellationToken, int threadCount = -1, bool overwrite = false, bool resume = false,
             bool isBinary = false, Cmdlet cmdletRunningRequest = null, ProgressRecord parentProgress = null)
         {
-            FileType ignoredType;   
+            FileType ignoredType;
             if (!overwrite && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType))
             {
-                throw new InvalidOperationException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationPath));    
+                throw new InvalidOperationException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationPath));
             }
 
             //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
@@ -380,7 +390,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 lock (ConsoleOutputLock)
                 {
-                    progress.PercentComplete = (int) (1.0*e.UploadedByteCount/e.TotalFileLength*100);
+                    progress.PercentComplete = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
                 }
             };
 
@@ -405,6 +415,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }, cmdletCancellationToken);
 
                 TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
+            }
+            catch (Exception e)
+            {
+                throw new CloudException(string.Format(Properties.Resources.UploadFailedMessage, e));
             }
             finally
             {
@@ -448,7 +462,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 uniqueActivityIdGenerator.Next(0, 10000000),
                 string.Format("Copying Folder: {0}{1}. Total bytes to be copied: {2}. Total files to be copied: {3}",
                     sourceFolderPath, recursive ? " recursively" : string.Empty, totalBytes, totalFiles),
-                "Copy in progress...") {PercentComplete = 0};
+                "Copy in progress...")
+            { PercentComplete = 0 };
 
             UpdateProgress(progress, cmdletRunningRequest);
 
@@ -461,7 +476,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             try
             {
                 ServicePointManager.DefaultConnectionLimit =
-                    Math.Max((internalFolderThreads*internalFileThreads) + internalFolderThreads,
+                    Math.Max((internalFolderThreads * internalFileThreads) + internalFolderThreads,
                         ServicePointManager.DefaultConnectionLimit);
                 ServicePointManager.Expect100Continue = false;
 
@@ -557,11 +572,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         cmdletCancellationToken.ThrowIfCancellationRequested();
 
                         // only update progress if the percentage has changed.
-                        if ((int) Math.Ceiling((decimal) testFileCountChanged/totalFiles*100)
-                            < (int) Math.Ceiling((decimal) fileCount/totalFiles*100))
+                        if ((int)Math.Ceiling((decimal)testFileCountChanged / totalFiles * 100)
+                            < (int)Math.Ceiling((decimal)fileCount / totalFiles * 100))
                         {
                             testFileCountChanged = fileCount;
-                            var percentComplete = (int) Math.Ceiling((decimal) fileCount/totalFiles*100);
+                            var percentComplete = (int)Math.Ceiling((decimal)fileCount / totalFiles * 100);
                             if (percentComplete > 100)
                             {
                                 // in some cases we can get 101 percent complete using ceiling, however we want to be

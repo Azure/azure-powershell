@@ -36,11 +36,11 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
                     let setter = p.GetSetMethod(true)
                     where exists
                     select new VhdPropertyDescriptor
-                               {
-                                   Attribute = (VhdPropertyAttribute)(vhdPropertyAttributes[0]),
-                                   Getter = getter,
-                                   Setter = setter
-                               }).ToList();
+                    {
+                        Attribute = (VhdPropertyAttribute)(vhdPropertyAttributes[0]),
+                        Getter = getter,
+                        Setter = setter
+                    }).ToList();
         }
     }
 }

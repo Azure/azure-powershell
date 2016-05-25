@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static FeatureResponse Get(this IFeatures operations, string resourceProviderNamespace, string featureName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IFeatures)s).GetAsync(resourceProviderNamespace, featureName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get all features under the subscription.
         /// </summary>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.GetAsync(resourceProviderNamespace, featureName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets a list of previewed features of a resource provider.
         /// </summary>
@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static FeatureOperationsListResult List(this IFeatures operations, string resourceProviderNamespace)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IFeatures)s).ListAsync(resourceProviderNamespace);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a list of previewed features of a resource provider.
         /// </summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAsync(resourceProviderNamespace, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets a list of previewed features for all the providers in the
         /// current subscription.
@@ -121,13 +121,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static FeatureOperationsListResult ListAll(this IFeatures operations)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IFeatures)s).ListAllAsync();
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a list of previewed features for all the providers in the
         /// current subscription.
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAllAsync(CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets a list of previewed features of a subscription.
         /// </summary>
@@ -158,13 +158,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static FeatureOperationsListResult ListAllNext(this IFeatures operations, string nextLink)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IFeatures)s).ListAllNextAsync(nextLink);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a list of previewed features of a subscription.
         /// </summary>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAllNextAsync(nextLink, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets a list of previewed features of a resource provider.
         /// </summary>
@@ -198,13 +198,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static FeatureOperationsListResult ListNext(this IFeatures operations, string nextLink)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IFeatures)s).ListNextAsync(nextLink);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a list of previewed features of a resource provider.
         /// </summary>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListNextAsync(nextLink, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Registers for a previewed feature of a resource provider.
         /// </summary>
@@ -240,13 +240,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static FeatureResponse Register(this IFeatures operations, string resourceProviderNamespace, string featureName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IFeatures)s).RegisterAsync(resourceProviderNamespace, featureName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Registers for a previewed feature of a resource provider.
         /// </summary>

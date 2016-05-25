@@ -22,7 +22,6 @@
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -96,13 +95,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 10,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetNetworkConfiguration [] NetworkInterfaceConfiguration { get; set; }
+        public VirtualMachineScaleSetNetworkConfiguration[] NetworkInterfaceConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 11,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetExtension [] Extension { get; set; }
+        public VirtualMachineScaleSetExtension[] Extension { get; set; }
 
         protected override void ProcessRecord()
         {

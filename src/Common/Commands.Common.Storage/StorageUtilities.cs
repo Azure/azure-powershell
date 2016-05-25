@@ -14,15 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
-    using System;
-    using System.Linq;
-    using System.Text;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.WindowsAzure.Management.Storage;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.Table;
+    using System;
+    using System.Linq;
+    using System.Text;
 
     public class StorageUtilities
     {

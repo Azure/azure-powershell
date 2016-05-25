@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
-{    
+{
     /// <summary>
     /// Cmdlet to get current context. 
     /// </summary>

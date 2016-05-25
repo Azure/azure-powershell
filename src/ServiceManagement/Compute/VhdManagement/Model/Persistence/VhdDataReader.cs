@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
-using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 {
@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         public bool EndReadBoolean(IAsyncResult result)
         {
             AsyncMachine.EndAsyncMachine(result);
-            return (m_buffer[0] != 0); 
+            return (m_buffer[0] != 0);
         }
 
         IEnumerable<CompletionPort> FillBuffer(AsyncMachine machine, int numBytes)
@@ -108,7 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         public short EndReadInt16(IAsyncResult result)
         {
             AsyncMachine.EndAsyncMachine(result);
-            short value = (short) (m_buffer[0] | m_buffer[1] << 8);
+            short value = (short)(m_buffer[0] | m_buffer[1] << 8);
             return IPAddress.NetworkToHostOrder(value);
         }
 
@@ -161,7 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
                              m_buffer[2] << 16 | m_buffer[3] << 24);
             uint hi = (uint)(m_buffer[4] | m_buffer[5] << 8 |
                              m_buffer[6] << 16 | m_buffer[7] << 24);
-            ulong value = ((ulong) hi) << 32 | lo;
+            ulong value = ((ulong)hi) << 32 | lo;
             return (ulong)IPAddress.NetworkToHostOrder((long)value);
         }
 
@@ -233,7 +233,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         {
             return BeginReadBytes(offset, 1, callback, state);
         }
-        
+
         public byte EndReadByte(IAsyncResult result)
         {
             return EndReadBytes(result)[0];

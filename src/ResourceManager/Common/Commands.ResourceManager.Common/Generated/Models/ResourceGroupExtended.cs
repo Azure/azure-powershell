@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ResourceGroupExtended : ResourceGroup
     {
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets the ID of the resource group.
         /// </summary>
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _name;
-        
+
         /// <summary>
         /// Optional. Gets or sets the Name of the resource group.
         /// </summary>
@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._name; }
             set { this._name = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceGroupExtended class.
         /// </summary>
         public ResourceGroupExtended()
         {
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceGroupExtended class with
         /// required arguments.

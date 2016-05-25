@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public void SetTokenCacheForProfile(AzureRMProfile profile)
         {
-            
+
         }
 
         public void ResetDefaultProfile()
