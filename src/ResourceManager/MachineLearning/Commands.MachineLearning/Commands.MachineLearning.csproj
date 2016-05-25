@@ -82,6 +82,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.Commands.Resources.dll">
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll">
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.ResourceManager.Common.dll">
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Commands.Common.dll">
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.Common.Authentication.dll">
+      <Private>true</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
@@ -92,28 +107,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
-      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
-      <Name>Commands.Common.Authentication</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
-      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
-      <Name>Commands.Resources.Rest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
-      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
-      <Name>Commands.Resources</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\ExportWebServiceDefinition.cs" />
