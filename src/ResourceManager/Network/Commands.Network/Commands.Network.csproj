@@ -290,19 +290,16 @@
     <Compile Include="Models\PSPeeringStats.cs" />
     <Compile Include="Models\PSExpressRouteCircuitAuthorization.cs" />
     <Compile Include="Models\PSExpressRouteCircuit.cs" />
-<<<<<<< HEAD
     <Compile Include="Models\PSExpressRouteCircuitArpTable.cs" />
     <Compile Include="Models\PSExpressRouteCircuitRoutesTable.cs" />
     <Compile Include="Models\PSExpressRouteCircuitRoutesTableSummary.cs" />
     <Compile Include="Models\PSExpressRouteCircuitStats.cs" />
-=======
     <Compile Include="NetworkInterface\IpConfiguration\AddAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\AzureNetworkInterfaceIpConfigBase.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\GetAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\NewAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\RemoveAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\SetAzureNetworkInterfaceIpConfigCommand.cs" />
->>>>>>> 72b79da8ead7a7656c981bbf8aa3c1e9ff2bcdd6
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
