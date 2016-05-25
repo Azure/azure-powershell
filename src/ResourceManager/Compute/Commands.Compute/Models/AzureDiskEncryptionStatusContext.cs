@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
     class AzureDiskEncryptionStatusContext
     {
         public EncryptionStatus OsVolumeEncrypted { get; set; }
-        public DiskEncryptionSettings VolumeEncryptionSettings { get; set; }
+        public DiskEncryptionSettings OsVolumeEncryptionSettings { get; set; }
         public EncryptionStatus DataVolumesEncrypted { get; set; }
     }
 }

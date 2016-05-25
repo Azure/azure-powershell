@@ -553,8 +553,8 @@
                 <PropertyName>DataVolumesEncrypted</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>VolumeEncryptionSettings</Label>
-                <PropertyName>VolumeEncryptionSettings</PropertyName>
+                <Label>OsVolumeEncryptionSettings</Label>
+                <PropertyName>OsVolumeEncryptionSettings</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
