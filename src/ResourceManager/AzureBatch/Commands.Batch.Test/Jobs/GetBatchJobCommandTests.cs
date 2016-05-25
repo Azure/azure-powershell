@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Microsoft.Rest.Azure;
 using Xunit;
-using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchJobCommandTests()
+        public GetBatchJobCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchJobCommand()
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             // Build a CloudJob instead of querying the service on a Get CloudJob call
             AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> response = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.JobGetOptions, 
+                ProxyModels.JobGetOptions,
                 AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -92,13 +93,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
             AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> getResponse = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
             RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.JobGetOptions, 
+                ProxyModels.JobGetOptions,
                 AzureOperationResponse<ProxyModels.CloudJob,
                 ProxyModels.JobGetHeaders>>(getResponse);
 
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                ProxyModels.JobGetOptions options = (ProxyModels.JobGetOptions) request.Options;
+                ProxyModels.JobGetOptions options = (ProxyModels.JobGetOptions)request.Options;
 
                 requestSelect = options.Select;
                 requestExpand = options.Expand;

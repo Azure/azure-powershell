@@ -14,12 +14,11 @@
 
 using Microsoft.Azure.Commands.ActiveDirectory.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Graph.RBAC.Models;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {

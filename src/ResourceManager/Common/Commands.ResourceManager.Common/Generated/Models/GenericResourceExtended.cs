@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class GenericResourceExtended : ResourceBaseExtended
     {
         private Plan _plan;
-        
+
         /// <summary>
         /// Optional. Gets or sets the plan of the resource.
         /// </summary>
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._plan; }
             set { this._plan = value; }
         }
-        
+
         private string _properties;
-        
+
         /// <summary>
         /// Optional. Gets or sets the resource properties.
         /// </summary>
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._properties; }
             set { this._properties = value; }
         }
-        
+
         private string _provisioningState;
-        
+
         /// <summary>
         /// Optional. Gets or sets resource provisioning state.
         /// </summary>
@@ -60,14 +60,14 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._provisioningState; }
             set { this._provisioningState = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the GenericResourceExtended class.
         /// </summary>
         public GenericResourceExtended()
         {
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the GenericResourceExtended class
         /// with required arguments.

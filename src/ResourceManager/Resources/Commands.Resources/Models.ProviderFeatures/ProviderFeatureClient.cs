@@ -17,11 +17,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
 {
+    using Microsoft.Azure.Management.Resources;
+    using Microsoft.Azure.Management.Resources.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
     /// <summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
                     throw new KeyNotFoundException(string.Format(ProjectResources.FeatureNotFound, featureName, resourceProviderNamespace));
                 }
 
-                return new [] { featureResponse.ToPSProviderFeature() };
+                return new[] { featureResponse.ToPSProviderFeature() };
             }
             else
             {
@@ -111,12 +111,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
                     listNextFunc = next => this.FeaturesManagementClient.Features.ListNext(next);
                 }
 
-                var returnList = new List<FeatureResponse>(); 
+                var returnList = new List<FeatureResponse>();
                 var tempResult = listFunc();
 
                 returnList.AddRange(tempResult.Features);
 
-                while(!string.IsNullOrWhiteSpace(tempResult.NextLink))
+                while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
                 {
                     tempResult = listNextFunc(tempResult.NextLink);
                     returnList.AddRange(tempResult.Features);

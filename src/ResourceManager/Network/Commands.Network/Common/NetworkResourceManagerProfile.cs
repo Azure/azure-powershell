@@ -14,10 +14,10 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using AutoMapper;
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using AutoMapper;
     using CNM = Microsoft.Azure.Commands.Network.Models;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -115,10 +115,10 @@ namespace Microsoft.Azure.Commands.Network
             // LoadBalancer
             // CNM to MNM
             Mapper.CreateMap<CNM.PSLoadBalancer, MNM.LoadBalancer>();
-            
+
             // MNM to CNM
             Mapper.CreateMap<MNM.LoadBalancer, CNM.PSLoadBalancer>();
-            
+
             // FrontendIpConfiguration
             // CNM to MNM
             Mapper.CreateMap<CNM.PSFrontendIPConfiguration, MNM.FrontendIPConfiguration>();
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Network
             // CNM to MNM
             Mapper.CreateMap<CNM.PSPeering, MNM.ExpressRouteCircuitPeering>();
             Mapper.CreateMap<CNM.PSPeeringConfig, MNM.ExpressRouteCircuitPeeringConfig>();
-            
+
             // MNM to CNM
             Mapper.CreateMap<MNM.ExpressRouteCircuitPeering, CNM.PSPeering>();
             Mapper.CreateMap<MNM.ExpressRouteCircuitPeeringConfig, CNM.PSPeeringConfig>();
@@ -232,10 +232,10 @@ namespace Microsoft.Azure.Commands.Network
             // ExoressRouteCircuitAuthorization
             // CNM to MNM
             Mapper.CreateMap<CNM.PSExpressRouteCircuitAuthorization, MNM.ExpressRouteCircuitAuthorization>();
-         
+
             // MNM to CNM
             Mapper.CreateMap<MNM.ExpressRouteCircuitAuthorization, CNM.PSExpressRouteCircuitAuthorization>();
-   
+
 
             // Gateways
             // CNM to MNM

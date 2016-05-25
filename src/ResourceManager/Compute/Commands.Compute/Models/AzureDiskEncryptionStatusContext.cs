@@ -13,6 +13,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get { return JsonConvert.SerializeObject(OsVolumeEncryptionSettings, Formatting.Indented); }
         }
-        public bool DataVolumesEncrypted { get; set;}
+        public bool DataVolumesEncrypted { get; set; }
     }
 }

@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses
 {
+    using Cmdlets.Utilities;
     using System;
     using System.Net;
-    using Cmdlets.Utilities;
 
     /// <summary>
     /// The error response message exception.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorRespons
         /// <param name="errorResponseMessage">The error response code.</param>
         /// <param name="errorMessage">The error response message.</param>
         /// <param name="innerException">Optional. The inner exception.</param>
-        public ErrorResponseMessageException(HttpStatusCode httpStatus,  ErrorResponseMessage errorResponseMessage, string errorMessage, Exception innerException = null)
+        public ErrorResponseMessageException(HttpStatusCode httpStatus, ErrorResponseMessage errorResponseMessage, string errorMessage, Exception innerException = null)
             : base(errorMessage, innerException)
         {
             if (HttpUtility.IsSuccessfulRequest(httpStatus))

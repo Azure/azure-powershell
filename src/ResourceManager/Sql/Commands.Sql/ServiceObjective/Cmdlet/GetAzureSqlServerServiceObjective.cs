@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter;
-using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
 {

@@ -19,25 +19,33 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
     public class OriginTests
     {
+        private ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
+
+        public OriginTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestOriginGetSetWithRunningEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-OriginGetSetWithRunningEndpoint");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-OriginGetSetWithRunningEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestOriginGetSetWithStoppedEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-OriginGetSetWithStoppedEndpoint");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-OriginGetSetWithStoppedEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestOriginGetSetWhenEndpointDoesnotExist()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-OriginGetSetWhenEndpointDoesnotExist");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-OriginGetSetWhenEndpointDoesnotExist");
         }
     }
 }

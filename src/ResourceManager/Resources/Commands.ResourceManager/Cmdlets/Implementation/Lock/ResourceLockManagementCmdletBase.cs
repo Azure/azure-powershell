@@ -14,13 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Base class for resource lock management cmdlets.
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary> 
         /// The Id parameter set. 
         /// </summary> 
-        internal const string LockIdParameterSet = "A lock, by Id."; 
+        internal const string LockIdParameterSet = "A lock, by Id.";
 
         /// <summary>
         /// The resource group level resource lock.
@@ -139,7 +138,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 throw new InvalidOperationException(string.Format("The Id '{0}' does not belong to a lock.", this.LockId));
             }
-            
+
             return !string.IsNullOrWhiteSpace(this.Scope)
                 ? ResourceIdUtility.GetResourceId(
                     resourceId: this.Scope,

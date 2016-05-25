@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class DeploymentOperation
     {
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets full deployment operation id.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _operationId;
-        
+
         /// <summary>
         /// Optional. Gets or sets deployment operation id.
         /// </summary>
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._operationId; }
             set { this._operationId = value; }
         }
-        
+
         private DeploymentOperationProperties _properties;
-        
+
         /// <summary>
         /// Optional. Gets or sets deployment properties.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._properties; }
             set { this._properties = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the DeploymentOperation class.
         /// </summary>

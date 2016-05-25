@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Management.DataLake.Store.Models;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Join, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
+    [Cmdlet(VerbsCommon.Join, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Alias("Join-AdlStoreItem")]
     public class JoinAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -52,8 +53,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             FileType fileType;
             if (Force &&
                 DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
-                    out fileType) && fileType == FileType.File)
-                // If it is a directory you are trying to overwrite with a concatenated file, we will error out.
+                    out fileType) && fileType == FileType.FILE)
+            // If it is a directory you are trying to overwrite with a concatenated file, we will error out.
             {
                 DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, false);
             }

@@ -14,13 +14,13 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
 
     /// <summary>
     /// Creates a new LogicApp workflow 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();            
+            base.ExecuteCmdlet();
 
             if (this.Definition != null)
             {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             {
                 this.Parameters = CmdletHelper.GetParametersFromFile(this.TryResolvePath(this.ParameterFilePath));
             }
-            
+
             var servicePlan = WebsitesClient.GetAppServicePlan(this.ResourceGroupName, this.AppServicePlan);
 
             if (string.IsNullOrEmpty(this.Location))
@@ -156,13 +156,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                         Uri = this.ParameterLinkUri,
                         ContentVersion = this.ParameterLinkContentVersion
                     },
-                State = (WorkflowState) Enum.Parse(typeof (WorkflowState), this.State),
+                State = (WorkflowState)Enum.Parse(typeof(WorkflowState), this.State),
                 Sku = new Sku
                 {
-                    Name = (SkuName)Enum.Parse(typeof(SkuName), servicePlan.Sku.Tier),                    
+                    Name = (SkuName)Enum.Parse(typeof(SkuName), servicePlan.Sku.Tier),
                     Plan = new ResourceReference
                     {
-                        Id = servicePlan.Id                        
+                        Id = servicePlan.Id
                     }
                 }
             }), true);

@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,14 +14,13 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
-    using System;
-    using System.Management.Automation;
-    using System.Globalization;
-    using System.Security.Permissions;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.BlobSas, DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission), OutputType(typeof(String))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
@@ -70,11 +69,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Policy Identifier", 
+            HelpMessage = "Policy Identifier",
             ParameterSetName = BlobNamePipelineParmeterSetWithPolicy)]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Policy Identifier", 
+            HelpMessage = "Policy Identifier",
             ParameterSetName = BlobPipelineParameterSetWithPolicy)]
         [ValidateNotNullOrEmpty]
         public string Policy

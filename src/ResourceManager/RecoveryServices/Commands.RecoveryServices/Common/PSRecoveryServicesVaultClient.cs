@@ -33,6 +33,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
+        /// Method to get Azure Recovery Services Vault
+        /// </summary>
+        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resourceName">Name of the resource</param>
+        /// <returns>vault response object.</returns>
+        public VaultResponse GetVault(string resouceGroupName, string resourceName)
+        {
+            return this.GetRecoveryServicesClient.Vaults.Get(resouceGroupName, resourceName, this.GetRequestHeaders());
+        }
+
+        /// <summary>
         /// Method to create Azure Recovery Services Vault
         /// </summary>
         /// <param name="resouceGroupName">Name of the resouce group</param>
@@ -62,6 +73,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public ResourceGroupListResponse GetResouceGroups()
         {
             return this.GetRecoveryServicesClient.ResourceGroup.List();
+        }
+
+
+        /// <summary>  
+        /// Method to Update Azure Recovery Services Vault Backup Properties  
+        /// </summary>  
+        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="vaultName">Name of the vault</param>  
+        /// <param name="vaultStorageUpdateRequest">Backup Properties Update</param>  
+        /// <returns>Azure Operation response object.</returns>  
+        public AzureOperationResponse UpdateVaultStorageType(string resouceGroupName, string vaultName, 
+            UpdateVaultStorageTypeRequest vaultStorageUpdateRequest)
+        {
+            return this.recoveryServicesClient.Vaults.UpdateStorageType(resouceGroupName, vaultName,
+                vaultStorageUpdateRequest, this.GetRequestHeaders());
+        }
+
+        /// <summary>  
+        /// Method to Get Azure Recovery Services Vault Backup Properties  
+        /// </summary>  
+        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="vaultName">Name of the vault</param>  
+        /// <returns>Azure Resource Storage response object.</returns>  
+        public GetResourceStorageConfigResponse GetVaultStorageType(string resouceGroupName, string vaultName)
+        {
+            return this.recoveryServicesClient.Vaults.GetResourceStorageConfig(resouceGroupName, 
+                vaultName, this.GetRequestHeaders());
         }
     }
 }

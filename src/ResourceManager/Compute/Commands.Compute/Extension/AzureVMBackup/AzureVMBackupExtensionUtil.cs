@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
-using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
@@ -28,13 +28,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {
@@ -147,7 +141,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
                 }
                 else
                 {
-                    throw new AzureVMBackupException(AzureVMBackupErrorCodes.WrongBlobUriFormat,"the blob uri is not in correct format.");
+                    throw new AzureVMBackupException(AzureVMBackupErrorCodes.WrongBlobUriFormat, "the blob uri is not in correct format.");
                 }
             }
             return blobSASUris;

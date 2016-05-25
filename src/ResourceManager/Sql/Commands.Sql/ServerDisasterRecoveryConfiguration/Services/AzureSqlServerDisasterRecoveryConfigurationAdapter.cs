@@ -12,17 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Server.Adapter;
+using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
+using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
-using Microsoft.Azure.Commands.Sql.Server.Services;
-using Microsoft.Azure.Commands.Sql.Services;
-
-using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Services
 {
@@ -163,7 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
                 return new AzureSqlServerDisasterRecoveryConfigurationActivityModel()
                 {
                     ServerDisasterRecoveryConfigurationName = r.Name,
-                    
+
                 };
             });
 

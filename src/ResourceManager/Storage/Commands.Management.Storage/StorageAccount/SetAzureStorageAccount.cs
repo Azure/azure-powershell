@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
@@ -100,6 +100,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ExecuteCmdlet();
 
+            WriteWarning("The usage of Tags parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+            
             StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
             if (this.SkuName != null)
             {
@@ -118,9 +120,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 {
                     Name = CustomDomainName,
                     UseSubDomain = UseSubDomain
-                };                
+                };
             }
-            else if(UseSubDomain != null)
+            else if (UseSubDomain != null)
             {
                 throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
             }

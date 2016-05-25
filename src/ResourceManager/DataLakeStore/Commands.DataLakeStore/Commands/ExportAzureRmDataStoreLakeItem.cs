@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
+    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Alias("Export-AdlStoreItem")]
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             FileType type;
 
             if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type) ||
-                type != FileType.File)
+                type != FileType.FILE)
             {
                 throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
             }

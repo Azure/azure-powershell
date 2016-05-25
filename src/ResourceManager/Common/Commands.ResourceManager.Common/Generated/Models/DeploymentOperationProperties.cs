@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class DeploymentOperationProperties
     {
         private string _provisioningState;
-        
+
         /// <summary>
         /// Optional. Gets or sets the state of the provisioning.
         /// </summary>
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._provisioningState; }
             set { this._provisioningState = value; }
         }
-        
+
         private string _statusCode;
-        
+
         /// <summary>
         /// Optional. Gets or sets operation status code.
         /// </summary>
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._statusCode; }
             set { this._statusCode = value; }
         }
-        
+
         private string _statusMessage;
-        
+
         /// <summary>
         /// Optional. Gets or sets operation status message.
         /// </summary>
@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._statusMessage; }
             set { this._statusMessage = value; }
         }
-        
+
         private TargetResource _targetResource;
-        
+
         /// <summary>
         /// Optional. Gets or sets the target resource.
         /// </summary>
@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._targetResource; }
             set { this._targetResource = value; }
         }
-        
+
         private DateTime _timestamp;
-        
+
         /// <summary>
         /// Optional. Gets or sets the date and time of the operation.
         /// </summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._timestamp; }
             set { this._timestamp = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the DeploymentOperationProperties
         /// class.
