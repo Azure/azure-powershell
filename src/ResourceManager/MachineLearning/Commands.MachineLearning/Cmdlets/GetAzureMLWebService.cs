@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 !string.IsNullOrWhiteSpace(this.Name))
             {
                 WebService service =
-                    this.WebServicesClient.GetAzureMlWebService(this.SubscriptionId, this.ResourceGroupName, this.Name);
+                    this.WebServicesClient.GetAzureMlWebService(this.ResourceGroupName, this.Name);
                 this.WriteObject(service);
             }
             else
@@ -51,12 +51,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 // This is a collection of web services get call, so determine which flavor it is
                 Func<Task<ResponseWithContinuation<WebService[]>>> getFirstServicesPageCall =
                     () => this.WebServicesClient.GetAzureMlWebServicesBySubscriptionAsync(
-                                                    this.SubscriptionId,
                                                     null,
                                                     this.CancellationToken);
                 Func<string, Task<ResponseWithContinuation<WebService[]>>> getNextPageCall =
                     nextLink => this.WebServicesClient.GetAzureMlWebServicesBySubscriptionAsync(
-                                                        this.SubscriptionId,
                                                         nextLink,
                                                         this.CancellationToken);
                 if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
@@ -64,12 +62,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
                     // This is a call for resource retrieval within a resource group
                     getFirstServicesPageCall =
                         () => this.WebServicesClient.GetAzureMlWebServicesBySubscriptionAndGroupAsync(
-                                                        this.SubscriptionId,
                                                         this.ResourceGroupName,
                                                         null,
                                                         this.CancellationToken);
                     getNextPageCall = nextLink => this.WebServicesClient.GetAzureMlWebServicesBySubscriptionAndGroupAsync(
-                                                        this.SubscriptionId,
                                                         this.ResourceGroupName,
                                                         nextLink,
                                                         this.CancellationToken);

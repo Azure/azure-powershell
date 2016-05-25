@@ -89,7 +89,6 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 
                     WebService newWebService =
                         this.WebServicesClient.CreateAzureMlWebService(
-                                                    this.SubscriptionId,
                                                     this.ResourceGroupName,
                                                     this.Location,
                                                     this.Name,

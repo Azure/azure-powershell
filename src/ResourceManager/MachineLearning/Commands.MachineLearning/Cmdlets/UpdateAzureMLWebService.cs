@@ -150,31 +150,6 @@ namespace Microsoft.Azure.Commands.MachineLearning
                     this.UpdateWebServiceResource();
                 }
             }
-            
-            ////bool isUpdateToReadonly = this.IsReadOnly.IsPresent;
-            ////if (string.Equals(
-            ////            this.ParameterSetName, 
-            ////            UpdateAzureMLWebService.UpdateFromObjectParameterSet, 
-            ////            StringComparison.OrdinalIgnoreCase))
-            ////{
-            ////    isUpdateToReadonly = this.ServiceUpdates.Properties != null &&
-            ////                         this.ServiceUpdates.Properties.ReadOnlyProperty.HasValue &&
-            ////                         this.ServiceUpdates.Properties.ReadOnlyProperty.Value;
-            ////}
-
-            ////if (isUpdateToReadonly)
-            ////{
-            ////    this.ConfirmAction(
-            ////       force: this.Force.IsPresent,
-            ////       actionMessage: Resources.UpdateServiceToReadonly.FormatInvariant(this.Name),
-            ////       processMessage: @"Updating machine learning web service..",
-            ////       target: this.Name,
-            ////       action: this.UpdateWebServiceResource);
-            ////}
-            ////else
-            ////{
-            ////    this.UpdateWebServiceResource();
-            ////}
         }
 
         private void UpdateWebServiceResource()
@@ -222,7 +197,6 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
             WebService updatedService = 
                 this.WebServicesClient.UpdateAzureMlWebService(
-                                        this.SubscriptionId, 
                                         this.ResourceGroupName, 
                                         this.Name, 
                                         serviceDefinitionUpdate);

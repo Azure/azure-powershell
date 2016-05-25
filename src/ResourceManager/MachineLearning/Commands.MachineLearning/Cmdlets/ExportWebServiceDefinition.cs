@@ -32,7 +32,10 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         private const string ExportToFileParamSet = "Export to file.";
         private const string ExportToStringParamSet = "Export to JSON string.";
 
-        [Parameter(Mandatory = true, HelpMessage = "The web service definition object to export.")]
+        [Parameter(
+            Mandatory = true, 
+            HelpMessage = "The web service definition object to export.",
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public WebService WebService { get; set; }
 
