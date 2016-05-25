@@ -104,5 +104,14 @@ namespace Microsoft.Azure.Commands.MachineLearning {
                 return ResourceManager.GetString("UpdateServiceToReadonly", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update the machine learning web service &quot;{0}&quot; ?.
+        /// </summary>
+        internal static string UpdateServiceWarning {
+            get {
+                return ResourceManager.GetString("UpdateServiceWarning", resourceCulture);
+            }
+        }
     }
 }

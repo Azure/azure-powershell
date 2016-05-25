@@ -155,7 +155,8 @@ function Test-UpdateWebService
             $svcDefinition.Properties.Description = "This has now changed."
             LogOutput "Updating description on service $($svc.Id)"
             $updatedSvc = Update-AzureRmMlWebService -ResourceGroupName $rgName `
-                                    -Name $webServiceName -ServiceUpdates $svcDefinition
+                                    -Name $webServiceName -ServiceUpdates $svcDefinition `
+                                    -Force
             Assert-NotNull $updatedSvc
             LogOutput "Update has completed."
             $updateModifiedOn = [datetime]::Parse($updatedSvc.Properties.ModifiedOn)
@@ -172,7 +173,8 @@ function Test-UpdateWebService
             $newPrimaryKey = 'highly secure key'
             LogOutput "Updating in line properties on service $($svc.Id)"
             $updatedSvc2 = Update-AzureRmMlWebService -ResourceGroupName $rgName -Name $webServiceName `
-                            -RealtimeConfiguration @{ MaxConcurrentCalls = 30 } -Keys @{ Primary = $newPrimaryKey }
+                            -RealtimeConfiguration @{ MaxConcurrentCalls = 30 } `
+                            -Keys @{ Primary = $newPrimaryKey } -Force
             Assert-NotNull $updatedSvc2
             LogOutput "Update has completed."
             $update2ModifiedOn = [datetime]::Parse($updatedSvc2.Properties.ModifiedOn)

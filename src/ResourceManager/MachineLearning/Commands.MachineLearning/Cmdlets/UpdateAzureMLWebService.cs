@@ -126,30 +126,55 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
         protected override void RunCmdlet()
         {
-            bool isUpdateToReadonly = this.IsReadOnly.IsPresent;
-            if (string.Equals(
-                        this.ParameterSetName, 
-                        UpdateAzureMLWebService.UpdateFromObjectParameterSet, 
-                        StringComparison.OrdinalIgnoreCase))
+            if (ShouldProcess(this.Name, @"Updating machine learning web service.."))
             {
-                isUpdateToReadonly = this.ServiceUpdates.Properties != null &&
-                                     this.ServiceUpdates.Properties.ReadOnlyProperty.HasValue &&
-                                     this.ServiceUpdates.Properties.ReadOnlyProperty.Value;
-            }
+                bool isUpdateToReadonly = this.IsReadOnly.IsPresent;
+                if (string.Equals(
+                            this.ParameterSetName,
+                            UpdateAzureMLWebService.UpdateFromObjectParameterSet,
+                            StringComparison.OrdinalIgnoreCase))
+                {
+                    isUpdateToReadonly = this.ServiceUpdates.Properties != null &&
+                                         this.ServiceUpdates.Properties.ReadOnlyProperty.HasValue &&
+                                         this.ServiceUpdates.Properties.ReadOnlyProperty.Value;
+                }
 
-            if (isUpdateToReadonly)
-            {
-                this.ConfirmAction(
-                   force: this.Force.IsPresent,
-                   actionMessage: Resources.UpdateServiceToReadonly.FormatInvariant(this.Name),
-                   processMessage: @"Updating machine learning web service..",
-                   target: this.Name,
-                   action: this.UpdateWebServiceResource);
+                var warningMessage = Resources.UpdateServiceWarning.FormatInvariant(this.Name);
+                if (isUpdateToReadonly)
+                {
+                    warningMessage = Resources.UpdateServiceToReadonly.FormatInvariant(this.Name);
+                }
+
+                if (this.Force.IsPresent || ShouldContinue(warningMessage, string.Empty))
+                {
+                    this.UpdateWebServiceResource();
+                }
             }
-            else
-            {
-                this.UpdateWebServiceResource();
-            }
+            
+            ////bool isUpdateToReadonly = this.IsReadOnly.IsPresent;
+            ////if (string.Equals(
+            ////            this.ParameterSetName, 
+            ////            UpdateAzureMLWebService.UpdateFromObjectParameterSet, 
+            ////            StringComparison.OrdinalIgnoreCase))
+            ////{
+            ////    isUpdateToReadonly = this.ServiceUpdates.Properties != null &&
+            ////                         this.ServiceUpdates.Properties.ReadOnlyProperty.HasValue &&
+            ////                         this.ServiceUpdates.Properties.ReadOnlyProperty.Value;
+            ////}
+
+            ////if (isUpdateToReadonly)
+            ////{
+            ////    this.ConfirmAction(
+            ////       force: this.Force.IsPresent,
+            ////       actionMessage: Resources.UpdateServiceToReadonly.FormatInvariant(this.Name),
+            ////       processMessage: @"Updating machine learning web service..",
+            ////       target: this.Name,
+            ////       action: this.UpdateWebServiceResource);
+            ////}
+            ////else
+            ////{
+            ////    this.UpdateWebServiceResource();
+            ////}
         }
 
         private void UpdateWebServiceResource()
