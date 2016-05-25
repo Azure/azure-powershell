@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             {
                 if (ex.IsFatal())
                 {
-                    throw;
+                    ThrowTerminatingError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidOperation, this.SubscriptionId));
                 }
                 
                 var capturedException = ExceptionDispatchInfo.Capture(ex);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             {
                 if (ex.IsFatal())
                 {
-                    throw;
+                    ThrowTerminatingError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidOperation, this));
                 }
 
                 var capturedException = ExceptionDispatchInfo.Capture(ex);

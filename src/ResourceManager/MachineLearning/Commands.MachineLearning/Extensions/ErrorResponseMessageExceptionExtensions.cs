@@ -24,30 +24,38 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.Azure.Commands.MachineLearning.Extensions
 {
     /// <summary>
-    /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+    /// Helper class that converts <see cref="ErrorResponseMessageException"/> 
+    /// objects into <see cref="ErrorRecord"/>
     /// </summary>
     internal static class ErrorResponseMessageExceptionExtensions
     {
         /// <summary>
-        /// Converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+        /// Converts <see cref="ErrorResponseMessageException"/> objects into 
+        /// <see cref="ErrorRecord"/>
         /// </summary>
         /// <param name="exception">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
+        internal static ErrorRecord ToErrorRecord(
+            this ErrorResponseMessageException exception)
         {
             var errorReport = new StringBuilder();
             errorReport.AppendLine();
-            if (exception.ErrorResponseMessage != null && exception.ErrorResponseMessage.Error != null)
+            if (exception.ErrorResponseMessage != null && 
+                exception.ErrorResponseMessage.Error != null)
             {
-                errorReport.AppendLine("Error Code: {0}".FormatInvariant(exception.ErrorResponseMessage.Error.Code));
-                errorReport.AppendLine("Error Message: {0}".FormatInvariant(exception.ErrorResponseMessage.Error.Message));
-                errorReport.AppendLine("Error Target: {0}".FormatInvariant(exception.ErrorResponseMessage.Error.Target));
+                errorReport.AppendLine("Error Code: {0}"
+                    .FormatInvariant(exception.ErrorResponseMessage.Error.Code));
+                errorReport.AppendLine("Error Message: {0}"
+                    .FormatInvariant(exception.ErrorResponseMessage.Error.Message));
+                errorReport.AppendLine("Error Target: {0}"
+                    .FormatInvariant(exception.ErrorResponseMessage.Error.Target));
                 
                 if (exception.ErrorResponseMessage.Error.Details.Any())
                 {
                     errorReport.AppendLine("Error Details:");
                     foreach (var errorDetail in exception.ErrorResponseMessage.Error.Details)
                     {
-                        errorReport.AppendLine("\t[Code={0}, Message={1}]".FormatInvariant(errorDetail.Code, errorDetail.Message));
+                        errorReport.AppendLine("\t[Code={0}, Message={1}]"
+                            .FormatInvariant(errorDetail.Code, errorDetail.Message));
                     }
                 }
             }
@@ -57,7 +65,11 @@ namespace Microsoft.Azure.Commands.MachineLearning.Extensions
             }
 
             var returnedError = new Exception(errorReport.ToString(), exception);
-            return new ErrorRecord(returnedError, "Resource Provider Error", ErrorCategory.CloseError, null);
+            return new ErrorRecord(
+                        returnedError, 
+                        "Resource Provider Error", 
+                        ErrorCategory.CloseError, 
+                        null);
         }
 
         /// <summary>
@@ -90,12 +102,17 @@ namespace Microsoft.Azure.Commands.MachineLearning.Extensions
                 errorReport.AppendLine("Error Details:");
                 foreach (var errorDetail in cloudException.Body.Details)
                 {
-                    errorReport.AppendLine("\t[Code={0}, Message={1}]".FormatInvariant(errorDetail.Code, errorDetail.Message));
+                    errorReport.AppendLine("\t[Code={0}, Message={1}]"
+                        .FormatInvariant(errorDetail.Code, errorDetail.Message));
                 }
             }
 
             var returnedError = new Exception(errorReport.ToString(), cloudException);
-            return new ErrorRecord(returnedError, "Resource Provider Error", ErrorCategory.CloseError, null);
+            return new ErrorRecord(
+                        returnedError, 
+                        "Resource Provider Error", 
+                        ErrorCategory.CloseError, 
+                        null);
         }
 
         /// <summary>

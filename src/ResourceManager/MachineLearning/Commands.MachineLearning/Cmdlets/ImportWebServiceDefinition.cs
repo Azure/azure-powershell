@@ -33,24 +33,24 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
             Mandatory = true, 
             HelpMessage = "Path to a file on disk containing the web service definition in JSON format.")]
         [ValidateNotNullOrEmpty]
-        public string FromFile { get; set; }
+        public string InputFile { get; set; }
 
         [Parameter(
             ParameterSetName = ImportWebServiceDefinition.ImportFromStringParamSet, 
             Mandatory = true, 
             HelpMessage = "The actual web service definition as a JSON string.")]
         [ValidateNotNullOrEmpty]
-        public string FromJsonString { get; set; }
+        public string JsonString { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string jsonDefinition = this.FromJsonString;
+            string jsonDefinition = this.JsonString;
             if (string.Equals(
                         this.ParameterSetName, 
                         ImportWebServiceDefinition.ImportFromFileParamSet, 
                         StringComparison.OrdinalIgnoreCase))
             {
-                jsonDefinition = CmdletHelpers.GetWebServiceDefinitionFromFile(this.FromFile);
+                jsonDefinition = CmdletHelpers.GetWebServiceDefinitionFromFile(this.InputFile);
             }
 
             WebService serviceDefinition = ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);

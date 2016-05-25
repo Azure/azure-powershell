@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 namespace Microsoft.Azure.Commands.MachineLearning
 {
     [Cmdlet(VerbsCommon.Get, WebServicesCmdletBase.CommandletSuffix)]
-    [OutputType(typeof(WebService), typeof(Array))]
+    [OutputType(typeof(WebService), typeof(WebService[]))]
     public class GetAzureMLWebService : WebServicesCmdletBase
     {
         [Parameter(

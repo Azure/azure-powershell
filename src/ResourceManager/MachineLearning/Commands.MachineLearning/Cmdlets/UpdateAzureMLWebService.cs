@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -86,7 +88,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, 
             Mandatory = false, 
             HelpMessage = "Updated assets for the web service.")]
-        public IDictionary<string, AssetItem> Assets { get; set; }
+        public Hashtable Assets { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, 
@@ -104,7 +106,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, 
             Mandatory = false, 
             HelpMessage = "Updated global parameter values definition for the web service.")]
-        public IDictionary<string, string> Parameters { get; set; }
+        public Hashtable Parameters { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateAzureMLWebService.UpdateFromArgumentsParameterSet, 
@@ -166,12 +168,22 @@ namespace Microsoft.Azure.Commands.MachineLearning
                         Description = this.Description,
                         Diagnostics = this.Diagnostics,
                         Keys = this.Keys,
-                        Assets = this.Assets,
+                        Assets = (this.Assets != null) ? 
+                                        this.Assets.Cast<DictionaryEntry>()
+                                                .ToDictionary(
+                                                    kvp => kvp.Key as string, 
+                                                    kvp => kvp.Value as AssetItem)
+                                        : null,
                         Input = this.Input,
                         Output = this.Output,
                         ReadOnlyProperty = this.IsReadOnly.IsPresent,
                         RealtimeConfiguration = this.RealtimeConfiguration,
-                        Parameters = this.Parameters,
+                        Parameters = (this.Parameters != null) ? 
+                                        this.Parameters.Cast<DictionaryEntry>()
+                                                .ToDictionary(
+                                                    kvp => kvp.Key as string,
+                                                    kvp => kvp.Value as string)
+                                        : null,
                         Package = this.Package
                     }
                 };

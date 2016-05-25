@@ -17,10 +17,15 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.MachineLearning.Utilities;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New, WebServicesCmdletBase.CommandletSuffix), OutputType(typeof(WebService))]
+    [Cmdlet(
+        VerbsCommon.New, 
+        WebServicesCmdletBase.CommandletSuffix,
+        SupportsShouldProcess = true)]
+    [OutputType(typeof(WebService))]
     public class NewAzureMLWebService : WebServicesCmdletBase
     {
         protected const string CreateFromFileParameterSet = 
@@ -57,25 +62,40 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         [ValidateNotNullOrEmpty]
         public WebService NewWebServiceDefinition { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value that indicates if the user should be prompted for confirmation.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         protected override void RunCmdlet()
         {
-            if (string.Equals(
-                        this.ParameterSetName, 
-                        NewAzureMLWebService.CreateFromFileParameterSet, 
-                        StringComparison.OrdinalIgnoreCase))
-            {
-                string jsonDefinition = CmdletHelpers.GetWebServiceDefinitionFromFile(this.DefinitionFile);
-                this.NewWebServiceDefinition = ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);
-            }
+            this.ConfirmAction(
+                this.Force.IsPresent,
+                Resources.NewServiceWarning.FormatInvariant(this.Name), 
+                "Creating the new web service", 
+                this.Name, 
+                () => {
+                    if (string.Equals(
+                                this.ParameterSetName,
+                                NewAzureMLWebService.CreateFromFileParameterSet,
+                                StringComparison.OrdinalIgnoreCase))
+                    {
+                        string jsonDefinition = CmdletHelpers.GetWebServiceDefinitionFromFile(this.DefinitionFile);
+                        this.NewWebServiceDefinition = ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);
+                    }
 
-            WebService newWebService = 
-                this.WebServicesClient.CreateAzureMlWebService(
-                                            this.SubscriptionId, 
-                                            this.ResourceGroupName, 
-                                            this.Location, 
-                                            this.Name, 
-                                            this.NewWebServiceDefinition);
-            this.WriteObject(newWebService);
+                    WebService newWebService =
+                        this.WebServicesClient.CreateAzureMlWebService(
+                                                    this.SubscriptionId,
+                                                    this.ResourceGroupName,
+                                                    this.Location,
+                                                    this.Name,
+                                                    this.NewWebServiceDefinition);
+                    this.WriteObject(newWebService);
+                });
         }
     }
 }

@@ -20,7 +20,10 @@ using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
-    [Cmdlet(VerbsCommon.Remove, WebServicesCmdletBase.CommandletSuffix)]
+    [Cmdlet(
+        VerbsCommon.Remove, 
+        WebServicesCmdletBase.CommandletSuffix,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
     public class RemoveAzureMLWebService : WebServicesCmdletBase
     {
