@@ -27,17 +27,21 @@ function New-AzureRmStorageAccount
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
 	[string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Location,
-    [Microsoft.Azure.Management.Storage.Models.AccountType] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $Type)
+    [string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $typeString)
   BEGIN { 
     $context = Get-Context
 	$client = Get-StorageClient $context
   }
   PROCESS {
     $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Models.StorageAccountCreateParameters
-    if ($Type -eq $null)
+    if ($typeString -eq $null)
     {
       $Type = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
     }
+    else
+    {
+      $Type = Parse-Type $typeString
+	}
 
 	$createParms.AccountType = $Type
 	$createParms.Location = $Location
@@ -117,6 +121,14 @@ function Get-Context
 
 	return $context
 }
+
+ function Parse-Type
+ {
+    param([string] $type)
+    $type = $type.Replace("_", "")
+    $returnSkuName = [System.Enum]::Parse([Microsoft.Azure.Management.Storage.Models.AccountType], $type)
+    return $returnSkuName;
+ }
 
 function Get-StorageClient
 {
