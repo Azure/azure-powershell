@@ -42,5 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public string AccountType { get; set; }
 
         public DateTime? LastGeoFailoverTime { get; set; }
+
+        public string MigrationState { get; set; }
     }
 }
