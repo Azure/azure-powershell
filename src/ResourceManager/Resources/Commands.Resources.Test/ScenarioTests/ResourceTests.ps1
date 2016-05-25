@@ -247,6 +247,23 @@ function Test-MoveAResource
 
 <#
 .SYNOPSIS
+Tests moving a resource but failed.
+#>
+function Test-MoveResourceFailed
+{
+	#Move a resource through pipeline while no resource is sent
+	$exceptionMessage = "At least one valid resource Id must be provided.";
+	Assert-Throws { Get-AzureRmResource | Where-Object { $PSItem.Name -eq "NonExistingResource" } | Move-AzureRmResource -DestinationResourceGroupName "AnyResourceGroup" } $exceptionMessage
+
+	#Move two resources from two resource groups
+	$resourceId1 = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/tianorg1/providers/Microsoft.Storage/storageAccounts/temp1"
+	$resourceId2 = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/tianorg2/providers/Microsoft.Storage/storageAccounts/temp1"
+	$exceptionMessage = "The resources being moved must all reside in the same resource group. The resources: *"
+	Assert-ThrowsLike { Move-AzureRmResource -DestinationResourceGroupName "AnyGroup" -ResourceId @($resourceId1, $resourceId2) } $exceptionMessage
+}
+
+<#
+.SYNOPSIS
 Tests setting a resource.
 #>
 function Test-SetAResource
