@@ -1,4 +1,4 @@
-##2016.05.25 version 1.5.0
+##2016.06.04 version 1.5.0
 * Azure Resource Manager
   - (Get/Set/New/Remove)-AzureRmResourceGroup cmdlets will now use the new autorest generated ARM assembly
   - (Get/New/Remove)-AzureRmResourceGroupDeployment cmdlets will now use the new autorest generated ARM assembly
@@ -11,6 +11,10 @@
   - Enable object and array type parameters for template deployment
   - Preserve casing for resource properties in New/Set-AzureRmResource cmdlet
   - PropertyObject parameter is now optional in New-AzureRmResource cmdlet
+* Azure Storage
+  * Fix get Storage Account throttling failures when run it on subscription with many accounts 
+    - Get-AzureRmStorageAccount
+    - Get-AzureStorageAccount
 
 ##2016.05.04 version 1.4.0
 * Azure Resource Manager
