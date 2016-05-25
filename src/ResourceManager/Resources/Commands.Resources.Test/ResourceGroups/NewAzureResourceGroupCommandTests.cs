@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreatesNewPSResourceGroup()
         {
-            CreatePSResourceGroupParameters expectedParameters = new CreatePSResourceGroupParameters()
+            PSCreateResourceGroupParameters expectedParameters = new PSCreateResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
                 Location = resourceGroupLocation,
@@ -79,16 +79,16 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 DeploymentName = deploymentName,
                 Tag = tags
             };
-            CreatePSResourceGroupParameters actualParameters = new CreatePSResourceGroupParameters();
+            PSCreateResourceGroupParameters actualParameters = new PSCreateResourceGroupParameters();
             PSResourceGroup expected = new PSResourceGroup()
             {
                 Location = expectedParameters.Location,
                 ResourceGroupName = expectedParameters.ResourceGroupName,
                 Tags = expectedParameters.Tag
             };
-            resourcesClientMock.Setup(f => f.CreatePSResourceGroup(It.IsAny<CreatePSResourceGroupParameters>()))
+            resourcesClientMock.Setup(f => f.CreatePSResourceGroup(It.IsAny<PSCreateResourceGroupParameters>()))
                 .Returns(expected)
-                .Callback((CreatePSResourceGroupParameters p) => { actualParameters = p; });
+                .Callback((PSCreateResourceGroupParameters p) => { actualParameters = p; });
 
             cmdlet.Name = expectedParameters.ResourceGroupName;
             cmdlet.Location = expectedParameters.Location;

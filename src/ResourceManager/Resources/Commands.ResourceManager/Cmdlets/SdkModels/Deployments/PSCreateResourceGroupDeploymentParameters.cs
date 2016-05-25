@@ -16,7 +16,7 @@ using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public class CreatePSResourceGroupDeploymentParameters : ValidatePSResourceGroupDeploymentParameters
+    public class PSCreateResourceGroupDeploymentParameters : PSValidateResourceGroupDeploymentParameters
     {
         public string DeploymentName { get; set; }
 

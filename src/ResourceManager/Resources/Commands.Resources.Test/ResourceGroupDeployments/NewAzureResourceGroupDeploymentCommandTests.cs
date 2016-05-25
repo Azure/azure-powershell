@@ -62,12 +62,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreatesNewPSResourceGroupDeploymentWithUserTemplate()
         {
-            CreatePSResourceGroupDeploymentParameters expectedParameters = new CreatePSResourceGroupDeploymentParameters()
+            PSCreateResourceGroupDeploymentParameters expectedParameters = new PSCreateResourceGroupDeploymentParameters()
             {
                 TemplateFile = templateFile,
                 DeploymentName = deploymentName,
             };
-            CreatePSResourceGroupDeploymentParameters actualParameters = new CreatePSResourceGroupDeploymentParameters();
+            PSCreateResourceGroupDeploymentParameters actualParameters = new PSCreateResourceGroupDeploymentParameters();
             PSResourceGroupDeployment expected = new PSResourceGroupDeployment()
             {
                 Mode = DeploymentMode.Incremental,
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 Timestamp = new DateTime(2014, 2, 13)
             };
             resourcesClientMock.Setup(f => f.ExecuteDeployment(
-                It.IsAny<CreatePSResourceGroupDeploymentParameters>()))
+                It.IsAny<PSCreateResourceGroupDeploymentParameters>()))
                 .Returns(expected)
-                .Callback((CreatePSResourceGroupDeploymentParameters p) => { actualParameters = p; });
+                .Callback((PSCreateResourceGroupDeploymentParameters p) => { actualParameters = p; });
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = expectedParameters.DeploymentName;

@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Management.Automation;
@@ -54,7 +55,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 
             this.WriteObject(
@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     "ResourceManagerStartup.ps1")));
                 invoker.Invoke();
             }
-            catch
+            catch(Exception e)
             {
-                // This may throw exception for tests, ignore.
+                this.WriteDebug("Exception on importing ResourceManagerStartup.ps1: " + e.Message);
             }
         }
     }

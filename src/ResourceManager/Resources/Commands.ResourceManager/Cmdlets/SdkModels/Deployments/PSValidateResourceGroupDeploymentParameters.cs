@@ -16,7 +16,7 @@ using System.Collections;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public class ValidatePSResourceGroupDeploymentParameters
+    public class PSValidateResourceGroupDeploymentParameters
     {
         public string ResourceGroupName { get; set; }
 

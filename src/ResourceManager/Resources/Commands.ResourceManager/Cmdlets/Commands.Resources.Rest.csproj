@@ -199,7 +199,7 @@
     <Compile Include="Json\TimeSpanConverter.cs" />
     <Compile Include="SdkClient\ProviderFeatureClient.cs" />
     <Compile Include="SdkClient\SubscriptionSdkClient.cs" />
-    <Compile Include="SdkModels\Deployments\CreatePSResourceGroupDeploymentParameters.cs" />
+    <Compile Include="SdkModels\Deployments\PSCreateResourceGroupDeploymentParameters.cs" />
     <Compile Include="SdkModels\Deployments\DeploymentVariable.cs" />
     <Compile Include="SdkModels\Deployments\FilterResourceGroupDeploymentOptions.cs" />
     <Compile Include="SdkModels\Deployments\PSResourceGroupDeployment.cs" />
@@ -208,7 +208,7 @@
     <Compile Include="SdkModels\Deployments\TemplateFileParameterv2.cs" />
     <Compile Include="SdkModels\Deployments\TemplateFileResource.cs" />
     <Compile Include="SdkModels\Deployments\TemplateValidationInfo.cs" />
-    <Compile Include="SdkModels\Deployments\ValidatePSResourceGroupDeploymentParameters.cs" />
+    <Compile Include="SdkModels\Deployments\PSValidateResourceGroupDeploymentParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implementation\Resource\GetAzureResourceCmdlet.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -223,9 +223,9 @@
     <Compile Include="SdkModels\Errors\PSResourceManagerError.cs" />
     <Compile Include="SdkModels\Features\PSProviderFeature.cs" />
     <Compile Include="SdkModels\Locations\PSResourceProviderLocation.cs" />
-    <Compile Include="SdkModels\ResourceGroups\CreatePSResourceGroupParameters.cs" />
+    <Compile Include="SdkModels\ResourceGroups\PSCreateResourceGroupParameters.cs" />
     <Compile Include="SdkModels\ResourceGroups\PSResourceGroup.cs" />
-    <Compile Include="SdkModels\ResourceGroups\UpdatePSResourceGroupParameters.cs" />
+    <Compile Include="SdkModels\ResourceGroups\PSUpdateResourceGroupParameters.cs" />
     <Compile Include="SdkModels\ResourceProvider\PSResourceProvider.cs" />
     <Compile Include="SdkModels\ResourceProvider\PSResourceProviderResourceType.cs" />
     <Compile Include="Components\ResourceIdentifier.cs" />

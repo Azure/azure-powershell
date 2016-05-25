@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
     using System.Collections;
     using System.Management.Automation;
 
@@ -53,8 +54,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             this.ConfirmAction(
                 this.Force,
-                string.Format("Are you sure you want to invoke the '{0}' action on the following resource: {1}", this.Action, resourceId),
-                string.Format("Invoking the '{0}' action on the resource.", this.Action),
+                string.Format(ProjectResources.ConfirmInvokeAction, this.Action, resourceId),
+                string.Format(ProjectResources.InvokingResourceAction, this.Action),
                 resourceId,
                 () =>
                 {

@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adding resource group....
+        ///   Looks up a localized string similar to Adding resource group ....
         /// </summary>
         internal static string AddingResourceGroup {
             get {
@@ -88,11 +88,65 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Checking deployment status in {0} seconds.
+        /// </summary>
+        internal static string CheckingDeploymentStatus {
+            get {
+                return ResourceManager.GetString("CheckingDeploymentStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to invoke the &apos;{0}&apos; action on the following resource: {1}.
+        /// </summary>
+        internal static string ConfirmInvokeAction {
+            get {
+                return ResourceManager.GetString("ConfirmInvokeAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to use the complete deployment mode? Resources in the resource group &apos;{0}&apos; which are not included in the template will be deleted..
+        /// </summary>
+        internal static string ConfirmOnCompleteDeploymentMode {
+            get {
+                return ResourceManager.GetString("ConfirmOnCompleteDeploymentMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are a guest user in the directory and are not allowed to create an application. Please contact the administrator of the directory..
         /// </summary>
         internal static string CreateApplicationNotAllowedGuestUser {
             get {
                 return ResourceManager.GetString("CreateApplicationNotAllowedGuestUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create template deployment &apos;{0}&apos;.
+        /// </summary>
+        internal static string CreatedDeployment {
+            get {
+                return ResourceManager.GetString("CreatedDeployment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a deployment with Complete mode.
+        /// </summary>
+        internal static string CreateDeploymentCompleteMode {
+            get {
+                return ResourceManager.GetString("CreateDeploymentCompleteMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created resource group &apos;{0}&apos; in location &apos;{1}&apos;.
+        /// </summary>
+        internal static string CreatedResourceGroup {
+            get {
+                return ResourceManager.GetString("CreatedResourceGroup", resourceCulture);
             }
         }
         
@@ -151,6 +205,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The deployment validation failed.
+        /// </summary>
+        internal static string FailedDeploymentValidation {
+            get {
+                return ResourceManager.GetString("FailedDeploymentValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot parse {0} &apos;{1}&apos;.
         /// </summary>
         internal static string FailedToParseProperty {
@@ -201,6 +264,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string FileAlreadyExists1 {
             get {
                 return ResourceManager.GetString("FileAlreadyExists1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter type in parameters cannot be null or empty.
+        /// </summary>
+        internal static string GetParameterTypeError {
+            get {
+                return ResourceManager.GetString("GetParameterTypeError", resourceCulture);
             }
         }
         
@@ -295,6 +367,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoking the &apos;{0}&apos; action on the resource..
+        /// </summary>
+        internal static string InvokingResourceAction {
+            get {
+                return ResourceManager.GetString("InvokingResourceAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Moving resource(s) ....
         /// </summary>
         internal static string MoveResourcesMessage {
@@ -358,6 +439,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are more than one running deployment please specify one.
+        /// </summary>
+        internal static string MultipleRunningDeployment {
+            get {
+                return ResourceManager.GetString("MultipleRunningDeployment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replacing resource group ....
         /// </summary>
         internal static string NewResourceGroupMessage {
@@ -376,11 +466,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is no deployment called &apos;{0}&apos; to cancel.
+        /// </summary>
+        internal static string NoDeploymentToCancel {
+            get {
+                return ResourceManager.GetString("NoDeploymentToCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find any deployments in resource group &apos;{0}&apos;..
         /// </summary>
         internal static string NoDeploymentWereFound {
             get {
                 return ResourceManager.GetString("NoDeploymentWereFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no running deployments under resource group &apos;{0}&apos;.
+        /// </summary>
+        internal static string NoRunningDeployments {
+            get {
+                return ResourceManager.GetString("NoRunningDeployments", resourceCulture);
             }
         }
         
@@ -759,6 +867,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string UnregisterProviderMessage {
             get {
                 return ResourceManager.GetString("UnregisterProviderMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updated resource group &apos;{0}&apos; in location &apos;{1}&apos;.
+        /// </summary>
+        internal static string UpdatedResourceGroup {
+            get {
+                return ResourceManager.GetString("UpdatedResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation.
+        /// </summary>
+        internal static string WarnOnDeploymentDebugSetting {
+            get {
+                return ResourceManager.GetString("WarnOnDeploymentDebugSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
+        /// </summary>
+        internal static string WarnOnTags {
+            get {
+                return ResourceManager.GetString("WarnOnTags", resourceCulture);
             }
         }
     }

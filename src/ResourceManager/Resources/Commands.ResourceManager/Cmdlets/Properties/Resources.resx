@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddingResourceGroup" xml:space="preserve">
-    <value>Adding resource group...</value>
+    <value>Adding resource group ...</value>
   </data>
   <data name="CancelResourceGroupDeployment" xml:space="preserve">
     <value>Are you sure you want to cancel the active deployment of resource group '{0}'?</value>
@@ -350,5 +350,50 @@
   </data>
   <data name="UnregisterProviderMessage" xml:space="preserve">
     <value>Unregistering provider ...</value>
+  </data>
+  <data name="WarnOnDeploymentDebugSetting" xml:space="preserve">
+    <value>The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation</value>
+  </data>
+  <data name="WarnOnTags" xml:space="preserve">
+    <value>The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494</value>
+  </data>
+  <data name="CheckingDeploymentStatus" xml:space="preserve">
+    <value>Checking deployment status in {0} seconds</value>
+  </data>
+  <data name="ConfirmInvokeAction" xml:space="preserve">
+    <value>Are you sure you want to invoke the '{0}' action on the following resource: {1}</value>
+  </data>
+  <data name="ConfirmOnCompleteDeploymentMode" xml:space="preserve">
+    <value>Are you sure you want to use the complete deployment mode? Resources in the resource group '{0}' which are not included in the template will be deleted.</value>
+  </data>
+  <data name="CreatedDeployment" xml:space="preserve">
+    <value>Create template deployment '{0}'</value>
+  </data>
+  <data name="CreateDeploymentCompleteMode" xml:space="preserve">
+    <value>Creating a deployment with Complete mode</value>
+  </data>
+  <data name="CreatedResourceGroup" xml:space="preserve">
+    <value>Created resource group '{0}' in location '{1}'</value>
+  </data>
+  <data name="FailedDeploymentValidation" xml:space="preserve">
+    <value>The deployment validation failed</value>
+  </data>
+  <data name="GetParameterTypeError" xml:space="preserve">
+    <value>Parameter type in parameters cannot be null or empty</value>
+  </data>
+  <data name="InvokingResourceAction" xml:space="preserve">
+    <value>Invoking the '{0}' action on the resource.</value>
+  </data>
+  <data name="MultipleRunningDeployment" xml:space="preserve">
+    <value>There are more than one running deployment please specify one</value>
+  </data>
+  <data name="NoDeploymentToCancel" xml:space="preserve">
+    <value>There is no deployment called '{0}' to cancel</value>
+  </data>
+  <data name="NoRunningDeployments" xml:space="preserve">
+    <value>There are no running deployments under resource group '{0}'</value>
+  </data>
+  <data name="UpdatedResourceGroup" xml:space="preserve">
+    <value>Updated resource group '{0}' in location '{1}'</value>
   </data>
 </root>

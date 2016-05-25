@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.Tags.Model;
     using Newtonsoft.Json.Linq;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
     using System;
     using System.Collections;
     using System.Management.Automation;
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
-            this.WriteWarning("The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+            this.WriteWarning(ProjectResources.WarnOnTags);
 
             PaginatedResponseHelper.ForEach(
                getFirstPage: () => this.GetResourceGroups(),
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 if (tagValuePair == null)
                 {
-                    throw new ArgumentException("Invalid tag format. Expect @{Name = 'tagName'} or @{Name = 'tagName'; Value = 'tagValue'}.");
+                    throw new ArgumentException(ProjectResources.InvalidTagFormat);
                 }
 
                 queryString = tagValuePair.Value != null

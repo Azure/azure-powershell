@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         public void NewResourceGroupChecksForPermissionForExistingResource()
         {
             RejectActionCounter = 0;
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters() { ResourceGroupName = resourceGroupName, ConfirmAction = RejectAction };
+            PSCreateResourceGroupParameters parameters = new PSCreateResourceGroupParameters() { ResourceGroupName = resourceGroupName, ConfirmAction = RejectAction };
             resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
                     new AzureOperationResponse<bool?>()
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewResourceGroupWithoutDeploymentSucceeds()
         {
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            PSCreateResourceGroupParameters parameters = new PSCreateResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
                 Location = resourceGroupLocation,
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         {
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
             Deployment deploymentFromValidate = new Deployment();
-            ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
+            PSValidateResourceGroupDeploymentParameters parameters = new PSValidateResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = resourceGroupName,
                 TemplateFile = templateFile,
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         {
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
             Deployment deploymentFromValidate = new Deployment();
-            ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
+            PSValidateResourceGroupDeploymentParameters parameters = new PSValidateResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = resourceGroupName,
                 TemplateFile = templateFile,
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             string deploymentName = "abc123";
             Deployment deploymentFromGet = new Deployment();
             Deployment deploymentFromValidate = new Deployment();
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            PSCreateResourceGroupParameters parameters = new PSCreateResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
                 Location = resourceGroupLocation,
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
             Deployment deploymentFromGet = new Deployment();
             Deployment deploymentFromValidate = new Deployment();
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            PSCreateResourceGroupParameters parameters = new PSCreateResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
                 Location = resourceGroupLocation,
@@ -646,7 +646,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
             Deployment deploymentFromGet = new Deployment();
             Deployment deploymentFromValidate = new Deployment();
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            PSCreateResourceGroupParameters parameters = new PSCreateResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
                 Location = resourceGroupLocation,
@@ -739,7 +739,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
             Deployment deploymentFromGet = new Deployment();
             Deployment deploymentFromValidate = new Deployment();
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            PSCreateResourceGroupParameters parameters = new PSCreateResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
                 Location = resourceGroupLocation,

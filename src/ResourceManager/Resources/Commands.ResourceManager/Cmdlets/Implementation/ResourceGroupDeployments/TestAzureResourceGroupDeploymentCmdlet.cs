@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
+            PSValidateResourceGroupDeploymentParameters parameters = new PSValidateResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
