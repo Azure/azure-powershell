@@ -26,6 +26,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Formatters;
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private string deploymentName = "fooDeployment";
 
-        private string templateFile = @"Resources\sampleTemplateFile.json";
+        private string templateFile = string.Empty;
 
         private string storageAccountName = "myStorageAccount";
 
@@ -214,6 +215,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
                 TypeNameHandling = TypeNameHandling.None
             });
+            templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
         }
 
         [Fact]
