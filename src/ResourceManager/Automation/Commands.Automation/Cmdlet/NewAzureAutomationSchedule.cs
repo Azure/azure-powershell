@@ -19,6 +19,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
 using DayOfWeek = Microsoft.Azure.Commands.Automation.Model.DayOfWeek;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
@@ -192,7 +193,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             var dayOfWeek = this.DayOfWeek.HasValue ? this.DayOfWeek.ToString() : null;
             if ((!string.IsNullOrWhiteSpace(dayOfWeek) && this.DayOfWeekOccurrence == 0) || (string.IsNullOrWhiteSpace(dayOfWeek) && this.DayOfWeekOccurrence != 0))
             {
-                throw new Exception("for monthly occurrence, both day of week and occurrence need to be specified");
+                throw new ArgumentException(Resources.MonthlyScheduleNeedsDayOfWeekAndOccurrence);
             }
 
             var newSchedule = new Schedule
