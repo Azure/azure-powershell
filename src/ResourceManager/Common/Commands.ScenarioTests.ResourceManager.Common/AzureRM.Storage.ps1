@@ -43,6 +43,31 @@ function New-AzureRmStorageAccount
 
 }
 
+function Set-AzureRmStorageAccount
+{
+  [CmdletBinding()]
+  param(
+    [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
+    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
+	[string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Location,
+	[string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $Type,
+  	[Hashtable[]] [Parameter(Position=4, ValueFromPipelineByPropertyName=$true)] $Tags)
+BEGIN { 
+    $context = Get-Context
+	$client = Get-StorageClient $context
+  }
+  PROCESS {
+    $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Models.StorageAccountUpdateParameters
+	$createParms.AccountType = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
+	$createParms.Location = $Location
+    $getTask = $client.StorageAccounts.UpdateAsync($ResourceGroupName, $Name, $createParms, [System.Threading.CancellationToken]::None)
+	$sa = $getTask.Result
+  }
+  END {}
+
+}
+
+
 function Get-AzureRmStorageAccountKey
 {
   [CmdletBinding()]
