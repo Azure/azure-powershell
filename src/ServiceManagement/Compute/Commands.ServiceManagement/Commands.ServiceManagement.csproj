@@ -136,7 +136,7 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.1.1\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -280,6 +280,7 @@
     <Compile Include="IaaS\Network\SetAzurePublicIP.cs" />
     <Compile Include="IaaS\Network\SetAzureReservedIPAssociation.cs" />
     <Compile Include="IaaS\PersistentVMs\SetAzureBootDiagnostics.cs" />
+    <Compile Include="Migration\MoveAzureStorageAccount.cs" />
     <Compile Include="Migration\MoveAzureVirtualNetwork.cs" />
     <Compile Include="Migration\MoveAzureService.cs" />
     <Compile Include="Model\DeploymentRebootEventContext.cs" />

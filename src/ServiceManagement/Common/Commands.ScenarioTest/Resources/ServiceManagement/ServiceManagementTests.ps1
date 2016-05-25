@@ -745,6 +745,49 @@ function Test-MigrationAbortAzureVNet
     Remove-AzureVNetConfig
 }
 
+<#
+.SYNOPSIS
+Tests Move-AzureStorageAccount with Prepare and Commit
+#>
+function Test-MigrateAzureStorageAccount
+{
+    # Setup
+	$location = "Central US";
+    $storageName = getAssetName;
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+	Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    # Test
+    Move-AzureStorageAccount -Prepare -StorageAccountName $storageName;
+    Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    Move-AzureStorageAccount -Commit -StorageAccountName $storageName;
+	Assert-ThrowsContains { Get-AzureStorageAccount -StorageAccountName $storageName; } "ResourceNotFound";
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureStorageAccount with Prepare and Abort
+#>
+function Test-MigrationAbortAzureStorageAccount
+{
+    # Setup
+	$location = "Central US";
+    $storageName = getAssetName;
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+	Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    # Test
+    Move-AzureStorageAccount -Prepare -StorageAccountName $storageName;
+    Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    Move-AzureStorageAccount -Abort -StorageAccountName $storageName;
+    Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    # Cleanup
+    Remove-AzureStorageAccount -StorageAccountName $storageName;
+}
+
 
 function Test-NewAzureVMWithBYOL
 {
