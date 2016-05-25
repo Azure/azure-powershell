@@ -22,7 +22,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Management.MachineLearning.WebServices;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
-using APIClient = Microsoft.Azure.Management.MachineLearning.WebServices.AzureMLWebServicesManagementClient;
+using APIClient = Microsoft.Azure.Management.MachineLearning.
+                    WebServices.AzureMLWebServicesManagementClient;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 {
@@ -34,8 +35,12 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 
         public WebServicesClient(AzureContext context)
         {
-            this.apiClient = AzureSession.ClientFactory.CreateArmClient<APIClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            this.apiClient.LongRunningOperationRetryTimeout = WebServicesClient.AsyncOperationPollingIntervalSeconds;
+            this.apiClient = AzureSession.ClientFactory.
+                                            CreateArmClient<APIClient>(
+                                                context, 
+                                                AzureEnvironment.Endpoint.ResourceManager);
+            this.apiClient.LongRunningOperationRetryTimeout = 
+                    WebServicesClient.AsyncOperationPollingIntervalSeconds;
         }
 
         public Action<string> VerboseLogger { get; set; }
@@ -55,7 +60,10 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             serviceDefinition.Name = webServiceName;
             serviceDefinition.Location = location;
 
-            return this.apiClient.WebServices.CreateOrUpdateWithRequestId(serviceDefinition, resourceGroupName, webServiceName);
+            return this.apiClient.WebServices.CreateOrUpdateWithRequestId(
+                                                serviceDefinition, 
+                                                resourceGroupName, 
+                                                webServiceName);
         }
 
         public WebService UpdateAzureMlWebService(
@@ -65,32 +73,44 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
                             WebService serviceDefinition)
         {
             this.apiClient.SubscriptionId = subscriptionId;
-            return this.apiClient.WebServices.PatchWithRequestId(serviceDefinition, resourceGroupName, webServiceName);
+            return this.apiClient.WebServices.PatchWithRequestId(
+                                                serviceDefinition, 
+                                                resourceGroupName, 
+                                                webServiceName);
         }
 
-        public void DeleteAzureMlWebService(string subscriptionId, string resourceGroupName, string webServiceName)
+        public void DeleteAzureMlWebService(
+                        string subscriptionId, 
+                        string resourceGroupName, 
+                        string webServiceName)
         {
             this.apiClient.SubscriptionId = subscriptionId;
             this.apiClient.WebServices.RemoveWithRequestId(resourceGroupName, webServiceName);
         }
 
-        public WebService GetAzureMlWebService(string subscriptionId, string resourceGroupName, string webServiceName)
+        public WebService GetAzureMlWebService(
+                            string subscriptionId, 
+                            string resourceGroupName, 
+                            string webServiceName)
         {
             this.apiClient.SubscriptionId = subscriptionId;
             return this.apiClient.WebServices.Get(resourceGroupName, webServiceName);
         }
 
-        public WebServiceKeys GetAzureMlWebServiceKeys(string subscriptionId, string resourceGroupName, string webServiceName)
+        public WebServiceKeys GetAzureMlWebServiceKeys(
+                                string subscriptionId, 
+                                string resourceGroupName, string webServiceName)
         {
             this.apiClient.SubscriptionId = subscriptionId;
             return this.apiClient.WebServices.ListKeys(resourceGroupName, webServiceName);
         }
 
-        public async Task<ResponseWithContinuation<WebService[]>> GetAzureMlWebServicesBySubscriptionAndGroupAsync(
-                                                                    string subscriptionId, 
-                                                                    string resourceGroupName, 
-                                                                    string nextLink, 
-                                                                    CancellationToken? cancellationToken)
+        public async Task<ResponseWithContinuation<WebService[]>> 
+                        GetAzureMlWebServicesBySubscriptionAndGroupAsync(
+                                                    string subscriptionId, 
+                                                    string resourceGroupName, 
+                                                    string nextLink, 
+                                                    CancellationToken? cancellationToken)
         {
             this.apiClient.SubscriptionId = subscriptionId;
             string skipToken = WebServicesClient.GetSkipTokenFromLink(nextLink);
@@ -106,18 +126,20 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             };
         }
 
-        public async Task<ResponseWithContinuation<WebService[]>> GetAzureMlWebServicesBySubscriptionAsync(
-                                                                    string subscriptionId, 
-                                                                    string nextLink, 
-                                                                    CancellationToken? cancellationToken)
+        public async Task<ResponseWithContinuation<WebService[]>> 
+                        GetAzureMlWebServicesBySubscriptionAsync(
+                                                    string subscriptionId, 
+                                                    string nextLink, 
+                                                    CancellationToken? cancellationToken)
         {
             this.apiClient.SubscriptionId = subscriptionId;
             string skipToken = WebServicesClient.GetSkipTokenFromLink(nextLink);
             var cancellationTokenParam = cancellationToken ?? CancellationToken.None;
 
-            var paginatedResponse = await this.apiClient.WebServices.ListAsync(
-                                                                        skipToken, 
-                                                                        cancellationTokenParam).ConfigureAwait(false);
+            var paginatedResponse = 
+                    await this.apiClient.WebServices.ListAsync(
+                                                        skipToken, 
+                                                        cancellationTokenParam).ConfigureAwait(false);
 
             return new ResponseWithContinuation<WebService[]>
             {
@@ -133,7 +155,8 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             {
                 var linkAsUri = new Uri(nextLink, UriKind.Absolute);
                 var queryParameters = HttpUtility.ParseQueryString(linkAsUri.Query);
-                skipToken = (queryParameters.GetValues("$skiptoken") ?? Enumerable.Empty<string>()).FirstOrDefault();
+                skipToken = (queryParameters.GetValues("$skiptoken") ?? 
+                                                Enumerable.Empty<string>()).FirstOrDefault();
             }
 
             return skipToken;

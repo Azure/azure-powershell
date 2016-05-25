@@ -54,10 +54,12 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($providerNamespace, $resourceType)
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
+        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
     {
         $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
-        $resourceType = $provider.ResourceTypes | where {$_.ResourceTypeName -eq $resourceType}
+        $resourceType = $provider.ResourceTypes | `
+                        where {$_.ResourceTypeName -eq $resourceType}
           if ($resourceType -eq $null) 
         {  
             return "southcentralus"  
@@ -76,7 +78,8 @@ Gets the latest API Version for the resource type
 #>
 function Get-ProviderAPIVersion($providerNamespace, $resourceType)
 { 
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
+        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
     {
         $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
         $resourceType = $provider.ResourceTypes | where {$_.ResourceTypeName -eq $resourceType}
@@ -85,12 +88,14 @@ function Get-ProviderAPIVersion($providerNamespace, $resourceType)
     {
         if ($providerNamespace -eq "Microsoft.MachineLearning")
         {
-            if ([System.String]::Equals($resourceType, "CommitmentPlans", [System.StringComparison]::OrdinalIgnoreCase))
+            if ([System.String]::Equals($resourceType, "CommitmentPlans", `
+                [System.StringComparison]::OrdinalIgnoreCase))
             {
                 return "2016-05-01-preview"
             }
 
-            if ([System.String]::Equals($resourceType, "webServices", [System.StringComparison]::OrdinalIgnoreCase))
+            if ([System.String]::Equals($resourceType, "webServices", `
+                [System.StringComparison]::OrdinalIgnoreCase))
             {
                 return "2016-05-01-preview"
             }
@@ -106,8 +111,10 @@ Create a storage account to be used during testing, and return its details
 #>
 function Create-TestStorageAccount($resourceGroup, $location, $storageName)
 {
-    New-AzureRmStorageAccount -ResourceGroupName $resourceGroup -Name $storageName -Location $location -Type 'Standard_LRS' | Out-Null
-    $accessKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup -Name $storageName).Key1;
+    New-AzureRmStorageAccount -ResourceGroupName $resourceGroup -Name $storageName `
+                                -Location $location -Type 'Standard_LRS' | Out-Null
+    $accessKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
+                                -Name $storageName).Key1;
     return @{ Name = $storageName; Key = $accessKey }
 }
 
@@ -117,15 +124,19 @@ Cleans the website resource created during testing
 #>
 function Clean-WebService($resourceGroup, $webServiceName)
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
+        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
     {
         try {
             LogOutput "Removing web service $webServiceName from resource group $rgName"    
-            Remove-AzureRmMlWebService -ResourceGroupName $resourceGroup -Name $webServiceName -Force
+            Remove-AzureRmMlWebService -ResourceGroupName $resourceGroup `
+                                        -Name $webServiceName -Force
             LogOutput "Web service $webServiceName was removed."
         }
         catch {
-            Write-Warning "Caught unexpected exception when cleaning up web service $webServiceName in group $resourceGroup : $($($_.Exception).Message)"
+            Write-Warning "Caught unexpected exception when cleaning up web `
+                            service $webServiceName in group $resourceGroup : `
+                            $($($_.Exception).Message)"
         }
     }
 }
@@ -136,7 +147,8 @@ Cleans the storage account created during testing
 #>
 function Clean-TestStorageAccount($resourceGroup, $accountName)
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
+        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
     {
         try {
             LogOutput "Removing storage account $accountName from resource group $rgName"             
@@ -144,7 +156,9 @@ function Clean-TestStorageAccount($resourceGroup, $accountName)
             LogOutput "Storage account $accountName was removed."
         }
         catch {
-            Write-Warning "Caught unexpected exception when cleaning up storage account $accountName in group $resourceGroup : $($($_.Exception).Message)"
+            Write-Warning "Caught unexpected exception when cleaning up `
+                            storage account $accountName in group $resourceGroup : `
+                            $($($_.Exception).Message)"
         }
     }
 }
@@ -155,7 +169,8 @@ Cleans the created resource group
 #>
 function Clean-ResourceGroup($resourceGroup)
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
+        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
     {
         try {
             LogOutput "Removing resource group $resourceGroup" 
@@ -163,7 +178,8 @@ function Clean-ResourceGroup($resourceGroup)
             LogOutput "Resource group $resourceGroup was removed." 
         }
         catch {
-            Write-Warning "Caught unexpected exception when cleaning up resource group $resourceGroup : $($($_.Exception).Message)"
+            Write-Warning "Caught unexpected exception when cleaning up resource `
+                            group $resourceGroup : $($($_.Exception).Message)"
         }
     }
 }
@@ -175,5 +191,5 @@ Writes a timestamped message to stdout
 function LogOutput($message)
 {
     $timestamp = Get-Date -UFormat "%Y-%m-%d %H:%M:%S %Z"
-    Write-Output "[$timestamp]: $message"
+    Write-Debug "[$timestamp]: $message"
 }

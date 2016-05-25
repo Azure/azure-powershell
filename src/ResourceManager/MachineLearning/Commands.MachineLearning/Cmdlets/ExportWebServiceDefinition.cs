@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         {
             string serializedDefinition = 
                 ModelsSerializationUtil.GetAzureMLWebServiceDefinitionJsonFromObject(this.WebService);
+
             if (!string.IsNullOrWhiteSpace(this.OutputFile))
             {
                 bool fileExisting = File.Exists(this.OutputFile);

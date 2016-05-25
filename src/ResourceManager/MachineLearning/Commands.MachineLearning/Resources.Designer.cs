@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.MachineLearning {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to create a new machine learning web service &quot;{0}&quot; ?.
+        /// </summary>
+        internal static string NewServiceWarning {
+            get {
+                return ResourceManager.GetString("NewServiceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the machine learning web service &quot;{0}&quot; ?.
         /// </summary>
         internal static string RemoveMlServiceWarning {

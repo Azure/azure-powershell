@@ -23,7 +23,9 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
     {
         private static readonly Regex MlWebServiceResourceIdRegex = 
             new Regex(
-                    @"^\/subscriptions\/(?<subscriptionId>[^\/]+)\/resourceGroups\/(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.MachineLearning\/webservices\/(?<webServiceName>[^\/]+)$", 
+                    @"^\/subscriptions\/(?<subscriptionId>[^\/]+)\/resourceGroups\/"+
+                    @"(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.MachineLearning\/"+
+                    @"webservices\/(?<webServiceName>[^\/]+)$", 
                     RegexOptions.IgnoreCase);
 
         internal static bool TryParseMlWebServiceMetadataFromResourceId(
