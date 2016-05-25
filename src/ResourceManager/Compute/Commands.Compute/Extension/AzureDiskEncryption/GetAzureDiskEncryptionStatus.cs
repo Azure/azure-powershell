@@ -70,7 +70,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             switch (osType)
             {
                 case OSType.Windows:
-                    if (GetOsVolumeEncryptionSettings(vmParameters) != null)
+                    DiskEncryptionSettings osEncryptionSettings = GetOsVolumeEncryptionSettings(vmParameters);
+
+                    if (osEncryptionSettings != null && osEncryptionSettings.DiskEncryptionKey != null && osEncryptionSettings.Enabled == true)
                     {
                         return EncryptionStatus.Encrypted;
                     }
