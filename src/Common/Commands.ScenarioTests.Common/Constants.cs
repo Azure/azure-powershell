@@ -58,6 +58,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string Network = "Network";
 
+        public const string DevTestLabs = "DevTestLabs";
+
         // Owners
         public const string OneSDK = "OneSDK";
 
