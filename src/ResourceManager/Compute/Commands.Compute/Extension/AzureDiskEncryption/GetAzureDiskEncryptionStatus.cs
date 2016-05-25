@@ -72,7 +72,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 case OSType.Windows:
                     DiskEncryptionSettings osEncryptionSettings = GetOsVolumeEncryptionSettings(vmParameters);
 
-                    if (osEncryptionSettings != null && osEncryptionSettings.DiskEncryptionKey != null && osEncryptionSettings.Enabled == true)
+                    if (osEncryptionSettings != null
+                        && osEncryptionSettings.DiskEncryptionKey != null
+                        && !String.IsNullOrEmpty(osEncryptionSettings.DiskEncryptionKey.SecretUrl)
+                        && osEncryptionSettings.Enabled == true)
                     {
                         return EncryptionStatus.Encrypted;
                     }
