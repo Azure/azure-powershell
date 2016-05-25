@@ -20,8 +20,13 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
-    public class GetAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
+    using System;
+    using System.Linq;
+
+    using AutoMapper;
+
+    [Cmdlet(VerbsCommon.Get, "AzureExpressRouteCircuitRouteTableSummary"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
+    public class GetAzureExpressRouteCircuitRouteTableSummaryCommand : NetworkBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -32,49 +37,50 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The Name of ExpressRoute Circuit")]
+        [ValidateNotNullOrEmpty]
+        public string ExpressRouteCircuitName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The PeeringType")]
+        [ValidateSet(
+           MNM.ExpressRouteCircuitPeeringType.AzurePrivatePeering,
+           MNM.ExpressRouteCircuitPeeringType.AzurePublicPeering,
+           MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering,
+           IgnoreCase = true)]
+        public string PeeringType { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The DevicePath, can be either Primary or Secondary")]
+        [ValidateNotNullOrEmpty]
+        public string DevicePath { get; set; }	
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (!string.IsNullOrEmpty(this.Name))
+            DevicePathEnum path;
+            if (Enum.TryParse(DevicePath, true, out path))
             {
-                var circuit = this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name);
-
-                WriteObject(circuit);
-            }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                var circuitList = this.ExpressRouteCircuitClient.List(this.ResourceGroupName);
-
-                var psCircuits = new List<PSExpressRouteCircuit>();
-                foreach (var ExpressRouteCircuit in circuitList)
+                var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTableSummary(ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath).Value.Cast<object>().ToList();
+                var psARPs = new List<PSExpressRouteCircuitRoutesTableSummary>();
+                foreach (var arpTable in arpTables)
                 {
-                    var psVnet = this.ToPsExpressRouteCircuit(ExpressRouteCircuit);
-                    psVnet.ResourceGroupName = this.ResourceGroupName;
-                    psCircuits.Add(psVnet);
+                    var psARP = Mapper.Map<PSExpressRouteCircuitRoutesTableSummary>(arpTable);
+                    psARPs.Add(psARP);
                 }
-
-                WriteObject(psCircuits, true);
-            }
-            else
-            {
-                var circuitList = this.ExpressRouteCircuitClient.ListAll();
-
-                var psCircuits = new List<PSExpressRouteCircuit>();
-                foreach (var ExpressRouteCircuit in circuitList)
-                {
-                    var psVnet = this.ToPsExpressRouteCircuit(ExpressRouteCircuit);
-                    psVnet.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(ExpressRouteCircuit.Id);
-                    psCircuits.Add(psVnet);
-                }
-
-                WriteObject(psCircuits, true);
-            }
+                WriteObject(psARPs, true);
+            }		
         }
     }
 }

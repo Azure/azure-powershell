@@ -37,6 +37,9 @@ function Test-ExpressRouteCircuitStageCRUD
       $circuit.AllowClassicOperations = $false
       $circuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 	  
+	  		$actual = Get-AzureRmExpressRouteCircuitStats -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name 
+			Assert-AreEqual $actual.PrimaryBytesIn 0
+
 	  #move
 	  Move-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname -Location $location -ServiceKey $circuit.ServiceKey -Force
             
