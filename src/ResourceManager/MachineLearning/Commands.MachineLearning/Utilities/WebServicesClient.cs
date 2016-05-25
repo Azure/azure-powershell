@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Management.MachineLearning.WebServices;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using APIClient = Microsoft.Azure.Management.MachineLearning.
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             return this.apiClient.WebServices.ListKeys(resourceGroupName, webServiceName);
         }
 
-        public async Task<ResponseWithContinuation<WebService[]>> 
+        public async Task<IList<WebService>> 
                         GetAzureMlWebServicesBySubscriptionAndGroupAsync(
                                                     string resourceGroupName, 
                                                     string nextLink, 
@@ -107,14 +107,11 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
                                                                         resourceGroupName, 
                                                                         skipToken, 
                                                                         cancellationTokenParam).ConfigureAwait(false);
-            return new ResponseWithContinuation<WebService[]>
-            {
-                Value = paginatedResponse.Value.ToArray(),
-                NextLink = paginatedResponse.NextLink
-            };
+
+            return paginatedResponse.Value;
         }
 
-        public async Task<ResponseWithContinuation<WebService[]>> 
+        public async Task<IList<WebService>> 
                         GetAzureMlWebServicesBySubscriptionAsync(
                                                     string nextLink, 
                                                     CancellationToken? cancellationToken)
@@ -127,11 +124,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
                                                         skipToken, 
                                                         cancellationTokenParam).ConfigureAwait(false);
 
-            return new ResponseWithContinuation<WebService[]>
-            {
-                Value = paginatedResponse.Value.ToArray(),
-                NextLink = paginatedResponse.NextLink
-            };
+            return paginatedResponse.Value;
         }
         
         private static string GetSkipTokenFromLink(string nextLink)
