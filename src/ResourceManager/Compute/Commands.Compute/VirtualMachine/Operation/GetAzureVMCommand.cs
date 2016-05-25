@@ -146,8 +146,8 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         foreach (var item in vmListResult.Body)
                         {
-                            var psItem = Mapper.Map<PSVirtualMachine>(item);
-                            psItem = Mapper.Map(vmListResult, psItem);
+                            var psItem = Mapper.Map<PSVirtualMachine>(vmListResult);
+                            psItem = Mapper.Map(item, psItem);
                             psResultList.Add(psItem);
                         }
                     }
