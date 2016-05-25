@@ -214,23 +214,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 switch (osType)
                 {
                     case OSType.Windows:
+                    case OSType.Linux:
                         AzureDiskEncryptionStatusContext encryptionStatus = new AzureDiskEncryptionStatusContext
                         {
                             OsVolumeEncrypted = osVolumeEncrypted,
-                            OsVolumeEncryptionSettings = osVolumeEncryptionSettings,
-                            DataVolumesEncrypted = dataVolumesEncrypted
+                            DataVolumesEncrypted = dataVolumesEncrypted,
+                            VolumeEncryptionSettings = osVolumeEncryptionSettings
                         };
                         WriteObject(encryptionStatus);
-                        break;
-                    case OSType.Linux:
-                        AzureDiskEncryptionStatusLinuxContext encryptionStatusLinux = new AzureDiskEncryptionStatusLinuxContext
-                        {
-                            OsVolumeEncrypted = osVolumeEncrypted,
-                            OsVolumeEncryptionSettings = null,
-                            DataVolumesEncrypted = dataVolumesEncrypted,
-                            DataVolumeEncryptionSettings = osVolumeEncryptionSettings
-                        };
-                        WriteObject(encryptionStatusLinux);
                         break;
                     case OSType.Unknown:
                         ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "OS type unknown.")),
