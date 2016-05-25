@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -69,48 +68,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
             // Assert
             this.mockAutomationClient.Verify(f => f.CreateRunbookByName(resourceGroupName, accountName, runbookName, description, tags, null, null, null, false), Times.Once());
-        }
-
-        [TestMethod]
-        public void NewAzureAutomationRunbookTypeValueDifferentFromSdk()
-        {
-            string resourceGroupName = "resourceGroup";
-            string accountName = "automation";
-            string runbookName = "runbook";
-            string type = "GraphicalPowerShell";
-
-            this.mockAutomationClient.Setup(
-                f => f.CreateRunbookByName(resourceGroupName, accountName, runbookName, null, null, RunbookTypeEnum.GraphPowerShell, null, null, false));
-
-            this.cmdlet.ResourceGroupName = resourceGroupName;
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = runbookName;
-            this.cmdlet.Type = type;
-            this.cmdlet.SetParameterSet("ByRunbookName");
-            this.cmdlet.ExecuteCmdlet();
-
-            this.mockAutomationClient.Verify(f => f.CreateRunbookByName(resourceGroupName, accountName, runbookName, null, null, RunbookTypeEnum.GraphPowerShell, null, null, false), Times.Once());
-        }
-
-        [TestMethod]
-        public void NewAzureAutomationRunbookTypeValueSameAsSdk()
-        {
-            string resourceGroupName = "resourceGroup";
-            string accountName = "automation";
-            string runbookName = "runbook";
-            string type = "PowerShellWorkflow";
-
-            this.mockAutomationClient.Setup(
-                f => f.CreateRunbookByName(resourceGroupName, accountName, runbookName, null, null, RunbookTypeEnum.PowerShellWorkflow, null, null, false));
-
-            this.cmdlet.ResourceGroupName = resourceGroupName;
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = runbookName;
-            this.cmdlet.Type = type;
-            this.cmdlet.SetParameterSet("ByRunbookName");
-            this.cmdlet.ExecuteCmdlet();
-
-            this.mockAutomationClient.Verify(f => f.CreateRunbookByName(resourceGroupName, accountName, runbookName, null, null, RunbookTypeEnum.PowerShellWorkflow, null, null, false), Times.Once());
         }
     }
 }

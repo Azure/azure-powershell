@@ -29,10 +29,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 return RunbookTypeEnum.GraphPowerShellWorkflow;
             }
-            else
-            {
-                return commandValue;
-            }
+
+            return commandValue;
         }
     }
 }
