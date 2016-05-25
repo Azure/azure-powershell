@@ -225,6 +225,7 @@
     <Compile Include="Jobs\DisableBatchJobCommandTests.cs" />
     <Compile Include="Jobs\EnableBatchJobCommandTests.cs" />
     <Compile Include="Jobs\GetBatchJobCommandTests.cs" />
+    <Compile Include="Jobs\GetBatchJobStatisticsCommandTests.cs" />
     <Compile Include="Jobs\NewBatchJobCommandTests.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommandTests.cs" />
     <Compile Include="Jobs\SetBatchJobCommandTests.cs" />
@@ -234,6 +235,8 @@
     <Compile Include="Pools\DisableBatchAutoScaleCommandTests.cs" />
     <Compile Include="Pools\EnableBatchAutoScaleCommandTests.cs" />
     <Compile Include="Pools\GetBatchPoolCommandTests.cs" />
+    <Compile Include="Pools\GetBatchPoolStatisticsCommandTests.cs" />
+    <Compile Include="Pools\GetBatchPoolUsageMetricsCommandTests.cs" />
     <Compile Include="Pools\NewBatchPoolCommandTests.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommandTests.cs" />
     <Compile Include="Pools\SetBatchPoolCommandTests.cs" />
@@ -666,6 +669,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestCreateTask.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestCreateTaskCollection.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestDeleteTask.json">

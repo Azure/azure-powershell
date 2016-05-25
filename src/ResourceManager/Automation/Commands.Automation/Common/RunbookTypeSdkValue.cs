@@ -13,25 +13,24 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Runtime.Serialization;
+using Microsoft.Azure.Management.Automation.Models;
 
-namespace Microsoft.Azure.Commands.Batch
+namespace Microsoft.Azure.Commands.Automation.Common
 {
-    /// <summary>
-    /// The exception that is thrown when failing to activate an application package
-    /// </summary>
-    [Serializable]
-    internal sealed class ActivateApplicationPackageException : Exception
+    public static class RunbookTypeSdkValue
     {
-        public ActivateApplicationPackageException(string message, Exception exception)
-            : base(message, exception)
+        public static string Resolve(string commandValue)
         {
-        }
+            if (Constants.RunbookType.GraphicalPowerShell.Equals(commandValue, StringComparison.OrdinalIgnoreCase))
+            {
+                return RunbookTypeEnum.GraphPowerShell;
+            }
+            else if (Constants.RunbookType.GraphicalPowerShellWorkflow.Equals(commandValue, StringComparison.OrdinalIgnoreCase))
+            {
+                return RunbookTypeEnum.GraphPowerShellWorkflow;
+            }
 
-        private ActivateApplicationPackageException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
+            return commandValue;
         }
     }
 }

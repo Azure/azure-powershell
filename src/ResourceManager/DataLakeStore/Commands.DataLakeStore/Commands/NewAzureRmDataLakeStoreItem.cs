@@ -23,6 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Alias("New-AdlStoreItem")]
     public class NewAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         private FileSystemCmdletProviderEncoding _encoding = FileSystemCmdletProviderEncoding.UTF8;

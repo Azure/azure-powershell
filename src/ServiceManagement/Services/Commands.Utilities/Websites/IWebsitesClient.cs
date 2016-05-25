@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.WebSitesExtensions.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 {
+    using Web.Deployment;
     using Utilities = Services.WebEntities;
 
     public interface IWebsitesClient
@@ -450,7 +451,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="connectionStrings">The connection strings to overwrite the ones in the Web.config file.</param>
         /// <param name="skipAppData">Skip app data</param>
         /// <param name="doNotDelete">Do not delete files at destination</param>
-        void PublishWebProject(string websiteName, string slot, string package, string setParametersFile, Hashtable connectionStrings, bool skipAppData, bool doNotDelete);
+        DeploymentChangeSummary PublishWebProject(string websiteName, string slot, string package, string setParametersFile, Hashtable connectionStrings, bool skipAppData, bool doNotDelete);
 
         /// <summary>
         /// Parse the Web.config files to get the connection string names.

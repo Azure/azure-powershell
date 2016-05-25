@@ -2007,22 +2007,21 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context
-          Id                           : tvm-2316545714_1-20150725t213220z
-          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
-          State                        : Idle
-          StateTransitionTime          : 7/25/2015 9:36:53 PM
-          LastBootTime                 : 7/25/2015 9:36:53 PM
-          AllocationTime               : 7/25/2015 9:32:20 PM
-          IPAddress                    : 10.14.121.1
-          AffinityId                   : TVM:tvm-2316545714_1-20150725t213220z
-          VirtualMachineSize           : small
-          TotalTasksRun                : 1
-          StartTaskInformation         :
-          RecentTasks                  : {}
-          StartTask                    :
-          CertificateReferences        :
-          Errors                       :
-
+          Id                    : tvm-2316545714_1-20150725t213220z
+          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
+          State                 : Idle
+          StateTransitionTime   : 7/25/2015 9:36:53 PM
+          LastBootTime          : 7/25/2015 9:36:53 PM
+          AllocationTime        : 7/25/2015 9:32:20 PM
+          IPAddress             : 10.14.121.1
+          AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
+          VirtualMachineSize    : small
+          TotalTasksRun         : 1
+          StartTaskInformation  :
+          RecentTasks           : {}
+          StartTask             :
+          CertificateReferences :
+          Errors                :
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets the compute node that has the ID tvm-2316545714_1-20150725t213220z from the pool that has the ID Pool06. Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
@@ -2043,38 +2042,37 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Filter "state eq 'idle'" -BatchContext $Context
-          Id                           : tvm-2316545714_1-20150725t213220z
-          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
-          State                        : Idle
-          StateTransitionTime          : 7/25/2015 9:36:53 PM
-          LastBootTime                 : 7/25/2015 9:36:53 PM
-          AllocationTime               : 7/25/2015 9:32:20 PM
-          IPAddress                    : 10.14.121.1
-          AffinityId                   : TVM:tvm-2316545714_1-20150725t213220z
-          VirtualMachineSize           : small
-          TotalTasksRun                : 1
-          StartTaskInformation         :
-          RecentTasks                  : {}
-          StartTask                    :
-          CertificateReferences        :
-          Errors                       :
+          Id                    : tvm-2316545714_1-20150725t213220z
+          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
+          State                 : Idle
+          StateTransitionTime   : 7/25/2015 9:36:53 PM
+          LastBootTime          : 7/25/2015 9:36:53 PM
+          AllocationTime        : 7/25/2015 9:32:20 PM
+          IPAddress             : 10.14.121.1
+          AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
+          VirtualMachineSize    : small
+          TotalTasksRun         : 1
+          StartTaskInformation  :
+          RecentTasks           : {}
+          StartTask             :
+          CertificateReferences :
+          Errors                :
 
-          Id                           : tvm-2316545714_2-20150726t172920z
-          Url                          : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
-          State                        : Idle
-          StateTransitionTime          : 7/26/2015 5:33:58 PM
-          LastBootTime                 : 7/26/2015 5:33:58 PM
-          AllocationTime               : 7/26/2015 5:29:20 PM
-          IPAddress                    : 10.14.121.38
-          AffinityId                   : TVM:tvm-2316545714_2-20150726t172920z
-          VirtualMachineSize           : small
-          TotalTasksRun                : 0
-          StartTaskInformation         :
-          RecentTasks                  :
-          StartTask                    :
-          CertificateReferences        :
-          Errors                       :
-
+          Id                    : tvm-2316545714_2-20150726t172920z
+          Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
+          State                 : Idle
+          StateTransitionTime   : 7/26/2015 5:33:58 PM
+          LastBootTime          : 7/26/2015 5:33:58 PM
+          AllocationTime        : 7/26/2015 5:29:20 PM
+          IPAddress             : 10.14.121.38
+          AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
+          VirtualMachineSize    : small
+          TotalTasksRun         : 0
+          StartTaskInformation  :
+          RecentTasks           :
+          StartTask             :
+          CertificateReferences :
+          Errors                :
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets all idle compute nodes that are contained in the pool that has the ID Pool06. The command specifies the idle state by using the Filter parameter.</maml:para>
@@ -4330,6 +4328,478 @@
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchPoolUsageMetrics
+      </command:name>
+      <maml:description>
+        <maml:para>Gets pool usage metrics for a Batch account.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchPoolUsageMetrics</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Lists the usage metrics, aggregated by pool across individual time intervals, for the specified account. You can filter the statistics to a specific pool and/or time range.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchPoolUsageMetrics</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>EndTime</maml:name>
+          <maml:description>
+            <maml:para>The end time should be at least two hours earlier. If not specified, it defaults to the end time of the last aggregation interval currently available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para>The OData filter clause to use to filter the list of metrics returned. The only valid property is poolId with a string value. Possible operations are: eq, ge, gt, le, lt, startswith.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>StartTime</maml:name>
+          <maml:description>
+            <maml:para>The start time should be at least two and half hours earlier. If not specified, it defaults to the start time of the last aggregation interval currently available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>EndTime</maml:name>
+        <maml:description>
+          <maml:para>The end time should be at least two hours earlier. If not specified, it defaults to the end time of the last aggregation interval currently available.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        <dev:type>
+          <maml:name>DateTime</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use to filter the list of metrics returned. The only valid property is poolId with a string value. Possible operations are: eq, ge, gt, le, lt, startswith.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>StartTime</maml:name>
+        <maml:description>
+          <maml:para>The start time should be at least two and half hours earlier. If not specified, it defaults to the start time of the last aggregation interval currently available.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        <dev:type>
+          <maml:name>DateTime</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSPoolUsageMetrics</maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          $startTime = Get-Date -Date &quot;2016-05-16 00:00:00Z&quot;
+          $endTime = Get-Date -Date &quot;2016-05-16 01:00:00Z&quot;
+          Get-AzureBatchPoolUsageMetrics -StartTime $startTime -EndTime $endTime -BatchContext $context
+
+
+          DataEgressGiB      : 6.68875873088837E-06
+          DataIngressGiB     : 1.9485130906105E-05
+          EndTime            : 5/16/2016 12:30:00 AM
+          PoolId             : testpool1
+          StartTime          : 5/16/2016 12:00:00 AM
+          TotalCoreHours     : 8
+          VirtualMachineSize : standard_d4
+
+          DataEgressGiB      : 5.61587512493134E-06
+          DataIngressGiB     : 1.76150351762772E-05
+          EndTime            : 5/16/2016 12:30:00 AM
+          PoolId             : testpool2
+          StartTime          : 5/16/2016 12:00:00 AM
+          TotalCoreHours     : 12
+          VirtualMachineSize : standard_d4
+
+          DataEgressGiB      : 7.36676156520844E-06
+          DataIngressGiB     : 2.10804864764214E-05
+          EndTime            : 5/16/2016 1:00:00 AM
+          PoolId             : testpool1
+          StartTime          : 5/16/2016 12:30:00 AM
+          TotalCoreHours     : 7.99999999955555
+          VirtualMachineSize : standard_d4
+
+          DataEgressGiB      : 5.80586493015289E-06
+          DataIngressGiB     : 1.80602073669434E-05
+          EndTime            : 5/16/2016 1:00:00 AM
+          PoolId             : testpool2
+          StartTime          : 5/16/2016 12:30:00 AM
+          TotalCoreHours     : 11.9999999993333
+          VirtualMachineSize : standard_d4
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command returns all of the pool usage metrics, aggregated by pool across time intervals between Monday, May 16, 2016 12:00:00 AM and Monday, May 16, 2016 1:00:00 AM</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          $filter = &quot;poolId eq 'MyPool'&quot;
+          Get-AzureBatchPoolUsageMetrics -Filter $filter -BatchContext $context
+
+          DataEgressGiB      : 9.0496614575386E-06
+          DataIngressGiB     : 2.60043889284134E-05
+          EndTime            : 5/16/2016 5:30:00 PM
+          PoolId             : MyPool
+          StartTime          : 5/16/2016 5:00:00 PM
+          TotalCoreHours     : 12
+          VirtualMachineSize : standard_d4
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command returns the usage metrics for pool MyPool with a filter string.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchPoolStatistics</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchJobStatistics</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchPoolStatistics
+      </command:name>
+      <maml:description>
+        <maml:para>Gets pool summary statistics for a Batch account.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchPoolStatistics</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Gets the lifetime statistics for all of the pools in the specified account. Statistics are aggregated across all pools that have ever existed in the account, from account creation to the last update time of the statistics.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchPoolStatistics</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSPoolStatistics</maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          $poolStatistics = Get-AzureBatchPoolStatistics -BatchContext $context
+          $poolStatistics.ResourceStatistics
+
+          AverageCpuPercentage : 0.351232518750755
+          AverageDiskGiB       : 55.2569014701165
+          AverageMemoryGiB     : 2.87273772318252
+          DiskReadGiB          : 45.1326256990433
+          DiskReadIOps         : 878278
+          DiskWriteGiB         : 1230.72120628133
+          DiskWriteIOps        : 176832212
+          LastUpdateTime       : 5/16/2016 4:30:00 PM
+          NetworkReadGiB       : 29.3502839952707
+          NetworkWriteGiB      : 25.5208827350289
+          PeakDiskGiB          : 21.9638671875
+          PeakMemoryGiB        : 1.11184692382813
+          StartTime            : 2/10/2016 7:07:24 PM
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command gets the resource statistics of all of the pools in the specified account. </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchPoolUsageMetrics</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchJobStatistics</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchJobStatistics
+      </command:name>
+      <maml:description>
+        <maml:para>Gets job summary statistics for a Batch account.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchJobStatistics</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Gets lifetime summary statistics for all of the jobs in the specified account. Statistics are aggregated across all jobs that have ever existed in the account, from account creation to the last update time of the statistics.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchJobStatistics</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSJobStatistics</maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Example section  -->
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchJobStatistics -BatchContext $context
+
+          FailedTaskCount    : 330
+          KernelCpuTime      : 00:24:31.8440000
+          LastUpdateTime     : 5/16/2016 6:00:00 PM
+          ReadIOGiB          : 38.1271341182292
+          ReadIOps           : 26546054
+          StartTime          : 11/3/2015 9:47:14 PM
+          SucceededTaskCount : 766
+          TaskRetryCount     : 0
+          Url                : https://accountname.westus.batch.azure.com/lifetimejobstats
+          UserCpuTime        : 20:55:50.3200000
+          WaitTime           : 03:54:49.8530000
+          WallClockTime      : 20:55:50.3200000
+          WriteIOGiB         : 0.159623090177774
+          WriteIOps          : 146946
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command gets the summary statistics for all of the jobs.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchPoolStatistics</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchPoolUsageMetrics</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureBatchRemoteDesktopProtocolFile</command:name>
@@ -6321,7 +6791,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Constraints</maml:name>
           <maml:description>
-            <maml:para>Specifies the run constraints for the job.</maml:para>
+            <maml:para>Specifies the execution constraints for the job.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSJobConstraints</command:parameterValue>
         </command:parameter>
@@ -6411,7 +6881,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Constraints</maml:name>
         <maml:description>
-          <maml:para>Specifies the run constraints for the job.</maml:para>
+          <maml:para>Specifies the execution constraints for the job.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">PSJobConstraints</command:parameterValue>
         <dev:type>
@@ -6886,7 +7356,7 @@
             <maml:para>Specifies the formula for automatically scaling the pool. </maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        </command:parameter>        
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>ApplicationPackageReferences</maml:name>
           <maml:description>
@@ -7396,6 +7866,7 @@
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <!--Generated by PS Cmdlet Help Editor-->
     <command:details>
       <command:name>New-AzureBatchTask</command:name>
       <maml:description>
@@ -7414,237 +7885,241 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>New-AzureBatchTask</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>AffinityInformation</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>JobId</maml:name>
           <maml:description>
-            <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to start the task.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">PSAffinityInformation</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Constraints</maml:name>
-          <maml:description>
-            <maml:para>Specifies the run constraints for the task.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">PSTaskConstraints</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>DisplayName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the display name of the task.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>EnvironmentSettings</maml:name>
-          <maml:description>
-            <maml:para>Specifies the environment settings, as key/value pairs, that this cmdlet adds to the task. The key is the environment setting name. The value is the environment setting.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">IDictionary</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>MultiInstanceSettings</maml:name>
-          <maml:description>
-            <maml:para>Specifies information about how to run a multi-instance task.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Commands.Batch.Models.PSMultiInstanceSettings</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>ResourceFiles</maml:name>
-          <maml:description>
-            <maml:para>Specifies resource files, as key/value pairs, that the task requires. The key is the resource file path. The value is the resource file blob source.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">IDictionary</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>RunElevated</maml:name>
-          <maml:description>
-            <maml:para>Indicates that the task process runs elevated as Administrator. Otherwise, the process runs without elevation.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
-          <maml:name>BatchContext</maml:name>
-          <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>CommandLine</maml:name>
-          <maml:description>
-            <maml:para>Specifies the command-line command for the task.</maml:para>
+            <maml:para>Specifies the ID of the job under which this cmdlet creates the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Id</maml:name>
           <maml:description>
             <maml:para>Specifies the ID of the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>JobId</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DisplayName</maml:name>
           <maml:description>
-            <maml:para>Specifies the ID of the job under whicht this cmdlet creates the task.</maml:para>
+            <maml:para>Specifies the display name of the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>CommandLine</maml:name>
+          <maml:description>
+            <maml:para>Specifies the command line for the task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ResourceFiles</maml:name>
+          <maml:description>
+            <maml:para>Specifies resource files, as key/value pairs, that the task requires. The key is the resource file path. The value is the resource file blob source.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>EnvironmentSettings</maml:name>
+          <maml:description>
+            <maml:para>Specifies the environment settings, as key/value pairs, that this cmdlet adds to the task. The key is the environment setting name. The value is the environment setting.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>RunElevated</maml:name>
+          <maml:description>
+            <maml:para>Indicates that the task process run with administrator privileges.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>AffinityInformation</maml:name>
+          <maml:description>
+            <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to run the task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Constraints</maml:name>
+          <maml:description>
+            <maml:para>Specifies the execution constraints that apply to this task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MultiInstanceSettings</maml:name>
+          <maml:description>
+            <maml:para>Specifies information about how to run a multi-instance task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSMultiInstanceSettings</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DependsOn</maml:name>
+          <maml:description>
+            <maml:para>Specifies that the task depends on other tasks. The task will not be scheduled until all depended-on tasks have completed successfully.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">TaskDependencies</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>New-AzureBatchTask</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>AffinityInformation</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>JobId</maml:name>
           <maml:description>
-            <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to start the task.</maml:para>
+            <maml:para>Specifies the ID of the job under which this cmdlet creates the task.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">PSAffinityInformation</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Constraints</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Tasks</maml:name>
           <maml:description>
-            <maml:para>Specifies the run constraints for the task.</maml:para>
+            <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">PSTaskConstraints</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">PSCloudTask[]</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>DisplayName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the display name of the task.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>EnvironmentSettings</maml:name>
-          <maml:description>
-            <maml:para>Specifies the environment settings, as key/value pairs, that this cmdlet adds to the task. The key is the environment setting name. The value is the environment setting.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">IDictionary</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
-          <maml:name>Job</maml:name>
-          <maml:description>
-            <maml:para>Specifies the job under which this cmdlet creates the task. To obtain a PSCloudJob object, use the Get-AzureBatchJob cmdlet.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">PSCloudJob</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>MultiInstanceSettings</maml:name>
-          <maml:description>
-            <maml:para>Specifies information about how to run a multi-instance task.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Commands.Batch.Models.PSMultiInstanceSettings</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>ResourceFiles</maml:name>
-          <maml:description>
-            <maml:para>Specifies resource files, as key/value pairs, that the task requires. The key is the resource file path. The value is the resource file blob source.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">IDictionary</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>RunElevated</maml:name>
-          <maml:description>
-            <maml:para>Indicates that the task process runs elevated as Administrator. Otherwise, the process runs without elevation.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
             <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>CommandLine</maml:name>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureBatchTask</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>Job</maml:name>
           <maml:description>
-            <maml:para>Specifies the command-line command for the task.</maml:para>
+            <maml:para>Specifies the job under which this cmdlet creates the task. To obtain a PSCloudJob object, use the Get-AzureBatchJob cmdlet.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Tasks</maml:name>
+          <maml:description>
+            <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">PSCloudTask[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureBatchTask</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>Job</maml:name>
+          <maml:description>
+            <maml:para>Specifies the job under which this cmdlet creates the task. To obtain a PSCloudJob object, use the Get-AzureBatchJob cmdlet.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Id</maml:name>
           <maml:description>
             <maml:para>Specifies the ID of the task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DisplayName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the display name of the task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>CommandLine</maml:name>
+          <maml:description>
+            <maml:para>Specifies the command line for the task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ResourceFiles</maml:name>
+          <maml:description>
+            <maml:para>Specifies resource files, as key/value pairs, that the task requires. The key is the resource file path. The value is the resource file blob source.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>EnvironmentSettings</maml:name>
+          <maml:description>
+            <maml:para>Specifies the environment settings, as key/value pairs, that this cmdlet adds to the task. The key is the environment setting name. The value is the environment setting.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>RunElevated</maml:name>
+          <maml:description>
+            <maml:para>Indicates that the task process run with administrator privileges.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>AffinityInformation</maml:name>
+          <maml:description>
+            <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to run the task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Constraints</maml:name>
+          <maml:description>
+            <maml:para>Specifies the execution constraints that apply to this task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MultiInstanceSettings</maml:name>
+          <maml:description>
+            <maml:para>Specifies information about how to run a multi-instance task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSMultiInstanceSettings</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DependsOn</maml:name>
+          <maml:description>
+            <maml:para>Specifies that the task depends on other tasks. The task will not be scheduled until all depended-on tasks have completed successfully.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">TaskDependencies</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>AffinityInformation</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>JobId</maml:name>
         <maml:description>
-          <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to start the task.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">PSAffinityInformation</command:parameterValue>
-        <dev:type>
-          <maml:name>PSAffinityInformation</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
-        <maml:name>BatchContext</maml:name>
-        <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-        <dev:type>
-          <maml:name>BatchAccountContext</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>CommandLine</maml:name>
-        <maml:description>
-          <maml:para>Specifies the command-line command for the task.</maml:para>
+          <maml:para>Specifies the ID of the job under which this cmdlet creates the task.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
+          <maml:uri/>
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Constraints</maml:name>
-        <maml:description>
-          <maml:para>Specifies the run constraints for the task.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">PSTaskConstraints</command:parameterValue>
-        <dev:type>
-          <maml:name>PSTaskConstraints</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>DisplayName</maml:name>
-        <maml:description>
-          <maml:para>Specifies the display name of the task.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>EnvironmentSettings</maml:name>
-        <maml:description>
-          <maml:para>Specifies the environment settings, as key/value pairs, that this cmdlet adds to the task. The key is the environment setting name. The value is the environment setting.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">IDictionary</command:parameterValue>
-        <dev:type>
-          <maml:name>IDictionary</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Id</maml:name>
         <maml:description>
           <maml:para>Specifies the ID of the task.</maml:para>
@@ -7652,67 +8127,151 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
+          <maml:uri/>
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
-        <maml:name>Job</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DisplayName</maml:name>
         <maml:description>
-          <maml:para>Specifies the job under which this cmdlet creates the task. To obtain a PSCloudJob object, use the Get-AzureBatchJob cmdlet.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">PSCloudJob</command:parameterValue>
-        <dev:type>
-          <maml:name>PSCloudJob</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>JobId</maml:name>
-        <maml:description>
-          <maml:para>Specifies the ID of the job under whicht this cmdlet creates the task.</maml:para>
+          <maml:para>Specifies the display name of the task.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
+          <maml:uri/>
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>MultiInstanceSettings</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>CommandLine</maml:name>
         <maml:description>
-          <maml:para>Specifies information about how to run a multi-instance task.</maml:para>
+          <maml:para>Specifies the command line for the task.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Commands.Batch.Models.PSMultiInstanceSettings</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>Microsoft.Azure.Commands.Batch.Models.PSMultiInstanceSettings</maml:name>
-          <maml:uri />
+          <maml:name>String</maml:name>
+          <maml:uri/>
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResourceFiles</maml:name>
         <maml:description>
           <maml:para>Specifies resource files, as key/value pairs, that the task requires. The key is the resource file path. The value is the resource file blob source.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">IDictionary</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
         <dev:type>
           <maml:name>IDictionary</maml:name>
-          <maml:uri />
+          <maml:uri/>
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>EnvironmentSettings</maml:name>
+        <maml:description>
+          <maml:para>Specifies the environment settings, as key/value pairs, that this cmdlet adds to the task. The key is the environment setting name. The value is the environment setting.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+        <dev:type>
+          <maml:name>IDictionary</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>RunElevated</maml:name>
         <maml:description>
-          <maml:para>Indicates that the task process runs elevated as Administrator. Otherwise, the process runs without elevation.</maml:para>
+          <maml:para>Indicates that the task process runs with administrator privileges.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AffinityInformation</maml:name>
+        <maml:description>
+          <maml:para>Specifies a locality hint that the Batch service uses to select a node on which to run the task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
+        <dev:type>
+          <maml:name>PSAffinityInformation</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Constraints</maml:name>
+        <maml:description>
+          <maml:para>Specifies the execution constraints that apply to this task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
+        <dev:type>
+          <maml:name>PSTaskConstraints</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MultiInstanceSettings</maml:name>
+        <maml:description>
+          <maml:para>Specifies information about how to run a multi-instance task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSMultiInstanceSettings</command:parameterValue>
+        <dev:type>
+          <maml:name>PSMultiInstanceSettings</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DependsOn</maml:name>
+        <maml:description>
+          <maml:para>Specifies that the task depends on other tasks. The task will not be scheduled until all depended-on tasks have completed successfully.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">TaskDependencies</command:parameterValue>
+        <dev:type>
+          <maml:name>TaskDependencies</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Tasks</maml:name>
+        <maml:description>
+          <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">PSCloudTask[]</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCloudTask[]</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>Job</maml:name>
+        <maml:description>
+          <maml:para>Specifies the job under which this cmdlet creates the task. To obtain a PSCloudJob object, use the Get-AzureBatchJob cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCloudJob</maml:name>
+          <maml:uri/>
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
@@ -7720,13 +8279,9 @@
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>
-          </maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
+          <maml:name></maml:name>
+          <maml:uri></maml:uri>
+          <maml:description/>
         </dev:type>
         <maml:description>
           <maml:para>
@@ -7737,13 +8292,9 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>
-          </maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
+          <maml:name></maml:name>
+          <maml:uri></maml:uri>
+          <maml:description/>
         </dev:type>
         <maml:description>
           <maml:para>
@@ -7751,46 +8302,107 @@
         </maml:description>
       </command:returnValue>
     </command:returnValues>
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
+    <command:terminatingErrors></command:terminatingErrors>
+    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>Example 1: Create a Batch task</maml:title>
+        <maml:title>--------------------------  Example 1: Create a Batch task  --------------------------</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>
-          PS C:\&gt;New-AzureBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -BatchContext $Context
-        </dev:code>
+        <dev:code>PS C:\&gt;New-AzureBatchTask -JobId &quot;Job-000001&quot; -Id &quot;Task23&quot; -CommandLine &quot;cmd /c dir /s&quot; -BatchContext $Context</dev:code>
         <dev:remarks>
           <maml:para>This command creates a task that has the ID Task23 under the job that has the ID Job-000001. The task runs the specified command. Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
           <maml:para />
           <maml:para />
+          <maml:para></maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
-            <command:commandText />
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
           </command:commandLine>
         </command:commandLines>
       </command:example>
       <command:example>
-        <maml:title>Example 2: Create a Batch task</maml:title>
+        <maml:title>--------------------------  Example 2: Create a Batch task  --------------------------</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>
-          PS C:\&gt;Get-AzureBatchJob -Id "Job-000001" -BatchContext $Context | New-AzureBatchTask -Id "Task26" -CommandLine "cmd /c echo hello &gt; newFile.txt" -RunElevated -BatchContext $Context
-        </dev:code>
+        <dev:code>PS C:\&gt;Get-AzureBatchJob -Id &quot;Job-000001&quot; -BatchContext $Context | New-AzureBatchTask -Id &quot;Task26&quot; -CommandLine &quot;cmd /c echo hello &gt; newFile.txt&quot; -RunElevated -BatchContext $Context</dev:code>
         <dev:remarks>
-          <maml:para>This command gets the Batch job that has the ID Job-000001 by using the Get-AzureBatchJob cmdlet. The command passes that job to the current cmdlet by using the pipeline operator. The command creates a task that has the ID Task26 under that job. The task runs the specified command by using elevated permissions.</maml:para>
+          <maml:para>This command gets the Batch job that has the ID Job-000001 by using the Get-AzureBatchJob cmdlet. The command passes that job to the New-AzureBatchTask cmdlet by using the pipeline operator. The command creates a task that has the ID Task26 under that job. The task runs the specified command with elevated permissions.</maml:para>
           <maml:para />
           <maml:para />
+          <maml:para></maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
-            <command:commandText />
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>--------------------------  Example 3: Add a collection of tasks to the specified job  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt; $taskId1 = &quot;Task23&quot;
+          PS C:\&gt; $taskId2 = &quot;Task24&quot;
+          PS C:\&gt; $cmd = &quot;cmd /c dir /s&quot;
+          PS C:\&gt; $task1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId1, $cmd)
+          PS C:\&gt; $task2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId2, $cmd)
+          PS C:\&gt; Get-AzureBatchJob -Id &quot;Job-000001&quot; -BatchContext $context | New-AzureBatchTask -Tasks
+          @($task1, $task2) -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command gets the Batch job that has the ID Job-000001 by using the Get-AzureBatchJob cmdlet. Then the command passes that job to the current cmdlet by using the pipeline operator. The command adds a collection of tasks under that job.</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>--------------------------  Example 4: Add a collection of tasks to the specified job  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt; $taskId1 = &quot;Task1&quot;
+          PS C:\&gt; $taskId2 = &quot;Task2&quot;
+          PS C:\&gt; $cmd = &quot;cmd /c dir /s&quot;
+          PS C:\&gt; $task1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId1, $cmd)
+          PS C:\&gt; $task2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId2, $cmd)
+          PS C:\&gt; New-AzureBatchTask -JobId &quot;Job-000001&quot; -Tasks @($task1, $task2) -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command adds a task with the ID Task1 and a task with the ID Task2 under the job that has the ID &quot;Job-000001&quot;.</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
           </command:commandLine>
         </command:commandLines>
       </command:example>
@@ -7798,31 +8410,31 @@
     <maml:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Get-AzureRmBatchAccountKeys</maml:linkText>
-        <maml:uri />
+        <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-AzureBatchJob</maml:linkText>
-        <maml:uri />
+        <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-AzureBatchTask</maml:linkText>
-        <maml:uri />
+        <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>New-AzureBatchTask</maml:linkText>
-        <maml:uri />
+        <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Remove-AzureBatchTask</maml:linkText>
-        <maml:uri />
+        <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Stop-AzureBatchTask</maml:linkText>
-        <maml:uri />
+        <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Azure Batch Cmdlets</maml:linkText>
-        <maml:uri />
+        <maml:uri></maml:uri>
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
@@ -8781,7 +9393,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -8824,12 +9436,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -8845,7 +9457,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: List the applications in a Batch account</maml:title>
@@ -8956,7 +9568,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>Specifies the name of the Batch account.</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -8968,7 +9580,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -8980,7 +9592,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
-        <maml:para>Specifies the version of the application.</maml:para>                
+        <maml:para>Specifies the version of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9023,12 +9635,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -9044,7 +9656,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Get details of an application package in the Batch account.</maml:title>
@@ -9054,12 +9666,15 @@
       </maml:introduction>
       <dev:code>
         PS C:\&gt;Get-AzureRmBatchApplicationPackage -AccountName "contosobatch" -ResourceGroupName "contosobatchgroup" -ApplicationId "litware" -ApplicationVersion "1.0"
-        Version State   Format
 
-        ------- ------- ------
+        Format             : zip
+        State              : Active
+        Version            : 1.0
+        LastActivationTime : 13/05/2016 4:03:24 AM
+        StorageUrl         : https://contosobatch.blob.core.windows.net/app-test
+        StorageUrlExpiry   : 13/05/2016 8:04:44 AM
+        Id                 : litware
 
-        1.0     active  zip
-        1.1     pending    
       </dev:code>
       <dev:remarks>
         <maml:para>This command gets the details of version 1.0 of the 'litware' package.</maml:para>
@@ -9178,7 +9793,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>Specifies the name of the Batch account.</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9197,7 +9812,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9209,7 +9824,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
-        <maml:para>Specifies the version of the application.</maml:para>                
+        <maml:para>Specifies the version of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9221,7 +9836,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>FilePath</maml:name>
       <maml:description>
-        <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>                
+        <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9233,7 +9848,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>Format</maml:name>
       <maml:description>
-        <maml:para>Specifies the format of the application package binary file.</maml:para>                
+        <maml:para>Specifies the format of the application package binary file.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9276,12 +9891,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
-          <!-- description  -->          
+          <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -9297,7 +9912,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Install an application package into a Batch account</maml:title>
@@ -9478,7 +10093,7 @@
       </dev:type>
       <maml:description>
         <maml:para>
-          <!-- description  -->          
+          <!-- description  -->
         </maml:para>
       </maml:description>
     </command:inputType>
@@ -9489,12 +10104,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -9510,7 +10125,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Add a new, empty application to a Batch account</maml:title>
@@ -9616,7 +10231,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>Specifies the name of the Batch account.</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9628,7 +10243,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9640,7 +10255,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationVersion</maml:name>
       <maml:description>
-        <maml:para>Specifies the version of the application.</maml:para>                
+        <maml:para>Specifies the version of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9683,12 +10298,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -9704,7 +10319,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Delete an application package from a Batch account</maml:title>
@@ -9803,7 +10418,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>Specifies the name of the Batch account.</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9815,7 +10430,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -9858,12 +10473,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -9879,7 +10494,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Delete an application from a Batch account</maml:title>
@@ -9999,7 +10614,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AccountName</maml:name>
       <maml:description>
-        <maml:para>Specifies the name of the Batch account.</maml:para>                
+        <maml:para>Specifies the name of the Batch account.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10011,7 +10626,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>AllowUpdates</maml:name>
       <maml:description>
-        <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>                
+        <maml:para>Specifies whether packages within the application may be overwritten using the same version string.</maml:para>
       </maml:description>
       <command:parameterValue required="false" variableLength="false">bool?</command:parameterValue>
       <dev:type>
@@ -10023,7 +10638,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>ApplicationId</maml:name>
       <maml:description>
-        <maml:para>Specifies the id of the application.</maml:para>                
+        <maml:para>Specifies the id of the application.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10035,7 +10650,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>DefaultVersion</maml:name>
       <maml:description>
-        <maml:para>Specifies which package to use if a client requests the application but does not specify a version.</maml:para>                
+        <maml:para>Specifies which package to use if a client requests the application but does not specify a version.</maml:para>
       </maml:description>
       <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10047,7 +10662,7 @@
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>DisplayName</maml:name>
       <maml:description>
-        <maml:para>Specifies the display name for the application.</maml:para>                
+        <maml:para>Specifies the display name for the application.</maml:para>
       </maml:description>
       <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
       <dev:type>
@@ -10090,12 +10705,12 @@
         <maml:name></maml:name>
         <maml:uri />
         <maml:description />
-      </dev:type>   
+      </dev:type>
       <maml:description>
         <maml:para>
           <!-- description  -->
         </maml:para>
-      </maml:description> 
+      </maml:description>
     </command:returnValue>
   </command:returnValues>
   <!-- Error section-->
@@ -10111,7 +10726,7 @@
       <maml:para></maml:para>
     </maml:alert>
   </maml:alertSet>
-  <!-- Example section  --> 
+  <!-- Example section  -->
   <command:examples>
     <command:example>
       <maml:title>Example 1: Update an application in a Batch account</maml:title>
@@ -12198,7 +12813,7 @@
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
-        <dev:code> 
+        <dev:code>
           Get-AzureBatchComputeNode -PoolId &quot;myPool&quot; -BatchContext $context | Get-AzureBatchRemoteLoginSettings -BatchContext $context
 
           IPAddress       Port

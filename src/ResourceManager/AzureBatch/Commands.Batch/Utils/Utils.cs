@@ -276,6 +276,31 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         }
 
         /// <summary>
+        /// Syncs the collections on a PSCloudTask with its wrapped OM object
+        /// </summary>
+        internal static void CloudTaskSyncCollections(PSCloudTask task)
+        {
+            if (task != null)
+            {
+                task.omObject.EnvironmentSettings = CreateSyncedList(task.EnvironmentSettings,
+                    (e) =>
+                    {
+                        EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
+                        return envSetting;
+                    });
+
+                task.omObject.ResourceFiles = CreateSyncedList(task.ResourceFiles,
+                    (r) =>
+                    {
+                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
+                        return resourceFile;
+                    });
+
+                MultiInstanceSettingsSyncCollections(task.MultiInstanceSettings);
+            }
+        }
+
+        /// <summary>
         /// Syncs the collections on a PSStartTask with its wrapped OM object
         /// </summary>
         internal static void StartTaskSyncCollections(PSStartTask startTask)

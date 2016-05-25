@@ -64,13 +64,13 @@ namespace Microsoft.Azure.Commands.Compute
                 if (Status.IsPresent)
                 {
                     var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
-                    WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName));
+                    WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
                 }
                 else
                 {
                     var result = this.VirtualMachineExtensionClient.GetWithHttpMessagesAsync(this.ResourceGroupName,
                         this.VMName, this.Name).GetAwaiter().GetResult();
-                    WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName));
+                    WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
                 }
             });
         }

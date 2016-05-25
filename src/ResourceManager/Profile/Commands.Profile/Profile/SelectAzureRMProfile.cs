@@ -46,6 +46,13 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (!string.IsNullOrEmpty(Path))
             {
+                if(!Common.Authentication.AzureSession.DataStore.FileExists(Path))
+                {
+                    throw new PSArgumentException(string.Format(
+                        Microsoft.Azure.Commands.Profile.Properties.Resources.FileNotFound, 
+                        Path));
+                }
+
                 AzureRmProfileProvider.Instance.Profile = new AzureRMProfile(Path);
             }
             else

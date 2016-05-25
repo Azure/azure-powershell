@@ -25,8 +25,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class AzureVmRecoveryPoint : RecoveryPointBase
     {
+        /// <summary>
+        /// Additional info associated with this recovery point serialized into a string.
+        /// </summary>
         public string RecoveryPointAdditionalInfo { get; set; }
 
+        /// <summary>
+        /// Storage type of the VM whose backup operation has created this recovery point.
+        /// </summary>
         public string SourceVMStorageType { get; set; }
 
         public AzureVmRecoveryPoint()
