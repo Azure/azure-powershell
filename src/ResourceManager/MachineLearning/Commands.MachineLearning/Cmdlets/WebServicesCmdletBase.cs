@@ -13,15 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Runtime.ExceptionServices;
+using System.Runtime.InteropServices;
+using System.Security;
+using System.Text;
 using System.Threading;
-using Microsoft.Azure.Commands.MachineLearning.Extensions;
+
 using Microsoft.Azure.Commands.MachineLearning.Utilities;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest.Azure;
+
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
@@ -77,7 +82,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
-                if (ex.IsFatal())
+                if (this.IsFatalException(ex))
                 {
                     ThrowTerminatingError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidOperation, this));
                 }
@@ -95,7 +100,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
-                if (ex.IsFatal())
+                if (this.IsFatalException(ex))
                 {
                     ThrowTerminatingError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidOperation, this));
                 }
@@ -123,7 +128,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
-                if (ex.IsFatal())
+                if (this.IsFatalException(ex))
                 {
                     throw;
                 }
@@ -154,7 +159,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
-                if (ex.IsFatal())
+                if (this.IsFatalException(ex))
                 {
                     throw;
                 }
@@ -192,11 +197,11 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 var cloudException = capturedException.SourceException as CloudException;
                 if (cloudException != null)
                 {
-                    errorRecord = cloudException.ToErrorRecord();
+                    errorRecord = this.CreateErrorRecordForCloudException(cloudException); ////new ErrorRecord(cloudException, cloudException.Message, ErrorCategory.CloseError, null);
                 }
                 else
                 {
-                    var errorResponseException = 
+                    var errorResponseException =
                             capturedException.SourceException as ErrorResponseMessageException;
                     if (errorResponseException != null)
                     {
@@ -208,7 +213,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                                 capturedException.SourceException as AggregateException;
                         if (aggregateException != null)
                         {
-                            errorResponseException = 
+                            errorResponseException =
                                 aggregateException.InnerException as ErrorResponseMessageException;
                             if (errorResponseException != null)
                             {
@@ -216,12 +221,12 @@ namespace Microsoft.Azure.Commands.MachineLearning
                             }
                             else
                             {
-                                errorRecord = aggregateException.InnerException.ToErrorRecord();
+                                errorRecord = new ErrorRecord(aggregateException.InnerException, aggregateException.InnerException.Message, ErrorCategory.CloseError, null);  
                             }
                         }
                         else
                         {
-                            errorRecord = capturedException.SourceException.ToErrorRecord();
+                            errorRecord = new ErrorRecord(capturedException.SourceException, capturedException.SourceException.Message, ErrorCategory.CloseError, null);
                         }
                     }
                 }
@@ -233,5 +238,75 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 this.DisposeOfCancellationSource();
             }
         }
+
+
+        /// <summary>
+        /// Converts <see cref="CloudException"/> objects into <see cref="ErrorRecord"/>
+        /// </summary>
+        /// <param name="cloudException">The exception</param>
+        private ErrorRecord CreateErrorRecordForCloudException(CloudException cloudException)
+        {
+            var errorReport = new StringBuilder();
+
+            string requestId = cloudException.RequestId;
+            if (string.IsNullOrWhiteSpace(requestId) && cloudException.Response != null)
+            {
+                // Try to obtain the request id from the HTTP response associated with the exception
+                IEnumerable<string> headerValues = Enumerable.Empty<string>();
+                if (cloudException.Response.Headers != null &&
+                    cloudException.Response.Headers.TryGetValue("x-ms-request-id", out headerValues))
+                {
+                    requestId = headerValues.First();
+                }
+            }
+
+            errorReport.AppendLine();
+            errorReport.AppendLine("Request Id: {0}".FormatInvariant(requestId));
+            errorReport.AppendLine("Error Code: {0}".FormatInvariant(cloudException.Body.Code));
+            errorReport.AppendLine("Error Message: {0}".FormatInvariant(cloudException.Body.Message));
+            errorReport.AppendLine("Error Target: {0}".FormatInvariant(cloudException.Body.Target));
+            if (cloudException.Body.Details.Any())
+            {
+                errorReport.AppendLine("Error Details:");
+                foreach (var errorDetail in cloudException.Body.Details)
+                {
+                    errorReport.AppendLine("\t[Code={0}, Message={1}]".FormatInvariant(errorDetail.Code, errorDetail.Message));
+                }
+            }
+
+            var returnedError = new Exception(errorReport.ToString(), cloudException);
+            return new ErrorRecord(returnedError, "Resource Provider Error", ErrorCategory.CloseError, null);
+        }
+
+        /// <summary>
+        /// Test if an exception is a fatal exception. 
+        /// </summary>
+        /// <param name="ex">Exception object.</param>
+        private bool IsFatalException(Exception ex)
+        {
+            if (ex is AggregateException)
+            {
+                return ((AggregateException)ex).Flatten().InnerExceptions.Any(exception => this.IsFatalException(exception));
+            }
+
+            if (ex.InnerException != null && this.IsFatalException(ex.InnerException))
+            {
+                return true;
+            }
+
+            return
+                ex is TypeInitializationException ||
+                ex is AppDomainUnloadedException ||
+                ex is ThreadInterruptedException ||
+                ex is AccessViolationException ||
+                ex is InvalidProgramException ||
+                ex is BadImageFormatException ||
+                ex is StackOverflowException ||
+                ex is ThreadAbortException ||
+                ex is OutOfMemoryException ||
+                ex is SecurityException ||
+                ex is SEHException;
+        }
+
     }
 }
