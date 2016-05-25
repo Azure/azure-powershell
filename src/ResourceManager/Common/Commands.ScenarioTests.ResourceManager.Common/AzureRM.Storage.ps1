@@ -49,8 +49,8 @@ function Set-AzureRmStorageAccount
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
-	[string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $Type,
-  	[Hashtable[]] [Parameter(Position=4, ValueFromPipelineByPropertyName=$true)] $Tags)
+    [string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Type,
+    [Hashtable[]] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $Tags)
 BEGIN { 
     $context = Get-Context
 	$client = Get-StorageClient $context
