@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         [Fact]
         public void ValidatesPSResourceGroupDeploymentWithUserTemplate()
         {
-            ValidatePSResourceGroupDeploymentParameters expectedParameters = new ValidatePSResourceGroupDeploymentParameters()
+            PSValidateResourceGroupDeploymentParameters expectedParameters = new PSValidateResourceGroupDeploymentParameters()
             {
                 TemplateFile = templateFile
             };
-            ValidatePSResourceGroupDeploymentParameters actualParameters = new ValidatePSResourceGroupDeploymentParameters();
+            PSValidateResourceGroupDeploymentParameters actualParameters = new PSValidateResourceGroupDeploymentParameters();
             List<PSResourceManagerError> expected = new List<PSResourceManagerError>()
             {
                 new PSResourceManagerError()
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
                 }
             };
             resourcesClientMock.Setup(f => f.ValidatePSResourceGroupDeployment(
-                It.IsAny<ValidatePSResourceGroupDeploymentParameters>(), DeploymentMode.Incremental))
+                It.IsAny<PSValidateResourceGroupDeploymentParameters>(), DeploymentMode.Incremental))
                 .Returns(expected)
-                .Callback((ValidatePSResourceGroupDeploymentParameters p, DeploymentMode m) => { actualParameters = p; m = DeploymentMode.Incremental; });
+                .Callback((PSValidateResourceGroupDeploymentParameters p, DeploymentMode m) => { actualParameters = p; m = DeploymentMode.Incremental; });
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;

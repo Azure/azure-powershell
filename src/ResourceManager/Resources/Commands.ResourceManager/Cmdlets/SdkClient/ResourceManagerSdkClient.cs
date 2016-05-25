@@ -1,8 +1,21 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
@@ -19,11 +32,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Management.Automation;
 using System.Net;
 using System.Runtime.Serialization.Formatters;
-using System.Text;
-using System.Threading.Tasks;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
@@ -298,7 +308,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             do
             {
-                WriteVerbose(string.Format("Checking deployment status in {0} seconds.", counter / 1000));
+                WriteVerbose(string.Format(ProjectResources.CheckingDeploymentStatus, counter / 1000));
                 TestMockSupport.Delay(counter);
 
                 if (job != null)
@@ -356,7 +366,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return newOperations;
         }
 
-        private Deployment CreateBasicDeployment(ValidatePSResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode, string debugSetting)
+        private Deployment CreateBasicDeployment(PSValidateResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode, string debugSetting)
         {
             Deployment deployment = new Deployment
             {
@@ -584,7 +594,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Creates a new resource group
         /// </summary>
         /// <param name="parameters">The create parameters</param>
-        public virtual PSResourceGroup CreatePSResourceGroup(CreatePSResourceGroupParameters parameters)
+        public virtual PSResourceGroup CreatePSResourceGroup(PSCreateResourceGroupParameters parameters)
         {
             bool resourceExists = ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Value;
 
@@ -592,7 +602,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             Action createOrUpdateResourceGroup = () =>
             {
                 resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, parameters.Location, parameters.Tag);
-                WriteVerbose(string.Format("Created resource group '{0}' in location '{1}'", resourceGroup.Name, resourceGroup.Location));
+                WriteVerbose(string.Format(ProjectResources.CreatedResourceGroup, resourceGroup.Name, resourceGroup.Location));
             };
 
             if (resourceExists && !parameters.Force)
@@ -616,12 +626,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Updates a resource group.
         /// </summary>
         /// <param name="parameters">The create parameters</param>
-        public virtual PSResourceGroup UpdatePSResourceGroup(UpdatePSResourceGroupParameters parameters)
+        public virtual PSResourceGroup UpdatePSResourceGroup(PSUpdateResourceGroupParameters parameters)
         {
             ResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName);
 
             resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, resourceGroup.Location, parameters.Tag);
-            WriteVerbose(string.Format("Updated resource group '{0}' in location '{1}'", resourceGroup.Name, resourceGroup.Location));
+            WriteVerbose(string.Format(ProjectResources.UpdatedResourceGroup, resourceGroup.Name, resourceGroup.Location));
 
             return resourceGroup.ToPSResourceGroup();
         }
@@ -753,7 +763,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Creates new deployment
         /// </summary>
         /// <param name="parameters">The create deployment parameters</param>
-        public virtual PSResourceGroupDeployment ExecuteDeployment(CreatePSResourceGroupDeploymentParameters parameters)
+        public virtual PSResourceGroupDeployment ExecuteDeployment(PSCreateResourceGroupDeploymentParameters parameters)
         {
             parameters.DeploymentName = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel);
@@ -773,7 +783,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         }
                     }
                 }
-                throw new InvalidOperationException("The deployment validation failed.");
+                throw new InvalidOperationException(ProjectResources.FailedDeploymentValidation);
             }
             else
             {
@@ -781,7 +791,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             ResourceManagementClient.Deployments.CreateOrUpdateAsync(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
-            WriteVerbose(string.Format("Create template deployment '{0}'.", parameters.DeploymentName));
+            WriteVerbose(string.Format(ProjectResources.CreatedDeployment, parameters.DeploymentName));
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
             return result.ToPSResourceGroupDeployment(parameters.ResourceGroupName);
@@ -799,7 +809,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private string GenerateDeploymentName(CreatePSResourceGroupDeploymentParameters parameters)
+        private string GenerateDeploymentName(PSCreateResourceGroupDeploymentParameters parameters)
         {
             if (!string.IsNullOrEmpty(parameters.DeploymentName))
             {
@@ -858,11 +868,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 if (string.IsNullOrEmpty(deploymentName))
                 {
-                    throw new ArgumentException(string.Format("There is no deployment called '{0}' to cancel", deploymentName));
+                    throw new ArgumentException(string.Format(ProjectResources.NoDeploymentToCancel, deploymentName));
                 }
                 else
                 {
-                    throw new ArgumentException(string.Format("There are no running deployments under resource group '{0}'", resourceGroup));
+                    throw new ArgumentException(string.Format(ProjectResources.NoRunningDeployments, resourceGroup));
                 }
             }
             else if (deployments.Count == 1)
@@ -871,7 +881,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                throw new ArgumentException("There are more than one running deployment please specify one");
+                throw new ArgumentException(ProjectResources.MultipleRunningDeployment);
             }
         }
 
@@ -880,7 +890,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// </summary>
         /// <param name="parameters">The deployment create options</param>
         /// <returns>True if valid, false otherwise.</returns>
-        public virtual List<PSResourceManagerError> ValidatePSResourceGroupDeployment(ValidatePSResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode)
+        public virtual List<PSResourceManagerError> ValidatePSResourceGroupDeployment(PSValidateResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode)
         {
             Deployment deployment = CreateBasicDeployment(parameters, deploymentMode, null);
             TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, Guid.NewGuid().ToString(), deployment);

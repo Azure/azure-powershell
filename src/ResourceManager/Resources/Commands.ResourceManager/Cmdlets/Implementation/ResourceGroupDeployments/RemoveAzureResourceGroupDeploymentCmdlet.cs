@@ -34,17 +34,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         internal const string DeploymentNameParameterSet = "The deployment name parameter set.";
 
-        [Parameter(Position = 0, ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Alias("DeploymentName")]
-        [Parameter(Position = 1, ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the deployment.")]
+        [Parameter(Position = 1, ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Alias("DeploymentId", "ResourceId")]
-        [Parameter(ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = true, HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}")]
+        [Parameter(ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = true, 
+            HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 

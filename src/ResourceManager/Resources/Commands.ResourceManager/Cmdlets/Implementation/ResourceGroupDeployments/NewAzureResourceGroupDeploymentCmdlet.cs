@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
@@ -52,8 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-            CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
+            PSCreateResourceGroupDeploymentParameters parameters = new PSCreateResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 DeploymentName = Name,
@@ -66,15 +66,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
             {
-                WriteWarning("The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation");
+                WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
             }
 
             if (this.Mode == DeploymentMode.Complete)
             {
                 this.ConfirmAction(
                     this.Force,
-                    "Are you sure you want to use the complete deployment mode? Resources in the resource group '" + ResourceGroupName + "' which are not included in the template will be deleted.",
-                    "Creating a deployment with Complete mode",
+                    string.Format(ProjectResources.ConfirmOnCompleteDeploymentMode, this.ResourceGroupName),
+                    ProjectResources.CreateDeploymentCompleteMode,
                     ResourceGroupName,
                     () =>
                     {

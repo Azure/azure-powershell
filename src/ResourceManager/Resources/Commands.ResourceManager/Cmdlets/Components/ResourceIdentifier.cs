@@ -134,16 +134,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             string parentAndType = string.IsNullOrEmpty(ParentResource) ? type : ParentResource + "/" + type;
             StringBuilder resourceId = new StringBuilder();
 
-            AppendIfNotNull(ref resourceId, "/subscriptions/{0}", Subscription);
-            AppendIfNotNull(ref resourceId, "/resourceGroups/{0}", ResourceGroupName);
-            AppendIfNotNull(ref resourceId, "/providers/{0}", provider);
-            AppendIfNotNull(ref resourceId, "/{0}", parentAndType);
-            AppendIfNotNull(ref resourceId, "/{0}", ResourceName);
+            AppendIfNotNull(resourceId, "/subscriptions/{0}", Subscription);
+            AppendIfNotNull(resourceId, "/resourceGroups/{0}", ResourceGroupName);
+            AppendIfNotNull(resourceId, "/providers/{0}", provider);
+            AppendIfNotNull(resourceId, "/{0}", parentAndType);
+            AppendIfNotNull(resourceId, "/{0}", ResourceName);
 
             return resourceId.ToString();
         }
 
-        private void AppendIfNotNull(ref StringBuilder resourceId, string format, string value)
+        private void AppendIfNotNull(StringBuilder resourceId, string format, string value)
         {
             if (!string.IsNullOrEmpty(value))
             {

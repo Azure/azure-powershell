@@ -59,7 +59,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var providers = this.ResourceManagerSdkClient.ListPSResourceProviders(providerName: this.ProviderNamespace, listAvailable: this.ListAvailable, location: this.Location);
 
             if (!string.IsNullOrEmpty(this.ProviderNamespace))

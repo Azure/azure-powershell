@@ -35,23 +35,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         internal const string DeploymentNameParameterSet = "The deployment name parameter set.";
 
-        [Parameter(Position = 0, ParameterSetName = GetAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, ParameterSetName = GetAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Alias("DeploymentName")]
-        [Parameter(Position = 1, ParameterSetName = GetAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group deployment.")]
+        [Parameter(Position = 1, ParameterSetName = GetAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = false, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Alias("DeploymentId", "ResourceId")]
-        [Parameter(ParameterSetName = GetAzureResourceGroupDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = true, HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}")]
+        [Parameter(ParameterSetName = GetAzureResourceGroupDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = true, 
+            HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions()
             {
                 ResourceGroupName = ResourceGroupName ?? ResourceIdUtility.GetResourceGroupName(Id),

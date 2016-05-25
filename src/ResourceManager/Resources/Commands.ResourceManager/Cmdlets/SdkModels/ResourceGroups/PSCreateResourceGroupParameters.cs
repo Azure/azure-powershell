@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,14 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public class UpdatePSResourceGroupParameters
+    public class PSCreateResourceGroupParameters : PSCreateResourceGroupDeploymentParameters
     {
-        public string ResourceGroupName { get; set; }
+        public string Location { get; set; }
+
+        public bool Force { get; set; }
 
         public Hashtable[] Tag { get; set; }
+
+        public Action<bool, string, string, string, Action> ConfirmAction { get; set; }
     }
 }
