@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             PSCloudTask expected1 = new PSCloudTask(taskIds[0], commandLine);
             PSCloudTask expected2 = new PSCloudTask(taskIds[1], commandLine);
 
-            cmdlet.TaskCollection = new PSCloudTask[] {expected1, expected2};
+            cmdlet.Tasks = new PSCloudTask[] {expected1, expected2};
 
             IList<TaskAddParameter> requestCollection = null;
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             // Don't go to the service on an Add Task Collection call
             AzureOperationResponse<TaskAddCollectionResult, TaskAddCollectionHeaders> response =
-                BatchTestHelpers.CreateTaskCollectionResponse(cmdlet.TaskCollection);
+                BatchTestHelpers.CreateTaskCollectionResponse(cmdlet.Tasks);
 
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(responseToUse: response, requestAction: extractCollection);
 

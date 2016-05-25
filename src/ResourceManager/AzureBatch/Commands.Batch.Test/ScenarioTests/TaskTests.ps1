@@ -105,7 +105,7 @@ function Test-CreateTaskCollection
     $taskCollection = @($task1, $task2)
 
     # Create a simple task collection and verify pipeline
-    Get-AzureBatchJob -Id $jobId -BatchContext $context | New-AzureBatchTask -TaskCollection $taskCollection -BatchContext $context
+    Get-AzureBatchJob -Id $jobId -BatchContext $context | New-AzureBatchTask -Tasks $taskCollection -BatchContext $context
     $task1 = Get-AzureBatchTask -JobId $jobId -Id $taskId1 -BatchContext $context
     $task2 = Get-AzureBatchTask -JobId $jobId -Id $taskId2 -BatchContext $context
 
@@ -158,7 +158,7 @@ function Test-CreateTaskCollection
     $taskCollection = @($task3, $task4)
 
     # Create a task collection with the job id
-    New-AzureBatchTask -JobId $jobId -TaskCollection $taskCollection -BatchContext $context
+    New-AzureBatchTask -JobId $jobId -Tasks $taskCollection -BatchContext $context
 
     $task3 = Get-AzureBatchTask -JobId $jobId -Id $taskId3 -BatchContext $context
     $task4 = Get-AzureBatchTask -JobId $jobId -Id $taskId4 -BatchContext $context

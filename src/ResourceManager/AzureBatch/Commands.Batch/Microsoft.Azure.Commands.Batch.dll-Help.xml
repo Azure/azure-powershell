@@ -6791,7 +6791,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Constraints</maml:name>
           <maml:description>
-            <maml:para>Specifies the runtime constraints for the job.</maml:para>
+            <maml:para>Specifies the execution constraints for the job.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSJobConstraints</command:parameterValue>
         </command:parameter>
@@ -6881,7 +6881,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Constraints</maml:name>
         <maml:description>
-          <maml:para>Specifies the runtime constraints for the job.</maml:para>
+          <maml:para>Specifies the execution constraints for the job.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">PSJobConstraints</command:parameterValue>
         <dev:type>
@@ -7944,7 +7944,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Constraints</maml:name>
           <maml:description>
-            <maml:para>Specifies the runtime constraints for the task.</maml:para>
+            <maml:para>Specifies the execution constraints that apply to this task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
         </command:parameter>
@@ -7980,7 +7980,7 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-          <maml:name>TaskCollection</maml:name>
+          <maml:name>Tasks</maml:name>
           <maml:description>
             <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id.</maml:para>
           </maml:description>
@@ -8004,7 +8004,7 @@
           <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-          <maml:name>TaskCollection</maml:name>
+          <maml:name>Tasks</maml:name>
           <maml:description>
             <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id.</maml:para>
           </maml:description>
@@ -8079,7 +8079,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Constraints</maml:name>
           <maml:description>
-            <maml:para>Specifies the runtime constraints for the task.</maml:para>
+            <maml:para>Specifies the execution constraints that apply to this task.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
         </command:parameter>
@@ -8206,7 +8206,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Constraints</maml:name>
         <maml:description>
-          <maml:para>Specifies the runtime constraints for the task.</maml:para>
+          <maml:para>Specifies the execution constraints that apply to this task.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
         <dev:type>
@@ -8252,7 +8252,7 @@
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-        <maml:name>TaskCollection</maml:name>
+        <maml:name>Tasks</maml:name>
         <maml:description>
           <maml:para>Specifies the collection of tasks to be added. Each task must have a unique id.</maml:para>
         </maml:description>
@@ -8338,7 +8338,7 @@
         </maml:introduction>
         <dev:code>PS C:\&gt;Get-AzureBatchJob -Id &quot;Job-000001&quot; -BatchContext $Context | New-AzureBatchTask -Id &quot;Task26&quot; -CommandLine &quot;cmd /c echo hello &gt; newFile.txt&quot; -RunElevated -BatchContext $Context</dev:code>
         <dev:remarks>
-          <maml:para>This command gets the Batch job that has the ID Job-000001 by using the Get-AzureBatchJob cmdlet. The command passes that job to the current cmdlet by using the pipeline operator. The command creates a task that has the ID Task26 under that job. The task runs the specified command with elevated permissions.</maml:para>
+          <maml:para>This command gets the Batch job that has the ID Job-000001 by using the Get-AzureBatchJob cmdlet. The command passes that job to the New-AzureBatchTask cmdlet by using the pipeline operator. The command creates a task that has the ID Task26 under that job. The task runs the specified command with elevated permissions.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para></maml:para>
@@ -8362,7 +8362,7 @@
           PS C:\&gt; $cmd = &quot;cmd /c dir /s&quot;
           PS C:\&gt; $task1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId1, $cmd)
           PS C:\&gt; $task2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId2, $cmd)
-          PS C:\&gt; Get-AzureBatchJob -Id &quot;Job-000001&quot; -BatchContext $context | New-AzureBatchTask -TaskCollection
+          PS C:\&gt; Get-AzureBatchJob -Id &quot;Job-000001&quot; -BatchContext $context | New-AzureBatchTask -Tasks
           @($task1, $task2) -BatchContext $context
         </dev:code>
         <dev:remarks>
@@ -8390,7 +8390,7 @@
           PS C:\&gt; $cmd = &quot;cmd /c dir /s&quot;
           PS C:\&gt; $task1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId1, $cmd)
           PS C:\&gt; $task2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask($taskId2, $cmd)
-          PS C:\&gt; New-AzureBatchTask -JobId &quot;Job-000001&quot; -TaskCollection @($task1, $task2) -BatchContext $context
+          PS C:\&gt; New-AzureBatchTask -JobId &quot;Job-000001&quot; -Tasks @($task1, $task2) -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>This command adds a task with the ID Task1 and a task with the ID Task2 under the job that has the ID &quot;Job-000001&quot;.</maml:para>
