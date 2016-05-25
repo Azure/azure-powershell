@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The vault resource ID.")]
+            HelpMessage = "The Resource ID of the Backup Long Term Retention Vault.")]
         [ValidateNotNullOrEmpty]
-        public string RecoveryServicesVaultResourceId { get; set; }
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> GetEntity()
         {
             return new List<AzureSqlServerBackupLongTermRetentionVaultModel>() { 
-                ModelAdapter.GetBackupArchivalVault(this.ResourceGroupName, this.ServerName, this.BackupLongTermRetentionVaultName) 
+                ModelAdapter.GetBackupLongTermRetentionVault(this.ResourceGroupName, this.ServerName) 
             };
         }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                RecoveryServicesVaultResourceId = RecoveryServicesVaultResourceId,
+                RecoveryServicesVaultResourceId = ResourceId,
             });
             return newEntity;
         }
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> PersistChanges(IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> entity)
         {
             return new List<AzureSqlServerBackupLongTermRetentionVaultModel>() {
-                ModelAdapter.SetBackupArchivalVault(this.ResourceGroupName, this.ServerName, entity.First())
+                ModelAdapter.SetBackupLongTermRetentionVault(this.ResourceGroupName, this.ServerName, entity.First())
             };
         }
     }

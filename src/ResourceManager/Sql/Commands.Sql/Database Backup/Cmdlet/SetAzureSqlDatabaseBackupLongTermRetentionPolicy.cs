@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Resource ID of the backup long term retention policy.")]
         [ValidateNotNullOrEmpty]
-        public string RecoveryServicesBackupPolicyResourceId { get; set; }
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> GetEntity()
         {
             return new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>() { 
-                ModelAdapter.GetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.BackupLongTermRetentionPolicyName) 
+                ModelAdapter.GetDatabaseBackupLongTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName) 
             };
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ServerName = ServerName,
                 DatabaseName = DatabaseName,
                 State = State,
-                RecoveryServicesBackupPolicyResourceId = RecoveryServicesBackupPolicyResourceId,
+                RecoveryServicesBackupPolicyResourceId = ResourceId,
             });
             return newEntity;
         }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> PersistChanges(IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> entity)
         {
             return new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>() {
-                ModelAdapter.SetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity.First())
+                ModelAdapter.SetDatabaseBackupLongTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity.First())
             };
         }
     }

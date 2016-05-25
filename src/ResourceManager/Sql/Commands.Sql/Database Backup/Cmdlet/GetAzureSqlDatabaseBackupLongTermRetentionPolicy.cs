@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ICollection<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> results;
 
             results = new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>();
-            results.Add(ModelAdapter.GetDatabaseBackupArchivalPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName));
+            results.Add(ModelAdapter.GetDatabaseBackupLongTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName));
 
             return results;
         }
