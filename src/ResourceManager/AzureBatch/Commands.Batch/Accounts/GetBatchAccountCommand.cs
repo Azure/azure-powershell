@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("WARNING: The usage of the Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags " +
+                "for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494 ");
+
             if (string.IsNullOrEmpty(this.AccountName))
             {
                 foreach (BatchAccountContext context in BatchClient.ListAccounts(Tag, this.ResourceGroupName))
