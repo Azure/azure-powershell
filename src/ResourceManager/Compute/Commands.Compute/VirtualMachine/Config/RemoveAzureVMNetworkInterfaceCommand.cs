@@ -65,11 +65,6 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            if (!networkProfile.NetworkInterfaces.Any())
-            {
-                networkProfile = null;
-            }
-
             this.VM.NetworkProfile = networkProfile;
 
             WriteObject(this.VM);

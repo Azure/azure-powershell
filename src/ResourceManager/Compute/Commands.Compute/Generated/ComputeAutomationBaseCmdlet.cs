@@ -136,7 +136,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var isJObject = childObject as Newtonsoft.Json.Linq.JObject;
                 if (isJObject != null)
                 {
-                    tupleList.Add(MakeTuple(property.Name, Newtonsoft.Json.JsonConvert.SerializeObject(childObject), depth));
+                    var objStringValue = Newtonsoft.Json.JsonConvert.SerializeObject(childObject);
+
+                    int i = objStringValue.IndexOf("xmlCfg");
+                    if (i >= 0)
+                    {
+                        var xmlCfgString = objStringValue.Substring(i + 7);
+                        int start = xmlCfgString.IndexOf('"');
+                        int end = xmlCfgString.IndexOf('"', start + 1);
+                        xmlCfgString = xmlCfgString.Substring(start + 1, end - start - 1);
+                        objStringValue = objStringValue.Replace(xmlCfgString, "...");
+                    }
+
+                    tupleList.Add(MakeTuple(property.Name, objStringValue, depth));
                     max = Math.Max(max, depth * 2 + property.Name.Length);
                 }
                 else
