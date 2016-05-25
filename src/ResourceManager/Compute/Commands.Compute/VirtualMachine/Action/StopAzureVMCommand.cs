@@ -15,8 +15,6 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -26,7 +24,7 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
-    [OutputType(typeof(PSAzureOperationResponse))]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(
@@ -60,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Action<Func<string, string, Dictionary<string, List<string>>, CancellationToken, Task<Rest.Azure.AzureOperationResponse>>> call = f =>
                     {
                         Rest.Azure.AzureOperationResponse op = f(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
-                        var result = Mapper.Map<PSAzureOperationResponse>(op);
+                        var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                         WriteObject(result);
                     };
 

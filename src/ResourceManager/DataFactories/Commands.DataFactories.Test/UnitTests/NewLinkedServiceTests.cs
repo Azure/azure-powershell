@@ -42,12 +42,13 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 ";
 
         private NewAzureDataFactoryLinkedServiceCommand cmdlet;
-        
-        public NewLinkedServiceTests()
+
+        public NewLinkedServiceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
-        cmdlet = new NewAzureDataFactoryLinkedServiceCommand()
+            cmdlet = new NewAzureDataFactoryLinkedServiceCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 DataFactoryClient = dataFactoriesClientMock.Object,
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
             LinkedService expected = new LinkedService()
             {
                 Name = linkedServiceName,
-                Properties = new LinkedServiceProperties(new AzureStorageLinkedService("myconnectionstring")) 
+                Properties = new LinkedServiceProperties(new AzureStorageLinkedService("myconnectionstring"))
             };
 
             dataFactoriesClientMock.Setup(c => c.ReadJsonFileContent(It.IsAny<string>()))
@@ -145,20 +146,20 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
             // Action
             cmdlet.File = filePath;
             cmdlet.Force = true;
-            
+
             // Assert
             Assert.Throws<ProvisioningFailedException>(() => cmdlet.ExecuteCmdlet());
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InvalidJsonLinkedService()
         {
             string malformedJson = rawJsonContent.Replace(":", "-");
 
-             dataFactoriesClientMock.Setup(c => c.ReadJsonFileContent(It.IsAny<string>()))
-                .Returns(malformedJson)
-                .Verifiable();
+            dataFactoriesClientMock.Setup(c => c.ReadJsonFileContent(It.IsAny<string>()))
+               .Returns(malformedJson)
+               .Verifiable();
 
             // Action
             cmdlet.File = filePath;

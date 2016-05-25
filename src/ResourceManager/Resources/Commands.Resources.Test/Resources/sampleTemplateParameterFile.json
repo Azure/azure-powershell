@@ -8,7 +8,22 @@
     "string" : {
         "value" : "myvalue"
     },
-    "int" : {
-        "value" : 12
-    }
+    "int": {
+        "value": 12
+    },
+    "object": {
+        "value": {
+            "code": "F1",
+            "name": "Free"
+      }
+    },
+	"secureObject": {
+		"value": {
+			"code": "F2",
+			"name": "Standard"
+		}
+	},
+	"array": {
+		"value": [ "A", "D", "F" ]
+	}
 }

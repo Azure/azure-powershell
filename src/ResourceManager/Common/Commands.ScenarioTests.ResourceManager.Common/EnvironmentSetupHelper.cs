@@ -13,8 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -26,10 +30,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -47,6 +47,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
         protected List<string> modules;
+
+        public XunitTracingInterceptor TracingInterceptor { get; set; }
 
         protected ProfileClient ProfileClient { get; set; }
 
@@ -107,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             get
             {
                 return Path.Combine(this.PackageDirectory,
-                                     @"ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1");
+                                     @"Storage\Azure.Storage\Azure.Storage.psd1");
             }
         }
 
@@ -323,7 +325,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 Collection<PSObject> output = null;
                 for (int i = 0; i < scripts.Length; ++i)
                 {
-                    Console.WriteLine(scripts[i]);
+                    if (TracingInterceptor != null)
+                    {
+                        TracingInterceptor.Information(scripts[i]);
+                    }
                     powershell.AddScript(scripts[i]);
                 }
                 try
@@ -341,12 +346,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 catch (Exception psException)
                 {
-                    powershell.LogPowerShellException(psException);
+                    powershell.LogPowerShellException(psException, TracingInterceptor);
                     throw;
                 }
                 finally
                 {
-                    powershell.LogPowerShellResults(output);
+                    powershell.LogPowerShellResults(output, TracingInterceptor);
                     powershell.Streams.Error.Clear();
                 }
             }
@@ -361,12 +366,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             foreach (string moduleName in modules)
             {
-                powershell.AddScript(string.Format("Import-Module \"{0}\"",
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, moduleName)));
+                powershell.AddScript(string.Format("Import-Module \"{0}\"", moduleName.AsAbsoluteLocation()));
             }
 
             powershell.AddScript(
-                string.Format(@"set-location {0}", AppDomain.CurrentDomain.BaseDirectory));
+                string.Format("set-location \"{0}\"", AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript(string.Format(@"$TestOutputRoot='{0}'", AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript("$VerbosePreference='Continue'");
             powershell.AddScript("$DebugPreference='Continue'");

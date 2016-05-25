@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 1)]
         public string State { get; set; }
-        
+
         [JsonProperty(Order = 1)]
         public int AzureASN { get; set; }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 1)]
         public PSPeeringConfig MicrosoftPeeringConfig { get; set; }
-        
+
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 

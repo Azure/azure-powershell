@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
             inboundNatPool.FrontendPortRangeStart = this.FrontendPortRangeStart;
             inboundNatPool.FrontendPortRangeEnd = this.FrontendPortRangeEnd;
             inboundNatPool.BackendPort = this.BackendPort;
-            
+
             if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
                 inboundNatPool.FrontendIPConfiguration = new PSResourceId() { Id = this.FrontendIpConfigurationId };
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName,
                     this.LoadBalancer.Name,
-                    Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInboundNatPoolsName,
+                    Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInboundNatPoolName,
                     this.Name);
 
             this.LoadBalancer.InboundNatPools.Add(inboundNatPool);

@@ -286,11 +286,29 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No value was specified for the token audience for the graph endpoint in environment &apos;{0}&apos;.  Please use Set-AzureRmEnvironment -Name {0} -GraphAudience token-audience-value.
+        /// </summary>
+        public static string InvalidGraphTokenAudience {
+            get {
+                return ResourceManager.GetString("InvalidGraphTokenAudience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot create instance of management client type {0}. It does not have the expected constructor..
         /// </summary>
         public static string InvalidManagementClientType {
             get {
                 return ResourceManager.GetString("InvalidManagementClientType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No value was specified for the token audience for the management endpoint in environment &apos;{0}&apos;.  Please use Set-AzureRmEnvironment -Name {0} -ActiveDirectoryServiceEndpointResourceId token-audience-value.
+        /// </summary>
+        public static string InvalidManagementTokenAudience {
+            get {
+                return ResourceManager.GetString("InvalidManagementTokenAudience", resourceCulture);
             }
         }
         

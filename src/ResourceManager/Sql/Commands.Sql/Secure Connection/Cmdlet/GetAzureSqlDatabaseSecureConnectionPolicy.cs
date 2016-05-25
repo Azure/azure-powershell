@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Cmdlet
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseSecureConnectionPolicyModel PersistChanges(DatabaseSecureConnectionPolicyModel model) 
+        protected override DatabaseSecureConnectionPolicyModel PersistChanges(DatabaseSecureConnectionPolicyModel model)
         {
             return null;
         }

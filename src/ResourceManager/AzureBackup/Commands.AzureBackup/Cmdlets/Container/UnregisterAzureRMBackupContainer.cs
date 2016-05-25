@@ -12,18 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Web;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.BackupServices.Models;
-using MBS = Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
+using System;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -71,9 +64,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             string containerUniqueName = Container.ContainerUniqueName;
             var operationId = AzureBackupClient.UnRegisterContainer(Container.ResourceGroupName, Container.ResourceName, containerUniqueName);
 
-            WriteObject(GetCreatedJobs(Container.ResourceGroupName, 
-                Container.ResourceName, 
-                new Models.AzureRMBackupVault(Container.ResourceGroupName, Container.ResourceName, Container.Location), 
+            WriteObject(GetCreatedJobs(Container.ResourceGroupName,
+                Container.ResourceName,
+                new Models.AzureRMBackupVault(Container.ResourceGroupName, Container.ResourceName, Container.Location),
                 GetOperationStatus(Container.ResourceGroupName, Container.ResourceName, operationId).JobList).FirstOrDefault());
         }
     }

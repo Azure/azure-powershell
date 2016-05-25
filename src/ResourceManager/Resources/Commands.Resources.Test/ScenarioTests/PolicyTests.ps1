@@ -28,7 +28,7 @@ function Test-PolicyDefinitionCRUD
 	Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
 	Assert-NotNull($actual.Properties.PolicyRule)
 
-	$actual = Set-AzureRMPolicyDefinition -Name $policyName -DisplayName testDisplay -Description testDescription
+	$actual = Set-AzureRMPolicyDefinition -Name $policyName -DisplayName testDisplay -Description testDescription -Policy ".\SamplePolicyDefinition.json"
 	$expected = Get-AzureRMPolicyDefinition -Name $policyName
 	Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
 	Assert-AreEqual $expected.Properties.Description $actual.Properties.Description

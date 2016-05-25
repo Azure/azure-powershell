@@ -138,6 +138,9 @@
   <data name="CurrentTenantInUse" xml:space="preserve">
     <value>Current tenant with Id '{0}' will be used.</value>
   </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>Cannot find file '{0}'</value>
+  </data>
   <data name="InvalidSubscriptionId" xml:space="preserve">
     <value>The provided subscription ID "{0}" is not a valid Guid.</value>
   </data>

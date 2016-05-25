@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,36 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Management.Automation;
+using Microsoft.Azure.Management.Automation.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Properties;
-using Microsoft.Azure.Management.Automation;
-using Microsoft.Azure.Management.Automation.Models;
-using Newtonsoft.Json;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using AutomationManagement = Microsoft.Azure.Management.Automation;
 using AutomationAccount = Microsoft.Azure.Commands.Automation.Model.AutomationAccount;
+using AutomationManagement = Microsoft.Azure.Management.Automation;
+using Certificate = Microsoft.Azure.Commands.Automation.Model.CertificateInfo;
+using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
+using Credential = Microsoft.Azure.Commands.Automation.Model.CredentialInfo;
+using Job = Microsoft.Azure.Commands.Automation.Model.Job;
+using JobSchedule = Microsoft.Azure.Commands.Automation.Model.JobSchedule;
+using JobStream = Microsoft.Azure.Commands.Automation.Model.JobStream;
 using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
 using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
-using Job = Microsoft.Azure.Commands.Automation.Model.Job;
 using Variable = Microsoft.Azure.Commands.Automation.Model.Variable;
-using JobStream = Microsoft.Azure.Commands.Automation.Model.JobStream;
-using Credential = Microsoft.Azure.Commands.Automation.Model.CredentialInfo;
-using JobSchedule = Microsoft.Azure.Commands.Automation.Model.JobSchedule;
-using Certificate = Microsoft.Azure.Commands.Automation.Model.CertificateInfo;
-using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         private void SetClientIdHeader(string clientRequestId)
         {
-            var client = ((AutomationManagementClient) this.automationManagementClient);
+            var client = ((AutomationManagementClient)this.automationManagementClient);
             client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
         }
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    throw new ResourceNotFoundException(typeof (AutomationAccount),
+                    throw new ResourceNotFoundException(typeof(AutomationAccount),
                         string.Format(CultureInfo.CurrentCulture, Resources.AutomationAccountNotFound,
                             automationAccountName));
                 }
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
                 {
-                    throw new ResourceNotFoundException(typeof (Module),
+                    throw new ResourceNotFoundException(typeof(Module),
                         string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
                 }
 
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    throw new ResourceNotFoundException(typeof (Module),
+                    throw new ResourceNotFoundException(typeof(Module),
                         string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
                 }
 
@@ -334,7 +334,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     ExpiryTime = schedule.ExpiryTime,
                     Description = schedule.Description,
                     Interval = schedule.Interval,
-                    Frequency = schedule.Frequency.ToString()
+                    Frequency = schedule.Frequency.ToString(),
+                    AdvancedSchedule = schedule.GetAdvancedSchedule(),
+                    TimeZone = schedule.TimeZone,
                 }
             };
 
@@ -359,7 +361,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    throw new ResourceNotFoundException(typeof (Schedule),
+                    throw new ResourceNotFoundException(typeof(Schedule),
                         string.Format(CultureInfo.CurrentCulture, Resources.ScheduleNotFound, scheduleName));
                 }
 
@@ -410,7 +412,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var runbookModel = this.TryGetRunbookModel(resourceGroupName, automationAccountName, runbookName);
             if (runbookModel == null)
             {
-                throw new ResourceCommonException(typeof (Runbook),
+                throw new ResourceCommonException(typeof(Runbook),
                     string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
             }
 
@@ -442,7 +444,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 var runbookModel = this.TryGetRunbookModel(resourceGroupName, automationAccountName, runbookName);
                 if (runbookModel != null && overwrite == false)
                 {
-                    throw new ResourceCommonException(typeof (Runbook),
+                    throw new ResourceCommonException(typeof(Runbook),
                         string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyExists, runbookName));
                 }
 
@@ -452,7 +454,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 var rdcprop = new RunbookCreateOrUpdateDraftProperties()
                 {
                     Description = description,
-                    RunbookType = String.IsNullOrWhiteSpace(type) ? RunbookTypeEnum.Script : (0 == string.Compare(type, Constants.RunbookType.PowerShellWorkflow, StringComparison.OrdinalIgnoreCase)) ? RunbookTypeEnum.Script : type,
+                    RunbookType = String.IsNullOrWhiteSpace(type) ? RunbookTypeEnum.Script : type,
                     LogProgress =  logProgress.HasValue && logProgress.Value,
                     LogVerbose = logVerbose.HasValue && logVerbose.Value,
                     Draft = new RunbookDraft(),
@@ -474,7 +476,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public Runbook ImportRunbook(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool published, bool overwrite, string name)
         {
-
             var fileExtension = Path.GetExtension(runbookPath);
 
             if (0 !=
@@ -490,13 +491,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             // if graph runbook make sure type is not null and has right value
             if (0 == string.Compare(fileExtension, Constants.SupportedFileExtensions.Graph, StringComparison.OrdinalIgnoreCase) 
-                && string.IsNullOrWhiteSpace(type) 
-                && (0 != string.Compare(type, Constants.RunbookType.Graph,StringComparison.OrdinalIgnoreCase)))
+                && (string.IsNullOrWhiteSpace(type) || !IsGraphRunbook(type)))
             {
                 throw new ResourceCommonException(typeof(Runbook),
                         string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookTypeForExtension, fileExtension));
             }
-
 
             var runbookName = Path.GetFileNameWithoutExtension(runbookPath);
 
@@ -548,7 +547,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    throw new ResourceNotFoundException(typeof (Connection),
+                    throw new ResourceNotFoundException(typeof(Connection),
                         string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
                 }
 
@@ -565,7 +564,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 var runbookModel = this.TryGetRunbookModel(resourceGroupName, automationAccountName, runbookName);
                 if (runbookModel == null)
                 {
-                    throw new ResourceCommonException(typeof (Runbook),
+                    throw new ResourceCommonException(typeof(Runbook),
                         string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
                 }
 
@@ -603,7 +602,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 var runbook = this.TryGetRunbookModel(resourceGroupName, automationAccountName, runbookName);
                 if (runbook == null)
                 {
-                    throw new ResourceNotFoundException(typeof (Runbook),
+                    throw new ResourceNotFoundException(typeof(Runbook),
                         string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
                 }
 
@@ -645,7 +644,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     {
 
                         if (String.IsNullOrEmpty(draftContent))
-                            throw new ResourceCommonException(typeof (Runbook),
+                            throw new ResourceCommonException(typeof(Runbook),
                                 string.Format(CultureInfo.CurrentCulture, Resources.RunbookHasNoDraftVersion,
                                     runbookName));
                         if (false == String.IsNullOrEmpty(draftContent))
@@ -655,7 +654,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     else
                     {
                         if (String.IsNullOrEmpty(publishedContent))
-                            throw new ResourceCommonException(typeof (Runbook),
+                            throw new ResourceCommonException(typeof(Runbook),
                                 string.Format(CultureInfo.CurrentCulture, Resources.RunbookHasNoPublishedVersion,
                                     runbookName));
 
@@ -760,7 +759,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    throw new ResourceNotFoundException(typeof (Variable),
+                    throw new ResourceNotFoundException(typeof(Variable),
                         string.Format(CultureInfo.CurrentCulture, Resources.VariableNotFound, variableName));
                 }
 
@@ -774,7 +773,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (existingVariable.Encrypted != variable.Encrypted && updateFields == VariableUpdateFields.OnlyValue)
             {
-                throw new ResourceNotFoundException(typeof (Variable),
+                throw new ResourceNotFoundException(typeof(Variable),
                     string.Format(CultureInfo.CurrentCulture, Resources.VariableEncryptionCannotBeChanged, variable.Name,
                         existingVariable.Encrypted));
             }
@@ -815,12 +814,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     return new Variable(sdkVarible, automationAccountName, resourceGroupName);
                 }
 
-                throw new ResourceNotFoundException(typeof (Variable),
+                throw new ResourceNotFoundException(typeof(Variable),
                     string.Format(CultureInfo.CurrentCulture, Resources.VariableNotFound, name));
             }
             catch (CloudException)
             {
-                throw new ResourceNotFoundException(typeof (Variable),
+                throw new ResourceNotFoundException(typeof(Variable),
                     string.Format(CultureInfo.CurrentCulture, Resources.VariableNotFound, name));
             }
         }
@@ -906,7 +905,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var credential = this.automationManagementClient.PsCredentials.Get(resourceGroupName, automationAccountName, name).Credential;
             if (credential == null)
             {
-                throw new ResourceNotFoundException(typeof (Credential),
+                throw new ResourceNotFoundException(typeof(Credential),
                     string.Format(CultureInfo.CurrentCulture, Resources.CredentialNotFound, name));
             }
 
@@ -942,7 +941,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
                 {
-                    throw new ResourceNotFoundException(typeof (Credential),
+                    throw new ResourceNotFoundException(typeof(Credential),
                         string.Format(CultureInfo.CurrentCulture, Resources.CredentialNotFound, name));
                 }
 
@@ -1004,7 +1003,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             response.JobStream.Properties.Value.Remove("PSComputerName");
             response.JobStream.Properties.Value.Remove("PSShowComputerName");
             response.JobStream.Properties.Value.Remove("PSSourceJobInstanceId");
-            
+
             var paramTable = new Hashtable();
 
             foreach (var kvp in response.JobStream.Properties.Value)
@@ -1039,7 +1038,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var job = this.automationManagementClient.Jobs.Get(resourceGroupName, automationAccountName, Id).Job;
             if (job == null)
             {
-                throw new ResourceNotFoundException(typeof (Job),
+                throw new ResourceNotFoundException(typeof(Job),
                     string.Format(CultureInfo.CurrentCulture, Resources.JobNotFound, Id));
             }
 
@@ -1125,7 +1124,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var certificateModel = this.TryGetCertificateModel(resourceGroupName, automationAccountName, name);
             if (certificateModel != null)
             {
-                throw new ResourceCommonException(typeof (CertificateInfo),
+                throw new ResourceCommonException(typeof(CertificateInfo),
                     string.Format(CultureInfo.CurrentCulture, Resources.CertificateAlreadyExists, name));
             }
 
@@ -1139,14 +1138,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             if (String.IsNullOrWhiteSpace(path) && (password != null || exportable.HasValue))
             {
-                throw new ResourceCommonException(typeof (CertificateInfo),
+                throw new ResourceCommonException(typeof(CertificateInfo),
                     string.Format(CultureInfo.CurrentCulture, Resources.SetCertificateInvalidArgs, name));
             }
 
             var certificateModel = this.TryGetCertificateModel(resourceGroupName, automationAccountName, name);
             if (certificateModel == null)
             {
-                throw new ResourceCommonException(typeof (CertificateInfo),
+                throw new ResourceCommonException(typeof(CertificateInfo),
                     string.Format(CultureInfo.CurrentCulture, Resources.CertificateNotFound, name));
             }
 
@@ -1182,7 +1181,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var certificateModel = this.TryGetCertificateModel(resourceGroupName, automationAccountName, name);
             if (certificateModel == null)
             {
-                throw new ResourceCommonException(typeof (CertificateInfo),
+                throw new ResourceCommonException(typeof(CertificateInfo),
                     string.Format(CultureInfo.CurrentCulture, Resources.CertificateNotFound, name));
             }
 
@@ -1216,7 +1215,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    throw new ResourceNotFoundException(typeof (Schedule),
+                    throw new ResourceNotFoundException(typeof(Schedule),
                         string.Format(CultureInfo.CurrentCulture, Resources.CertificateNotFound, name));
                 }
 
@@ -1235,20 +1234,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var connectionModel = this.TryGetConnectionModel(resourceGroupName, automationAccountName, name);
             if (connectionModel != null)
             {
-                throw new ResourceCommonException(typeof (Connection),
+                throw new ResourceCommonException(typeof(Connection),
                     string.Format(CultureInfo.CurrentCulture, Resources.ConnectionAlreadyExists, name));
             }
 
             var ccprop = new ConnectionCreateOrUpdateProperties()
             {
                 Description = description,
-                ConnectionType = new ConnectionTypeAssociationProperty() {Name = connectionTypeName},
+                ConnectionType = new ConnectionTypeAssociationProperty() { Name = connectionTypeName },
                 FieldDefinitionValues =
                     connectionFieldValues.Cast<DictionaryEntry>()
                         .ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString())
             };
 
-            var ccparam = new ConnectionCreateOrUpdateParameters() {Name = name, Properties = ccprop};
+            var ccparam = new ConnectionCreateOrUpdateParameters() { Name = name, Properties = ccprop };
 
             var connection =
                 this.automationManagementClient.Connections.CreateOrUpdate(resourceGroupName, automationAccountName, ccparam).Connection;
@@ -1262,7 +1261,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var connectionModel = this.TryGetConnectionModel(resourceGroupName, automationAccountName, name);
             if (connectionModel == null)
             {
-                throw new ResourceCommonException(typeof (Connection),
+                throw new ResourceCommonException(typeof(Connection),
                     string.Format(CultureInfo.CurrentCulture, Resources.ConnectionNotFound, name));
             }
 
@@ -1273,7 +1272,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             else
             {
-                throw new ResourceCommonException(typeof (Connection),
+                throw new ResourceCommonException(typeof(Connection),
                     string.Format(CultureInfo.CurrentCulture, Resources.ConnectionFieldNameNotFound, name));
             }
 
@@ -1298,7 +1297,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var connectionModel = this.TryGetConnectionModel(resourceGroupName, automationAccountName, name);
             if (connectionModel == null)
             {
-                throw new ResourceCommonException(typeof (Connection),
+                throw new ResourceCommonException(typeof(Connection),
                     string.Format(CultureInfo.CurrentCulture, Resources.ConnectionNotFound, name));
             }
 
@@ -1350,7 +1349,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    throw new ResourceNotFoundException(typeof (Connection),
+                    throw new ResourceNotFoundException(typeof(Connection),
                         string.Format(CultureInfo.CurrentCulture, Resources.ConnectionNotFound, name));
                 }
 
@@ -1378,7 +1377,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
                 {
-                    throw new ResourceNotFoundException(typeof (JobSchedule),
+                    throw new ResourceNotFoundException(typeof(JobSchedule),
                         string.Format(CultureInfo.CurrentCulture, Resources.JobScheduleWithIdNotFound, jobScheduleId));
                 }
 
@@ -1411,7 +1410,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (!jobScheduleFound)
             {
-                throw new ResourceNotFoundException(typeof (Schedule),
+                throw new ResourceNotFoundException(typeof(Schedule),
                     string.Format(CultureInfo.CurrentCulture, Resources.JobScheduleNotFound, runbookName, scheduleName));
             }
         }
@@ -1477,8 +1476,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     Properties = new JobScheduleCreateProperties
                     {
-                        Schedule = new ScheduleAssociationProperty {Name = scheduleName},
-                        Runbook = new RunbookAssociationProperty {Name = runbookName},
+                        Schedule = new ScheduleAssociationProperty { Name = scheduleName },
+                        Runbook = new RunbookAssociationProperty { Name = runbookName },
                         Parameters = processedParameters
                     }
                 }).JobSchedule;
@@ -1499,7 +1498,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
                 {
-                    throw new ResourceNotFoundException(typeof (Schedule),
+                    throw new ResourceNotFoundException(typeof(Schedule),
                         string.Format(CultureInfo.CurrentCulture, Resources.JobScheduleWithIdNotFound, jobScheduleId));
                 }
 
@@ -1530,7 +1529,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (!jobScheduleFound)
             {
-                throw new ResourceNotFoundException(typeof (Schedule),
+                throw new ResourceNotFoundException(typeof(Schedule),
                     string.Format(CultureInfo.CurrentCulture, Resources.JobScheduleNotFound, runbookName, scheduleName));
             }
         }
@@ -1599,7 +1598,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return runbook;
         }
 
-        private Azure.Management.Automation.Models.Certificate TryGetCertificateModel(string resourceGroupName, string automationAccountName, 
+        private Azure.Management.Automation.Models.Certificate TryGetCertificateModel(string resourceGroupName, string automationAccountName,
             string certificateName)
         {
             Azure.Management.Automation.Models.Certificate certificate = null;
@@ -1633,7 +1632,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Resources.RunbookHasNoPublishedVersion, runbookName));
             }
             return runbook.Parameters.Cast<DictionaryEntry>()
-                .ToDictionary(k => k.Key.ToString(), k => (RunbookParameter) k.Value);
+                .ToDictionary(k => k.Key.ToString(), k => (RunbookParameter)k.Value);
         }
 
         private IDictionary<string, string> ProcessRunbookParameters(string resourceGroupName, string automationAccountName, string runbookName,
@@ -1693,7 +1692,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
                 {
-                    throw new ResourceNotFoundException(typeof (Schedule),
+                    throw new ResourceNotFoundException(typeof(Schedule),
                         string.Format(CultureInfo.CurrentCulture, Resources.ScheduleNotFound, scheduleName));
                 }
 
@@ -1703,7 +1702,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return scheduleModel;
         }
 
-       
+
         private Schedule UpdateScheduleHelper(string resourceGroupName, string automationAccountName,
             string scheduleName, bool? isEnabled, string description)
         {
@@ -1744,7 +1743,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 IsExportable = exportable
             };
 
-            var ccparam = new CertificateCreateOrUpdateParameters() {Name = name, Properties = ccprop};
+            var ccparam = new CertificateCreateOrUpdateParameters() { Name = name, Properties = ccprop };
 
             var certificate =
                 this.automationManagementClient.Certificates.CreateOrUpdate(resourceGroupName, automationAccountName, ccparam).Certificate;
@@ -1784,8 +1783,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 outputFolderFullPath = this.ValidateAndGetFullPath(outputFolder);
             }
 
-            var fileExtension = (0 == string.Compare(runbookType, Constants.RunbookType.Graph, StringComparison.OrdinalIgnoreCase)) ? Constants.SupportedFileExtensions.Graph : Constants.SupportedFileExtensions.PowerShellScript;
-            
+            var fileExtension = IsGraphRunbook(runbookType) ? Constants.SupportedFileExtensions.Graph : Constants.SupportedFileExtensions.PowerShellScript;
+
             var outputFilePath = outputFolderFullPath + "\\" + runbookName + fileExtension;
 
             // file exists and overwrite Not specified
@@ -1799,6 +1798,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
             this.WriteFile(outputFilePath, content);
 
             return new DirectoryInfo(runbookName + fileExtension);
+        }
+
+        private static bool IsGraphRunbook(string runbookType)
+        {
+            return (string.Equals(runbookType, RunbookTypeEnum.Graph, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(runbookType, RunbookTypeEnum.GraphPowerShell, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(runbookType, RunbookTypeEnum.GraphPowerShellWorkflow, StringComparison.OrdinalIgnoreCase));
         }
 
         #endregion

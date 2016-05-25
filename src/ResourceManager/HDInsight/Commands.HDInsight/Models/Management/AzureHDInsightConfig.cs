@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -56,7 +56,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the flavor for a cluster.
         /// </summary>
         public string ClusterType { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the cluster tier.
+        /// </summary>
+        public Tier ClusterTier { get; set; }
+
         /// <summary>
         /// Gets or sets the database to store the metadata for Oozie.
         /// </summary>
@@ -68,17 +73,22 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public AzureHDInsightMetastore HiveMetastore { get; set; }
 
         /// <summary>
-        /// Gets Object id of the service principal 
+        /// Gets Object id of the service principal. 
         /// </summary>
         public Guid ObjectId { get; set; }
 
         /// <summary>
-        /// Gets client certificate associated with service principal
+        /// Gets the file path of the client certificate file contents associated with the service principal.
+        /// </summary>
+        public byte[] CertificateFileContents { get; set; }
+
+        /// <summary>
+        /// Gets the file path of the client certificate file associated with the service principal.
         /// </summary>
         public string CertificateFilePath { get; set; }
 
         /// <summary>
-        /// Gets client certificate password associated with service principal
+        /// Gets client certificate password associated with service principal.
         /// </summary>
         public string CertificatePassword { get; set; }
 
@@ -86,7 +96,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets AAD tenant uri of the service principal
         /// </summary>
         public Guid AADTenantId { get; set; }
-        
+
         /// <summary>
         /// Gets the configurations of this HDInsight cluster.
         /// </summary>

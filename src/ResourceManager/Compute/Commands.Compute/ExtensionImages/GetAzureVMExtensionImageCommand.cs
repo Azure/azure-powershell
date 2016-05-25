@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (string.IsNullOrEmpty(this.Version))
                 {
-                    var filter = new ODataQuery<VirtualMachineImageResource>(this.FilterExpression);
+                    var filter = new ODataQuery<VirtualMachineExtensionImage>(this.FilterExpression);
 
                     var result = this.VirtualMachineExtensionImageClient.ListVersionsWithHttpMessagesAsync(
                         this.Location.Canonicalize(),

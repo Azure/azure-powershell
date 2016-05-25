@@ -93,13 +93,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             }
         }
 
-        public static byte[] GetCertificateData(string certPath, string password)
-        {
-            var cert = new X509Certificate2();
-            cert.Import(certPath, password, X509KeyStorageFlags.Exportable);
-            return cert.HasPrivateKey ? cert.Export(X509ContentType.Pfx, password) : cert.Export(X509ContentType.Pkcs12);
-        }
-
         public static X509Certificate2 DropPrivateKey(X509Certificate2 cert)
         {
             // export and reimport without private key.

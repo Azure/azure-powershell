@@ -15,8 +15,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using System.Management.Automation;
 
     [Cmdlet(VerbsData.Update, "AzureRmApiManagementRegion"), OutputType(typeof(PsApiManagement))]
     public class UpdateAzureApiManagementRegion : AzureApiManagementCmdletBase
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true, 
+            Mandatory = true,
             HelpMessage = "Location of the deployment region to update.")]
 
         [ValidateNotNullOrEmpty]

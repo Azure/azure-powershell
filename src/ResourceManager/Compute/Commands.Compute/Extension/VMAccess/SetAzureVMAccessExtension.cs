@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
 using System.Collections;
 using System.Management.Automation;
-using AutoMapper;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -27,67 +25,22 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineAccessExtension)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class SetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    public class SetAzureVMAccessExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         private const string userNameKey = "UserName";
         private const string passwordKey = "Password";
 
         [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual machine name.")]
-        [ValidateNotNullOrEmpty]
-        public string VMName { get; set; }
-
-        [Alias("ExtensionName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Alias("HandlerVersion", "Version")]
-        [Parameter(
-            Mandatory = false,
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type handler version.")]
-        [ValidateNotNullOrEmpty]
-        public string TypeHandlerVersion { get; set; }
-
-        [Parameter(
            Mandatory = false,
-           Position = 4,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "New or Existing User Name")]
         public string UserName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "New or Existing User Password")]
         public string Password { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 6,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -114,7 +67,8 @@ namespace Microsoft.Azure.Commands.Compute
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineAccessExtensionContext.ExtensionDefaultVersion,
                     Settings = publicSettings,
                     ProtectedSettings = privateSettings,
-                    AutoUpgradeMinorVersion = true
+                    AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+                    ForceUpdateTag = this.ForceRerun
                 };
 
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(

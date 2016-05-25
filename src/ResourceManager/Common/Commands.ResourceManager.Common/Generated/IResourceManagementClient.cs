@@ -19,10 +19,10 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -33,17 +33,17 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </summary>
         string ApiVersion
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Gets the URI used as the base for all cloud service requests.
         /// </summary>
         Uri BaseUri
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Gets subscription credentials which uniquely identify Microsoft
         /// Azure subscription. The subscription ID forms part of the URI for
@@ -51,89 +51,89 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </summary>
         SubscriptionCloudCredentials Credentials
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Gets or sets the initial timeout for Long Running Operations.
         /// </summary>
         int LongRunningOperationInitialTimeout
         {
-            get; set; 
+            get; set;
         }
-        
+
         /// <summary>
         /// Gets or sets the retry timeout for Long Running Operations.
         /// </summary>
         int LongRunningOperationRetryTimeout
         {
-            get; set; 
+            get; set;
         }
-        
+
         /// <summary>
         /// Operations for managing deployment operations.
         /// </summary>
         IDeploymentOperationOperations DeploymentOperations
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Operations for managing deployments.
         /// </summary>
         IDeploymentOperations Deployments
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Operations for managing providers.
         /// </summary>
         IProviderOperations Providers
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Operations for getting provider operations metadata.
         /// </summary>
         IProviderOperationsMetadataOperations ProviderOperationsMetadata
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Operations for managing resource groups.
         /// </summary>
         IResourceGroupOperations ResourceGroups
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Operations for managing resources.
         /// </summary>
         IResourceOperations Resources
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Operations for managing Resource provider operations.
         /// </summary>
         IResourceProviderOperationDetailsOperations ResourceProviderOperationDetails
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Operations for managing tags.
         /// </summary>
         ITagOperations Tags
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// The Get Operation Status operation returns the status of the
         /// specified operation. After calling an asynchronous operation, you

@@ -14,21 +14,20 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
-using System;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.ODataFilterParameterSet), 
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.ODataFilterParameterSet),
         OutputType(typeof(PSComputeNode))]
     public class GetBatchComputeNodeCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool.")]
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, 
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }

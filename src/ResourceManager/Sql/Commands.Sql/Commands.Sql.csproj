@@ -51,7 +51,17 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase.cs" />
+    <Compile Include="ImportExport\Cmdlet\GetAzureSqlDatabaseImportExportStatus.cs" />
+    <Compile Include="ImportExport\Model\AzureSqlDatabaseImportExportStatusModel.cs" />
+    <Compile Include="ImportExport\Cmdlet\ImportExportCmdletBase.cs" />
+    <Compile Include="ImportExport\Cmdlet\NewAzureSqlDatabaseExport.cs" />
+    <Compile Include="ImportExport\Cmdlet\NewAzureSqlDatabaseImport.cs" />
+    <Compile Include="ImportExport\Model\AuthenticationType.cs" />
+    <Compile Include="ImportExport\Model\AzureSqlDatabaseImportExportBaseModel.cs" />
+    <Compile Include="ImportExport\Model\AzureSqlDatabaseImportModel.cs" />
+    <Compile Include="ImportExport\Model\StorageKeyType.cs" />
+    <Compile Include="ImportExport\Service\ImportExportDatabaseAdapter.cs" />
+    <Compile Include="ImportExport\Service\ImportExportDatabaseCommunicator.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseGeoBackupCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDeletedDatabaseBackupCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlServerBackupLongTermRetentionVaultCmdletBase.cs" />
@@ -312,7 +322,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm">
@@ -336,7 +346,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.0.1\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

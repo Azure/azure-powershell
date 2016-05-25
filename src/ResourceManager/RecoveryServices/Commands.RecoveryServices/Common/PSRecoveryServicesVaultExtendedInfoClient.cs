@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             ResourceExtendedInformationResponse response =
                 await this.recoveryServicesClient.VaultExtendedInfo.GetExtendedInfoAsync(
-                asrVaultCreds.ResourceGroupName,
-                asrVaultCreds.ResourceName,
+                arsVaultCreds.ResourceGroupName,
+                arsVaultCreds.ResourceName,
                 this.GetRequestHeaders());
 
             return response.ResourceExtendedInformation;
@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public AzureOperationResponse CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
         {
             return this.recoveryServicesClient.VaultExtendedInfo.CreateExtendedInfo(
-                asrVaultCreds.ResourceGroupName,
-                asrVaultCreds.ResourceName,
+                arsVaultCreds.ResourceGroupName,
+                arsVaultCreds.ResourceName,
                 extendedInfoArgs,
                 this.GetRequestHeaders());
         }
@@ -68,8 +68,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public async Task<UploadCertificateResponse> UpdateVaultCertificate(CertificateArgs args, string certFriendlyName)
         {
             return await this.recoveryServicesClient.VaultExtendedInfo.UploadCertificateAsync(
-                asrVaultCreds.ResourceGroupName, 
-                asrVaultCreds.ResourceName,
+                arsVaultCreds.ResourceGroupName, 
+                arsVaultCreds.ResourceName,
                 args, certFriendlyName, 
                 this.GetRequestHeaders());
         }
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>credential object</returns>
         public ASRVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ARSVault vault, ASRSite site)
         {
-            ASRVaultCreds currentVaultContext = PSRecoveryServicesClient.asrVaultCreds;
+            ASRVaultCreds currentVaultContext = PSRecoveryServicesClient.arsVaultCreds;
 
             string resourceProviderNamespace = string.Empty;
             string resourceType = string.Empty;
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             acsDetails = uploadCertificate.Result;
             channelIntegrityKey = getChannelIntegrityKey.Result;
 
-            ASRVaultCreds asrVaultCreds = this.GenerateCredentialObject(
+            ASRVaultCreds arsVaultCreds = this.GenerateCredentialObject(
                                                 managementCert,
                                                 acsDetails,
                                                 channelIntegrityKey,
@@ -122,7 +122,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Update back the original vault settings
             Utilities.UpdateCurrentVaultContext(currentVaultContext);
 
-            return asrVaultCreds;
+            return arsVaultCreds;
+        }
+
+        /// <summary>
+        /// Upload cert to idmgmt
+        /// </summary>
+        /// <param name="managementCert">certificate to be uploaded</param>
+        /// <param name="vault">vault object</param>
+        /// <returns>Upload Certificate Response</returns>
+        public UploadCertificateResponse UploadCertificate(X509Certificate2 managementCert, ARSVault vault)
+        {
+            var certificateArgs = new CertificateArgs();
+            certificateArgs.Properties = new Dictionary<string, string>();
+            certificateArgs.Properties.Add("certificate", Convert.ToBase64String(managementCert.GetRawCertData()));
+
+            var response = this.recoveryServicesClient.VaultExtendedInfo.UploadCertificateAsync(
+                vault.ResouceGroupName,
+                vault.Name,
+                certificateArgs, managementCert.FriendlyName,
+                this.GetRequestHeaders());
+            response.Wait();
+            return response.Result;
         }
 
         /// <summary>
@@ -157,7 +178,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 ARMResourceType = resourceType
             });
 
-            return asrVaultCreds;
+            return arsVaultCreds;
         }
 
         /// <summary>
@@ -272,7 +293,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                             site.ID,
                                             site.Name,
                                             resourceProviderNamespace,
-                                            resourceType);
+                                            resourceType,
+                                            vault.Location);
 
             return vaultCreds;
         }

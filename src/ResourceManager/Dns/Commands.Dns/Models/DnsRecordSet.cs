@@ -17,7 +17,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Dns
 {
@@ -188,7 +187,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Represents a DNS record of type A that is part of a <see cref="DnsRecordSet"/>.
     /// </summary>
-    public class ARecord :  DnsRecordBase
+    public class ARecord : DnsRecordBase
     {
         /// <summary>
         /// Gets or sets the IPv4 address of this A record in string notation
@@ -436,8 +435,8 @@ namespace Microsoft.Azure.Commands.Dns
         /// <returns>A clone of this object</returns>
         public override object Clone()
         {
-            return new SrvRecord 
-            { 
+            return new SrvRecord
+            {
                 Priority = this.Priority,
                 Target = this.Target,
                 Weight = this.Weight,
@@ -511,8 +510,8 @@ namespace Microsoft.Azure.Commands.Dns
         /// <returns>A clone of this object</returns>
         public override object Clone()
         {
-            return new SoaRecord 
-            { 
+            return new SoaRecord
+            {
                 Host = this.Host,
                 Email = this.Email,
                 SerialNumber = this.SerialNumber,

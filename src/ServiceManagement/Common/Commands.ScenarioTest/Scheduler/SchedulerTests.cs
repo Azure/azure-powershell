@@ -22,13 +22,20 @@ using Microsoft.Azure.Test;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System;
+using Xunit.Abstractions;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public class SchedulerTests
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
-        
+
+        public SchedulerTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
@@ -51,12 +58,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 SetupManagementClients();
 
-                List<string> modules = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\Scheduler"), "*.ps1").ToList();
-                modules.Add("Common.ps1");
-                modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
+                List<string> modules = Directory.GetFiles("Resources\\Scheduler".AsAbsoluteLocation(), "*.ps1").ToList();
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(modules.ToArray());
+                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
 
                 helper.RunPowerShellTest(scripts);
             }

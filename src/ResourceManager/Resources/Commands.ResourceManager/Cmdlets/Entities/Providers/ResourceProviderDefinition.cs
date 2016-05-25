@@ -25,18 +25,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Providers
         /// Gets or sets the registration state.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public string RegistrationState {get;set;}
+        public string RegistrationState { get; set; }
 
         /// <summary>
         /// Gets or sets the namespace.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public string Namespace {get;set;}
+        public string Namespace { get; set; }
 
         /// <summary>
         /// Gets or sets the resource types.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public ResourceTypeDefinition[] ResourceTypes { get; set;}
+        public ResourceTypeDefinition[] ResourceTypes { get; set; }
     }
 }
