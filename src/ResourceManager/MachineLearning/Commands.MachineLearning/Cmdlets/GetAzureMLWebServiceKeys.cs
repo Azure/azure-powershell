@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
             }
 
             WebServiceKeys storageKeys = 
-                this.WebServicesClient.GetAzureMlWebServiceKeys(this.SubscriptionId, this.ResourceGroupName, this.Name);
+                this.WebServicesClient.GetAzureMlWebServiceKeys(this.ResourceGroupName, this.Name);
             this.WriteObject(storageKeys);
         }
     }

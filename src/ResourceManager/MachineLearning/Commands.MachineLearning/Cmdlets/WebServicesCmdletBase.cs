@@ -47,8 +47,6 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
         }
 
-        protected string SubscriptionId { get; set; }
-
         public PSResourceManagerModels.ResourcesClient ResourceClient
         {
             get
@@ -96,14 +94,13 @@ namespace Microsoft.Azure.Commands.MachineLearning
                     this.cancellationSource = new CancellationTokenSource();
                 }
 
-                this.SubscriptionId = this.DefaultProfile.Context.Subscription.Id.ToString();
                 base.BeginProcessing();
             }
             catch (Exception ex)
             {
                 if (ex.IsFatal())
                 {
-                    ThrowTerminatingError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidOperation, this.SubscriptionId));
+                    ThrowTerminatingError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidOperation, this));
                 }
                 
                 var capturedException = ExceptionDispatchInfo.Capture(ex);
