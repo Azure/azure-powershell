@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-       
+
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To show the status.")]
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             if (Status)
             {
                 var result = VirtualMachineExtensionClient.GetWithInstanceView(ResourceGroupName, VMName, Name);
-                var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
+                var extension = result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName);
 
                 if (
                     extension.Publisher.Equals(DscExtensionCmdletConstants.ExtensionPublishedNamespace,
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             else
             {
                 var result = VirtualMachineExtensionClient.Get(ResourceGroupName, VMName, Name);
-                var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
+                var extension = result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName);
 
                 if (
                     extension.Publisher.Equals(

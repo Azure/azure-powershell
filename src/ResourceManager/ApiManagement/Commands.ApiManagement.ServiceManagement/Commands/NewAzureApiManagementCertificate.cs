@@ -14,13 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.IO;
     using System.Management.Automation;
     using System.Security.Cryptography.X509Certificates;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementCertificate", DefaultParameterSetName = FromFile)]
+    [Cmdlet(VerbsCommon.New, Constants.ApiManagementCertificate, DefaultParameterSetName = FromFile)]
     [OutputType(typeof(PsApiManagementCertificate))]
     public class NewAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
@@ -28,35 +28,35 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         private const string Raw = "Raw";
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Identifier of new certificate. This parameter is optional. If not specified will be generated.")]
         public String CertificateId { get; set; }
 
         [Parameter(
             ParameterSetName = FromFile,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Path to the certificate file in .pfx format to be created/uploaded. This parameter is required if -PfxBytes not specified.")]
         public String PfxFilePath { get; set; }
 
         [Parameter(
             ParameterSetName = Raw,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Bytes of the certificate file in .pfx format to be created/uploaded. This parameter is required if -PfxFilePath not specified.")]
         public Byte[] PfxBytes { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Password for the certificate. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String PfxPassword { get; set; }

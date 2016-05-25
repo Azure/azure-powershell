@@ -14,44 +14,46 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementGroup")]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementGroup)]
     [OutputType(typeof(PsApiManagementGroup))]
     public class SetAzureApiManagementGroup : AzureApiManagementCmdletBase
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true, 
+            Mandatory = true,
             HelpMessage = "Identifier of existing group. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String GroupId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Group name. This parameter is optional.")]
         public String Name { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Group description. This parameter is optional.")]
         public String Description { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup type  representing the modified group.")]
+            HelpMessage = "If specified then instance of " +
+                          "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup type " +
+                          "representing the modified group.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteApiManagementCmdlet()

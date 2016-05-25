@@ -14,11 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.Management.Automation;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Gets the policy assignment.
@@ -100,9 +100,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             string resourceId = this.Id ?? this.GetResourceId();
 
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceId)
-                .ConfigureAwait(continueOnCapturedContext: false);
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
 
             if (IsResourceGet(resourceId))
             {
@@ -173,13 +171,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string GetResourceId()
         {
             var subscriptionId = DefaultContext.Subscription.Id;
-            if(string.IsNullOrEmpty(this.Name) && string.IsNullOrEmpty(this.Scope))
+            if (string.IsNullOrEmpty(this.Name) && string.IsNullOrEmpty(this.Scope))
             {
-                return string.Format("/subscriptions/{0}/providers/{1}", 
-                    subscriptionId.ToString(), 
+                return string.Format("/subscriptions/{0}/providers/{1}",
+                    subscriptionId.ToString(),
                     Constants.MicrosoftAuthorizationPolicyAssignmentType);
             }
-            else if(string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.Scope))
+            else if (string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.Scope))
             {
                 return ResourceIdUtility.GetResourceId(
                     resourceId: this.Scope,

@@ -191,54 +191,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
-    /// Error contract returned when some exception occurs in ASR REST API.
-    /// </summary>
-    [SuppressMessage(
-        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
-        "SA1402:FileMayOnlyContainASingleClass",
-        Justification = "Keeping all contracts together.")]
-    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    public class Error
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Error" /> class.
-        /// </summary>
-        public Error()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets error code.
-        /// </summary>
-        [DataMember]
-        public string Code { get; set; }
-
-        /// <summary>
-        /// Gets or sets error message.
-        /// </summary>
-        [DataMember]
-        public string Message { get; set; }
-
-        /// <summary>
-        /// Gets or sets possible causes of error.
-        /// </summary>
-        [DataMember]
-        public string PossibleCauses { get; set; }
-
-        /// <summary>
-        /// Gets or sets recommended action to resolve error.
-        /// </summary>
-        [DataMember]
-        public string RecommendedAction { get; set; }
-
-        /// <summary>
-        /// Gets or sets client request Id.
-        /// </summary>
-        [DataMember(Name = "ActivityId")]
-        public string ClientRequestId { get; set; }
-    }
-
-    /// <summary>
     /// CIK token details.
     /// </summary>
     [SuppressMessage(
@@ -358,10 +310,11 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="resourceName">resource name</param>
         /// <param name="managementCert">management cert</param>
         /// <param name="acsNamespace">authenticating service namespace</param>
-        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
+        /// <param name="resourceType">resource type backup vault or ASR vault</param>
+        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace, string resourceType = null)
         {
             this.SubscriptionId = subscriptionId;
-            this.ResourceType = Constants.ASRVaultType;
+            this.ResourceType = string.IsNullOrEmpty(resourceType) ? Constants.VaultType : resourceType;
             this.ResourceName = resourceName;
             this.ManagementCert = managementCert;
             this.AcsNamespace = acsNamespace;
@@ -404,7 +357,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     }
 
     /// <summary>
-    /// Class to define ASR Vault credentials
+    /// Class to define ARS Vault credentials
     /// </summary>
     [SuppressMessage(
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
@@ -442,7 +395,8 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
             string siteId,
             string siteName,
             string resourceNamespace,
-            string resourceType)
+            string resourceType,
+            string location)
             : base(subscriptionId, resourceName, managementCert, acsNamespace)
         {
             this.ChannelIntegrityKey = channelIntegrityKey;
@@ -454,6 +408,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
 
             this.ResourceNamespace = resourceNamespace;
             this.ARMResourceType = resourceType;
+            this.Location = location;
         }
 
         #endregion
@@ -500,6 +455,62 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 6)]
         public string ARMResourceType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the vault location
+        /// </summary>
+        [DataMember(Order = 7)]
+        public string Location { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Class to define backup vault credentials
+    /// </summary>
+    [DataContract]
+    public class BackupVaultCreds : VaultCreds
+    {
+        /// <summary>
+        /// Gets or sets the agent links
+        /// </summary>
+        [DataMember(Order = 0)]
+        public string AgentLinks { get; set; }
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        public BackupVaultCreds() { }
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceType">resource type</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">acs namespace</param>
+        public BackupVaultCreds(string subscriptionId, string resourceName, string managementCert, 
+            AcsNamespace acsNamespace)
+            : base(subscriptionId, resourceName, managementCert, acsNamespace, Constants.BackupVaultType) { }
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceType">resource type</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">acs namespace</param>
+        /// <param name="agentLinks">agent links</param>
+        public BackupVaultCreds(string subscriptionId, string resourceName, string managementCert, 
+            AcsNamespace acsNamespace, string agentLinks)
+            : this(subscriptionId, resourceName, managementCert, acsNamespace)
+        {
+            AgentLinks = agentLinks;
+        }
 
         #endregion
     }

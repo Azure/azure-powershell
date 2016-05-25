@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SiteRecovery.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -58,23 +57,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.EnterpriseToAzure:
-                        this.EnterpriseToAzureDissociation();
-                        break;
-                    case ASRParameterSets.EnterpriseToEnterprise:
-                        this.EnterpriseToEnterpriseDissociation();
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
+                case ASRParameterSets.EnterpriseToAzure:
+                    this.EnterpriseToAzureDissociation();
+                    break;
+                case ASRParameterSets.EnterpriseToEnterprise:
+                    this.EnterpriseToEnterpriseDissociation();
+                    break;
             }
         }
 

@@ -12,19 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.SiteRecovery.Properties;
+using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.SiteRecoveryVault;
+using Microsoft.Azure.Portal.HybridServicesCore;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
-using Hyak.Common;
-using Microsoft.Azure.Commands.SiteRecovery.Properties;
-using Microsoft.Azure.Management.RecoveryServices;
-using Microsoft.Azure.Management.RecoveryServices.Models;
-using Microsoft.Azure.Management.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Portal.HybridServicesCore;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using rpError = Microsoft.Azure.Commands.SiteRecovery.RestApiInfra;
 
 
@@ -41,10 +39,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>Vault Extended Information Response</returns>
         public async Task<ResourceExtendedInformation> GetExtendedInfo()
         {
-            ResourceExtendedInformationResponse response = 
+            ResourceExtendedInformationResponse response =
                 await this.recoveryServicesClient.VaultExtendedInfo.GetExtendedInfoAsync(
-                asrVaultCreds.ResourceGroupName, 
-                asrVaultCreds.ResourceName, 
+                asrVaultCreds.ResourceGroupName,
+                asrVaultCreds.ResourceName,
                 this.GetRequestHeaders(false));
 
             return response.ResourceExtendedInformation;
@@ -58,9 +56,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public AzureOperationResponse CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
         {
             return this.recoveryServicesClient.VaultExtendedInfo.CreateExtendedInfo(
-                asrVaultCreds.ResourceGroupName, 
-                asrVaultCreds.ResourceName, 
-                extendedInfoArgs, 
+                asrVaultCreds.ResourceGroupName,
+                asrVaultCreds.ResourceName,
+                extendedInfoArgs,
                 this.GetRequestHeaders(false));
         }
 
@@ -72,9 +70,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public async Task<UploadCertificateResponse> UpdateVaultCertificate(CertificateArgs args, string certFriendlyName)
         {
             return await this.recoveryServicesClient.VaultExtendedInfo.UploadCertificateAsync(
-                asrVaultCreds.ResourceGroupName, 
+                asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceName,
-                args, certFriendlyName, 
+                args, certFriendlyName,
                 this.GetRequestHeaders(false));
         }
 
@@ -154,7 +152,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 ResourceGroupName = vault.ResouceGroupName,
                 ResourceName = vault.Name,
                 ResourceNamespace = resourceProviderNamespace,
-                ARMResourceType= resourceType
+                ARMResourceType = resourceType
             });
 
             // Get Channel Integrity key

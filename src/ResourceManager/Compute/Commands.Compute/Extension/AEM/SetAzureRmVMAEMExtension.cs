@@ -12,23 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
-using Microsoft.Azure.Commands.Compute.Extension.AEM;
-using AutoMapper;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute
                 this._Helper.WriteVerbose("Retrieving VM...");
 
                 var selectedVM = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
-                var selectedVMStatus = ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, this.VMName);
+                var selectedVMStatus = ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, this.VMName).Body.InstanceView;
 
                 if (selectedVM == null)
                 {
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (String.IsNullOrEmpty(this.OSType))
                 {
-                    this.OSType = osdisk.OsType;
+                    this.OSType = osdisk.OsType.ToString();
                 }
                 if (String.IsNullOrEmpty(this.OSType))
                 {
@@ -153,10 +153,11 @@ namespace Microsoft.Azure.Commands.Compute
                         break;
                 }
                 sapmonPublicConfig.Add(new KeyValuePair() { Key = "vmsize", Value = vmsize });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.memory.isovercommitted", Value = memOvercommit.ToString() });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.cpu.isovercommitted", Value = cpuOvercommit.ToString() });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.role", Value = "IaaS" });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.memory.isovercommitted", Value = memOvercommit });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.cpu.isovercommitted", Value = cpuOvercommit });
                 sapmonPublicConfig.Add(new KeyValuePair() { Key = "script.version", Value = AEMExtensionConstants.CurrentScriptVersion });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "verbose", Value = "1" });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "verbose", Value = "0" });
                 sapmonPublicConfig.Add(new KeyValuePair() { Key = "href", Value = "http://aka.ms/sapaem" });
 
                 var vmSLA = this._Helper.GetVMSLA(selectedVM);
@@ -175,8 +176,9 @@ namespace Microsoft.Azure.Commands.Compute
                 this._Helper.WriteHost("[INFO] Adding configuration for OS disk");
 
                 var caching = osdisk.Caching;
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = osdisk.Name });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetDiskName(osdisk.Vhd.Uri) });
                 sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.account", Value = accountName });
                 if (this._Helper.IsPremiumStorageAccount(accountName))
                 {
                     WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
@@ -206,9 +208,10 @@ namespace Microsoft.Azure.Commands.Compute
 
                     this._Helper.WriteHost("[INFO] Adding configuration for data disk {0}", disk.Name);
                     caching = disk.Caching;
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun.ToString() });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = disk.Name });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetDiskName(disk.Vhd.Uri) });
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = caching });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.account." + diskNumber, Value = accountName });
 
                     if (this._Helper.IsPremiumStorageAccount(accountName))
                     {
@@ -268,8 +271,8 @@ namespace Microsoft.Azure.Commands.Compute
                     else
                     {
                         this._Helper.WriteHost("[INFO] {0} is of type {1} - Storage Account Metrics are not available for Premium Type Storage.", storage.Name, storage.AccountType.Value.ToString());
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.ispremium"), Value = "1" });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.ispremium"), Value = "1" });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.ispremium"), Value = 1 });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.ispremium"), Value = 1 });
                     }
                 }
 
@@ -299,7 +302,7 @@ namespace Microsoft.Azure.Commands.Compute
                         return;
                     }
 
-                    selectedVM = SetAzureVMDiagnosticsExtensionC(selectedVM, wadstorage.Key, wadstorage.Value);
+                    selectedVM = SetAzureVMDiagnosticsExtensionC(selectedVM, selectedVMStatus, wadstorage.Key, wadstorage.Value as string);
 
                     var storage = this._Helper.GetStorageAccountFromCache(wadstorage.Key);
                     var endpoint = this._Helper.GetAzureSAPTableEndpoint(storage);
@@ -307,12 +310,12 @@ namespace Microsoft.Azure.Commands.Compute
 
                     sapmonPrivateConfig.Add(new KeyValuePair() { Key = "wad.key", Value = wadstorage.Value });
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.name", Value = wadstorage.Key });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.isenabled", Value = "1" });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.isenabled", Value = 1 });
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.uri", Value = wadUri });
                 }
                 else
                 {
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.isenabled", Value = "0" });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.isenabled", Value = 0 });
                 }
 
                 ExtensionConfig jsonPublicConfig = new ExtensionConfig();
@@ -324,17 +327,21 @@ namespace Microsoft.Azure.Commands.Compute
                 this._Helper.WriteHost("[INFO] Updating Azure Enhanced Monitoring Extension for SAP configuration - Please wait...");
 
                 WriteVerbose("Installing AEM extension");
+
+                Version aemVersion = this._Helper.GetExtensionVersion(selectedVM, selectedVMStatus, OSType, AEMExtensionConstants.AEMExtensionType[OSType], AEMExtensionConstants.AEMExtensionPublisher[OSType]);
+
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
                     new VirtualMachineExtension()
                     {
                         Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
                         VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
-                        TypeHandlerVersion = AEMExtensionConstants.AEMExtensionVersion[OSType],
+                        TypeHandlerVersion = aemVersion.ToString(2),
                         Settings = jsonPublicConfig,
                         ProtectedSettings = jsonPrivateConfig,
                         Location = selectedVM.Location,
-                        AutoUpgradeMinorVersion = true
+                        AutoUpgradeMinorVersion = true,
+                        ForceUpdateTag = DateTime.Now.Ticks.ToString()
                     }).GetAwaiter().GetResult();
 
                 this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
@@ -345,13 +352,13 @@ namespace Microsoft.Azure.Commands.Compute
             });
         }
 
-        private VirtualMachine SetAzureVMDiagnosticsExtensionC(VirtualMachine selectedVM, string storageAccountName, string storageAccountKey)
+        private VirtualMachine SetAzureVMDiagnosticsExtensionC(VirtualMachine vm, VirtualMachineInstanceView vmStatus, string storageAccountName, string storageAccountKey)
         {
             System.Xml.XmlDocument xpublicConfig = null;
 
             var extensionName = AEMExtensionConstants.WADExtensionDefaultName[this.OSType];
 
-            var extTemp = this._Helper.GetExtension(selectedVM,
+            var extTemp = this._Helper.GetExtension(vm,
                 AEMExtensionConstants.WADExtensionType[this.OSType], AEMExtensionConstants.WADExtensionPublisher[OSType]);
             object publicConf = null;
             if (extTemp != null)
@@ -417,18 +424,24 @@ namespace Microsoft.Azure.Commands.Compute
             jPrivateConfig.Add("storageAccountEndPoint", new Newtonsoft.Json.Linq.JValue(endpoint));
 
             WriteVerbose("Installing WAD extension");
+
+            Version wadVersion = this._Helper.GetExtensionVersion(vm, vmStatus, OSType,
+                AEMExtensionConstants.WADExtensionType[this.OSType], AEMExtensionConstants.WADExtensionPublisher[this.OSType]);
+
             VirtualMachineExtension vmExtParameters = new VirtualMachineExtension();
 
             vmExtParameters.Publisher = AEMExtensionConstants.WADExtensionPublisher[this.OSType];
             vmExtParameters.VirtualMachineExtensionType = AEMExtensionConstants.WADExtensionType[this.OSType];
-            vmExtParameters.TypeHandlerVersion = AEMExtensionConstants.WADExtensionVersion[this.OSType];
+            vmExtParameters.TypeHandlerVersion = wadVersion.ToString(2);
             vmExtParameters.Settings = jPublicConfig;
             vmExtParameters.ProtectedSettings = jPrivateConfig;
-            vmExtParameters.Location = selectedVM.Location;
+            vmExtParameters.Location = vm.Location;
+            vmExtParameters.AutoUpgradeMinorVersion = true;
+            vmExtParameters.ForceUpdateTag = DateTime.Now.Ticks.ToString();
 
-            this.VirtualMachineExtensionClient.CreateOrUpdate(ResourceGroupName, selectedVM.Name, extensionName, vmExtParameters);
+            this.VirtualMachineExtensionClient.CreateOrUpdate(ResourceGroupName, vm.Name, extensionName, vmExtParameters);
 
-            return this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(ResourceGroupName, selectedVM.Name);
+            return this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(ResourceGroupName, vm.Name);
         }
 
         private void SetStorageAnalytics(string storageAccountName)

@@ -12,17 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using BatchCommon = Microsoft.Azure.Batch.Common;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
@@ -32,8 +33,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public DisableBatchJobCommandTests()
+        public DisableBatchJobCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new DisableBatchJobCommand()
@@ -54,10 +56,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.Id = "testJob";
-            cmdlet.DisableJobOption = DisableJobOption.Terminate;
+            cmdlet.DisableJobOption = BatchCommon.DisableJobOption.Terminate;
 
             // Don't go to the service on a Disable CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobDisableParameters, CloudJobDisableResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.DisableJobOption,
+                ProxyModels.JobDisableOptions,
+                AzureOperationHeaderResponse<ProxyModels.JobDisableHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -71,17 +76,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
 
-            DisableJobOption disableOption = DisableJobOption.Terminate;
-            DisableJobOption requestDisableOption = DisableJobOption.Requeue;
+            BatchCommon.DisableJobOption disableOption = BatchCommon.DisableJobOption.Terminate;
+            ProxyModels.DisableJobOption? requestDisableOption = ProxyModels.DisableJobOption.Requeue;
 
             cmdlet.Id = "testJob";
             cmdlet.DisableJobOption = disableOption;
 
             // Don't go to the service on a Disable CloudJob call
-            Action<BatchRequest<CloudJobDisableParameters, CloudJobDisableResponse>> extractDisableOptionAction =
+            Action<BatchRequest<ProxyModels.DisableJobOption, ProxyModels.JobDisableOptions, AzureOperationHeaderResponse<ProxyModels.JobDisableHeaders>>> extractDisableOptionAction =
                 (request) =>
                 {
-                    requestDisableOption = request.TypedParameters.DisableJobOption;
+                    requestDisableOption = request.Parameters;
                 };
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractDisableOptionAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -89,7 +94,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.ExecuteCmdlet();
 
             // Verify that the job disable option was properly set on the outgoing request
-            Assert.Equal(disableOption, requestDisableOption);
+            Assert.Equal(disableOption, BatchTestHelpers.MapEnum<BatchCommon.DisableJobOption>(requestDisableOption));
         }
     }
 }

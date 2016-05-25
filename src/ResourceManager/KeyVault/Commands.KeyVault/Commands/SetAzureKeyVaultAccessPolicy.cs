@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
         [ValidateSet("get", "list", "set", "delete", "all")]
         public string[] PermissionsToSecrets { get; set; }
-        
+
         [Parameter(Mandatory = false,
             ParameterSetName = ForVault,
             ValueFromPipelineByPropertyName = true,
@@ -164,11 +164,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 throw new ArgumentException(PSKeyVaultProperties.Resources.VaultPermissionFlagMissing);
             }
 
-            ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;           
+            ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
             PSKeyVaultModels.PSVault vault = null;
 
             // Get the vault to be updated
-            if (!string.IsNullOrWhiteSpace(ResourceGroupName))                
+            if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                 vault = KeyVaultManagementClient.GetVault(
                                                    VaultName,
                                                    ResourceGroupName);
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 //Both arrays cannot be null
                 if (PermissionsToKeys == null && PermissionsToSecrets == null)
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.PermissionsNotSpecified);                
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.PermissionsNotSpecified);
                 else
                 {
                     //Validate 
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         existingPolicy.PermissionsToKeys.ToArray() : null);
 
                     var secrets = PermissionsToSecrets ?? (existingPolicy != null && existingPolicy.PermissionsToSecrets != null ?
-                        existingPolicy.PermissionsToSecrets.ToArray() : null);                    
+                        existingPolicy.PermissionsToSecrets.ToArray() : null);
 
                     //Remove old policies for this policy identity and add a new one with the right permissions, iff there were some non-empty permissions
                     updatedListOfAccessPolicies = vault.AccessPolicies.Where(ap => !MatchVaultAccessPolicyIdentity(ap, objId, this.ApplicationId)).ToArray();
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             return ap.ApplicationId == applicationId && ap.ObjectId == objectId;
         }
-       
+
         private bool IsMeaningfulPermissionSet(string[] perms)
         {
             if (perms == null || perms.Length == 0)

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.IO;
 using System.Net.Http;
@@ -21,7 +22,6 @@ using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 using System.Threading;
 using System.Xml.Linq;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -59,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected override HttpResponseMessage ProcessResponse(HttpResponseMessage response, CancellationToken cancellationToken)
         {
             string body = String.Empty;
-            if(response.Content != null)
+            if (response.Content != null)
             {
                 var contentHeaders = response.Content.Headers;
                 var stream = new MemoryStream();
@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 contentHeaders.ForEach(kv => response.Content.Headers.Add(kv.Key, kv.Value));
             }
             logger(GeneralUtilities.GetHttpResponseLog(response.StatusCode.ToString(), response.Headers, body));
-            
+
             return response;
         }
     }

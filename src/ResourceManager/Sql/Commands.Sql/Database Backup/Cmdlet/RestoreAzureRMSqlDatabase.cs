@@ -12,15 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Backup.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.Database.Services;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
@@ -90,11 +87,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(
             ParameterSetName = FromDeletedDatabaseBackupSetName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The deletion DateTime of the deleted database to restore.")]
         public DateTime DeletionDate { get; set; }
 
-        /// <summary>
+        /// <summary> 
         /// The resource ID of the database to restore (deleted DB, geo backup DB, live DB, long term retention backup, etc.)
         /// </summary>
         [Parameter(Mandatory = true,
@@ -104,10 +101,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 
         /// <summary> 
         /// Gets or sets the name of the database server to use. 
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the Azure SQL Server to restore the database to.")]
+        /// </summary> 
+        [Parameter(Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The name of the Azure SQL Server to restore the database to.")] 
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -141,7 +138,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The name of the elastic pool into which the database should be restored.")]
         public string ElasticPoolName { get; set; }
-
+        
         /// <summary>
         /// Initializes the adapter
         /// </summary>

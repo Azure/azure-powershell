@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -31,9 +33,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
     {
         public const string ResourceGroupTypeName = "ResourceGroup";
 
+        public const string ErrorFormat = "Error: Code={0}; Message={1}\r\n";
+
         public static List<string> KnownLocations = new List<string>
         {
-            "East Asia", "South East Asia", "East US", "West US", "North Central US", 
+            "East Asia", "South East Asia", "East US", "West US", "North Central US",
             "South Central US", "Central US", "North Europe", "West Europe"
         };
 
@@ -78,22 +82,22 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     WriteVerbose(string.Format("Creating resource \"{0}\" started.", parameters.Name));
 
                     Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(parameters.Tag, validate: true);
-                    
-                    ResourceCreateOrUpdateResult createOrUpdateResult = ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName, 
+
+                    ResourceCreateOrUpdateResult createOrUpdateResult = ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName,
                         resourceIdentity,
                         new GenericResource
-                            {
-                                Location = parameters.Location,
-                                Properties = SerializeHashtable(parameters.PropertyObject, addValueLayer: false),
-                                Tags = tagDictionary
-                            });
+                        {
+                            Location = parameters.Location,
+                            Properties = SerializeHashtable(parameters.PropertyObject, addValueLayer: false),
+                            Tags = tagDictionary
+                        });
 
                     if (createOrUpdateResult.Resource != null)
                     {
                         WriteVerbose(string.Format("Creating resource \"{0}\" complete.", parameters.Name));
                     }
                 };
-            
+
             if (resourceExists && !parameters.Force)
             {
                 parameters.ConfirmAction(parameters.Force,
@@ -106,7 +110,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 createOrUpdateResource();
             }
-            
+
             ResourceGetResult getResult = ResourceManagementClient.Resources.Get(parameters.ResourceGroupName, resourceIdentity);
 
             return getResult.Resource.ToPSResource(this, false);
@@ -140,11 +144,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName, resourceIdentity,
                         new GenericResource
-                            {
-                                Location = getResource.Resource.Location,
-                                Properties = newProperty,
-                                Tags = tagDictionary
-                            });
+                        {
+                            Location = getResource.Resource.Location,
+                            Properties = newProperty,
+                            Tags = tagDictionary
+                        });
 
             ResourceGetResult getResult = ResourceManagementClient.Resources.Get(parameters.ResourceGroupName, resourceIdentity);
 
@@ -189,12 +193,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     }
                 }
                 ResourceListResult listResult = ResourceManagementClient.Resources.List(new ResourceListParameters
-                    {
-                        ResourceGroupName = parameters.ResourceGroupName,
-                        ResourceType = parameters.ResourceType,
-                        TagName = tagValuePair.Name,
-                        TagValue = tagValuePair.Value
-                    });
+                {
+                    ResourceGroupName = parameters.ResourceGroupName,
+                    ResourceType = parameters.ResourceType,
+                    TagName = tagValuePair.Name,
+                    TagValue = tagValuePair.Value
+                });
 
                 if (listResult.Resources != null)
                 {
@@ -298,11 +302,64 @@ namespace Microsoft.Azure.Commands.Resources.Models
             parameters.DeploymentName = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel);
 
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+
+            if (validationInfo.Errors.Count != 0)
+            {
+                foreach (var error in validationInfo.Errors)
+                {
+                    WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+                    if (!string.IsNullOrEmpty(error.Details))
+                    {
+                        DisplayDetailedErrorMessage(error.Details);
+                    }
+                }
+                throw new InvalidOperationException("The deployment validation failed.");
+            }
+            else
+            {
+                WriteVerbose(ProjectResources.TemplateValid);
+            }
+
             ResourceManagementClient.Deployments.CreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
             WriteVerbose(string.Format("Create template deployment '{0}'.", parameters.DeploymentName));
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
             return result.ToPSResourceGroupDeployment(parameters.ResourceGroupName);
+        }
+
+        private void DisplayDetailedErrorMessage(string details)
+        {
+            dynamic errorMessage = JsonConvert.DeserializeObject(details);
+            if (errorMessage != null)
+            {
+                var token = JToken.Parse(errorMessage.ToString());
+                if (token is JArray)
+                {
+                    var errors = details.FromJson<ExtendedErrorInfo[]>();
+                    foreach (var error in errors)
+                    {
+                        DisplayInnerDetailErrorMessage(error);
+                    }
+                }
+                else if (token is JObject)
+                {
+                    var error = details.FromJson<ExtendedErrorInfo>();
+                    DisplayInnerDetailErrorMessage(error);
+                }
+            }
+        }
+
+        private void DisplayInnerDetailErrorMessage(ExtendedErrorInfo error)
+        {
+            WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+            if (error.Details != null)
+            {
+                foreach (var innerError in error.Details)
+                {
+                    DisplayInnerDetailErrorMessage(innerError);
+                }
+            }
         }
 
         private string GenerateDeploymentName(CreatePSResourceGroupDeploymentParameters parameters)
@@ -332,7 +389,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
-            
+
             if (string.IsNullOrEmpty(name))
             {
                 var response = ResourceManagementClient.ResourceGroups.List(null);
@@ -466,7 +523,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
             }
 
-            if(excludedProvisioningStates.Count > 0)
+            if (excludedProvisioningStates.Count > 0)
             {
                 return deployments.Where(d => excludedProvisioningStates
                     .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
@@ -552,47 +609,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 WriteVerbose(ProjectResources.TemplateValid);
             }
             return validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList();
-        }
-
-        /// <summary>
-        /// Gets available locations for the specified resource type.
-        /// </summary>
-        /// <param name="resourceTypes">The resource types</param>
-        /// <returns>Mapping between each resource type and its available locations</returns>
-        public virtual List<PSResourceProviderLocationInfo> GetLocations(params string[] resourceTypes)
-        {
-            if (resourceTypes == null)
-            {
-                resourceTypes = new string[0];
-            }
-            List<string> providerNames = resourceTypes.Select(r => r.Split('/').First()).ToList();
-            List<PSResourceProviderLocationInfo> result = new List<PSResourceProviderLocationInfo>();
-            List<Provider> providers = new List<Provider>();
-
-            if (resourceTypes.Length == 0 || resourceTypes.Any(r => r.Equals(ResourceGroupTypeName, StringComparison.OrdinalIgnoreCase)))
-            {
-                result.Add(new ProviderResourceType
-                {
-                    Name = ResourceGroupTypeName,
-                    Locations = KnownLocations
-                }.ToPSResourceProviderLocationInfo(null));
-            }
-
-            if (resourceTypes.Length > 0)
-            {
-                providers.AddRange(ListResourceProviders()
-                    .Where(p => providerNames.Any(pn => pn.Equals(p.Namespace, StringComparison.OrdinalIgnoreCase))));
-            }
-            else
-            {
-                providers.AddRange(ListResourceProviders());
-            }
-
-            result.AddRange(providers.SelectMany(p => p.ResourceTypes
-                .Select(r => r.ToPSResourceProviderLocationInfo(p.Namespace)))
-                .Where(r => r.Locations != null && r.Locations.Count > 0));
-
-            return result;
         }
     }
 }

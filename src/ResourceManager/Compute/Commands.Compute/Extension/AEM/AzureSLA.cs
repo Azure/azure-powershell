@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Compute
     public class AzureSLA
     {
         public bool HasSLA { get; internal set; }
-        public string IOPS { get; internal set; }
-        public string TP { get; internal set; }
+        public int IOPS { get; internal set; }
+        public int TP { get; internal set; }
     }
 }

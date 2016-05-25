@@ -12,30 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.Serialization.Formatters;
-using System.Threading;
-using System.Threading.Tasks;
 using Hyak.Common;
-using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Subscriptions;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Net;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Runtime.Serialization.Formatters;
+using System.Threading.Tasks;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -259,7 +260,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 {
                     string errorMessage = ParseErrorMessage(operation.Properties.StatusMessage);
 
-                    if(operation.Properties.TargetResource != null)
+                    if (operation.Properties.TargetResource != null)
                     {
                         statusMessage = string.Format(failureStatusFormat,
                         operation.Properties.TargetResource.ResourceType,
@@ -298,13 +299,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public static List<string> ParseDetailErrorMessage(string statusMessage)
         {
-            if(!string.IsNullOrEmpty(statusMessage))
+            if (!string.IsNullOrEmpty(statusMessage))
             {
                 List<string> detailedMessage = new List<string>();
                 dynamic errorMessage = JsonConvert.DeserializeObject(statusMessage);
-                if(errorMessage.error != null && errorMessage.error.details !=null)
+                if (errorMessage.error != null && errorMessage.error.details != null)
                 {
-                    foreach(var detail in errorMessage.error.details)
+                    foreach (var detail in errorMessage.error.details)
                     {
                         detailedMessage.Add(detail.message.ToString());
                     }
@@ -322,16 +323,19 @@ namespace Microsoft.Azure.Commands.Resources.Models
             params string[] status)
         {
             DeploymentExtended deployment;
+            int counter = 5000;
 
             do
             {
+                WriteVerbose(string.Format("Checking deployment status in {0} seconds.", counter / 1000));
+                TestMockSupport.Delay(counter);
+
                 if (job != null)
                 {
                     job(resourceGroup, deploymentName, basicDeployment);
                 }
-
                 deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName).Deployment;
-                TestMockSupport.Delay(10000);
+                counter = counter + 5000 > 60000 ? 60000 : counter + 5000;
 
             } while (!status.Any(s => s.Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 
@@ -349,12 +353,16 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     newOperations.Add(operation);
                 }
 
-                //If nested deployment, get the operations under those deployments as well
-                if(operation.Properties.TargetResource != null && operation.Properties.TargetResource.ResourceType.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase))
+                //If nested deployment, get the operations under those deployments as well. Check if the deployment exists before calling list operations on it
+                if (operation.Properties.TargetResource != null &&
+                    operation.Properties.TargetResource.ResourceType.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase) &&
+                    ResourceManagementClient.Deployments.CheckExistence(
+                        resourceGroupName: ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id),
+                        deploymentName: operation.Properties.TargetResource.ResourceName).Exists)
                 {
                     HttpStatusCode statusCode;
                     Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
-                    if(!statusCode.IsClientFailureRequest())
+                    if (!statusCode.IsClientFailureRequest())
                     {
                         List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
                         DeploymentOperationsListResult result;
@@ -386,12 +394,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             Deployment deployment = new Deployment
             {
-                Properties = new DeploymentProperties {
+                Properties = new DeploymentProperties
+                {
                     Mode = deploymentMode
                 }
             };
 
-            if(!string.IsNullOrEmpty(debugSetting))
+            if (!string.IsNullOrEmpty(debugSetting))
             {
                 deployment.Properties.DebugSetting = new DeploymentDebugSetting
                 {
@@ -485,7 +494,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     throw new KeyNotFoundException(string.Format(ProjectResources.ResourceProviderNotFound, providerName));
                 }
 
-                return new List<Provider> {provider};
+                return new List<Provider> { provider };
             }
             else
             {
@@ -583,8 +592,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     {
                         string[] allowedTestPrefixes = new[] { "-preview", "-alpha", "-beta", "-rc", "-privatepreview" };
                         List<string> nonTestApiVersions = new List<string>();
-                        
-                        foreach (string apiVersion in operationsResourceType.ApiVersions) 
+
+                        foreach (string apiVersion in operationsResourceType.ApiVersions)
                         {
                             bool isTestApiVersion = false;
                             foreach (string testPrefix in allowedTestPrefixes)
@@ -596,13 +605,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
                                 }
                             }
 
-                            if(isTestApiVersion == false && !nonTestApiVersions.Contains(apiVersion))
+                            if (isTestApiVersion == false && !nonTestApiVersions.Contains(apiVersion))
                             {
                                 nonTestApiVersions.Add(apiVersion);
                             }
                         }
 
-                        if(nonTestApiVersions.Any())
+                        if (nonTestApiVersions.Any())
                         {
                             string latestNonTestApiVersion = nonTestApiVersions.OrderBy(o => o).Last();
                             providersSupportingOperations.Add(provider.ProviderNamespace, latestNonTestApiVersion);
@@ -626,7 +635,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             var allProviderOperations = new List<PSResourceProviderOperation>();
             Task<ResourceProviderOperationDetailListResult> task;
 
-            if(identities != null)
+            if (identities != null)
             {
                 foreach (var identity in identities)
                 {
@@ -641,18 +650,18 @@ namespace Microsoft.Azure.Commands.Resources.Models
                             allProviderOperations.AddRange(task.Result.ResourceProviderOperationDetails.Select(op => op.ToPSResourceProviderOperation()));
                         }
                     }
-                    catch(AggregateException ae)
+                    catch (AggregateException ae)
                     {
-                         AggregateException flattened = ae.Flatten();
-                         foreach (Exception inner in flattened.InnerExceptions)
-                         {
-                             // Do nothing for now - this is just a mitigation against one provider which hasn't implemented the operations API correctly
-                             //WriteWarning(inner.ToString());
-                         }
+                        AggregateException flattened = ae.Flatten();
+                        foreach (Exception inner in flattened.InnerExceptions)
+                        {
+                            // Do nothing for now - this is just a mitigation against one provider which hasn't implemented the operations API correctly
+                            //WriteWarning(inner.ToString());
+                        }
                     }
                 }
             }
-              
+
             return allProviderOperations;
         }
 
@@ -664,8 +673,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public IList<ProviderOperationsMetadata> ListProviderOperationsMetadata()
         {
-           ProviderOperationsMetadataListResult result = this.ResourceManagementClient.ProviderOperationsMetadata.List();
-           return result.Providers;
+            ProviderOperationsMetadataListResult result = this.ResourceManagementClient.ProviderOperationsMetadata.List();
+            return result.Providers;
         }
     }
 }

@@ -11,11 +11,13 @@
 
 using System;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
@@ -47,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         {
             base.ValidateParameters();
 
-            XNamespace configNameSpace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
+            XNamespace configNameSpace = DiagnosticsHelper.XmlNamespace;
             ProviderNamespace = DiagnosticsExtensionNamespace;
             ExtensionName = DiagnosticsExtensionType;
 
@@ -115,44 +117,48 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 }
             }
 
-            XmlDocument doc = new XmlDocument();
-            XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
-            ns.AddNamespace("ns", XmlNamespace);
-            doc.Load(DiagnosticsConfigurationPath);
-
-            // Make sure the configuration elements exist
-            var publicConfigElement = doc.SelectSingleNode("//ns:PublicConfig", ns);
+            var doc = XDocument.Load(DiagnosticsConfigurationPath);
+            var publicConfigElement = doc.Descendants().FirstOrDefault(d => d.Name.LocalName == "PublicConfig");
             if (publicConfigElement == null)
             {
                 throw new ArgumentException(Resources.DiagnosticsExtensionNullPublicConfig);
             }
 
-            var wadConfigElement = doc.SelectSingleNode("//ns:WadCfg", ns) ?? doc.SelectSingleNode("//ns:WadCfgBlob", ns);
-            if (wadConfigElement == null)
+            var wadCfgElement = doc.Descendants().FirstOrDefault(d => d.Name.LocalName == "WadCfg");
+            var wadCfgBlobElement = doc.Descendants().FirstOrDefault(d => d.Name.LocalName == "WadCfgBlob");
+            if (wadCfgElement == null && wadCfgBlobElement == null)
             {
                 throw new ArgumentException(Resources.DiagnosticsExtensionPaaSConfigElementNotDefined);
             }
 
+            if (wadCfgElement != null)
+            {
+                DiagnosticsHelper.AutoFillMetricsConfig(wadCfgElement, GetResourceId(), cmdlet: this);
+            }
+
             // The element <StorageAccount> is not meant to be set by the user in the public config.
             // Make sure it matches the storage account in the private config.
-            var storageAccountElement = doc.SelectSingleNode("//ns:StorageAccount", ns);
+            var storageAccountElement = publicConfigElement.Elements().FirstOrDefault(d => d.Name.LocalName == "StorageAccount");
             if (storageAccountElement == null)
             {
                 // The StorageAccount element is not there, we create one
-                storageAccountElement = doc.CreateElement("StorageAccount", XmlNamespace);
-                wadConfigElement.ParentNode.AppendChild(storageAccountElement);
+                XNamespace ns = XmlNamespace;
+                storageAccountElement = new XElement(ns + "StorageAccount", StorageAccountName);
+                publicConfigElement.Add(storageAccountElement);
             }
-
-            if (!string.IsNullOrEmpty(storageAccountElement.InnerText) && string.Compare(storageAccountElement.InnerText, StorageAccountName, true) != 0)
+            else
             {
-                WriteWarning(Resources.DiagnosticsExtensionNoMatchStorageAccount);
+                if (!string.IsNullOrEmpty(storageAccountElement.Value) && string.Compare(storageAccountElement.Value, StorageAccountName, true) != 0)
+                {
+                    WriteWarning(Resources.DiagnosticsExtensionNoMatchStorageAccount);
+                }
+                storageAccountElement.SetValue(StorageAccountName);
             }
 
-            storageAccountElement.InnerText = StorageAccountName;
-            PublicConfiguration = publicConfigElement.OuterXml;
+            PublicConfiguration = publicConfigElement.ToString();
 
             // Make sure the storage account name in PrivateConfig matches.
-            var privateConfigStorageAccountName = DiagnosticsHelper.GetStorageAccountInfoFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.PrivConfNameAttr);
+            var privateConfigStorageAccountName = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfNameAttr);
             if (!string.IsNullOrEmpty(privateConfigStorageAccountName)
                 && !string.Equals(StorageAccountName, privateConfigStorageAccountName, StringComparison.OrdinalIgnoreCase))
             {
@@ -163,7 +169,48 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfNameAttr, StorageAccountName);
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfKeyAttr, StorageAccountKey);
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfEndpointAttr, StorageAccountEndpoint);
+            AddEventHubPrivateConfig(PrivateConfigurationXml);
+
             PrivateConfiguration = PrivateConfigurationXml.ToString();
+        }
+
+        private string GetResourceId()
+        {
+            string resourceGroup = null;
+            foreach (var service in this.ComputeClient.HostedServices.List())
+            {
+                if (service.ServiceName == ServiceName
+                    && service.Properties != null
+                    && service.Properties.ExtendedProperties != null
+                    && service.Properties.ExtendedProperties.ContainsKey("ResourceGroup"))
+                {
+                    resourceGroup = service.Properties.ExtendedProperties["ResourceGroup"];
+                    break;
+                }
+            }
+
+            return !string.IsNullOrEmpty(resourceGroup)
+                ? string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ClassicCompute/domainNames/{2}",
+                    Profile.DefaultSubscription.Id, resourceGroup, ServiceName)
+                : null;
+        }
+
+        private void AddEventHubPrivateConfig(XDocument privateConfig)
+        {
+            var eventHubUrl = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.EventHubElemStr, DiagnosticsHelper.EventHubUrlAttr);
+            var eventHubSharedAccessKeyName = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.EventHubElemStr, DiagnosticsHelper.EventHubSharedAccessKeyNameAttr);
+            var eventHubSharedAccessKey = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.EventHubElemStr, DiagnosticsHelper.EventHubSharedAccessKeyAttr);
+
+            if (!string.IsNullOrEmpty(eventHubUrl) || !string.IsNullOrEmpty(eventHubSharedAccessKeyName) || !string.IsNullOrEmpty(eventHubSharedAccessKey))
+            {
+                var privateConfigElem = privateConfig.Descendants().FirstOrDefault(d => d.Name.LocalName == DiagnosticsHelper.PrivateConfigElemStr);
+                XNamespace XmlNamespace = DiagnosticsHelper.XmlNamespace;
+                privateConfigElem.Add(new XElement(XmlNamespace + DiagnosticsHelper.EventHubElemStr,
+                    new XAttribute(DiagnosticsHelper.EventHubUrlAttr, eventHubUrl),
+                    new XAttribute(DiagnosticsHelper.EventHubSharedAccessKeyNameAttr, eventHubSharedAccessKeyName),
+                    new XAttribute(DiagnosticsHelper.EventHubSharedAccessKeyAttr, eventHubSharedAccessKey)
+                    ));
+            }
         }
     }
 }

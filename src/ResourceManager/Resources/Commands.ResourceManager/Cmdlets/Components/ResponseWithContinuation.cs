@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
-    using System.Collections;
     using Newtonsoft.Json;
+    using System.Collections;
 
     /// <summary>
     /// Response with next link signifying continuation.

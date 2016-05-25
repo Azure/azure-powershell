@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using System;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -105,7 +104,8 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
-        public string Location {
+        public string Location
+        {
             get
             {
                 if (string.IsNullOrEmpty(this.location))
@@ -179,9 +179,10 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.publicConfiguration == null)
                 {
+                    var vm = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
                     this.publicConfiguration =
                         DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath,
-                            this.StorageAccountName);
+                            this.StorageAccountName, vm.Id, cmdlet: this);
                 }
 
                 return this.publicConfiguration;
@@ -194,9 +195,8 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.privateConfiguration == null)
                 {
-                    this.privateConfiguration = DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.StorageAccountName,
-                        this.StorageAccountKey,
-                        this.StorageAccountEndpoint);
+                    this.privateConfiguration = DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.DiagnosticsConfigurationPath,
+                        this.StorageAccountName, this.StorageAccountKey, this.StorageAccountEndpoint);
                 }
 
                 return this.privateConfiguration;

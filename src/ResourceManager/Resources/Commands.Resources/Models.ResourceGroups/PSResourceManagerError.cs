@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Resources.Models
 {
     public class PSResourceManagerError
@@ -20,5 +21,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public string Code { get; set; }
 
         public string Message { get; set; }
+
+        public string Target { get; set; }
+
+        public List<PSResourceManagerError> Details { get; set; }
     }
 }

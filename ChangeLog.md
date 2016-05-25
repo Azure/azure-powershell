@@ -1,11 +1,133 @@
-##2016.04.01
+##2016.07.04 version 1.6.0
 * Azure SQL DB Backup/Restore
-  * Get-AzureRmSqlServerBackupArchivalVault
-  * Get-AzureRmSqlDatabaseBackupArchivalPolicy
-  * Set-AzureRmSqlServerBackupArchivalVault
-  * Set-AzureRmSqlDatabaseBackupArchivalPolicy
+  * Cmdlets for LTR (Long Term Retention) backup feature
+	* Get-AzureRmSqlServerBackupArchivalVault
+	* Get-AzureRmSqlDatabaseBackupArchivalPolicy
+	* Set-AzureRmSqlServerBackupArchivalVault
+	* Set-AzureRmSqlDatabaseBackupArchivalPolicy
   * Restore-AzureRmSqlDatabase now supports point-in-time restore of a deleted database
-  * Restore-AzureRmSqlDatabase now supports restoring from an archived backup
+  * Restore-AzureRmSqlDatabase now supports restoring from a Long Term Retention backup
+##2016.06.04 version 1.5.0
+* Azure Storage
+  * Fix get Storage Account throttling failures when run it on subscription with many accounts 
+    - Get-AzureRmStorageAccount
+    - Get-AzureStorageAccount
+##2016.05.04 version 1.4.0
+* Azure Resource Manager
+  - Get-AzureRmLocation cmdley: New cmdlet Lists all public Azure locatiosn with available provider namespaces
+  - Get-AzureRMResourceGroupDeploymentOperations: Improved output format
+  - Get-AzureRMDeployment: Responses contain all error details
+  - Added cmdlet help anbd examples
+  - Normalized cmdlet parameter defaults and position
+* Azure Storage
+  * Add Encryption and Hot/Cool features support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+  * Add "Add" and "Create" permission to Blob SAS cmdlets
+    - New-AzureStorageBlobSASToken
+    - New-AzureStorageContainerSASToken
+    - New-AzureStorageContainerStoredAccessPolicy
+    - Set-AzureStorageContainerStoredAccessPolicy
+  * Add "Create" permission to File SAS cmdlets
+    - New-AzureStorageFileSASToken
+    - New-AzureStorageShareSASToken
+    - New-AzureStorageShareStoredAccessPolicy
+    - Set-AzureStorageShareStoredAccessPolicy
+* Azure Compute
+  * Added cmdlets for Contaner Service support
+  * Bug and help fixes
+* Azure Profile
+  * Added support for German national cloud (AzureGermanCloud)
+* Azure APIManagement
+  *  Added Tenant Git Configuration cmdlets
+    - Get-AzureRmApiManagementTenantGitAccess
+    - Set-AzureRmApiManagementTenantGitAccess
+    - Get-AzureRmApiManagementTenantSyncState
+    - Publish-AzureRmApiManagementTenantGitConfiguration
+    - Save-AzureRmApiManagementTenantGitConfiguration
+  * Added ApiManagement Properties cmdlets
+    - Get-AzureRmApiManagementProperty
+    - New-AzureRmApiManagementProperty
+    - Remove-AzureRmApiManagementProperty
+    - Set-AzureRmApiManagementProperty
+  * Added Logger cmdlets
+    - Get-AzureRmApiManagementLogger
+    - Remove-AzureRmApiManagementLogger
+    - Set-AzureRmApiManagementLogger
+    - New-AzureRmApiManagementLogger
+  * Fixed cmdlet bugs
+    - NewAzureRMApiManagementAPI: changed Path to optional
+    - NewAzureRMApiManagementProduct: fixed issue with creating products without Subscriptions
+* Azure Recovery Services Backup
+  * Added Recovery Services Backup cmdlets
+    - Set-AzureRmRecoveryServicesVaultContext
+    - Set-AzureRmRecoveryServicesBackupProperties
+    - Get-AzureRmRecoveryServicesBackupProperties
+    - Get-AzureRmRecoveryServicesVaultSettingsFile
+    - Backup-AzureRmRecoveryServicesBackupItem
+    - Get-AzureRmRecoveryServicesBackupContainer
+    - Get-AzureRmRecoveryServicesBackupManagementServer
+    - Unregister-AzureRmRecoveryServicesBackupContainer
+    - Unregister-AzureRmRecoveryServicesBackupManagementServer
+    - Disable-AzureRmRecoveryServicesBackupProtection
+    - Enable-AzureRmRecoveryServicesBackupProtection
+    - Get-AzureRmRecoveryServicesBackupItem
+    - Get-AzureRmRecoveryServicesBackupJob
+    - Get-AzureRmRecoveryServicesBackupJobDetails
+    - Stop-AzureRmRecoveryServicesBackupJob
+    - Wait-AzureRmRecoveryServicesBackupJob
+    - Get-AzureRmRecoveryServicesBackupRetentionPolicyObject
+    - Get-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Get-AzureRmRecoveryServicesBackupSchedulePolicyObject
+    - New-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Remove-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Set-AzureRmRecoveryServicesBackupProtectionPolicy
+    - Get-AzureRmRecoveryServicesBackupRecoveryPoint
+    - Restore-AzureRmRecoveryServicesBackupItem
+
+##2016.04.19 version 1.3.2
+* Add support for specifying NIC/VMSS as application gateway backend address
+* Fix HDI ADL cluster creation and live test
+* Fix WAPack cmdlet Proxy issue for WAP
+* Fix Dynamic Memory Issue while setting VM
+* Update Azure Gov STS and Traffic Manager
+* Compute
+  - Upgrade to Microsoft.Azure.Management.Compute nuget package v13.0 
+* HDInsignt
+  - Upgrade to Microsoft.Azure.Management.HDInsight nuget package v1.0.14
+* Resource Manager 
+  - Change api-version for Policy and Locks operations
+  - Change api version for Deployments operations
+* Web Apps
+  - Add backup and restore cmdlets
+    - Restore-AzureWebApp
+    - Edit-AzureRmWebAppBackupConfiguration
+    - Get-AzureRmWebAppBackupConfiguration
+    - Get-AzureRmWebAppBackup
+    - New-AzureRmWebAppBackup
+    - Remove-AzureRmWebAppBackup
+    - Restore-AzureRmWebAppBackup
+    - Get-AzureRmWebAppBackupList
+    - New-AzureRmWebAppDatabaseBackupSetting
+  - Upgrade to Microsoft.WindowsAzure.Management.WebSite nuget package v5.0
+
+##2016.03.30 version 1.3.0
+* AzureRM module
+  - Installation performance fix
+* New Azure CDN cmdlets
+* Azure Storage
+  * Made Protocol parameter in following cmdlets to be nullable and optional
+    - New-AzureStorageBlobSASToken
+    - New-AzureStorageContainerSASToken
+    - New-AzureStorageFileSASToken
+    - New-AzureStorageShareSASToken
+    - New-AzureStorageQueueSASToken
+    - New-AzureStorageTableSASToken
+    - New-AzureStorageAccountSASToken
+* Add Export-AzureRmResourceGroupTemplate cmdlet
+* Add VirtualMachineScaleSet cmdlet
+* Add "EA" value for permission parameter of Set-AzurePlatformVMImage
+* Documentation improvements in cmdlets 
 
 ##2016.03.03 version 1.2.2
 * Azure Compute (ARM):
@@ -52,12 +174,12 @@
 * Fix installer issue - remove PSGallery modules on install
 
 ## 2016.02.03 version 1.2.0
-* Azure RemoteApp:
+* Azure RemoteApp: 
   * Organizational Unit in Azure RemoteApp RDFE cmdlets now accepts Unicode characters.
-* Azure Stack Admin:
+* Azure Stack Admin: 
   * New module for the management of azure stack administrative resources such as plan, offer, subscription, resource provider and
     gallery items.
-* Azure Stack Storage Admin:
+* Azure Stack Storage Admin: 
   * New module for the management of azure stack storage administrative resources such as configuration, infrastructure and health.
 * Azure Operational Insights new cmdlets:
   *  Get-AzureRmOperationalInsightsSavedSearch
@@ -98,7 +220,7 @@
   * Get-AzureBatchSubtask cmdlet added
   * Enable-AzureBatchComputeNodeScheduling / Disable-AzureBatchComputeNodeScheduling cmdlets added
   * Enable-AzureBatchAutoScale and New-AzureBatchPool now accept an AutoScaleEvaluationInterval parameter.
-
+  
 ## 2015.12.14 version 1.0.2
 * Azure Compute (ARM):
   * Enable BGInfo extension by default
@@ -125,7 +247,7 @@
   * Added cmdlets for managing VM DiskEncryption extension
 * Azure KeyVault
   * Added EnabledForDiskEncryption and EnabledForTemplateDeployment flags to Azure Key Vault access policy
-* Azure Websites
+* Azure Websites 
   * Fixed issues with website management client creation
 
 ## 2015.11.05 version 1.0
@@ -154,15 +276,15 @@
   * Added support for storage file and usage metrics in Azure Resource Manager cmdlets
 * Azure Websites
   * New and rewritten cmdlets for Azure Web Application management
-
+  
 ## 2015.10.09 version 1.0 preview
 * Azure Resource Manager Management Cmdlets
-  * New-AzureRmResourceGroup - Removed the template deployment parameters from this cmdlet. Template deployment will now be
+  * New-AzureRmResourceGroup - Removed the template deployment parameters from this cmdlet. Template deployment will now be 
   handled only through the New-AzureRmResourceGroupDeployment
   * Get-AzureRmResource - Will query directly against the Resource Provider. Removed parameters for tags from here. New cmdlets added for querying against the cache as listed below.
   * Get-AzureRmResourceGroup - Removed parameters for finding resources through tags. New cmdlet added for handling this   
   functionality as mentioned below.
-  * Find-AzureRmResource - Query against the cache.
+  * Find-AzureRmResource - Query against the cache. 
   * Find-AzureRmResourceGroup - Tag parameter added for querying resource group containing specific tags.
   * Test-AzureResource - Cmdlet removed. Will be adding a better and reliable way to achieve this scenario which will be guaranteed to work against all Resource providers.
   * Test-AzureResourceGroup - Cmdlet removed. Will be adding a better and reliable way to achieve this scenario.
@@ -174,9 +296,9 @@
     * Removed Get-AzureResourceLog, Get-AzureResourceGroupLog, Get-AzureProviderLog
     * Added new cmdlet Get-AzureLog which you can use to obtain logs at different scopes like resource group, resource, provider.
   * Removed Get-AzureLocation - the functionality is now provided through the Get-AzureRmResourceProvider
-
+  
 ## 2015.09.03 version 0.9.8
-* Azure Redis Cache cmdlets
+* Azure Redis Cache cmdlets 
   * New-AzureRMRedisCache - 'RedisVersion' parameter is deprecated.
 * Azure Compute (ARM) Cmdlets
   * Added -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
@@ -215,9 +337,9 @@
   * Stop-AzureBatchTask
 * Azure Data Factory
   * Update SDK reference to 3.0.0 to use API version 2015-09-01
-    * Imposes message size limits for all authoring types. Pipelines must be 200 KB or less in size and all others must be 30 KB or less.
-    * TeradataLinkedService no longer accepts the obsolete properties "database" and "schema".
-    * Obsolete copy-related properties are no longer returned from the service.
+    * Imposes message size limits for all authoring types. Pipelines must be 200 KB or less in size and all others must be 30 KB or less. 
+    * TeradataLinkedService no longer accepts the obsolete properties "database" and "schema". 
+    * Obsolete copy-related properties are no longer returned from the service. 
 * Azure Sql (ARM) Cmdlets - added the following cmdlets
   * Get-AzureSqlServerActiveDirectoryAdministrator
   * Set-AzureSqlServerActiveDirectoryAdministrator
@@ -235,7 +357,7 @@
 * Azure SQL Database and Server Upgrade Hints Cmdlets
   * Get-AzureSqlDatabaseUpgradeHint
   * Get-AzureSqlServerUpgradeHint
-
+	
 ## 2015.08.17 version 0.9.7
 * Azure Profile cmdlets
   * New-AzureProfile
@@ -243,7 +365,7 @@
     * Fixed issues with AAD aithentication when constructing profile
     * Enabled passing results of Add-AzureEnvironment to New-AzureProfile -Environment parameter
 * Azure ResourceManager cmdlets
-  * New-AzureResourceGroupDeployment: Added Mode (deployment mode) and Force parameters
+  * New-AzureResourceGroupDeployment: Added Mode (deployment mode) and Force parameters 
   * Get-AzureProviderOperation: API changes to improve performance
 * Azure Compute (ARM) Cmdlets
   * Fixes for Set-AzureDeployment with -ExtensionConfiguration
@@ -270,7 +392,7 @@
 * Azure Batch cmdlets
     * Cmdlets updated to use the general availability API. See http://blogs.technet.com/b/windowshpc/archive/2015/07/10/what-39-s-new-in-azure-batch-july-release-general-availability.aspx
     * Breaking changes to cmdlets resulting from API update:
-        * Workitems have been removed.
+        * Workitems have been removed. 
             * If you were adding all tasks to a single job, use the New-AzureBatchJob cmdlet to directly create your job.
             * If you were managing workitems with a recurring schedule defined, use the AzureBatchJobSchedule cmdlets instead.
         * If you were using the AzureBatchVM cmdlets, use the AzureBatchComputeNode cmdlets instead.
@@ -294,7 +416,7 @@
 * Azure Hdinsight Resoruce Management cmdlets
 * Azure Site Recovery
     * Add Valult, Server, Protection Container, protection Entity, Protection Profile, Job cmdlets.
-* Azure Stream Analytics
+* Azure Stream Analytics 
     * Use Stream Analytics SDK reference to 1.6.0 version.
 * Azure Backup
     * Get-AzureBackupContainer cmdlet
@@ -305,7 +427,7 @@
 ## 2015.07.17 version 0.9.5
 * Azure SQL cmdlets
   * Allowing to use of Storage V2 accounts in Auditing policies
-* Azure RedisCache cmdlets
+* Azure RedisCache cmdlets 
   * Set-AzureRedisCache - Bug fix done in management API that fixes bug here as well, Make return type public
   * New-AzureRedisCache - Make return type public
   * Get-AzureRedisCache - Make return type public
@@ -369,7 +491,7 @@
     * Set-AzureApplicationGatewaySslCertificate
     * Get-AzureApplicationGatewaySslCertificate
     * Remove-AzureApplicationGatewaySslCertificate
-  * Fixed minor bugs AzureLoadbalancer
+  * Fixed minor bugs AzureLoadbalancer 
   * Renamed Get-AzureCheckDnsAvailablity to Test-AzureDnsAvailability
   * Added cmdlets to RouteTables and Routes
     * New-AzureRouteTable
@@ -414,7 +536,7 @@
 * Azure Compute cmdlets
     * Warning message for deprecation Name parameter in New-AzureVM. The guidance is to use –Name parameter in New-AzureVMConfig cmdlet.
     * Save-AzureVMImgage has new paramter -Path to save the JSON template returned from the server.
-    * Add-AzureVMNetworkInterface has new paramter -NetworkInterface which accepts a list of NIC object returned by Get-AzureNetworkInterface cmdlet.
+    * Add-AzureVMNetworkInterface has new paramter -NetworkInterface which accepts a list of NIC object returned by Get-AzureNetworkInterface cmdlet. 
     * Deprecated “-Name” parameter in Set-AzureVMSourceImage. The guidance is to use the Pub, Offer, SKU, Version method to specify the VM Images for the VM.
     * Fixed the formatting of the output of VM Image cmdlets.
     * Fixed issues in New/Set-AzureDeployment & other service extension related cmdlets.
@@ -433,7 +555,7 @@
         * Reset-AzureVirtualNetworkGatewayConnection renamed to Set-AzureVirtualNetworkGatewayConnection8
 * Azure Storage changes
     * Fix the bug on aliases Get-AzureStorageContainerAcl, Start-CopyAzureStorageBlob and Stop-CopyAzureStorageBlob
-* Azure RedisCache cmdlets
+* Azure RedisCache cmdlets 
     * Set-AzureRedisCache - Added support for scaling, using RedisConfiguration instead of MaxMemoryPolicy #513
     * New-AzureRedisCache - Using RedisConfiguration instead of MaxMemoryPolicy #513
 * Azure Resource Manager cmdlets
@@ -458,7 +580,7 @@
 ## 2015.05.29 version 0.9.2
 * Deprecated Switch-AzureMode
 * Profile
-    * Fixed bug in Get-AzureSubscription and Select-AzureSubscription cmdlets
+    * Fixed bug in Get-AzureSubscription and Select-AzureSubscription cmdlets 
 * Added Automation cmdlets
     * Get-AzureAutomationWebhook
     * New-AzureAutomationWebhook
@@ -473,13 +595,13 @@
     * Get-AzureVM -Status output is updated
     * -Force parameter is added for Remove-AzureAvailabilitySet
     * Outputs of New-AzureAvailabilitySet, Get-AzureAvailabilitySet, and Remove-AzureAvailabilitySet are updated
-* Azure Key Vault
+* Azure Key Vault 
     * Update Set-AzureKeyVaultAccessPolicy and Remove-AzureKeyVaultAccessPolicy cmdlets
     * Fixed bugs  
 * Azure Data Factories
     * Base cmdlet type switch to use Profile
     * New-AzureDataFactoryEncryptedValue cmdlet supporting M data sources
-* Azure Resource Manager
+* Azure Resource Manager 
     * Fixed bug in Move-AzureResource cmdlet
     * Fixed bug in Set-AzureResource cmdlet
 
@@ -511,7 +633,7 @@
       * Set-AzureAutomationModule
       * Start-AzureAutomationDscCompilationJob
       * Unregister-AzureAutomationDscNode
-* Azure Key Vault
+* Azure Key Vault 
     * Added new cmdlets for key vault management in AzureResourceManager mode
       * New-AzureKeyVault
       * Get-AzureKeyVault
@@ -1189,7 +1311,7 @@
     * Set-AzureDns
     * Remove-AzureDns
     * Added IdealTimeoutInMinutes parameter to Set-AzurePublicIP, Add-AzureEndpoint and Set-AzureLoadBalancedEndpoint
-
+	
 ## 2014.06.30 Version 0.8.4
 * Compute
     * New-AzurePlatformExtensionCertificateConfig

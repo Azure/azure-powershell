@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 
@@ -23,6 +22,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     public partial class PSRecoveryServicesClient
     {
+        /// <summary>
+        /// Gets Azure Site Recovery Protection Container.
+        /// </summary>
+        /// <returns>Protection Container list response</returns>
+        public ProtectionContainerListResponse GetAzureSiteRecoveryProtectionContainer()
+        {
+            return this.GetSiteRecoveryClient().ProtectionContainer.ListAll(this.GetRequestHeaders());
+        }
+
         /// <summary>
         /// Gets Azure Site Recovery Protection Container.
         /// </summary>

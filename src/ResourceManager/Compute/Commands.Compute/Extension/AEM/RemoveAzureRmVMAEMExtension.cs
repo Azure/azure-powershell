@@ -13,17 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Storage;
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Commands.Compute.Extension.AEM;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (String.IsNullOrEmpty(this.OSType))
                 {
                     virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
-                    this.OSType = virtualMachine.StorageProfile.OsDisk.OsType;
+                    this.OSType = virtualMachine.StorageProfile.OsDisk.OsType.ToString();
                 }
                 if (String.IsNullOrEmpty(this.OSType))
                 {

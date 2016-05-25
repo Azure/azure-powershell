@@ -14,12 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using System;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementGroup", DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(PsApiManagementGroup))]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementGroup, DefaultParameterSetName = GetAll)]
+    [OutputType(typeof(IList<PsApiManagementGroup>), ParameterSetName = new[] { GetAll, FindByUser, FindByProduct })]
+    [OutputType(typeof(PsApiManagementGroup), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementGroup : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all groups";
@@ -28,37 +30,39 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         private const string FindByProduct = "Find groups by product";
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
             ParameterSetName = GetById,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Identifier of a group. If specified will try to find group by the identifier. This parameter is optional.")]
         public String GroupId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Group name. If specified will try to find group by the name. This parameter is optional.")]
         public String Name { get; set; }
 
         [Parameter(
             ParameterSetName = FindByUser,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
-            HelpMessage = "Identifier of existing user. If specified will return all groups the user belongs to. This parameter is optional.")]
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Identifier of existing user. If specified will return all groups the user belongs to. " +
+                          "This parameter is optional.")]
         public String UserId { get; set; }
 
         [Parameter(
             ParameterSetName = FindByProduct,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Identifier of existing product. If specified will return all groups the product assigned to. This parameter is optional.")]
+            HelpMessage = "Identifier of existing product. If specified will return all groups the product assigned to. " +
+                          "This parameter is optional.")]
         public String ProductId { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
@@ -78,7 +82,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 var groups = Client.GroupsList(Context, Name, UserId, null);
                 WriteObject(groups, true);
             }
-            else if(ParameterSetName.Equals(FindByProduct))
+            else if (ParameterSetName.Equals(FindByProduct))
             {
                 var groups = Client.GroupsList(Context, Name, null, ProductId);
                 WriteObject(groups, true);

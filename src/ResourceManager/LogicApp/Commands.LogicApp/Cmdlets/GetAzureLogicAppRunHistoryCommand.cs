@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.Logic.Models;
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "The name of the workflow run.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string RunName { get; set; }        
+        public string RunName { get; set; }
 
         #endregion Input Parameters
 
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             if (string.IsNullOrEmpty(this.RunName))
             {
                 var enumerator = LogicAppClient.GetWorkflowRuns(this.ResourceGroupName, this.Name).GetEnumerator();
-                this.WriteObject(enumerator.ToIEnumerable<WorkflowRun>(), true);                
+                this.WriteObject(enumerator.ToIEnumerable<WorkflowRun>(), true);
             }
             else
             {
