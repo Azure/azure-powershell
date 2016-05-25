@@ -59,37 +59,38 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
         protected override void RunCmdlet()
         {
-            if (string.Equals(
-                        this.ParameterSetName, 
-                        RemoveAzureMLWebService.RemoveByObjectParameterSet, 
-                        StringComparison.OrdinalIgnoreCase))
+            if (ShouldProcess(this.Name, @"Deleting machine learning web service.."))
             {
-                string subscriptionId, resourceGroup, webServiceName;
-                if (!CmdletHelpers.TryParseMlWebServiceMetadataFromResourceId(
-                                    this.MlWebService.Id, 
-                                    out subscriptionId, 
-                                    out resourceGroup, 
-                                    out webServiceName))
+                if (string.Equals(
+                                this.ParameterSetName,
+                                RemoveAzureMLWebService.RemoveByObjectParameterSet,
+                                StringComparison.OrdinalIgnoreCase))
                 {
-                    throw new ValidationMetadataException(Resources.InvalidWebServiceIdOnObject);
+                    string subscriptionId, resourceGroup, webServiceName;
+                    if (!CmdletHelpers.TryParseMlWebServiceMetadataFromResourceId(
+                                        this.MlWebService.Id,
+                                        out subscriptionId,
+                                        out resourceGroup,
+                                        out webServiceName))
+                    {
+                        throw new ValidationMetadataException(Resources.InvalidWebServiceIdOnObject);
+                    }
+
+                    this.ResourceGroupName = resourceGroup;
+                    this.Name = webServiceName;
                 }
 
-                this.ResourceGroupName = resourceGroup;
-                this.Name = webServiceName;
-            }
-
-            this.ConfirmAction(
-                force: this.Force.IsPresent,
-                actionMessage: Resources.RemoveMlServiceWarning.FormatInvariant(this.Name),
-                processMessage: @"Deleting machine learning web service..",
-                target: this.Name,
-                action: () =>
+                if (this.Force.IsPresent || 
+                    ShouldContinue(
+                        Resources.RemoveMlServiceWarning.FormatInvariant(this.Name), 
+                        string.Empty))
                 {
                     this.WebServicesClient.DeleteAzureMlWebService(
-                                            this.SubscriptionId, 
-                                            this.ResourceGroupName, 
-                                            this.Name);
-                });
+                                                                this.SubscriptionId,
+                                                                this.ResourceGroupName,
+                                                                this.Name);
+                }
+            }
         }
     }
 }

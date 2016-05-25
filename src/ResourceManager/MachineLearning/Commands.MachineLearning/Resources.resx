@@ -132,4 +132,7 @@
   <data name="UpdateServiceToReadonly" xml:space="preserve">
     <value>Your update will make this web service readonly. This means that the service will no longer be update-able and can only be deleted. Are you sure you want to process this update for web service "{0}" ?</value>
   </data>
+  <data name="UpdateServiceWarning" xml:space="preserve">
+    <value>Are you sure you want to update the machine learning web service "{0}" ?</value>
+  </data>
 </root>
