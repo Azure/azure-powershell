@@ -255,7 +255,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             const bool blockRole = true;
             const bool disallowUpgrade = true;
             const bool xmlExtension = false;
-            const bool internalExtension = true;
             const bool force = true;
             const string regions = "West US";
 
