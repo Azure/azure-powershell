@@ -66,6 +66,16 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string ServerVersion { get; set; }
 
         /// <summary>
+        /// Overriding to add warning message
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            this.WriteWarning("The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
+            base.ExecuteCmdlet();
+        }
+
+        /// <summary>
         /// Check to see if the server already exists in this resource group.
         /// </summary>
         /// <returns>Null if the server doesn't exist.  Otherwise throws exception</returns>
