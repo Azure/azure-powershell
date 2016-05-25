@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                     List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage.ToString());
 
-                    if (detailedMessage != null)
+                    if (detailedMessage != null && detailedMessage.Count > 0)
                     {
                         detailedMessage.ForEach(s => WriteError(s));
                     }
@@ -283,13 +283,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             if (!string.IsNullOrEmpty(statusMessage))
             {
                 List<string> detailedMessage = new List<string>();
-                dynamic errorMessage = JsonConvert.DeserializeObject(statusMessage);
-                if (errorMessage.error != null && errorMessage.error.details != null)
+                try
                 {
-                    foreach (var detail in errorMessage.error.details)
+                    dynamic errorMessage = JsonConvert.DeserializeObject(statusMessage);
+                    if (errorMessage.error != null && errorMessage.error.details != null)
                     {
-                        detailedMessage.Add(detail.message.ToString());
+                        foreach (var detail in errorMessage.error.details)
+                        {
+                            detailedMessage.Add(detail.message.ToString());
+                        }
                     }
+                }
+                catch
+                {
+                    //statusMessage is not always a valid JSON. It can sometimes be a string, which can result is DeserializeObject exception above in try
+                    detailedMessage.Add(statusMessage);
                 }
                 return detailedMessage;
             }
