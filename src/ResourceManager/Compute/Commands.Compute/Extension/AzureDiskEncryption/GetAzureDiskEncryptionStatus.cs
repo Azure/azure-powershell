@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     case OSType.Linux:
                         if (IsAzureDiskEncryptionExtension(osType, vmExtension))
                         {
-                            AzureDiskEncryptionExtensionContext adeExtension = new AzureDiskEncryptionExtensionContext(vmExtension.ToPSVirtualMachineExtension(this.ResourceGroupName));
+                            AzureDiskEncryptionExtensionContext adeExtension = new AzureDiskEncryptionExtensionContext(vmExtension.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
                             if (DataVolumeInExtensionConfig(adeExtension))
                             {
                                 if (adeExtension.EncryptionOperation.Equals(AzureDiskEncryptionExtensionConstants.enableEncryptionOperation, StringComparison.InvariantCultureIgnoreCase))
