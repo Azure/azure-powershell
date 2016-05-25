@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The SKU of application gateway")]
         [ValidateNotNullOrEmpty]
         public virtual PSApplicationGatewaySku Sku { get; set; }
-        
+
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
@@ -132,7 +131,9 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (this.IsApplicationGatewayPresent(this.ResourceGroupName, this.Name))            
+            WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
+            if (this.IsApplicationGatewayPresent(this.ResourceGroupName, this.Name))
             {
                 ConfirmAction(
                     Force.IsPresent,
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.Commands.Network
             var applicationGateway = new PSApplicationGateway();
             applicationGateway.Name = this.Name;
             applicationGateway.ResourceGroupName = this.ResourceGroupName;
-            applicationGateway.Location = this.Location;            
+            applicationGateway.Location = this.Location;
             applicationGateway.Sku = this.Sku;
 
             if (this.GatewayIPConfigurations != null)

@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Management.DataLake.Store.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof (List<DataLakeStoreAccount>))]
+     OutputType(typeof(List<DataLakeStoreAccount>))]
+    [Alias("Get-AdlStore")]
     public class GetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         internal const string BaseParameterSetName = "All In Subscription";

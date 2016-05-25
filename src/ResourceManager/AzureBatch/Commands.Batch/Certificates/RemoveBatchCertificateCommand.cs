@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Batch.Models;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Batch.Properties;
+using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch

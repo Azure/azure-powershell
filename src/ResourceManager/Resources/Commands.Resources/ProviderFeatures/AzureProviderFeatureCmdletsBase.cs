@@ -14,9 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
 {
-    using ResourceManager.Common;
     using Microsoft.Azure.Commands.Resources.Models.ProviderFeatures;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common;
 
     /// <summary>
     /// Base class for all feature cmdlets

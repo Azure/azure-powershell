@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof (DataLakeAnalyticsAccount))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(DataLakeAnalyticsAccount))]
+    [Alias("New-AdlAnalyticsAccount")]
     public class NewAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -55,6 +56,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
+            if (Tags != null && Tags.Length > 0)
+            {
+                WriteWarningWithTimestamp(Properties.Resources.TagsWarning);
+            }
+
             try
             {
                 if (DataLakeAnalyticsClient.GetAccount(ResourceGroupName, Name) != null)

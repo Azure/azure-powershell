@@ -16,13 +16,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-
+    using Xunit.Abstractions;
     /// <summary>
     /// Scenario tests for the Workflow run commands
     /// </summary>
     public class WorkflowRunTests : RMTestBase
     {
+        public WorkflowRunTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         /// <summary>
         /// Test Start-Azurelogicapp and Stop-Azurelogicapp command to run workflow
         /// </summary>

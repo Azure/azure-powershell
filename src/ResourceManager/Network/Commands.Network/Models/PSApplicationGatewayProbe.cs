@@ -16,7 +16,7 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayProbe : PSChildResource
-     {
+    {
         public string Protocol { get; set; }
         public string Host { get; set; }
         public string Path { get; set; }
@@ -24,5 +24,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         public uint Timeout { get; set; }
         public uint UnhealthyThreshold { get; set; }
         public string ProvisioningState { get; set; }
-     }
+    }
 }

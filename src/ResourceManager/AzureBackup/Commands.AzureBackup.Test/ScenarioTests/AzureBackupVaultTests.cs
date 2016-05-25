@@ -19,11 +19,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
     public class AzureBackupVaultTests : AzureBackupTestsBase
     {
+        public AzureBackupVaultTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupVaultScenarioTests()
         {
             this.RunPowerShellTest("Test-AzureBackupVaultScenario");
-        }        
+        }
     }
 }

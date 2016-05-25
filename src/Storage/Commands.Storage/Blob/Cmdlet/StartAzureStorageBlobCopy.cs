@@ -16,12 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
-    using System;
-    using System.IO;
-    using System.Management.Automation;
-    using System.Reflection;
-    using System.Security.Permissions;
-    using System.Threading.Tasks;
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
@@ -30,6 +24,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.File;
+    using System;
+    using System.IO;
+    using System.Management.Automation;
+    using System.Reflection;
+    using System.Security.Permissions;
+    using System.Threading.Tasks;
 
     [Cmdlet(VerbsLifecycle.Start, StorageNouns.CopyBlob, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = ContainerNameParameterSet),
        OutputType(typeof(AzureStorageBlob))]

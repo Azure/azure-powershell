@@ -12,12 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel;
-using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -44,8 +40,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            LongRunningOperationResponse responseBlue =  RecoveryServicesClient.DeletePolicy(this.Policy.Name);
-                
+            LongRunningOperationResponse responseBlue = RecoveryServicesClient.DeletePolicy(this.Policy.Name);
+
             JobResponse jobResponseBlue =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));

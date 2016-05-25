@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
 using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.StreamAnalytics.Properties;
-using Microsoft.Azure.Management.StreamAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {

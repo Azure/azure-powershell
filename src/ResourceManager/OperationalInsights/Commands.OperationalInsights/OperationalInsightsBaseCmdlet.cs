@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Hyak.Common;
 using Microsoft.Azure.Commands.OperationalInsights.Client;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {

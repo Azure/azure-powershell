@@ -20,10 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Management.Compute.Models;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -54,19 +51,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        public string [] ApplicationGatewayBackendAddressPoolsId { get; set; }
+        public string[] ApplicationGatewayBackendAddressPoolsId { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true)]
-        public string [] LoadBalancerBackendAddressPoolsId { get; set; }
+        public string[] LoadBalancerBackendAddressPoolsId { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public string [] LoadBalancerInboundNatPoolsId { get; set; }
+        public string[] LoadBalancerInboundNatPoolsId { get; set; }
 
         protected override void ProcessRecord()
         {

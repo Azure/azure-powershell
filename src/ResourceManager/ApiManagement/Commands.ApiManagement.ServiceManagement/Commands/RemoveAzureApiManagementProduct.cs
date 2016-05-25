@@ -14,45 +14,45 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Globalization;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagementProduct")]
+    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementProduct)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementProduct : AzureApiManagementCmdletBase
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of existing Product. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ProductId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Whether to delete subscriptions to the product or not. If not set and subscriptions exists exception will be thrown. This parameter is optional.")]
         public SwitchParameter DeleteSubscriptions { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Forces delete operation (prevents confirmation dialog). This parameter is optional.")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional.")]
         public SwitchParameter PassThru { get; set; }
 

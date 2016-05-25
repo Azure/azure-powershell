@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataFactories.Properties;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.DataFactories
         private void ExecuteDelete()
         {
             HttpStatusCode response = DataFactoryClient.DeleteDataset(ResourceGroupName, DataFactoryName, Name);
-                
-            if(response == HttpStatusCode.NoContent)
+
+            if (response == HttpStatusCode.NoContent)
             {
                 WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.DatasetNotFound, Name, DataFactoryName));
             }

@@ -18,8 +18,6 @@ using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources
 
 namespace Microsoft.Azure.Commands.Resources
 {
-    using System.Linq;
-
     /// <summary>
     /// Removes a new resource group.
     /// </summary>
@@ -37,9 +35,9 @@ namespace Microsoft.Azure.Commands.Resources
         internal const string ResourceGroupIdParameterSet = "Lists the resource group based in the Id.";
 
         [Alias("ResourceGroupName")]
-        [Parameter(Mandatory = true, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
-        public string Name {get; set;}
+        public string Name { get; set; }
 
         [Alias("ResourceGroupId", "ResourceId")]
         [Parameter(Mandatory = true, ParameterSetName = ResourceGroupIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group Id.")]
@@ -48,7 +46,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;

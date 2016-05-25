@@ -19,6 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
+using Microsoft.Azure.Internal.Subscriptions.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +29,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Internal.Subscriptions.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Internal.Subscriptions
 {
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Internal.Subscriptions
         {
             this._client = client;
         }
-        
+
         private SubscriptionClient _client;
-        
+
         /// <summary>
         /// Gets a reference to the
         /// Microsoft.Azure.Internal.Subscriptions.SubscriptionClient.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
         {
             get { return this._client; }
         }
-        
+
         /// <summary>
         /// Gets details about particular subscription.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
             {
                 throw new ArgumentNullException("subscriptionId");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 tracingParameters.Add("subscriptionId", subscriptionId);
                 TracingAdapter.Enter(invocationId, this, "GetAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -120,13 +120,13 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     GetSubscriptionResult result = null;
                     // Deserialize Response
@@ -166,33 +166,33 @@ namespace Microsoft.Azure.Internal.Subscriptions
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             Subscription subscriptionInstance = new Subscription();
                             result.Subscription = subscriptionInstance;
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 subscriptionInstance.Id = idInstance;
                             }
-                            
+
                             JToken subscriptionIdValue = responseDoc["subscriptionId"];
                             if (subscriptionIdValue != null && subscriptionIdValue.Type != JTokenType.Null)
                             {
                                 string subscriptionIdInstance = ((string)subscriptionIdValue);
                                 subscriptionInstance.SubscriptionId = subscriptionIdInstance;
                             }
-                            
+
                             JToken displayNameValue = responseDoc["displayName"];
                             if (displayNameValue != null && displayNameValue.Type != JTokenType.Null)
                             {
                                 string displayNameInstance = ((string)displayNameValue);
                                 subscriptionInstance.DisplayName = displayNameInstance;
                             }
-                            
+
                             JToken stateValue = responseDoc["state"];
                             if (stateValue != null && stateValue.Type != JTokenType.Null)
                             {
@@ -200,14 +200,14 @@ namespace Microsoft.Azure.Internal.Subscriptions
                                 subscriptionInstance.State = stateInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets a list of the subscriptionIds.
         /// </summary>
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
         public async Task<SubscriptionListResult> ListAsync(CancellationToken cancellationToken)
         {
             // Validate
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 TracingAdapter.Enter(invocationId, this, "ListAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions";
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -283,13 +283,13 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     SubscriptionListResult result = null;
                     // Deserialize Response
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -339,28 +339,28 @@ namespace Microsoft.Azure.Internal.Subscriptions
                                 {
                                     Subscription subscriptionInstance = new Subscription();
                                     result.Subscriptions.Add(subscriptionInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         subscriptionInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken subscriptionIdValue = valueValue["subscriptionId"];
                                     if (subscriptionIdValue != null && subscriptionIdValue.Type != JTokenType.Null)
                                     {
                                         string subscriptionIdInstance = ((string)subscriptionIdValue);
                                         subscriptionInstance.SubscriptionId = subscriptionIdInstance;
                                     }
-                                    
+
                                     JToken displayNameValue = valueValue["displayName"];
                                     if (displayNameValue != null && displayNameValue.Type != JTokenType.Null)
                                     {
                                         string displayNameInstance = ((string)displayNameValue);
                                         subscriptionInstance.DisplayName = displayNameInstance;
                                     }
-                                    
+
                                     JToken stateValue = valueValue["state"];
                                     if (stateValue != null && stateValue.Type != JTokenType.Null)
                                     {
@@ -370,14 +370,14 @@ namespace Microsoft.Azure.Internal.Subscriptions
                                 }
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets a list of the subscription locations.
         /// </summary>
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
             {
                 throw new ArgumentNullException("subscriptionId");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 tracingParameters.Add("subscriptionId", subscriptionId);
                 TracingAdapter.Enter(invocationId, this, "ListLocationsAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -463,13 +463,13 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     LocationListResult result = null;
                     // Deserialize Response
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -519,42 +519,42 @@ namespace Microsoft.Azure.Internal.Subscriptions
                                 {
                                     Location locationInstance = new Location();
                                     result.Locations.Add(locationInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         locationInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken subscriptionIdValue = valueValue["subscriptionId"];
                                     if (subscriptionIdValue != null && subscriptionIdValue.Type != JTokenType.Null)
                                     {
                                         string subscriptionIdInstance = ((string)subscriptionIdValue);
                                         locationInstance.SubscriptionId = subscriptionIdInstance;
                                     }
-                                    
+
                                     JToken nameValue = valueValue["name"];
                                     if (nameValue != null && nameValue.Type != JTokenType.Null)
                                     {
                                         string nameInstance = ((string)nameValue);
                                         locationInstance.Name = nameInstance;
                                     }
-                                    
+
                                     JToken displayNameValue = valueValue["displayName"];
                                     if (displayNameValue != null && displayNameValue.Type != JTokenType.Null)
                                     {
                                         string displayNameInstance = ((string)displayNameValue);
                                         locationInstance.DisplayName = displayNameInstance;
                                     }
-                                    
+
                                     JToken latitudeValue = valueValue["latitude"];
                                     if (latitudeValue != null && latitudeValue.Type != JTokenType.Null)
                                     {
                                         string latitudeInstance = ((string)latitudeValue);
                                         locationInstance.Latitude = latitudeInstance;
                                     }
-                                    
+
                                     JToken longitudeValue = valueValue["longitude"];
                                     if (longitudeValue != null && longitudeValue.Type != JTokenType.Null)
                                     {
@@ -564,14 +564,14 @@ namespace Microsoft.Azure.Internal.Subscriptions
                                 }
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);

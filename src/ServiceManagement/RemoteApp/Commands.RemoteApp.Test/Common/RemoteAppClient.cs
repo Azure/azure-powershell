@@ -44,6 +44,10 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 
         protected const string collectionName = "test1";
 
+        protected const string secondaryCollectionName = "test2";
+
+        protected const bool OverwriteExistingUserDisk = false;
+
         protected const string vmName = "testVm";
 
         protected const string loggedInUserUpn = "test@somedomain.com";
