@@ -29,10 +29,6 @@ namespace CognitiveServices.Test.ScenarioTests
 
         public CognitiveServicesAccountTests(ITestOutputHelper output)
         {
-            Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
-            //Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION", "SubscriptionId=a064e0b9-e6c9-4a0d-b993-22efebefe2af;BaseUri=https://management.azure.com/;AADAuthEndpoint=https://login.windows.net/");
-            //Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Record");
-
             this.traceInterceptor = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(this.traceInterceptor);
         }
