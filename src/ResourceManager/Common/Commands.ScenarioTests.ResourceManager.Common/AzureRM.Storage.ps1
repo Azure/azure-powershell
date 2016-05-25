@@ -51,19 +51,17 @@ function Set-AzureRmStorageAccount
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
     [string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Type,
     [Hashtable[]] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $Tags)
-BEGIN { 
+  BEGIN { 
     $context = Get-Context
-	$client = Get-StorageClient $context
+    $client = Get-StorageClient $context
   }
   PROCESS {
     $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Models.StorageAccountUpdateParameters
-	$createParms.AccountType = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
-	
+    $createParms.AccountType = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
     $getTask = $client.StorageAccounts.UpdateAsync($ResourceGroupName, $Name, $createParms, [System.Threading.CancellationToken]::None)
-	$sa = $getTask.Result
+    $sa = $getTask.Result
   }
   END {}
-
 }
 
 
