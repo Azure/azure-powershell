@@ -15,10 +15,10 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Globalization;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
