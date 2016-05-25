@@ -14,9 +14,8 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System.Management.Automation;
-    using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using System.Management.Automation;
 
     /// <summary>
     /// Creates a new LogicApp workflow 

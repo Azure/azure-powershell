@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Management.Automation.Language;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
@@ -27,8 +26,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
     {
         private GetAzureDataFactoryCommand cmdlet;
 
-        public GetDataFactoryTests()
+        public GetDataFactoryTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             cmdlet = new GetAzureDataFactoryCommand()
@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         public void CanGetDataFactory()
         {
             // Arrange
-            PSDataFactory expected = new PSDataFactory() {DataFactoryName = DataFactoryName, ResourceGroupName = ResourceGroupName};
+            PSDataFactory expected = new PSDataFactory() { DataFactoryName = DataFactoryName, ResourceGroupName = ResourceGroupName };
 
             dataFactoriesClientMock.Setup(
                 c =>
                     c.FilterPSDataFactories(
                         It.Is<DataFactoryFilterOptions>(
                             options =>
-                                options.Name == DataFactoryName && 
+                                options.Name == DataFactoryName &&
                                 options.ResourceGroupName == ResourceGroupName &&
                                 options.NextLink == null)))
                 .CallBase()
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             dataFactoriesClientMock.Setup(c => c.GetDataFactory(ResourceGroupName, DataFactoryName))
                 .Returns(expected)
                 .Verifiable();
-            
+
             // Action
             cmdlet.ResourceGroupName = ResourceGroupName;
             cmdlet.Name = "  ";
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             Exception empty = Assert.Throws<PSArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.Name = DataFactoryName;
-            cmdlet.ExecuteCmdlet();                      
+            cmdlet.ExecuteCmdlet();
 
             // Assert
             dataFactoriesClientMock.VerifyAll();
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                 new PSDataFactory() {DataFactoryName = DataFactoryName, ResourceGroupName = ResourceGroupName},
                 new PSDataFactory() {DataFactoryName = "datafactory1", ResourceGroupName = ResourceGroupName}
             };
-            
+
             // Arrange
             dataFactoriesClientMock.Setup(
                 c =>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
             // Action
             cmdlet.ExecuteCmdlet();
-            
+
             // Assert
             dataFactoriesClientMock.VerifyAll();
 

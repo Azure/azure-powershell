@@ -14,21 +14,22 @@
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
-    using System;
-    using System.Linq;
-    using System.Management.Automation;
-    using System.Net;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.Resources.Models.ProviderFeatures;
     using Microsoft.Azure.Commands.Resources.ProviderFeatures;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Moq;
+    using ServiceManagemenet.Common.Models;
+    using System;
+    using System.Linq;
+    using System.Management.Automation;
+    using System.Net;
+    using System.Threading;
+    using System.Threading.Tasks;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
-
+    using Xunit.Abstractions;
     /// <summary>
     /// Tests the Azure Provider Feature cmdlets
     /// </summary>
@@ -52,8 +53,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderFeatureCmdletTests"/> class.
         /// </summary>
-        public GetAzureProviderFeatureCmdletTests()
+        public GetAzureProviderFeatureCmdletTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             this.featureOperationsMock = new Mock<IFeatures>();
             var featureClient = new Mock<IFeatureClient>();
 

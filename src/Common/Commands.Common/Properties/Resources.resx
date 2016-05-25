@@ -1544,4 +1544,7 @@ Select Y to enable data collection [Y/N]:</value>
   <data name="NoCurrentContextForDataCmdlet" xml:space="preserve">
     <value>"There is no current context, please log in using Login-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management."</value>
   </data>
+  <data name="NoSubscriptionFoundForTenant" xml:space="preserve">
+    <value>No subscriptions are associated with the logged in account in Azure Service Management (RDFE). This means that the logged in user is not an administrator or co-administrator for any account.\r\nDid you mean to execute Login-AzureRmAccount?</value>
+  </data>
 </root>

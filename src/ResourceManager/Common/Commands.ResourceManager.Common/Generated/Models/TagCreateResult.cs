@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class TagCreateResult : AzureOperationResponse
     {
         private TagDetails _tag;
-        
+
         /// <summary>
         /// Optional. Gets or sets the tag.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._tag; }
             set { this._tag = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the TagCreateResult class.
         /// </summary>

@@ -19,17 +19,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     public class PsApiManagementTenantConfigurationSyncState
     {
         public string Branch { get; set; }
-        
+
         public string CommitId { get; set; }
-        
+
         public bool IsExport { get; set; }
-        
+
         public bool IsSynced { get; set; }
-        
+
         public bool IsGitEnabled { get; set; }
-        
+
         public DateTime? SyncDate { get; set; }
-        
+
         public DateTime? ConfigurationChangeDate { get; set; }
     }
 }

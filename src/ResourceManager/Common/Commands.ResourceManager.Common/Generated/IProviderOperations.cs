@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Resource provider information.
         /// </returns>
         Task<ProviderGetResult> GetAsync(string resourceProviderNamespace, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets a list of resource providers.
         /// </summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of resource providers.
         /// </returns>
         Task<ProviderListResult> ListAsync(ProviderListParameters parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of resource providers.
         /// </returns>
         Task<ProviderListResult> ListNextAsync(string nextLink, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Registers provider to be used with a subscription.
         /// </summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Resource provider registration information.
         /// </returns>
         Task<ProviderRegistionResult> RegisterAsync(string resourceProviderNamespace, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Unregisters provider from a subscription.
         /// </summary>

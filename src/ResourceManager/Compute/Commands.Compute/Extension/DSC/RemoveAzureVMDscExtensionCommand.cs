@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Newtonsoft.Json;
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using System.Net;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -74,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     }
                     catch (Rest.Azure.CloudException ex)
                     {
-                        var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(ex.Response.Content);
+                        var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(ex.Response.Content);
 
                         if ("Failed".Equals(errorReturned.Status)
                             && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))

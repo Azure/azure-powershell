@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
@@ -26,8 +26,6 @@ using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -76,6 +74,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Properties.Resources.TagFixWarningMessage);
+
             base.ExecuteCmdlet();
 
             if (this.VM.DiagnosticsProfile == null)
@@ -99,16 +99,16 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 var parameters = new VirtualMachine
                 {
-                    DiagnosticsProfile       = this.VM.DiagnosticsProfile,
-                    HardwareProfile          = this.VM.HardwareProfile,
-                    StorageProfile           = this.VM.StorageProfile,
-                    NetworkProfile           = this.VM.NetworkProfile,
-                    OsProfile                = this.VM.OSProfile,
-                    Plan                     = this.VM.Plan,
-                    LicenseType              = this.LicenseType,
+                    DiagnosticsProfile = this.VM.DiagnosticsProfile,
+                    HardwareProfile = this.VM.HardwareProfile,
+                    StorageProfile = this.VM.StorageProfile,
+                    NetworkProfile = this.VM.NetworkProfile,
+                    OsProfile = this.VM.OSProfile,
+                    Plan = this.VM.Plan,
+                    LicenseType = this.LicenseType,
                     AvailabilitySet = this.VM.AvailabilitySetReference,
-                    Location                 = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
-                    Tags                     = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
+                    Location = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
+                    Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
                 };
 
                 var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
         private Uri GetOrCreateStorageAccountForBootDiagnostics()
-        {                        
+        {
             var storageAccountName = GetStorageAccountNameFromStorageProfile();
             var storageClient =
                     AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context,
@@ -284,10 +284,14 @@ namespace Microsoft.Azure.Commands.Compute
 
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
         {
-            var storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
-            if (storageAccountList == null)
+            StorageAccountListResponse storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+            if (storageAccountList == null || storageAccountList.Count() == 0)
             {
-                return null;
+                storageAccountList = (StorageAccountListResponse) client.StorageAccounts.List().Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()));
+                if (storageAccountList == null || storageAccountList.Count() == 0)
+                {
+                    return null;
+                }
             }
 
             try
@@ -303,7 +307,7 @@ namespace Microsoft.Azure.Commands.Compute
                 return null;
             }
         }
-        
+
         private Uri CreateStandardStorageAccount(StorageManagementClient client)
         {
             string storageAccountName;

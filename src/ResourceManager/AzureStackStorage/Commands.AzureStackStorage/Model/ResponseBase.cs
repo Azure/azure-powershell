@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.AzureStack.Management.StorageAdmin.Models;
 using System;
 using System.Reflection;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
@@ -22,7 +22,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
     {
         public ResponseBase(ResourceBase resource) : this(resource, "Properties")
         {
-            
+
         }
 
         public ResponseBase(ResourceBase resource, string propertyNameToExpand)

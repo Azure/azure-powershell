@@ -12,19 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Cmdlets;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
 using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using System.Threading;
-using Hyak.Common;
-using Microsoft.Azure.Commands.AzureBackup.Properties;
-using System.Net;
-using Microsoft.Azure.Commands.AzureBackup.Models;
-using Microsoft.Azure.Commands.AzureBackup.Cmdlets;
 
 namespace Microsoft.Azure.Commands.AzureBackup
 {

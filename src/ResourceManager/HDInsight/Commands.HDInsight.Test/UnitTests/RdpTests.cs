@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Management.Automation;
+using System.Net;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
@@ -29,9 +29,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         private RevokeAzureHDInsightRdpServicesAccessCommand revokecmdlet;
 
         private readonly PSCredential _rdpCred;
-        
-        public RdpTests()
+
+        public RdpTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
             _rdpCred = new PSCredential("rdpuser", string.Format("Password1!").ConvertToSecureString());
 
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 _rdpCred.Password.ConvertToString())))
                 .Returns(new OperationResource
                 {
-                    ErrorInfo= null,
+                    ErrorInfo = null,
                     StatusCode = HttpStatusCode.OK,
                     State = AsyncOperationState.Succeeded
                 })

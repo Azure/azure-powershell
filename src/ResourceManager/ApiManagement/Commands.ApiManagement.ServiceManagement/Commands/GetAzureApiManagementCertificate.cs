@@ -14,13 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementCertificate, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementCertificate>), ParameterSetName = new [] { GetAll })]
+    [OutputType(typeof(IList<PsApiManagementCertificate>), ParameterSetName = new[] { GetAll })]
     [OutputType(typeof(PsApiManagementCertificate), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
@@ -28,16 +28,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         private const string GetById = "Get certificate by ID";
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
             ParameterSetName = GetById,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of the certificate. If specified will find certificate by the identifier. This parameter is required. ")]
         public String CertificateId { get; set; }
 

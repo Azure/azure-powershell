@@ -199,7 +199,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       ErrorCategory.InvalidResult,
                                                       null));
             }
-            PSVirtualMachineExtension returnedExtension = extensionResult.ToPSVirtualMachineExtension(this.ResourceGroupName);
+
+            PSVirtualMachineExtension returnedExtension = extensionResult.ToPSVirtualMachineExtension(
+                this.ResourceGroupName, this.VMName);
+
             if ((returnedExtension == null) ||
                 (string.IsNullOrWhiteSpace(returnedExtension.Publisher)) ||
                 (string.IsNullOrWhiteSpace(returnedExtension.ExtensionType)))
@@ -411,7 +414,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         this.ResourceGroupName, VMName).Body;
 
                     currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
-                    
+
                     if (OperatingSystemTypes.Linux.Equals(currentOSType) &&
                         !AzureDiskEncryptionExtensionContext.VolumeTypeData.Equals(VolumeType, StringComparison.InvariantCultureIgnoreCase))
                     {

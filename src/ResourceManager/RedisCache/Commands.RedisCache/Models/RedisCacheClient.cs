@@ -17,18 +17,16 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.ComponentModel;
     using Microsoft.Azure.Management.Insights;
     using Microsoft.Azure.Management.Insights.Models;
     using Microsoft.Azure.Management.Redis;
     using Microsoft.Azure.Management.Redis.Models;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Rest.Azure;
-    using ServiceManagemenet.Common;
-    using ServiceManagemenet.Common.Models;
-    
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+
     public class RedisCacheClient
     {
         private RedisManagementClient _client;
@@ -39,7 +37,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         {
             _client = AzureSession.ClientFactory.CreateArmClient<RedisManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
             _insightsClient = AzureSession.ClientFactory.CreateClient<InsightsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            _resourceManagementClient  = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _resourceManagementClient = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
         public RedisCacheClient() { }
 
@@ -48,15 +46,15 @@ namespace Microsoft.Azure.Commands.RedisCache
         {
             _resourceManagementClient.Providers.Register("Microsoft.Cache");
             RedisCreateOrUpdateParameters parameters = new RedisCreateOrUpdateParameters
-                                                    {
-                                                        Location = location,
-                                                        Sku = new Microsoft.Azure.Management.Redis.Models.Sku
-                                                        {
-                                                            Name = skuName,
-                                                            Family = skuFamily,
-                                                            Capacity = skuCapacity
-                                                        }
-                                                    };
+            {
+                Location = location,
+                Sku = new Microsoft.Azure.Management.Redis.Models.Sku
+                {
+                    Name = skuName,
+                    Family = skuFamily,
+                    Capacity = skuCapacity
+                }
+            };
 
             if (redisConfiguration != null)
             {
@@ -85,7 +83,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 parameters.ShardCount = shardCount.Value;
             }
-            
+
             if (!string.IsNullOrWhiteSpace(virtualNetwork))
             {
                 parameters.VirtualNetwork = virtualNetwork;
@@ -136,7 +134,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             else
             {
                 return _client.Redis.ListByResourceGroupNext(nextPageLink: nextLink);
-            } 
+            }
         }
 
         public RedisListKeysResult RegenerateAccessKeys(string resourceGroupName, string cacheName, RedisKeyType keyType)

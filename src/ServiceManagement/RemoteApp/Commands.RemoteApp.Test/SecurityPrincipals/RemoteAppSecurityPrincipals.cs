@@ -20,8 +20,8 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
     using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using System;
     using System.Collections.Generic;
-    using Xunit;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Xunit;
 
     public class AzureRemoteAppServiceUser : RemoteAppClientTest
     {

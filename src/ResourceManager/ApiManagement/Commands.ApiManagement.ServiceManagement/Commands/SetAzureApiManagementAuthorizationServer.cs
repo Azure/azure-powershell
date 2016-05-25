@@ -13,13 +13,13 @@
 //  limitations under the License.
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet(VerbsCommon.Set, Constants.ApiManagementAuthorizationServer)]
-    [OutputType(typeof (PsApiManagementOAuth2AuthrozationServer))]
+    [OutputType(typeof(PsApiManagementOAuth2AuthrozationServer))]
     public class SetAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 ClientId,
                 ClientSecret,
                 AuthorizationRequestMethods == null || AuthorizationRequestMethods.Length == 0
-                    ? new[] {PsApiManagementAuthorizationRequestMethod.Get}
+                    ? new[] { PsApiManagementAuthorizationRequestMethod.Get }
                     : AuthorizationRequestMethods,
                 GrantTypes,
                 ClientAuthenticationMethods,

@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using System;
 using System.Management.Automation;
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (model.AuditState == AuditStateType.New)
             {
                 model.AuditState = AuditStateType.Enabled;
-            }       
+            }
             model.UseServerDefault = UseServerDefaultOptions.Enabled;
             model.StorageAccountName = GetStorageAccountName();
             return model;

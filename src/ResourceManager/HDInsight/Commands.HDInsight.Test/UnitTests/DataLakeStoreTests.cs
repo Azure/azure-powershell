@@ -12,22 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.HDInsight;
 using Microsoft.Azure.Commands.HDInsight.ManagementCommands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Test;
-using Microsoft.Azure.Management.HDInsight;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using Newtonsoft.Json;
+using System;
+using System.Management.Automation;
 using Xunit;
 
 namespace Commands.HDInsight.Test.UnitTests
@@ -46,8 +40,9 @@ namespace Commands.HDInsight.Test.UnitTests
         private readonly PSCredential _httpCred;
         private Mock<AzureHDInsightConfig> AzureHDInsightconfigMock;
 
-        public DataLakeStoreTests()
+        public DataLakeStoreTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
             _httpCred = new PSCredential("hadoopuser", string.Format("Password1!").ConvertToSecureString());
             cmdlet = new NewAzureHDInsightClusterCommand
@@ -83,7 +78,7 @@ namespace Commands.HDInsight.Test.UnitTests
                                 c.ObjectId == ObjectId &&
                                 c.CertificateFilePath == Certificate
                                 )),
-                Times.Once); 
+                Times.Once);
         }
 
         [Fact]
