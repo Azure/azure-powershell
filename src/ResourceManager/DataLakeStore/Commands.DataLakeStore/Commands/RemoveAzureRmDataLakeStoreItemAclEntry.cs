@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAclEntry", DefaultParameterSetName = BaseParameterSetName),
      OutputType(typeof(bool))]
+    [Alias("Remove-AdlStoreItemAclEntry")]
     public class RemoveAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "Remove ACL Entries using ACL object";

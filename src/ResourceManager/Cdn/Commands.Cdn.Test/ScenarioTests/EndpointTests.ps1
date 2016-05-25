@@ -21,7 +21,7 @@ function Test-EndpointCrudAndAction
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "Standard"
+    $profileSku = "StandardVerizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -77,7 +77,7 @@ function Test-EndpointCrudAndActionWithPiping
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "Standard"
+    $profileSku = "StandardVerizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -142,7 +142,7 @@ function Test-EndpointCrudAndActionWithAllProperties
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "Standard"
+    $profileSku = "StandardVerizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -221,7 +221,7 @@ function Test-EndpointCrudAndActionWithAllPropertiesWithPiping
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "Standard"
+    $profileSku = "StandardVerizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -306,7 +306,7 @@ function Test-EndpointCrudAndActionWithStoppedEndpoint
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "Standard"
+    $profileSku = "StandardVerizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName

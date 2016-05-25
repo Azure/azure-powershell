@@ -26,6 +26,7 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
@@ -129,7 +130,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static RequestInterceptor CreateFakeServiceResponseInterceptor<TOptions, TResponse>(TResponse responseToUse = default(TResponse),
             Action<BatchRequest<TOptions, TResponse>> requestAction = null)
             where TOptions : ProxyModels.IOptions, new()
-            where TResponse : IAzureOperationResponse, new()
+            where TResponse : class, IAzureOperationResponse, new()
         {
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
@@ -137,13 +138,10 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    if (responseToUse == null)
+                    responseToUse = responseToUse ?? new TResponse()
                     {
-                        responseToUse = new TResponse()
-                        {
-                            Response = new HttpResponseMessage()
-                        };
-                    }
+                        Response = new HttpResponseMessage()
+                    };
 
                     if (requestAction != null)
                     {
@@ -392,6 +390,90 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a CloudPoolUsageMetricsResponse object. Note: The lengths of all three lists must be the same.
+        /// </summary>
+        public static AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders> CreatePoolListUsageMetricsResponse(
+            IEnumerable<string> poolIds,
+            IEnumerable<DateTime> startTimes,
+            IEnumerable<DateTime> endTimes)
+        {
+            var poolUsageList = new List<ProxyModels.PoolUsageMetrics>();
+
+            // Validate the lengths of the lists are equal
+            if (!(poolIds.Count() == startTimes.Count() && startTimes.Count() == endTimes.Count()))
+            {
+                throw new ArgumentException("The lists length are not equal.");
+            }
+
+            using (var startTimeEnumerator = startTimes.GetEnumerator())
+            using (var endTimeEnumerator = endTimes.GetEnumerator())
+            using (var poolIdEnumerator = poolIds.GetEnumerator())
+            {
+                while (startTimeEnumerator.MoveNext() && endTimeEnumerator.MoveNext() && poolIdEnumerator.MoveNext())
+                {
+                    poolUsageList.Add(new ProxyModels.PoolUsageMetrics()
+                    {
+                        PoolId = poolIdEnumerator.Current,
+                        StartTime = startTimeEnumerator.Current,
+                        EndTime = endTimeEnumerator.Current
+                    });
+                }
+            }
+
+            var response = new AzureOperationResponse
+                <IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders>()
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = new MockPagedEnumerable<ProxyModels.PoolUsageMetrics>(poolUsageList)
+            };
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudPoolStatisticsResponse object. Note: Using avgCPUPercentage and startTime for validating if the pipeline return the correct values
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders> CreatePoolStatisticsResponse(
+            double avgCPUPercentage,
+            DateTime startTime)
+        {
+            var stats = new ProxyModels.PoolStatistics()
+            {
+                ResourceStats = new ProxyModels.ResourceStatistics() { AvgCPUPercentage = avgCPUPercentage },
+                UsageStats = new ProxyModels.UsageStatistics() { StartTime =  startTime }
+            };
+
+            var response = new AzureOperationResponse
+                <ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders>()
+            {
+                Body = stats,
+                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
+            };
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudJobStatisticsResponse object.Note: Using startTime for validating if the pipeline return the correct values
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders> CreateJobStatisticsResponse(DateTime startTime)
+        {
+            var stats = new ProxyModels.JobStatistics()
+            {
+                StartTime = startTime
+            };
+
+            var response = new AzureOperationResponse
+                <ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders>()
+            {
+                Body = stats,
+                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
+            };
+
+            return response;
+        }
+
+        /// <summary>
         /// Builds a GetRemoteLoginSettingsResponse object
         /// </summary>
         public static AzureOperationResponse<ProxyModels.ComputeNodeGetRemoteLoginSettingsResult, ProxyModels.ComputeNodeGetRemoteLoginSettingsHeaders> CreateRemoteLoginSettingsGetResponse(string ipAddress)
@@ -557,6 +639,26 @@ namespace Microsoft.Azure.Commands.Batch.Test
             }
 
             response.Body = new MockPagedEnumerable<ProxyModels.CloudTask>(tasks);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a TaskAddCollectionResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.TaskAddCollectionResult, ProxyModels.TaskAddCollectionHeaders> CreateTaskCollectionResponse(PSCloudTask[] taskCollection)
+        {
+            Func<PSCloudTask, ProxyModels.TaskAddResult> mappingFunc =
+                t => new ProxyModels.TaskAddResult(ProxyModels.TaskAddStatus.Success, t.Id);
+
+            var taskAddResults = taskCollection.Select(mappingFunc);
+
+            var response = new AzureOperationResponse
+                <ProxyModels.TaskAddCollectionResult, ProxyModels.TaskAddCollectionHeaders>()
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.Created),
+                Body = new ProxyModels.TaskAddCollectionResult(taskAddResults.ToList())
+            };
 
             return response;
         }

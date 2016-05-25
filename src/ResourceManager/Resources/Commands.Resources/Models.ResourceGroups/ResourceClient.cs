@@ -323,10 +323,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
             params string[] status)
         {
             DeploymentExtended deployment;
-            int counter = 0;
+            int counter = 5000;
 
             do
             {
+                WriteVerbose(string.Format("Checking deployment status in {0} seconds.", counter / 1000));
                 TestMockSupport.Delay(counter);
 
                 if (job != null)

@@ -143,7 +143,7 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.ServiceBus.0.18.0-preview\lib\net40\Microsoft.WindowsAzure.Management.ServiceBus.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Store">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Store.0.15.0-preview\lib\net40\Microsoft.WindowsAzure.Management.Store.dll</HintPath>
@@ -413,6 +413,9 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Test.Profile.NewAzureProfileTests\TestMakeRdfeCallWithCreatedProfile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Test.Profile.SelectAzureSubscriptionTests\GetSubscriptionPipeToSetSubscription.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Test.Profile.SelectAzureSubscriptionTests\StorageAccountIsNotCleaned.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

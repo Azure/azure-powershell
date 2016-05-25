@@ -322,6 +322,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                                             password,
                                             password == null ? ShowDialog.Always : ShowDialog.Never).ToList();
 
+            if (subscriptionsFromServer == null ||
+                subscriptionsFromServer.Count ==0 )
+            {
+                throw new ArgumentException(Resources.NoSubscriptionFoundForTenant);
+            }
             // If account id is null the login failed
             if (account.Id != null)
             {

@@ -20,6 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAclEntry"), OutputType(typeof(bool))]
+    [Alias("Set-AdlStoreItemAclEntry")]
     public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "Set ACL Entries using ACL object";

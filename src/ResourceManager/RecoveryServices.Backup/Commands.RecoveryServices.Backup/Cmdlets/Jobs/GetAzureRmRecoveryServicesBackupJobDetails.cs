@@ -18,6 +18,9 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
+    /// <summary>
+    /// Gets detailed information about a particular job.
+    /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJobDetails", 
         DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
     public class GetAzureRmRecoveryServicesBackupJobDetails : RecoveryServicesBackupCmdletBase
@@ -25,11 +28,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
 
+        /// <summary>
+        /// Job whose details are to be fetched.
+        /// </summary>
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.JobFilter, 
             ParameterSetName = JobFilterSet, Position = 1)]
         [ValidateNotNull]
         public JobBase Job { get; set; }
 
+        /// <summary>
+        /// ID of job whose details are to be fetched.
+        /// </summary>
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.JobIdFilter,
             ParameterSetName = IdFilterSet, Position = 2)]
         [ValidateNotNullOrEmpty]

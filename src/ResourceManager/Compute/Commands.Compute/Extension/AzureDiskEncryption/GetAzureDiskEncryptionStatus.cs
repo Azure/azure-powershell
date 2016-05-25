@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         private bool ExtensionProvisioningSucceeded(AzureDiskEncryptionExtensionContext adeExtension)
         {
             var extensionStatusViewresult = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, adeExtension.Name);
-            var extensionStatusView = extensionStatusViewresult.ToPSVirtualMachineExtension(this.ResourceGroupName);
+            var extensionStatusView = extensionStatusViewresult.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName);
             var adeExtensionWithStatus = new AzureDiskEncryptionExtensionContext(extensionStatusView);
             if (adeExtensionWithStatus.ProvisioningState.Equals(AzureDiskEncryptionExtensionContext.StatusSucceeded, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             {
                 if (IsAzureDiskEncryptionExtension(vmExtension))
                 {
-                    AzureDiskEncryptionExtensionContext adeExtension = new AzureDiskEncryptionExtensionContext(vmExtension.ToPSVirtualMachineExtension(this.ResourceGroupName));
+                    AzureDiskEncryptionExtensionContext adeExtension = new AzureDiskEncryptionExtensionContext(vmExtension.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
                     if (DataVolumeInExtensionConfig(adeExtension))
                     {
                         if (adeExtension.EncryptionOperation.Equals(AzureDiskEncryptionExtensionConstants.enableEncryptionOperation, StringComparison.InvariantCultureIgnoreCase))

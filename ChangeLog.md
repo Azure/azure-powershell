@@ -1,3 +1,8 @@
+##2016.06.04 version 1.5.0
+* Azure Storage
+  * Fix get Storage Account throttling failures when run it on subscription with many accounts 
+    - Get-AzureRmStorageAccount
+    - Get-AzureStorageAccount
 ##2016.05.04 version 1.4.0
 * Azure Resource Manager
   - Get-AzureRmLocation cmdley: New cmdlet Lists all public Azure locatiosn with available provider namespaces
