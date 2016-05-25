@@ -199,7 +199,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       ErrorCategory.InvalidResult,
                                                       null));
             }
-            PSVirtualMachineExtension returnedExtension = extensionResult.ToPSVirtualMachineExtension(this.ResourceGroupName);
+
+            PSVirtualMachineExtension returnedExtension = extensionResult.ToPSVirtualMachineExtension(
+                this.ResourceGroupName, this.VMName);
+
             if ((returnedExtension == null) ||
                 (string.IsNullOrWhiteSpace(returnedExtension.Publisher)) ||
                 (string.IsNullOrWhiteSpace(returnedExtension.ExtensionType)))

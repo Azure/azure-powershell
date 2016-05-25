@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HourlySchedule"/> class.
+        /// Initializes a new instance of the <see cref="Schedule"/> class.
         /// </summary>
         public Schedule()
         {

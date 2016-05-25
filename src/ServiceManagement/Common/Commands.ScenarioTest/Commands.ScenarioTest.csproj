@@ -124,7 +124,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.WebSites, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -313,10 +313,16 @@
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrateAzureDeployment.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrateAzureStorageAccount.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrateAzureVNet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrationAbortAzureDeployment.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrationAbortAzureStorageAccount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrationAbortAzureVNet.json">

@@ -74,6 +74,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Properties.Resources.TagFixWarningMessage);
+
             base.ExecuteCmdlet();
 
             if (this.VM.DiagnosticsProfile == null)
@@ -282,10 +284,14 @@ namespace Microsoft.Azure.Commands.Compute
 
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
         {
-            var storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
-            if (storageAccountList == null)
+            StorageAccountListResponse storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+            if (storageAccountList == null || storageAccountList.Count() == 0)
             {
-                return null;
+                storageAccountList = (StorageAccountListResponse) client.StorageAccounts.List().Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()));
+                if (storageAccountList == null || storageAccountList.Count() == 0)
+                {
+                    return null;
+                }
             }
 
             try

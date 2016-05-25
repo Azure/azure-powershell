@@ -26,6 +26,7 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
@@ -129,7 +130,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static RequestInterceptor CreateFakeServiceResponseInterceptor<TOptions, TResponse>(TResponse responseToUse = default(TResponse),
             Action<BatchRequest<TOptions, TResponse>> requestAction = null)
             where TOptions : ProxyModels.IOptions, new()
-            where TResponse : IAzureOperationResponse, new()
+            where TResponse : class, IAzureOperationResponse, new()
         {
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
@@ -137,13 +138,10 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    if (responseToUse == null)
+                    responseToUse = responseToUse ?? new TResponse()
                     {
-                        responseToUse = new TResponse()
-                        {
-                            Response = new HttpResponseMessage()
-                        };
-                    }
+                        Response = new HttpResponseMessage()
+                    };
 
                     if (requestAction != null)
                     {
@@ -641,6 +639,26 @@ namespace Microsoft.Azure.Commands.Batch.Test
             }
 
             response.Body = new MockPagedEnumerable<ProxyModels.CloudTask>(tasks);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a TaskAddCollectionResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.TaskAddCollectionResult, ProxyModels.TaskAddCollectionHeaders> CreateTaskCollectionResponse(PSCloudTask[] taskCollection)
+        {
+            Func<PSCloudTask, ProxyModels.TaskAddResult> mappingFunc =
+                t => new ProxyModels.TaskAddResult(ProxyModels.TaskAddStatus.Success, t.Id);
+
+            var taskAddResults = taskCollection.Select(mappingFunc);
+
+            var response = new AzureOperationResponse
+                <ProxyModels.TaskAddCollectionResult, ProxyModels.TaskAddCollectionHeaders>()
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.Created),
+                Body = new ProxyModels.TaskAddCollectionResult(taskAddResults.ToList())
+            };
 
             return response;
         }
