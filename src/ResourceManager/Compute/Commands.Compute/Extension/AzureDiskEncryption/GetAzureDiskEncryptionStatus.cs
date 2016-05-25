@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         {
                             OsVolumeEncrypted = osVolumeEncrypted,
                             DataVolumesEncrypted = dataVolumesEncrypted,
-                            VolumeEncryptionSettings = osVolumeEncryptionSettings
+                            OsVolumeEncryptionSettings = osVolumeEncryptionSettings
                         };
                         WriteObject(encryptionStatus);
                         break;
