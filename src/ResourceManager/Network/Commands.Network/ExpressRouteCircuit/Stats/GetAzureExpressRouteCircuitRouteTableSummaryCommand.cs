@@ -21,9 +21,7 @@
  using Microsoft.Azure.Commands.Network.Models;
  using MNM = Microsoft.Azure.Management.Network.Models;
  using System;
- using System.Collections;
  using System.Linq;
- using AutoMapper;
 
 namespace Microsoft.Azure.Commands.Network
 {
