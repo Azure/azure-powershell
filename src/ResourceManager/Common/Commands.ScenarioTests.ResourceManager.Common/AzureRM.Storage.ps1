@@ -27,14 +27,23 @@ function New-AzureRmStorageAccount
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
 	[string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Location,
-	[string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $Type)
+    [string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $typeString)
   BEGIN { 
     $context = Get-Context
 	$client = Get-StorageClient $context
   }
   PROCESS {
     $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Models.StorageAccountCreateParameters
-	$createParms.AccountType = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
+    if ($typeString -eq $null)
+    {
+      $Type = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
+    }
+    else
+    {
+      $Type = Parse-Type $typeString
+	}
+
+	$createParms.AccountType = $Type
 	$createParms.Location = $Location
     $getTask = $client.StorageAccounts.CreateAsync($ResourceGroupName, $name, $createParms, [System.Threading.CancellationToken]::None)
 	$sa = $getTask.Result
@@ -42,6 +51,28 @@ function New-AzureRmStorageAccount
   END {}
 
 }
+
+function Set-AzureRmStorageAccount
+{
+  [CmdletBinding()]
+  param(
+    [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
+    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
+    [string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Type,
+    [Hashtable[]] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $Tags)
+  BEGIN { 
+    $context = Get-Context
+    $client = Get-StorageClient $context
+  }
+  PROCESS {
+    $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Models.StorageAccountUpdateParameters
+    $createParms.AccountType = [Microsoft.Azure.Management.Storage.Models.AccountType]::StandardLRS
+    $getTask = $client.StorageAccounts.UpdateAsync($ResourceGroupName, $Name, $createParms, [System.Threading.CancellationToken]::None)
+    $sa = $getTask.Result
+  }
+  END {}
+}
+
 
 function Get-AzureRmStorageAccountKey
 {
@@ -90,6 +121,14 @@ function Get-Context
 
 	return $context
 }
+
+ function Parse-Type
+ {
+    param([string] $type)
+    $type = $type.Replace("_", "")
+    $returnSkuName = [System.Enum]::Parse([Microsoft.Azure.Management.Storage.Models.AccountType], $type)
+    return $returnSkuName;
+ }
 
 function Get-StorageClient
 {
