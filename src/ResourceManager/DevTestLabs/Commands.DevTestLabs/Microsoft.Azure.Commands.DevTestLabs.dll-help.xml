@@ -153,7 +153,7 @@ The policy that specifies the list of VM sizes allowed in the lab.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Gets the auto shutdown policy of a lab, which allows you to automatically shut down all the VMs in a lab at a specified time of the day. The cmdlet returns the status (enabled or disabled) of the policy, and the time of day that you have set to automatically start the lab VMs.</maml:para>
+		<maml:para>Gets the auto shutdown policy of a lab, which allows you to automatically shut down all the VMs in a lab at a specified time of the day. The cmdlet returns the status (enabled or disabled) of the policy, and the time of day that you have set to automatically shut down the lab VMs.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
