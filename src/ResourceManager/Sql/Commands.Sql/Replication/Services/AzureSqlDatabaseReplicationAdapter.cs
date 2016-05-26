@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
-using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
@@ -189,11 +184,11 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="partnerResourceGroupName">The name of the Resource Group containing the secondary database</param>
         /// <param name="linkId">The linkId of the replication link to the secondary</param>
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
-        internal AzureReplicationLinkModel GetLink(string resourceGroupName, string serverName, string databaseName, 
+        internal AzureReplicationLinkModel GetLink(string resourceGroupName, string serverName, string databaseName,
             string partnerResourceGroupName, Guid linkId)
         {
             // partnerResourceGroupName is required because it is not exposed in any reponse from the service.
-            
+
             var resp = ReplicationCommunicator.GetLink(resourceGroupName, serverName, databaseName, linkId, Util.GenerateTracingId());
 
             return CreateReplicationLinkModelFromReplicationLinkResponse(resourceGroupName, serverName, databaseName, partnerResourceGroupName, resp);
@@ -273,7 +268,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="partnerResourceGroupName">The name of the Resource Group containing the secondary database</param>
         /// <param name="partnerServerName">The name of the Azure SQL Server containing the secondary database</param>
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
-        internal AzureReplicationLinkModel GetLink(string resourceGroupName, string serverName, string databaseName, 
+        internal AzureReplicationLinkModel GetLink(string resourceGroupName, string serverName, string databaseName,
             string partnerResourceGroupName, string partnerServerName)
         {
             IList<AzureReplicationLinkModel> links = ListLinks(resourceGroupName, serverName, databaseName, partnerResourceGroupName).ToList();
@@ -314,7 +309,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             // Resource Management executes in context of the Secondary
             AzureReplicationLinkModel link = links.First();
 
-            if(allowDataLoss)
+            if (allowDataLoss)
             {
                 ReplicationCommunicator.FailoverLinkAllowDataLoss(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId, Util.GenerateTracingId());
             }

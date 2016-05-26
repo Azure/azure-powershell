@@ -12,12 +12,12 @@
 // limitations under the License. 
 // ---------------------------------------------------------------------------------- 
 
+using Microsoft.Azure.Test.HttpRecorder;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -106,7 +106,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private bool ContainsIgnoredProvider(string requestUri, out string version)
         {
-            if (_ignoreGenericResource && !requestUri.Contains("providers"))
+            if (_ignoreGenericResource &&
+                !requestUri.Contains("providers") &&
+                !requestUri.StartsWith("/certificates?", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/pools", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/jobs", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/jobschedules", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.Contains("/applications?") &&
+                !requestUri.Contains("/servicePrincipals?"))
             {
                 version = String.Empty;
                 return true;

@@ -21,21 +21,24 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchAccount), OutputType(typeof(BatchAccountContext))]
     public class NewBatchAccountCommand : BatchCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Batch service account to create.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The region where the account will be created.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group where the account will be created.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        public string AutoStorageAccountId { get; set; }
 
         [Alias("Tags")]
         [Parameter(ValueFromPipelineByPropertyName = true)]
@@ -43,7 +46,10 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            BatchAccountContext context = BatchClient.CreateAccount(this.ResourceGroupName, this.AccountName, this.Location, this.Tag);
+            WriteWarning("WARNING: The usage of the Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags " +
+                "for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494 ");
+
+            BatchAccountContext context = BatchClient.CreateAccount(this.ResourceGroupName, this.AccountName, this.Location, this.Tag, this.AutoStorageAccountId);
             WriteObject(context);
         }
     }

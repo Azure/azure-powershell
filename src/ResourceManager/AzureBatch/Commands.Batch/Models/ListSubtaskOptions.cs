@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class ListSubtaskOptions : TaskOperationParameters
     {
-        public ListSubtaskOptions(BatchAccountContext context, string jobId, string taskId, 
-            PSCloudTask task, IEnumerable<BatchClientBehavior> additionalBehaviors = null) 
+        public ListSubtaskOptions(BatchAccountContext context, string jobId, string taskId,
+            PSCloudTask task, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, jobId, taskId, task, additionalBehaviors)
         { }
 

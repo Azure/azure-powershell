@@ -14,6 +14,7 @@
 
 //TODO: When transition to SM.NET is completed, rename the namespace to "Microsoft.WindowsAzure.ServiceManagement"
 
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,7 +28,6 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Xml;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 {
@@ -1151,7 +1151,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 base.SetValue("LoadBalancerName", value);
             }
         }
-        
+
         [DataMember(Name = "IdleTimeoutInMinutes", EmitDefaultValue = false, Order = 10)]
         public int? IdleTimeoutInMinutes
         {
@@ -1695,6 +1695,51 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set
             {
                 this.SetValue("DataDiskConfigurations", value);
+            }
+        }
+    }
+    #endregion
+
+    #region DebugSettings
+    [DataContract(Namespace = Constants.ServiceManagementNS)]
+    public class DebugSettings : Mergable<DebugSettings>
+    {
+        [DataMember(Name = "BootDiagnosticsEnabled", EmitDefaultValue = false, Order = 1)]
+        public bool BootDiagnosticsEnabled
+        {
+            get
+            {
+                return this.GetValue<bool>("BootDiagnosticsEnabled");
+            }
+            set
+            {
+                this.SetValue("BootDiagnosticsEnabled", value);
+            }
+        }
+
+        [DataMember(Name = "ConsoleScreenshotBlobUri", EmitDefaultValue = false, Order = 2)]
+        public Uri ConsoleScreenshotBlobUri
+        {
+            get
+            {
+                return this.GetValue<Uri>("ConsoleScreenshotBlobUri");
+            }
+            set
+            {
+                this.SetValue("ConsoleScreenshotBlobUri", value);
+            }
+        }
+
+        [DataMember(Name = "SerialOutputBlobUri", EmitDefaultValue = false, Order = 3)]
+        public Uri SerialOutputBlobUri
+        {
+            get
+            {
+                return this.GetValue<Uri>("SerialOutputBlobUri");
+            }
+            set
+            {
+                this.SetValue("SerialOutputBlobUri", value);
             }
         }
     }
@@ -6045,22 +6090,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         [DataMember(Order = 1)]
         private string Value { get; set; }
 
-        private static readonly ReadOnlyCollection<Type> KnownTypes = new ReadOnlyCollection<Type>(new[] { 
-                                             typeof(CreateAffinityGroupInput), 
+        private static readonly ReadOnlyCollection<Type> KnownTypes = new ReadOnlyCollection<Type>(new[] {
+                                             typeof(CreateAffinityGroupInput),
                                              typeof(UpdateAffinityGroupInput),
-                                             typeof(CertificateFile), 
+                                             typeof(CertificateFile),
                                              typeof(ChangeConfigurationInput),
-                                             typeof(CreateDeploymentInput), 
-                                             typeof(CreateHostedServiceInput), 
-                                             typeof(CreateStorageServiceInput), 
-                                             typeof(RegenerateKeys), 
+                                             typeof(CreateDeploymentInput),
+                                             typeof(CreateHostedServiceInput),
+                                             typeof(CreateStorageServiceInput),
+                                             typeof(RegenerateKeys),
                                              typeof(StorageDomain),
-                                             typeof(SubscriptionCertificate), 
-                                             typeof(SwapDeploymentInput), 
-                                             typeof(UpdateDeploymentStatusInput), 
-                                             typeof(UpdateHostedServiceInput), 
-                                             typeof(UpdateStorageServiceInput), 
-                                             typeof(UpgradeDeploymentInput), 
+                                             typeof(SubscriptionCertificate),
+                                             typeof(SwapDeploymentInput),
+                                             typeof(UpdateDeploymentStatusInput),
+                                             typeof(UpdateHostedServiceInput),
+                                             typeof(UpdateStorageServiceInput),
+                                             typeof(UpgradeDeploymentInput),
                                              typeof(WalkUpgradeDomainInput),
                                              typeof(CaptureRoleOperation),
                                              typeof(ShutdownRoleOperation),
@@ -6075,7 +6120,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                                              typeof(Disk),
                                              typeof(ExtendedProperty),
                                              typeof(ExtensionConfiguration),
-                                             typeof(HostedServiceExtensionInput), 
+                                             typeof(HostedServiceExtensionInput),
                                              typeof(ReservedIP),
                                            });
 
@@ -6331,7 +6376,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public ServiceManagementError Error { get; set; }
 
         public ExtensionDataObject ExtensionData { get; set; }
-    }   
+    }
 
     internal static class StringEncoder
     {

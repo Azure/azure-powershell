@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Xml;
 using Microsoft.Azure.Management.Insights.Models;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -26,12 +25,17 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// The storageAccount Id
         /// </summary>
-        public bool Enabled{ get; set; }
+        public bool Enabled { get; set; }
 
         /// <summary>
         /// The timegrain
         /// </summary>
         public string Timegrain { get; set; }
+
+        /// <summary>
+        /// The retention policy
+        /// </summary>
+        public PSRetentionPolicy RetentionPolicy { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the PSMetricSettings class.
@@ -40,6 +44,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             this.Enabled = metricSettings.Enabled;
             this.Timegrain = XmlConvert.ToString(metricSettings.TimeGrain);
+            this.RetentionPolicy = new PSRetentionPolicy(metricSettings.RetentionPolicy);
         }
     }
 }

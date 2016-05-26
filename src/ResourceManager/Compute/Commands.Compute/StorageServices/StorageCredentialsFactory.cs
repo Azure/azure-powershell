@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         {
             if (IsChannelRequired(destination.Uri))
             {
-                if(currentSubscription == null)
+                if (currentSubscription == null)
                 {
                     throw new ArgumentException(Rsrc.StorageCredentialsFactoryCurrentSubscriptionNotSet, "SubscriptionId");
                 }

@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Xml;
 using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -26,12 +24,17 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// A value indicating whether the logs are enabled for this category.
         /// </summary>
-        public bool Enabled{ get; set; }
+        public bool Enabled { get; set; }
 
         /// <summary>
         /// The category of the log. Use Categories to selectively enabling and desabling logs.
         /// </summary>
         public string Category { get; set; }
+
+        /// <summary>
+        /// The retention policy
+        /// </summary>
+        public PSRetentionPolicy RetentionPolicy { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the PSLogSettings class.
@@ -40,6 +43,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             this.Enabled = logSettings.Enabled;
             this.Category = logSettings.Category;
+            this.RetentionPolicy = new PSRetentionPolicy(logSettings.RetentionPolicy);
         }
     }
 }

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Management.BackupServices.Models;
-using System;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
@@ -45,7 +44,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         }
 
         public AzureBackupVaultContextObject(AzureRMBackupVault vault)
-            : this(vault.ResourceGroupName, vault.Name, vault.Region) { }
+            : this(vault.ResourceGroupName, vault.Name, vault.Region)
+        { }
     }
 
     /// <summary>

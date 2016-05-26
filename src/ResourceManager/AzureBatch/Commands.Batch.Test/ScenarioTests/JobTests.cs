@@ -12,42 +12,38 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Collections.Generic;
-using System.Management.Automation;
+using System;
 using Xunit;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class JobTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private const string accountName = ScenarioTestHelpers.SharedAccount;
+        public JobTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewJob()
         {
-            BatchController controller = BatchController.NewInstance;
-            controller.RunPsTest(string.Format("Test-NewJob '{0}'", accountName));
+            BatchController.NewInstance.RunPsTest("Test-NewJob");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobById()
         {
             BatchController controller = BatchController.NewInstance;
             string jobId = "testJob";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetJobById '{0}' '{1}'", accountName, jobId) }; },
+                () => { return new string[] { string.Format("Test-GetJobById '{0}'", jobId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                 },
                 () =>
@@ -59,7 +55,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListJobsByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -70,10 +65,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int matches = 2;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListJobsByFilter '{0}' '{1}' '{2}'", accountName, prefix, matches) }; },
+                () => { return new string[] { string.Format("Test-ListJobsByFilter '{0}' '{1}'", prefix, matches) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId1);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId2);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId3);
@@ -98,10 +93,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchAccountContext context = null;
             string jobId = "selectTest";
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetAndListJobsWithSelect '{0}' '{1}'", accountName, jobId) }; },
+                () => { return new string[] { string.Format("Test-GetAndListJobsWithSelect '{0}'", jobId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                 },
                 () =>
@@ -113,7 +108,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListJobsWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -123,10 +117,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int maxCount = 1;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListJobsWithMaxCount '{0}' '{1}'", accountName, maxCount) }; },
+                () => { return new string[] { string.Format("Test-ListJobsWithMaxCount '{0}'", maxCount) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId1);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId2);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId3);
@@ -142,7 +136,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllJobs()
         {
             BatchController controller = BatchController.NewInstance;
@@ -152,10 +145,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int count = 3;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListAllJobs '{0}' '{1}'", accountName, count) }; },
+                () => { return new string[] { string.Format("Test-ListAllJobs '{0}'", count) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId1);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId2);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId3);
@@ -171,7 +164,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListJobsUnderSchedule()
         {
             BatchController controller = BatchController.NewInstance;
@@ -182,11 +174,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListJobsUnderSchedule '{0}' '{1}' '{2}' '{3}'", accountName, jobScheduleId, jobId, 2) }; },
+                () => { return new string[] { string.Format("Test-ListJobsUnderSchedule '{0}' '{1}' '{2}'", jobScheduleId, jobId, 2) }; },
                 () =>
                 {
                     TimeSpan recurrence = TimeSpan.FromMinutes(1);
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, runOnceJob);
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, recurrence);
                     jobId = ScenarioTestHelpers.WaitForRecentJob(controller, context, jobScheduleId);
@@ -205,12 +197,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateJob()
         {
             BatchController controller = BatchController.NewInstance;
             string jobId = "updateJobTest";
-            controller.RunPsTest(string.Format("Test-UpdateJob '{0}' '{1}'", accountName, jobId));
+            controller.RunPsTest(string.Format("Test-UpdateJob '{0}'", jobId));
         }
 
         [Fact]
@@ -222,10 +213,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeleteJob '{0}' '{1}' '0'", accountName, jobId) }; },
+                () => { return new string[] { string.Format("Test-DeleteJob '{0}' '0'", jobId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                 },
                 null,
@@ -234,7 +225,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteJobPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -242,10 +232,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeleteJob '{0}' '{1}' '1'", accountName, jobId) }; },
+                () => { return new string[] { string.Format("Test-DeleteJob '{0}' '1'", jobId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                 },
                 null,
@@ -254,7 +244,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAndEnableJob()
         {
             BatchController controller = BatchController.NewInstance;
@@ -262,10 +251,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DisableAndEnableJob '{0}' '{1}' '1'", accountName, jobId) }; },
+                () => { return new string[] { string.Format("Test-DisableAndEnableJob '{0}' '1'", jobId) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                 },
                 () =>
@@ -277,17 +266,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTerminateJobById()
         {
             TestTerminateJob(false);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTerminateJobPipeline()
         {
             TestTerminateJob(true);
+        }
+
+        [Fact]
+        public void TestJobWithTaskDependencies()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-JobWithTaskDependencies"));
         }
 
         private void TestTerminateJob(bool usePipeline)
@@ -296,10 +290,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchAccountContext context = null;
             string jobId = "testTerminateJob" + (usePipeline ? "Pipeline" : "Id");
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-TerminateJob '{0}' '{1}' '{2}'", accountName, jobId, usePipeline ? 1 : 0) }; },
+                () => { return new string[] { string.Format("Test-TerminateJob '{0}' '{1}'", jobId, usePipeline ? 1 : 0) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                 },
                 () =>

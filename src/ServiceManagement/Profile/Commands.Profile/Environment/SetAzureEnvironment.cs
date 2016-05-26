@@ -16,9 +16,10 @@ using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
@@ -98,13 +99,14 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if ((Name == "AzureCloud") ||
-                (Name == "AzureChinaCloud") ||
-                (Name == "AzureUSGovernment"))
+            AzureEnvironment.PublicEnvironments.Keys.ForEach((key) =>
             {
-                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, 
-                    Resources.CannotChangeBuiltinEnvironment, Name));
-            }
+                if (string.Equals(Name, key, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
+                        Resources.CannotChangeBuiltinEnvironment, Name));
+                }
+            });
 
             var newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
             if (ProfileClient.Profile.Environments.ContainsKey(Name))

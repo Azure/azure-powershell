@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
@@ -23,8 +24,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public string AffinityGroup { get; set; }
 
         public string Location { get; set; }
-
-        public bool? GeoReplicationEnabled { get; set; }
 
         public string GeoPrimaryLocation { get; set; }
 
@@ -41,5 +40,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public IEnumerable<string> Endpoints { get; set; }
 
         public string AccountType { get; set; }
+
+        public DateTime? LastGeoFailoverTime { get; set; }
+
+        public string MigrationState { get; set; }
     }
 }

@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -31,8 +32,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public SetBatchPoolCommandTests()
+        public SetBatchPoolCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new SetBatchPoolCommand()
@@ -54,7 +56,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.Pool = new PSCloudPool(BatchTestHelpers.CreateFakeBoundPool(context));
 
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolUpdatePropertiesParameters, CloudPoolUpdatePropertiesResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolUpdatePropertiesParameter,
+                PoolUpdatePropertiesOptions,
+                AzureOperationHeaderResponse<PoolUpdatePropertiesHeaders>>();
+
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };
 
             // Verify that no exceptions occur

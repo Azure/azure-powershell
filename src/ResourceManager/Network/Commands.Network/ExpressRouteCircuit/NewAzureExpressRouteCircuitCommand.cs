@@ -12,19 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System.Linq;
-
     [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
     public class NewAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
@@ -74,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
         public string ServiceProviderName { get; set; }
 
         [Parameter(
-             Mandatory = false,
+             Mandatory = true,
              ValueFromPipelineByPropertyName = true)]
         public string PeeringLocation { get; set; }
 
@@ -96,6 +94,13 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSExpressRouteCircuitAuthorization> Authorization { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public bool? AllowClassicOperations { get; set; }
+
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
@@ -109,6 +114,8 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
 
             if (this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name))
             {
@@ -158,6 +165,7 @@ namespace Microsoft.Azure.Commands.Network
             circuit.Peerings = this.Peering;
             circuit.Authorizations = new List<PSExpressRouteCircuitAuthorization>();
             circuit.Authorizations = this.Authorization;
+            circuit.AllowClassicOperations = this.AllowClassicOperations;
 
             // Map to the sdk object
             var circuitModel = Mapper.Map<MNM.ExpressRouteCircuit>(circuit);

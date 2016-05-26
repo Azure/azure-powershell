@@ -247,6 +247,23 @@ function Test-MoveAResource
 
 <#
 .SYNOPSIS
+Tests moving a resource but failed.
+#>
+function Test-MoveResourceFailed
+{
+	#Move a resource through pipeline while no resource is sent
+	$exceptionMessage = "At least one valid resource Id must be provided.";
+	Assert-Throws { Get-AzureRmResource | Where-Object { $PSItem.Name -eq "NonExistingResource" } | Move-AzureRmResource -DestinationResourceGroupName "AnyResourceGroup" } $exceptionMessage
+
+	#Move two resources from two resource groups
+	$resourceId1 = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/tianorg1/providers/Microsoft.Storage/storageAccounts/temp1"
+	$resourceId2 = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/tianorg2/providers/Microsoft.Storage/storageAccounts/temp1"
+	$exceptionMessage = "The resources being moved must all reside in the same resource group. The resources: *"
+	Assert-ThrowsLike { Move-AzureRmResource -DestinationResourceGroupName "AnyGroup" -ResourceId @($resourceId1, $resourceId2) } $exceptionMessage
+}
+
+<#
+.SYNOPSIS
 Tests setting a resource.
 #>
 function Test-SetAResource
@@ -261,6 +278,14 @@ function Test-SetAResource
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 	$resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	
+	# Verify original value
+	$oldSku = $resource.Sku.psobject
+	$oldSkuNameProperty = $oldSku.Properties
+	Assert-AreEqual $oldSkuNameProperty.Name "name" 
+	Assert-AreEqual $resource.SKu.Name "A0" 
+	
+	# Set resource
 	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
 	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force 
 
@@ -346,6 +371,9 @@ function Test-GetResourceExpandProperties
 	$resourceGet = Get-AzureRmResource -ResourceName $rname -ResourceGroupName $rgname -ExpandProperties
 
 	# Assert
+	$properties = $resourceGet.Properties.psobject
+	$keyProperty = $properties.Properties
+	Assert-AreEqual $keyProperty.Name "key"
 	Assert-AreEqual $resourceGet.Properties.key "value"
 }
 
@@ -358,9 +386,8 @@ function Test-GetResourceWithCollection
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = "East US"
 	$apiversion = "2015-08-01"
-	$resourceType = "Providers.Test/statefulResources"
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation

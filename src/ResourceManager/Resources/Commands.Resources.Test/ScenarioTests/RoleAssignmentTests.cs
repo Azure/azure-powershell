@@ -13,23 +13,30 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
-using System.Linq;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Xunit;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Linq;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class RoleAssignmentTests : RMTestBase
     {
+        public RoleAssignmentTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact(Skip = "http://vstfrd:8080/Azure/RD/_workitems/edit/4616537")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaAuthorizationChangeLog()
@@ -90,7 +97,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RaUserPermissions()
         {
             User newUser = null;
-            ResourceGroupExtended resourceGroup = null;
+            ResourceGroup resourceGroup = null;
             string roleAssignmentId = "1BAF0B29-608A-424F-B54F-92FCDB343FFF";
             string userName = null;
             string userPass = null;
@@ -108,7 +115,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     userPass = TestUtilities.GenerateName("adpass") + "0#$";
 
                     var upn = userName + "@" + controllerAdmin.UserDomain;
-                    
+
                     var parameter = new UserCreateParameters
                     {
                         UserPrincipalName = upn,
@@ -125,20 +132,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = controllerAdmin.GraphClient.User.Create(parameter).User;
 
                     resourceGroup = controllerAdmin.ResourceManagementClient.ResourceGroups
-                                        .List(new ResourceGroupListParameters())
-                                        .ResourceGroups
+                                        .List()
                                         .First();
 
                     // Wait to allow newly created object changes to propagate
                     TestMockSupport.Delay(20000);
 
-                    return new[] 
-                    { 
+                    return new[]
+                    {
                         string.Format(
-                            "CreateRoleAssignment '{0}' '{1}' '{2}' '{3}'", 
-                                roleAssignmentId, 
-                                newUser.ObjectId, 
-                                roleDefinitionName, 
+                            "CreateRoleAssignment '{0}' '{1}' '{2}' '{3}'",
+                                roleAssignmentId,
+                                newUser.ObjectId,
+                                roleDefinitionName,
                                 resourceGroup.Name)
                     };
                 },
@@ -155,12 +161,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 // scriptBuilder
                 () =>
                 {
-                    return new[] 
-                    { 
+                    return new[]
+                    {
                         string.Format(
-                            "Test-RaUserPermissions '{0}' '{1}'", 
-                            resourceGroup.Name, 
-                            userPermission) 
+                            "Test-RaUserPermissions '{0}' '{1}'",
+                            resourceGroup.Name,
+                            userPermission)
                     };
                 },
                 // initialize

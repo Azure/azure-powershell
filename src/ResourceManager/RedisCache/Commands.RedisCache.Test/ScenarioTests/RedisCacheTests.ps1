@@ -31,7 +31,7 @@ function Test-RedisCache
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+        Start-TestSleep 30000
         $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -187,7 +187,7 @@ function Test-RedisCachePipeline
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+        Start-TestSleep 30000
         $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -306,7 +306,7 @@ function Test-RedisCacheClustering
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+        Start-TestSleep 30000
         $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -423,4 +423,16 @@ function Test-RemoveAzureRedisCacheDiagnostics
     
     # Set Diagnostics
     Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -Force
+}
+
+<#
+.SYNOPSIS
+Sleeps but only during recording.
+#>
+function Start-TestSleep($milliseconds)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        Start-Sleep -Milliseconds $milliseconds
+    }
 }

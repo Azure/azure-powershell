@@ -13,15 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -121,10 +114,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary> 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Represents the frequency (in minutes) at which the Local Configuration Manager contacts the Azure Automation DSC pull server to download the latest node configuration.")]
         [ValidateRange(30, 44640)]
-        public int RefreshFrequencyMins 
+        public int RefreshFrequencyMins
         {
             get { return this.refreshFrequencyMins; }
-            set { this.refreshFrequencyMins = value; } 
+            set { this.refreshFrequencyMins = value; }
         }
 
         /// <summary> 
@@ -163,10 +156,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the azure VM resource group name.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Azure VM resource group name.")]
-        public string AzureVMResourceGroup 
+        public string AzureVMResourceGroup
         {
             get { return this.azureVmResourceGroup; }
-            set { this.azureVmResourceGroup = value; } 
+            set { this.azureVmResourceGroup = value; }
         }
 
         /// <summary>

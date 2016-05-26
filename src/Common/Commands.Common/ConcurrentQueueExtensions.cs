@@ -12,11 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.Concurrent;
 
 namespace Microsoft.WindowsAzure.Commands.Common
@@ -30,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 return;
             }
-            lock(queue)
+            lock (queue)
             {
                 while (queue.Count >= Capacity)
                 {
@@ -38,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     queue.TryDequeue(out result);
                 }
                 queue.Enqueue(item);
-            } 
+            }
         }
     }
 }

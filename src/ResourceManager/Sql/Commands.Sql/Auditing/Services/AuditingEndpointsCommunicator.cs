@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
-using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 {
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// The Sql client to be used by this end points communicator
         /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
-        
+
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription {get ; set; }
+        private static AzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Sets the database server auditing policy of the given database server in the given resource group
         /// </summary>
-        public void SetServerAuditingPolicy(string resourceGroupName, string serverName,  string clientRequestId, ServerAuditingPolicyCreateOrUpdateParameters parameters)
+        public void SetServerAuditingPolicy(string resourceGroupName, string serverName, string clientRequestId, ServerAuditingPolicyCreateOrUpdateParameters parameters)
         {
             IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
             operations.CreateOrUpdateServerPolicy(resourceGroupName, serverName, parameters);

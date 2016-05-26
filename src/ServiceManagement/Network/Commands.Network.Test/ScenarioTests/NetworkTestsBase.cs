@@ -18,7 +18,7 @@ using Microsoft.Azure.Test;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests
 {
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using WindowsAzure.Management.Network;
 
     public abstract class NetworkTestsBase

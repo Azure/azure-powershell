@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
-using Microsoft.Azure.Management.DataLake.AnalyticsCatalog.Models;
+using Microsoft.Azure.Management.DataLake.Analytics.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof (USqlSecret))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof(USqlSecret))]
+    [Alias("Set-AdlCatalogSecret")]
     public class SetAzureDataLakeAnalyticsCatalogSecret : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "Specify full URI";
@@ -60,15 +61,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             Mandatory = true, HelpMessage = "The Port associated with the host for the database to connect to.")]
         public int Port { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 4,
-            Mandatory = false,
-            HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 5,
-            Mandatory = false,
-            HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (Uri != null && Uri.Port <= 0)
@@ -78,7 +70,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
             var toUse = Uri ?? new Uri(string.Format("https://{0}:{1}", Host, Port));
 
-            WriteObject(DataLakeAnalyticsClient.UpdateSecret(ResourceGroupName, Account, DatabaseName, Secret.UserName,
+            WriteObject(DataLakeAnalyticsClient.UpdateSecret(Account, DatabaseName, Secret.UserName,
                 Secret.GetNetworkCredential().Password, toUse.AbsoluteUri));
         }
     }

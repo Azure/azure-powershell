@@ -12,15 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
-    using ResourceManager.Common;
     using Microsoft.Azure.Commands.Resources.Models.Authorization;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common;
 
     /// <summary> 
     /// Base class for all resources cmdlets
@@ -41,6 +37,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// Field that holds the policies client instance
         /// </summary>
         private AuthorizationClient policiesClient;
+
+        /// <summary>
+        /// Field that holds the subscripotions client instance
+        /// </summary>
+        private SubscriptionsClient subscriptionsClient;
 
         /// <summary>
         /// Gets or sets the resources client
@@ -99,6 +100,23 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
 
             set { this.policiesClient = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the subscriptions client
+        /// </summary>
+        public SubscriptionsClient SubscriptionsClient
+        {
+            get
+            {
+                if (this.subscriptionsClient == null)
+                {
+                    this.subscriptionsClient = new SubscriptionsClient(DefaultContext);
+                }
+                return this.subscriptionsClient;
+            }
+
+            set { this.subscriptionsClient = value; }
         }
 
         /// <summary>

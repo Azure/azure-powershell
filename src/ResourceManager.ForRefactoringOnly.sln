@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8531411A-0137-4E27-9C5E-49E07C245048}"
 	ProjectSection(SolutionItems) = preProject
@@ -119,7 +119,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.Reso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "Common\Storage\Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "Storage\Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Common", "ServiceManagement\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj", "{CFF09E81-1E31-444E-B4D4-A21E946C29E2}"
 EndProject
@@ -135,9 +135,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataLakeStore.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataLakeAnalytics.Test", "ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\Commands.DataLakeAnalytics.Test.csproj", "{E6122DB1-1466-47EE-8BA0-73F9CA90F826}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Intune", "ResourceManager\Intune\Commands.Intune\Commands.Intune.csproj", "{189B40C3-7505-410A-9E55-7E7671BB2E14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication", "Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj", "{D3804B64-C0D3-48F8-82EC-1F632F833C9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Intune.Test", "ResourceManager\Intune\Commands.Intune.Test\Commands.Intune.Test.csproj", "{CA5F571B-550B-4BE3-9BA3-06442DF52768}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStackAdmin", "ResourceManager\AzureStackAdmin\Commands.AzureStackAdmin\Commands.AzureStackAdmin.csproj", "{0B02390C-8AA9-4D99-8AA8-2A9D2D39682F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStackStorage", "ResourceManager\AzureStackStorage\Commands.AzureStackStorage\Commands.AzureStackStorage.csproj", "{D4CA0CC1-CD0A-4CE2-A40D-2D8A082D8791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStackStorage.Test", "ResourceManager\AzureStackStorage\Commands.AzureStackStorage.Tests\Commands.AzureStackStorage.Test.csproj", "{53ED0604-8774-4B46-BB26-6AA5A6327A7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.LogicApp.Test", "ResourceManager\LogicApp\Commands.LogicApp.Test\Commands.LogicApp.Test.csproj", "{F1F11BB1-592B-45A3-844C-7F8A585AD107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.LogicApp", "ResourceManager\LogicApp\Commands.LogicApp\Commands.LogicApp.csproj", "{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -393,14 +401,30 @@ Global
 		{E6122DB1-1466-47EE-8BA0-73F9CA90F826}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6122DB1-1466-47EE-8BA0-73F9CA90F826}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6122DB1-1466-47EE-8BA0-73F9CA90F826}.Release|Any CPU.Build.0 = Release|Any CPU
-		{189B40C3-7505-410A-9E55-7E7671BB2E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{189B40C3-7505-410A-9E55-7E7671BB2E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{189B40C3-7505-410A-9E55-7E7671BB2E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{189B40C3-7505-410A-9E55-7E7671BB2E14}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA5F571B-550B-4BE3-9BA3-06442DF52768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA5F571B-550B-4BE3-9BA3-06442DF52768}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA5F571B-550B-4BE3-9BA3-06442DF52768}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA5F571B-550B-4BE3-9BA3-06442DF52768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B02390C-8AA9-4D99-8AA8-2A9D2D39682F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B02390C-8AA9-4D99-8AA8-2A9D2D39682F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B02390C-8AA9-4D99-8AA8-2A9D2D39682F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B02390C-8AA9-4D99-8AA8-2A9D2D39682F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4CA0CC1-CD0A-4CE2-A40D-2D8A082D8791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4CA0CC1-CD0A-4CE2-A40D-2D8A082D8791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4CA0CC1-CD0A-4CE2-A40D-2D8A082D8791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4CA0CC1-CD0A-4CE2-A40D-2D8A082D8791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53ED0604-8774-4B46-BB26-6AA5A6327A7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53ED0604-8774-4B46-BB26-6AA5A6327A7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53ED0604-8774-4B46-BB26-6AA5A6327A7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53ED0604-8774-4B46-BB26-6AA5A6327A7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F11BB1-592B-45A3-844C-7F8A585AD107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F11BB1-592B-45A3-844C-7F8A585AD107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F11BB1-592B-45A3-844C-7F8A585AD107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F11BB1-592B-45A3-844C-7F8A585AD107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -433,6 +457,7 @@ Global
 		{EA66BF2C-4E5F-42FE-912C-B62AEB588308} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{B0D03ECF-9F25-499A-BE25-D668E0D208AA} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{E6122DB1-1466-47EE-8BA0-73F9CA90F826} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
-		{CA5F571B-550B-4BE3-9BA3-06442DF52768} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{53ED0604-8774-4B46-BB26-6AA5A6327A7C} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{F1F11BB1-592B-45A3-844C-7F8A585AD107} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal

@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Sql.Database.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -77,13 +76,23 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
+        /// Overriding to add warning message
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            this.WriteWarning("The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
+            base.ExecuteCmdlet();
+        }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> GetEntity()
         {
-            return new List<AzureSqlDatabaseModel>() { 
-                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName) 
+            return new List<AzureSqlDatabaseModel>() {
+                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName)
             };
         }
 

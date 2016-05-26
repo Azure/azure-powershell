@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             int startIndex = id.IndexOf(resourceName, StringComparison.OrdinalIgnoreCase) + resourceName.Length + 1;
             int endIndex = id.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
-            
+
             // Replace the following string '/{value}/'
             startIndex--;
             string orignalString = id.Substring(startIndex, endIndex - startIndex + 1);
@@ -67,14 +66,14 @@ namespace Microsoft.Azure.Commands.Network
             return id.Replace(orignalString, string.Format("/{0}/", resourceValue));
         }
 
-        public static void NormalizeChildResourcesId(PSLoadBalancer loadBalancer)
+        public static void NormalizeChildResourcesId(PSLoadBalancer loadBalancer, string subscriptionId)
         {
             // Normalize LoadBalancingRules
             if (loadBalancer.LoadBalancingRules != null)
             {
                 foreach (var loadBalancingRule in loadBalancer.LoadBalancingRules)
                 {
-                    loadBalancingRule.Id = string.Empty;
+                    loadBalancingRule.Id = GetResourceId(subscriptionId, loadBalancer.ResourceGroupName, loadBalancer.Name, Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerRuleName, loadBalancingRule.Name);
 
                     if (loadBalancingRule.FrontendIPConfiguration != null)
                     {
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
 
                     if (loadBalancingRule.Probe != null)
                     {
-                        loadBalancingRule.Probe.Id = 
+                        loadBalancingRule.Probe.Id =
                             NormalizeLoadBalancerChildResourceIds(
                                 loadBalancingRule.Probe.Id,
                                 loadBalancer.ResourceGroupName,
@@ -110,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (var inboundNatRule in loadBalancer.InboundNatRules)
                 {
-                    inboundNatRule.Id = string.Empty;
+                    inboundNatRule.Id = GetResourceId(subscriptionId, loadBalancer.ResourceGroupName, loadBalancer.Name, Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInBoundNatRuleName, inboundNatRule.Name);
 
                     if (inboundNatRule.FrontendIPConfiguration != null)
                     {
@@ -128,7 +127,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (var inboundNatPool in loadBalancer.InboundNatPools)
                 {
-                    inboundNatPool.Id = string.Empty;
+                    inboundNatPool.Id = GetResourceId(subscriptionId, loadBalancer.ResourceGroupName, loadBalancer.Name, Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInboundNatPoolName, inboundNatPool.Name);
 
                     if (inboundNatPool.FrontendIPConfiguration != null)
                     {
@@ -146,7 +145,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (var frontendIpConfig in loadBalancer.FrontendIpConfigurations)
                 {
-                    frontendIpConfig.Id = string.Empty;
+                    frontendIpConfig.Id = GetResourceId(subscriptionId, loadBalancer.ResourceGroupName, loadBalancer.Name, Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerFrontendIpConfigName, frontendIpConfig.Name);
                 }
             }
 
@@ -155,7 +154,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (var probe in loadBalancer.Probes)
                 {
-                    probe.Id = string.Empty;
+                    probe.Id = GetResourceId(subscriptionId, loadBalancer.ResourceGroupName, loadBalancer.Name, Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerProbeName, probe.Name);
                 }
             }
 
@@ -164,7 +163,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (var backendAddressPool in loadBalancer.BackendAddressPools)
                 {
-                    backendAddressPool.Id = string.Empty;
+                    backendAddressPool.Id = GetResourceId(subscriptionId, loadBalancer.ResourceGroupName, loadBalancer.Name, Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerBackendAddressPoolName, backendAddressPool.Name);
                 }
             }
         }

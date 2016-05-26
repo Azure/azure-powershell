@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using System.Management.Automation;
-using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using System.IO;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Import, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
+    [Cmdlet(VerbsData.Import, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Alias("Import-AdlStoreItem")]
     public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         // default number of threads
@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
-                    -1,
                     NumThreads,
+                    -1,
                     Recurse,
                     Force,
                     Resume, ForceBinary, ForceBinary, this);

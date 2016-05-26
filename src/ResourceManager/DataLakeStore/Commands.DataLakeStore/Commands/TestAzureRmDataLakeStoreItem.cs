@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
-using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
+using Microsoft.Azure.Management.DataLake.Store.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeStoreItem"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeStoreItem"), OutputType(typeof(bool))]
+    [Alias("Test-AdlStoreItem")]
     public class TestAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -47,11 +48,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 {
                     WriteObject(true);
                 }
-                else if (PathType == DataLakeStoreEnums.PathType.File && fileType == FileType.File)
+                else if (PathType == DataLakeStoreEnums.PathType.File && fileType == FileType.FILE)
                 {
                     WriteObject(true);
                 }
-                else if (PathType == DataLakeStoreEnums.PathType.Folder && fileType == FileType.Directory)
+                else if (PathType == DataLakeStoreEnums.PathType.Folder && fileType == FileType.DIRECTORY)
                 {
                     WriteObject(true);
                 }

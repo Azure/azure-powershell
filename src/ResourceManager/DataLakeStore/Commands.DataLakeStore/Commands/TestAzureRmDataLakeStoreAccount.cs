@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using System.Net;
-using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeStoreAccount"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeStoreAccount"), OutputType(typeof(bool))]
+    [Alias("Test-AdlStore")]
     public class TestAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -34,22 +33,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            try
-            {
-                DataLakeStoreClient.GetAccount(ResourceGroupName, Name);
-                WriteObject(true);
-            }
-            catch (CloudException e)
-            {
-                if (e.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    WriteObject(false);
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            WriteObject(DataLakeStoreClient.TestAccount(ResourceGroupName, Name));
         }
     }
 }

@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "The workspace name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             WriteObject(OperationalInsightsClient.GetWorkspaceKeys(ResourceGroupName, Name));

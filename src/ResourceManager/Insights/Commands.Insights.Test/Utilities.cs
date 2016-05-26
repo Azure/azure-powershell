@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
 using Microsoft.Azure.Management.Insights.Models;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test
 {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             {
                 MetricDefinitionCollection = new MetricDefinitionCollection
                 {
-                    Value = new MetricDefinition[] {}
+                    Value = new MetricDefinition[] { }
                 },
                 RequestId = Guid.NewGuid().ToString(),
                 StatusCode = HttpStatusCode.OK
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
         public static void VerifyContinuationToken(EventDataListResponse response, Mock<IEventOperations> insinsightsEventOperationsMockightsClientMock, EventCmdletBase cmdlet)
         {
-                        // Make sure calls to Next work also
+            // Make sure calls to Next work also
             response.EventDataCollection.NextLink = Utilities.ContinuationToken;
             var responseNext = new EventDataListResponse()
             {
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             if (!string.IsNullOrWhiteSpace(field))
             {
                 var condition = string.Format("and {0} eq '{1}'", field, value);
-                Assert.True(filter.Contains(condition), "Filter does not contain required condition");
+                Assert.True(filter.Contains(condition), string.Format("Filter: {0} does not contain required condition: {1}", filter, condition));
             }
         }
 
@@ -319,7 +319,10 @@ namespace Microsoft.Azure.Commands.Insights.Test
                 Name = Name,
                 Properties = new Rule()
                 {
-                    Action = new RuleEmailAction(),
+                    Actions = new BindingList<RuleAction>()
+                    {
+                        new RuleEmailAction(),
+                    },
                     Condition = new ThresholdRuleCondition()
                     {
                         DataSource = new RuleMetricDataSource()
@@ -377,7 +380,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             };
         }
 
-        public static void VerifyDetailedOutput(GetAlertRuleCommand cmdlet, string expectedResourceGroup, ref string resourceGroup, ref string nameOrTargetUri)
+        public static void VerifyDetailedOutput(GetAzureRmAlertRuleCommand cmdlet, string expectedResourceGroup, ref string resourceGroup, ref string nameOrTargetUri)
         {
             // Calling with detailed output
             cmdlet.DetailedOutput = true;
@@ -404,7 +407,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             Assert.Equal(expectedResourceGroup, resourceGroup);
             Assert.Null(nameOrTargetUri);
 
-            var typedCmdlet = cmdlet as GetAlertRuleCommand;
+            var typedCmdlet = cmdlet as GetAzureRmAlertRuleCommand;
             if (typedCmdlet != null)
             {
                 // Calling with Name

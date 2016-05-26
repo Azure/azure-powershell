@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataMasking.Model;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Server.Services;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// The communicator that this adapter uses
         /// </summary>
         private DataMaskingEndpointsCommunicator Communicator { get; set; }
-        
-       /// <summary>
-       /// Gets or sets the Azure profile
-       /// </summary>
+
+        /// <summary>
+        /// Gets or sets the Azure profile
+        /// </summary>
         public AzureContext Context { get; set; }
 
         public SqlDataMaskingAdapter(AzureContext context)
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
             Subscription = context.Subscription;
             Communicator = new DataMaskingEndpointsCommunicator(Context);
         }
-        
+
         /// <summary>
         ///  Checks whether the server is applicable for dynamic data masking
         /// </summary>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public void SetDatabaseDataMaskingPolicy(DatabaseDataMaskingPolicyModel model, String clientId)
         {
-            if (!IsRightServerVersionForDataMasking(model.ResourceGroupName,model.ServerName, clientId))
+            if (!IsRightServerVersionForDataMasking(model.ResourceGroupName, model.ServerName, clientId))
             {
                 throw new Exception(Properties.Resources.ServerNotApplicableForDataMasking);
             }
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public void SetDatabaseDataMaskingRule(DatabaseDataMaskingRuleModel model, String clientId)
         {
-             if (!IsRightServerVersionForDataMasking(model.ResourceGroupName, model.ServerName, clientId))
+            if (!IsRightServerVersionForDataMasking(model.ResourceGroupName, model.ServerName, clientId))
             {
                 throw new Exception(Properties.Resources.ServerNotApplicableForDataMasking);
             }
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         private string PolicizeMaskingFunction(MaskingFunction maskingFunction)
         {
-            switch(maskingFunction)
+            switch (maskingFunction)
             {
                 case MaskingFunction.NoMasking: return SecurityConstants.DataMaskingEndpoint.NoMasking;
                 case MaskingFunction.Default: return SecurityConstants.DataMaskingEndpoint.Default;
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         private uint? ModelizeNullableUint(string value)
         {
-            if(string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
             {
                 return null;
             }
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         private DataMaskingStateType ModelizePolicyState(string policyState)
         {
-            if(SecurityConstants.DataMaskingEndpoint.Enabled == policyState)
+            if (SecurityConstants.DataMaskingEndpoint.Enabled == policyState)
             {
                 return DataMaskingStateType.Enabled;
             }
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
             {
                 return DataMaskingStateType.Disabled;
             }
-            
+
             return DataMaskingStateType.Uninitialized;
         }
 
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         {
             DatabaseDataMaskingPolicyModel dbPolicyModel = new DatabaseDataMaskingPolicyModel();
             DataMaskingPolicyProperties properties = policy.Properties;
-            dbPolicyModel.DataMaskingState = ModelizePolicyState(properties.DataMaskingState); 
+            dbPolicyModel.DataMaskingState = ModelizePolicyState(properties.DataMaskingState);
             dbPolicyModel.PrivilegedUsers = properties.ExemptPrincipals;
             return dbPolicyModel;
         }

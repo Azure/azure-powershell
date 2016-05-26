@@ -12,12 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -26,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public static string GetCurrentStorageAccountName(this AzureContext context)
         {
             string result = null;
-            if (context != null && context.Subscription != null  
+            if (context != null && context.Subscription != null
                 && context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
             {
                 result = context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);

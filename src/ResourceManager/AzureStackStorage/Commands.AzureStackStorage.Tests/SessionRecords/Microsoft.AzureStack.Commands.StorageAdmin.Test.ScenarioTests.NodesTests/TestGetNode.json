@@ -1,0 +1,216 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/nodes/woss-node-1?api-version=2015-12-01-preview",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [
+                    "Microsoft.AzureStack.Management.StorageAdmin/0.9.0.0 AzurePowershell/v0.8.14"
+                ]
+            },
+            "ResponseBody": "{\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/nodes/woss-node-1\",\"name\":\"03768357-B4F2-4C3C-AA75-574209B03D49/woss-node-1\",\"type\":\"Microsoft.Storage.Admin/farms/nodes\",\"location\":\"West_US\",\"properties\":{\"codeVersion\":\"3.0.1414.9492\",\"configVersion\":\"1.0\",\"faultDomain\":\"fd:/woss-node-1\",\"healthStatus\":\"Critical\",\"ipAddressOrFqdn\":\"woss-node-1\",\"isSeedNode\":true,\"nodeId\":\"c8e6bfe487b4b8eceb5dc36ff6a2452\",\"nodeName\":\"woss-node-1\",\"nodeStatus\":\"Up\",\"nodeType\":\"Common\",\"nodeUpTime\":\"PT1H\",\"upgradeDomain\":\"WOSS_U1\",\"runningInstanceUris\":[\"subscriptions/serviceAdmin/resourcegroups/system/providers/Microsoft.Storage.Admin/farms/WEST_US_1/tableserverinstances/woss-node-1\",\"subscriptions/serviceAdmin/resourcegroups/system/providers/Microsoft.Storage.Admin/farms/WEST_US_1/accountcontainerserverinstances/woss-node-1\"]}}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Vary": [
+                    "Accept-Encoding"
+                ],
+                "Content-Length": [
+                    "8232"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31998"
+                ],
+                "x-ms-request-id": [
+                    "WestUS_d9e73d2735f24797a08dda5d8228e509_635609224343322694"
+                ],
+                "x-ms-correlation-request-id": [
+                    "45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150302T194714Z:45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        },
+
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/nodes/woss-node-1/offline?api-version=2015-12-01-preview",
+            "RequestMethod": "POST",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "User-Agent": [
+                    "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+                ]
+            },
+            "ResponseBody": "",
+            "ResponseHeaders": {
+                "Content-Length": [
+                    "0"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Retry-After": [
+                    "5"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1190"
+                ],
+                "x-ms-request-id": [
+                    "1fccaffa-7dd6-4fd0-8ebf-bdf8523ae631"
+                ],
+                "x-ms-correlation-request-id": [
+                    "1fccaffa-7dd6-4fd0-8ebf-bdf8523ae631"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150218T004139Z:1fccaffa-7dd6-4fd0-8ebf-bdf8523ae631"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Wed, 18 Feb 2015 00:41:39 GMT"
+                ],
+                "Location": [
+                    "https://management.azure.com/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourcegroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/nodes/woss-node-1/operationresults/491b11bf-fffc-4990-81c2-e6693627d5e2?api-version=2015-12-01-preview"
+                ]
+            },
+            "StatusCode": 202
+        },
+        {
+            "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourcegroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/nodes/woss-node-1/operationresults/491b11bf-fffc-4990-81c2-e6693627d5e2?api-version=2015-12-01-preview",            
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "x-ms-version": [
+                    "2015-12-01-preview"
+                ],
+                "User-Agent": [
+                    "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+                ]
+            },
+            "ResponseBody": "",
+            "ResponseHeaders": {
+                "Content-Length": [
+                    "0"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Retry-After": [
+                    "15"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31991"
+                ],
+                "x-ms-request-id": [
+                    "f62f23d6-0868-4e9e-ada8-f31ca9538c1e"
+                ],
+                "x-ms-correlation-request-id": [
+                    "f62f23d6-0868-4e9e-ada8-f31ca9538c1e"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150218T004139Z:f62f23d6-0868-4e9e-ada8-f31ca9538c1e"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Wed, 18 Feb 2015 00:41:39 GMT"
+                ],
+                "Location": [
+                    "https://management.azure.com/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourcegroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/nodes/woss-node-1/operationresults/491b11bf-fffc-4990-81c2-e6693627d5e2?api-version=2015-12-01-preview"
+                ]
+            },
+            "StatusCode": 202
+        },
+        {
+            "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourcegroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/nodes/woss-node-1/operationresults/491b11bf-fffc-4990-81c2-e6693627d5e2?api-version=2015-12-01-preview",            
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "x-ms-version": [
+                    "2015-12-01-preview"
+                ],
+                "User-Agent": [
+                    "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+                ]
+            },
+            "ResponseBody": "",
+            "ResponseHeaders": {
+                "Content-Length": [
+                    "0"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31988"
+                ],
+                "x-ms-request-id": [
+                    "514a2b94-333d-4837-a70f-e7bc4572d6ff"
+                ],
+                "x-ms-correlation-request-id": [
+                    "514a2b94-333d-4837-a70f-e7bc4572d6ff"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150218T004225Z:514a2b94-333d-4837-a70f-e7bc4572d6ff"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Wed, 18 Feb 2015 00:42:25 GMT"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+  "Names": {
+    "Test-GetNode": [
+      ""
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "Domain": "microsoft.com"
+  }
+}

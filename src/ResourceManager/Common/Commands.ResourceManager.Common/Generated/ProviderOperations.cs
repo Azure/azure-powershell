@@ -19,6 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +29,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             this._client = client;
         }
-        
+
         private ResourceManagementClient _client;
-        
+
         /// <summary>
         /// Gets a reference to the
         /// Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._client; }
         }
-        
+
         /// <summary>
         /// Gets a resource provider.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("resourceProviderNamespace");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("resourceProviderNamespace", resourceProviderNamespace);
                 TracingAdapter.Enter(invocationId, this, "GetAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -125,13 +125,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ProviderGetResult result = null;
                     // Deserialize Response
@@ -171,33 +171,33 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             Provider providerInstance = new Provider();
                             result.Provider = providerInstance;
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 providerInstance.Id = idInstance;
                             }
-                            
+
                             JToken namespaceValue = responseDoc["namespace"];
                             if (namespaceValue != null && namespaceValue.Type != JTokenType.Null)
                             {
                                 string namespaceInstance = ((string)namespaceValue);
                                 providerInstance.Namespace = namespaceInstance;
                             }
-                            
+
                             JToken registrationStateValue = responseDoc["registrationState"];
                             if (registrationStateValue != null && registrationStateValue.Type != JTokenType.Null)
                             {
                                 string registrationStateInstance = ((string)registrationStateValue);
                                 providerInstance.RegistrationState = registrationStateInstance;
                             }
-                            
+
                             JToken resourceTypesArray = responseDoc["resourceTypes"];
                             if (resourceTypesArray != null && resourceTypesArray.Type != JTokenType.Null)
                             {
@@ -205,14 +205,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     ProviderResourceType providerResourceTypeInstance = new ProviderResourceType();
                                     providerInstance.ResourceTypes.Add(providerResourceTypeInstance);
-                                    
+
                                     JToken resourceTypeValue = resourceTypesValue["resourceType"];
                                     if (resourceTypeValue != null && resourceTypeValue.Type != JTokenType.Null)
                                     {
                                         string resourceTypeInstance = ((string)resourceTypeValue);
                                         providerResourceTypeInstance.Name = resourceTypeInstance;
                                     }
-                                    
+
                                     JToken locationsArray = resourceTypesValue["locations"];
                                     if (locationsArray != null && locationsArray.Type != JTokenType.Null)
                                     {
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             providerResourceTypeInstance.Locations.Add(((string)locationsValue));
                                         }
                                     }
-                                    
+
                                     JToken apiVersionsArray = resourceTypesValue["apiVersions"];
                                     if (apiVersionsArray != null && apiVersionsArray.Type != JTokenType.Null)
                                     {
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             providerResourceTypeInstance.ApiVersions.Add(((string)apiVersionsValue));
                                         }
                                     }
-                                    
+
                                     JToken propertiesSequenceElement = ((JToken)resourceTypesValue["properties"]);
                                     if (propertiesSequenceElement != null && propertiesSequenceElement.Type != JTokenType.Null)
                                     {
@@ -244,14 +244,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 }
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets a list of resource providers.
         /// </summary>
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         public async Task<ProviderListResult> ListAsync(ProviderListParameters parameters, CancellationToken cancellationToken)
         {
             // Validate
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("parameters", parameters);
                 TracingAdapter.Enter(invocationId, this, "ListAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -341,13 +341,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ProviderListResult result = null;
                     // Deserialize Response
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -397,28 +397,28 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     Provider providerInstance = new Provider();
                                     result.Providers.Add(providerInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         providerInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken namespaceValue = valueValue["namespace"];
                                     if (namespaceValue != null && namespaceValue.Type != JTokenType.Null)
                                     {
                                         string namespaceInstance = ((string)namespaceValue);
                                         providerInstance.Namespace = namespaceInstance;
                                     }
-                                    
+
                                     JToken registrationStateValue = valueValue["registrationState"];
                                     if (registrationStateValue != null && registrationStateValue.Type != JTokenType.Null)
                                     {
                                         string registrationStateInstance = ((string)registrationStateValue);
                                         providerInstance.RegistrationState = registrationStateInstance;
                                     }
-                                    
+
                                     JToken resourceTypesArray = valueValue["resourceTypes"];
                                     if (resourceTypesArray != null && resourceTypesArray.Type != JTokenType.Null)
                                     {
@@ -426,14 +426,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                         {
                                             ProviderResourceType providerResourceTypeInstance = new ProviderResourceType();
                                             providerInstance.ResourceTypes.Add(providerResourceTypeInstance);
-                                            
+
                                             JToken resourceTypeValue = resourceTypesValue["resourceType"];
                                             if (resourceTypeValue != null && resourceTypeValue.Type != JTokenType.Null)
                                             {
                                                 string resourceTypeInstance = ((string)resourceTypeValue);
                                                 providerResourceTypeInstance.Name = resourceTypeInstance;
                                             }
-                                            
+
                                             JToken locationsArray = resourceTypesValue["locations"];
                                             if (locationsArray != null && locationsArray.Type != JTokenType.Null)
                                             {
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                                     providerResourceTypeInstance.Locations.Add(((string)locationsValue));
                                                 }
                                             }
-                                            
+
                                             JToken apiVersionsArray = resourceTypesValue["apiVersions"];
                                             if (apiVersionsArray != null && apiVersionsArray.Type != JTokenType.Null)
                                             {
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                                     providerResourceTypeInstance.ApiVersions.Add(((string)apiVersionsValue));
                                                 }
                                             }
-                                            
+
                                             JToken propertiesSequenceElement = ((JToken)resourceTypesValue["properties"]);
                                             if (propertiesSequenceElement != null && propertiesSequenceElement.Type != JTokenType.Null)
                                             {
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -474,14 +474,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("nextLink");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -536,12 +536,12 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("nextLink", nextLink);
                 TracingAdapter.Enter(invocationId, this, "ListNextAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + nextLink;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -549,13 +549,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ProviderListResult result = null;
                     // Deserialize Response
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -605,28 +605,28 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     Provider providerInstance = new Provider();
                                     result.Providers.Add(providerInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         providerInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken namespaceValue = valueValue["namespace"];
                                     if (namespaceValue != null && namespaceValue.Type != JTokenType.Null)
                                     {
                                         string namespaceInstance = ((string)namespaceValue);
                                         providerInstance.Namespace = namespaceInstance;
                                     }
-                                    
+
                                     JToken registrationStateValue = valueValue["registrationState"];
                                     if (registrationStateValue != null && registrationStateValue.Type != JTokenType.Null)
                                     {
                                         string registrationStateInstance = ((string)registrationStateValue);
                                         providerInstance.RegistrationState = registrationStateInstance;
                                     }
-                                    
+
                                     JToken resourceTypesArray = valueValue["resourceTypes"];
                                     if (resourceTypesArray != null && resourceTypesArray.Type != JTokenType.Null)
                                     {
@@ -634,14 +634,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                         {
                                             ProviderResourceType providerResourceTypeInstance = new ProviderResourceType();
                                             providerInstance.ResourceTypes.Add(providerResourceTypeInstance);
-                                            
+
                                             JToken resourceTypeValue = resourceTypesValue["resourceType"];
                                             if (resourceTypeValue != null && resourceTypeValue.Type != JTokenType.Null)
                                             {
                                                 string resourceTypeInstance = ((string)resourceTypeValue);
                                                 providerResourceTypeInstance.Name = resourceTypeInstance;
                                             }
-                                            
+
                                             JToken locationsArray = resourceTypesValue["locations"];
                                             if (locationsArray != null && locationsArray.Type != JTokenType.Null)
                                             {
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                                     providerResourceTypeInstance.Locations.Add(((string)locationsValue));
                                                 }
                                             }
-                                            
+
                                             JToken apiVersionsArray = resourceTypesValue["apiVersions"];
                                             if (apiVersionsArray != null && apiVersionsArray.Type != JTokenType.Null)
                                             {
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                                     providerResourceTypeInstance.ApiVersions.Add(((string)apiVersionsValue));
                                                 }
                                             }
-                                            
+
                                             JToken propertiesSequenceElement = ((JToken)resourceTypesValue["properties"]);
                                             if (propertiesSequenceElement != null && propertiesSequenceElement.Type != JTokenType.Null)
                                             {
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -682,14 +682,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Registers provider to be used with a subscription.
         /// </summary>
@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("resourceProviderNamespace");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -743,7 +743,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("resourceProviderNamespace", resourceProviderNamespace);
                 TracingAdapter.Enter(invocationId, this, "RegisterAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -772,7 +772,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -780,13 +780,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Post;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -812,7 +812,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ProviderRegistionResult result = null;
                     // Deserialize Response
@@ -826,33 +826,33 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             Provider providerInstance = new Provider();
                             result.Provider = providerInstance;
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 providerInstance.Id = idInstance;
                             }
-                            
+
                             JToken namespaceValue = responseDoc["namespace"];
                             if (namespaceValue != null && namespaceValue.Type != JTokenType.Null)
                             {
                                 string namespaceInstance = ((string)namespaceValue);
                                 providerInstance.Namespace = namespaceInstance;
                             }
-                            
+
                             JToken registrationStateValue = responseDoc["registrationState"];
                             if (registrationStateValue != null && registrationStateValue.Type != JTokenType.Null)
                             {
                                 string registrationStateInstance = ((string)registrationStateValue);
                                 providerInstance.RegistrationState = registrationStateInstance;
                             }
-                            
+
                             JToken resourceTypesArray = responseDoc["resourceTypes"];
                             if (resourceTypesArray != null && resourceTypesArray.Type != JTokenType.Null)
                             {
@@ -860,14 +860,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     ProviderResourceType providerResourceTypeInstance = new ProviderResourceType();
                                     providerInstance.ResourceTypes.Add(providerResourceTypeInstance);
-                                    
+
                                     JToken resourceTypeValue = resourceTypesValue["resourceType"];
                                     if (resourceTypeValue != null && resourceTypeValue.Type != JTokenType.Null)
                                     {
                                         string resourceTypeInstance = ((string)resourceTypeValue);
                                         providerResourceTypeInstance.Name = resourceTypeInstance;
                                     }
-                                    
+
                                     JToken locationsArray = resourceTypesValue["locations"];
                                     if (locationsArray != null && locationsArray.Type != JTokenType.Null)
                                     {
@@ -876,7 +876,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             providerResourceTypeInstance.Locations.Add(((string)locationsValue));
                                         }
                                     }
-                                    
+
                                     JToken apiVersionsArray = resourceTypesValue["apiVersions"];
                                     if (apiVersionsArray != null && apiVersionsArray.Type != JTokenType.Null)
                                     {
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             providerResourceTypeInstance.ApiVersions.Add(((string)apiVersionsValue));
                                         }
                                     }
-                                    
+
                                     JToken propertiesSequenceElement = ((JToken)resourceTypesValue["properties"]);
                                     if (propertiesSequenceElement != null && propertiesSequenceElement.Type != JTokenType.Null)
                                     {
@@ -899,14 +899,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 }
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Unregisters provider from a subscription.
         /// </summary>
@@ -949,7 +949,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("resourceProviderNamespace");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -960,7 +960,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("resourceProviderNamespace", resourceProviderNamespace);
                 TracingAdapter.Enter(invocationId, this, "UnregisterAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -989,7 +989,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -997,13 +997,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Post;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -1029,7 +1029,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ProviderUnregistionResult result = null;
                     // Deserialize Response
@@ -1043,33 +1043,33 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             Provider providerInstance = new Provider();
                             result.Provider = providerInstance;
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 providerInstance.Id = idInstance;
                             }
-                            
+
                             JToken namespaceValue = responseDoc["namespace"];
                             if (namespaceValue != null && namespaceValue.Type != JTokenType.Null)
                             {
                                 string namespaceInstance = ((string)namespaceValue);
                                 providerInstance.Namespace = namespaceInstance;
                             }
-                            
+
                             JToken registrationStateValue = responseDoc["registrationState"];
                             if (registrationStateValue != null && registrationStateValue.Type != JTokenType.Null)
                             {
                                 string registrationStateInstance = ((string)registrationStateValue);
                                 providerInstance.RegistrationState = registrationStateInstance;
                             }
-                            
+
                             JToken resourceTypesArray = responseDoc["resourceTypes"];
                             if (resourceTypesArray != null && resourceTypesArray.Type != JTokenType.Null)
                             {
@@ -1077,14 +1077,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     ProviderResourceType providerResourceTypeInstance = new ProviderResourceType();
                                     providerInstance.ResourceTypes.Add(providerResourceTypeInstance);
-                                    
+
                                     JToken resourceTypeValue = resourceTypesValue["resourceType"];
                                     if (resourceTypeValue != null && resourceTypeValue.Type != JTokenType.Null)
                                     {
                                         string resourceTypeInstance = ((string)resourceTypeValue);
                                         providerResourceTypeInstance.Name = resourceTypeInstance;
                                     }
-                                    
+
                                     JToken locationsArray = resourceTypesValue["locations"];
                                     if (locationsArray != null && locationsArray.Type != JTokenType.Null)
                                     {
@@ -1093,7 +1093,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             providerResourceTypeInstance.Locations.Add(((string)locationsValue));
                                         }
                                     }
-                                    
+
                                     JToken apiVersionsArray = resourceTypesValue["apiVersions"];
                                     if (apiVersionsArray != null && apiVersionsArray.Type != JTokenType.Null)
                                     {
@@ -1102,7 +1102,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             providerResourceTypeInstance.ApiVersions.Add(((string)apiVersionsValue));
                                         }
                                     }
-                                    
+
                                     JToken propertiesSequenceElement = ((JToken)resourceTypesValue["properties"]);
                                     if (propertiesSequenceElement != null && propertiesSequenceElement.Type != JTokenType.Null)
                                     {
@@ -1116,14 +1116,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 }
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
