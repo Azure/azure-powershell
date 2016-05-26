@@ -24,11 +24,7 @@
  using System.Linq;
  		
  namespace Microsoft.Azure.Commands.Network		
- {		
-		
- 		
-	
- 		
+ {			
      [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitRouteTable"),OutputType(typeof(PSExpressRouteCircuitRoutesTable))]
      public class GetAzureRmExpressRouteCircuitRouteTable : NetworkBaseCmdlet		
      {		
@@ -62,30 +58,26 @@
             MNM.ExpressRouteCircuitPeeringType.AzurePublicPeering,		
             MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering,		
             IgnoreCase = true)]		
-         public string PeeringType { get; set; }		
- 		
-         [Parameter(		
-             Mandatory = true,		
-             HelpMessage = "The DevicePath, can be either Primary or Secondary")]		
-         [ValidateNotNullOrEmpty]		
-         public string DevicePath { get; set; }		
+         public string PeeringType { get; set; }
+
+         [Parameter(
+                      Mandatory = true,
+                      HelpMessage = "The DevicePath, can be either Primary or Secondary")]
+         [ValidateNotNullOrEmpty]
+         public DevicePathEnum DevicePath { get; set; }			
  		
          public override void ExecuteCmdlet()		
          {		
-             base.ExecuteCmdlet();		
-             DevicePathEnum path;		
-             if (Enum.TryParse(DevicePath, true, out path))		
-             {		
-                 var routeTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTable
-                     (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath).Value.Cast<object>().ToList();
-                 var psRoutes = new List<PSExpressRouteCircuitRoutesTable>();
-                 foreach (var routeTable in routeTables)		
-                 {
-                     var psRoute = Mapper.Map<PSExpressRouteCircuitRoutesTable>(routeTable);
-                     psRoutes.Add(psRoute);		
-                 }
-                 WriteObject(psRoutes, true);		
-             }		
+             base.ExecuteCmdlet();
+             var routeTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTable
+                 (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();
+             var psRoutes = new List<PSExpressRouteCircuitRoutesTable>();
+             foreach (var routeTable in routeTables)
+             {
+                 var psRoute = Mapper.Map<PSExpressRouteCircuitRoutesTable>(routeTable);
+                 psRoutes.Add(psRoute);
+             }
+             WriteObject(psRoutes, true);
          }		
      }		
  		

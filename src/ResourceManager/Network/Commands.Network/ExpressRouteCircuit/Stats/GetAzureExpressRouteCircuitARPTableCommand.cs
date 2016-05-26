@@ -27,8 +27,8 @@
  {
      public enum DevicePathEnum		
      {		
-        primary, 		
-        secondary		
+        Primary, 		
+        Secondary		
      }		
  		
      [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitARPTable"),OutputType(typeof(PSExpressRouteCircuitArpTable))]		
@@ -69,25 +69,21 @@
          [Parameter(		
              Mandatory = true,		
              HelpMessage = "The DevicePath, can be either Primary or Secondary")]		
-         [ValidateNotNullOrEmpty]		
-         public string DevicePath { get; set; }		
+         [ValidateNotNullOrEmpty]
+         public DevicePathEnum DevicePath { get; set; }		
  		
          public override void ExecuteCmdlet()		
          {		
              base.ExecuteCmdlet();		
-             DevicePathEnum path;		
-             if (Enum.TryParse(DevicePath, true, out path))		
-             {		
-                 var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListArpTable
-                     (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath).Value.Cast<object>().ToList();       		
-                 var psARPs = new List<PSExpressRouteCircuitArpTable>();		
-                 foreach (var arpTable in arpTables)		
-                 {		
-                     var psARP = Mapper.Map<PSExpressRouteCircuitArpTable>(arpTable);		
-                     psARPs.Add(psARP);		
-                 }		
-                 WriteObject(psARPs, true);		
-             }		
+             var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListArpTable
+                     (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();
+             var psARPs = new List<PSExpressRouteCircuitArpTable>();
+             foreach (var arpTable in arpTables)
+             {
+                 var psARP = Mapper.Map<PSExpressRouteCircuitArpTable>(arpTable);
+                 psARPs.Add(psARP);
+             }
+             WriteObject(psARPs, true);
          }		
      }		
  		
