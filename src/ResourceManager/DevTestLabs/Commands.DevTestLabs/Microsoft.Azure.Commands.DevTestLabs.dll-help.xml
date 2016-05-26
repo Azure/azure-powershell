@@ -4,7 +4,7 @@
 	<command:details>
 		<command:name>Get-AzureRmDtlAllowedVMSizesPolicy</command:name>
 		<maml:description>
-			<maml:para>The Get-AzureRmDtlAllowedVMSizesPolicy cmdlet gets the policy that specifies the list of VM sizes allowed in the lab.</maml:para>
+			<maml:para>Gets the allowed VM sizes policy of a lab in DevTest Labs.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -14,7 +14,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Get-AzureRmDtlAllowedVMSizesPolicy cmdlet gets the policy that specifies the list of VM sizes allowed in the lab.</maml:para>
+		<maml:para>The Get-AzureRmDtlAllowedVMSizesPolicy cmdlet gets the allowed VM sizes policy, which allows you to specify a list of VM sizes allowed in the lab. The cmdlet returns the status (enabled or disabled) of the policy and a list of all the allowed VM sizes that you have set in the specified policy.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
