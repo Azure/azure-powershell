@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisCacheClient() { }
 
         public RedisResourceWithAccessKey CreateOrUpdateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
-                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string virtualNetwork, string subnet, string staticIP)
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string subnetId, string staticIP)
         {
             _resourceManagementClient.Providers.Register("Microsoft.Cache");
             RedisCreateOrUpdateParameters parameters = new RedisCreateOrUpdateParameters
@@ -84,14 +84,9 @@ namespace Microsoft.Azure.Commands.RedisCache
                 parameters.ShardCount = shardCount.Value;
             }
 
-            if (!string.IsNullOrWhiteSpace(virtualNetwork))
+            if (!string.IsNullOrWhiteSpace(subnetId))
             {
-                parameters.VirtualNetwork = virtualNetwork;
-            }
-
-            if (!string.IsNullOrWhiteSpace(subnet))
-            {
-                parameters.Subnet = subnet;
+                parameters.SubnetId = subnetId;
             }
 
             if (!string.IsNullOrWhiteSpace(staticIP))
