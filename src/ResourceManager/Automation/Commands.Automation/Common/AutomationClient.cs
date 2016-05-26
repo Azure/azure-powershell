@@ -42,15 +42,13 @@ using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
 using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
 using Variable = Microsoft.Azure.Commands.Automation.Model.Variable;
-<<<<<<< 5a3f20949198c648832d7ae2bed4ba88898a4a3d
-=======
 using JobStream = Microsoft.Azure.Commands.Automation.Model.JobStream;
 using Credential = Microsoft.Azure.Commands.Automation.Model.CredentialInfo;
 using JobSchedule = Microsoft.Azure.Commands.Automation.Model.JobSchedule;
 using Certificate = Microsoft.Azure.Commands.Automation.Model.CertificateInfo;
 using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
 using HybridRunbookWorkerGroup = Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup;
->>>>>>> New cmdlet Get-AzureRMAutomationHybridRunbookWorkerGroup
+
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
