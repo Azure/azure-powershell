@@ -25,8 +25,6 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
-
-
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitRouteTableSummary"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
     public class GetAzureRmExpressRouteCircuitRouteTableSummaryCommand : NetworkBaseCmdlet
     {
@@ -63,27 +61,23 @@ namespace Microsoft.Azure.Commands.Network
         public string PeeringType { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The DevicePath, can be either Primary or Secondary")]
+                     Mandatory = true,
+                     HelpMessage = "The DevicePath, can be either Primary or Secondary")]
         [ValidateNotNullOrEmpty]
-        public string DevicePath { get; set; }
+        public DevicePathEnum DevicePath { get; set; }		
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            DevicePathEnum path;
-            if (Enum.TryParse(DevicePath, true, out path))
+            var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTableSummary
+                    (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();
+            var psARPs = new List<PSExpressRouteCircuitRoutesTableSummary>();
+            foreach (var arpTable in arpTables)
             {
-                var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTableSummary
-                    (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath).Value.Cast<object>().ToList();
-                var psARPs = new List<PSExpressRouteCircuitRoutesTableSummary>();
-                foreach (var arpTable in arpTables)
-                {
-                    var psARP = Mapper.Map<PSExpressRouteCircuitRoutesTableSummary>(arpTable);
-                    psARPs.Add(psARP);
-                }
-                WriteObject(psARPs, true);
+                var psARP = Mapper.Map<PSExpressRouteCircuitRoutesTableSummary>(arpTable);
+                psARPs.Add(psARP);
             }
+            WriteObject(psARPs, true);
         }
     }
 
