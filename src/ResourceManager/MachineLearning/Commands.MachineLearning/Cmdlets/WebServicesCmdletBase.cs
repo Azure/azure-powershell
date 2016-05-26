@@ -84,7 +84,12 @@ namespace Microsoft.Azure.Commands.MachineLearning
             {
                 if (this.IsFatalException(ex))
                 {
-                    ThrowTerminatingError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidOperation, this));
+                    ThrowTerminatingError(
+                        new ErrorRecord(
+                                ex, 
+                                string.Empty, 
+                                ErrorCategory.InvalidOperation, 
+                                this));
                 }
                 
                 var capturedException = ExceptionDispatchInfo.Capture(ex);
@@ -102,7 +107,12 @@ namespace Microsoft.Azure.Commands.MachineLearning
             {
                 if (this.IsFatalException(ex))
                 {
-                    ThrowTerminatingError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidOperation, this));
+                    ThrowTerminatingError(
+                            new ErrorRecord(
+                                    ex, 
+                                    string.Empty, 
+                                    ErrorCategory.InvalidOperation, 
+                                    this));
                 }
 
                 var capturedException = ExceptionDispatchInfo.Capture(ex);
@@ -197,7 +207,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 var cloudException = capturedException.SourceException as CloudException;
                 if (cloudException != null)
                 {
-                    errorRecord = this.CreateErrorRecordForCloudException(cloudException); ////new ErrorRecord(cloudException, cloudException.Message, ErrorCategory.CloseError, null);
+                    errorRecord = this.CreateErrorRecordForCloudException(cloudException); 
                 }
                 else
                 {
@@ -221,12 +231,20 @@ namespace Microsoft.Azure.Commands.MachineLearning
                             }
                             else
                             {
-                                errorRecord = new ErrorRecord(aggregateException.InnerException, aggregateException.InnerException.Message, ErrorCategory.CloseError, null);  
+                                errorRecord = new ErrorRecord(
+                                                    aggregateException.InnerException, 
+                                                    aggregateException.InnerException.Message, 
+                                                    ErrorCategory.CloseError, 
+                                                    null);  
                             }
                         }
                         else
                         {
-                            errorRecord = new ErrorRecord(capturedException.SourceException, capturedException.SourceException.Message, ErrorCategory.CloseError, null);
+                            errorRecord = new ErrorRecord(
+                                                    capturedException.SourceException, 
+                                                    capturedException.SourceException.Message, 
+                                                    ErrorCategory.CloseError, 
+                                                    null);
                         }
                     }
                 }
@@ -270,7 +288,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 errorReport.AppendLine("Error Details:");
                 foreach (var errorDetail in cloudException.Body.Details)
                 {
-                    errorReport.AppendLine("\t[Code={0}, Message={1}]".FormatInvariant(errorDetail.Code, errorDetail.Message));
+                    errorReport.AppendLine(
+                                    "\t[Code={0}, Message={1}]".FormatInvariant(
+                                                                    errorDetail.Code, 
+                                                                    errorDetail.Message));
                 }
             }
 
