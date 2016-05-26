@@ -19,16 +19,13 @@
  using Microsoft.Azure.Commands.Tags.Model;		
  using Microsoft.Azure.Management.Network;		
  using Microsoft.Azure.Commands.Network.Models;		
- using MNM = Microsoft.Azure.Management.Network.Models;		
- 		
+ using MNM = Microsoft.Azure.Management.Network.Models;
+ using System;
+ using AutoMapper;
+ using System.Linq;
+	
  namespace Microsoft.Azure.Commands.Network		
- {		
-     using System;		
-     using System.Collections;		
-     using System.Linq;		
- 		
-     using AutoMapper;		
- 		
+ {
      public enum DevicePathEnum		
      {		
         primary, 		
@@ -82,7 +79,8 @@
              DevicePathEnum path;		
              if (Enum.TryParse(DevicePath, true, out path))		
              {		
-                 var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListArpTable(ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath).Value.Cast<object>().ToList();       		
+                 var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListArpTable
+                     (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath).Value.Cast<object>().ToList();       		
                  var psARPs = new List<PSExpressRouteCircuitArpTable>();		
                  foreach (var arpTable in arpTables)		
                  {		

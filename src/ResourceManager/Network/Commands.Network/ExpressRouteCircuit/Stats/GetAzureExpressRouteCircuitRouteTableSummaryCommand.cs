@@ -12,22 +12,22 @@
 // limitations under the License.		
 // 		
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+ using System.Collections;
+ using System.Collections.Generic;
+ using System.Management.Automation;
+ using AutoMapper;
+ using Microsoft.Azure.Commands.Tags.Model;
+ using Microsoft.Azure.Management.Network;
+ using Microsoft.Azure.Commands.Network.Models;
+ using MNM = Microsoft.Azure.Management.Network.Models;
+ using System;
+ using System.Collections;
+ using System.Linq;
+ using AutoMapper;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System;
-    using System.Collections;
-    using System.Linq;
 
-    using AutoMapper;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitRouteTableSummary"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
     public class GetAzureRmExpressRouteCircuitRouteTableSummaryCommand : NetworkBaseCmdlet
@@ -76,7 +76,8 @@ namespace Microsoft.Azure.Commands.Network
             DevicePathEnum path;
             if (Enum.TryParse(DevicePath, true, out path))
             {
-                var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTableSummary(ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath).Value.Cast<object>().ToList();
+                var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTableSummary
+                    (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath).Value.Cast<object>().ToList();
                 var psARPs = new List<PSExpressRouteCircuitRoutesTableSummary>();
                 foreach (var arpTable in arpTables)
                 {

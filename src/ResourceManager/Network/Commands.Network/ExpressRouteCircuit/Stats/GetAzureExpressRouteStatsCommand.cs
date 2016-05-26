@@ -11,16 +11,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //---------------------------------------------------------------------------------
+ using System.Management.Automation;
+ using AutoMapper;
+ using Microsoft.Azure.Commands.Tags.Model;
+ using Microsoft.Azure.Management.Network;
+ using Microsoft.Azure.Commands.Network.Models;
+ using MNM = Microsoft.Azure.Management.Network.Models;
 		
 namespace Microsoft.Azure.Commands.Network		
-{		
-    using System.Management.Automation;
-    using AutoMapper;
-    using Microsoft.Azure.Commands.Tags.Model;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.Azure.Commands.Network.Models;
-    using MNM = Microsoft.Azure.Management.Network.Models;		
-		
+{
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitStats"), OutputType(typeof(PSExpressRouteCircuitStats))]		
     public class GetAzureExpressRouteCircuitStatsCommand : NetworkBaseCmdlet		
     {		
