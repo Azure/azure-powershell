@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Alias("Group")]
         public string Name { get; set; }
 
-        protected override void ProcessRecord()
+        protected override void AutomationProcessRecord()
         {
             IEnumerable<HybridRunbookWorkerGroup> ret = null;
             if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)

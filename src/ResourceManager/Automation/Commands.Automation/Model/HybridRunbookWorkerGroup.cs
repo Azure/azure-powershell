@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = accountName;
-            //this.ID = hybridRunbookWorkerGroup.Id;
+            
             this.Name = hybridRunbookWorkerGroup.Name;
-            //this.Credential = hybridRunbookWorkerGroup.Credential;
+            
             
             RunbookWorker = new List<HybridRunbookWorker>();
             foreach (var worker in hybridRunbookWorkerGroup.HybridRunbookWorkers)
@@ -71,19 +71,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </summary>
         public List<HybridRunbookWorker> RunbookWorker { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-
-        //public string ID { get; set; }
-
-
-        /// <summary>
-        /// 
-        ///</summary>
-        ///
-        // public RunAsCredentialAssociationProperty Credential { get; set; }
-
-
+        
     }
 }
