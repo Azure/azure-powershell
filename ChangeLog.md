@@ -15,6 +15,20 @@
   * Fix get Storage Account throttling failures when run it on subscription with many accounts 
     - Get-AzureRmStorageAccount
     - Get-AzureStorageAccount
+* Azure Batch
+  * Added Batch account usage cmdlets
+    - Get-BatchPoolUsageMetrics
+    - Get-BatchPoolStatistics
+    - Get-BatchJobStatistics
+  * Added application packages and task dependencies cmdlets
+    - Get-AzureRmBatchApplication
+    - Get-AzureRmBatchApplicationPackage
+    - New-AzureRmBatchApplication
+    - New-AzureRmBatchApplicationPackage
+    - Set-AzureRmBatchApplication
+    - Remove-AzureRmBatchApplicationPackage
+    - Remove-AzureRmBatchApplication
+  * Added bulk task option to New-AzureBatchTask cmdlet
 
 ##2016.05.04 version 1.4.0
 * Azure Resource Manager
