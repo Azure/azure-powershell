@@ -99,7 +99,7 @@ function Test-ServerBackupLongTermRetentionVault
 	$serverVersion = "12.0"
 	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
 	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
-	$vaultResourceId = "INSERT_RESOURCEID_HERE"
+	$vaultResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault"
 
 	# set
 	Set-AzureRmSqlServerBackupLongTermRetentionVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ResourceId $vaultResourceId
@@ -116,7 +116,7 @@ function Test-DatabaseBackupLongTermRetentionPolicy
 	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
 	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
 	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb -ResourceGroupName $rg.ResourceGroupName
-	$policyResourceId = "INSERT_RESOURCEID_HERE"
+	$policyResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupPolicies/hchung-testpolicy"
 
 	# set
 	Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName -State 1 -ResourceId $policyResourceId

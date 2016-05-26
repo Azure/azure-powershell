@@ -37,5 +37,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the backup archival policy resource ID
         /// </summary>
         public string RecoveryServicesBackupPolicyResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location
+        /// </summary>
+        public string Location { get; set; }
     }
 }
