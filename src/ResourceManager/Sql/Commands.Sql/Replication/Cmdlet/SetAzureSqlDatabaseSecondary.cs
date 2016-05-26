@@ -14,9 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
-using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
@@ -24,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// <summary>
     /// Cmdlet to fail over Azure SQL Database Replication Link to the secondary database
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseSecondary", 
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseSecondary",
         DefaultParameterSetName = NoOptionsSet,
         ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
@@ -38,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// ParameterSet to get a Replication Link by its partner Azure SQL Server Name
         /// </summary>
         internal const string ByFailoverParams = "ByFailoverParams";
-        
+
         /// <summary>
         /// Gets or sets the name of the primary Azure SQL Database with the replication link to remove.
         /// </summary>
@@ -104,13 +102,13 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureReplicationLinkModel> PersistChanges(IEnumerable<AzureReplicationLinkModel> entity)
         {
-            
+
             switch (ParameterSetName)
             {
                 case ByFailoverParams:
-                    return new List<AzureReplicationLinkModel>() { ModelAdapter.FailoverLink(this.ResourceGroupName, 
-                        this.ServerName, 
-                        this.DatabaseName, 
+                    return new List<AzureReplicationLinkModel>() { ModelAdapter.FailoverLink(this.ResourceGroupName,
+                        this.ServerName,
+                        this.DatabaseName,
                         this.PartnerResourceGroupName,
                         this.AllowDataLoss.IsPresent)
                     };

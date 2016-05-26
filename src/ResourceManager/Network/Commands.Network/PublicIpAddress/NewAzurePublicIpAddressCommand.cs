@@ -14,12 +14,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
+using System.Collections;
+using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -104,6 +104,8 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
+            WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
             if (this.IsPublicIpAddressPresent(this.ResourceGroupName, this.Name))
             {
                 ConfirmAction(
@@ -156,4 +158,3 @@ namespace Microsoft.Azure.Commands.Network
     }
 }
 
- 

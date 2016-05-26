@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,14 +14,14 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using Common;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Model.Contract;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
-    using Common;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Model.Contract;
 
     /// <summary>
     /// create a new azure container
@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     public class GetAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Name")]
-        [Parameter(Position = 0, Mandatory = true, 
+        [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "Container name",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
@@ -38,9 +38,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public string Container { get; set; }
 
         [Parameter(Position = 1,
-            HelpMessage = "Policy Identifier", 
+            HelpMessage = "Policy Identifier",
             ValueFromPipelineByPropertyName = true)]
-        public string Policy {get; set; }
+        public string Policy { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageContainerStoredAccessPolicyCommand class.

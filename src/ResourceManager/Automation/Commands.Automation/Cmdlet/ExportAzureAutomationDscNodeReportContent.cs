@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,15 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
 using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -41,8 +37,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary> 
         [Parameter(Mandatory = true, ParameterSetName = AutomationCmdletParameterSets.ByAll, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc node id.")]
         public Guid NodeId { get; set; }
-		
-		/// <summary> 
+
+        /// <summary> 
         /// Gets or sets the report id. 
         /// </summary> 
         [Parameter(Mandatory = true, ParameterSetName = AutomationCmdletParameterSets.ByAll, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc node report id.")]

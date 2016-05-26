@@ -16,7 +16,6 @@ using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -47,6 +46,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
+            string storageId = "storageId";
+
             Hashtable[] tags = new[]
             {
                 new Hashtable
@@ -55,19 +56,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
                     {"Value", "tagValue"}
                 }
             };
+
             AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, tags);
             BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
-
-            batchClientMock.Setup(b => b.UpdateAccount(resourceGroup, accountName, tags)).Returns(expected);
+            batchClientMock.Setup(b => b.UpdateAccount(resourceGroup, accountName, tags, storageId)).Returns(expected);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.Tag = tags;
+            cmdlet.AutoStorageAccountId = storageId;
 
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
         }
-
     }
 }

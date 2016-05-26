@@ -12,22 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.ServiceManagemenet.Common;
-
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Test.HttpRecorder;
-using System.IO;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Commands.Network.Test
 {
@@ -35,7 +33,7 @@ namespace Commands.Network.Test
     {
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
-        
+
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
@@ -46,8 +44,8 @@ namespace Commands.Network.Test
 
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
-        public static NetworkResourcesController NewInstance 
-        { 
+        public static NetworkResourcesController NewInstance
+        {
             get
             {
                 return new NetworkResourcesController();
@@ -73,9 +71,9 @@ namespace Commands.Network.Test
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
             RunPsTestWorkflow(
-                () => scripts, 
+                () => scripts,
                 // no custom initializer
-                null, 
+                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -83,8 +81,8 @@ namespace Commands.Network.Test
         }
 
         public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder, 
-            Action<CSMTestEnvironmentFactory> initialize, 
+            Func<string[]> scriptBuilder,
+            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -94,7 +92,7 @@ namespace Commands.Network.Test
             {
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
-                if(initialize != null)
+                if (initialize != null)
                 {
                     initialize(this.csmTestFactory);
                 }
@@ -102,16 +100,17 @@ namespace Commands.Network.Test
                 SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                
+
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1", 
-                    helper.RMProfileModule, 
-                    helper.RMResourceModule, 
-                    helper.GetRMModulePath("AzureRM.Network.psd1"));
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath("AzureRM.Network.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
@@ -127,7 +126,7 @@ namespace Commands.Network.Test
                 }
                 finally
                 {
-                    if(cleanup !=null)
+                    if (cleanup != null)
                     {
                         cleanup();
                     }

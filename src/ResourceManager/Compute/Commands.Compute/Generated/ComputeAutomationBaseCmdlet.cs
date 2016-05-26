@@ -19,15 +19,11 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -37,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected static PSArgument[] ConvertFromObjectsToArguments(string[] names, object[] objects)
         {
             var arguments = new PSArgument[objects.Length];
-            
+
             for (int index = 0; index < objects.Length; index++)
             {
                 arguments[index] = new PSArgument
@@ -59,7 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             var objects = new object[arguments.Length];
-            
+
             for (int index = 0; index < arguments.Length; index++)
             {
                 if (arguments[index] is PSArgument)
@@ -140,7 +136,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var isJObject = childObject as Newtonsoft.Json.Linq.JObject;
                 if (isJObject != null)
                 {
-                    tupleList.Add(MakeTuple(property.Name, Newtonsoft.Json.JsonConvert.SerializeObject(childObject), depth));
+                    var objStringValue = Newtonsoft.Json.JsonConvert.SerializeObject(childObject);
+
+                    int i = objStringValue.IndexOf("xmlCfg");
+                    if (i >= 0)
+                    {
+                        var xmlCfgString = objStringValue.Substring(i + 7);
+                        int start = xmlCfgString.IndexOf('"');
+                        int end = xmlCfgString.IndexOf('"', start + 1);
+                        xmlCfgString = xmlCfgString.Substring(start + 1, end - start - 1);
+                        objStringValue = objStringValue.Replace(xmlCfgString, "...");
+                    }
+
+                    tupleList.Add(MakeTuple(property.Name, objStringValue, depth));
                     max = Math.Max(max, depth * 2 + property.Name.Length);
                 }
                 else

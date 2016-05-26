@@ -24,6 +24,9 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
+    /// <summary>
+    /// Gets recovery points created for the provided item protected by the recovery services vault
+    /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRecoveryPoint"), 
         OutputType(typeof(RecoveryPointBase), typeof(IList<RecoveryPointBase>))]
     public class GetAzureRmRecoveryServicesBackupRecoveryPoint : RecoveryServicesBackupCmdletBase
@@ -31,16 +34,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string DateTimeFilterParameterSet = "DateTimeFilter";
         internal const string RecoveryPointIdParameterSet = "RecoveryPointId";
 
+        /// <summary>
+        /// Start time of Time range for which recovery point needs to be fetched
+        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, 
             ValueFromPipeline = false, Position = 0, HelpMessage = ParamHelpMsgs.RecoveryPoint.StartDate)]        
         [ValidateNotNullOrEmpty]
         public DateTime StartDate { get; set; }
 
+        /// <summary>
+        /// End time of Time range for which recovery points need to be fetched
+        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = false, 
             Position = 1, HelpMessage = ParamHelpMsgs.RecoveryPoint.EndDate)]        
         [ValidateNotNullOrEmpty]
         public DateTime EndDate { get; set; }
 
+        /// <summary>
+        /// Protected Item object for which recovery points need to be fetched
+        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, 
             ValueFromPipeline = true, Position = 2, HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
         [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, 
@@ -48,6 +60,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
 
+        /// <summary>
+        /// Recovery point Id for which detail is needed
+        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, 
             ValueFromPipeline = false, Position = 1, HelpMessage = ParamHelpMsgs.RecoveryPoint.RecoveryPointId)]
         [ValidateNotNullOrEmpty]

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {

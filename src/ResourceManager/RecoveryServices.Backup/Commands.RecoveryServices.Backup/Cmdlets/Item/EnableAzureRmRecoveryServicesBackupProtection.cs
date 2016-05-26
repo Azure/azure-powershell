@@ -28,7 +28,8 @@ using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Enable Azure Backup protection
+    /// Enable protection of an item with the recovery services vault. 
+    /// Returns the corresponding job created in the service to track this operation.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection", 
         DefaultParameterSetName = AzureVMComputeParameterSet), OutputType(typeof(JobBase))]
@@ -38,26 +39,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
         internal const string ModifyProtectionParameterSet = "ModifyProtection";
 
+        /// <summary>
+        /// Policy to be associated with this item as part of the protection operation.
+        /// </summary>
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
+        /// <summary>
+        /// Name of the Azure VM whose representative item needs to be protected.
+        /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, 
             ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.AzureVMName)]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, 
             ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.AzureVMName)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Service name of the classic Azure VM whose representative item needs to be protected.
+        /// </summary>
         [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureVMClassicComputeParameterSet, 
             HelpMessage = ParamHelpMsgs.Item.AzureVMServiceName)]
         public string ServiceName { get; set; }
 
+        /// <summary>
+        /// Resource group name of the compute Azure VM whose representative item needs to be protected.
+        /// </summary>
         [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, 
             ParameterSetName = AzureVMComputeParameterSet, 
             HelpMessage = ParamHelpMsgs.Item.AzureVMResourceGroupName)]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Item whose protection needs to be modified.
+        /// </summary>
         [Parameter(Position = 4, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, 
             HelpMessage = ParamHelpMsgs.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]

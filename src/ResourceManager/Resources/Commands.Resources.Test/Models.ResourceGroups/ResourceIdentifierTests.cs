@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IdentifierThrowsExceptionFromInvalidId()
         {
-            Assert.Throws<ArgumentException>(()=> new ResourceIdentifier("/subscriptions/abc123/resourceGroups/group1"));
+            Assert.Throws<ArgumentException>(() => new ResourceIdentifier("/subscriptions/abc123/resourceGroups/group1"));
         }
 
         [Fact]

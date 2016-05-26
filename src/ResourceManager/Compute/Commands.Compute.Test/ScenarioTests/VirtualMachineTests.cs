@@ -40,6 +40,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineUpdateWithoutNic()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineUpdateWithoutNic");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachine()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-LinuxVirtualMachine");
@@ -142,12 +149,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineListWithPaging");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithDifferentStorageResource()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithDifferentStorageResource");
+        }
+
+        [Fact (Skip="Record the test after storage account ps1 fix")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineWithPremiumStorageAccount()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithPremiumStorageAccount");
         }
 
         [Fact]

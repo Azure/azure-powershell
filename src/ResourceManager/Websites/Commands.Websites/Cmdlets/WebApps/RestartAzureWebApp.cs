@@ -15,7 +15,6 @@
 
 
 using System.Management.Automation;
-using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {

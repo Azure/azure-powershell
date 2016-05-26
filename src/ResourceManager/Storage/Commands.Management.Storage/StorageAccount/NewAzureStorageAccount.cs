@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using System.Collections;
+using System.Management.Automation;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
@@ -106,7 +106,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ExecuteCmdlet();
 
-            CheckNameAvailabilityResult checkNameAvailabilityResult =this.StorageClient.StorageAccounts.CheckNameAvailability(this.Name);
+            WriteWarning("The usage of Tags parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
+            CheckNameAvailabilityResult checkNameAvailabilityResult = this.StorageClient.StorageAccounts.CheckNameAvailability(this.Name);
             if (!checkNameAvailabilityResult.NameAvailable.Value)
             {
                 throw new System.ArgumentException(checkNameAvailabilityResult.Message, "Name");
@@ -138,7 +140,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createParameters.Encryption = ParseEncryption(EnableEncryptionService);
             }
 
-            if(this.AccessTier != null)
+            if (this.AccessTier != null)
             {
                 createParameters.AccessTier = ParseAccessTier(AccessTier);
             }

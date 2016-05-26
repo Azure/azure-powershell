@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Common;
+using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
 

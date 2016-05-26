@@ -23,6 +23,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public partial class ServiceClientAdapter
     {
+        /// <summary>
+        /// Creates a new protected item or updates an already existing protected item
+        /// </summary>
+        /// <param name="containerName">Name of the container which this item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="request">Protected item create or update request</param>
+        /// <returns>Job created in the service for this operation</returns>
         public BaseRecoveryServicesJobResponse CreateOrUpdateProtectedItem(
                 string containerName,
                 string protectedItemName,
@@ -42,6 +49,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
 
+        /// <summary>
+        /// Deletes a protected item
+        /// </summary>
+        /// <param name="containerName">Name of the container which this item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <returns>Job created in the service for this operation</returns>
         public BaseRecoveryServicesJobResponse DeleteProtectedItem(
                 string containerName,
                 string protectedItemName)
@@ -59,6 +72,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
 
+        /// <summary>
+        /// Gets a protected item
+        /// </summary>
+        /// <param name="containerName">Name of the container which this item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="queryFilter">Query filter</param>
+        /// <returns>Protected item</returns>
         public ProtectedItemResponse GetProtectedItem(
                 string containerName,
                 string protectedItemName,
@@ -78,6 +98,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
 
+        /// <summary>
+        /// List protected items protected by the Recovery Services vault according to the query params 
+        /// and pagination params.
+        /// </summary>
+        /// <param name="queryFilter">Query params</param>
+        /// <param name="paginationParams">Pagination params</param>
+        /// <returns>List of protected items</returns>
         public ProtectedItemListResponse ListProtectedItem(
                 ProtectedItemListQueryParam queryFilter,
             PaginationRequest paginationParams = null)

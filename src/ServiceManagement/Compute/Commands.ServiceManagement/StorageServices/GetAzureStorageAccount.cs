@@ -68,8 +68,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
                             return PSStorageService.Create(this.StorageClient, context);
                         }));
             }
-
-            WriteWarning(Resources.DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet);
         }
     }
 }

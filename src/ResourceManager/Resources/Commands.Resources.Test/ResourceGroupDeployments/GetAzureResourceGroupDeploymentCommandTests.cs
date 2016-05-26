@@ -12,40 +12,42 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
     public class GetAzureResourceGroupDeploymentCommandTests : RMTestBase
     {
-        private GetAzureResourceGroupDeploymentCommand cmdlet;
+        private GetAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         private string resourceGroupName = "myResourceGroup";
 
         private string deploymentName = "TheDeploymentName";
-        
+
         public GetAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetAzureResourceGroupDeploymentCommand()
+            cmdlet = new GetAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 

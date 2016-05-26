@@ -73,11 +73,11 @@ namespace Microsoft.WindowsAzure.Commands.Sync
             double avtThroughputMbps = 8.0 * computeAvg;
             double remainingSeconds = (RemainingMB() / computeAvg);
             var pr = new ProgressRecord
-                         {
-                             PercentComplete = PercentComplete(),
-                             AvgThroughputMbPerSecond = avtThroughputMbps,
-                             RemainingTime = TimeSpan.FromSeconds(remainingSeconds)
-                         };
+            {
+                PercentComplete = PercentComplete(),
+                AvgThroughputMbPerSecond = avtThroughputMbps,
+                RemainingTime = TimeSpan.FromSeconds(remainingSeconds)
+            };
             return pr;
         }
 

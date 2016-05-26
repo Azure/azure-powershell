@@ -42,7 +42,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             this.AccountType = account.AccountType;
             this.AffinityGroup = account.AffinityGroup;
             this.GeoPrimaryLocation = account.GeoPrimaryLocation;
-            this.GeoReplicationEnabled = account.GeoReplicationEnabled;
             this.GeoSecondaryLocation = account.GeoSecondaryLocation;
             this.Label = account.Label;
             this.Location = account.Location;
@@ -54,6 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             this.StorageAccountName = account.StorageAccountName;
             this.StorageAccountDescription = account.StorageAccountDescription;
             this.StorageAccountStatus = account.StorageAccountStatus;
+            this.LastGeoFailoverTime = account.LastGeoFailoverTime;
             var endpointList = new List<string>();
             foreach (var endpoint in account.Endpoints)
             {
@@ -66,8 +66,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public static PSStorageService Create(StorageManagementClient client,
             StorageServicePropertiesOperationContext account)
         {
-            var cloudStorageAccount = StorageUtilities.GenerateCloudStorageAccount(client, account.StorageAccountName);
-            return new PSStorageService(account, new AzureStorageContext(cloudStorageAccount));
+            return new PSStorageService(account, new LazyAzureStorageContext((s) =>
+            {
+                return StorageUtilities.GenerateCloudStorageAccount(client, account.StorageAccountName);
+            }, account.StorageAccountName) as AzureStorageContext); 
         }
 
         /// <summary>

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSlot");
         }
 
-        [Fact(Skip= "Needs investigation. Fails running playback")]
+        [Fact(Skip = "Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppSlotMetrics()
         {
@@ -89,6 +89,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public void TestSetWebAppSlot()
         {
             WebsitesController.NewInstance.RunPsTest("Test-SetWebAppSlot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSlotSlotConfigName()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-ManageSlotSlotConfigName");
         }
     }
 }

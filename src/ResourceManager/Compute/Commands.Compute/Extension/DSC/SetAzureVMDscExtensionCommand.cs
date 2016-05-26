@@ -1,22 +1,19 @@
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -61,8 +58,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// </summary>
         [Alias("ConfigurationArchiveBlob")]
         [Parameter(
-            Mandatory = true, 
-            Position = 5, 
+            Mandatory = true,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureBlobDscExtensionParamSet,
             HelpMessage = "The name of the configuration file that was previously uploaded by Publish-AzureRmVMDSCConfiguration")]
@@ -212,14 +209,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// <summary>
         /// The Extension Data Collection state
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  " + 
+        [Parameter(ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  " +
             "The value is persisted in the extension between calls.")
         ]
         [ValidateSet("Enable", "Disable")]
         [AllowNull]
         public string DataCollection { get; set; }
-        
+
         //Private Variables
         private const string VersionRegexExpr = @"^(([0-9])\.)\d+$";
 
@@ -381,7 +378,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 }
                 catch (Rest.Azure.CloudException ex)
                 {
-                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
+                    var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(
                         ex.Response.Content);
 
                     if ("Failed".Equals(errorReturned.Status)
@@ -411,7 +408,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             //
             // Get a reference to the container in blob storage
             //
-            var storageAccount = new CloudStorageAccount(_storageCredentials, ArchiveStorageEndpointSuffix, true); 
+            var storageAccount = new CloudStorageAccount(_storageCredentials, ArchiveStorageEndpointSuffix, true);
 
             var blobClient = storageAccount.CreateCloudBlobClient();
 
@@ -449,7 +446,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
                 var configurationDataBlobReference =
                     containerReference.GetBlockBlobReference(configurationDataBlobName);
-                
+
                 ConfirmAction(
                     true,
                     string.Empty,

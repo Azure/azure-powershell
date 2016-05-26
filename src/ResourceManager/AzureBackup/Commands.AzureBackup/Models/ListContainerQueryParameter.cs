@@ -13,11 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.BackupServices.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
@@ -36,6 +31,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         /// <summary>
         ///Containers status information
         /// </summary>
-       public string ContainerFriendlyNameField { get; set; }
+        public string ContainerFriendlyNameField { get; set; }
     }
 }
