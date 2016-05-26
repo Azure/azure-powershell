@@ -222,6 +222,7 @@
     <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionPublicSettings.cs" />
     <Compile Include="Extension\AzureDiskEncryption\DisableAzureDiskEncryption.cs" />
     <Compile Include="Extension\AzureDiskEncryption\GetAzureDiskEncryptionStatus.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\OSType.cs" />
     <Compile Include="Extension\AzureDiskEncryption\RemoveAzureDiskEncryptionExtension.cs" />
     <Compile Include="Extension\AzureDiskEncryption\SetAzureDiskEncryptionExtension.cs" />
     <Compile Include="Extension\AzureVMBackup\AzureVMBackupExtensionUtil.cs" />
