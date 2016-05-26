@@ -71,12 +71,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 DatabaseName = DatabaseName,
                 State = State,
                 RecoveryServicesBackupPolicyResourceId = ResourceId,
+                Location = model.FirstOrDefault().Location,
             });
             return newEntity;
         }
 
         /// <summary>
-        /// Update the database
+        /// Update the entity
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>

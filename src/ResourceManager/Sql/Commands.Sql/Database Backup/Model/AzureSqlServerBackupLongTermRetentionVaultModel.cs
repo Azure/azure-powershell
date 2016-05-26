@@ -19,5 +19,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the backup archival vault resource ID
         /// </summary>
         public string RecoveryServicesVaultResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location
+        /// </summary>
+        public string Location { get; set; }
     }
 }
