@@ -245,6 +245,7 @@
     <Compile Include="ExpressRouteCircuit\Authorization\RemoveAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\MoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitARPTableCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitRouteTableCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitRouteTableSummaryCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteStatsCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AddAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
