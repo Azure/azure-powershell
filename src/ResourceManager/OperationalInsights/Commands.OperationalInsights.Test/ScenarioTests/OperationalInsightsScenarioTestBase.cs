@@ -73,7 +73,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1"));
+                    helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 helper.RunPowerShellTest(scripts);
             }
