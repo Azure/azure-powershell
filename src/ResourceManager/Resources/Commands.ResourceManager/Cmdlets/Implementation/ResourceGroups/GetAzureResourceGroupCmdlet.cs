@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     "ResourceManagerStartup.ps1")));
                 invoker.Invoke();
             }
-            catch(Exception e)
+            catch
             {
-                this.WriteDebug("Exception on importing ResourceManagerStartup.ps1: " + e.Message);
+                // This may throw exception for tests, ignore.
             }
         }
     }
