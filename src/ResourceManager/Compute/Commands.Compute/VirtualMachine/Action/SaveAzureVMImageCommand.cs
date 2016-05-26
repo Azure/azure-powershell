@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage, DefaultParameterSetName = ResourceGroupNameParameterSet)]
-    [OutputType(typeof(PSAzureOperationResponse))]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class SaveAzureVMImageCommand : VirtualMachineActionBaseCmdlet
     {
         [Alias("VMName")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute
                     this.Name,
                     parameters).GetAwaiter().GetResult();
 
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
 
                 if (!string.IsNullOrWhiteSpace(this.Path))
                 {

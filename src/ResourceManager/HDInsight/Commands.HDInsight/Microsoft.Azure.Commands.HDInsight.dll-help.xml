@@ -7952,7 +7952,7 @@
 				<maml:description>
 					<maml:para>Specifies the node types on which to run the script action.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">ClusterNodeType[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">RuntimeScriptActionClusterNodeType[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
 				<maml:name>Parameters</maml:name>
@@ -7962,6 +7962,13 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+				<maml:name>ApplicationName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the application name for the script action.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
 				<maml:name>PersistOnSuccess</maml:name>
 				<maml:description>
 					<maml:para>Indicates that the script action should run each time the cluster is scaled up. This switch parameter is ignored if the script action initially fails.</maml:para>
