@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataMasking.Model;
-using Microsoft.Azure.Commands.Sql.DataMasking.Services;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines if data masking is enabled or disabled for this database")]
         [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
-        public string DataMaskingState  { get; set; }
+        public string DataMaskingState { get; set; }
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -70,12 +69,12 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
                 WriteWarning("The parameter PrivilegedLogins is being deprecated and will be removed in a future release. Use the PrivilegedUsers parameter to provide SQL users excluded from masking.");
                 model.PrivilegedUsers = PrivilegedLogins;
             }
-           
+
             if (PrivilegedUsers != null) // empty string here means that the user clears the users list
             {
                 model.PrivilegedUsers = PrivilegedUsers;
             }
-            
+
             if (!string.IsNullOrEmpty(DataMaskingState))
             {
                 model.DataMaskingState = (DataMaskingState == SecurityConstants.Enabled) ? DataMaskingStateType.Enabled : DataMaskingStateType.Disabled;

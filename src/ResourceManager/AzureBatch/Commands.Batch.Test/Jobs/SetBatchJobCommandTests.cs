@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -31,8 +32,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public SetBatchJobCommandTests()
+        public SetBatchJobCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new SetBatchJobCommand()
@@ -54,8 +56,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context));
 
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobUpdateParameters, CloudJobUpdateResponse>();
-            cmdlet.AdditionalBehaviors = new BatchClientBehavior[] {interceptor};
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                JobUpdateParameter,
+                JobUpdateOptions,
+                AzureOperationHeaderResponse<JobUpdateHeaders>>();
+
+            cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };
 
             // Verify that no exceptions occur
             cmdlet.ExecuteCmdlet();

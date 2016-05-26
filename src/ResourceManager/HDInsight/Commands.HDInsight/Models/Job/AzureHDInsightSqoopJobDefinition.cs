@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -35,5 +34,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the name of the jobDetails.
         /// </summary>
         public string JobName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the directory for libraries.
+        /// </summary>
+        public string LibDir { get; set; }
     }
 }

@@ -14,21 +14,20 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
-using System;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchTask, DefaultParameterSetName = Constants.ODataFilterParameterSet), 
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchTask, DefaultParameterSetName = Constants.ODataFilterParameterSet),
         OutputType(typeof(PSCloudTask))]
     public class GetBatchTaskCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job which contains the tasks.")]
-        [Parameter(Position = 0, ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, 
+        [Parameter(Position = 0, ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }

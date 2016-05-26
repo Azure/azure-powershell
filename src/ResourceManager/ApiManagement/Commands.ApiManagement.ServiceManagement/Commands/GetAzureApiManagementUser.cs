@@ -14,13 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementUser", DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementUser>))]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementUser, DefaultParameterSetName = GetAll)]
+    [OutputType(typeof(IList<PsApiManagementUser>), ParameterSetName = new[] { GetAll, FindBy })]
+    [OutputType(typeof(PsApiManagementUser), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementUser : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all users";
@@ -28,51 +29,51 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         private const string FindBy = "Find users";
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
             ParameterSetName = GetById,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Identifier of a user. If specified will try to find user by the identifier. This parameter is optional.")]
         public String UserId { get; set; }
 
         [Parameter(
             ParameterSetName = FindBy,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "User first name. If specified will try to find users by the first name. This parameter is optional.")]
         public String FirstName { get; set; }
 
         [Parameter(
             ParameterSetName = FindBy,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "User last name. If specified will try to find users by the last name. This parameter is optional.")]
         public String LastName { get; set; }
 
         [Parameter(
             ParameterSetName = FindBy,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "User state. If specified will try to find all users in the state. This parameter is optional.")]
         public PsApiManagementUserState? State { get; set; }
 
         [Parameter(
             ParameterSetName = FindBy,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "User email. If specified will try to find user by email. This parameter is optional.")]
         public String Email { get; set; }
 
         [Parameter(
             ParameterSetName = FindBy,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Identifier of existing group. If specified will try to find all users within the group. This parameter is optional.")]
         public String GroupId { get; set; }
 

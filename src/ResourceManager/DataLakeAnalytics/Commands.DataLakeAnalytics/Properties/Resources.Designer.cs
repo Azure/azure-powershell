@@ -214,6 +214,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing ALL Data Lake Analytics catalog secrets in database &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsCatalogSecrets {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogSecrets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Data Lake Analytics Data Lake Store account &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeAnalyticsDataLakeStore {
@@ -250,6 +259,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove ALL Data Lake Analytics catalog secrets in database &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsCatalogSecrets {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogSecrets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics Data Lake Store account &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingDataLakeAnalyticsDataLakeStore {
@@ -282,6 +300,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string StoppingDataLakeAnalyticsJob {
             get {
                 return ResourceManager.GetString("StoppingDataLakeAnalyticsJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The usage of &apos;Tags&apos; parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
+        /// </summary>
+        internal static string TagsWarning {
+            get {
+                return ResourceManager.GetString("TagsWarning", resourceCulture);
             }
         }
         

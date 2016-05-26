@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class VirtualMachineExtensionTests
     {
+        public VirtualMachineExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtension()
@@ -38,6 +43,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineCustomScriptExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtensionSecureExecution()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtensionSecureExecution");
         }
 
         [Fact]
@@ -66,6 +78,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineBginfoExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineBginfoExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineExtensionWithSwitch()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineExtensionWithSwitch");
         }
     }
 }

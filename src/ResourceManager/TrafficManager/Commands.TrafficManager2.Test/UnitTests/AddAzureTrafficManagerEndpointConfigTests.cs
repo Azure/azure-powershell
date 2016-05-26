@@ -14,15 +14,21 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
 {
-    using System.Collections.Generic;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using ServiceManagemenet.Common.Models;
+    using System.Collections.Generic;
+    using System.Management.Automation;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
-
+    using Xunit.Abstractions;
     public class AddAzureTrafficManagerEndpointConfigTests : RMTestBase
     {
+        public AddAzureTrafficManagerEndpointConfigTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureTrafficManagerEndpointConfig_ThrowsExceptionIfAddingExistingEndpoint()

@@ -14,7 +14,8 @@
 
 using AutoMapper;
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
@@ -29,7 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsData.Update, "AzureVM"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsData.Update, ProfileNouns.VirtualMachine), OutputType(typeof(ManagementOperationContext))]
     public class UpdateAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Virtual Machine to update.")]
@@ -150,6 +151,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         }
                     }
                 }
+            }
+
+            if (VM.DebugSettings != null)
+            {
+                parameters.DebugSettings = new DebugSettings
+                {
+                    BootDiagnosticsEnabled = VM.DebugSettings.BootDiagnosticsEnabled
+                };
             }
 
             ExecuteClientActionNewSM(

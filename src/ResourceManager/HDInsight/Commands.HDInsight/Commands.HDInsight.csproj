@@ -51,7 +51,7 @@
     <Compile Include="JobCommands\StopAzureHDInsightJobCommand.cs" />
     <Compile Include="JobCommands\StartAzureHDInsightJobCommand.cs" />
     <Compile Include="ManagementCommands\SetAzureHDInsightDefaultStorageCommand.cs" />
-    <Compile Include="ManagementCommands\NewAzureHDInsightClusterIdentity.cs" />
+    <Compile Include="ManagementCommands\AddAzureHDInsightClusterIdentity.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightStorageCommand.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightScriptActionCommand.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightMetastoreCommand.cs" />
@@ -64,6 +64,14 @@
     <Compile Include="ManagementCommands\NewAzureHDInsightClusterConfigCommand.cs" />
     <Compile Include="ManagementCommands\RemoveAzureHDInsightClusterCommand.cs" />
     <Compile Include="ManagementCommands\SetAzureHDInsightClusterSizeCommand.cs" />
+    <Compile Include="ManagementCommands\GetAzureHDInsightPersistedScriptActionCommand.cs" />
+    <Compile Include="ManagementCommands\GetAzureHDInsightScriptActionHistoryCommand.cs" />
+    <Compile Include="ManagementCommands\RemoveAzureHDInsightPersistedScriptActionCommand.cs" />
+    <Compile Include="ManagementCommands\SetAzureHDInsightPersistedScriptActionCommand.cs" />
+    <Compile Include="ManagementCommands\SubmitAzureHDInsightScriptActionCommand.cs" />
+    <Compile Include="Models\Management\AzureHDInsightRuntimeScriptAction.cs" />
+    <Compile Include="Models\Management\AzureHDInsightRuntimeScriptActionDetail.cs" />
+    <Compile Include="Models\Management\AzureHDInsightRuntimeScriptActionOperationResource.cs" />
     <Compile Include="HDInsightCmdletBase.cs" />
     <Compile Include="ManagementCommands\GetAzureHDInsightClusterCommand.cs" />
     <Compile Include="Constants.cs" />
@@ -85,6 +93,7 @@
     <Compile Include="ManagementCommands\NewAzureHDInsightClusterCommand.cs" />
     <Compile Include="ClusterConfigurationUtils.cs" />
     <Compile Include="Models\Management\AzureHDInsightScriptAction.cs" />
+    <Compile Include="Models\Management\RuntimeScriptActionClusterNodeType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +102,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.HDInsight.dll-help.psd1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
@@ -107,10 +116,6 @@
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.6.1-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
@@ -119,16 +124,17 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.9-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.14-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight.Job">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.Job.1.1.0-preview\lib\net40\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.Job.2.0.0-preview\lib\net40\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.11-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -147,6 +153,14 @@
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.0.1-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
@@ -155,10 +169,6 @@
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage">
       <SpecificVersion>False</SpecificVersion>
@@ -172,14 +182,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.8.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.11.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -190,6 +192,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.HDInsight.dll-help.xml">
@@ -197,6 +200,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The PSComputeNode object representing the compute node to remove.
         /// </summary>
         public PSComputeNode ComputeNode { get; private set; }
-        
+
         /// <summary>
         /// Specifies when nodes may be removed from the pool.
         /// </summary>

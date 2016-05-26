@@ -12,10 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
@@ -28,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public static AzureOperationResponse<VirtualMachineExtension> GetWithInstanceView(this IVirtualMachineExtensionsOperations iVmExtensionOperations,
             string rgName, string vmName, string name)
         {
-            const string expand = "instanceView";
+            string expand = "instanceView";
             var result = iVmExtensionOperations.GetWithHttpMessagesAsync(rgName, vmName, name, expand).GetAwaiter().GetResult();
             return result;
         }
@@ -36,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public static AzureOperationResponse<VirtualMachine> GetWithInstanceView(this IVirtualMachinesOperations iVmExtensionOperations,
             string rgName, string vmName)
         {
-            const string expand = "instanceView";
+            const InstanceViewTypes expand = InstanceViewTypes.InstanceView;
             var result = iVmExtensionOperations.GetWithHttpMessagesAsync(rgName, vmName, expand).GetAwaiter().GetResult();
             return result;
         }

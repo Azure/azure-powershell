@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Linq;
-using System.Globalization;
-using System.Collections.Generic;
-using System.Net;
 using Hyak.Common;
-using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             return workspaces;
         }
-        
+
         public virtual HttpStatusCode DeleteWorkspace(string resourceGroupName, string workspaceName)
         {
             AzureOperationResponse response = OperationalInsightsManagementClient.Workspaces.Delete(resourceGroupName, workspaceName);
@@ -118,11 +118,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         }
 
         public virtual Workspace CreateOrUpdateWorkspace(
-            string resourceGroupName, 
+            string resourceGroupName,
             string workspaceName,
-            string location, 
-            string sku, 
-            Guid? customerId, 
+            string location,
+            string sku,
+            Guid? customerId,
             IDictionary<string, string> tags)
         {
             WorkspaceProperties properties = new WorkspaceProperties();
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             parameters.Location,
                             parameters.Sku,
                             parameters.CustomerId,
-                            tags), 
+                            tags),
                         parameters.ResourceGroupName);
             };
 
@@ -224,9 +224,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 throw new ProvisioningFailedException(
                     string.Format(
-                        CultureInfo.InvariantCulture, 
-                        Resources.WorkspaceProvisioningFailed, 
-                        parameters.WorkspaceName, 
+                        CultureInfo.InvariantCulture,
+                        Resources.WorkspaceProvisioningFailed,
+                        parameters.WorkspaceName,
                         parameters.ResourceGroupName));
             }
 
@@ -260,9 +260,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             List<PSIntelligencePack> intelligencePacks = new List<PSIntelligencePack>();
 
             var listResponse = OperationalInsightsManagementClient.Workspaces.ListIntelligencePacks(resourceGroupName, workspaceName);
-            if (listResponse != null)
+            if (listResponse != null && listResponse.IntelligencePacks != null)
             {
-                listResponse.ForEach(ip => intelligencePacks.Add(new PSIntelligencePack(ip.Name, ip.Enabled)));
+                listResponse.IntelligencePacks.ForEach(ip => intelligencePacks.Add(new PSIntelligencePack(ip.Name, ip.Enabled)));
             }
 
             return intelligencePacks;
@@ -272,12 +272,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             if (enabled)
             {
-                OperationalInsightsManagementClient.Workspaces.EnableIntelligencePackAsync(resourceGroupName, workspaceName, intelligencePackName);
+                OperationalInsightsManagementClient.Workspaces.EnableIntelligencePack(resourceGroupName, workspaceName, intelligencePackName);
                 return new PSIntelligencePack(intelligencePackName, enabled); ;
             }
             else
             {
-                OperationalInsightsManagementClient.Workspaces.DisableIntelligencePackAsync(resourceGroupName, workspaceName, intelligencePackName);
+                OperationalInsightsManagementClient.Workspaces.DisableIntelligencePack(resourceGroupName, workspaceName, intelligencePackName);
                 return new PSIntelligencePack(intelligencePackName, enabled);
             }
         }

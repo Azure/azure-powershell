@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Management.Insights.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Xml;
-using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
@@ -56,14 +55,29 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the categories parameter of the cmdlet
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The log categories")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The log categories")]
+        [ValidateNotNullOrEmpty]
         public List<string> Categories { get; set; }
 
         /// <summary>
         /// Gets or sets the timegrain parameter of the cmdlet
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The timegrains")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The timegrains")]
+        [ValidateNotNullOrEmpty]
         public List<string> Timegrains { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether retention should be enabled
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the retention should be enabled")]
+        [ValidateNotNullOrEmpty]
+        public bool? RetentionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the retention in days
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days.")]
+        public int? RetentionInDays { get; set; }
 
         #endregion
 
@@ -126,6 +140,31 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                             throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Metric timegrain '{0}' is not available for '{1}'", timegrainString, this.StorageAccountId));
                         }
                         metricSettings.Enabled = this.Enabled;
+                    }
+                }
+            }
+
+            if (this.RetentionEnabled.HasValue)
+            {
+                var retentionPolicy = new RetentionPolicy
+                {
+                    Enabled = this.RetentionEnabled.Value,
+                    Days = this.RetentionInDays.Value
+                };
+
+                if (properties.Logs != null)
+                {
+                    foreach (LogSettings logSettings in properties.Logs)
+                    {
+                        logSettings.RetentionPolicy = retentionPolicy;
+                    }
+                }
+
+                if (properties.Metrics != null)
+                {
+                    foreach (MetricSettings metricSettings in properties.Metrics)
+                    {
+                        metricSettings.RetentionPolicy = retentionPolicy;
                     }
                 }
             }

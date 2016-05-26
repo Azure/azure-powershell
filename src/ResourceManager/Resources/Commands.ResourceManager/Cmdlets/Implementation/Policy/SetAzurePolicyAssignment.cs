@@ -14,15 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.IO;
-    using System.Management.Automation;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Sets the policy assignment.
@@ -76,7 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             string resourceId = this.Id ?? this.GetResourceId();
-            var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
 
             var operationResult = this.GetResourcesClient()
                         .PutResource(
@@ -106,7 +103,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private JToken GetResource(string resourceId, string apiVersion)
         {
             var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
-            
+
             var policyAssignmentObject = new PolicyAssignment
             {
                 Name = this.Name ?? ResourceIdUtility.GetResourceName(this.Id),

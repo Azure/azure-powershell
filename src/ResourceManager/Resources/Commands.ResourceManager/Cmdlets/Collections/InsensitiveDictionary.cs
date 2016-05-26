@@ -14,10 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using System;
     using System.Collections.Generic;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
-    
+
     /// <summary>
     /// The insensitive version of dictionary.
     /// </summary>

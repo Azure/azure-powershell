@@ -250,6 +250,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified offset: {0} is greater than the length of the file to preview. Please select an offset less than: {1} and greater than or equal to zero..
+        /// </summary>
+        internal static string OffsetOutOfRange {
+            get {
+                return ResourceManager.GetString("OffsetOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing DataLakeStore account &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeStoreAccount {
@@ -358,11 +367,29 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The usage of &apos;Tags&apos; parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
+        /// </summary>
+        internal static string TagsWarning {
+            get {
+                return ResourceManager.GetString("TagsWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The operation is being cancelled, please wait....
         /// </summary>
         internal static string TaskCancelledMessage {
             get {
                 return ResourceManager.GetString("TaskCancelledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Upload operation failed due to the following underlying error: {0}. You can try to resume the upload by specifying the &quot;Resume&quot; option. If the error persists, please contact Microsoft support.&quot;.
+        /// </summary>
+        internal static string UploadFailedMessage {
+            get {
+                return ResourceManager.GetString("UploadFailedMessage", resourceCulture);
             }
         }
     }

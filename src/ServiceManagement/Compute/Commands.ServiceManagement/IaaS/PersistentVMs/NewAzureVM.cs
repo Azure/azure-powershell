@@ -18,25 +18,28 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using AutoMapper;
-using Microsoft.Azure.Common.Authentication.Models;
+using Hyak.Common;
+using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.Azure;
-using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 {
-    [Cmdlet(VerbsCommon.New, "AzureVM", DefaultParameterSetName = "ExistingService"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine, DefaultParameterSetName = ExistingServiceParameterSet), OutputType(typeof(ManagementOperationContext))]
     public class NewAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
+        private const string CreateServiceParameterSet = "CreateService";
+        private const string ExistingServiceParameterSet = "ExistingService";
         private bool createdDeployment;
 
-        [Parameter(Mandatory = true, ParameterSetName = "CreateService", ValueFromPipelineByPropertyName = true, HelpMessage = "Service Name")]
-        [Parameter(Mandatory = true, ParameterSetName = "ExistingService", ValueFromPipelineByPropertyName = true, HelpMessage = "Service Name")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateServiceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Service Name")]
+        [Parameter(Mandatory = true, ParameterSetName = ExistingServiceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Service Name")]
         [ValidateNotNullOrEmpty]
         public override string ServiceName
         {
@@ -44,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             set;
         }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = "CreateService", HelpMessage = "Required if AffinityGroup is not specified. The data center region where the cloud service will be created.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = CreateServiceParameterSet, HelpMessage = "Required if AffinityGroup is not specified. The data center region where the cloud service will be created.")]
         [ValidateNotNullOrEmpty]
         public string Location
         {
@@ -52,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             set;
         }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "CreateService", HelpMessage = "Required if Location is not specified. The name of an existing affinity group associated with this subscription.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CreateServiceParameterSet, HelpMessage = "Required if Location is not specified. The name of an existing affinity group associated with this subscription.")]
         [ValidateNotNullOrEmpty]
         public string AffinityGroup
         {
@@ -60,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             set;
         }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "CreateService", HelpMessage = "The label may be up to 100 characters in length. Defaults to Service Name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CreateServiceParameterSet, HelpMessage = "The label may be up to 100 characters in length. Defaults to Service Name.")]
         [ValidateNotNullOrEmpty]
         public string ServiceLabel
         {
@@ -68,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             set;
         }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "CreateService", HelpMessage = "Dns address to which the cloud service’s IP address resolves when queried using a reverse Dns query.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CreateServiceParameterSet, HelpMessage = "Dns address to which the cloud service’s IP address resolves when queried using a reverse Dns query.")]
         [ValidateNotNullOrEmpty]
         public string ReverseDnsFqdn
         {
@@ -76,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             set;
         }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "CreateService", HelpMessage = "A description for the cloud service. The description may be up to 1024 characters in length.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CreateServiceParameterSet, HelpMessage = "A description for the cloud service. The description may be up to 1024 characters in length.")]
         [ValidateNotNullOrEmpty]
         public string ServiceDescription
         {
@@ -84,8 +87,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             set;
         }
 
-        [Parameter(Mandatory = false, ParameterSetName = "CreateService", ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment Label. Will default to service name if not specified.")]
-        [Parameter(Mandatory = false, ParameterSetName = "ExistingService", ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment Label. Will default to service name if not specified.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateServiceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment Label. Will default to service name if not specified.")]
+        [Parameter(Mandatory = false, ParameterSetName = ExistingServiceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment Label. Will default to service name if not specified.")]
         [ValidateNotNullOrEmpty]
         public string DeploymentLabel
         {
@@ -93,8 +96,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             set;
         }
 
-        [Parameter(Mandatory = false, ParameterSetName = "CreateService", ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment Name. Will default to service name if not specified.")]
-        [Parameter(Mandatory = false, ParameterSetName = "ExistingService", ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment Name. Will default to service name if not specified.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateServiceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment Name. Will default to service name if not specified.")]
+        [Parameter(Mandatory = false, ParameterSetName = ExistingServiceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment Name. Will default to service name if not specified.")]
         [ValidateNotNullOrEmpty]
         public string DeploymentName
         {
@@ -102,16 +105,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             set;
         }
 
-        [Parameter(Mandatory = false, ParameterSetName = "CreateService", HelpMessage = "Virtual network name.")]
-        [Parameter(Mandatory = false, ParameterSetName = "ExistingService", HelpMessage = "Virtual network name.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateServiceParameterSet, HelpMessage = "Virtual network name.")]
+        [Parameter(Mandatory = false, ParameterSetName = ExistingServiceParameterSet, HelpMessage = "Virtual network name.")]
         public string VNetName
         {
             get;
             set;
         }
 
-        [Parameter(Mandatory = false, ParameterSetName = "CreateService", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "DNS Settings for Deployment.")]
-        [Parameter(Mandatory = false, ParameterSetName = "ExistingService", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "DNS Settings for Deployment.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateServiceParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "DNS Settings for Deployment.")]
+        [Parameter(Mandatory = false, ParameterSetName = ExistingServiceParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "DNS Settings for Deployment.")]
         [ValidateNotNullOrEmpty]
         public Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DnsServer[] DnsSettings
         {
@@ -119,8 +122,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             set;
         }
 
-        [Parameter(Mandatory = false, ParameterSetName = "CreateService", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ILB Settings for Deployment.")]
-        [Parameter(Mandatory = false, ParameterSetName = "ExistingService", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ILB Settings for Deployment.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateServiceParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ILB Settings for Deployment.")]
+        [Parameter(Mandatory = false, ParameterSetName = ExistingServiceParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ILB Settings for Deployment.")]
         [ValidateNotNullOrEmpty]
         public Model.InternalLoadBalancerConfig InternalLoadBalancerConfig
         {
@@ -128,8 +131,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             set;
         }
 
-        [Parameter(Mandatory = true, ParameterSetName = "CreateService", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "List of VMs to Deploy.")]
-        [Parameter(Mandatory = true, ParameterSetName = "ExistingService", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "List of VMs to Deploy.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateServiceParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "List of VMs to Deploy.")]
+        [Parameter(Mandatory = true, ParameterSetName = ExistingServiceParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "List of VMs to Deploy.")]
         [ValidateNotNullOrEmpty]
         public Model.PersistentVM[] VMs
         {
@@ -371,7 +374,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     ProvisionGuestAgent = persistentVMs[i].ProvisionGuestAgent,
                     ResourceExtensionReferences = persistentVMs[i].ProvisionGuestAgent != null && persistentVMs[i].ProvisionGuestAgent.Value ? persistentVMs[i].ResourceExtensionReferences : null,
                     VMImageName = VMTuples[i].Item3 ? persistentVMs[i].VMImageName : null,
-                    MediaLocation = VMTuples[i].Item3 ? persistentVMs[i].MediaLocation : null
+                    MediaLocation = VMTuples[i].Item3 ? persistentVMs[i].MediaLocation : null,
+                    LicenseType = persistentVMs[i].LicenseType
                 };
 
                 if (parameter.OSVirtualHardDisk != null)
@@ -434,6 +438,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 ResourceExtensionReferences = persistentVM.ProvisionGuestAgent != null && persistentVM.ProvisionGuestAgent.Value ? Mapper.Map<List<ResourceExtensionReference>>(persistentVM.ResourceExtensionReferences) : null,
                 VMImageName = isVMImage ? persistentVM.OSVirtualHardDisk.SourceImageName : null,
                 MediaLocation = isVMImage ? persistentVM.OSVirtualHardDisk.MediaLink : null,
+                LicenseType = persistentVM.LicenseType
             };
 
             if (persistentVM.VMImageInput != null)
@@ -466,6 +471,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 PersistentVMHelper.MapConfigurationSets(persistentVM.ConfigurationSets).ForEach(c => result.ConfigurationSets.Add(c));
             }
 
+            if (persistentVM.DebugSettings != null)
+            {
+                result.DebugSettings = new DebugSettings
+                {
+                    BootDiagnosticsEnabled = persistentVM.DebugSettings.BootDiagnosticsEnabled
+                };
+            }
             return result;
         }
 
@@ -486,7 +498,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 
         protected void ValidateParameters()
         {
-            if (ParameterSetName.Equals("CreateService", StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetName.Equals(CreateServiceParameterSet, StringComparison.OrdinalIgnoreCase))
             {
                 if (string.IsNullOrEmpty(Location) && string.IsNullOrEmpty(AffinityGroup))
                 {
@@ -505,8 +517,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 }
             }
 
-            if (this.ParameterSetName.Equals("CreateService", StringComparison.OrdinalIgnoreCase) == true
-             || this.ParameterSetName.Equals("CreateDeployment", StringComparison.OrdinalIgnoreCase) == true)
+            if (this.ParameterSetName.Equals(CreateServiceParameterSet, StringComparison.OrdinalIgnoreCase))
             {
                 if (this.DnsSettings != null && string.IsNullOrEmpty(this.VNetName))
                 {

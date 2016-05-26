@@ -12,19 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Dns;
+using Microsoft.Azure.Management.Dns.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Dns;
-using Microsoft.Azure.Management.Dns.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure;
-using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Dns.Models
 {
@@ -34,7 +30,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
 
         public DnsClient(AzureContext context)
             : this(AzureSession.ClientFactory.CreateClient<DnsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
-        {            
+        {
         }
 
         public DnsClient(IDnsManagementClient managementClient)
@@ -47,8 +43,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
         public DnsZone CreateDnsZone(string name, string resourceGroupName, Hashtable[] tags)
         {
             ZoneCreateOrUpdateResponse response = this.DnsManagementClient.Zones.CreateOrUpdate(
-                resourceGroupName, 
-                name, 
+                resourceGroupName,
+                name,
                 new ZoneCreateOrUpdateParameters
                 {
                     IfNoneMatch = "*",

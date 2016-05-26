@@ -20,7 +20,7 @@ function Test-NewJobSchedule
 {
     param([string]$accountName)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     
     $jsId1 = "simple"
     $jsId2 = "complex"
@@ -44,11 +44,13 @@ function Test-NewJobSchedule
         $startTaskCmd = "cmd /c dir /s"
         $startTask.CommandLine = $startTaskCmd
 
+		$osFamily = "4"
+		$targetOS = "*"
+
         $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
         $poolSpec.TargetDedicated = $targetDedicated = 3
         $poolSpec.VirtualMachineSize = $vmSize = "small"
-        $poolSpec.OSFamily = $osFamily = "4"
-        $poolSpec.TargetOSVersion = $targetOS = "*"
+        $poolSpec.CloudServiceConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOS)
         $poolSpec.StartTask = $startTask
 
         $poolSpec.CertificateReferences = new-object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSCertificateReference]
@@ -192,8 +194,8 @@ function Test-NewJobSchedule
         Assert-AreEqual $poolLifeTime $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolLifeTimeOption
         Assert-AreEqual $targetDedicated $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetDedicated
         Assert-AreEqual $vmSize $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.VirtualMachineSize
-        Assert-AreEqual $osFamily $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.OSFamily
-        Assert-AreEqual $targetOS $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetOSVersion
+        Assert-AreEqual $osFamily $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.OSFamily
+        Assert-AreEqual $targetOS $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.TargetOSVersion
         Assert-AreEqual $certRefCount $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences.Count
         Assert-AreEqual $storeLocation $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreLocation
         Assert-AreEqual $storeName $jobSchedule2.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreName
@@ -273,9 +275,9 @@ Tests querying for a Batch job schedule by id
 #>
 function Test-GetJobScheduleById
 {
-    param([string]$accountName, [string]$jsId)
+    param([string]$jsId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobSchedule = Get-AzureBatchJobSchedule -Id $jsId -BatchContext $context
 
     Assert-AreEqual $jsId $jobSchedule.Id
@@ -287,9 +289,9 @@ Tests querying for Batch job schedules using a filter
 #>
 function Test-ListJobSchedulesByFilter
 {
-    param([string]$accountName, [string]$jsPrefix, [string]$matches)
+    param([string]$jsPrefix, [string]$matches)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jsFilter = "startswith(id,'" + "$jsPrefix" + "')"
     $jobSchedules = Get-AzureBatchJobSchedule -Filter $jsFilter -BatchContext $context
 
@@ -306,9 +308,9 @@ Tests querying for Batch job schedules using a select clause
 #>
 function Test-GetAndListJobSchedulesWithSelect
 {
-    param([string]$accountName, [string]$jobScheduleId)
+    param([string]$jobScheduleId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "id eq '$jobScheduleId'"
     $selectClause = "id,state"
 
@@ -337,9 +339,9 @@ Tests querying for Batch job schedules and supplying a max count
 #>
 function Test-ListJobSchedulesWithMaxCount
 {
-    param([string]$accountName, [string]$maxCount)
+    param([string]$maxCount)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobSchedules = Get-AzureBatchJobSchedule -MaxCount $maxCount -BatchContext $context
 
     Assert-AreEqual $maxCount $jobSchedules.Length
@@ -351,9 +353,9 @@ Tests querying for all job schedules under an account
 #>
 function Test-ListAllJobSchedules
 {
-    param([string]$accountName, [string]$count)
+    param([string]$count)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobSchedules = Get-AzureBatchJobSchedule -BatchContext $context
 
     Assert-AreEqual $count $jobSchedules.Length
@@ -365,9 +367,9 @@ Tests updating a job schedule
 #>
 function Test-UpdateJobSchedule
 {
-    param([string]$accountName, [string]$jobScheduleId)
+    param([string]$jobScheduleId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     $jobSchedule = Get-AzureBatchJobSchedule $jobScheduleId -BatchContext $context
     
@@ -384,11 +386,13 @@ function Test-UpdateJobSchedule
     $startTaskCmd = "cmd /c dir /s"
     $startTask.CommandLine = $startTaskCmd
 
+	$osFamily = "4"
+	$targetOS = "*"
+
     $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
     $poolSpec.TargetDedicated = $targetDedicated = 3
     $poolSpec.VirtualMachineSize = $vmSize = "small"
-    $poolSpec.OSFamily = $osFamily = "4"
-    $poolSpec.TargetOSVersion = $targetOS = "*"
+    $poolSpec.CloudServiceConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOS)
     $poolSpec.StartTask = $startTask
 
     $poolSpec.CertificateReferences = new-object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSCertificateReference]
@@ -538,8 +542,8 @@ function Test-UpdateJobSchedule
     Assert-AreEqual $poolLifeTime $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolLifeTimeOption
     Assert-AreEqual $targetDedicated $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetDedicated
     Assert-AreEqual $vmSize $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.VirtualMachineSize
-    Assert-AreEqual $osFamily $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.OSFamily
-    Assert-AreEqual $targetOS $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetOSVersion
+    Assert-AreEqual $osFamily $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.OSFamily
+    Assert-AreEqual $targetOS $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.TargetOSVersion
     Assert-AreEqual $certRefCount $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences.Count
     Assert-AreEqual $storeLocation $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreLocation
     Assert-AreEqual $storeName $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreName
@@ -611,9 +615,9 @@ Tests deleting a job schedule
 #>
 function Test-DeleteJobSchedule
 {
-    param([string]$accountName, [string]$jobScheduleId, [string]$usePipeline)
+    param([string]$jobScheduleId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the job schedule exists
     $jobSchedules = Get-AzureBatchJobSchedule -BatchContext $context
@@ -639,9 +643,9 @@ Tests disabling and enabling a job schedule
 #>
 function Test-DisableAndEnableJobSchedule
 {
-    param([string]$accountName, [string]$jobScheduleId)
+    param([string]$jobScheduleId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the job schedule is Active
     $jobSchedule = Get-AzureBatchJobSchedule $jobScheduleId -BatchContext $context
@@ -675,9 +679,9 @@ Tests terminating a job schedule
 #>
 function Test-TerminateJobSchedule
 {
-    param([string]$accountName, [string]$jobScheduleId, [string]$usePipeline)
+    param([string]$jobScheduleId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     if ($usePipeline -eq '1')
     {

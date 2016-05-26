@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.DataFactories.Models;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.DataFactories.Models;
 
 namespace Microsoft.Azure.Commands.DataFactories.Models
 {
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
                 dataSliceRun.ActivityName = value;
             }
         }
-        
+
         public string PipelineName
         {
             get

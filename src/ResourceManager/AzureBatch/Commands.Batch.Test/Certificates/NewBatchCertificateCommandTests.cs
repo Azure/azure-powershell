@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Test.ScenarioTests;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Security.Cryptography.X509Certificates;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -33,8 +33,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public NewBatchCertificateCommandTests()
+        public NewBatchCertificateCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewBatchCertificateCommand()
@@ -57,7 +58,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             cmdlet.FilePath = BatchTestHelpers.TestCertificateFileName1;
 
             // Don't go to the service on an Add Certificate call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateAddParameters, CertificateAddResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                CertificateAddParameter,
+                CertificateAddOptions,
+                AzureOperationHeaderResponse<CertificateAddHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

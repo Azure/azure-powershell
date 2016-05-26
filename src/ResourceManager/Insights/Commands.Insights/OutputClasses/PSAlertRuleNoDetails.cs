@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Management.Insights.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the Tags of the rule
         /// </summary>
-        public IDictionary<string,string> Tags { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the PSAlertRule class.

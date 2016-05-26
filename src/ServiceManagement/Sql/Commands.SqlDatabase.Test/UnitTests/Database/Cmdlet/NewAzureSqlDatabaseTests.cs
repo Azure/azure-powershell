@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                     (expected, actual) =>
                     {
                         Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                        Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                        Assert.IsNotNull(actual.UserAgent);
                         switch (expected.Index)
                         {
                             // Request 0-1: Create testdb1
@@ -141,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                 (expected, actual) =>
                 {
                     Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                    Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                    Assert.IsNotNull(actual.UserAgent);
                     switch (expected.Index)
                     {
                         // Request 0-2: Create testdb1
@@ -234,7 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                 (expected, actual) =>
                 {
                     Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                    Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                    Assert.IsNotNull(actual.UserAgent);
                     switch (expected.Index)
                     {
                         // Request 0-5: Remove database requests

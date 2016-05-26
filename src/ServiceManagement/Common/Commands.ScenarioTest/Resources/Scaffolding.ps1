@@ -12,12 +12,12 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-.".\Common.ps1"
+."$TestOutputRoot\Common.ps1"
 
-$CloudConfig=".\ServiceConfiguration.Cloud.cscfg"
-$LocalConfig=".\ServiceConfiguration.Local.cscfg"
-$ServiceDefinition=".\ServiceDefinition.csdef"
-$DeploymentSettings=".\DeploymentSettings.json"
+$CloudConfig="$TestOutputRoot\ServiceConfiguration.Cloud.cscfg"
+$LocalConfig="$TestOutputRoot\ServiceConfiguration.Local.cscfg"
+$ServiceDefinition="$TestOutputRoot\ServiceDefinition.csdef"
+$DeploymentSettings="$TestOutputRoot\DeploymentSettings.json"
 
 function Create-Service
 {

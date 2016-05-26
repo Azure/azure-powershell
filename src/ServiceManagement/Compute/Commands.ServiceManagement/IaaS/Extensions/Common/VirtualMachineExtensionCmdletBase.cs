@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
@@ -27,8 +27,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     public class VirtualMachineExtensionCmdletBase : VirtualMachineConfigurationCmdletBase
     {
-        protected const string VirtualMachineExtensionNoun = "AzureVMExtension";
-
         protected const string PublicConfigurationKeyStr = "PublicConfiguration";
         protected const string PrivateConfigurationKeyStr = "PrivateConfiguration";
         protected const string PublicTypeStr = "Public";
@@ -120,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         {
             if (string.IsNullOrEmpty(version))
             {
-                return true;
+                return false;
             }
             return version.StartsWith("1");
         }

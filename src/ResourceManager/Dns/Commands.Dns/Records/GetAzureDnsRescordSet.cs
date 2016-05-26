@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Management.Dns.Models;
 using System;
-
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 using System.Collections.Generic;
+using System.Management.Automation;
+using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
 {
@@ -110,7 +108,7 @@ namespace Microsoft.Azure.Commands.Dns
 
                 this.WriteObject(result);
             }
-            
+
         }
     }
 }
