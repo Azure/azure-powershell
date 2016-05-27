@@ -98,7 +98,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 Id = rpResponse.RecPoint.Id,
                 WorkloadType = item.WorkloadType,
                 RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
+                EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ? recPoint.IsSourceVMEncrypted.Value : false,
             };
+
+            if (result.EncryptionEnabled)
+            {
+                result.KeyAndSecretDetails = new KeyAndSecretDetails()
+                {
+                    SecretUrl = recPoint.KeyAndSecret.SecretUrl,
+                    KeyUrl = recPoint.KeyAndSecret.KeyUrl,
+                    SecretData = recPoint.KeyAndSecret.SecretData,
+                    KeyBackupData = recPoint.KeyAndSecret.KeyBackupData,
+                    KeyVersion = recPoint.KeyAndSecret.KeyVersion,
+                };
+            }
+
             return result;
         }
     }

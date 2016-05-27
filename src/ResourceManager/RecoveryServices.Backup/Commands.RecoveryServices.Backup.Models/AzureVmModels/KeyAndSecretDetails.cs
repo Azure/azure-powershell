@@ -21,43 +21,34 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Azure VM specific recovery point class.
+    /// Required details for recovering an encrypted VM.
     /// </summary>
-    public class AzureVmRecoveryPoint : RecoveryPointBase
+    public class KeyAndSecretDetails
     {
         /// <summary>
-        /// Type of recovery point (appConsistent\CrashConsistent etc) 
+        /// Secret is BEK.
         /// </summary>
-        public String RecoveryPointType { get; set; }
+        public string SecretUrl { get; set; }
 
         /// <summary>
-        /// Time when this recovery point was created
+        /// Key is KEK.
         /// </summary>
-        public DateTime RecoveryPointTime { get; set; }
+        public string KeyUrl { get; set; }
 
         /// <summary>
-        /// Additional info associated with this recovery point serialized into a string.
+        /// KEK can have multiple versions. This is needed for the callers to check whether 
+        /// the version that service has in recovery point is still active or not.
         /// </summary>
-        public string RecoveryPointAdditionalInfo { get; set; }
+        public string KeyVersion { get; set; }
 
         /// <summary>
-        /// Storage type of the VM whose backup operation has created this recovery point.
+        /// BEK data.
         /// </summary>
-        public string SourceVMStorageType { get; set; }
+        public string SecretData { get; set; }
 
         /// <summary>
-        /// Identifies whether this recovery point represents an encrypted VM at the time of backup.
+        /// KEK data.
         /// </summary>
-        public bool EncryptionEnabled { get; set; }
-
-        /// <summary>
-        /// Required details for recovering an encrypted VM. Applicable only when IsSourceVMEncrypted is true.
-        /// </summary>
-        public KeyAndSecretDetails KeyAndSecretDetails { get; set; }
-
-        public AzureVmRecoveryPoint()
-        {
-
-        }
+        public string KeyBackupData { get; set; }
     }
 }

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureVmModels\AzureVmJob.cs" />
+    <Compile Include="AzureVmModels\KeyAndSecretDetails.cs" />
     <Compile Include="AzureVmModels\AzureVmRecoveryPoint.cs" />
     <Compile Include="BaseObjects.cs" />
     <Compile Include="CmdletParamEnums.cs" />
