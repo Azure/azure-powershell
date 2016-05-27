@@ -46,6 +46,15 @@
     - Remove-AzureRmBatchApplicationPackage
     - Remove-AzureRmBatchApplication
   * Added bulk task option to New-AzureBatchTask cmdlet
+* Azure API Management
+  * Added Tenant Access cmdlets to get keys for Tenant Access via REST API
+    - Get-AzureRmApiManagementTenantAccess
+    - Set-AzureRmApiManagementTenantAccess
+   * Added OpenId Connect Provider cmdlets to Manage OpenID Connect Providers
+    - Get-AzureRmApiManagementOpenIdConnectProvider
+    - New-AzureRmApiManagementOpenIdConnectProvider
+    - Remove-AzureRmApiManagementOpenIdConnectProvider
+    - Set-AzureRmApiManagementOpenIdConnectProvider
 * Azure Automation
   * (New/Import)-AzureRmAutomationRunbook now supports the new values of 'GraphicalPowerShell' and 'GraphicalPowerShellWorkflow' with the Type parameter.  The use of 'Graph' value is discouraged.
   * Start-AzureRmAutomationRunbook now supports the Wait and MaxWaitSeconds parameters.
