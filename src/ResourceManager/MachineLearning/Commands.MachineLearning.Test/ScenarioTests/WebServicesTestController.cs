@@ -116,7 +116,8 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
                    helper.RMProfileModule,
                    helper.RMResourceModule,
                    helper.GetRMModulePath(@"AzureRM.MachineLearning.psd1"),
-                   "AzureRM.Storage.ps1");
+                   "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
