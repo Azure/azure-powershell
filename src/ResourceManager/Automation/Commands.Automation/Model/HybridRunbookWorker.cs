@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         {
             this.IpAddress = ipAddress;
             this.Name = name;
-            this.RegistrationDateTime = registrationDataTime;
+            this.RegistrationTime = registrationDataTime;
         }
         public string IpAddress { get; set; }
         //
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         //
         // Summary:
         //     Optional. Gets or sets the registration time of the worker machine.
-        public DateTimeOffset RegistrationDateTime { get; set; }
+        public DateTimeOffset RegistrationTime { get; set; }
 
     }
 }
