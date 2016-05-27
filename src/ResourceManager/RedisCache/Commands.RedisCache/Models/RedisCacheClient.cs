@@ -156,5 +156,39 @@ namespace Microsoft.Azure.Commands.RedisCache
                 }
             );
         }
+
+        public void ImportToCache(string resourceGroupName, string cacheName, string[] sasForBlobs, string format)
+        {
+            ImportRDBParameters parameters = new ImportRDBParameters();
+            parameters.Files = sasForBlobs;
+            if (!string.IsNullOrWhiteSpace(format))
+            {
+                parameters.Format = format;
+            }
+            _client.Redis.Import(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
+        }
+
+        public void ExportToCache(string resourceGroupName, string cacheName, string container, string prefix, string format)
+        {
+            ExportRDBParameters parameters = new ExportRDBParameters();
+            parameters.Container = container;
+            parameters.Prefix = prefix;
+            if (!string.IsNullOrWhiteSpace(format))
+            {
+                parameters.Format = format;
+            }
+            _client.Redis.Export(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
+        }
+
+        public void RebootCache(string resourceGroupName, string cacheName, string rebootType, int? shardId)
+        {
+            RedisRebootParameters parameters = new RedisRebootParameters();
+            parameters.RebootType = rebootType;
+            if (shardId.HasValue)
+            {
+                parameters.ShardId = shardId;
+            }
+            _client.Redis.ForceReboot(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
+        }
     }
 }

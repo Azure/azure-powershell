@@ -152,6 +152,9 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\ResetAzureRedisCache.cs" />
+    <Compile Include="Commands\ExportAzureRedisCache.cs" />
+    <Compile Include="Commands\ImportAzureRedisCache.cs" />
     <Compile Include="Commands\RemoveAzureRedisCacheDiagnostics.cs" />
     <Compile Include="Commands\SetAzureRedisCacheDiagnostics.cs" />
     <Compile Include="Commands\SetAzureRedisCache.cs" />

@@ -427,6 +427,44 @@ function Test-RemoveAzureRedisCacheDiagnostics
 
 <#
 .SYNOPSIS
+Tests ResetRMAzureRedisCache
+#>
+function Test-ResetAzureRmRedisCache
+{
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunny-reboot"
+    $rebootType = "PrimaryNode"
+    
+    Reset-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RebootType $rebootType -Force
+}
+
+<#
+.SYNOPSIS
+Tests ExportRMAzureRedisCache
+#>
+function Test-ExportAzureRmRedisCache
+{
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunny-importexport"
+    $prefix = "sunny"
+    $container = "https://sunnystoragenew.blob.core.windows.net/sunny-importexport?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
+    Export-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Prefix $prefix -Container $container -Force
+}
+
+<#
+.SYNOPSIS
+Tests ImportAzureRmRedisCache
+#>
+function Test-ImportAzureRmRedisCache
+{
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunny-importexport"
+    $files = @("https://sunnystoragenew.blob.core.windows.net/sunny-importexport/sunny?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd")
+    Import-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Files $files -Force
+}
+
+<#
+.SYNOPSIS
 Sleeps but only during recording.
 #>
 function Start-TestSleep($milliseconds)
