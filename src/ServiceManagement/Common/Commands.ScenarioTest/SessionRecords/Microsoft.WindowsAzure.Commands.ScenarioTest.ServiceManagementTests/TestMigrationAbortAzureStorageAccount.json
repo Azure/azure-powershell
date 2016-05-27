@@ -1,0 +1,921 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXM=",
+      "RequestMethod": "POST",
+      "RequestBody": "<CreateStorageServiceInput xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk7082</ServiceName>\r\n  <Description p2:nil=\"true\" xmlns:p2=\"http://www.w3.org/2001/XMLSchema-instance\" />\r\n  <Label>b25lc2RrNzA4Mg==</Label>\r\n  <Location>Central US</Location>\r\n  <AccountType>Standard_GRS</AccountType>\r\n</CreateStorageServiceInput>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "347"
+        ],
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "44a65a0120d4a7d2aa8229804b39ce7d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:33:37 GMT"
+        ],
+        "Location": [
+          "https://management.core.windows.net/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/storage/onesdk7082"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/44a65a0120d4a7d2aa8229804b39ce7d",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzQ0YTY1YTAxMjBkNGE3ZDJhYTgyMjk4MDRiMzljZTdk",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>44a65a01-20d4-a7d2-aa82-29804b39ce7d</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "197"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "1726a2fb34ecad22b73ac8c87bd57896"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:33:37 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/44a65a0120d4a7d2aa8229804b39ce7d",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzQ0YTY1YTAxMjBkNGE3ZDJhYTgyMjk4MDRiMzljZTdk",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>44a65a01-20d4-a7d2-aa82-29804b39ce7d</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "09553c1bb7d0a3b190f3683a40e4f857"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:34:08 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk7082",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvb25lc2RrNzA4Mg==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk7082</Url>\r\n  <ServiceName>onesdk7082</ServiceName>\r\n  <StorageServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>Central US</Location>\r\n    <Label>b25lc2RrNzA4Mg==</Label>\r\n    <Status>Created</Status>\r\n    <Endpoints>\r\n      <Endpoint>https://onesdk7082.blob.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk7082.queue.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk7082.table.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk7082.file.core.windows.net/</Endpoint>\r\n    </Endpoints>\r\n    <GeoPrimaryRegion>Central US</GeoPrimaryRegion>\r\n    <StatusOfPrimary>Available</StatusOfPrimary>\r\n    <GeoSecondaryRegion>East US 2</GeoSecondaryRegion>\r\n    <StatusOfSecondary>Available</StatusOfSecondary>\r\n    <CreationTime>2016-05-24T10:33:37Z</CreationTime>\r\n    <CustomDomains />\r\n    <AccountType>Standard_GRS</AccountType>\r\n  </StorageServiceProperties>\r\n  <ExtendedProperties>\r\n    <ExtendedProperty>\r\n      <Name>ResourceGroup</Name>\r\n      <Value>Default-Storage-CentralUS</Value>\r\n    </ExtendedProperty>\r\n    <ExtendedProperty>\r\n      <Name>ResourceLocation</Name>\r\n      <Value>Central US</Value>\r\n    </ExtendedProperty>\r\n  </ExtendedProperties>\r\n  <Capabilities>\r\n    <Capability>PersistentVMRole</Capability>\r\n  </Capabilities>\r\n</StorageService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1328"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "cde541f69beaa08c81dd11b3d321b849"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:34:08 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk7082",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvb25lc2RrNzA4Mg==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk7082</Url>\r\n  <ServiceName>onesdk7082</ServiceName>\r\n  <StorageServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>Central US</Location>\r\n    <Label>b25lc2RrNzA4Mg==</Label>\r\n    <Status>Created</Status>\r\n    <Endpoints>\r\n      <Endpoint>https://onesdk7082.blob.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk7082.queue.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk7082.table.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk7082.file.core.windows.net/</Endpoint>\r\n    </Endpoints>\r\n    <GeoPrimaryRegion>Central US</GeoPrimaryRegion>\r\n    <StatusOfPrimary>Available</StatusOfPrimary>\r\n    <GeoSecondaryRegion>East US 2</GeoSecondaryRegion>\r\n    <StatusOfSecondary>Available</StatusOfSecondary>\r\n    <CreationTime>2016-05-24T10:33:37Z</CreationTime>\r\n    <CustomDomains />\r\n    <AccountType>Standard_GRS</AccountType>\r\n  </StorageServiceProperties>\r\n  <ExtendedProperties>\r\n    <ExtendedProperty>\r\n      <Name>ResourceGroup</Name>\r\n      <Value>Default-Storage-CentralUS</Value>\r\n    </ExtendedProperty>\r\n    <ExtendedProperty>\r\n      <Name>ResourceLocation</Name>\r\n      <Value>Central US</Value>\r\n    </ExtendedProperty>\r\n  </ExtendedProperties>\r\n  <Capabilities>\r\n    <Capability>PersistentVMRole</Capability>\r\n  </Capabilities>\r\n  <MigrationState>Prepared</MigrationState>\r\n</StorageService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1369"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "83fe89330b28a444b4fa0a4b1477212e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:35:10 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk7082",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvb25lc2RrNzA4Mg==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk7082</Url>\r\n  <ServiceName>onesdk7082</ServiceName>\r\n  <StorageServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>Central US</Location>\r\n    <Label>b25lc2RrNzA4Mg==</Label>\r\n    <Status>Created</Status>\r\n    <Endpoints>\r\n      <Endpoint>https://onesdk7082.blob.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk7082.queue.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk7082.table.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk7082.file.core.windows.net/</Endpoint>\r\n    </Endpoints>\r\n    <GeoPrimaryRegion>Central US</GeoPrimaryRegion>\r\n    <StatusOfPrimary>Available</StatusOfPrimary>\r\n    <GeoSecondaryRegion>East US 2</GeoSecondaryRegion>\r\n    <StatusOfSecondary>Available</StatusOfSecondary>\r\n    <CreationTime>2016-05-24T10:33:37Z</CreationTime>\r\n    <CustomDomains />\r\n    <AccountType>Standard_GRS</AccountType>\r\n  </StorageServiceProperties>\r\n  <ExtendedProperties>\r\n    <ExtendedProperty>\r\n      <Name>ResourceGroup</Name>\r\n      <Value>Default-Storage-CentralUS</Value>\r\n    </ExtendedProperty>\r\n    <ExtendedProperty>\r\n      <Name>ResourceLocation</Name>\r\n      <Value>Central US</Value>\r\n    </ExtendedProperty>\r\n  </ExtendedProperties>\r\n  <Capabilities>\r\n    <Capability>PersistentVMRole</Capability>\r\n  </Capabilities>\r\n</StorageService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1328"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "2dfde2e804e9a984bd1d011d8c902efc"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:37:11 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/cde541f69beaa08c81dd11b3d321b849",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2NkZTU0MWY2OWJlYWEwOGM4MWRkMTFiM2QzMjFiODQ5",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>cde541f6-9bea-a08c-81dd-11b3d321b849</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "447b4ed07de1a49f912792493983429c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:34:08 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk7082/migration?comp=prepare",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvb25lc2RrNzA4Mi9taWdyYXRpb24/Y29tcD1wcmVwYXJl",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8b46fd703bf1a46db74ee83db3a84ad1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:34:09 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/8b46fd703bf1a46db74ee83db3a84ad1",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzhiNDZmZDcwM2JmMWE0NmRiNzRlZTgzZGIzYTg0YWQx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>8b46fd70-3bf1-a46d-b74e-e83db3a84ad1</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "197"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "50f75fd2cc70a98a8e0e303f22960e66"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:34:09 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/8b46fd703bf1a46db74ee83db3a84ad1",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzhiNDZmZDcwM2JmMWE0NmRiNzRlZTgzZGIzYTg0YWQx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>8b46fd70-3bf1-a46d-b74e-e83db3a84ad1</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "197"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b7b7c426fddaad49a02f868c00aa81ba"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:34:39 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/8b46fd703bf1a46db74ee83db3a84ad1",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzhiNDZmZDcwM2JmMWE0NmRiNzRlZTgzZGIzYTg0YWQx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>8b46fd70-3bf1-a46d-b74e-e83db3a84ad1</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "dcf9350af5a7a65f8bc525df0b4152af"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:35:09 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/83fe89330b28a444b4fa0a4b1477212e",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzgzZmU4OTMzMGIyOGE0NDRiNGZhMGE0YjE0NzcyMTJl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>83fe8933-0b28-a444-b4fa-0a4b1477212e</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "7120f49b7e1ea144b9c38eeb2dd02d7b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:35:09 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk7082/migration?comp=abort",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvb25lc2RrNzA4Mi9taWdyYXRpb24/Y29tcD1hYm9ydA==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ac1e2cb0725ea6819857390b7c46db47"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:35:10 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/ac1e2cb0725ea6819857390b7c46db47",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2FjMWUyY2IwNzI1ZWE2ODE5ODU3MzkwYjdjNDZkYjQ3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ac1e2cb0-725e-a681-9857-390b7c46db47</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "197"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0327e8ce87e5ab0a9fc6ad768ead5d52"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:35:10 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/ac1e2cb0725ea6819857390b7c46db47",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2FjMWUyY2IwNzI1ZWE2ODE5ODU3MzkwYjdjNDZkYjQ3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ac1e2cb0-725e-a681-9857-390b7c46db47</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "197"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "5c99b0d810e1a031ba98388f4624b4ca"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:35:41 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/ac1e2cb0725ea6819857390b7c46db47",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2FjMWUyY2IwNzI1ZWE2ODE5ODU3MzkwYjdjNDZkYjQ3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ac1e2cb0-725e-a681-9857-390b7c46db47</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "197"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3840cf35bd74ab47bbe60d20de3a555b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:36:10 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/ac1e2cb0725ea6819857390b7c46db47",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2FjMWUyY2IwNzI1ZWE2ODE5ODU3MzkwYjdjNDZkYjQ3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ac1e2cb0-725e-a681-9857-390b7c46db47</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "197"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "77ad2f507c9ca09daf28d8db022b555e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:36:41 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/ac1e2cb0725ea6819857390b7c46db47",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2FjMWUyY2IwNzI1ZWE2ODE5ODU3MzkwYjdjNDZkYjQ3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ac1e2cb0-725e-a681-9857-390b7c46db47</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "9250b485ff56ab9aab351314b55f92ee"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:37:11 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/2dfde2e804e9a984bd1d011d8c902efc",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzJkZmRlMmU4MDRlOWE5ODRiZDFkMDExZDhjOTAyZWZj",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>2dfde2e8-04e9-a984-bd1d-011d8c902efc</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "ed0dfec59711a79da1a28add8a16a9c8"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:37:11 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk7082",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvb25lc2RrNzA4Mg==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "5913edb54210af358a5a20d445559930"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:37:17 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/5913edb54210af358a5a20d445559930",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzU5MTNlZGI1NDIxMGFmMzU4YTVhMjBkNDQ1NTU5OTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>5913edb5-4210-af35-8a5a-20d445559930</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "592dae10c507a0009da3fdacf2770a16"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 10:37:17 GMT"
+        ],
+        "Server": [
+          "1.0.6198.382",
+          "(rd_rdfe_stable.160516-1447)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-MigrationAbortAzureStorageAccount": [
+      "onesdk7082"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "24fb23e3-6ba3-41f0-9b6e-e41131d5d61e"
+  }
+}
