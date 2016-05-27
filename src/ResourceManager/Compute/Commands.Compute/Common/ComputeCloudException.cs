@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
 using System;
@@ -52,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
             if (cloudException.Response.StatusCode.Equals(HttpStatusCode.OK)
                 && cloudException.Response.Content != null)
             {
-                var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
+                var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(
                     cloudException.Response.Content);
 
                 sb.AppendLine().AppendFormat("StartTime: {0}", errorReturned.StartTime);
@@ -77,12 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                     return sb.ToString();
                 }
 
-                var headers = cloudException.Response.Headers;
-
-                var match = Regex.Match(headers.ToString(),
-                    @"x-ms-request-id: ([a-z0-9]{8}\-[a-z0-9]{4}\-[a-z0-9]{4}\-[a-z0-9]{4}\-[a-z0-9]{12})",
-                    RegexOptions.IgnoreCase);
-                string operationId = (match.Success) ? match.Groups[1].Value : "";
+                string operationId = cloudException.RequestId;
 
                 sb.AppendLine().AppendFormat(
                     "OperationID : '{0}'",
@@ -90,14 +87,5 @@ namespace Microsoft.Azure.Commands.Compute.Common
             }
             return sb.ToString();
         }
-    }
-
-    public class ComputeLongRunningOperationError
-    {
-        public string OperationId;
-        public string Status;
-        public DateTime? StartTime;
-        public DateTime? EndTime;
-        public ApiError Error;
     }
 }

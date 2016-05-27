@@ -76,6 +76,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
             // Therefore, we need to check whether the Profile exists before we actually try to create it.
             try
             {
+                WriteWarning("The usage of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
                 this.TrafficManagerClient.GetTrafficManagerProfile(this.ResourceGroupName, this.Name);
 
                 throw new PSArgumentException(string.Format(ProjectResources.Error_CreateExistingProfile, this.Name, this.ResourceGroupName));

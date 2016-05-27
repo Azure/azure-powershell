@@ -1,6 +1,55 @@
+##2016.06.01 version 1.5.0
+* Azure Resource Manager
+  - (Get/Set/New/Remove)-AzureRmResourceGroup cmdlets will now use the new autorest generated ARM assembly
+  - (Get/New/Remove)-AzureRmResourceGroupDeployment cmdlets will now use the new autorest generated ARM assembly
+  - (Get/Register)-AzureRmProviderFeature cmdlets will now use the new autorest generated ARM assembly
+  - (Get/Register/Unregister)-AzureRmResourceProvider cmdlets will now use the new autorest generated ARM assembly
+  - Use a constant backoff interval when polling for deployment progress in New-AzureRmResourceGroupDeployment cmdlet
+  - Add support to specify file share paths for cmdlets that take input file as parameter
+  - Improve error message when Move-AzureRmResource cmdlet fails
+  - Improve error message when New-AzureRmResourceGroupDeployment cmdlet fails
+  - Enable object and array type parameters for template deployment
+  - Preserve casing for resource properties in New/Set-AzureRmResource cmdlet
+  - PropertyObject parameter is now optional in New-AzureRmResource cmdlet
+* Azure Compute (CRP)
+  - Add additional validation for fixed vhd in Add-AzureRmVhd cmdlet
+  - Add -ForceRerun parameter to Set-AzureRmVMCustomExtension, Set-AzureRmVMBginfoExtension, and Set-AzureRmAccessExtension
+  - Update -VhdUri parameter from optional to mandatory (bug fix)
+  - Remove GeoReplicationEnabled deprecation warning message for Get-AzureStorageAccount cmdlet
+  - Fix piping issue for Remove-AzureRmExtension
+  - Create one storage account for Boot diagnostics (one for each location, instead of one for each resource group)
+  - Add -DiskSizeInGB paramter to Set-AzureRmVMOSDisk cmdlet
+  - Show operation id and status for POST Async cmdlets.
+  - Fix Remove-AzureRmNetworkInterface issue for not throwing error when all NICs are removed.
+  - Fix 'Type' output for List cmdlet
+  - Remove xmlCfg contents from output format.
+  - Show warning message for upcoming breaking update of Tag fix.
+  - Change Set-AzureBootDiagnostics cmdlets name to Set-AzureVMBootDiagnostics (and set alias)
+* Azure Compute (ASM)
+  - Storage Migration cmdlet (Move-AzureStorageAccount)
+  - Fix Add-AzureCertificate issue
+* Azure Storage
+  * Fix get Storage Account throttling failures when run it on subscription with many accounts 
+    - Get-AzureRmStorageAccount
+    - Get-AzureStorageAccount
+* Azure Batch
+  * Added Batch account usage cmdlets
+    - Get-BatchPoolUsageMetrics
+    - Get-BatchPoolStatistics
+    - Get-BatchJobStatistics
+  * Added application packages and task dependencies cmdlets
+    - Get-AzureRmBatchApplication
+    - Get-AzureRmBatchApplicationPackage
+    - New-AzureRmBatchApplication
+    - New-AzureRmBatchApplicationPackage
+    - Set-AzureRmBatchApplication
+    - Remove-AzureRmBatchApplicationPackage
+    - Remove-AzureRmBatchApplication
+  * Added bulk task option to New-AzureBatchTask cmdlet
+
 ##2016.05.04 version 1.4.0
 * Azure Resource Manager
-  - Get-AzureRmLocation cmdley: New cmdlet Lists all public Azure locatiosn with available provider namespaces
+  - Get-AzureRmLocation cmdlet: New cmdlet Lists all public Azure locatiosn with available provider namespaces
   - Get-AzureRMResourceGroupDeploymentOperations: Improved output format
   - Get-AzureRMDeployment: Responses contain all error details
   - Added cmdlet help anbd examples
