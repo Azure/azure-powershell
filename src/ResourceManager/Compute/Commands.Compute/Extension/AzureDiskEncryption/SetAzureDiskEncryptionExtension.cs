@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             if (OperatingSystemTypes.Linux.Equals(currentOSType))
             {
                 if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                    returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                    returnedExtension.ExtensionType.Equals(this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
                 {
                     publisherMatch = true;
                 }
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             else if (OperatingSystemTypes.Windows.Equals(currentOSType))
             {
                 if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                    returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                    returnedExtension.ExtensionType.Equals(this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
                 {
                     publisherMatch = true;
                 }
