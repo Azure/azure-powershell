@@ -1,4 +1,4 @@
-##2016.06.04 version 1.5.0
+##2016.06.01 version 1.5.0
 * Azure Resource Manager
   - (Get/Set/New/Remove)-AzureRmResourceGroup cmdlets will now use the new autorest generated ARM assembly
   - (Get/New/Remove)-AzureRmResourceGroupDeployment cmdlets will now use the new autorest generated ARM assembly
