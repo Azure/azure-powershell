@@ -83,8 +83,12 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
                                 NewAzureMLWebService.CreateFromFileParameterSet,
                                 StringComparison.OrdinalIgnoreCase))
                     {
-                        string jsonDefinition = CmdletHelpers.GetWebServiceDefinitionFromFile(this.DefinitionFile);
-                        this.NewWebServiceDefinition = ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);
+                        string jsonDefinition = 
+                                CmdletHelpers.GetWebServiceDefinitionFromFile(
+                                                this.SessionState.Path.CurrentFileSystemLocation.Path,
+                                                this.DefinitionFile);
+                        this.NewWebServiceDefinition = 
+                                ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);
                     }
 
                     WebService newWebService =

@@ -49,10 +49,19 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             return false;
         }
 
-        internal static string GetWebServiceDefinitionFromFile(string definitionFilePath)
+        internal static string GetWebServiceDefinitionFromFile(string currentPath, string definitionFilePath)
         {
-            var definitionFileFullPath = Path.GetFullPath(definitionFilePath);
-            if (!File.Exists(definitionFileFullPath))
+            string definitionFileFullPath;
+            if (Path.IsPathRooted(definitionFilePath))
+            {
+                definitionFileFullPath = definitionFilePath;
+            }
+            else
+            {
+                definitionFileFullPath = Path.Combine(currentPath, definitionFilePath);
+            }
+
+            if (!File.Exists(definitionFilePath))
             {
                 throw new FileNotFoundException(Resources.MissingDefinitionFile, definitionFilePath);
             }
