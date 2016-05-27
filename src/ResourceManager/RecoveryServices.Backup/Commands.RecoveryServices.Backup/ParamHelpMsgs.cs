@@ -80,6 +80,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 "also be deleted and restoring data will not be possible.";
             public const string ExpiryDate = "Retention period for the recovery points created by this backup operaiton";
             public const string ForceOption = "Force disables backup protection (prevents confirmation dialog). This parameter is optional.";
+            public const string ExpiryDateTimeUTC = "Date and time specified in UTC after which the recovery points created " +
+                "by this backup will no longer be available for restore";
         }
 
         internal static class RecoveryPoint

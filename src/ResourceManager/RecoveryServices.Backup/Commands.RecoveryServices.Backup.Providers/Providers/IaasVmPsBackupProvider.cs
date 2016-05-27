@@ -209,9 +209,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public BaseRecoveryServicesJobResponse TriggerBackup()
         {
             ItemBase item = (ItemBase)ProviderData[ItemParams.Item];
+            DateTime? expiryDateTime = (DateTime?)ProviderData[ItemParams.ExpiryDateTimeUTC];
             AzureVmItem iaasVmItem = item as AzureVmItem;
+
             return ServiceClientAdapter.TriggerBackup(IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectionContainerName),
-                IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectedItemName));
+                IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectedItemName), expiryDateTime);
         }
 
         /// <summary>
