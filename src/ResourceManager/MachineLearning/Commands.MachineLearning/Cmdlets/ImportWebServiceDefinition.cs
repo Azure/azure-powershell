@@ -50,7 +50,9 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
                         ImportWebServiceDefinition.ImportFromFileParamSet, 
                         StringComparison.OrdinalIgnoreCase))
             {
-                jsonDefinition = CmdletHelpers.GetWebServiceDefinitionFromFile(this.InputFile);
+                jsonDefinition = CmdletHelpers.GetWebServiceDefinitionFromFile(
+                                        this.SessionState.Path.CurrentFileSystemLocation.Path, 
+                                        this.InputFile);
             }
 
             WebService serviceDefinition = ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);
