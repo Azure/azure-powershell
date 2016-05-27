@@ -499,6 +499,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     }
 
                     break;
+                case DataLakeAnalyticsEnums.CatalogItemType.TablePartition:
+                    if (isList)
+                    {
+                        toReturn.AddRange(GetTablePartitions(accountName, path.DatabaseName,
+                            path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName));
+                    }
+                    else
+                    {
+                        toReturn.Add(GetTablePartition(accountName, path.DatabaseName,
+                            path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName, path.TableStatisticsOrPartitionName));
+                    }
+
+                    break;
                 case DataLakeAnalyticsEnums.CatalogItemType.TableValuedFunction:
                     if (isList)
                     {
@@ -522,7 +535,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     {
                         toReturn.Add(GetTableStatistic(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName,
-                            path.TableStatisticsName));
+                            path.TableStatisticsOrPartitionName));
                     }
 
                     break;
@@ -704,6 +717,28 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
                 response = _catalogClient.Catalog.ListTablesNext(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
+        }
+
+        private USqlTablePartition GetTablePartition(string accountName, string databaseName, string schemaName,
+            string tableName, string partitionName)
+        {
+            return
+                _catalogClient.Catalog.GetTablePartition(accountName, databaseName, schemaName, tableName, partitionName);
+        }
+
+        private IList<USqlTablePartition> GetTablePartitions(string accountName, string databaseName,
+            string schemaName, string tableName)
+        {
+            List<USqlTablePartition> toReturn = new List<USqlTablePartition>();
+            var response = _catalogClient.Catalog.ListTablePartitions(accountName, databaseName, schemaName, tableName);
+            toReturn.AddRange(response);
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = _catalogClient.Catalog.ListTablePartitionsNext(response.NextPageLink);
                 toReturn.AddRange(response);
             }
 
@@ -958,6 +993,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
                     break;
                 case DataLakeAnalyticsEnums.CatalogItemType.TableStatistics:
+                case DataLakeAnalyticsEnums.CatalogItemType.TablePartition:
                     if (string.IsNullOrEmpty(path.DatabaseName) ||
                         string.IsNullOrEmpty(path.SchemaAssemblyOrExternalDataSourceName) ||
                         string.IsNullOrEmpty(path.TableOrTableValuedFunctionName))
@@ -966,7 +1002,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                             path.FullCatalogItemPath));
                     }
 
-                    if (string.IsNullOrEmpty(path.TableStatisticsName))
+                    if (string.IsNullOrEmpty(path.TableStatisticsOrPartitionName))
                     {
                         isList = true;
                     }

@@ -27,40 +27,13 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachineExtension,
         DefaultParameterSetName = SettingsParamSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class SetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    public class SetAzureVMExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         protected const string SettingStringParamSet = "SettingString";
         protected const string SettingsParamSet = "Settings";
 
         [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Alias("ResourceName")]
-        [Parameter(
             Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual machine name.")]
-        [ValidateNotNullOrEmpty]
-        public string VMName { get; set; }
-
-        [Alias("ExtensionName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The publisher.")]
         [ValidateNotNullOrEmpty]
@@ -69,24 +42,13 @@ namespace Microsoft.Azure.Commands.Compute
         [Alias("Type")]
         [Parameter(
             Mandatory = true,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type.")]
         [ValidateNotNullOrEmpty]
         public string ExtensionType { get; set; }
 
-        [Alias("HandlerVersion", "Version")]
-        [Parameter(
-            Mandatory = true,
-            Position = 5,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type.")]
-        [ValidateNotNullOrEmpty]
-        public string TypeHandlerVersion { get; set; }
-
         [Parameter(
             ParameterSetName = SettingsParamSet,
-            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The settings.")]
         [ValidateNotNullOrEmpty]
@@ -94,7 +56,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = SettingsParamSet,
-            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected settings.")]
         [ValidateNotNullOrEmpty]
@@ -102,7 +63,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = SettingStringParamSet,
-            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The setting raw string.")]
         [ValidateNotNullOrEmpty]
@@ -110,31 +70,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = SettingStringParamSet,
-            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected setting raw string.")]
         [ValidateNotNullOrEmpty]
         public string ProtectedSettingString { get; set; }
-
-        [Parameter(
-            Position = 8,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Disable auto-upgrade of minor version")]
-        public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Force re-run even if extension configuration has not changed")]
-        [ValidateNotNullOrEmpty]
-        public string ForceRerun { get; set; }
 
         public override void ExecuteCmdlet()
         {
