@@ -46,6 +46,15 @@
     - Remove-AzureRmBatchApplicationPackage
     - Remove-AzureRmBatchApplication
   * Added bulk task option to New-AzureBatchTask cmdlet
+* Azure API Management
+  * Added Tenant Access cmdlets to get keys for Tenant Access via REST API
+    - Get-AzureRmApiManagementTenantAccess
+    - Set-AzureRmApiManagementTenantAccess
+   * Added OpenId Connect Provider cmdlets to Manage OpenID Connect Providers
+    - Get-AzureRmApiManagementOpenIdConnectProvider
+    - New-AzureRmApiManagementOpenIdConnectProvider
+    - Remove-AzureRmApiManagementOpenIdConnectProvider
+    - Set-AzureRmApiManagementOpenIdConnectProvider
 
 ##2016.05.04 version 1.4.0
 * Azure Resource Manager
