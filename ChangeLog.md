@@ -46,6 +46,11 @@
     - Remove-AzureRmBatchApplicationPackage
     - Remove-AzureRmBatchApplication
   * Added bulk task option to New-AzureBatchTask cmdlet
+* Azure Automation
+  * (New/Import)-AzureRmAutomationRunbook now supports the new values of 'GraphicalPowerShell' and 'GraphicalPowerShellWorkflow' with the Type parameter.  The use of 'Graph' value is discouraged.
+  * Start-AzureRmAutomationRunbook now supports the Wait and MaxWaitSeconds parameters.
+  * (New/Get)-AzureRmAutomationSchedule now supports weekly and monthly schedules.
+  * New-AzureRmAutomationSchedule now takes a TimeZone parameter to adjust for daylight savings.
 
 ##2016.05.04 version 1.4.0
 * Azure Resource Manager
