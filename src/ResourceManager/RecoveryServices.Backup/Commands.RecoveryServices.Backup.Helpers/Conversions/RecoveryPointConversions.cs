@@ -109,7 +109,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     KeyUrl = recPoint.KeyAndSecret.KeyUrl,
                     SecretData = recPoint.KeyAndSecret.SecretData,
                     KeyBackupData = recPoint.KeyAndSecret.KeyBackupData,
-                    KeyVersion = recPoint.KeyAndSecret.KeyVersion,
+                    KeyVaultId = recPoint.KeyAndSecret.KeyVaultId,
+                    SecretVaultId = recPoint.KeyAndSecret.SecretVaultId,
                 };
             }
 

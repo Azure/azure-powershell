@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 {
                     EncryptionEnabled = rp.EncryptionEnabled,
                     KekUrl = rp.KeyAndSecretDetails.KeyUrl,
-                    //KekVaultId = ?,
+                    KekVaultId = rp.KeyAndSecretDetails.KeyVaultId,
                     SecretKeyUrl = rp.KeyAndSecretDetails.SecretUrl,
-                    //SecretKeyVaultId = ?,
+                    SecretKeyVaultId = rp.KeyAndSecretDetails.SecretVaultId,
                 };
 
                 // TODO: Handle file name

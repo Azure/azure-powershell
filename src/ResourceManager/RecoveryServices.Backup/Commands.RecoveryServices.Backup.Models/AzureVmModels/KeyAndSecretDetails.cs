@@ -36,10 +36,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string KeyUrl { get; set; }
 
         /// <summary>
-        /// KEK can have multiple versions. This is needed for the callers to check whether 
-        /// the version that service has in recovery point is still active or not.
+        /// ID of the Key Vault where this Key is stored
         /// </summary>
-        public string KeyVersion { get; set; }
+        public string KeyVaultId { get; set; }
+
+        /// <summary>
+        /// ID of the Key Vault where this Secret is stored
+        /// </summary>
+        public string SecretVaultId { get; set; }
 
         /// <summary>
         /// BEK data.
