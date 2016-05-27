@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>Job created by this operation</returns>
         public BaseRecoveryServicesJobResponse TriggerBackup(string containerName, string itemName)
         {
+            TriggerBackupRequest triggerBackupRequest = new TriggerBackupRequest();
+            triggerBackupRequest.Item = new BackupRequestResource();
+            IaaSVMBackupRequest iaasVmBackupRequest = new IaaSVMBackupRequest();
+            triggerBackupRequest.Item.Properties = iaasVmBackupRequest;
+            
             return BmsAdapter.Client.Backups.TriggerBackupAsync(
                 BmsAdapter.GetResourceGroupName(),
                 BmsAdapter.GetResourceName(),
@@ -60,6 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 ServiceClientAdapter.AzureFabricName,
                 containerName,
                 itemName,
+                triggerBackupRequest,
                 BmsAdapter.CmdletCancellationToken).Result;
         }
     }
