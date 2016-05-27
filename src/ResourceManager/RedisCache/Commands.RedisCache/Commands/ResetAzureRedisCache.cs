@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemovingRedisCache, Name),
-                string.Format(Resources.RemoveRedisCache, Name),
+                string.Format(Resources.RebootingRedisCache, Name),
+                string.Format(Resources.RebootRedisCache, Name),
                 Name,
                 () => CacheClient.RebootCache(ResourceGroupName, Name, RebootType, ShardId));
             }

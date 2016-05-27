@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemovingRedisCache, Name),
-                string.Format(Resources.RemoveRedisCache, Name),
+                string.Format(Resources.ImportingRedisCache, Name),
+                string.Format(Resources.ImportRedisCache, Name),
                 Name,
                 () => CacheClient.ImportToCache(ResourceGroupName, Name, Files, Format));
             }

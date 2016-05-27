@@ -157,10 +157,10 @@ namespace Microsoft.Azure.Commands.RedisCache
             );
         }
 
-        public void ImportToCache(string resourceGroupName, string cacheName, string[] sasForBlobs, string format)
+        public void ImportToCache(string resourceGroupName, string cacheName, string[] blobUrisWithSasTokens, string format)
         {
             ImportRDBParameters parameters = new ImportRDBParameters();
-            parameters.Files = sasForBlobs;
+            parameters.Files = blobUrisWithSasTokens;
             if (!string.IsNullOrWhiteSpace(format))
             {
                 parameters.Format = format;
@@ -168,10 +168,10 @@ namespace Microsoft.Azure.Commands.RedisCache
             _client.Redis.Import(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
         }
 
-        public void ExportToCache(string resourceGroupName, string cacheName, string container, string prefix, string format)
+        public void ExportToCache(string resourceGroupName, string cacheName, string containerUrisWithSasTokens, string prefix, string format)
         {
             ExportRDBParameters parameters = new ExportRDBParameters();
-            parameters.Container = container;
+            parameters.Container = containerUrisWithSasTokens;
             parameters.Prefix = prefix;
             if (!string.IsNullOrWhiteSpace(format))
             {

@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemovingRedisCache, Name),
-                string.Format(Resources.RemoveRedisCache, Name),
+                string.Format(Resources.ExportingRedisCache, Name),
+                string.Format(Resources.ExportRedisCache, Name),
                 Name,
                 () => CacheClient.ExportToCache(ResourceGroupName, Name, Container, Prefix, Format));
             }
