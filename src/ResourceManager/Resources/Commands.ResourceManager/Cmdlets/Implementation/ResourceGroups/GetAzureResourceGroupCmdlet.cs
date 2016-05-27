@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 System.Management.Automation.PowerShell invoker = null;
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    AppDomain.CurrentDomain.BaseDirectory,
                     "ResourceManagerStartup.ps1")));
                 invoker.Invoke();
             }
