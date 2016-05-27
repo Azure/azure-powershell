@@ -18,13 +18,13 @@ function Test-AzureSqlPolicyScenario
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
 	# get default objects
-	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureSql"
+	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureSQL"
 
 	# now create new policy
-	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swati321" -WorkloadType "AzureSql" -RetentionPolicy $retPolicy
+	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swati321" -WorkloadType "AzureSQL" -RetentionPolicy $retPolicy
 		
 	# now get policy and update it with new schedule/retention
-	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureSql"
+	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureSQL"
 
     $temp = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swati321"	
 	Assert-AreEqual $temp.RetentionPolicy.RetentionDuration.RetentionCount 180;
