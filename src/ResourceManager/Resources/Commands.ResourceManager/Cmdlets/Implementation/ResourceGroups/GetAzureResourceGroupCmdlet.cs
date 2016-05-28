@@ -72,13 +72,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 System.Management.Automation.PowerShell invoker = null;
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    AppDomain.CurrentDomain.BaseDirectory,
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "ResourceManagerStartup.ps1")));
                 invoker.Invoke();
             }
-            catch(Exception e)
+            catch
             {
-                this.WriteDebug("Exception on importing ResourceManagerStartup.ps1: " + e.Message);
+                // need to fix exception in WriteDebug
+                // this.WriteDebug("Exception on importing ResourceManagerStartup.ps1: " + e.Message);
             }
         }
     }
