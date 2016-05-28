@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
         public string PublicIpAddressId { get; set; }
 
         [Parameter(
-            ParameterSetName = "SetByResourceP",
+            ParameterSetName = "SetByResource",
             HelpMessage = "PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
