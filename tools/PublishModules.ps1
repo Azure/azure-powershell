@@ -42,7 +42,7 @@ if ([string]::IsNullOrEmpty($scope))
 }
 
 Write-Host "Publishing $scope package(and its dependencies)" 
-
+Import-Module "$PSScriptRoot\UpdateExports\UpdateExports.psd1"
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
 $repo = Get-PSRepository | where { $_.SourceLocation -eq $repositoryLocation }
@@ -58,6 +58,7 @@ $publishToLocal = test-path $repositoryLocation
 if (($scope -eq 'All') -or $publishToLocal ) {
     # If we publish 'All' or to local folder, publish AzureRM.Profile first, becasue it is the common dependency
     Write-Host "Publishing profile module"
+    Update-ModuleExports "$resourceManagerRootFolder\AzureRM.Profile\AzureRM.Profile.psd1"
     Publish-Module -Path "$resourceManagerRootFolder\AzureRM.Profile" -NuGetApiKey $apiKey -Repository $repoName
     Write-Host "Published profile module"
 }
@@ -66,14 +67,18 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
     $modulePath = "$packageFolder\$buildConfig\Storage\Azure.Storage"
     # Publish AzureStorage module
     Write-Host "Publishing AzureStorage module from $modulePath"
+    Update-ModuleExports "$modulePath\Azure.Storage.psd1"
     Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
+    Write-Host "Published storage data plane module"
 } 
 
 if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
     $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure"
     # Publish Azure module
     Write-Host "Publishing ServiceManagement(aka Azure) module from $modulePath"
+    Update-ModuleExports "$modulePath\Azure.psd1"
     Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
+    Write-Host "Published Azure (ServiceManagement) module"
 } 
 
 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
@@ -83,7 +88,9 @@ if ($scope -eq 'All') {
         # And "Azure.Storage" which is built out as test dependencies  
         if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
             $modulePath = $module.FullName
+            $moduleName = $module.Name
             Write-Host "Publishing $module module from $modulePath"
+            Update-ModuleExports "$modulePath\$moduleName.psd1"
             Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
             Write-Host "Published $module module"
         }
@@ -91,7 +98,9 @@ if ($scope -eq 'All') {
 } elseif ($scope -ne 'AzureRM') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
     if (Test-Path $modulePath) {
+        $moduleName = "AzureRM.$scope"
         Write-Host "Publishing $scope module from $modulePath"
+        Update-ModuleExports "$modulePath\$moduleName.psd1"
         Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
         Write-Host "Published $scope module"        
     } else {
