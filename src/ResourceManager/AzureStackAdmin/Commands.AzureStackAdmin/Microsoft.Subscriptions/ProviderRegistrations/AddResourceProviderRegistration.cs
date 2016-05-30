@@ -26,7 +26,7 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Add Resource Provider Registration Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, Nouns.ResourceProviderRegistration)]
+    [Cmdlet(VerbsCommon.Add, Nouns.ResourceProviderRegistration, DefaultParameterSetName = "MultipleExtensions")]
     [OutputType(typeof(ProviderRegistrationModel))]
     public class AddResourceProviderRegistration : AdminApiCmdlet
     {
@@ -35,7 +35,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 128)]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 128)]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 90)]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
         // TODO - use API to get CSM location?
@@ -59,7 +59,7 @@ namespace Microsoft.AzureStack.Commands
         /// Gets or sets the resource manager location.
         /// </summary>
         [Parameter(Mandatory = true)]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string ArmLocation { get; set; }
 
         /// <summary>
@@ -67,14 +67,13 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 128)]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// Gets or sets the subscription id.
         /// </summary>
         [Parameter(Mandatory = false)]
-        [ValidateNotNull]
         [ValidateGuidNotEmpty]
         public Guid SubscriptionId { get; set; }
 
@@ -82,26 +81,35 @@ namespace Microsoft.AzureStack.Commands
         /// Gets or sets the resource provider registration location (region).
         /// </summary>
         [Parameter(Mandatory = true)]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string ProviderLocation { get; set; }
 
         /// <summary>
         /// Optional. Gets or sets the name of the extension.
         /// </summary>
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ParameterSetName = "SingleExtension")]
         public string ExtensionName { get; set; }
 
         /// <summary>
         /// Gets or sets the extension endpoint.
         /// </summary>
+        [Parameter(Mandatory = true, ParameterSetName = "SingleExtension")]
         [ValidateAbsoluteUri]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public Uri ExtensionUri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the extensions json string.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = "MultipleExtensions")]
+        [ValidateNotNullOrEmpty]
+        public string Extensions { get; set; }
 
         /// <summary>
         /// Gets or sets the resource type json string.
         /// </summary>
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         [Parameter(Mandatory = true)]
         public string ResourceTypes { get; set; }
 
@@ -112,24 +120,48 @@ namespace Microsoft.AzureStack.Commands
         {
             using (var client = this.GetAzureStackClient(this.SubscriptionId))
             {
-                var registrationParams = new ProviderRegistrationCreateOrUpdateParameters()
-                {
-                    ProviderRegistration = new ProviderRegistrationModel()
+                ProviderRegistrationCreateOrUpdateParameters registrationParams = null;
+                if( this.ParameterSetName.Equals("SingleExtension", StringComparison.OrdinalIgnoreCase) )
+                { 
+                    registrationParams = new ProviderRegistrationCreateOrUpdateParameters()
                     {
-                        Name = this.Name,
-                        Location = this.ArmLocation,
-                        Properties = new ManifestPropertiesDefinition()
+                        ProviderRegistration = new ProviderRegistrationModel()
                         {
-                            DisplayName = this.DisplayName,
-                            Namespace = this.Namespace,
-                            Enabled = true,
-                            ProviderLocation = this.ProviderLocation,
-                            ExtensionName = this.ExtensionName,
-                            ExtensionUri = this.ExtensionUri.AbsoluteUri,
-                            ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>()
+                            Name = this.Name,
+                            Location = this.ArmLocation,
+                            Properties = new ManifestPropertiesDefinition()
+                            {
+                                DisplayName = this.DisplayName,
+                                Namespace = this.Namespace,
+                                Enabled = true,
+                                ProviderLocation = this.ProviderLocation,
+                                ExtensionName = this.ExtensionName,
+                                ExtensionUri = (this.ExtensionUri == null) ? null : this.ExtensionUri.AbsoluteUri,
+                                ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>()
+                            }
                         }
-                    }
-                };
+                    };
+                }
+                else
+                {
+                    registrationParams = new ProviderRegistrationCreateOrUpdateParameters()
+                    {
+                        ProviderRegistration = new ProviderRegistrationModel()
+                        {
+                            Name = this.Name,
+                            Location = this.ArmLocation,
+                            Properties = new ManifestPropertiesDefinition()
+                            {
+                                DisplayName = this.DisplayName,
+                                Namespace = this.Namespace,
+                                Enabled = true,
+                                ProviderLocation = this.ProviderLocation,
+                                Extensions = this.Extensions.FromJson<List<Extension>>(),
+                                ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>()
+                            }
+                        }
+                    };
+                }
                 
                 this.WriteVerbose(Resources.AddingResourceProviderRegistration.FormatArgs(registrationParams.ProviderRegistration.Properties.DisplayName));
 

@@ -6187,6 +6187,26 @@
             required arguments.
             </summary>
         </member>
+        <member name="T:Microsoft.AzureStack.Management.Models.Extension">
+            <summary>
+            The resource provider extension.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Models.Extension.Name">
+            <summary>
+            Optional. Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Models.Extension.Uri">
+            <summary>
+            Optional. Gets or sets the Uri.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Models.Extension.#ctor">
+            <summary>
+            Initializes a new instance of the Extension class.
+            </summary>
+        </member>
         <member name="T:Microsoft.AzureStack.Management.Models.ExtensionMetadata">
             <summary>
             Your documentation here.
@@ -7088,6 +7108,11 @@
         <member name="P:Microsoft.AzureStack.Management.Models.ManifestPropertiesDefinition.ExtensionName">
             <summary>
             Optional. Gets or sets the name of the extension.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Models.ManifestPropertiesDefinition.Extensions">
+            <summary>
+            Optional. Gets or sets the extensions.
             </summary>
         </member>
         <member name="P:Microsoft.AzureStack.Management.Models.ManifestPropertiesDefinition.ExtensionUri">
