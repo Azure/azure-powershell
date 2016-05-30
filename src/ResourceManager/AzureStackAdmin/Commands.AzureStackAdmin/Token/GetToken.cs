@@ -65,6 +65,7 @@ namespace Microsoft.AzureStack.Commands.Security
         /// <summary>
         /// Gets or sets the resource.
         /// </summary>
+        [Parameter(ParameterSetName = "AAD", Mandatory = true)]
         [Parameter]
         [ValidateNotNull]
         public string Resource { get; set; }
@@ -98,7 +99,9 @@ namespace Microsoft.AzureStack.Commands.Security
             AuthenticationResult result;
 
             this.Resource = this.Resource ?? SharedConstants.ResourceManager.ClientId;
-            this.ClientId = this.ClientId ?? SharedConstants.AzureStackPowerShell.ClientId;
+            // HACK - This ClientId parameter will be removed in a future release
+            this.ClientId = SharedConstants.AzurePowerShell.ClientId;
+
 
             if (this.IsInteractiveTokenRequest())
             {
