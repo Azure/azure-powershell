@@ -127,11 +127,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             VirtualMachineExtension vmExtensionParameters = null;
             if (OperatingSystemTypes.Windows.Equals(currentOSType))
             {
+                this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
+
                 vmExtensionParameters = new VirtualMachineExtension
                 {
                     Location = vmParameters.Location,
                     Publisher = AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
-                    VirtualMachineExtensionType = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName,
+                    VirtualMachineExtensionType = this.Name,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion,
                     Settings = SettingString,
                     ProtectedSettings = ProtectedSettingString,
@@ -140,10 +142,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
             if (OperatingSystemTypes.Linux.Equals(currentOSType))
             {
+                this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
+
                 vmExtensionParameters = new VirtualMachineExtension
                 {
                     Location = vmParameters.Location,
-                    Publisher = this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
+                    Publisher = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
                     VirtualMachineExtensionType = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
                     Settings = SettingString,
