@@ -60,6 +60,15 @@
   * Start-AzureRmAutomationRunbook now supports the Wait and MaxWaitSeconds parameters.
   * (New/Get)-AzureRmAutomationSchedule now supports weekly and monthly schedules.
   * New-AzureRmAutomationSchedule now takes a TimeZone parameter to adjust for daylight savings.
+* Azure Machine Learning (Preview)
+  * New cmdlets to manage Azure Machine Learning Web Services
+    - New-AzureRmMlWebService
+    - Get-AzureRmMlWebService
+    - Remove-AzureRmMlWebService
+    - Update-AzureRmMlWebService
+    - Get-AzureRmMlWebServiceKeys
+    - Import-AzureRmMlWebService
+    - Export-AzureRmMlWebService
 
 ##2016.05.04 version 1.4.0
 * Azure Resource Manager
