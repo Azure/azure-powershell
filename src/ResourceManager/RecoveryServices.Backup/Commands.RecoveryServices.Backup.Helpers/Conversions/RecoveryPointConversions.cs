@@ -105,12 +105,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 result.KeyAndSecretDetails = new KeyAndSecretDetails()
                 {
-                    SecretUrl = recPoint.KeyAndSecret.SecretUrl,
-                    KeyUrl = recPoint.KeyAndSecret.KeyUrl,
-                    SecretData = recPoint.KeyAndSecret.SecretData,
-                    KeyBackupData = recPoint.KeyAndSecret.KeyBackupData,
-                    KeyVaultId = recPoint.KeyAndSecret.KeyVaultId,
-                    SecretVaultId = recPoint.KeyAndSecret.SecretVaultId,
+                    SecretUrl = recPoint.KeyAndSecret.BekDetails.SecretUrl,
+                    KeyUrl = recPoint.KeyAndSecret.KekDetails.KeyUrl,
+                    SecretData = recPoint.KeyAndSecret.BekDetails.SecretData,
+                    KeyBackupData = recPoint.KeyAndSecret.KekDetails.KeyBackupData,
+                    KeyVaultId = recPoint.KeyAndSecret.KekDetails.KeyVaultId,
+                    SecretVaultId = recPoint.KeyAndSecret.BekDetails.SecretVaultId,
                 };
             }
 
