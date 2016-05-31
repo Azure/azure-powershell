@@ -448,7 +448,7 @@ function Test-ExportAzureRmRedisCache
     $cacheName = "sunny-importexport"
     $prefix = "sunny"
     $container = "https://sunnystoragenew.blob.core.windows.net/sunny-importexport?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
-    Export-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Prefix $prefix -Container $container -Force
+    Export-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Prefix $prefix -Container $container
 }
 
 <#

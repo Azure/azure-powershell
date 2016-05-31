@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisCacheClient() { }
 
         public RedisResourceWithAccessKey CreateOrUpdateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
-                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string subnetId, string staticIP)
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string subnetId, string staticIP, IDictionary<string, string> tags = null)
         {
             _resourceManagementClient.Providers.Register("Microsoft.Cache");
             RedisCreateOrUpdateParameters parameters = new RedisCreateOrUpdateParameters
@@ -55,6 +55,11 @@ namespace Microsoft.Azure.Commands.RedisCache
                     Capacity = skuCapacity
                 }
             };
+
+            if (tags != null)
+            {
+                parameters.Tags = tags;
+            }
 
             if (redisConfiguration != null)
             {

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RebootingRedisCache, Name),
+                string.Format(Resources.RebootingRedisCache, Name, RebootType),
                 string.Format(Resources.RebootRedisCache, Name),
                 Name,
                 () => CacheClient.RebootCache(ResourceGroupName, Name, RebootType, ShardId));

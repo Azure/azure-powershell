@@ -1979,12 +1979,6 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>When the Force parameter is provided, export will be performed without any confirmation prompts.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
           <maml:name>PassThru</maml:name>
           <maml:description>
             <maml:para>By default Export-AzureRmRedisCache export does not return any value. If the PassThru parameter is provided then Export-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
@@ -2059,18 +2053,6 @@
         </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>When the Force parameter is provided, export will be performed without any confirmation prompts.</maml:para>
-        </maml:description>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
         <maml:name>PassThru</maml:name>
         <maml:description>
           <maml:para>By default Export-AzureRmRedisCache export does not return any value. If the PassThru parameter is provided then Export-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
@@ -2128,7 +2110,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Export-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprifix" -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl" -Force
+          PS C:\&gt;Export-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprifix" -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
         </dev:code>
         <dev:remarks>
           <maml:para>

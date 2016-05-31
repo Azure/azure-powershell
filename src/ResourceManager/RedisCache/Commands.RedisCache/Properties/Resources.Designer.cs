@@ -61,24 +61,6 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to export data from redis cache &apos;{0}&apos;?.
-        /// </summary>
-        internal static string ExportingRedisCache {
-            get {
-                return ResourceManager.GetString("ExportingRedisCache", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Exporting data from redis cache &apos;{0}&apos; ....
-        /// </summary>
-        internal static string ExportRedisCache {
-            get {
-                return ResourceManager.GetString("ExportRedisCache", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to import data into redis cache &apos;{0}&apos;?.
         /// </summary>
         internal static string ImportingRedisCache {
@@ -106,7 +88,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to reboot redis cache &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to reboot redis cache &apos;{0}&apos; {1}?.
         /// </summary>
         internal static string RebootingRedisCache {
             get {

@@ -41,28 +41,13 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Format for import operation.")]
         public string Format { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.ExportingRedisCache, Name),
-                string.Format(Resources.ExportRedisCache, Name),
-                Name,
-                () => CacheClient.ExportToCache(ResourceGroupName, Name, Container, Prefix, Format));
-            }
-            else
-            {
-                CacheClient.ExportToCache(ResourceGroupName, Name, Container, Prefix, Format);
-            }
-
+            CacheClient.ExportToCache(ResourceGroupName, Name, Container, Prefix, Format);
+            
             if (PassThru)
             {
                 WriteObject(true);
