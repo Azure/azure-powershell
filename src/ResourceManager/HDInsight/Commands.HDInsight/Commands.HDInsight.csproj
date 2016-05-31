@@ -93,6 +93,7 @@
     <Compile Include="ManagementCommands\NewAzureHDInsightClusterCommand.cs" />
     <Compile Include="ClusterConfigurationUtils.cs" />
     <Compile Include="Models\Management\AzureHDInsightScriptAction.cs" />
+    <Compile Include="Models\Management\RuntimeScriptActionClusterNodeType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

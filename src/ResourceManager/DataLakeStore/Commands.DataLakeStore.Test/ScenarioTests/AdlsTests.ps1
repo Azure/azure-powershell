@@ -204,6 +204,18 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual "File" $result.Type
 		Assert-AreEqual $($content.length*2) $result.Length
 	
+		# Preview content from the file
+		$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile
+		Assert-AreEqual $($content.length*2) $previewContent.Length
+
+		# Preview a subset of the content
+		$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile -Offset 2
+		Assert-AreEqual $(($content.length*2) - 2) $previewContent.Length
+
+		# Preview a subset with a specific length
+		$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile -Offset 2 -Length $content.Length
+		Assert-AreEqual $content.length $previewContent.Length
+
 		# Import and get file
 		$localFileInfo = Get-ChildItem $fileToCopy
 		$result = Import-AzureRmDataLakeStoreItem -Account $accountName -Path $fileToCopy -Destination $importFile

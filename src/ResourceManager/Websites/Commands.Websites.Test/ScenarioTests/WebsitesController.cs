@@ -118,7 +118,8 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                     helper.RMStorageDataPlaneModule,
                     helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.WebSites.psd1"),
-                    "AzureRM.Storage.ps1");
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 try
                 {

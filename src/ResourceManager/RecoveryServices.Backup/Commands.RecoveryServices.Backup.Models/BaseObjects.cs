@@ -20,10 +20,13 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Base class for objects.
+    /// Base class for all the PowerShell model objects.
     /// </summary>
     public class ObjectBase
     {
+        /// <summary>
+        /// Method to validate the object properties.
+        /// </summary>
         public virtual void Validate() { }
     }
 
@@ -33,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class ManagementContext : ObjectBase
     {
         /// <summary>
-        /// BackupManagementType
+        /// Type of the backup management agent.
         /// </summary>
         public BackupManagementType BackupManagementType { get; set; }
 
@@ -50,6 +53,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class ContainerContext : ManagementContext
     {
+        /// <summary>
+        /// Type of the container that maybe managed by the recovery services vault.
+        /// </summary>
         public ContainerType ContainerType { get; set; }
 
         public ContainerContext() { }
@@ -72,6 +78,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class BackupEngineContext : ManagementContext
     {
+        /// <summary>
+        /// Type of the backup engine.
+        /// </summary>
         public string BackupEngineType { get; set; }
 
         public BackupEngineContext() { }
@@ -89,7 +98,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class ContainerBase : ContainerContext
     {
         /// <summary>
-        /// Container Name
+        /// Name of the container
         /// </summary>
         public string Name { get; set; }
 
@@ -107,7 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class BackupEngineBase : BackupEngineContext
     {
         /// <summary>
-        /// Container Name
+        /// Name of the backup engine
         /// </summary>
         public string Name { get; set; }
 
@@ -165,7 +174,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string Id { get; set; }
 
         /// <summary>
-        /// Last Recovery Point for the item
+        /// Latest Recovery Point for the item
         /// </summary>
         public DateTime? LatestRecoveryPoint { get; set; }
 
@@ -195,28 +204,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         private global::Microsoft.Azure.Management.RecoveryServices.Backup.Models.RecoveryPointResource rp;
 
         /// <summary>
-        /// 
+        /// ID of the recovery point
         /// </summary>
         public string RecoveryPointId { get; set; }
 
         /// <summary>
-        /// 
+        /// Name of the item represented by this recovery point
         /// </summary>
         public string ItemName { get; set; }
 
         /// <summary>
-        /// 
+        /// Fully qualified ARM ID of this recovery point
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        ///Type of recovery point (appConsistent\CrashConsistent etc) 
+        /// Type of recovery point (appConsistent\CrashConsistent etc) 
         /// </summary>
-        ///
         public String RecoveryPointType { get; set; }
 
         /// <summary>
-        /// Time of RecoveryPoint
+        /// Time when this recovery point was created
         /// </summary>
         public DateTime RecoveryPointTime { get; set; }
 
@@ -231,10 +239,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class PolicyBase : ManagementContext
     {
+        /// <summary>
+        /// Name of the policy
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Workload type of the item associated with this policy
+        /// </summary>
         public WorkloadType WorkloadType { get; set; }
 
+        /// <summary>
+        /// Fully qualified ARM ID of this policy
+        /// </summary>
         public string Id { get; set; }
 
         public override void Validate()
@@ -272,20 +289,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class JobBase : ManagementContext
     {
+        /// <summary>
+        /// Activity ID of this job
+        /// </summary>
         public string ActivityId { get; set; }
 
+        /// <summary>
+        /// ID of this job
+        /// </summary>
         public string JobId { get; set; }
 
+        /// <summary>
+        /// Operation represented by this job
+        /// </summary>
         public string Operation { get; set; }
 
+        /// <summary>
+        /// Status of this job
+        /// </summary>
         public string Status { get; set; }
 
+        /// <summary>
+        /// Name of the workload handled by this job
+        /// </summary>
         public string WorkloadName { get; set; }
 
+        /// <summary>
+        /// Time at which this job started
+        /// </summary>
         public DateTime StartTime { get; set; }
 
+        /// <summary>
+        /// Time at which this job was terminated
+        /// </summary>
         public DateTime? EndTime { get; set; }
 
+        /// <summary>
+        /// Time taken by this job to run
+        /// </summary>
         public TimeSpan Duration { get; set; }       
     }
 
@@ -294,8 +335,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class JobErrorInfoBase
     {
+        /// <summary>
+        /// Description of the error in the backend service
+        /// </summary>
         public string ErrorMessage { get; set; }
 
+        /// <summary>
+        /// List of recommendations to the user, provided by the backend service for this error
+        /// </summary>
         public List<string> Recommendations { get; set; }
     }
 
@@ -304,8 +351,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class JobSubTaskBase
     {
+        /// <summary>
+        /// Name of the sub task
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Status of the sub task
+        /// </summary>
         public string Status { get; set; }
     }
 }
