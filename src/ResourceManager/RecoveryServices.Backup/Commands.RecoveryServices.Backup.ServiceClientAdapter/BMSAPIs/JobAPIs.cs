@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public partial class ServiceClientAdapter
     {
+        /// <summary>
+        /// Gets a job
+        /// </summary>
+        /// <param name="jobId">ID of the job</param>
+        /// <returns>Job response returned by the service</returns>
         public JobResponse GetJob(string jobId)
         {
             string resourceName = BmsAdapter.GetResourceName();
@@ -32,6 +37,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 BmsAdapter.CmdletCancellationToken).Result;
         }
 
+        /// <summary>
+        /// Lists jobs according to the parameters
+        /// </summary>
+        /// <param name="jobId">ID of the job</param>
+        /// <param name="status">Status of the job</param>
+        /// <param name="operation">Operation represented by the job</param>
+        /// <param name="startTime">Time when the job started</param>
+        /// <param name="endTime">Time when the job finished</param>
+        /// <param name="backupManagementType">Backup management type of the item represented by the job</param>
+        /// <param name="top">Top pagination param</param>
+        /// <param name="skipToken">Skip token pagination param</param>
+        /// <returns>Job list response from the service</returns>
         public JobListResponse GetJobs(
             string jobId,
             string status,
@@ -73,6 +90,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 BmsAdapter.CmdletCancellationToken).Result;
         }
 
+        /// <summary>
+        /// Cancels a job
+        /// </summary>
+        /// <param name="jobId">ID of the job to cancel</param>
+        /// <returns>Cancelled job response from the service</returns>
         public BaseRecoveryServicesJobResponse CancelJob(string jobId)
         {
             string resourceName = BmsAdapter.GetResourceName();
@@ -86,6 +108,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 BmsAdapter.CmdletCancellationToken).Result;
         }
 
+        /// <summary>
+        /// Gets the job operation status
+        /// </summary>
+        /// <param name="jobId">ID of the job</param>
+        /// <param name="operationId">ID of the operation associated with the job</param>
+        /// <returns>Job response returned by the service</returns>
         public JobResponse GetJobOperationStatus(string jobId, string operationId)
         {
             string resourceName = BmsAdapter.GetResourceName();
@@ -102,6 +130,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
         #region private helpers
 
+        /// <summary>
+        /// Constructs the query object based on the input parameters
+        /// </summary>
+        /// <param name="backupManagementType">Backup management type of the item associated with the job</param>
+        /// <param name="startTime">Time when the job started</param>
+        /// <param name="endTime">Time when the job ended</param>
+        /// <param name="jobId">ID of the job</param>
+        /// <param name="status">Status of the job</param>
+        /// <param name="operation">ID of operation associated with the job</param>
+        /// <returns></returns>
         public CommonJobQueryFilters GetQueryObject(
             string backupManagementType,
             DateTime startTime,

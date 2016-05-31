@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsLifecycle.Restart, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
-    [OutputType(typeof(PSAzureOperationResponse))]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class RestartAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
                 var op = this.VirtualMachineClient.RestartWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.Name).GetAwaiter().GetResult();
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                 WriteObject(result);
             });
         }

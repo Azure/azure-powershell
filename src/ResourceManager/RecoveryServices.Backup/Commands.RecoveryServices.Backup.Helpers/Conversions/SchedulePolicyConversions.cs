@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         // <summary>
-        /// Helper function to convert service simple schedule policy from ps scheduel policy.
+        /// Helper function to convert service simple schedule policy from ps schedule policy.
         /// </summary>
         public static ServiceClientModel.SimpleSchedulePolicy GetServiceClientSimpleSchedulePolicy(
             SimpleSchedulePolicy psPolicy)

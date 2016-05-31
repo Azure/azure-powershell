@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// DPM specific backup engine class.
+    /// Data Protection Manager (DPM) Backup Engine
     /// </summary>
     public class DpmBackupEngine : BackupEngineBase
     {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Registration Status
+        /// Status of registration of the DPM server with the Recovery Services vault
         /// </summary>
         public string Status { get; set; }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Azure backup specific backup server engine class.
+    /// Azure Backup Server Backup Engine
     /// </summary>
     public class AzureBackupServerEngine : BackupEngineBase
     {
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Registration Status
+        /// Status of registration of the Azure Backup Server with the Recovery Services vault
         /// </summary>
         public string Status { get; set; }
 
