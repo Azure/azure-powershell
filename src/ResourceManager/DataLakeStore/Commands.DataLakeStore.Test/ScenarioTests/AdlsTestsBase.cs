@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Management.DataLake.Store;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using System.Net;

@@ -22,10 +22,10 @@ using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Services

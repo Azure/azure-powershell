@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
     using Common;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Newtonsoft.Json.Linq;
     using System.Collections.Generic;
 

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlDatabaseAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
+        protected override AzureSqlDatabaseAdapter InitModelAdapter(Azure.Commands.Common.Authentication.Models.AzureSubscription subscription)
         {
             return new AzureSqlDatabaseAdapter(DefaultProfile.Context);
         }

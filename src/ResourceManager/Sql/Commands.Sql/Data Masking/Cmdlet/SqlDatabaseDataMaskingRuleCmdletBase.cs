@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.DataMasking.Model;
 using Microsoft.Azure.Commands.Sql.DataMasking.Services;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;

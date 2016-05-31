@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class PSAzureAccount
+    public enum LoginType
     {
-        public string Id { get; set; }
+        /// <summary>
+        /// User is logging in with orgid credentials
+        /// </summary>
+        OrgId,
 
-        public AzureAccount.AccountType Type { get; set; }
-
-        public string Subscriptions { get; set; }
-
-        public List<string> Tenants { get; set; }
+        /// <summary>
+        /// User is logging in with liveid credentials
+        /// </summary>
+        LiveId
     }
 }

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlElasticPoolRecommendationAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
+        protected override AzureSqlElasticPoolRecommendationAdapter InitModelAdapter(Azure.Commands.Common.Authentication.Models.AzureSubscription subscription)
         {
             return new AzureSqlElasticPoolRecommendationAdapter(DefaultProfile.Context);
         }

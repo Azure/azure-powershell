@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
 using System;
 using System.Collections.Generic;

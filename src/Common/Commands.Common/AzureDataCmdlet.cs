@@ -21,8 +21,8 @@ using System.Management.Automation.Host;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class AzureDataCmdlet : AzurePSCmdlet
     {
-        protected override Azure.Common.Authentication.Models.AzureContext DefaultContext
+        protected override AzureContext DefaultContext
         {
             get
             {
@@ -120,8 +120,23 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
         }
 
+        protected override void SetupHttpClientPipeline()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void TearDownHttpClientPipeline()
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void InitializeQosEvent()
         {
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            throw new NotImplementedException();
         }
     }
 }

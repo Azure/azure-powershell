@@ -26,7 +26,7 @@ using Microsoft.Azure.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;

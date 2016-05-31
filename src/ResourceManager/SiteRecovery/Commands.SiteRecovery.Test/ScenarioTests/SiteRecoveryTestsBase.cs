@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Net.Http;

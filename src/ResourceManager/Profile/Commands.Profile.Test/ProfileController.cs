@@ -14,7 +14,7 @@
 
 using System;
 using System.Linq;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;

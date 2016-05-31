@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;

@@ -19,7 +19,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Insights;

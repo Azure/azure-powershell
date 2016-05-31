@@ -18,10 +18,11 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.XmlSchema;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.ServiceManagement.Common.XmlSchema;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.ServiceManagemenet.Common
 {
     /// <summary>
     /// Class that handles loading publishsettings files

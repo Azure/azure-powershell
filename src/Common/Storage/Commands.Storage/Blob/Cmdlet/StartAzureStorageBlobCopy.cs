@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.DataMovement;
     using Microsoft.WindowsAzure.Storage.File;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using System.Reflection;
 
     [Cmdlet(VerbsLifecycle.Start, StorageNouns.CopyBlob, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = ContainerNameParameterSet),

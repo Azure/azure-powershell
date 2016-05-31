@@ -14,8 +14,8 @@
 
 using Microsoft.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -61,9 +61,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             rmprofile.Context.Subscription.Environment = "foo";
             if (AzureRmProfileProvider.Instance.Profile == null)
             {
-                AzureRmProfileProvider.Instance.Profile = rmprofile;            }
+                AzureRmProfileProvider.Instance.Profile = rmprofile;
+            }
 
-            AzureSession.DataStore = datastore;            ProfileClient = new ProfileClient(profile);
+            AzureSession.DataStore = datastore;            
+            ProfileClient = new ProfileClient(profile);
 
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
