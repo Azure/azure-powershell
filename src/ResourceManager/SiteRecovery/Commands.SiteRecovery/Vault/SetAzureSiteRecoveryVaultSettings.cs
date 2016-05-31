@@ -29,6 +29,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         #region Parameters
 
         /// <summary>
+        /// Gets or sets vault Object.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public System.Object Vault { get; set; }
+
+        /// <summary>
         /// Gets or sets ASR vault Object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ASRVault, Mandatory = true)]
@@ -54,11 +61,35 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ASRVault:
+                    this.WriteWarningWithTimestamp(
+                          string.Format(Properties.Resources.ParameterWillBeDeprecatedSoon,
+                              "ASRVault",
+                              "Vault"));
                     this.SetASRVaultContext(this.ASRVault);
                     break;
                 case ASRParameterSets.ARSVault:
+                    this.WriteWarningWithTimestamp(
+                        string.Format(Properties.Resources.ParameterWillBeDeprecatedSoon,
+                            "ARSVault",
+                            "Vault"));
                     this.SetARSVaultContext(this.ARSVault);
                     break;
+                case ASRParameterSets.Default:
+                    if (((PSObject)Vault).BaseObject is ASRVault)
+                    {
+                        this.SetASRVaultContext(((PSObject)Vault).BaseObject as ASRVault);
+                    }
+                    else if (((PSObject)Vault).BaseObject is ARSVault)
+                    {
+                        this.SetARSVaultContext(((PSObject)Vault).BaseObject as ARSVault);
+                    }
+                    else
+                    {
+                        throw new PSInvalidOperationException(Properties.Resources.InvalidVaultObject);
+                    }
+                    break;
+                default:
+                    throw new PSInvalidOperationException(Properties.Resources.InvalidParameterSet);
             }
         }
 
