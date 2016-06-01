@@ -69,7 +69,63 @@
     - Get-AzureRmMlWebServiceKeys
     - Import-AzureRmMlWebService
     - Export-AzureRmMlWebService
-
+* Azure Data Lake (Preview)
+  * Convenience cmdlet aliases added for all cmdlets
+    - Analytics account management
+      - Get-AdlAnalyticsAccount
+      - New-AdlAnalyticsAccount
+      - Remove-AdlAnalyticsAccount
+      - Set-AdlAnalyticsAccount
+      - Test-AdlAnalyticsAccount
+    - Data source management
+      - Add-AdlAnalyticsDataSource
+      - Get-AdlAnalyticsDataSource
+      - Remove-AdlAnalyticsDataSource
+      - Set-AdlAnalyticsDataSource
+    - Job management
+      - Get-AdlJob
+      - Stop-AdlJob
+      - Submit-AdlJob
+      - Wait-AdlJob
+    - Catalog management
+      - Get-AdlCatalogItem
+      - New-AdlCatalogSecret
+      - Remove-AdlCatalogSecret
+      - Set-AdlCatalogSecret
+      - Test-AdlCatalogItem
+    - Store account management
+      - Get-AdlStore
+      - New-AdlStore
+      - Remove-AdlStore
+      - Set-AdlStore
+      - Test-AdlStore
+     - File management
+      - Add-AdlStoreItemContent
+      - Export-AdlStoreItem
+      - Get-AdlStoreChildItem
+      - Get-AdlStoreItem
+      - Get-AdlStoreItemContent
+      - Import-AdlStoreItem
+      - Join-AdlStoreItem
+      - Move-AdlStoreItem
+      - New-AdlStoreItem
+      - Remove-AdlStoreItem
+      - Test-AdlStoreItem
+    - File access management
+      - Get-AdlStoreItemAcl
+      - Get-AdlStoreItemOwner
+      - Get-AdlStoreItemPermissions
+      - Remove-AdlStoreItemAcl
+      - Remove-AdlStoreItemAclEntry
+      - Set-AdlStoreItemAcl
+      - Set-AdlStoreItemAclEntry
+      - Set-AdlStoreItemOwner
+      - Set-AdlStoreItemPermissions
+   * Granular progress tracking for folder upload done through Import-AzureRMDataLakeStoreItem
+   * Errors more accurately indicate that failed Import-AzureRMDataLakeStoreItem commands can be resumed/retried.
+   * More targetted error handling for all Data Lake Store filesystem cmdlets.
+   * Support for getting/listing table partitions through Get-AzureRMDataLakeAnalyticsCatalogItem
+   
 ##2016.05.04 version 1.4.0
 * Azure Resource Manager
   - Get-AzureRmLocation cmdlet: New cmdlet Lists all public Azure locatiosn with available provider namespaces
