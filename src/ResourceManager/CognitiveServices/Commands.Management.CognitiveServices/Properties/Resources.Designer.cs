@@ -61,29 +61,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want a new {0} Cognitive Services account with name {1} and Sku {2}?.
-        /// </summary>
-        internal static string NewAccount_ActionMessage {
-            get {
-                return ResourceManager.GetString("NewAccount_ActionMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Creating new Cognitive Services account of type {0}, Sku {1} at location {2}..
+        ///   Looks up a localized string similar to Creating new Cognitive Services account {0} of type {1}, Sku {2} at location {3}..
         /// </summary>
         internal static string NewAccount_ProcessMessage {
             get {
                 return ResourceManager.GetString("NewAccount_ProcessMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to regenerate key {0} for account {1}?.
-        /// </summary>
-        internal static string NewAccountKey_ActionMessage {
-            get {
-                return ResourceManager.GetString("NewAccountKey_ActionMessage", resourceCulture);
             }
         }
         
@@ -97,29 +79,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete account {0}?.
-        /// </summary>
-        internal static string RemoveAccount_ActionMessage {
-            get {
-                return ResourceManager.GetString("RemoveAccount_ActionMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Deleting account {0}..
         /// </summary>
         internal static string RemoveAccount_ProcessMessage {
             get {
                 return ResourceManager.GetString("RemoveAccount_ProcessMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to update account {0}?.
-        /// </summary>
-        internal static string SetAccount_ActionMessage {
-            get {
-                return ResourceManager.GetString("SetAccount_ActionMessage", resourceCulture);
             }
         }
         

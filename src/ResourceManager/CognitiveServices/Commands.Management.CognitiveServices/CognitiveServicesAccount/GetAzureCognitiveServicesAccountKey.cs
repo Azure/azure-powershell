@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using System.Management.Automation;
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Get Account Keys for Cognitive Services Account
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CognitiveServicesAccountKeyNounStr), OutputType(typeof(CognitiveServicesAccountKeys))]
+    [Cmdlet(VerbsCommon.Get, CognitiveServicesAccountKeyNounStr), OutputType(typeof(PSCognitiveServicesAccountKeys))]
     public class GetAzureCognitiveServicesAccountKeyCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
@@ -45,11 +46,14 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         {
             base.ExecuteCmdlet();
 
-            var cognitiveServicesKeys = this.CognitiveServicesClient.CognitiveServicesAccounts.ListKeys(
-                 this.ResourceGroupName,
-                 this.Name);
+            RunCmdLet(() =>
+            {
+                var cognitiveServicesKeys = this.CognitiveServicesClient.CognitiveServicesAccounts.ListKeys(
+                     this.ResourceGroupName,
+                     this.Name);
 
-            WriteObject(cognitiveServicesKeys);
+                WriteObject(new PSCognitiveServicesAccountKeys(cognitiveServicesKeys));
+            });
         }
     }
 }

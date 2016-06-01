@@ -117,26 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NewAccountKey_ActionMessage" xml:space="preserve">
-    <value>Are you sure you want to regenerate key {0} for account {1}?</value>
-  </data>
   <data name="NewAccountKey_ProcessMessage" xml:space="preserve">
     <value>Regenerating Key {0} for account {1}.</value>
   </data>
-  <data name="NewAccount_ActionMessage" xml:space="preserve">
-    <value>Are you sure you want a new {0} Cognitive Services account with name {1} and Sku {2}?</value>
-  </data>
   <data name="NewAccount_ProcessMessage" xml:space="preserve">
-    <value>Creating new Cognitive Services account of type {0}, Sku {1} at location {2}.</value>
-  </data>
-  <data name="RemoveAccount_ActionMessage" xml:space="preserve">
-    <value>Are you sure you want to delete account {0}?</value>
+    <value>Creating new Cognitive Services account {0} of type {1}, Sku {2} at location {3}.</value>
   </data>
   <data name="RemoveAccount_ProcessMessage" xml:space="preserve">
     <value>Deleting account {0}.</value>
-  </data>
-  <data name="SetAccount_ActionMessage" xml:space="preserve">
-    <value>Are you sure you want to update account {0}?</value>
   </data>
   <data name="SetAccount_ProcessMessage_UpdateSku" xml:space="preserve">
     <value>Updating account {0} with Sku {1}.</value>

@@ -29,6 +29,8 @@ namespace CognitiveServices.Test.ScenarioTests
 
         public CognitiveServicesAccountTests(ITestOutputHelper output)
         {
+            Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
+
             this.traceInterceptor = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(this.traceInterceptor);
         }
@@ -44,7 +46,6 @@ namespace CognitiveServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAccount()
         {
-            //TestController.NewInstance.RunPsTest(this.traceInterceptor, "Test-RemoveAzureRmCognitiveServicesAccount");
             TestController.NewInstance.RunPsTest("Test-RemoveAzureRmCognitiveServicesAccount");
         }
 

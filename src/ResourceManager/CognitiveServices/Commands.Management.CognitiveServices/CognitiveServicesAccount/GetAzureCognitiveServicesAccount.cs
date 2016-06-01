@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 using Microsoft.Azure.Management.CognitiveServices;
+using Microsoft.Azure.Management.CognitiveServices.Models;
 using System.Globalization;
 using System.Management.Automation;
 
@@ -57,29 +58,32 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(this.ResourceGroupName))
+            RunCmdLet(() =>
             {
-                var cognitiveServicesAccounts = this.CognitiveServicesClient.CognitiveServicesAccounts.List();
-
-                WriteCognitiveServicesAccountList(cognitiveServicesAccounts);
-            }
-            else if (string.IsNullOrEmpty(this.Name))
-            {
-                var cognitiveServicesAccounts = this.CognitiveServicesClient.CognitiveServicesAccounts.ListByResourceGroup(this.ResourceGroupName);
-                if (cognitiveServicesAccounts == null)
+                if (string.IsNullOrEmpty(this.ResourceGroupName))
                 {
-                    WriteWarningWithTimestamp("Received empty accounts list");
-                }
-                WriteCognitiveServicesAccountList(cognitiveServicesAccounts);
-            }
-            else
-            {
-                var cognitiveServicesAccount = this.CognitiveServicesClient.CognitiveServicesAccounts.GetProperties(
-                    this.ResourceGroupName,
-                    this.Name);
+                    var cognitiveServicesAccounts = this.CognitiveServicesClient.CognitiveServicesAccounts.List();
 
-                WriteCognitiveServicesAccount(cognitiveServicesAccount);
-            }
+                    WriteCognitiveServicesAccountList(cognitiveServicesAccounts);
+                }
+                else if (string.IsNullOrEmpty(this.Name))
+                {
+                    var cognitiveServicesAccounts = this.CognitiveServicesClient.CognitiveServicesAccounts.ListByResourceGroup(this.ResourceGroupName);
+                    if (cognitiveServicesAccounts == null)
+                    {
+                        WriteWarningWithTimestamp("Received empty accounts list");
+                    }
+                    WriteCognitiveServicesAccountList(cognitiveServicesAccounts);
+                }
+                else
+                {
+                    var cognitiveServicesAccount = this.CognitiveServicesClient.CognitiveServicesAccounts.GetProperties(
+                        this.ResourceGroupName,
+                        this.Name);
+
+                    WriteCognitiveServicesAccount(cognitiveServicesAccount);
+                }
+            });
         }
     }
 }

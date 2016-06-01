@@ -19,7 +19,10 @@ using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Management.Automation;
 using CognitiveServicesModels = Microsoft.Azure.Management.CognitiveServices.Models;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
@@ -89,6 +92,22 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             }
         }
 
+        /// <summary>
+        /// Run Cmdlet with Error Handling (report error correctly)
+        /// </summary>
+        /// <param name="action"></param>
+        protected void RunCmdLet(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (ErrorException ex)
+            {
+                throw new PSInvalidOperationException(ex.Body.ErrorProperty.Message, ex);
+            }
+        }
+
         protected static SkuName ParseSkuName(string skuName)
         {
             SkuName returnSkuName;
@@ -132,6 +151,68 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             }
             
             WriteObject(output, true);
+        }
+
+        protected static class TagsConversionHelper
+        {
+            public static KeyValuePair<string, string> Create(Hashtable hashtable)
+            {
+                if (hashtable == null ||
+                    !hashtable.ContainsKey("Name"))
+                {
+                    return new KeyValuePair<string, string>();
+                }
+
+
+                return new KeyValuePair<string, string>(
+                    hashtable["Name"].ToString(), 
+                    hashtable.ContainsKey("Value") ? hashtable["Value"].ToString() : string.Empty);
+            }
+
+            public static Dictionary<string, string> CreateTagDictionary(Hashtable[] hashtableArray)
+            {
+                Dictionary<string, string> tagDictionary = null;
+                if (hashtableArray != null && hashtableArray.Length > 0)
+                {
+                    tagDictionary = new Dictionary<string, string>();
+                    foreach (var tag in hashtableArray)
+                    {
+                        var tagValuePair = Create(tag);
+                        if (!string.IsNullOrEmpty(tagValuePair.Key))
+                        {
+                            if (tagValuePair.Value != null)
+                            {
+                                tagDictionary[tagValuePair.Key] = tagValuePair.Value;
+                            }
+                            else
+                            {
+                                tagDictionary[tagValuePair.Value] = "";
+                            }
+                        }
+                    }
+                }
+
+                return tagDictionary;
+            }
+
+            public static Hashtable[] CreateTagHashtable(IDictionary<string, string> dictionary)
+            {
+                if (dictionary == null)
+                {
+                    return new Hashtable[0];
+                }
+
+                List<Hashtable> tagHashtable = new List<Hashtable>();
+                foreach (string key in dictionary.Keys)
+                {
+                    tagHashtable.Add(new Hashtable
+                {
+                    {"Name", key},
+                    {"Value", dictionary[key]}
+                });
+                }
+                return tagHashtable.ToArray();
+            }
         }
     }
 }

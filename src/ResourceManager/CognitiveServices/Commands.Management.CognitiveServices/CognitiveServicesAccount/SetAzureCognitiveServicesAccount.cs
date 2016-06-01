@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
-using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using System;
@@ -21,14 +20,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using CognitiveServicesModels = Microsoft.Azure.Management.CognitiveServices.Models;
+using CognitiveServicesModels = Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
 {
     /// <summary>
     /// Update a Cognitive Services Account (change SKU, Tags)
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, CognitiveServicesAccountNounStr, SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.CognitiveServicesAccount))]
+    [Cmdlet(VerbsCommon.Set, CognitiveServicesAccountNounStr, SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesAccount))]
     public class SetAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Dictionary<string, string> tags = null;
             if (this.Tag != null)
             {
-                Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+                Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag);
                 tags = tagDictionary ?? new Dictionary<string, string>();
             }
 
@@ -112,17 +111,13 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 WriteCognitiveServicesAccount(cognitiveServicesAccount);
                 return;
             }
-            
-            this.ConfirmAction(
-                this.Force,
-                string.Format(
-                    CultureInfo.CurrentCulture,
-                    Resources.SetAccount_ActionMessage,
-                    this.Name
-                    ),
-                processMessage,
-                this.Name,
-                () =>
+
+            if (ShouldProcess(
+                this.Name, processMessage)
+                ||
+                Force.IsPresent)
+            {
+                RunCmdLet(() =>
                 {
                     var updatedAccount = this.CognitiveServicesClient.CognitiveServicesAccounts.Update(
                         this.ResourceGroupName,
@@ -131,8 +126,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         tags);
 
                     WriteCognitiveServicesAccount(updatedAccount);
-                }
-            );
+                });
+            }
         }
     }
 }

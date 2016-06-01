@@ -49,18 +49,18 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         {
             base.ExecuteCmdlet();
 
-            this.ConfirmAction(
-                this.Force,
-                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ActionMessage, this.Name),
-                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ProcessMessage, this.Name),
-                this.Name,
-                () =>
+            if (ShouldProcess(
+                this.Name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ProcessMessage, this.Name))
+                ||
+                Force.IsPresent)
+            {
+                RunCmdLet(() =>
                 {
                     this.CognitiveServicesClient.CognitiveServicesAccounts.Delete(
                         this.ResourceGroupName,
                         this.Name);
-                }
-            );
+                });
+            }
         }
     }
 }

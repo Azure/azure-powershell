@@ -27,10 +27,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     [Cmdlet(VerbsCommon.New, CognitiveServicesAccountKeyNounStr, SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.CognitiveServicesAccountKeys))]
     public class NewAzureCognitiveServicesAccountKeyCommand : CognitiveServicesAccountBaseCmdlet
     {
-        private const KeyNameEnum Key1 = KeyNameEnum.Key1;
-
-        private const KeyNameEnum Key2 = KeyNameEnum.Key2;
-
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -53,7 +49,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Key.")]
-        public KeyNameEnum KeyName { get; set; }
+        public KeyName KeyName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -62,12 +58,13 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         {
             base.ExecuteCmdlet();
 
-            this.ConfirmAction(
-                this.Force,
-                string.Format(CultureInfo.CurrentCulture, Resources.NewAccountKey_ActionMessage, this.KeyName, this.Name),
-                string.Format(CultureInfo.CurrentCulture, Resources.NewAccountKey_ProcessMessage, this.KeyName, this.Name),
-                this.Name,
-                () =>
+            if (ShouldProcess(
+                this.Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccountKey_ProcessMessage, this.KeyName, this.Name))
+                ||
+                Force.IsPresent)
+            {
+
+                RunCmdLet(() =>
                 {
                     var keys = this.CognitiveServicesClient.CognitiveServicesAccounts.RegenerateKey(
                         this.ResourceGroupName,
@@ -75,8 +72,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         this.KeyName);
 
                     WriteObject(keys);
-                }
-            );
+                });
+            }
         }
     }
 }

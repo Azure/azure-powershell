@@ -15,13 +15,14 @@
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using System.Management.Automation;
+using CognitiveServicesModels = Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
 {
     /// <summary>
     /// Get Available Skus for Cognitive Services Account
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CognitiveServicesAccountSkusNounStr), OutputType(typeof(CognitiveServicesAccountEnumerateSkusResult))]
+    [Cmdlet(VerbsCommon.Get, CognitiveServicesAccountSkusNounStr), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesSkus))]
     public class GetAzureCognitiveServicesAccountSkusCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
@@ -44,12 +45,14 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            RunCmdLet(() =>
+            {
+                var cognitiveServicesKeys = this.CognitiveServicesClient.CognitiveServicesAccounts.ListSkus(
+                     this.ResourceGroupName,
+                     this.Name);
 
-            var cognitiveServicesKeys = this.CognitiveServicesClient.CognitiveServicesAccounts.ListSkus(
-                 this.ResourceGroupName,
-                 this.Name);
-
-            WriteObject(cognitiveServicesKeys);
+                WriteObject(cognitiveServicesKeys);
+            });
         }
     }
 }
