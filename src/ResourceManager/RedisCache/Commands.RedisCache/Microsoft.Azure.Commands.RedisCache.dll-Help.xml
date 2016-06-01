@@ -301,7 +301,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>RedisVersion</maml:name>
           <maml:description>
-            <maml:para>RedisVersion is deprecated and will be removed in future release.</maml:para>
+            <maml:para>RedisVersion is deprecated and will be removed in a future release.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -336,7 +336,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>EnableNonSslPort</maml:name>
           <maml:description>
-            <maml:para>EnableNonSslPort is used by Azure Redis Cache. If no value is provided, the default value is false and the non-SSL port will be disabled. Possible values are true and false.</maml:para>
+            <maml:para>EnableNonSslPort specifies whether the non-SSL port is enabled. If no value is provided, the default value is false and the non-SSL port will be disabled. Possible values are true and false.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
@@ -364,7 +364,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>SubnetId</maml:name>
           <maml:description>
-            <maml:para>The full resource ID of a subnet in a virtual network to deploy the redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1</maml:para>
+            <maml:para>The full resource ID of a subnet in a virtual network in which to deploy the redis cache. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -482,7 +482,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>EnableNonSslPort</maml:name>
         <maml:description>
-          <maml:para>EnableNonSslPort is used by Azure Redis Cache. If no value is provided, the default value is false and the non-SSL port will be disabled. Possible values are true and false.</maml:para>
+          <maml:para>EnableNonSslPort specifies whether the non-SSL port is enabled. If no value is provided, the default value is false and the non-SSL port will be disabled. Possible values are true and false.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
@@ -1240,7 +1240,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>EnableNonSslPort</maml:name>
           <maml:description>
-            <maml:para>EnableNonSslPort is used by Azure Redis Cache. The default value is null and no change will be made to the currently configured value. Possible values are true and false.</maml:para>
+            <maml:para>EnableNonSslPort specifies whether the non-SSL port is enabled. The default value is null and no change will be made to the currently configured value. Possible values are true and false.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
@@ -1335,7 +1335,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>EnableNonSslPort</maml:name>
         <maml:description>
-          <maml:para>EnableNonSslPort is used by Azure Redis Cache. The default value is null and no change will be made to the currently configured value. Possible values are true and false.</maml:para>
+          <maml:para>EnableNonSslPort specifies whether the non-SSL port is enabled. The default value is null and no change will be made to the currently configured value. Possible values are true and false.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
@@ -1752,7 +1752,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Import-AzureRmRedisCache cmdlet imports data from specified blobs into Azure Redis Cache.</maml:para>
+      <maml:para>The Import-AzureRmRedisCache cmdlet imports data from the specified blobs into Azure Redis Cache.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1774,7 +1774,7 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Files</maml:name>
           <maml:description>
-            <maml:para>SAS urls of blobs whose content should be imported into cache.</maml:para>
+            <maml:para>SAS urls of blobs whose content should be imported into the cache.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         </command:parameter>
@@ -1829,7 +1829,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>Files</maml:name>
         <maml:description>
-          <maml:para>SAS urls of blobs whose content should be imported into cache.</maml:para>
+          <maml:para>SAS urls of blobs whose content should be imported into the cache.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
@@ -1926,7 +1926,7 @@
         </dev:code>
         <dev:remarks>
           <maml:para>
-            This command will import data from blob specified by sas uri into Azure Redis Cache.
+            This command imports data from the blob specified by the SAS uri into Azure Redis Cache.
           </maml:para>
         </dev:remarks>
         <command:commandLines>
@@ -1947,7 +1947,7 @@
     <command:details>
       <command:name>Export-AzureRmRedisCache</command:name>
       <maml:description>
-        <maml:para>Export data from Azure Redis Cache to specified container.</maml:para>
+        <maml:para>Exports data from Azure Redis Cache to a specified container.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1957,7 +1957,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Export-AzureRmRedisCache cmdlet export data from Azure Redis Cache to specified container.</maml:para>
+      <maml:para>The Export-AzureRmRedisCache cmdlet exports data from Azure Redis Cache to a specified container.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2129,11 +2129,11 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Export-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprifix" -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
+          PS C:\&gt;Export-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprefix" -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
         </dev:code>
         <dev:remarks>
           <maml:para>
-            This command will export data from Azure Redis Cache into container specified by sas uri.
+            This command exports data from an Azure Redis Cache instance into the container specified by the SAS uri.
           </maml:para>
         </dev:remarks>
         <command:commandLines>
@@ -2154,7 +2154,7 @@
     <command:details>
       <command:name>Reset-AzureRmRedisCache</command:name>
       <maml:description>
-        <maml:para>Reboot specified node(s) of Azure Redis Cache.</maml:para>
+        <maml:para>Reboot specified node(s) of an Azure Redis Cache instance.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2164,7 +2164,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Reset-AzureRmRedisCache cmdlet reboots specified node(s) of Azure Redis Cache.</maml:para>
+      <maml:para>The Reset-AzureRmRedisCache cmdlet reboots the specified node(s) of an Azure Redis Cache instance.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2186,14 +2186,14 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>RebootType</maml:name>
           <maml:description>
-            <maml:para>Which node to reboot. Possible values are "PrimaryNode","SecondaryNode","AllNodes".</maml:para>
+            <maml:para>Which node to reboot. Possible values are "PrimaryNode", "SecondaryNode", "AllNodes".</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>ShardId</maml:name>
           <maml:description>
-            <maml:para>In case of Premium Cluster Cache, which shard to reboot.</maml:para>
+            <maml:para>Which shard to reboot when rebooting a premium cache with clustering enabled.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
         </command:parameter>
@@ -2241,7 +2241,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>RebootType</maml:name>
         <maml:description>
-          <maml:para>Which node to reboot. Possible values are "PrimaryNode","SecondaryNode","AllNodes".</maml:para>
+          <maml:para>Which node to reboot. Possible values are "PrimaryNode", "SecondaryNode", "AllNodes".</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -2254,7 +2254,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>ShardId</maml:name>
         <maml:description>
-          <maml:para>In case of Premium Cluster Cache, which shard to reboot.</maml:para>
+          <maml:para>Which shard to reboot when rebooting a premium cache with clustering enabled.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
         <dev:type>
@@ -2337,7 +2337,7 @@
         </dev:code>
         <dev:remarks>
           <maml:para>
-            This command will reboot both nodes for specified Azure Redis Cache.
+            This command will reboot both nodes for the specified Azure Redis Cache.
           </maml:para>
         </dev:remarks>
         <command:commandLines>
