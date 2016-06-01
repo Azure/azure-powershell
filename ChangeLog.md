@@ -99,7 +99,7 @@
       - Remove-AdlStore
       - Set-AdlStore
       - Test-AdlStore
-     - File management
+    - File management
       - Add-AdlStoreItemContent
       - Export-AdlStoreItem
       - Get-AdlStoreChildItem
