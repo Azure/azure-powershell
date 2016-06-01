@@ -122,6 +122,7 @@
       - Set-AdlStoreItemOwner
       - Set-AdlStoreItemPermissions
    * Granular progress tracking for folder upload done through Import-AzureRMDataLakeStoreItem
+   * Scalable performance improvements for flat and recursive folder upload through Import-AzureRMDataLakeStoreItem. Full network saturation should now be possible.
    * Errors more accurately indicate that failed Import-AzureRMDataLakeStoreItem commands can be resumed/retried.
    * More targetted error handling for all Data Lake Store filesystem cmdlets.
    * Support for getting/listing table partitions through Get-AzureRMDataLakeAnalyticsCatalogItem
