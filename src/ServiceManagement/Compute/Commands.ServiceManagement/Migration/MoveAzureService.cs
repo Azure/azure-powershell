@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 {
@@ -201,9 +199,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     };
 
                 ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.ComputeClient.Deployments.PrepareMigration(this.ServiceName, DeploymentName, parameter));
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.ComputeClient.Deployments.PrepareMigration(this.ServiceName, DeploymentName, parameter));
             }
         }
     }

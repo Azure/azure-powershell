@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
     {
         public const string DataDisk = "AzureDataDisk";
         public const string OsDisk = "AzureOSDisk";
-        public const string BootDiagnostics = "AzureBootDiagnostics";
+        public const string BootDiagnostics = "AzureVMBootDiagnostics";
        
         public const string VirtualMachine = "AzureVM";
         public const string VirtualMachineExtension = "AzureVMExtension";
