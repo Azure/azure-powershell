@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -85,8 +86,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
           
             try
             {
+                var tokenCache = AzureSession.TokenCache;
+                if (context.TokenCache != null && context.TokenCache.Length > 0)
+                {
+                    tokenCache = new TokenCache(context.TokenCache);
+                }
+
                 var accesstoken = authFactory.Authenticate(context.Account, context.Environment, TenantId, null, ShowDialog.Never,
-                    resourceIdEndpoint);
+                    tokenCache, resourceIdEndpoint);
+
+                if (context.TokenCache != null && context.TokenCache.Length > 0)
+                {
+                    context.TokenCache = tokenCache.Serialize();
+                }
 
                 return Tuple.Create(accesstoken, context.Environment.Endpoints[resourceIdEndpoint]);
             }
