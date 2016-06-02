@@ -113,9 +113,10 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $rgname = if ([string]::IsNullOrEmpty($rgname)) { Get-ComputeTestResourceName } else { $rgname }
     $vmname = if ([string]::IsNullOrEmpty($vmname)) { 'vm' + $rgname } else { $vmname }
     $loc = if ([string]::IsNullOrEmpty($loc)) { Get-ComputeVMLocation } else { $loc }
+	Write-Host $vmname
 
     # Common
-    New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+    $g = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
@@ -141,7 +142,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     # Storage Account (SA)
     $stoname = 'sto' + $rgname;
     $stotype = 'Standard_GRS';
-    New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+    $sa = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
     Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
     $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
@@ -196,7 +197,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
     # Virtual Machine
-    New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+    $v = New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
     $vm = Get-AzureRmVM -ResourceGroupName $rgname -VMName $vmname
     return $vm

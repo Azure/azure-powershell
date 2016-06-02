@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -28,9 +30,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
 {
     public class SetAzureResourceGroupCommandTests : RMTestBase
     {
-        private SetAzureResourceGroupCommand cmdlet;
+        private SetAzureResourceGroupCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -41,13 +43,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         public SetAzureResourceGroupCommandTests(ITestOutputHelper output)
         {
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new SetAzureResourceGroupCommand()
+            cmdlet = new SetAzureResourceGroupCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
 
             tags = new[] {new Hashtable
@@ -61,21 +63,20 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdatesSetPSResourceGroupWithTag()
         {
-            UpdatePSResourceGroupParameters expectedParameters = new UpdatePSResourceGroupParameters()
+            PSUpdateResourceGroupParameters expectedParameters = new PSUpdateResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
                 Tag = tags.ToArray()
             };
-            UpdatePSResourceGroupParameters actualParameters = new UpdatePSResourceGroupParameters();
+            PSUpdateResourceGroupParameters actualParameters = new PSUpdateResourceGroupParameters();
             PSResourceGroup expected = new PSResourceGroup()
             {
                 ResourceGroupName = expectedParameters.ResourceGroupName,
-                Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } },
                 Tags = expectedParameters.Tag
             };
-            resourcesClientMock.Setup(f => f.UpdatePSResourceGroup(It.IsAny<UpdatePSResourceGroupParameters>()))
+            resourcesClientMock.Setup(f => f.UpdatePSResourceGroup(It.IsAny<PSUpdateResourceGroupParameters>()))
                 .Returns(expected)
-                .Callback((UpdatePSResourceGroupParameters p) => { actualParameters = p; });
+                .Callback((PSUpdateResourceGroupParameters p) => { actualParameters = p; });
 
             cmdlet.Name = expectedParameters.ResourceGroupName;
             cmdlet.Tag = expectedParameters.Tag;
@@ -92,21 +93,20 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdatesSetPSResourceGroupWithTagFromId()
         {
-            UpdatePSResourceGroupParameters expectedParameters = new UpdatePSResourceGroupParameters()
+            PSUpdateResourceGroupParameters expectedParameters = new PSUpdateResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
                 Tag = tags.ToArray()
             };
-            UpdatePSResourceGroupParameters actualParameters = new UpdatePSResourceGroupParameters();
+            PSUpdateResourceGroupParameters actualParameters = new PSUpdateResourceGroupParameters();
             PSResourceGroup expected = new PSResourceGroup()
             {
                 ResourceGroupName = expectedParameters.ResourceGroupName,
-                Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } },
                 Tags = expectedParameters.Tag
             };
-            resourcesClientMock.Setup(f => f.UpdatePSResourceGroup(It.IsAny<UpdatePSResourceGroupParameters>()))
+            resourcesClientMock.Setup(f => f.UpdatePSResourceGroup(It.IsAny<PSUpdateResourceGroupParameters>()))
                 .Returns(expected)
-                .Callback((UpdatePSResourceGroupParameters p) => { actualParameters = p; });
+                .Callback((PSUpdateResourceGroupParameters p) => { actualParameters = p; });
 
             cmdlet.Id = resourceGroupId;
             cmdlet.Tag = expectedParameters.Tag;
