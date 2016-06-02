@@ -1,10 +1,10 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidProviders/onesdk2913?api-version=2014-02-14",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRQcm92aWRlcnMvb25lc2RrMjkxMz9hcGktdmVyc2lvbj0yMDE0LTAyLTE0",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidConnectProviders/onesdk5620?api-version=2014-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRDb25uZWN0UHJvdmlkZXJzL29uZXNkazU2MjA/YXBpLXZlcnNpb249MjAxNC0wMi0xNA==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"onesdk9944\",\r\n  \"description\": \"onesdk7999\",\r\n  \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n  \"clientId\": \"onesdk2329\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"onesdk3584\",\r\n  \"description\": \"onesdk2381\",\r\n  \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n  \"clientId\": \"onesdk9995\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json"
@@ -28,16 +28,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "633be2ec-44d0-4ddc-ac50-7b657693377c"
+          "2265ab9d-2063-49aa-b3e5-794523ae2c8f"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "06b16349-55bd-4548-b91c-3aa80a2660a3"
+          "0abaf4a4-8dd0-4848-9bca-b11785fde9f3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160427T232336Z:06b16349-55bd-4548-b91c-3aa80a2660a3"
+          "WESTUS:20160525T162921Z:0abaf4a4-8dd0-4848-9bca-b11785fde9f3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,7 +46,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 23:23:36 GMT"
+          "Wed, 25 May 2016 16:29:21 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -55,8 +55,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidProviders/onesdk2913?api-version=2014-02-14",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRQcm92aWRlcnMvb25lc2RrMjkxMz9hcGktdmVyc2lvbj0yMDE0LTAyLTE0",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidConnectProviders/onesdk5620?api-version=2014-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRDb25uZWN0UHJvdmlkZXJzL29uZXNkazU2MjA/YXBpLXZlcnNpb249MjAxNC0wMi0xNA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -64,7 +64,7 @@
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/openidConnectProviders/onesdk2913\",\r\n  \"name\": \"onesdk9944\",\r\n  \"description\": \"onesdk7999\",\r\n  \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n  \"clientId\": \"onesdk2329\",\r\n  \"clientSecret\": null\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/openidConnectProviders/onesdk5620\",\r\n  \"name\": \"onesdk3584\",\r\n  \"description\": \"onesdk2381\",\r\n  \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n  \"clientId\": \"onesdk9995\",\r\n  \"clientSecret\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "251"
@@ -79,16 +79,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1fc878a0-ecbb-445b-a3d9-d34c7cfef214"
+          "b978594d-51e5-4f43-a1b6-b8867a3564c0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14991"
+          "14985"
         ],
         "x-ms-correlation-request-id": [
-          "6478801c-985d-4f26-9a5c-de8b3a81985d"
+          "50475a30-a1d2-46df-b444-b972805def89"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160427T232337Z:6478801c-985d-4f26-9a5c-de8b3a81985d"
+          "WESTUS:20160525T162921Z:50475a30-a1d2-46df-b444-b972805def89"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -97,10 +97,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 23:23:36 GMT"
+          "Wed, 25 May 2016 16:29:21 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAACMY=\""
+          "\"AAAAAAAAFGA=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -109,8 +109,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidProviders/onesdk2913?api-version=2014-02-14",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRQcm92aWRlcnMvb25lc2RrMjkxMz9hcGktdmVyc2lvbj0yMDE0LTAyLTE0",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidConnectProviders/onesdk5620?api-version=2014-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRDb25uZWN0UHJvdmlkZXJzL29uZXNkazU2MjA/YXBpLXZlcnNpb249MjAxNC0wMi0xNA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -118,7 +118,7 @@
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/openidConnectProviders/onesdk2913\",\r\n  \"name\": \"onesdk9944\",\r\n  \"description\": \"onesdk7999\",\r\n  \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n  \"clientId\": \"onesdk2329\",\r\n  \"clientSecret\": null\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/openidConnectProviders/onesdk5620\",\r\n  \"name\": \"onesdk3584\",\r\n  \"description\": \"onesdk2381\",\r\n  \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n  \"clientId\": \"onesdk9995\",\r\n  \"clientSecret\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "251"
@@ -133,16 +133,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3a8d2b7e-520d-40bf-8243-d065cab62353"
+          "a9aafb4e-9e53-4285-98c2-f35ff5902d9a"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
+          "14983"
         ],
         "x-ms-correlation-request-id": [
-          "54e9d08b-c02b-451f-a560-f2a26e0afb72"
+          "54e47c84-d0b1-4663-8f69-7f787533432e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160427T232337Z:54e9d08b-c02b-451f-a560-f2a26e0afb72"
+          "WESTUS:20160525T162922Z:54e47c84-d0b1-4663-8f69-7f787533432e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -151,10 +151,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 23:23:36 GMT"
+          "Wed, 25 May 2016 16:29:21 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAACMY=\""
+          "\"AAAAAAAAFGA=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -163,8 +163,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidProviders/onesdk2913?api-version=2014-02-14",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRQcm92aWRlcnMvb25lc2RrMjkxMz9hcGktdmVyc2lvbj0yMDE0LTAyLTE0",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidConnectProviders/onesdk5620?api-version=2014-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRDb25uZWN0UHJvdmlkZXJzL29uZXNkazU2MjA/YXBpLXZlcnNpb249MjAxNC0wMi0xNA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -172,7 +172,7 @@
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/openidConnectProviders/onesdk2913\",\r\n  \"name\": \"onesdk9944\",\r\n  \"description\": \"onesdk7999\",\r\n  \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n  \"clientId\": \"onesdk2329\",\r\n  \"clientSecret\": \"onesdk7109\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/openidConnectProviders/onesdk5620\",\r\n  \"name\": \"onesdk3584\",\r\n  \"description\": \"onesdk2381\",\r\n  \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n  \"clientId\": \"onesdk9995\",\r\n  \"clientSecret\": \"onesdk3631\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "259"
@@ -187,16 +187,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "abcc472f-b259-41af-a8f2-a0000b14351f"
+          "62d3c1fb-ed6d-4ae1-ba5c-1ca8fa5dd047"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14987"
+          "14981"
         ],
         "x-ms-correlation-request-id": [
-          "72f57142-ea3f-4744-8836-1fff013fb37a"
+          "04747972-c737-4b34-a765-27ee4903d172"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160427T232338Z:72f57142-ea3f-4744-8836-1fff013fb37a"
+          "WESTUS:20160525T162923Z:04747972-c737-4b34-a765-27ee4903d172"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -205,10 +205,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 23:23:37 GMT"
+          "Wed, 25 May 2016 16:29:22 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAACMc=\""
+          "\"AAAAAAAAFGE=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -217,8 +217,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidProviders/onesdk2913?api-version=2014-02-14",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRQcm92aWRlcnMvb25lc2RrMjkxMz9hcGktdmVyc2lvbj0yMDE0LTAyLTE0",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidConnectProviders/onesdk5620?api-version=2014-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRDb25uZWN0UHJvdmlkZXJzL29uZXNkazU2MjA/YXBpLXZlcnNpb249MjAxNC0wMi0xNA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -241,16 +241,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "af709919-c6eb-49ff-beb9-78125f9b040c"
+          "6f23b6cb-5f69-4558-8bd3-632fe76d91f9"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14986"
+          "14980"
         ],
         "x-ms-correlation-request-id": [
-          "69072f8f-7223-4f9b-b9ca-894ccf0ff82d"
+          "f544faa0-8303-4582-a4c9-7786e67ceda5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160427T232339Z:69072f8f-7223-4f9b-b9ca-894ccf0ff82d"
+          "WESTUS:20160525T162924Z:f544faa0-8303-4582-a4c9-7786e67ceda5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -259,7 +259,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 23:23:38 GMT"
+          "Wed, 25 May 2016 16:29:23 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -268,8 +268,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidProviders/onesdk2913?api-version=2014-02-14",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRQcm92aWRlcnMvb25lc2RrMjkxMz9hcGktdmVyc2lvbj0yMDE0LTAyLTE0",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidConnectProviders/onesdk5620?api-version=2014-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRDb25uZWN0UHJvdmlkZXJzL29uZXNkazU2MjA/YXBpLXZlcnNpb249MjAxNC0wMi0xNA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -292,16 +292,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "4e695535-5a3a-4d29-ba4f-801544e22978"
+          "d675bee8-4c97-4f77-a904-0e5aee414c83"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14985"
+          "14979"
         ],
         "x-ms-correlation-request-id": [
-          "b827eed6-e960-407e-a345-0f36faaaf1d0"
+          "b4ff1326-4238-4a31-b6b9-1976ef860ccc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160427T232339Z:b827eed6-e960-407e-a345-0f36faaaf1d0"
+          "WESTUS:20160525T162924Z:b4ff1326-4238-4a31-b6b9-1976ef860ccc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -310,7 +310,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 23:23:38 GMT"
+          "Wed, 25 May 2016 16:29:23 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -319,8 +319,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidProviders?api-version=2014-02-14&$filter=substringof('onesdk9944'%2Cname)",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRQcm92aWRlcnM/YXBpLXZlcnNpb249MjAxNC0wMi0xNCYkZmlsdGVyPXN1YnN0cmluZ29mJTI4JTI3b25lc2RrOTk0NCUyNyUyQ25hbWUlMjk=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidConnectProviders?api-version=2014-02-14&$filter=substringof('onesdk3584'%2Cname)",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRDb25uZWN0UHJvdmlkZXJzP2FwaS12ZXJzaW9uPTIwMTQtMDItMTQmJGZpbHRlcj1zdWJzdHJpbmdvZiUyOCUyN29uZXNkazM1ODQlMjclMkNuYW1lJTI5",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -328,7 +328,7 @@
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/openidConnectProviders/onesdk2913\",\r\n      \"name\": \"onesdk9944\",\r\n      \"description\": \"onesdk7999\",\r\n      \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n      \"clientId\": \"onesdk2329\",\r\n      \"clientSecret\": null\r\n    }\r\n  ],\r\n  \"count\": 1,\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/openidConnectProviders/onesdk5620\",\r\n      \"name\": \"onesdk3584\",\r\n      \"description\": \"onesdk2381\",\r\n      \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n      \"clientId\": \"onesdk9995\",\r\n      \"clientSecret\": null\r\n    }\r\n  ],\r\n  \"count\": 1,\r\n  \"nextLink\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "289"
@@ -343,16 +343,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "dcc9e4bc-bd65-4578-a69b-e187e5f6528b"
+          "c1c72eb1-e27c-4528-9bf1-cdc0dad524db"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14990"
+          "14984"
         ],
         "x-ms-correlation-request-id": [
-          "a7981312-6e28-4494-aa60-5ac91b26a183"
+          "83bc4468-f47d-4f29-9276-6450076d5c74"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160427T232337Z:a7981312-6e28-4494-aa60-5ac91b26a183"
+          "WESTUS:20160525T162922Z:83bc4468-f47d-4f29-9276-6450076d5c74"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -361,7 +361,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 23:23:36 GMT"
+          "Wed, 25 May 2016 16:29:21 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -370,8 +370,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidProviders?api-version=2014-02-14",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRQcm92aWRlcnM/YXBpLXZlcnNpb249MjAxNC0wMi0xNA==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidConnectProviders?api-version=2014-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRDb25uZWN0UHJvdmlkZXJzP2FwaS12ZXJzaW9uPTIwMTQtMDItMTQ=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -379,7 +379,7 @@
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/openidConnectProviders/onesdk2913\",\r\n      \"name\": \"onesdk9944\",\r\n      \"description\": \"onesdk7999\",\r\n      \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n      \"clientId\": \"onesdk2329\",\r\n      \"clientSecret\": null\r\n    }\r\n  ],\r\n  \"count\": 1,\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/openidConnectProviders/onesdk5620\",\r\n      \"name\": \"onesdk3584\",\r\n      \"description\": \"onesdk2381\",\r\n      \"metadataEndpoint\": \"https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration\",\r\n      \"clientId\": \"onesdk9995\",\r\n      \"clientSecret\": null\r\n    }\r\n  ],\r\n  \"count\": 1,\r\n  \"nextLink\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "289"
@@ -394,16 +394,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3224a6b2-78cd-40c4-b60a-324f983052e4"
+          "1f4ca157-793e-4641-8481-5cbe2648874f"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14988"
+          "14982"
         ],
         "x-ms-correlation-request-id": [
-          "c19fbd70-6877-4e34-8483-27fc0ef1680a"
+          "5eba28ae-227f-46bc-ad36-d22494a8de62"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160427T232337Z:c19fbd70-6877-4e34-8483-27fc0ef1680a"
+          "WESTUS:20160525T162922Z:5eba28ae-227f-46bc-ad36-d22494a8de62"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -412,7 +412,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 23:23:37 GMT"
+          "Wed, 25 May 2016 16:29:22 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -421,10 +421,10 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidProviders/onesdk2913?api-version=2014-02-14",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRQcm92aWRlcnMvb25lc2RrMjkxMz9hcGktdmVyc2lvbj0yMDE0LTAyLTE0",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidConnectProviders/onesdk5620?api-version=2014-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRDb25uZWN0UHJvdmlkZXJzL29uZXNkazU2MjA/YXBpLXZlcnNpb249MjAxNC0wMi0xNA==",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"clientSecret\": \"onesdk7109\"\r\n}",
+      "RequestBody": "{\r\n  \"clientSecret\": \"onesdk3631\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json"
@@ -451,16 +451,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "d4ef1930-8f02-4c25-8786-b4d9e0bd4c86"
+          "0a9f7e11-1f9a-4f7c-b8cf-392bd81c4778"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "01516656-e03a-4378-a59a-e166883d2c4b"
+          "f26e8250-3600-4600-af33-f8c35c681de3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160427T232338Z:01516656-e03a-4378-a59a-e166883d2c4b"
+          "WESTUS:20160525T162923Z:f26e8250-3600-4600-af33-f8c35c681de3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -469,7 +469,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 23:23:37 GMT"
+          "Wed, 25 May 2016 16:29:22 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -478,8 +478,8 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidProviders/onesdk2913?api-version=2014-02-14",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRQcm92aWRlcnMvb25lc2RrMjkxMz9hcGktdmVyc2lvbj0yMDE0LTAyLTE0",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidConnectProviders/onesdk5620?api-version=2014-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRDb25uZWN0UHJvdmlkZXJzL29uZXNkazU2MjA/YXBpLXZlcnNpb249MjAxNC0wMi0xNA==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -502,16 +502,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "032b66b9-bae0-4c09-be41-071ea7c689d8"
+          "e0b780ed-0fa1-4f27-bfae-50a0f2f3e266"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "755914aa-786e-4900-8f21-83e287e0c2f9"
+          "097881fa-f91c-4e23-a6f8-d11e1c84034b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160427T232338Z:755914aa-786e-4900-8f21-83e287e0c2f9"
+          "WESTUS:20160525T162923Z:097881fa-f91c-4e23-a6f8-d11e1c84034b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -520,7 +520,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 23:23:38 GMT"
+          "Wed, 25 May 2016 16:29:23 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -529,8 +529,8 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidProviders/onesdk2913?api-version=2014-02-14",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRQcm92aWRlcnMvb25lc2RrMjkxMz9hcGktdmVyc2lvbj0yMDE0LTAyLTE0",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default4528/providers/Microsoft.ApiManagement/service/hydraapimservice9914/openidConnectProviders/onesdk5620?api-version=2014-02-14",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0NDUyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9oeWRyYWFwaW1zZXJ2aWNlOTkxNC9vcGVuaWRDb25uZWN0UHJvdmlkZXJzL29uZXNkazU2MjA/YXBpLXZlcnNpb249MjAxNC0wMi0xNA==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -553,16 +553,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "bed66c50-f190-47b1-842c-165c4bd9c885"
+          "84aaa35b-65f7-4f60-b1b8-97733a83dce0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1191"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "bab6c29e-424a-4995-97d3-b064a45a6082"
+          "692687c9-4a97-47a4-8203-0200f07bface"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160427T232339Z:bab6c29e-424a-4995-97d3-b064a45a6082"
+          "WESTUS:20160525T162924Z:692687c9-4a97-47a4-8203-0200f07bface"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -571,7 +571,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 27 Apr 2016 23:23:38 GMT"
+          "Wed, 25 May 2016 16:29:23 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -582,11 +582,11 @@
   ],
   "Names": {
     "": [
-      "onesdk2913",
-      "onesdk9944",
-      "onesdk2329",
-      "onesdk7999",
-      "onesdk7109"
+      "onesdk5620",
+      "onesdk3584",
+      "onesdk9995",
+      "onesdk2381",
+      "onesdk3631"
     ]
   },
   "Variables": {

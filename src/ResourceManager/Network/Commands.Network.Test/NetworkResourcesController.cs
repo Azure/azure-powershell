@@ -109,7 +109,8 @@ namespace Commands.Network.Test
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.Network.psd1"));
+                    helper.GetRMModulePath("AzureRM.Network.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 try
                 {

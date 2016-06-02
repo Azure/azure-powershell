@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -27,9 +29,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
 {
     public class GetAzureResourceGroupDeploymentCommandTests : RMTestBase
     {
-        private GetAzureResourceGroupDeploymentCommand cmdlet;
+        private GetAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -39,13 +41,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         public GetAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetAzureResourceGroupDeploymentCommand()
+            cmdlet = new GetAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 
