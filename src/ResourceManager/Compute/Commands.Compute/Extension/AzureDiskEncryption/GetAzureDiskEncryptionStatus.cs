@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Globalization;
 using System.Management.Automation;
@@ -44,6 +45,80 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
+
+        [Alias("ExtensionName")]
+        [Parameter(
+            Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        private string GetExtensionStatusMessage(OSType currentOSType)
+        {
+            AzureOperationResponse<VirtualMachineExtension> extensionResult = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
+            if (extensionResult == null)
+            {
+                ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "Failed to retrieve extension status")),
+                                                      "InvalidResult",
+                                                      ErrorCategory.InvalidResult,
+                                                      null));
+            }
+
+            PSVirtualMachineExtension returnedExtension = extensionResult.ToPSVirtualMachineExtension(
+                this.ResourceGroupName, this.VMName);
+
+            if ((returnedExtension == null) ||
+                (string.IsNullOrWhiteSpace(returnedExtension.Publisher)) ||
+                (string.IsNullOrWhiteSpace(returnedExtension.ExtensionType)))
+            {
+                ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "Missing extension publisher and type info")),
+                                                      "InvalidResult",
+                                                      ErrorCategory.InvalidResult,
+                                                      null));
+            }
+            bool publisherMatch = false;
+            if (OSType.Linux.Equals(currentOSType))
+            {
+                if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                    returnedExtension.ExtensionType.Equals(this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    publisherMatch = true;
+                }
+            }
+            else if (OSType.Windows.Equals(currentOSType))
+            {
+                if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                    returnedExtension.ExtensionType.Equals(this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    publisherMatch = true;
+                }
+            }
+            if (publisherMatch)
+            {
+                AzureDiskEncryptionExtensionContext context = new AzureDiskEncryptionExtensionContext(returnedExtension);
+                if ((context == null) ||
+                    (context.Statuses == null) ||
+                    (context.Statuses.Count < 1) ||
+                    (string.IsNullOrWhiteSpace(context.Statuses[0].Message)))
+                {
+                    ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "Invalid extension status")),
+                                                          "InvalidResult",
+                                                          ErrorCategory.InvalidResult,
+                                                          null));
+                }
+                return context.Statuses[0].Message;
+            }
+            else
+            {
+                ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "Extension publisher and type mismatched")),
+                                                      "InvalidResult",
+                                                      ErrorCategory.InvalidResult,
+                                                      null));
+            }
+            return null;
+        }
 
         private OSType GetOSType(VirtualMachine vmParameters)
         {
@@ -219,7 +294,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         {
                             OsVolumeEncrypted = osVolumeEncrypted,
                             DataVolumesEncrypted = dataVolumesEncrypted,
-                            OsVolumeEncryptionSettings = osVolumeEncryptionSettings
+                            OsVolumeEncryptionSettings = osVolumeEncryptionSettings,
+                            ProgressMessage = GetExtensionStatusMessage(osType)
                         };
                         WriteObject(encryptionStatus);
                         break;

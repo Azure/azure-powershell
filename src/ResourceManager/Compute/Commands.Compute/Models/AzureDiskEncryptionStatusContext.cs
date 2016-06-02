@@ -29,5 +29,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public EncryptionStatus OsVolumeEncrypted { get; set; }
         public DiskEncryptionSettings OsVolumeEncryptionSettings { get; set; }
         public EncryptionStatus DataVolumesEncrypted { get; set; }
+        public string ProgressMessage { get; set; }
     }
 }
