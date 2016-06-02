@@ -152,7 +152,8 @@ function Test-SetVirtualNetworkGatewayCRUD
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
     $domainNameLabel = Get-ResourceName
-	#lngName = Get-ResourceName
+	$lngName = Get-ResourceName
+	$connName = Get-ResourceName
     $vnetName = Get-ResourceName
     $publicIpName = Get-ResourceName
     $vnetGatewayConfigName = Get-ResourceName
@@ -161,7 +162,7 @@ function Test-SetVirtualNetworkGatewayCRUD
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
-     {
+    {
       # Create the resource group
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
       
@@ -176,45 +177,37 @@ function Test-SetVirtualNetworkGatewayCRUD
 
       # Create & Get virtualnetworkgateway
       $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
-      New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
+      New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku Standard
       $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 
 	  # test Set-AzureRmVirtualNetworkGateway
 	  # resize
-	  $sku = "Standard"
-	  Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -GatewaySku $sku
-	  $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-	  Assert-AreEqual $gateway.GatewaySku $sku
+	  # $sku = "HighPerformance"
+	  # $gateway = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -GatewaySku $sku
+	  # Assert-AreEqual $sku $gateway.Sku.Name 
 
 	  # default site - put a local network gateway and set it as the default site
-	  $lng = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $lngName -GatewayIpAddress "1.2.3.4" -AddressPrefix "172.16.1.0/24"
-	  Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -GatewayDefaultSite $lng
-	  $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-	  Assert-AreEqual $gateway.GatewayDefaultSite $lng
+	  $lng = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -Name $lngName -Location $location -GatewayIpAddress "1.2.3.4" -AddressPrefix "172.16.1.0/24"
+	  $gateway = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -GatewayDefaultSite $lng
+	  Assert-AreEqual $lng.Id $gateway.GatewayDefaultSite.Id 
 
 	  # VPN client things
 	  $vpnClientAddressSpace = "192.168.1.0/24"
-	  Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -VpnClientAddressPool $vpnClientAddressSpace
-	  $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-	  Assert-AreEqual $gateway.vpnClientAddressSpace $vpnClientAddressSpace
+	  $gateway = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -VpnClientAddressPool $vpnClientAddressSpace
+	  Assert-AreEqual $vpnClientAddressSpace $gateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
 
 	  # BGP settings
 	  $asn = 1337
 	  $peerweight = 5
-	  Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -Asn $asn -PeerWeight $peerweight
-	  $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-	  Assert-AreEqual $gateway.BgpSettings.Asn $asn
-	  Assert-AreEqual $gateway.BgpSettings.PeerWeight $peerWeight
-
-      # Delete virtualNetworkGateway
-      $delete = Remove-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
-      Assert-AreEqual true $delete
-     }
-     finally
-     {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-     }
+	  $gateway = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -Asn $asn -PeerWeight $peerweight
+	  Assert-AreEqual $asn $gateway.BgpSettings.Asn 
+	  Assert-AreEqual $peerWeight $gateway.BgpSettings.PeerWeight 
+	}
+    finally
+    {
+      # Cleanup
+      Clean-ResourceGroup $rgname
+    }
 }
 
 <#
