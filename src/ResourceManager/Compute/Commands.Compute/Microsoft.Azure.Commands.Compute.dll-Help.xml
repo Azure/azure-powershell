@@ -3087,7 +3087,7 @@ PS C:\&gt; Add-AzureRmVmssWinRMListener -VirtualMachineScaleSet $VMSS -Protocol 
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Disable-AzureRmVMDiskEncryption cmdlet disables encryption on an infrastructure as a service (IaaS) virtual machine. This cmdlet is only supported on Windows virtual machines and not Linux virtual machines. This cmdlet installs an extension on the virtual machine to disable encryption. If the Name parameter is not specified, an extension with the default name &quot;AzureDiskEncryption for Windows VMs&quot; is created. Caution: This cmdlet reboots the virtual machine.</maml:para>
+		<maml:para>The Disable-AzureRmVMDiskEncryption cmdlet disables encryption on an infrastructure as a service (IaaS) virtual machine. This cmdlet installs an extension on the virtual machine to disable encryption. If the Name parameter is not specified, extension with the name &quot;AzureDiskEncryption/AzureDiskEncryptionForLinux&quot; (depending on the OS) is used. Caution: This cmdlet reboots the virtual machine.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -5438,7 +5438,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName &quot;Group002&quo
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Get-AzureRmVMDiskEncryptionStatus cmdlet gets the encryption status of the virtual machine. It displays the encryption status of the operating system and data volumes. In addition to encryption status, it also displays the encryption secret URL, key encryption key URL, resource IDs of the KeyVaults where the encryption key and key encryption key for operating system volume are present.</maml:para>
+		<maml:para>The Get-AzureRmVMDiskEncryptionStatus cmdlet gets the encryption status of the virtual machine. It displays the encryption status of the operating system and data volumes. In addition to encryption status, it also displays the encryption secret URL, key encryption key URL, resource IDs of the KeyVaults where the encryption key and key encryption key for operating system volume are present. </maml:para>
+		<maml:para>The OS disk encryption status reporting is not supported for Linux VMs in the preview release. Currently it is reported as &quot;Unknown&quot;.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
