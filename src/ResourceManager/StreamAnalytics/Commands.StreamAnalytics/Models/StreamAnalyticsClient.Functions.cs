@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.Azure.Management.StreamAnalytics;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using Microsoft.Azure.Commands.StreamAnalytics.Properties;
-using Microsoft.Azure.Management.StreamAnalytics;
-using Microsoft.Azure.Management.StreamAnalytics.Models;
-using Hyak.Common;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
@@ -179,7 +178,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
             var response = StreamAnalyticsManagementClient.Functions.RetrieveDefaultDefinitionWithRawJsonContent(
                 parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName,
-                new FunctionRetrieveDefaultDefinitionWithRawJsonContentParameters() {Content = parameter.RawJsonContent});
+                new FunctionRetrieveDefaultDefinitionWithRawJsonContentParameters() { Content = parameter.RawJsonContent });
 
             return new PSFunction(response.Function)
             {

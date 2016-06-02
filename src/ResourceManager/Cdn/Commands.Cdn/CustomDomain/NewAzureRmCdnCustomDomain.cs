@@ -96,12 +96,19 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 
         public void OnImport()
         {
+            try
+            {
                 System.Management.Automation.PowerShell invoker = null;
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory),
                     "CdnStartup.ps1")));
                 invoker.Invoke();
+            }
+            catch
+            {
+                // This may throw exception for tests, ignore.
+            }
         }
     }
 }

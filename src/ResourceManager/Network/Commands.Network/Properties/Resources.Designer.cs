@@ -198,9 +198,9 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         /// <summary>
         ///   Looks up a localized string similar to inboundNatPools.
         /// </summary>
-        public static string LoadBalancerInboundNatPoolsName {
+        public static string LoadBalancerInboundNatPoolName {
             get {
-                return ResourceManager.GetString("LoadBalancerInboundNatPoolsName", resourceCulture);
+                return ResourceManager.GetString("LoadBalancerInboundNatPoolName", resourceCulture);
             }
         }
         
@@ -318,6 +318,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string SetByIP {
             get {
                 return ResourceManager.GetString("SetByIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SetByIpConfiguration.
+        /// </summary>
+        public static string SetByIpConfiguration {
+            get {
+                return ResourceManager.GetString("SetByIpConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SetByIpConfigurationResourceId.
+        /// </summary>
+        public static string SetByIpConfigurationResourceId {
+            get {
+                return ResourceManager.GetString("SetByIpConfigurationResourceId", resourceCulture);
             }
         }
         

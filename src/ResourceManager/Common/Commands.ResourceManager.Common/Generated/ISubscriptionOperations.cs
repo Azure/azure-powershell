@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Internal.Subscriptions.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Internal.Subscriptions.Models;
 
 namespace Microsoft.Azure.Internal.Subscriptions
 {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
         /// Subscription detailed information.
         /// </returns>
         Task<GetSubscriptionResult> GetAsync(string subscriptionId, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets a list of the subscriptionIds.
         /// </summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
         /// Subscription list operation response.
         /// </returns>
         Task<SubscriptionListResult> ListAsync(CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets a list of the subscription locations.
         /// </summary>

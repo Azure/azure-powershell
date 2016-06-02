@@ -15,11 +15,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using System;
-    using System.Globalization;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using System;
+    using System.Management.Automation;
 
     [Cmdlet(VerbsData.Publish, Constants.ApiManagementTenantGitConfiguration)]
     [OutputType(typeof(PsApiManagementOperationResult))]

@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Batch.Protocol.BatchRequests;
-using Microsoft.Rest.Azure;
 using Xunit;
-using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
@@ -33,8 +32,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public TestBatchAutoScaleCommandTests()
+        public TestBatchAutoScaleCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new TestBatchAutoScaleCommand()
@@ -60,13 +60,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.AutoScaleFormula = "formula";
 
-            AzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders> response = 
+            AzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders> response =
                 BatchTestHelpers.CreateGenericAzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders>();
 
             // Don't go to the service on an Evaluate AutoScale call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                string, 
-                ProxyModels.PoolEvaluateAutoScaleOptions, 
+                string,
+                ProxyModels.PoolEvaluateAutoScaleOptions,
                 AzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
             cmdlet.AutoScaleFormula = formula;
 
-            AzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders> response = 
+            AzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders> response =
                 BatchTestHelpers.CreateGenericAzureOperationResponse<ProxyModels.AutoScaleRun, ProxyModels.PoolEvaluateAutoScaleHeaders>();
 
             // Don't go to the service on an Evaluate AutoScale call

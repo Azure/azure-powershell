@@ -41,13 +41,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     public abstract class RecoveryServicesBackupCmdletBase : AzureRMCmdlet
     {
-        // in seconds
+        /// <summary>
+        /// Defines the time (in seconds) to sleep in between calls while tracking operations
+        /// </summary>
         private int _defaultSleepForOperationTracking = 5;
 
+        /// <summary>
+        /// Service client adapter is used to make calls to the backend service
+        /// </summary>
         protected ServiceClientAdapter ServiceClientAdapter { get; set; }
 
+        /// <summary>
+        /// Resource management client is used to make calls to the Compute service
+        /// </summary>
         protected ResourcesNS.ResourceManagementClient RmClient { get; set; }
 
+        /// <summary>
+        /// Initializes the service clients and the logging utility
+        /// </summary>
         protected void InitializeAzureBackupCmdlet()
         {
             var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
@@ -60,6 +71,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
         }
 
+        /// <summary>
+        /// Wrapper method which executes the cmdlet processing blocks. 
+        /// Catches and logs any exception occuring during the execution.
+        /// </summary>
+        /// <param name="action">Delegate representing the cmdlet processing block</param>
         protected void ExecutionBlock(Action action)
         {
             try
@@ -76,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Handles set of exceptions thrown by client
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param name="ex">Exception thrown by the client</param>
         private void HandleException(Exception exception)
         {
             if (exception is AggregateException && ((AggregateException)exception).InnerExceptions != null
@@ -137,11 +153,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             InitializeAzureBackupCmdlet();
         }
 
+        /// <summary>
+        /// Get the job PS model after fetching the job object from the service given the job ID.
+        /// </summary>
+        /// <param name="jobId">ID of the job to be fetched</param>
+        /// <returns></returns>
         public CmdletModel.JobBase GetJobObject(string jobId)
         {
             return JobConversions.GetPSJob(ServiceClientAdapter.GetJob(jobId));
         }
 
+        /// <summary>
+        /// Gets list of job PS models after fetching the job objects from the service given the list of job IDs.
+        /// </summary>
+        /// <param name="jobIds">List of IDs of jobs to be fetched</param>
+        /// <returns></returns>
         public List<CmdletModel.JobBase> GetJobObject(IList<string> jobIds)
         {
             List<CmdletModel.JobBase> result = new List<CmdletModel.JobBase>();
@@ -152,6 +178,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             return result;
         }
 
+        /// <summary>
+        /// Block to track the operation to completion.
+        /// Waits till the status of the operation becomes something other than InProgress.
+        /// </summary>
+        /// <param name="statusUrlLink"></param>
+        /// <param name="serviceClientMethod"></param>
+        /// <returns></returns>
         public BackUpOperationStatusResponse WaitForOperationCompletionUsingStatusLink(
                                               string statusUrlLink,
                                               Func<string, BackUpOperationStatusResponse> serviceClientMethod)
@@ -174,6 +207,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             return response;
         }
 
+        /// <summary>
+        /// Based on the response from the service, handles the job created in the service appropriately.
+        /// </summary>
+        /// <param name="itemResponse">Response from service</param>
+        /// <param name="operationName">Name of the operation</param>
         protected void HandleCreatedJob(BaseRecoveryServicesJobResponse itemResponse, string operationName)
         {
             WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
