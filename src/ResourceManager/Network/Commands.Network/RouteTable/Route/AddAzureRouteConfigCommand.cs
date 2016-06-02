@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException("Route with the specified name already exists");
             }
-            
+
             route = new PSRoute();
 
             route.Name = this.Name;

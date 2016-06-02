@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {

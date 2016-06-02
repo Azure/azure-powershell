@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ResourceGroupListParameters
     {
         private string _tagName;
-        
+
         /// <summary>
         /// Optional. Filter the results based on a particular tag name.
         /// Optional.
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._tagName; }
             set { this._tagName = value; }
         }
-        
+
         private string _tagValue;
-        
+
         /// <summary>
         /// Optional. Filter the results for a tag name along with a particular
         /// tag value. Optional.
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._tagValue; }
             set { this._tagValue = value; }
         }
-        
+
         private int? _top;
-        
+
         /// <summary>
         /// Optional. Number of records to return. Optional.
         /// </summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._top; }
             set { this._top = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceGroupListParameters class.
         /// </summary>

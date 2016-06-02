@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
+using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Tasks
@@ -32,8 +35,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public NewBatchTaskCommandTests()
+        public NewBatchTaskCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewBatchTaskCommand()
@@ -60,11 +64,65 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Id = "testTask";
 
             // Don't go to the service on an Add CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskAddParameter, TaskAddOptions, AzureOperationHeaderResponse<TaskAddHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.TaskAddParameter,
+                ProxyModels.TaskAddOptions,
+                AzureOperationHeaderResponse<ProxyModels.TaskAddHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskCollectionParametersTest()
+        {
+            string commandLine = "cmd /c dir /s";
+
+            // Setup cmdlet without the required parameters
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+            cmdlet.JobId = "job-collection";
+
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+            string[] taskIds = new[] {"simple1", "simple2"};
+            PSCloudTask expected1 = new PSCloudTask(taskIds[0], commandLine);
+            PSCloudTask expected2 = new PSCloudTask(taskIds[1], commandLine);
+
+            cmdlet.Tasks = new PSCloudTask[] {expected1, expected2};
+
+            IList<TaskAddParameter> requestCollection = null;
+
+            Action<BatchRequest<
+                IList<TaskAddParameter>,
+                TaskAddCollectionOptions,
+                AzureOperationResponse<TaskAddCollectionResult, TaskAddCollectionHeaders>>> extractCollection =
+                (request) =>
+                {
+                    requestCollection = request.Parameters;
+                };
+
+            // Don't go to the service on an Add Task Collection call
+            AzureOperationResponse<TaskAddCollectionResult, TaskAddCollectionHeaders> response =
+                BatchTestHelpers.CreateTaskCollectionResponse(cmdlet.Tasks);
+
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(responseToUse: response, requestAction: extractCollection);
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Verify no exceptions when required parameters are set
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(2, requestCollection.Count);
+            foreach (var task in requestCollection)
+            {
+                Assert.True(taskIds.Contains(task.Id));
+            }
         }
     }
 }

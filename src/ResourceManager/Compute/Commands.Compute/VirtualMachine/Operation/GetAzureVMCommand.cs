@@ -17,10 +17,10 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -146,8 +146,8 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         foreach (var item in vmListResult.Body)
                         {
-                            var psItem = Mapper.Map<PSVirtualMachine>(item);
-                            psItem = Mapper.Map(vmListResult, psItem);
+                            var psItem = Mapper.Map<PSVirtualMachine>(vmListResult);
+                            psItem = Mapper.Map(item, psItem);
                             psResultList.Add(psItem);
                         }
                     }

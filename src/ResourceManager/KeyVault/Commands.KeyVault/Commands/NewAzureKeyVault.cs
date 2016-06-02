@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Create a new key vault. 
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof (PSKeyVaultModels.PSVault))]
+    [OutputType(typeof(PSKeyVaultModels.PSVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Input Parameter Definitions
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = false,            
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
         public SwitchParameter EnabledForDeployment { get; set; }
@@ -78,14 +78,14 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
-        [Parameter(Mandatory = false,            
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).")]
         [ValidateSet("standard", "premium")]
         public string Sku { get; set; }
 
         [Alias("Tags")]
-        [Parameter(Mandatory = false,            
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
@@ -93,7 +93,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
 
         public override void ExecuteCmdlet()
-        {            
+        {
+            WriteWarning("The usage of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
             if (VaultExistsInCurrentSubscription(this.VaultName))
             {
                 throw new ArgumentException(PSKeyVaultProperties.Resources.VaultAlreadyExists);

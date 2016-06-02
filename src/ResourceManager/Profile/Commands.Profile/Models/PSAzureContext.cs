@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
             else
             {
-              result = new AzureContext(
-                    context.Subscription,
-                    context.Account,
-                    context.Environment,
-                    context.Tenant);
+                result = new AzureContext(
+                      context.Subscription,
+                      context.Account,
+                      context.Environment,
+                      context.Tenant);
             }
             result.TokenCache = context.TokenCache;
             return result;

@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using System;
-using System.Threading.Tasks;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 tokenStr = tokenValue;
             });
-              
-            return Task.FromResult<string>(tokenStr);           
+
+            return Task.FromResult<string>(tokenStr);
         }
 
         private Tuple<IAccessToken, string> GetToken(IAuthenticationFactory authFactory, AzureContext context, AzureEnvironment.Endpoint resourceIdEndpoint)
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentException(KeyVaultProperties.Resources.ArmAccountNotFound);
 
             if (context.Account.Type != AzureAccount.AccountType.User &&
-                context.Account.Type != AzureAccount.AccountType.ServicePrincipal )
+                context.Account.Type != AzureAccount.AccountType.ServicePrincipal)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedAccountType, context.Account.Type));
 
             if (context.Subscription != null && context.Account != null)
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             if (string.IsNullOrWhiteSpace(TenantId))
                 throw new ArgumentException(KeyVaultProperties.Resources.NoTenantInContext);
-          
+
             try
             {
                 var accesstoken = authFactory.Authenticate(context.Account, context.Environment, TenantId, null, ShowDialog.Auto,
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             catch (Exception ex)
             {
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidSubscriptionState, ex);
-            }        
+            }
         }
-     
+
         private IAccessToken token;
     }
 }

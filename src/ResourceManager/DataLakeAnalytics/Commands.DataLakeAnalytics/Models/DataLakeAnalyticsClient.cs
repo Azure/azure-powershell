@@ -12,11 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Tags.Model;
@@ -24,6 +19,11 @@ using Microsoft.Azure.Management.DataLake.Analytics;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             var toReturn = new List<DataLakeStoreAccountInfo>();
             toReturn.AddRange(response);
 
-            while(!string.IsNullOrEmpty(response.NextPageLink))
+            while (!string.IsNullOrEmpty(response.NextPageLink))
             {
                 response = _accountClient.Account.ListDataLakeStoreAccountsNext(response.NextPageLink);
                 toReturn.AddRange(response);
@@ -499,6 +499,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     }
 
                     break;
+                case DataLakeAnalyticsEnums.CatalogItemType.TablePartition:
+                    if (isList)
+                    {
+                        toReturn.AddRange(GetTablePartitions(accountName, path.DatabaseName,
+                            path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName));
+                    }
+                    else
+                    {
+                        toReturn.Add(GetTablePartition(accountName, path.DatabaseName,
+                            path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName, path.TableStatisticsOrPartitionName));
+                    }
+
+                    break;
                 case DataLakeAnalyticsEnums.CatalogItemType.TableValuedFunction:
                     if (isList)
                     {
@@ -522,7 +535,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     {
                         toReturn.Add(GetTableStatistic(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName,
-                            path.TableStatisticsName));
+                            path.TableStatisticsOrPartitionName));
                     }
 
                     break;
@@ -590,7 +603,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IList<USqlDatabase> GetDatabases(string accountName)
         {
             List<USqlDatabase> toReturn = new List<USqlDatabase>();
-            var response =  _catalogClient.Catalog.ListDatabases(accountName);
+            var response = _catalogClient.Catalog.ListDatabases(accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -704,6 +717,28 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
                 response = _catalogClient.Catalog.ListTablesNext(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
+        }
+
+        private USqlTablePartition GetTablePartition(string accountName, string databaseName, string schemaName,
+            string tableName, string partitionName)
+        {
+            return
+                _catalogClient.Catalog.GetTablePartition(accountName, databaseName, schemaName, tableName, partitionName);
+        }
+
+        private IList<USqlTablePartition> GetTablePartitions(string accountName, string databaseName,
+            string schemaName, string tableName)
+        {
+            List<USqlTablePartition> toReturn = new List<USqlTablePartition>();
+            var response = _catalogClient.Catalog.ListTablePartitions(accountName, databaseName, schemaName, tableName);
+            toReturn.AddRange(response);
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = _catalogClient.Catalog.ListTablePartitionsNext(response.NextPageLink);
                 toReturn.AddRange(response);
             }
 
@@ -958,6 +993,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
                     break;
                 case DataLakeAnalyticsEnums.CatalogItemType.TableStatistics:
+                case DataLakeAnalyticsEnums.CatalogItemType.TablePartition:
                     if (string.IsNullOrEmpty(path.DatabaseName) ||
                         string.IsNullOrEmpty(path.SchemaAssemblyOrExternalDataSourceName) ||
                         string.IsNullOrEmpty(path.TableOrTableValuedFunctionName))
@@ -966,7 +1002,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                             path.FullCatalogItemPath));
                     }
 
-                    if (string.IsNullOrEmpty(path.TableStatisticsName))
+                    if (string.IsNullOrEmpty(path.TableStatisticsOrPartitionName))
                     {
                         isList = true;
                     }

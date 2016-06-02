@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             DataStore = new DiskDataStore();
         }
-        
+
         public static IDataStore DataStore { get; set; }
 
         public static string GetAssemblyDirectory()

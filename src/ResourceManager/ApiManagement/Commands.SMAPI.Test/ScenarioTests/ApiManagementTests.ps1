@@ -1683,7 +1683,7 @@ Param($resourceGroupName, $serviceName)
 
 <#
 .SYNOPSIS
-Tests CRUD operations on Properties.
+Tests CRUD operations on Tenant Git Configuration.
 #>
 function TenantGitConfiguration-CrudTest
 {
@@ -1749,5 +1749,35 @@ Param($resourceGroupName, $serviceName)
     finally
     {
 		Set-AzureRmApiManagementTenantGitAccess -Context $context -Enabled $false -PassThru		
+    }
+}
+
+<#
+.SYNOPSIS
+Tests operations on Tenant Access.
+#>
+function TenantAccessConfiguration-CrudTest
+{
+Param($resourceGroupName, $serviceName)
+
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+	
+    try
+    {        
+        $tenantAccess = Get-AzureRmApiManagementTenantAccess -Context $context
+
+		Assert-NotNull $tenantAccess
+        Assert-AreEqual $false $tenantAccess.Enabled
+		
+		#enable Tenant Access
+		$tenantAccess = $null
+        $tenantAccess = Set-AzureRmApiManagementTenantAccess -Context $context -Enabled $true -PassThru
+
+		Assert-NotNull $tenantAccess
+		Assert-AreEqual $true $tenantAccess.Enabled
+    }
+    finally
+    {
+		Set-AzureRmApiManagementTenantAccess -Context $context -Enabled $false -PassThru
     }
 }

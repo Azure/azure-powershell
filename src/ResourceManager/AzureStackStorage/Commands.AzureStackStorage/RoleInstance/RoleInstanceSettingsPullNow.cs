@@ -13,11 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.AzureStack.Management.StorageAdmin;
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.AzureStack.Commands.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {

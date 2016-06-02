@@ -16,7 +16,7 @@ using Microsoft.AzureStack.Management.StorageAdmin.Models;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
-    internal class FarmResponse: ResponseBase
+    internal class FarmResponse : ResponseBase
     {
         public FarmResponse(FarmModel resource) : base(resource)
         {

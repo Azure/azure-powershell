@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.GettingSubscriptionQuotas, location));
 
-            SubscriptionQuotasGetResponse response = this.BatchManagementClient.Subscriptions.GetSubscriptionQuotas(location);
+            SubscriptionQuotasGetResult response = this.BatchManagementClient.Subscription.GetSubscriptionQuotas(location);
             return new PSBatchSubscriptionQuotas(location, response);
         }
     }
