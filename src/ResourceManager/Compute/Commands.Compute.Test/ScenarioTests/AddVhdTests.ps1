@@ -43,9 +43,9 @@ function Test-AddVhd
 
         foreach ($testItem in $testData)
         {
-              $vhdLocalPath = 'e:\vhdstore\' + $testItem.vhdName;
+              $vhdLocalPath = 'f:\vhdstore\' + $testItem.vhdName;
               $vhdName = GetFileNameWithoutExtension $testItem.vhdName;
-              $vhdDestUri = [System.String]::Format("{0}{1}/{2}{3}.vhd", $stoaccount.PrimaryEndpoints.Blob.AbsoluteUri, $vhdContainerName, $vhdName, $rgname);
+              $vhdDestUri = [System.String]::Format("{0}{1}/{2}{3}.vhd", $stoaccount.PrimaryEndpoints.Blob, $vhdContainerName, $vhdName, $rgname);
               Write-Output ("Start Uploading... : " + $testItem.vhdName);
 
               $vhdUploadContext = Add-AzureRmVhd -ResourceGroupName $rgname -Destination $vhdDestUri -LocalFilePath $vhdLocalPath -NumberOfUploaderThreads 1;
