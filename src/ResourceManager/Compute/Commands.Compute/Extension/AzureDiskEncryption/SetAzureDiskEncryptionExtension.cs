@@ -380,6 +380,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     Location = vmParameters.Location,
                     Publisher = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
                     VirtualMachineExtensionType = this.Name,
+                    VirtualMachineExtensionType = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
                     Settings = SettingString,
                     ProtectedSettings = ProtectedSettingString,
