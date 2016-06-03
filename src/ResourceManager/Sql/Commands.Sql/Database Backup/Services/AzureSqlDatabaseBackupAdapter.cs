@@ -293,6 +293,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     ElasticPoolName = model.ElasticPoolName,
                     RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
                     SourceDatabaseId = resourceId,
+                    RecoveryServicesRecoveryPointResourceId = resourceId,
                     RestorePointInTime = restorePointInTime,
                     CreateMode = model.CreateMode
                 }

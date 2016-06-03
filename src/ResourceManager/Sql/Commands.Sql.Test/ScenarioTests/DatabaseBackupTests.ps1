@@ -128,12 +128,12 @@ function Test-DatabaseBackupLongTermRetentionPolicy
 
 function Test-RestoreLongTermRetentionBackup
 {
-	$location = "Southeast Asia"
+	$location = "North Europe"
 	$serverVersion = "12.0"
 	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
 	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
 	$restoredDbName = "powershell_db_restored_ltr"
-	$recoveryPointResourceId = "INSERT_RESOURCEID_HERE"
+	$recoveryPointResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupFabrics/Azure/protectionContainers/AzureSqlContainer;Sql;hchung;hchung-testsvr/protectedItems/AzureSqlDb;dsName;hchung-testdb;fbf5641f-77f8-43b7-8fd7-5338ec293213/recoveryPoints/1731556986347"
 
     Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $recoveryPointResourceId -TargetDatabaseName $restoredDbName -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 }
