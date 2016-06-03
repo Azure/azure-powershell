@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkGatewayCRUD()
         {
