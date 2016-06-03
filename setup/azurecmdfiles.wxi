@@ -1719,6 +1719,62 @@
                             <File Id="fil813FC8791E81AF65295E649133678045" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\ResourceManagerStartup.ps1" />
                         </Component>
                     </Directory>
+                    <Directory Id="dirC7D44D5BAE2DF249D119CEEB989788D3" Name="AzureRM.MachineLearning">
+                        <Component Id="cmp6AC65F6E0A0DB2F0EB94464A70BDD390" Guid="*">
+                            <File Id="filF637097B03E79AC4980670E8CF2FFC50" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\AzureRM.MachineLearning.psd1" />
+                        </Component>
+                        <Component Id="cmpFC05B30C41841E100FC3A9D6BEA347CC" Guid="*">
+                            <File Id="fil37F0EEB14A939268F7C2BF54B9ED226E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Hyak.Common.dll" />
+                        </Component>
+                        <Component Id="cmp05B28EADD58C9B693F531046B6F29941" Guid="*">
+                            <File Id="filD4D5E229F6E5C86EB45803ABAE67FCED" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.ApplicationInsights.dll" />
+                        </Component>
+                        <Component Id="cmp1687B41A0610093F607896B43CC4EF07" Guid="*">
+                            <File Id="fil4AD817F8580081D66F07EAA8B7A6E899" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Azure.Commands.Common.Authentication.dll" />
+                        </Component>
+                        <Component Id="cmp13C5660A6B1A6927145886D667D1EF34" Guid="*">
+                            <File Id="fil698BE57556BDE4D6ACF19354C1028525" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Azure.Commands.MachineLearning.dll" />
+                        </Component>
+                        <Component Id="cmp6A48276F58D526B435D05E179E6FB29B" Guid="*">
+                            <File Id="fil5C495C9F84E5C11A5DB1E4C0C7866A3C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Azure.Commands.MachineLearning.dll-help.xml" />
+                        </Component>
+                        <Component Id="cmp07F58A461285099831CF9BD57FB59B73" Guid="*">
+                            <File Id="fil599F3D5C47FDAE0FD7B5023211470622" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Azure.Commands.ResourceManager.Common.dll" />
+                        </Component>
+                        <Component Id="cmp9195553C2F963156791B7E498358919E" Guid="*">
+                            <File Id="filB8DE80F70DE91293B8A46220CA5529D5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Azure.Common.dll" />
+                        </Component>
+                        <Component Id="cmp227D2D238101AB1BEAE9BB314900A60E" Guid="*">
+                            <File Id="fil054E561ED4C42AF979876CE1A2CC3D7A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Azure.Common.NetFramework.dll" />
+                        </Component>
+                        <Component Id="cmpE30D1CC3A7EEB6038E38C3A342340796" Guid="*">
+                            <File Id="fil67B84ED0DF2CE68E638CB933FAFDDC9D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Azure.Management.Authorization.dll" />
+                        </Component>
+                        <Component Id="cmp94E5A53E75966774C5E70C6345053377" Guid="*">
+                            <File Id="filFC7FF006A46D6369663DA5B146A5165F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Azure.Management.MachineLearning.dll" />
+                        </Component>
+                        <Component Id="cmpAF7FF17AC679A9E475EB18EF6DC95D65" Guid="*">
+                            <File Id="fil47BFF6E5A6F87E76270CBAEB31088B5D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+                        </Component>
+                        <Component Id="cmp99FE1322A326B4531D95870C45932B71" Guid="*">
+                            <File Id="filE7E8545B7129D8AB10F223E1DBC39C19" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
+                        </Component>
+                        <Component Id="cmpA40EB11031167885698706959D701AC2" Guid="*">
+                            <File Id="fil82F5C198128F36E1643A145A7B2FD3D8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\microsoft.rest.clientruntime.azure.dll" />
+                        </Component>
+                        <Component Id="cmp51E3C65B2F3F17518527B3A918539456" Guid="*">
+                            <File Id="fil93A2C25B1489CEF6A426222A4F03EE10" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Rest.ClientRuntime.dll" />
+                        </Component>
+                        <Component Id="cmpCE57E791762E3631B8C38599B6593102" Guid="*">
+                            <File Id="fil60A4C662816DD3A42C452225619D91F7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp3410AB0438048C3EBA9AED8ED25EA043" Guid="*">
+                            <File Id="filA5CCF049238D110F53A2FCA398E5FAD5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.WindowsAzure.Commands.Common.dll" />
+                        </Component>
+                        <Component Id="cmp5786485F44089C42878CE439EB85D475" Guid="*">
+                            <File Id="filD6D42F626E72D9E9389F18E941D176C8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Newtonsoft.Json.dll" />
+                        </Component>
+                    </Directory>
                     <Directory Id="dir76147B1D381C34B7638F2A844B5685DC" Name="AzureRM.Network">
                         <Component Id="cmp33F39A22183184A6B41F85DF085BAD29" Guid="*">
                             <File Id="fil55AEBBBFEF03FD95E26F163516FF2E54" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\AutoMapper.dll" />
@@ -5922,6 +5978,24 @@
             <ComponentRef Id="cmp1C5F3EB3B89301FD0329A1E35E270D3B" />
             <ComponentRef Id="cmp1282ECE600F3F0A8EFD9B13D7D3EAF3C" />
             <ComponentRef Id="cmpFB9B262BA2C2691DA3864C0932598F71" />
+            <ComponentRef Id="cmp6AC65F6E0A0DB2F0EB94464A70BDD390" />
+            <ComponentRef Id="cmpFC05B30C41841E100FC3A9D6BEA347CC" />
+            <ComponentRef Id="cmp05B28EADD58C9B693F531046B6F29941" />
+            <ComponentRef Id="cmp1687B41A0610093F607896B43CC4EF07" />
+            <ComponentRef Id="cmp13C5660A6B1A6927145886D667D1EF34" />
+            <ComponentRef Id="cmp6A48276F58D526B435D05E179E6FB29B" />
+            <ComponentRef Id="cmp07F58A461285099831CF9BD57FB59B73" />
+            <ComponentRef Id="cmp9195553C2F963156791B7E498358919E" />
+            <ComponentRef Id="cmp227D2D238101AB1BEAE9BB314900A60E" />
+            <ComponentRef Id="cmpE30D1CC3A7EEB6038E38C3A342340796" />
+            <ComponentRef Id="cmp94E5A53E75966774C5E70C6345053377" />
+            <ComponentRef Id="cmpAF7FF17AC679A9E475EB18EF6DC95D65" />
+            <ComponentRef Id="cmp99FE1322A326B4531D95870C45932B71" />
+            <ComponentRef Id="cmpA40EB11031167885698706959D701AC2" />
+            <ComponentRef Id="cmp51E3C65B2F3F17518527B3A918539456" />
+            <ComponentRef Id="cmpCE57E791762E3631B8C38599B6593102" />
+            <ComponentRef Id="cmp3410AB0438048C3EBA9AED8ED25EA043" />
+            <ComponentRef Id="cmp5786485F44089C42878CE439EB85D475" />
             <ComponentRef Id="cmp33F39A22183184A6B41F85DF085BAD29" />
             <ComponentRef Id="cmp70B60DBD32D61BCA5715AB2D64131358" />
             <ComponentRef Id="cmp92653399A1E9659661E74CA982C1D16A" />
