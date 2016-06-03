@@ -12,14 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Network;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
 {
@@ -37,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
             Position = 0,
             Mandatory = true,
             ParameterSetName = AbortParameterSetName,
-            HelpMessage = "Abort migration")]        
+            HelpMessage = "Abort migration")]
         public SwitchParameter Abort
         {
             get;
@@ -69,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Service name.")]
+            HelpMessage = "Virtual network name")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName
         {
@@ -83,7 +79,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
 
             if (this.Abort.IsPresent)
             {
-                
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
@@ -103,7 +98,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                 CommandRuntime.ToString(),
                 () => this.NetworkClient.Networks.PrepareMigration(this.VirtualNetworkName));
             }
-            
         }
     }
 }

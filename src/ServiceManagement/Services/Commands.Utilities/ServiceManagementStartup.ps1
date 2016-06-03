@@ -52,6 +52,7 @@ $script:aliases = @{
     
     # Compute aliases
     "New-AzureDnsConfig" = "New-AzureDns";
+    "Set-AzureBootDiagnostics" = "Set-AzureVMBootDiagnostics";
     
     # HDInsight aliases
     "Invoke-Hive" = "Invoke-AzureHDInsightHiveJob";

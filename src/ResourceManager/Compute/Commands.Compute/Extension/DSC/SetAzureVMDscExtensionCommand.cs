@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 }
                 catch (Rest.Azure.CloudException ex)
                 {
-                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
+                    var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(
                         ex.Response.Content);
 
                     if ("Failed".Equals(errorReturned.Status)

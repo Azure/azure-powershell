@@ -52,8 +52,8 @@ function IncrementVersion([string]$FilePath)
     Write-Output "Updating File: $FilePath"   
     (Get-Content $FilePath) | 
     ForEach-Object {
-		$temp = ReplaceVersion("ModuleVersion", $_)
-		ReplaceVersion("RequiredVersion", $temp)
+		$temp = ReplaceVersion "ModuleVersion" $_
+		ReplaceVersion "RequiredVersion" $temp
     } | Set-Content -Path $FilePath -Encoding UTF8
 }
 
