@@ -26,6 +26,10 @@ function Test-AzureProvider
 
     Assert-True { $allProviders.Length -gt $defaultProviders.Length }
 
+	$nonProviders = Get-AzureRmResourceProvider -Location "abc"
+
+	Assert-True { $nonProviders.Length -eq 0 }
+
     Register-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement" -Force
 
     $endTime = [DateTime]::UtcNow.AddMinutes(5)
